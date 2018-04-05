@@ -38,6 +38,16 @@ class Editor:
         gtk.main_quit()
         
     def cursor_changed(self, treeview, data=None):
+		if self.needsSave():
+			dlg = gtk.MessageDialog(self.window, type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO)
+			dlg.set_markup("Do you want to save the changes?")
+
+			response = dlg.run()
+			dlg.destroy()
+
+			if response == gtk.RESPONSE_YES:
+				self.save_event(treeview, data)
+
 		(model, piter) = treeview.get_selection().get_selected()
 		self.fun = self.treestore.get_value(piter,0)
 		(abstr,self.synset,descr) = self.loadAbstract()
@@ -50,11 +60,15 @@ class Editor:
 		self.textbuffer_eng.set_modified(False)
 		self.textbuffer_bul.set_text(concr[1])
 		self.textbuffer_bul.set_modified(False)
-		
+
+		self.saveButton.set_sensitive(False)
+
     def save_event(self, widget, data=None):
         self.saveAbstract()
         self.saveConcrete()
-        
+
+        self.saveButton.set_sensitive(False)
+
     def execute_event(self, widget, data=None):
 		subprocess.Popen(["gf", "--make", "WordNetEng.gf", "WordNetBul.gf"])
 
@@ -62,16 +76,32 @@ class Editor:
 		# reload the grammar
 		self.gr = pgf.readPGF("WordNet.pgf")
 
-    def delete_event(self, widget, data=None):
+    def delete_function_event(self, widget, data=None):
 		self.deleteAbstract()
 		self.deleteConcrete()
 		self.deleteMapping()
+
+    def changed_event(self, widget, data=None):
+		self.saveButton.set_sensitive(True)
+
+    def needsSave(self):
+		if (self.textbuffer_abstr.get_modified() or self.textbuffer_gloss.get_modified()):
+			return True
+		
+		if (self.textbuffer_eng.get_modified()):
+			return True
+			
+		if (self.textbuffer_bul.get_modified()):
+			return True
+
+		return False
 
     def setupTextView(self,vbox,title):
 		label = gtk.Label(title)
 		label.set_alignment(0,0)
 
 		textbuffer = gtk.TextBuffer()
+		textbuffer.connect("changed", self.changed_event)
 
 		textview = gtk.TextView()
 		textview.set_buffer(textbuffer);
@@ -164,8 +194,11 @@ class Editor:
         vbox1.pack_start(hbox,False)
         vbox1.pack_start(scrolledwindow,True)
 
+        accel_group = gtk.AccelGroup()
+        self.window.add_accel_group(accel_group)
+
         toolbar = gtk.Toolbar()
-        toolbar.insert_stock(gtk.STOCK_SAVE,
+        self.saveButton = toolbar.insert_stock(gtk.STOCK_SAVE,
                              "Saves the changes",
                              "Private",
                              self.save_event,
@@ -183,9 +216,13 @@ class Editor:
         toolbar.insert_stock(gtk.STOCK_DELETE,
                              "Deletes the current function",
                              "Private",
-                             self.delete_event,
+                             self.delete_function_event,
                              None, 3)
-   
+
+        self.saveButton.set_sensitive(False)
+        self.saveButton.add_accelerator("activate", accel_group,
+                                        ord('S'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+
         vbox2 = gtk.VBox()
         vbox2.pack_start(toolbar,False)
         self.textbuffer_gloss = self.setupTextView(vbox2, "Gloss")

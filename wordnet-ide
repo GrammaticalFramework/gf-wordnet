@@ -12,12 +12,17 @@ class Editor:
     # This is a callback function. The data arguments are ignored
     # in this example. More on callbacks below.
     def search(self, widget, data=None):
-        query = self.entry.get_text();
+        self.notifyNeedsSave()
+
+        query = self.entry.get_text()
         self.entry.set_text("");
         self.textbuffer_abstr.set_text("");
+        self.textbuffer_abstr.set_modified(False)
         self.textbuffer_gloss.set_text("");
-        self.textbuffer_eng.set_text("");
-        self.textbuffer_bul.set_text("");
+        self.textbuffer_gloss.set_modified(False)
+        for textbuffer in self.textbuffers:
+			textbuffer.set_text("")
+			textbuffer.set_modified(False)
 
         langs = self.gr.languages
         exprs = []
@@ -31,6 +36,8 @@ class Editor:
 			    values.append(langs[lang].linearize(e))
             self.treestore.append(values)
 
+        self.saveButton.set_sensitive(False)
+
     def delete_event(self, widget, event, data=None):
         return False
 
@@ -38,15 +45,7 @@ class Editor:
         gtk.main_quit()
         
     def cursor_changed(self, treeview, data=None):
-		if self.needsSave():
-			dlg = gtk.MessageDialog(self.window, type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO)
-			dlg.set_markup("Do you want to save the changes?")
-
-			response = dlg.run()
-			dlg.destroy()
-
-			if response == gtk.RESPONSE_YES:
-				self.save_event(treeview, data)
+		self.notifyNeedsSave()
 
 		(model, piter) = treeview.get_selection().get_selected()
 		self.fun = self.treestore.get_value(piter,0)
@@ -56,10 +55,9 @@ class Editor:
 		self.textbuffer_abstr.set_modified(False)
 		self.textbuffer_gloss.set_text(descr)
 		self.textbuffer_gloss.set_modified(False)
-		self.textbuffer_eng.set_text(concr[0])
-		self.textbuffer_eng.set_modified(False)
-		self.textbuffer_bul.set_text(concr[1])
-		self.textbuffer_bul.set_modified(False)
+		for i in xrange(len(self.textbuffers)):
+			self.textbuffers[i].set_text(concr[i])
+			self.textbuffers[i].set_modified(False)
 
 		self.saveButton.set_sensitive(False)
 
@@ -88,13 +86,22 @@ class Editor:
 		if (self.textbuffer_abstr.get_modified() or self.textbuffer_gloss.get_modified()):
 			return True
 		
-		if (self.textbuffer_eng.get_modified()):
-			return True
-			
-		if (self.textbuffer_bul.get_modified()):
-			return True
+		for textbuffer in self.textbuffers:
+			if (textbuffer.get_modified()):
+				return True
 
 		return False
+
+    def notifyNeedsSave(self):
+		if self.needsSave():
+			dlg = gtk.MessageDialog(self.window, type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO)
+			dlg.set_markup("Do you want to save the changes?")
+
+			response = dlg.run()
+			dlg.destroy()
+
+			if response == gtk.RESPONSE_YES:
+				self.save_event(treeview, data)
 
     def setupTextView(self,vbox,title):
 		label = gtk.Label(title)
@@ -147,45 +154,33 @@ class Editor:
         hbox.pack_start(self.entry,True)
         hbox.pack_end(self.button,False)
 
-        self.treestore = gtk.ListStore(str,str,str)
+        self.treestore = gtk.ListStore(str,str,str,str)
         self.treeview = gtk.TreeView(self.treestore)
         self.treeview.connect('cursor-changed', self.cursor_changed, None)
 
-        # create the TreeViewColumns to display the data
-        self.tvcolumn_abs = gtk.TreeViewColumn('Abstract')
-        self.tvcolumn_eng = gtk.TreeViewColumn('English')
-        self.tvcolumn_bul = gtk.TreeViewColumn('Bulgarian')
+        i = 0
+        for lang_name in ['Abstract', 'English', 'Swedish', 'Bulgarian']:
+			tvcolumn = gtk.TreeViewColumn(lang_name)
 
-        # add tvcolumns to treeview
-        self.treeview.append_column(self.tvcolumn_abs)
-        self.treeview.append_column(self.tvcolumn_eng)
-        self.treeview.append_column(self.tvcolumn_bul)
+			# add tvcolumns to treeview
+			self.treeview.append_column(tvcolumn)
 
-        self.cell_abs = gtk.CellRendererText()
-        self.cell_eng = gtk.CellRendererText()
-        self.cell_bul = gtk.CellRendererText()
+			cell = gtk.CellRendererText()
 
-        # add the cell to the tvcolumn and allow it to expand
-        self.tvcolumn_abs.pack_start(self.cell_abs, True)
-        self.tvcolumn_eng.pack_start(self.cell_eng, True)
-        self.tvcolumn_bul.pack_start(self.cell_bul, True)
+			# add the cell to the tvcolumn and allow it to expand
+			tvcolumn.pack_start(cell, True)
 
-        # set the cell "text" attribute to column 0 - retrieve text
-        # from that column in treestore
-        self.tvcolumn_abs.add_attribute(self.cell_abs, 'text', 0)
-        self.tvcolumn_eng.add_attribute(self.cell_eng, 'text', 1)
-        self.tvcolumn_bul.add_attribute(self.cell_bul, 'text', 2)
+			# set the cell "text" attribute to column 0 - retrieve text
+			# from that column in treestore
+			tvcolumn.add_attribute(cell, 'text', i)
+
+			# Allow sorting on the column
+			tvcolumn.set_sort_column_id(i)
+
+			i = i+1
 
         # make it searchable
         self.treeview.set_search_column(0)
-
-        # Allow sorting on the column
-        self.tvcolumn_abs.set_sort_column_id(0)
-        self.tvcolumn_eng.set_sort_column_id(1)
-        self.tvcolumn_bul.set_sort_column_id(2)
-
-        # Allow drag and drop reordering of rows
-        self.treeview.set_reorderable(True)
 
         scrolledwindow = gtk.ScrolledWindow()
         scrolledwindow.add(self.treeview)
@@ -228,13 +223,16 @@ class Editor:
         self.textbuffer_gloss = self.setupTextView(vbox2, "Gloss")
         self.textbuffer_exmpl = self.setupTextView(vbox2, "Examples")
         self.textbuffer_abstr = self.setupTextView(vbox2, "Abstract")
-        self.textbuffer_eng   = self.setupTextView(vbox2, "English")
-        self.textbuffer_bul   = self.setupTextView(vbox2, "Bulgarian")
+
+        self.textbuffers = []
+        self.textbuffers.append(self.setupTextView(vbox2, "English"))
+        self.textbuffers.append(self.setupTextView(vbox2, "Swedish"))
+        self.textbuffers.append(self.setupTextView(vbox2, "Bulgarian"))
 
         hpaned = gtk.HPaned()
         hpaned.add1(vbox1)
         hpaned.add2(vbox2)
-        hpaned.set_position(300)
+        hpaned.set_position(350)
 
         # This packs the button into the window (a GTK container).
         self.window.add(hpaned)
@@ -289,7 +287,7 @@ class Editor:
 
     def loadConcrete(self):
 		concr = []
-		for file_name in ["WordNetEng.gf", "WordNetBul.gf"]:
+		for file_name in ["WordNetEng.gf", "WordNetSwe.gf", "WordNetBul.gf"]:
 			f = open(file_name, "r")
 			for line in f:
 				ws = line.split()
@@ -302,7 +300,7 @@ class Editor:
 		return concr
 
     def saveConcrete(self):
-		for (file_name, textbuffer) in [("WordNetEng.gf",self.textbuffer_eng), ("WordNetBul.gf",self.textbuffer_bul)]:
+		for (file_name, textbuffer) in [("WordNetEng.gf",self.textbuffers[0]), ("WordNetSwe.gf",self.textbuffers[1]), ("WordNetBul.gf",self.textbuffers[2])]:
 			if not textbuffer.get_modified():
 				continue
 

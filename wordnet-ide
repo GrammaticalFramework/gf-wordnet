@@ -43,18 +43,29 @@ class Editor:
 		(abstr,self.synset,descr) = self.loadAbstract()
 		concr                     = self.loadConcrete()
 		self.textbuffer_abstr.set_text(abstr)
+		self.textbuffer_abstr.set_modified(False)
 		self.textbuffer_gloss.set_text(descr)
+		self.textbuffer_gloss.set_modified(False)
 		self.textbuffer_eng.set_text(concr[0])
+		self.textbuffer_eng.set_modified(False)
 		self.textbuffer_bul.set_text(concr[1])
+		self.textbuffer_bul.set_modified(False)
 		
     def save_event(self, widget, data=None):
         self.saveAbstract()
         self.saveConcrete()
         
     def execute_event(self, widget, data=None):
-		subprocess.call(["gf", "--make", "WordNetEng.gf", "WordNetBul.gf"])
+		subprocess.Popen(["gf", "--make", "WordNetEng.gf", "WordNetBul.gf"])
+
+    def reload_event(self, widget, data=None):
 		# reload the grammar
 		self.gr = pgf.readPGF("WordNet.pgf")
+
+    def delete_event(self, widget, data=None):
+		self.deleteAbstract()
+		self.deleteConcrete()
+		self.deleteMapping()
 
     def setupTextView(self,vbox,title):
 		label = gtk.Label(title)
@@ -164,6 +175,16 @@ class Editor:
                              "Private",
                              self.execute_event,
                              None, 1)
+        toolbar.insert_stock(gtk.STOCK_REFRESH,
+                             "Reloads the grammar",
+                             "Private",
+                             self.reload_event,
+                             None, 2)
+        toolbar.insert_stock(gtk.STOCK_DELETE,
+                             "Deletes the current function",
+                             "Private",
+                             self.delete_event,
+                             None, 3)
    
         vbox2 = gtk.VBox()
         vbox2.pack_start(toolbar,False)
@@ -202,6 +223,9 @@ class Editor:
 		return (abstr,synset,descr)
 
     def saveAbstract(self):
+		if not (self.textbuffer_abstr.get_modified() or self.textbuffer_gloss.get_modified()):
+			return
+
 		inp = open("WordNet.gf", "r")
 		out = open("__temp__", "w")
 		for line in inp:
@@ -209,6 +233,19 @@ class Editor:
 			if len(ws) > 2 and ws[0] == "fun" and ws[1] == self.fun:
 				line = self.textbuffer_abstr.get_text(*self.textbuffer_abstr.get_bounds()).ljust(35)+"-- "+self.synset+"\t"+self.textbuffer_gloss.get_text(*self.textbuffer_gloss.get_bounds())+"\n"
 			out.write(line)
+		inp.close()
+		out.close()
+		shutil.move("__temp__", "WordNet.gf")
+
+    def deleteAbstract(self):
+		inp = open("WordNet.gf", "r")
+		out = open("__temp__", "w")
+		for line in inp:
+			ws = line.split()
+			if len(ws) > 2 and ws[0] == "fun" and ws[1] == self.fun:
+				pass
+			else:
+				out.write(line)
 		inp.close()
 		out.close()
 		shutil.move("__temp__", "WordNet.gf")
@@ -229,6 +266,9 @@ class Editor:
 
     def saveConcrete(self):
 		for (file_name, textbuffer) in [("WordNetEng.gf",self.textbuffer_eng), ("WordNetBul.gf",self.textbuffer_bul)]:
+			if not textbuffer.get_modified():
+				continue
+
 			inp = open(file_name, "r")
 			out = open("__temp__", "w")
 			for line in inp:
@@ -239,6 +279,33 @@ class Editor:
 			inp.close()
 			out.close()
 			shutil.move("__temp__", file_name)
+
+    def deleteConcrete(self):
+		for (file_name, textbuffer) in [("WordNetEng.gf",self.textbuffer_eng), ("WordNetBul.gf",self.textbuffer_bul)]:
+			inp = open(file_name, "r")
+			out = open("__temp__", "w")
+			for line in inp:
+				ws = line.split()
+				if len(ws) > 2 and ws[0] == "lin" and ws[1] == self.fun:
+					pass
+				else:
+					out.write(line)
+			inp.close()
+			out.close()
+			shutil.move("__temp__", file_name)
+
+    def deleteMapping(self):
+		inp = open("mapping.txt", "r")
+		out = open("__temp__", "w")
+		for line in inp:
+			ws = line.split()
+			if len(ws) > 1 and ws[1] == self.fun:
+				pass
+			else:
+				out.write(line)
+		inp.close()
+		out.close()
+		shutil.move("__temp__", "mapping.txt")
 
     def main(self):
         # All PyGTK applications must have a gtk.main(). Control ends here

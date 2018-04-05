@@ -22702,10 +22702,8 @@ convalescent_N	convalescent_N
 convection_N	convection_1_N
 convection_N	convection_2_N
 convector_N	convector_N
-convene_V	convene_1_V
-convene_V	convene_2_V
-convene_V2	convene_1_V2
-convene_V2	convene_2_V2
+convene_V	convene_V
+convene_V2	convene_V2
 convener_N	convener_N
 convenience_N	convenience_1_N
 convenience_N	convenience_2_N
@@ -47186,11 +47184,8 @@ hatch_N	hatch_2_N
 hatch_N	hatch_3_N
 hatch_N	hatch_4_N
 hatch_V	hatch_1_V
-hatch_V	hatch_2_V
 hatch_V	hatch_3_V
 hatch_V	hatch_4_V
-hatch_V	hatch_5_V
-hatch_V2	hatch_1_V2
 hatch_V2	hatch_2_V2
 hatch_V2	hatch_3_V2
 hatch_V2	hatch_4_V2

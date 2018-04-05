@@ -53,6 +53,8 @@ class Editor:
         
     def execute_event(self, widget, data=None):
 		subprocess.call(["gf", "--make", "WordNetEng.gf", "WordNetBul.gf"])
+		# reload the grammar
+        self.gr = pgf.readPGF("WordNet.pgf")
 
     def setupTextView(self,vbox,title):
 		label = gtk.Label(title)

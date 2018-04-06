@@ -25,15 +25,15 @@ class Editor:
 			textbuffer.set_modified(False)
 
         langs = self.gr.languages
-        exprs = []
+        funs  = set()
         for lang in langs:
             for (fun,an,prob) in langs[lang].lookupMorpho(query):
-                exprs.append(pgf.Expr(fun,[]))
+                funs.add(fun)
         self.treestore.clear()
-        for e in exprs:
-            values = [str(e)]
+        for fun in funs:
+            values = [fun]
             for lang in langs:
-			    values.append(langs[lang].linearize(e))
+			    values.append(langs[lang].linearize(pgf.Expr(fun,[])))
             self.treestore.append(values)
 
         self.saveButton.set_sensitive(False)
@@ -68,7 +68,7 @@ class Editor:
         self.saveButton.set_sensitive(False)
 
     def execute_event(self, widget, data=None):
-		subprocess.Popen(["gf", "--make", "WordNetEng.gf", "WordNetBul.gf"])
+		subprocess.Popen(["gf", "--make", "WordNetEng.gf", "WordNetSwe.gf", "WordNetBul.gf"])
 
     def reload_event(self, widget, data=None):
 		# reload the grammar
@@ -85,7 +85,7 @@ class Editor:
     def needsSave(self):
 		if (self.textbuffer_abstr.get_modified() or self.textbuffer_gloss.get_modified()):
 			return True
-		
+
 		for textbuffer in self.textbuffers:
 			if (textbuffer.get_modified()):
 				return True
@@ -271,6 +271,9 @@ class Editor:
 		inp.close()
 		out.close()
 		shutil.move("__temp__", "WordNet.gf")
+		
+		self.textbuffer_abstr.set_modified(False)
+		self.textbuffer_gloss.set_modified(False)
 
     def deleteAbstract(self):
 		inp = open("WordNet.gf", "r")
@@ -315,8 +318,10 @@ class Editor:
 			out.close()
 			shutil.move("__temp__", file_name)
 
+			textbuffer.set_modified(False)
+
     def deleteConcrete(self):
-		for (file_name, textbuffer) in [("WordNetEng.gf",self.textbuffer_eng), ("WordNetBul.gf",self.textbuffer_bul)]:
+		for (file_name, textbuffer) in [("WordNetEng.gf",self.textbuffers[0]), ("WordNetSwe.gf",self.textbuffers[1]), ("WordNetBul.gf",self.textbuffers[2])]:
 			inp = open(file_name, "r")
 			out = open("__temp__", "w")
 			for line in inp:

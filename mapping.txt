@@ -43495,7 +43495,7 @@ ghillie_N	ghillie_N
 ghost_N	ghost_1_N
 ghost_N	ghost_2_N
 ghost_N	ghost_3_N
-ghost_N	ghost_4_N
+ghost_N	ghost_of_N2
 ghost_V	ghost_1_V
 ghost_V	ghost_2_V
 ghost_V	ghost_3_V
@@ -94161,8 +94161,6 @@ shy_A	shy_2_A
 shy_A	shy_3_A
 shy_N	shy_N
 shy_V	shy_1_V
-shy_V	shy_2_V
-shy_V2	shy_1_V2
 shy_V2	shy_2_V2
 shy_away_V	shy_away_V
 shy_away_from_V2	shy_away_from_V2

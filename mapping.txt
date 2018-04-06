@@ -31973,8 +31973,6 @@ drive_V	drive_4_V
 drive_V	drive_5_V
 drive_V	drive_6_V
 drive_V	drive_7_V
-drive_V	drive_8_V
-drive_V	drive_9_V
 drive_V	drive_10_V
 drive_V	drive_11_V
 drive_V	drive_12_V
@@ -31985,7 +31983,6 @@ drive_V	drive_16_V
 drive_V	drive_17_V
 drive_V	drive_18_V
 drive_V	drive_19_V
-drive_V	drive_20_V
 drive_V	drive_21_V
 drive_V	drive_22_V
 drive_V2	drive_1_V2
@@ -90281,8 +90278,6 @@ scarce_A	scarce_A
 scarcity_N	scarcity_N
 scare_N	scare_1_N
 scare_N	scare_2_N
-scare_V	scare_1_V
-scare_V	scare_2_V
 scare_V2	scare_1_V2
 scare_V2	scare_2_V2
 scare_away_V2	scare_away_V2

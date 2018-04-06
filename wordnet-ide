@@ -101,7 +101,7 @@ class Editor:
 			dlg.destroy()
 
 			if response == gtk.RESPONSE_YES:
-				self.save_event(treeview, data)
+				self.save_event(None, None)
 
     def setupTextView(self,vbox,title):
 		label = gtk.Label(title)

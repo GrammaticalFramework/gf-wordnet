@@ -40,7 +40,8 @@ create index expr_txt on expr(langvar,txt);
 create index expr_langvar on expr(langvar);
 create index meaning_source on meaning(source);
 create index denotation_meaning on denotation(meaning);
-
+create index denotation_expr_meaning on denotation(expr,meaning);
+ 
 .print "import denotation"
 
 begin transaction;

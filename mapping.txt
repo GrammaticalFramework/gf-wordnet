@@ -89319,12 +89319,12 @@ saigon_PN	saigon_PN
 sail_N	sail_1_N
 sail_N	sail_2_N
 sail_N	sail_3_N
-sail_V	sail_1_V
-sail_V	sail_2_V
+sail_V	sail_V2
+sail_V	sail_through_2_V2
 sail_V	sail_3_V
 sail_V	sail_4_V
 sail_into_V2	sail_into_V2
-sail_through_V2	sail_through_V2
+sail_through_V2	sail_through_1_V2
 sailboat_N	sailboat_N
 sailcloth_N	sailcloth_N
 sailfish_N	sailfish_1_N

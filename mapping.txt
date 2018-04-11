@@ -1341,7 +1341,7 @@ adhocracy_N	adhocracy_N
 adiabatic_A	adiabatic_A
 adience_N	adience_N
 adient_A	adient_A
-adieu_N	adieu_1_N
+adieu_N	adieu_Interj
 adipose_A	adipose_A
 adiposity_N	adiposity_N
 adit_N	adit_N
@@ -8378,13 +8378,7 @@ batfish_N	batfish_N
 bath_N	bath_1_N
 bath_N	bath_2_N
 bath_N	bath_3_N
-bath_N	bath_4_N
-bath_PN	bath_1_PN
-bath_PN	bath_2_PN
-bath_PN	bath_3_PN
-bath_PN	bath_4_PN
-bath_V	bath_V
-bath_V2	bath_V2
+bath_PN	bath_PN
 bath_chair_N	bath_chair_N
 bathe_N	bathe_N
 bathe_V	bathe_1_V
@@ -14203,8 +14197,7 @@ by_election_N	by_election_N
 by_means_of_Prep	by_means_of_Prep
 by_virtue_of_Prep	by_virtue_of_Prep
 bye_Interj	bye_Interj
-bye_N	bye_1_N
-bye_N	bye_2_N
+bye_N	bye_N
 bye_bye_Interj	bye_bye_Interj
 bye_law_N	bye_law_N
 bygone_A	bygone_A
@@ -26219,7 +26212,6 @@ darken_V2	darken_2_V2
 darken_V2	darken_3_V2
 darkey_N	darkey_N
 darkgrey_N	darkgrey_N
-darkie_N	darkie_N
 darkish_A	darkish_A
 darkling_A	darkling_1_A
 darkling_A	darkling_2_A
@@ -26230,7 +26222,6 @@ darkness_N	darkness_4_N
 darkness_N	darkness_5_N
 darkness_N	darkness_6_N
 darkroom_N	darkroom_N
-darky_N	darky_N
 darling_N	darling_1_N
 darling_N	darling_2_N
 darlington_PN	darlington_PN
@@ -49624,7 +49615,6 @@ horror_N	horror_1_N
 horror_N	horror_2_N
 horror_N	horror_3_N
 horror_stricken_A	horror_stricken_A
-horror_struck_A	horror_struck_A
 hors_de_combat_A	hors_de_combat_A
 horse_N	horse_1_N
 horse_N	horse_2_N
@@ -105632,7 +105622,6 @@ terror_N	terror_2_N
 terror_N	terror_3_N
 terror_N	terror_4_N
 terror_stricken_A	terror_stricken_A
-terror_struck_A	terror_struck_A
 terrorism_N	terrorism_N
 terrorist_N	terrorist_N
 terrorization_N	terrorization_1_N

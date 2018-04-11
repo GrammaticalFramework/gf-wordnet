@@ -28136,7 +28136,6 @@ desensitizing_A	desensitizing_1_A
 desert_A	desert_A
 desert_N	desert_1_N
 desert_N	desert_2_N
-desert_V	desert_1_V
 desert_V	desert_2_V
 desert_V	desert_3_V
 desert_V2	desert_1_V2
@@ -96305,11 +96304,8 @@ snatch_N	snatch_2_N
 snatch_N	snatch_3_N
 snatch_N	snatch_4_N
 snatch_N	snatch_5_N
-snatch_V	snatch_1_V
 snatch_V	snatch_2_V
-snatch_V	snatch_3_V
 snatch_V2	snatch_1_V2
-snatch_V2	snatch_2_V2
 snatch_V2	snatch_3_V2
 snatcher_N	snatcher_1_N
 snatcher_N	snatcher_2_N

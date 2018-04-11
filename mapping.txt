@@ -25387,7 +25387,7 @@ curl_N	curl_3_N
 curl_V	curl_1_V
 curl_V	curl_2_V
 curl_V	curl_3_V
-curl_V	curl_4_V
+curl_V	curl_V2
 curl_V	curl_5_V
 curl_up_V	curl_up_V
 curler_N	curler_N
@@ -62669,7 +62669,6 @@ marrow_2_N	marrow_4_N
 marrow_2_N	marrow_5_N
 marrowbone_N	marrowbone_N
 marry_V	marry_1_V
-marry_V	marry_2_V
 marry_V2	marry_1_V2
 marry_V2	marry_2_V2
 marry_in_V	marry_in_V
@@ -87360,8 +87359,6 @@ rimu_N	rimu_N
 rind_N	rind_N
 rinderpest_N	rinderpest_N
 ring_4_V2	ring_4_V2
-ring_6_V2	ring_1_V2
-ring_6_V2	ring_2_V2
 ring_6_V2	ring_3_V2
 ring_6_V2	ring_5_V2
 ring_6_V2	ring_6_V2
@@ -87377,9 +87374,6 @@ ring_N	ring_9_N
 ring_V	ring_1_V
 ring_V	ring_2_V
 ring_V	ring_3_V
-ring_V	ring_4_V
-ring_V	ring_5_V
-ring_V	ring_6_V
 ring_armour_N	ring_armour_N
 ring_back_V2	ring_back_V2
 ring_finger_N	ring_finger_N
@@ -107091,7 +107085,6 @@ tire_N	tire_N
 tire_V	tire_1_V
 tire_V	tire_2_V
 tire_V	tire_3_V
-tire_V	tire_4_V
 tire_V2	tire_1_V2
 tire_V2	tire_2_V2
 tire_V2	tire_3_V2

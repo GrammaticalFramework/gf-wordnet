@@ -66626,14 +66626,10 @@ multiplicative_A	multiplicative_A
 multiplicity_N	multiplicity_1_N
 multiplicity_N	multiplicity_2_N
 multiplier_N	multiplier_N
-multiply_V	multiply_1_V
-multiply_V	multiply_2_V
 multiply_V	multiply_3_V
 multiply_V	multiply_4_V
-multiply_V2	multiply_1_V2
-multiply_V2	multiply_2_V2
-multiply_V2	multiply_3_V2
-multiply_V2	multiply_4_V2
+multiply_V2	multiply_by_V3
+multiply_V2	multiply_V2
 multipotent_A	multipotent_A
 multiprocessing_N	multiprocessing_N
 multiprocessor_N	multiprocessor_N

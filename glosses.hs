@@ -12,11 +12,6 @@ main = do
     sequence_ [insertTriple db s p o | (s,p,o) <- glosses]
   closeSG db
 
-toTriple l =
-  case readTriple l of
-    Just t  -> t
-    Nothing -> error ("topics.txt: "++l)
-
 gloss l = 
   case words l of
     ("fun":fn:_) -> case dropWhile (/='\t') l of
@@ -26,21 +21,27 @@ gloss l =
 
 glossTriples fn s =
   (if null gs then [] else [(fn_e,gloss,mkStr (merge gs))])++
-  (if null es then [] else [(fn_e,example,mkStr (merge (map (init . tail) es)))])
+  (if null es then [] else [(fn_e,example,(mkStr . noQuotes) e) | e <- es])
   where
     fn_e    = mkApp fn []
     gloss   = mkApp "gloss"   []
     example = mkApp "example" []
-    (es,gs) = partition isExample (splitGloss s)
+    (es,gs) = partition isExample (parseComment s)
+    
+    noQuotes s
+      | head s == '"' && last s == '"' = (init . tail) s
+      | otherwise                      = s
 
-splitGloss s =
-  let (xs,s') = break (==';') s
-  in trim xs : case s' of
-                 ';':s -> splitGloss s
-                 _     -> []
-  where
-    trim = reverse . dropWhile isSpace . reverse . dropWhile isSpace
+parseComment ""       = [""]
+parseComment (';':cs) = "":parseComment (dropWhile isSpace cs)
+parseComment ('"':cs) = case break (=='"') cs of
+                          (y,'"':cs) -> case parseComment cs of
+                                          (x:xs) -> ('"':y++'"':x):xs
+                          _          -> case parseComment cs of
+                                          (x:xs) -> (       '"':x):xs
+parseComment (c  :cs) = case parseComment cs of
+                          (x:xs) -> (c:x):xs
 
 merge = intercalate "; "
 
-isExample s = not (null s) && head s == '"' && last s == '"'
+isExample s = not (null s) && head s == '"'

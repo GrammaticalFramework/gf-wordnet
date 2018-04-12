@@ -34,7 +34,12 @@ class Editor:
             values = [fun]
             for lang in langs:
 			    values.append(langs[lang].linearize(pgf.Expr(fun,[])))
-            self.treestore.append(values)
+            it = self.treestore.append(None,values)
+            for syn_fun in self.fun2synset[fun]:
+				values = [syn_fun]
+				for lang in langs:
+					values.append(langs[lang].linearize(pgf.Expr(syn_fun,[])))
+				self.treestore.append(it,values)
 
         self.saveButton.set_sensitive(False)
 
@@ -45,9 +50,12 @@ class Editor:
         gtk.main_quit()
         
     def cursor_changed(self, treeview, data=None):
+		(model, piter) = treeview.get_selection().get_selected()
+		if piter == None:
+			return
+
 		self.notifyNeedsSave()
 
-		(model, piter) = treeview.get_selection().get_selected()
 		self.fun = self.treestore.get_value(piter,0)
 		(abstr,self.synset,descr) = self.loadAbstract()
 		concr                     = self.loadConcrete()
@@ -125,6 +133,8 @@ class Editor:
 		# load the grammar
         self.gr = pgf.readPGF("WordNet.pgf")
 
+        self.fun2synset = self.loadSynsets()
+
         # create a new window
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
         self.window.resize(1000,500)
@@ -154,7 +164,7 @@ class Editor:
         hbox.pack_start(self.entry,True)
         hbox.pack_end(self.button,False)
 
-        self.treestore = gtk.ListStore(str,str,str,str)
+        self.treestore = gtk.TreeStore(str,str,str,str)
         self.treeview = gtk.TreeView(self.treestore)
         self.treeview.connect('cursor-changed', self.cursor_changed, None)
 
@@ -178,9 +188,6 @@ class Editor:
 			tvcolumn.set_sort_column_id(i)
 
 			i = i+1
-
-        # make it searchable
-        self.treeview.set_search_column(0)
 
         scrolledwindow = gtk.ScrolledWindow()
         scrolledwindow.add(self.treeview)
@@ -239,7 +246,30 @@ class Editor:
 
         # and the window
         self.window.show_all()
-        
+
+    def loadSynsets(self):
+		f = open("WordNet.gf", "r")
+		fun2synset = {}
+		synsets    = {}
+		for line in f:
+			ws = line.split()
+			if len(ws) > 2 and ws[0] == "fun":
+				fun = ws[1]
+				parts = line.split('--')
+				if len(parts) == 2:
+					[abstr,comment] = parts
+					abstr = abstr.strip()
+					[synset_id,descr] = comment.split('\t')
+					if synset_id in synsets:
+						synset = synsets[synset_id]
+					else:
+						synset = []
+						synsets[synset_id] = synset
+					fun2synset[fun] = synset
+					synset.append(fun)
+		f.close()
+		return fun2synset
+
     def loadAbstract(self):
 		f = open("WordNet.gf", "r")
 		abstr  = None

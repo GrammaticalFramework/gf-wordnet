@@ -6,48 +6,63 @@ import gtk
 import pgf
 import shutil
 import subprocess
- 
+import threading
+import os.path
+import sys
+
 class Editor:
-
-    # This is a callback function. The data arguments are ignored
-    # in this example. More on callbacks below.
-    def search(self, widget, data=None):
-        self.notifyNeedsSave()
-
-        query = self.entry.get_text()
-        self.entry.set_text("");
-        self.textbuffer_abstr.set_text("");
-        self.textbuffer_abstr.set_modified(False)
-        self.textbuffer_gloss.set_text("");
-        self.textbuffer_gloss.set_modified(False)
-        for textbuffer in self.textbuffers:
-			textbuffer.set_text("")
-			textbuffer.set_modified(False)
-
-        langs = self.gr.languages
-        funs  = set()
-        for lang in langs:
-            for (fun,an,prob) in langs[lang].lookupMorpho(query):
-                funs.add(fun)
-        self.treestore.clear()
-        for fun in funs:
-            values = [fun]
-            for lang in langs:
-			    values.append(langs[lang].linearize(pgf.Expr(fun,[])))
-            it = self.treestore.append(None,values)
-            for syn_fun in self.fun2synset[fun]:
-				values = [syn_fun]
-				for lang in langs:
-					values.append(langs[lang].linearize(pgf.Expr(syn_fun,[])))
-				self.treestore.append(it,values)
-
-        self.saveButton.set_sensitive(False)
+    modules = [
+         ("English",   "WordNetEng.gf", "ParseEng.gf")
+		,("Swedish",   "WordNetSwe.gf", "ParseSwe.gf")
+        ,("Bulgarian", "WordNetBul.gf", "ParseBul.gf")
+        ]
 
     def delete_event(self, widget, event, data=None):
         return False
 
     def destroy(self, widget, data=None):
         gtk.main_quit()
+
+    def reset_editor(self):
+        self.entry.set_text("");
+        self.textbuffer_abstr.set_text("");
+        self.textbuffer_abstr.set_modified(False)
+        self.textbuffer_exmpl.set_text("");
+        self.textbuffer_exmpl.set_modified(False)
+        self.textbuffer_gloss.set_text("");
+        self.textbuffer_gloss.set_modified(False)
+        for (lang,wordnet,parse,textbuffer) in self.modules:
+			textbuffer.set_text("")
+			textbuffer.set_modified(False)
+
+    def search(self, widget, data=None):
+        self.notifyNeedsSave()
+
+        query = self.entry.get_text()
+        self.reset_editor()
+        self.treestore.clear()
+        if query in self.lemma2funs:
+			self.defs = {}
+			for fun in self.lemma2funs[query]:
+				self.defs[fun] = {}
+				values = [fun]
+				for (lang, wordnet, parse, textbuffer) in self.modules:
+					values.append("")
+				it = self.treestore.append(None,values)
+				for syn_fun in self.fun2synset.get(fun,[]):
+					if fun == syn_fun:
+						continue
+					self.defs[syn_fun] = {}
+					values = [syn_fun]
+					for lang in self.modules:
+						values.append("")
+					self.treestore.append(it,values)
+			self.loadAbstract()
+			self.loadConcrete()
+
+			self.buildMiniGrammar()
+
+        self.saveButton.set_sensitive(False)
         
     def cursor_changed(self, treeview, data=None):
 		(model, piter) = treeview.get_selection().get_selected()
@@ -57,15 +72,16 @@ class Editor:
 		self.notifyNeedsSave()
 
 		self.fun = self.treestore.get_value(piter,0)
-		(abstr,self.synset,descr) = self.loadAbstract()
-		concr                     = self.loadConcrete()
+		fun_defs = self.defs[self.fun]
+		(abstr,self.synset,descr) = fun_defs["WordNet.gf"]
+
 		self.textbuffer_abstr.set_text(abstr)
 		self.textbuffer_abstr.set_modified(False)
 		self.textbuffer_gloss.set_text(descr)
 		self.textbuffer_gloss.set_modified(False)
-		for i in xrange(len(self.textbuffers)):
-			self.textbuffers[i].set_text(concr[i])
-			self.textbuffers[i].set_modified(False)
+		for (lang, wordnet, parse, textbuffer) in self.modules:
+			textbuffer.set_text(fun_defs[wordnet])
+			textbuffer.set_modified(False)
 
 		self.saveButton.set_sensitive(False)
 
@@ -73,19 +89,58 @@ class Editor:
         self.saveAbstract()
         self.saveConcrete()
 
+        if self.fun != self.new_fun:
+			self.updateMapping()
+
+			self.defs[self.new_fun] = self.defs[self.fun]
+			del self.defs[self.fun]
+
+			for lst in self.fun2lists[self.fun]:
+				lst.remove(self.fun)
+				lst.append(self.new_fun)
+			self.fun2lists[self.new_fun] = self.fun2lists[self.fun]
+			del self.fun2lists[self.fun]
+
+			def update_tree_rows(treeiter):
+				while treeiter is not None:
+					if self.treestore[treeiter][0] == self.fun:
+						self.treestore[treeiter][0] = self.new_fun
+
+					if self.treestore.iter_has_child(treeiter):
+						childiter = self.treestore.iter_children(treeiter)
+						update_tree_rows(childiter)
+					treeiter = self.treestore.iter_next(treeiter)
+
+			update_tree_rows(self.treestore.get_iter_first())
+			
+			self.fun = self.new_fun
+			del self.new_fun
+
+        self.buildMiniGrammar()
+
         self.saveButton.set_sensitive(False)
-
-    def execute_event(self, widget, data=None):
-		subprocess.Popen(["gf", "--make", "WordNetEng.gf", "WordNetSwe.gf", "WordNetBul.gf"])
-
-    def reload_event(self, widget, data=None):
-		# reload the grammar
-		self.gr = pgf.readPGF("WordNet.pgf")
 
     def delete_function_event(self, widget, data=None):
 		self.deleteAbstract()
 		self.deleteConcrete()
 		self.deleteMapping()
+
+		del self.defs[self.fun]
+		for lst in self.fun2lists[self.fun]:
+			lst.remove(self.fun)
+
+		self.reset_editor()
+		def remove_tree_rows(treeiter):
+			while treeiter is not None:
+				if self.treestore[treeiter][0] == self.fun:
+					self.treestore.remove(treeiter)
+
+				if self.treestore.iter_has_child(treeiter):
+					childiter = self.treestore.iter_children(treeiter)
+					remove_tree_rows(childiter)
+				treeiter = self.treestore.iter_next(treeiter)
+
+		remove_tree_rows(self.treestore.get_iter_first())
 
     def changed_event(self, widget, data=None):
 		self.saveButton.set_sensitive(True)
@@ -94,7 +149,7 @@ class Editor:
 		if (self.textbuffer_abstr.get_modified() or self.textbuffer_gloss.get_modified()):
 			return True
 
-		for textbuffer in self.textbuffers:
+		for (lang, wordnet, parse, textbuffer) in self.modules:
 			if (textbuffer.get_modified()):
 				return True
 
@@ -110,6 +165,26 @@ class Editor:
 
 			if response == gtk.RESPONSE_YES:
 				self.save_event(None, None)
+
+    def setupTreeColumn(self, lang, i):
+		tvcolumn = gtk.TreeViewColumn(lang)
+
+		# add tvcolumns to treeview
+		self.treeview.append_column(tvcolumn)
+
+		cell = gtk.CellRendererText()
+
+		# add the cell to the tvcolumn and allow it to expand
+		tvcolumn.pack_start(cell, True)
+
+		# set the cell "text" attribute to column 0 - retrieve text
+		# from that column in treestore
+		tvcolumn.add_attribute(cell, 'text', i)
+
+		# Allow sorting on the column
+		tvcolumn.set_sort_column_id(i)
+		
+		return tvcolumn
 
     def setupTextView(self,vbox,title):
 		label = gtk.Label(title)
@@ -128,16 +203,20 @@ class Editor:
 		vbox.pack_start(viewport,True)
 		
 		return textbuffer
+		
+    def next_tree(self, widget, data=None):
+		self.loadTree()
 
     def __init__(self):
 		# load the grammar
-        self.gr = pgf.readPGF("WordNet.pgf")
+        (self.lemma2funs,self.fun2lists) = self.loadGrammarCache()
 
         self.fun2synset = self.loadSynsets()
+        self.mapping    = self.loadMapping()
 
         # create a new window
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        self.window.resize(1000,500)
+        self.window.resize(1000,700)
     
         # When the window is given the "delete_event" signal (this is given
         # by the window manager, usually by the "close" option, or on the
@@ -154,50 +233,34 @@ class Editor:
         # Sets the border width of the window.
         self.window.set_border_width(10)
 
+        accel_group = gtk.AccelGroup()
+        self.window.add_accel_group(accel_group)
+
         self.entry = gtk.Entry()
         self.entry.connect("activate", self.search, None)
 
-        self.button = gtk.Button("Search")
-        self.button.connect("clicked", self.search, None)
-        
-        hbox = gtk.HBox()
-        hbox.pack_start(self.entry,True)
-        hbox.pack_end(self.button,False)
+        search_button = gtk.Button("Search")
+        search_button.connect("clicked", self.search, None)
+
+        hbox1 = gtk.HBox()
+        hbox1.pack_start(self.entry,True)
+        hbox1.pack_end(search_button,False)
 
         self.treestore = gtk.TreeStore(str,str,str,str)
         self.treeview = gtk.TreeView(self.treestore)
         self.treeview.connect('cursor-changed', self.cursor_changed, None)
 
         i = 0
-        for lang_name in ['Abstract', 'English', 'Swedish', 'Bulgarian']:
-			tvcolumn = gtk.TreeViewColumn(lang_name)
 
-			# add tvcolumns to treeview
-			self.treeview.append_column(tvcolumn)
+        self.setupTreeColumn("Abstract", i)
+        i = i+1
 
-			cell = gtk.CellRendererText()
-
-			# add the cell to the tvcolumn and allow it to expand
-			tvcolumn.pack_start(cell, True)
-
-			# set the cell "text" attribute to column 0 - retrieve text
-			# from that column in treestore
-			tvcolumn.add_attribute(cell, 'text', i)
-
-			# Allow sorting on the column
-			tvcolumn.set_sort_column_id(i)
-
+        for (lang,wordnet,parse) in self.modules:
+			self.setupTreeColumn(lang, i)
 			i = i+1
 
         scrolledwindow = gtk.ScrolledWindow()
         scrolledwindow.add(self.treeview)
-
-        vbox1 = gtk.VBox()
-        vbox1.pack_start(hbox,False)
-        vbox1.pack_start(scrolledwindow,True)
-
-        accel_group = gtk.AccelGroup()
-        self.window.add_accel_group(accel_group)
 
         toolbar = gtk.Toolbar()
         self.saveButton = toolbar.insert_stock(gtk.STOCK_SAVE,
@@ -205,16 +268,6 @@ class Editor:
                              "Private",
                              self.save_event,
                              None, 0)
-        toolbar.insert_stock(gtk.STOCK_EXECUTE,
-                             "Executes the compiler",
-                             "Private",
-                             self.execute_event,
-                             None, 1)
-        toolbar.insert_stock(gtk.STOCK_REFRESH,
-                             "Reloads the grammar",
-                             "Private",
-                             self.reload_event,
-                             None, 2)
         toolbar.insert_stock(gtk.STOCK_DELETE,
                              "Deletes the current function",
                              "Private",
@@ -228,13 +281,36 @@ class Editor:
         vbox2 = gtk.VBox()
         vbox2.pack_start(toolbar,False)
         self.textbuffer_gloss = self.setupTextView(vbox2, "Gloss")
-        self.textbuffer_exmpl = self.setupTextView(vbox2, "Examples")
+        
+        self.textbuffer_exmpl = gtk.TextBuffer()
+        self.textbuffer_exmpl.connect("changed", self.changed_event)
+
+        textview_exmpl = gtk.TextView()
+        textview_exmpl.set_buffer(self.textbuffer_exmpl);
+
+        viewport = gtk.Viewport()
+        viewport.add(textview_exmpl)
+
+        hbox = gtk.HBox()
+        example_button = gtk.Button("Example")
+        example_button.connect("clicked", self.next_tree, None)
+        example_button.add_accelerator("activate", accel_group,
+                                    ord('N'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+        hbox.pack_start(example_button,False)
+
+        vbox2.pack_start(hbox,False)
+        vbox2.pack_start(viewport,True)
+
         self.textbuffer_abstr = self.setupTextView(vbox2, "Abstract")
 
-        self.textbuffers = []
-        self.textbuffers.append(self.setupTextView(vbox2, "English"))
-        self.textbuffers.append(self.setupTextView(vbox2, "Swedish"))
-        self.textbuffers.append(self.setupTextView(vbox2, "Bulgarian"))
+        for i in xrange(len(self.modules)):
+			(lang,wordnet,parse) = self.modules[i]
+			textbuffer = self.setupTextView(vbox2, lang)
+			self.modules[i] = (lang,wordnet,parse,textbuffer)
+
+        vbox1 = gtk.VBox()
+        vbox1.pack_start(hbox1, False)
+        vbox1.pack_start(scrolledwindow, True)
 
         hpaned = gtk.HPaned()
         hpaned.add1(vbox1)
@@ -271,32 +347,51 @@ class Editor:
 		return fun2synset
 
     def loadAbstract(self):
-		f = open("WordNet.gf", "r")
+		file_name = "WordNet.gf"
+		f = open(file_name, "r")
 		abstr  = None
 		synset = None
 		descr  = None
 		for line in f:
 			ws = line.split()
-			if len(ws) > 2 and ws[0] == "fun" and ws[1] == self.fun:
-				[abstr,comment] = line.split('--')
-				abstr = abstr.strip()
-				[synset,descr] = comment.split('\t')
-				synset = synset.strip()
-				descr = descr.strip()
-				break;
+			if len(ws) > 2 and ws[0] == "fun" and ws[1] in self.defs:
+				parts = line.split('--')
+				if len(parts) == 2:
+					[abstr,comment] = line.split('--')
+					abstr = abstr.strip()
+					[synset,descr] = comment.split('\t')
+					synset = synset.strip()
+					descr = descr.strip()
+				else:
+					abstr  = line.strip()
+					synset = None
+					descr  = ""
+				self.defs[ws[1]][file_name] = (abstr,synset,descr)
 		f.close()
-		return (abstr,synset,descr)
 
     def saveAbstract(self):
+		self.new_fun = self.fun
+
 		if not (self.textbuffer_abstr.get_modified() or self.textbuffer_gloss.get_modified()):
 			return
 
-		inp = open("WordNet.gf", "r")
+		abstr = self.textbuffer_abstr.get_text(*self.textbuffer_abstr.get_bounds())
+		gloss = self.textbuffer_gloss.get_text(*self.textbuffer_gloss.get_bounds())
+
+		ws = abstr.split()
+		if len(ws) > 2 and ws[0] == "fun":
+			self.new_fun = ws[1]
+
+		file_name = "WordNet.gf"
+		inp = open(file_name, "r")
 		out = open("__temp__", "w")
 		for line in inp:
 			ws = line.split()
 			if len(ws) > 2 and ws[0] == "fun" and ws[1] == self.fun:
-				line = self.textbuffer_abstr.get_text(*self.textbuffer_abstr.get_bounds()).ljust(35)+"-- "+self.synset+"\t"+self.textbuffer_gloss.get_text(*self.textbuffer_gloss.get_bounds())+"\n"
+				if self.synset == None:
+					line = abstr
+				else:
+					line = abstr.ljust(35)+"-- "+self.synset+"\t"+gloss+"\n"
 			out.write(line)
 		inp.close()
 		out.close()
@@ -304,6 +399,9 @@ class Editor:
 		
 		self.textbuffer_abstr.set_modified(False)
 		self.textbuffer_gloss.set_modified(False)
+		
+		abs_def = self.defs[self.fun][file_name]
+		self.defs[self.fun][file_name] = (abstr,abs_def[1],gloss)
 
     def deleteAbstract(self):
 		inp = open("WordNet.gf", "r")
@@ -319,40 +417,39 @@ class Editor:
 		shutil.move("__temp__", "WordNet.gf")
 
     def loadConcrete(self):
-		concr = []
-		for file_name in ["WordNetEng.gf", "WordNetSwe.gf", "WordNetBul.gf"]:
-			f = open(file_name, "r")
+		for (lang,wordnet,parse,text_buffer) in self.modules:
+			f = open(wordnet, "r")
 			for line in f:
 				ws = line.split()
-				if len(ws) > 2 and ws[0] == "lin" and ws[1] == self.fun:
-					concr.append(line.strip())
-					break;
-			else:
-				concr.append(None)
+				if len(ws) > 2 and ws[0] == "lin" and ws[1] in self.defs:
+					self.defs[ws[1]][wordnet] = line.strip()
 			f.close()
-		return concr
 
     def saveConcrete(self):
-		for (file_name, textbuffer) in [("WordNetEng.gf",self.textbuffers[0]), ("WordNetSwe.gf",self.textbuffers[1]), ("WordNetBul.gf",self.textbuffers[2])]:
+		for (lang,wordnet,parse,textbuffer) in self.modules:
 			if not textbuffer.get_modified():
 				continue
 
-			inp = open(file_name, "r")
+			concr = textbuffer.get_text(*textbuffer.get_bounds())
+
+			inp = open(wordnet, "r")
 			out = open("__temp__", "w")
 			for line in inp:
 				ws = line.split()
 				if len(ws) > 2 and ws[0] == "lin" and ws[1] == self.fun:
-					line = textbuffer.get_text(*textbuffer.get_bounds())+"\n"
+					line = concr+"\n"
 				out.write(line)
 			inp.close()
 			out.close()
-			shutil.move("__temp__", file_name)
+			shutil.move("__temp__", wordnet)
 
 			textbuffer.set_modified(False)
 
+			self.defs[self.fun][wordnet] = concr
+
     def deleteConcrete(self):
-		for (file_name, textbuffer) in [("WordNetEng.gf",self.textbuffers[0]), ("WordNetSwe.gf",self.textbuffers[1]), ("WordNetBul.gf",self.textbuffers[2])]:
-			inp = open(file_name, "r")
+		for (lang,wordnet,parse,textbuffer) in self.modules:
+			inp = open(wordnet, "r")
 			out = open("__temp__", "w")
 			for line in inp:
 				ws = line.split()
@@ -362,7 +459,34 @@ class Editor:
 					out.write(line)
 			inp.close()
 			out.close()
-			shutil.move("__temp__", file_name)
+			shutil.move("__temp__", wordnet)
+
+    def loadMapping(self):
+		mapping = {}
+		inp = open("mapping.txt", "r")
+		for line in inp:
+			ws = line.split()
+			if len(ws) == 2:
+				if ws[0] in mapping:
+					lst = mapping[ws[0]]
+				else:
+					lst = []
+					mapping[ws[0]] = lst
+				lst.append(ws[1])
+		inp.close()
+		return mapping
+
+    def updateMapping(self):
+		inp = open("mapping.txt", "r")
+		out = open("__temp__", "w")
+		for line in inp:
+			ws = line.split()
+			if len(ws) > 1 and ws[1] == self.fun:
+				line = ws[0] + "\t" + self.new_fun + "\n"
+			out.write(line)
+		inp.close()
+		out.close()
+		shutil.move("__temp__", "mapping.txt")
 
     def deleteMapping(self):
 		inp = open("mapping.txt", "r")
@@ -377,10 +501,152 @@ class Editor:
 		out.close()
 		shutil.move("__temp__", "mapping.txt")
 
+    def loadLexicon(self,e):
+		app = e.unpack()
+		if type(app) == tuple:
+			if len(app[1]) == 0:
+				if app[0] in self.mapping:
+					for fun in self.mapping[app[0]]:
+						values = [fun]
+						for (lang,wordnet,parse,textbuffer) in self.modules:
+							values.append("")
+						self.treestore.append(None,values)
+			else:
+				for e in app[1]:
+					self.loadLexicon(e)
+
+    def loadTree(self):
+		i     = -1
+		lines = []
+		inp = open("examples.txt", "r")
+		for line in inp:
+			if i < 0 and line.startswith("abs*"):
+				lines.append(line)
+				i = 3
+			elif i >= 0:
+				lines.append(line)
+				i = i - 1
+				if i == 0:
+					break
+		self.textbuffer_exmpl.set_text("".join(lines))
+		inp.close()
+		e = pgf.readExpr(lines[0][5:])
+		self.treestore.clear()
+		self.loadLexicon(e)
+
+    def loadGrammarCache(self):
+		recompile = False
+		if os.path.isfile("Parse.pgf"):
+			source_files = []
+			for (lang,wordnet,parse) in self.modules:
+				if os.path.getmtime(wordnet) >= os.path.getmtime("Parse.pgf"):
+					recompile = True
+					break
+				if os.path.getmtime(parse) >= os.path.getmtime("Parse.pgf"):
+					recompile = True
+					break
+
+		if recompile:
+			cmd = ["gf", "--make"]
+			for (lang,wordnet,parse) in self.modules:
+				cmd.append(parse)
+			subprocess.call(cmd)
+
+		sys.stdout.write("Reading Parse.pgf... ")
+		sys.stdout.flush()
+		gr = pgf.readPGF("Parse.pgf")
+		lemma2funs = {}
+		fun2lists  = {}
+		for lang in gr.languages:
+			for (lemma,ans) in gr.languages[lang].fullFormLexicon():
+				for (fun,an,prob) in ans:
+					lst = lemma2funs.setdefault(lemma,[])
+					if not fun in lst:
+						lst.append(fun)
+						lists = fun2lists.setdefault(fun,[])
+						lists.append(lst)
+		sys.stdout.write("\n")
+		return (lemma2funs,fun2lists)
+
+    def buildMiniGrammar(self):
+		inp = open("Parse.gf", "r")
+		out = open("lib/src/abstract/Parse.gf", "w")
+		while True:
+			l = inp.readline()
+			if l == '':
+				break
+			if l == "  WordNet,\n":
+				continue
+			if l == "-- INJECT\n":
+				for fun in self.defs:
+					out.write(self.defs[fun]["WordNet.gf"][0]+"\n")
+			else:
+				out.write(l)
+		out.close()
+		inp.close()
+
+		cmd = ["gf", "--make", "--output-dir=lib/src"]
+		for (lang,wordnet,parse,textbuffer) in self.modules:
+			file_name = "lib/src/"+lang.lower()+"/"+parse
+			cmd.append(file_name)
+
+			inp = open(parse, "r")
+			out = open(file_name, "w")
+			skip = "  "+wordnet[:-3]+",\n"
+			while True:
+				l = inp.readline()
+				if l == '':
+					break
+				if l == skip:
+					continue
+				if l == "-- INJECT\n":
+					for fun in self.defs:
+						out.write(self.defs[fun][wordnet]+"\n")
+				else:
+					out.write(l)
+			out.close()
+			inp.close()
+
+		process = subprocess.Popen(cmd)
+		
+		def wait():
+			if process.poll() != None:
+				sys.stdout.write("Reading lib/src/Parse.pgf... ")
+				sys.stdout.flush()
+				self.gr = pgf.readPGF("lib/src/Parse.pgf")
+				sys.stdout.write("\n")
+				self.updateLinearizations()
+				return
+
+			gtk.timeout_add(500, wait)
+
+		wait()
+		
+    def updateLinearizations(self):
+		langs = self.gr.languages
+
+		def update_tree_rows(treeiter):
+			while treeiter is not None:
+				i = 0
+
+				e = pgf.Expr(self.treestore[treeiter][0],[])
+				i = i+1
+
+				for (lang, wordnet, parse, textbuffer) in self.modules:
+					self.treestore[treeiter][i] = langs[parse[:-3]].linearize(e)
+					i = i+1
+
+				if self.treestore.iter_has_child(treeiter):
+					childiter = self.treestore.iter_children(treeiter)
+					update_tree_rows(childiter)
+				treeiter = self.treestore.iter_next(treeiter)
+
+		update_tree_rows(self.treestore.get_iter_first())
+
     def main(self):
-        # All PyGTK applications must have a gtk.main(). Control ends here
-        # and waits for an event to occur (like a key press or mouse event).
-        gtk.main()
+		gtk.threads_enter()
+		gtk.main()
+		gtk.threads_leave()
 
 # If the program is run directly or passed as an argument to the python
 # interpreter then create a HelloWorld instance and show it

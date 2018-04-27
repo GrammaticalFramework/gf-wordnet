@@ -15,7 +15,7 @@ concrete ParseBul of Parse =
   TenseX - [CAdv,IAdv],
   WordNetBul,
   DocumentationBul
-  ** open MorphoBul, ResBul, (S = StructuralBul), (E = ExtraBul), ParadigmsBul, Prelude in {
+  ** open MorphoBul, ResBul, (S = StructuralBul), (L = LexiconBul), (E = ExtraBul), ParadigmsBul, Prelude in {
 
 -- INJECT
 

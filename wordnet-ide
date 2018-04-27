@@ -6,7 +6,6 @@ import gtk
 import pgf
 import shutil
 import subprocess
-import threading
 import os.path
 import sys
 

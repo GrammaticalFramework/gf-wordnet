@@ -551,6 +551,8 @@ class Editor:
 				if os.path.getmtime(parse) >= os.path.getmtime("Parse.pgf"):
 					recompile = True
 					break
+		else:
+			recompile = True
 
 		if recompile:
 			cmd = ["gf", "--make"]

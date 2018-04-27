@@ -63,7 +63,8 @@ class Editor:
 			self.buildMiniGrammar()
 
         self.saveButton.set_sensitive(False)
-        
+        self.deleteButton.set_sensitive(False)
+
     def cursor_changed(self, treeview, data=None):
 		(model, piter) = treeview.get_selection().get_selected()
 		if piter == None:
@@ -84,6 +85,7 @@ class Editor:
 			textbuffer.set_modified(False)
 
 		self.saveButton.set_sensitive(False)
+		self.deleteButton.set_sensitive(True)
 
     def save_event(self, widget, data=None):
         self.saveAbstract()
@@ -141,6 +143,8 @@ class Editor:
 				treeiter = self.treestore.iter_next(treeiter)
 
 		remove_tree_rows(self.treestore.get_iter_first())
+		
+		self.deleteButton.set_sensitive(False)
 
     def changed_event(self, widget, data=None):
 		self.saveButton.set_sensitive(True)
@@ -263,20 +267,22 @@ class Editor:
         scrolledwindow.add(self.treeview)
 
         toolbar = gtk.Toolbar()
-        self.saveButton = toolbar.insert_stock(gtk.STOCK_SAVE,
-                             "Saves the changes",
-                             "Private",
-                             self.save_event,
-                             None, 0)
-        toolbar.insert_stock(gtk.STOCK_DELETE,
-                             "Deletes the current function",
-                             "Private",
-                             self.delete_function_event,
-                             None, 3)
+        self.saveButton   = toolbar.insert_stock(gtk.STOCK_SAVE,
+                               "Saves the changes",
+                               "Private",
+                               self.save_event,
+                               None, 0)
+        self.deleteButton = toolbar.insert_stock(gtk.STOCK_DELETE,
+                               "Deletes the current function",
+                               "Private",
+                               self.delete_function_event,
+                               None, 1)
 
         self.saveButton.set_sensitive(False)
         self.saveButton.add_accelerator("activate", accel_group,
                                         ord('S'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+
+        self.deleteButton.set_sensitive(False)
 
         vbox2 = gtk.VBox()
         vbox2.pack_start(toolbar,False)

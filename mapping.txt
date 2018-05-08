@@ -4763,16 +4763,12 @@ applied_A	applied_A
 applique_N	applique_N
 applique_V2	applique_V2
 apply_V	apply_2_V
-apply_V	apply_3_V
 apply_V	apply_5_V
-apply_V	apply_6_V
-apply_V	apply_7_V
 apply_V	apply_8_V
 apply_V	apply_9_V
 apply_V	apply_10_V
 apply_V2	apply_1_V2
 apply_V2	apply_2_V2
-apply_V2	apply_3_V2
 apply_V2	apply_4_V2
 apply_V2	apply_5_V2
 apply_V2	apply_6_V2
@@ -4782,8 +4778,6 @@ apply_V2	apply_9_V2
 apply_V2	apply_10_V2
 apply_V2V	apply_1_V2V
 apply_V2V	apply_2_V2V
-apply_V2V	apply_3_V2V
-apply_V2V	apply_4_V2V
 apply_V2V	apply_5_V2V
 apply_V2V	apply_6_V2V
 apply_V2V	apply_7_V2V
@@ -4791,14 +4785,10 @@ apply_V2V	apply_8_V2V
 apply_V2V	apply_9_V2V
 apply_V2V	apply_10_V2V
 apply_VV	apply_1_VV
-apply_VV	apply_2_VV
-apply_VV	apply_3_VV
-apply_VV	apply_4_VV
 apply_VV	apply_5_VV
 apply_VV	apply_6_VV
 apply_VV	apply_7_VV
 apply_VV	apply_8_VV
-apply_VV	apply_9_VV
 apply_VV	apply_10_VV
 apply_for_V2	apply_for_V2
 appoint_V2	appoint_1_V2
@@ -43694,7 +43684,6 @@ give_V	give_16_V
 give_V	give_17_V
 give_V	give_18_V
 give_V	give_19_V
-give_V	give_20_V
 give_V	give_21_V
 give_V	give_22_V
 give_V	give_23_V
@@ -76740,7 +76729,6 @@ plimsoll_N	plimsoll_2_N
 plinth_N	plinth_N
 ploce_N	ploce_N
 plod_V	plod_V
-plod_V2	plod_V2
 plodder_N	plodder_1_N
 plodder_N	plodder_2_N
 plodder_N	plodder_3_N
@@ -81528,7 +81516,6 @@ put_on_V	put_on_3_V
 put_on_V	put_on_4_V
 put_on_V	put_on_5_V
 put_on_V	put_on_6_V
-put_on_V	put_on_7_V
 put_on_V	put_on_8_V
 put_on_V	put_on_9_V
 put_on_V2	put_on_1_V2

@@ -60602,8 +60602,8 @@ lot_3_N	lot_6_N
 lot_3_N	lot_7_N
 lota_N	lota_1_N
 lota_N	lota_2_N
-loth_A	loth_1_A
-loth_A	loth_2_A
+loth_A	loath_1_A
+loth_A	loath_2_A
 lothian_PN	lothian_PN
 loti_N	loti_N
 lotic_A	lotic_A

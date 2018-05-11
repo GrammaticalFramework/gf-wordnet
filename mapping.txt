@@ -174,7 +174,7 @@ ablaze_A	ablaze_1_A
 ablaze_A	ablaze_2_A
 ablaze_A	ablaze_3_A
 ablaze_A	ablaze_4_A
-able_A	able_1_A
+able_A	able_to_AV
 able_A	able_2_A
 able_A	able_3_A
 able_A	able_4_A
@@ -679,8 +679,8 @@ accord_V	accord_1_V
 accord_V	accord_2_V
 accordance_N	accordance_1_N
 accordance_N	accordance_2_N
-accordant_A	accordant_1_A
-accordant_A	accordant_2_A
+accordant_A	accordant_with_A2
+accordant_A	accordant_A
 according_to_Prep	according_to_Prep
 accordingly_Adv	accordingly_1_Adv
 accordingly_Adv	accordingly_2_Adv
@@ -2685,9 +2685,9 @@ aliquot_N	aliquot_N
 alison_PN	alison_PN
 aliterate_N	aliterate_N
 alive_A	alive_1_A
-alive_A	alive_2_A
+alive_A	alive_with_A2
 alive_A	alive_3_A
-alive_A	alive_4_A
+alive_A	alive_to_A2
 alive_A	alive_5_A
 alive_A	alive_6_A
 alive_A	alive_7_A
@@ -2939,6 +2939,7 @@ along_Adv	along_1_Adv
 along_Adv	along_2_Adv
 along_Adv	along_3_Adv
 along_Adv	along_4_Adv
+along_Adv	along_with_Prep
 along_Adv	along_5_Adv
 along_Prep	along_Prep
 alongside_Adv	alongside_Adv
@@ -4333,8 +4334,8 @@ antioxidant_N	antioxidant_N
 antiparallel_A	antiparallel_A
 antiparticle_N	antiparticle_N
 antipasto_N	antipasto_N
-antipathetic_A	antipathetic_1_A
-antipathetic_A	antipathetic_2_A
+antipathetic_A	antipathetic_to_A2
+antipathetic_A	antipathetic_A
 antipathy_N	antipathy_1_N
 antipathy_N	antipathy_2_N
 antiperspirant_N	antiperspirant_N
@@ -4949,7 +4950,7 @@ apropos_Adv	apropos_2_Adv
 apropos_Prep	apropos_Prep
 apse_N	apse_1_N
 apsidal_A	apsidal_A
-apt_A	apt_1_A
+apt_A	apt_to_AV
 apt_A	apt_2_A
 apt_A	apt_3_A
 apt_A	apt_4_A
@@ -6259,7 +6260,7 @@ atherosclerosis_N	atherosclerosis_N
 atherosclerotic_A	atherosclerotic_A
 atherstone_PN	atherstone_PN
 athetosis_N	athetosis_N
-athirst_A	athirst_A
+athirst_A	athirst_for_A2
 athlete_N	athlete_N
 athletic_A	athletic_1_A
 athletic_A	athletic_2_A
@@ -6419,8 +6420,8 @@ attention_N	attention_4_N
 attention_N	attention_5_N
 attention_N	attention_6_N
 attentional_A	attentional_A
-attentive_A	attentive_1_A
-attentive_A	attentive_2_A
+attentive_A	attentive_to_A2
+attentive_A	attentive_A
 attentiveness_N	attentiveness_1_N
 attentiveness_N	attentiveness_2_N
 attentiveness_N	attentiveness_3_N
@@ -6856,7 +6857,7 @@ average_V2	average_3_V2
 averageness_N	averageness_1_N
 averageness_N	averageness_2_N
 averr_VS	averr_VS
-averse_A	averse_A
+averse_A	averse_to_A2
 aversion_N	aversion_1_N
 aversion_N	aversion_2_N
 aversive_A	aversive_A
@@ -6873,8 +6874,8 @@ aviation_N	aviation_4_N
 aviatorFem_N	aviatorFem_N
 aviatorMasc_N	aviatorMasc_N
 aviatrix_N	aviatrix_N
-avid_A	avid_1_A
-avid_A	avid_2_A
+avid_A	avid_for_A2
+avid_A	avid_A
 avidity_N	avidity_N
 avifauna_N	avifauna_N
 avifaunal_A	avifaunal_A
@@ -8356,7 +8357,7 @@ bat_V2	bat_4_V2
 bat_V2	bat_5_V2
 bat_in_V	bat_in_V
 batch_N	batch_1_N
-batch_N	batch_2_N
+batch_N	batch_of_N2
 batch_N	batch_3_N
 bate_V2	bate_1_V2
 bate_V2	bate_2_V2
@@ -15484,7 +15485,7 @@ caregiver_N	caregiver_2_N
 careladen_A	careladen_A
 careless_A	careless_1_A
 careless_A	careless_2_A
-careless_A	careless_3_A
+careless_A	careless_of_A2
 carelessness_N	carelessness_1_N
 carelessness_N	carelessness_2_N
 carer_N	carer_N
@@ -19894,7 +19895,7 @@ cognitive_A	cognitive_A
 cognizance_N	cognizance_1_N
 cognizance_N	cognizance_2_N
 cognizance_N	cognizance_3_N
-cognizant_A	cognizant_1_A
+cognizant_A	cognizant_of_A2
 cognomen_N	cognomen_1_N
 cognomen_N	cognomen_2_N
 cogwheel_N	cogwheel_N
@@ -21947,7 +21948,7 @@ conscientiousness_N	conscientiousness_2_N
 conscionable_A	conscionable_A
 conscious_A	conscious_1_A
 conscious_A	conscious_2_A
-conscious_A	conscious_3_A
+conscious_A	conscious_of_A2
 consciousness_N	consciousness_1_N
 consciousness_N	consciousness_2_N
 conscript_N	conscript_N
@@ -22722,7 +22723,7 @@ convergence_N	convergence_2_N
 convergence_N	convergence_3_N
 convergence_N	convergence_4_N
 convergent_A	convergent_A
-conversant_A	conversant_A
+conversant_A	conversant_with_A2
 conversation_N	conversation_N
 conversational_A	conversational_A
 conversationalist_N	conversationalist_1_N
@@ -26025,8 +26026,8 @@ damage_N	damage_5_N
 damage_V2	damage_1_V2
 damage_V2	damage_2_V2
 damages_N	damages_N
-damaging_A	damaging_1_A
-damaging_A	damaging_2_A
+damaging_A	damaging_to_A2
+damaging_A	damaging_A
 damascene_A	damascene_1_A
 damascene_A	damascene_2_A
 damascene_N	damascene_1_N
@@ -26428,7 +26429,7 @@ dead_A	dead_11_A
 dead_A	dead_12_A
 dead_A	dead_13_A
 dead_A	dead_14_A
-dead_A	dead_15_A
+dead_A	dead_to_A2
 dead_A	dead_16_A
 dead_A	dead_17_A
 dead_Adv	dead_1_Adv
@@ -26465,8 +26466,8 @@ deadpan_A	deadpan_A
 deadpan_Adv	deadpan_Adv
 deadwood_N	deadwood_1_N
 deadwood_N	deadwood_2_N
-deaf_A	deaf_1_A
-deaf_A	deaf_2_A
+deaf_A	deaf_A
+deaf_A	deaf_to_A2
 deaf_N	deaf_N
 deaf_aid_N	deaf_aid_N
 deaf_mute_N	deaf_mute_N
@@ -26478,7 +26479,7 @@ deafness_N	deafness_N
 deal_Adv	deal_Adv
 deal_N	deal_1_N
 deal_N	deal_2_N
-deal_N	deal_3_N
+deal_N	deal_of_N2
 deal_N	deal_4_N
 deal_N	deal_5_N
 deal_N	deal_6_N
@@ -26487,7 +26488,6 @@ deal_N	deal_8_N
 deal_N	deal_9_N
 deal_PN	deal_1_PN
 deal_PN	deal_2_PN
-deal_PN	deal_3_PN
 deal_PN	deal_4_PN
 deal_PN	deal_5_PN
 deal_PN	deal_6_PN
@@ -26529,7 +26529,7 @@ dealfish_N	dealfish_N
 dealignment_N	dealignment_N
 dealing_N	dealing_1_N
 dealing_N	dealing_2_N
-dealings_N	dealings_1_N
+dealings_N	dealings_of_N2
 dealings_N	dealings_2_N
 dealings_N	dealings_3_N
 deamination_N	deamination_1_N
@@ -28454,7 +28454,7 @@ detribalization_N	detribalization_1_N
 detribalization_N	detribalization_2_N
 detribalize_V2	detribalize_1_V2
 detriment_N	detriment_N
-detrimental_A	detrimental_A
+detrimental_A	detrimental_to_A2
 detritus_N	detritus_1_N
 detritus_N	detritus_2_N
 detroit_PN	detroit_PN
@@ -28611,8 +28611,8 @@ devon_PN	devon_2_PN
 devote_V2	devote_1_V2
 devote_V2	devote_2_V2
 devote_V2	devote_3_V2
-devoted_A	devoted_1_A
-devoted_A	devoted_2_A
+devoted_A	devoted_A
+devoted_A	devoted_to_A2
 devotee_N	devotee_N
 devotion_N	devotion_1_N
 devotion_N	devotion_2_N
@@ -30370,7 +30370,7 @@ distillation_N	distillation_1_N
 distillation_N	distillation_2_N
 distiller_N	distiller_N
 distillery_N	distillery_N
-distinct_A	distinct_1_A
+distinct_A	distinct_from_A2
 distinct_A	distinct_2_A
 distinct_A	distinct_3_A
 distinct_A	distinct_4_A
@@ -30396,8 +30396,8 @@ distinguish_V2	distinguish_2_V2
 distinguish_V2	distinguish_3_V2
 distinguish_V2	distinguish_4_V2
 distinguish_V2	distinguish_5_V2
-distinguishable_A	distinguishable_1_A
-distinguishable_A	distinguishable_2_A
+distinguishable_A	distinguishable_A
+distinguishable_A	distinguishable_from_A2
 distinguished_A	distinguished_1_A
 distinguished_A	distinguished_2_A
 distort_V2	distort_1_V2
@@ -39036,7 +39036,8 @@ fistular_A	fistular_1_A
 fistulous_A	fistulous_1_A
 fistulous_A	fistulous_2_A
 fit_A	fit_1_A
-fit_A	fit_2_A
+fit_A	fit_to_AV
+fit_A	fit_for_A2
 fit_A	fit_3_A
 fit_N	fit_1_N
 fit_N	fit_2_N
@@ -39683,7 +39684,7 @@ floccule_N	floccule_N
 flocculent_A	flocculent_A
 flock_N	flock_1_N
 flock_N	flock_2_N
-flock_N	flock_3_N
+flock_N	flock_of_N2
 flock_N	flock_4_N
 flock_N	flock_5_N
 flock_V	flock_1_V
@@ -40295,8 +40296,10 @@ fomentation_N	fomentation_2_N
 fomentation_N	fomentation_3_N
 fomite_N	fomite_N
 fond_A	fond_1_A
+fond_A	fond_of_1_A2
 fond_A	fond_2_A
-fond_A	fond_3_A
+fond_A	fond_of_3_A2
+fond_A	fond_to_AV
 fond_A	fond_4_A
 fondant_N	fondant_N
 fondle_V2	fondle_V2
@@ -43867,7 +43870,7 @@ giveaway_N	giveaway_1_N
 giveaway_N	giveaway_2_N
 giveaway_N	giveaway_3_N
 given_A	given_1_A
-given_A	given_2_A
+given_A	given_to_AV
 given_N	given_N
 givenness_N	givenness_N
 giver_N	giver_1_N
@@ -45311,7 +45314,7 @@ greed_N	greed_2_N
 greediness_N	greediness_1_N
 greediness_N	greediness_2_N
 greedy_A	greedy_1_A
-greedy_A	greedy_2_A
+greedy_A	greedy_for_A2
 greedy_A	greedy_3_A
 greekFem_N	greekFem_1_N
 greekFem_N	greekFem_2_N
@@ -47180,7 +47183,7 @@ hatefulness_N	hatefulness_N
 hatemonger_N	hatemonger_N
 hater_N	hater_N
 hatfield_PN	hatfield_PN
-hatful_N	hatful_1_N
+hatful_N	hatful_of_N2
 hatful_N	hatful_2_N
 hatless_A	hatless_A
 hatmaker_N	hatmaker_N
@@ -47547,7 +47550,7 @@ healthy_A	healthy_4_A
 healthy_A	healthy_5_A
 heanor_PN	heanor_PN
 heap_N	heap_1_N
-heap_N	heap_2_N
+heap_N	heap_of_N2
 heap_N	heap_3_N
 heap_V2	heap_1_V2
 heap_V2	heap_2_V2
@@ -50098,7 +50101,7 @@ hunger_V	hunger_3_V
 hunger_march_N	hunger_march_N
 hunger_marcher_N	hunger_marcher_N
 hungry_A	hungry_1_A
-hungry_A	hungry_2_A
+hungry_A	hungry_for_A2
 hunk_N	hunk_1_N
 hunk_N	hunk_2_N
 hunker_down_V	hunker_down_1_V
@@ -51057,7 +51060,7 @@ immaterial_A	immaterial_1_A
 immaterial_A	immaterial_2_A
 immaterial_A	immaterial_3_A
 immaterial_A	immaterial_4_A
-immaterial_A	immaterial_5_A
+immaterial_A	immaterial_to_A2
 immateriality_N	immateriality_1_N
 immateriality_N	immateriality_2_N
 immature_A	immature_1_A
@@ -51135,7 +51138,7 @@ immovable_A	immovable_1_A
 immune_A	immune_1_A
 immune_A	immune_2_A
 immune_A	immune_3_A
-immune_A	immune_4_A
+immune_A	immune_to_A2
 immune_N	immune_N
 immunity_N	immunity_1_N
 immunity_N	immunity_2_N
@@ -51221,7 +51224,7 @@ impatience_N	impatience_1_N
 impatience_N	impatience_2_N
 impatience_N	impatience_3_N
 impatient_A	impatient_1_A
-impatient_A	impatient_2_A
+impatient_A	impatient_to_AV
 impeach_V2	impeach_1_V2
 impeach_V2	impeach_2_V2
 impeach_V2	impeach_3_V2
@@ -51736,9 +51739,9 @@ incandescent_A	incandescent_2_A
 incantation_N	incantation_N
 incapability_N	incapability_1_N
 incapability_N	incapability_2_N
-incapable_A	incapable_1_A
-incapable_A	incapable_2_A
-incapable_A	incapable_3_A
+incapable_A	incapable_of_1_A2
+incapable_A	incapable_of_2_A2
+incapable_A	incapable_of_3_A2
 incapable_A	incapable_4_A
 incapacitate_V2	incapacitate_1_V2
 incapacitate_V2	incapacitate_2_V2
@@ -51787,11 +51790,11 @@ inchon_PN	inchon_1_PN
 inchon_PN	inchon_2_PN
 incidence_N	incidence_1_N
 incidence_N	incidence_2_N
-incident_A	incident_1_A
-incident_A	incident_2_A
+incident_A	incident_A
+incident_A	incident_to_A2
 incident_N	incident_1_N
 incident_N	incident_2_N
-incidental_A	incidental_1_A
+incidental_A	incidental_to_A2
 incidental_A	incidental_2_A
 incidental_A	incidental_3_A
 incidental_N	incidental_1_N
@@ -51855,7 +51858,7 @@ incline_V2V	incline_5_V2V
 incline_V2V	incline_6_V2V
 inclined_A	inclined_1_A
 inclined_A	inclined_2_A
-inclined_A	inclined_3_A
+inclined_A	inclined_to_A2
 inclinometer_N	inclinometer_1_N
 inclinometer_N	inclinometer_2_N
 inclinometer_N	inclinometer_3_N
@@ -52211,8 +52214,8 @@ indication_N	indication_2_N
 indication_N	indication_3_N
 indication_N	indication_4_N
 indication_N	indication_5_N
-indicative_A	indicative_1_A
-indicative_A	indicative_2_A
+indicative_A	indicative_A
+indicative_A	indicative_of_A2
 indicator_N	indicator_1_N
 indicator_N	indicator_2_N
 indicator_N	indicator_3_N
@@ -52233,8 +52236,8 @@ indifference_N	indifference_3_N
 indifference_N	indifference_4_N
 indifferent_A	indifferent_1_A
 indifferent_A	indifferent_2_A
-indifferent_A	indifferent_3_A
-indifferent_A	indifferent_4_A
+indifferent_A	indifferent_to_3_A2
+indifferent_A	indifferent_to_4_A2
 indifferent_A	indifferent_5_A
 indifferent_A	indifferent_6_A
 indifferent_A	indifferent_7_A
@@ -52278,7 +52281,7 @@ indispensable_A	indispensable_1_A
 indispensable_A	indispensable_2_A
 indispensable_A	indispensable_3_A
 indisposed_A	indisposed_1_A
-indisposed_A	indisposed_2_A
+indisposed_A	indisposed_to_AV
 indisposition_N	indisposition_1_N
 indisposition_N	indisposition_2_N
 indisputability_N	indisputability_N
@@ -53260,7 +53263,7 @@ instil_V2	instil_5_V2
 instillation_N	instillation_1_N
 instillation_N	instillation_2_N
 instillator_N	instillator_N
-instinct_A	instinct_A
+instinct_A	instinct_with_A2
 instinct_N	instinct_N
 instinctive_A	instinctive_A
 institute_N	institute_N
@@ -58760,7 +58763,7 @@ liability_N	liability_2_N
 liability_N	liability_3_N
 liable_A	liable_1_A
 liable_A	liable_2_A
-liable_A	liable_3_A
+liable_A	liable_to_A2
 liable_A	liable_4_A
 liaise_V	liaise_V
 liaison_N	liaison_1_N
@@ -59971,7 +59974,7 @@ loanhead_PN	loanhead_PN
 loanword_N	loanword_N
 loasa_N	loasa_N
 loath_A	loath_1_A
-loath_A	loath_2_A
+loath_A	loath_to_AV
 loathe_V2	loathe_V2
 loathing_N	loathing_N
 loathly_A	loathly_A
@@ -60595,7 +60598,7 @@ lost_A	lost_8_A
 lost_A	lost_9_A
 lot_1_N	lot_2_N
 lot_2_N	lot_4_N
-lot_3_N	lot_1_N
+lot_3_N	lot_of_N2
 lot_3_N	lot_3_N
 lot_3_N	lot_5_N
 lot_3_N	lot_6_N
@@ -60603,7 +60606,7 @@ lot_3_N	lot_7_N
 lota_N	lota_1_N
 lota_N	lota_2_N
 loth_A	loath_1_A
-loth_A	loath_2_A
+loth_A	loath_to_AV
 lothian_PN	lothian_PN
 loti_N	loti_N
 lotic_A	lotic_A
@@ -62780,7 +62783,7 @@ masquerade_V	masquerade_2_V
 masquerader_N	masquerader_N
 mass_1_N	mass_1_N
 mass_2_N	mass_3_N
-mass_3_N	mass_2_N
+mass_3_N	mass_of_N2
 mass_3_N	mass_4_N
 mass_3_N	mass_5_N
 mass_3_N	mass_6_N
@@ -63935,7 +63938,7 @@ mess_N	mess_2_N
 mess_N	mess_3_N
 mess_N	mess_4_N
 mess_N	mess_5_N
-mess_N	mess_6_N
+mess_N	mess_of_N2
 mess_V	mess_1_V
 mess_V	mess_2_V
 mess_V2	mess_1_V2
@@ -64203,7 +64206,7 @@ michigan_PN	michigan_3_PN
 mick_PN	mick_PN
 mickey_N	mickey_N
 mickey_PN	mickey_PN
-mickle_N	mickle_N
+mickle_N	mickle_of_N2
 miconazole_N	miconazole_N
 micro_A	micro_A
 micro_N	micro_N
@@ -64777,7 +64780,7 @@ minstrel_N	minstrel_2_N
 minstrelsy_N	minstrelsy_1_N
 minstrelsy_N	minstrelsy_2_N
 minstrelsy_N	minstrelsy_3_N
-mint_N	mint_1_N
+mint_N	mint_of_N2
 mint_N	mint_2_N
 mint_N	mint_3_N
 mint_N	mint_4_N
@@ -66220,8 +66223,8 @@ mount_V2	mount_6_V2
 mount_V2	mount_7_V2
 mount_V2	mount_8_V2
 mount_up_V	mount_up_V
-mountain_N	mountain_1_N
-mountain_N	mountain_2_N
+mountain_N	mountain_N
+mountain_N	mountain_of_N2
 mountain_ash_PN	mountain_ash_1_PN
 mountain_ash_PN	mountain_ash_2_PN
 mountain_ash_PN	mountain_ash_3_PN
@@ -66437,7 +66440,7 @@ muck_V2	muck_1_V2
 muck_V2	muck_2_V2
 muck_V2	muck_3_V2
 muck_heap_N	muck_heap_N
-muckle_N	muckle_N
+muckle_N	muckle_of_N2
 muckraker_N	muckraker_N
 muckraking_N	muckraking_N
 mucky_A	mucky_1_A
@@ -68018,7 +68021,7 @@ new_A	new_6_A
 new_A	new_7_A
 new_A	new_8_A
 new_A	new_9_A
-new_A	new_10_A
+new_A	new_to_A2
 new_Adv	new_Adv
 new_cumnock_PN	new_cumnock_PN
 new_mills_PN	new_mills_PN
@@ -68716,8 +68719,8 @@ nonresidential_A	nonresidential_A
 nonresilient_A	nonresilient_A
 nonresinous_A	nonresinous_1_A
 nonresistance_N	nonresistance_N
-nonresistant_A	nonresistant_1_A
-nonresistant_A	nonresistant_2_A
+nonresistant_A	nonresistant_to_A2
+nonresistant_A	nonresistant_A
 nonrestrictive_A	nonrestrictive_A
 nonreticulate_A	nonreticulate_A
 nonretractile_A	nonretractile_1_A
@@ -69206,8 +69209,8 @@ nullify_V2	nullify_3_V2
 nullipara_N	nullipara_N
 nullity_N	nullity_1_N
 nullity_N	nullity_2_N
-numb_A	numb_1_A
-numb_A	numb_2_A
+numb_A	numb_with_A2
+numb_A	numb_to_A2
 numb_V2	numb_V2
 numbat_N	numbat_N
 number_1_N	number_2_N
@@ -69508,8 +69511,9 @@ obliteration_N	obliteration_2_N
 obliterator_N	obliterator_N
 oblivion_N	oblivion_1_N
 oblivion_N	oblivion_2_N
-oblivious_A	oblivious_1_A
-oblivious_A	oblivious_2_A
+oblivious_A	oblivious_A
+oblivious_A	oblivious_to_A2
+oblivious_A	oblivious_of_A2
 obliviousness_N	obliviousness_N
 oblong_A	oblong_1_A
 oblong_A	oblong_2_A
@@ -73036,7 +73040,8 @@ parthian_A	parthian_A
 parti_coloured_A	parti_coloured_A
 partial_A	partial_1_A
 partial_A	partial_2_A
-partial_A	partial_3_A
+partial_A	partial_of_A2
+partial_A	partial_to_A2
 partial_N	partial_1_N
 partial_N	partial_2_N
 partiality_N	partiality_1_N
@@ -73826,7 +73831,7 @@ pecan_N	pecan_3_N
 peccable_A	peccable_A
 peccadillo_N	peccadillo_N
 peccary_N	peccary_N
-peck_N	peck_1_N
+peck_N	peck_of_N2
 peck_N	peck_2_N
 peck_N	peck_3_N
 peck_V	peck_1_V
@@ -75583,7 +75588,7 @@ pilaster_N	pilaster_N
 pilchard_N	pilchard_1_N
 pilchard_N	pilchard_2_N
 pile_N	pile_1_N
-pile_N	pile_2_N
+pile_N	pile_of_N2
 pile_N	pile_3_N
 pile_N	pile_4_N
 pile_N	pile_5_N
@@ -76676,10 +76681,8 @@ plentiful_A	plentiful_1_A
 plentiful_A	plentiful_2_A
 plentiful_A	plentiful_3_A
 plenty_Adv	plenty_Adv
-plenty_N	plenty_1_N
-plenty_N	plenty_2_N
-plenty_NP	plenty_1_NP
-plenty_NP	plenty_2_NP
+plenty_N	plenty_of_1_N2
+plenty_N	plenty_of_2_N2
 plenum_N	plenum_1_N
 plenum_N	plenum_2_N
 pleochroic_A	pleochroic_A
@@ -78088,7 +78091,7 @@ pot_N	pot_1_N
 pot_N	pot_2_N
 pot_N	pot_3_N
 pot_N	pot_4_N
-pot_N	pot_5_N
+pot_N	pot_of_N2
 pot_N	pot_6_N
 pot_N	pot_7_N
 pot_N	pot_8_N
@@ -78702,8 +78705,8 @@ prejudgment_N	prejudgment_N
 prejudice_N	prejudice_N
 prejudice_V2	prejudice_1_V2
 prejudice_V2	prejudice_2_V2
-prejudicial_A	prejudicial_1_A
-prejudicial_A	prejudicial_2_A
+prejudicial_A	prejudicial_to_A2
+prejudicial_A	prejudicial_A
 prelacy_N	prelacy_1_N
 prelacy_N	prelacy_2_N
 prelapsarian_A	prelapsarian_A
@@ -79463,8 +79466,8 @@ privilege_N	privilege_3_N
 privileged_A	privileged_1_A
 privileged_A	privileged_2_A
 privileged_A	privileged_3_A
-privy_A	privy_1_A
-privy_A	privy_2_A
+privy_A	privy_A
+privy_A	privy_to_A2
 privy_N	privy_1_N
 privy_N	privy_2_N
 prize_N	prize_1_N
@@ -80204,8 +80207,8 @@ proportion_N	proportion_5_N
 proportion_V2	proportion_1_V2
 proportion_V2	proportion_2_V2
 proportionable_A	proportionable_A
-proportional_A	proportional_1_A
-proportional_A	proportional_2_A
+proportional_A	proportional_to_A2
+proportional_A	proportional_A
 proportional_N	proportional_N
 proportionality_N	proportionality_1_N
 proportionality_N	proportionality_2_N
@@ -80371,7 +80374,7 @@ protectionistFem_N	protectionistFem_N
 protectionistMasc_N	protectionistMasc_N
 protective_A	protective_1_A
 protective_A	protective_2_A
-protective_A	protective_3_A
+protective_A	protective_of_A2
 protectiveness_N	protectiveness_1_N
 protectiveness_N	protectiveness_2_N
 protector_N	protector_N
@@ -81329,8 +81332,7 @@ purser_N	purser_N
 purslane_N	purslane_N
 pursuance_N	pursuance_1_N
 pursuance_N	pursuance_2_N
-pursuant_A	pursuant_A
-pursuant_to_Prep	pursuant_to_Prep
+pursuant_A	pursuant_to_A2
 pursue_V	pursue_1_V
 pursue_V	pursue_2_V
 pursue_V	pursue_3_V
@@ -82597,7 +82599,7 @@ raffish_A	raffish_2_A
 raffle_N	raffle_N
 raffle_V2	raffle_V2
 raft_N	raft_1_N
-raft_N	raft_2_N
+raft_N	raft_of_N2
 raft_N	raft_3_N
 raft_V	raft_1_V
 raft_V	raft_2_V
@@ -83040,7 +83042,7 @@ rarefy_V2	rarefy_1_V2
 rarefy_V2	rarefy_2_V2
 rarefy_V2	rarefy_3_V2
 rareness_N	rareness_N
-raring_A	raring_A
+raring_A	raring_to_AV
 rariora_N	rariora_N
 rarity_N	rarity_1_N
 rarity_N	rarity_2_N
@@ -84675,7 +84677,6 @@ regard_V2	regard_3_V2
 regardful_A	regardful_A
 regarding_Prep	regarding_Prep
 regardless_A	regardless_A
-regardless_Adv	regardless_Adv
 regardless_of_Prep	regardless_of_Prep
 regatta_N	regatta_N
 regency_N	regency_1_N
@@ -85015,8 +85016,8 @@ relationship_N	relationship_1_N
 relationship_N	relationship_2_N
 relationship_N	relationship_3_N
 relationship_N	relationship_4_N
-relative_A	relative_1_A
-relative_A	relative_2_A
+relative_A	relative_A
+relative_A	relative_to_A2
 relative_N	relative_1_N
 relative_N	relative_2_N
 relativism_N	relativism_N
@@ -85615,8 +85616,8 @@ replay_V2	replay_3_V2
 replay_V2	replay_4_V2
 replenish_V2	replenish_V2
 replenishment_N	replenishment_N
-replete_A	replete_1_A
-replete_A	replete_2_A
+replete_A	replete_with_A2
+replete_A	replete_A
 repletion_N	repletion_1_N
 repletion_N	repletion_2_N
 replica_N	replica_N
@@ -89123,7 +89124,7 @@ sacred_A	sacred_1_A
 sacred_A	sacred_2_A
 sacred_A	sacred_3_A
 sacred_A	sacred_4_A
-sacred_A	sacred_5_A
+sacred_A	sacred_to_A2
 sacredness_N	sacredness_N
 sacrifice_N	sacrifice_1_N
 sacrifice_N	sacrifice_2_N
@@ -94306,7 +94307,7 @@ sight_N	sight_3_N
 sight_N	sight_4_N
 sight_N	sight_5_N
 sight_N	sight_6_N
-sight_N	sight_7_N
+sight_N	sight_of_N
 sight_V2	sight_1_V2
 sight_V2	sight_2_V2
 sighting_N	sighting_N
@@ -94405,7 +94406,7 @@ significant_A	significant_2_A
 significant_A	significant_3_A
 significant_A	significant_4_A
 signification_N	signification_N
-significative_A	significative_A
+significative_A	significative_of_A2
 signify_V	signify_1_V
 signify_V	signify_2_V
 signify_V	signify_3_V
@@ -97704,7 +97705,7 @@ specie_N	specie_N
 species_N	species_1_N
 species_N	species_2_N
 specifiable_A	specifiable_A
-specific_A	specific_1_A
+specific_A	specific_to_A2
 specific_A	specific_2_A
 specific_A	specific_3_A
 specific_A	specific_4_A
@@ -99063,7 +99064,7 @@ staccato_A	staccato_A
 staccato_Adv	staccato_Adv
 stachyose_N	stachyose_N
 stack_N	stack_1_N
-stack_N	stack_2_N
+stack_N	stack_of_N2
 stack_N	stack_3_N
 stack_N	stack_4_N
 stack_N	stack_5_N
@@ -102271,7 +102272,7 @@ suggestion_N	suggestion_4_N
 suggestion_N	suggestion_5_N
 suggestion_N	suggestion_6_N
 suggestive_A	suggestive_1_A
-suggestive_A	suggestive_2_A
+suggestive_A	suggestive_of_A2
 suggestive_A	suggestive_3_A
 suicidal_A	suicidal_A
 suicide_N	suicide_1_N
@@ -102585,11 +102586,11 @@ superintendent_N	superintendent_1_N
 superintendent_N	superintendent_2_N
 superior_A	superior_1_A
 superior_A	superior_2_A
-superior_A	superior_3_A
+superior_A	superior_to_3_A2
 superior_A	superior_4_A
 superior_A	superior_5_A
 superior_A	superior_6_A
-superior_A	superior_7_A
+superior_A	superior_to_7_A2
 superior_N	superior_1_N
 superior_N	superior_2_N
 superior_N	superior_3_N
@@ -102998,7 +102999,8 @@ survivor_N	survivor_3_N
 susan_PN	susan_PN
 susanna_PN	susanna_PN
 susceptibility_N	susceptibility_N
-susceptible_A	susceptible_1_A
+susceptible_A	susceptible_of_A2
+susceptible_A	susceptible_to_A2
 susceptible_A	susceptible_2_A
 sushi_N	sushi_N
 susie_PN	susie_PN
@@ -106127,7 +106129,7 @@ thirst_V2	thirst_1_V2
 thirst_V2	thirst_2_V2
 thirsty_A	thirsty_1_A
 thirsty_A	thirsty_2_A
-thirsty_A	thirsty_3_A
+thirsty_A	thirsty_for_A2
 thirsty_A	thirsty_4_A
 this_Quant	this_Quant
 thistle_N	thistle_N
@@ -107922,7 +107924,7 @@ trace_V2	trace_5_V2
 trace_V2	trace_6_V2
 trace_V2	trace_7_V2
 trace_V2	trace_8_V2
-traceable_A	traceable_1_A
+traceable_A	traceable_to_AV
 traceable_A	traceable_2_A
 tracer_N	tracer_1_N
 tracer_N	tracer_2_N
@@ -108037,7 +108039,7 @@ traducer_N	traducer_N
 traffic_N	traffic_1_N
 traffic_N	traffic_2_N
 traffic_N	traffic_3_N
-traffic_N	traffic_4_N
+traffic_N	traffic_with_N2
 traffic_V	traffic_1_V
 traffic_V	traffic_2_V
 trafficator_N	trafficator_N
@@ -110366,8 +110368,8 @@ un_come_at_able_A	un_come_at_able_A
 un_get_at_able_A	un_get_at_able_A
 unabashed_A	unabashed_A
 unabated_A	unabated_A
-unable_A	unable_1_A
-unable_A	unable_2_A
+unable_A	unable_to_1_AV
+unable_A	unable_to_2_AV
 unable_A	unable_3_A
 unabridged_A	unabridged_A
 unabused_A	unabused_A
@@ -110518,7 +110520,6 @@ unavowed_A	unavowed_1_A
 unavowed_A	unavowed_2_A
 unavowed_A	unavowed_3_A
 unawakened_A	unawakened_A
-unaware_A	unaware_A
 unaware_of_A2	unaware_of_A2
 unawares_Adv	unawares_1_Adv
 unawares_Adv	unawares_2_Adv
@@ -110772,7 +110773,7 @@ unconscionable_A	unconscionable_1_A
 unconscionable_A	unconscionable_2_A
 unconscious_A	unconscious_1_A
 unconscious_A	unconscious_2_A
-unconscious_A	unconscious_3_A
+unconscious_A	unconscious_of_A2
 unconscious_N	unconscious_N
 unconsciousness_N	unconsciousness_N
 unconsidered_A	unconsidered_A
@@ -111679,7 +111680,7 @@ uniovular_A	uniovular_1_A
 uniparous_A	uniparous_A
 unipolar_A	unipolar_A
 unique_A	unique_1_A
-unique_A	unique_2_A
+unique_A	unique_to_A2
 unique_A	unique_3_A
 unique_A	unique_4_A
 uniqueness_N	uniqueness_N
@@ -111892,8 +111893,9 @@ unmerited_A	unmerited_2_A
 unmeritorious_A	unmeritorious_A
 unmethodical_A	unmethodical_A
 unmilitary_A	unmilitary_A
-unmindful_A	unmindful_1_A
-unmindful_A	unmindful_2_A
+unmindful_A	unmindful_A
+unmindful_A	unmindful_of_A2
+unmindful_A	unmindful_to_A2
 unmindfulness_N	unmindfulness_N
 unmined_A	unmined_A
 unmingled_A	unmingled_A
@@ -112507,7 +112509,7 @@ unsusceptibility_N	unsusceptibility_N
 unsusceptible_A	unsusceptible_A
 unsuspected_A	unsuspected_A
 unsuspecting_A	unsuspecting_1_A
-unsuspecting_A	unsuspecting_2_A
+unsuspecting_A	unsuspecting_of_A2
 unsuspicious_A	unsuspicious_A
 unswayed_A	unswayed_A
 unsweet_A	unsweet_1_A
@@ -112747,7 +112749,8 @@ up_A	up_4_A
 up_A	up_5_A
 up_A	up_6_A
 up_A	up_7_A
-up_A	up_8_A
+up_A	up_on_A2
+up_A	up_for_A2
 up_Adv	up_1_Adv
 up_Adv	up_2_Adv
 up_Adv	up_3_Adv
@@ -114783,8 +114786,8 @@ vuolijoki_PN	vuolijoki_PN
 vähäkyrö_PN	vähäkyrö_PN
 västanfjärd_PN	västanfjärd_PN
 vörå_PN	vörå_PN
-wad_N	wad_1_N
-wad_N	wad_2_N
+wad_N	wad_of_1_N2
+wad_N	wad_of_2_N2
 wad_N	wad_3_N
 wad_V2	wad_1_V2
 wad_V2	wad_2_V2

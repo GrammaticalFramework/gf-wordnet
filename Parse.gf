@@ -12,18 +12,12 @@ abstract Parse =
   Text,
   Idiom,
   Tense,
+  Extend [N, CompoundN],
   WordNet,
   Documentation ** {
   
   flags
     startcat = Phr ;
-
-fun
-  CompoundN : N -> N -> N ;
-  GerundNP : VP -> NP ;
-  PresPartAP : VP -> AP ;
-  InOrderToVP : VP -> Adv ;
-  has_age_VP : Num -> VP ;
 
 -- INJECT
 

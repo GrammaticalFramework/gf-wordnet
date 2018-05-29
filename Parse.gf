@@ -12,7 +12,7 @@ abstract Parse =
   Text,
   Idiom,
   Tense,
-  Extend [N, CompoundN],
+  ParseExtend,
   WordNet,
   Documentation ** {
   

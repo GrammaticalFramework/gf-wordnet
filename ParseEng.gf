@@ -13,7 +13,7 @@ concrete ParseEng of Parse =
   TextX - [Pol,PPos,PNeg],
   IdiomEng,
   TenseX - [Pol,PPos,PNeg],
-  ExtendEng [N, CompoundN],
+  ParseExtendEng,
   WordNetEng,
   DocumentationEng
   ** open MorphoEng, ResEng, ParadigmsEng, IrregEng, (E = ExtraEng), (S = SyntaxEng), Prelude in {

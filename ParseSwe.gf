@@ -13,7 +13,7 @@ concrete ParseSwe of Parse =
   TextX -[Tense,Temp],
   IdiomSwe,
   TenseSwe,
-  ExtendSwe [N, CompoundN],
+  ParseExtendSwe,
   WordNetSwe,
   DocumentationSwe
   ** open ParadigmsSwe, (I = IrregSwe), (C = CommonScand), (R = ResSwe), (MorphoSwe = MorphoSwe), (L = LexiconSwe), (M = MakeStructuralSwe), (S = SyntaxSwe), Prelude in {

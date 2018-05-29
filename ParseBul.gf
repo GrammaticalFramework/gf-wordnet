@@ -13,7 +13,7 @@ concrete ParseBul of Parse =
   TextBul,
   IdiomBul,
   TenseX - [CAdv,IAdv],
-  ExtendBul [N, CompoundN],
+  ParseExtendBul,
   WordNetBul,
   DocumentationBul
   ** open MorphoBul, ResBul, (S = StructuralBul), (L = LexiconBul), (E = ExtraBul), ParadigmsBul, Prelude in {

@@ -56,6 +56,8 @@ class Editor:
 					for lang in self.modules:
 						values.append("")
 					self.treestore.append(it,values)
+			self.loadExamples()
+
 			self.loadAbstract()
 			self.loadConcrete()
 
@@ -73,12 +75,16 @@ class Editor:
 
 		self.fun = self.treestore.get_value(piter,0)
 		fun_defs = self.defs[self.fun]
-		(abstr,self.synset,descr) = fun_defs["WordNet.gf"]
+		(abstr,self.synset,gloss,examples) = fun_defs["WordNet.gf"]
 
 		self.textbuffer_abstr.set_text(abstr)
 		self.textbuffer_abstr.set_modified(False)
-		self.textbuffer_gloss.set_text(descr)
+		self.textbuffer_gloss.set_text(gloss)
 		self.textbuffer_gloss.set_modified(False)
+
+		self.textbuffer_exmpl.set_text(fun_defs["examples.txt"])
+		self.textbuffer_exmpl.set_modified(False)
+
 		for (lang, wordnet, parse, textbuffer) in self.modules:
 			textbuffer.set_text(fun_defs[wordnet])
 			textbuffer.set_modified(False)
@@ -208,14 +214,15 @@ class Editor:
 		return textbuffer
 		
     def next_tree(self, widget, data=None):
-		self.loadTree()
+		self.loadNextExample()
 
     def __init__(self):
 		# load the grammar
         (self.lemma2funs,self.fun2lists) = self.loadGrammarCache()
 
         self.fun2synset = self.loadSynsets()
-        self.mapping    = self.loadMapping()
+
+        self.fun = None
 
         # create a new window
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
@@ -366,12 +373,48 @@ class Editor:
 					abstr = abstr.strip()
 					[synset,descr] = comment.split('\t')
 					synset = synset.strip()
-					descr = descr.strip()
+					descr  = descr.strip()
+
+					gloss    = ""
+					examples = []
+					i        = 0
+					start    = i
+					while i < len(descr):
+						if descr[i] == ';':
+							if descr[start] == '"':
+								if descr[i-1] == '"':
+									example = descr[start+1:i-1]
+								else:
+									example = descr[start:i]
+								examples.append(example)
+							else:
+								if gloss == "":
+									gloss = descr[start:i]
+								else:
+									gloss = gloss + "; " + descr[start:i]
+							i = i+1
+							while descr[i].isspace():
+								i = i+1
+							start = i
+						else:
+							if descr[i] == '"':
+								while i < len(descr) and descr[i] != '"':
+									i = i+1
+							i = i+1
+					if start < len(descr) and descr[start] == '"':
+						if descr[i-1] == '"':
+							example = descr[start+1:i-1]
+						else:
+							example = descr[start:i]
+						examples.append(example)
+					else:
+						gloss = gloss + "; " + descr[start:i]
 				else:
-					abstr  = line.strip()
-					synset = None
-					descr  = ""
-				self.defs[ws[1]][file_name] = (abstr,synset,descr)
+					abstr    = line.strip()
+					synset   = None
+					gloss    = ""
+					examples = []
+				self.defs[ws[1]][file_name] = (abstr,synset,descr,examples)
 		f.close()
 
     def saveAbstract(self):
@@ -401,12 +444,12 @@ class Editor:
 		inp.close()
 		out.close()
 		shutil.move("__temp__", "WordNet.gf")
-		
+
 		self.textbuffer_abstr.set_modified(False)
 		self.textbuffer_gloss.set_modified(False)
 		
 		abs_def = self.defs[self.fun][file_name]
-		self.defs[self.fun][file_name] = (abstr,abs_def[1],gloss)
+		self.defs[self.fun][file_name] = (abstr,abs_def[1],gloss,abs_def[3])
 
     def deleteAbstract(self):
 		inp = open("WordNet.gf", "r")
@@ -466,21 +509,6 @@ class Editor:
 			out.close()
 			shutil.move("__temp__", wordnet)
 
-    def loadMapping(self):
-		mapping = {}
-		inp = open("mapping.txt", "r")
-		for line in inp:
-			ws = line.split()
-			if len(ws) == 2:
-				if ws[0] in mapping:
-					lst = mapping[ws[0]]
-				else:
-					lst = []
-					mapping[ws[0]] = lst
-				lst.append(ws[1])
-		inp.close()
-		return mapping
-
     def updateMapping(self):
 		inp = open("mapping.txt", "r")
 		out = open("__temp__", "w")
@@ -510,17 +538,155 @@ class Editor:
 		app = e.unpack()
 		if type(app) == tuple:
 			if len(app[1]) == 0:
-				if app[0] in self.mapping:
-					for fun in self.mapping[app[0]]:
-						values = [fun]
-						for (lang,wordnet,parse,textbuffer) in self.modules:
-							values.append("")
-						self.treestore.append(None,values)
+				values = [app[0]]
+				for (lang,wordnet,parse,textbuffer) in self.modules:
+					values.append("")
+				self.treestore.append(None,values)
 			else:
 				for e in app[1]:
 					self.loadLexicon(e)
 
-    def loadTree(self):
+    def loadExamples(self):
+		def addLexicon(e):
+			app = e.unpack()
+			if type(app) == tuple:
+				if len(app[1]) == 0:
+					self.defs.setdefault(app[0], {})
+				else:
+					for e in app[1]:
+						addLexicon(e)
+
+		defs_copy = self.defs.copy()
+
+		inp = open("examples.txt", "r")
+		while True:
+			l0 = inp.readline()
+			l1 = inp.readline()
+			l2 = inp.readline()
+			l3 = inp.readline()
+			l4 = inp.readline()
+			l5 = inp.readline()
+
+			if l0 == '':
+				break
+
+			ws = l4[5:-1].split()
+			funs = ws[1:int(ws[0])+1]
+			for fun in funs:
+				if fun in defs_copy:
+					addLexicon(pgf.readExpr(l0[5:-1]))
+
+					lines = self.defs[fun].setdefault("examples.txt",[])
+					lines.append(l0)
+					lines.append(l1)
+					lines.append(l2)
+					lines.append(l3)
+					lines.append(l4)
+					lines.append(l5)
+		inp.close()
+
+		for fun in defs_copy:
+			examples = self.defs[fun].get("examples.txt",[])
+			self.defs[fun]["examples.txt"] = "".join(examples)
+
+    def saveExamples(self, all_lines):
+		inp = open("examples.txt", "r")
+		out = open("__temp__", "w")
+
+		l0 = inp.readline()
+		while True:
+			l1 = inp.readline()
+			if l1 == '':
+				break
+
+			for xlines in all_lines:
+				if xlines[1] == l1:
+					l2 = inp.readline()
+					l3 = inp.readline()
+					l4 = inp.readline()
+					l5 = inp.readline()
+
+					for line in xlines:
+						out.write(line)
+
+					l0 = inp.readline()
+					break
+			else:
+				out.write(l0)
+				l0 = l1
+		out.write(l0)
+
+		out.close()
+		inp.close()
+		shutil.move("__temp__", "examples.txt")
+
+    def updateExamples(self):
+		lines     = []
+		all_lines = []
+
+		itr = self.textbuffer_exmpl.get_start_iter()
+		while True:
+			start = itr.copy()
+			if not itr.forward_line():
+				break
+			line0 = self.textbuffer_exmpl.get_text(start,itr)
+			if line0.startswith("abs*") or line0.startswith("abs:"):
+				xlines = []
+
+				xlines.append(line0)
+
+				e = pgf.readExpr(line0[4:])
+
+				start = itr.copy(); itr.forward_line()
+				line1 = self.textbuffer_exmpl.get_text(start,itr)
+				xlines.append(line1)
+
+				start = itr.copy(); itr.forward_line()
+				line2 = self.textbuffer_exmpl.get_text(start,itr)
+				xlines.append(line2)
+
+				start = itr.copy(); itr.forward_line()
+				line3 = self.textbuffer_exmpl.get_text(start,itr)
+				xlines.append(line3)
+					
+				start = itr.copy(); itr.forward_line()
+				line4 = self.textbuffer_exmpl.get_text(start,itr)
+				xlines.append(line4)
+
+				start = itr.copy(); itr.forward_line()
+				line5 = self.textbuffer_exmpl.get_text(start,itr)
+				xlines.append(line5)
+
+				all_lines.append(xlines)
+
+				lines.extend(xlines)
+				l = len(lines)
+
+				lin   = self.gr.languages["ParseEng"].linearize(e)
+				if lin != line1[5:-1]:
+					lines.append("eng: "+lin+"\n")
+
+				lin   = self.gr.languages["ParseSwe"].linearize(e)
+				if lin != line2[5:-1]:
+					lines.append("swe: "+lin+"\n")
+
+				lin   = self.gr.languages["ParseBul"].linearize(e)
+				if lin != line3[5:-1]:
+					lines.append("bul: "+lin+"\n")
+					
+				if l != len(lines):
+					lines.append("\n")
+
+		if self.textbuffer_exmpl.get_modified():
+			self.saveExamples(all_lines)
+
+		examples = "".join(lines)
+		self.defs[self.fun]["examples.txt"] = examples
+		
+		self.textbuffer_exmpl.set_text(examples)
+		self.textbuffer_exmpl.set_modified(False)
+
+    def loadNextExample(self):
 		i     = -1
 		lines = []
 		inp = open("examples.txt", "r")
@@ -543,11 +709,12 @@ class Editor:
 		recompile = False
 		if os.path.isfile("Parse.pgf"):
 			source_files = []
+			file_names = ["WordNet.gf", "Parse.gf"]
 			for (lang,wordnet,parse) in self.modules:
-				if os.path.getmtime(wordnet) >= os.path.getmtime("Parse.pgf"):
-					recompile = True
-					break
-				if os.path.getmtime(parse) >= os.path.getmtime("Parse.pgf"):
+				file_names.append(wordnet)
+				file_names.append(parse)
+			for file_name in file_names:
+				if os.path.getmtime(file_name) >= os.path.getmtime("Parse.pgf"):
 					recompile = True
 					break
 		else:
@@ -586,7 +753,8 @@ class Editor:
 				continue
 			if l == "-- INJECT\n":
 				for fun in self.defs:
-					out.write(self.defs[fun]["WordNet.gf"][0]+"\n")
+					if "WordNet.gf" in self.defs[fun]:
+						out.write(self.defs[fun]["WordNet.gf"][0]+"\n")
 			else:
 				out.write(l)
 		out.close()
@@ -608,7 +776,8 @@ class Editor:
 					continue
 				if l == "-- INJECT\n":
 					for fun in self.defs:
-						out.write(self.defs[fun][wordnet]+"\n")
+						if wordnet in self.defs[fun]:
+							out.write(self.defs[fun][wordnet]+"\n")
 				else:
 					out.write(l)
 			out.close()
@@ -623,6 +792,9 @@ class Editor:
 				self.gr = pgf.readPGF("lib/src/Parse.pgf")
 				sys.stdout.write("\n")
 				self.updateLinearizations()
+				
+				if self.fun != None:
+					self.updateExamples()
 				return
 
 			gtk.timeout_add(500, wait)

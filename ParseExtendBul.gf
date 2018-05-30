@@ -1,10 +1,7 @@
-concrete ParseExtendBul of ParseExtend = ParseCatBul, ExtendBul [A, N, VP, Tense, Adv, AdV, CompoundN, PositAdVAdj] ** open Prelude, ResBul in {
+concrete ParseExtendBul of ParseExtend = ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron] ** open Prelude, ResBul, NounBul in {
 
-lin ComplAV a vp = {
-      s = \\aform => let agr = agrP3 (aform2gennum aform) ;
-                     in a.s ! aform ++ daComplex Simul Pos vp ! Perf ! agr ;
-      adv = a.adv ++ daComplex Simul Pos vp ! Perf ! agrP3 (GSg Neut) ;
-      isPre = False
-    } ;
+lin gen_Quant = DefArt ;
+
+    UttAPFem ap = {s = ap.s ! ASg Fem Indef ! P3} ;
 
 }

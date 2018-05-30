@@ -1,13 +1,7 @@
-concrete ParseExtendSwe of ParseExtend = ParseCatSwe, ExtendSwe [A, N, VP, Tense, Adv, AdV, CompoundN, PositAdVAdj] ** open Prelude, ResSwe, CommonScand in {
+concrete ParseExtendSwe of ParseExtend = ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron] ** open Prelude, ResSwe, CommonScand, NounSwe, PhraseSwe in {
 
-lin ComplAV a vp = {
-      s = \\ap => let agr = case ap of {
-                              Strong (GSg g) => agrP3 g Sg ;
-                              Strong GPl     => agrP3 Utr Pl ;
-                              Weak   n       => agrP3 Utr n
-                            }
-                  in a.s ! AF (APosit ap) Nom ++ infMark ++ infVP vp agr ;
-      isPre = False
-    } ;
+lin gen_Quant = DefArt ;
+
+    UttAPFem = UttAP ;
 
 }

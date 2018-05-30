@@ -1,8 +1,13 @@
-concrete ParseExtendEng of ParseExtend = ParseCatEng, ExtendEng [A, N, VP, Tense, Adv, AdV, CompoundN, PositAdVAdj] ** open Prelude, ResEng in {
+concrete ParseExtendEng of ParseExtend = ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron] ** open Prelude, ResEng, PhraseEng in {
 
-lin ComplAV a vp = {
-      s = \\agr => a.s ! AAdj Posit Nom ++ infVP VVInf vp Simul CPos agr ;
-      isPre = False
-    } ;
+lin gen_Quant = {
+      s  = \\hasCard,n => "" ;
+      sp = \\hasCard,n => case <n,hasCard> of {
+        <Sg,False> => table { NCase Gen => "its"; _ => "it" } ;
+        <Pl,False> => table { NCase Nom => "they"; NPAcc => "them"; _ => "theirs" } ;
+        _          => \\c => artDef
+        }
+      } ;
 
+    UttAPFem = UttAP ;
 }

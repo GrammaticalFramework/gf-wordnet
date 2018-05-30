@@ -1,5 +1,7 @@
-abstract ParseExtend = ParseCat, Extend [A, N, VP, Tense, Adv, AdV, CompoundN, PositAdVAdj] ** {
+abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron] ** {
 
-fun ComplAV : AV -> VP -> AP ;
+fun gen_Quant : Quant ;
+
+    UttAPFem : AP -> Utt ;
 
 }

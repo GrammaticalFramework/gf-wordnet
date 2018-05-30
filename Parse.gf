@@ -1,6 +1,6 @@
 abstract Parse = 
   Noun,
-  Verb, 
+  Verb - [PassV2], 
   Adjective,
   Adverb,
   Numeral,

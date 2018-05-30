@@ -1,7 +1,7 @@
 --# -path=.:../abstract:../common
 concrete ParseBul of Parse =
   NounBul,
-  VerbBul,
+  VerbBul - [PassV2],
   AdjectiveBul,
   AdverbBul,
   NumeralBul,
@@ -12,7 +12,7 @@ concrete ParseBul of Parse =
   PhraseBul,
   TextBul,
   IdiomBul,
-  TenseX - [CAdv,IAdv],
+  TenseX - [CAdv,IAdv,SC],
   ParseExtendBul,
   WordNetBul,
   DocumentationBul

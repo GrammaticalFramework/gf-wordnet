@@ -466,12 +466,28 @@ class Editor:
 
     def loadConcrete(self):
 		for (lang,wordnet,parse,text_buffer) in self.modules:
-			f = open(wordnet, "r")
-			for line in f:
-				ws = line.split()
+			inp = open(wordnet, "r")
+			while True:
+				line = inp.readline()
+				if line == '':
+					break
+
+				ws   = line.split()
 				if len(ws) > 2 and ws[0] == "lin" and ws[1] in self.defs:
-					self.defs[ws[1]][wordnet] = line.strip()
-			f.close()
+					count = 0
+					body  = ""
+					while line != '':
+						body = body + line
+						for c in line:
+							if c == '{' or c == '(' or c == '[':
+								count = count + 1
+							if c == '}' or c == ')' or c == ']':
+								count = count - 1
+						if count == 0:
+							break
+						line = inp.readline()
+					self.defs[ws[1]][wordnet] = body.strip()
+			inp.close()
 
     def saveConcrete(self):
 		for (lang,wordnet,parse,textbuffer) in self.modules:

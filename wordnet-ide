@@ -106,6 +106,10 @@ class Editor:
 			self.fun = self.new_fun
 			del self.new_fun
 
+        if self.detectNewFunctions():
+			self.loadAbstract()
+			self.loadConcrete()
+
         self.buildMiniGrammar()
 
         self.saveButton.set_sensitive(False)
@@ -729,6 +733,35 @@ class Editor:
 		self.selectFunction(target_funs[0])
 
 		self.buildMiniGrammar()
+		
+    def detectNewFunctions(self):
+		def addLexicon(e):
+			app = e.unpack()
+			if type(app) == tuple:
+				if len(app[1]) == 0:
+					fun = app[0]
+					if fun not in self.defs:
+						self.defs[fun] = {}
+						return True
+				else:
+					detected = False
+					for e in app[1]:
+						detected = detected or addLexicon(e)
+					return detected
+			else:
+				return False
+
+		detected = False
+		itr = self.textbuffer_exmpl.get_start_iter()
+		while True:
+			start = itr.copy()
+			if not itr.forward_line():
+				break
+			line = self.textbuffer_exmpl.get_text(start,itr)
+			if line.startswith("abs*") or line.startswith("abs:"):
+				e = pgf.readExpr(line[4:])
+				detected = detected or addLexicon(e)
+		return detected
 
     def selectFunction(self,fun):
 		self.fun = fun

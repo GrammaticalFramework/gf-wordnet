@@ -73,24 +73,7 @@ class Editor:
 
 		self.notifyNeedsSave()
 
-		self.fun = self.treestore.get_value(piter,0)
-		fun_defs = self.defs[self.fun]
-		(abstr,self.synset,gloss,examples) = fun_defs["WordNet.gf"]
-
-		self.textbuffer_abstr.set_text(abstr)
-		self.textbuffer_abstr.set_modified(False)
-		self.textbuffer_gloss.set_text(gloss)
-		self.textbuffer_gloss.set_modified(False)
-
-		self.textbuffer_exmpl.set_text(fun_defs["examples.txt"])
-		self.textbuffer_exmpl.set_modified(False)
-
-		for (lang, wordnet, parse, textbuffer) in self.modules:
-			textbuffer.set_text(fun_defs[wordnet])
-			textbuffer.set_modified(False)
-
-		self.saveButton.set_sensitive(False)
-		self.deleteButton.set_sensitive(True)
+		self.selectFunction(self.treestore.get_value(piter,0))
 
     def save_event(self, widget, data=None):
         self.saveAbstract()
@@ -550,17 +533,28 @@ class Editor:
 		out.close()
 		shutil.move("__temp__", "mapping.txt")
 
-    def loadLexicon(self,e):
+    def loadExampleLexicon(self,e):
 		app = e.unpack()
 		if type(app) == tuple:
-			if len(app[1]) == 0:
-				values = [app[0]]
+			fun = app[0]
+			if fun in self.fun2synset:
+				self.defs[fun] = {}
+				values = [fun]
 				for (lang,wordnet,parse,textbuffer) in self.modules:
 					values.append("")
-				self.treestore.append(None,values)
+				it = self.treestore.append(None,values)
+
+				for syn_fun in self.fun2synset.get(fun,[]):
+					if fun == syn_fun:
+						continue
+					self.defs[syn_fun] = {}
+					values = [syn_fun]
+					for lang in self.modules:
+						values.append("")
+					self.treestore.append(it,values)
 			else:
 				for e in app[1]:
-					self.loadLexicon(e)
+					self.loadExampleLexicon(e)
 
     def loadExamples(self):
 		def addLexicon(e):
@@ -707,19 +701,54 @@ class Editor:
 		lines = []
 		inp = open("examples.txt", "r")
 		for line in inp:
-			if i < 0 and line.startswith("abs*"):
+			if i < 0 and line.startswith("abs* Phr"):
 				lines.append(line)
-				i = 3
+				i = 5
 			elif i >= 0:
 				lines.append(line)
 				i = i - 1
+				if i == 1:
+					ws = line[5:-1].split()
+					target_funs = ws[1:int(ws[0])+1]
 				if i == 0:
 					break
-		self.textbuffer_exmpl.set_text("".join(lines))
 		inp.close()
+
 		e = pgf.readExpr(lines[0][5:])
 		self.treestore.clear()
-		self.loadLexicon(e)
+		self.defs = {}
+		self.loadExampleLexicon(e)
+
+		self.loadExamples()
+		for fun in target_funs:
+			self.defs[fun]["examples.txt"] = "".join(lines)
+
+		self.loadAbstract()
+		self.loadConcrete()
+
+		self.selectFunction(target_funs[0])
+
+		self.buildMiniGrammar()
+
+    def selectFunction(self,fun):
+		self.fun = fun
+		fun_defs = self.defs[self.fun]
+		(abstr,self.synset,gloss,examples) = fun_defs["WordNet.gf"]
+
+		self.textbuffer_abstr.set_text(abstr)
+		self.textbuffer_abstr.set_modified(False)
+		self.textbuffer_gloss.set_text(gloss)
+		self.textbuffer_gloss.set_modified(False)
+
+		self.textbuffer_exmpl.set_text(fun_defs["examples.txt"])
+		self.textbuffer_exmpl.set_modified(False)
+
+		for (lang, wordnet, parse, textbuffer) in self.modules:
+			textbuffer.set_text(fun_defs[wordnet])
+			textbuffer.set_modified(False)
+
+		self.saveButton.set_sensitive(False)
+		self.deleteButton.set_sensitive(True)
 
     def loadGrammarCache(self):
 		recompile = False

@@ -294,7 +294,7 @@ class Editor:
         example_button = gtk.Button("Example")
         example_button.connect("clicked", self.next_tree, None)
         example_button.add_accelerator("activate", accel_group,
-                                    ord('N'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+                                       ord('E'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
         hbox.pack_start(example_button,False)
 
         vbox2.pack_start(hbox,False)
@@ -677,15 +677,15 @@ class Editor:
 				l = len(lines)
 
 				lin   = self.gr.languages["ParseEng"].linearize(e)
-				if lin != line1[5:-1]:
+				if lin.lower() != line1[5:-1].lower():
 					lines.append("eng: "+lin+"\n")
 
 				lin   = self.gr.languages["ParseSwe"].linearize(e)
-				if lin != line2[5:-1]:
+				if lin.lower() != line2[5:-1].lower():
 					lines.append("swe: "+lin+"\n")
 
 				lin   = self.gr.languages["ParseBul"].linearize(e)
-				if lin != line3[5:-1]:
+				if lin.lower() != line3[5:-1].lower():
 					lines.append("bul: "+lin+"\n")
 					
 				if l != len(lines):

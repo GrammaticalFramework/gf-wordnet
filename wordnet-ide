@@ -61,7 +61,7 @@ class Editor:
 			self.loadAbstract()
 			self.loadConcrete()
 
-			self.buildMiniGrammar()
+			self.buildMiniGrammar(True)
 
         self.saveButton.set_sensitive(False)
         self.deleteButton.set_sensitive(False)
@@ -110,7 +110,12 @@ class Editor:
 			self.loadAbstract()
 			self.loadConcrete()
 
-        self.buildMiniGrammar()
+        self.buildMiniGrammar(False)
+
+        self.textbuffer_abstr.set_modified(False)
+        self.textbuffer_gloss.set_modified(False)
+        for (lang,wordnet,parse,textbuffer) in self.modules:
+			textbuffer.set_modified(False)
 
         self.saveButton.set_sensitive(False)
 
@@ -432,9 +437,6 @@ class Editor:
 		inp.close()
 		out.close()
 		shutil.move("__temp__", "WordNet.gf")
-
-		self.textbuffer_abstr.set_modified(False)
-		self.textbuffer_gloss.set_modified(False)
 		
 		abs_def = self.defs[self.fun][file_name]
 		self.defs[self.fun][file_name] = (abstr,abs_def[1],gloss,abs_def[3])
@@ -494,8 +496,6 @@ class Editor:
 			inp.close()
 			out.close()
 			shutil.move("__temp__", wordnet)
-
-			textbuffer.set_modified(False)
 
 			self.defs[self.fun][wordnet] = concr
 
@@ -733,7 +733,7 @@ class Editor:
 
 		self.selectFunction(target_funs[0])
 
-		self.buildMiniGrammar()
+		self.buildMiniGrammar(True)
 		
     def detectNewFunctions(self):
 		def addLexicon(e):
@@ -821,49 +821,54 @@ class Editor:
 		sys.stdout.write("\n")
 		return (lemma2funs,fun2lists)
 
-    def buildMiniGrammar(self):
-		inp = open("Parse.gf", "r")
-		out = open("lib/src/abstract/Parse.gf", "w")
-		while True:
-			l = inp.readline()
-			if l == '':
-				break
-			if l == "  WordNet,\n":
-				continue
-			if l == "-- INJECT\n":
-				for fun in self.defs:
-					if "WordNet.gf" in self.defs[fun]:
-						out.write(self.defs[fun]["WordNet.gf"][0]+"\n")
-			else:
-				out.write(l)
-		out.close()
-		inp.close()
+    def buildMiniGrammar(self, rebuild):
+		modified = False
+		if rebuild or self.textbuffer_abstr.get_modified():
+			modified = True
+
+			inp = open("Parse.gf", "r")
+			out = open("lib/src/abstract/Parse.gf", "w")
+			while True:
+				l = inp.readline()
+				if l == '':
+					break
+				if l == "  WordNet,\n":
+					continue
+				if l == "-- INJECT\n":
+					for fun in self.defs:
+						if "WordNet.gf" in self.defs[fun]:
+							out.write(self.defs[fun]["WordNet.gf"][0]+"\n")
+				else:
+					out.write(l)
+			out.close()
+			inp.close()
 
 		cmd = ["gf", "--make", "--output-dir=lib/src"]
 		for (lang,wordnet,parse,textbuffer) in self.modules:
 			file_name = "lib/src/"+lang.lower()+"/"+parse
 			cmd.append(file_name)
 
-			inp = open(parse, "r")
-			out = open(file_name, "w")
-			skip = "  "+wordnet[:-3]+",\n"
-			while True:
-				l = inp.readline()
-				if l == '':
-					break
-				if l == skip:
-					continue
-				if l == "-- INJECT\n":
-					for fun in self.defs:
-						if wordnet in self.defs[fun]:
-							out.write(self.defs[fun][wordnet]+"\n")
-				else:
-					out.write(l)
-			out.close()
-			inp.close()
+			if rebuild or textbuffer.get_modified():
+				modified = True
 
-		process = subprocess.Popen(cmd)
-		
+				inp = open(parse, "r")
+				out = open(file_name, "w")
+				skip = "  "+wordnet[:-3]+",\n"
+				while True:
+					l = inp.readline()
+					if l == '':
+						break
+					if l == skip:
+						continue
+					if l == "-- INJECT\n":
+						for fun in self.defs:
+							if wordnet in self.defs[fun]:
+								out.write(self.defs[fun][wordnet]+"\n")
+					else:
+						out.write(l)
+				out.close()
+				inp.close()
+
 		def wait():
 			if process.poll() != None:
 				sys.stdout.write("Reading lib/src/Parse.pgf... ")
@@ -878,8 +883,13 @@ class Editor:
 
 			gtk.timeout_add(500, wait)
 
-		wait()
-		
+		if modified:
+			process = subprocess.Popen(cmd)
+			wait()
+		else:
+			if self.fun != None:
+				self.updateExamples()
+
     def updateLinearizations(self):
 		langs = self.gr.languages
 

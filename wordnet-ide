@@ -196,7 +196,7 @@ class Editor:
 		viewport.add(textview)
 
 		vbox.pack_start(label,False)
-		vbox.pack_start(viewport,True)
+		vbox.pack_start(viewport,False)
 		
 		return textbuffer
 		
@@ -280,6 +280,13 @@ class Editor:
         vbox2 = gtk.VBox()
         vbox2.pack_start(toolbar,False)
         self.textbuffer_gloss = self.setupTextView(vbox2, "Gloss")
+
+        self.textbuffer_abstr = self.setupTextView(vbox2, "Abstract")
+
+        for i in xrange(len(self.modules)):
+			(lang,wordnet,parse) = self.modules[i]
+			textbuffer = self.setupTextView(vbox2, lang)
+			self.modules[i] = (lang,wordnet,parse,textbuffer)
         
         self.textbuffer_exmpl = gtk.TextBuffer()
         self.textbuffer_exmpl.connect("changed", self.changed_event)
@@ -287,8 +294,9 @@ class Editor:
         textview_exmpl = gtk.TextView()
         textview_exmpl.set_buffer(self.textbuffer_exmpl);
 
-        viewport = gtk.Viewport()
-        viewport.add(textview_exmpl)
+        textview_scrll = gtk.ScrolledWindow()
+        textview_scrll.set_policy(gtk.POLICY_ALWAYS, gtk.POLICY_AUTOMATIC)
+        textview_scrll.add(textview_exmpl)
 
         hbox = gtk.HBox()
         example_button = gtk.Button("Example")
@@ -298,14 +306,7 @@ class Editor:
         hbox.pack_start(example_button,False)
 
         vbox2.pack_start(hbox,False)
-        vbox2.pack_start(viewport,True)
-
-        self.textbuffer_abstr = self.setupTextView(vbox2, "Abstract")
-
-        for i in xrange(len(self.modules)):
-			(lang,wordnet,parse) = self.modules[i]
-			textbuffer = self.setupTextView(vbox2, lang)
-			self.modules[i] = (lang,wordnet,parse,textbuffer)
+        vbox2.pack_start(textview_scrll,True)
 
         vbox1 = gtk.VBox()
         vbox1.pack_start(hbox1, False)

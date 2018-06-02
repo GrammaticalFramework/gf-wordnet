@@ -10,9 +10,9 @@ concrete ParseEng of Parse =
   RelativeEng,
   ConjunctionEng,
   PhraseEng,
-  TextX - [Pol,PPos,PNeg],
+  TextX - [Pol,PPos,PNeg,SC],
   IdiomEng,
-  TenseX - [Pol,PPos,PNeg],
+  TenseX - [Pol,PPos,PNeg,SC],
   ParseExtendEng,
   WordNetEng,
   DocumentationEng

@@ -17368,7 +17368,7 @@ circumstance_N	circumstance_1_N
 circumstance_N	circumstance_2_N
 circumstance_N	circumstance_3_N
 circumstance_N	circumstance_4_N
-circumstances_N	circumstances_1_N
+circumstances_N	circumstance_5_N
 circumstances_N	circumstances_2_N
 circumstantial_A	circumstantial_A
 circumvent_V2	circumvent_1_V2
@@ -28801,7 +28801,8 @@ divisor_N	divisor_2_N
 divorce_N	divorce_N
 divorce_V2	divorce_1_V2
 divorce_V2	divorce_2_V2
-divorcee_N	divorcee_N
+divorcee_N	divorceeFem_N
+divorcee_N	divorceeMasc_N
 divot_N	divot_1_N
 divot_N	divot_2_N
 divulge_V2	divulge_V2
@@ -34833,7 +34834,7 @@ fairground_N	fairground_N
 fairish_A	fairish_1_A
 fairish_A	fairish_2_A
 fairlead_N	fairlead_N
-fairly_Adv	fairly_1_Adv
+fairly_Adv	fairly_AdA
 fairly_Adv	fairly_2_Adv
 fairly_Adv	fairly_3_Adv
 fairness_N	fairness_1_N
@@ -44292,7 +44293,6 @@ hazy_A	hazy_2_A
 he_Pron	he_Pron
 he_goat_N	he_goat_N
 he_man_N	he_man_N
-head_A	head_A
 head_N	head_1_N
 head_N	head_2_N
 head_N	head_3_N
@@ -48272,15 +48272,14 @@ imputation_N	imputation_2_N
 impute_V2	impute_1_V2
 impute_V2	impute_2_V2
 imputrescible_A	imputrescible_A
-in_1_Adv	in_1_Adv
-in_2_Adv	in_2_Adv
 in_A	in_1_A
 in_A	in_2_A
 in_A	in_3_A
 in_N	in_1_N
 in_N	in_2_N
 in_N	in_3_N
-in_Prep	in_Prep
+in_Prep	in_1_Prep
+in_Prep	in_2_Prep
 in_accordance_with_Prep	in_accordance_with_Prep
 in_addition_Adv	in_addition_Adv
 in_addition_to_Prep	in_addition_to_Prep
@@ -56683,7 +56682,7 @@ lot_3_N	lot_of_N2
 lot_3_N	lot_3_N
 lot_3_N	lot_5_N
 lot_3_N	lot_6_N
-lot_3_N	lot_7_N
+lot_3_N	lot_PN
 lota_N	lota_1_N
 lota_N	lota_2_N
 loth_A	loath_AV
@@ -99286,7 +99285,7 @@ those_N	those_N
 though_Adv	though_Adv
 though_Prep	though_Prep
 though_Subj	though_Subj
-thought_N	thought_1_N
+thought_N	thought_of_N2
 thought_N	thought_2_N
 thought_N	thought_3_N
 thought_N	thought_4_N

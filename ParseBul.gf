@@ -16,7 +16,7 @@ concrete ParseBul of Parse =
   ParseExtendBul,
   WordNetBul,
   DocumentationBul
-  ** open MorphoBul, ResBul, (S = StructuralBul), (L = LexiconBul), (E = ExtraBul), ParadigmsBul, Prelude in {
+  ** open MorphoBul, ResBul, (S = StructuralBul), (L = LexiconBul), (E = ExtendBul), ParadigmsBul, Prelude in {
 
 -- INJECT
 

@@ -386,7 +386,7 @@ class Editor:
 								else:
 									gloss = gloss + "; " + descr[start:i]
 							i = i+1
-							while descr[i].isspace():
+							while i < len(descr) and descr[i].isspace():
 								i = i+1
 							start = i
 						else:

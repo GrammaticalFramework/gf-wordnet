@@ -19,5 +19,7 @@ lin gen_Quant = {
     FullStop  = {s = "."} ;
     ExclMark  = {s = "!"} ;
     QuestMark = {s = "?"} ;
+    
+    AdvRNP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! a) vp ;
 
 }

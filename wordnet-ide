@@ -337,10 +337,9 @@ class Editor:
 			if len(ws) > 2 and ws[0] == "fun":
 				fun = ws[1]
 				parts = line.split('--')
-				if len(parts) == 2:
-					[abstr,comment] = parts
-					abstr = abstr.strip()
-					[synset_id,descr] = comment.split('\t')
+				if len(parts) >= 2:
+					abstr = parts[0].strip()
+					[synset_id,descr] = "--".join(parts[1:]).split('\t')
 					if synset_id in synsets:
 						synset = synsets[synset_id]
 					else:
@@ -361,10 +360,9 @@ class Editor:
 			ws = line.split()
 			if len(ws) > 2 and ws[0] == "fun" and ws[1] in self.defs:
 				parts = line.split('--')
-				if len(parts) == 2:
-					[abstr,comment] = line.split('--')
-					abstr = abstr.strip()
-					[synset,descr] = comment.split('\t')
+				if len(parts) >= 2:
+					abstr = parts[0].strip()
+					[synset,descr] = "--".join(parts[1:]).split('\t')
 					synset = synset.strip()
 					descr  = descr.strip()
 

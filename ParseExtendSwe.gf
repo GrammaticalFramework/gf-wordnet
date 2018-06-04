@@ -13,4 +13,5 @@ lin gen_Quant = DefArt ;
     ExclMark  = {s = "!"} ;
     QuestMark = {s = "?"} ;
 
+    AdvRNP vp prep rnp = insertObjPost (\\a => prep.s ++ rnp.s ! a) vp ;
 }

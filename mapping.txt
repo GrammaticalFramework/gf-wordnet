@@ -31655,7 +31655,7 @@ em_N	em_2_N
 emaciate_V2	emaciate_1_V2
 emaciate_V2	emaciate_2_V2
 emaciation_N	emaciation_N
-email_N	email_N
+email_N	e_mail_N
 emanate_V	emanate_1_V
 emanate_V	emanate_2_V
 emanation_N	emanation_1_N
@@ -45861,7 +45861,7 @@ holly_N	holly_2_N
 hollyhock_N	hollyhock_1_N
 hollyhock_N	hollyhock_2_N
 hollywood_PN	hollywood_1_PN
-hollywood_PN	hollywood_2_PN
+hollywood_PN	hollywood_N
 hollywood_PN	hollywood_3_PN
 holm_oak_N	holm_oak_1_N
 holm_oak_N	holm_oak_2_N
@@ -45887,7 +45887,8 @@ holophytic_A	holophytic_A
 holozoic_A	holozoic_A
 holster_N	holster_1_N
 holster_N	holster_2_N
-holy_A	holy_A
+holy_A	holy_1_A
+holy_A	holy_2_A
 holy_N	holy_N
 holyhead_PN	holyhead_PN
 holystone_N	holystone_N
@@ -50163,10 +50164,10 @@ interdict_V2	interdict_2_V2
 interdiction_N	interdiction_1_N
 interdiction_N	interdiction_2_N
 interdisciplinary_A	interdisciplinary_A
-interest_1_N	interest_1_N
+interest_2_N	interest_in_N2
 interest_2_N	interest_2_N
 interest_2_N	interest_3_N
-interest_2_N	interest_4_N
+interest_1_N	interest_4_N
 interest_2_N	interest_5_N
 interest_2_N	interest_6_N
 interest_2_N	interest_7_N
@@ -74537,7 +74538,7 @@ prime_V2	prime_3_V2
 primer_N	primer_1_N
 primer_N	primer_2_N
 primer_N	primer_3_N
-primeval_A	primeval_A
+primeval_A	primаeval_A
 primidone_N	primidone_N
 primigravida_N	primigravida_N
 priming_N	priming_1_N
@@ -85093,8 +85094,9 @@ scrap_N	scrap_1_N
 scrap_N	scrap_2_N
 scrap_N	scrap_3_N
 scrap_N	scrap_4_N
-scrap_V	scrap_V
+scrap_V	scrap_over_V2
 scrap_V2	scrap_1_V2
+scrap_V2	scrap_2_V2
 scrap_V2	scrap_3_V2
 scrap_iron_N	scrap_iron_N
 scrapbook_N	scrapbook_N
@@ -106603,8 +106605,8 @@ verve_N	verve_N
 vervet_N	vervet_N
 very_A	very_1_A
 very_A	very_2_A
-very_AdA	very_1_AdA
-very_AdA	very_2_AdA
+very_AdA	very_AdA
+very_AdA	very_3_A
 vesanto_PN	vesanto_PN
 vesical_A	vesical_A
 vesicant_N	vesicant_N

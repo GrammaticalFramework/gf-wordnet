@@ -106,11 +106,12 @@ class Editor:
 			self.fun = self.new_fun
 			del self.new_fun
 
-        if self.detectNewFunctions():
+        detected = self.detectNewFunctions()
+        if detected:
 			self.loadAbstract()
 			self.loadConcrete()
 
-        self.buildMiniGrammar(False)
+        self.buildMiniGrammar(detected)
 
         self.textbuffer_abstr.set_modified(False)
         self.textbuffer_gloss.set_modified(False)

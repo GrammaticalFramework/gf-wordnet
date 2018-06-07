@@ -13,6 +13,7 @@ abstract Parse =
   Idiom,
   Tense,
   ParseExtend,
+  Construction,
   WordNet,
   Documentation ** {
   

@@ -12,7 +12,10 @@ fun gen_Quant : Quant ;
     PhrUttMark : PConj -> Utt -> Voc -> Mark -> Phr ;
     
     FullStop, ExclMark, QuestMark : Mark ;
-    
-    AdvRNP : VP -> Prep -> RNP -> VP ;
+
+    AdvRNP : NP -> Prep -> RNP -> RNP ;
+    AdvRVP : VP -> Prep -> RNP -> VP ;
+
+    AdvImp : Adv -> Imp -> Imp ;
 
 }

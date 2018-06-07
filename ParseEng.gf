@@ -5,7 +5,7 @@ concrete ParseEng of Parse =
   AdjectiveEng,
   AdverbEng,
   NumeralEng,
-  SentenceEng,
+  SentenceEng - [UseCl],
   QuestionEng,
   RelativeEng,
   ConjunctionEng,
@@ -15,12 +15,15 @@ concrete ParseEng of Parse =
   TenseX - [Pol,PPos,PNeg,SC],
   ParseExtendEng,
   WordNetEng,
+  ConstructionEng,
   DocumentationEng
-  ** open MorphoEng, ResEng, ParadigmsEng, IrregEng, (E = ExtraEng), (S = SyntaxEng), Prelude in {
+  ** open MorphoEng, ResEng, ParadigmsEng, IrregEng, (E = ExtendEng), (S = SyntaxEng), SentenceEng, ExtraEng, Prelude in {
 
 lin
   PPos = {s = [] ; p = CPos} ;
-  PNeg = {s = [] ; p = CNeg True} ; -- contracted: don't
+  PNeg = {s = [] ; p = CNeg (variants {True; False})} ; -- contracted: don't
+
+  UseCl = variants {SentenceEng.UseCl; ExtraEng.ContractedUseCl} ;
 
 -- INJECT
 

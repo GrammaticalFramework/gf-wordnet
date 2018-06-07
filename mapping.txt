@@ -240,11 +240,7 @@ abortive_A	abortive_A
 abortus_N	abortus_N
 abound_V	abound_1_V
 abound_V	abound_2_V
-about_AdN	about_1_AdN
-about_AdN	about_2_AdN
-about_AdN	about_3_AdN
-about_AdN	about_4_AdN
-about_AdN	about_6_AdN
+about_AdN	about_AdN
 about_Adv	about_1_Adv
 about_Adv	about_2_Adv
 about_Adv	about_3_Adv
@@ -5923,8 +5919,8 @@ at_home_Adv	at_home_1_Adv
 at_home_Adv	at_home_2_Adv
 at_home_N	at_home_N
 at_last_Adv	at_last_Adv
-at_least_AdN	at_least_1_AdN
-at_least_AdN	at_least_2_AdN
+at_least_AdN	at_least_Adv
+at_least_AdN	at_least_AdN
 at_long_last_Adv	at_long_last_Adv
 at_the_behest_of_Prep	at_the_behest_of_Prep
 at_times_Adv	at_times_Adv
@@ -21672,7 +21668,7 @@ core_N	core_2_N
 core_N	core_3_N
 core_N	core_4_N
 core_N	core_5_N
-core_N	core_6_N
+core_N	core_PN
 core_N	core_7_N
 core_N	core_8_N
 core_N	core_9_N
@@ -29276,7 +29272,7 @@ double_A	double_6_A
 double_A	double_7_A
 double_Adv	double_1_Adv
 double_Adv	double_2_Adv
-double_Adv	double_3_Adv
+double_Adv	double_AdA
 double_N	double_1_N
 double_N	double_2_N
 double_N	double_3_N
@@ -35877,8 +35873,7 @@ feverish_A	feverish_1_A
 feverish_A	feverish_2_A
 feverish_A	feverish_3_A
 feverroot_N	feverroot_N
-few_A	few_A
-few_Det	few_Det
+few_Det	a_few_Det
 few_N	few_N
 few_Num	few_Num
 fewer_A	fewer_A
@@ -48281,6 +48276,7 @@ in_N	in_2_N
 in_N	in_3_N
 in_Prep	in_1_Prep
 in_Prep	in_2_Prep
+in_Prep	in_3_Prep
 in_accordance_with_Prep	in_accordance_with_Prep
 in_addition_Adv	in_addition_Adv
 in_addition_to_Prep	in_addition_to_Prep
@@ -65512,6 +65508,7 @@ oesophagus_N	oesophagus_N
 oeuvre_N	oeuvre_N
 of_Prep	of_1_Prep
 of_Prep	of_2_Prep
+of_Prep	of_3_Prep
 of_course_Adv	of_course_Adv
 off_A	off_1_A
 off_A	off_2_A
@@ -65878,7 +65875,6 @@ onboard_A	onboard_A
 once_AdV	once_AdV
 once_Adv	once_1_Adv
 once_Adv	once_3_Adv
-once_Prep	once_Prep
 once_Subj	once_Subj
 once_in_a_while_Adv	once_in_a_while_Adv
 onchocerciasis_N	onchocerciasis_N
@@ -82740,9 +82736,7 @@ roughcast_V2	roughcast_3_V2
 roughdried_A	roughdried_A
 roughen_V2	roughen_V2
 roughish_A	roughish_A
-roughly_AdV	roughly_1_AdV
-roughly_AdV	roughly_2_AdV
-roughly_AdV	roughly_3_AdV
+roughly_AdV	roughly_AdN
 roughneck_N	roughneck_N
 roughness_N	roughness_1_N
 roughness_N	roughness_2_N
@@ -91546,10 +91540,9 @@ spectacular_A	spectacular_1_A
 spectacular_A	spectacular_2_A
 spectacular_A	spectacular_3_A
 spectacular_N	spectacular_N
-spectatorFem_N	spectatorFem_1_N
-spectatorFem_N	spectatorFem_2_N
-spectatorMasc_N	spectatorMasc_1_N
-spectatorMasc_N	spectatorMasc_2_N
+spectatorFem_N	spectatorFem_N
+spectatorMasc_N	spectatorMasc_N
+spectatorMasc_N	spectator_N
 spectinomycin_N	spectinomycin_N
 spectral_A	spectral_1_A
 spectral_A	spectral_2_A
@@ -99658,7 +99651,6 @@ thyroxine_N	thyroxine_1_N
 thyrse_N	thyrse_1_N
 thyrsopteris_N	thyrsopteris_N
 thysanopter_N	thysanopter_1_N
-ti_N	ti_1_N
 ti_N	ti_2_N
 ti_N	ti_3_N
 tiara_N	tiara_N
@@ -102811,8 +102803,8 @@ twelfth_night_N	twelfth_night_N
 twelfth_night_PN	twelfth_night_PN
 twelvemonth_N	twelvemonth_N
 twerp_N	twerp_1_N
-twice_Adv	twice_1_Adv
-twice_Adv	twice_2_Adv
+twice_Adv	twice_Adv
+twice_Adv	twice_AdA
 twiddle_N	twiddle_N
 twiddle_V	twiddle_1_V
 twiddle_V2	twiddle_1_V2

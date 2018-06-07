@@ -8,11 +8,15 @@ lin gen_Quant = DefArt ;
     UttVPS vps = {s = vps.s ! agrP3 (GSg Masc)} ;
     UttVPSFem vps = {s = vps.s ! agrP3 (GSg Fem)} ;
 
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
     ExclMark  = {s = "!"} ;
     QuestMark = {s = "?"} ;
 
-    AdvRNP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;
+    AdvRNP np prep rnp = {s = \\role => np.s ! role ++ prep.s ++ rnp.s ! RObj prep.c; a = np.a; p = np.p} ;
+    AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;
 
+    AdvImp adv imp = {
+      s = \\pol,gennum => adv.s ++ imp.s ! pol ! gennum
+    } ;
 }

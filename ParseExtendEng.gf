@@ -15,11 +15,16 @@ lin gen_Quant = {
     UttVPS vps = {s = vps.s ! agrP3 Sg}  ;
     UttVPSFem vps = {s = vps.s ! agrP3 Sg}  ;
 
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
     ExclMark  = {s = "!"} ;
     QuestMark = {s = "?"} ;
-    
-    AdvRNP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! a) vp ;
+
+    AdvRNP np prep rnp = {s = \\a => np.s ! NPAcc ++ prep.s ++ rnp.s ! a} ;
+    AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! a) vp ;
+
+    AdvImp adv imp = {
+      s = \\pol,impform => adv.s ++ imp.s ! pol ! impform
+    } ;
 
 }

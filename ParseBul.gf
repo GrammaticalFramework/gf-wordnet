@@ -12,7 +12,7 @@ concrete ParseBul of Parse =
   PhraseBul,
   TextBul,
   IdiomBul,
-  TenseX - [CAdv,IAdv,SC],
+  TenseX - [CAdv,IAdv,AdV,SC],
   ParseExtendBul,
   ConstructionBul,
   WordNetBul,

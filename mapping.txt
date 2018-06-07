@@ -284,8 +284,7 @@ abridge_V2	abridge_1_V2
 abridge_V2	abridge_2_V2
 abridgement_N	abridgement_1_N
 abridger_N	abridger_N
-abroach_A	abroach_A
-abroad_A	abroad_A
+abroach_A	set_abroach_V2
 abroad_Adv	abroad_1_Adv
 abroad_Adv	abroad_2_Adv
 abroad_Adv	abroad_3_Adv
@@ -5994,7 +5993,6 @@ atoll_N	atoll_N
 atom_N	atom_1_N
 atom_N	atom_2_N
 atomic_A	atomic_1_A
-atomic_A	atomic_2_A
 atomic_A	atomic_3_A
 atomism_N	atomism_1_N
 atomism_N	atomism_2_N
@@ -10754,7 +10752,6 @@ bolt_V	bolt_4_V
 bolt_V	bolt_5_V
 bolt_V2	bolt_2_V2
 bolt_V2	bolt_3_V2
-bolt_V2	bolt_4_V2
 bolt_V2	bolt_6_V2
 bolt_V2	bolt_7_V2
 bolt_hole_N	bolt_hole_N

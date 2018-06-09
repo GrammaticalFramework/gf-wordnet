@@ -898,7 +898,6 @@ class Editor:
 
 				fun = self.treestore[treeiter][0]
 				e = pgf.Expr(fun, [pgf.Expr()]*len(self.gr.functionType(fun).hypos))
-				print e
 				i = i+1
 
 				for (lang, wordnet, parse, textbuffer) in self.modules:

@@ -17,7 +17,7 @@ concrete ParseSwe of Parse =
   WordNetSwe,
   ConstructionSwe,
   DocumentationSwe
-  ** open ParadigmsSwe, (I = IrregSwe), (C = CommonScand), (R = ResSwe), (MorphoSwe = MorphoSwe), (L = LexiconSwe), (M = MakeStructuralSwe), (S = SyntaxSwe), Prelude in {
+  ** open ParadigmsSwe, (I = IrregSwe), (C = CommonScand), (R = ResSwe), (MorphoSwe = MorphoSwe), (L = LexiconSwe), (M = MakeStructuralSwe), (G = GrammarSwe), Prelude in {
 
 -- INJECT
 

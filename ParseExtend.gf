@@ -15,7 +15,19 @@ fun gen_Quant : Quant ;
 
     AdvRNP : NP -> Prep -> RNP -> RNP ;
     AdvRVP : VP -> Prep -> RNP -> VP ;
+    PossPronRNP : Pron -> Num -> CN -> RNP -> NP ;
 
-    AdvImp : Adv -> Imp -> Imp ;
+cat CNN ;
+fun BaseCNN : Num -> CN -> Num -> CN -> CNN ;
+    DetCNN  : Quant -> Conj -> CNN -> NP ;
+
+    ReflPossCNN : Conj -> CNN -> RNP ;
+    PossCNN_RNP : Quant -> Conj -> CNN -> RNP -> RNP ;
+
+fun ComparAsAP : A -> NP -> AP ;
+
+fun AdvImp : Adv -> Imp -> Imp ;
+
+fun ImperfectVP : VP -> VP ;
 
 }

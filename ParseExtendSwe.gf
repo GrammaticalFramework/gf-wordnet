@@ -1,4 +1,4 @@
-concrete ParseExtendSwe of ParseExtend = ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Prelude, ResSwe, CommonScand, NounSwe, PhraseSwe in {
+concrete ParseExtendSwe of ParseExtend = ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Prelude, ResSwe, CommonScand, GrammarSwe in {
 
 lincat Mark = {s : Str} ;
 
@@ -64,6 +64,8 @@ lin BaseCNN num1 cn1 num2 cn2 = {
         s = \\a => quant.s ! cnn.n1 ! cnn.isMod ! md cnn.isMod ! cnn.g1 ++ conj.s1 ++ cnn.s1 ! dd ! Nom ++ conj.s2 ++ cnn.s2 ! dd ! Nom ++ av_Prep ++ rnp.s ! a;
         isPron = False
       } ;
+
+lin BareN2 n2 = n2 ;
       
 lin ComparAsAP a np = {
       s = \\ap => a.s ! AF (APosit ap) Nom ++ "som" ++ np.s ! nominative ;
@@ -74,6 +76,6 @@ lin AdvImp adv imp = {
       s = \\pol,num => adv.s ++ imp.s ! pol ! num
     } ;
 
-lin ImperfectVP vp = vp ;
+lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
 
 }

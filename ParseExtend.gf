@@ -24,10 +24,13 @@ fun BaseCNN : Num -> CN -> Num -> CN -> CNN ;
     ReflPossCNN : Conj -> CNN -> RNP ;
     PossCNN_RNP : Quant -> Conj -> CNN -> RNP -> RNP ;
 
+fun BareN2 : N2 -> N ;
+
 fun ComparAsAP : A -> NP -> AP ;
 
 fun AdvImp : Adv -> Imp -> Imp ;
 
-fun ImperfectVP : VP -> VP ;
+fun whatSgFem_IP : IP ;
+    whatSgNeut_IP : IP ;
 
 }

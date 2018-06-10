@@ -46,6 +46,8 @@ lin BaseCNN num1 cn1 num2 cn2 = {
       s = \\a => quant.s ! cnn.hasCard ! cnn.n1 ++ conj.s1 ++ cnn.s1 ! Nom ++ conj.s2 ++ cnn.s2 ! Nom ++ "of" ++ rnp.s ! a ;
     } ;
 
+lin BareN2 n2 = n2 ;
+
 lin ComparAsAP a np = {
       s = \\_ => "as" ++ a.s ! AAdj Posit Nom ++ "as" ++ np.s ! npNom ;
       isPre = False
@@ -55,6 +57,6 @@ lin AdvImp adv imp = {
       s = \\pol,impform => adv.s ++ imp.s ! pol ! impform
     } ;
 
-lin ImperfectVP vp = vp ;
+lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
 
 }

@@ -94,6 +94,8 @@ lin BaseCNN num1 cn1 num2 cn2 =
         g = cnn.g1
       } ;
 
+lin BareN2 n2 = n2 ;
+
 lin ComparAsAP a np = {
       s = \\aform,_ => a.s ! aform ++ "като" ++ np.s ! RObj Acc ;
       adv = a.adv ++ "като" ++ np.s ! RObj Acc ;
@@ -103,7 +105,8 @@ lin ComparAsAP a np = {
 lin AdvImp adv imp = {
       s = \\pol,gennum => adv.s ++ imp.s ! pol ! gennum
     } ;
-    
-lin ImperfectVP vp = ProgrVP vp ;
+
+lin whatSgFem_IP  = mkIP "каква" "каква" (GSg Fem) ;
+    whatSgNeut_IP = mkIP "какво" "какво" (GSg Neut) ;
 
 }

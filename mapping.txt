@@ -417,7 +417,7 @@ abundance_N	abundance_3_N
 abundant_A	abundant_A
 abuse_N	abuse_1_N
 abuse_N	abuse_2_N
-abuse_N	abuse_3_N
+abuse_N	abuse_of_N2
 abuse_V2	abuse_1_V2
 abuse_V2	abuse_2_V2
 abuse_V2	abuse_3_V2
@@ -483,7 +483,7 @@ acathexis_N	acathexis_N
 acaudate_A	acaudate_1_A
 acaulescent_A	acaulescent_A
 accede_V	accede_1_V
-accede_V	accede_2_V
+accede_V	accede_to_V2
 accede_V	accede_3_V
 accelerando_A	accelerando_A
 accelerando_Adv	accelerando_Adv
@@ -23330,6 +23330,7 @@ crowberry_N	crowberry_N
 crowborough_PN	crowborough_PN
 crowd_N	crowd_1_N
 crowd_N	crowd_2_N
+crowd_N	crowd_3_N
 crowd_V	crowd_1_V
 crowd_V	crowd_4_V
 crowd_V2	crowd_1_V2
@@ -60886,7 +60887,7 @@ misty_A	misty_2_A
 misunderstand_V2	misunderstand_V2
 misunderstanding_N	misunderstanding_1_N
 misunderstanding_N	misunderstanding_2_N
-misuse_N	misuse_N
+misuse_N	misuse_N2
 misuse_V2	misuse_1_V2
 misuse_V2	misuse_2_V2
 mite_N	mite_1_N
@@ -65648,7 +65649,6 @@ often_AdA	often_3_AdA
 often_AdV	often_1_AdV
 often_AdV	often_2_AdV
 often_AdV	often_3_AdV
-often_Adv	often_1_Adv
 often_Adv	often_2_Adv
 often_Adv	often_3_Adv
 oftener_Adv	oftener_Adv
@@ -75649,7 +75649,7 @@ provincialism_N	provincialism_1_N
 provincialism_N	provincialism_2_N
 provirus_N	provirus_N
 provision_N	provision_1_N
-provision_N	provision_2_N
+provision_N	provision_of_N2
 provision_N	provision_3_N
 provision_N	provision_4_N
 provision_V2	provision_V2
@@ -88308,7 +88308,7 @@ sigmoid_A	sigmoid_2_A
 sigmoidectomy_N	sigmoidectomy_N
 sigmoidoscope_N	sigmoidoscope_N
 sigmoidoscopy_N	sigmoidoscopy_N
-sign_N	sign_1_N
+sign_N	sign_of_N2
 sign_N	sign_2_N
 sign_N	sign_3_N
 sign_N	sign_4_N
@@ -96040,7 +96040,7 @@ supplication_N	supplication_3_N
 supplier_N	supplier_N
 supply_N	supply_1_N
 supply_N	supply_2_N
-supply_N	supply_3_N
+supply_N	supply_of_N2
 supply_V2	supply_1_V2
 supply_V2	supply_2_V2
 supply_V2	supply_3_V2

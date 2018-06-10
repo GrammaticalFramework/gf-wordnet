@@ -1,5 +1,5 @@
 abstract Parse = 
-  Noun - [PPartNP],
+  Noun - [PPartNP, UseN2],
   Verb - [PassV2], 
   Adjective,
   Adverb,

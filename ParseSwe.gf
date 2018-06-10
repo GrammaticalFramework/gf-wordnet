@@ -1,6 +1,6 @@
 --# -path=.:../scandinavian:../abstract:../common:../api
 concrete ParseSwe of Parse =
-  NounSwe - [PPartNP],
+  NounSwe - [PPartNP, UseN2],
   VerbSwe - [PassV2],
   AdjectiveSwe,
   AdverbSwe,

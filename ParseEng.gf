@@ -1,6 +1,6 @@
 --# -path=.:../abstract:../common:../api
 concrete ParseEng of Parse =
-  NounEng - [PPartNP],
+  NounEng - [PPartNP, UseN2],
   VerbEng - [PassV2],
   AdjectiveEng,
   AdverbEng,

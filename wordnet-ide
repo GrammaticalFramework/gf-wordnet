@@ -564,11 +564,11 @@ class Editor:
 		def addLexicon(e):
 			app = e.unpack()
 			if type(app) == tuple:
-				if len(app[1]) == 0:
+				if len(app[1]) == 0 or app[0] in self.fun2synset:
 					self.defs.setdefault(app[0], {})
-				else:
-					for e in app[1]:
-						addLexicon(e)
+				
+				for e in app[1]:
+					addLexicon(e)
 
 		defs_copy = self.defs.copy()
 

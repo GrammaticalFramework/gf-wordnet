@@ -316,7 +316,7 @@ absent_A	absent_1_A
 absent_A	absent_2_A
 absent_A	absent_3_A
 absent_Prep	absent_Prep
-absent_V2	absent_V2
+absent_V2	absent_yourself_V
 absent_minded_A	absent_minded_A
 absentee_N	absentee_N
 absenteeism_N	absenteeism_N
@@ -964,12 +964,12 @@ act_N	act_3_N
 act_N	act_4_N
 act_N	act_5_N
 act_V	act_1_V
-act_V	act_2_V
 act_V	act_4_V
 act_V	act_6_V
 act_V	act_7_V
 act_V	act_8_V
 act_V	act_9_V
+act_V	act_VA
 act_V	act_10_V
 act_V2	act_3_V2
 act_V2	act_5_V2
@@ -20985,7 +20985,7 @@ contempt_N	contempt_2_N
 contempt_N	contempt_3_N
 contempt_N	contempt_4_N
 contemptible_A	contemptible_A
-contemptuous_of_A2	contemptuous_of_A2
+contemptuous_of_A2	contemptuous_A
 contemptuousness_N	contemptuousness_N
 contend_V	contend_2_V
 contend_V	contend_3_V
@@ -47385,7 +47385,6 @@ id_N	id_3_N
 ida_PN	ida_PN
 idaho_PN	idaho_PN
 idea_N	idea_1_N
-idea_N	idea_2_N
 idea_N	idea_3_N
 idea_N	idea_4_N
 idea_N	idea_5_N

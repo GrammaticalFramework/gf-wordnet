@@ -1,4 +1,4 @@
-concrete ParseExtendEng of ParseExtend = ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Prelude, ResEng, GrammarEng in {
+concrete ParseExtendEng of ParseExtend = ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Prelude, ResEng, GrammarEng, (E = ExtraEng) in {
 
 lincat Mark = {s : Str} ;
 
@@ -63,5 +63,7 @@ lin AdvImp adv imp = {
     } ;
 
 lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
+
+lin that_RP = E.that_RP ;
 
 }

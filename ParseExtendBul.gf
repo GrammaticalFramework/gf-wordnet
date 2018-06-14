@@ -1,4 +1,4 @@
-concrete ParseExtendBul of ParseExtend = ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Predef, Prelude, ResBul, NounBul, IdiomBul in {
+concrete ParseExtendBul of ParseExtend = ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Predef, Prelude, ResBul, GrammarBul in {
 
 lincat Mark = {s : Str} ;
 
@@ -129,5 +129,7 @@ lin AdvImp adv imp = {
 
 lin whatSgFem_IP  = mkIP "каква" "каква" (GSg Fem) ;
     whatSgNeut_IP = mkIP "какво" "какво" (GSg Neut) ;
+
+lin that_RP = IdRP ;
 
 }

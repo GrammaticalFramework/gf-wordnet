@@ -34,4 +34,6 @@ fun AdvImp : Adv -> Imp -> Imp ;
 fun whatSgFem_IP : IP ;
     whatSgNeut_IP : IP ;
 
+fun that_RP : RP ;
+
 }

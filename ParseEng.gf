@@ -7,7 +7,7 @@ concrete ParseEng of Parse =
   NumeralEng,
   SentenceEng - [UseCl],
   QuestionEng,
-  RelativeEng,
+  RelativeEng - [IdRP],
   ConjunctionEng,
   PhraseEng,
   TextX - [Pol,PPos,PNeg,SC],
@@ -24,6 +24,8 @@ lin
   PNeg = {s = [] ; p = CNeg (variants {True; False})} ; -- contracted: don't
 
   UseCl = variants {SentenceEng.UseCl; ExtraEng.ContractedUseCl} ;
+  
+  IdRP = which_who_RP ;
 
 -- INJECT
 

@@ -53,6 +53,11 @@ lin ComparAsAP a np = {
       isPre = False
     } ;
 
+lin AdvAP_DAP ap prep dap = {
+      s = \\a => ap.s ! a ++ preOrPost prep.isPre prep.s dap.s ;
+      isPre = False
+    } ;
+
 lin AdvImp adv imp = {
       s = \\pol,impform => adv.s ++ imp.s ! pol ! impform
     } ;

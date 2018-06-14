@@ -17,7 +17,7 @@ lin gen_Quant = DefArt ;
     AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;
     PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = rnp.s; a = rnp.a; p=rnp.p})) ;    
 
-lincat CNN = {s : Bool => Ints 2 => Species => Role => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
+lincat CNN = {s : Bool => Ints 3 => Species => Role => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
 
 lin BaseCNN num1 cn1 num2 cn2 = 
       let mknf : NNumber -> Species -> Role -> AGender -> NForm =
@@ -101,6 +101,27 @@ lin ComparAsAP a np = {
       adv = a.adv ++ "като" ++ np.s ! RObj Acc ;
       isPre = True
     } ;
+
+    AdvAP_DAP ap prep dap =
+      let adverb : AForm => Str 
+                 = \\aform => let g = case aform of {
+                                        ASg Masc _    => AMasc NonHuman ;
+                                        ASg Fem _     => AFem ;
+                                        ASg Neut _    => ANeut ;
+                                        ASgMascDefNom => AMasc Human ;
+                                        _             => ANeut
+                                      } ;
+                                  s = dap.s ! False ! g ! RObj prep.c
+                              in prep.s ++ 
+                                 case prep.c of {
+                                   Dat      => "на" ++ s;
+                                   WithPrep => with_Word ++ s;
+                                   _        => s
+                                 } ;
+      in { s     = \\aform,p => ap.s ! aform ! p ++ adverb ! aform ;
+           adv   = ap.adv ++ adverb ! ASg Neut Indef ;
+           isPre = False
+         } ;
 
 lin AdvImp adv imp = {
       s = \\pol,gennum => adv.s ++ imp.s ! pol ! gennum

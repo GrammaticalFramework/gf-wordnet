@@ -652,7 +652,7 @@ accordionist_N	accordionist_N
 accost_V2	accost_1_V2
 accost_V2	accost_2_V2
 accouchement_N	accouchement_N
-account_N	account_1_N
+account_N	account_of_N2
 account_N	account_2_N
 account_N	account_3_N
 account_N	account_4_N
@@ -662,7 +662,7 @@ account_N	account_7_N
 account_N	account_8_N
 account_N	account_9_N
 account_N	account_10_N
-account_V	account_1_V
+account_V	account_for_3_V2
 account_V	account_2_V
 account_V	account_3_V
 account_V2	account_2_V2
@@ -696,8 +696,8 @@ accretion_N	accretion_6_N
 accretionary_A	accretionary_A
 accretive_A	accretive_A
 accrington_PN	accrington_PN
-accrue_V	accrue_1_V
-accrue_V	accrue_2_V
+accrue_V	accrue_V
+accrue_V	accrue_to_V2
 acculturation_N	acculturation_1_N
 acculturation_N	acculturation_2_N
 acculturation_N	acculturation_3_N
@@ -726,8 +726,8 @@ accusative_A	accusative_1_A
 accusative_A	accusative_2_A
 accusative_N	accusative_N
 accusatorial_A	accusatorial_A
-accuse_V2	accuse_1_V2
-accuse_V2	accuse_2_V2
+accuse_V2	accuse_of_V3
+accuse_V2	accuse_V2
 accused_A	accused_A
 accused_N	accused_N
 accuserFem_N	accuserFem_N
@@ -2165,7 +2165,6 @@ aid_N	aid_2_N
 aid_N	aid_3_N
 aid_N	aid_4_N
 aid_V	aid_1_V
-aid_V	aid_2_V
 aid_V2	aid_1_V2
 aid_V2	aid_2_V2
 aide_N	aide_1_N
@@ -5495,6 +5494,7 @@ ask_V2	ask_4_V2
 ask_V2	ask_5_V2
 ask_V2	ask_6_V2
 ask_V2	ask_7_V2
+ask_V	ask_VV
 ask_about_V2	ask_about_V2
 ask_after_V2	ask_after_V2
 ask_around_V	ask_around_V
@@ -13344,7 +13344,8 @@ buzzword_N	buzzword_N
 bvm_N	bvm_N
 by_Adv	by_1_Adv
 by_Adv	by_2_Adv
-by_Prep	by_Prep
+by_Prep	by_1_Prep
+by_Prep	by_2_Prep
 by_and_large_Adv	by_and_large_Adv
 by_election_N	by_election_N
 by_means_of_Prep	by_means_of_Prep
@@ -31918,7 +31919,7 @@ en_clair_Adv	en_clair_Adv
 en_famille_Adv	en_famille_Adv
 en_masse_Adv	en_masse_Adv
 en_route_Adv	en_route_Adv
-enable_VS	enable_VS
+enable_VS	enable_V2V
 enabling_A	enabling_A
 enact_V2	enact_1_V2
 enact_V2	enact_2_V2
@@ -45713,7 +45714,7 @@ hold_V2	hold_9_V2
 hold_V2	hold_10_V2
 hold_V2	hold_11_V2
 hold_V2	hold_12_V2
-hold_V2	hold_14_V2
+hold_V2	hold_V2A
 hold_V2	hold_17_V2
 hold_V2	hold_18_V2
 hold_V2	hold_19_V2
@@ -64961,7 +64962,7 @@ nurture_V2	nurture_1_V2
 nurture_V2	nurture_2_V2
 nurture_V2	nurture_3_V2
 nut_N	nut_1_N
-nut_N	nut_2_N
+nut_N	nut_PN
 nut_N	nut_3_N
 nut_N	nut_4_N
 nut_N	nut_5_N
@@ -66712,8 +66713,8 @@ other_Adv	other_Adv
 other_N	other_N
 otherness_N	otherness_N
 otherwise_A	otherwise_A
-otherwise_Adv	otherwise_1_Adv
-otherwise_Adv	otherwise_2_Adv
+otherwise_Adv	otherwise_AdA
+otherwise_Adv	otherwise_Adv
 otherworld_N	otherworld_N
 otherworldly_A	otherworldly_A
 othonna_N	othonna_N
@@ -80989,7 +80990,6 @@ resuscitator_N	resuscitator_N
 resuspension_N	resuspension_N
 ret_PN	ret_PN
 ret_V2	ret_V2
-retail_A	retail_A
 retail_Adv	retail_Adv
 retail_N	retail_N
 retail_V	retail_V
@@ -85082,7 +85082,6 @@ scrape_N	scrape_2_N
 scrape_N	scrape_3_N
 scrape_N	scrape_4_N
 scrape_V	scrape_1_V
-scrape_V	scrape_3_V
 scrape_V	scrape_4_V
 scrape_V	scrape_6_V
 scrape_V2	scrape_2_V2
@@ -85090,6 +85089,7 @@ scrape_V2	scrape_3_V2
 scrape_V2	scrape_4_V2
 scrape_V2	scrape_6_V2
 scrape_along_V	scrape_along_V
+scrape_V	scrape_away_V2
 scrape_by_V	scrape_by_V
 scrape_in_V	scrape_in_V
 scrape_into_V2	scrape_into_V2

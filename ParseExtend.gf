@@ -27,6 +27,7 @@ fun BaseCNN : Num -> CN -> Num -> CN -> CNN ;
 fun BareN2 : N2 -> N ;
 
 fun ComparAsAP : A -> NP -> AP ;
+    AdvAP_DAP : AP -> Prep -> DAP -> AP ;
 
 fun AdvImp : Adv -> Imp -> Imp ;
 

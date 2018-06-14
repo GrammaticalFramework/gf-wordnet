@@ -72,6 +72,15 @@ lin ComparAsAP a np = {
       isPre = False
     } ;
 
+lin AdvAP_DAP ap prep dap = {
+      s = \\a => let g = case a of {
+                           Strong (GSg g) => g ;
+                           _              => Neutr
+                         }
+                 in ap.s ! a ++ prep.s ++ dap.s ! True ! g ;
+      isPre = ap.isPre
+    } ;
+
 lin AdvImp adv imp = {
       s = \\pol,num => adv.s ++ imp.s ! pol ! num
     } ;

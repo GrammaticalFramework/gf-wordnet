@@ -12,7 +12,7 @@ Each entry in the lexicon represents the full morphology, precise syntactic
 category as well as one particular sense of a word. If three words
 in three different languages share the same meaning then 
 they are represented as a single cross lingual id. For example
-in WordNetEng.gf we have all those definitions of ´blue´ in English:
+in [WordNetEng.gf](WordNetEng.gf) we have all those definitions of blue in English:
 
 ```
 lin blue_1_A = mkA "blue" "bluer";
@@ -26,7 +26,7 @@ lin blue_8_A = mkA "blue" "bluer";
 ```
 
 since they represent different senses and thus different translations
-in WordNetSwe.gf and WordNetBul.gf:
+in [WordNetSwe.gf](WordNetSwe.gf) and [WordNetBul.gf](WordNetBul.gf):
 
 ```
 lin blue_1_A = L.blue_A ;
@@ -54,7 +54,7 @@ The definitions are using the standard RGL syntactic categories
 with are a lot more descriptive than the tags ´n´, ´v´, ´a´, and ´r´
 in the WordNet. In addition we use the RGL paradigms to implement the morphology.
 
-In the abstract syntax WordNet.gf are defined all abstract ids in 
+In the abstract syntax [WordNet.gf](WordNet.gf) are defined all abstract ids in 
 the lexicon. Almost all definitions are also followed by a comment
 which consists of first the corresponding WordNet 3.1 synset offset
 followed by dash and then the wordnet tag. After that there is a tab
@@ -72,7 +72,7 @@ In those cases there is usually a different translation in Bulgarian.
 ## Treebank
 
 In order to make the lexical development more stable we have also started
-a treebank consisting of all examples from the Princeton WordNet (see examples.txt).
+a treebank consisting of all examples from the Princeton WordNet (see [examples.txt](examples.txt)).
 The examples are automatically parsed with the translation grammar in GF.
 For each example there is also the original English sentence, as well
 as the Swedish and Bulgarian seed translations from Google Translate.
@@ -107,13 +107,13 @@ When possible these translations should be used.
 
 ## Mapping
 
-The file ´mapping.txt´ contains a mapping from the translation lexicon
+The file [mapping.txt](mapping.txt) contains a mapping from the translation lexicon
 in GF to the WordNet lexicon. Hopefully later this could be used
 to easily port the other languages in the translation lexicon.
 
 ## Editing
 
-The Python script ´wordnet-ide´ is a simple IDE for editing the lexicon.
+The Python script [wordnet-ide](wordnet-ide) is a simple IDE for editing the lexicon.
 It lets us to see simultaneously the abstract syntax together with the
 three concrete syntaxes and the corresponding treebank entries.
 All the information could be edited and then saved in the original files.
@@ -124,7 +124,7 @@ to speed up the compilation. Otherwise compiling the whole lexicon every
 time is far too slow.
 
 When changing entries from the lexicon this can affect several entries
-in the lexicon. It is a good idea to run the `sanity.hs` script regularly.
+in the lexicon. It is a good idea to run the [sanity.hs](sanity.hs) script regularly.
 It creates a second file `examples2.txt` with two kinds of annotations:
 
 1. For those entries that are already checked it verifies that the grammar

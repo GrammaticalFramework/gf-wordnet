@@ -2206,7 +2206,7 @@ aimless_A	aimless_2_A
 aioli_N	aioli_N
 air_N	air_1_N
 air_N	air_2_N
-air_N	air_3_N
+air_N	air_of_N2
 air_N	air_4_N
 air_N	air_5_N
 air_N	air_6_N
@@ -5976,7 +5976,7 @@ atlanta_PN	atlanta_1_PN
 atlanta_PN	atlanta_2_PN
 atlantic_A	atlantic_A
 atlantic_PN	atlantic_PN
-atlas_N	atlas_1_N
+atlas_N	atlas_PN
 atlas_N	atlas_2_N
 atlas_N	atlas_3_N
 atlas_N	atlas_4_N
@@ -5986,7 +5986,7 @@ atmosphere_N	atmosphere_2_N
 atmosphere_N	atmosphere_3_N
 atmosphere_N	atmosphere_4_N
 atmosphere_N	atmosphere_5_N
-atmosphere_N	atmosphere_6_N
+atmosphere_N	atmosphere_of_N2
 atmospheric_A	atmospheric_1_A
 atmospherics_N	atmospherics_N
 atole_N	atole_N
@@ -6273,7 +6273,7 @@ auntie_N	auntie_N
 aunty_N	aunty_N
 aura_N	aura_1_N
 aura_N	aura_2_N
-aura_N	aura_3_N
+aura_N	aura_of_N2
 aura_PN	aura_1_PN
 aura_PN	aura_2_PN
 aura_PN	aura_3_PN

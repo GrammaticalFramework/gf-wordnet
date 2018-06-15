@@ -66,7 +66,7 @@ In those cases there is usually a different translation in Bulgarian.
 ## Treebank
 
 In order to make the lexical development more stable we have also started
-a treebank consisting of all examples from the Princeton WordNet.
+a treebank consisting of all examples from the Princeton WordNet (see examples.txt).
 The examples are automatically parsed with the translation grammar in GF.
 For each example there is also the original English sentence, as well
 as the Swedish and Bulgarian seed translations from Google Translate.
@@ -114,3 +114,19 @@ The IDE automatically compiles the grammar in the beginning but later
 when some changes are made only the affected part of the grammar is recompiled
 to speed up the compilation. Otherwise compiling the whole lexicon every
 time is far too slow.
+
+When changing entries from the lexicon this can affect several entries
+in the lexicon. It is a good idea to run the `sanity.hs` script regularly.
+It creates a second file `examples2.txt` with two kinds of annotations:
+
+1. For those entries that are already checked it verifies that the grammar
+still produces the same linearization as the one in the treebank. 
+If it does'n then the wrong linearizations are marked with `FIX:`.
+Either the grammar or the linearization for those entries needs to be fixed.
+
+2. For those entries that are not checked yet, it verifies whether the
+grammar produces the same output as the output from Google Translate.
+If they match the the abstract syntax tree is marked with `DONE:`.
+When that happen then maybe the GF lexicon is now better and it has
+managed to produce the right linearization. However, this might be bogus
+since the translations from Google Translate are not perfect either.

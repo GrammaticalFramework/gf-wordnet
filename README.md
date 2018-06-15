@@ -63,6 +63,13 @@ by a list of examples, but here we retain only the examples relevant
 to the current lexical id. In other words if a synset contains several
 words the corresponding examples are split to the relevant abstract ids.
 
+The data also integrates WordNet Domains. If the synset for 
+the current entry has domain(s) in WordNet Domains, then they
+are listed in the beginning of the gloss, surrounded by square brackets.
+In addition to those, some more domains are added by analysing the glosses
+in the original WordNet. Many of the glosses there start with 
+round parenthesis with the relevant domain inside.
+
 In English the lexicon contains also information for the gender.
 All senses that refer to a human being are tagged with either 
 ´masculine´, ´feminine´ or ´human´ gender. In some cases where the word

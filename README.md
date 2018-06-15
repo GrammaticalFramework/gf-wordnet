@@ -14,6 +14,7 @@ in three different languages share the same meaning then
 they are represented as a single cross lingual id. For example
 in WordNetEng.gf we have all those definitions of ´blue´ in English:
 
+```
 lin blue_1_A = mkA "blue" "bluer";
 lin blue_2_A = mkA "blue" "bluer";
 lin blue_3_A = mkA "blue" "bluer";
@@ -22,10 +23,12 @@ lin blue_5_A = mkA "blue" "bluer";
 lin blue_6_A = mkA "blue" "bluer";
 lin blue_7_A = mkA "blue" "bluer";
 lin blue_8_A = mkA "blue" "bluer";
+```
 
 since they represent different senses and thus different translations
 in WordNetSwe.gf and WordNetBul.gf:
 
+```
 lin blue_1_A = L.blue_A ;
 lin blue_2_A = L.blue_A ;
 lin blue_3_A = mkA "deppig" ;
@@ -34,7 +37,9 @@ lin blue_5_A = mkA "pornografisk" ;
 lin blue_6_A = mkA "aristokratisk" ;
 lin blue_7_A = L.blue_A ;
 lin blue_8_A = L.blue_A ;
+```
 
+```
 lin blue_1_A = mkA086 "син" ;
 lin blue_2_A = mkA086 "син" ;
 lin blue_3_A = mkA076 "потиснат" ;
@@ -43,6 +48,7 @@ lin blue_5_A = mkA078 "порнографски" ;
 lin blue_6_A = mkA079 "аристократичен" ;
 lin blue_7_A = mkA086 "син" ;
 lin blue_8_A = mkA086 "син" ;
+```
 
 The definitions are using the standard RGL syntactic categories
 with are a lot more descriptive than the tags ´n´, ´v´, ´a´, and ´r´
@@ -79,11 +85,13 @@ manually checked for validity.
 
 The format of a treebank entry is as follows:
 
+```
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN storm_1_N)) (UseV abate_2_V)))) NoVoc
 eng: The storm abated
 swe: stormen minskade
 bul: бурята отслабва
 key: 1 abate_2_V 00245945-v
+```
 
 If the first line starts with "abs*" instead of "abs:" then
 the entry is not checked yet. If the line starts with "abs^" then

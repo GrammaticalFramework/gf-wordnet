@@ -123,7 +123,7 @@ the abstract ids for which this example is intended. The number 1
 here means that there is only one id but there could be more if they
 share examples. After the abstract ids is the synset offset in WordNet 3.1.
 If the same synset has translations in either BulTreebank WordNet
-or Svenska OrdNät then they are also listed after the offset. 
+or Svenskt OrdNät then they are also listed after the offset. 
 When possible these translations should be used.
 
 ## Mapping

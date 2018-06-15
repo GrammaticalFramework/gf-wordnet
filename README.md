@@ -68,6 +68,20 @@ All senses that refer to a human being are tagged with either
 ´masculine´, ´feminine´ or ´human´ gender. In some cases where the word
 is either masculine or feminine then it is further split into two senses.
 In those cases there is usually a different translation in Bulgarian.
+The information about which words refer to humans is based on
+the WordNet hierarchy.
+
+The verbs in the lexicon are also distinguished based on their valency,
+i.e. transitive, intransitive, ditransitive, etc. Currently the valency
+of a verb in a given sense is determined by its example. If there
+are no examples for a verb then all possible valencies that existed
+in the translation dictionary are retained. Later some of those might
+be edited.
+
+Some of the nouns and the adjectives are typically accompanied by
+prepositions and a noun phrase. In those cases they are classified as
+N2 and A2. This helps in parsing and also let us to choose the
+right preposition in every language.
 
 ## Treebank
 
@@ -122,6 +136,15 @@ The IDE automatically compiles the grammar in the beginning but later
 when some changes are made only the affected part of the grammar is recompiled
 to speed up the compilation. Otherwise compiling the whole lexicon every
 time is far too slow.
+
+In order to use the IDE you must create in the current folder
+a symlink to the lib folder of the RGL. After that do this:
+```
+cp ParseExtend.gf lib/src/abstract
+cp ParseExtendEng.gf lib/src/english
+cp ParseExtendSwe.gf lib/src/swedish
+cp ParseExtendBul.gf lib/src/bulgarian
+```
 
 When changing entries from the lexicon this can affect several entries
 in the lexicon. It is a good idea to run the [sanity.hs](sanity.hs) script regularly.

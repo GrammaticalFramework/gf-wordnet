@@ -109,7 +109,7 @@ The format of a treebank entry is as follows:
 ```
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN storm_1_N)) (UseV abate_2_V)))) NoVoc
 eng: The storm abated
-swe: stormen minskade
+swe: stormen avtog
 bul: бурята отслабва
 key: 1 abate_2_V 00245945-v
 ```

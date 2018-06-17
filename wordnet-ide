@@ -421,48 +421,12 @@ class Editor:
 					[synset,descr] = "--".join(parts[1:]).split('\t')
 					synset = synset.strip()
 					descr  = descr.strip()
-
-					gloss    = ""
-					examples = []
-					i        = 0
-					start    = i
-					while i < len(descr):
-						if descr[i] == ';':
-							if descr[start] == '"':
-								if descr[i-1] == '"':
-									example = descr[start+1:i-1]
-								else:
-									example = descr[start:i]
-								examples.append(example)
-							else:
-								if gloss == "":
-									gloss = descr[start:i]
-								else:
-									gloss = gloss + "; " + descr[start:i]
-							i = i+1
-							while i < len(descr) and descr[i].isspace():
-								i = i+1
-							start = i
-						else:
-							if descr[i] == '"':
-								while i < len(descr) and descr[i] != '"':
-									i = i+1
-							i = i+1
-					if start < len(descr) and descr[start] == '"':
-						if descr[i-1] == '"':
-							example = descr[start+1:i-1]
-						else:
-							example = descr[start:i]
-						examples.append(example)
-					else:
-						gloss = gloss + "; " + descr[start:i]
 				else:
 					abstr    = line.strip()
 					synset   = None
 					descr    = ""
 					gloss    = ""
-					examples = []
-				self.defs[ws[1]][file_name] = (abstr,synset,descr,examples)
+				self.defs[ws[1]][file_name] = (abstr,synset,descr,[])
 		f.close()
 
     def saveAbstract(self):

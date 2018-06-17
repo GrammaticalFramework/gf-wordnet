@@ -74,10 +74,17 @@ class Editor:
 
     def cursor_changed(self, treeview, data=None):
 		(model, piter) = treeview.get_selection().get_selected()
+		(path, column) = treeview.get_cursor()
 		if piter == None:
 			return
 
 		self.notifyNeedsSave()
+
+		i = 0
+		for (lang,wordnet,parse,textbuffer) in self.modules:
+			if lang == column.get_title():
+				self.languageCombo.set_active(i)
+			i = i + 1
 
 		self.selectFunction(self.treestore.get_value(piter,0))
 

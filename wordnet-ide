@@ -810,7 +810,10 @@ class Editor:
 							i = i+1
 					i = i+1
 			if not (start < len(descr) and descr[start] == '"'):
-				gloss = gloss + "; " + descr[start:i]
+				if gloss == "":
+					gloss = descr[start:i]
+				else:
+					gloss = gloss + "; " + descr[start:i]
 
 			examples = "<ul>"
 			itr = self.textbuffer_exmpl.get_start_iter()

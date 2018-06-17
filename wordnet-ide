@@ -61,7 +61,10 @@ class Editor:
 			self.loadAbstract()
 			self.loadConcrete()
 
-			self.buildMiniGrammar(True)
+			if self.gr_is_full:
+			    self.updateLinearizations()
+			else:
+				self.buildMiniGrammar(True)
 
         self.saveButton.set_sensitive(False)
         self.deleteButton.set_sensitive(False)
@@ -111,7 +114,7 @@ class Editor:
 			self.loadAbstract()
 			self.loadConcrete()
 
-        self.buildMiniGrammar(detected)
+        self.buildMiniGrammar(self.gr_is_full or detected)
 
         self.textbuffer_abstr.set_modified(False)
         self.textbuffer_gloss.set_modified(False)
@@ -211,7 +214,7 @@ class Editor:
 
     def __init__(self):
 		# load the grammar
-        (self.lemma2funs,self.fun2lists) = self.loadGrammarCache()
+        (self.lemma2funs,self.fun2lists) = self.buildFullGrammar()
 
         self.fun2synset = self.loadSynsets()
 
@@ -783,7 +786,7 @@ class Editor:
 		self.saveButton.set_sensitive(False)
 		self.deleteButton.set_sensitive(True)
 
-    def loadGrammarCache(self):
+    def buildFullGrammar(self):
 		recompile = False
 		if os.path.isfile("Parse.pgf"):
 			source_files = []
@@ -806,11 +809,12 @@ class Editor:
 
 		sys.stdout.write("Reading Parse.pgf... ")
 		sys.stdout.flush()
-		gr = pgf.readPGF("Parse.pgf")
+		self.gr = pgf.readPGF("Parse.pgf")
+		self.gr_is_full = True
 		lemma2funs = {}
 		fun2lists  = {}
-		for lang in gr.languages:
-			for (lemma,ans) in gr.languages[lang].fullFormLexicon():
+		for lang in self.gr.languages:
+			for (lemma,ans) in self.gr.languages[lang].fullFormLexicon():
 				for (fun,an,prob) in ans:
 					lst = lemma2funs.setdefault(lemma,[])
 					if not fun in lst:
@@ -873,6 +877,7 @@ class Editor:
 				sys.stdout.write("Reading lib/src/Parse.pgf... ")
 				sys.stdout.flush()
 				self.gr = pgf.readPGF("lib/src/Parse.pgf")
+				self.gr_is_full = False
 				sys.stdout.write("\n")
 				self.updateLinearizations()
 				

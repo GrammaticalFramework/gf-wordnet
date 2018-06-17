@@ -425,7 +425,6 @@ class Editor:
 					abstr    = line.strip()
 					synset   = None
 					descr    = ""
-					gloss    = ""
 				self.defs[ws[1]][file_name] = (abstr,synset,descr,[])
 		f.close()
 

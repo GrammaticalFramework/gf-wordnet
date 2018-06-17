@@ -3,6 +3,7 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import webkit
 import pgf
 import shutil
 import subprocess
@@ -33,6 +34,8 @@ class Editor:
         for (lang,wordnet,parse,textbuffer) in self.modules:
 			textbuffer.set_text("")
 			textbuffer.set_modified(False)
+			
+        self.webview.load_string("", "text/html", "UTF-8", "about:blank")
 
     def search(self, widget, data=None):
         self.notifyNeedsSave()
@@ -146,6 +149,19 @@ class Editor:
 		remove_tree_rows(self.treestore.get_iter_first())
 		
 		self.deleteButton.set_sensitive(False)
+
+    def browse_event(self, widget, data=None):
+		if self.browseButton.get_active():
+			self.editor.set_visible(False)
+			self.browser.set_visible(True)
+			self.languageComboItem.set_visible(True)
+		else:
+			self.editor.set_visible(True)
+			self.browser.set_visible(False)
+			self.languageComboItem.set_visible(False)
+
+    def language_changed_event(self, widget, data=None):
+		self.updateBrowser()
 
     def changed_event(self, widget, data=None):
 		self.saveButton.set_sensitive(True)
@@ -269,32 +285,54 @@ class Editor:
         scrolledwindow.add(self.treeview)
 
         toolbar = gtk.Toolbar()
-        self.saveButton   = toolbar.insert_stock(gtk.STOCK_SAVE,
-                               "Saves the changes",
-                               "Private",
-                               self.save_event,
-                               None, 0)
-        self.deleteButton = toolbar.insert_stock(gtk.STOCK_DELETE,
-                               "Deletes the current function",
-                               "Private",
-                               self.delete_function_event,
-                               None, 1)
+
+        self.saveButton = gtk.ToolButton(gtk.STOCK_SAVE)
+        self.saveButton.set_label("Save")
+        self.saveButton.connect("clicked", self.save_event, None)
+        toolbar.insert(self.saveButton, 0)
+
+        self.deleteButton = gtk.ToolButton(gtk.STOCK_DELETE)
+        self.deleteButton.set_label("Delete")
+        self.deleteButton.connect("clicked", self.delete_function_event, None)
+        toolbar.insert(self.deleteButton, 1)
+
+        toolbar.insert(gtk.SeparatorToolItem(), 2)
+
+        self.browseButton = gtk.ToggleToolButton(gtk.STOCK_FILE)
+        self.browseButton.set_label("Browse")
+        self.browseButton.connect("toggled", self.browse_event, None)
+        toolbar.insert(self.browseButton, 3)
+        
+        toolbar.show_all()
+        
+        self.languageCombo = gtk.ComboBox(gtk.ListStore(str,str))
+        cell = gtk.CellRendererText()
+        self.languageCombo.pack_start(cell, True)
+        self.languageCombo.add_attribute(cell, 'text', 0)
+        for (lang,wordnet,parse) in self.modules:
+			self.languageCombo.get_model().append([lang,parse])
+        self.languageCombo.set_active(0)
+        self.languageCombo.connect("changed", self.language_changed_event, None)
+        self.languageCombo.show()
+        self.languageComboItem = gtk.ToolItem()
+        self.languageComboItem.add(self.languageCombo)
+        toolbar.insert(self.languageComboItem, 4)
 
         self.saveButton.set_sensitive(False)
-        self.saveButton.add_accelerator("activate", accel_group,
+        self.saveButton.add_accelerator("clicked", accel_group,
                                         ord('S'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 
         self.deleteButton.set_sensitive(False)
 
-        vbox2 = gtk.VBox()
-        vbox2.pack_start(toolbar,False)
-        self.textbuffer_gloss = self.setupTextView(vbox2, "Gloss")
+        self.editor = gtk.VBox()
 
-        self.textbuffer_abstr = self.setupTextView(vbox2, "Abstract")
+        self.textbuffer_gloss = self.setupTextView(self.editor, "Gloss")
+
+        self.textbuffer_abstr = self.setupTextView(self.editor, "Abstract")
 
         for i in xrange(len(self.modules)):
 			(lang,wordnet,parse) = self.modules[i]
-			textbuffer = self.setupTextView(vbox2, lang)
+			textbuffer = self.setupTextView(self.editor, lang)
 			self.modules[i] = (lang,wordnet,parse,textbuffer)
         
         self.textbuffer_exmpl = gtk.TextBuffer()
@@ -314,23 +352,37 @@ class Editor:
                                        ord('E'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
         hbox.pack_start(example_button,False)
 
-        vbox2.pack_start(hbox,False)
-        vbox2.pack_start(textview_scrll,True)
+        self.editor.pack_start(hbox,False)
+        self.editor.pack_start(textview_scrll,True)
+        self.editor.show_all()
+
+        self.browser = gtk.ScrolledWindow()
+        self.webview = webkit.WebView()
+        self.webview.show()
+        self.browser.add(self.webview)
 
         vbox1 = gtk.VBox()
         vbox1.pack_start(hbox1, False)
         vbox1.pack_start(scrolledwindow, True)
+        vbox1.show_all()
+
+        vbox2 = gtk.VBox()
+        vbox2.pack_start(toolbar,False)
+        vbox2.pack_start(self.editor,True)
+        vbox2.pack_start(self.browser,True)
+        vbox2.show()
 
         hpaned = gtk.HPaned()
         hpaned.add1(vbox1)
         hpaned.add2(vbox2)
         hpaned.set_position(350)
+        hpaned.show()
 
         # This packs the button into the window (a GTK container).
         self.window.add(hpaned)
 
         # and the window
-        self.window.show_all()
+        self.window.show()
 
     def loadSynsets(self):
 		f = open("WordNet.gf", "r")
@@ -766,8 +818,26 @@ class Editor:
 				detected = detected or addLexicon(e)
 		return detected
 
+    def updateBrowser(self):
+		itr = self.languageCombo.get_model().get_iter_from_string(str(self.languageCombo.get_active()))
+		lang = self.languageCombo.get_model().get_value(itr,1)[:-3]
+
+		ty = self.gr.functionType(self.fun)
+		if len(ty.hypos) == 0 and self.gr.languages[lang].hasLinearization("Inflection"+ty.cat):
+			e = pgf.Expr("MkDocument", [pgf.readExpr('NoDefinition ""'),
+										pgf.Expr("Inflection"+ty.cat, [pgf.Expr(self.fun,[])]),
+										pgf.Expr("")])
+								
+			doc = self.gr.languages[lang].linearize(e)
+		else:
+			doc = ""
+		self.webview.load_string(doc, "text/html", "UTF-8", "wordnet://"+self.fun)
+
     def selectFunction(self,fun):
 		self.fun = fun
+
+		self.updateBrowser()		
+
 		fun_defs = self.defs[self.fun]
 		(abstr,self.synset,gloss,examples) = fun_defs["WordNet.gf"]
 
@@ -883,6 +953,7 @@ class Editor:
 				
 				if self.fun != None:
 					self.updateExamples()
+					self.updateBrowser()
 				return
 
 			gtk.timeout_add(500, wait)

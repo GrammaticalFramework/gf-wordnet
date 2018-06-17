@@ -459,6 +459,7 @@ class Editor:
 				else:
 					abstr    = line.strip()
 					synset   = None
+					descr    = ""
 					gloss    = ""
 					examples = []
 				self.defs[ws[1]][file_name] = (abstr,synset,descr,examples)
@@ -819,24 +820,60 @@ class Editor:
 		return detected
 
     def updateBrowser(self):
-		itr = self.languageCombo.get_model().get_iter_from_string(str(self.languageCombo.get_active()))
-		lang = self.languageCombo.get_model().get_value(itr,1)[:-3]
+		itr   = self.languageCombo.get_model().get_iter_from_string(str(self.languageCombo.get_active()))
+		concr = self.gr.languages[self.languageCombo.get_model().get_value(itr,1)[:-3]]
 
 		ty = self.gr.functionType(self.fun)
-		if len(ty.hypos) == 0 and self.gr.languages[lang].hasLinearization("Inflection"+ty.cat):
-			e = pgf.Expr("MkDocument", [pgf.readExpr('NoDefinition ""'),
+		if len(ty.hypos) == 0 and concr.hasLinearization("Inflection"+ty.cat):
+			descr = self.textbuffer_gloss.get_text(*self.textbuffer_gloss.get_bounds())
+
+			gloss    = ""
+			i        = 0
+			start    = i
+			while i < len(descr):
+				if descr[i] == ';':
+					if descr[start] != '"':
+						if gloss == "":
+							gloss = descr[start:i]
+						else:
+							gloss = gloss + "; " + descr[start:i]
+					i = i+1
+					while i < len(descr) and descr[i].isspace():
+						i = i+1
+					start = i
+				else:
+					if descr[i] == '"':
+						while i < len(descr) and descr[i] != '"':
+							i = i+1
+					i = i+1
+			if not (start < len(descr) and descr[start] == '"'):
+				gloss = gloss + "; " + descr[start:i]
+
+			examples = "<ul>"
+			itr = self.textbuffer_exmpl.get_start_iter()
+			while True:
+				start = itr.copy()
+				if not itr.forward_line():
+					break
+				line0 = self.textbuffer_exmpl.get_text(start,itr)
+				if line0.startswith("abs:"):
+					e = pgf.readExpr(line0[4:])
+
+					lin   = concr.linearize(e)
+					examples = examples + "<li>" + lin + "</li>"
+			examples = examples + "</ul>"
+
+			e = pgf.Expr("MkDocument", [pgf.Expr("MkDefinition", [pgf.Expr(gloss),pgf.Expr(examples)]),
 										pgf.Expr("Inflection"+ty.cat, [pgf.Expr(self.fun,[])]),
 										pgf.Expr("")])
-								
-			doc = self.gr.languages[lang].linearize(e)
+
+			doc = concr.linearize(e)
 		else:
 			doc = ""
 		self.webview.load_string(doc, "text/html", "UTF-8", "wordnet://"+self.fun)
 
     def selectFunction(self,fun):
 		self.fun = fun
-
-		self.updateBrowser()		
 
 		fun_defs = self.defs[self.fun]
 		(abstr,self.synset,gloss,examples) = fun_defs["WordNet.gf"]
@@ -855,6 +892,8 @@ class Editor:
 
 		self.saveButton.set_sensitive(False)
 		self.deleteButton.set_sensitive(True)
+		
+		self.updateBrowser()
 
     def buildFullGrammar(self):
 		recompile = False

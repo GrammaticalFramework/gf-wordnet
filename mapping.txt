@@ -55064,7 +55064,7 @@ lie_2_V	lie_5_V
 lie_2_V	lie_6_V
 lie_2_V	lie_7_V
 lie_N	lie_1_N
-lie_N	lie_2_N
+lie_N	lie_PN
 lie_N	lie_3_N
 lie_VS	lie_1_VS
 lie_VS	lie_3_VS

@@ -30003,8 +30003,7 @@ driverFem_N	driverFem_3_N
 driverMasc_N	driverMasc_1_N
 driverMasc_N	driverMasc_2_N
 driverMasc_N	driverMasc_3_N
-driver_N	driver_1_N
-driver_N	driver_2_N
+driver_N	driver_N
 driveshaft_N	driveshaft_N
 driveway_N	driveway_N
 driving_A	driving_1_A
@@ -40242,7 +40241,7 @@ generous_A	generous_2_A
 generous_A	generous_3_A
 genesis_N	genesis_1_N
 genesis_N	genesis_2_N
-genet_N	genet_1_N
+genet_N	genet_PN
 genet_N	genet_2_N
 genet_N	genet_3_N
 genetic_A	genetic_1_A
@@ -46653,7 +46652,7 @@ hulking_A	hulking_A
 hull_N	hull_1_N
 hull_N	hull_2_N
 hull_N	hull_3_N
-hull_N	hull_4_N
+hull_N	hull_PN
 hull_N	hull_5_N
 hull_N	hull_6_N
 hull_V2	hull_V2
@@ -51482,8 +51481,8 @@ jawbreaker_N	jawbreaker_2_N
 jawed_A	jawed_A
 jawfish_N	jawfish_N
 jawless_A	jawless_A
-jay_N	jay_1_N
-jay_N	jay_2_N
+jay_N	jay_PN
+jay_N	jay_N
 jaywalk_V	jaywalk_V
 jaywalker_N	jaywalker_N
 jazz_N	jazz_1_N
@@ -67723,8 +67722,8 @@ pagan_N	pagan_2_N
 pagan_N	pagan_3_N
 paganism_N	paganism_N
 page_N	page_1_N
-page_N	page_2_N
-page_N	page_3_N
+page_N	page_2_PN
+page_N	page_3_PN
 page_N	page_4_N
 page_N	page_5_N
 page_N	page_6_N
@@ -83849,12 +83848,8 @@ salsilla_N	salsilla_2_N
 salt_A	salt_A
 salt_N	salt_1_N
 salt_N	salt_2_N
-salt_N	salt_3_N
 salt_N	salt_4_N
-salt_PN	salt_1_PN
-salt_PN	salt_2_PN
-salt_PN	salt_3_PN
-salt_PN	salt_4_PN
+salt_PN	salt_PN
 salt_V2	salt_1_V2
 salt_V2	salt_2_V2
 salt_V2	salt_3_V2
@@ -109066,8 +109061,8 @@ whitefly_N	whitefly_N
 whitehall_PN	whitehall_1_PN
 whitehall_PN	whitehall_2_PN
 whitehaven_PN	whitehaven_PN
-whitehead_N	whitehead_1_N
-whitehead_N	whitehead_2_N
+whitehead_N	whitehead_PN
+whitehead_N	whitehead_N
 whitelash_N	whitelash_N
 whiten_V2	whiten_V2
 whiteness_N	whiteness_1_N

@@ -37,16 +37,20 @@ class Editor:
 			
         self.webview.load_string("", "text/html", "UTF-8", "about:blank")
 
-    def search(self, widget, data=None):
+    def search_event(self, widget, data=None):
         self.notifyNeedsSave()
 
         query = self.entry.get_text()
         self.reset_editor()
         self.treestore.clear()
+
         if query in self.lemma2funs:
-			self.defs = {}
+			del self.defs
+
+			self.save_defs   = {}
+			self.save_domain = None
 			for fun in self.lemma2funs[query]:
-				self.defs[fun] = {}
+				self.save_defs[fun] = {}
 				values = [fun]
 				for (lang, wordnet, parse, textbuffer) in self.modules:
 					values.append("")
@@ -54,20 +58,26 @@ class Editor:
 				for syn_fun in self.fun2synset.get(fun,[]):
 					if fun == syn_fun:
 						continue
-					self.defs[syn_fun] = {}
+					self.save_defs[syn_fun] = {}
 					values = [syn_fun]
 					for lang in self.modules:
 						values.append("")
 					self.treestore.append(it,values)
-			self.loadExamples()
 
+			self.defs = self.loadExamples(self.save_defs)
 			self.loadAbstract()
 			self.loadConcrete()
+
+			self.updateDefsDomains()
 
 			if self.gr_is_full:
 			    self.updateLinearizations()
 			else:
 				self.buildMiniGrammar(True)
+        else:
+			self.save_defs   = None
+			self.save_domain = None
+			self.updateDomains(self.domains2funs)
 
         self.saveButton.set_sensitive(False)
         self.deleteButton.set_sensitive(False)
@@ -170,6 +180,64 @@ class Editor:
     def language_changed_event(self, widget, data=None):
 		self.updateBrowser()
 
+    def domain_toggled_event(self, cell, path, data=None):
+		self.notifyNeedsSave()
+
+		self.reset_editor()
+		self.treestore.clear()
+
+		self.liststore[path][0] = not self.liststore[path][0]
+
+		start_domain = None
+		start_defs   = {}
+		all_selected = set()
+		it = self.liststore.get_iter_first()
+		while it != None:
+			if self.liststore.get_value(it,0):
+				start_domain = self.liststore.get_value(it,1)
+				all_selected.add(start_domain)
+			it = self.liststore.iter_next(it)
+
+		if self.save_domain != None and not self.save_domain in all_selected:
+			self.save_defs = None
+
+		if start_domain != None:
+			if self.save_defs == None:
+				self.save_defs   = {}
+				self.save_domain = start_domain
+			
+				for fun in self.domains2funs[start_domain]:
+					self.save_defs[fun] = {}
+
+				self.defs = self.loadExamples(self.save_defs)
+				self.loadAbstract()
+				self.loadConcrete()
+		else:
+			self.defs      = {}
+			self.save_defs = None
+			self.updateDomains(self.domains2funs)
+			return
+
+		domains = set()
+		for fun in self.save_defs:
+			if "WordNet.gf" in self.save_defs[fun] and all_selected.issubset(self.save_defs[fun]["WordNet.gf"][3]):
+				for domain in self.save_defs[fun]["WordNet.gf"][3]:
+					domains.add(domain)
+				values = [fun]
+				for (lang, wordnet, parse, textbuffer) in self.modules:
+					values.append("")
+				it = self.treestore.append(None,values)
+
+		self.updateDomains(domains, all_selected)
+
+		if self.gr_is_full:
+			self.updateLinearizations()
+		else:
+			self.buildMiniGrammar(True)
+
+		self.saveButton.set_sensitive(False)
+		self.deleteButton.set_sensitive(False)
+
     def changed_event(self, widget, data=None):
 		self.saveButton.set_sensitive(True)
 
@@ -238,9 +306,11 @@ class Editor:
     def __init__(self):
 		# load the grammar
         (self.lemma2funs,self.fun2lists) = self.buildFullGrammar()
+        (self.fun2synset,self.domains2funs) = self.loadSynsetsAndDomains()
 
-        self.fun2synset = self.loadSynsets()
-
+        self.defs        = {}
+        self.save_defs   = None
+        self.save_domain = None
         self.fun = None
 
         # create a new window
@@ -266,10 +336,10 @@ class Editor:
         self.window.add_accel_group(accel_group)
 
         self.entry = gtk.Entry()
-        self.entry.connect("activate", self.search, None)
+        self.entry.connect("activate", self.search_event, None)
 
         search_button = gtk.Button("Search")
-        search_button.connect("clicked", self.search, None)
+        search_button.connect("clicked", self.search_event, None)
 
         hbox1 = gtk.HBox()
         hbox1.pack_start(self.entry,True)
@@ -288,9 +358,35 @@ class Editor:
 			self.setupTreeColumn(lang, i)
 			i = i+1
 
-        scrolledwindow = gtk.ScrolledWindow()
-        scrolledwindow.add(self.treeview)
+        scrolledwindow1 = gtk.ScrolledWindow()
+        scrolledwindow1.add(self.treeview)
 
+        self.liststore = gtk.ListStore(bool,str)
+        self.listview  = gtk.TreeView(self.liststore)
+
+        tvcolumn = gtk.TreeViewColumn("Domain")
+        cell = gtk.CellRendererToggle()
+        cell.set_property('activatable', True)
+        cell.connect('toggled', self.domain_toggled_event)
+        tvcolumn.pack_start(cell, False)
+        tvcolumn.add_attribute(cell, 'active', 0)
+        cell = gtk.CellRendererText()
+        tvcolumn.pack_start(cell, True)
+        tvcolumn.add_attribute(cell, 'text', 1)
+        tvcolumn.set_sort_column_id(1)
+        self.listview.append_column(tvcolumn)
+
+        self.updateDomains(self.domains2funs)
+
+        scrolledwindow2 = gtk.ScrolledWindow()
+        scrolledwindow2.add(self.listview)
+
+        vpaned = gtk.VPaned()
+        vpaned.add1(scrolledwindow1)
+        vpaned.add2(scrolledwindow2)
+        vpaned.set_position(350)
+        vpaned.show()
+        
         toolbar = gtk.Toolbar()
 
         self.saveButton = gtk.ToolButton(gtk.STOCK_SAVE)
@@ -370,7 +466,7 @@ class Editor:
 
         vbox1 = gtk.VBox()
         vbox1.pack_start(hbox1, False)
-        vbox1.pack_start(scrolledwindow, True)
+        vbox1.pack_start(vpaned, True)
         vbox1.show_all()
 
         vbox2 = gtk.VBox()
@@ -391,10 +487,11 @@ class Editor:
         # and the window
         self.window.show()
 
-    def loadSynsets(self):
+    def loadSynsetsAndDomains(self):
 		f = open("WordNet.gf", "r")
-		fun2synset = {}
-		synsets    = {}
+		fun2synset   = {}
+		domains2funs = {}
+		synsets      = {}
 		for line in f:
 			ws = line.split()
 			if len(ws) > 2 and ws[0] == "fun":
@@ -410,8 +507,19 @@ class Editor:
 						synsets[synset_id] = synset
 					fun2synset[fun] = synset
 					synset.append(fun)
+					lists = self.fun2lists.setdefault(fun,[])
+					lists.append(synset)
+
+					descr = descr.strip()
+					if len(descr) > 0 and descr[0] == '[':
+						for domain in descr[1:].split(']')[0].split(','):
+							domain = domain.strip()
+							lst = domains2funs.setdefault(domain, [])
+							lst.append(fun)
+							lists = self.fun2lists.setdefault(fun,[])
+							lists.append(lst)
 		f.close()
-		return fun2synset
+		return (fun2synset,domains2funs)
 
     def loadAbstract(self):
 		file_name = "WordNet.gf"
@@ -428,11 +536,17 @@ class Editor:
 					[synset,descr] = "--".join(parts[1:]).split('\t')
 					synset = synset.strip()
 					descr  = descr.strip()
+					
+					domains= []
+					if len(descr) > 0 and descr[0] == '[':
+						for domain in descr[1:].split(']')[0].split(','):
+							domains.append(domain.strip())
 				else:
 					abstr    = line.strip()
 					synset   = None
 					descr    = ""
-				self.defs[ws[1]][file_name] = (abstr,synset,descr,[])
+					domains  = []
+				self.defs[ws[1]][file_name] = (abstr,synset,descr,domains)
 		f.close()
 
     def saveAbstract(self):
@@ -563,12 +677,12 @@ class Editor:
 		out.close()
 		shutil.move("__temp__", "mapping.txt")
 
-    def loadExampleLexicon(self,e):
+    def loadExampleLexicon(self,e,defs):
 		app = e.unpack()
 		if type(app) == tuple:
 			fun = app[0]
 			if fun in self.fun2synset:
-				self.defs[fun] = {}
+				defs[fun] = {}
 				values = [fun]
 				for (lang,wordnet,parse,textbuffer) in self.modules:
 					values.append("")
@@ -577,26 +691,26 @@ class Editor:
 				for syn_fun in self.fun2synset.get(fun,[]):
 					if fun == syn_fun:
 						continue
-					self.defs[syn_fun] = {}
+					defs[syn_fun] = {}
 					values = [syn_fun]
 					for lang in self.modules:
 						values.append("")
 					self.treestore.append(it,values)
 			else:
 				for e in app[1]:
-					self.loadExampleLexicon(e)
+					self.loadExampleLexicon(e,defs)
 
-    def loadExamples(self):
-		def addLexicon(e):
+    def loadExamples(self, defs):
+		def addLexicon(e, new_defs):
 			app = e.unpack()
 			if type(app) == tuple:
 				if len(app[1]) == 0 or app[0] in self.fun2synset:
-					self.defs.setdefault(app[0], {})
+					new_defs.setdefault(app[0], {})
 				
 				for e in app[1]:
-					addLexicon(e)
+					addLexicon(e, new_defs)
 
-		defs_copy = self.defs.copy()
+		new_defs = defs.copy()
 
 		inp = open("examples.txt", "r")
 		while True:
@@ -613,10 +727,10 @@ class Editor:
 			ws = l4[5:-1].split()
 			funs = ws[1:int(ws[0])+1]
 			for fun in funs:
-				if fun in defs_copy:
-					addLexicon(pgf.readExpr(l0[5:-1]))
+				if fun in defs:
+					addLexicon(pgf.readExpr(l0[5:-1]), new_defs)
 
-					lines = self.defs[fun].setdefault("examples.txt",[])
+					lines = new_defs[fun].setdefault("examples.txt",[])
 					lines.append(l0)
 					lines.append(l1)
 					lines.append(l2)
@@ -625,9 +739,11 @@ class Editor:
 					lines.append(l5)
 		inp.close()
 
-		for fun in defs_copy:
-			examples = self.defs[fun].get("examples.txt",[])
-			self.defs[fun]["examples.txt"] = "".join(examples)
+		for fun in defs:
+			examples = defs[fun].get("examples.txt",[])
+			defs[fun]["examples.txt"] = "".join(examples)
+
+		return new_defs
 
     def saveExamples(self, all_lines):
 		inp = open("examples.txt", "r")
@@ -746,20 +862,24 @@ class Editor:
 
 		e = pgf.readExpr(lines[0][5:])
 		self.treestore.clear()
-		self.defs = {}
-		self.loadExampleLexicon(e)
+		del self.defs
 
-		self.loadExamples()
+		self.save_defs = {}
+		self.save_domain = None
+		self.loadExampleLexicon(e,self.save_defs)
+		self.defs = self.loadExamples(self.save_defs)
 		for fun in target_funs:
 			self.defs[fun]["examples.txt"] = "".join(lines)
 
 		self.loadAbstract()
 		self.loadConcrete()
 
+		self.updateDefsDomains()
 		self.selectFunction(target_funs[0])
 
-		self.buildMiniGrammar(True)
-		
+		if not self.gr_is_full:
+			buildMiniGrammar(True)
+
     def detectNewFunctions(self):
 		def addLexicon(e):
 			app = e.unpack()
@@ -998,6 +1118,19 @@ class Editor:
 				treeiter = self.treestore.iter_next(treeiter)
 
 		update_tree_rows(self.treestore.get_iter_first())
+
+    def updateDefsDomains(self):
+		domains = set()
+		for fun in self.save_defs:
+			if "WordNet.gf" in self.save_defs[fun]:
+				for domain in self.save_defs[fun]["WordNet.gf"][3]:
+					domains.add(domain)
+		self.updateDomains(domains, set())
+
+    def updateDomains(self, domains, all_selected = set()):
+		self.liststore.clear()
+		for domain in domains:
+			self.liststore.append([domain in all_selected,domain])
 
     def main(self):
 		gtk.threads_enter()

@@ -1055,8 +1055,6 @@ class Editor:
 
 				xlines.append(line0)
 
-				e = pgf.readExpr(line0[4:])
-
 				start = itr.copy(); itr.forward_line()
 				line1 = self.textbuffer_exmpl.get_text(start,itr)
 				xlines.append(line1)
@@ -1082,17 +1080,25 @@ class Editor:
 				lines.extend(xlines)
 				l = len(lines)
 
-				lins = [lin.lower() for lin in self.gr.languages["ParseEng"].linearizeAll(e)]
-				if not line1[5:-1].lower() in lins:
-					lines.append("eng: "+lin+"\n")
+				try:
+					e = pgf.readExpr(line0[4:])
+					(e,ty) = self.gr.inferExpr(e)
 
-				lins = [lin.lower() for lin in self.gr.languages["ParseSwe"].linearizeAll(e)]
-				if not line2[5:-1].lower() in lins:
-					lines.append("swe: "+lin+"\n")
+					lins = [lin.lower() for lin in self.gr.languages["ParseEng"].linearizeAll(e)]
+					if not line1[5:-1].lower() in lins:
+						lines.append("eng: "+lin+"\n")
 
-				lins = [lin.lower() for lin in self.gr.languages["ParseBul"].linearizeAll(e)]
-				if not line3[5:-1].lower() in lins:
-					lines.append("bul: "+lin+"\n")
+					lins = [lin.lower() for lin in self.gr.languages["ParseSwe"].linearizeAll(e)]
+					if not line2[5:-1].lower() in lins:
+						lines.append("swe: "+lin+"\n")
+
+					lins = [lin.lower() for lin in self.gr.languages["ParseBul"].linearizeAll(e)]
+					if not line3[5:-1].lower() in lins:
+						lines.append("bul: "+lin+"\n")
+				except pgf.PGFError as e:
+					lines.append(str(e))
+				except pgf.TypeError as e:
+					lines.append(str(e))
 
 				if l != len(lines):
 					lines.append("\n")
@@ -1169,8 +1175,11 @@ class Editor:
 				break
 			line = self.textbuffer_exmpl.get_text(start,itr)
 			if line.startswith("abs*") or line.startswith("abs:"):
-				e = pgf.readExpr(line[4:])
-				detected = detected or addLexicon(e)
+				try:
+					e = pgf.readExpr(line[4:])
+					detected = detected or addLexicon(e)
+				except pgf.PGFError:
+					pass
 		return detected
 
     def updateBrowser(self):

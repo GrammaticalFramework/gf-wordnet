@@ -434,7 +434,8 @@ class Editor:
 			self.languageComboItem.set_visible(False)
 
     def language_changed_event(self, widget, data=None):
-		self.updateBrowser()
+		if self.fun != None:
+			self.updateBrowser()
 
     def domain_toggled_event(self, cell, path, data=None):
 		self.notifyNeedsSave()
@@ -1147,8 +1148,10 @@ class Editor:
 		self.updateDefsDomains()
 		self.selectFunction(target_funs[0])
 
-		if not self.gr_is_full:
-			buildMiniGrammar(True)
+		if self.gr_is_full:
+			self.updateLinearizations()
+		else:
+			self.buildMiniGrammar(True)
 
     def detectNewFunctions(self):
 		def addLexicon(e):

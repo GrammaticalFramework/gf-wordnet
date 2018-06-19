@@ -1082,18 +1082,18 @@ class Editor:
 				lines.extend(xlines)
 				l = len(lines)
 
-				lin   = self.gr.languages["ParseEng"].linearize(e)
-				if lin.lower() != line1[5:-1].lower():
+				lins = [lin.lower() for lin in self.gr.languages["ParseEng"].linearizeAll(e)]
+				if not line1[5:-1].lower() in lins:
 					lines.append("eng: "+lin+"\n")
 
-				lin   = self.gr.languages["ParseSwe"].linearize(e)
-				if lin.lower() != line2[5:-1].lower():
+				lins = [lin.lower() for lin in self.gr.languages["ParseSwe"].linearizeAll(e)]
+				if not line2[5:-1].lower() in lins:
 					lines.append("swe: "+lin+"\n")
 
-				lin   = self.gr.languages["ParseBul"].linearize(e)
-				if lin.lower() != line3[5:-1].lower():
+				lins = [lin.lower() for lin in self.gr.languages["ParseBul"].linearizeAll(e)]
+				if not line3[5:-1].lower() in lins:
 					lines.append("bul: "+lin+"\n")
-					
+
 				if l != len(lines):
 					lines.append("\n")
 

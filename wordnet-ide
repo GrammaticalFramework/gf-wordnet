@@ -10,6 +10,262 @@ import subprocess
 import os.path
 import sys
 
+WHITESPACE = ("\r", "\n", "\t", " ")
+
+class UndoableInsert(object):
+    """something that has been inserted into our textbuffer"""
+    def __init__(self, text_iter, text, length):
+        self.offset = text_iter.get_offset()
+        self.text = text
+        self.length = length
+        if self.length > 1:
+            self.mergeable = False
+        else:
+            self.mergeable = True
+
+class UndoableDelete(object):
+    """something that has ben deleted from our textbuffer"""
+    def __init__(self, text_buffer, start_iter, end_iter):
+        self.text = text_buffer.get_text(start_iter, end_iter)
+        self.start = start_iter.get_offset()
+        self.end = end_iter.get_offset()
+        # need to find out if backspace or delete key has been used
+        # so we don't mess up during redo
+        insert_iter = text_buffer.get_iter_at_mark(text_buffer.get_insert())
+        if insert_iter.get_offset() <= self.start:
+            self.delete_key_used = True
+        else:
+            self.delete_key_used = False
+        if self.end - self.start > 1 or self.text in ("\r", "\n", " "):
+            self.mergeable = False
+        else:
+            self.mergeable = True
+
+class CodeBuffer(gtk.TextBuffer):
+	def __init__(self):
+		gtk.TextBuffer.__init__(self)
+		
+		self.tag = gtk.TextTag()
+		self.tag.set_property("background", "lightblue")
+		self.get_tag_table().add(self.tag)
+
+		self.undo_stack = []
+		self.redo_stack = []
+		self.not_undoable_action = False
+		self.undo_in_progress = False
+
+		self.connect("notify::cursor-position", self.cursor_moved_event)
+		self.connect('insert-text', self.on_insert_text)
+		self.connect('delete-range', self.on_delete_range)
+
+	def cursor_moved_event(self, sender, pos):
+		self.remove_all_tags(self.get_start_iter(), self.get_end_iter())
+
+		itr_start = self.get_iter_at_mark(self.get_insert())
+		itr_end   = itr_start.copy()
+
+		if itr_start.get_char() == '(':
+			itr_end.forward_char()
+
+			nesting = 1
+			while nesting > 0:
+				ch = itr_end.get_char()
+				if ch == '(':
+					nesting = nesting + 1
+				elif ch == ')':
+					nesting = nesting - 1
+				if not itr_end.forward_char():
+					break
+
+			if nesting > 0:
+				itr_end = itr_start.copy()
+				itr_end.forward_char()
+
+			itr_start.forward_char()
+			self.apply_tag(self.tag, itr_start, itr_end)
+
+		itr_end.backward_char()
+		if itr_end.get_char() == ')':
+			nesting = 1
+			while itr_end.backward_char():
+				ch = itr_end.get_char()
+				if ch == '(':
+					nesting = nesting - 1
+				elif ch == ')':
+					nesting = nesting + 1
+				if nesting == 0:
+					break
+			else:
+				itr_end = itr_start.copy()
+				itr_end.backward_char()
+
+			self.apply_tag(self.tag, itr_end, itr_start)
+
+	@property
+	def can_undo(self):
+		return bool(self.undo_stack)
+
+	@property
+	def can_redo(self):
+		return bool(self.redo_stack)
+
+	def on_insert_text(self, textbuffer, text_iter, text, length):
+		def can_be_merged(prev, cur):
+			"""see if we can merge multiple inserts here
+
+			will try to merge words or whitespace
+			can't merge if prev and cur are not mergeable in the first place
+			can't merge when user set the input bar somewhere else
+			can't merge across word boundaries"""
+			if not cur.mergeable or not prev.mergeable:
+				return False
+			elif cur.offset != (prev.offset + prev.length):
+				return False
+			elif cur.text in WHITESPACE and not prev.text in WHITESPACE:
+				return False
+			elif prev.text in WHITESPACE and not cur.text in WHITESPACE:
+				return False
+			return True
+
+		if not self.undo_in_progress:
+			self.redo_stack = []
+		if self.not_undoable_action:
+			return
+		undo_action = UndoableInsert(text_iter, text, length)
+		try:
+			prev_insert = self.undo_stack.pop()
+		except IndexError:
+			self.undo_stack.append(undo_action)
+			return
+		if not isinstance(prev_insert, UndoableInsert):
+			self.undo_stack.append(prev_insert)
+			self.undo_stack.append(undo_action)
+			return
+		if can_be_merged(prev_insert, undo_action):
+			prev_insert.length += undo_action.length
+			prev_insert.text += undo_action.text
+			self.undo_stack.append(prev_insert)
+		else:
+			self.undo_stack.append(prev_insert)
+			self.undo_stack.append(undo_action)
+
+	def on_delete_range(self, text_buffer, start_iter, end_iter):
+		def can_be_merged(prev, cur):
+			"""see if we can merge multiple deletions here
+
+			will try to merge words or whitespace
+			can't merge if prev and cur are not mergeable in the first place
+			can't merge if delete and backspace key were both used
+			can't merge across word boundaries"""
+
+			WHITESPACE = (' ', '\t')
+			if not cur.mergeable or not prev.mergeable:
+				return False
+			elif prev.delete_key_used != cur.delete_key_used:
+				return False
+			elif prev.start != cur.start and prev.start != cur.end:
+				return False
+			elif cur.text not in WHITESPACE and \
+				prev.text in WHITESPACE:
+				return False
+			elif cur.text in WHITESPACE and \
+				prev.text not in WHITESPACE:
+				return False
+			return True
+
+		if not self.undo_in_progress:
+			self.redo_stack = []
+		if self.not_undoable_action:
+			return
+		undo_action = UndoableDelete(text_buffer, start_iter, end_iter)
+		try:
+			prev_delete = self.undo_stack.pop()
+		except IndexError:
+			self.undo_stack.append(undo_action)
+			return
+		if not isinstance(prev_delete, UndoableDelete):
+			self.undo_stack.append(prev_delete)
+			self.undo_stack.append(undo_action)
+			return
+		if can_be_merged(prev_delete, undo_action):
+			if prev_delete.start == undo_action.start: # delete key used
+				prev_delete.text += undo_action.text
+				prev_delete.end += (undo_action.end - undo_action.start)
+			else: # Backspace used
+				prev_delete.text = "%s%s" % (undo_action.text,
+                                                     prev_delete.text)
+				prev_delete.start = undo_action.start
+			self.undo_stack.append(prev_delete)
+		else:
+			self.undo_stack.append(prev_delete)
+			self.undo_stack.append(undo_action)
+
+	def begin_not_undoable_action(self):
+		"""don't record the next actions
+
+		toggles self.not_undoable_action"""
+		self.not_undoable_action = True        
+
+	def end_not_undoable_action(self):
+		"""record next actions
+
+		toggles self.not_undoable_action"""
+		self.not_undoable_action = False
+
+	def undo(self):
+		"""undo inserts or deletions
+
+		undone actions are being moved to redo stack"""
+		if not self.undo_stack:
+			return
+		self.begin_not_undoable_action()
+		self.undo_in_progress = True
+		undo_action = self.undo_stack.pop()
+		self.redo_stack.append(undo_action)
+		if isinstance(undo_action, UndoableInsert):
+			start = self.get_iter_at_offset(undo_action.offset)
+			stop = self.get_iter_at_offset(
+                undo_action.offset + undo_action.length
+			)
+			self.delete(start, stop)
+			self.place_cursor(start)
+		else:
+			start = self.get_iter_at_offset(undo_action.start)
+			self.insert(start, undo_action.text)
+			stop = self.get_iter_at_offset(undo_action.end)
+			if undo_action.delete_key_used:
+				self.place_cursor(start)
+			else:
+				self.place_cursor(stop)
+		self.end_not_undoable_action()
+		self.undo_in_progress = False
+
+	def redo(self):
+		"""redo inserts or deletions
+
+		redone actions are moved to undo stack"""
+		if not self.redo_stack:
+			return
+		self.begin_not_undoable_action()
+		self.undo_in_progress = True
+		redo_action = self.redo_stack.pop()
+		self.undo_stack.append(redo_action)
+		if isinstance(redo_action, UndoableInsert):
+			start = self.get_iter_at_offset(redo_action.offset)
+			self.insert(start, redo_action.text)
+			new_cursor_pos = self.get_iter_at_offset(
+                redo_action.offset + redo_action.length
+			)
+			self.place_cursor(new_cursor_pos)
+		else:
+			start = self.get_iter_at_offset(redo_action.start)
+			stop = self.get_iter_at_offset(redo_action.end)
+			self.delete(start, stop)
+			self.place_cursor(start)
+		self.end_not_undoable_action()
+		self.undo_in_progress = False
+
+
 class Editor:
     modules = [
          ("English",   "WordNetEng.gf", "ParseEng.gf")
@@ -438,11 +694,12 @@ class Editor:
 			textbuffer = self.setupTextView(self.editor, lang)
 			self.modules[i] = (lang,wordnet,parse,textbuffer)
         
-        self.textbuffer_exmpl = gtk.TextBuffer()
+        self.textbuffer_exmpl = CodeBuffer()
         self.textbuffer_exmpl.connect("changed", self.changed_event)
 
         textview_exmpl = gtk.TextView()
         textview_exmpl.set_buffer(self.textbuffer_exmpl);
+        textview_exmpl.connect("key-press-event",self.textview_exmpl_key_press_event)
 
         textview_scrll = gtk.ScrolledWindow()
         textview_scrll.set_policy(gtk.POLICY_ALWAYS, gtk.POLICY_AUTOMATIC)
@@ -486,6 +743,13 @@ class Editor:
 
         # and the window
         self.window.show()
+
+    def textview_exmpl_key_press_event(self,widget,event):
+		if event.state & gtk.gdk.CONTROL_MASK:
+			if event.keyval == 122:
+				self.textbuffer_exmpl.undo()
+			elif event.keyval == 121:
+				self.textbuffer_exmpl.redo()
 
     def loadSynsetsAndDomains(self):
 		f = open("WordNet.gf", "r")

@@ -353,6 +353,7 @@ class Editor:
 			i = i + 1
 
 		self.selectFunction(self.treestore.get_value(piter,0))
+		self.updateBrowser()
 
     def save_event(self, widget, data=None):
         self.saveAbstract()
@@ -1261,8 +1262,6 @@ class Editor:
 
 		self.saveButton.set_sensitive(False)
 		self.deleteButton.set_sensitive(True)
-		
-		self.updateBrowser()
 
     def buildFullGrammar(self):
 		recompile = False

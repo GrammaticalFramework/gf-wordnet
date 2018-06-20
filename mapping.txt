@@ -871,7 +871,7 @@ acoustic_A	acoustic_1_A
 acoustic_N	acoustic_N
 acoustician_N	acoustician_N
 acoustics_N	acoustics_N
-acquaint_V2	acquaint_1_V2
+acquaint_V2	acquaint_with_V3
 acquaint_V2	acquaint_2_V2
 acquaint_V2	acquaint_3_V2
 acquaintance_N	acquaintance_1_N
@@ -968,6 +968,7 @@ act_V	act_7_V
 act_V	act_8_V
 act_V	act_9_V
 act_V	act_VA
+act_V	act_like_V2
 act_V	act_10_V
 act_V2	act_3_V2
 act_V2	act_5_V2
@@ -1417,7 +1418,7 @@ adolescent_A	adolescent_4_A
 adolescent_N	adolescent_N
 adonis_N	adonis_1_N
 adonis_N	adonis_2_N
-adonis_N	adonis_3_N
+adonis_N	adonis_PN
 adopt_V2	adopt_1_V2
 adopt_V2	adopt_2_V2
 adopt_V2	adopt_3_V2
@@ -3517,8 +3518,8 @@ androgyny_N	androgyny_N
 android_N	android_N
 andromeda_N	andromeda_1_N
 andromeda_N	andromeda_2_N
-andromeda_N	andromeda_3_N
-andromeda_N	andromeda_4_N
+andromeda_N	andromeda_3_PN
+andromeda_N	andromeda_4_PN
 androphobia_N	androphobia_N
 androsterone_N	androsterone_N
 andryala_N	andryala_N
@@ -6298,7 +6299,7 @@ aurochs_N	aurochs_1_N
 aurochs_N	aurochs_2_N
 aurora_N	aurora_1_N
 aurora_N	aurora_2_N
-aurora_N	aurora_3_N
+aurora_N	aurora_PN
 auroral_A	auroral_1_A
 auroral_A	auroral_2_A
 aurous_A	aurous_A
@@ -8547,9 +8548,9 @@ beguine_N	beguine_3_N
 begum_N	begum_N
 behalf_N	behalf_1_N
 behalf_N	behalf_2_N
-behave_V	behave_1_V
 behave_V	behave_2_V
 behave_V	behave_3_V
+behave_V	behave_like_V2
 behaved_A	behaved_A
 behavior_N	behavior_1_N
 behavior_N	behavior_2_N
@@ -11673,6 +11674,7 @@ break_N	break_13_N
 break_N	break_14_N
 break_N	break_15_N
 break_N	break_16_N
+break_N	break_17_N
 break_V	break_2_V
 break_V	break_4_V
 break_V	break_7_V
@@ -13205,7 +13207,6 @@ busyness_N	busyness_N
 busywork_N	busywork_N
 but_Adv	but_Adv
 but_Conj	but_Conj
-but_N	but_N
 but_PConj	but_PConj
 but_Prep	but_Prep
 butacaine_N	butacaine_N
@@ -24707,7 +24708,6 @@ dawlish_PN	dawlish_PN
 dawn_N	dawn_1_N
 dawn_N	dawn_2_N
 dawn_N	dawn_3_N
-dawn_PN	dawn_1_PN
 dawn_PN	dawn_2_PN
 dawn_PN	dawn_3_PN
 dawn_V	dawn_1_V
@@ -24723,7 +24723,7 @@ day_N	day_6_N
 day_N	day_7_N
 day_N	day_8_N
 day_N	day_9_N
-day_N	day_10_N
+day_N	day_PN
 day_boarder_N	day_boarder_N
 day_labourer_N	day_labourer_N
 day_return_N	day_return_N
@@ -28363,7 +28363,6 @@ dissemble_V	dissemble_2_V
 dissemble_V	dissemble_3_V
 dissemble_V2	dissemble_1_V2
 dissemble_V2	dissemble_2_V2
-dissemble_V2	dissemble_3_V2
 dissembler_N	dissembler_N
 disseminate_V	disseminate_V
 disseminate_V2	disseminate_V2
@@ -33533,7 +33532,6 @@ evolutionistFem_N	evolutionistFem_N
 evolutionistMasc_N	evolutionistMasc_N
 evolve_V	evolve_1_V
 evolve_V	evolve_2_V
-evolve_V	evolve_3_V
 evolve_V2	evolve_1_V2
 evolve_V2	evolve_3_V2
 ewe_N	ewe_1_N
@@ -33835,7 +33833,6 @@ exercise_N	exercise_3_N
 exercise_N	exercise_4_N
 exercise_N	exercise_5_N
 exercise_N	exercise_6_N
-exercise_V	exercise_1_V
 exercise_V	exercise_2_V
 exercise_V	exercise_4_V
 exercise_V	exercise_5_V
@@ -33844,7 +33841,6 @@ exercise_V2	exercise_2_V2
 exercise_V2	exercise_3_V2
 exercise_V2	exercise_4_V2
 exercise_V2	exercise_5_V2
-exercise_VV	exercise_1_VV
 exercise_VV	exercise_2_VV
 exercise_VV	exercise_4_VV
 exercise_VV	exercise_5_VV
@@ -48244,6 +48240,7 @@ in_N	in_3_N
 in_Prep	in_1_Prep
 in_Prep	in_2_Prep
 in_Prep	in_3_Prep
+in_Prep	in_4_Prep
 in_accordance_with_Prep	in_accordance_with_Prep
 in_addition_Adv	in_addition_Adv
 in_addition_to_Prep	in_addition_to_Prep
@@ -52145,18 +52142,13 @@ just_A	just_1_A
 just_A	just_2_A
 just_A	just_3_A
 just_A	just_4_A
-just_AdV	just_1_AdV
-just_AdV	just_2_AdV
+just_AdV	just_2_AdA
 just_AdV	just_3_AdV
 just_AdV	just_4_AdV
 just_AdV	just_5_AdV
 just_AdV	just_6_AdV
 just_AdV	just_7_AdV
 just_AdV	just_8_AdV
-just_Adv	just_1_Adv
-just_Adv	just_2_Adv
-just_Adv	just_3_Adv
-just_Adv	just_4_Adv
 just_Adv	just_5_Adv
 just_Adv	just_6_Adv
 just_Adv	just_7_Adv
@@ -57520,7 +57512,6 @@ maintain_V	maintain_1_V
 maintain_V	maintain_2_V
 maintain_V	maintain_3_V
 maintain_V	maintain_4_V
-maintain_V	maintain_5_V
 maintain_V	maintain_6_V
 maintain_V	maintain_9_V
 maintain_V	maintain_10_V
@@ -57538,7 +57529,6 @@ maintain_VS	maintain_1_VS
 maintain_VS	maintain_2_VS
 maintain_VS	maintain_3_VS
 maintain_VS	maintain_4_VS
-maintain_VS	maintain_5_VS
 maintain_VS	maintain_6_VS
 maintain_VS	maintain_9_VS
 maintain_VS	maintain_10_VS
@@ -57583,14 +57573,13 @@ majuscule_A	majuscule_1_A
 majuscule_A	majuscule_2_A
 make_N	make_1_N
 make_N	make_2_N
-make_V	make_11_V
 make_V	make_29_V
 make_V	make_30_V
 make_V	make_35_V
 make_V	make_42_V
 make_V	make_49_V
 make_V2	make_1_V2
-make_V2	make_2_V2
+make_V2	make_2_V3
 make_V2	make_3_V2
 make_V2	make_5_V2
 make_V2	make_6_V2
@@ -57606,7 +57595,7 @@ make_V2	make_16_V2
 make_V2	make_17_V2
 make_V2	make_18_V2
 make_V2	make_19_V2
-make_V2	make_20_V2
+make_V2	make_20_V3
 make_V2	make_21_V2
 make_V2	make_23_V2
 make_V2	make_24_V2
@@ -57620,7 +57609,7 @@ make_V2	make_34_V2
 make_V2	make_36_V2
 make_V2	make_37_V2
 make_V2	make_38_V2
-make_V2	make_39_V2
+make_V2	make_39_V3
 make_V2	make_40_V2
 make_V2	make_41_V2
 make_V2	make_43_V2
@@ -58329,7 +58318,7 @@ mark_N	mark_6_N
 mark_N	mark_7_N
 mark_N	mark_9_N
 mark_N	mark_10_N
-mark_N	mark_11_N
+mark_N	mark_of_N2
 mark_N	mark_13_N
 mark_N	mark_14_N
 mark_N	mark_15_N
@@ -62791,7 +62780,6 @@ name_V2	name_8_V2
 name_V2	name_9_V2
 name_V3	name_4_V3
 name_V3	name_7_V3
-name_V3	name_8_V3
 name_V3	name_9_V3
 name_after_V3	name_after_V3
 name_day_N	name_day_N
@@ -65846,8 +65834,7 @@ online_A	online_1_A
 online_A	online_2_A
 online_A	online_3_A
 onlooker_N	onlooker_N
-only_Adv	only_1_Adv
-only_Adv	only_2_Adv
+only_Adv	only_AdA
 only_Adv	only_3_Adv
 only_Adv	only_4_Adv
 only_Adv	only_5_Adv
@@ -70991,11 +70978,7 @@ pill_N	pill_2_N
 pill_N	pill_3_N
 pill_N	pill_4_N
 pill_N	pill_5_N
-pill_PN	pill_1_PN
-pill_PN	pill_2_PN
-pill_PN	pill_3_PN
-pill_PN	pill_4_PN
-pill_PN	pill_5_PN
+pill_PN	pill_PN
 pillage_N	pillage_1_N
 pillage_N	pillage_2_N
 pillage_V2	pillage_V2
@@ -74258,13 +74241,9 @@ pretend_V	pretend_2_V
 pretend_V	pretend_5_V
 pretend_V	pretend_6_V
 pretend_V2	pretend_1_V2
-pretend_V2	pretend_2_V2
 pretend_V2	pretend_3_V2
-pretend_V2	pretend_5_V2
 pretend_VS	pretend_1_VS
-pretend_VS	pretend_2_VS
 pretend_VS	pretend_4_VS
-pretend_VS	pretend_5_VS
 pretendedly_Adv	pretendedly_Adv
 pretender_N	pretender_1_N
 pretender_N	pretender_2_N
@@ -76444,7 +76423,6 @@ put_off_V2	put_off_5_V2
 put_on_N	put_on_1_N
 put_on_N	put_on_2_N
 put_on_N	put_on_3_N
-put_on_V	put_on_4_V
 put_on_V	put_on_6_V
 put_on_V	put_on_8_V
 put_on_V	put_on_9_V
@@ -77167,9 +77145,8 @@ quitclaim_N	quitclaim_1_N
 quitclaim_N	quitclaim_2_N
 quite_AdA	quite_AdA
 quite_Adv	quite_2_Adv
-quite_Adv	quite_3_Adv
-quite_Adv	quite_4_Adv
-quite_Predet	quite_Predet
+quite_Predet	quite_3_Predet
+quite_Predet	quite_4_Predet
 quito_PN	quito_PN
 quits_A	quits_A
 quittance_N	quittance_1_N
@@ -78353,7 +78330,7 @@ reallocation_N	reallocation_1_N
 reallocation_N	reallocation_2_N
 reallotment_N	reallotment_N
 really_AdA	really_AdA
-really_Adv	really_1_Adv
+really_Adv	really_1_AdV
 really_Adv	really_2_Adv
 really_Adv	really_3_Adv
 realm_N	realm_1_N
@@ -83536,9 +83513,7 @@ saddle_N	saddle_3_N
 saddle_N	saddle_4_N
 saddle_N	saddle_5_N
 saddle_N	saddle_6_N
-saddle_V	saddle_V
 saddle_V2	saddle_1_V2
-saddle_V2	saddle_2_V2
 saddle_V2	saddle_3_V2
 saddle_sore_A	saddle_sore_A
 saddle_up_V2	saddle_up_V2
@@ -100777,7 +100752,7 @@ towline_N	towline_N
 town_N	town_1_N
 town_N	town_2_N
 town_N	town_3_N
-town_N	town_4_N
+town_N	town_PN
 town_crier_N	town_crier_N
 town_gas_N	town_gas_N
 townee_N	townee_N

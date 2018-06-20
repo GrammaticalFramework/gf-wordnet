@@ -46,6 +46,12 @@ lin BaseCNN num1 cn1 num2 cn2 = {
       s = \\a => quant.s ! cnn.hasCard ! cnn.n1 ++ conj.s1 ++ cnn.s1 ! Nom ++ conj.s2 ++ cnn.s2 ! Nom ++ "of" ++ rnp.s ! a ;
     } ;
 
+lin RelNP np rs = {
+      s = \\c => np.s ! c ++ rs.s ! np.a ++ finalComma ;
+      a = np.a
+      } ;
+    ExtRelNP = GrammarEng.RelNP ;
+
 lin BareN2 n2 = n2 ;
 
 lin ComparAsAP a np = {

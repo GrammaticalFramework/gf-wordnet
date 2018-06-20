@@ -65,6 +65,13 @@ lin BaseCNN num1 cn1 num2 cn2 = {
         isPron = False
       } ;
 
+lin RelNP np rs = {
+      s = \\c => np.s ! c ++ rs.s ! np.a ! RNom ;
+      a = np.a ;
+      isPron = False
+      } ;
+    ExtRelNP = GrammarSwe.RelNP ;
+
 lin BareN2 n2 = n2 ;
       
 lin ComparAsAP a np = {

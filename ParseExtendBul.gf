@@ -94,6 +94,13 @@ lin BaseCNN num1 cn1 num2 cn2 =
         g = cnn.g1
       } ;
 
+lin RelNP    = GrammarBul.RelNP ;
+    ExtRelNP np rs = {
+      s = \\r => np.s ! r ++ comma ++ rs.s ! np.a ;
+      a = np.a ;
+      p = np.p
+      } ;
+
 lin BareN2 n2 = n2 ;
 
 lin ComparAsAP a np = {

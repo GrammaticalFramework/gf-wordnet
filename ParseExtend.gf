@@ -24,6 +24,9 @@ fun BaseCNN : Num -> CN -> Num -> CN -> CNN ;
     ReflPossCNN : Conj -> CNN -> RNP ;
     PossCNN_RNP : Quant -> Conj -> CNN -> RNP -> RNP ;
 
+fun RelNP : NP -> RS -> NP ;
+    ExtRelNP : NP -> RS -> NP ;
+
 fun BareN2 : N2 -> N ;
 
 fun ComparAsAP : A -> NP -> AP ;

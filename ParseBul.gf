@@ -1,6 +1,6 @@
 --# -path=.:../abstract:../common
 concrete ParseBul of Parse =
-  NounBul - [PPartNP, UseN2],
+  NounBul - [PPartNP, UseN2, RelNP],
   VerbBul - [PassV2],
   AdjectiveBul,
   AdverbBul,

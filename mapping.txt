@@ -11065,8 +11065,8 @@ bore_hole_N	bore_hole_N
 boreal_A	boreal_1_A
 boreal_A	boreal_2_A
 boreal_A	boreal_3_A
-bored_A	bored_1_A
-bored_A	bored_2_A
+bored_A	bored_with_A2
+bored_A	bored_A
 boredom_N	boredom_N
 borer_N	borer_1_N
 borer_N	borer_2_N
@@ -14786,7 +14786,6 @@ carry_on_V	carry_on_3_V
 carry_on_V	carry_on_4_V
 carry_on_V2	carry_on_1_V2
 carry_on_V2	carry_on_2_V2
-carry_on_V2	carry_on_4_V2
 carry_on_about_V2	carry_on_about_V2
 carry_on_with_V2	carry_on_with_V2
 carry_out_V	carry_out_2_V
@@ -25496,7 +25495,6 @@ defile_V2	defile_3_V2
 defilement_N	defilement_N
 definable_A	definable_A
 define_V	define_1_V
-define_V	define_5_V
 define_V2	define_1_V2
 define_V2	define_2_V2
 define_V2	define_3_V2
@@ -26629,7 +26627,6 @@ determinative_N	determinative_1_N
 determinative_N	determinative_2_N
 determine_V	determine_1_V
 determine_V	determine_3_V
-determine_V	determine_4_V
 determine_V	determine_5_V
 determine_V	determine_7_V
 determine_V	determine_8_V
@@ -26643,18 +26640,15 @@ determine_V2	determine_7_V2
 determine_V2	determine_8_V2
 determine_V2V	determine_1_V2V
 determine_V2V	determine_3_V2V
-determine_V2V	determine_4_V2V
 determine_V2V	determine_5_V2V
 determine_V2V	determine_7_V2V
 determine_VS	determine_1_VS
 determine_VS	determine_3_VS
-determine_VS	determine_4_VS
 determine_VS	determine_5_VS
 determine_VS	determine_7_VS
 determine_VS	determine_8_VS
 determine_VV	determine_1_VV
 determine_VV	determine_3_VV
-determine_VV	determine_4_VV
 determine_VV	determine_5_VV
 determine_VV	determine_7_VV
 determine_VV	determine_8_VV
@@ -73952,7 +73946,6 @@ preparation_N	preparation_6_N
 preparation_N	preparation_7_N
 preparation_N	preparation_8_N
 preparatory_A	preparatory_A
-prepare_V	prepare_2_V
 prepare_V	prepare_4_V
 prepare_V	prepare_6_V
 prepare_V	prepare_8_V
@@ -73964,11 +73957,10 @@ prepare_V2	prepare_5_V2
 prepare_V2	prepare_6_V2
 prepare_V2	prepare_7_V2
 prepare_V2	prepare_8_V2
-prepare_V2V	prepare_2_V2V
 prepare_V2V	prepare_6_V2V
 prepare_V2V	prepare_8_V2V
 prepare_VV	prepare_1_VV
-prepare_VV	prepare_2_VV
+prepare_VV	prepare_2_V3
 prepare_VV	prepare_4_VV
 prepare_VV	prepare_6_VV
 prepare_VV	prepare_8_VV

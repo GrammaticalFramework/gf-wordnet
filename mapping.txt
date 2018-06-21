@@ -17441,10 +17441,10 @@ civil_A	civil_5_A
 civil_A	civil_6_A
 civilian_A	civilian_A
 civilian_N	civilian_N
-civilisation_N	civilisation_1_N
-civilisation_N	civilisation_2_N
-civilisation_N	civilisation_3_N
-civilisation_N	civilisation_4_N
+civilisation_N	civilization_1_N
+civilisation_N	civilization_2_N
+civilisation_N	civilization_3_N
+civilisation_N	civilization_4_N
 civility_N	civility_1_N
 civility_N	civility_2_N
 civilization_N	civilization_1_N
@@ -24708,8 +24708,7 @@ dawlish_PN	dawlish_PN
 dawn_N	dawn_1_N
 dawn_N	dawn_2_N
 dawn_N	dawn_3_N
-dawn_PN	dawn_2_PN
-dawn_PN	dawn_3_PN
+dawn_PN	dawn_PN
 dawn_V	dawn_1_V
 dawn_V	dawn_2_V
 dawn_V	dawn_3_V
@@ -51746,10 +51745,8 @@ joggle_V	joggle_2_V
 joggle_V2	joggle_1_V2
 joggle_V2	joggle_2_V2
 johannesburg_PN	johannesburg_PN
-john_PN	john_1_PN
 john_PN	john_2_PN
 john_PN	john_3_PN
-john_PN	john_4_PN
 john_PN	john_5_PN
 john_bull_N	john_bull_N
 johnny_PN	johnny_PN
@@ -67703,7 +67700,7 @@ paint_N	paint_2_N
 paint_N	paint_3_N
 paint_V	paint_4_V
 paint_V2	paint_1_V2
-paint_V2	paint_2_V2
+paint_V2	paint_2_V2A
 paint_V2	paint_3_V2
 paint_V2	paint_4_V2
 paintable_A	paintable_A

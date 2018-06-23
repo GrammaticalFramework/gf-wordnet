@@ -29,7 +29,8 @@ fun RelNP : NP -> RS -> NP ;
 
 fun BareN2 : N2 -> N ;
 
-fun ComparAsAP : A -> NP -> AP ;
+fun ComparAsAP : AP -> Comp -> AP ;
+    ComparAsAdv : Adv -> Comp -> Adv ;
     AdvAP_DAP : AP -> Prep -> DAP -> AP ;
 
 fun AdvImp : Adv -> Imp -> Imp ;

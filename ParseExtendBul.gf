@@ -103,10 +103,19 @@ lin RelNP    = GrammarBul.RelNP ;
 
 lin BareN2 n2 = n2 ;
 
-lin ComparAsAP a np = {
-      s = \\aform,_ => a.s ! aform ++ "като" ++ np.s ! RObj Acc ;
-      adv = a.adv ++ "като" ++ np.s ! RObj Acc ;
+lin ComparAsAP a comp = {
+      s = \\aform,p => let gn = case aform of {
+                                  ASg g _       => GSg g ;
+                                  ASgMascDefNom => GSg Masc ;
+                                  APl   _       => GPl
+                                }
+                       in a.s ! aform ! p ++ "колкото" ++ comp.s ! agrP3 gn ;
+      adv = a.adv ++ "колкото" ++ comp.s ! agrP3 (GSg Neut) ;
       isPre = True
+    } ;
+
+    ComparAsAdv adv comp = {
+      s = adv.s ++ "колкото" ++ comp.s ! agrP3 (GSg Neut)
     } ;
 
     AdvAP_DAP ap prep dap =

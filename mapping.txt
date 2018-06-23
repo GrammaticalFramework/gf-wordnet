@@ -7233,7 +7233,7 @@ ball_N	ball_3_N
 ball_N	ball_4_N
 ball_N	ball_5_N
 ball_N	ball_6_N
-ball_N	ball_7_N
+ball_N	ball_PN
 ball_N	ball_8_N
 ball_N	ball_9_N
 ball_N	ball_10_N
@@ -15341,7 +15341,6 @@ cause_N	cause_3_N
 cause_N	cause_4_N
 cause_N	cause_5_N
 cause_V2	cause_1_V2
-cause_V2	cause_2_V2
 cause_V2V	cause_2_V2V
 causeless_A	causeless_1_A
 causeless_A	causeless_2_A
@@ -30553,6 +30552,7 @@ dutifulness_N	dutifulness_N
 duty_N	duty_1_N
 duty_N	duty_2_N
 duty_N	duty_3_N
+duty_N	duty_4_N
 duty_free_A	duty_free_A
 duvet_N	duvet_N
 dwarf_N	dwarf_1_N
@@ -40449,7 +40449,7 @@ get_V2	get_11_V2
 get_V2	get_12_V2
 get_V2	get_13_V2
 get_V2	get_14_V2
-get_V2	get_16_V2
+get_V2	get_16_V
 get_V2	get_17_V2
 get_V2	get_18_V2
 get_V2	get_19_V2
@@ -44117,10 +44117,6 @@ hautboy_N	hautboy_1_N
 hauteur_N	hauteur_N
 havana_N	havana_N
 havana_PN	havana_PN
-have_V	have_2_V
-have_V	have_5_V
-have_V	have_13_V
-have_V	have_15_V
 have_V2	have_1_V2
 have_V2	have_2_V2
 have_V2	have_3_V2
@@ -44133,16 +44129,13 @@ have_V2	have_9_V2
 have_V2	have_10_V2
 have_V2	have_11_V2
 have_V2	have_12_V2
-have_V2	have_13_V2
 have_V2	have_14_V2
 have_V2	have_15_V2
 have_V2	have_16_V2
 have_V2	have_17_V2
 have_V2	have_18_V2
-have_VV	have_2_VV
 have_VV	have_5_VV
-have_VV	have_13_VV
-have_VV	have_15_VV
+have_VV	have_13_V2V
 have_against_V2	have_against_V2
 have_around_V2	have_around_V2
 have_down_as_V3	have_down_as_V3
@@ -44152,7 +44145,6 @@ have_it_in_for_V2	have_it_in_for_V2
 have_it_off_V	have_it_off_V
 have_it_out_with_V2	have_it_out_with_V2
 have_off_V2	have_off_V2
-have_on_V	have_on_V
 have_on_V2	have_on_V2
 have_over_V2	have_over_V2
 have_round_V2	have_round_V2
@@ -63114,8 +63106,8 @@ nearer_Adv	nearer_Adv
 nearer_Prep	nearer_Prep
 nearest_Adv	nearest_Adv
 nearest_Prep	nearest_Prep
-nearly_Adv	nearly_1_Adv
-nearly_Adv	nearly_2_Adv
+nearly_Adv	nearly_AdV
+nearly_Adv	nearly_AdA
 nearness_N	nearness_N
 nearside_N	nearside_N
 neat_A	neat_1_A
@@ -86695,7 +86687,7 @@ settler_N	settler_3_N
 settling_N	settling_N
 settlor_N	settlor_N
 seven_sisters_PN	seven_sisters_PN
-sevenfold_A	sevenfold_1_A
+sevenfold_A	sevenfold_A
 sevenfold_Adv	sevenfold_Adv
 sevenoaks_PN	sevenoaks_PN
 sever_V2	sever_1_V2
@@ -91198,7 +91190,8 @@ spare_V	spare_1_V
 spare_V	spare_3_V
 spare_V	spare_4_V
 spare_V2	spare_1_V2
-spare_V2	spare_2_V2
+spare_V2	spare_V3
+spare_V2	spare_from_V3
 spare_V2	spare_4_V2
 spare_rib_N	spare_rib_N
 spareness_N	spareness_1_N
@@ -93663,7 +93656,7 @@ stimulant_A	stimulant_A
 stimulant_N	stimulant_1_N
 stimulant_N	stimulant_2_N
 stimulate_V2	stimulate_1_V2
-stimulate_V2	stimulate_2_V2
+stimulate_V2	stimulate_2_V2V
 stimulate_V2	stimulate_3_V2
 stimulate_V2	stimulate_4_V2
 stimulate_V2	stimulate_5_V2
@@ -94076,7 +94069,7 @@ stornoway_PN	stornoway_PN
 story_N	story_1_N
 story_N	story_2_N
 story_N	story_3_N
-story_N	story_4_N
+story_N	story_of_N2
 story_N	story_5_N
 story_N	story_6_N
 storybook_N	storybook_N

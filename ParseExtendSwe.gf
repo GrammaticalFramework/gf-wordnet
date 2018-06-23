@@ -73,10 +73,19 @@ lin RelNP np rs = {
     ExtRelNP = GrammarSwe.RelNP ;
 
 lin BareN2 n2 = n2 ;
-      
-lin ComparAsAP a np = {
-      s = \\ap => a.s ! AF (APosit ap) Nom ++ "som" ++ np.s ! nominative ;
+
+lin ComparAsAP a comp = {
+      s = \\ap => let agr = case ap of {
+                              Strong (GSg g) => agrP3 g Sg;
+                              Strong GPl     => agrP3 Neutr Pl;
+                              Weak n         => agrP3 Neutr n
+                            }
+                  in a.s ! ap ++ "som" ++ comp.s ! agr ;
       isPre = False
+    } ;
+
+lin ComparAsAdv adv comp = {
+      s = adv.s ++ "som" ++ comp.s ! agrP3 Neutr Sg
     } ;
 
 lin AdvAP_DAP ap prep dap = {

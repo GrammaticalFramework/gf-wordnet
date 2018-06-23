@@ -54,9 +54,13 @@ lin RelNP np rs = {
 
 lin BareN2 n2 = n2 ;
 
-lin ComparAsAP a np = {
-      s = \\_ => "as" ++ a.s ! AAdj Posit Nom ++ "as" ++ np.s ! npNom ;
+lin ComparAsAP a comp = {
+      s = \\agr => "as" ++ a.s ! agr ++ "as" ++ comp.s ! agr ;
       isPre = False
+    } ;
+
+lin ComparAsAdv adv comp = {
+      s = "as" ++ adv.s ++ "as" ++ comp.s ! agrP3 Sg
     } ;
 
 lin AdvAP_DAP ap prep dap = {

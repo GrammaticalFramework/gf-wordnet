@@ -1882,7 +1882,6 @@ aftermath_N	aftermath_1_N
 aftermath_N	aftermath_2_N
 aftermost_A	aftermost_A
 afternoon_N	afternoon_1_N
-afternoon_N	afternoon_2_N
 afterpains_N	afterpains_N
 afterpiece_N	afterpiece_N
 aftershaft_N	aftershaft_N
@@ -61618,7 +61617,6 @@ mormon_N	mormon_2_N
 mormonism_N	mormonism_N
 morn_N	morn_N
 morning_N	morning_1_N
-morning_N	morning_2_N
 morning_N	morning_3_N
 morning_N	morning_4_N
 morning_glory_N	morning_glory_N

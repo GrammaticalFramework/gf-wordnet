@@ -1065,9 +1065,9 @@ actual_A	actual_3_A
 actual_A	actual_4_A
 actual_A	actual_5_A
 actuality_N	actuality_N
-actually_Adv	actually_1_Adv
-actually_Adv	actually_2_Adv
-actually_Adv	actually_3_Adv
+actually_Adv	actually_1_AdV
+actually_Adv	actually_2_AdV
+actually_Adv	actually_3_AdV
 actually_Adv	actually_4_Adv
 actuarial_A	actuarial_A
 actuary_N	actuary_N
@@ -1182,7 +1182,7 @@ adding_machine_N	adding_machine_N
 addis_ababa_PN	addis_ababa_PN
 addition_N	addition_1_N
 addition_N	addition_2_N
-addition_N	addition_3_N
+addition_N	addition_to_N2
 addition_N	addition_4_N
 addition_N	addition_5_N
 addition_N	addition_6_N
@@ -13728,8 +13728,8 @@ call_back_V2	call_back_3_V2
 call_back_V2	call_back_4_V2
 call_box_N	call_box_1_N
 call_box_N	call_box_2_N
-call_for_V2V	call_for_1_V2V
-call_for_V2V	call_for_16_V2V
+call_for_V2V	call_for_V2
+call_for_V2V	call_for_V2V
 call_forth_V2	call_forth_1_V2
 call_forth_V2	call_forth_2_V2
 call_girl_N	call_girl_N
@@ -35989,7 +35989,6 @@ fiery_A	fiery_2_A
 fiery_A	fiery_3_A
 fiesta_N	fiesta_N
 fife_N	fife_N
-fife_PN	fife_PN
 fig_N	fig_1_N
 fig_N	fig_2_N
 fig_N	fig_3_N
@@ -47633,6 +47632,7 @@ imagination_N	imagination_3_N
 imaginative_A	imaginative_A
 imagine_V	imagine_1_V
 imagine_V2	imagine_1_V2
+imagine_V2	imagine_2_V2
 imagine_VS	imagine_1_VS
 imagine_VS	imagine_2_VS
 imaging_N	imaging_1_N
@@ -55760,9 +55760,9 @@ list_V2	list_2_V2
 list_V2	list_3_V2
 list_V2	list_5_V2
 list_price_N	list_price_N
-listen_V	listen_1_V
-listen_V	listen_2_V
-listen_V	listen_3_V
+listen_V	listen_to_1_V2
+listen_V	listen_to_2_V2
+listen_V	listen_V
 listen_in_V	listen_in_1_V
 listen_in_V	listen_in_2_V
 listen_out_for_V2	listen_out_for_V2
@@ -66953,7 +66953,8 @@ over_Adv	over_3_Adv
 over_Adv	over_4_Adv
 over_Adv	over_5_Adv
 over_N	over_N
-over_Prep	over_Prep
+over_Prep	over_1_Prep
+over_Prep	over_2_Prep
 over_abundance_N	over_abundance_1_N
 over_abundance_N	over_abundance_2_N
 over_magazine_V2	over_magazine_V2
@@ -75475,7 +75476,7 @@ proturan_N	proturan_N
 proud_A	proud_1_A
 proud_A	proud_2_A
 provable_A	provable_A
-prove_V	prove_1_V
+prove_V	prove_1_VV
 prove_V	prove_2_V
 prove_V	prove_3_V
 prove_V	prove_4_V
@@ -78312,7 +78313,7 @@ reallocation_N	reallocation_2_N
 reallotment_N	reallotment_N
 really_AdA	really_AdA
 really_Adv	really_1_AdV
-really_Adv	really_2_Adv
+really_Adv	really_2_AdV
 really_Adv	really_3_Adv
 realm_N	realm_1_N
 realm_N	realm_2_N
@@ -91292,7 +91293,6 @@ spaying_N	spaying_N
 speak_V	speak_1_V
 speak_V	speak_2_V
 speak_V	speak_3_V
-speak_V	speak_4_V
 speak_V	speak_5_V
 speak_V2	speak_1_V2
 speak_V2	speak_2_V2
@@ -102067,7 +102067,7 @@ truffle_N	truffle_1_N
 truffle_N	truffle_2_N
 truffle_N	truffle_3_N
 truism_N	truism_N
-truly_AdA	truly_1_AdA
+truly_AdA	truly_1_AdV
 truly_AdA	truly_2_AdA
 truly_AdA	truly_3_AdA
 truly_AdA	truly_4_AdA

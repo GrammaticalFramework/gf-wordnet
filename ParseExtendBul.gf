@@ -1,4 +1,4 @@
-concrete ParseExtendBul of ParseExtend = ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Predef, Prelude, ResBul, GrammarBul in {
+concrete ParseExtendBul of ParseExtend = ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem] ** open Predef, Prelude, ResBul, GrammarBul in {
 
 lincat Mark = {s : Str} ;
 
@@ -118,26 +118,38 @@ lin ComparAsAP a comp = {
       s = adv.s ++ "колкото" ++ comp.s ! agrP3 (GSg Neut)
     } ;
 
-    AdvAP_DAP ap prep dap =
-      let adverb : AForm => Str 
-                 = \\aform => let g = case aform of {
-                                        ASg Masc _    => AMasc NonHuman ;
-                                        ASg Fem _     => AFem ;
-                                        ASg Neut _    => ANeut ;
-                                        ASgMascDefNom => AMasc Human ;
-                                        _             => ANeut
-                                      } ;
-                                  s = dap.s ! False ! g ! RObj prep.c
-                              in prep.s ++ 
-                                 case prep.c of {
-                                   Dat      => "на" ++ s;
-                                   WithPrep => with_Word ++ s;
-                                   _        => s
-                                 } ;
-      in { s     = \\aform,p => ap.s ! aform ! p ++ adverb ! aform ;
-           adv   = ap.adv ++ adverb ! ASg Neut Indef ;
-           isPre = False
-         } ;
+lin UseDAP dap = {
+      s = \\role => let s = dap.s ! False ! ANeut ! role
+                    in case role of {
+                         RObj Dat      => "на" ++ s;
+                         RObj WithPrep => with_Word ++ s;
+                         _             => s
+                       } ;
+      a = {gn = gennum ANeut (numnnum dap.nn); p = P3} ;
+      p = dap.p
+      } ;
+
+    UseDAPMasc dap = {
+      s = \\role => let s = dap.s ! False ! (AMasc Human) ! role
+                    in case role of {
+                         RObj Dat      => "на" ++ s;
+                         RObj WithPrep => with_Word ++ s;
+                         _             => s
+                       } ;
+      a = {gn = gennum (AMasc Human) (numnnum dap.nn); p = P3} ;
+      p = dap.p
+      } ;
+
+    UseDAPFem dap = {
+      s = \\role => let s = dap.s ! False ! AFem ! role
+                    in case role of {
+                         RObj Dat      => "на" ++ s;
+                         RObj WithPrep => with_Word ++ s;
+                         _             => s
+                       } ;
+      a = {gn = gennum AFem (numnnum dap.nn); p = P3} ;
+      p = dap.p
+      } ;
 
 lin AdvImp adv imp = {
       s = \\pol,gennum => adv.s ++ imp.s ! pol ! gennum

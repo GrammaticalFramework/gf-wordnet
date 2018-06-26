@@ -4266,13 +4266,10 @@ anyPl_Det	anyPl_2_Det
 anySg_Det	anySg_1_Det
 anySg_Det	anySg_2_Det
 any_Adv	any_AdA
-anybody_NP	anybody_NP
 anyhow_Adv	anyhow_1_Adv
 anyhow_Adv	anyhow_2_Adv
 anymore_Adv	anymore_Adv
-anyone_NP	anyone_NP
 anyplace_Adv	anyplace_Adv
-anything_NP	anything_NP
 anyway_Adv	anyway_1_Adv
 anyway_Adv	anyway_2_Adv
 anywhere_Adv	anywhere_Adv
@@ -33455,14 +33452,11 @@ eversion_N	eversion_1_N
 eversion_N	eversion_2_N
 every_Det	every_Det
 every_bit_Adv	every_bit_Adv
-everybody_NP	everybody_NP
 everyday_A	everyday_1_A
 everyday_A	everyday_2_A
 everyday_A	everyday_3_A
 everyman_N	everyman_N
-everyone_NP	everyone_NP
 everyplace_Adv	everyplace_Adv
-everything_NP	everything_NP
 everywhere_Adv	everywhere_Adv
 evesham_PN	evesham_PN
 evict_V2	evict_1_V2
@@ -63936,7 +63930,6 @@ no_man's_land_N	no_man's_land_1_N
 no_man's_land_N	no_man's_land_2_N
 no_man's_land_N	no_man's_land_3_N
 no_more_than_AdN	no_more_than_AdN
-no_one_NP	no_one_NP
 noah_PN	noah_PN
 nob_N	nob_N
 nobble_V2	nobble_1_V2
@@ -63959,7 +63952,6 @@ nobleman_N	nobleman_N
 noblesse_N	noblesse_1_N
 noblesse_N	noblesse_2_N
 noblesse_oblige_N	noblesse_oblige_N
-nobody_NP	nobody_NP
 nocent_A	nocent_A
 nociceptive_A	nociceptive_A
 noctambulist_N	noctambulist_N
@@ -64149,8 +64141,6 @@ nondisposable_A	nondisposable_2_A
 nondriver_N	nondriver_N
 none_A	none_A
 none_Adv	none_Adv
-none_NP	none_1_NP
-none_NP	none_2_NP
 nonechoic_A	nonechoic_A
 noneffervescent_A	noneffervescent_1_A
 noneffervescent_A	noneffervescent_2_A
@@ -64596,7 +64586,6 @@ notepad_N	notepad_N
 notepaper_N	notepaper_N
 noteworthy_A	noteworthy_A
 nothing_Adv	nothing_Adv
-nothing_NP	nothing_NP
 nothingness_N	nothingness_1_N
 nothingness_N	nothingness_2_N
 nothings_N	nothings_N
@@ -90639,12 +90628,10 @@ sombrero_N	sombrero_1_N
 sombrero_N	sombrero_2_N
 some_Det	some_Det
 some_Quant	some_Quant
-somebody_NP	somebody_NP
 someday_Adv	someday_Adv
 somehow_AdV	somehow_1_AdV
 somehow_Adv	somehow_1_Adv
 somehow_Adv	somehow_2_Adv
-someone_NP	someone_NP
 someplace_Adv	someplace_Adv
 somercotes_PN	somercotes_PN
 somero_PN	somero_PN
@@ -90654,7 +90641,6 @@ somerset_PN	somerset_1_PN
 somerset_PN	somerset_2_PN
 somesthesia_N	somesthesia_1_N
 somesthesia_N	somesthesia_2_N
-something_NP	something_NP
 sometime_Adv	sometime_Adv
 sometimes_Adv	sometimes_Adv
 someway_Adv	someway_1_Adv

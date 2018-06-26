@@ -1,4 +1,4 @@
-concrete ParseExtendSwe of ParseExtend = ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Prelude, ResSwe, CommonScand, GrammarSwe in {
+concrete ParseExtendSwe of ParseExtend = ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem] ** open Prelude, ResSwe, CommonScand, GrammarSwe in {
 
 lincat Mark = {s : Str} ;
 
@@ -88,14 +88,25 @@ lin ComparAsAdv adv comp = {
       s = adv.s ++ "som" ++ comp.s ! agrP3 Neutr Sg
     } ;
 
-lin AdvAP_DAP ap prep dap = {
-      s = \\a => let g = case a of {
-                           Strong (GSg g) => g ;
-                           _              => Neutr
-                         }
-                 in ap.s ! a ++ prep.s ++ dap.s ! True ! g ;
-      isPre = ap.isPre
-    } ;
+lin UseDAP dap = 
+      let 
+        g = neutrum ; ----
+        m = True ;  ---- is this needed for other than Art?
+      in {
+        s = \\c => dap.sp ! m ! g ;    ---- case of det!
+        a = agrP3 (ngen2gen g) dap.n ;
+        isPron = False
+      } ;
+
+lin UseDAPMasc, UseDAPFem = \dap ->
+      let 
+        g = utrum ; ----
+        m = True ;  ---- is this needed for other than Art?
+      in {
+        s = \\c => dap.sp ! m ! g ;    ---- case of det!
+        a = agrP3 (ngen2gen g) dap.n ;
+        isPron = False
+      } ;
 
 lin AdvImp adv imp = {
       s = \\pol,num => adv.s ++ imp.s ! pol ! num

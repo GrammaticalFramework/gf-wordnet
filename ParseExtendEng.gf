@@ -1,11 +1,11 @@
-concrete ParseExtendEng of ParseExtend = ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** open Prelude, ResEng, GrammarEng, (E = ExtraEng) in {
+concrete ParseExtendEng of ParseExtend = ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem] ** open Prelude, ResEng, GrammarEng, (E = ExtraEng) in {
 
 lincat Mark = {s : Str} ;
 
 lin gen_Quant = {
       s  = \\hasCard,n => "" ;
-      sp = \\hasCard,n => case <n,hasCard> of {
-        <Sg,False> => table { NCase Gen => "its"; _ => "it" } ;
+      sp = \\g,hasCard,n => case <n,hasCard> of {
+        <Sg,False> => table { NCase Gen => table Gender ["its"; "his"; "her"] ! g; _ => table Gender ["it"; "he"; "she"] ! g } ;
         <Pl,False> => table { NCase Nom => "they"; NPAcc => "them"; _ => "theirs" } ;
         _          => \\c => artDef
         }
@@ -63,9 +63,19 @@ lin ComparAsAdv adv comp = {
       s = "as" ++ adv.s ++ "as" ++ comp.s ! agrP3 Sg
     } ;
 
-lin AdvAP_DAP ap prep dap = {
-      s = \\a => ap.s ! a ++ preOrPost prep.isPre prep.s dap.s ;
-      isPre = False
+lin UseDAP dap = {
+      s = dap.sp ! Neutr ! False ;
+      a = agrP3 dap.n
+    } ;
+
+lin UseDAPMasc dap = {
+      s = dap.sp ! Masc ! False ;
+      a = agrgP3 dap.n Masc
+    } ;
+
+lin UseDAPFem dap = {
+      s = dap.sp ! Fem ! False ;
+      a = agrgP3 dap.n Fem
     } ;
 
 lin AdvImp adv imp = {

@@ -1,4 +1,4 @@
-abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP] ** {
+abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem] ** {
 
 cat Mark ;
 
@@ -31,7 +31,10 @@ fun BareN2 : N2 -> N ;
 
 fun ComparAsAP : AP -> Comp -> AP ;
     ComparAsAdv : Adv -> Comp -> Adv ;
-    AdvAP_DAP : AP -> Prep -> DAP -> AP ;
+
+fun UseDAP     : DAP -> NP ;
+    UseDAPMasc : DAP -> NP ;
+    UseDAPFem  : DAP -> NP ;
 
 fun AdvImp : Adv -> Imp -> Imp ;
 

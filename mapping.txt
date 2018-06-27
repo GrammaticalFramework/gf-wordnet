@@ -1331,7 +1331,6 @@ adjuvant_A	adjuvant_1_A
 adjuvant_A	adjuvant_2_A
 adjuvant_N	adjuvant_N
 admass_N	admass_N
-administer_V	administer_4_V
 administer_V2	administer_1_V2
 administer_V2	administer_2_V2
 administer_V2	administer_3_V2
@@ -28211,7 +28210,6 @@ dispensary_N	dispensary_N
 dispensation_N	dispensation_1_N
 dispensation_N	dispensation_2_N
 dispensation_N	dispensation_3_N
-dispense_V	dispense_3_V
 dispense_V2	dispense_1_V2
 dispense_V2	dispense_2_V2
 dispense_V2	dispense_3_V2
@@ -35823,8 +35821,7 @@ feverroot_N	feverroot_N
 few_Det	a_few_Det
 few_N	few_N
 few_Num	few_Num
-fewer_A	fewer_A
-fewer_Det	fewer_Det
+fewer_Det	fewer_Num
 fewer_than_AdN	fewer_than_AdN
 fewness_N	fewness_N
 fey_A	fey_1_A
@@ -55842,7 +55839,7 @@ little_A	little_5_A
 little_A	little_6_A
 little_A	little_7_A
 little_A	little_8_A
-little_Det	little_Det
+little_Det	little_Num
 little_N	little_N
 littlehampton_PN	littlehampton_PN
 littleneck_N	littleneck_1_N
@@ -58120,7 +58117,7 @@ manuscript_N	manuscript_2_N
 manx_A	manx_A
 manx_N	manx_1_N
 manx_N	manx_2_N
-many_Det	many_Det
+many_Det	many_Num
 many_sided_A	many_sided_1_A
 many_sided_A	many_sided_2_A
 many_sided_A	many_sided_3_A
@@ -86652,7 +86649,6 @@ sevenfold_Adv	sevenfold_Adv
 sevenoaks_PN	sevenoaks_PN
 sever_V2	sever_1_V2
 sever_V2	sever_2_V2
-several_Det	several_Det
 several_Num	several_Num
 severally_Adv	severally_1_Adv
 severally_Adv	severally_2_Adv

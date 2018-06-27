@@ -1,4 +1,4 @@
-concrete ParseExtendSwe of ParseExtend = ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem] ** open Prelude, ResSwe, CommonScand, GrammarSwe in {
+concrete ParseExtendSwe of ParseExtend = ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** open Prelude, ResSwe, CommonScand, GrammarSwe in {
 
 lincat Mark = {s : Str} ;
 
@@ -7,6 +7,8 @@ lin gen_Quant = DefArt ;
     UttAPFem = UttAP ;
     UttVPS vps = {s = vps.s ! Main ! (agrP3 Utr Sg)} ;
     UttVPSFem vps = {s = vps.s ! Main ! (agrP3 Utr Sg)} ;
+
+    FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! nominative) (predV verbBe)) ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;

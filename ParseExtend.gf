@@ -1,4 +1,4 @@
-abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem] ** {
+abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** {
 
 cat Mark ;
 
@@ -8,7 +8,9 @@ fun gen_Quant : Quant ;
     
     UttVPS : VPS -> Utt ;
     UttVPSFem : VPS -> Utt ;
-    
+
+    FocusComp : Comp -> NP -> Cl ;
+
     PhrUttMark : PConj -> Utt -> Voc -> Mark -> Phr ;
     
     FullStop, ExclMark, QuestMark : Mark ;

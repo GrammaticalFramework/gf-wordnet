@@ -1,4 +1,4 @@
-concrete ParseExtendBul of ParseExtend = ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem] ** open Predef, Prelude, ResBul, GrammarBul in {
+concrete ParseExtendBul of ParseExtend = ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** open Predef, Prelude, ResBul, GrammarBul in {
 
 lincat Mark = {s : Str} ;
 
@@ -7,6 +7,10 @@ lin gen_Quant = DefArt ;
     UttAPFem ap = {s = ap.s ! ASg Fem Indef ! P3} ;
     UttVPS vps = {s = vps.s ! agrP3 (GSg Masc)} ;
     UttVPSFem vps = {s = vps.s ! agrP3 (GSg Fem)} ;
+
+    FocusComp comp np =
+      mkClause (comp.s ! np.a) np.a comp.p
+               (insertObj (\\_ => np.s ! RSubj) np.p (predV verbBe)) ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;

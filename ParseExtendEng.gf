@@ -1,4 +1,4 @@
-concrete ParseExtendEng of ParseExtend = ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem] ** open Prelude, ResEng, GrammarEng, (E = ExtraEng) in {
+concrete ParseExtendEng of ParseExtend = ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** open Prelude, ResEng, GrammarEng, (E = ExtraEng) in {
 
 lincat Mark = {s : Str} ;
 
@@ -14,6 +14,8 @@ lin gen_Quant = {
     UttAPFem = UttAP ;
     UttVPS vps = {s = vps.s ! agrP3 Sg}  ;
     UttVPSFem vps = {s = vps.s ! agrP3 Sg}  ;
+
+    FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! npNom) (predAux auxBe)) ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;

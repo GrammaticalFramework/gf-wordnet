@@ -1,0 +1,388 @@
+-- Special labels:
+--   * head - designates the source of dependencies for
+--     the other arguments of the function. The label becomes
+--     a shortcut for head:anchor if there are no other anchors defined.
+--
+--   * rel  - the name of the head function of this argument becomes 
+--     a dependency label
+--
+--   * _    - this child is ignored
+--
+-- Pragmas:
+--
+--   If a child has a pragma then it is attached by using a colon.
+--   For example mod:anchor or mod:2.
+--
+--   * anchor - this pragma designates the child to which 
+--     the incoming dependencies should be anchored. It doesn't have to
+--     be the head. If none of the children has an anchor then
+--     the head gets anchored.
+--   * <number N> - this pragma is used to designate that
+--     they modify the Nth argument. By default the modified
+--     argument is the head
+--   * rev - this pragma means to reverse the dependency.
+--   * rel=<label> - this pragma changes the name of the relation.
+
+AdAP mod head
+AdAdV mod head
+AdAdv mod head
+AdNum mod head
+AdVVP mod head
+AdVVPSlash mod head
+-- AddAdvQVP mod mod
+-- AdjAsCN mod
+-- AdjAsNP mod
+AdjCN mod head
+AdjDAP head mod
+AdjOrd head
+AdnCAdv head
+AdvAP head mod
+AdvCN head mod
+AdvIAdv head mod
+AdvIP head mod
+AdvImp mod head
+AdvNP head mod
+-- AdvQVP mod mod
+AdvRNP head rel:3 mod
+AdvRVP head rel:3 mod
+AdvS mod head
+AdvSlash head mod
+AdvVP head mod
+AdvVPSlash head mod
+ApposCN head mod
+ApposNP head mod
+BareN2 head
+BaseAP head head
+BaseAdV head head
+BaseAdv head head
+BaseCN head head
+BaseCNN mod:2 head mod:4 head
+BaseComp head head
+BaseDAP head head
+BaseIAdv head head
+BaseNP head head
+BaseRS head head
+BaseS head head
+BaseVPI head head
+BaseVPI2 head head
+BaseVPS head head
+BaseVPS2 head head
+Base_nr_RNP head head
+Base_rn_RNP head head
+Base_rr_RNP head head
+ByVP head
+CAdvAP mod head mod
+-- CleftAdv mod mod
+-- CleftNP mod mod
+CompAP head
+CompAdv head
+CompBareCN head
+CompCN head
+CompIAdv head
+CompIP head
+CompIQuant head
+CompNP head
+CompQS head
+CompS head
+CompVP mod mod head
+ComparA mod:anchor head
+-- ComparAdvAdj mod mod mod
+-- ComparAdvAdjS mod mod mod
+ComparAsAP head mod
+ComparAsAdv head mod
+ComplA2 head arg
+ComplBareVS head arg
+ComplDirectVQ head arg
+ComplDirectVS head arg
+-- RENAME: ComplGenVV head mod:4 mod:4 arg
+ComplN2 head arg
+ComplN3 head arg
+ComplSlash head obj
+-- ComplSlashIP mod mod
+ComplSlashPartLast head mod
+ComplVA head arg
+ComplVPI2 head obj
+ComplVPIVV head arg
+-- ComplVPS2 head obj
+ComplVQ head arg
+ComplVS head arg
+ComplVV head arg
+CompoundAP comp head
+CompoundN comp head
+ConjAP _ head
+ConjAdV _ head
+ConjAdv _ head
+ConjCN _ head
+ConjComp _ head
+ConjDet _ head
+ConjIAdv _ head
+ConjNP _ head
+ConjRNP _ head
+ConjRS _ head
+ConjS _ head
+ConjVPI _ head
+ConjVPI2 _ head
+ConjVPS _ head
+ConjVPS2 _ head
+ConsAP head head
+ConsAdV head head
+ConsAdv head head
+ConsCN head head
+ConsComp head head
+ConsDAP head head
+ConsIAdv head head
+ConsNP head head
+ConsRS head head
+ConsS head head
+ConsVPI head head
+ConsVPI2 head head
+ConsVPS head head
+ConsVPS2 head head
+Cons_nr_RNP head head
+Cons_rr_RNP head head
+CountNP mod head
+DetCN mod head
+DetCNN mod _ head
+DetDAP head
+DetQuant head head
+DetQuantOrd head head head
+-- EmbedPresPart head
+EmbedQS head
+EmbedS head
+EmbedVP head
+EmptyRelSlash head
+ExistCN head
+ExistIP head
+-- ExistIPAdv mod mod
+-- ExistMassCN head
+ExistNP head
+ExistNPAdv mod mod
+ExistPluralCN head
+ExistsNP head
+ExtAdvNP head mod
+ExtAdvS mod head
+ExtAdvVP head mod
+ExtRelNP subj:anchor head
+-- FocusAdV mod mod
+-- FocusAdv mod mod
+FocusComp mod mod
+FrontComplDirectVQ subj head arg
+FrontComplDirectVS subj head arg
+-- FunRP mod mod mod
+-- GenIP head
+-- GenModIP mod mod mod
+GenModNP mod poss head
+-- GenRP mod mod
+GenericCl head
+GerundAdv head
+GerundCN head
+GerundNP head
+IAdvAdv head
+ICompAP head
+IDig _
+IIDig _ _
+-- IdetCN mod mod
+-- IdetIP head
+-- IdetQuant mod mod
+-- ImpP3 mod mod
+-- ImpPl1 head
+ImpVP head
+ImpersCl head
+InLanguage head
+InOrderToVP head
+InflectionA head
+InflectionA2 head
+InflectionAdv head
+InflectionN head
+InflectionN2 head
+InflectionN3 head
+InflectionPrep head
+InflectionV head
+InflectionV2 head
+InflectionV2A head
+InflectionV2Q head
+InflectionV2S head
+InflectionV2V head
+InflectionV3 head
+InflectionVA head
+InflectionVQ head
+InflectionVS head
+InflectionVV head
+MassNP head
+MkDefinition _ _
+MkDefinitionEx _ _ _
+MkDocument _ _ _
+MkTag _
+MkVPI head
+MkVPI2 head
+MkVPS mod mod head
+MkVPS2 mod mod head
+NoDefinition _
+-- NominalizeVPSlashNP mod mod
+NumCard _
+NumDigits _
+NumNumeral _
+OrdDigits _
+OrdNumeral _
+OrdNumeralSuperl head head
+OrdSuperl head
+PConjConj head
+PartNP rel head
+PassAgentVPSlash head:rel=obj subj
+PassVPSlash head:rel=obj
+PastPartAP head:rev:rel=obj
+PastPartAgentAP head:rev:rel=obj subj
+PhrUtt mod head mod
+PhrUttMark mod head mod _
+PositA head
+PositAdAAdj head
+PositAdVAdj head
+PositAdvAdj head
+PossCNN_RNP mod _ head poss
+PossNP head poss
+PossPron head
+PossPronRNP poss:3 mod mod head
+-- PredAPVP mod mod
+-- PredSCVP mod mod
+PredVP subj head
+PredVPS subj head
+PredetNP mod head
+PredetRNP mod head
+PrepCN rel head
+-- PrepIP mod mod
+PrepNP rel head
+PresPartAP head:rev:rel=subj
+ProDrop head
+ProgrVP head
+-- PurposeVP head
+QuestCl head
+-- QuestIAdv mod mod
+-- QuestIComp mod mod
+-- QuestQVP mod mod
+-- QuestSlash mod mod
+-- QuestVP mod mod
+ReflA2 head
+ReflPoss mod head
+ReflPossCNN _ head
+ReflRNP head obj
+ReflVP head
+RelCN head mod
+RelCl head
+RelNP head mod
+-- RelS mod mod
+RelSlash _ head:ref:rel=obj
+RelVP _ head:ref:rel=subj
+SSubjS head rel mod
+-- SelfAdVVP head
+-- SelfAdvVP head
+-- SelfNP head
+SentAP head mod
+SentCN head mod
+Slash2V3 head obj
+Slash3V3 head obj
+SlashBareV2S head arg
+-- SlashPrep head mod
+SlashV2A head arg
+SlashV2Q head arg
+SlashV2S head arg
+SlashV2V head arg
+SlashV2VNP head:anchor subj:3 head:only=obj
+SlashV2a head
+SlashVP subj head
+SlashVS subj head arg
+SlashVV head arg
+-- StrandQuestSlash mod mod
+-- StrandRelSlash mod mod
+SubjS rel head
+-- TExclMark mod mod
+-- TFullStop mod mod
+-- TQuestMark mod mod
+TTAnt head head
+Use2N3 head
+Use3N3 head
+UseA2 head
+UseCl mod mod head
+UseComp head
+UseComparA head
+UseDAP head
+UseDAPFem head
+UseDAPMasc head
+UseN head
+UsePN head
+UsePron head
+UseQCl mod mod head
+UseRCl mod mod head
+UseSlash mod mod head
+UseV head
+UttAP head
+UttAPFem head
+UttAccIP head
+UttAccNP head
+UttAdV head
+UttAdv head
+UttCN head
+UttCard head
+UttDatIP head
+UttDatNP head
+UttIAdv head
+UttIP head
+UttImpPl mod head
+UttImpPol mod head
+UttImpSg mod head
+UttInterj head
+UttNP head
+UttQS head
+UttS head
+UttVP head
+UttVPS head
+UttVPSFem head
+UttVPShort head
+VPSlashPrep head mod
+VocNP head
+WithoutVP head
+bottle_of_CN head
+come_to_VP head
+-- come_to_adj_VP mod mod
+cup_of_CN head
+-- dayMonthAdv mod mod
+-- dayMonthYearAdv mod mod mod
+-- few_X_short_of_Y mod mod mod
+glass_of_CN head
+has_age_VP head
+-- have_name_Cl mod mod
+how_far_QCl head
+how_old_QCl head
+intMonthday head
+intYear head
+languageCN head
+languageNP head
+-- married_Cl mod mod
+monthAdv head
+monthN head
+monthPN head
+-- monthYearAdv mod mod
+-- n_units_AP mod mod mod
+-- n_units_of_NP mod mod mod
+num head
+pot0 _
+pot0as1 _
+pot1 _
+pot1as2 _
+pot1plus _ _
+pot1to19 _
+pot2 _
+pot2as3 _
+pot2plus _ _
+pot3 _
+pot3plus _ _
+tend_VP head
+-- timeunitAdv mod mod
+-- weather_adjCl head
+-- weekdayHabitualAdv head
+-- weekdayLastAdv head
+-- weekdayN head
+-- weekdayNextAdv head
+-- weekdayPN head
+-- weekdayPunctualAdv head
+-- what_name_QCl head
+-- yearAdv head

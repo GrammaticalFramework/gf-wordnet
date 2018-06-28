@@ -1,4 +1,6 @@
-concrete ParseExtendSwe of ParseExtend = ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** open Prelude, ResSwe, CommonScand, GrammarSwe in {
+concrete ParseExtendSwe of ParseExtend = 
+  ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** 
+  open Prelude, ResSwe, CommonScand, GrammarSwe, Coordination in {
 
 lincat Mark = {s : Str} ;
 
@@ -8,8 +10,6 @@ lin gen_Quant = DefArt ;
     UttVPS vps = {s = vps.s ! Main ! (agrP3 Utr Sg)} ;
     UttVPSFem vps = {s = vps.s ! Main ! (agrP3 Utr Sg)} ;
 
-    FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! nominative) (predV verbBe)) ;
-
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
     ExclMark  = {s = "!"} ;
@@ -18,7 +18,14 @@ lin gen_Quant = DefArt ;
     AdvRNP np prep rnp = {s = \\a => np.s ! NPAcc ++ prep.s ++ rnp.s ! a; isPron = False} ;
     AdvRVP vp prep rnp = insertObjPost (\\a => prep.s ++ rnp.s ! a) vp ;
     PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = \\_ => rnp.s ! pron.a; a = pron.a; isPron=False})) ;
-    
+
+lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! nominative) (predV verbBe)) ;
+
+lincat [Comp] = {s1,s2 : Agr => Str} ;
+lin BaseComp x y = twoTable Agr x y ;
+    ConsComp xs x = consrTable Agr comma xs x ;
+    ConjComp conj ss = conjunctDistrTable Agr conj ss ;
+
 lincat CNN = {s1,s2 : DetSpecies => Case => Str ; n1,n : Number ; g1 : NGender ; isMod,isDet : Bool} ;
 
 lin BaseCNN num1 cn1 num2 cn2 = {

@@ -9,8 +9,6 @@ fun gen_Quant : Quant ;
     UttVPS : VPS -> Utt ;
     UttVPSFem : VPS -> Utt ;
 
-    FocusComp : Comp -> NP -> Cl ;
-
     PhrUttMark : PConj -> Utt -> Voc -> Mark -> Phr ;
     
     FullStop, ExclMark, QuestMark : Mark ;
@@ -18,6 +16,11 @@ fun gen_Quant : Quant ;
     AdvRNP : NP -> Prep -> RNP -> RNP ;
     AdvRVP : VP -> Prep -> RNP -> VP ;
     PossPronRNP : Pron -> Num -> CN -> RNP -> NP ;
+
+fun FocusComp : Comp -> NP -> Cl ;
+
+cat [Comp]{2} ;
+fun ConjComp : Conj -> ListComp -> Comp ;
 
 cat CNN ;
 fun BaseCNN : Num -> CN -> Num -> CN -> CNN ;

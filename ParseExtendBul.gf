@@ -8,10 +8,6 @@ lin gen_Quant = DefArt ;
     UttVPS vps = {s = vps.s ! agrP3 (GSg Masc)} ;
     UttVPSFem vps = {s = vps.s ! agrP3 (GSg Fem)} ;
 
-    FocusComp comp np =
-      mkClause (comp.s ! np.a) np.a comp.p
-               (insertObj (\\_ => np.s ! RSubj) np.p (predV verbBe)) ;
-
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
     ExclMark  = {s = "!"} ;
@@ -20,6 +16,20 @@ lin gen_Quant = DefArt ;
     AdvRNP np prep rnp = {s = \\role => np.s ! role ++ prep.s ++ rnp.s ! RObj prep.c; a = np.a; p = np.p} ;
     AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;
     PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = rnp.s; a = rnp.a; p=rnp.p})) ;    
+
+lin FocusComp comp np =
+      mkClause (comp.s ! np.a) np.a comp.p
+               (insertObj (\\_ => np.s ! RSubj) np.p (predV verbBe)) ;
+
+lincat [Comp] = {s : Bool => Ints 3 => Agr => Str} ;
+lin BaseComp x y =
+      {s = \\d,t,agr=>x.s!agr++linCoord!t++y.s!agr} ;
+    ConsComp x xs =
+      {s = \\d,t,agr=>x.s!agr++(linCoordSep comma)!d!t++xs.s!d!t!agr} ;
+    ConjComp conj ss = {
+      s = \\agr => conj.s ++ (linCoordSep [])!conj.distr!conj.conj++ss.s!conj.distr!conj.conj!agr;
+      p = Pos
+      } ;
 
 lincat CNN = {s : Bool => Ints 3 => Species => Role => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
 

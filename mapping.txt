@@ -30809,7 +30809,7 @@ easternmost_A	easternmost_A
 eastleigh_PN	eastleigh_PN
 eastside_A	eastside_A
 eastward_A	eastward_A
-eastward_Adv	eastward_Adv
+eastward_Adv	eastwards_Adv
 eastwards_Adv	eastwards_Adv
 easy_A	easy_1_A
 easy_A	easy_2_A
@@ -35067,15 +35067,11 @@ fantasy_N	fantasy_2_N
 fantasy_N	fantasy_3_N
 fantods_N	fantods_N
 fao_N	fao_N
-far_A	far_1_A
 far_A	far_2_A
 far_A	far_3_A
 far_A	far_4_A
-far_AdA	far_1_AdA
-far_AdA	far_2_AdA
-far_AdA	far_3_AdA
-far_AdA	far_4_AdA
-far_AdA	far_5_AdA
+far_AdA	far_AdA
+far_AdA	far_Adv
 far_V2	far_V2
 far_famed_A	far_famed_A
 far_fetched_A	far_fetched_1_A
@@ -38978,7 +38974,7 @@ frore_A	frore_A
 frost_N	frost_1_N
 frost_N	frost_2_N
 frost_N	frost_3_N
-frost_N	frost_4_N
+frost_N	frost_PN
 frost_V2	frost_1_V2
 frost_V2	frost_2_V2
 frost_V2	frost_3_V2
@@ -44532,9 +44528,10 @@ heaver_N	heaver_1_N
 heaver_N	heaver_2_N
 heaves_N	heaves_N
 heavily_Adv	heavily_1_Adv
+heavily_Adv	heavily_1_AdV
 heavily_Adv	heavily_2_Adv
 heavily_Adv	heavily_3_Adv
-heavily_Adv	heavily_4_Adv
+heavily_Adv	heavily_4_AdA
 heavily_Adv	heavily_5_Adv
 heavily_Adv	heavily_6_Adv
 heavily_Adv	heavily_7_Adv
@@ -78150,6 +78147,7 @@ reactivity_N	reactivity_2_N
 reactor_N	reactor_1_N
 reactor_N	reactor_2_N
 read_N	read_N
+read_V	read_1_V
 read_V	read_2_V
 read_V	read_7_V
 read_V	read_9_V

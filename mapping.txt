@@ -1697,6 +1697,7 @@ aether_N	aether_2_N
 aetiology_N	aetiology_1_N
 aetiology_N	aetiology_2_N
 afar_Adv	afar_Adv
+afar_Adv	afar_off_Adv
 afebrile_A	afebrile_A
 affability_N	affability_N
 affable_A	affable_A
@@ -1763,12 +1764,11 @@ affirmation_N	affirmation_4_N
 affirmative_A	affirmative_1_A
 affirmative_A	affirmative_2_A
 affirmative_A	affirmative_3_A
-affirmative_N	affirmative_N
 affirmativeness_N	affirmativeness_N
 affix_N	affix_N
 affix_V2	affix_1_V2
 affix_V2	affix_2_V2
-affix_V2	affix_3_V2
+affix_V2	affix_to_V2
 affixal_A	affixal_1_A
 affixation_N	affixation_1_N
 affixation_N	affixation_2_N
@@ -1784,7 +1784,7 @@ affluence_N	affluence_N
 affluent_A	affluent_A
 affluent_N	affluent_1_N
 affluent_N	affluent_2_N
-afford_V2	afford_1_V2
+afford_V2	afford_1_VV
 afford_V2	afford_2_V2
 afford_V2	afford_3_V2
 afford_V2	afford_4_V2
@@ -52099,6 +52099,7 @@ just_A	just_2_A
 just_A	just_3_A
 just_A	just_4_A
 just_AdV	just_2_AdA
+just_AdV	just_2_AdN
 just_AdV	just_3_AdV
 just_AdV	just_4_AdV
 just_AdV	just_5_AdV
@@ -68416,7 +68417,6 @@ parsnip_N	parsnip_3_N
 parson_N	parson_N
 parsonage_N	parsonage_N
 part_Adv	part_Adv
-part_N	part_1_N
 part_N	part_2_N
 part_N	part_3_N
 part_N	part_4_N
@@ -77865,7 +77865,8 @@ ratatouille_N	ratatouille_N
 ratch_N	ratch_N
 ratchet_N	ratchet_1_N
 ratchet_up_V2	ratchet_up_V2
-rate_N	rate_1_N
+rate_N	rate_1a_N
+rate_N	rate_1b_N
 rate_N	rate_2_N
 rate_N	rate_3_N
 rate_N	rate_4_N

@@ -102,7 +102,10 @@ lin UseDAP dap =
         g = neutrum ; ----
         m = True ;  ---- is this needed for other than Art?
       in {
-        s = \\c => dap.sp ! m ! g ;    ---- case of det!
+        s = table {
+               NPPoss _ _ => dap.sp ! m ! g ++ BIND ++ "s" ;
+               _          => dap.sp ! m ! g
+            } ;
         a = agrP3 (ngen2gen g) dap.n ;
         isPron = False
       } ;
@@ -112,7 +115,10 @@ lin UseDAPMasc, UseDAPFem = \dap ->
         g = utrum ; ----
         m = True ;  ---- is this needed for other than Art?
       in {
-        s = \\c => dap.sp ! m ! g ;    ---- case of det!
+        s = table {
+               NPPoss _ _ => dap.sp ! m ! g ++ BIND ++ "s" ;
+               _          => dap.sp ! m ! g
+            } ;
         a = agrP3 (ngen2gen g) dap.n ;
         isPron = False
       } ;

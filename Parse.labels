@@ -182,10 +182,10 @@ ICompAP head
 IDig _
 IIDig _ _
 -- IdetCN mod mod
--- IdetIP head
+IdetIP head
 -- IdetQuant mod mod
 -- ImpP3 mod mod
--- ImpPl1 head
+ImpPl1 head
 ImpVP head
 ImpersCl head
 InLanguage head
@@ -243,7 +243,7 @@ PossNP head poss
 PossPron head
 PossPronRNP poss:3 mod mod head
 -- PredAPVP mod mod
--- PredSCVP mod mod
+PredSCVP mod head
 PredVP subj head
 PredVPS subj head
 PredetNP mod head
@@ -256,10 +256,10 @@ ProDrop head
 ProgrVP head
 -- PurposeVP head
 QuestCl head
--- QuestIAdv mod mod
--- QuestIComp mod mod
+QuestIAdv mod head
+QuestIComp mod head
 -- QuestQVP mod mod
--- QuestSlash mod mod
+QuestSlash mod head
 -- QuestVP mod mod
 ReflA2 head
 ReflPoss mod head
@@ -342,7 +342,7 @@ VocNP head
 WithoutVP head
 bottle_of_CN head
 come_to_VP head
--- come_to_adj_VP mod mod
+come_to_adj_VP mod head
 cup_of_CN head
 -- dayMonthAdv mod mod
 -- dayMonthYearAdv mod mod mod
@@ -361,8 +361,9 @@ monthAdv head
 monthN head
 monthPN head
 -- monthYearAdv mod mod
--- n_units_AP mod mod mod
+n_units_AP mod mod head
 -- n_units_of_NP mod mod mod
+none_of_NP_affair_VP head
 num head
 pot0 _
 pot0as1 _
@@ -380,9 +381,9 @@ tend_VP head
 -- weather_adjCl head
 -- weekdayHabitualAdv head
 -- weekdayLastAdv head
--- weekdayN head
+weekdayN head
 -- weekdayNextAdv head
 -- weekdayPN head
 -- weekdayPunctualAdv head
 -- what_name_QCl head
--- yearAdv head
+yearAdv head

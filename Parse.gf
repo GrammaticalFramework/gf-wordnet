@@ -8,7 +8,7 @@ abstract Parse =
   Question,
   Relative,
   Conjunction,
-  Phrase,
+  Phrase - [UttAP],
   Text,
   Idiom,
   Tense,

@@ -1786,7 +1786,7 @@ affluent_N	affluent_1_N
 affluent_N	affluent_2_N
 afford_V2	afford_1_VV
 afford_V2	afford_2_V2
-afford_V2	afford_3_V2
+afford_V2	afford_3_VV
 afford_V2	afford_4_V2
 affordable_A	affordable_A
 afforest_V2	afforest_V2
@@ -1832,9 +1832,9 @@ afloat_A	afloat_1_A
 afloat_A	afloat_2_A
 afloat_A	afloat_3_A
 aflutter_A	aflutter_A
-afoot_A	afoot_1_A
-afoot_A	afoot_2_A
-afoot_Adv	afoot_Adv
+afoot_A	afoot_1_Adv
+afoot_A	afoot_2_Adv
+afoot_Adv	afoot_3_Adv
 afore_Adv	afore_Adv
 afore_Prep	afore_Prep
 aforementioned_A	aforementioned_A
@@ -36438,7 +36438,6 @@ fireweed_N	fireweed_1_N
 fireweed_N	fireweed_2_N
 firewood_N	firewood_N
 firework_N	firework_N
-fireworks_N	fireworks_N
 firing_N	firing_1_N
 firing_N	firing_2_N
 firing_N	firing_3_N
@@ -54166,7 +54165,6 @@ lead_V	lead_9_V
 lead_V	lead_10_V
 lead_V	lead_11_V
 lead_V	lead_12_V
-lead_V	lead_13_V
 lead_V	lead_14_V
 lead_V2	lead_1_V2
 lead_V2	lead_2_V2

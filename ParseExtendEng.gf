@@ -13,7 +13,10 @@ lin gen_Quant = {
         }
       } ;
 
-    UttAPFem = UttAP ;
+    UttAP     ap = {s = ap.s ! agrgP3 Sg Neutr} ;
+    UttAPMasc ap = {s = ap.s ! agrgP3 Sg Masc} ;
+    UttAPFem  ap = {s = ap.s ! agrgP3 Sg Fem } ;
+
     UttVPS vps = {s = vps.s ! agrP3 Sg}  ;
     UttVPSFem vps = {s = vps.s ! agrP3 Sg}  ;
 
@@ -71,6 +74,8 @@ lin ComparAsAP a comp = {
 lin ComparAsAdv adv comp = {
       s = "as" ++ adv.s ++ "as" ++ comp.s ! agrP3 Sg
     } ;
+
+lin TimeNP np = {s = np.s ! NPAcc} ;
 
 lin UseDAP dap = {
       s = dap.sp ! Neutr ! False ;

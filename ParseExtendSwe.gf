@@ -6,7 +6,10 @@ lincat Mark = {s : Str} ;
 
 lin gen_Quant = DefArt ;
 
-    UttAPFem = UttAP ;
+    UttAP     ap = {s = ap.s ! Strong (GSg Neutr)} ;
+    UttAPMasc ap = {s = ap.s ! Strong (GSg Utr)} ;
+    UttAPFem  ap = {s = ap.s ! Strong (GSg Utr)} ;
+
     UttVPS vps = {s = vps.s ! Main ! (agrP3 Utr Sg)} ;
     UttVPSFem vps = {s = vps.s ! Main ! (agrP3 Utr Sg)} ;
 
@@ -96,6 +99,8 @@ lin ComparAsAP a comp = {
 lin ComparAsAdv adv comp = {
       s = adv.s ++ "som" ++ comp.s ! agrP3 Neutr Sg
     } ;
+
+lin TimeNP np = {s = np.s ! accusative} ;
 
 lin UseDAP dap = 
       let 

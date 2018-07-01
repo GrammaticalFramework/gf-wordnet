@@ -9,7 +9,7 @@ concrete ParseEng of Parse =
   QuestionEng,
   RelativeEng - [IdRP],
   ConjunctionEng,
-  PhraseEng,
+  PhraseEng - [UttAP],
   TextX - [Pol,PPos,PNeg,SC],
   IdiomEng,
   TenseX - [Pol,PPos,PNeg,SC],

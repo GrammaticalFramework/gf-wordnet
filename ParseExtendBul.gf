@@ -4,7 +4,10 @@ lincat Mark = {s : Str} ;
 
 lin gen_Quant = DefArt ;
 
-    UttAPFem ap = {s = ap.s ! ASg Fem Indef ! P3} ;
+    UttAP     ap = {s = ap.s ! ASg Neut Indef ! P3} ;
+    UttAPMasc ap = {s = ap.s ! ASg Masc Indef ! P3} ;
+    UttAPFem  ap = {s = ap.s ! ASg Fem  Indef ! P3} ;
+
     UttVPS vps = {s = vps.s ! agrP3 (GSg Masc)} ;
     UttVPSFem vps = {s = vps.s ! agrP3 (GSg Fem)} ;
 
@@ -131,6 +134,8 @@ lin ComparAsAP a comp = {
     ComparAsAdv adv comp = {
       s = adv.s ++ "колкото" ++ comp.s ! agrP3 (GSg Neut)
     } ;
+
+lin TimeNP np = {s = np.s ! RObj Acc} ;
 
 lin UseDAP dap = {
       s = \\role => let s = dap.s ! False ! ANeut ! role

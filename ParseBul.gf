@@ -9,7 +9,7 @@ concrete ParseBul of Parse =
   QuestionBul,
   RelativeBul,
   ConjunctionBul,
-  PhraseBul,
+  PhraseBul - [UttAP],
   TextBul,
   IdiomBul,
   TenseX - [CAdv,IAdv,AdV,SC],

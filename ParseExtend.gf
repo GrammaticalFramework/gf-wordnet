@@ -4,8 +4,10 @@ cat Mark ;
 
 fun gen_Quant : Quant ;
 
-    UttAPFem : AP -> Utt ;
-    
+    UttAP     : AP -> Utt ;
+    UttAPMasc : AP -> Utt ;
+    UttAPFem  : AP -> Utt ;
+
     UttVPS : VPS -> Utt ;
     UttVPSFem : VPS -> Utt ;
 
@@ -36,6 +38,8 @@ fun BareN2 : N2 -> N ;
 
 fun ComparAsAP : AP -> Comp -> AP ;
     ComparAsAdv : Adv -> Comp -> Adv ;
+
+fun TimeNP : NP -> Adv ;
 
 fun UseDAP     : DAP -> NP ;
     UseDAPMasc : DAP -> NP ;

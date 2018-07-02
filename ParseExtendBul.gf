@@ -30,7 +30,7 @@ lincat [Comp] = {s : Bool => Ints 3 => Agr => Str} ;
 lin BaseComp x y =
       {s = \\d,t,agr=>x.s!agr++linCoord!t++y.s!agr} ;
     ConsComp x xs =
-      {s = \\d,t,agr=>x.s!agr++(linCoordSep comma)!d!t++xs.s!d!t!agr} ;
+      {s = \\d,t,agr=>x.s!agr++(linCoordSep bindComma)!d!t++xs.s!d!t!agr} ;
     ConjComp conj ss = {
       s = \\agr => conj.s ++ (linCoordSep [])!conj.distr!conj.conj++ss.s!conj.distr!conj.conj!agr;
       p = Pos
@@ -115,7 +115,7 @@ lin BaseCNN num1 cn1 num2 cn2 =
 
 lin RelNP    = GrammarBul.RelNP ;
     ExtRelNP np rs = {
-      s = \\r => np.s ! r ++ comma ++ rs.s ! np.a ;
+      s = \\r => np.s ! r ++ bindComma ++ rs.s ! np.a ;
       a = np.a ;
       p = np.p
       } ;

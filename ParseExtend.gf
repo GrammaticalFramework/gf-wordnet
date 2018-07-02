@@ -1,4 +1,5 @@
-abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** {
+abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP] ** {
 
 cat Mark ;
 
@@ -18,6 +19,8 @@ fun gen_Quant : Quant ;
     AdvRNP : NP -> Prep -> RNP -> RNP ;
     AdvRVP : VP -> Prep -> RNP -> VP ;
     PossPronRNP : Pron -> Num -> CN -> RNP -> NP ;
+    ReflA2 : A2 -> RNP -> AP ;
+    ReflVPSlash : VPSlash -> RNP -> VP ;
 
 fun FocusComp : Comp -> NP -> Cl ;
 
@@ -51,5 +54,16 @@ fun whatSgFem_IP : IP ;
     whatSgNeut_IP : IP ;
 
 fun that_RP : RP ;
+
+fun EmbedVP : Ant -> Pol -> VP -> SC ;
+    ComplVV : VV -> Ant -> Pol -> VP -> VP ;
+    SlashVV  : VV  -> Ant -> Pol -> VPSlash -> VPSlash ;
+    SlashV2V : V2V -> Ant -> Pol -> VP -> VPSlash ;
+    SlashV2VNP : V2V -> NP -> Ant -> Pol -> VPSlash -> VPSlash ;
+    InOrderToVP : Ant -> Pol -> VP -> Adv ;
+    CompVP : Ant -> Pol -> VP -> Comp ;
+    UttVP : Ant -> Pol -> VP -> Utt ;
+    UttVPMasc : Ant -> Pol -> VP -> Utt ;
+    UttVPFem : Ant -> Pol -> VP -> Utt ;
 
 }

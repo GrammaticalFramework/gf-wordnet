@@ -1,5 +1,6 @@
 concrete ParseExtendSwe of ParseExtend = 
-  ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** 
+  ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP] ** 
   open Prelude, ResSwe, CommonScand, GrammarSwe, Coordination in {
 
 lincat Mark = {s : Str} ;
@@ -135,5 +136,48 @@ lin AdvImp adv imp = {
 lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
 
 lin that_RP = IdRP ;
+
+lin EmbedVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 Utr Sg) ant.a pol.p} ; --- agr
+
+    ComplVV vv ant pol vp = insertObjPost (\\a => vv.c2.s ++ ant.s ++ pol.s ++ infVPPlus vp a ant.a pol.p) (predV vv) ;
+
+    SlashVV vv ant pol slash = 
+      insertObj (\\a => vv.c2.s ++ ant.s ++ pol.s ++ infVPPlus slash a ant.a pol.p) (predV vv) ** {n3 = slash.n3 ; c2 = slash.c2} ;
+
+    SlashV2V v ant pol vp = predV v ** {
+      n3 = \\a => v.c3.s ++ ant.s ++ pol.s ++ infVPPlus vp a ant.a pol.p ;
+      c2 = v.c2
+      } ;
+
+    SlashV2VNP vv np ant pol vp =
+      insertObj
+        (\\a => vv.c2.s ++ np.s ! accusative ++ vv.c3.s ++ ant.s ++ pol.s ++ infVPPlus vp a ant.a pol.p) (predV vv) 
+        ** {n3 = vp.n3 ; c2 = vv.c2} ;
+
+    InOrderToVP ant pol vp = {  -- infinitive: att dricka öl, att vara glad
+      s = "för att" ++ ant.s ++ pol.s ++ infVPPlus vp {g = Utr ; n = Sg ; p = P3} ant.a pol.p
+    } ;
+
+    CompVP ant pol vp = {s = \\agr => "att" ++ ant.s ++ pol.s ++ infVPPlus vp agr ant.a pol.p} ;
+
+    UttVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 Neutr Sg) ant.a pol.p} ;
+    UttVPMasc ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 Utr Sg) ant.a pol.p} ;
+    UttVPFem  ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 Utr Sg) ant.a pol.p} ;
+
+    ReflA2 a rnp = {
+      s = \\ap => let agr = case ap of {
+                              Strong (GSg g) => agrP3 g Sg ;
+                              Strong GPl => agrP3 Utr Pl ;
+                              Weak n => agrP3 Utr n
+                            }
+                    
+                  in a.s ! AF (APosit ap) Nom ++ a.c2.s ++ rnp.s ! agr ;
+      isPre = False
+      } ;
+
+    ReflVPSlash vps rnp = 
+      insertObjPron (andB (notB vps.c2.hasPrep) rnp.isPron)
+                    rnp.s
+	                (insertObj (\\a => vps.c2.s ++ vps.n3 ! a) vps) ;
 
 }

@@ -1,4 +1,6 @@
-concrete ParseExtendBul of ParseExtend = ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP] ** open Predef, Prelude, ResBul, GrammarBul in {
+concrete ParseExtendBul of ParseExtend = 
+  ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP] ** open Predef, Prelude, ResBul, GrammarBul in {
 
 lincat Mark = {s : Str} ;
 
@@ -179,4 +181,65 @@ lin whatSgFem_IP  = mkIP "каква" "каква" (GSg Fem) ;
 
 lin that_RP = IdRP ;
 
+lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agr} ;
+
+    ComplVV vv ant pol vp =
+      insertObj (\\agr => ant.s ++ pol.s ++ 
+                          case vv.typ of {
+                            VVInf asp => daComplex ant.a pol.p vp ! asp ! agr;
+                            VVGerund  => gerund vp ! Imperf ! agr
+                          }) vp.p
+                (predV vv) ;
+
+    SlashVV vv ant pol slash = {
+      s = vv.s ;
+      ad = {isEmpty=True; s=[]};
+      compl1 = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p {s=slash.s; ad=slash.ad; compl=slash.compl1; vtype=slash.vtype; p = Pos; isSimple = slash.isSimple} ! Perf ! agr ;
+      compl2 = slash.compl2 ;
+      vtype  = vv.vtype ;
+      p  = slash.p ;
+      c2 = slash.c2 ;
+      isSimple = False ;
+      subjCtrl = slash.subjCtrl
+      } ;
+
+    SlashV2V vv ant pol vp =
+      insertSlashObj2 (\\agr => ant.s ++ pol.s ++ vv.c3.s ++ daComplex ant.a (orPol pol.p vp.p) vp ! Perf ! agr) Pos (slashV vv vv.c2 vv.subjCtrl) ;
+
+    SlashV2VNP vv np ant pol slash = {
+      s = vv.s ;
+      ad = {isEmpty=True; s=[]};
+      compl1 = \\agr => ant.s ++ pol.s ++ vv.c2.s ++ np.s ! RObj vv.c2.c ++ 
+                        daComplex ant.a (orPol pol.p np.p) {s=slash.s; ad=slash.ad; compl=slash.compl1; vtype=slash.vtype; p=Pos; isSimple = slash.isSimple} ! Perf ! np.a ;
+      compl2 = slash.compl2 ;
+      vtype = vv.vtype ;
+      p  = Pos ;
+      c2 = slash.c2 ;
+      isSimple = False ;
+      subjCtrl = slash.subjCtrl
+      } ;
+
+    InOrderToVP ant pol vp =
+      {s = "за" ++ ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! {gn=GSg Neut; p=P3}};
+
+    CompVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agr; p = Pos} ;
+
+    UttVP ant pol vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Neut)} ;
+    UttVPMasc ant pol vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Masc)} ;
+    UttVPFem  ant pol vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Fem)} ;
+
+    ReflA2 a rnp = {
+      s = \\aform,_ => a.s ! aform ++ a.c2 ++ rnp.s ! RObj Acc ;
+      adv = a.adv ++ a.c2 ++ rnp.s ! RObj Acc ; 
+      isPre = False
+      } ;
+
+    ReflVPSlash slash rnp = {
+      s   = slash.s ;
+      ad  = slash.ad ;
+      compl = \\a => slash.compl1 ! a ++ slash.c2.s ++ rnp.s ! RObj slash.c2.c ++ slash.compl2 ! rnp.a ;
+      vtype = slash.vtype ;
+      p   = orPol rnp.p slash.p ;
+      isSimple = False
+    } ;
 }

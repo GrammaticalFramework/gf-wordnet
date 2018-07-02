@@ -21,6 +21,16 @@ lin gen_Quant = DefArt ;
 
     AdvRNP np prep rnp = {s = \\a => np.s ! NPAcc ++ prep.s ++ rnp.s ! a; isPron = False} ;
     AdvRVP vp prep rnp = insertObjPost (\\a => prep.s ++ rnp.s ! a) vp ;
+    AdvRAP ap prep rnp = {
+      s = \\a => let agr = case a of {
+                              Strong (GSg g) => agrP3 g Sg ;
+                              Strong GPl => agrP3 Utr Pl ;
+                              Weak n => agrP3 Utr n
+                            }
+                  in ap.s ! a ++ prep.s ++ rnp.s ! agr ;
+      isPre = ap.isPre
+      } ;
+
     PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = \\_ => rnp.s ! pron.a; a = pron.a; isPron=False})) ;
 
 lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! nominative) (predV verbBe)) ;
@@ -170,7 +180,6 @@ lin EmbedVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 U
                               Strong GPl => agrP3 Utr Pl ;
                               Weak n => agrP3 Utr n
                             }
-                    
                   in a.s ! AF (APosit ap) Nom ++ a.c2.s ++ rnp.s ! agr ;
       isPre = False
       } ;

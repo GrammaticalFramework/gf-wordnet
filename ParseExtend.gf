@@ -18,6 +18,7 @@ fun gen_Quant : Quant ;
 
     AdvRNP : NP -> Prep -> RNP -> RNP ;
     AdvRVP : VP -> Prep -> RNP -> VP ;
+    AdvRAP : AP -> Prep -> RNP -> AP ;
     PossPronRNP : Pron -> Num -> CN -> RNP -> NP ;
     ReflA2 : A2 -> RNP -> AP ;
     ReflVPSlash : VPSlash -> RNP -> VP ;

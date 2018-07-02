@@ -1900,7 +1900,7 @@ agamic_A	agamic_A
 agamid_N	agamid_N
 agammaglobulinemia_N	agammaglobulinemia_N
 agapanthus_N	agapanthus_N
-agape_A	agape_A
+agape_A	agape_Adv
 agape_N	agape_1_N
 agape_N	agape_2_N
 agape_N	agape_3_N
@@ -93394,7 +93394,7 @@ stern_A	stern_2_A
 stern_A	stern_3_A
 stern_A	stern_4_A
 stern_N	stern_1_N
-stern_N	stern_2_N
+stern_N	stern_PN
 stern_N	stern_3_N
 sternal_A	sternal_A
 sternness_N	sternness_1_N

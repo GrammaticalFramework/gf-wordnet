@@ -20,6 +20,12 @@ lin gen_Quant = DefArt ;
 
     AdvRNP np prep rnp = {s = \\role => np.s ! role ++ prep.s ++ rnp.s ! RObj prep.c; a = np.a; p = np.p} ;
     AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;
+    AdvRAP ap prep rnp = {
+      s = \\aform,p => ap.s ! aform ! p ++ prep.s ++ rnp.s ! RObj prep.c ;
+      adv = ap.adv ++ prep.s ++ rnp.s ! RObj prep.c ;
+      isPre = False
+    } ;
+
     PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = rnp.s; a = rnp.a; p=rnp.p})) ;    
 
 lin FocusComp comp np =

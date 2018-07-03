@@ -1900,7 +1900,7 @@ agamic_A	agamic_A
 agamid_N	agamid_N
 agammaglobulinemia_N	agammaglobulinemia_N
 agapanthus_N	agapanthus_N
-agape_A	agape_Adv
+agape_A	agape_A
 agape_N	agape_1_N
 agape_N	agape_2_N
 agape_N	agape_3_N
@@ -1921,7 +1921,7 @@ age_N	age_4_N
 age_N	age_5_N
 age_V	age_1_V
 age_V	age_2_V
-age_V	age_3_V
+age_V	age_V2
 age_bracket_N	age_bracket_N
 age_group_N	age_group_N
 age_long_A	age_long_A
@@ -1942,18 +1942,15 @@ agency_N	agency_5_N
 agenda_N	agenda_1_N
 agenda_N	agenda_2_N
 agenesis_N	agenesis_1_N
-agentFem_N	agentFem_1_N
 agentFem_N	agentFem_2_N
-agentFem_N	agentFem_3_N
 agentFem_N	agentFem_4_N
 agentFem_N	agentFem_5_N
-agentFem_N	agentFem_6_N
-agentMasc_N	agentMasc_1_N
+agentMasc_N	agent_1_N
 agentMasc_N	agentMasc_2_N
-agentMasc_N	agentMasc_3_N
+agentMasc_N	agent_3_N
 agentMasc_N	agentMasc_4_N
 agentMasc_N	agentMasc_5_N
-agentMasc_N	agentMasc_6_N
+agentMasc_N	agent_6_N
 agent_provocateur_N	agent_provocateur_N
 agential_A	agential_A
 agerasia_N	agerasia_N
@@ -2077,7 +2074,7 @@ agonistic_A	agonistic_3_A
 agonize_V	agonize_1_V
 agonize_V	agonize_2_V
 agonized_A	agonized_1_A
-agonizingly_Adv	agonizingly_Adv
+agonizingly_Adv	agonizingly_AdA
 agony_N	agony_1_N
 agony_N	agony_2_N
 agora_N	agora_1_N
@@ -2093,7 +2090,7 @@ agrapha_N	agrapha_N
 agraphia_N	agraphia_N
 agraphic_A	agraphic_A
 agrarian_A	agrarian_A
-agree_V	agree_2_V
+agree_V	agree_to_V2
 agree_V	agree_3_V
 agree_V	agree_4_V
 agree_V	agree_5_V
@@ -32376,7 +32373,7 @@ enslavement_N	enslavement_1_N
 enslavement_N	enslavement_2_N
 ensnare_V2	ensnare_1_V2
 ensnare_V2	ensnare_2_V2
-ensue_V	ensue_V
+ensue_V	ensue_in_V2
 ensure_V	ensure_2_V
 ensure_V2	ensure_1_V2
 ensure_V2	ensure_2_V2
@@ -40564,7 +40561,6 @@ get_on_2_V2	get_on_2_V2
 get_on_2_V2	get_on_3_V2
 get_on_2_V2	get_on_4_V2
 get_on_2_V2	get_on_6_V2
-get_on_2_V2	get_on_7_V2
 get_on_V	get_on_1_V
 get_on_V	get_on_2_V
 get_on_V	get_on_3_V
@@ -54156,7 +54152,6 @@ lead_N	lead_14_N
 lead_N	lead_15_N
 lead_N	lead_16_N
 lead_N	lead_17_N
-lead_V	lead_2_V
 lead_V	lead_4_V
 lead_V	lead_6_V
 lead_V	lead_7_V
@@ -54167,7 +54162,6 @@ lead_V	lead_11_V
 lead_V	lead_12_V
 lead_V	lead_14_V
 lead_V2	lead_1_V2
-lead_V2	lead_2_V2
 lead_V2	lead_4_V2
 lead_V2	lead_6_V2
 lead_V2	lead_7_V2
@@ -54178,7 +54172,6 @@ lead_V2	lead_11_V2
 lead_V2	lead_12_V2
 lead_V2	lead_13_V2
 lead_V2	lead_14_V2
-lead_V2V	lead_2_V2V
 lead_V2V	lead_4_V2V
 lead_V2V	lead_5_V2V
 lead_V2V	lead_7_V2V
@@ -56288,7 +56281,6 @@ long_A	long_6_A
 long_A	long_7_A
 long_A	long_8_A
 long_A	long_9_A
-long_N	long_N
 long_V	long_V
 long_distance_A	long_distance_1_A
 long_distance_A	long_distance_2_A
@@ -58829,7 +58821,6 @@ mature_V	mature_5_V
 mature_V	mature_6_V
 mature_V2	mature_2_V2
 mature_V2	mature_4_V2
-mature_V2	mature_5_V2
 mature_V2	mature_6_V2
 maturity_1_N	maturity_2_N
 maturity_2_N	maturity_1_N
@@ -67132,7 +67123,7 @@ overlook_V2	overlook_4_V2
 overlook_V2	overlook_5_V2
 overlord_N	overlord_N
 overlordship_N	overlordship_N
-overly_Adv	overly_Adv
+overly_Adv	overly_AdA
 overmantel_N	overmantel_N
 overmaster_V2	overmaster_V2
 overmodest_A	overmodest_A
@@ -75474,14 +75465,10 @@ provide_V2	provide_2_V2
 provide_V2	provide_4_V2
 provide_V2	provide_6_V2
 provided_Subj	provided_Subj
-providence_N	providence_1_N
 providence_N	providence_2_N
 providence_N	providence_3_N
 providence_N	providence_4_N
-providence_PN	providence_1_PN
-providence_PN	providence_2_PN
-providence_PN	providence_3_PN
-providence_PN	providence_4_PN
+providence_PN	providence_PN
 provident_A	provident_1_A
 provident_A	provident_2_A
 providential_A	providential_1_A
@@ -80808,9 +80795,9 @@ result_N	result_1_N
 result_N	result_2_N
 result_N	result_3_N
 result_N	result_4_N
-result_V	result_1_V
-result_V	result_2_V
-result_V	result_3_V
+result_V	result_in_V2
+result_V	result_to_V2
+result_V	result_from_V2
 resultant_A	resultant_A
 resultant_N	resultant_1_N
 resultant_N	resultant_2_N
@@ -82126,12 +82113,7 @@ rod_N	rod_3_N
 rod_N	rod_4_N
 rod_N	rod_5_N
 rod_N	rod_6_N
-rod_PN	rod_1_PN
-rod_PN	rod_2_PN
-rod_PN	rod_3_PN
-rod_PN	rod_4_PN
-rod_PN	rod_5_PN
-rod_PN	rod_6_PN
+rod_PN	rod_PN
 rodent_N	rodent_N
 rodeo_N	rodeo_1_N
 rodeo_N	rodeo_2_N
@@ -82142,8 +82124,8 @@ roe_N	roe_2_N
 roe_N	roe_3_N
 roe_N	roe_4_N
 roebuck_N	roebuck_N
-roentgen_N	roentgen_1_N
-roentgen_N	roentgen_2_N
+roentgen_N	roentgen_N
+roentgen_N	roentgen_PN
 roentgenium_N	roentgenium_N
 roentgenogram_N	roentgenogram_N
 roentgenographic_A	roentgenographic_A
@@ -89496,11 +89478,9 @@ slow_V	slow_1_V
 slow_V	slow_2_V
 slow_V2	slow_1_V2
 slow_V2	slow_3_V2
-slow_down_V	slow_down_1_V
 slow_down_V	slow_down_5_V
 slow_down_V2	slow_down_1_V2
 slow_down_V2	slow_down_4_V2
-slow_down_V2	slow_down_5_V2
 slow_up_V2	slow_up_3_V2
 slow_worm_N	slow_worm_N
 slowcoach_N	slowcoach_N
@@ -100245,6 +100225,7 @@ tony_PN	tony_PN
 tonyrefail_PN	tonyrefail_PN
 too_AdA	too_AdA
 too_Adv	too_Adv
+too_AdA	too_Predet
 tool_N	tool_1_N
 tool_N	tool_2_N
 tool_N	tool_3_N
@@ -109948,7 +109929,6 @@ worse_A	worse_2_A
 worse_Adv	worse_Adv
 worse_N	worse_N
 worsen_V	worsen_1_V
-worsen_V	worsen_2_V
 worsen_V2	worsen_2_V2
 worsening_N	worsening_1_N
 worsening_N	worsening_2_N

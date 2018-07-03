@@ -248,4 +248,7 @@ lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p v
       p   = orPol rnp.p slash.p ;
       isSimple = False
     } ;
+
+lin RecipVPSlash slash = GrammarBul.ComplSlash (slash ** {vtype=VMedial slash.c2.c}) (mkNP ("един"++slash.c2.s++"друг") (GSg Masc) P3 Pos);
+
 }

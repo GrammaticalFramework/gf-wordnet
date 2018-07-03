@@ -189,4 +189,6 @@ lin EmbedVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 U
                     rnp.s
 	                (insertObj (\\a => vps.c2.s ++ vps.n3 ! a) vps) ;
 
+lin RecipVPSlash slash = GrammarSwe.ComplSlash slash (regNP "varandra" "varandra" Utr Sg);
+
 }

@@ -156,4 +156,6 @@ lin EmbedVP ant pol vp = {s =
       isPre = False
       } ;
 
+lin RecipVPSlash slash = GrammarEng.ComplSlash slash (mkNP "each other" "each other" "each other" Sg P3 Masc);
+
 }

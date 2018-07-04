@@ -99,7 +99,7 @@ lin BaseCNN num1 cn1 num2 cn2 =
                     s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++ 
                            conj.s ++ (linCoordSep [])!conj.distr!conj.conj ++ 
                            cnn.s ! conj.distr ! conj.conj ! spec ! role ++
-                           "на" ++ rnp.s ! (RObj Acc)
+                           "на" ++ rnp.s ! (RObj CPrep)
                 in case role of {
                      RObj c => linCase c quant.p ++ s;
                      _      => s
@@ -134,7 +134,7 @@ lin ComparAsAP a comp = {
       s = adv.s ++ "колкото" ++ comp.s ! agrP3 (GSg Neut)
     } ;
 
-lin TimeNP np = {s = np.s ! RObj Acc} ;
+lin TimeNP np = {s = np.s ! RObj CPrep} ;
 
 lin UseDAP dap = {
       s  = \\role => let s = dap.s ! False ! ANeut ! role
@@ -225,8 +225,8 @@ lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p v
     UttVPFem  ant pol vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Fem)} ;
 
     ReflA2 a rnp = {
-      s = \\aform,_ => a.s ! aform ++ a.c2 ++ rnp.s ! RObj Acc ;
-      adv = a.adv ++ a.c2 ++ rnp.s ! RObj Acc ; 
+      s = \\aform,_ => a.s ! aform ++ a.c2 ++ rnp.s ! RObj CPrep ;
+      adv = a.adv ++ a.c2 ++ rnp.s ! RObj CPrep ; 
       isPre = False
       } ;
 

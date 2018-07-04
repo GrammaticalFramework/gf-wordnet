@@ -18,7 +18,7 @@ lin gen_Quant = DefArt ;
     ExclMark  = {s = "!"} ;
     QuestMark = {s = "?"} ;
 
-    AdvRNP np prep rnp = {s = \\role => np.s ! role ++ prep.s ++ rnp.s ! RObj prep.c; a = np.a; p = np.p} ;
+    AdvRNP np prep rnp = {s = \\role => np.s ! role ++ prep.s ++ rnp.s ! RObj prep.c; gn = np.gn; p = np.p} ;
     AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;
     AdvRAP ap prep rnp = {
       s = \\aform,p => ap.s ! aform ! p ++ prep.s ++ rnp.s ! RObj prep.c ;
@@ -26,11 +26,11 @@ lin gen_Quant = DefArt ;
       isPre = False
     } ;
 
-    PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = rnp.s; a = rnp.a; p=rnp.p})) ;    
+    PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = rnp.s; gn = rnp.gn; p=NounP3 Pos})) ;    
 
 lin FocusComp comp np =
-      mkClause (comp.s ! np.a) np.a comp.p
-               (insertObj (\\_ => np.s ! RSubj) np.p (predV verbBe)) ;
+      mkClause (comp.s ! personAgr np.gn np.p) np.gn (NounP3 comp.p)
+               (insertObj (\\_ => np.s ! RSubj) (personPol np.p) (predV verbBe)) ;
 
 lincat [Comp] = {s : Bool => Ints 3 => Agr => Str} ;
 lin BaseComp x y =
@@ -73,30 +73,24 @@ lin BaseCNN num1 cn1 num2 cn2 =
       } ;
       
     DetCNN quant conj cnn =
-      { s = \\role => 
-                let spec = case cnn.nonEmpty of {True=>Indef; _=>quant.spec} ;
-                    s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++ 
-                           conj.s ++ (linCoordSep [])!conj.distr!conj.conj ++ 
-                           cnn.s ! conj.distr ! conj.conj ! spec ! role
-                in case role of {
-                     RObj Dat      => "на" ++ s;
-                     RObj WithPrep => case quant.p of {
-                                        Pos => with_Word ++ s ;
-                                        Neg => "без" ++ s
-                                      } ;
-                     _             => s
-                   } ;
-        a = {gn = gennum cnn.g1 (numnnum cnn.n); p = P3} ;
-        p = quant.p ;
-        g = cnn.g1
+      { s  = \\role => 
+                 let spec = case cnn.nonEmpty of {True=>Indef; _=>quant.spec} ;
+                     s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++ 
+                            conj.s ++ (linCoordSep [])!conj.distr!conj.conj ++ 
+                            cnn.s ! conj.distr ! conj.conj ! spec ! role
+                 in case role of {
+                      RObj c => linCase c quant.p ++ s;
+                      _      => s
+                    } ;
+        gn = gennum cnn.g1 (numnnum cnn.n);
+        p  = NounP3 quant.p
       } ;
       
     ReflPossCNN conj cnn = {
         s = \\role => reflPron ! aform (gennum cnn.g1 (numnnum cnn.n1)) Def (RObj Acc) ++
                       conj.s ++ (linCoordSep [])!conj.distr!conj.conj ++ 
                       cnn.s ! conj.distr ! conj.conj ! Def ! role ;
-        a = {gn = gennum cnn.g1 (numnnum cnn.n); p = P3} ;
-        p = Pos
+        gn = gennum cnn.g1 (numnnum cnn.n)
       } ;
       
     PossCNN_RNP quant conj cnn rnp =
@@ -107,23 +101,20 @@ lin BaseCNN num1 cn1 num2 cn2 =
                            cnn.s ! conj.distr ! conj.conj ! spec ! role ++
                            "на" ++ rnp.s ! (RObj Acc)
                 in case role of {
-                     RObj Dat      => "на" ++ s;
-                     RObj WithPrep => case quant.p of {
-                                        Pos => with_Word ++ s ;
-                                        Neg => "без" ++ s
-                                      } ;
-                     _             => s
+                     RObj c => linCase c quant.p ++ s;
+                     _      => s
                    } ;
-        a = {gn = gennum cnn.g1 (numnnum cnn.n); p = P3} ;
-        p = quant.p ;
-        g = cnn.g1
+        gn = gennum cnn.g1 (numnnum cnn.n)
       } ;
 
 lin RelNP    = GrammarBul.RelNP ;
     ExtRelNP np rs = {
-      s = \\r => np.s ! r ++ bindComma ++ rs.s ! np.a ;
-      a = np.a ;
-      p = np.p
+      s  = \\role => case role of {
+                       RObj c => linCase c (personPol np.p) ++ np.s ! RObj CPrep ;
+                       role   => np.s ! role
+                     } ++ bindComma ++ rs.s ! personAgr np.gn np.p ;
+      gn = np.gn ;
+      p  = NounP3 (personPol np.p)
       } ;
 
 lin BareN2 n2 = n2 ;
@@ -146,36 +137,33 @@ lin ComparAsAP a comp = {
 lin TimeNP np = {s = np.s ! RObj Acc} ;
 
 lin UseDAP dap = {
-      s = \\role => let s = dap.s ! False ! ANeut ! role
-                    in case role of {
-                         RObj Dat      => "на" ++ s;
-                         RObj WithPrep => with_Word ++ s;
-                         _             => s
-                       } ;
-      a = {gn = gennum ANeut (numnnum dap.nn); p = P3} ;
-      p = dap.p
+      s  = \\role => let s = dap.s ! False ! ANeut ! role
+                     in case role of {
+                          RObj c => linCase c dap.p ++ s;
+                          _      => s
+                        } ;
+      gn = gennum ANeut (numnnum dap.nn);
+      p  = NounP3 dap.p
       } ;
 
     UseDAPMasc dap = {
-      s = \\role => let s = dap.s ! False ! (AMasc Human) ! role
-                    in case role of {
-                         RObj Dat      => "на" ++ s;
-                         RObj WithPrep => with_Word ++ s;
-                         _             => s
-                       } ;
-      a = {gn = gennum (AMasc Human) (numnnum dap.nn); p = P3} ;
-      p = dap.p
+      s  = \\role => let s = dap.s ! False ! (AMasc Human) ! role
+                     in case role of {
+                          RObj c => linCase c dap.p ++ s;
+                          _      => s
+                        } ;
+      gn = gennum (AMasc Human) (numnnum dap.nn);
+      p  = NounP3 dap.p
       } ;
 
     UseDAPFem dap = {
       s = \\role => let s = dap.s ! False ! AFem ! role
                     in case role of {
-                         RObj Dat      => "на" ++ s;
-                         RObj WithPrep => with_Word ++ s;
-                         _             => s
+                         RObj c => linCase c dap.p ++ s;
+                         _      => s
                        } ;
-      a = {gn = gennum AFem (numnnum dap.nn); p = P3} ;
-      p = dap.p
+      gn = gennum AFem (numnnum dap.nn);
+      p  = NounP3 dap.p
       } ;
 
 lin AdvImp adv imp = {
@@ -200,7 +188,8 @@ lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p v
     SlashVV vv ant pol slash = {
       s = vv.s ;
       ad = {isEmpty=True; s=[]};
-      compl1 = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p {s=slash.s; ad=slash.ad; compl=slash.compl1; vtype=slash.vtype; p = Pos; isSimple = slash.isSimple} ! Perf ! agr ;
+      clitics = [] ;
+      compl1 = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p {s=slash.s; ad=slash.ad; clitics=slash.clitics; compl=slash.compl1; vtype=slash.vtype; p = Pos; isSimple = slash.isSimple} ! Perf ! agr ;
       compl2 = slash.compl2 ;
       vtype  = vv.vtype ;
       p  = slash.p ;
@@ -215,8 +204,9 @@ lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p v
     SlashV2VNP vv np ant pol slash = {
       s = vv.s ;
       ad = {isEmpty=True; s=[]};
+      clitics = [] ;
       compl1 = \\agr => ant.s ++ pol.s ++ vv.c2.s ++ np.s ! RObj vv.c2.c ++ 
-                        daComplex ant.a (orPol pol.p np.p) {s=slash.s; ad=slash.ad; compl=slash.compl1; vtype=slash.vtype; p=Pos; isSimple = slash.isSimple} ! Perf ! np.a ;
+                        daComplex ant.a (orPol pol.p (personPol np.p)) {s=slash.s; ad=slash.ad; clitics=slash.clitics; compl=slash.compl1; vtype=slash.vtype; p=Pos; isSimple = slash.isSimple} ! Perf ! personAgr np.gn np.p ;
       compl2 = slash.compl2 ;
       vtype = vv.vtype ;
       p  = Pos ;
@@ -243,12 +233,24 @@ lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p v
     ReflVPSlash slash rnp = {
       s   = slash.s ;
       ad  = slash.ad ;
-      compl = \\a => slash.compl1 ! a ++ slash.c2.s ++ rnp.s ! RObj slash.c2.c ++ slash.compl2 ! rnp.a ;
+      clitics = slash.clitics ;
+      compl = \\a => slash.compl1 ! a ++ slash.c2.s ++ rnp.s ! RObj slash.c2.c ++ slash.compl2 ! agrP3 rnp.gn ;
       vtype = slash.vtype ;
-      p   = orPol rnp.p slash.p ;
+      p     = slash.p ;
       isSimple = False
     } ;
 
-lin RecipVPSlash slash = GrammarBul.ComplSlash (slash ** {vtype=VMedial slash.c2.c}) (mkNP ("един"++slash.c2.s++"друг") (GSg Masc) P3 Pos);
+lin RecipVPSlash slash = {
+      s   = slash.s ;
+      ad  = slash.ad ;
+      clitics = slash.clitics ;
+      compl = \\a => slash.compl1 ! a ++ "един"++linPrep slash.c2++"друг" ++ slash.compl2 ! a ;
+      vtype = case slash.c2.c of {
+                Acc | Dat => VMedial slash.c2.c ;
+                _         => slash.vtype
+              } ;
+      p     = slash.p ;
+      isSimple = False
+      } ;
 
 }

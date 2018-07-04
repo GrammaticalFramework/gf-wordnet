@@ -50102,8 +50102,8 @@ interface_N	interface_3_N
 interface_N	interface_4_N
 interfacial_A	interfacial_A
 interfaith_A	interfaith_A
-interfere_V	interfere_1_V
-interfere_V	interfere_2_V
+interfere_V	interfere_with_V2
+interfere_V	interfere_in_V2
 interference_N	interference_1_N
 interference_N	interference_2_N
 interference_N	interference_3_N
@@ -93313,8 +93313,8 @@ step_down_V	step_down_2_V
 step_down_V2	step_down_1_V2
 step_down_V2	step_down_2_V2
 step_forward_V	step_forward_V
-step_in_V	step_in_1_V
-step_in_V	step_in_2_V
+step_in_V	step_in_V2
+step_in_V	step_in_V
 step_V2	step_off_V2
 step_on_it_V2	step_on_it_V2
 step_out_V	step_out_V

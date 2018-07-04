@@ -1,7 +1,7 @@
 concrete ParseExtendEng of ParseExtend = 
   ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP] ** 
-  open Prelude, ResEng, GrammarEng, (E = ExtraEng), Coordination in {
+  open Prelude, ResEng, MorphoEng, GrammarEng, (E = ExtraEng), Coordination in {
 
 lincat Mark = {s : Str} ;
 
@@ -157,5 +157,6 @@ lin EmbedVP ant pol vp = {s =
       } ;
 
 lin RecipVPSlash slash = GrammarEng.ComplSlash slash (mkNP "each other" "each other" "each other" Sg P3 Masc);
+    RecipVPSlashCN slash cn = GrammarEng.ComplSlash slash (DetCN (mkDeterminer Sg "each other's") cn);
 
 }

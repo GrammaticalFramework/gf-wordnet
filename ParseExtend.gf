@@ -67,6 +67,7 @@ fun EmbedVP : Ant -> Pol -> VP -> SC ;
     UttVPMasc : Ant -> Pol -> VP -> Utt ;
     UttVPFem : Ant -> Pol -> VP -> Utt ;
 
-fun RecipVPSlash : VPSlash -> VP ;
-
+fun RecipVPSlash   : VPSlash -> VP ;
+    RecipVPSlashCN : VPSlash -> CN -> VP ;
+    
 }

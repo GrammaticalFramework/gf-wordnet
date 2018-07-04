@@ -253,4 +253,13 @@ lin RecipVPSlash slash = {
       isSimple = False
       } ;
 
+    RecipVPSlashCN slash cn = {
+      s   = slash.s ;
+      ad  = slash.ad ;
+      clitics = slash.clitics ;
+      compl = \\a => slash.compl1 ! a ++ linPrep slash.c2 ++ "един на друг"  ++ cn.s ! NF Pl Def ++ slash.compl2 ! a ;
+      vtype = slash.vtype ;
+      p     = slash.p ;
+      isSimple = False
+      } ;
 }

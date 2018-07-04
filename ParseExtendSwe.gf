@@ -1,7 +1,7 @@
 concrete ParseExtendSwe of ParseExtend = 
   ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP] ** 
-  open Prelude, ResSwe, CommonScand, GrammarSwe, Coordination in {
+  open Prelude, ResSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe) in {
 
 lincat Mark = {s : Str} ;
 
@@ -190,5 +190,6 @@ lin EmbedVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 U
 	                (insertObj (\\a => vps.c2.s ++ vps.n3 ! a) vps) ;
 
 lin RecipVPSlash slash = GrammarSwe.ComplSlash slash (regNP "varandra" "varandra" Utr Sg);
+    RecipVPSlashCN slash cn = GrammarSwe.ComplSlash slash (DetCN (M.mkDet "varandras" Pl) cn);
 
 }

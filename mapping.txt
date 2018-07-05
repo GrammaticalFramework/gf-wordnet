@@ -2148,7 +2148,6 @@ ahead_Adv	ahead_1_Adv
 ahead_Adv	ahead_2_Adv
 ahead_Adv	ahead_3_Adv
 ahead_Adv	ahead_4_Adv
-ahead_Adv	ahead_5_Adv
 ahead_Adv	ahead_6_Adv
 ahead_Adv	ahead_7_Adv
 ahead_of_Prep	ahead_of_Prep
@@ -2307,7 +2306,7 @@ akaa_PN	akaa_PN
 akaryocyte_N	akaryocyte_1_N
 akimbo_Adv	akimbo_Adv
 akin_A	akin_1_A
-akin_A	akin_2_A
+akin_A	akin_to_A2
 akinesis_N	akinesis_1_N
 akron_PN	akron_PN
 al_PN	al_1_PN
@@ -8292,7 +8291,7 @@ beat_V2	beat_19_V2
 beat_V2	beat_20_V2
 beat_V2	beat_21_V2
 beat_V2	beat_22_V2
-beat_back_V	beat_back_V
+beat_back_V	beat_back_V2
 beat_down_V	beat_down_2_V
 beat_down_V2	beat_down_1_V2
 beat_down_V2	beat_down_3_V2
@@ -11767,9 +11766,9 @@ break_out_V2	break_out_V2
 break_out_V2	break_out_VV
 break_out_in_V2	break_out_in_V2
 break_out_of_V2	break_out_of_V2
+break_through_V2	break_through_V
 break_through_V2	break_through_1_V2
 break_through_V2	break_through_2_V2
-break_through_V2	break_through_3_V2
 break_up_N	break_up_1_N
 break_up_N	break_up_2_N
 break_up_V	break_up_1_V
@@ -14531,7 +14530,7 @@ care_N	care_5_N
 care_N	care_6_N
 care_V	care_1_V
 care_V	care_2_V
-care_V	care_3_V
+care_V	care_3_VV
 care_V	care_4_V
 care_V	care_5_V
 care_for_V2	care_for_1_V2
@@ -14539,7 +14538,6 @@ care_for_V2	care_for_2_V2
 care_for_V2	care_for_3_V2
 careen_V	careen_1_V
 careen_V	careen_2_V
-careen_V2	careen_1_V2
 career_N	career_1_N
 career_N	career_2_N
 career_V	career_V
@@ -20350,7 +20348,7 @@ confounding_A	confounding_A
 confrere_N	confrere_N
 confront_V2	confront_1_V2
 confront_V2	confront_2_V2
-confront_V2	confront_3_V2
+confront_V2	confront_with_V3
 confront_V2	confront_4_V2
 confrontation_N	confrontation_1_N
 confrontation_N	confrontation_2_N
@@ -27511,7 +27509,7 @@ direct_V	direct_2_V
 direct_V	direct_3_V
 direct_V	direct_4_V
 direct_V	direct_5_V
-direct_V	direct_7_V
+direct_V	direct_7_V2
 direct_V	direct_8_V
 direct_V	direct_10_V
 direct_V	direct_11_V
@@ -27522,7 +27520,6 @@ direct_V2	direct_3_V2
 direct_V2	direct_4_V2
 direct_V2	direct_5_V2
 direct_V2	direct_6_V2
-direct_V2	direct_7_V2
 direct_V2	direct_8_V2
 direct_V2	direct_9_V2
 direct_V2	direct_10_V2
@@ -29917,7 +29914,6 @@ drive_N	drive_10_N
 drive_N	drive_11_N
 drive_N	drive_12_N
 drive_V	drive_2_V
-drive_V	drive_6_V
 drive_V	drive_10_V
 drive_V	drive_11_V
 drive_V	drive_12_V
@@ -29939,7 +29935,6 @@ drive_V2	drive_19_V2
 drive_V2	drive_20_V2
 drive_V2	drive_21_V2
 drive_V2	drive_22_V2
-drive_V2V	drive_6_V2V
 drive_V2V	drive_7_V2V
 drive_away_V2	drive_away_V2
 drive_back_V2	drive_back_V2
@@ -36666,7 +36661,7 @@ flag_V2	flag_2_V2
 flag_V2	flag_3_V2
 flag_V2	flag_4_V2
 flag_V2	flag_5_V2
-flag_V2	flag_6_V2
+flag_V2	flag_6_V
 flag_V2	flag_7_V2
 flag_captain_N	flag_captain_N
 flag_day_N	flag_day_N
@@ -41342,7 +41337,7 @@ go_V	go_27_V
 go_V	go_28_V
 go_V	go_29_V
 go_V	go_30_V
-go_VA	go_7_VA
+go_VA	go_7_V
 go_VA	go_10_VA
 go_VA	go_26_VA
 go_VA	go_27_VA
@@ -47975,7 +47970,6 @@ imply_V	imply_1_V
 imply_V	imply_2_V
 imply_V	imply_3_V
 imply_V	imply_4_V
-imply_V	imply_5_V
 imply_V2	imply_1_V2
 imply_V2	imply_2_V2
 imply_V2	imply_3_V2
@@ -47985,7 +47979,6 @@ imply_VS	imply_1_VS
 imply_VS	imply_2_VS
 imply_VS	imply_3_VS
 imply_VS	imply_4_VS
-imply_VS	imply_5_VS
 impolite_A	impolite_A
 impoliteness_N	impoliteness_N
 impolitic_A	impolitic_A
@@ -50686,9 +50679,7 @@ involution_N	involution_3_N
 involution_N	involution_4_N
 involution_N	involution_5_N
 involution_N	involution_6_N
-involve_V	involve_1_V
 involve_V	involve_2_V
-involve_V	involve_4_V
 involve_V	involve_7_V
 involve_V2	involve_1_V2
 involve_V2	involve_2_V2
@@ -50696,8 +50687,6 @@ involve_V2	involve_3_V2
 involve_V2	involve_4_V2
 involve_V2	involve_5_V2
 involve_V2	involve_6_V2
-involve_VS	involve_1_VS
-involve_VS	involve_4_VS
 involved_A	involved_1_A
 involved_A	involved_2_A
 involved_A	involved_3_A
@@ -52285,7 +52274,6 @@ keel_N	keel_1_N
 keel_N	keel_2_N
 keel_N	keel_3_N
 keel_V	keel_V
-keel_V2	keel_V2
 keel_over_V	keel_over_V
 keelboat_N	keelboat_N
 keelson_N	keelson_N
@@ -54163,7 +54151,6 @@ lead_V	lead_12_V
 lead_V	lead_14_V
 lead_V2	lead_1_V2
 lead_V2	lead_4_V2
-lead_V2	lead_6_V2
 lead_V2	lead_7_V2
 lead_V2	lead_8_V2
 lead_V2	lead_9_V2
@@ -62012,8 +61999,7 @@ much_AdA	much_2_AdA
 much_Adv	much_3_Adv
 much_Adv	much_4_Adv
 much_Adv	much_5_Adv
-much_Det	much_Det
-much_N	much_N
+much_Det	much_Num
 muchness_N	muchness_N
 muciferous_A	muciferous_A
 mucilage_N	mucilage_1_N
@@ -71271,7 +71257,6 @@ pitch_V	pitch_9_V
 pitch_V	pitch_10_V
 pitch_V	pitch_11_V
 pitch_V2	pitch_1_V2
-pitch_V2	pitch_2_V2
 pitch_V2	pitch_4_V2
 pitch_V2	pitch_5_V2
 pitch_V2	pitch_6_V2
@@ -74891,7 +74876,6 @@ project_V	project_2_V
 project_V	project_3_V
 project_V	project_5_V
 project_V	project_6_V
-project_V	project_7_V
 project_V	project_8_V
 project_V	project_9_V
 project_V	project_10_V
@@ -74915,7 +74899,6 @@ project_V2V	project_12_V2V
 project_VS	project_2_VS
 project_VS	project_3_VS
 project_VS	project_6_VS
-project_VS	project_7_VS
 project_VS	project_9_VS
 project_VS	project_10_VS
 project_VS	project_12_VS
@@ -76249,9 +76232,9 @@ push_V2	push_5_V2
 push_V2	push_6_V2
 push_V2	push_8_V2
 push_V2V	push_V2V
-push_ahead_V	push_ahead_V
+push_ahead_V	push_ahead_V2
 push_around_V	push_around_V
-push_back_V	push_back_V
+push_back_V	push_back_V2
 push_bike_N	push_bike_N
 push_in_V2	push_in_V2
 push_through_V	push_through_V
@@ -79029,7 +79012,6 @@ reel_N	reel_6_N
 reel_V	reel_1_V
 reel_V	reel_2_V
 reel_V	reel_3_V
-reel_V2	reel_1_V2
 reel_V2	reel_2_V2
 reel_V2	reel_3_V2
 reel_in_V2	reel_in_V2
@@ -79280,7 +79262,6 @@ regard_N	regard_6_N
 regard_N	regard_7_N
 regard_V	regard_1_V
 regard_V	regard_2_V
-regard_V	regard_3_V
 regard_V2	regard_1_V2
 regard_V2	regard_2_V2
 regard_V2	regard_3_V2
@@ -81612,7 +81593,7 @@ rigger_N	rigger_4_N
 rigging_N	rigging_1_N
 rigging_N	rigging_2_N
 right_1_Adv	right_3_Adv
-right_2_Adv	right_1_Adv
+right_2_Adv	right_1_AdA
 right_2_Adv	right_2_Adv
 right_2_Adv	right_4_Adv
 right_2_Adv	right_5_Adv
@@ -83010,7 +82991,6 @@ run_V	run_39_V
 run_V	run_40_V
 run_V	run_41_V
 run_V2	run_4_V2
-run_V2	run_6_V2
 run_V2	run_9_V2
 run_V2	run_10_V2
 run_V2	run_14_V2
@@ -83030,7 +83010,6 @@ run_V2	run_29_V2
 run_V2	run_30_V2
 run_V2	run_31_V2
 run_V2	run_32_V2
-run_V2	run_33_V2
 run_V2	run_35_V2
 run_V2	run_36_V2
 run_V2	run_37_V2
@@ -83207,7 +83186,7 @@ rush_VV	rush_7_VV
 rush_away_V	rush_away_V
 rush_into_V2	rush_into_V2
 rush_off_V	rush_off_V
-rush_out_V2	rush_out_V2
+rush_out_V2	rush_out_V
 rusher_N	rusher_1_N
 rusher_N	rusher_2_N
 rusher_N	rusher_3_N
@@ -87238,7 +87217,6 @@ shift_V2	shift_4_V2
 shift_V2	shift_5_V2
 shift_V2	shift_7_V2
 shift_V2	shift_8_V2
-shift_V2	shift_9_V2
 shift_V2	shift_10_V2
 shift_V2	shift_13_V2
 shiftiness_N	shiftiness_1_N
@@ -100224,8 +100202,8 @@ tontine_N	tontine_2_N
 tony_PN	tony_PN
 tonyrefail_PN	tonyrefail_PN
 too_AdA	too_AdA
+too_AdA	too_AdN
 too_Adv	too_Adv
-too_AdA	too_Predet
 tool_N	tool_1_N
 tool_N	tool_2_N
 tool_N	tool_3_N
@@ -109424,17 +109402,14 @@ wish_N	wish_1_N
 wish_N	wish_2_N
 wish_N	wish_3_N
 wish_N	wish_4_N
-wish_V	wish_2_V
 wish_V	wish_4_V
 wish_V	wish_5_V
-wish_V2	wish_2_V2
 wish_V2	wish_4_V2
 wish_V2	wish_5_V2
 wish_V2	wish_6_V2
 wish_V2V	wish_4_V2V
 wish_V2V	wish_5_V2V
 wish_VS	wish_1_VS
-wish_VS	wish_2_VS
 wish_VS	wish_3_VS
 wish_VS	wish_4_VS
 wish_VS	wish_5_VS

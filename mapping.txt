@@ -4061,7 +4061,6 @@ anticholinergic_A	anticholinergic_A
 anticholinergic_N	anticholinergic_N
 anticholinesterase_N	anticholinesterase_N
 anticipant_A	anticipant_A
-anticipate_V	anticipate_1_V
 anticipate_V	anticipate_2_V
 anticipate_V	anticipate_3_V
 anticipate_V	anticipate_4_V
@@ -4072,12 +4071,10 @@ anticipate_V2	anticipate_3_V2
 anticipate_V2	anticipate_4_V2
 anticipate_V2	anticipate_5_V2
 anticipate_V2	anticipate_6_V2
-anticipate_VS	anticipate_1_VS
 anticipate_VS	anticipate_2_VS
 anticipate_VS	anticipate_3_VS
 anticipate_VS	anticipate_4_VS
 anticipate_VS	anticipate_5_VS
-anticipate_VV	anticipate_1_VV
 anticipate_VV	anticipate_2_VV
 anticipate_VV	anticipate_3_VV
 anticipate_VV	anticipate_4_VV

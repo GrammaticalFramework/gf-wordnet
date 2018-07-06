@@ -32315,8 +32315,8 @@ enormity_N	enormity_4_N
 enormous_A	enormous_A
 enormousness_N	enormousness_N
 enosis_N	enosis_N
-enough_A	enough_A
-enough_N	enough_N
+enough_N	enoughSg_Card
+enough_N	enoughPl_Card
 enplane_V	enplane_V
 enplane_V2	enplane_V2
 enquire_V	enquire_1_V
@@ -44296,7 +44296,6 @@ headmistressship_N	headmistressship_N
 headpiece_N	headpiece_1_N
 headpiece_N	headpiece_2_N
 headpin_N	headpin_N
-headquarter_N	headquarter_N
 headquarters_N	headquarters_1_N
 headquarters_N	headquarters_2_N
 headquarters_N	headquarters_3_N
@@ -95331,7 +95330,6 @@ suffering_N	suffering_4_N
 suffice_V	suffice_V
 suffice_VV	suffice_VV
 sufficiency_N	sufficiency_1_N
-sufficiency_N	sufficiency_2_N
 sufficiency_N	sufficiency_3_N
 sufficient_A	sufficient_A
 suffix_N	suffix_N

@@ -45,6 +45,7 @@ AdvNP head mod
 -- AdvQVP mod mod
 AdvRNP head rel:3 mod
 AdvRVP head rel:3 mod
+AdvRAP head rel:3 mod
 AdvS mod head
 AdvSlash head mod
 AdvVP head mod
@@ -94,7 +95,6 @@ ComplA2 head arg
 ComplBareVS head arg
 ComplDirectVQ head arg
 ComplDirectVS head arg
--- RENAME: ComplGenVV head mod:4 mod:4 arg
 ComplN2 head arg
 ComplN3 head arg
 ComplSlash head obj
@@ -106,7 +106,7 @@ ComplVPIVV head arg
 -- ComplVPS2 head obj
 ComplVQ head arg
 ComplVS head arg
-ComplVV head arg
+ComplVV _ _ head arg
 CompoundAP comp head
 CompoundN comp head
 ConjAP _ head
@@ -149,7 +149,7 @@ DetQuantOrd head head head
 -- EmbedPresPart head
 EmbedQS head
 EmbedS head
-EmbedVP head
+EmbedVP _ _ head
 EmptyRelSlash head
 ExistCN head
 ExistIP head
@@ -189,7 +189,7 @@ ImpPl1 head
 ImpVP head
 ImpersCl head
 InLanguage head
-InOrderToVP head
+InOrderToVP _ _ head
 InflectionA head
 InflectionA2 head
 InflectionAdv head
@@ -232,7 +232,7 @@ PassAgentVPSlash head:rel=obj subj
 PassVPSlash head:rel=obj
 PastPartAP head:rev:rel=obj
 PastPartAgentAP head:rev:rel=obj subj
-PhrUtt mod head mod
+PhrUtt _ head _
 PhrUttMark mod head mod _
 PositA head
 PositAdAAdj head
@@ -241,7 +241,7 @@ PositAdvAdj head
 PossCNN_RNP mod _ head poss
 PossNP head poss
 PossPron head
-PossPronRNP poss:3 mod mod head
+PossPronRNP poss:3 mod head mod
 -- PredAPVP mod mod
 PredSCVP mod head
 PredVP subj head
@@ -260,11 +260,11 @@ QuestIAdv mod head
 QuestIComp mod head
 -- QuestQVP mod mod
 QuestSlash mod head
--- QuestVP mod mod
+QuestVP mod head
 ReflA2 head
 ReflPoss mod head
 ReflPossCNN _ head
-ReflRNP head obj
+ReflVPSlash head obj
 ReflVP head
 RelCN head mod
 RelCl head
@@ -285,7 +285,7 @@ SlashBareV2S head arg
 SlashV2A head arg
 SlashV2Q head arg
 SlashV2S head arg
-SlashV2V head arg
+SlashV2V _ _ head arg
 SlashV2VNP head:anchor subj:3 head:only=obj
 SlashV2a head
 SlashVP subj head
@@ -301,7 +301,7 @@ TTAnt head head
 Use2N3 head
 Use3N3 head
 UseA2 head
-UseCl mod mod head
+UseCl _ _ head
 UseComp head
 UseComparA head
 UseDAP head
@@ -315,6 +315,7 @@ UseRCl mod mod head
 UseSlash mod mod head
 UseV head
 UttAP head
+UttAPMasc head
 UttAPFem head
 UttAccIP head
 UttAccNP head
@@ -387,3 +388,6 @@ weekdayN head
 -- weekdayPunctualAdv head
 -- what_name_QCl head
 yearAdv head
+RecipVPSlash head
+RecipVPSlashCN head obj
+TimeNP head

@@ -32317,7 +32317,6 @@ enormousness_N	enormousness_N
 enosis_N	enosis_N
 enough_A	enough_A
 enough_N	enough_N
-enough_Predet	enough_Predet
 enplane_V	enplane_V
 enplane_V2	enplane_V2
 enquire_V	enquire_1_V
@@ -52079,8 +52078,8 @@ just_A	just_1_A
 just_A	just_2_A
 just_A	just_3_A
 just_A	just_4_A
-just_AdV	just_2_AdA
-just_AdV	just_2_AdN
+just_AdV	just_AdA
+just_AdV	just_AdN
 just_AdV	just_3_AdV
 just_AdV	just_4_AdV
 just_AdV	just_5_AdV

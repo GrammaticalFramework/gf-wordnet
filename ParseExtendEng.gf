@@ -11,7 +11,8 @@ lin gen_Quant = {
         <Sg,False> => table { NCase Gen => table Gender ["its"; "his"; "her"] ! g; _ => table Gender ["it"; "he"; "she"] ! g } ;
         <Pl,False> => table { NCase Nom => "they"; NPAcc => "them"; _ => "theirs" } ;
         _          => \\c => artDef
-        }
+        } ;
+      isDef = True
       } ;
 
     UttAP     ap = {s = ap.s ! agrgP3 Sg Neutr} ;
@@ -39,11 +40,11 @@ lin BaseComp x y = twoTable Agr x y ;
     ConsComp xs x = consrTable Agr comma xs x ;
     ConjComp conj ss = conjunctDistrTable Agr conj ss ;
 
-lincat CNN = {s1,s2 : Case => Str; n1,n : Number; g1 : Gender; hasCard : Bool} ;
+lincat CNN = {s1 : Bool => Case => Str; s2 : Case => Str; n1,n : Number; g1 : Gender; hasCard : Bool} ;
 
 lin BaseCNN num1 cn1 num2 cn2 = {
-      s1 = \\c => num1.s ! Nom ++ cn1.s ! num1.n ! c ;
-      s2 = \\c => num2.s ! Nom ++ cn2.s ! num2.n ! c ;
+      s1 = \\d,c => num1.s ! d     ! Nom ++ cn1.s ! num1.n ! c ;
+      s2 = \\  c => num2.s ! False ! Nom ++ cn2.s ! num2.n ! c ;
       n1 = num1.n ;
       g1 = cn1.g ;
       n  = conjNumber num1.n num2.n ;
@@ -51,14 +52,14 @@ lin BaseCNN num1 cn1 num2 cn2 = {
     } ;
 
     DetCNN quant conj cnn = {
-      s = \\c => quant.s ! cnn.hasCard ! cnn.n1 ++ conj.s1 ++ cnn.s1 ! npcase2case c ++ conj.s2 ++ cnn.s2 ! npcase2case c ;
+      s = \\c => quant.s ! cnn.hasCard ! cnn.n1 ++ conj.s1 ++ cnn.s1 ! quant.isDef ! npcase2case c ++ conj.s2 ++ cnn.s2 ! npcase2case c ;
       a = conjAgr (agrP3 conj.n) (agrgP3 cnn.n cnn.g1)
     } ;
 
-    ReflPossCNN conj cnn = {s = \\a => possPron ! a ++ conj.s1 ++ cnn.s1 ! Nom ++ conj.s2 ++ cnn.s2 ! Nom} ;
+    ReflPossCNN conj cnn = {s = \\a => possPron ! a ++ conj.s1 ++ cnn.s1 ! True ! Nom ++ conj.s2 ++ cnn.s2 ! Nom} ;
     
     PossCNN_RNP quant conj cnn rnp = {
-      s = \\a => quant.s ! cnn.hasCard ! cnn.n1 ++ conj.s1 ++ cnn.s1 ! Nom ++ conj.s2 ++ cnn.s2 ! Nom ++ "of" ++ rnp.s ! a ;
+      s = \\a => quant.s ! cnn.hasCard ! cnn.n1 ++ conj.s1 ++ cnn.s1 ! quant.isDef ! Nom ++ conj.s2 ++ cnn.s2 ! Nom ++ "of" ++ rnp.s ! a ;
     } ;
 
 lin RelNP np rs = {

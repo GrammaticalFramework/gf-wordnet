@@ -17682,7 +17682,6 @@ clean_A	clean_18_A
 clean_N	clean_N
 clean_V	clean_3_V
 clean_V	clean_5_V
-clean_V	clean_9_V
 clean_V2	clean_1_V2
 clean_V2	clean_2_V2
 clean_V2	clean_3_V2
@@ -19910,7 +19909,7 @@ concede_V2	concede_3_V2
 concede_VS	concede_1_VS
 concede_VS	concede_2_VS
 concede_VS	concede_3_VS
-concede_VS	concede_4_VS
+concede_VS	concede_4_V
 conceit_N	conceit_1_N
 conceit_N	conceit_2_N
 conceit_N	conceit_3_N
@@ -52306,6 +52305,8 @@ keep_V2	keep_18_V2
 keep_V2	keep_19_V2
 keep_V2	keep_20_V2
 keep_V2	keep_21_V2
+keep_V2A	keep_1_VA
+keep_V2A	keep_1_V2A
 keep_V2A	keep_22_V2A
 keep_VV	keep_VV
 keep_around_V2	keep_around_V2

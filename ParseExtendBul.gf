@@ -134,6 +134,17 @@ lin ComparAsAP a comp = {
       s = adv.s ++ "колкото" ++ comp.s ! agrP3 (GSg Neut)
     } ;
 
+    EnoughAP a ant pol vp = {
+      s = \\aform,p => let gn = case aform of {
+                                  ASg g _       => GSg g ;
+                                  ASgMascDefNom => GSg Masc ;
+                                  APl   _       => GPl
+                                }
+                       in "достатъчно" ++ a.s ! aform ! p ++ ant.s ++ pol.s ++ daComplex ant.a (orPol pol.p vp.p) vp ! Perf ! {gn=gn; p=p} ;
+      adv = "достатъчно" ++ a.adv ++ ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Neut) ;
+      isPre = False
+    } ;
+
 lin TimeNP np = {s = np.s ! RObj CPrep} ;
 
 lin UseDAP dap = {
@@ -175,7 +186,7 @@ lin whatSgFem_IP  = mkIP "каква" "каква" (GSg Fem) ;
 
 lin that_RP = IdRP ;
 
-lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agr} ;
+lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a (orPol pol.p vp.p) vp ! Perf ! agr} ;
 
     ComplVV vv ant pol vp =
       insertObj (\\agr => ant.s ++ pol.s ++ 

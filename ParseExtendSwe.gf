@@ -107,8 +107,18 @@ lin ComparAsAP a comp = {
       isPre = False
     } ;
 
-lin ComparAsAdv adv comp = {
+    ComparAsAdv adv comp = {
       s = adv.s ++ "som" ++ comp.s ! agrP3 Neutr Sg
+    } ;
+
+    EnoughAP a ant pol vp = {
+      s = \\ap => let agr = case ap of {
+                              Strong (GSg g) => agrP3 g Sg;
+                              Strong GPl     => agrP3 Neutr Pl;
+                              Weak n         => agrP3 Neutr n
+                            }
+                  in a.s ! ap ++ "nog för" ++ infMark ++ ant.s ++ pol.s ++ infVPPlus vp agr ant.a pol.p ;
+      isPre = False
     } ;
 
 lin TimeNP np = {s = np.s ! accusative} ;

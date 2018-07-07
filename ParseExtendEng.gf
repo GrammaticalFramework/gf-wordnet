@@ -75,8 +75,13 @@ lin ComparAsAP a comp = {
       isPre = False
     } ;
 
-lin ComparAsAdv adv comp = {
+    ComparAsAdv adv comp = {
       s = "as" ++ adv.s ++ "as" ++ comp.s ! agrP3 Sg
+    } ;
+
+    EnoughAP a ant pol vp = {
+      s = \\agr => a.s ! agr ++ "enough" ++ ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p agr ;
+      isPre = False
     } ;
 
 lin TimeNP np = {s = np.s ! NPAcc} ;
@@ -146,9 +151,9 @@ lin EmbedVP ant pol vp = {s =
                                        \\a => ant.s ++ pol.s ++ 
                                               infVP VVInf vp False ant.a pol.p a}} ;
 
-    UttVP ant pol vp = {s = infVP VVInf vp (variants {True; False}) ant.a pol.p (agrP3 Sg)} ;
-    UttVPMasc ant pol vp = {s = infVP VVInf vp (variants {True; False}) ant.a pol.p (agrgP3 Sg Masc)} ;
-    UttVPFem  ant pol vp = {s = infVP VVInf vp (variants {True; False}) ant.a pol.p (agrgP3 Sg Fem)} ;
+    UttVP ant pol vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p (agrP3 Sg)} ;
+    UttVPMasc ant pol vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p (agrgP3 Sg Masc)} ;
+    UttVPFem  ant pol vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p (agrgP3 Sg Fem)} ;
 
     ReflVPSlash vps rnp = insertObjPre (\\a => vps.c2 ++ rnp.s ! a) vps ;
 

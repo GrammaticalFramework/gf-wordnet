@@ -42,6 +42,7 @@ fun BareN2 : N2 -> N ;
 
 fun ComparAsAP : AP -> Comp -> AP ;
     ComparAsAdv : Adv -> Comp -> Adv ;
+    EnoughAP : AP -> Ant -> Pol -> VP -> AP ;
 
 fun TimeNP : NP -> Adv ;
 

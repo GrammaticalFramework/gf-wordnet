@@ -2420,7 +2420,7 @@ alert_A	alert_2_A
 alert_N	alert_1_N
 alert_N	alert_2_N
 alert_N	alert_3_N
-alert_V2	alert_V2
+alert_V2	alert_to_V3
 alertness_N	alertness_1_N
 alertness_N	alertness_2_N
 alertness_N	alertness_3_N
@@ -40137,7 +40137,7 @@ generalize_V	generalize_4_V
 generalize_V2	generalize_1_V2
 generalize_V2	generalize_2_V2
 generalize_V2	generalize_3_V2
-generally_Adv	generally_1_Adv
+generally_Adv	generally_1_AdV
 generally_Adv	generally_2_Adv
 generally_Adv	generally_3_Adv
 generalship_N	generalship_1_N
@@ -45608,7 +45608,6 @@ hold_N	hold_6_N
 hold_N	hold_7_N
 hold_N	hold_8_N
 hold_N	hold_9_N
-hold_V	hold_1_V
 hold_V	hold_6_V
 hold_V	hold_8_V
 hold_V	hold_13_V
@@ -53216,13 +53215,6 @@ labiate_A	labiate_A
 labile_A	labile_1_A
 labile_A	labile_2_A
 labium_N	labium_N
-labor_N	labor_1_N
-labor_N	labor_2_N
-labor_N	labor_3_N
-labor_N	labor_4_N
-labor_N	labor_5_N
-labor_N	labor_6_N
-labor_N	labor_7_N
 laboratory_N	laboratory_1_N
 laboratory_N	laboratory_2_N
 labored_A	labored_1_A
@@ -57438,7 +57430,6 @@ mainstay_N	mainstay_3_N
 mainstream_A	mainstream_A
 mainstream_N	mainstream_N
 mainstreamed_A	mainstreamed_A
-maintain_V	maintain_1_V
 maintain_V	maintain_2_V
 maintain_V	maintain_3_V
 maintain_V	maintain_4_V
@@ -57455,7 +57446,6 @@ maintain_V2	maintain_7_V2
 maintain_V2	maintain_8_V2
 maintain_V2	maintain_9_V2
 maintain_V2	maintain_10_V2
-maintain_VS	maintain_1_VS
 maintain_VS	maintain_2_VS
 maintain_VS	maintain_3_VS
 maintain_VS	maintain_4_VS

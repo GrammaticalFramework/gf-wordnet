@@ -120,6 +120,11 @@ lin ComparAsAP a comp = {
                   in a.s ! ap ++ "nog för" ++ infMark ++ ant.s ++ pol.s ++ infVPPlus vp agr ant.a pol.p ;
       isPre = False
     } ;
+    
+    ExtAdvAP ap adv = {
+      s = \\a => ap.s ! a ++ bindComma ++ adv.s ;
+      isPre = ap.isPre
+      } ;
 
 lin TimeNP np = {s = np.s ! accusative} ;
 

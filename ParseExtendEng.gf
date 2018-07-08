@@ -84,6 +84,8 @@ lin ComparAsAP a comp = {
       isPre = False
     } ;
 
+    ExtAdvAP ap adv = {s = \\a => ap.s ! a ++ bindComma ++ adv.s ; isPre = False} ;
+
 lin TimeNP np = {s = np.s ! NPAcc} ;
 
 lin UseDAP dap = {

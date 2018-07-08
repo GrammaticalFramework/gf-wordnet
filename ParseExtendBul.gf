@@ -145,6 +145,12 @@ lin ComparAsAP a comp = {
       isPre = False
     } ;
 
+    ExtAdvAP ap adv = {
+      s = \\aform,p => ap.s ! aform ! p ++ bindComma ++ adv.s ;
+      adv = ap.adv ++ adv.s;
+      isPre = False
+    } ;
+
 lin TimeNP np = {s = np.s ! RObj CPrep} ;
 
 lin UseDAP dap = {

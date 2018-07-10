@@ -119,19 +119,8 @@ lin RelNP    = GrammarBul.RelNP ;
 
 lin BareN2 n2 = n2 ;
 
-lin ComparAsAP a comp = {
-      s = \\aform,p => let gn = case aform of {
-                                  ASg g _       => GSg g ;
-                                  ASgMascDefNom => GSg Masc ;
-                                  APl   _       => GPl
-                                }
-                       in a.s ! aform ! p ++ "колкото" ++ comp.s ! agrP3 gn ;
-      adv = a.adv ++ "колкото" ++ comp.s ! agrP3 (GSg Neut) ;
-      isPre = True
-    } ;
-
-    ComparAsAdv adv comp = {
-      s = adv.s ++ "колкото" ++ comp.s ! agrP3 (GSg Neut)
+lin ComparAdvAdjA cadv adv ap = {
+      s = cadv.s ++ adv.s ++ cadv.p ++ ap.s ! aform (GSg Neut) Indef (RObj Acc) ! P3
     } ;
 
     EnoughAP a ant pol vp = {

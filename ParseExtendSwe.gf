@@ -97,18 +97,8 @@ lin RelNP np rs = {
 
 lin BareN2 n2 = n2 ;
 
-lin ComparAsAP a comp = {
-      s = \\ap => let agr = case ap of {
-                              Strong (GSg g) => agrP3 g Sg;
-                              Strong GPl     => agrP3 Neutr Pl;
-                              Weak n         => agrP3 Neutr n
-                            }
-                  in a.s ! ap ++ "som" ++ comp.s ! agr ;
-      isPre = False
-    } ;
-
-    ComparAsAdv adv comp = {
-      s = adv.s ++ "som" ++ comp.s ! agrP3 Neutr Sg
+lin ComparAdvAdjA cadv adv ap = {
+      s = cadv.s ++ adv.s ++ cadv.p ++ ap.s ! agrAdjNP (agrP3 Neutr Sg) DIndef
     } ;
 
     EnoughAP a ant pol vp = {

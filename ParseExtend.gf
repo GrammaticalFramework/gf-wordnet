@@ -40,8 +40,7 @@ fun RelNP : NP -> RS -> NP ;
 
 fun BareN2 : N2 -> N ;
 
-fun ComparAsAP : AP -> Comp -> AP ;
-    ComparAsAdv : Adv -> Comp -> Adv ;
+fun ComparAdvAdjA : CAdv -> Adv -> AP -> Adv ;
     EnoughAP : AP -> Ant -> Pol -> VP -> AP ;
     ExtAdvAP : AP -> Adv -> AP ;
 

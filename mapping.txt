@@ -54678,7 +54678,6 @@ less_A	less_3_A
 less_AdA	less_AdA
 less_Adv	less_Adv
 less_Det	less_Det
-less_than_AdN	less_than_AdN
 lessee_N	lessee_N
 lessen_V	lessen_1_V
 lessen_V	lessen_2_V
@@ -61521,7 +61520,6 @@ more_Adv	more_2_Adv
 more_N	more_N
 more_Quant	more_Quant
 more_often_than_not_Adv	more_often_than_not_Adv
-more_than_AdN	more_than_AdN
 more_than_Predet	more_than_Predet
 morecambe_PN	morecambe_PN
 moreen_N	moreen_N
@@ -63884,7 +63882,6 @@ no_longer_AdV	no_longer_AdV
 no_man's_land_N	no_man's_land_1_N
 no_man's_land_N	no_man's_land_2_N
 no_man's_land_N	no_man's_land_3_N
-no_more_than_AdN	no_more_than_AdN
 noah_PN	noah_PN
 nob_N	nob_N
 nobble_V2	nobble_1_V2

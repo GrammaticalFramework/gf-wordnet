@@ -70,13 +70,8 @@ lin RelNP np rs = {
 
 lin BareN2 n2 = n2 ;
 
-lin ComparAsAP a comp = {
-      s = \\agr => "as" ++ a.s ! agr ++ "as" ++ comp.s ! agr ;
-      isPre = False
-    } ;
-
-    ComparAsAdv adv comp = {
-      s = "as" ++ adv.s ++ "as" ++ comp.s ! agrP3 Sg
+lin ComparAdvAdjA cadv adv ap = {
+      s = cadv.s ++ adv.s ++ cadv.p ++ ap.s ! agrP3 Sg
     } ;
 
     EnoughAP a ant pol vp = {

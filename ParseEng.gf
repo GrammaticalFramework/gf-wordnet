@@ -17,7 +17,7 @@ concrete ParseEng of Parse =
   WordNetEng,
   ConstructionEng,
   DocumentationEng
-  ** open MorphoEng, ResEng, ParadigmsEng, IrregEng, (E = ExtendEng), (G = GrammarEng), SentenceEng, ExtraEng, Prelude in {
+  ** open MorphoEng, ResEng, ParadigmsEng, IrregEng, (E = ExtendEng), (G = GrammarEng), (C = ConstructX), SentenceEng, ExtraEng, Prelude in {
 
 lin
   PPos = {s = [] ; p = CPos} ;

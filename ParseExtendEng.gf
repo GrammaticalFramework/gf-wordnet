@@ -19,8 +19,10 @@ lin gen_Quant = {
     UttAPMasc ap = {s = ap.s ! agrgP3 Sg Masc} ;
     UttAPFem  ap = {s = ap.s ! agrgP3 Sg Fem } ;
 
-    UttVPS vps = {s = vps.s ! agrP3 Sg}  ;
-    UttVPSFem vps = {s = vps.s ! agrP3 Sg}  ;
+    UttVPS     vps = {s = vps.s ! agrgP3 Sg Neutr}  ;
+    UttVPSMasc vps = {s = vps.s ! agrgP3 Sg Masc} ;
+    UttVPSFem  vps = {s = vps.s ! agrgP3 Sg Fem} ;
+    UttVPSPl   vps = {s = vps.s ! agrgP3 Pl Neutr} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
@@ -62,6 +64,21 @@ lin BaseCNN num1 cn1 num2 cn2 = {
       s = \\a => quant.s ! cnn.hasCard ! cnn.n1 ++ conj.s1 ++ cnn.s1 ! quant.isDef ! Nom ++ conj.s2 ++ cnn.s2 ! Nom ++ "of" ++ rnp.s ! a ;
     } ;
 
+lin NumLess num = {
+      s,sp = \\d,c => num.sp ! d ! c ++ "less";
+      n = num.n;
+      hasCard = True
+    } ;
+
+    NumMore num = {
+      s,sp = \\d,c => num.sp ! d ! c ++ "more";
+      n = num.n;
+      hasCard = True
+    } ;
+
+    UseACard acard = {s,sp = \\_ => acard.s; n = acard.n} ;
+    UseAdAACard ada acard = {s,sp = \\_,c => ada.s ++ acard.s ! c; n = acard.n} ;
+
 lin RelNP np rs = {
       s = \\c => np.s ! c ++ rs.s ! np.a ++ finalComma ;
       a = np.a
@@ -70,18 +87,31 @@ lin RelNP np rs = {
 
 lin BareN2 n2 = n2 ;
 
-lin ComparAdvAdjA cadv adv ap = {
-      s = cadv.s ++ adv.s ++ cadv.p ++ ap.s ! agrP3 Sg
+lin ComparAdv pol cadv adv comp = {
+      s = pol.s ++ cadv.s ! (case pol.p of {CPos => Pos; CNeg _ => Neg}) ++ adv.s ++ cadv.p ++ comp.s ! agrP3 Sg
     } ;
+
+    CAdvAP pol cadv ap comp = {
+      s = \\a => pol.s ++ cadv.s ! (case pol.p of {CPos => Pos; CNeg _ => Neg}) ++ ap.s ! a ++ cadv.p ++ comp.s ! a ;
+      isPre = False
+      } ;
+
+    AdnCAdv pol cadv = {s = pol.s ++ cadv.s ! (case pol.p of {CPos => Pos; CNeg _ => Neg}) ++ cadv.p} ;
 
     EnoughAP a ant pol vp = {
       s = \\agr => a.s ! agr ++ "enough" ++ ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p agr ;
       isPre = False
     } ;
+    
+    EnoughAdv adv = {
+      s = adv.s ++ "enough"
+    } ;
 
     ExtAdvAP ap adv = {s = \\a => ap.s ! a ++ bindComma ++ adv.s ; isPre = False} ;
 
 lin TimeNP np = {s = np.s ! NPAcc} ;
+
+lin AdvAdv adv1 adv2 = {s=adv1.s ++ adv2.s} ;
 
 lin UseDAP dap = {
       s = dap.sp ! Neutr ! False ;

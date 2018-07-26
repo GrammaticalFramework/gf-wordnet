@@ -10,8 +10,10 @@ lin gen_Quant = DefArt ;
     UttAPMasc ap = {s = ap.s ! ASg Masc Indef ! P3} ;
     UttAPFem  ap = {s = ap.s ! ASg Fem  Indef ! P3} ;
 
-    UttVPS vps = {s = vps.s ! agrP3 (GSg Masc)} ;
-    UttVPSFem vps = {s = vps.s ! agrP3 (GSg Fem)} ;
+    UttVPS     vps = {s = vps.s ! agrP3 (GSg Neut)} ;
+    UttVPSMasc vps = {s = vps.s ! agrP3 (GSg Masc)} ;
+    UttVPSFem  vps = {s = vps.s ! agrP3 (GSg Fem)} ;
+    UttVPSPl   vps = {s = vps.s ! agrP3 GPl} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
@@ -22,7 +24,6 @@ lin gen_Quant = DefArt ;
     AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;
     AdvRAP ap prep rnp = {
       s = \\aform,p => ap.s ! aform ! p ++ prep.s ++ rnp.s ! RObj prep.c ;
-      adv = ap.adv ++ prep.s ++ rnp.s ! RObj prep.c ;
       isPre = False
     } ;
 
@@ -107,6 +108,27 @@ lin BaseCNN num1 cn1 num2 cn2 =
         gn = gennum cnn.g1 (numnnum cnn.n)
       } ;
 
+lin NumMore num = {s = \\cf => "още" ++ num.s ! cf ;      nn = NNum Pl ; nonEmpty = True} ;
+    NumLess num = {s = \\cf => num.s ! cf ++ "по-малко" ; nn = NNum Pl ; nonEmpty = True} ;
+
+lin UseACard card = 
+      {s  = table { CFMasc spec _ => card.s ! spec;
+                    CFMascDefNom _ => card.s ! Def;
+                    CFFem spec => card.s ! spec;
+                    CFNeut spec => card.s ! spec 
+                  };
+       nn = card.nn
+      };
+
+    UseAdAACard ada card = 
+      {s  = table { CFMasc spec _ => ada.s ++ card.s ! spec;
+                    CFMascDefNom _ => ada.s ++ card.s ! Def;
+                    CFFem spec => ada.s ++ card.s ! spec;
+                    CFNeut spec => ada.s ++ card.s ! spec 
+                  };
+       nn = card.nn
+      };
+
 lin RelNP    = GrammarBul.RelNP ;
     ExtRelNP np rs = {
       s  = \\role => case role of {
@@ -119,9 +141,16 @@ lin RelNP    = GrammarBul.RelNP ;
 
 lin BareN2 n2 = n2 ;
 
-lin ComparAdvAdjA cadv adv ap = {
-      s = cadv.s ++ adv.s ++ cadv.p ++ ap.s ! aform (GSg Neut) Indef (RObj Acc) ! P3
+lin ComparAdv pol cadv adv comp = {
+      s = pol.s ++ case pol.p of {Pos => []; Neg => "не"} ++ cadv.s ++ adv.s ++ cadv.p ++ comp.s ! agrP3 (GSg Neut)
     } ;
+
+    CAdvAP pol cadv ap comp = {
+      s = \\a,p => pol.s ++ case pol.p of {Pos => []; Neg => "не"} ++ cadv.s ++ ap.s ! a ! p ++ cadv.p ++ comp.s ! agrP3 (GSg Neut) ; 
+      isPre = False
+      } ;
+
+    AdnCAdv pol cadv = {s = pol.s ++ case pol.p of {Pos => []; Neg => "не"} ++ cadv.s ++ cadv.p} ;
 
     EnoughAP a ant pol vp = {
       s = \\aform,p => let gn = case aform of {
@@ -130,17 +159,21 @@ lin ComparAdvAdjA cadv adv ap = {
                                   APl   _       => GPl
                                 }
                        in "достатъчно" ++ a.s ! aform ! p ++ ant.s ++ pol.s ++ daComplex ant.a (orPol pol.p vp.p) vp ! Perf ! {gn=gn; p=p} ;
-      adv = "достатъчно" ++ a.adv ++ ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Neut) ;
       isPre = False
+    } ;
+
+    EnoughAdv adv = {
+      s = "достатъчно" ++ adv.s
     } ;
 
     ExtAdvAP ap adv = {
       s = \\aform,p => ap.s ! aform ! p ++ bindComma ++ adv.s ;
-      adv = ap.adv ++ adv.s;
       isPre = False
     } ;
 
 lin TimeNP np = {s = np.s ! RObj CPrep} ;
+
+lin AdvAdv adv1 adv2 = {s=adv1.s ++ adv2.s} ;
 
 lin UseDAP dap = {
       s  = \\role => let s = dap.s ! False ! ANeut ! role
@@ -231,8 +264,7 @@ lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a (orPol 
     UttVPFem  ant pol vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Fem)} ;
 
     ReflA2 a rnp = {
-      s = \\aform,_ => a.s ! aform ++ a.c2 ++ rnp.s ! RObj CPrep ;
-      adv = a.adv ++ a.c2 ++ rnp.s ! RObj CPrep ; 
+      s = \\aform,_ => a.s ! aform ++ a.c2.s ++ rnp.s ! RObj a.c2.c ;
       isPre = False
       } ;
 

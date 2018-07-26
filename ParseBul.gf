@@ -2,8 +2,8 @@
 concrete ParseBul of Parse =
   NounBul - [PPartNP, UseN2, RelNP, DetNP],
   VerbBul - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP],
-  AdjectiveBul - [ReflA2],
-  AdverbBul,
+  AdjectiveBul - [ReflA2, CAdvAP],
+  AdverbBul - [ComparAdvAdj, ComparAdvAdjS, AdnCAdv],
   NumeralBul,
   SentenceBul - [EmbedVP],
   QuestionBul,

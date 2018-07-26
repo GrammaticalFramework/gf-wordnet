@@ -9,8 +9,10 @@ fun gen_Quant : Quant ;
     UttAPMasc : AP -> Utt ;
     UttAPFem  : AP -> Utt ;
 
-    UttVPS : VPS -> Utt ;
-    UttVPSFem : VPS -> Utt ;
+    UttVPS     : VPS -> Utt ;
+    UttVPSMasc : VPS -> Utt ;
+    UttVPSFem  : VPS -> Utt ;
+    UttVPSPl   : VPS -> Utt ;
 
     PhrUttMark : PConj -> Utt -> Voc -> Mark -> Phr ;
     
@@ -35,16 +37,29 @@ fun BaseCNN : Num -> CN -> Num -> CN -> CNN ;
     ReflPossCNN : Conj -> CNN -> RNP ;
     PossCNN_RNP : Quant -> Conj -> CNN -> RNP -> RNP ;
 
+fun NumLess : Num -> Num ;
+    NumMore : Num -> Num ;
+
+fun UseACard    : ACard -> Card ;
+    UseAdAACard : AdA -> ACard -> Card ;
+
 fun RelNP : NP -> RS -> NP ;
     ExtRelNP : NP -> RS -> NP ;
 
 fun BareN2 : N2 -> N ;
 
-fun ComparAdvAdjA : CAdv -> Adv -> AP -> Adv ;
-    EnoughAP : AP -> Ant -> Pol -> VP -> AP ;
+fun ComparAdv : Pol -> CAdv -> Adv -> Comp -> Adv ;
+    CAdvAP    : Pol -> CAdv -> AP  -> Comp -> AP ;
+
+    AdnCAdv : Pol -> CAdv -> AdN ;
+
+    EnoughAP  : AP -> Ant -> Pol -> VP -> AP ;
+    EnoughAdv : Adv -> Adv ;
     ExtAdvAP : AP -> Adv -> AP ;
 
 fun TimeNP : NP -> Adv ;
+
+fun AdvAdv : Adv -> Adv -> Adv ;
 
 fun UseDAP     : DAP -> NP ;
     UseDAPMasc : DAP -> NP ;

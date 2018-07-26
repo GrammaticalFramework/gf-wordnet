@@ -11,8 +11,10 @@ lin gen_Quant = DefArt ;
     UttAPMasc ap = {s = ap.s ! Strong (GSg Utr)} ;
     UttAPFem  ap = {s = ap.s ! Strong (GSg Utr)} ;
 
-    UttVPS vps = {s = vps.s ! Main ! (agrP3 Utr Sg)} ;
-    UttVPSFem vps = {s = vps.s ! Main ! (agrP3 Utr Sg)} ;
+    UttVPS     vps = {s = vps.s ! Main ! (agrP3 Neutr Sg)} ;
+    UttVPSMasc vps = {s = vps.s ! Main ! (agrP3 Utr   Sg)} ;
+    UttVPSFem  vps = {s = vps.s ! Main ! (agrP3 Utr   Sg)} ;
+    UttVPSPl   vps = {s = vps.s ! Main ! (agrP3 Neutr Pl)} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
@@ -88,6 +90,19 @@ lin BaseCNN num1 cn1 num2 cn2 = {
         isPron = False
       } ;
 
+lin NumMore num = {s = \\g => num.s ! g ++ "mera" ;  isDet = num.isDet ; n = Pl} ;
+    NumLess num = {s = \\g => num.s ! g ++ "färre" ; isDet = num.isDet ; n = Pl} ;
+
+lin UseACard card = 
+      {s = \\_ => card.s;
+       n = card.n
+      };
+
+    UseAdAACard ada card = 
+      {s = \\_ => ada.s ++ card.s;
+       n = card.n
+      };
+
 lin RelNP np rs = {
       s = \\c => np.s ! c ++ rs.s ! np.a ! RNom ;
       a = np.a ;
@@ -97,9 +112,21 @@ lin RelNP np rs = {
 
 lin BareN2 n2 = n2 ;
 
-lin ComparAdvAdjA cadv adv ap = {
-      s = cadv.s ++ adv.s ++ cadv.p ++ ap.s ! agrAdjNP (agrP3 Neutr Sg) DIndef
+lin ComparAdv pol cadv adv comp = {
+      s = pol.s ++ case pol.p of {Pos => []; Neg => "inte"} ++ cadv.s ++ adv.s ++ cadv.p ++ comp.s ! agrP3 Neutr Sg
     } ;
+
+    CAdvAP pol cadv ap comp = {
+      s = \\a => let agr = case a of {
+                             Strong (GSg g) => agrP3 g Sg;
+                             Strong GPl     => agrP3 Neutr Pl;
+                             Weak n         => agrP3 Neutr n
+                           }
+                  in pol.s ++ case pol.p of {Pos => []; Neg => "inte"} ++ cadv.s ++ ap.s ! a ++ cadv.p ++ comp.s ! agr ;
+      isPre = False
+    } ;
+
+    AdnCAdv pol cadv = {s = pol.s ++ case pol.p of {Pos => []; Neg => "inte"} ++ cadv.s ++ conjThan} ;
 
     EnoughAP a ant pol vp = {
       s = \\ap => let agr = case ap of {
@@ -110,13 +137,19 @@ lin ComparAdvAdjA cadv adv ap = {
                   in a.s ! ap ++ "nog för" ++ infMark ++ ant.s ++ pol.s ++ infVPPlus vp agr ant.a pol.p ;
       isPre = False
     } ;
-    
+
+    EnoughAdv adv = {
+      s = adv.s ++ "nog"
+    } ;
+
     ExtAdvAP ap adv = {
       s = \\a => ap.s ! a ++ bindComma ++ adv.s ;
       isPre = ap.isPre
       } ;
 
 lin TimeNP np = {s = np.s ! accusative} ;
+
+lin AdvAdv adv1 adv2 = {s=adv1.s ++ adv2.s} ;
 
 lin UseDAP dap = 
       let 

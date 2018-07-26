@@ -2700,7 +2700,6 @@ allow_V2	allow_9_V2
 allow_V2	allow_10_V2
 allow_V2V	allow_1_V2V
 allow_V2V	allow_2_V2V
-allow_V2V	allow_4_V2V
 allow_V2V	allow_8_V2V
 allow_for_V2	allow_for_6_V2
 allow_for_V2	allow_for_7_V2
@@ -2708,7 +2707,8 @@ allow_of_V2	allow_of_V2
 allowable_A	allowable_1_A
 allowable_A	allowable_2_A
 allowable_A	allowable_3_A
-allowance_N	allowance_1_N
+allowance_N	allowance_1a_N
+allowance_N	allowance_1b_N
 allowance_N	allowance_2_N
 allowance_N	allowance_3_N
 allowance_N	allowance_4_N
@@ -2756,7 +2756,7 @@ almond_eyed_A	almond_eyed_A
 almoner_N	almoner_N
 almost_AdA	almost_AdA
 almost_AdN	almost_AdN
-almost_Adv	almost_Adv
+almost_Adv	almost_AdV
 almost_Predet	almost_Predet
 alms_N	alms_N
 alms_box_N	alms_box_N
@@ -2895,7 +2895,8 @@ alto_N	alto_3_N
 alto_N	alto_4_N
 alto_N	alto_5_N
 altocumulus_N	altocumulus_N
-altogether_Adv	altogether_1_Adv
+altogether_Adv	altogether_AdA
+altogether_Adv	altogether_AdV
 altogether_Adv	altogether_2_Adv
 altogether_Adv	altogether_3_Adv
 alton_PN	alton_PN
@@ -12075,6 +12076,7 @@ brimstone_N	brimstone_N
 brindled_A	brindled_1_A
 brine_N	brine_1_N
 brine_N	brine_2_N
+bring_V2	bring_1_V2
 bring_V2	bring_2_V2
 bring_V2	bring_3_V2
 bring_V2	bring_4_V2
@@ -12811,7 +12813,6 @@ bump_Adv	bump_Adv
 bump_N	bump_1_N
 bump_N	bump_2_N
 bump_N	bump_3_N
-bump_V	bump_2_V
 bump_V	bump_3_V
 bump_V	bump_4_V
 bump_V	bump_5_V
@@ -35032,8 +35033,7 @@ fanlight_N	fanlight_3_N
 fanlike_A	fanlike_A
 fanny_N	fanny_1_N
 fanny_N	fanny_2_N
-fanny_PN	fanny_1_PN
-fanny_PN	fanny_2_PN
+fanny_PN	fanny_PN
 fansite_N	fansite_N
 fantail_N	fantail_N
 fantan_N	fantan_1_N
@@ -36066,7 +36066,6 @@ filipino_N	filipino_2_N
 fill_N	fill_1_N
 fill_N	fill_2_N
 fill_V	fill_2_V
-fill_V	fill_4_V
 fill_V	fill_5_V
 fill_V	fill_6_V
 fill_V	fill_7_V
@@ -36204,7 +36203,7 @@ find_V2	find_6_V2
 find_V2	find_7_V2
 find_V2	find_8_V2
 find_V2	find_12_V2
-find_V2	find_13_V2
+find_V2	find_13_V
 find_V2	find_14_V2
 find_V2	find_15_V2
 find_V2	find_16_V2
@@ -37668,7 +37667,6 @@ following_A	following_2_A
 following_A	following_3_A
 following_N	following_1_N
 following_N	following_2_N
-following_Prep	following_Prep
 folly_N	folly_1_N
 folly_N	folly_2_N
 folly_N	folly_3_N
@@ -37803,7 +37801,7 @@ footwork_N	footwork_2_N
 fop_N	fop_N
 foppish_A	foppish_A
 foppishness_N	foppishness_N
-for_Adv	for_Adv
+for_Adv	for_Subj
 for_PConj	for_PConj
 for_Prep	for_Prep
 for_example_Adv	for_example_Adv
@@ -40461,7 +40459,6 @@ get_ahead_of_V2	get_ahead_of_V2
 get_along_V	get_along_1_V
 get_along_V	get_along_2_V
 get_along_V	get_along_3_V
-get_along_in_V2	get_along_in_V2
 get_along_with_V2	get_along_with_V2
 get_around_V	get_around_1_V
 get_around_V	get_around_2_V
@@ -43992,7 +43989,6 @@ hasten_V	hasten_1_V
 hasten_V	hasten_2_V
 hasten_V	hasten_3_V
 hasten_V	hasten_4_V
-hasten_V2	hasten_1_V2
 hasten_V2	hasten_2_V2
 hasten_V2	hasten_3_V2
 hasten_V2	hasten_4_V2
@@ -46777,7 +46773,7 @@ hurry_N	hurry_2_N
 hurry_N	hurry_3_N
 hurry_V	hurry_1_V
 hurry_V	hurry_2_V
-hurry_V	hurry_3_V
+hurry_V	hurry_V2
 hurstpierpoint_PN	hurstpierpoint_PN
 hurt_N	hurt_1_N
 hurt_N	hurt_2_N
@@ -49649,7 +49645,7 @@ insidious_A	insidious_2_A
 insidious_A	insidious_3_A
 insidiousness_N	insidiousness_1_N
 insidiousness_N	insidiousness_2_N
-insight_N	insight_1_N
+insight_N	insight_in_N2
 insight_N	insight_2_N
 insight_N	insight_3_N
 insight_N	insight_4_N
@@ -54677,7 +54673,6 @@ less_A	less_2_A
 less_A	less_3_A
 less_AdA	less_AdA
 less_Adv	less_Adv
-less_Det	less_Det
 lessee_N	lessee_N
 lessen_V	lessen_1_V
 lessen_V	lessen_2_V
@@ -55802,7 +55797,6 @@ little_A	little_6_A
 little_A	little_7_A
 little_A	little_8_A
 little_Det	little_Num
-little_N	little_N
 littlehampton_PN	littlehampton_PN
 littleneck_N	littleneck_1_N
 littleneck_N	littleneck_2_N
@@ -57566,7 +57560,7 @@ make_out_V	make_out_7_V
 make_out_V2	make_out_1_V2
 make_out_V2	make_out_2_V2
 make_out_V2	make_out_3_V2
-make_out_V2	make_out_4_V2
+make_out_V2	make_out_4_V
 make_out_V2	make_out_6_V2
 make_out_V2	make_out_7_V2
 make_out_V2	make_out_8_V2
@@ -61518,7 +61512,6 @@ mordant_N	mordant_N
 more_Adv	more_1_Adv
 more_Adv	more_2_Adv
 more_N	more_N
-more_Quant	more_Quant
 more_often_than_not_Adv	more_often_than_not_Adv
 more_than_Predet	more_than_Predet
 morecambe_PN	morecambe_PN
@@ -61910,7 +61903,6 @@ move_V2	move_15_V2
 move_V2	move_16_V2
 move_V2	move_V2V
 move_ahead_V	move_ahead_V
-move_along_V	move_along_V
 move_away_V	move_away_V
 move_away_from_V2	move_away_from_V2
 move_down_V2	move_down_V2
@@ -61923,7 +61915,6 @@ move_into_V2	move_into_V2
 move_on_V	move_on_V
 move_out_V	move_out_V
 move_out_V2	move_out_V2
-move_towards_V2	move_towards_V2
 move_up_V	move_up_1_V
 move_up_V	move_up_2_V
 move_up_V2	move_up_1_V2
@@ -68541,7 +68532,7 @@ pass_N	pass_16_N
 pass_V	pass_1_V
 pass_V	pass_3_V
 pass_V	pass_4_V
-pass_V	pass_5_V
+pass_V	pass_5_V2
 pass_V	pass_6_V
 pass_V	pass_7_V
 pass_V	pass_8_V
@@ -69425,7 +69416,7 @@ penetrate_V2	penetrate_6_V2
 penetrate_V2	penetrate_7_V2
 penetratingly_Adv	penetratingly_Adv
 penetration_N	penetration_1_N
-penetration_N	penetration_2_N
+penetration_N	penetration_of_N2
 penetration_N	penetration_3_N
 penetration_N	penetration_4_N
 penetration_N	penetration_5_N
@@ -75424,7 +75415,7 @@ proverbial_A	proverbial_1_A
 proverbial_A	proverbial_2_A
 provide_V	provide_3_V
 provide_V	provide_4_V
-provide_V	provide_5_V
+provide_V	provide_for_V2
 provide_V	provide_7_V
 provide_V2	provide_1_V2
 provide_V2	provide_2_V2
@@ -76643,7 +76634,6 @@ qualifier_N	qualifier_1_N
 qualifier_N	qualifier_2_N
 qualify_V	qualify_1_V
 qualify_V	qualify_5_V
-qualify_V	qualify_6_V
 qualify_V	qualify_7_V
 qualify_V2	qualify_1_V2
 qualify_V2	qualify_2_V2
@@ -80422,7 +80412,6 @@ reserve_N	reserve_5_N
 reserve_N	reserve_6_N
 reserve_N	reserve_7_N
 reserve_V	reserve_1_V
-reserve_V	reserve_2_V
 reserve_V2	reserve_1_V2
 reserve_V2	reserve_2_V2
 reserve_V2	reserve_3_V2
@@ -83034,7 +83023,6 @@ run_off_V	run_off_6_V
 run_off_V	run_off_7_V
 run_off_V2	run_off_3_V2
 run_off_V2	run_off_4_V2
-run_off_V2	run_off_5_V2
 run_off_V2	run_off_6_V2
 run_off_V2	run_off_7_V2
 run_on_V2	run_on_1_V2
@@ -90170,7 +90158,6 @@ soar_V	soar_3_V
 soar_V	soar_4_V
 soar_V	soar_5_V
 soar_V2	soar_2_V2
-soar_V2	soar_3_V2
 soar_V2	soar_5_V2
 sob_N	sob_1_N
 sob_N	sob_2_N
@@ -91366,7 +91353,6 @@ speed_V	speed_4_V
 speed_V	speed_5_V
 speed_V2	speed_1_V2
 speed_V2	speed_2_V2
-speed_V2	speed_3_V2
 speed_V2	speed_5_V2
 speed_along_V	speed_along_V
 speed_cop_N	speed_cop_N
@@ -95974,7 +95960,6 @@ surge_V	surge_2_V
 surge_V	surge_3_V
 surge_V	surge_4_V
 surge_V	surge_5_V
-surge_V2	surge_2_V2
 surge_on_V	surge_on_V
 surgeon_N	surgeon_N
 surgeonfish_N	surgeonfish_N
@@ -99037,7 +99022,7 @@ those_N	those_N
 though_Adv	though_Adv
 though_Prep	though_Prep
 though_Subj	though_Subj
-thought_N	thought_of_N2
+thought_N	thought_1_N
 thought_N	thought_2_N
 thought_N	thought_3_N
 thought_N	thought_4_N
@@ -100184,7 +100169,6 @@ tontine_N	tontine_2_N
 tony_PN	tony_PN
 tonyrefail_PN	tonyrefail_PN
 too_AdA	too_AdA
-too_AdA	too_AdN
 too_Adv	too_Adv
 tool_N	tool_1_N
 tool_N	tool_2_N
@@ -101262,7 +101246,6 @@ travel_V	travel_2_V
 travel_V	travel_3_V
 travel_V	travel_5_V
 travel_V	travel_6_V
-travel_V2	travel_1_V2
 travel_V2	travel_2_V2
 travel_V2	travel_3_V2
 travel_V2	travel_4_V2

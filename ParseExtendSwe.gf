@@ -1,7 +1,7 @@
 concrete ParseExtendSwe of ParseExtend = 
   ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP] ** 
-  open Prelude, ResSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe) in {
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralSwe - [num] ** 
+  open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe) in {
 
 lincat Mark = {s : Str} ;
 
@@ -178,7 +178,7 @@ lin UseDAPMasc, UseDAPFem = \dap ->
       } ;
 
 lin AdvImp adv imp = {
-      s = \\pol,num => adv.s ++ imp.s ! pol ! num
+      s = \\p,n => adv.s ++ imp.s ! p ! n
     } ;
 
 lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
@@ -229,5 +229,19 @@ lin EmbedVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 U
 
 lin RecipVPSlash slash = GrammarSwe.ComplSlash slash (regNP "varandra" "varandra" Utr Sg);
     RecipVPSlashCN slash cn = GrammarSwe.ComplSlash slash (DetCN (M.mkDet "varandras" Pl) cn);
+
+lincat Sub1000000000 = {s : CardOrd => Str ; n : Number} ;
+
+lin pot3as4 n = n ;
+    pot4 n = 
+      numPl (\\g => n.s ! NCard Utr ++ cardOrd "miljon" "miljonde" ! g) ;
+    pot4plus n m =
+      {s = \\g => n.s ! NCard Utr ++ BIND ++ "miljon" ++ m.s ! g ; n = Pl} ;
+
+    pot21 = numPl (cardOrd "hundra" "hundrade") ;
+    pot31 = numPl (cardOrd "tusen" "tusende") ;
+    pot41 = numPl (cardOrd "miljon" "miljonde") ;
+
+    num x = x ;
 
 }

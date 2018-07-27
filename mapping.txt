@@ -60195,9 +60195,7 @@ milliner_N	milliner_N
 millinery_N	millinery_1_N
 millinery_N	millinery_2_N
 milling_N	milling_N
-million_A	million_A
-million_N	million_1_N
-million_N	million_2_N
+million_N	millions_Card
 millionaire_N	millionaire_N
 millionairess_N	millionairess_N
 millionfold_Adv	millionfold_Adv

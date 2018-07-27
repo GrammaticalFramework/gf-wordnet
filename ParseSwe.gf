@@ -4,7 +4,6 @@ concrete ParseSwe of Parse =
   VerbSwe - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP],
   AdjectiveSwe - [ReflA2, CAdvAP],
   AdverbSwe - [ComparAdvAdj, ComparAdvAdjS, AdnCAdv],
-  NumeralSwe,
   SentenceSwe - [EmbedVP],
   QuestionSwe,
   RelativeSwe,

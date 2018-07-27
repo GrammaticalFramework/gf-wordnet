@@ -1,5 +1,5 @@
 abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP] ** {
+                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], Numeral - [num] ** {
 
 cat Mark ;
 
@@ -85,5 +85,16 @@ fun EmbedVP : Ant -> Pol -> VP -> SC ;
 
 fun RecipVPSlash   : VPSlash -> VP ;
     RecipVPSlashCN : VPSlash -> CN -> VP ;
-    
+
+cat Sub1000000000 ;
+
+fun pot3as4 : Sub1000000 -> Sub1000000000 ;              -- coercion of 1..999999
+    pot4  : Sub1000 -> Sub1000000000 ;                   -- m * 1000000000
+    pot4plus : Sub1000 -> Sub1000000 -> Sub1000000000 ;  -- m * 1000000000 + n
+
+    pot21 : Sub1000 ;                                    -- 100
+    pot31 : Sub1000000 ;                                 -- 1000
+    pot41 : Sub1000000000 ;                              -- 1000000000
+
+    num : Sub1000000000 -> Numeral ;
 }

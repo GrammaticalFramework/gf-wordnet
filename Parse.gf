@@ -3,7 +3,6 @@ abstract Parse =
   Verb - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP], 
   Adjective - [ReflA2, CAdvAP],
   Adverb - [AdnCAdv, ComparAdvAdj, ComparAdvAdjS],
-  Numeral,
   Sentence - [EmbedVP], 
   Question,
   Relative,

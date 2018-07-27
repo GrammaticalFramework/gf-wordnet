@@ -1,6 +1,6 @@
 concrete ParseExtendEng of ParseExtend = 
   ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP] ** 
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralEng - [num] **
   open Prelude, ResEng, MorphoEng, GrammarEng, (E = ExtraEng), Coordination in {
 
 lincat Mark = {s : Str} ;
@@ -191,5 +191,35 @@ lin EmbedVP ant pol vp = {s =
 
 lin RecipVPSlash slash = GrammarEng.ComplSlash slash (mkNP "each other" "each other" "each other" Sg P3 Masc);
     RecipVPSlashCN slash cn = GrammarEng.ComplSlash slash (DetCN (mkDeterminer Sg "each other's") cn);
+
+lincat Sub1000000000 = {s : Bool => CardOrd => Case => Str ; n : Number} ;
+
+lin pot3as4 n = n ;
+    pot4 n = {
+      s = \\d,o,c => n.s ! d ! NCard ! Nom ++ pot41.s ! True ! o ! c ;
+      n = Pl
+    } ;
+    pot4plus n1 n2 = {
+      s = \\d,o,c => n1.s ! d ! NCard ! Nom ++ pot41.s ! True ! NCard ! Nom ++ "and" ++ n2.s ! True ! o ! c;
+      n = Pl
+    } ;
+
+    pot21 = {
+      s = \\d,o,c => case d of {True => []; False => "a"} ++
+                     (regCardOrd "hundred").s ! o ! c;
+      n = Pl
+    } ;
+    pot31 = {
+      s = \\d,o,c => case d of {True => []; False => "a"} ++
+                     (regCardOrd "thousand").s ! o ! c;
+      n = Pl
+    } ;
+    pot41 = {
+      s = \\d,o,c => case d of {True => []; False => "a"} ++
+                     (regCardOrd "million").s ! o ! c;
+      n = Pl
+    } ;
+
+    num x = x ;
 
 }

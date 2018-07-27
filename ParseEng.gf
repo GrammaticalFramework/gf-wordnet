@@ -4,7 +4,6 @@ concrete ParseEng of Parse =
   VerbEng - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP],
   AdjectiveEng - [ReflA2,CAdvAP],
   AdverbEng - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
-  NumeralEng,
   SentenceEng - [UseCl, EmbedVP],
   QuestionEng,
   RelativeEng - [IdRP],

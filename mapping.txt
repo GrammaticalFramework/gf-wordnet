@@ -4608,7 +4608,6 @@ appraiser_N	appraiser_1_N
 appraiser_N	appraiser_2_N
 appreciable_A	appreciable_A
 appreciate_V	appreciate_1_V
-appreciate_V	appreciate_3_V
 appreciate_V	appreciate_4_V
 appreciate_V2	appreciate_1_V2
 appreciate_V2	appreciate_2_V2
@@ -55153,7 +55152,6 @@ light_N	light_12_N
 light_N	light_13_N
 light_N	light_14_N
 light_N	light_15_N
-light_V	light_1_V
 light_V	light_2_V
 light_V	light_3_V
 light_V	light_5_V
@@ -55184,7 +55182,6 @@ light_mindedness_N	light_mindedness_N
 light_o'_love_N	light_o'_love_1_N
 light_out_V	light_out_V
 light_up_V	light_up_1_V
-light_up_V	light_up_2_V
 light_up_V	light_up_3_V
 light_up_V	light_up_4_V
 light_up_V2	light_up_2_V2
@@ -105754,7 +105751,6 @@ value_N	value_3_N
 value_N	value_4_N
 value_N	value_5_N
 value_N	value_6_N
-value_V	value_2_V
 value_V	value_3_V
 value_V	value_4_V
 value_V	value_5_V

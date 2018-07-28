@@ -1155,8 +1155,6 @@ add_V2	add_5_V2
 add_VS	add_2_VS
 add_in_V	add_in_V
 add_on_to_V2	add_on_to_V2
-add_up_V	add_up_1_V
-add_up_V	add_up_3_V
 add_up_V	add_up_4_V
 add_up_V2	add_up_1_V2
 add_up_V2	add_up_3_V2
@@ -3206,9 +3204,9 @@ amount_N	amount_1_N
 amount_N	amount_2_N
 amount_N	amount_3_N
 amount_N	amount_4_N
-amount_V	amount_1_V
-amount_V	amount_2_V
-amount_V	amount_3_V
+amount_V	amount_to_1_V2
+amount_V	amount_to_2_V2
+amount_V	amount_to_3_V2
 amour_N	amour_N
 amour_propre_N	amour_propre_N
 amoxicillin_N	amoxicillin_N
@@ -5046,7 +5044,6 @@ arm_2_N	arm_4_N
 arm_2_N	arm_5_N
 arm_2_N	arm_6_N
 arm_V	arm_1_V
-arm_V2	arm_1_V2
 arm_V2	arm_2_V2
 arm_hole_N	arm_hole_N
 armada_N	armada_N
@@ -11729,7 +11726,6 @@ break_apart_V	break_apart_3_V
 break_away_V	break_away_2_V
 break_away_V	break_away_4_V
 break_away_V	break_away_5_V
-break_down_V	break_down_2_V
 break_down_V	break_down_3_V
 break_down_V	break_down_4_V
 break_down_V	break_down_5_V
@@ -14182,7 +14178,6 @@ canvass_N	canvass_6_N
 canvass_N	canvass_7_N
 canvass_V	canvass_1_V
 canvass_V	canvass_2_V
-canvass_V	canvass_3_V
 canvass_V2	canvass_1_V2
 canvass_V2	canvass_2_V2
 canvass_V2	canvass_3_V2
@@ -24035,7 +24030,6 @@ cut_in_on_V2	cut_in_on_V2
 cut_it_out_V2	cut_it_out_V2
 cut_off_V	cut_off_1_V
 cut_off_V	cut_off_5_V
-cut_off_V	cut_off_6_V
 cut_off_V2	cut_off_1_V2
 cut_off_V2	cut_off_3_V2
 cut_off_V2	cut_off_4_V2
@@ -42583,7 +42577,6 @@ ground_1_N	ground_9_N
 ground_1_N	ground_10_N
 ground_1_N	ground_11_N
 ground_2_N	ground_2_N
-ground_V	ground_1_V
 ground_V	ground_3_V
 ground_V	ground_4_V
 ground_V	ground_6_V
@@ -48573,8 +48566,8 @@ increase_N	increase_2_N
 increase_N	increase_3_N
 increase_N	increase_4_N
 increase_N	increase_5_N
-increase_V	increase_1_V
-increase_V2	increase_2_V2
+increase_V	increase_V
+increase_V2	increase_V2
 increased_A	increased_A
 increasing_A	increasing_1_A
 increasing_A	increasing_2_A
@@ -51154,18 +51147,7 @@ jack_N	jack_9_N
 jack_N	jack_10_N
 jack_N	jack_11_N
 jack_N	jack_12_N
-jack_PN	jack_1_PN
-jack_PN	jack_2_PN
-jack_PN	jack_3_PN
-jack_PN	jack_4_PN
-jack_PN	jack_5_PN
-jack_PN	jack_6_PN
-jack_PN	jack_7_PN
-jack_PN	jack_8_PN
-jack_PN	jack_9_PN
-jack_PN	jack_10_PN
-jack_PN	jack_11_PN
-jack_PN	jack_12_PN
+jack_PN	jack_PN
 jack_V2	jack_2_V2
 jack_around_V2	jack_around_V2
 jack_in_V2	jack_in_V2
@@ -72103,14 +72085,12 @@ plutocratic_A	plutocratic_1_A
 plutonium_N	plutonium_N
 ply_N	ply_1_N
 ply_N	ply_2_N
-ply_V	ply_V
 ply_V2	ply_1_V2
 ply_V2	ply_2_V2
 ply_V2	ply_3_V2
 ply_V2	ply_4_V2
 ply_V2	ply_5_V2
 ply_V2	ply_6_V2
-ply_V2A	ply_V2A
 plymouth_PN	plymouth_PN
 plywood_N	plywood_N
 pneumatic_A	pneumatic_1_A
@@ -87670,7 +87650,6 @@ show_N	show_1_N
 show_N	show_2_N
 show_N	show_3_N
 show_N	show_4_N
-show_V	show_5_V
 show_V	show_8_V
 show_V	show_12_V
 show_V2	show_1_V2
@@ -94638,7 +94617,6 @@ study_N	study_7_N
 study_N	study_8_N
 study_N	study_9_N
 study_N	study_10_N
-study_V	study_1_V
 study_V	study_2_V
 study_V	study_3_V
 study_V	study_4_V
@@ -100437,7 +100415,6 @@ total_A	total_1_A
 total_A	total_2_A
 total_N	total_1_N
 total_N	total_2_N
-total_V	total_1_V
 total_V	total_2_V
 total_V2	total_1_V2
 total_V2	total_2_V2

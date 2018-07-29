@@ -3327,14 +3327,14 @@ anadiplosis_N	anadiplosis_N
 anadromous_A	anadromous_A
 anaemia_N	anaemia_1_N
 anaemia_N	anaemia_2_N
-anaemic_A	anaemic_1_A
-anaemic_A	anaemic_2_A
 anaerobe_N	anaerobe_N
 anaerobic_A	anaerobic_1_A
 anaerobic_A	anaerobic_2_A
 anaesthesia_N	anaesthesia_N
 anaesthetic_A	anaesthetic_1_A
 anaesthetic_A	anaesthetic_2_A
+anesthetic_A	anaesthetic_1_A
+anesthetic_A	anaesthetic_2_A
 anaesthetic_N	anaesthetic_N
 anaesthetist_N	anaesthetist_N
 anaglyph_N	anaglyph_1_N
@@ -3527,6 +3527,8 @@ anemia_N	anemia_2_N
 anemia_N	anemia_3_N
 anemic_A	anemic_1_A
 anemic_A	anemic_2_A
+anemic_A	anaemic_1_A
+anemic_A	anaemic_2_A
 anemographic_A	anemographic_A
 anemography_N	anemography_N
 anemometer_N	anemometer_N
@@ -3546,8 +3548,6 @@ aneroid_N	aneroid_N
 anesthesia_N	anesthesia_N
 anesthesiologist_N	anesthesiologist_N
 anesthesiology_N	anesthesiology_N
-anesthetic_A	anesthetic_1_A
-anesthetic_A	anesthetic_2_A
 anesthetic_N	anesthetic_N
 anesthetist_N	anesthetist_N
 anesthetize_V2	anesthetize_1_V2
@@ -5602,7 +5602,6 @@ assemblage_N	assemblage_1_N
 assemblage_N	assemblage_2_N
 assemblage_N	assemblage_3_N
 assemblage_N	assemblage_4_N
-assemble_V	assemble_1_V
 assemble_V2	assemble_1_V2
 assemble_V2	assemble_2_V2
 assemble_V2	assemble_3_V2
@@ -12099,7 +12098,6 @@ bring_down_V2	bring_down_4_V2
 bring_down_V2	bring_down_5_V2
 bring_down_V2	bring_down_6_V2
 bring_forth_V	bring_forth_1_V
-bring_forth_V	bring_forth_3_V
 bring_forth_V	bring_forth_4_V
 bring_forth_V2	bring_forth_1_V2
 bring_forth_V2	bring_forth_2_V2
@@ -19318,7 +19316,6 @@ command_2_N	command_5_N
 command_2_N	command_6_N
 command_2_N	command_7_N
 command_V	command_2_V
-command_V	command_4_V
 command_V2	command_1_V2
 command_V2	command_2_V2
 command_V2	command_3_V2
@@ -19634,9 +19631,7 @@ compendious_A	compendious_A
 compendium_N	compendium_1_N
 compendium_N	compendium_2_N
 compensable_A	compensable_A
-compensate_V	compensate_1_V
 compensate_V	compensate_3_V
-compensate_V	compensate_4_V
 compensate_V	compensate_5_V
 compensate_V	compensate_6_V
 compensate_V2	compensate_1_V2
@@ -21788,9 +21783,6 @@ correct_A	correct_1_A
 correct_A	correct_2_A
 correct_A	correct_3_A
 correct_A	correct_4_A
-correct_V	correct_2_V
-correct_V	correct_3_V
-correct_V	correct_5_V
 correct_V	correct_6_V
 correct_V	correct_8_V
 correct_V2	correct_1_V2
@@ -21798,10 +21790,7 @@ correct_V2	correct_2_V2
 correct_V2	correct_3_V2
 correct_V2	correct_4_V2
 correct_V2	correct_5_V2
-correct_VS	correct_2_VS
-correct_VS	correct_3_VS
-correct_VS	correct_5_VS
-correct_VS	correct_7_VS
+correct_VS	correct_7_V2
 correctable_A	correctable_1_A
 correctable_A	correctable_2_A
 correction_1_N	correction_1_N
@@ -25164,13 +25153,11 @@ decline_V	decline_6_V
 decline_V2	decline_1_V2
 decline_V2	decline_2_V2
 decline_V2	decline_4_V2
-decline_V2	decline_6_V2
 decline_V2	decline_7_V2
 decline_VV	decline_1_VV
 decline_VV	decline_2_VV
 decline_VV	decline_3_VV
 decline_VV	decline_4_VV
-decline_VV	decline_6_VV
 declinometer_N	declinometer_N
 declivitous_A	declivitous_A
 declivity_N	declivity_N
@@ -26737,9 +26724,9 @@ development_N	development_9_N
 developmental_A	developmental_A
 deviant_A	deviant_1_A
 deviant_N	deviant_1_N
-deviate_V	deviate_1_V
-deviate_V	deviate_2_V
-deviate_V	deviate_3_V
+deviate_V	deviate_1_V2
+deviate_V	deviate_V
+deviate_V	deviate_3_V2
 deviation_N	deviation_1_N
 deviation_N	deviation_2_N
 deviation_N	deviation_3_N
@@ -28657,10 +28644,10 @@ diversionary_A	diversionary_A
 diversionist_N	diversionist_N
 diversity_N	diversity_1_N
 diversity_N	diversity_2_N
-divert_V	divert_1_V
-divert_V	divert_2_V
-divert_V	divert_3_V
-divert_V	divert_4_V
+divert_V	divert_1_V2
+divert_V	divert_2_V2
+divert_V	divert_3_V2
+divert_V	divert_4_V2
 diverticulitis_N	diverticulitis_N
 diverticulosis_N	diverticulosis_N
 diverticulum_N	diverticulum_N
@@ -28780,7 +28767,7 @@ do_V2	do_3_V2
 do_V2	do_4_V2
 do_V2	do_5_V2
 do_V2	do_6_V2
-do_V2	do_7_V2
+do_V2	do_7_V
 do_V2	do_8_V2
 do_V2	do_9_V2
 do_V2	do_10_V2
@@ -30009,7 +29996,6 @@ drop_V	drop_12_V
 drop_V	drop_13_V
 drop_V	drop_15_V
 drop_V	drop_16_V
-drop_V	drop_19_V
 drop_V	drop_21_V
 drop_V	drop_22_V
 drop_V2	drop_1_V2
@@ -33357,14 +33343,10 @@ evasion_N	evasion_4_N
 evasive_A	evasive_1_A
 evasive_A	evasive_2_A
 evasiveness_N	evasiveness_N
-eve_N	eve_1_N
 eve_N	eve_2_N
 eve_N	eve_3_N
 eve_N	eve_4_N
-eve_PN	eve_1_PN
-eve_PN	eve_2_PN
-eve_PN	eve_3_PN
-eve_PN	eve_4_PN
+eve_PN	eve_PN
 evelyn_PN	evelyn_PN
 even_1_A	even_1_A
 even_2_A	even_2_A
@@ -33372,7 +33354,6 @@ even_2_A	even_3_A
 even_2_A	even_4_A
 even_2_A	even_5_A
 even_2_A	even_6_A
-even_AdA	even_1_AdA
 even_AdA	even_2_AdA
 even_AdA	even_3_AdA
 even_AdA	even_4_AdA
@@ -33389,10 +33370,10 @@ even_V2	even_1_V2
 even_V2	even_2_V2
 even_V2	even_3_V2
 even_handed_A	even_handed_A
-even_out_V	even_out_1_V
-even_out_V	even_out_2_V
-even_out_V	even_out_V2
-even_out_V	even_out_4_V
+even_out_V	even_out_1_V2
+even_out_V	even_out_2_V2
+even_out_V	even_out_3_V2
+even_out_V	even_out_4_V2
 even_though_Subj	even_though_Subj
 evening_N	evening_1_N
 evening_N	evening_2_N
@@ -37379,7 +37360,6 @@ flush_N	flush_7_N
 flush_V	flush_1_V
 flush_V	flush_2_V
 flush_V	flush_3_V
-flush_V	flush_4_V
 flush_V	flush_6_V
 flush_V2	flush_1_V2
 flush_V2	flush_4_V2
@@ -49734,9 +49714,6 @@ instability_N	instability_1_N
 instability_N	instability_2_N
 instability_N	instability_3_N
 instability_N	instability_4_N
-instal_V	instal_1_V
-instal_V	instal_3_V
-install_V	install_3_V
 install_V2	install_1_V2
 install_V2	install_2_V2
 install_V2	install_3_V2
@@ -50350,7 +50327,8 @@ intimidation_N	intimidation_1_N
 intimidation_N	intimidation_2_N
 intimidation_N	intimidation_3_N
 intimidation_N	intimidation_4_N
-into_Prep	into_Prep
+into_Prep	into_1_Prep
+into_Prep	into_2_Prep
 intolerable_A	intolerable_A
 intolerance_N	intolerance_1_N
 intolerance_N	intolerance_2_N
@@ -53912,7 +53890,6 @@ laughter_N	laughter_2_N
 laukaa_PN	laukaa_PN
 launch_N	launch_1_N
 launch_N	launch_2_N
-launch_V	launch_1_V
 launch_V	launch_4_V
 launch_V2	launch_1_V2
 launch_V2	launch_2_V2
@@ -57554,7 +57531,6 @@ make_up_N	make_up_2_N
 make_up_N	make_up_3_N
 make_up_V	make_up_3_V
 make_up_V	make_up_5_V
-make_up_V	make_up_7_V
 make_up_V	make_up_8_V
 make_up_V2	make_up_1_V2
 make_up_V2	make_up_2_V2
@@ -66146,7 +66122,6 @@ order_N	order_15_N
 order_V	order_3_V
 order_V	order_4_V
 order_V	order_7_V
-order_V	order_8_V
 order_V	order_9_V
 order_V2	order_2_V2
 order_V2	order_3_V2
@@ -66164,7 +66139,6 @@ order_V2V	order_9_V2V
 order_VS	order_3_VS
 order_VS	order_4_VS
 order_VS	order_7_VS
-order_VS	order_8_VS
 order_VS	order_9_VS
 order_book_N	order_book_1_N
 order_book_N	order_book_2_N
@@ -68361,7 +68335,6 @@ part_V	part_3_V
 part_V	part_4_V
 part_V2	part_1_V2
 part_V2	part_2_V2
-part_V2	part_3_V2
 part_V2	part_4_V2
 part_V2	part_5_V2
 part_of_N2	part_of_N2
@@ -76308,7 +76281,6 @@ put_over_V2	put_over_2_V2
 put_through_V2	put_through_2_V2
 put_towards_V2	put_towards_V2
 put_up_V	put_up_1_V
-put_up_V	put_up_3_V
 put_up_V	put_up_4_V
 put_up_V	put_up_6_V
 put_up_V	put_up_7_V
@@ -78223,7 +78195,6 @@ rear_V	rear_1_V
 rear_V	rear_2_V
 rear_V	rear_3_V
 rear_V	rear_4_V
-rear_V	rear_5_V
 rear_V2	rear_2_V2
 rear_V2	rear_3_V2
 rear_V2	rear_4_V2
@@ -86429,7 +86400,6 @@ set_back_V2	set_back_2_V2
 set_back_V2	set_back_3_V2
 set_forth_V	set_forth_2_V
 set_forth_V2	set_forth_1_V2
-set_forth_V2	set_forth_2_V2
 set_in_V	set_in_1_V
 set_in_V	set_in_2_V
 set_in_V	set_in_3_V
@@ -86448,19 +86418,12 @@ set_out_V	set_out_1_V
 set_out_V	set_out_3_V
 set_out_V2	set_out_1_V2
 set_out_V2	set_out_2_V2
-set_out_V2	set_out_3_V2
 set_square_N	set_square_N
 set_to_N	set_to_N
 set_to_V	set_to_V
 set_up_N	set_up_1_N
 set_up_N	set_up_2_N
 set_up_N	set_up_3_N
-set_up_V	set_up_3_V
-set_up_V	set_up_5_V
-set_up_V	set_up_9_V
-set_up_V	set_up_11_V
-set_up_V	set_up_12_V
-set_up_V	set_up_14_V
 set_up_V	set_up_15_V
 set_up_V2	set_up_1_V2
 set_up_V2	set_up_2_V2
@@ -86477,6 +86440,7 @@ set_up_V2	set_up_12_V2
 set_up_V2	set_up_13_V2
 set_up_V2	set_up_14_V2
 set_up_V2	set_up_15_V2
+set_up_V2	set_up_V2V
 set_upon_V2	set_upon_V2
 seta_N	seta_1_N
 seta_N	seta_2_N
@@ -88939,7 +88903,6 @@ slangy_A	slangy_A
 slant_N	slant_1_N
 slant_N	slant_2_N
 slant_V	slant_1_V
-slant_V	slant_2_V
 slant_V	slant_3_V
 slant_V	slant_4_V
 slant_V2	slant_2_V2
@@ -92861,7 +92824,6 @@ start_V	start_11_V
 start_V	start_12_V
 start_V	start_14_V
 start_V2	start_2_V2
-start_V2	start_3_V2
 start_V2	start_5_V2
 start_V2	start_6_V2
 start_V2	start_7_V2
@@ -92871,7 +92833,6 @@ start_V2	start_11_V2
 start_V2	start_12_V2
 start_V2	start_13_V2
 start_V2	start_14_V2
-start_ing_VV	start_ing_3_VV
 start_ing_VV	start_ing_7_VV
 start_ing_VV	start_ing_11_VV
 start_ing_VV	start_ing_12_VV
@@ -92885,7 +92846,6 @@ start_out_V	start_out_2_V
 start_out_as_V2	start_out_as_V2
 start_out_to_V2	start_out_to_V2
 start_over_V	start_over_V
-start_to_VV	start_to_3_VV
 start_to_VV	start_to_7_VV
 start_to_VV	start_to_11_VV
 start_to_VV	start_to_12_VV
@@ -95275,7 +95235,6 @@ suffering_N	suffering_2_N
 suffering_N	suffering_3_N
 suffering_N	suffering_4_N
 suffice_V	suffice_V
-suffice_VV	suffice_VV
 sufficiency_N	sufficiency_1_N
 sufficiency_N	sufficiency_3_N
 sufficient_A	sufficient_A
@@ -105930,7 +105889,6 @@ varus_N	varus_N
 vary_V	vary_1_V
 vary_V	vary_2_V
 vary_V	vary_3_V
-vary_V2	vary_2_V2
 vary_V2	vary_4_V2
 varying_A	varying_A
 vascular_A	vascular_A

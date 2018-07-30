@@ -4212,7 +4212,7 @@ antitauon_N	antitauon_N
 antithesis_N	antithesis_1_N
 antithesis_N	antithesis_2_N
 antithetic_A	antithetic_A
-antithetical_A	antithetical_A
+antithetical_A	antithetic_A
 antithyroid_A	antithyroid_A
 antitoxic_A	antitoxic_A
 antitoxin_N	antitoxin_N
@@ -4280,9 +4280,6 @@ apar_N	apar_N
 apart_Adv	apart_1_Adv
 apart_Adv	apart_2_Adv
 apart_Adv	apart_3_Adv
-apart_Adv	apart_4_Adv
-apart_Adv	apart_5_Adv
-apart_Adv	apart_6_Adv
 apart_from_Prep	apart_from_Prep
 apartheid_N	apartheid_N
 apartment_N	apartment_N
@@ -4569,7 +4566,6 @@ apply_V2V	apply_6_V2V
 apply_VV	apply_5_VV
 apply_VV	apply_6_VV
 apply_for_V2	apply_for_V2
-appoint_V2	appoint_1_V2
 appoint_V2	appoint_2_V2
 appoint_V2	appoint_3_V2
 appoint_V2V	appoint_1_V2V
@@ -6019,7 +6015,6 @@ atrophy_N	atrophy_1_N
 atrophy_N	atrophy_2_N
 atrophy_V	atrophy_V
 atropine_N	atropine_N
-attach_V	attach_1_V
 attach_V	attach_2_V
 attach_V	attach_4_V
 attach_V	attach_5_V
@@ -11719,7 +11714,7 @@ break_V2	break_53_V2
 break_V2	break_54_V2
 break_V2	break_57_V2
 break_V2	break_59_V2
-break_apart_V	break_apart_1_V
+break_apart_V	break_apart_1_V2
 break_apart_V	break_apart_2_V
 break_apart_V	break_apart_3_V
 break_away_V	break_away_2_V
@@ -11769,7 +11764,6 @@ break_up_V	break_up_4_V
 break_up_V	break_up_5_V
 break_up_V	break_up_6_V
 break_up_V	break_up_7_V
-break_up_V	break_up_8_V
 break_up_V	break_up_10_V
 break_up_V	break_up_11_V
 break_up_V	break_up_12_V
@@ -13670,13 +13664,12 @@ call_N	call_10_N
 call_N	call_11_N
 call_N	call_12_N
 call_N	call_13_N
-call_V	call_1_V
 call_V	call_4_V
 call_V	call_9_V
 call_V	call_10_V
 call_V	call_13_V
 call_V	call_16_V
-call_V2	call_1_V2
+call_V2	call_V3
 call_V2	call_2_V2
 call_V2	call_3_V2
 call_V2	call_4_V2
@@ -21187,7 +21180,6 @@ contrivance_N	contrivance_4_N
 contrivance_N	contrivance_5_N
 contrivance_N	contrivance_6_N
 contrive_V	contrive_2_V
-contrive_V	contrive_3_V
 contrive_V2	contrive_1_V2
 contrive_V2	contrive_2_V2
 contrive_V2	contrive_3_V2
@@ -25049,12 +25041,12 @@ deceptive_A	deceptive_1_A
 deceptive_A	deceptive_2_A
 deceptiveness_N	deceptiveness_N
 decibel_N	decibel_N
-decide_V	decide_V
+decide_V	decide_1_V
 decide_V2	decide_2_V2
 decide_V2	decide_3_V2
-decide_V2	decide_4_V2
-decide_VS	decide_4_VS
-decide_VV	decide_4_VV
+decide_V2	decide_1_V2
+decide_VS	decide_1_VS
+decide_VV	decide_1_VV
 decide_on_V2	decide_on_V2
 decide_upon_V2	decide_upon_V2
 decided_A	decided_A
@@ -26591,13 +26583,11 @@ determine_V2	determine_1_V2
 determine_V2	determine_2_V2
 determine_V2	determine_3_V2
 determine_V2	determine_4_V2
-determine_V2	determine_5_V2
 determine_V2	determine_6_V2
 determine_V2	determine_7_V2
 determine_V2	determine_8_V2
 determine_V2V	determine_1_V2V
 determine_V2V	determine_3_V2V
-determine_V2V	determine_5_V2V
 determine_V2V	determine_7_V2V
 determine_VS	determine_1_VS
 determine_VS	determine_3_VS
@@ -27821,7 +27811,6 @@ discourteous_A	discourteous_2_A
 discourtesy_N	discourtesy_1_N
 discourtesy_N	discourtesy_2_N
 discourtesy_N	discourtesy_3_N
-discover_V	discover_1_V
 discover_V	discover_2_V
 discover_V	discover_4_V
 discover_V	discover_5_V
@@ -30526,6 +30515,8 @@ dweller_N	dweller_N
 dwelling_N	dwelling_N
 dwelling_house_N	dwelling_house_N
 dwindle_V	dwindle_V
+dwindle_V	dwindle_away_V
+dwindle_V	dwindle_down_V
 dwindling_N	dwindling_N
 dyadic_A	dyadic_A
 dyarchy_N	dyarchy_N
@@ -36432,7 +36423,7 @@ firmness_N	firmness_3_N
 firmness_N	firmness_4_N
 firmware_N	firmware_N
 first_Adv	first_1_Adv
-first_Adv	first_2_Adv
+first_Adv	first_2_AdV
 first_Adv	first_3_Adv
 first_Adv	first_4_Adv
 first_class_A	first_class_A
@@ -43454,7 +43445,7 @@ hamilton_PN	hamilton_5_PN
 hamilton_PN	hamilton_6_PN
 hamina_PN	hamina_PN
 hamlet_N	hamlet_1_N
-hamlet_N	hamlet_2_N
+hamlet_N	hamlet_PN
 hamlet_N	hamlet_3_N
 hammer_N	hammer_1_N
 hammer_N	hammer_2_N
@@ -48806,7 +48797,7 @@ indispensable_A	indispensable_1_A
 indispensable_A	indispensable_2_A
 indispensable_A	indispensable_3_A
 indisposed_A	indisposed_1_A
-indisposed_A	indisposed_2_A
+indisposed_A	indisposed_to_A2
 indisposition_N	indisposition_1_N
 indisposition_N	indisposition_2_N
 indisputability_N	indisputability_N
@@ -54556,11 +54547,7 @@ lens_N	lens_2_N
 lens_N	lens_3_N
 lens_N	lens_4_N
 lens_N	lens_5_N
-lens_PN	lens_1_PN
-lens_PN	lens_2_PN
-lens_PN	lens_3_PN
-lens_PN	lens_4_PN
-lens_PN	lens_5_PN
+lens_PN	lens_PN
 lent_N	lent_N
 lent_PN	lent_PN
 lenten_A	lenten_A
@@ -62625,10 +62612,9 @@ name_N	name_3_N
 name_N	name_4_N
 name_N	name_5_N
 name_N	name_6_N
-name_V2	name_1_V2
+name_V2	name_1_V3
 name_V2	name_2_V2
-name_V2	name_3_V2
-name_V2	name_4_V2
+name_V2	name_3_V3
 name_V2	name_5_V2
 name_V2	name_6_V2
 name_V2	name_7_V2
@@ -66562,7 +66548,8 @@ out_V2	out_2_V2
 out_V2	out_V
 out_from_Prep	out_from_Prep
 out_herod_V2	out_herod_V2
-out_of_Prep	out_of_Prep
+out_of_Prep	out_of_1_Prep
+out_of_Prep	out_of_2_Prep
 out_of_date_A	out_of_date_A
 out_of_door_A	out_of_door_A
 out_of_doors_Adv	out_of_doors_Adv
@@ -74041,7 +74028,6 @@ prestwich_PN	prestwich_PN
 prestwick_PN	prestwick_PN
 presumable_A	presumable_A
 presumably_Adv	presumably_Adv
-presume_V	presume_1_V
 presume_V	presume_2_V
 presume_V	presume_4_V
 presume_V2	presume_1_V2
@@ -74800,7 +74786,6 @@ project_V	project_5_V
 project_V	project_6_V
 project_V	project_8_V
 project_V	project_9_V
-project_V	project_10_V
 project_V	project_12_V
 project_V2	project_1_V2
 project_V2	project_2_V2
@@ -74816,13 +74801,11 @@ project_V2V	project_2_V2V
 project_V2V	project_3_V2V
 project_V2V	project_6_V2V
 project_V2V	project_9_V2V
-project_V2V	project_10_V2V
 project_V2V	project_12_V2V
 project_VS	project_2_VS
 project_VS	project_3_VS
 project_VS	project_6_VS
 project_VS	project_9_VS
-project_VS	project_10_VS
 project_VS	project_12_VS
 projectile_A	projectile_A
 projectile_N	projectile_1_N
@@ -97092,7 +97075,6 @@ take_off_V2	take_off_6_V2
 take_off_V2	take_off_7_V2
 take_off_V2	take_off_9_V2
 take_off_V2	take_off_V3
-take_on_V	take_on_2_V
 take_on_V	take_on_3_V
 take_on_V	take_on_5_V
 take_on_V2	take_on_1_V2
@@ -97121,7 +97103,6 @@ take_out_V2	take_out_12_V2
 take_out_V2	take_out_13_V2
 take_out_V2	take_out_14_V2
 take_over_V	take_over_1_V
-take_over_V	take_over_2_V
 take_over_V	take_over_3_V
 take_over_V	take_over_4_V
 take_over_V	take_over_5_V

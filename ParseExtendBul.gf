@@ -33,7 +33,7 @@ lin FocusComp comp np =
       mkClause (comp.s ! personAgr np.gn np.p) np.gn (NounP3 comp.p)
                (insertObj (\\_ => np.s ! RSubj) (personPol np.p) (predV verbBe)) ;
 
-lincat [Comp] = {s : Bool => Ints 3 => Agr => Str} ;
+lincat [Comp] = {s : Bool => Ints 4 => Agr => Str} ;
 lin BaseComp x y =
       {s = \\d,t,agr=>x.s!agr++linCoord!t++y.s!agr} ;
     ConsComp x xs =
@@ -43,7 +43,7 @@ lin BaseComp x y =
       p = Pos
       } ;
 
-lincat CNN = {s : Bool => Ints 3 => Species => Role => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
+lincat CNN = {s : Bool => Ints 4 => Species => Role => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
 
 lin BaseCNN num1 cn1 num2 cn2 = 
       let mknf : NNumber -> Species -> Role -> AGender -> NForm =

@@ -2092,9 +2092,7 @@ agree_V	agree_to_V2
 agree_V	agree_3_V
 agree_V	agree_4_V
 agree_V	agree_5_V
-agree_VS	agree_4_VS
 agree_VV	agree_2_VV
-agree_VV	agree_4_VV
 agree_V2	agree_on_1_V2
 agree_V2	agree_on_7_V2
 agree_with_V2	agree_with_1_V2
@@ -16063,7 +16061,7 @@ chard_PN	chard_1_PN
 chard_PN	chard_2_PN
 charge_1_N	charge_4_N
 charge_2_N	charge_1_N
-charge_2_N	charge_2_N
+charge_2_N	charge_of_N2
 charge_2_N	charge_3_N
 charge_2_N	charge_5_N
 charge_2_N	charge_6_N
@@ -27479,7 +27477,6 @@ direct_V	direct_5_V
 direct_V	direct_7_V2
 direct_V	direct_8_V
 direct_V	direct_10_V
-direct_V	direct_11_V
 direct_V	direct_12_V
 direct_V	direct_13_V
 direct_V2	direct_1_V2
@@ -27811,7 +27808,6 @@ discourteous_A	discourteous_2_A
 discourtesy_N	discourtesy_1_N
 discourtesy_N	discourtesy_2_N
 discourtesy_N	discourtesy_3_N
-discover_V	discover_2_V
 discover_V	discover_4_V
 discover_V	discover_5_V
 discover_V	discover_6_V
@@ -33350,11 +33346,9 @@ even_AdA	even_3_AdA
 even_AdA	even_4_AdA
 even_AdV	even_1_AdV
 even_AdV	even_2_AdV
-even_AdV	even_3_AdV
 even_AdV	even_4_AdV
 even_Adv	even_1_Adv
 even_Adv	even_2_Adv
-even_Adv	even_3_Adv
 even_Adv	even_4_Adv
 even_N	even_N
 even_V2	even_1_V2
@@ -34945,7 +34939,6 @@ famine_N	famine_2_N
 famish_V	famish_1_V
 famish_V	famish_2_V
 famish_V	famish_3_V
-famish_V2	famish_1_V2
 famish_V2	famish_2_V2
 famotidine_N	famotidine_N
 famous_A	famous_A
@@ -36031,7 +36024,6 @@ filipino_N	filipino_2_N
 fill_N	fill_1_N
 fill_N	fill_2_N
 fill_V	fill_2_V
-fill_V	fill_5_V
 fill_V	fill_6_V
 fill_V	fill_7_V
 fill_V	fill_8_V
@@ -36175,7 +36167,6 @@ find_V2	find_16_V2
 find_V2A	find_5_V2A
 find_V2A	find_11_V2A
 find_VS	find_VS
-find_out_V	find_out_2_V
 find_out_V2	find_out_2_V2
 find_out_V2	find_out_3_V2
 find_out_V2	find_out_4_V2
@@ -36504,7 +36495,6 @@ fit_V	fit_2_V
 fit_V	fit_5_V
 fit_V	fit_6_V
 fit_V	fit_7_V
-fit_V	fit_8_V
 fit_V	fit_9_V
 fit_V2	fit_1_V2
 fit_V2	fit_3_V2
@@ -36514,7 +36504,6 @@ fit_V2	fit_7_V2
 fit_V2	fit_8_V2
 fit_V2	fit_9_V2
 fit_in_V	fit_in_V
-fit_in_V2	fit_in_V2
 fit_in_with_V2	fit_in_with_V2
 fit_into_V2	fit_into_V2
 fit_out_V2	fit_out_1_V2
@@ -37599,7 +37588,6 @@ follow_V2	follow_12_V2
 follow_V2	follow_13_V2
 follow_V2	follow_14_V2
 follow_V2	follow_15_V2
-follow_V2	follow_16_V2
 follow_V2	follow_17_V2
 follow_V2	follow_18_V2
 follow_V2	follow_19_V2
@@ -37609,7 +37597,6 @@ follow_V2	follow_22_V2
 follow_V2	follow_23_V2
 follow_V2	follow_24_V2
 follow_VS	follow_3_VS
-follow_VS	follow_16_VS
 follow_VS	follow_17_VS
 follow_VS	follow_20_VS
 follow_VS	follow_24_VS
@@ -39455,7 +39442,6 @@ gag_V2	gag_1_V2
 gag_V2	gag_2_V2
 gag_V2	gag_3_V2
 gag_V2	gag_6_V2
-gag_V2	gag_7_V2
 gag_for_V2	gag_for_V2
 gaga_A	gaga_1_A
 gaga_A	gaga_2_A
@@ -39854,7 +39840,6 @@ gasometer_N	gasometer_1_N
 gasometer_N	gasometer_2_N
 gasp_N	gasp_N
 gasp_V	gasp_V
-gasp_V2	gasp_V2
 gassing_N	gassing_1_N
 gassing_N	gassing_2_N
 gassy_A	gassy_1_A
@@ -43622,10 +43607,10 @@ hang_back_V	hang_back_V
 hang_back_from_V2	hang_back_from_V2
 hang_in_there_V	hang_in_there_V
 hang_it_up_V	hang_it_up_V
-hang_on_V	hang_on_1_V
 hang_on_V	hang_on_2_V
 hang_on_V	hang_on_3_V
-hang_on_V	hang_on_V2
+hang_on_V	hang_on_1_V2
+hang_on_V	hang_on_2_V2
 hang_on_V	hang_on_to_V2
 hang_onto_V2	hang_onto_V2
 hang_out_V	hang_out_V
@@ -43687,8 +43672,7 @@ happen_V	happen_1_V
 happen_V	happen_2_V
 happen_V	happen_4_V
 happen_V	happen_5_V
-happen_VV	happen_3_VV
-happen_VV	happen_4_VV
+happen_VV	happen_VV
 happening_N	happening_N
 happiness_N	happiness_1_N
 happiness_N	happiness_2_N
@@ -43714,10 +43698,6 @@ harbin_PN	harbin_PN
 harbinger_N	harbinger_N
 harbour_N	harbour_1_N
 harbour_N	harbour_2_N
-harbour_V	harbour_1_V
-harbour_V	harbour_2_V
-harbour_V	harbour_3_V
-harbour_V	harbour_4_V
 harbour_V2	harbour_1_V2
 harbour_V2	harbour_2_V2
 harbour_V2	harbour_3_V2
@@ -43754,9 +43734,6 @@ hardcore_A	hardcore_2_A
 hardcover_N	hardcover_N
 hardcovered_A	hardcovered_A
 harden_V	harden_1_V
-harden_V	harden_3_V
-harden_V	harden_4_V
-harden_V	harden_5_V
 harden_V2	harden_2_V2
 harden_V2	harden_3_V2
 harden_V2	harden_4_V2
@@ -43950,9 +43927,6 @@ haste_N	haste_2_N
 haste_N	haste_3_N
 hasten_V	hasten_1_V
 hasten_V	hasten_2_V
-hasten_V	hasten_3_V
-hasten_V	hasten_4_V
-hasten_V2	hasten_2_V2
 hasten_V2	hasten_3_V2
 hasten_V2	hasten_4_V2
 hastiness_N	hastiness_1_N
@@ -43971,7 +43945,6 @@ hatch_N	hatch_2_N
 hatch_N	hatch_3_N
 hatch_N	hatch_4_N
 hatch_V	hatch_1_V
-hatch_V	hatch_3_V
 hatch_V2	hatch_2_V2
 hatch_V2	hatch_3_V2
 hatch_V2	hatch_4_V2
@@ -44187,7 +44160,6 @@ head_N	head_30_N
 head_N	head_31_N
 head_N	head_32_N
 head_N	head_33_N
-head_V	head_5_V
 head_V	head_6_V
 head_V2	head_1_V2
 head_V2	head_2_V2
@@ -44315,7 +44287,6 @@ heap_V2	heap_2_V2
 heap_V2	heap_3_V2
 heaps_Adv	heaps_Adv
 hear_V	hear_1_V
-hear_V	hear_2_V
 hear_V2	hear_1_V2
 hear_V2	hear_2_V2
 hear_V2	hear_3_V2
@@ -44323,7 +44294,6 @@ hear_V2	hear_4_V2
 hear_V2	hear_5_V2
 hear_V2V	hear_1_V2V
 hear_V2V	hear_2_V2V
-hear_VS	hear_1_VS
 hear_VS	hear_2_VS
 hear_about_V2	hear_about_V2
 hear_from_V2	hear_from_V2
@@ -44450,12 +44420,9 @@ heave_V	heave_7_V
 heave_V	heave_8_V
 heave_V2	heave_1_V2
 heave_V2	heave_2_V2
-heave_V2	heave_3_V2
 heave_V2	heave_4_V2
 heave_V2	heave_5_V2
-heave_V2	heave_6_V2
 heave_V2	heave_7_V2
-heave_V2	heave_8_V2
 heave_out_V	heave_out_V
 heaven_N	heaven_1_N
 heaven_N	heaven_2_N
@@ -45567,7 +45534,6 @@ hold_N	hold_6_N
 hold_N	hold_7_N
 hold_N	hold_8_N
 hold_N	hold_9_N
-hold_V	hold_6_V
 hold_V	hold_8_V
 hold_V	hold_13_V
 hold_V	hold_15_V
@@ -48560,7 +48526,6 @@ incrustation_N	incrustation_1_N
 incrustation_N	incrustation_2_N
 incrustation_N	incrustation_3_N
 incubate_V	incubate_1_V
-incubate_V	incubate_2_V
 incubate_V2	incubate_1_V2
 incubate_V2	incubate_2_V2
 incubation_N	incubation_1_N
@@ -57366,7 +57331,6 @@ mainstay_N	mainstay_3_N
 mainstream_A	mainstream_A
 mainstream_N	mainstream_N
 mainstreamed_A	mainstreamed_A
-maintain_V	maintain_2_V
 maintain_V	maintain_3_V
 maintain_V	maintain_4_V
 maintain_V	maintain_6_V
@@ -57382,7 +57346,6 @@ maintain_V2	maintain_7_V2
 maintain_V2	maintain_8_V2
 maintain_V2	maintain_9_V2
 maintain_V2	maintain_10_V2
-maintain_VS	maintain_2_VS
 maintain_VS	maintain_3_VS
 maintain_VS	maintain_4_VS
 maintain_VS	maintain_6_VS
@@ -57934,7 +57897,6 @@ manoeuvre_N	manoeuvre_2_N
 manoeuvre_N	manoeuvre_3_N
 manoeuvre_N	manoeuvre_4_N
 manoeuvre_N	manoeuvre_5_N
-manoeuvre_V	manoeuvre_2_V
 manoeuvre_V	manoeuvre_3_V
 manoeuvre_V2	manoeuvre_2_V2
 manoeuvre_V2	manoeuvre_3_V2
@@ -70552,7 +70514,6 @@ pick_up_N	pick_up_7_N
 pick_up_N	pick_up_8_N
 pick_up_N	pick_up_9_N
 pick_up_V	pick_up_1_V
-pick_up_V	pick_up_7_V
 pick_up_V	pick_up_12_V
 pick_up_V	pick_up_13_V
 pick_up_V	pick_up_15_V
@@ -72179,7 +72140,6 @@ point_2_N	point_25_N
 point_2_N	point_26_N
 point_V	point_1_V
 point_V	point_2_V
-point_V	point_4_V
 point_V	point_5_V
 point_V	point_6_V
 point_V	point_7_V
@@ -75674,7 +75634,6 @@ puff_V	puff_7_V
 puff_V	puff_8_V
 puff_V2	puff_1_V2
 puff_V2	puff_2_V2
-puff_V2	puff_3_V2
 puff_V2	puff_4_V2
 puff_V2	puff_5_V2
 puffball_N	puffball_1_N
@@ -78301,13 +78260,12 @@ recall_N	recall_3_N
 recall_N	recall_4_N
 recall_N	recall_5_N
 recall_V2	recall_1_V2
-recall_V2	recall_2_V2
+recall_V2	recall_V
 recall_V2	recall_3_V2
 recall_V2	recall_4_V2
 recall_V2	recall_5_V2
 recall_V2	recall_6_V2
 recall_VS	recall_1_VS
-recall_VS	recall_2_VS
 recall_VS	recall_3_VS
 recall_VS	recall_7_VS
 recant_V	recant_V
@@ -80948,7 +80906,6 @@ return_V	return_15_V
 return_V	return_16_V
 return_V2	return_2_V2
 return_V2	return_3_V2
-return_V2	return_4_V2
 return_V2	return_5_V2
 return_V2	return_6_V2
 return_V2	return_7_V2
@@ -83072,7 +83029,6 @@ rush_V	rush_2_V
 rush_V	rush_4_V
 rush_V	rush_5_V
 rush_V	rush_6_V
-rush_V	rush_7_V
 rush_V2	rush_2_V2
 rush_V2	rush_3_V2
 rush_V2	rush_5_V2
@@ -83082,7 +83038,6 @@ rush_VV	rush_1_VV
 rush_VV	rush_2_VV
 rush_VV	rush_5_VV
 rush_VV	rush_6_VV
-rush_VV	rush_7_VV
 rush_away_V	rush_away_V
 rush_into_V2	rush_into_V2
 rush_off_V	rush_off_V
@@ -84059,7 +84014,6 @@ savannah_N	savannah_3_N
 savant_N	savant_N
 savarin_N	savarin_N
 save_N	save_N
-save_V	save_1_V
 save_V	save_3_V
 save_V	save_4_V
 save_V	save_7_V
@@ -91271,7 +91225,6 @@ speed_V	speed_2_V
 speed_V	speed_3_V
 speed_V	speed_4_V
 speed_V	speed_5_V
-speed_V2	speed_1_V2
 speed_V2	speed_2_V2
 speed_V2	speed_5_V2
 speed_along_V	speed_along_V
@@ -93089,7 +93042,6 @@ steeplejack_N	steeplejack_N
 steepness_N	steepness_N
 steer_N	steer_1_N
 steer_N	steer_2_N
-steer_V	steer_1_V
 steer_V	steer_2_V
 steer_V2	steer_1_V2
 steer_V2	steer_3_V2
@@ -93410,16 +93362,12 @@ still_A	still_3_A
 still_A	still_4_A
 still_A	still_5_A
 still_AdA	still_1_AdA
-still_AdA	still_2_AdA
 still_AdA	still_3_AdA
 still_AdA	still_4_AdA
 still_AdV	still_1_AdV
-still_AdV	still_2_AdV
-still_AdV	still_3_AdV
 still_AdV	still_4_AdV
 still_Adv	still_1_Adv
-still_Adv	still_2_Adv
-still_Adv	still_3_Adv
+still_Adv	still_2_AdV
 still_Adv	still_4_Adv
 still_N	still_1_N
 still_N	still_2_N
@@ -96806,7 +96754,6 @@ tack_N	tack_5_N
 tack_N	tack_6_N
 tack_V	tack_2_V
 tack_V	tack_4_V
-tack_V	tack_5_V
 tack_V	tack_6_V
 tack_V2	tack_1_V2
 tack_V2	tack_3_V2
@@ -110239,15 +110186,13 @@ yesterday_N	yesterday_1_N
 yesterday_N	yesterday_2_N
 yet_1_Adv	yet_1_Adv
 yet_2_Adv	yet_2_Adv
-yet_2_Adv	yet_3_Adv
 yet_2_Adv	yet_4_Adv
 yet_2_Adv	yet_5_Adv
 yet_2_Adv	yet_6_Adv
 yet_AdV	yet_1_AdV
 yet_AdV	yet_2_AdV
-yet_AdV	yet_3_AdV
+yet_AdV	yet_3_AdA
 yet_AdV	yet_4_AdV
-yet_AdV	yet_5_AdV
 yet_AdV	yet_6_AdV
 yeti_N	yeti_N
 yew_N	yew_1_N

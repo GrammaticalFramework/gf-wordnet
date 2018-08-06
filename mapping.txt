@@ -3053,10 +3053,8 @@ amebiasis_N	amebiasis_1_N
 ameboid_A	ameboid_1_A
 ameer_N	ameer_N
 amelia_N	amelia_N
-ameliorate_V	ameliorate_1_V
 ameliorate_V	ameliorate_2_V
 ameliorate_V2	ameliorate_1_V2
-ameliorate_V2	ameliorate_2_V2
 amelioration_N	amelioration_N
 ameloblast_N	ameloblast_N
 amelogenesis_N	amelogenesis_N
@@ -3066,12 +3064,10 @@ amenable_A	amenable_1_A
 amenable_A	amenable_2_A
 amenable_A	amenable_3_A
 amenable_A	amenable_4_A
-amend_V	amend_2_V
 amend_V	amend_3_V
 amend_V2	amend_1_V2
 amend_V2	amend_2_V2
 amend_V2	amend_3_V2
-amend_V2V	amend_2_V2V
 amend_V2V	amend_3_V2V
 amendable_A	amendable_A
 amendatory_A	amendatory_A
@@ -4549,7 +4545,7 @@ applicator_N	applicator_N
 applied_A	applied_A
 applique_N	applique_N
 applique_V2	applique_V2
-apply_V	apply_2_V
+apply_V	apply_to_V2
 apply_V	apply_5_V
 apply_V2	apply_1_V2
 apply_V2	apply_4_V2
@@ -6047,9 +6043,7 @@ attack_V2	attack_5_V2
 attack_V2	attack_6_V2
 attacker_N	attacker_N
 attain_V	attain_1_V
-attain_V	attain_2_V
 attain_V	attain_3_V
-attain_V	attain_4_V
 attain_V2	attain_1_V2
 attain_V2	attain_2_V2
 attain_V2	attain_3_V2
@@ -10855,7 +10849,6 @@ bonyness_N	bonyness_1_N
 bonzer_A	bonzer_A
 boo_N	boo_N
 boo_V	boo_V
-boo_V2	boo_V2
 boob_N	boob_1_N
 boob_N	boob_2_N
 boob_V	boob_V
@@ -12424,7 +12417,7 @@ brush_V2	brush_3_V2
 brush_V2	brush_4_V2
 brush_V2	brush_5_V2
 brush_V2	brush_6_V2
-brush_aside_V	brush_aside_V
+brush_aside_V	brush_aside_V2
 brush_aside_V	brush_aside_V2
 brush_off_N	brush_off_N
 brush_off_V2	brush_off_V2
@@ -19785,7 +19778,6 @@ compound_A	compound_3_A
 compound_N	compound_1_N
 compound_N	compound_2_N
 compound_N	compound_3_N
-compound_V	compound_1_V
 compound_V	compound_2_V
 compound_V	compound_3_V
 compound_V	compound_4_V
@@ -27784,7 +27776,6 @@ discount_N	discount_1_N
 discount_N	discount_2_N
 discount_N	discount_3_N
 discount_N	discount_4_N
-discount_V	discount_1_V
 discount_V2	discount_1_V2
 discount_V2	discount_2_V2
 discountenance_V2	discountenance_1_V2
@@ -28152,7 +28143,6 @@ dispatch_V2	dispatch_4_V2
 dispatch_V2	dispatch_5_V2
 dispatch_V2V	dispatch_1_V2V
 dispatch_V2V	dispatch_2_V2V
-dispatch_V2V	dispatch_3_V2V
 dispatch_box_N	dispatch_box_N
 dispatch_rider_N	dispatch_rider_N
 dispatcher_N	dispatcher_1_N
@@ -28219,7 +28209,6 @@ disposal_N	disposal_3_N
 disposal_N	disposal_4_N
 dispose_V	dispose_1_V
 dispose_V	dispose_2_V
-dispose_V	dispose_3_V
 dispose_V	dispose_5_V
 dispose_V2	dispose_2_V2
 dispose_V2	dispose_3_V2
@@ -32135,11 +32124,9 @@ enfranchisement_N	enfranchisement_1_N
 enfranchisement_N	enfranchisement_2_N
 enfranchisement_N	enfranchisement_3_N
 engage_V	engage_1_V
-engage_V	engage_3_V
 engage_V	engage_4_V
 engage_V	engage_5_V
 engage_V	engage_7_V
-engage_V	engage_9_V
 engage_V	engage_10_V
 engage_V2	engage_2_V2
 engage_V2	engage_3_V2
@@ -39460,7 +39447,6 @@ gain_N	gain_3_N
 gain_N	gain_4_N
 gain_V	gain_1_V
 gain_V	gain_3_V
-gain_V	gain_4_V
 gain_V	gain_8_V
 gain_V2	gain_1_V2
 gain_V2	gain_2_V2
@@ -44376,7 +44362,6 @@ heat_N	heat_4_N
 heat_N	heat_5_N
 heat_N	heat_6_N
 heat_N	heat_7_N
-heat_V	heat_3_V
 heat_V	heat_4_V
 heat_V2	heat_1_V2
 heat_V2	heat_2_V2
@@ -44580,7 +44565,6 @@ height_N	height_4_N
 heighten_V	heighten_1_V
 heighten_V	heighten_2_V
 heighten_V	heighten_4_V
-heighten_V	heighten_5_V
 heighten_V2	heighten_3_V2
 heighten_V2	heighten_5_V2
 heighten_V2	heighten_6_V2
@@ -44956,9 +44940,8 @@ hesitance_N	hesitance_N
 hesitancy_N	hesitancy_1_N
 hesitancy_N	hesitancy_2_N
 hesitant_A	hesitant_A
-hesitate_V	hesitate_2_V
-hesitate_VV	hesitate_1_VV
-hesitate_VV	hesitate_2_VV
+hesitate_V	hesitate_V
+hesitate_VV	hesitate_VV
 hesitatingly_Adv	hesitatingly_Adv
 hesitation_N	hesitation_1_N
 hesitation_N	hesitation_2_N
@@ -45302,8 +45285,6 @@ hire_N	hire_2_N
 hire_V2	hire_1_V2
 hire_V2	hire_2_V2
 hire_V2	hire_3_V2
-hire_V2V	hire_2_V2V
-hire_V2V	hire_3_V2V
 hireling_N	hireling_N
 hiroshima_PN	hiroshima_PN
 hirsute_A	hirsute_A
@@ -45315,16 +45296,9 @@ hiss_N	hiss_1_N
 hiss_N	hiss_2_N
 hiss_V	hiss_1_V
 hiss_V	hiss_2_V
-hiss_V	hiss_3_V
 hiss_V	hiss_4_V
-hiss_V2	hiss_1_V2
 hiss_V2	hiss_2_V2
 hiss_V2	hiss_3_V2
-hiss_V2	hiss_4_V2
-hiss_VQ	hiss_1_VQ
-hiss_VQ	hiss_2_VQ
-hiss_VQ	hiss_3_VQ
-hiss_VQ	hiss_4_VQ
 hisser_N	hisser_N
 histaminase_N	histaminase_N
 histamine_N	histamine_N
@@ -45366,11 +45340,8 @@ hit_N	hit_4_N
 hit_N	hit_5_N
 hit_N	hit_6_N
 hit_N	hit_7_N
-hit_V	hit_6_V
 hit_V	hit_7_V
 hit_V	hit_10_V
-hit_V	hit_11_V
-hit_V	hit_14_V
 hit_V	hit_15_V
 hit_V2	hit_1_V2
 hit_V2	hit_2_V2
@@ -45407,14 +45378,10 @@ hitch_N	hitch_4_N
 hitch_N	hitch_5_N
 hitch_N	hitch_6_N
 hitch_N	hitch_7_N
-hitch_V	hitch_1_V
 hitch_V	hitch_2_V
 hitch_V	hitch_3_V
 hitch_V	hitch_4_V
-hitch_V	hitch_5_V
 hitch_V2	hitch_1_V2
-hitch_V2	hitch_2_V2
-hitch_V2	hitch_3_V2
 hitch_V2	hitch_4_V2
 hitch_V2	hitch_5_V2
 hitchhike_V	hitchhike_V
@@ -45539,7 +45506,7 @@ hold_V	hold_13_V
 hold_V	hold_15_V
 hold_V	hold_23_V
 hold_V	hold_24_V
-hold_V	hold_25_V
+hold_V	hold_for_V2
 hold_V	hold_30_V
 hold_V	hold_35_V
 hold_V2	hold_1_V2
@@ -46658,7 +46625,6 @@ hunt_N	hunt_6_N
 hunt_N	hunt_7_N
 hunt_N	hunt_8_N
 hunt_V	hunt_1_V
-hunt_V	hunt_2_V
 hunt_V	hunt_4_V
 hunt_V	hunt_5_V
 hunt_V2	hunt_2_V2
@@ -47308,7 +47274,6 @@ idle_A	idle_7_A
 idle_N	idle_N
 idle_V	idle_1_V
 idle_V	idle_2_V
-idle_V2	idle_2_V2
 idleness_N	idleness_1_N
 idleness_N	idleness_2_N
 idleness_N	idleness_3_N
@@ -47361,11 +47326,7 @@ ignorant_A	ignorant_1_A
 ignorant_A	ignorant_2_A
 ignorant_A	ignorant_3_A
 ignorantness_N	ignorantness_N
-ignore_V	ignore_1_V
-ignore_V	ignore_2_V
 ignore_V	ignore_3_V
-ignore_V	ignore_4_V
-ignore_V	ignore_5_V
 ignore_V2	ignore_1_V2
 ignore_V2	ignore_2_V2
 ignore_V2	ignore_3_V2
@@ -47475,8 +47436,6 @@ illusionist_N	illusionist_1_N
 illusionist_N	illusionist_2_N
 illusive_A	illusive_A
 illusory_A	illusory_A
-illustrate_V	illustrate_1_V
-illustrate_V	illustrate_2_V
 illustrate_V2	illustrate_1_V2
 illustrate_V2	illustrate_2_V2
 illustrate_V2	illustrate_3_V2
@@ -47513,7 +47472,6 @@ imagination_N	imagination_1_N
 imagination_N	imagination_2_N
 imagination_N	imagination_3_N
 imaginative_A	imaginative_A
-imagine_V	imagine_1_V
 imagine_V2	imagine_1_V2
 imagine_V2	imagine_2_V2
 imagine_VS	imagine_1_VS
@@ -47884,10 +47842,6 @@ implore_VS	implore_VS
 imploringly_Adv	imploringly_Adv
 implosion_N	implosion_1_N
 implosion_N	implosion_2_N
-imply_V	imply_1_V
-imply_V	imply_2_V
-imply_V	imply_3_V
-imply_V	imply_4_V
 imply_V2	imply_1_V2
 imply_V2	imply_2_V2
 imply_V2	imply_3_V2
@@ -47925,8 +47879,6 @@ importing_N	importing_N
 importunate_A	importunate_A
 importune_V2	importune_V2
 importunity_N	importunity_N
-impose_V	impose_2_V
-impose_V	impose_3_V
 impose_V2	impose_1_V2
 impose_V2	impose_2_V2
 impose_V2	impose_3_V2
@@ -47980,10 +47932,6 @@ impregnation_N	impregnation_2_N
 impregnation_N	impregnation_3_N
 impresario_N	impresario_N
 impress_N	impress_N
-impress_V	impress_3_V
-impress_V	impress_5_V
-impress_V	impress_6_V
-impress_V	impress_7_V
 impress_V2	impress_1_V2
 impress_V2	impress_2_V2
 impress_V2	impress_3_V2
@@ -48040,8 +47988,8 @@ impropriety_N	impropriety_2_N
 impropriety_N	impropriety_3_N
 impropriety_N	impropriety_4_N
 improvable_A	improvable_A
-improve_V	improve_2_V
-improve_V2	improve_1_V2
+improve_V	improve_V
+improve_V2	improve_V2
 improved_A	improved_1_A
 improved_A	improved_2_A
 improved_A	improved_3_A
@@ -48347,8 +48295,6 @@ incline_V	incline_4_V
 incline_V	incline_5_V
 incline_V2	incline_2_V2
 incline_V2	incline_3_V2
-incline_V2	incline_4_V2
-incline_V2V	incline_4_V2V
 incline_V2V	incline_6_V2V
 inclined_A	inclined_1_A
 inclined_A	inclined_2_A
@@ -48360,7 +48306,6 @@ inclose_V2	inclose_1_V2
 inclose_V2	inclose_2_V2
 inclosure_N	inclosure_1_N
 inclosure_N	inclosure_2_N
-include_V	include_4_V
 include_V2	include_1_V2
 include_V2	include_2_V2
 include_V2	include_3_V2
@@ -48621,9 +48566,7 @@ indemnity_N	indemnity_3_N
 indene_N	indene_N
 indent_N	indent_1_N
 indent_N	indent_2_N
-indent_V	indent_3_V
 indent_V	indent_4_V
-indent_V	indent_5_V
 indent_V2	indent_1_V2
 indent_V2	indent_2_V2
 indent_V2	indent_3_V2
@@ -48850,7 +48793,6 @@ indue_V2	indue_V2
 indulge_V	indulge_1_V
 indulge_V	indulge_2_V
 indulge_V	indulge_3_V
-indulge_V	indulge_4_V
 indulge_V2	indulge_2_V2
 indulge_V2	indulge_4_V2
 indulgence_N	indulgence_1_N
@@ -48994,7 +48936,6 @@ infatuation_N	infatuation_1_N
 infatuation_N	infatuation_2_N
 infatuation_N	infatuation_3_N
 infeasibility_N	infeasibility_N
-infect_V	infect_2_V
 infect_V2	infect_1_V2
 infect_V2	infect_2_V2
 infect_V2	infect_3_V2
@@ -49056,7 +48997,6 @@ infidel_N	infidel_N
 infidelity_N	infidelity_N
 infield_N	infield_N
 infielder_N	infielder_N
-infiltrate_V	infiltrate_1_V
 infiltrate_V	infiltrate_4_V
 infiltrate_V2	infiltrate_1_V2
 infiltrate_V2	infiltrate_2_V2
@@ -49085,11 +49025,8 @@ infirmary_N	infirmary_N
 infirmity_N	infirmity_N
 infix_N	infix_N
 inflame_V	inflame_2_V
-inflame_V	inflame_3_V
-inflame_V	inflame_4_V
 inflame_V	inflame_5_V
 inflame_V2	inflame_1_V2
-inflame_V2	inflame_2_V2
 inflame_V2	inflame_3_V2
 inflame_V2	inflame_4_V2
 inflammable_A	inflammable_A
@@ -49190,17 +49127,13 @@ infrequent_A	infrequent_A
 infringe_V	infringe_1_V
 infringe_V	infringe_2_V
 infringe_V2	infringe_1_V2
-infringe_V2	infringe_2_V2
 infringement_N	infringement_1_N
 infringement_N	infringement_2_N
 infructescence_N	infructescence_N
 infundibulum_N	infundibulum_N
 infuriate_V2	infuriate_V2
 infuriation_N	infuriation_N
-infuse_V	infuse_1_V
-infuse_V	infuse_2_V
-infuse_V	infuse_3_V
-infuse_V	infuse_4_V
+infuse_V	infuse_V
 infuse_V2	infuse_1_V2
 infuse_V2	infuse_2_V2
 infuse_V2	infuse_4_V2
@@ -51375,7 +51308,6 @@ jerk_V	jerk_4_V
 jerk_V2	jerk_1_V2
 jerk_V2	jerk_2_V2
 jerk_V2	jerk_3_V2
-jerk_V2	jerk_4_V2
 jerk_V2	jerk_5_V2
 jerk_around_V	jerk_around_V
 jerk_around_V2	jerk_around_V2
@@ -54004,7 +53936,6 @@ lazarus_N	lazarus_2_N
 lazarus_PN	lazarus_1_PN
 lazarus_PN	lazarus_2_PN
 laze_V	laze_V
-laze_V2	laze_V2
 laziness_N	laziness_1_N
 laziness_N	laziness_2_N
 laziness_N	laziness_3_N
@@ -59145,10 +59076,8 @@ meld_V2	meld_3_V2
 melee_N	melee_N
 melena_N	melena_1_N
 melilotus_N	melilotus_1_N
-meliorate_V	meliorate_1_V
 meliorate_V	meliorate_2_V
 meliorate_V2	meliorate_1_V2
-meliorate_V2	meliorate_2_V2
 melioration_N	melioration_1_N
 melioration_N	melioration_2_N
 melioration_N	melioration_3_N
@@ -65020,7 +64949,6 @@ obtain_V	obtain_2_V
 obtain_V	obtain_3_V
 obtain_V2	obtain_1_V2
 obtain_V2	obtain_2_V2
-obtain_V2	obtain_3_V2
 obtainable_A	obtainable_A
 obtainment_N	obtainment_N
 obtrude_V	obtrude_1_V
@@ -71131,7 +71059,6 @@ pitch_V	pitch_11_V
 pitch_V2	pitch_1_V2
 pitch_V2	pitch_4_V2
 pitch_V2	pitch_5_V2
-pitch_V2	pitch_6_V2
 pitch_V2	pitch_7_V2
 pitch_V2	pitch_8_V2
 pitch_V2	pitch_9_V2
@@ -74289,7 +74216,6 @@ print_N	print_5_N
 print_N	print_6_N
 print_N	print_7_N
 print_V	print_2_V
-print_V	print_4_V
 print_V2	print_1_V2
 print_V2	print_2_V2
 print_V2	print_3_V2
@@ -79716,7 +79642,6 @@ remove_V	remove_2_V
 remove_V	remove_3_V
 remove_V	remove_4_V
 remove_V	remove_6_V
-remove_V	remove_7_V
 remove_V2	remove_1_V2
 remove_V2	remove_2_V2
 remove_V2	remove_3_V2
@@ -79819,7 +79744,6 @@ rent_N	rent_2_N
 rent_N	rent_3_N
 rent_N	rent_4_N
 rent_V	rent_2_V
-rent_V	rent_4_V
 rent_V2	rent_1_V2
 rent_V2	rent_2_V2
 rent_V2	rent_3_V2
@@ -81719,7 +81643,6 @@ rise_V2	rise_5_V2
 rise_V2	rise_6_V2
 rise_V2	rise_7_V2
 rise_V2	rise_8_V2
-rise_V2	rise_9_V2
 rise_V2	rise_11_V2
 rise_V2	rise_14_V2
 rise_V2	rise_17_V2
@@ -87311,7 +87234,6 @@ shoofly_N	shoofly_2_N
 shook_N	shook_N
 shoot_N	shoot_1_N
 shoot_N	shoot_2_N
-shoot_V	shoot_1_V
 shoot_V	shoot_2_V
 shoot_V	shoot_3_V
 shoot_V	shoot_6_V
@@ -91689,7 +91611,6 @@ spoil_N	spoil_3_N
 spoil_V	spoil_1_V
 spoil_V	spoil_2_V
 spoil_V	spoil_3_V
-spoil_V	spoil_4_V
 spoil_V	spoil_5_V
 spoil_V	spoil_6_V
 spoil_V	spoil_7_V
@@ -96890,7 +96811,6 @@ tailstock_N	tailstock_N
 tailwind_N	tailwind_N
 taint_N	taint_N
 taint_V	taint_1_V
-taint_V	taint_2_V
 taint_V2	taint_1_V2
 taint_V2	taint_2_V2
 taintless_A	taintless_A

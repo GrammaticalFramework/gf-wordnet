@@ -1,0 +1,2004 @@
+          RGL     Google  | RGL     Google
+Swedish   61.42   53.14   | 72.72   52.88
+Bulgarian 90.71   36.15   | 92.03	35.74
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA frequent_1_A) (AdjCN (PositA penetrative_1_A) (UseN observation_1_N))))) NoVoc
+eng-ref: frequent penetrative observations
+swe-ref: frekventa skarpsinniga observationer
+bul-ref: чести проницателни наблюдения
+swe-rgl: frekventa skarpsinniga observationer
+bul-rgl: чести проницателни наблюдения
+swe-ggl: frekventa penetrerande observationer
+bul-ggl: чести проникващи наблюдения
+key: 1 penetrative_1_A 01748764-a
+
+abs: PhrUtt NoPConj (UttVPShort (AdvVP (AdvVP (UseV appeal_2_V) (PrepNP to_1_Prep (UseDAPMasc (DetDAP (DetQuant some_Quant NumSg))))) (PrepNP for_Prep (MassNP (UseN help_1_N))))) NoVoc
+eng-ref: appeal to somebody for help
+swe-ref: vädja till någon för hjälp
+bul-ref: апелира до някой за помощ
+swe-rgl: vädja till någon för hjälp
+bul-rgl: апелира до някой за помощ
+swe-ggl: vädja till någon för hjälp
+bul-ggl: обжалване на някого за помощ
+key: 1 appeal_2_V 00757492-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA overnight_A) (UseN trip_1_N)))) NoVoc
+eng-ref: an overnight trip
+swe-ref: en nattlig tripp
+bul-ref: нощно пътуване
+swe-rgl: en nattlig tripp
+bul-rgl: нощно пътуване
+swe-ggl: en övernattningstur
+bul-ggl: еднодневна екскурзия
+key: 1 overnight_A 01444421-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a forget_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN password_N)))))) NoVoc
+eng-ref: he forgot the password
+swe-ref: han glömde lösenordet
+bul-ref: той забрави паролата
+swe-rgl: han glömde lösenordet
+bul-rgl: той забрави паролата
+swe-ggl: han glömde lösenordet
+bul-ggl: той забрави паролата
+key: 1 password_N 06686933-n парола täcknamn passord lösenord kodord kodnamn
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN widow_N)) (AdvVP (ComplSlash (SlashV2a sue_V2) (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN surgeon_N))) (PrepNP for_Prep (MassNP (UseN malpractice_1_N))))))) NoVoc
+eng-ref: the widow sued his surgeon for malpractice
+swe-ref: änkan stämde hans kirurg för felbehandling
+bul-ref: вдовицата съди неговия хирург за грешка
+swe-rgl: änkan stämde hans kirurg för felbehandling
+bul-rgl: вдовицата съди неговия хирург за грешка
+swe-ggl: änkan stämde sin kirurg för felbehandling
+bul-ggl: вдовицата съди хирурга си за злоупотреби
+key: 1 malpractice_1_N 00743612-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PastPartAP (SlashV2a animate_2_V2)) (UseN cartoon_1_N)))) NoVoc
+eng-ref: animated cartoons
+swe-ref: tecknad film
+bul-ref: оживени карикатури
+swe-rgl: animerade teckningar
+bul-rgl: оживени карикатури
+swe-ggl: animerade teckningar
+bul-ggl: анимационни карикатури
+key: 1 animate_2_V2 00549075-v
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA descriptive_2_A) (UseN grammar_N)))) NoVoc
+eng-ref: descriptive grammar
+swe-ref: deskriptiv grammatik
+bul-ref: дескриптивна граматика
+swe-rgl: deskriptiv grammatik
+bul-rgl: дескриптивна граматика
+swe-ggl: beskrivande grammatik
+bul-ggl: описателна граматика
+key: 1 descriptive_2_A 00735762-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (AdvAP (PositA ablaze_3_A) (PrepNP in_2_Prep (DetCN (DetQuant gen_Quant NumSg) (UseN autumn_N)))) (UseN (CompoundN maple_1_N tree_1_N))))) NoVoc
+eng-ref: maple trees ablaze in autumn
+swe-ref: lönnträden står i lågor på hösten
+bul-ref: кленови дървета пламнали през есента
+swe-rgl: glödande i hösten lönnträd
+bul-rgl: кленови дървета пламнали през есента
+swe-ggl: lönnträd brinna i höst
+bul-ggl: кленовите дървета пламнат през есента
+key: 1 ablaze_3_A 00403798-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA extreme_2_A) (UseN danger_1_N)))) NoVoc
+eng-ref: extreme danger
+swe-ref: extrem fara
+bul-ref: екстремна опасност
+swe-rgl: extrem fara
+bul-rgl: екстремна опасност
+swe-ggl: extrem fara
+bul-ggl: крайна опасност
+key: 1 extreme_2_A 01538953-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA anaphylactic_A) (UseN shock_1_N)))) NoVoc
+eng-ref: anaphylactic shock
+swe-ref: anafylaktisk chock
+bul-ref: анафилактичен шок
+swe-rgl: anafylaktisk chock
+bul-rgl: анафилактичен шок
+swe-ggl: anafylaktisk chock
+bul-ggl: анафилактичен шок
+key: 1 anaphylactic_A 03152543-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA anticancer_A) (UseN drug_N)))) NoVoc
+eng-ref: anticancer drug
+swe-ref: cancerläkemedel
+bul-ref: противораково лекарство
+swe-rgl: anticancer läkemedel
+bul-rgl: противораково лекарство
+swe-ggl: anticancer läkemedel
+bul-ggl: противораково лекарство
+key: 1 anticancer_A 02639827-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA dry_15_A) (UseN greeting_N)))) NoVoc
+eng-ref: a dry greeting
+swe-ref: en avmätt hälsning
+bul-ref: сухо поздравление
+swe-rgl: en avmätt hälsning
+bul-rgl: сухо поздравление
+swe-ggl: en torr hälsning
+bul-ggl: сухо поздравление
+key: 1 dry_15_A 00860574-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA allopathic_A) (UseN remedy_2_N)))) NoVoc
+eng-ref: allopathic remedies
+swe-ref: allopatiska botemedel
+bul-ref: алопатични лекарства
+swe-rgl: allopatiska botemedel
+bul-rgl: алопатични лекарства
+swe-ggl: allopatiska medel
+bul-ggl: алопатични лекарства
+key: 1 allopathic_A 03084538-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN quail_2_N)) (AdvVP (PassVPSlash (SlashV2a hunt_1_V2)) (ConjAdv either7or_DConj (BaseAdv afoot_3_Adv (PrepNP on_1_Prep (MassNP (UseN horseback_1_N))))))))) NoVoc
+eng-ref: quail are hunted either afoot or on horseback
+swe-ref: vaktlar jagas antingen till fots eller till häst
+bul-ref: пъдпъдъци са ловени или пеша или на кон
+swe-rgl: vaktlar jagas antingen till fots eller på häst
+bul-rgl: пъдпъдъци са ловени или пеша или на кон
+swe-ggl: vaktel jagas antingen på häst eller på häst
+bul-ggl: пъдпъдъците се ловуват навън или на кон
+key: 1 afoot_3_Adv 00240791-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA minor_1_A) (UseN officialMasc_1_N)))) NoVoc
+eng-ref: a minor official
+swe-ref: en lägre tjänsteman
+bul-ref: второстепенен представител
+swe-rgl: en lägre tjänsteman
+bul-rgl: второстепенен представител
+swe-ggl: en mindre tjänsteman
+bul-ggl: малък служител
+key: 1 minor_1_A 01476226-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN tale_1_N)) (ComplVA seem_VA (ComparA approachable_1_A (DetCN (DetQuant (PossPron he_Pron) NumPl) (AdjCN (UseComparA difficult_1_A) (UseN novel_1_N)))))))) NoVoc
+eng-ref: the tales seem more approachable than his more difficult novels
+swe-ref: sagorna verkar vara mer tillgängliga än hans svårtolkade romaner
+bul-ref: приказките изглеждат по-достъпни от неговите по-трудни романи
+swe-rgl: sagorna verkar tillvägagångare än hans svårare romaner
+bul-rgl: приказките изглеждат по-достъпни от неговите по-трудни романи
+swe-ggl: sagorna verkar mer tillvägagångssätt än hans svårare romaner
+bul-ggl: приказките изглеждат по-достъпни от по-трудните му романи
+key: 1 approachable_1_A 00535441-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA popular_1_A) (UseN girl_1_N)))) NoVoc
+eng-ref: a popular girl
+swe-ref: en populär tjej
+bul-ref: популярно момиче
+swe-rgl: en populär tjej
+bul-rgl: популярно момиче
+swe-ggl: en populär tjej
+bul-ggl: популярно момиче
+key: 1 popular_1_A 01821123-a популярен
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA allied_2_A) (UseN army_1_N)))) NoVoc
+eng-ref: the Allied armies
+swe-ref: de allierade arméerna
+bul-ref: съюзническите армии
+swe-rgl: de allierade arméerna
+bul-rgl: съюзническите армии
+swe-ggl: de allierade arméerna
+bul-ggl: съюзническите армии
+key: 1 allied_2_A 02623356-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron we_Pron) (ComplSlash (SlashV2a agree_on_1_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (UseN term_3_N) (DetCN (DetQuant DefArt NumSg) (UseN settlement_3_N)))))))) NoVoc
+eng-ref: We agreed on the terms of the settlement
+swe-ref: vi kom överens om villkoren för förlikningen
+bul-ref: ние се съгласихме с условията на решението
+swe-rgl: vi kom överens om villkoren av förlikningen
+bul-rgl: ние се съгласихме с условията на решението
+swe-ggl: Vi kom överens om villkoren i förlikningen
+bul-ggl: Съгласихме се за условията на споразумението
+key: 1 agree_on_1_V2 00807038-v
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN ear_1_N)) (ComplSlash (SlashV2a accept_1_V2) (PredetNP such_1_Predet (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA violent_3_A) (UseN accelerando_N)))))))) NoVoc
+eng-ref: my ear will not accept such violent accelerandos
+swe-ref: mitt öra kommer inte acceptera sådana våldsamma accelerandos
+bul-ref: моето ухо няма да приеме такива жестоки акслеранда
+swe-rgl: mitt öra ska inte acceptera sådana våldsamma accelerandos
+bul-rgl: моето ухо няма да приеме такива жестоки акслеранда
+swe-ggl: mitt öra kommer inte att acceptera sådana våldsamma accelerandos
+bul-ggl: ухото ми няма да приеме подобни насилствени акселерони
+key: 1 accelerando_N 15289537-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN car_1_N)) (UseV accelerate_V)))) NoVoc
+eng-ref: The car accelerated
+swe-ref: Bilen accelererade
+bul-ref: колата ускори
+swe-rgl: Bilen accelererade
+bul-rgl: колата ускори
+swe-ggl: Bilen accelererade
+bul-ggl: Колата ускори
+key: 1 accelerate_V 00439133-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt (NumCard a_few_Card)) (AdjCN (PastPartAP (AdvVPSlash (SlashV2a add_1_V2) (PrepNP in_4_Prep (ConjNP and_Conj (BaseNP (MassNP (UseN amplification_1_N)) (MassNP (UseN defense_1_N))))))) (UseN remark_1_N)))) NoVoc
+eng-ref: a few remarks added in amplification and defense
+swe-ref: några anmärkningar tillagda för förstärkning och försvar
+bul-ref: няколко забележки добавени за укрепване и отбрана
+swe-rgl: några anmärkningar tillagda på förstärkning och försvar
+bul-rgl: няколко забележки добавени за укрепване и отбрана
+swe-ggl: några kommentarer tillfördes i förstärkning och försvar
+bul-ggl: няколко думи, добавени в усилването и защитата
+key: 1 amplification_1_N 00372295-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseComp (CompAP (AdAP fairly_AdA (PositA clever_1_A)))) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumPl) (UseN computer_1_N))))))) NoVoc
+eng-ref: he is fairly clever with computers
+swe-ref: han är ganska duktig med datorer
+bul-ref: той е доста вещ с компютри
+swe-rgl: han är ganska klok med datorer
+bul-rgl: той е доста вещ с компютри
+swe-ggl: han är ganska smart med datorer
+bul-ggl: той е доста умен с компютрите
+key: 1 fairly_AdA 00036138-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA roman_1_A) (UseN nose_1_N)))) NoVoc
+eng-ref: a Roman nose
+swe-ref: en romersk näsa
+bul-ref: римски нос
+swe-rgl: en romersk näsa
+bul-rgl: римски нос
+swe-ggl: en romersk näsa
+bul-ggl: римски нос
+key: 1 roman_1_A 02932882-a
+
+abs: PhrUtt NoPConj (UttAPMasc (SentAP (PositA afraid_4_A) (EmbedVP ASimul PPos (ComplSlash (SlashV2a show_1_V2) (MassNP (UseN emotion_N)))))) NoVoc
+eng-ref: afraid to show emotion
+swe-ref: rädd för att visa känslor
+bul-ref: уплашен да покаже емоция
+swe-rgl: rädd att visa känsla
+bul-rgl: уплашен да покаже емоция
+swe-ggl: rädd för att visa känslor
+bul-ggl: страх да покаже емоция
+key: 1 afraid_4_A 01296519-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN contract_1_N)) (PassVPSlash (SlashV2a annul_1_V2))))) NoVoc
+eng-ref: The contract was annulled
+swe-ref: kontraktet annullerades
+bul-ref: договорът беше анулиран
+swe-rgl: kontraktet annullerades
+bul-rgl: договорът беше анулиран
+swe-ggl: Kontraktet ogiltigförklarades
+bul-ggl: Договорът беше анулиран
+key: 1 annul_1_V2 02483482-v
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (PredetNP only_Predet (DetCN (DetQuantOrd DefArt NumPl (OrdSuperl fit_3_A)) (UseN animal_N))) (UseComp (CompNP (DetCN (DetQuant IndefArt NumPl) (AdvCN (UseN survivor_3_N) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA cold_1_A) (UseN winter_N))))))))))) NoVoc
+eng-ref: only the fittest animals were survivors of the cold winters
+swe-ref: bara de starkaste djuren överlevde de kalla vintrarna
+bul-ref: само най-силните животни бяха оцелели от студените зими
+swe-rgl: bara de starkaste djuren var överlevanden av de kalla vintrarna
+bul-rgl: само най-здравите животни бяха оцелели от студените зими
+swe-ggl: bara de fittaste djuren var överlevande av de kalla vintrarna
+bul-ggl: само най-гостоприемните животни оцелели от студените зими
+key: 1 survivor_3_N 01326783-n
+
+abs: PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TFut ASimul) PPos (QuestVP whoSg_IP (UseV start_1_V)))) NoVoc QuestMark
+eng-ref: Who will start?
+swe-ref: Vem ska börja?
+bul-ref: кой ще започне?
+swe-rgl: Vem ska börja?
+bul-rgl: кой ще започне?
+swe-ggl: Vem ska börja?
+bul-ggl: Кой ще започне?
+key: 1 start_1_V 00346415-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA neat_5_A) (UseN sports_car_N)))) NoVoc
+eng-ref: a neat sports car
+swe-ref: en snygg sportbil
+bul-ref: хубава спортна кола
+swe-rgl: en snygg sportbil
+bul-rgl: хубава спортна кола
+swe-ggl: en snygg sportbil
+bul-ggl: чист спортен автомобил
+key: 1 neat_5_A 01127641-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PastPartAgentAP (SlashV2a mark_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN adversity_2_N))) (UseN period_1_N)))) NoVoc
+eng-ref: a period marked by adversities
+swe-ref: en period som utmärkte sig av motgångar
+bul-ref: период маркиран от несгоди
+swe-rgl: en period markerad av motgångar
+bul-rgl: период маркиран от несгоди
+swe-ggl: en period markerad av motgångar
+bul-ggl: период, отбелязан от несгоди
+key: 1 adversity_2_N 07351212-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA executive_A) (UseN branch_1_N)))) NoVoc
+eng-ref: the executive branch
+swe-ref: den verkställande grenen
+bul-ref: изпълнителният клон
+swe-rgl: den verkställande grenen
+bul-rgl: изпълнителният клон
+swe-ggl: den verkställande filialen
+bul-ggl: изпълнителната власт
+key: 1 executive_A 03029435-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant (PossPron they_Pron) NumSg) (UseN research_1_N)) (ComplSlash (SlashV2a uncover_1_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA new_1_A) (UseN (CompoundN disease_N agent_1_N)))))))) NoVoc
+eng-ref: their research uncovered new disease agents
+swe-ref: deras forskning avslöjade nya sjukdomsagenter
+bul-ref: тяхното изследване разкри нови болестни агенти
+swe-rgl: deras forskning avslöjade nya sjukdomsagenter
+bul-rgl: тяхното изследване разкри нови болестни агенти
+swe-ggl: deras forskning avslöjade nya sjukdomsagenter
+bul-ggl: тяхното изследване разкри нови агенти на болестта
+key: 1 agent_1_N 09213796-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumSg) (UseN choice_1_N)) (PrepNP between_Prep (ConjNP and_Conj (BaseNP (MassNP (UseN bureaucracy_1_N)) (MassNP (UseN adhocracy_N)))))) (ComplSlash (SlashV2a represent_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA common_1_A) (UseN dilemma_N))))))) NoVoc
+eng-ref: the choice between bureaucracy and adhocracy represents a common dilemma
+swe-ref: valet mellan byråkrati och adhokrati representerar ett gemensamt dilemma
+bul-ref: изборът между бюрокрация и адхокрация представлява обща дилема
+swe-rgl: valet mellan byråkrati och adhokrati representerar ett gemensamt dilemma
+bul-rgl: изборът между бюрокрация и адхокрация представлява обща дилема
+swe-ggl: Valet mellan byråkrati och adhocracy utgör ett vanligt dilemma
+bul-ggl: изборът между бюрокрацията и адхокрацията представлява обща дилема
+key: 1 adhocracy_N 08025971-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA unknown_1_A) (UseN amount_1_N)))) NoVoc
+eng-ref: an unknown amount
+swe-ref: ett okänt belopp
+bul-ref: неизвестна сума
+swe-rgl: ett okänt belopp
+bul-rgl: неизвестна сума
+swe-ggl: en okänd mängd
+bul-ggl: неизвестна сума
+key: 1 unknown_1_A 01379820-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumPl) (AdjCN (PositA so_called_A) (UseN expert_N))) (UseComp (CompNP (DetCN (DetQuant no_Quant NumSg) (UseN help_1_N))))))) NoVoc
+eng-ref: these so-called experts are no help
+swe-ref: Dessa så kallade experter är ingen hjälp
+bul-ref: тези така наречни експерти не са от никаква помощ
+swe-rgl: Dessa så kallade experter är ingen hjälp
+bul-rgl: тези така наречни експерти не са никаква помощ
+swe-ggl: Dessa så kallade experter är ingen hjälp
+bul-ggl: тези така наречените експерти не са от полза
+key: 1 so_called_A 01922936-a
+
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a anchor_V2) (AdvNP (DetCN (DetQuant DefArt NumSg) (UseN lamppost_N)) (PrepNP in_1_Prep (MassNP (UseN concrete_N))))))) NoVoc
+eng-ref: anchor the lamppost in concrete
+swe-ref: förankra lyktstolpen i betong
+bul-ref: закрепи лампата в бетон
+swe-rgl: ankra lyktstolpen i betong
+bul-rgl: закрепи лампата в бетон
+swe-ggl: Förankra lamppostet i betong
+bul-ggl: закрепете лампата в бетон
+key: 1 anchor_V2 01307604-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA romantic_2_A) (UseN adventure_N)))) NoVoc
+eng-ref: a romantic adventure
+swe-ref: ett romantiskt äventyr
+bul-ref: романтично приключение
+swe-rgl: ett romantiskt äventyr
+bul-rgl: романтично приключение
+swe-ggl: ett romantiskt äventyr
+bul-ggl: романтично приключение
+key: 1 romantic_2_A 01468104-a романтичен
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN outcome_1_N)) (UseComp (CompAP (PositA otherwise_A)))))) NoVoc
+eng-ref: the outcome was otherwise
+swe-ref: utfallet var annorlunda
+bul-ref: резултатът беше различен
+swe-rgl: utfallet var annorlunda
+bul-rgl: резултатът беше различен
+swe-ggl: resultatet var annars
+bul-ggl: резултатът беше различен
+key: 1 otherwise_A 02078705-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (ExistNPAdv (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN shortage_1_N) (MassNP (AdjCN (PositA skilled_A) (UseN labour_1_N))))) (PrepNP in_1_Prep (DetCN (DetQuant this_Quant NumSg) (UseN field_6_N)))))) NoVoc
+eng-ref: there is a shortage of skilled labor in this field
+swe-ref: det finns en brist av skicklig arbetskraft inom det här området
+bul-ref: има недостиг на опитна работна ръка в тази област
+swe-rgl: det finns en brist av skicklig arbetskraft i det här området
+bul-rgl: има недостиг на опитна работна ръка в тази област
+swe-ggl: Det finns brist på kompetent arbetskraft inom detta område
+bul-ggl: има недостиг на квалифицирана работна ръка в тази област
+key: 1 labour_1_N 08197557-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA native_3_A) (UseN americanMasc_1_N)))) NoVoc
+eng-ref: native Americans
+swe-ref: infödda amerikaner
+bul-ref: коренни американци
+swe-rgl: infödda amerikaner
+bul-rgl: коренни американци
+swe-ggl: indianer
+bul-ggl: родени американци
+key: 1 native_3_A 01040830-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN train_1_N)) (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA unexpected_A) (UseN sight_1_N)))))))) NoVoc
+eng-ref: the train was an unexpected sight
+swe-ref: tåget var en oväntad syn
+bul-ref: влакът беше неочаквана гледка
+swe-rgl: tåget var en oväntad syn
+bul-rgl: влакът беше неочаквана гледка
+swe-ggl: tåget var en oväntad syn
+bul-ggl: влакът беше неочаквана гледка
+key: 1 sight_1_N 05941790-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseV speak_1_V) ad_lib_Adv)))) NoVoc
+eng-ref: he spoke ad lib
+swe-ref: han talade oförberett
+bul-ref: той говори неподготвено
+swe-rgl: han talade oförberett
+bul-rgl: той говори неподготвено
+swe-ggl: han pratade ad lib
+bul-ggl: той говори ad lib
+key: 1 ad_lib_Adv 00089143-r
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN today_2_N)) (UseComp (CompAP (PositA beautiful_1_A)))))) NoVoc
+eng-ref: Today is beautiful
+swe-ref: dagen är vacker
+bul-ref: денят е хубав
+swe-rgl: dagen är vacker
+bul-rgl: денят е хубав
+swe-ggl: Idag är det vackert
+bul-ggl: Днес е красива
+key: 1 today_2_N 15180961-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA alate_1_A) (UseN leaf_1_N)))) NoVoc
+eng-ref: alate leaves
+swe-ref: löv med vingar
+bul-ref: алатни листа
+swe-rgl: alate löv
+bul-rgl: алатни листа
+swe-ggl: alate löv
+bul-ggl: алатните листа
+key: 1 alate_1_A 02577837-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (AdvVP (ComplVV have_5_VV ASimul PPos (UseV appear_7_V)) (PrepNP in_1_Prep (DetCN (DetQuant gen_Quant NumSg) (UseN court_1_N)))) (TimeNP (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA last_1_A) (UseN month_1_N)))))))) NoVoc
+eng-ref: He had to appear in court last month
+swe-ref: han måste inställa sig vid domstolen förra månaden
+bul-ref: той трябваше да се яви в съда миналия месец
+swe-rgl: han borde inställa sig i domstolen den förra månaden
+bul-rgl: той трябваше да се яви в съда миналия месец
+swe-ggl: Han var tvungen att dyka upp i domstolen förra månaden
+bul-ggl: Трябваше да се яви в съда миналия месец
+key: 1 appear_7_V 02603759-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA verbal_1_A) (UseN protest_1_N)))) NoVoc
+eng-ref: a verbal protest
+swe-ref: en muntlig protest
+bul-ref: вербален протест
+swe-rgl: en muntlig protest
+bul-rgl: вербален протест
+swe-ggl: en verbal protest
+bul-ggl: словесен протест
+key: 1 verbal_1_A 00502355-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA superficial_2_A) (UseN measurement_N)))) NoVoc
+eng-ref: superficial measurements
+swe-ref: ytliga mätningar
+bul-ref: повърхностни измервания
+swe-rgl: ytliga mätningar
+bul-rgl: повърхностни измервания
+swe-ggl: ytliga mätningar
+bul-ggl: повърхностни измервания
+key: 1 superficial_2_A 02816313-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA verbal_1_A) (UseN imagery_N)))) NoVoc
+eng-ref: verbal imagery
+swe-ref: verbala bilder
+bul-ref: вербална образност
+swe-rgl: muntligt bildframställning
+bul-rgl: вербална образност
+swe-ggl: verbala bilder
+bul-ggl: словесни изображения
+key: 1 verbal_1_A 00502355-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA extreme_2_A) (UseN temperature_1_N)))) NoVoc
+eng-ref: extreme temperatures
+swe-ref: extrema temperaturer
+bul-ref: екстремни температури
+swe-rgl: extrema temperaturer
+bul-rgl: екстремни температури
+swe-ggl: extrema temperaturer
+bul-ggl: екстремни температури
+key: 1 extreme_2_A 01538953-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA high_2_A) (UseN forehead_1_N)))) NoVoc
+eng-ref: a high forehead
+swe-ref: en hög panna
+bul-ref: високо чело
+swe-rgl: en hög panna
+bul-rgl: високо чело
+swe-ggl: en hög panna
+bul-ggl: високо чело
+key: 1 high_2_A 01207229-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA blue_5_A) (UseN movie_N)))) NoVoc
+eng-ref: a blue movie
+swe-ref: en pornografisk film
+bul-ref: порнографски филм
+swe-rgl: en pornografisk film
+bul-rgl: порнографски филм
+swe-ggl: en blå film
+bul-ggl: син филм
+key: 1 blue_5_A 02139604-a
+
+abs: PhrUtt NoPConj (UttS (AdvS here_1_Adv (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (AdvVP (ComplVV must_VV ASimul PPos (UseV play_3_V)) accelerando_Adv))))) NoVoc
+eng-ref: here you must play accelerando
+swe-ref: här måste du spela accelerando
+bul-ref: тук ти трябва да свириш акселерандо
+swe-rgl: här måste du spela accelerando
+bul-rgl: тук ти трябва да свириш акселерандо
+swe-ggl: här måste du spela accelerando
+bul-ggl: тук трябва да играете accelerando
+key: 1 accelerando_Adv 00266358-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA aesthetic_2_A) (UseN person_1_N)))) NoVoc
+eng-ref: an aesthetic person
+swe-ref: en estetisk person
+bul-ref: естетически човек
+swe-rgl: en estetisk person
+bul-rgl: естетически човек
+swe-ggl: en estetisk person
+bul-ggl: естетически човек
+key: 1 aesthetic_2_A 00070140-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA mental_2_A) (UseN hygiene_1_N)))) NoVoc
+eng-ref: mental hygiene
+swe-ref: mental hygien
+bul-ref: умствена хигиена
+swe-rgl: mental hygien
+bul-rgl: умствена хигиена
+swe-ggl: mental hygien
+bul-ggl: умствена хигиена
+key: 1 mental_2_A 02910002-a умствен мисловен
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron we_Pron) (AdvVP (ComplSlash (SlashV2a provide_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN room_1_N))) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA electrical_1_A) (UseN heater_1_N)))))))) NoVoc
+eng-ref: We provided the room with an electrical heater
+swe-ref: vi försedde rummet med ett elektriskt värmare
+bul-ref: ние снабдихме стаята с електрически печка
+swe-rgl: vi försedde rummet med ett elektriskt värmare
+bul-rgl: ние снабдихме стаята с електрически нагревател
+swe-ggl: Vi gav rummet med en elektrisk värmare
+bul-ggl: Предоставихме стаята с електрически нагревател
+key: 1 provide_1_V2 02332196-v
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA weekly_A) (UseN paper_3_N)))) NoVoc
+eng-ref: weekly paper
+swe-ref: veckotidning
+bul-ref: седмичен вестник
+swe-rgl: veckovis tidning
+bul-rgl: седмичен вестник
+swe-ggl: veckopapper
+bul-ggl: седмична хартия
+key: 1 weekly_A 01975568-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA mathematical_1_A) (UseN textbook_N)))) NoVoc
+eng-ref: a mathematical textbook
+swe-ref: en matematisk lärobok
+bul-ref: математически учебник
+swe-rgl: en matematisk lärobok
+bul-rgl: математически учебник
+swe-ggl: en matematisk lärobok
+bul-ggl: математически учебник
+key: 1 mathematical_1_A 02949213-a математически
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN studentMasc_1_N)) (UseN essay_1_N)) (ComplVV fail_1_VV ASimul PPos (ComplSlash (SlashV2a list_1_V2) (DetCN (DetQuant IndefArt (NumCard several_Card)) (AdjCN (PositA important_1_A) (UseN citation_3_N)))))))) NoVoc
+eng-ref: the student's essay failed to list several important citations
+swe-ref: studentens essä misslyckades att lista flera viktiga källor
+bul-ref: есето на студента се провали да изреди няколко важни цитати
+swe-rgl: studentens essä misslyckades att lista flera viktiga källor
+bul-rgl: есето на студента се провали да изреди няколко важни цитати
+swe-ggl: studentens uppsats misslyckades med att lista flera viktiga citat
+bul-ggl: в есето на студентите не бяха изброени няколко важни цитати
+key: 1 citation_3_N 06776392-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA typical_1_A) (AdjCN (PositA american_1_A) (UseN girl_1_N))))) NoVoc
+eng-ref: a typical American girl
+swe-ref: en typisk amerikansk tjej
+bul-ref: типично американско момиче
+swe-rgl: en typisk amerikansk tjej
+bul-rgl: типично американско момиче
+swe-ggl: en typisk amerikansk tjej
+bul-ggl: типично американско момиче
+key: 1 typical_1_A 02477858-a типичен
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (PredetNP such_1_Predet (MassNP (UseN action_1_N))) (UseComp (CompAP (ConjAP neither7nor_DConj (BaseAP (PositA necessary_1_A) (PositA advisable_A)))))))) NoVoc
+eng-ref: such action is neither necessary nor advisable
+swe-ref: sådan handling är varken nödvändig eller tillrådlig
+bul-ref: такова действие е нито необходимо нито препоръчително
+swe-rgl: sådan handling är varken nödvändig eller tillrådlig
+bul-rgl: такова действие е нито необходимо нито препоръчително
+swe-ggl: sådan åtgärd är varken nödvändig eller lämplig
+bul-ggl: такова действие не е нито необходимо, нито препоръчително
+key: 1 advisable_A 00067647-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN physician_N)) (AdVVP now_1_AdV (AdvVP (UseComp (CompAP (UseComparA circumspect_A))) (PrepNP about_Prep (MassNP (GerundCN (ComplSlash (SlashV2a recommend_2_V2) (DetCN (DetQuant (PossPron it_Pron) NumSg) (UseN use_1_N))))))))))) NoVoc
+eng-ref: physicians are now more circumspect about recommending its use
+swe-ref: läkare är nu försiktigare om att rekommendera dess användning
+bul-ref: лекари сега са по-предвидливи при препоръчване на неговата употреба
+swe-rgl: läkare är nu försiktigare om att rekommendera dess användning
+bul-rgl: лекари сега са по-предвидливи за препоръчване неговата употреба
+swe-ggl: läkare är nu mer försiktiga med att rekommendera användningen
+bul-ggl: лекарите сега са по-внимателни, когато препоръчват използването му
+key: 1 circumspect_A 01904557-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA alluring_A) (UseN prospect_1_N)))) NoVoc
+eng-ref: an alluring prospect
+swe-ref: en lockande utsikt
+bul-ref: съблазнителна перспектива
+swe-rgl: en lockande utsikt
+bul-rgl: съблазнителна перспектива
+swe-ggl: en lockande utsikter
+bul-ggl: привлекателна перспектива
+key: 1 alluring_A 02104760-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA slow_1_A) (UseN walker_1_N)))) NoVoc
+eng-ref: a slow walker
+swe-ref: en långsam fotgängare
+bul-ref: бавен пешеходец
+swe-rgl: en långsam fotgängare
+bul-rgl: бавен пешеходец
+swe-ggl: en långsam vandrare
+bul-ggl: бавен проходилка
+key: 1 slow_1_A 00983718-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (PossNP (AdjCN (PositA advanced_1_A) (UseN form_1_N)) (MassNP (UseN life_1_N)))) (ComplVV may_2_VV ASimul PPos (AdvVP (UseComp (CompAP (PositA anomalous_A))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN universe_1_N)))))))) NoVoc
+eng-ref: advanced forms of life may be anomalous in the universe
+swe-ref: avancerade former av liv kan vara avvikande i universumet
+bul-ref: напреднали форми на живот могат да бъдат аномални във вселената
+swe-rgl: avancerade former av liv får vara avvikande i universumet
+bul-rgl: напреднали форми на живот могат да бъдат аномални във вселената
+swe-ggl: avancerade former av liv kan vara avvikande i universum
+bul-ggl: напредналите форми на живот могат да бъдат ненормални във Вселената
+key: 1 anomalous_A 01601037-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (ReflVPSlash (SlashV2a have_1_V2) (AdvRNP (DetCN (DetQuant IndefArt NumSg) (UseN dispute_1_N)) with_Prep (ReflPoss NumSg (UseN wife_N))))))) NoVoc
+eng-ref: he had a dispute with his wife
+swe-ref: han hade en tvist med sin fru
+bul-ref: той има разногласие със своята съпруга
+swe-rgl: han hade en tvist med sin fru
+bul-rgl: той има разногласие със своята съпруга
+swe-ggl: han hade en tvist med sin fru
+bul-ggl: той има спор със съпругата си
+key: 1 dispute_1_N 07196595-n
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA hereditary_2_A) (UseN monarchy_N)))) NoVoc
+eng-ref: hereditary monarchy
+swe-ref: ärftlig monarki
+bul-ref: наследствена монархия
+swe-rgl: ärftlig monarki
+bul-rgl: наследствена монархия
+swe-ggl: ärftlig monarki
+bul-ggl: наследствена монархия
+key: 1 hereditary_2_A 01317151-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (UseV abstain_2_V) (PrepNP from_Prep (DetCN (DetQuant gen_Quant NumSg) (UseN alcohol_1_N))))))) NoVoc
+eng-ref: I abstain from alcohol
+swe-ref: jag avstår från alkohol
+bul-ref: аз се въздържам от алкохол
+swe-rgl: jag avstår från alkohol
+bul-rgl: аз се въздържам от алкохол
+swe-ggl: Jag avstår från alkohol
+bul-ggl: Въздържам се от алкохола
+key: 1 abstain_2_V 01198570-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA acoustic_1_A) (PossNP (UseN property_2_N) (DetCN (DetQuant IndefArt NumSg) (UseN hall_1_N)))))) NoVoc
+eng-ref: acoustic properties of a hall
+swe-ref: en sals akustiska egenskaper
+bul-ref: акустични свойства на зала
+swe-rgl: akustiska egenskaper av en sal
+bul-rgl: акустични свойства на зала
+swe-ggl: akustiska egenskaper hos en hall
+bul-ggl: акустични свойства на зала
+key: 1 acoustic_1_A 02879771-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA colourful_1_A) (UseN language_1_N)))) NoVoc
+eng-ref: colorful language
+swe-ref: färgstarkt språk
+bul-ref: цветист език
+swe-rgl: färgstarkt språk
+bul-rgl: цветист език
+swe-ggl: färgstarkt språk
+bul-ggl: цветен език
+key: 1 colourful_1_A 00407944-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN unemployment_N)) (ComplSlash (SlashV2a reach_1_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA dangerous_1_A) (UseN proportion_1_N))))))) NoVoc
+eng-ref: unemployment reached dangerous proportions
+swe-ref: arbetslösheten nådde farliga nivåer
+bul-ref: безработицата достигна опасни пропорции
+swe-rgl: arbetslösheten nådde farliga proportioner
+bul-rgl: безработицата достигна опасни пропорции
+swe-ggl: arbetslösheten nått farliga proportioner
+bul-ggl: безработицата достигна опасни пропорции
+key: 1 dangerous_1_A 02066198-a опасен
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN world_1_N) (DetCN (DetQuant gen_Quant NumSg) (UseN today_1_N))))) NoVoc
+eng-ref: the world of today
+swe-ref: dagens värld
+bul-ref: света на деня
+swe-rgl: världen av dagen
+bul-rgl: света на деня
+swe-ggl: dagens värld
+bul-ggl: днешния свят
+key: 1 today_1_N 15287732-n idag dessa dagar
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA angelic_1_A) (UseN beneficence_1_N)))) NoVoc
+eng-ref: angelic beneficence
+swe-ref: änglalik välgörenhet
+bul-ref: ангелско благодеяние
+swe-rgl: änglalik välgörenhet
+bul-rgl: ангелско благодеяние
+swe-ggl: änglalös välgörenhet
+bul-ggl: ангелско благодеяние
+key: 1 angelic_1_A 01133761-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA descriptive_2_A) (UseN grammar_N)))) NoVoc
+eng-ref: descriptive grammar
+swe-ref: deskriptiv grammatik
+bul-ref: дескриптивна граматика
+swe-rgl: deskriptiv grammatik
+bul-rgl: дескриптивна граматика
+swe-ggl: beskrivande grammatik
+bul-ggl: описателна граматика
+key: 1 descriptive_2_A 00735762-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA active_6_A) (UseN ingredient_1_N)))) NoVoc
+eng-ref: an active ingredient
+swe-ref: en aktiv ingrediens
+bul-ref: активна съставка
+swe-rgl: en aktiv ingrediens
+bul-rgl: активна съставка
+swe-ggl: en aktiv ingrediens
+bul-ggl: активна съставка
+key: 1 active_6_A 00042677-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA minor_1_A) (UseN poet_N)))) NoVoc
+eng-ref: a minor poet
+swe-ref: en obetydlig poet
+bul-ref: второстепенен поет
+swe-rgl: en lägre poet
+bul-rgl: второстепенен поет
+swe-ggl: en mindre poet
+bul-ggl: малък поет
+key: 1 minor_1_A 01476226-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN news_1_N)) (ComplSlash (SlashV2a anger_V2) (UsePron he_Pron))))) NoVoc
+eng-ref: The news angered him
+swe-ref: nyheten förargade honom
+bul-ref: новината го ядоса
+swe-rgl: nyheten förargade honom
+bul-rgl: новината го ядоса
+swe-ggl: Nyheten gjorde honom arg
+bul-ggl: Новината го разгневи
+key: 1 anger_V2 01789790-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA noxious_A) (UseN idea_1_N)))) NoVoc
+eng-ref: noxious ideas
+swe-ref: skadliga idéer
+bul-ref: вредни идеи
+swe-rgl: skadliga idéer
+bul-rgl: вредни идеи
+swe-ggl: skadliga idéer
+bul-ggl: вредни идеи
+key: 1 noxious_A 01615595-a пагубен вреден
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA cosmic_1_A) (UseN catastrophe_1_N)))) NoVoc
+eng-ref: cosmic catastrophe
+swe-ref: kosmisk katastrof
+bul-ref: космическа катастрофа
+swe-rgl: kosmisk katastrof
+bul-rgl: космическа катастрофа
+swe-ggl: kosmisk katastrof
+bul-ggl: космическа катастрофа
+key: 1 cosmic_1_A 02713543-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UseDAP (DetDAP (DetQuant some_Quant NumSg))) (UseComp (CompAP (PositA amiss_A)))))) NoVoc
+eng-ref: something is amiss
+swe-ref: någonting är fel
+bul-ref: нещо е грешно
+swe-rgl: någonting är fel
+bul-rgl: нещо е грешно
+swe-ggl: något är okej
+bul-ggl: нещо не е наред
+key: 1 amiss_A 01096064-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA lively_1_A) (UseN discussion_1_N)))) NoVoc
+eng-ref: a lively discussion
+swe-ref: en livlig diskussion
+bul-ref: будна дискусия
+swe-rgl: en livlig diskussion
+bul-rgl: будна дискусия
+swe-ggl: en livlig diskussion
+bul-ggl: оживена дискусия
+key: 1 lively_1_A 00808265-a
+
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2A keep_1_V2A (PositA alive_5_A)) (DetCN (DetQuant gen_Quant NumSg) (UseN hope_1_N))))) NoVoc
+eng-ref: keep hope alive
+swe-ref: håll hoppet levande
+bul-ref: поддържай надеждата жива
+swe-rgl: håll hoppet levande
+bul-rgl: поддържай надеждата жива
+swe-ggl: håll hoppet levande
+bul-ggl: поддържайте надежда жива
+key: 1 alive_5_A 00930614-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron we_Pron) (ComplVV can_1_VV ASimul PPos (ComplVV afford_3_VV ASimul PPos (AdvVP (ComplSlash (SlashV2a send_7_V2) (DetCN (DetQuant (PossPron we_Pron) NumPl) (UseN child_1_N))) (PrepNP to_2_Prep (MassNP (UseN college_2_N))))))))) NoVoc
+eng-ref: We can't afford to send our children to college
+swe-ref: vi kan inte råd att skicka våra barn till högskolan
+bul-ref: ние не можем да си позволим да изпратим нашите деца в колеж
+swe-rgl: vi kan inte råda att skicka våra barn till college
+bul-rgl: ние не можем да си позволим да изпратим нашите деца на колеж
+swe-ggl: Vi har inte råd att skicka våra barn till college
+bul-ggl: Не можем да си позволим да изпратим децата си в колежа
+key: 1 afford_3_VV 02750326-v позволявам си позволя си
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a do_3_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA bully_A) (UseN job_5_N))))))) NoVoc
+eng-ref: he did a bully job
+swe-ref: han gjorde ett bra jobb
+bul-ref: той върши страхотна работа
+swe-rgl: han gjorde ett bra jobb
+bul-rgl: той върши страхотна работа
+swe-ggl: han gjorde ett mobbande jobb
+bul-ggl: той върши груба работа
+key: 1 bully_A 01127641-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN aggravation_3_N) (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN condition_1_N)))) (ComplSlash (SlashV2a result_from_V2) (MassNP (PossNP (UseN lack_N) (MassNP (UseN care_1_N)))))))) NoVoc
+eng-ref: the aggravation of her condition resulted from lack of care
+swe-ref: förvärrandet av hennes tillstånd berodde på brist av vård
+bul-ref: влошаването на нейното състояние се получи от липса на грижа
+swe-rgl: förvärrandet av hennes tillstånd berodde på brist av vård
+bul-rgl: влошаването на нейното състояние се получи от липса на грижа
+swe-ggl: förvärringen av hennes tillstånd berodde på brist på vård
+bul-ggl: влошаването на състоянието й се дължи на липса на грижи
+key: 1 aggravation_3_N 00375643-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (GenModNP NumSg (DetCN (DetQuant IndefArt NumSg) (UseN child_1_N)) (UseN allowance_1a_N)) (ComplVV should_VV ASimul PPos (UseComp (CompAP (AdAP too_AdA (PositA generous_1_A)))))))) NoVoc
+eng-ref: a child's allowance should not be too generous
+swe-ref: ett barns veckopeng bör inte vara för generöst
+bul-ref: надбавката за дете не трябва да бъде твърде щедра
+swe-rgl: ett barns bidrag bör inte vara för generöst
+bul-rgl: надбавката на дете не трябва да бъде твърде щедра
+swe-ggl: Barnbidrag bör inte vara för generöst
+bul-ggl: детската надбавка не трябва да бъде прекалено щедра
+key: 1 allowance_1a_N 13307277-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA smart_7_A) (UseN weapon_1_N)))) NoVoc
+eng-ref: smart weapons
+swe-ref: smarta vapen
+bul-ref: умни оръжия
+swe-rgl: smarta vapen
+bul-rgl: умни оръжия
+swe-ggl: smarta vapen
+bul-ggl: умни оръжия
+key: 1 smart_7_A 00184018-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN boss_1_N)) (ReflVPSlash (SlashV2a abuse_1_V2) (ReflPoss NumPl (UseN worker_1_N)))))) NoVoc
+eng-ref: This boss abuses his workers
+swe-ref: denna chef missbrukar sina arbetare
+bul-ref: този шеф малтретира своите работници
+swe-rgl: denna chef misshandlar sina arbetare
+bul-rgl: този шеф малтретира своите работници
+swe-ggl: Denna chef missbrukar sina arbetare
+bul-ggl: Този шеф злоупотребява с работниците си
+key: 1 abuse_1_V2 02522260-v
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (UseV graduate_V) (yearAdv (intYear 1990)))))) NoVoc
+eng-ref: She graduated in 1990
+swe-ref: hon utexaminerades år 1990
+bul-ref: тя завърши през 1990
+swe-rgl: hon utexaminerade år 1990
+bul-rgl: тя завърши през 1990
+swe-ggl: Hon tog examen 1990
+bul-ggl: Завършва през 1990 г.
+key: 1 graduate_V 02269205-v
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA maximum_A) (UseN pressure_1_N)))) NoVoc
+eng-ref: maximum pressure
+swe-ref: maximalt tryck
+bul-ref: максимално налягане
+swe-rgl: maximalt tryck
+bul-rgl: максимално налягане
+swe-ggl: maximalt tryck
+bul-ggl: максимално налягане
+key: 1 maximum_A 01498873-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PastPartAP (AdvVPSlash (SlashV2a receive_1_V2) (PrepNP from_Prep (DetCN (DetQuant DefArt NumPl) (PossNP (UseN depths_N) (DetCN (DetQuant gen_Quant NumSg) (UseN space_2_N))))))) (UseN signal_1_N)))) NoVoc
+eng-ref: signals received from the depths of space
+swe-ref: signaler mottagna från rymdens djup
+bul-ref: сигнали получени от дълбините на космоса
+swe-rgl: signaler mottagna från djupen av rymden
+bul-rgl: сигнали получени от дълбините на космоса
+swe-ggl: signaler mottagna från djupet av rymden
+bul-ggl: сигнали, получени от дълбините на пространството
+key: 1 depths_N 08517241-n
+
+abs: PhrUtt NoPConj (UttAdv (GerundAdv (AdvVP (ComplSlash (SlashV2a hurry_V2) (DetCN (DetQuant (PossPron they_Pron) NumSg) (UseN education_2_N))) along_3_Adv))) NoVoc
+eng-ref: hurrying their education along
+swe-ref: påskyndandes deras utbildning
+bul-ref: забързвайки тяхното образование напред
+swe-rgl: påskyndandes deras utbildning fram
+bul-rgl: забързвайки тяхното образование напред
+swe-ggl: skynda på sin utbildning tillsammans
+bul-ggl: бързат да учат заедно
+key: 1 along_3_Adv 00069386-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA sexual_2_A) (UseN spore_N)))) NoVoc
+eng-ref: sexual spores
+swe-ref: sexuella sporer
+bul-ref: сексуални спори
+swe-rgl: sexuella sporer
+bul-rgl: сексуални спори
+swe-ggl: sexuella sporer
+bul-ggl: сексуални спори
+key: 1 sexual_2_A 02142650-a сексуален полов
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA heavy_4_A) (UseN silence_1_N)))) NoVoc
+eng-ref: a heavy silence
+swe-ref: en tung tystnad
+bul-ref: тежко мълчание
+swe-rgl: en tung tystnad
+bul-rgl: тежко мълчание
+swe-ggl: en tung tystnad
+bul-ggl: тежко мълчание
+key: 1 heavy_4_A 01192305-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA wild_1_A) (UseN rice_1_N))) (AdvVP (AdvVP (PassVPSlash (SlashV2a serve_5_V2)) (PrepNP as_Prep (DetCN (DetQuant IndefArt NumSg) (UseN accompaniment_3_N)))) (PrepNP to_3_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA main_2_A) (UseN dish_2_N)))))))) NoVoc
+eng-ref: wild rice was served as an accompaniment to the main dish
+swe-ref: det vilda riset serverades som en sidorätt till huvudrätten
+bul-ref: дивият ориз беше сервиран като гарнитура към основното ястие
+swe-rgl: det vilda riset serverades som en komplettering till den huvudsakliga rätten
+bul-rgl: дивият ориз беше сервиран като гарнитура към основното ястие
+swe-ggl: Vildt ris serverades som ett ackompanjemang till huvudrätten
+bul-ggl: дивият ориз се поднасяше като съпровод на основното ястие
+key: 1 accompaniment_3_N 05116811-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (ComplSlash (SlashV2a see_1_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (UseN light_1_N) (DetCN (DetQuant IndefArt NumSg) (UseN town_1_N))))) ahead_1_Adv)))) NoVoc
+eng-ref: I see the lights of a town ahead
+swe-ref: jag ser ljusen av en stad framåt
+bul-ref: аз виждам светлините на град напред
+swe-rgl: jag ser ljusen av en stad framåt
+bul-rgl: аз виждам светлините на град напред
+swe-ggl: Jag ser ljusen i en stad framåt
+bul-ggl: Виждам светлините на един град напред
+key: 1 ahead_1_Adv 00067181-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA questionable_1_A) (UseN reputation_1_N)))) NoVoc
+eng-ref: a questionable reputation
+swe-ref: ett tvivelaktigt rykte
+bul-ref: спорна репутация
+swe-rgl: ett tvivelaktigt rykte
+bul-rgl: спорна репутация
+swe-ggl: ett tvivelaktigt rykte
+bul-ggl: спорна репутация
+key: 1 questionable_1_A 01922610-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN chairman_N)) (ComplSlash (SlashV2a address_2_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN board_1_N) (DetCN (DetQuant gen_Quant NumPl) (UseN trustee_1_N)))))))) NoVoc
+eng-ref: The chairman addressed the board of trustees
+swe-ref: ordföranden tilltalade styrelsen av förmyndarna
+bul-ref: председателят се обърна към борда на попечителите
+swe-rgl: ordföranden tilltalade styrelsen av förmyndarna
+bul-rgl: председателят се обърна към борда на попечителите
+swe-ggl: Ordföranden hänvisade till förvaltningsstyrelsen
+bul-ggl: Председателят се обърна към управителния съвет
+key: 1 address_2_V2 00991233-v
+
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron youSgFem_Pron) NumSg) (SentCN (UseN ability_1_N) (EmbedVP ASimul PPos (ComplSlash (SlashV2a speak_1_V2) (DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n6))))))))) (UseN language_1_N)))))) (ComplSlash (SlashV2a amaze_1_V2) (UsePron i_Pron))))) NoVoc ExclMark
+eng-ref: Your ability to speak six languages amazes me!
+swe-ref: Din förmåga att tala sex språk förvånar mig!
+bul-ref: твоето умение да говориш шест езика ме удивлява!
+swe-rgl: Din förmåga att tala sex språk förvånar mig!
+bul-rgl: твоето умение да говори шест езика ме удивлява!
+swe-ggl: Din förmåga att tala sex språk förvånar mig!
+bul-ggl: Способността ви да говорите шест езика ме учудва!
+key: 1 amaze_1_V2 00726794-v
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA dry_3_A) (UseN paint_1_N)))) NoVoc
+eng-ref: dry paint
+swe-ref: torr färg
+bul-ref: суха боя
+swe-rgl: torr färg
+bul-rgl: суха боя
+swe-ggl: torr färg
+bul-ggl: суха боя
+key: 1 dry_3_A 02566037-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA prestigious_1_A) (UseN author_1_N)))) NoVoc
+eng-ref: a prestigious author
+swe-ref: en prestigefylld författare
+bul-ref: престижен автор
+swe-rgl: en prestigefylld författare
+bul-rgl: престижен автор
+swe-ggl: en prestigefylld författare
+bul-ggl: престижен автор
+key: 1 prestigious_1_A 01990022-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA moral_1_A) (UseN life_1_N)))) NoVoc
+eng-ref: a moral life
+swe-ref: ett moraliskt liv
+bul-ref: морален живот
+swe-rgl: ett moraliskt liv
+bul-rgl: морален живот
+swe-ggl: ett moraliskt liv
+bul-ggl: морален живот
+key: 1 moral_1_A 01552360-a нравствен морален
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN throat_3_N) (DetCN (DetQuant IndefArt NumSg) (UseN chimney_1_N))))) NoVoc
+eng-ref: the throat of a chimney
+swe-ref: skorstens hals
+bul-ref: гърлото на комин
+swe-rgl: halsen av en skorsten
+bul-rgl: гърлото на комин
+swe-ggl: en skorstens hals
+bul-ggl: гърлото на комина
+key: 1 throat_3_N 04435898-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (ConjAP and_Conj (BaseAP (PositA lively_1_A) (PositA attractive_1_A))) (UseN parent_1_N)))) NoVoc
+eng-ref: lively and attractive parents
+swe-ref: livliga och attraktiva föräldrar
+bul-ref: будни и привлекателни родители
+swe-rgl: livliga och attraktiva föräldrar
+bul-rgl: будни и привлекателни родители
+swe-ggl: livliga och attraktiva föräldrar
+bul-ggl: живи и привлекателни родители
+key: 1 lively_1_A 00808265-a оживен
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA native_3_A) (UseN americanMasc_1_N)))) NoVoc
+eng-ref: native Americans
+swe-ref: infödda amerikaner
+bul-ref: първични американци
+swe-rgl: infödda amerikaner
+bul-rgl: първични американци
+swe-ggl: indianer
+bul-ggl: родени американци
+key: 1 native_3_A 01040830-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA good_8_A) (UseN mechanic_1_N)))) NoVoc
+eng-ref: a good mechanic
+swe-ref: en bra mekaniker
+bul-ref: добър механик
+swe-rgl: en bra mekaniker
+bul-rgl: добър механик
+swe-ggl: en bra mekaniker
+bul-ggl: добър механик
+key: 1 good_8_A 02234002-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN child_1_N)) (AdvVP (AdvVP (UseV run_1_V) (PrepNP down_Prep (DetCN (DetQuant DefArt NumSg) (UseN hill_1_N)))) amain_1_Adv)))) NoVoc
+eng-ref: the children ran down the hill amain
+swe-ref: barnen sprang nerför kullen med full fart
+bul-ref: децата бягаха надолу по хълма с пълна скорост
+swe-rgl: barnen sprang nerför kullen med full fart
+bul-rgl: децата бягаха надолу по хълма с пълна скорост
+swe-ggl: barnen sprang nerför kullen
+bul-ggl: децата изтичаха по хълма
+key: 1 amain_1_Adv 00274564-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA crowded_A) (UseN program_1_N)))) NoVoc
+eng-ref: a crowded program
+swe-ref: ett trångt program
+bul-ref: претъпкана програма
+swe-rgl: ett trångt program
+bul-rgl: претъпкана програма
+swe-ggl: ett trångt program
+bul-ggl: претъпкана програма
+key: 1 crowded_A 00561916-a
+
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (UseN about_face_2_N)) (PrepNP on_1_Prep (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA foreign_1_A) (UseN policy_2_N)))))) NoVoc
+eng-ref: an about-face on foreign policy
+swe-ref: en helomvändning angående utrikespolitiken
+bul-ref: пълна промяна на външната политика
+swe-rgl: en helomvändning på den utländska politiken
+bul-rgl: пълна промяна на външната политика
+swe-ggl: ett ansikte mot utrikespolitiken
+bul-ggl: лице на външната политика
+key: 1 about_face_2_N 00164227-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN addition_2_N) (DetCN (DetQuant IndefArt NumSg) (UseN bathroom_1_N)))) (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA major_1_A) (UseN improvement_1_N)))))))) NoVoc
+eng-ref: the addition of a bathroom was a major improvement
+swe-ref: Tillägget av ett badrum var en stor förbättring
+bul-ref: добавянето на баня беше голямо подобрение
+swe-rgl: Tillägget av ett badrum var en stor förbättring
+bul-rgl: добавянето на баня беше голямо подобрение
+swe-ggl: Tillägget av ett badrum var en stor förbättring
+bul-ggl: добавянето на баня е голямо подобрение
+key: 1 addition_2_N 02682269-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA diploid_A) (AdjCN (PositA somatic_A) (UseN cell_1_N))))) NoVoc
+eng-ref: diploid somatic cells
+swe-ref: diploida somatiska celler
+bul-ref: диплоидни соматични клетки
+swe-rgl: diploida somatiska celler
+bul-rgl: диплоидни соматични клетки
+swe-ggl: diploida somatiska celler
+bul-ggl: диплоидни соматични клетки
+key: 1 diploid_A 01151125-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN action_1_N)) (ComplSlash (SlashV2a amount_to_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN rebellion_1_N)))))) NoVoc
+eng-ref: Her action amounted to a rebellion
+swe-ref: hennes handling utgjorde ett uppror
+bul-ref: нейното действие представлява бунт
+swe-rgl: hennes handling utgjorde ett uppror
+bul-rgl: нейното действие представлява бунт
+swe-ggl: Hennes handling utgjorde ett uppror
+bul-ggl: Действието й представляваше бунт
+key: 1 amount_to_1_V2 02671069-v
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA apogean_A) (UseN tide_1_N))) (AdvVP (UseV occur_1_V) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN moon_1_N)) (UseComp (CompAdv (PrepNP at_1_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN apogee_1_N) (DetCN (DetQuant (PossPron it_Pron) NumSg) (UseN orbit_1_N)))))))))))))) NoVoc
+eng-ref: apogean tides occur when the moon is at the apogee of its orbit
+swe-ref: apogeiska tidvatten uppstår när månen är i apogeum av dess omloppsbana
+bul-ref: апогейни приливи се случват когато луната е на апогея на своята орбита
+swe-rgl: apogeiska tidvatten uppstår när månen är hos apogeumet av dess omloppsbana
+bul-rgl: апогейни приливи се случват когато луната е на апогея на своята орбита
+swe-ggl: apogeiska tidvatten inträffar när månen är på apogee i sin bana
+bul-ggl: апогейните приливи се появяват, когато луната е на апогея на своята орбита
+key: 1 apogean_A 02644347-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a advocate_1_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN application_1_N) (MassNP (UseN statistics_N))))) (PrepNP to_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN problem_1_N))))))) NoVoc
+eng-ref: he advocated the application of statistics to the problem
+swe-ref: han förespråkade tillämpningen av statistik på problemet
+bul-ref: той се застъпи за приложението на статистика към проблема
+swe-rgl: han förespråkade tillämpningen av statistik till problemet
+bul-rgl: той се застъпи за приложението на статистика към проблема
+swe-ggl: han förespråkade tillämpningen av statistiken på problemet
+bul-ggl: той се застъпва за прилагането на статистически данни за проблема
+key: 1 application_1_N 00950950-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA accidental_A) (UseN shooting_1_N)))) NoVoc
+eng-ref: an accidental shooting
+swe-ref: en oavsiktlig skjutning
+bul-ref: инцидентна стрелба
+swe-rgl: en oavsiktlig skjutning
+bul-rgl: инцидентна стрелба
+swe-ggl: en oavsiktlig skytte
+bul-ggl: случайно стрелба
+key: 1 accidental_A 01341947-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA ambrosial_1_A) (UseN food_1_N)))) NoVoc
+eng-ref: ambrosial food
+swe-ref: ambrosisk mat
+bul-ref: божествена храна
+swe-rgl: ambrosisk mat
+bul-rgl: божествена храна
+swe-ggl: ambrosial mat
+bul-ggl: амброзиална храна
+key: 1 ambrosial_1_A 02404495-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (AdvVP (UseV migrate_2_V) eastwards_Adv) (PrepNP to_3_Prep (UsePN sweden_PN)))))) NoVoc
+eng-ref: they migrated eastward to Sweden
+swe-ref: De migrerade österut till Sverige
+bul-ref: те мигрираха на изток към Швеция
+swe-rgl: De migrerade österut till Sverige
+bul-rgl: те мигрираха на исток към Швеция
+swe-ggl: De migrerade österut till Sverige
+bul-ggl: те мигрират на изток към Швеция
+key: 1 eastwards_Adv 00325528-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA sweet_1_A) (AdjCN (PositA little_8_A) (UseN deal_1_N))))) NoVoc
+eng-ref: a sweet little deal
+swe-ref: en ljuv liten överenskommelse
+bul-ref: сладка малка сделка
+swe-rgl: en ljuv liten affär
+bul-rgl: сладка малка сделка
+swe-ggl: en söt liten affär
+bul-ggl: сладка малка сделка
+key: 1 little_8_A 00858857-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (ImpersCl (none_of_NP_affair_VP (UsePron youSg_Pron))))) NoVoc
+eng-ref: it is none of your affair
+swe-ref: det är inte din ensak
+bul-ref: не е твоя работата
+swe-rgl: det är ingen av din ensak
+bul-rgl: не е работата на теб
+swe-ggl: det är ingen av din affär
+bul-ggl: това не е твоя афера
+key: 1 none_of_NP_affair_VP 05679169-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN solution_1_N)) (UseV acidify_2_V)))) NoVoc
+eng-ref: the solution acetified
+swe-ref: lösningen surgjordes
+bul-ref: разтворът се подкисели
+swe-rgl: lösningen surgjordes
+bul-rgl: разтворът се подкисели
+swe-ggl: lösningen acetatiserades
+bul-ggl: решението е осиновено
+key: 1 acidify_2_V 00265761-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA philharmonic_1_A) (UseN player_2_N)))) NoVoc
+eng-ref: philharmonic players
+swe-ref: filharmoniker
+bul-ref: филхармонични изпълнители
+swe-rgl: filharmoniska spelare
+bul-rgl: филхармонични изпълнители
+swe-ggl: filharmoniska spelare
+bul-ggl: филхармонични играчи
+key: 1 philharmonic_1_A 03110716-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA personal_1_A) (UseN favour_1_N)))) NoVoc
+eng-ref: a personal favor
+swe-ref: en personlig tjänst
+bul-ref: лична услуга
+swe-rgl: en personlig tjänst
+bul-rgl: лична услуга
+swe-ggl: en personlig tjänst
+bul-ggl: лична услуга
+key: 1 personal_1_A 01771841-a персонален личен
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA ramshackle_A) (AdjCN (PositA antediluvian_2_A) (UseN tenement_N))))) NoVoc
+eng-ref: a ramshackle antediluvian tenement
+swe-ref: ett fallfärdigt föråldrat hyreshus
+bul-ref: разнебитена допотопна барака
+swe-rgl: ett fallfärdigt föråldrat hyreshus
+bul-rgl: разнебитена допотопна барака
+swe-ggl: en ramshackle antediluvian tenement
+bul-ggl: кошмарно преддверие
+key: 1 antediluvian_2_A 01643372-a
+
+abs: PhrUtt NoPConj (UttVPShort (ComplVV have_5_VV ASimul PPos (ComplSlash (SlashV2A keep_1_V2A (EnoughAP (PositA high_1_A) ASimul PPos (ComplSlash (SlashV2A make_2_V2A (SentAP (PositA economic_5_A) (EmbedVP ASimul PPos (ComplSlash (SlashV2a continue_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN service_1_N)))))) (UsePron it_Pron)))) (DetCN (DetQuant IndefArt NumPl) (UseN price_1_N))))) NoVoc
+eng-ref: have to keep prices high enough to make it economic to continue the service
+swe-ref: behöver hålla priser höga nog för att göra det lönsamt att fortsätta med tjänsten
+bul-ref: трябва да поддържа цени достатъчно високи да го направят изгодно да продължи услугата
+swe-rgl: böra hålla priser höga nog för att göra det lönsamt att fortsätta med tjänsten
+bul-rgl: трябва да поддържа цени достатъчно високи да го направят изгодно да продължи услугата
+swe-ggl: måste hålla priserna tillräckligt höga för att göra det ekonomiskt att fortsätta tjänsten
+bul-ggl: трябва да поддържат цените достатъчно високи, за да направят икономическото продължаване на услугата
+key: 1 economic_5_A 01877533-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumSg) (PossNP (UseN acceptance_7_N) (DetCN (DetQuant DefArt NumSg) (UseN gift_1_N)))) (ComplSlash (SlashV2a encourage_1_V2) (UsePron he_Pron))))) NoVoc
+eng-ref: her acceptance of the gift encouraged him
+swe-ref: hennes acceptans av gåvan uppmuntrade honom
+bul-ref: нейното приемане на подаръка го насърчи
+swe-rgl: hennes acceptans av gåvan uppmuntrade honom
+bul-rgl: нейното приемане на подаръка го насърчи
+swe-ggl: hennes acceptans av gåvan uppmuntrade honom
+bul-ggl: нейното приемане на дара го насърчи
+key: 1 acceptance_7_N 00083345-n
+
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA good_1_A) (UseN ear_2_N))) (PrepNP for_Prep (MassNP (UseN pitch_1_N))))) NoVoc
+eng-ref: a good ear for pitch
+swe-ref: ett bra öra för tonhöjd
+bul-ref: добро ухо за височина
+swe-rgl: ett bra öra för tonhöjd
+bul-rgl: добро ухо за височина
+swe-ggl: ett bra öra för tonhöjd
+bul-ggl: добро ухо за смола
+key: 1 ear_2_N 05665844-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA advanced_7_A) (UseN society_1_N)))) NoVoc
+eng-ref: advanced societies
+swe-ref: avancerade samhällen
+bul-ref: напреднали общества
+swe-rgl: avancerade samhällen
+bul-rgl: напреднали общества
+swe-ggl: avancerade samhällen
+bul-ggl: напреднали общества
+key: 1 advanced_7_A 00413248-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA simple_1_A) (UseN design_1_N)))) NoVoc
+eng-ref: a simple design
+swe-ref: en enkel design
+bul-ref: изчистен дизайн
+swe-rgl: en enkel design
+bul-rgl: прост дизайн
+swe-ggl: en enkel design
+bul-ggl: прост дизайн
+key: 1 simple_1_A 02182456-a
+
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA abrupt_2_A) (UseN change_1_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN weather_N))))) NoVoc
+eng-ref: an abrupt change in the weather
+swe-ref: en plötslig förändring i vädret
+bul-ref: рязка промяна във времето
+swe-rgl: en plötslig förändring i vädret
+bul-rgl: рязка промяна във времето
+swe-ggl: en abrupt förändring i vädret
+bul-ggl: рязка промяна на времето
+key: 1 abrupt_2_A 01147070-a
+
+abs: PhrUtt NoPConj (UttImpPl PPos (ImpVP (ComplSlash (SlashV2a leave_6_V2) (DetCN (DetQuant IndefArt (NumCard lotsSg_Card)) (AdvCN (UseN time_2_N) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN trip_1_N)))))))) NoVoc
+eng-ref: leave lots of time for the trip
+swe-ref: lämna en hel del tid för utflykten
+bul-ref: оставете много време за пътуването
+swe-rgl: lämna en hel del tid för trippet
+bul-rgl: оставете много време за пътуването
+swe-ggl: lämna mycket tid för resan
+bul-ggl: Оставете много време за пътуването
+key: 1 leave_6_V2 02727313-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA noble_3_A) (UseN spirit_3_N)))) NoVoc
+eng-ref: a noble spirit
+swe-ref: en ädel själ
+bul-ref: благороден дух
+swe-rgl: en ädel själ
+bul-rgl: благороден дух
+swe-ggl: en ädel ande
+bul-ggl: благороден дух
+key: 1 noble_3_A 01592579-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA multicultural_A) (UseN event_1_N)))) NoVoc
+eng-ref: a multicultural event
+swe-ref: en mångkulturell händelse
+bul-ref: мултикултурно събитие
+swe-rgl: en mångkulturell händelse
+bul-rgl: мултикултурно събитие
+swe-ggl: en mångkulturell händelse
+bul-ggl: мултикултурно събитие
+key: 1 multicultural_A 02884080-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant (PossPron he_Pron) NumSg) (PossNP (UseN sphere_1_N) (MassNP (UseN activity_2_N))))) NoVoc
+eng-ref: his sphere of activity
+swe-ref: hans verksamhetssfär
+bul-ref: неговата сфера на дейност
+swe-rgl: hans sfär av verksamhet
+bul-rgl: неговата сфера на дейност
+swe-ggl: hans verksamhetsområde
+bul-ggl: неговата сфера на дейност
+key: 1 activity_2_N 14030430-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA multi_lingual_A) (UseN translator_1_N)))) NoVoc
+eng-ref: a multilingual translator
+swe-ref: en flerspråkig översättare
+bul-ref: многоезичен преводач
+swe-rgl: en flerspråkig översättare
+bul-rgl: многоезичен преводач
+swe-ggl: en flerspråkig översättare
+bul-ggl: многоезичен преводач
+key: 1 multi_lingual_A 01549738-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA oral_1_A) (UseN tradition_1_N)))) NoVoc
+eng-ref: an oral tradition
+swe-ref: en muntlig tradition
+bul-ref: устна традиция
+swe-rgl: en muntlig tradition
+bul-rgl: устна традиция
+swe-ggl: en muntlig tradition
+bul-ggl: устна традиция
+key: 1 oral_1_A 02291903-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (AdjCN (PositA advanced_8_A) (UseN state_2_N)) (MassNP (UseN exhaustion_1_N))))) NoVoc
+eng-ref: an advanced state of exhaustion
+swe-ref: ett långtgående tillstånd av utmattning
+bul-ref: напреднало състояние на изтощение
+swe-rgl: ett långtgående tillstånd av utmattning
+bul-rgl: напреднало състояние на изтощение
+swe-ggl: ett avancerat tillstånd av utmattning
+bul-ggl: напреднало състояние на изтощение
+key: 1 advanced_8_A 00823095-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA absolute_1_A) (UseN silence_2_N)))) NoVoc
+eng-ref: absolute silence
+swe-ref: absolut tystnad
+bul-ref: абсолютна тишина
+swe-rgl: absolut tystnad
+bul-rgl: абсолютна тишина
+swe-ggl: absolut tystnad
+bul-ggl: абсолютно мълчание
+key: 1 absolute_1_A 00005204-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA economic_1_A) (UseN growth_1_N)))) NoVoc
+eng-ref: economic growth
+swe-ref: ekonomisk tillväxt
+bul-ref: икономически растеж
+swe-rgl: ekonomisk tillväxt
+bul-rgl: икономически растеж
+swe-ggl: ekonomisk tillväxt
+bul-ggl: икономически растеж
+key: 1 economic_1_A 02727475-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA adipose_A) (UseN tissue_1_N))) (ComplSlash (SlashV2a constitute_1_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN fat_1_N) (DetCN (DetQuant gen_Quant NumSg) (UseN meat_1_N)))))))) NoVoc
+eng-ref: adipose tissue constitutes the fat of meat
+swe-ref: fettvävnaden utgör köttets fett
+bul-ref: мастната тъкан представлява мазнината на месото
+swe-rgl: den feta väven utgörar fettet av köttet
+bul-rgl: мастната тъкан представлява мазнината на месото
+swe-ggl: fettvävnad utgör köttets fett
+bul-ggl: мастната тъкан представлява мазнината на месото
+key: 1 adipose_A 00995483-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA rare_1_A) (UseN book_1_N)))) NoVoc
+eng-ref: rare books
+swe-ref: sällsynta böcker
+bul-ref: редки книги
+swe-rgl: sällsynta böcker
+bul-rgl: редки книги
+swe-ggl: sällsynta böcker
+bul-ggl: редки книги
+key: 1 rare_1_A 00490548-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN weather_N)) (AdvVP (UseV improve_V) (PrepNP toward_Prep (DetCN (DetQuant gen_Quant NumSg) (UseN evening_1_N))))))) NoVoc
+eng-ref: The weather improved toward evening
+swe-ref: vädret förbättrades mot kvällen
+bul-ref: времето се подобри към вечерта
+swe-rgl: vädret förbättrade mot kvällen
+bul-rgl: времето се подобри към вечерта
+swe-ggl: Vädret förbättrades mot kvällen
+bul-ggl: Времето се подобри към вечерта
+key: 1 improve_V 00205454-v förbättras
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA bad_10_A) (UseN heart_1_N)))) NoVoc
+eng-ref: a bad heart
+swe-ref: ett dåligt hjärta
+bul-ref: болно сърце
+swe-rgl: ett dåligt hjärta
+bul-rgl: болно сърце
+swe-ggl: ett dåligt hjärta
+bul-ggl: лошо сърце
+key: 1 bad_10_A 01177766-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA decent_2_A) (UseN burial_1_N)))) NoVoc
+eng-ref: a decent burial
+swe-ref: en anständig begravning
+bul-ref: прилично погребение
+swe-rgl: en anständig begravning
+bul-rgl: прилично погребение
+swe-ggl: en anständig begravning
+bul-ggl: прилично погребение
+key: 1 decent_2_A 01885720-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA rapid_2_A) (UseN movement_1_N)))) NoVoc
+eng-ref: a rapid movement
+swe-ref: en snabb rörelse
+bul-ref: бързо движение
+swe-rgl: en snabb rörelse
+bul-rgl: бързо движение
+swe-ggl: en snabb rörelse
+bul-ggl: бързо движение
+key: 1 rapid_2_A 00983053-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant (PossPron they_Pron) NumSg) (UseN anger_1_N)) (come_to_VP boil_1_V)))) NoVoc
+eng-ref: Their anger came to a boil
+swe-ref: deras ilska kokade
+bul-ref: те се пръснаха от яд
+swe-rgl: deras ilska kokade
+bul-rgl: техният яд завря
+swe-ggl: Deras ilska kom till koka
+bul-ggl: Гневът им се срина
+key: 1 come_to_VP 00543200-v
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA interesting_A) (UseN idea_1_N))) (ComplSlash (SlashV2a hit_9_V2) (UsePron she_Pron))))) NoVoc
+eng-ref: An interesting idea hit her
+swe-ref: En intressant idé slog henne
+bul-ref: Хрумна й интересна идея
+swe-rgl: En intressant idé slog henne
+bul-rgl: интересна идея й хрумва
+swe-ggl: En intressant idé slog henne
+bul-ggl: Интересна идея я удари
+key: 1 hit_9_V2 02113245-v
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA monochromatic_2_A) (UseN light_1_N)))) NoVoc
+eng-ref: monochromatic light
+swe-ref: monokromatiskt ljus
+bul-ref: монохромна светлина
+swe-rgl: monokromatiskt ljus
+bul-rgl: монохромна светлина
+swe-ggl: monokromatiskt ljus
+bul-ggl: монохромна светлина
+key: 1 monochromatic_2_A 00367435-a
+
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a look_to_10_V2) (AdvNP (DetCN (DetQuant (PossPron youSgFem_Pron) NumPl) (UseN friend_1_N)) (PrepNP for_Prep (MassNP (UseN support_3_N))))))) NoVoc
+eng-ref: Look to your friends for support
+swe-ref: vänd dig till dina vänner för stöd
+bul-ref: обърни се към твоите приятели за подкрепа
+swe-rgl: vänd dig till dina vänner för stöd
+bul-rgl: обърни се към твоите приятели за подкрепа
+swe-ggl: Titta på dina vänner för support
+bul-ggl: Погледнете към приятелите си за подкрепа
+key: 1 look_to_10_V2 00714537-v
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA hysterical_1_A) (UseN amnesia_N)))) NoVoc
+eng-ref: hysterical amnesia
+swe-ref: hysterisk amnesi
+bul-ref: истерична амнезия
+swe-rgl: hysterisk amnesi
+bul-rgl: истерична амнезия
+swe-ggl: hysterisk amnesi
+bul-ggl: истерична амнезия
+key: 1 hysterical_1_A 01588695-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (AdjCN (PositA eventual_A) (AdjCN (PositA accumulative_1_A) (UseN effect_1_N))) (DetCN (DetQuant this_Quant NumPl) (UseN substance_1_N))))) NoVoc
+eng-ref: the eventual accumulative effect of these substances
+swe-ref: den eventuellt kumulativa effekten av dessa substanser
+bul-ref: евентуалният съвкупен ефект на тези субстанции
+swe-rgl: den eventuella kumulativa effekten av de här substanserna
+bul-rgl: евентуалният съвкупен ефект на тези субстанции
+swe-ggl: den eventuella ackumulativa effekten av dessa ämnen
+bul-ggl: евентуалния акумулиращ ефект на тези вещества
+key: 1 accumulative_1_A 00048680-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA provisional_1_A) (UseN government_1_N)))) NoVoc
+eng-ref: a provisional government
+swe-ref: en provisorisk regering
+bul-ref: временно правителство
+swe-rgl: en provisorisk regering
+bul-rgl: временно правителство
+swe-ggl: en provisorisk regering
+bul-ggl: временно правителство
+key: 1 provisional_1_A 00558544-a
+
+abs: PhrUtt NoPConj (UttAPMasc (AdvAP (PositA straightforward_3_A) (PrepNP in_1_Prep (PredetNP all_Predet (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN (CompoundN business_1_N affair_1_N))))))) NoVoc
+eng-ref: straightforward in all his business affairs
+swe-ref: rättfram i alla hans affärsuppgörelser
+bul-ref: директен във всичките неговите бизнес сделки
+swe-rgl: rättfram i alla hans verksamhetshändelser
+bul-rgl: директен във всичките неговите бизнес афери
+swe-ggl: enkel i alla sina affärsaffärer
+bul-ggl: пряко във всичките си бизнес дела
+key: 1 straightforward_3_A 02326406-a
+
+abs: PhrUtt NoPConj (UttAdv (PrepNP with_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA dry_8_A) (UseN eye_1_N))))) NoVoc
+eng-ref: with dry eyes
+swe-ref: med torra ögon
+bul-ref: със сухи очи
+swe-rgl: med torra ögon
+bul-rgl: със сухи очи
+swe-ggl: med torra ögon
+bul-ggl: със сухи очи
+key: 1 dry_8_A 02483551-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (ImpersCl (AdvVP (PassVPSlash (SlashV2a say_4_V2)) (SubjS that_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN marjoram_1_N)) (ComplSlash (SlashV2a have_1_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA antiseptic_1_A) (UseN quality_1_N))))))))))) NoVoc
+eng-ref: it is said that marjoram has antiseptic qualities
+swe-ref: det sägs att mejram har antiseptiska egenskaper
+bul-ref: казано е че майоранът има антисептични качества
+swe-rgl: det sägs att mejramen har antiseptiska kvaliteter
+bul-rgl: казано е че майоранът има антисептични качества
+swe-ggl: det sägs att marjoram har antiseptiska egenskaper
+bul-ggl: се казва, че маржоранът има антисептични свойства
+key: 1 antiseptic_1_A 02122604-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN dog_1_N)) (ComplSlash (SlashV2a have_1_V2) (DetCN (DetQuant IndefArt NumSg) (PossNP (AdjCN (PositA remarkable_1_A) (UseN acuteness_1_N)) (DetCN (DetQuant gen_Quant NumSg) (UseN smell_4_N)))))))) NoVoc
+eng-ref: dogs have a remarkable acuteness of smell
+swe-ref: hundar har en anmärkningsvärd skärpa i luktsinnet
+bul-ref: кучета имат забележителна острота на обонянието
+swe-rgl: hundar har en anmärkningsvärd skärpa av luktsinnet
+bul-rgl: кучета имат забележителна острота на обонянието
+swe-ggl: hundar har en anmärkningsvärd lukthud
+bul-ggl: кучетата имат забележителна острота на мирис
+key: 1 acuteness_1_N 05661172-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA literal_3_A) (UseN translation_1_N)))) NoVoc
+eng-ref: a literal translation
+swe-ref: en bokstavlig översättning
+bul-ref: буквален превод
+swe-rgl: en bokstavlig översättning
+bul-rgl: буквален превод
+swe-ggl: en bokstavlig översättning
+bul-ggl: буквален превод
+key: 1 literal_3_A 01421662-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_1_A) (UseN lady_1_N))) (ComplVV can_2_VV ASimul PPos (ComplSlash (SlashV2a keep_up_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN building_1_N))))))) NoVoc
+eng-ref: The old lady could not keep up the building
+swe-ref: den gamla damen kunde inte underhålla byggnaden
+bul-ref: старата дама не можа да поддържа сградата
+swe-rgl: den gamla damen kunde inte underhålla byggnaden
+bul-rgl: старата дама не можа да поддържа сградата
+swe-ggl: Den gamla damen kunde inte fortsätta byggnaden
+bul-ggl: Старата дама не можеше да задържи сградата
+key: 1 keep_up_3_V2 02284977-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (PossNP (AdjCN (PositA eminent_1_A) (UseN member_1_N)) (DetCN (DetQuant DefArt NumSg) (UseN community_1_N))))) NoVoc
+eng-ref: eminent members of the community
+swe-ref: framstående samhällsmedborgare
+bul-ref: изтъкнати членове на общността
+swe-rgl: framstående medlemmar av samhället
+bul-rgl: изтъкнати членове на общността
+swe-ggl: framstående medlemmar av samhället
+bul-ggl: изтъкнати членове на общността
+key: 1 eminent_1_A 02347190-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA hyperactive_A) (UseN child_1_N)))) NoVoc
+eng-ref: a hyperactive child
+swe-ref: ett hyperaktivt barn
+bul-ref: хиперактивно дете
+swe-rgl: ett hyperaktivt barn
+bul-rgl: хиперактивно дете
+swe-ggl: ett hyperaktivt barn
+bul-ggl: хиперактивно дете
+key: 1 hyperactive_A 00033319-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (AdvAP (PositA accoutered_1_A) (PrepNP for_Prep (MassNP (UseN battle_1_N)))) (UseN troop_1_N)))) NoVoc
+eng-ref: troops accoutered for battle
+swe-ref: trupper förberedda för strid
+bul-ref: роти подготвени за битка
+swe-rgl: förbereda för strid trupper
+bul-rgl: роти подготвени за битка
+swe-ggl: trupper accoutered för strid
+bul-ggl: войските са присвоени за битка
+key: 1 accoutered_1_A 01098091-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA moral_1_A) (UseN bankruptcy_1_N)))) NoVoc
+eng-ref: moral bankruptcy
+swe-ref: moralisk bankrutt
+bul-ref: морален банкрут
+swe-rgl: moralisk bankrutt
+bul-rgl: морален банкрут
+swe-ggl: moralisk konkurs
+bul-ggl: морален фалит
+key: 1 bankruptcy_1_N 14502268-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (AdjCN (PositA analphabetic_2_A) (UseN arrangement_2_N)) (DetCN (DetQuant IndefArt NumPl) (UseN letter_2_N))))) NoVoc
+eng-ref: an analphabetic arrangement of letters
+swe-ref: bokstäver i oalfabetisk ordning
+bul-ref: неазбучно подреждане на букви
+swe-rgl: ett oalfabetisktt arrangemang av bokstäver
+bul-rgl: неазбучно подреждане на букви
+swe-ggl: ett analfabetiskt arrangemang av bokstäver
+bul-ggl: азбучен ред на писмата
+key: 1 analphabetic_2_A 00101913-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt (NumCard (NumNumeral (num (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))))))) (UseN enemy_4_N)) finally_1_Adv) (RecipVPSlash (SlashV2a confront_1_V2))))) NoVoc
+eng-ref: The two enemies finally confronted each other
+swe-ref: de två fienderna konfronterade äntligen varandra
+bul-ref: двамата врагове най-накрая се сблъскаха един с друг
+swe-rgl: de två fiendena äntligen konfronterade varandra
+bul-rgl: двамата врагове накрая се конфронтираха един с друг
+swe-ggl: De två fienderna konfronterade äntligen varandra
+bul-ggl: Двамата врагове най-сетне се изправиха един срещу друг
+key: 1 confront_1_V2 01081176-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA antiparallel_A) (UseN vector_1_N)))) NoVoc
+eng-ref: antiparallel vectors
+swe-ref: antiparallella vektorer
+bul-ref: антипаралелни вектори
+swe-rgl: antiparallella vektorer
+bul-rgl: антипаралелни вектори
+swe-ggl: antiparallella vektorer
+bul-ggl: антипаралелни вектори
+key: 1 antiparallel_A 01722706-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA municipal_1_A) (UseN bond_1_N)))) NoVoc
+eng-ref: municipal bonds
+swe-ref: kommunala obligationer
+bul-ref: общински облигации
+swe-rgl: kommunala obligationer
+bul-rgl: общински облигации
+swe-ggl: kommunala obligationer
+bul-ggl: общински облигации
+key: 1 municipal_1_A 02708189-a общински
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA zodiacal_A) (UseN constellation_2_N)))) NoVoc
+eng-ref: zodiacal constellations
+swe-ref: zodiakonstellationer
+bul-ref: зодиакални съзвездия
+swe-rgl: zodiakaliska konstellationer
+bul-rgl: зодиакални съзвездия
+swe-ggl: zodiakonstellationer
+bul-ggl: зодиакални съзвездия
+key: 1 zodiacal_A 03144228-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN house_11_N)) (UseComp (CompAP (PositA full_1_A)))))) NoVoc
+eng-ref: the house was full
+swe-ref: huset var fullt
+bul-ref: къщата беше пълна
+swe-rgl: huset var fullt
+bul-rgl: къщата беше пълна
+swe-ggl: huset var fullt
+bul-ggl: къщата беше пълна
+key: 1 house_11_N 04424944-n teater
+
+abs: PhrUtt NoPConj (UttAPMasc (AdvAP (PositA present_1_A) (PrepNP at_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN wedding_1_N))))) NoVoc
+eng-ref: present at the wedding
+swe-ref: närvarande vid bröllopet
+bul-ref: присъстващ на сватбата
+swe-rgl: närvarande vid bröllopet
+bul-rgl: присъстващ на сватбата
+swe-ggl: närvarande vid bröllopet
+bul-ggl: присъства на сватбата
+key: 1 present_1_A 01852337-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA accomplished_1_A) (UseN pianistMasc_N)))) NoVoc
+eng-ref: an accomplished pianist
+swe-ref: en fulländad pianist
+bul-ref: успял пианист
+swe-rgl: en fulländad pianist
+bul-rgl: успял пианист
+swe-ggl: en fulländad pianist
+bul-ggl: отличен пианист
+key: 1 accomplished_1_A 02233868-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA superior_6_A) (UseN officer_1_N)))) NoVoc
+eng-ref: superior officer
+swe-ref: högre tjänsteman
+bul-ref: висш офицер
+swe-rgl: högre officer
+bul-rgl: висш офицер
+swe-ggl: överlägsen officer
+bul-ggl: висш офицер
+key: 1 superior_6_A 02107846-a
+
+abs: PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (DetCN (DetQuant this_Quant NumSg) (AdjCN (PositA old_1_A) (UseN car_1_N))) (AdvVP (AdVVP still_1_AdV (UseV run_7_V)) (PositAdvAdj good_1_A)))))) NoVoc QuestMark
+eng-ref: Does this old car still run well?
+swe-ref: Går den här gamla bilen fortfarande bra?
+bul-ref: тази стара кола все още ли върви добре?
+swe-rgl: Går den här gamla bilen fortfarande bra?
+bul-rgl: тази стара кола все още ли върви добре?
+swe-ggl: Går den här gamla bilen fortfarande bra?
+bul-ggl: Дали тази стара кола все още работи добре?
+key: 1 run_7_V 01528454-v
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA clammy_A) (UseN handshake_N)))) NoVoc
+eng-ref: a clammy handshake
+swe-ref: en svettig handskakning
+bul-ref: влажно ръкостискане
+swe-rgl: en klam handskakning
+bul-rgl: влажно ръкостискане
+swe-ggl: ett klammigt handslag
+bul-ggl: сладко ръкостискане
+key: 1 clammy_A 02559389-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA aerobic_2_A) (UseN dance_1_N)))) NoVoc
+eng-ref: aerobic dance
+swe-ref: aerobisk dans
+bul-ref: аеробатичен танц
+swe-rgl: aerobisk dans
+bul-rgl: аеробатичен танц
+swe-ggl: aerobisk dans
+bul-ggl: аеробика танц
+key: 1 aerobic_2_A 00069826-a
+
+abs: PhrUtt NoPConj (UttAPMasc (SentAP (PositA able_1_A) (EmbedVP ASimul PPos (ComplSlash (SlashV2a get_1_V2) (AdvNP (DetCN (DetQuant IndefArt NumSg) (UseN grant_1_N)) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN project_1_N)))))))) NoVoc
+eng-ref: able to get a grant for the project
+swe-ref: kunnig att få en bidrag för projektet
+bul-ref: способен да получи субсидия за проекта
+swe-rgl: kunnig att få en bidrag för projektet
+bul-rgl: способен да получи субсидия за проекта
+swe-ggl: kunna få bidrag för projektet
+bul-ggl: може да получи субсидия за проекта
+key: 1 able_1_A 00001740-a
+
+abs: PhrUtt NoPConj (UttNP (AdvNP (MassNP (UseN power_4_N)) (PrepNP to_2_Prep (DetCN (DetQuant DefArt NumPl) (UseN people_4_N))))) NoVoc
+eng-ref: power to the people
+swe-ref: makt till folket
+bul-ref: власт за хората
+swe-rgl: makt till folken
+bul-rgl: власт на хората
+swe-ggl: makt till folket
+bul-ggl: сила на хората
+key: 1 people_4_N 08197108-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA bright_1_A) (AdjCN (PositA sunlit_A) (UseN room_1_N))))) NoVoc
+eng-ref: a bright sunlit room
+swe-ref: ett ljust solbelyst rum
+bul-ref: светла слънчева стая
+swe-rgl: ett ljust solbelyst rum
+bul-rgl: светла слънчева стая
+swe-ggl: ett ljust soligt rum
+bul-ggl: ярко осветена стая
+key: 1 bright_1_A 00279417-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA strong_1_A) (UseN medicine_2_N)))) NoVoc
+eng-ref: strong medicine
+swe-ref: stark medicin
+bul-ref: силно лекарство
+swe-rgl: stark medicin
+bul-rgl: силно лекарство
+swe-ggl: stark medicin
+bul-ggl: силна медицина
+key: 1 strong_1_A 02328781-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA good_1_A) (UseN ally_2_N))))) (PrepNP in_1_Prep (DetCN (DetQuant gen_Quant NumSg) (UseN fight_1_N))))))) NoVoc
+eng-ref: he's a good ally in fight
+swe-ref: han är en god bundsförvant i kampen
+bul-ref: той е добър съюзник в борбата
+swe-rgl: han är en bra bundsförvant i kampen
+bul-rgl: той е добър съюзник в борбата
+swe-ggl: han är en bra allierad i kampen
+bul-ggl: той е добър съюзник в борбата
+key: 1 ally_2_N 09804483-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN woman_1_N) (UseRCl (TTAnt TPast ASimul) PPos (RelVP IdRP (AdvVP (ComplVA become_VA (ConjAP rather_than_Conj (BaseAP (PositA active_1_A) (PositA apathetic_1_A)))) (SubjS as_Subj (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron she_Pron) (ComplVA grow_1_VA (UseComparA old_1_A))))))))))) NoVoc
+eng-ref: a woman who became active rather than apathetic as she grew older
+swe-ref: en kvinna som blev aktiv snarare än apatisk när hon blev äldre
+bul-ref: жена която стана активна вместо апатична докато остаряваше
+swe-rgl: en kvinna som blev aktiv snarare än apatisk när hon blev äldre
+bul-rgl: жена която стана активна вместо апатична докато тя стана по-стара
+swe-ggl: en kvinna som blev aktiv snarare än apatisk när hon blev äldre
+bul-ggl: жена, която станала по-скоро активна, отколкото апатична, докато остарявала
+key: 1 apathetic_1_A 02289345-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a climb_2_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA steep_1_A) (UseN slope_1_N))))))) NoVoc
+eng-ref: he climbed the steep slope
+swe-ref: han klättrade uppför den branta sluttningen
+bul-ref: той изкатери стръмния склон
+swe-rgl: han klättrade uppför den branta sluttningen
+bul-rgl: той изкатери стръмния склон
+swe-ggl: han klättrade steget
+bul-ggl: той се изкачи на пещерата
+key: 1 slope_1_N 09460358-n
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN recession_1_N)) (ComplSlash (SlashV2a account_for_1_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA slow_1_A) (UseN (CompoundN retail_N business_1_N)))))))) NoVoc
+eng-ref: The recession accounts for the slow retail business
+swe-ref: lågkonjunkturen orsakar den tröga detaljhandeln
+bul-ref: рецесията отговаря за бавния търговски бизнес
+swe-rgl: recessionen nyttar för den långsamma detaljhandelnverksamheten
+bul-rgl: рецесията отговаря за бавния търговски бизнес
+swe-ggl: Recessionen står för den långsamma detaljhandeln
+bul-ggl: Рецесията е свързана с бавния бизнес на дребно
+key: 1 account_for_1_V2 02641114-v
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN good_4_N)) (AdvVP (PassVPSlash (SlashV2a tax_1_V2)) ad_valorem_Adv)))) NoVoc
+eng-ref: the goods were taxed ad valorem
+swe-ref: varorna beskattades ad valorem
+bul-ref: стоките бяха таксувани на база тяхната стойност
+swe-rgl: varorna beskattades ad valorem
+bul-rgl: стоките бяха таксувани на база тяхната стойност
+swe-ggl: varorna beskattades ad valorem
+bul-ggl: стоките бяха облагани ad valorem
+key: 1 ad_valorem_Adv 00252635-r
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN system_1_N)) (UseComp (CompAP (ConjAP and_Conj (BaseAP (AdAP (PositAdAAdj economical_1_A) (PositA inefficient_1_A)) (AdAP (PositAdAAdj political_1_A) (PositA anarchic_1_A))))))))) NoVoc
+eng-ref: the system is economically inefficient and politically anarchic
+swe-ref: systemet är ekonomiskt ineffektivt och politiskt anarkistiskt
+bul-ref: системата е икономично неефикасна и политически анархистична
+swe-rgl: systemet är ekonomiskt ineffektivt och politiskt anarkistiskt
+bul-rgl: системата е икономично неефикасна и политически анархистична
+swe-ggl: systemet är ekonomiskt ineffektivt och politiskt anarkiskt
+bul-ggl: системата е икономически неефективна и политически анархична
+key: 1 anarchic_1_A 00602836-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN evidence_3_N)) (ComplSlash (SlashV2a allow_5_V2) (PredetNP only_Predet (DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot3as4 (pot2as3 (pot1as2 (pot0as1 pot01)))))))) (UseN conclusion_1_N))))))) NoVoc
+eng-ref: The evidence allows only one conclusion
+swe-ref: beviset tillåter bara en slutsats
+bul-ref: доказателството позволява само едно заключение
+swe-rgl: beviset tillåter bara en slutsats
+bul-rgl: доказателството позволява само едно заключение
+swe-ggl: Beviset tillåter endast en slutsats
+bul-ggl: Доказателствата позволяват само едно заключение
+key: 1 allow_5_V2 02727313-v
+
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (UseV see_2_V) above_1_Adv))) NoVoc
+eng-ref: see above
+swe-ref: se ovan
+bul-ref: виж по-горе
+swe-rgl: se ovan
+bul-rgl: виж по-горе
+swe-ggl: se ovan
+bul-ggl: виж по-горе
+key: 1 above_1_Adv 00080266-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA tyrannical_2_A) (UseN government_1_N)))) NoVoc
+eng-ref: a tyrannical government
+swe-ref: en tyrannisk regering
+bul-ref: тиранично правителство
+swe-rgl: en tyrannisk regering
+bul-rgl: тиранично правителство
+swe-ggl: en tyrannisk regering
+bul-ggl: тиранично правителство
+key: 1 tyrannical_2_A 00721128-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron she_Pron) (ComplVV can_2_VV ASimul PPos (ComplSlash (SlashV2a act_out_1_V2) (MassNP (AdjCN (PositA neurotic_1_A) (UseN anxiety_1_N)))))))) NoVoc
+eng-ref: She could act out neurotic anxiety
+swe-ref: hon kunde leva ut neurotisk ångest
+bul-ref: тя можа да изиграе невротично безпокойство
+swe-rgl: hon kunde leva ut neurotisk ångest
+bul-rgl: тя можа да изиграе невротично безпокойство
+swe-ggl: Hon kunde utöva neurotisk ångest
+bul-ggl: Тя можеше да извърши нервно безпокойство
+key: 1 act_out_1_V2 01726522-v
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA industrial_1_A) (UseN revolution_1_N))) (AdVVP also_AdV (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA cultural_1_A) (UseN revolution_1_N))))))))) NoVoc
+eng-ref: the industrial revolution was also a cultural revolution
+swe-ref: den industriella revolutionen var också en kulturell revolution
+bul-ref: индустриалната революция беше също културна революция
+swe-rgl: den industriella revolutionen var också en kulturell revolution
+bul-rgl: индустриалната революция също беше културна революция
+swe-ggl: Industrirevolutionen var också en kulturell revolution
+bul-ggl: индустриалната революция също беше културна революция
+key: 1 revolution_1_N 07438709-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN allegation_1_N) (MassNP (UseN malpractice_2_N))))) NoVoc
+eng-ref: an allegation of malpractice
+swe-ref: en anklagelse om försummelse
+bul-ref: обвинение за злоупотреба
+swe-rgl: en anklagelse av försummelse
+bul-rgl: обвинение на злоупотреба
+swe-ggl: ett påstående om felaktighet
+bul-ggl: твърдение за злоупотреби
+key: 1 allegation_1_N 07250737-n
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA serial_3_A) (UseN monogamy_N)))) NoVoc
+eng-ref: serial monogamy
+swe-ref: seriell monogami
+bul-ref: серийна моногамия
+swe-rgl: seriell monogami
+bul-rgl: серийна моногамия
+swe-ggl: seriell monogami
+bul-ggl: серийна моногамия
+key: 1 serial_3_A 02807844-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA aboveground_A) (UseN nuclear_testing_N)))) NoVoc
+eng-ref: aboveground nuclear testing
+swe-ref: ovanjordisk kärnvapenprovning
+bul-ref: надземно тестване на атомни оръжия
+swe-rgl: ovanjordisk kärnvapenprovning
+bul-rgl: надземно тестване на атомни оръжия
+swe-ggl: ovanjordisk kärnvapenprovning
+bul-ggl: надземно ядрено изпитване
+key: 1 aboveground_A 02480739-a
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (AdAP very_AdA (PositA natural_1_A)) (UseN development_1_N)))) NoVoc
+eng-ref: a very natural development
+swe-ref: en väldigt naturlig utveckling
+bul-ref: много естествено развитие
+swe-rgl: en väldigt naturlig utveckling
+bul-rgl: много естествено развитие
+swe-ggl: en väldigt naturlig utveckling
+bul-ggl: много естествено развитие
+key: 1 natural_1_A 01574358-a
+
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA trigonometric_A) (UseN function_1_N)))) NoVoc
+eng-ref: trigonometric function
+swe-ref: trigonometrisk funktion
+bul-ref: тригонометрична функция
+swe-rgl: trigonometrisk funktion
+bul-rgl: тригонометрична функция
+swe-ggl: trigonometrisk funktion
+bul-ggl: тригонометрична функция
+key: 1 trigonometric_A 02923831-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumPl) (AdjCN (PositA large_1_A) (UseN meteorite_N))) (AdvVP (AdVVP actually_1_AdV (UseV come_1_V)) (PrepNP from_Prep (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN asteroid_N belt_3_N)))))))) NoVoc
+eng-ref: large meteorites actually come from the asteroid belt
+swe-ref: stora meteoriter kommer faktiskt från asteroidbältet
+bul-ref: големите метеорити всъщност идват от астероидния пояс
+swe-rgl: de stora meteoriterna kommer faktiskt från asteroidbältet
+bul-rgl: големите метеорити всъщност идват от астероидния пояс
+swe-ggl: stora meteoriter kommer faktiskt från asteroidbältet
+bul-ggl: големи метеорити всъщност идват от пояса на астероидите
+key: 1 actually_1_AdV 00150568-r
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (AdVVP nearly_AdV (UseV faint_V))))) NoVoc
+eng-ref: he nearly fainted
+swe-ref: han svimmade nästan
+bul-ref: той почти припадна
+swe-rgl: han svimmade nästan
+bul-rgl: той почти припадна
+swe-ggl: han svimmade nästan
+bul-ggl: той почти припадна
+key: 1 nearly_AdV 00073433-r
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA desirable_1_A) (UseN job_1_N)))) NoVoc
+eng-ref: a desirable job
+swe-ref: ett önskvärt jobb
+bul-ref: желана работа
+swe-rgl: ett önskvärt jobb
+bul-rgl: желана работа
+swe-ggl: ett önskvärt jobb
+bul-ggl: желана работа
+key: 1 desirable_1_A 00736491-a търсен желателен желан
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (ConjNP and_Conj (ConsNP (DetCN (DetQuant DefArt NumPl) (UseN liquid_1_N)) (BaseNP (DetCN (DetQuant gen_Quant NumSg) (UseN light_1_N)) (DetCN (DetQuant gen_Quant NumPl) (UseN gas_1_N))))) (UseV absorb_V)))) NoVoc
+eng-ref: The liquids, light and gases absorb
+swe-ref: Vätskorna, ljuset och gaserna absorberar
+bul-ref: течностите, светлината и газовете абсорбират
+swe-rgl: Vätskorna, ljuset och gaserna absorberar
+bul-rgl: течностите, светлината и газовете абсорбират
+swe-ggl: Vätskorna, ljuset och gaserna absorberar
+bul-ggl: Течностите, светлината и газовете поемат
+key: 1 absorb_V 01542421-v
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN news_1_N)) (ComplSlash (SlashV2a anger_V2) (UsePron he_Pron))))) NoVoc
+eng-ref: The news angered him
+swe-ref: nyheten förargade honom
+bul-ref: новината го ядоса
+swe-rgl: nyheten förargade honom
+bul-rgl: новината го ядоса
+swe-ggl: Nyheten gjorde honom arg
+bul-ggl: Новината го разгневи
+key: 1 anger_V2 01789790-v
+
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA bad_1_A) (UseN reaction_3_N))) (PrepNP to_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN medicine_2_N))))) NoVoc
+eng-ref: a bad reaction to the medicine
+swe-ref: en dålig reaktion på medicinen
+bul-ref: лоша реакция към лекарството
+swe-rgl: en dålig reaktion till medicinen
+bul-rgl: лоша реакция към лекарството
+swe-ggl: en dålig reaktion på medicinen
+bul-ggl: лоша реакция към лекарството
+key: 1 reaction_3_N 00860679-n
+
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA anonymous_1_A) (UseN author_1_N)))) NoVoc
+eng-ref: anonymous authors
+swe-ref: anonyma författare
+bul-ref: анонимни автори
+swe-rgl: anonyma författare
+bul-rgl: анонимни автори
+swe-ggl: anonyma författare
+bul-ggl: анонимни автори
+key: 1 anonymous_1_A 00121384-a
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN eagle_1_N)) (AdvVP (ProgrVP (UseV soar_3_V)) aloft_3_Adv)))) NoVoc
+eng-ref: eagles were soaring aloft
+swe-ref: örnar flög högt uppe
+bul-ref: орли се издигаха нагоре
+swe-rgl: örnar höll på att höja uppåt
+bul-rgl: орли се издигаха нагоре
+swe-ggl: örnar höjde sig högt
+bul-ggl: орлите се издигаха нагоре
+key: 1 aloft_3_Adv 00500808-r
+

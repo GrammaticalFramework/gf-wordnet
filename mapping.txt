@@ -3499,7 +3499,7 @@ anergy_N	anergy_1_N
 anergy_N	anergy_2_N
 aneroid_A	aneroid_A
 aneroid_N	aneroid_N
-anesthesia_N	anesthesia_N
+anesthesia_N	anaesthesia_N
 anesthesiologist_N	anesthesiologist_N
 anesthesiology_N	anesthesiology_N
 anesthetic_N	anesthetic_N
@@ -4504,7 +4504,7 @@ apply_V2	apply_6_V2
 apply_V2	apply_7_V2
 apply_V2	apply_8_V2
 apply_V2	apply_9_V2
-apply_V2	apply_10_V2
+apply_V2	apply_oneself_to_V2
 apply_V2V	apply_5_V2V
 apply_V2V	apply_6_V2V
 apply_VV	apply_5_VV
@@ -4514,6 +4514,7 @@ appoint_V2	appoint_2_V2
 appoint_V2	appoint_3_V2
 appoint_V2V	appoint_1_V2V
 appoint_V3	appoint_1_V3
+appoint_V3	appoint_2_V3
 appointed_A	appointed_1_A
 appointed_A	appointed_2_A
 appointed_A	appointed_3_A
@@ -4579,7 +4580,7 @@ apprise_V2	apprise_1_V2
 apprise_V2	apprise_2_V2
 apprise_V2	apprise_3_V2
 apprise_V2	apprise_4_V2
-appro_N	appro_N
+appro_N	on_appro_Adv
 approach_N	approach_1_N
 approach_N	approach_2_N
 approach_N	approach_3_N
@@ -4615,7 +4616,7 @@ approval_N	approval_1_N
 approval_N	approval_2_N
 approval_N	approval_3_N
 approval_N	approval_4_N
-approve_V	approve_1_V
+approve_V	approve_of_V2
 approve_V	approve_2_V
 approve_V2	approve_2_V2
 approved_A	approved_A
@@ -4734,7 +4735,6 @@ arbitrative_A	arbitrative_A
 arbitrator_N	arbitrator_N
 arbor_N	arbor_1_N
 arbor_N	arbor_2_N
-arbor_N	arbor_3_N
 arboraceous_A	arboraceous_A
 arboreal_A	arboreal_1_A
 arboreal_A	arboreal_2_A
@@ -11681,7 +11681,6 @@ breathe_V	breathe_9_V
 breathe_V2	breathe_3_V2
 breathe_V2	breathe_5_V2
 breathe_V2	breathe_6_V2
-breathe_V2	breathe_7_V2
 breathe_V2	breathe_9_V2
 breather_N	breather_1_N
 breather_N	breather_2_N
@@ -14999,7 +14998,7 @@ category_N	category_2_N
 catena_N	catena_N
 catenary_N	catenary_N
 catenulate_A	catenulate_A
-cater_V	cater_1_V
+cater_V	cater_1_V2
 cater_V	cater_2_V
 cater_for_V2	cater_for_V2
 cater_to_V2	cater_to_V2
@@ -15865,7 +15864,7 @@ charge_V	charge_4_V
 charge_V	charge_7_V
 charge_V	charge_13_V
 charge_V	charge_19_V
-charge_V2	charge_5_V2
+charge_V2	charge_with_5_V3
 charge_V2	charge_6_V2
 charge_V2	charge_8_V2
 charge_V2	charge_9_V2
@@ -28851,7 +28850,6 @@ downwind_Adv	downwind_2_Adv
 downy_A	downy_1_A
 downy_A	downy_2_A
 dowry_N	dowry_1_N
-dowse_N	dowse_N
 dowse_V2	dowse_1_V2
 dowse_V2	dowse_2_V2
 dowse_V2	dowse_3_V2
@@ -29076,7 +29074,6 @@ draw_out_V2	draw_out_3_V2
 draw_out_V2	draw_out_4_V2
 draw_out_V2	draw_out_5_V2
 draw_out_V2	draw_out_6_V2
-draw_up_V	draw_up_1_V
 draw_up_V	draw_up_5_V
 draw_up_V2	draw_up_1_V2
 draw_up_V2	draw_up_2_V2
@@ -41388,9 +41385,9 @@ green_A	green_4_A
 green_A	green_5_A
 green_N	green_1_N
 green_N	green_2_N
-green_N	green_3_N
+green_N	green_3_PN
 green_N	green_4_N
-green_N	green_5_N
+green_N	green_5_PN
 green_N	green_6_N
 green_N	green_7_N
 green_N	green_8_N
@@ -43153,7 +43150,7 @@ have_V2	have_1_V2
 have_V2	have_2_V2
 have_V2	have_3_V2
 have_V2	have_4_V2
-have_V2	have_5_V2
+have_V2	have_5_V2A
 have_V2	have_6_V2
 have_V2	have_7_V2
 have_V2	have_8_V2
@@ -49371,10 +49368,8 @@ intricacy_N	intricacy_N
 intricate_A	intricate_A
 intrigue_N	intrigue_1_N
 intrigue_N	intrigue_2_N
-intrigue_V	intrigue_1_V
-intrigue_V	intrigue_2_V
-intrigue_V2	intrigue_1_V2
-intrigue_V2	intrigue_2_V2
+intrigue_V	intrigue_V
+intrigue_V2	intrigue_V2
 intrinsic_A	intrinsic_1_A
 intrinsic_A	intrinsic_2_A
 intro_N	intro_1_N
@@ -72998,7 +72993,6 @@ prize_money_N	prize_money_N
 prize_ring_N	prize_ring_N
 prizefighter_N	prizefighter_N
 pro_A	pro_A
-pro_Adv	pro_Adv
 pro_N	pro_1_N
 pro_N	pro_2_N
 pro_Prep	pro_Prep
@@ -76906,7 +76900,7 @@ recklessness_N	recklessness_N
 recklinghausen_PN	recklinghausen_PN
 reckon_VS	reckon_1_VS
 reckon_VS	reckon_2_VS
-reckon_VS	reckon_3_VS
+reckon_VS	reckon_3_V2
 reckon_VS	reckon_4_VS
 reckon_VS	reckon_6_VS
 reckon_on_V2	reckon_on_V2
@@ -78467,7 +78461,6 @@ repose_V	repose_2_V
 repose_V	repose_3_V
 repose_V	repose_4_V
 repose_V2	repose_1_V2
-repose_V2	repose_2_V2
 repose_V2	repose_5_V2
 repose_V2	repose_6_V2
 reposeful_A	reposeful_A
@@ -78948,15 +78941,15 @@ rest_N	rest_4_N
 rest_N	rest_5_N
 rest_N	rest_6_N
 rest_N	rest_7_N
-rest_V2	rest_1_V2
-rest_V2	rest_2_V2
+rest_V2	rest_1_V
+rest_V2	rest_2_V
 rest_V2	rest_3_V2
-rest_V2	rest_4_V2
-rest_V2	rest_5_V2
-rest_V2	rest_6_V2
-rest_V2	rest_7_V2
+rest_V2	rest_4_V
+rest_V2	rest_5_V
+rest_V2	rest_VA
+rest_V2	rest_7_V
 rest_V2	rest_8_V2
-rest_V2	rest_9_V2
+rest_V2	rest_9_V
 rest_V2	rest_10_V2
 rest_V2	rest_11_V2
 rest_cure_N	rest_cure_N
@@ -82715,7 +82708,6 @@ scheme_N	scheme_4_N
 scheme_N	scheme_5_N
 scheme_V	scheme_1_V
 scheme_V	scheme_2_V
-scheme_V2	scheme_1_V2
 scheme_V2	scheme_2_V2
 schemer_N	schemer_N
 schemozzle_N	schemozzle_1_N
@@ -100149,10 +100141,10 @@ turn_out_V2	turn_out_5_V2
 turn_out_V2	turn_out_6_V2
 turn_out_V2	turn_out_7_V2
 turn_out_V2	turn_out_9_V2
-turn_over_V	turn_over_V
+turn_over_V	turn_over_3_V
+turn_over_V	turn_over_7_V
 turn_over_V2	turn_over_1_V2
 turn_over_V2	turn_over_2_V2
-turn_over_V2	turn_over_3_V2
 turn_over_V2	turn_over_4_V2
 turn_over_V2	turn_over_5_V2
 turn_over_V2	turn_over_6_V2

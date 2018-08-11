@@ -182,7 +182,7 @@ lin EmbedVP ant pol vp = {s =
     UttVPMasc ant pol vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p (agrgP3 Sg Masc)} ;
     UttVPFem  ant pol vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p (agrgP3 Sg Fem)} ;
 
-    ReflVPSlash vps rnp = insertObjPre (\\a => vps.c2 ++ rnp.s ! a) vps ;
+    ReflVPSlash vps rnp = insertObj (\\a => vps.c2 ++ rnp.s ! a) vps ;
 
     ReflA2 a rnp = {
       s = \\ag => a.s ! AAdj Posit Nom ++ a.c2 ++ rnp.s ! ag ; 

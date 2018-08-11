@@ -542,7 +542,7 @@ swe-ggl: mental hygien
 bul-ggl: умствена хигиена
 key: 1 mental_2_A 02910002-a умствен мисловен
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron we_Pron) (AdvVP (ComplSlash (SlashV2a provide_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN room_1_N))) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA electrical_1_A) (UseN heater_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron we_Pron) (ComplSlash (SlashV2a provide_1_V2) (DetCN (DetQuant DefArt NumSg) (AdvCN (UseN room_1_N) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA electrical_1_A) (UseN heater_1_N)))))))))) NoVoc
 eng-ref: We provided the room with an electrical heater
 swe-ref: vi försedde rummet med ett elektriskt värmare
 bul-ref: ние снабдихме стаята с електрически печка

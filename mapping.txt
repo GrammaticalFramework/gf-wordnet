@@ -4908,7 +4908,7 @@ arguable_A	arguable_1_A
 arguable_A	arguable_2_A
 argue_V	argue_1_V
 argue_V	argue_2_V
-argue_V	argue_3_V
+argue_V	argue_for_V2
 argue_V2	argue_1_V2
 argue_V2	argue_2_V2
 argue_VS	argue_1_VS
@@ -5063,8 +5063,9 @@ around_Adv	around_6_Adv
 around_Adv	around_7_Adv
 around_Adv	around_8_Adv
 around_Adv	around_9_Adv
-around_Adv	around_10_Adv
-around_Prep	around_Prep
+around_Adv	around_10_Prep
+around_Prep	around_2_Prep
+around_Prep	around_8_Prep
 arousal_N	arousal_1_N
 arousal_N	arousal_2_N
 arousal_N	arousal_3_N
@@ -5165,9 +5166,7 @@ art_N	art_1_N
 art_N	art_2_N
 art_N	art_3_N
 art_N	art_4_N
-art_PN	art_1_PN
-art_PN	art_3_PN
-art_PN	art_4_PN
+art_PN	art_PN
 artefact_N	artefact_N
 artemisia_N	artemisia_N
 arterial_A	arterial_A
@@ -5222,7 +5221,7 @@ articulate_A	articulate_2_A
 articulate_V2	articulate_1_V2
 articulate_V2	articulate_2_V2
 articulate_V2	articulate_3_V2
-articulate_V2	articulate_4_V2
+articulate_V2	articulate_4_V
 articulate_V2	articulate_5_V2
 articulation_N	articulation_1_N
 articulation_N	articulation_2_N
@@ -5306,8 +5305,6 @@ ascendant_A	ascendant_2_A
 ascendant_N	ascendant_1_N
 ascendant_N	ascendant_2_N
 ascendency_N	ascendency_1_N
-ascendent_N	ascendent_1_N
-ascendent_N	ascendent_2_N
 ascender_N	ascender_1_N
 ascender_N	ascender_2_N
 ascender_N	ascender_3_N
@@ -5399,7 +5396,7 @@ aside_from_Prep	aside_from_Prep
 asikkala_PN	asikkala_PN
 asinine_A	asinine_A
 asininity_N	asininity_N
-ask_V	ask_3_V
+ask_V	ask_3_V2
 ask_V2	ask_1_V2
 ask_V2	ask_2_V2
 ask_V2	ask_4_V2
@@ -24751,7 +24748,7 @@ decompositional_A	decompositional_A
 decompound_A	decompound_A
 decompress_V2	decompress_1_V2
 decompress_V2	decompress_2_V2
-decompress_V2	decompress_3_V2
+decompress_V2	decompress_3_V
 decompression_N	decompression_1_N
 decompression_N	decompression_2_N
 decongestant_N	decongestant_N
@@ -26667,7 +26664,7 @@ dig_N	dig_4_N
 dig_N	dig_5_N
 dig_V	dig_1_V
 dig_V2	dig_2_V2
-dig_V2	dig_3_V2
+dig_V2	dig_3_V
 dig_V2	dig_4_V2
 dig_V2	dig_5_V2
 dig_V2	dig_6_V2
@@ -27404,7 +27401,6 @@ disestablish_V2	disestablish_V2
 disestablishment_N	disestablishment_N
 disesteem_N	disesteem_N
 disfavor_N	disfavor_1_N
-disfavor_N	disfavor_2_N
 disfavour_N	disfavour_1_N
 disfavour_N	disfavour_2_N
 disfavour_V2	disfavour_1_V2
@@ -27534,8 +27530,8 @@ disk_N	disk_3_N
 disk_N	disk_4_N
 diskette_N	diskette_N
 dislikable_A	dislikable_A
-dislike_N	dislike_1_N
-dislike_N	dislike_2_N
+dislike_N	dislike_N
+dislike_N	dislike_of_N2
 dislike_V2	dislike_V2
 dislocate_V2	dislocate_1_V2
 dislocate_V2	dislocate_2_V2
@@ -29447,7 +29443,6 @@ drop_off_V	drop_off_1_V
 drop_off_V	drop_off_2_V
 drop_off_V	drop_off_4_V
 drop_off_V	drop_off_5_V
-drop_off_V2	drop_off_2_V2
 drop_off_V2	drop_off_4_V2
 drop_out_V	drop_out_1_V
 drop_out_V	drop_out_2_V
@@ -31736,6 +31731,7 @@ entente_N	entente_1_N
 entente_N	entente_2_N
 entente_cordiale_N	entente_cordiale_1_N
 entente_cordiale_N	entente_cordiale_2_N
+enter_V	enter_1_V
 enter_V	enter_4_V
 enter_V	enter_6_V
 enter_V	enter_9_V
@@ -33986,7 +33982,6 @@ fag_N	fag_2_N
 fag_V	fag_1_V
 fag_V	fag_2_V
 fag_V2	fag_1_V2
-fag_V2	fag_2_V2
 fag_V2	fag_3_V2
 fag_end_N	fag_end_1_N
 fag_end_N	fag_end_2_N
@@ -35108,11 +35103,6 @@ fib_N	fib_N
 fib_V	fib_V
 fibber_N	fibber_N
 fibbing_N	fibbing_N
-fiber_N	fiber_1_N
-fiber_N	fiber_2_N
-fiber_N	fiber_3_N
-fiber_N	fiber_4_N
-fiber_N	fiber_5_N
 fiberboard_N	fiberboard_N
 fiberglass_N	fiberglass_N
 fiberscope_N	fiberscope_N
@@ -40574,7 +40564,7 @@ go_up_V	go_up_2_V
 go_up_V	go_up_3_V
 go_up_V	go_up_4_V
 go_up_V	go_up_6_V
-go_up_V	go_up_7_V
+go_up_V	go_up_7_V2
 go_up_to_V2	go_up_to_V2
 go_with_V2	go_with_1_V2
 go_with_V2	go_with_2_V2
@@ -41544,7 +41534,6 @@ grind_V	grind_3_V
 grind_V	grind_4_V
 grind_V2	grind_1_V2
 grind_V2	grind_2_V2
-grind_V2	grind_3_V2
 grind_V2	grind_4_V2
 grind_V2	grind_5_V2
 grind_V2	grind_6_V2
@@ -42739,7 +42728,7 @@ hang_V2	hang_12_V2
 hang_V2	hang_14_V2
 hang_V2	hang_15_V2
 hang_about_V	hang_about_V
-hang_around_V2	hang_around_V2
+hang_around_V2	hang_16_V
 hang_back_V	hang_back_V
 hang_back_from_V2	hang_back_from_V2
 hang_in_there_V	hang_in_there_V
@@ -45015,10 +45004,6 @@ honker_N	honker_1_N
 honker_N	honker_2_N
 honker_N	honker_3_N
 honkytonk_N	honkytonk_N
-honor_N	honor_1_N
-honor_N	honor_2_N
-honor_N	honor_3_N
-honor_N	honor_4_N
 honorable_A	honourable_1_A
 honorable_A	honourable_2_A
 honorable_A	honourable_3_A
@@ -50271,11 +50256,8 @@ jauntiness_N	jauntiness_2_N
 jaunting_car_N	jaunting_car_N
 jaunty_A	jaunty_1_A
 jaunty_A	jaunty_2_A
-java_N	java_1_N
 java_N	java_2_N
-java_N	java_3_N
 java_PN	java_1_PN
-java_PN	java_2_PN
 java_PN	java_3_PN
 javanese_A	javanese_A
 javanese_N	javanese_1_N
@@ -52113,9 +52095,6 @@ labour_N	labour_7_N
 labour_V	labour_1_V
 labour_V	labour_2_V
 labour_V	labour_3_V
-labour_V2	labour_1_V2
-labour_V2	labour_2_V2
-labour_V2	labour_3_V2
 labour_saving_A	labour_saving_A
 labourer_N	labourer_N
 labourite_N	labourite_N
@@ -64835,7 +64814,6 @@ order_V2	order_7_V2
 order_V2	order_8_V2
 order_V2	order_9_V2
 order_V2V	order_1_V2V
-order_V2V	order_8_V2V
 order_book_N	order_book_1_N
 order_book_N	order_book_2_N
 order_form_N	order_form_N
@@ -64900,13 +64878,13 @@ organic_N	organic_N
 organicism_N	organicism_N
 organicistic_A	organicistic_A
 organification_N	organification_N
-organisation_N	organisation_1_N
-organisation_N	organisation_2_N
-organisation_N	organisation_3_N
-organisation_N	organisation_4_N
-organisation_N	organisation_5_N
-organisation_N	organisation_6_N
-organisation_N	organisation_7_N
+organisation_N	organization_1_N
+organisation_N	organization_2_N
+organisation_N	organization_3_N
+organisation_N	organization_4_N
+organisation_N	organization_5_N
+organisation_N	organization_6_N
+organisation_N	organization_7_N
 organism_N	organism_1_N
 organism_N	organism_2_N
 organismal_A	organismal_1_A
@@ -65256,6 +65234,7 @@ out_from_Prep	out_from_Prep
 out_herod_V2	out_herod_V2
 out_of_Prep	out_of_1_Prep
 out_of_Prep	out_of_2_Prep
+out_of_Prep	out_of_3_Prep
 out_of_date_A	out_of_date_A
 out_of_door_A	out_of_door_A
 out_of_doors_Adv	out_of_doors_Adv
@@ -67418,8 +67397,7 @@ pathway_N	pathway_1_N
 pathway_N	pathway_2_N
 patience_N	patience_1_N
 patience_N	patience_2_N
-patience_PN	patience_1_PN
-patience_PN	patience_2_PN
+patience_PN	patience_PN
 patient_A	patient_A
 patient_N	patient_1_N
 patient_N	patient_2_N
@@ -67893,12 +67871,7 @@ peg_N	peg_3_N
 peg_N	peg_4_N
 peg_N	peg_5_N
 peg_N	peg_6_N
-peg_PN	peg_1_PN
-peg_PN	peg_2_PN
-peg_PN	peg_3_PN
-peg_PN	peg_4_PN
-peg_PN	peg_5_PN
-peg_PN	peg_6_PN
+peg_PN	peg_PN
 peg_V	peg_2_V
 peg_V2	peg_1_V2
 peg_V2	peg_2_V2
@@ -68954,7 +68927,6 @@ phonemic_Adv	phonemic_Adv
 phonemics_N	phonemics_N
 phonetic_A	phonetic_1_A
 phonetic_A	phonetic_2_A
-phonetic_N	phonetic_N
 phonetician_N	phonetician_N
 phonetics_N	phonetics_N
 phoney_A	phoney_A
@@ -75231,7 +75203,7 @@ quest_V	quest_1_V
 quest_V	quest_2_V
 quest_V	quest_3_V
 quest_V	quest_4_V
-quest_V	quest_5_V
+quest_V	quest_5_V2
 question_N	question_1_N
 question_N	question_2_N
 question_N	question_3_N
@@ -78617,7 +78589,7 @@ requiem_N	requiem_3_N
 requiescat_N	requiescat_N
 require_V	require_3_V
 require_V2	require_1_V2
-require_V2	require_2_V2
+require_V2	require_2_V2V
 require_V2	require_3_V2
 require_V2	require_4_V2
 require_V2V	require_3_V2V
@@ -80766,7 +80738,6 @@ roulette_N	roulette_3_N
 round_A	round_1_A
 round_A	round_2_A
 round_A	round_3_A
-round_Adv	round_Adv
 round_N	round_1_N
 round_N	round_2_N
 round_N	round_3_N
@@ -83596,9 +83567,12 @@ secret_N	secret_3_N
 secretarial_A	secretarial_A
 secretariat_N	secretariat_1_N
 secretariat_N	secretariat_2_N
-secretary_N	secretary_1_N
-secretary_N	secretary_2_N
-secretary_N	secretary_3_N
+secretary_N	secretaryMasc_1_N
+secretary_N	secretaryFem_1_N
+secretary_N	secretaryMasc_2_N
+secretary_N	secretaryFem_2_N
+secretary_N	secretaryMasc_3_N
+secretary_N	secretaryFem_3_N
 secretary_N	secretary_4_N
 secretary_general_N	secretary_general_N
 secretaryship_N	secretaryship_N
@@ -84647,7 +84621,6 @@ set_up_V2	set_up_12_V2
 set_up_V2	set_up_13_V2
 set_up_V2	set_up_14_V2
 set_up_V2	set_up_15_V2
-set_up_V2	set_up_V2V
 set_upon_V2	set_upon_V2
 seta_N	seta_1_N
 seta_N	seta_2_N
@@ -85755,7 +85728,7 @@ shout_N	shout_N
 shout_V	shout_1_V
 shout_V	shout_2_V
 shout_V	shout_3_V
-shout_V	shout_4_V
+shout_V	shout_at_V2
 shout_V2	shout_V2
 shout_down_V2	shout_down_V2
 shout_out_V2	shout_out_1_V2
@@ -91763,7 +91736,6 @@ stony_A	stony_1_A
 stony_A	stony_2_A
 stony_A	stony_3_A
 stony_broke_A	stony_broke_1_A
-stood_V2V	stood_V2V
 stooge_N	stooge_1_N
 stooge_N	stooge_2_N
 stooge_V	stooge_1_V
@@ -100078,7 +100050,7 @@ turn_V2	turn_26_V2
 turn_VA	turn_7_VA
 turn_VA	turn_14_VA
 turn_against_V2	turn_against_V2
-turn_around_V2	turn_around_1_V2
+turn_around_V2	turn_around_V
 turn_around_V2	turn_around_2_V2
 turn_around_V2	turn_around_3_V2
 turn_away_V	turn_away_1_V
@@ -104972,7 +104944,6 @@ wait_V2	wait_2_V2
 wait_VV	wait_1_VV
 wait_VV	wait_3_VV
 wait_about_V	wait_about_V
-wait_around_V	wait_around_V
 wait_behind_V	wait_behind_V
 wait_in_V	wait_in_V
 wait_on_V2	wait_on_V2

@@ -5527,7 +5527,7 @@ assemblage_N	assemblage_2_N
 assemblage_N	assemblage_3_N
 assemblage_N	assemblage_4_N
 assemble_V2	assemble_1_V2
-assemble_V2	assemble_2_V2
+assemble_V2	assemble_2_V
 assemble_V2	assemble_3_V2
 assembler_N	assembler_N
 assembly_N	assembly_1_N
@@ -5543,7 +5543,7 @@ assent_V	assent_V
 assenter_N	assenter_N
 assentient_A	assentient_A
 assert_V	assert_1_V
-assert_V	assert_3_V
+assert_V	assert_3_V2
 assert_V2	assert_1_V2
 assert_V2	assert_2_V2
 assert_V2	assert_4_V2
@@ -9161,7 +9161,6 @@ bill_N	bill_8_N
 bill_N	bill_9_N
 bill_N	bill_10_N
 bill_PN	bill_PN
-bill_V	bill_3_V
 bill_V2	bill_1_V2
 bill_V2	bill_2_V2
 bill_V2	bill_3_V2
@@ -37253,7 +37252,6 @@ forfeit_V2	forfeit_V2
 forfeiture_N	forfeiture_1_N
 forfeiture_N	forfeiture_2_N
 forfeiture_N	forfeiture_3_N
-forgather_V	forgather_V
 forge_N	forge_1_N
 forge_N	forge_2_N
 forge_V	forge_4_V
@@ -39107,7 +39105,6 @@ gather_N	gather_1_N
 gather_N	gather_2_N
 gather_V	gather_2_V
 gather_V	gather_3_V
-gather_V	gather_5_V
 gather_V2	gather_1_V2
 gather_V2	gather_5_V2
 gather_V2	gather_6_V2
@@ -39727,7 +39724,7 @@ get_to_V2	get_to_2_V2
 get_to_V2	get_to_3_V2
 get_to_V2	get_to_5_V2
 get_together_N	get_together_N
-get_together_V	get_together_1_V
+get_together_V	get_together_1_V2
 get_together_V	get_together_2_V
 get_together_V	get_together_3_V
 get_together_V	get_together_4_V
@@ -45746,6 +45743,7 @@ hunt_V2	hunt_3_V2
 hunt_V2	hunt_4_V2
 hunt_V2	hunt_6_V2
 hunt_V2	hunt_7_V2
+hunt_down_V2	hunt_down_V2
 hunt_out_V2	hunt_out_V2
 hunt_up_V2	hunt_up_V2
 hunter_N	hunter_1_N
@@ -57885,7 +57883,6 @@ meet_V	meet_5_V
 meet_V	meet_11_V
 meet_V2	meet_1_V2
 meet_V2	meet_4_V2
-meet_V2	meet_5_V2
 meet_V2	meet_6_V2
 meet_V2	meet_7_V2
 meet_V2	meet_8_V2
@@ -74104,7 +74101,6 @@ puce_N	puce_N
 puck_N	puck_1_N
 puck_N	puck_2_N
 pucker_N	pucker_N
-pucker_V	pucker_2_V
 pucker_V	pucker_3_V
 pucker_V2	pucker_1_V2
 pucker_V2	pucker_2_V2
@@ -88583,6 +88579,7 @@ somesthesia_N	somesthesia_1_N
 somesthesia_N	somesthesia_2_N
 sometime_Adv	sometime_Adv
 sometimes_Adv	sometimes_Adv
+sometimes_Adv	sometimes_AdV
 someway_Adv	someway_1_Adv
 somewhat_Adv	somewhat_1_Adv
 somewhat_Adv	somewhat_2_Adv
@@ -99831,7 +99828,6 @@ tuck_N	tuck_1_N
 tuck_N	tuck_2_N
 tuck_N	tuck_3_N
 tuck_N	tuck_4_N
-tuck_V	tuck_V
 tuck_V2	tuck_2_V2
 tuck_V2	tuck_3_V2
 tuck_in_N	tuck_in_N

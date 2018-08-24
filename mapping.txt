@@ -5938,7 +5938,7 @@ atrophy_V	atrophy_V
 atropine_N	atropine_N
 attach_V	attach_2_V
 attach_V2	attach_1_V2
-attach_V2	attach_3_V2
+attach_V2	attach_3_V
 attach_V2	attach_4_V2
 attach_V2	attach_5_V2
 attachable_A	attachable_A
@@ -5957,11 +5957,11 @@ attack_N	attack_4_N
 attack_N	attack_5_N
 attack_N	attack_6_N
 attack_N	attack_7_N
-attack_N	attack_8_N
+attack_N	attack_by_N2
 attack_N	attack_9_N
 attack_V2	attack_1_V2
 attack_V2	attack_2_V2
-attack_V2	attack_3_V2
+attack_V2	attack_3_V
 attack_V2	attack_4_V2
 attack_V2	attack_5_V2
 attack_V2	attack_6_V2
@@ -72875,6 +72875,7 @@ print_N	print_4_N
 print_N	print_5_N
 print_N	print_6_N
 print_N	print_7_N
+print_N	print_8_N
 print_V	print_2_V
 print_V2	print_1_V2
 print_V2	print_2_V2
@@ -72907,9 +72908,7 @@ priority_N	priority_2_N
 priorship_N	priorship_N
 priory_N	priory_N
 priscilla_PN	priscilla_PN
-prise_V2	prise_1_V2
 prise_V2	prise_2_V2
-prise_V2	prise_3_V2
 prism_N	prism_1_N
 prism_N	prism_2_N
 prismatic_A	prismatic_1_A
@@ -90857,6 +90856,7 @@ start_out_V	start_out_2_V
 start_out_as_V2	start_out_as_V2
 start_out_to_V2	start_out_to_V2
 start_over_V	start_over_V
+start_to_VV	start_to_1_VV
 start_to_VV	start_to_7_VV
 start_to_VV	start_to_11_VV
 start_to_VV	start_to_12_VV
@@ -104484,6 +104484,7 @@ visit_N	visit_4_N
 visit_N	visit_5_N
 visit_V	visit_1_V
 visit_V	visit_6_V
+visit_V	visit_7_V
 visit_V2	visit_1_V2
 visit_V2	visit_2_V2
 visit_V2	visit_3_V2

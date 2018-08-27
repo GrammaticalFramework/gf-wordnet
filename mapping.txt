@@ -4408,7 +4408,7 @@ appeal_N	appeal_3_N
 appeal_N	appeal_4_N
 appeal_V	appeal_1_V
 appeal_V	appeal_2_V
-appeal_V	appeal_3_V
+appeal_V	appeal_to_3_V2
 appeal_V	appeal_5_V
 appeal_V2	appeal_4_V2
 appealable_A	appealable_A
@@ -5982,8 +5982,8 @@ attempt_V2	attempt_2_V2
 attempt_VV	attempt_1_VV
 attempt_VV	attempt_2_VV
 attempted_A	attempted_A
-attend_V	attend_2_V
-attend_V	attend_5_V
+attend_V	attend_to_2_V2
+attend_V	attend_to_5_V2
 attend_V2	attend_1_V2
 attend_V2	attend_3_V2
 attend_V2	attend_4_V2
@@ -6001,7 +6001,7 @@ attention_N	attention_2_N
 attention_N	attention_3_N
 attention_N	attention_4_N
 attention_N	attention_5_N
-attention_N	attention_6_N
+attention_N	at_attention_Adv
 attentional_A	attentional_A
 attentive_A	attentive_to_A2
 attentive_A	attentive_A
@@ -6014,7 +6014,7 @@ attenuate_V2	attenuate_2_V2
 attenuation_N	attenuation_1_N
 attenuation_N	attenuation_2_N
 attenuator_N	attenuator_N
-attest_V	attest_1_V
+attest_V	attest_to_V2
 attest_V	attest_3_V
 attest_V2	attest_2_V2
 attest_V2	attest_3_V2
@@ -6156,8 +6156,7 @@ august_A	august_2_A
 augustan_A	augustan_A
 auk_N	auk_N
 auklet_N	auklet_N
-auld_A	auld_A
-auld_lang_syne_N	auld_lang_syne_N
+auld_lang_syne_N	auld_lang_syne_PN
 aunt_N	aunt_N
 auntie_N	auntie_N
 aunty_N	aunty_N
@@ -12973,7 +12972,7 @@ busy_V2	busy_V2
 busybody_N	busybody_N
 busyness_N	busyness_N
 busywork_N	busywork_N
-but_Adv	but_Adv
+but_Adv	but_Predet
 but_Conj	but_Conj
 but_PConj	but_PConj
 but_Prep	but_Prep
@@ -13113,6 +13112,7 @@ by_Adv	by_2_Adv
 by_Prep	by_1_Prep
 by_Prep	by_2_Prep
 by_Prep	by_3_Prep
+by_Prep	by_4_Prep
 by_and_large_Adv	by_and_large_Adv
 by_election_N	by_election_N
 by_means_of_Prep	by_means_of_Prep
@@ -15481,7 +15481,6 @@ certificatory_A	certificatory_A
 certified_A	certified_1_A
 certified_A	certified_2_A
 certified_A	certified_3_A
-certify_V	certify_1_V
 certify_V	certify_2_V
 certify_V	certify_5_V
 certify_V2	certify_1_V2
@@ -49971,7 +49970,6 @@ issue_2_N	issue_8_N
 issue_2_N	issue_9_N
 issue_2_N	issue_10_N
 issue_2_N	issue_11_N
-issue_V	issue_3_V
 issue_V	issue_4_V
 issue_V2	issue_1_V2
 issue_V2	issue_2_V2
@@ -50968,7 +50966,8 @@ just_Adv	just_5_Adv
 just_Adv	just_6_Adv
 just_Adv	just_7_Adv
 just_Adv	just_8_Adv
-just_Predet	just_Predet
+just_Predet	just_1_Predet
+just_Predet	just_2_Predet
 just_because_Subj	just_because_Subj
 justice_N	justice_1_N
 justice_N	justice_2_N
@@ -61048,7 +61047,8 @@ musselburgh_PN	musselburgh_PN
 must_N	must_1_N
 must_N	must_2_N
 must_N	must_3_N
-must_VV	must_VV
+must_VV	must_1_VV
+must_VV	must_2_VV
 mustache_N	mustache_N
 mustachio_N	mustachio_1_N
 mustachioed_A	mustachioed_1_A

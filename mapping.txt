@@ -246,7 +246,8 @@ about_Adv	about_4_Adv
 about_Adv	about_5_Adv
 about_Adv	about_6_Adv
 about_Adv	about_7_Adv
-about_Prep	about_Prep
+about_Prep	about_1_Prep
+about_Prep	about_2_Prep
 about_face_N	about_face_1_N
 about_face_N	about_face_2_N
 about_face_V	about_face_1_V
@@ -6270,8 +6271,6 @@ auto_da_fe_N	auto_da_fe_1_N
 autoantibody_N	autoantibody_N
 autobahn_N	autobahn_N
 autobiographer_N	autobiographer_N
-autobiographic_A	autobiographic_1_A
-autobiographic_A	autobiographic_2_A
 autobiographical_A	autobiographical_1_A
 autobiographical_A	autobiographical_2_A
 autobiography_N	autobiography_N
@@ -6378,7 +6377,7 @@ auxin_N	auxin_N
 auxinic_A	auxinic_A
 avadavat_N	avadavat_1_N
 avail_N	avail_N
-avail_V	avail_1_V
+avail_V	avail_of_V2
 avail_V2	avail_2_V2
 avail_V2	avail_3_V2
 availability_N	availability_N
@@ -6414,7 +6413,7 @@ average_A	average_6_A
 average_N	average_1_N
 average_N	average_2_N
 average_N	average_3_N
-average_V	average_1_V
+average_V	average_out_to_V2
 average_V	average_3_V
 average_V2	average_2_V2
 average_V2	average_3_V2
@@ -6427,8 +6426,6 @@ aversion_N	aversion_2_N
 aversive_A	aversive_A
 avert_V2	avert_1_V2
 avert_V2	avert_2_V2
-averting_N	averting_1_N
-averting_N	averting_2_N
 avian_A	avian_A
 aviary_N	aviary_N
 aviation_N	aviation_1_N
@@ -6460,7 +6457,7 @@ avoid_V2	avoid_1_V2
 avoid_V2	avoid_2_V2
 avoid_V2	avoid_4_V2
 avoid_V2	avoid_5_V2
-avoid_VV	avoid_3_VV
+avoid_VV	avoid_3_V2
 avoidable_A	avoidable_A
 avoidance_N	avoidance_N
 avoirdupois_N	avoirdupois_1_N
@@ -6473,7 +6470,7 @@ avouch_V2	avouch_V2
 avow_V2	avow_1_V2
 avow_V2	avow_2_V2
 avowal_N	avowal_N
-avowedly_Adv	avowedly_1_Adv
+avowedly_Adv	avowedly_1_AdA
 avowedly_Adv	avowedly_2_Adv
 avower_N	avower_1_N
 avower_N	avower_2_N
@@ -6493,7 +6490,7 @@ award_N	award_1_N
 award_N	award_2_N
 award_N	award_3_N
 award_V2	award_1_V2
-award_V2	award_2_V2
+award_V2	award_to_V3
 award_V3	award_1_V3
 aware_A	aware_A
 aware_of_A2	aware_of_A2
@@ -10632,8 +10629,8 @@ bond_N	bond_4_N
 bond_N	bond_5_N
 bond_N	bond_6_N
 bond_N	bond_7_N
-bond_N	bond_8_N
-bond_N	bond_9_N
+bond_N	bond_8_PN
+bond_N	bond_9_PN
 bond_N	bond_10_N
 bond_V2	bond_1_V2
 bond_V2	bond_2_V2
@@ -41121,7 +41118,7 @@ grant_N	grant_6_PN
 grant_N	grant_7_N
 grant_N	grant_8_N
 grant_V2	grant_1_V2
-grant_V2	grant_2_V2
+grant_V2	grant_to_V3
 grant_V2	grant_4_V2
 grant_V2	grant_5_V2
 grant_V2	grant_6_V2
@@ -63202,6 +63199,7 @@ notice_N	notice_4_N
 notice_N	notice_5_N
 notice_N	notice_6_N
 notice_N	notice_7_N
+notice_V2	notice_V
 notice_V2	notice_1_V2
 notice_V2	notice_2_V2
 notice_V2	notice_3_V2
@@ -66595,6 +66593,7 @@ paper_N	paper_4_N
 paper_N	paper_5_N
 paper_N	paper_6_N
 paper_N	paper_7_N
+paper_N	paper_8_N
 paper_V2	paper_1_V2
 paper_V2	paper_2_V2
 paper_chase_N	paper_chase_N
@@ -73406,6 +73405,7 @@ promise_V2	promise_2_V2
 promise_V2	promise_3_V2
 promise_VS	promise_3_VS
 promise_VS	promise_4_VS
+promise_V2	promise_VV
 promisee_N	promisee_N
 promiser_N	promiser_1_N
 promisingly_Adv	promisingly_Adv
@@ -80214,7 +80214,7 @@ rochester_PN	rochester_2_PN
 rock_'n_roll_N	rock_'n_roll_N
 rock_1_N	rock_1_N
 rock_2_N	rock_2_N
-rock_2_N	rock_3_N
+rock_2_N	rock_PN
 rock_2_N	rock_4_N
 rock_2_N	rock_5_N
 rock_2_N	rock_6_N
@@ -91654,7 +91654,7 @@ stoke_V2	stoke_V2
 stoke_on_trent_PN	stoke_on_trent_PN
 stokehold_N	stokehold_N
 stokehole_N	stokehole_N
-stoker_N	stoker_1_N
+stoker_N	stoker_PN
 stoker_N	stoker_2_N
 stoker_N	stoker_3_N
 stole_N	stole_N

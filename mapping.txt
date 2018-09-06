@@ -50363,16 +50363,11 @@ jerry_PN	jerry_PN
 jerry_builder_N	jerry_builder_N
 jerry_building_N	jerry_building_N
 jerry_built_A	jerry_built_A
-jersey_N	jersey_1_N
-jersey_N	jersey_2_N
 jersey_N	jersey_3_N
 jersey_N	jersey_4_N
 jersey_N	jersey_5_N
 jersey_PN	jersey_1_PN
 jersey_PN	jersey_2_PN
-jersey_PN	jersey_3_PN
-jersey_PN	jersey_4_PN
-jersey_PN	jersey_5_PN
 jess_PN	jess_PN
 jessica_PN	jessica_PN
 jessie_PN	jessie_PN
@@ -73102,7 +73097,6 @@ prodigy_N	prodigy_3_N
 prodromal_A	prodromal_1_A
 prodrome_N	prodrome_1_N
 produce_N	produce_N
-produce_V	produce_V
 produce_V2	produce_1_V2
 produce_V2	produce_2_V2
 produce_V2	produce_3_V2
@@ -76160,7 +76154,7 @@ ratel_N	ratel_N
 ratepayer_N	ratepayer_N
 rates_N	rates_N
 rather_Adv	rather_1_Adv
-rather_Adv	rather_2_Adv
+rather_Adv	rather_AdA
 rather_Adv	rather_3_Adv
 rather_Adv	rather_4_Adv
 rather_than_Conj	rather_than_Conj

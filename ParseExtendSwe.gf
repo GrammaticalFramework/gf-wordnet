@@ -1,7 +1,7 @@
 concrete ParseExtendSwe of ParseExtend = 
   ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralSwe - [num] ** 
-  open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe) in {
+  open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe), (P = ParadigmsSwe), (I = IrregSwe) in {
 
 lincat Mark = {s : Str} ;
 
@@ -35,7 +35,7 @@ lin gen_Quant = DefArt ;
 
     PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = \\_ => rnp.s ! pron.a; a = pron.a; isPron=False})) ;
 
-lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! nominative) (predV verbBe)) ;
+lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! MorphoSwe.nominative) (predV verbBe)) ;
 
 lincat [Comp] = {s1,s2 : Agr => Str} ;
 lin BaseComp x y = twoTable Agr x y ;
@@ -243,5 +243,16 @@ lin pot3as4 n = n ;
     pot41 = numPl (cardOrd "miljon" "miljonde") ;
 
     num x = x ;
+
+lincat ListImp = {s1,s2 : Polarity => Number => Str} ;
+lin BaseImp = twoTable2 Polarity Number ;
+    ConsImp = consrTable2 Polarity Number comma ;
+    ConjImp conj ss = conjunctDistrTable2 Polarity Number conj ss ;
+
+lin ProgrVPSlash vp = 
+      insertObj (\\a => "att" ++ infVP vp a) (predV (P.partV I.hålla_V "på")) **
+        { n3 = vp.n3 ;
+          c2 = vp.c2
+        } ;
 
 }

@@ -97,4 +97,10 @@ fun pot3as4 : Sub1000000 -> Sub1000000000 ;              -- coercion of 1..99999
     pot41 : Sub1000000000 ;                              -- 1000000000
 
     num : Sub1000000000 -> Numeral ;
+
+cat [Imp] {2} ;
+fun ConjImp : Conj -> ListImp -> Imp ;
+
+fun ProgrVPSlash : VPSlash -> VPSlash ;
+
 }

@@ -356,5 +356,18 @@ lin pot3as4 n = n ;
 
     num x = {s = \\c => x.s ! c ! Formal; n=x.n} ;
 
+lincat ListImp = {s : Bool => Ints 4 => Polarity => GenNum => Str} ;
+lin BaseImp x y =
+      {s  = \\d,t,p,gn=>x.s!p!gn++linCoord!t++y.s!p!gn} ;
+    ConsImp x xs =
+      {s  = \\d,t,p,gn=>x.s!p!gn++(linCoordSep bindComma)!d!t++xs.s!d!t!p!gn} ;
+    ConjImp conj ss = {
+      s  = \\p,gn => conj.s ++ (linCoordSep [])!conj.distr!conj.conj++ss.s!conj.distr!conj.conj!p!gn
+      } ;
+
+lin ProgrVPSlash vp = vp ** {
+      s   = \\_ => vp.s ! Imperf
+      } ;
+
 }
 	

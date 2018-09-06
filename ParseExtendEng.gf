@@ -189,8 +189,10 @@ lin EmbedVP ant pol vp = {s =
       isPre = False
       } ;
 
-lin RecipVPSlash slash = GrammarEng.ComplSlash slash (mkNP "each other" "each other" "each other" Sg P3 Masc);
-    RecipVPSlashCN slash cn = GrammarEng.ComplSlash slash (DetCN (mkDeterminer Sg "each other's") cn);
+lin RecipVPSlash slash = GrammarEng.ComplSlash slash (variants {mkNP "each other"  "each other"  "each other"  Sg P3 Masc ;
+                                                                mkNP "one another" "one another" "one another" Sg P3 Masc});
+    RecipVPSlashCN slash cn = GrammarEng.ComplSlash slash (DetCN (variants {mkDeterminer Sg "each other's" ;
+                                                                            mkDeterminer Sg "one another's"}) cn);
 
 lincat Sub1000000000 = {s : Bool => CardOrd => Case => Str ; n : Number} ;
 
@@ -221,5 +223,17 @@ lin pot3as4 n = n ;
     } ;
 
     num x = x ;
+
+lincat ListImp = {s1,s2 : CPolarity => ImpForm => Str} ;
+lin BaseImp = twoTable2 CPolarity ImpForm ;
+    ConsImp = consrTable2 CPolarity ImpForm comma ;
+    ConjImp conj ss = conjunctDistrTable2 CPolarity ImpForm conj ss ;
+
+lin ProgrVPSlash vp = 
+      insertObj (\\a => vp.ad ! a ++ vp.prp ++ vp.p ++ vp.s2 ! a) (predAux auxBe) **
+        { c2 = vp.c2 ;
+          gapInMiddle = vp.gapInMiddle ;
+          missingAdv = vp.missingAdv
+        } ;
 
 }

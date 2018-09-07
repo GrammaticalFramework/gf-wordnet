@@ -10,6 +10,8 @@ main = do
     ls <- fmap lines $ readFile "../WordNet.gf"
     let glosses = [x | Just (fn,synset,gloss) <- map parseGloss ls, x <- glossTriples fn synset gloss]
     sequence_ [print t >> insertTriple db s p o | t@(s,p,o) <- glosses]
+    ls <- fmap lines $ readFile "../examples.txt"
+    sequence_ [print (fn,example,e) >> insertTriple db fn example e | (fn,e) <- parseExamples ls]
   closeSG db
 
 parseGloss l = 
@@ -21,7 +23,6 @@ parseGloss l =
 
 glossTriples fn synset_id s =
   [(fn_e,synset,synid_e)]++
-  [(fn_e,example,(mkStr . noQuotes) e) | e <- es]++
   (if null gs then [] else [(synid_e,gloss,mkStr (merge gs))])++
   [(synid_e,domain,mkStr d) | d <- ds]
   where
@@ -34,14 +35,17 @@ glossTriples fn synset_id s =
       | head s == '"' && last s == '"' = (init . tail) s
       | otherwise                      = s
 
-splitDomains ('[':cs) =
-  case break (flip elem ",]") cs of
-     (x,',':cs) -> let (xs,cs') = splitDomains cs
-                   in (trim x : xs, cs')
-     (x,']':cs) -> ([trim x], cs)
-     _          -> ([],       cs)
+splitDomains ('[':cs) = split cs
   where
     trim = reverse . dropWhile isSpace . reverse . dropWhile isSpace
+    
+    split cs =
+      case break (flip elem ",]") cs of
+        (x,',':cs) -> let (xs,cs') = split (dropWhile isSpace cs)
+                      in (trim x : xs, dropWhile isSpace cs')
+        (x,']':cs) -> let x' = trim x
+                      in (if null x' then [] else [x'], cs)
+        _          -> ([],       cs)
 splitDomains cs = ([],cs)
 
 parseComment ""       = [""]
@@ -57,3 +61,13 @@ parseComment (c  :cs) = case parseComment cs of
 merge = intercalate "; "
 
 isExample s = not (null s) && head s == '"'
+
+
+parseExamples []                               = []
+parseExamples (l1:l2:l3:l4:l5:l6:ls)
+  | take 4 l1 == "abs:" && take 4 l5 == "key:" =
+      let (w:ws) = words (drop 5 l5)
+          fns    = take (read w) ws
+      in [(fn, e) | Just fn <- fmap readExpr fns, Just e <- [readExpr (drop 5 l1)]] ++
+         parseExamples ls
+parseExamples (l:ls)                           = parseExamples ls

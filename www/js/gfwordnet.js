@@ -21,14 +21,19 @@ gfwordnet.search = function (from, input, result) {
 	function extract_search(lemmas) {
 		clear(result);
 		var index = 1;
+		var rows  = {};
 		result.appendChild(tr([th(text("Abstract")),th(text("Bulgarian")),th(text("English")),th(text("Swedish"))]));
 		for (var i in lemmas) {
-			var row = [td(text(lemmas[i].lemma)),td([]),td([]),td([])];
+			var lemma = lemmas[i].lemma;
+			if (!(lemma in rows)) {
+				var row = [td(text(lemma)),td([]),td([]),td([])];
+				rows[lemma] = row;
 
-			result.appendChild(tr(node("td",{colspan: 4},[text(index+". gloss")]))); index++;
-			result.appendChild(tr(row));
+				result.appendChild(tr(node("td",{colspan: 4},[text(index+". gloss")]))); index++;
+				result.appendChild(tr(row));
 
-			gfwordnet.grammar_call("?command=c-linearize&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(lemmas[i].lemma),bind(extract_linearization,row),errcont);
+				gfwordnet.grammar_call("?command=c-linearize&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
+			}
 		}
     }
 

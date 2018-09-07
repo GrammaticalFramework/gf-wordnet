@@ -11,25 +11,24 @@ import qualified Codec.Binary.UTF8.String as UTF8 (encodeString)
 import Text.JSON
 
 main = do
-  db <- openSG "semantics.db"
-#ifndef mingw32_HOST_OS
-  runFastCGIConcurrent' forkIO 100 (cgiMain db)
-#else
-  runFastCGI (cgiMain db)
-#endif
+  db <- openSG "/home/krasimir/www/semantics.db"
+-- #ifndef mingw32_HOST_OS
+  -- runFastCGIConcurrent' forkIO 100 (cgiMain db)
+-- #else
+  runFastCGI (handleErrors $ cgiMain db)
+-- #endif
   closeSG db
 
 
 cgiMain :: SG -> CGI CGIResult
-cgiMain db = do
-  json <- liftIO doQuery
-  r <- outputJSONP json
-  return r
+cgiMain db = do	
+  lex_ids <- fmap (maybe [] (\s -> [e | w <- words s, Just e <- [readExpr w]])) $ getInput "lexical_ids"
+  json <- liftIO (doQuery lex_ids)
+  outputJSONP json
   where
-    doQuery = do
-      let lex_ids = [lex_id | Just lex_id <- [readExpr "apple_1_N", readExpr "book_1_N"]]
+    doQuery lex_ids = do
       senses <- foldM (getSense db) Map.empty lex_ids
-      putStrLn (encode (showJSON (map mkSenseObj (Map.toList senses))))
+      return (showJSON (map mkSenseObj (Map.toList senses)))
       where
         mkSenseObj (sense_id,(mb_gloss,domains,lex_ids)) =
           makeObj ([("sense_id",showJSON sense_id)]++

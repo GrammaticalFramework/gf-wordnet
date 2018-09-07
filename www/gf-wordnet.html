@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GF WordNet</title>
+		<style>
+			body {
+				color: black;
+				background: #eee;
+			}
+			table.result {
+				border-collapse: collapse;
+				background: #cef;
+				white-space: nowrap;
+			}
+			table.result > tr > th {
+				text-align: center;
+				color: #008;
+				border: 2px solid #66c;
+				background: #99e;
+			}
+			table.result > tr > td {
+				border-width: 1px 1px 2px 1px ;
+				border-style: solid;
+				border-color: #66c;
+				padding: 3px;
+			}
+			table.result > tr > td[colspan] {
+				border-width: 2px 2px 1px 2px ;
+			}
+			
+			table.result > tr > td:first-child:not([colspan]) {
+				border-width: 1px 1px 2px 2px ;
+			}
+
+			table.result > tr > td:last-child:not([colspan]) {
+				border-width: 1px 2px 2px 1px ;
+			}			
+		</style>
+	</head>
+
+	<body>
+		<table><tr>
+			<td>
+			<select id="from">
+				<option value=ParseBul>Bulgarian</option>
+				<option value=ParseEng selected>English</option>
+				<option value=ParseSwe>Swedish</option>
+			</select>
+			</td>
+			<td><input id="search" type="text"></td>
+			<td><input id="button" type="button" value="Search" onclick="gfwordnet.search(element('from').value, element('search').value, element('result'))"></td>
+		</tr></table>
+
+		<br>
+
+		<table class="result" id="result">
+		</table>
+
+		<script src="http://cloud.grammaticalframework.org/js/support.js"></script>
+		<script src="js/gfwordnet.js"></script>
+		<script>
+			gfwordnet.initialize()
+
+			element("search").addEventListener("keyup", function(event) {
+				event.preventDefault();
+				if (event.keyCode === 13) {
+					element("button").click();
+				}
+			});
+		</script>
+	</body>
+</html>

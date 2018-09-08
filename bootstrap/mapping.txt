@@ -7293,8 +7293,6 @@ bangle_N	bangle_2_N
 bangor_PN	bangor_1_PN
 bangor_PN	bangor_2_PN
 bangor_PN	bangor_3_PN
-banian_N	banian_1_N
-banian_N	banian_2_N
 banian_tree_N	banian_tree_N
 banish_V2	banish_1_V2
 banish_V2	banish_2_V2
@@ -31190,7 +31188,7 @@ empty_V2	empty_5_V2
 empty_handed_A	empty_handed_1_A
 empty_handed_A	empty_handed_2_A
 empty_headed_A	empty_headed_A
-empty_out_V2	empty_out_V2
+empty_out_V2	empty_out_V
 emptying_N	emptying_N
 empurpled_A	empurpled_A
 empyema_N	empyema_N
@@ -64904,7 +64902,7 @@ oriel_N	oriel_N
 orient_A	orient_A
 orient_N	orient_1_N
 orient_N	orient_2_N
-orient_V2	orient_1_V2
+orient_V2	orient_1_V
 orient_V2	orient_2_V2
 orient_V2	orient_3_V2
 orient_V2	orient_4_V2
@@ -94774,17 +94772,11 @@ tag_N	tag_2_N
 tag_N	tag_3_N
 tag_N	tag_4_N
 tag_N	tag_5_N
-tag_V	tag_2_V
-tag_V	tag_3_V
-tag_V	tag_5_V
 tag_V2	tag_1_V2
 tag_V2	tag_2_V2
-tag_V2	tag_3_V2
 tag_V2	tag_4_V2
 tag_V2	tag_5_V2
-tag_V3	tag_2_V3
 tag_V3	tag_3_V3
-tag_V3	tag_5_V3
 tag_along_V	tag_along_V
 tag_on_V2	tag_on_V2
 tag_onto_V3	tag_onto_V3
@@ -96234,10 +96226,8 @@ terrorization_N	terrorization_1_N
 terrorization_N	terrorization_2_N
 terrorize_V2	terrorize_1_V2
 terrorize_V2	terrorize_2_V2
-terry_N	terry_1_N
-terry_N	terry_2_N
-terry_PN	terry_1_PN
-terry_PN	terry_2_PN
+terry_N	terry_N
+terry_PN	terry_PN
 terse_A	terse_A
 terseness_N	terseness_N
 tertian_A	tertian_1_A

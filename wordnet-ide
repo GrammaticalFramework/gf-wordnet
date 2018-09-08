@@ -919,7 +919,7 @@ class Editor:
 			shutil.move("__temp__", wordnet)
 
     def updateMapping(self):
-		inp = open("mapping.txt", "r")
+		inp = open("bootstrap/mapping.txt", "r")
 		out = open("__temp__", "w")
 		for line in inp:
 			ws = line.split()
@@ -928,10 +928,10 @@ class Editor:
 			out.write(line)
 		inp.close()
 		out.close()
-		shutil.move("__temp__", "mapping.txt")
+		shutil.move("__temp__", "bootstrap/mapping.txt")
 
     def deleteMapping(self):
-		inp = open("mapping.txt", "r")
+		inp = open("bootstrap/mapping.txt", "r")
 		out = open("__temp__", "w")
 		for line in inp:
 			ws = line.split()
@@ -941,7 +941,7 @@ class Editor:
 				out.write(line)
 		inp.close()
 		out.close()
-		shutil.move("__temp__", "mapping.txt")
+		shutil.move("__temp__", "bootstrap/mapping.txt")
 
     def loadExampleLexicon(self,e,defs):
 		app = e.unpack()

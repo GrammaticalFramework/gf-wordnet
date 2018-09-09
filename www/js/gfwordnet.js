@@ -28,8 +28,15 @@ gfwordnet.search = function (from, input, result) {
 		var index = 1;
 		for (var i in senses) {
 			result.appendChild(tr(node("td",{colspan: 4},[text(index+". "+senses[i].gloss)]))); index++;
-			for (var j in senses[i].lex_ids) {
-				result.appendChild(tr(this[senses[i].lex_ids[j]]));
+			for (var lex_id in senses[i].lex_ids) {
+				var icon;
+				var row = this[lex_id];
+				if (senses[i].lex_ids[lex_id].indexOf("unchecked") >= 0)
+					icon = img("unchecked.png");
+				else
+					icon = img("checked.png");
+				row[0].insertBefore(icon, row[0].firstChild);
+				result.appendChild(tr(row));
 			}
 		}
 	}

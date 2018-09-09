@@ -33,17 +33,17 @@ lin FocusComp comp np =
       mkClause (comp.s ! personAgr np.gn np.p) np.gn (NounP3 comp.p)
                (insertObj (\\_ => np.s ! RSubj) (personPol np.p) (predV verbBe)) ;
 
-lincat [Comp] = {s : Bool => Ints 4 => Agr => Str} ;
+lincat [Comp] = {s : Agr => Ints 4 => Str} ;
 lin BaseComp x y =
-      {s = \\d,t,agr=>x.s!agr++linCoord!t++y.s!agr} ;
+      {s = \\agr=>table {4 => y.s!agr; _ => x.s!agr}} ;
     ConsComp x xs =
-      {s = \\d,t,agr=>x.s!agr++(linCoordSep bindComma)!d!t++xs.s!d!t!agr} ;
+      {s = \\agr=>table {4 => xs.s!agr!4; t => x.s!agr++linCoord bindComma!t++xs.s!agr!t}} ;
     ConjComp conj ss = {
-      s = \\agr => conj.s ++ (linCoordSep [])!conj.distr!conj.conj++ss.s!conj.distr!conj.conj!agr;
+      s = \\agr => linCoord [] ! conj.sep ++ ss.s!agr!conj.sep ++ conj.s ++ ss.s!agr!4 ;
       p = Pos
       } ;
 
-lincat CNN = {s : Bool => Ints 4 => Species => Role => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
+lincat CNN = {s : Species => Role => Ints 4 => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
 
 lin BaseCNN num1 cn1 num2 cn2 = 
       let mknf : NNumber -> Species -> Role -> AGender -> NForm =
@@ -66,19 +66,20 @@ lin BaseCNN num1 cn1 num2 cn2 =
                                           _           => NFPlCount
                                         }
                 } ;
-      in { s  = \\d,t,spec,role => num1.s ! dgenderSpecies cn1.g spec role ++ cn1.s ! mknf num1.nn spec role cn1.g ++ linCoord!t ++ num2.s ! dgenderSpecies cn2.g spec role ++ cn2.s ! mknf num2.nn spec role cn2.g ;
+      in { s  = \\spec,role => table {4 => num2.s ! dgenderSpecies cn2.g spec role ++ cn2.s ! mknf num2.nn spec role cn2.g ;
+                                      _ => num1.s ! dgenderSpecies cn1.g spec role ++ cn1.s ! mknf num1.nn spec role cn1.g
+                                     } ;
            n1 = num1.nn ;
            n  = num1.nn ;
            g1 = cn1.g ;
            nonEmpty = num1.nonEmpty
       } ;
-      
+
     DetCNN quant conj cnn =
       { s  = \\role => 
                  let spec = case cnn.nonEmpty of {True=>Indef; _=>quant.spec} ;
                      s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++ 
-                            conj.s ++ (linCoordSep [])!conj.distr!conj.conj ++ 
-                            cnn.s ! conj.distr ! conj.conj ! spec ! role
+                            linCoord [] ! conj.sep ++ cnn.s ! spec ! role ! conj.sep ++ conj.s ++ cnn.s ! spec ! role ! 4
                  in case role of {
                       RObj c => linCase c quant.p ++ s;
                       _      => s
@@ -89,8 +90,7 @@ lin BaseCNN num1 cn1 num2 cn2 =
       
     ReflPossCNN conj cnn = {
         s = \\role => reflPron ! aform (gennum cnn.g1 (numnnum cnn.n1)) Def (RObj Acc) ++
-                      conj.s ++ (linCoordSep [])!conj.distr!conj.conj ++ 
-                      cnn.s ! conj.distr ! conj.conj ! Def ! role ;
+                      cnn.s ! Def ! role ! conj.sep ++ conj.s ++ cnn.s ! Def ! role ! 4 ;
         gn = gennum cnn.g1 (numnnum cnn.n)
       } ;
       
@@ -98,8 +98,7 @@ lin BaseCNN num1 cn1 num2 cn2 =
       { s = \\role =>
                 let spec = case cnn.nonEmpty of {True=>Indef; _=>quant.spec} ;
                     s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++ 
-                           conj.s ++ (linCoordSep [])!conj.distr!conj.conj ++ 
-                           cnn.s ! conj.distr ! conj.conj ! spec ! role ++
+                           cnn.s ! spec ! role ! conj.sep ++ conj.s ++ cnn.s ! spec ! role ! 4 ++
                            "на" ++ rnp.s ! (RObj CPrep)
                 in case role of {
                      RObj c => linCase c quant.p ++ s;
@@ -115,7 +114,7 @@ lin UseACard card =
       {s  = table { CFMasc spec _ => card.s ! spec;
                     CFMascDefNom _ => card.s ! Def;
                     CFFem spec => card.s ! spec;
-                    CFNeut spec => card.s ! spec 
+                    CFNeut spec => card.s ! spec
                   };
        nn = card.nn
       };
@@ -356,13 +355,13 @@ lin pot3as4 n = n ;
 
     num x = {s = \\c => x.s ! c ! Formal; n=x.n} ;
 
-lincat ListImp = {s : Bool => Ints 4 => Polarity => GenNum => Str} ;
+lincat ListImp = {s : Polarity => GenNum => Ints 4 => Str} ;
 lin BaseImp x y =
-      {s  = \\d,t,p,gn=>x.s!p!gn++linCoord!t++y.s!p!gn} ;
+      {s  = \\p,gn=>table {4 => y.s!p!gn; _ => x.s!p!gn}} ;
     ConsImp x xs =
-      {s  = \\d,t,p,gn=>x.s!p!gn++(linCoordSep bindComma)!d!t++xs.s!d!t!p!gn} ;
+      {s  = \\p,gn=>table {4 => xs.s!p!gn!4; t => x.s!p!gn++linCoord bindComma!t++xs.s!p!gn!t}} ;
     ConjImp conj ss = {
-      s  = \\p,gn => conj.s ++ (linCoordSep [])!conj.distr!conj.conj++ss.s!conj.distr!conj.conj!p!gn
+      s  = \\p,gn => linCoord [] ! conj.sep ++ ss.s!p!gn!conj.sep ++ conj.s ++ ss.s!p!gn!4
       } ;
 
 lin ProgrVPSlash vp = vp ** {

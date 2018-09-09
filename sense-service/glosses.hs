@@ -24,7 +24,7 @@ parseGloss l =
 glossTriples fn synset_id s =
   [(fn_e,synset,synid_e)]++
   (if null gs then [] else [(synid_e,gloss,mkStr (merge gs))])++
-  [(synid_e,domain,mkStr d) | d <- ds]
+  [(fn_e,domain,mkStr d) | d <- ds]
   where
     synid_e = mkApp synset_id []
     fn_e    = mkApp fn []

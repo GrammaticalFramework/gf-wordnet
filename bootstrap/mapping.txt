@@ -7251,7 +7251,7 @@ bandwidth_N	bandwidth_N
 bandy_A	bandy_A
 bandy_V2	bandy_1_V2
 bandy_V2	bandy_2_V2
-bandy_V2	bandy_3_V2
+bandy_V2	bandy_around_V2
 bandy_legged_A	bandy_legged_A
 bane_N	bane_N
 baneberry_N	baneberry_1_N
@@ -7273,7 +7273,7 @@ bang_V2	bang_5_V2
 bang_V2	bang_6_V2
 bang_V2	bang_7_V2
 bang_about_V	bang_about_V
-bang_around_V	bang_around_V
+bang_around_V	bang_around_V2
 bang_on_V	bang_on_V
 bang_on_about_V2	bang_on_about_V2
 bang_out_V2	bang_out_V2

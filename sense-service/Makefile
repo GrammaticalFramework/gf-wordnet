@@ -9,7 +9,7 @@ all: semantics.db SenseService
 	@echo "********************************************************************************"
 	@ssh www.grammaticalframework.org
 
-semantics.db: ../WordNet.gf
+semantics.db: ../WordNet.gf ../examples.txt
 	runghc glosses.hs
 
 SenseService: SenseService.hs SenseSchema.hs

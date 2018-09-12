@@ -10,7 +10,7 @@
 			table.result {
 				border-collapse: collapse;
 				border: 2px solid #66c;
-				white-space: nowrap;
+				max-width: 1200px;
 			}
 			table.result > tr > th {
 				text-align: center;
@@ -38,6 +38,12 @@
 				background: white;
 				border-top-style: none;
 			}
+			table.result > tr > td.details > div {
+				min-height: 100px;
+				max-height: 500px;
+				overflow: auto;
+				padding: 5px;
+			}
 		</style>
 	</head>
 
@@ -51,7 +57,7 @@
 			</select>
 			</td>
 			<td><input id="search" type="text"></td>
-			<td><input id="button" type="button" value="Search" onclick="gfwordnet.search(element('from').value, element('search').value, element('result'))"></td>
+			<td><input id="button" type="button" value="Search" onclick="gfwordnet.search(element('from').value, element('search').value, element('result')); element('search').value = ''"></td>
 		</tr></table>
 
 		<br>

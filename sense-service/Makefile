@@ -5,8 +5,9 @@ all: semantics.db SenseService
 	ssh www.grammaticalframework.org mv www/SenseService www/SenseService.fcgi
 	@echo ""
 	@echo "********************************************************************************"
-	@echo "* Login to www.grammaticalframework.org and kill the SenseService.fcgi process"
+	@echo "* Now kill the SenseService.fcgi process"
 	@echo "********************************************************************************"
+	@ssh www.grammaticalframework.org
 
 semantics.db: ../WordNet.gf
 	runghc glosses.hs

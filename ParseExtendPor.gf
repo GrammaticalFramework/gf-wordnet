@@ -33,11 +33,9 @@ concrete ParseExtendPor of ParseExtend =
   --lin AdvRNP np prep rnp = rnp ;
 
   lincat
-    -- CN = {s : Number => Str ; g : Gender}
     -- True if digit
     CNN = {s1 : Bool => Str ; s2 : Str; n1,n : Number; g1 : Gender} ;
   lin
-    --     Num     = {s : Gender => Str ; isNum : Bool ; n : Number} ;
     BaseCNN num1 cn1 num2 cn2 = {
       s1 = \\d => num1.s ! cn1.g ++ cn1.s ! num1.n ;
       s2 = num2.s ! cn2.g ++ cn2.s ! num2.n ;
@@ -56,38 +54,46 @@ concrete ParseExtendPor of ParseExtend =
 
   lincat Sub1000000000 = {s : CardOrd => Str ; n : Number} ;
 
-  ---- Numeral = {s : CardOrd => Str ; n : Number} ;
-  ---- CardOrd = NCard Gender | NOrd Gender Number ;
   lin
     pot3as4 n = n ;
-    pot4 n = {s = \\g => n.s ! NCard Masc ++ milhao g; n = Pl} ;
-    pot4plus n m = {s = \\g => n.s! NCard Masc ++ milhao g ++ e_CardOrd g ++ m.s ! g ;
+
+    pot4 n = {s = table CardOrd {co => n.s ! NCard Masc ++ milhao ! co } ; n = Pl} ;
+
+    pot4plus n m = {s = \\co => n.s ! NCard Masc
+                      ++ milhao ! co
+                      ++ e_CardOrd co ++ m.s ! co ;
                     n = Pl
       } ;
 
-    pot21 = mkNum "cem" "centésimo" "centésima" ;
-    pot31 = mkNum "mil" "milésimo" "milésima" ;
-    pot41 = mkNum "milhão" "milhonésimo" "milhonésima" ;
-  oper
-    milhao : CardOrd -> Str = \g ->
-      (mkTal "milhão" [] [] [] "milhonésimo" [] []).s ! unit ! g ;
+    pot21 = mkNum "cem" "centésimo" ;
 
-    mkNum : Str -> Str -> Str -> {s : CardOrd => Str ; n : Number} ;
-    -- probably temporary, NumeralPor needs refactoring
-    mkNum cem centesimo centesima =
-      {s = \\g =>
-         case g of {
-           NCard _     => cem ;
-           NOrd Masc _ => centesimo ;
-           NOrd Fem  _ => centesima
-         } ;
-       n = Pl } ;
+    pot31 = mkNum "mil" "milésimo" ;
+
+    -- cem, mil, but um milhão, um bilhão
+    pot41 = mkNum "um milhão" "milhonésimo" ;
+
+  oper
+    milhao : CardOrd => Str ;
+    milhao = mkNumStr "milhão" "milhonésimo" ;
+
+    mkNum : Str -> Str -> {s : CardOrd => Str ; n : Number} ;
+    mkNum cem centesimo = spl (mkNumStr cem centesimo) ;
 
   lin
     num x = x ;
 
   lin
     BareN2 n2 = n2 ;
+
+  lin
+    EnoughAP ap ant pol vp = {
+      s = \\af => let g : Gender = aform2gender af ;
+                      n : Number = aform2number af
+        in ap.s ! af ++ "o suficiente" ++ ant.s ++ pol.s ++ infVP (Ag g n P3)
+      } ** ap ;
+
+    -- not sure about this, but in the one example seems to work
+    EnoughAdv adv = adv ;
 
   lin
     AdvAdv adv1 adv2 = {s = adv1.s ++ adv2.s} ;
@@ -100,5 +106,20 @@ concrete ParseExtendPor of ParseExtend =
   lin
     whatSgFem_IP = whatSg_IP ** {a = aagr Fem Sg} ;
     whatSgNeut_IP = whatSg_IP ;
+
+  lincat
+    ListComp = {s1,s2 : Agr => Str ; cop : CopulaType} ;
+  lin
+    -- should one allow different copulas?
+    BaseComp x y = twoTable Agr x y ** {cop = x.cop } ;
+    ConsComp xs x = consrTable Agr comma xs x ** xs ;
+    ConjComp conj cs = conjunctDistrTable Agr conj cs ** {cop = cs.cop} ;
+
+  lincat
+    ListImp = {s1,s2 : RPolarity => ImpForm => Gender => Str} ;
+  lin
+    BaseImp = twoTable3 RPolarity ImpForm Gender ;
+    ConsImp = consrTable3 RPolarity ImpForm Gender comma ;
+    ConjImp conj is = conjunctDistrTable3 RPolarity ImpForm Gender conj is ;
 
 } ;

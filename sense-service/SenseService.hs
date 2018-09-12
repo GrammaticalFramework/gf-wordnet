@@ -8,8 +8,10 @@ import Control.Concurrent(forkIO)
 import Network.CGI
 import Network.FastCGI(runFastCGI,runFastCGIConcurrent')
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString)
-import Data.Maybe(mapMaybe)
 import Text.JSON
+import Data.Maybe(mapMaybe)
+import Data.List(sortOn)
+import Data.Char
 
 main = do
   db <- openSG "/home/krasimir/www/semantics.db"
@@ -29,7 +31,8 @@ cgiMain db = do
   where
     doQuery lex_ids = do
       senses <- foldM (getSense db) Map.empty lex_ids
-      return (showJSON (map mkSenseObj (Map.toList senses)))
+      let sorted_senses = (map snd . sortOn fst . map addKey . Map.toList) senses
+      return (showJSON (map mkSenseObj sorted_senses))
       where
         mkSenseObj (sense_id,(mb_gloss,lex_ids)) =
           makeObj ([("sense_id",showJSON sense_id)]++
@@ -62,6 +65,16 @@ cgiMain db = do
                                           return (Map.insert sense_id (mb_gloss,[(lex_id,domains,examples)]) senses)
           where
             Just (sense_id,[]) = unApp sense_id_e
+            
+        addKey (sense_id,(mb_gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(mb_gloss,map snd key_lex_ids)))
+          where
+            key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_) <- lex_ids]
+
+            toKey lex_id = (reverse rid,reverse rcat,read ('0':reverse rn)::Int)
+              where
+                s0 = reverse (showExpr [] lex_id)
+                (rcat,'_':s1) = break (=='_') s0
+                (rn,rid) = break (not . isDigit) s1
 
 
 outputJSONP :: JSON a => a -> CGI CGIResult

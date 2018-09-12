@@ -7,10 +7,20 @@
 				color: black;
 				background: #eee;
 			}
+
+			@media (min-resolution: 300dpi) {
+				body {
+					font-size: 200%;
+  				}
+				select, input, button {
+					font-size: 150%;
+  				}
+			}
+
 			table.result {
 				border-collapse: collapse;
 				border: 2px solid #66c;
-				max-width: 1200px;
+				max-width: 100%;
 			}
 			td.details > div > table.result {
 				margin: 5px;

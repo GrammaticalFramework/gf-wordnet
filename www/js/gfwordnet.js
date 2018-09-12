@@ -33,9 +33,9 @@ gfwordnet.search = function (from, input, result) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
 				
 				var synonyms = senses[i].synset.slice(0);
-				var index = synonyms.indexOf(lex_id);
-				if (index > -1) {
-					synonyms.splice(index, 1);
+				var k = synonyms.indexOf(lex_id);
+				if (k > -1) {
+					synonyms.splice(k, 1);
 				}
 				gfwordnet.lex_ids[lex_id].synonyms = synonyms;
 

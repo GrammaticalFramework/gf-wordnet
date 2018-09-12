@@ -31,6 +31,13 @@ gfwordnet.search = function (from, input, result) {
 			result.appendChild(tr(node("td",{colspan: 4},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
+				
+				var synonyms = senses[i].synset.slice(0);
+				var index = synonyms.indexOf(lex_id);
+				if (index > -1) {
+					synonyms.splice(index, 1);
+				}
+				gfwordnet.lex_ids[lex_id].synonyms = synonyms;
 
 				var icon;
 				var row = this[lex_id];
@@ -87,6 +94,13 @@ gfwordnet.onclick_cell = function (cell) {
 		}
 		this.parentNode.insertBefore(node("table",{class: "result"},rows), this.nextSibling);
 	}
+	function extract_linearization_synonym(lins) {
+		var indices = {"ParseBul": 1, "ParseEng": 2, "ParseSwe": 3};
+		for (var i in lins) {
+			var lin = lins[i];
+			this[indices[lin.to]].appendChild(text(lin.text));
+		}
+	}
 	function extract_linearization_morpho(lins) {
 		this.innerHTML = lins[0].text;
 	}
@@ -118,6 +132,17 @@ gfwordnet.onclick_cell = function (cell) {
 
 	if (index == 0) {
 		var row = [];
+		if (this.lex_ids[lex_id].synonyms.length > 0) {
+			details.appendChild(node("h1",{},[text("Synonyms")]));
+			var result = node("table",{class: "result"},[]);
+			result.appendChild(tr([th(text("Abstract")),th(text("Bulgarian")),th(text("English")),th(text("Swedish"))]));
+			for (var i in this.lex_ids[lex_id].synonyms) {
+				var row = [td([text(this.lex_ids[lex_id].synonyms[i])]),td([]),td([]),td([])]
+				gfwordnet.grammar_call("?command=c-linearize&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(this.lex_ids[lex_id].synonyms[i]),bind(extract_linearization_synonym,row),errcont);
+				result.appendChild(tr(row));
+			}
+			details.appendChild(result);
+		}
 		if (this.lex_ids[lex_id].examples.length > 0) {
 			var header = node("h1",{},[text("Primary Examples")]);
 			details.appendChild(header);

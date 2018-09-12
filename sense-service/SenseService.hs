@@ -34,11 +34,12 @@ cgiMain db = do
       let sorted_senses = (map snd . sortOn fst . map addKey . Map.toList) senses
       return (showJSON (map mkSenseObj sorted_senses))
       where
-        mkSenseObj (sense_id,(mb_gloss,lex_ids)) =
+        mkSenseObj (sense_id,(mb_gloss,synset,lex_ids)) =
           makeObj ([("sense_id",showJSON sense_id)]++
                    maybe [] (\gloss->[("gloss",showJSON gloss)]) mb_gloss++
+                   [("synset",showJSON (map (showExpr []) synset))]++
                    [("lex_ids",mkLexObj lex_ids)])
-                   
+
         mkLexObj lex_ids =
           makeObj [(showExpr [] lex_id,mkInfObj domains examples sexamples) | (lex_id,domains,examples,sexamples) <- lex_ids]
           
@@ -63,14 +64,16 @@ cgiMain db = do
           let sexamples = [example | (_,_,_,example) <- res]
 
           case Map.lookup sense_id senses of
-            Just (mb_gloss,lex_ids) -> return (Map.insert sense_id (mb_gloss,(lex_id,domains,examples,sexamples):lex_ids) senses)
-            Nothing                 -> do res <- queryTriple db (Just sense_id_e) (Just gloss) Nothing
-                                          let mb_gloss = head ([unStr gloss_str | (_,_,_,gloss_str) <- res]++[Nothing])
-                                          return (Map.insert sense_id (mb_gloss,[(lex_id,domains,examples,sexamples)]) senses)
+            Just (mb_gloss,synset,lex_ids) -> return (Map.insert sense_id (mb_gloss,synset,(lex_id,domains,examples,sexamples):lex_ids) senses)
+            Nothing                        -> do res <- queryTriple db (Just sense_id_e) (Just gloss) Nothing
+                                                 let mb_gloss = head ([unStr gloss_str | (_,_,_,gloss_str) <- res]++[Nothing])
+                                                 res <- queryTriple db Nothing (Just synset) (Just sense_id_e)
+                                                 let synset = [lex_id | (_,lex_id,_,_) <- res]
+                                                 return (Map.insert sense_id (mb_gloss,synset,[(lex_id,domains,examples,sexamples)]) senses)
           where
             Just (sense_id,[]) = unApp sense_id_e
             
-        addKey (sense_id,(mb_gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(mb_gloss,map snd key_lex_ids)))
+        addKey (sense_id,(mb_gloss,synset,lex_ids)) = (fst (head key_lex_ids), (sense_id,(mb_gloss,synset,map snd key_lex_ids)))
           where
             key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_,_) <- lex_ids]
 

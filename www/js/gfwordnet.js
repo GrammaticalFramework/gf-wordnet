@@ -13,7 +13,7 @@ gfwordnet.sense_call=function(querystring,cont,errcont) {
 }
 
 gfwordnet.initialize = function () {
-	this.examples = {};
+	this.lex_ids = {};
 }
 
 gfwordnet.search = function (from, input, result) {
@@ -30,8 +30,7 @@ gfwordnet.search = function (from, input, result) {
 		for (var i in senses) {
 			result.appendChild(tr(node("td",{colspan: 4},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
-				if (senses[i].lex_ids[lex_id].examples.length > 0)
-					gfwordnet.examples[lex_id] = senses[i].lex_ids[lex_id].examples;
+				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
 
 				var icon;
 				var row = this[lex_id];
@@ -49,7 +48,7 @@ gfwordnet.search = function (from, input, result) {
 			return node("td",{onclick: "gfwordnet.onclick_cell(this)"},contents);
 		}
 
-		gfwordnet.examples = {};
+		gfwordnet.lex_ids = {};
 		clear(result);
 
 		var rows        = {};
@@ -86,7 +85,7 @@ gfwordnet.onclick_cell = function (cell) {
 			var lin = lins[i];
 			rows.push(tr([th(text(langs[lin.to])), td(text(lin.text))]));
 		}
-		this.appendChild(node("table",{class: "result"},rows));
+		this.parentNode.insertBefore(node("table",{class: "result"},rows), this.nextSibling);
 	}
 	function extract_linearization_morpho(lins) {
 		this.innerHTML = lins[0].text;
@@ -119,8 +118,19 @@ gfwordnet.onclick_cell = function (cell) {
 
 	if (index == 0) {
 		var row = [];
-		for (var i in this.examples[lex_id]) {
-			gfwordnet.grammar_call("?command=c-linearize&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(this.examples[lex_id][i]),bind(extract_linearization,details),errcont);
+		if (this.lex_ids[lex_id].examples.length > 0) {
+			var header = node("h1",{},[text("Primary Examples")]);
+			details.appendChild(header);
+			for (var i in this.lex_ids[lex_id].examples) {
+				gfwordnet.grammar_call("?command=c-linearize&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(this.lex_ids[lex_id].examples[i]),bind(extract_linearization,header),errcont);
+			}
+		}
+		if (this.lex_ids[lex_id].secondary_examples.length > 0) {
+			var header = node("h1",{},[text("Secondary Examples")]);
+			details.appendChild(header);
+			for (var i in this.lex_ids[lex_id].secondary_examples) {
+				gfwordnet.grammar_call("?command=c-linearize&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(this.lex_ids[lex_id].secondary_examples[i]),bind(extract_linearization,header),errcont);
+			}
 		}
 	} else {
 		var s   = lex_id.split("_");

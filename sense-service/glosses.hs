@@ -2,6 +2,8 @@ import SG
 import PGF2
 import Data.Char
 import Data.List
+import Data.Maybe
+import qualified Data.Set as Set
 import SenseSchema
 import System.Directory
 
@@ -10,10 +12,12 @@ main = do
   db <- openSG "semantics.db"
   inTransaction db $ do
     ls <- fmap lines $ readFile "../WordNet.gf"
-    let glosses = [x | Just (fn,synset,gloss) <- map parseGloss ls, x <- glossTriples fn synset gloss]
+    let fundefs = mapMaybe parseGloss ls
+    let funids  = Set.fromList (map (\(fn,_,_) -> fn) fundefs)
+    let glosses = [x | (fn,synset,gloss) <- fundefs, x <- glossTriples fn synset gloss]
     sequence_ [print t >> insertTriple db s p o | t@(s,p,o) <- glosses]
     ls <- fmap lines $ readFile "../examples.txt"
-    sequence_ [print (fn,example,e) >> insertTriple db fn example e | (fn,e) <- parseExamples ls]
+    sequence_ [print t >> insertTriple db s p o | t@(s,p,o) <- parseExamples funids ls]
   closeSG db
 
 parseGloss l = 
@@ -65,11 +69,17 @@ merge = intercalate "; "
 isExample s = not (null s) && head s == '"'
 
 
-parseExamples []                               = []
-parseExamples (l1:l2:l3:l4:l5:l6:ls)
+parseExamples funids []                        = []
+parseExamples funids (l1:l2:l3:l4:l5:l6:ls)
   | take 4 l1 == "abs:" && take 4 l5 == "key:" =
       let (w:ws) = words (drop 5 l5)
           fns    = take (read w) ws
-      in [(fn, e) | Just fn <- fmap readExpr fns, Just e <- [readExpr (drop 5 l1)]] ++
-         parseExamples ls
-parseExamples (l:ls)                           = parseExamples ls
+          ts     = case readExpr (drop 5 l1) of
+                     Just e  -> [(mkApp fn [], example, e) | fn <- fns] ++
+                                [(mkApp fn [], secondary_example, e) | 
+                                        fn <- exprFunctions e,
+                                        Set.member fn funids,
+                                        not (elem fn fns)]
+                     Nothing -> []
+      in ts ++ parseExamples funids ls
+parseExamples funids (l:ls)                    = parseExamples funids ls

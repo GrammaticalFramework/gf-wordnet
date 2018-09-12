@@ -24,7 +24,7 @@ main = do
 
 
 cgiMain :: SG -> CGI CGIResult
-cgiMain db = do	
+cgiMain db = do
   lex_ids <- fmap (maybe [] (\s -> [e | w <- words s, Just e <- [readExpr w]])) $ getInput "lexical_ids"
   json <- liftIO (doQuery lex_ids)
   outputJSONP json
@@ -40,11 +40,12 @@ cgiMain db = do
                    [("lex_ids",mkLexObj lex_ids)])
                    
         mkLexObj lex_ids =
-          makeObj [(showExpr [] lex_id,mkInfObj domains examples) | (lex_id,domains,examples) <- lex_ids]
+          makeObj [(showExpr [] lex_id,mkInfObj domains examples sexamples) | (lex_id,domains,examples,sexamples) <- lex_ids]
           
-        mkInfObj domains examples =
+        mkInfObj domains examples sexamples =
           makeObj [("domains",  showJSON (mapMaybe unStr domains)),
-                   ("examples", showJSON (map (showExpr []) examples))
+                   ("examples", showJSON (map (showExpr []) examples)),
+                   ("secondary_examples", showJSON (map (showExpr []) sexamples))
                   ]
 
         getSense db senses lex_id = do
@@ -58,17 +59,20 @@ cgiMain db = do
           res <- queryTriple db (Just lex_id) (Just example) Nothing
           let examples = [example | (_,_,_,example) <- res]
 
+          res <- queryTriple db (Just lex_id) (Just secondary_example) Nothing
+          let sexamples = [example | (_,_,_,example) <- res]
+
           case Map.lookup sense_id senses of
-            Just (mb_gloss,lex_ids) -> return (Map.insert sense_id (mb_gloss,(lex_id,domains,examples):lex_ids) senses)
+            Just (mb_gloss,lex_ids) -> return (Map.insert sense_id (mb_gloss,(lex_id,domains,examples,sexamples):lex_ids) senses)
             Nothing                 -> do res <- queryTriple db (Just sense_id_e) (Just gloss) Nothing
                                           let mb_gloss = head ([unStr gloss_str | (_,_,_,gloss_str) <- res]++[Nothing])
-                                          return (Map.insert sense_id (mb_gloss,[(lex_id,domains,examples)]) senses)
+                                          return (Map.insert sense_id (mb_gloss,[(lex_id,domains,examples,sexamples)]) senses)
           where
             Just (sense_id,[]) = unApp sense_id_e
             
         addKey (sense_id,(mb_gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(mb_gloss,map snd key_lex_ids)))
           where
-            key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_) <- lex_ids]
+            key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_,_) <- lex_ids]
 
             toKey lex_id = (reverse rid,reverse rcat,read ('0':reverse rn)::Int)
               where

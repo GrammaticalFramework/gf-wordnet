@@ -2877,7 +2877,6 @@ alum_N	alum_4_N
 alumina_N	alumina_N
 aluminate_N	aluminate_N
 aluminiferous_A	aluminiferous_A
-aluminium_N	aluminium_N
 aluminous_A	aluminous_A
 aluminum_N	aluminum_N
 alumna_N	alumna_N
@@ -7484,8 +7483,8 @@ barehanded_A	barehanded_A
 bareheaded_A	bareheaded_A
 barelegged_A	barelegged_A
 barely_Adv	barely_1_Adv
-barely_Adv	barely_2_Adv
-barely_Adv	barely_3_Adv
+barely_Adv	barely_2_AdV
+barely_Adv	barely_3_AdN
 bareness_N	bareness_1_N
 bareness_N	bareness_2_N
 bareness_N	bareness_3_N
@@ -7501,7 +7500,6 @@ bargainer_N	bargainer_1_N
 bargainer_N	bargainer_2_N
 bargaining_N	bargaining_N
 barge_N	barge_N
-barge_V	barge_1_V
 barge_V	barge_2_V
 barge_in_V	barge_in_1_V
 barge_into_V2	barge_into_V2
@@ -16026,7 +16024,6 @@ cheap_A	cheap_1_A
 cheap_A	cheap_2_A
 cheap_A	cheap_3_A
 cheap_A	cheap_4_A
-cheapen_V	cheapen_V
 cheapen_V2	cheapen_V2
 cheapjack_A	cheapjack_A
 cheapjack_N	cheapjack_N
@@ -52342,7 +52339,7 @@ land_N	land_6_N
 land_N	land_7_N
 land_N	land_8_N
 land_N	land_9_N
-land_N	land_10_N
+land_N	land_PN
 land_N	land_11_N
 land_V	land_1_V
 land_V	land_6_V
@@ -72208,7 +72205,7 @@ prefer_V2	prefer_1_V2
 prefer_V2	prefer_2_V2
 prefer_V2	prefer_3_V2
 prefer_V2	prefer_4_V2
-prefer_VV	prefer_4_VV
+prefer_VV	prefer_2_VV
 preferable_A	preferable_A
 preference_N	preference_1_N
 preference_N	preference_2_N

@@ -3,8 +3,10 @@ import PGF2
 import Data.Char
 import Data.List
 import SenseSchema
+import System.Directory
 
 main = do
+  removeFile "semantics.db"
   db <- openSG "semantics.db"
   inTransaction db $ do
     ls <- fmap lines $ readFile "../WordNet.gf"

@@ -41,6 +41,10 @@ gfwordnet.search = function (from, input, result) {
 		}
 	}
 	function extract_search(lemmas) {
+		function cell(contents) {
+			return node("td",{onclick: "gfwordnet.onclick_cell(this)"},contents);
+		}
+
 		clear(result);
 		var rows        = {};
 		var lexical_ids = ""
@@ -48,7 +52,7 @@ gfwordnet.search = function (from, input, result) {
 		for (var i in lemmas) {
 			var lemma = lemmas[i].lemma;
 			if (!(lemma in rows)) {
-				var row = [td(text(lemma)),td([]),td([]),td([])];
+				var row = [cell([text(lemma)]),cell([]),cell([]),cell([])];
 				rows[lemma] = row;
 				lexical_ids = lexical_ids+" "+lemma;
 
@@ -59,4 +63,19 @@ gfwordnet.search = function (from, input, result) {
     }
 
 	gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+from,extract_search,errcont);
+}
+
+gfwordnet.onclick_cell = function (cell) {
+	if (cell.parentNode.nextSibling != null && 
+	    cell.parentNode.nextSibling.firstChild != null && 
+	    cell.parentNode.nextSibling.firstChild.className != "details") {
+		var row = tr(node("td",{colspan: 4, class: "details"},[text("test")]));
+		cell.parentNode.parentNode.insertBefore(row, cell.parentNode.nextSibling);
+	}
+
+	var siblings = cell.parentNode.children;
+	for (var i = 0; i < siblings.length; i++) {
+		siblings[i].className = "unselected"
+	}
+	cell.className = "selected";
 }

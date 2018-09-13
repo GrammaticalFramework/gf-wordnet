@@ -144,7 +144,7 @@ gfwordnet.onclick_cell = function (cell) {
 			details.appendChild(result);
 		}
 		if (this.lex_ids[lex_id].examples.length > 0) {
-			var header = node("h1",{},[text("Primary Examples")]);
+			var header = node("h1",{},[text("Examples")]);
 			details.appendChild(header);
 			for (var i in this.lex_ids[lex_id].examples) {
 				gfwordnet.grammar_call("?command=c-linearize&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(this.lex_ids[lex_id].examples[i]),bind(extract_linearization,header),errcont);

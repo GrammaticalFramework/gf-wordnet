@@ -75534,7 +75534,6 @@ racketeering_N	racketeering_N
 rackety_A	rackety_A
 raconteur_N	raconteur_N
 racoon_N	racoon_N
-racquet_N	racquet_N
 racquetball_N	racquetball_1_N
 racquetball_N	racquetball_2_N
 racy_A	racy_1_A

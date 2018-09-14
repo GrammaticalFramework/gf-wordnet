@@ -42,6 +42,7 @@ AdvIAdv head mod
 AdvIP head mod
 AdvImp mod head
 AdvNP head mod
+AdvAdv head mod
 -- AdvQVP mod mod
 AdvRNP head rel:3 mod
 AdvRVP head rel:3 mod
@@ -61,6 +62,7 @@ BaseCNN mod:2 head mod:4 head
 BaseComp head head
 BaseDAP head head
 BaseIAdv head head
+BaseImp head head
 BaseNP head head
 BaseRS head head
 BaseS head head
@@ -87,7 +89,7 @@ CompQS head
 CompS head
 CompVP mod mod head
 ComparA mod:anchor head
--- ComparAdvAdj mod mod mod
+ComparAdv _ head mod mod
 -- ComparAdvAdjS mod mod mod
 ComparAsAP head mod
 ComparAsAdv head mod
@@ -116,6 +118,7 @@ ConjCN _ head
 ConjComp _ head
 ConjDet _ head
 ConjIAdv _ head
+ConjImp _ head
 ConjNP _ head
 ConjRNP _ head
 ConjRS _ head
@@ -151,6 +154,8 @@ EmbedQS head
 EmbedS head
 EmbedVP _ _ head
 EmptyRelSlash head
+EnoughAP head _ _ mod
+EnoughAdv head
 ExistCN head
 ExistIP head
 -- ExistIPAdv mod mod
@@ -160,6 +165,7 @@ ExistNPAdv mod mod
 ExistPluralCN head
 ExistsNP head
 ExtAdvNP head mod
+ExtAdvAP head mod
 ExtAdvS mod head
 ExtAdvVP head mod
 ExtRelNP subj:anchor head
@@ -177,6 +183,8 @@ GenericCl head
 GerundAdv head
 GerundCN head
 GerundNP head
+IdetCN mod head
+IdetQuant mod head
 IAdvAdv head
 ICompAP head
 IDig _
@@ -220,6 +228,8 @@ MkVPS2 mod mod head
 NoDefinition _
 -- NominalizeVPSlashNP mod mod
 NumCard _
+NumMore _
+NumLess _
 NumDigits _
 NumNumeral _
 OrdDigits _
@@ -233,7 +243,7 @@ PassVPSlash head:rel=obj
 PastPartAP head:rev:rel=obj
 PastPartAgentAP head:rev:rel=obj subj
 PhrUtt _ head _
-PhrUttMark mod head mod _
+PhrUttMark _ head _ _
 PositA head
 PositAdAAdj head
 PositAdVAdj head
@@ -254,6 +264,7 @@ PrepNP rel head
 PresPartAP head:rev:rel=subj
 ProDrop head
 ProgrVP head
+ProgrVPSlash head
 -- PurposeVP head
 QuestCl head
 QuestIAdv mod head
@@ -301,6 +312,8 @@ TTAnt head head
 Use2N3 head
 Use3N3 head
 UseA2 head
+UseACard head
+UseAdAACard mod head
 UseCl _ _ head
 UseComp head
 UseComparA head
@@ -336,7 +349,9 @@ UttQS head
 UttS head
 UttVP head
 UttVPS head
+UttVPSMasc head
 UttVPSFem head
+UttVPSPl head
 UttVPShort head
 VPSlashPrep head mod
 VocNP head
@@ -377,6 +392,8 @@ pot2as3 _
 pot2plus _ _
 pot3 _
 pot3plus _ _
+pot3as4 _
+pot4 _
 tend_VP head
 -- timeunitAdv mod mod
 -- weather_adjCl head

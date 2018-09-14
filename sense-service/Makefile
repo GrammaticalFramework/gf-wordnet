@@ -1,4 +1,4 @@
-all: semantics.db SenseService
+all: semantics.db ../Parse.pgf SenseService
 	rsync semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
 	rsync ../Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 	rsync SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService

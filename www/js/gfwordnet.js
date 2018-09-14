@@ -13,8 +13,9 @@ gfwordnet.sense_call=function(querystring,cont,errcont) {
 }
 
 gfwordnet.initialize = function () {
-	this.lex_ids = {};
-	this.can_check = false;
+	this.lex_ids   = {};
+	this.can_check = window.location.href.endsWith("?can_check");
+	
 }
 
 gfwordnet.search = function (from, input, result) {
@@ -23,7 +24,8 @@ gfwordnet.search = function (from, input, result) {
 		var indices = {"ParseBul": 1, "ParseEng": 2, "ParseSwe": 3};
 		for (var i in lins) {
 			var lin = lins[i];
-			this[indices[lin.to]].appendChild(text(lin.text));
+			var txt = gfwordnet.can_check ? lin.texts.join(", ") : lin.text;
+			this[indices[lin.to]].appendChild(text(txt));
 		}
 	}
 	function extract_senses(senses) {
@@ -42,10 +44,15 @@ gfwordnet.search = function (from, input, result) {
 
 				var icon;
 				var row = this[lex_id];
-				if (senses[i].lex_ids[lex_id].domains.indexOf("unchecked") >= 0)
+				if (senses[i].lex_ids[lex_id].domains.indexOf("unchecked") >= 0) {
 					icon = img("unchecked.png");
-				else
+					if (gfwordnet.can_check)
+						row.push(td([node("button",{onclick: "gfwordnet.onclick_check(this)"},[text("Check")])]));
+				} else {
 					icon = node("img", {src: "checked_plus.png", onclick: "gfwordnet.onclick_minus(event,this)"});
+					if (gfwordnet.can_check)
+						row.push(td([]));
+				}
 				row[0].insertBefore(icon, row[0].firstChild);
 				result.appendChild(tr(row));
 			}
@@ -71,12 +78,11 @@ gfwordnet.search = function (from, input, result) {
 			var lemma = lemmas[i].lemma;
 			if (!(lemma in rows)) {
 				var row = [cell([text(lemma)]),cell([]),cell([]),cell([])];
-				if (gfwordnet.can_check)
-					row.push(td([node("button",{},[text("Check")])]));
 				rows[lemma] = row;
 				lexical_ids = lexical_ids+" "+lemma;
 
-				gfwordnet.grammar_call("?command=c-linearize&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
+				var cmd = gfwordnet.can_check ? "c-linearizeAll" : "c-linearize";
+				gfwordnet.grammar_call("?command="+cmd+"&to=ParseBul%20ParseEng%20ParseSwe&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
 			}
 		}
 		gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(extract_senses,rows),errcont);
@@ -186,4 +192,10 @@ gfwordnet.onclick_minus = function (event, icon) {
 	row.parentNode.removeChild(row.nextSibling);
 	
 	icon.src = "checked_plus.png"
+}
+gfwordnet.onclick_check = function (btn) {
+	var img = btn.parentNode.parentNode.firstChild.firstChild;
+	img.src = "checked_plus.png";
+	img.onclick = function(event) { gfwordnet.onclick_minus(event, this) };
+	btn.parentNode.removeChild(btn);
 }

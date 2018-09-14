@@ -14,6 +14,7 @@ gfwordnet.sense_call=function(querystring,cont,errcont) {
 
 gfwordnet.initialize = function () {
 	this.lex_ids = {};
+	this.can_check = false;
 }
 
 gfwordnet.search = function (from, input, result) {
@@ -28,7 +29,7 @@ gfwordnet.search = function (from, input, result) {
 	function extract_senses(senses) {
 		var index = 1;
 		for (var i in senses) {
-			result.appendChild(tr(node("td",{colspan: 4},[text(index+". "+senses[i].gloss)]))); index++;
+			result.appendChild(tr(node("td",{colspan: gfwordnet.can_check ? 5 : 4},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
 				
@@ -60,11 +61,18 @@ gfwordnet.search = function (from, input, result) {
 
 		var rows        = {};
 		var lexical_ids = ""
-		result.appendChild(tr([th(text("Abstract")),th(text("Bulgarian")),th(text("English")),th(text("Swedish"))]));
+		
+		var row = [th(text("Abstract")),th(text("Bulgarian")),th(text("English")),th(text("Swedish"))];
+		if (gfwordnet.can_check)
+			row.push(node("th",{style: "width: 10px"},[]));
+		result.appendChild(tr(row));
+
 		for (var i in lemmas) {
 			var lemma = lemmas[i].lemma;
 			if (!(lemma in rows)) {
 				var row = [cell([text(lemma)]),cell([]),cell([]),cell([])];
+				if (gfwordnet.can_check)
+					row.push(td([node("button",{},[text("Check")])]));
 				rows[lemma] = row;
 				lexical_ids = lexical_ids+" "+lemma;
 
@@ -110,7 +118,7 @@ gfwordnet.onclick_cell = function (cell) {
 	    cell.parentNode.nextSibling.firstChild == null ||
 	    cell.parentNode.nextSibling.firstChild.className != "details") {
 		details = node("div", {}, []);
-		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 4, class: "details"},[details])), cell.parentNode.nextSibling);
+		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: gfwordnet.can_check ? 5 : 4, class: "details"},[details])), cell.parentNode.nextSibling);
 
 		cell.parentNode.firstChild.firstChild.src = "checked_minus.png";
 	} else {

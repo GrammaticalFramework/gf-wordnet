@@ -7,6 +7,7 @@ import Control.Monad(foldM)
 import Control.Concurrent(forkIO)
 import Network.CGI
 import Network.FastCGI(runFastCGI,runFastCGIConcurrent')
+import System.Environment
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString)
 import Text.JSON
 import Data.Maybe(mapMaybe)
@@ -15,19 +16,34 @@ import Data.Char
 
 main = do
   db <- openSG "/home/krasimir/www/semantics.db"
+  args <- getArgs
+  case args of
+    ["report"] -> doReport db
+    _          -> 
 -- #ifndef mingw32_HOST_OS
-  -- runFastCGIConcurrent' forkIO 100 (cgiMain db)
+--                runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else
-  runFastCGI (handleErrors $ cgiMain db)
+                  runFastCGI (handleErrors $ cgiMain db)
 -- #endif
   closeSG db
+  where
+    doReport db = do
+      res <- queryTriple db Nothing (Just domain) (Just (mkStr "checked"))
+      mapM_ putStrLn [showExpr [] lex_id | t@(_,lex_id,_,_) <- res]
 
 
 cgiMain :: SG -> CGI CGIResult
 cgiMain db = do
-  lex_ids <- fmap (maybe [] (\s -> [e | w <- words s, Just e <- [readExpr w]])) $ getInput "lexical_ids"
-  json <- liftIO (doQuery lex_ids)
-  outputJSONP json
+  mb_s1 <- getInput "lexical_ids"
+  mb_s2 <- getInput "check_id"
+  case mb_s1 of
+    Just s  -> do let lex_ids = [e | w <- words s, Just e <- [readExpr w]]
+                  json <- liftIO (doQuery lex_ids)
+                  outputJSONP json
+    Nothing -> case mb_s2 >>= readExpr of
+                 Just lex_id -> do json <- liftIO (doCheck lex_id)
+                                   outputJSONP json
+                 Nothing     -> outputNothing
   where
     doQuery lex_ids = do
       senses <- foldM (getSense db) Map.empty lex_ids
@@ -83,6 +99,10 @@ cgiMain db = do
                 (rcat,'_':s1) = break (=='_') s0
                 (rn,rid) = break (not . isDigit) s1
 
+    doCheck lex_id = do
+      inTransaction db $
+        insertTriple db lex_id domain (mkStr "checked")
+      return ()
 
 outputJSONP :: JSON a => a -> CGI CGIResult
 outputJSONP = outputEncodedJSONP . encode

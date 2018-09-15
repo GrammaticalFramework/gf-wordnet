@@ -15,9 +15,9 @@ main = do
     let fundefs = mapMaybe parseGloss ls
     let funids  = Set.fromList (map (\(fn,_,_) -> fn) fundefs)
     let glosses = [x | (fn,synset,gloss) <- fundefs, x <- glossTriples fn synset gloss]
-    sequence_ [print t >> insertTriple db s p o | t@(s,p,o) <- glosses]
+    sequence_ [insertTriple db s p o | t@(s,p,o) <- glosses]
     ls <- fmap lines $ readFile "../examples.txt"
-    sequence_ [print t >> insertTriple db s p o | t@(s,p,o) <- parseExamples funids ls]
+    sequence_ [insertTriple db s p o | t@(s,p,o) <- parseExamples funids ls]
   closeSG db
 
 parseGloss l = 

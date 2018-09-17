@@ -44379,7 +44379,6 @@ hipline_N	hipline_2_N
 hippeastrum_N	hippeastrum_N
 hipped_A	hipped_1_A
 hipped_A	hipped_2_A
-hippie_N	hippie_N
 hippo_N	hippo_1_N
 hippo_N	hippo_2_N
 hippocampus_N	hippocampus_1_N
@@ -51205,8 +51204,8 @@ kelpy_N	kelpy_N
 kelso_PN	kelso_PN
 kelt_N	kelt_N
 kelty_PN	kelty_PN
-kelvin_N	kelvin_1_N
-kelvin_N	kelvin_2_N
+kelvin_N	kelvin_N
+kelvin_N	kelvin_PN
 kemi_PN	kemi_PN
 kemijärvi_PN	kemijärvi_PN
 keminmaa_PN	keminmaa_PN
@@ -86579,7 +86578,6 @@ siris_N	siris_N
 sirloin_N	sirloin_N
 sirocco_N	sirocco_N
 sirrah_N	sirrah_N
-sirup_N	sirup_N
 sisal_N	sisal_1_N
 sisal_N	sisal_2_N
 siskin_N	siskin_N

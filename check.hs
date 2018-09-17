@@ -11,7 +11,7 @@ main = do
                []         -> do es <- fmap (catMaybes . map (readExpr . drop 5) . filter (\l -> take 4 l == "abs:") . lines) $ readFile "examples.txt"
                                 return (nub (concatMap lemmas es))
                ("-":args) -> return args
-  if null args
+  if null checked
     then return ()
     else do ls <- fmap lines $ readFile "WordNet.gf"
             writeFile "WordNet2.gf" (unlines (map (annotate checked) ls))

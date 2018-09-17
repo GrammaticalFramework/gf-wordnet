@@ -5,7 +5,7 @@ import Data.Maybe
 main = do
   [from_file,to_file] <- getArgs
   dict <- fmap (Map.fromList . mapMaybe toDictEntry . lines) $ readFile from_file
-  mapp <- fmap (map toMapEntry . lines) $ readFile "mapping.txt"
+  mapp <- fmap (map toMapEntry . lines) $ readFile "bootstrap/mapping.txt"
   writeFile to_file (unlines ["lin "++new_id++" "++fromMaybe "= variants {} ;" (Map.lookup old_id dict) | (old_id,new_id) <- mapp])
 
 toDictEntry l =

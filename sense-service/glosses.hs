@@ -6,10 +6,14 @@ import Data.Maybe
 import qualified Data.Set as Set
 import SenseSchema
 import System.Directory
+import Control.Monad    
+
 
 main = do
-  removeFile "semantics.db"
-  db <- openSG "semantics.db"
+  let db_name = "semantics.db"
+  fileExists <- doesFileExist db_name
+  when fileExists (removeFile db_name)
+  db <- openSG db_name
   inTransaction db $ do
     ls <- fmap lines $ readFile "../WordNet.gf"
     let fundefs = mapMaybe parseGloss ls

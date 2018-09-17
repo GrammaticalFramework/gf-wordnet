@@ -16410,14 +16410,10 @@ chin_N	chin_1_N
 chin_N	chin_2_N
 chin_strap_N	chin_strap_N
 chin_wagging_N	chin_wagging_N
-china_N	china_1_N
 china_N	china_2_N
-china_N	china_3_N
 china_N	china_4_N
 china_PN	china_1_PN
-china_PN	china_2_PN
 china_PN	china_3_PN
-china_PN	china_4_PN
 china_closet_N	china_closet_N
 chinaberry_N	chinaberry_1_N
 chinaberry_N	chinaberry_2_N
@@ -108076,8 +108072,8 @@ zenithal_A	zenithal_A
 zeolite_N	zeolite_N
 zephyr_N	zephyr_1_N
 zephyr_N	zephyr_2_N
-zeppelin_N	zeppelin_1_N
-zeppelin_N	zeppelin_2_N
+zeppelin_N	zeppelin_PN
+zeppelin_N	zeppelin_N
 zero_A	zero_1_A
 zero_A	zero_2_A
 zero_A	zero_3_A

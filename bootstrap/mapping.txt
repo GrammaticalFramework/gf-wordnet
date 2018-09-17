@@ -6865,7 +6865,6 @@ bacon_N	bacon_2_N
 bacon_N	bacon_3_N
 bacteremia_N	bacteremia_1_N
 bacteremic_A	bacteremic_A
-bacteria_N	bacteria_N
 bacterial_A	bacterial_A
 bactericidal_A	bactericidal_A
 bactericide_N	bactericide_1_N
@@ -39025,7 +39024,6 @@ gaskin_N	gaskin_N
 gaslight_N	gaslight_N
 gasman_N	gasman_N
 gasohol_N	gasohol_N
-gasolene_N	gasolene_N
 gasoline_N	gasoline_N
 gasometer_N	gasometer_1_N
 gasometer_N	gasometer_2_N
@@ -45827,7 +45825,6 @@ hutted_A	hutted_A
 hwainan_PN	hwainan_PN
 hyacinth_N	hyacinth_1_N
 hyacinth_N	hyacinth_2_N
-hyaena_N	hyaena_N
 hyaline_A	hyaline_A
 hyaline_N	hyaline_1_N
 hyalinization_N	hyalinization_1_N
@@ -46424,8 +46421,6 @@ iisalmi_PN	iisalmi_PN
 iitti_PN	iitti_PN
 ijtihad_N	ijtihad_N
 ikaalinen_PN	ikaalinen_PN
-ikon_N	ikon_1_N
-ikon_N	ikon_2_N
 ilama_N	ilama_1_N
 ilama_N	ilama_2_N
 ileitis_N	ileitis_N
@@ -86550,8 +86545,6 @@ sinusoidal_A	sinusoidal_A
 sioux_N	sioux_N
 sip_N	sip_N
 sip_V2	sip_V2
-siphon_N	siphon_1_N
-siphon_N	siphon_2_N
 siphon_V	siphon_1_V
 siphon_V2	siphon_1_V2
 siphon_V2	siphon_2_V2

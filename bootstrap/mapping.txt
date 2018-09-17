@@ -11647,7 +11647,6 @@ breath_N	breath_2_N
 breath_N	breath_3_N
 breath_N	breath_4_N
 breath_N	breath_5_N
-breathalyser_N	breathalyser_N
 breathalyzer_N	breathalyzer_N
 breathe_V	breathe_1_V
 breathe_V	breathe_2_V

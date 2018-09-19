@@ -1,18 +1,17 @@
 --# -path=.:../abstract:../common:../api
 concrete ParsePor of Parse =
-  CommonX - [Temp,Pol,SC,Tense],
-  NounPor - [PPartNP, UseN2, RelNP, DetNP],
-  VerbPor - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP],
+  NounPor - [PPartNP, UseN2, RelNP, DetNP], --*
+  VerbPor - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP], --*
   AdjectivePor - [ReflA2,CAdvAP],
   AdverbPor - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentencePor - [UseCl, EmbedVP],
   QuestionPor,
-  RelativePor - [IdRP],
+  RelativePor,
   ConjunctionPor,
-  PhrasePor - [UttAP, UttVP],
---  TextX - [Pol,PPos,PNeg,SC,CAdv],
+  PhrasePor - [UttAP,UttVP],
+  TextX - [Temp,Pol,SC,Tense], -- PPos,PNeg,CAdv
   IdiomPor,
---  TenseX - [Temp,Pol,PPos,PNeg,SC,CAdv],
+  TenseX - [Temp,Pol,SC,Tense], -- PPos,PNeg,CAdv
   ParseExtendPor,
   WordNetPor,
   ConstructionPor,

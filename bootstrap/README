@@ -1,16 +1,18 @@
 # -*- mode:org -*-
 #+TITLE: how to bootstrap a new concrete WordNet grammar
 
-If your target language has a [[https://github.com/grammaticalframework/wide-coverage][Translate grammar]], use the =migrate.hs=
-script to bootstrap it, and you are done. Else keep on reading.
+If your target language has a [[https://github.com/grammaticalframework/wide-coverage][Translate grammar]] but no WordNet, use
+the =migrate.hs= script to bootstrap it, and you are done. If your
+language has both, it is better to bootstrap the new concrete using
+WordNet. Else keep on reading.
 
-Our end goal is to map GF abstract =fun= names to forms in our target
+Our end goal is to map GF abstract =fun= names to lemmas in our target
 language. We do this by matching them by their WordNet synsets, so
-this method is only suitable for languages which have a decently-sized
-WordNet available in the format used by the [[http://compling.hss.ntu.edu.sg/omw/][OMW]]. This grammar uses the
-synsets from WordNet 3.1 while the OMW uses WordNet 3.0, so we need to
-do a little conversion before we are ready. The conversion is done
-using standard terminal utilities (GNU versions).
+this method is only suitable for languages which have a (hopefully
+decently-sized) WordNet available in the format used by the [[http://compling.hss.ntu.edu.sg/omw/][OMW]]. This
+grammar uses the synsets from WordNet 3.1 while the OMW uses WordNet
+3.0, so we need to do a little conversion before we are ready. The
+conversion is done using standard terminal utilities (GNU versions).
 
 * WN3.0->WN3.1 mapping
 The file =wn30map31.txt= maps the synsets from WordNet 3.0 to WordNet

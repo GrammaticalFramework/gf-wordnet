@@ -159,7 +159,7 @@ It creates a second file `examples2.txt` with two kinds of annotations:
 
 1. For those entries that are already checked it verifies that the grammar
 still produces the same linearization as the one in the treebank. 
-If it does'n then the wrong linearizations are marked with `FIX:`.
+If it doesn't then the wrong linearizations are marked with `FIX:`.
 Either the grammar or the linearization for those entries needs to be fixed.
 
 2. For those entries that are not checked yet, it verifies whether the

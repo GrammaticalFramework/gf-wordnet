@@ -53,19 +53,16 @@ splitOn e = split []
                            else (reverse xs) : split [] yt
                       else split (y:xs) yt
 
-singleton :: [a] -> Bool
-singleton [x] = True
-singleton _ = False
-
 lines2gf :: String -> String
 lines2gf l = gf
   where
     absname:forms = splitOn '\t' l
     (abs,cat) = splitOnElemRight '_' absname
     gf = concat ["lin ", absname, " = ", body, "--*\n"]
-    body = if singleton forms
-           then mkBody $ head forms
-           else concat ["variants {", concatMap mkBody forms, "} ; "]
+    body = case forms of
+             [] -> "variants {} ;"
+             [f] -> mkBody f
+             _ -> concat ["variants {", concatMap mkBody forms, "} ; "]
     mkBody = printf $ M.findWithDefault "%.0svariants {} ; " cat functionMap
 
 main :: IO ()

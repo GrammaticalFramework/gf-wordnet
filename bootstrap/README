@@ -45,3 +45,10 @@ revision afterwards. It takes two filepaths as arguments, the first is
 a file in the same format as =fun-lemmas.tsv=, and the other is the
 name of the output file. You can customize the output language name
 and the functions to be applied (to some extent).
+
+* merge old checked WordNet module with new machine-generated one
+let's say your WordNet got updated, and you would like to carry over
+the updates without losing the linearizations you have already
+checked. you can do this by calling
+: bash merge-wordnet-modules.bash OLD_MODULE NEW-MODULE > WordNetXXX.gf
+you'll have to add the headers manually, though.

@@ -60,7 +60,7 @@ lines2gf l = gf
     (abs,cat) = splitOnElemRight '_' absname
     gf = concat ["lin ", absname, " = ", body, "--*\n"]
     body = case forms of
-             [] -> "variants {} ;"
+             [] -> "variants {} ; "
              [f] -> mkBody f
              _ -> concat ["variants {", concatMap mkBody forms, "} ; "]
     mkBody = printf $ M.findWithDefault "%.0svariants {} ; " cat functionMap

@@ -159,9 +159,16 @@ gfwordnet.onclick_cell = function (cell) {
 		if (this.lex_ids[lex_id].synonyms.length > 0) {
 			details.appendChild(node("h1",{},[text("Synonyms")]));
 			var result = node("table",{class: "result"},[]);
-			result.appendChild(tr([th(text("Abstract")),th(text("Bulgarian")),th(text("English")),th(text("Swedish"))]));
+			var row = [th(text("Abstract"))]
+			for (var lang in gfwordnet.langs_list) {
+				row.push(th(text(gfwordnet.langs[gfwordnet.langs_list[lang]].name)));
+			}
+			result.appendChild(tr(row));
 			for (var i in this.lex_ids[lex_id].synonyms) {
-				var row = [td([text(this.lex_ids[lex_id].synonyms[i])]),td([]),td([]),td([])]
+				var row = [td([text(this.lex_ids[lex_id].synonyms[i])])]
+				for (var lang in gfwordnet.langs_list) {
+					row.push(td([]));
+				}
 				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(this.lex_ids[lex_id].synonyms[i]),bind(extract_linearization_synonym,row),errcont);
 				result.appendChild(tr(row));
 			}

@@ -11,8 +11,9 @@ all: semantics.db ../Parse.pgf SenseService
 
 ../Parse.pgf: ../Parse.gf ../ParseEng.gf ../ParsePor.gf ../ParseSwe.gf ../ParseBul.gf \
               ../ParseExtend.gf ../ParseExtendEng.gf ../ParseExtendPor.gf ../ParseExtendSwe.gf ../ParseExtendBul.gf \
-              ../WordNet.gf ../WordNetEng.gf ../WordNetSwe.gf ../WordNetPor.gf ../WordNetBul.gf
-	(cd ..; gf --make ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf)
+              ../WordNet.gf ../WordNetEng.gf ../WordNetSwe.gf ../WordNetPor.gf ../WordNetBul.gf \
+              ../Parse.probs
+	(cd ..; gf --make --probs=Parse.probs ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf)
 
 semantics.db: ../WordNet.gf ../examples.txt
 	runghc glosses.hs

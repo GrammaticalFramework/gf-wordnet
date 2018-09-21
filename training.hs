@@ -48,7 +48,7 @@ main = do
 
   putStrLn "Computing unigrams"
   unigram_ps <- em unigrams
-  writeFile "unigram.txt" (unlines [f++"\t"++show p | (f,p) <- mkUnigramProbs gr unigram_ps])
+  writeFile "Parse.probs" (unlines [f++"\t"++show p | (f,p) <- mkUnigramProbs gr unigram_ps])
 
   putStrLn "Computing bigrams"
   bigram_ps  <- em bigrams

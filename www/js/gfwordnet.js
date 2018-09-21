@@ -38,7 +38,7 @@ gfwordnet.search = function (from, input, result) {
 	function extract_senses(senses) {
 		var index = 1;
 		for (var i in senses) {
-			result.appendChild(tr(node("td",{colspan: 1 + gfwordnet.langs_list.length + (gfwordnet.can_check ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
+			result.appendChild(tr(node("td",{colspan: 2 + gfwordnet.langs_list.length + (gfwordnet.can_check ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
 				
@@ -81,9 +81,16 @@ gfwordnet.search = function (from, input, result) {
 		for (var lang in gfwordnet.langs_list) {
 			row.push(th(text(gfwordnet.langs[gfwordnet.langs_list[lang]].name)));
 		}
+		row.push(node("th",{style: "width: 10px; font-style: italic"},[text("f")]));
 		if (gfwordnet.can_check)
 			row.push(node("th",{style: "width: 10px"},[]));
 		result.appendChild(tr(row));
+
+		var total_prob = 0;
+		for (var i in lemmas) {
+			total_prob += Math.exp(-lemmas[i].prob);
+		}
+		var scale = (lemmas.length*4)/total_prob;
 
 		for (var i in lemmas) {
 			var lemma = lemmas[i].lemma;
@@ -92,6 +99,13 @@ gfwordnet.search = function (from, input, result) {
 				for (var lang in gfwordnet.langs) {
 					row.push(cell([]));
 				}
+				var rank_bar = node("td",{style: "white-space: nowrap"});
+				var rank = Math.round(Math.exp(-lemmas[i].prob)*scale);
+				while (rank > 0) {
+					rank_bar.appendChild(div_class("bar",[]));
+					rank--;
+				}
+				row.push(rank_bar);
 				rows[lemma] = row;
 				lexical_ids = lexical_ids+" "+lemma;
 
@@ -134,7 +148,7 @@ gfwordnet.onclick_cell = function (cell) {
 	    cell.parentNode.nextSibling.firstChild == null ||
 	    cell.parentNode.nextSibling.firstChild.className != "details") {
 		details = node("div", {}, []);
-		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 1 + gfwordnet.langs_list.length + (gfwordnet.can_check ? 1 : 0), class: "details"},[details])), cell.parentNode.nextSibling);
+		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 2 + gfwordnet.langs_list.length + (gfwordnet.can_check ? 1 : 0), class: "details"},[details])), cell.parentNode.nextSibling);
 
 		cell.parentNode.firstChild.firstChild.src = "checked_minus.png";
 	} else {

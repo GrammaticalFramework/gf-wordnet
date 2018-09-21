@@ -4,7 +4,7 @@ concrete ParsePor of Parse =
   VerbPor - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP], --*
   AdjectivePor - [ReflA2,CAdvAP],
   AdverbPor - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
-  SentencePor - [UseCl, EmbedVP],
+  SentencePor - [EmbedVP],
   QuestionPor,
   RelativePor,
   ConjunctionPor,

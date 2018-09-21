@@ -1,7 +1,7 @@
 #!bin/bash
 
 set -e
-errcho(){ >&2 echo $@; }
+errcho(){ >&2 echo "$@"; }
 
 mkdir tmp || errcho "rm tmp directory" # will throw error if existant, just remove it
 errcho 'format map between wn 3.0 and wn 3.1'
@@ -18,5 +18,6 @@ errcho 'cut to what we want (GF fun name and lemma in target language) and merge
 cut -d '	' -f 2,5 tmp/fun-lang.tsv  | sort -k1 | uniq | awk -F '\t' 'NF>1{a[$1] = a[$1]"\t"$2};END{for(i in a)print i""a[i]}' | sort -k1 > fun-lemmas.tsv
 errcho 'get missing gf funs and add missing lin'
 awk '{print $2}' tmp/synset-fun.txt | tr -d ' ' > tmp/missing-funs.txt
-LC_ALL=C join -t '	' -v 1 -1 1 -2 1 <(LC_ALL=C sort tmp/missing-funs.txt) <(LC_ALL=C sort fun-lemmas.tsv) >> fun-lemmas.tsv
+LC_ALL=C join -t '	' -v 1 -1 1 -2 1 <(LC_ALL=C sort tmp/missing-funs.txt) <(LC_ALL=C sort fun-lemmas.tsv) > tmp/missing-lemmas.tsv
+cat tmp/missing-lemmas.tsv >> fun-lemmas.tsv
 rm -r tmp

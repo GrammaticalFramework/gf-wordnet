@@ -86,11 +86,14 @@ gfwordnet.search = function (from, input, result) {
 			row.push(node("th",{style: "width: 10px"},[]));
 		result.appendChild(tr(row));
 
-		var total_prob = 0;
+		var min = Number.MAX_VALUE;
+		var max = Number.MIN_VALUE;
 		for (var i in lemmas) {
-			total_prob += Math.exp(-lemmas[i].prob);
+			var prob = Math.exp(-lemmas[i].prob);
+			if (min > prob) min = prob;
+			if (max < prob) max = prob;
 		}
-		var scale = (lemmas.length*4)/total_prob;
+		var scale = Math.min(5/max,3/min);
 
 		for (var i in lemmas) {
 			var lemma = lemmas[i].lemma;

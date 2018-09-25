@@ -15,7 +15,7 @@ all: semantics.db ../Parse.pgf SenseService
               ../Parse.probs
 	(cd ..; gf --make --probs=Parse.probs ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf)
 
-semantics.db: ../WordNet.gf ../examples.txt
+semantics.db: ../WordNet.gf ../examples.txt ../Parse.bigram.probs
 	runghc glosses.hs
 	rsync semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
 

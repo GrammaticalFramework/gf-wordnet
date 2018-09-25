@@ -22,6 +22,8 @@ main = do
     sequence_ [insertTriple db s p o | t@(s,p,o) <- glosses]
     ls <- fmap lines $ readFile "../examples.txt"
     sequence_ [insertTriple db s p o | t@(s,p,o) <- parseExamples funids ls]
+    ls <- fmap lines $ readFile "../Parse.bigram.probs"
+    sequence_ [insertTriple db s p o | t@(s,p,o) <- map parseContext ls]
   closeSG db
 
 parseGloss l = 
@@ -87,3 +89,11 @@ parseExamples funids (l1:l2:l3:l4:l5:l6:ls)
                      Nothing -> []
       in ts ++ parseExamples funids ls
 parseExamples funids (l:ls)                    = parseExamples funids ls
+
+
+parseContext l = (h,modifier,ep m p)
+  where
+    Just h  = readExpr w0
+    Just m  = readExpr w1
+    p       = read w2 :: Double
+    [w0,w1,w2] = words l

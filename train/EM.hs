@@ -36,9 +36,7 @@ em xs kl_limit kl_cut = do
             mergesort keys counts 0 size
             putStrLn ""
             putStr "cutting ... " >> hFlush stdout
-            print size
             (size,total) <- cuttingPoint counts
-            print (size,total)
             putStrLn ""
             keys   <- unsafeFreeze keys
             counts <- unsafeFreeze counts
@@ -108,7 +106,7 @@ em xs kl_limit kl_cut = do
                   set (i+1)
 
     cuttingPoint :: IOUArray Int Float -> IO (Int,Float)
-    cuttingPoint counts = do print (total,max) >> cut 0 0
+    cuttingPoint counts = cut 0 0
        where
          max = total * exp(-kl_cut)
 

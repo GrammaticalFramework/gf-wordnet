@@ -6,22 +6,20 @@ import Data.List
 import qualified Data.Map.Strict as Map
 import qualified Data.Set as Set
 import Data.Char(isDigit)
-import Data.Array
-import Data.Array.IO
-import Data.Array.Unsafe
 import Control.Monad(liftM2)
-import System.IO
 import Debug.Trace
+import System.IO
+import EM
 
 main = do
   putStr "Loading Parse.pgf ..." >> hFlush stdout
-  gr <- readPGF "Parse.pgf"
+  gr <- readPGF "../Parse.pgf"
   let null_unigrams = [([f],1) | f <- functions gr]
   putStrLn ""
 
   putStr "Collect observations ..." >> hFlush stdout
-  es <- fmap (concatMap getExpr . lines) $ readFile "examples.txt"
-  cfg <- readDepConfig "Parse.labels"
+  es <- fmap (concatMap getExpr . lines) $ readFile "../examples.txt"
+  cfg <- readDepConfig "../Parse.labels"
   let (!ex_unigrams,!ex_bigrams) = getExampleStatistics cfg es
 
   let Just eng = Map.lookup "ParseEng" (languages gr)
@@ -47,12 +45,12 @@ main = do
   putStrLn ("Number of bigram sets:  "++show (length bigrams))
 
   putStrLn "Computing unigrams"
-  unigram_ps <- em unigrams
-  writeFile "Parse.probs" (unlines [f++"\t"++show p | (f,p) <- mkUnigramProbs gr unigram_ps])
+  (unigram_ps,_) <- em unigrams kl_limit 0
+  writeFile "../Parse.probs" (unlines [f++"\t"++show p | (f,p) <- mkUnigramProbs gr unigram_ps])
 
   putStrLn "Computing bigrams"
-  bigram_ps  <- em bigrams
-  writeFile "bigram.txt" (unlines [x ++ "\t" ++ y ++ "\t" ++ show p | ((x,y),p) <- Map.toList bigram_ps])
+  (bigram_ps,total) <- em bigrams kl_limit kl_cut
+  writeFile "../Parse.bigram.probs" (unlines [x ++ "\t" ++ y ++ "\t" ++ show p | ((x,y),c) <- bigram_ps, let p = c/total, p > 0])
 
 
 getExpr l 
@@ -151,7 +149,7 @@ toUnigram (ax,root)
 
 toBigram ls (ax,root)
   | null ax || null ay = []
-  | otherwise          = [(liftM2 (,) ax ay, 1.0)]
+  | otherwise          = [(liftM2 (,) ay ax, 1.0)]
   where
     ay = if root == 0 then [] else fst (ls !! (root - 1))
 
@@ -163,10 +161,9 @@ summarize = Map.toList . Map.fromListWith (+)
 -- and computes the probabilities P(f | C) and P(C).
 -- In the process it also does Laplace smoothing
 
-mkUnigramProbs :: PGF -> Map.Map Fun Float -> [(CId,Float)]
-mkUnigramProbs gr f_ps0 =
-  let f_ps  = [(f,fromMaybe 0 (Map.lookup f f_ps0) + 1) | f <- functions gr]
-      c_ps  = foldl' addCount Map.empty f_ps
+mkUnigramProbs :: PGF -> [(Fun,Float)] -> [(CId,Float)]
+mkUnigramProbs gr f_ps =
+  let c_ps  = foldl' addCount Map.empty f_ps
       total = Map.foldl (+) 0 c_ps
   in map (toFunProb c_ps) f_ps ++
      map (toCatProb total) (Map.toList c_ps)
@@ -182,112 +179,5 @@ mkUnigramProbs gr f_ps0 =
 
     toCatProb total (cat,p) = (cat,p/total)
 
---------------------------------------------------------------
--- This function takes the estimated counts for the pairs 
--- of functions and computes the probabilities P(f1,f2).
--- There is no smoothing since these probabilities are expected
--- to be used together with a unigram back off. On the other hand
--- we take away very low probability events since those are just
--- artefacts from the roundings.
-
-mkBigramProbs :: Map.Map k Float -> [(k,Float)]
-mkBigramProbs cs =
-  let (total,ps) = (clip total 0 . sortBy count) (Map.toList cs)
-  in ps
-  where
-    count :: (k,Float) -> (k,Float) -> Ordering
-    count (_,c1) (_,c2) = compare c2 c1
-
-    total0     = Map.foldl (+) 0 cs :: Float
-    max        = total0 * exp(-kl_limit) :: Float
-
-    clip total sum ((x,p):xs)
-      | sum < max             = let (sum',ys) = clip total (sum + p) xs
-                                in (sum',(x,p/total) : ys)
-    clip total sum _          = (sum,[])
-
-------------------------------------------------------------
--- This function is the core of the algorithm. Here we use
--- expectation maximization to estimate the counts.
--- The first argument is a list of pairs. The first element
--- of every pair is the list of possible keys and the second
--- element is how many times we have seen this list of 
--- possibilities. The result is the estimated count for each
--- of the keys. The estimation continues until convergency, i.e.
--- until the KL divergency is less than kl_limit.
---
--- Note: the code is optimized for memory efficiency since
--- it must work with more that 50 000 000 latent variables.
--- Be careful if you do any changes here!
-
-data K a = K {-# UNPACK #-} !Int a
-
-em :: Ord k => [([k],Float)] -> IO (Map.Map k Float)
-em xs = do
-  old <- newArray (0,size-1) (1 :: Float)
-  new <- newArray (0,size-1) (0 :: Float)
-  new <- loop 1 old new (map addIndices xs)
-  arr <- unsafeFreeze new
-  return (Map.mapWithKey (\k _ -> arr ! Map.findIndex k keySet) keySet)
-  where
-    keySet = Map.fromList (concatMap (map (flip (,) ()) . fst) xs)
-    total  = sum (map snd xs) :: Float
-
-    addIndices (ks,c) = (map (\k -> K (Map.findIndex k keySet) k) ks, c)
-
-    size = Map.size keySet
-
-    loop :: Int -> IOUArray Int Float -> IOUArray Int Float -> [([K k],Float)] -> IO (IOUArray Int Float)
-    loop n old new xs = do
-      iter xs
-      kl <- divergency
-      clean
-      putStrLn (show n++" "++show kl)
-      if abs kl < kl_limit 
-        then return new
-        else loop (n+1) new old xs
-      where
-        iter :: [([K k],Float)] -> IO ()
-        iter []          = return ()
-        iter ((fs,c):xs) = do total <- sumup fs
-                              addCount total fs
-                              iter xs
-          where
-            addCount :: Float -> [K k] -> IO ()
-            addCount total []           = return ()
-            addCount total (K i f : fs) = do
-              old_c <- readArray old i
-              new_c <- readArray new i
-              writeArray new i (new_c + (old_c/total)*c)
-              addCount total fs
-
-        sumup = compute 0
-          where
-            compute :: Float -> [K k] -> IO Float
-            compute !s []           = return s
-            compute !s ((K i f):fs) = do
-              old_c <- readArray old i
-              compute (s + old_c) fs
-
-        divergency = sum 0 0
-          where
-            sum :: Int -> Float -> IO Float
-            sum !i !kl
-              | i >= size = return kl
-              | otherwise = do
-                  old_c <- readArray old i
-                  new_c <- readArray new i
-                  if abs(old_c-new_c)/total > 1e-50
-                    then sum (i+1) (kl + (old_c*log(old_c/new_c)/total))
-                    else sum (i+1) kl
-
-        clean = set 0
-          where
-            set :: Int -> IO ()
-            set !i
-              | i >= size = return ()
-              | otherwise = do
-                  writeArray old i 0
-                  set (i+1)
-
 kl_limit = 5e-8
+kl_cut   = 5e-3

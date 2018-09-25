@@ -57,12 +57,14 @@ cgiMain db = do
                    [("lex_ids",mkLexObj lex_ids)])
 
         mkLexObj lex_ids =
-          makeObj [(showExpr [] lex_id,mkInfObj domains examples sexamples) | (lex_id,domains,examples,sexamples) <- lex_ids]
-          
-        mkInfObj domains examples sexamples =
+          makeObj [(showExpr [] lex_id,mkInfObj domains examples sexamples heads mods) | (lex_id,domains,examples,sexamples,heads,mods) <- lex_ids]
+
+        mkInfObj domains examples sexamples heads mods =
           makeObj [("domains",  showJSON (mapMaybe unStr domains)),
                    ("examples", showJSON (map (showExpr []) examples)),
-                   ("secondary_examples", showJSON (map (showExpr []) sexamples))
+                   ("secondary_examples", showJSON (map (showExpr []) sexamples)),
+                   ("heads", makeObj heads),
+                   ("modifiers", makeObj mods)
                   ]
 
         getSense db senses lex_id = do
@@ -79,19 +81,25 @@ cgiMain db = do
           res <- queryTriple db (Just lex_id) (Just secondary_example) Nothing
           let sexamples = [example | (_,_,_,example) <- res]
 
+          res <- queryTriple db (Just lex_id) (Just head_) Nothing
+          let heads = [(showExpr [] h,showJSON p) | (_,_,_,e) <- res, Just (_,[h,ep]) <- [unApp e], let Just p = unFloat ep]
+
+          res <- queryTriple db (Just lex_id) (Just modifier) Nothing
+          let modifiers = [(showExpr [] m,showJSON p) | (_,_,_,e) <- res, Just (_,[m,ep]) <- [unApp e], let Just p = unFloat ep]
+
           case Map.lookup sense_id senses of
-            Just (mb_gloss,synset,lex_ids) -> return (Map.insert sense_id (mb_gloss,synset,(lex_id,domains,examples,sexamples):lex_ids) senses)
+            Just (mb_gloss,synset,lex_ids) -> return (Map.insert sense_id (mb_gloss,synset,(lex_id,domains,examples,sexamples,heads,modifiers):lex_ids) senses)
             Nothing                        -> do res <- queryTriple db (Just sense_id_e) (Just gloss) Nothing
                                                  let mb_gloss = head ([unStr gloss_str | (_,_,_,gloss_str) <- res]++[Nothing])
                                                  res <- queryTriple db Nothing (Just synset) (Just sense_id_e)
                                                  let synset = [lex_id | (_,lex_id,_,_) <- res]
-                                                 return (Map.insert sense_id (mb_gloss,synset,[(lex_id,domains,examples,sexamples)]) senses)
+                                                 return (Map.insert sense_id (mb_gloss,synset,[(lex_id,domains,examples,sexamples,heads,modifiers)]) senses)
           where
             Just (sense_id,[]) = unApp sense_id_e
-            
+
         addKey (sense_id,(mb_gloss,synset,lex_ids)) = (fst (head key_lex_ids), (sense_id,(mb_gloss,synset,map snd key_lex_ids)))
           where
-            key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_,_) <- lex_ids]
+            key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_,_,_,_) <- lex_ids]
 
             toKey lex_id = (reverse rid,reverse rcat,read ('0':reverse rn)::Int)
               where

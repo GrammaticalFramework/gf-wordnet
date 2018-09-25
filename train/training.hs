@@ -89,16 +89,11 @@ readDepConfig fpath =
                                      [(n,"")] -> DepIndex n
                                      _        -> error ("Unknown pragma "++w)
 
--- We want to give a higher weight to statistics from the corpus.
--- For that purpose every observed count is multiplied with
--- the following constant:
-example_scale = 5
-
 getExampleStatistics :: DepConfig -> [Expr] -> ([([Fun], Float)], [([(Fun,Fun)], Float)])
 getExampleStatistics config es = 
   let (unigrams, bigrams) = foldl' (\stats e -> fst $ getStats stats e) (Map.empty,Map.empty) es
-  in ([([f],c*example_scale) | (f,c) <- Map.toList unigrams]
-     ,[([(h,m)],c*example_scale) | ((h,_,m),c) <- Map.toList bigrams]
+  in ([([f],c) | (f,c) <- Map.toList unigrams]
+     ,[([(h,m)],c) | ((h,_,m),c) <- Map.toList bigrams]
      )
   where
     getStats stats@(unigrams,bigrams) e =

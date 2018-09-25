@@ -172,8 +172,56 @@ gfwordnet.onclick_cell = function (cell) {
 	var lex_id = cell.parentNode.firstChild.firstChild.nextSibling.textContent;
 
 	if (index == 0) {
+		var lex_def = this.lex_ids[lex_id];
+
+		var min = Number.MAX_VALUE;
+		var max = Number.MIN_VALUE;
+		for (var head in lex_def.heads) {
+			if (max < lex_def.heads[head])
+				max = lex_def.heads[head];
+			if (min > lex_def.heads[head])
+				min = lex_def.heads[head];
+		}
+		for (var mod  in lex_def.modifiers) {
+			if (max < lex_def.modifiers[head])
+				max = lex_def.modifiers[head];
+			if (min > lex_def.modifiers[head])
+				min = lex_def.modifiers[head];
+		}
+		var scale = Math.min(30/max,10/min);
+
+		var list = [[lex_id,35]];
+		for (var head in lex_def.heads) {
+			var size = lex_def.heads[head]*scale;
+			if (size > 1)
+				list.push([head,size]);
+		}
+		for (var mod  in lex_def.modifiers) {
+			var size = lex_def.modifiers[mod]*scale;
+			if (size > 1)
+				list.push([mod,size]);
+		}
+		if (list.length > 1) {
+			function select_color(word, weight, fontSize, distance, theta) {
+				if (word in this.heads) {
+					return "orange";
+				}
+				if (word in this.modifiers) {
+					return "turquoise";
+				}
+				return "black";
+			}
+
+			details.appendChild(node("h1",{},[text("Context")]));
+
+			var canvas = node("canvas", {width: 300, height: 150}, []);
+			details.appendChild(canvas);
+			
+			WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,lex_def)});
+		}
+
 		var row = [];
-		if (this.lex_ids[lex_id].synonyms.length > 0) {
+		if (lex_def.synonyms.length > 0) {
 			details.appendChild(node("h1",{},[text("Synonyms")]));
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
@@ -181,28 +229,28 @@ gfwordnet.onclick_cell = function (cell) {
 				row.push(th(text(gfwordnet.langs[gfwordnet.langs_list[lang]].name)));
 			}
 			result.appendChild(tr(row));
-			for (var i in this.lex_ids[lex_id].synonyms) {
-				var row = [td([text(this.lex_ids[lex_id].synonyms[i])])]
+			for (var i in lex_def.synonyms) {
+				var row = [td([text(lex_def.synonyms[i])])]
 				for (var lang in gfwordnet.langs_list) {
 					row.push(td([]));
 				}
-				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(this.lex_ids[lex_id].synonyms[i]),bind(extract_linearization_synonym,row),errcont);
+				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.synonyms[i]),bind(extract_linearization_synonym,row),errcont);
 				result.appendChild(tr(row));
 			}
 			details.appendChild(result);
 		}
-		if (this.lex_ids[lex_id].examples.length > 0) {
+		if (lex_def.examples.length > 0) {
 			var header = node("h1",{},[text("Examples")]);
 			details.appendChild(header);
-			for (var i in this.lex_ids[lex_id].examples) {
-				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(this.lex_ids[lex_id].examples[i]),bind(extract_linearization,header),errcont);
+			for (var i in lex_def.examples) {
+				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i]),bind(extract_linearization,header),errcont);
 			}
 		}
-		if (this.lex_ids[lex_id].secondary_examples.length > 0) {
+		if (lex_def.secondary_examples.length > 0) {
 			var header = node("h1",{},[text("Secondary Examples")]);
 			details.appendChild(header);
-			for (var i in this.lex_ids[lex_id].secondary_examples) {
-				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(this.lex_ids[lex_id].secondary_examples[i]),bind(extract_linearization,header),errcont);
+			for (var i in lex_def.secondary_examples) {
+				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header),errcont);
 			}
 		}
 	} else {

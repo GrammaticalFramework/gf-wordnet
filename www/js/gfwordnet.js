@@ -183,23 +183,29 @@ gfwordnet.onclick_cell = function (cell) {
 				min = lex_def.heads[head];
 		}
 		for (var mod  in lex_def.modifiers) {
-			if (max < lex_def.modifiers[head])
-				max = lex_def.modifiers[head];
-			if (min > lex_def.modifiers[head])
-				min = lex_def.modifiers[head];
+			if (max < lex_def.modifiers[mod])
+				max = lex_def.modifiers[mod];
+			if (min > lex_def.modifiers[mod])
+				min = lex_def.modifiers[mod];
 		}
-		var scale = Math.min(30/max,10/min);
-
-		var list = [[lex_id,35]];
+		var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));
+		var scale = fontSize*Math.min(2/max,1/(min*2));
+		var list = [];
 		for (var head in lex_def.heads) {
 			var size = lex_def.heads[head]*scale;
-			if (size > 1)
+			if (size > 1) {
+				if (size < 9)
+					size = 9;
 				list.push([head,size]);
+			}
 		}
 		for (var mod  in lex_def.modifiers) {
 			var size = lex_def.modifiers[mod]*scale;
-			if (size > 1)
+			if (size > 1) {
+				if (size < 9)
+					size = 9;
 				list.push([mod,size]);
+			}
 		}
 		if (list.length > 1) {
 			function select_color(word, weight, fontSize, distance, theta) {
@@ -214,7 +220,7 @@ gfwordnet.onclick_cell = function (cell) {
 
 			details.appendChild(node("h1",{},[text("Context")]));
 
-			var canvas = node("canvas", {width: 300, height: 150}, []);
+			var canvas = node("canvas", {width: 300, height: 200}, []);
 			details.appendChild(canvas);
 			
 			WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,lex_def)});

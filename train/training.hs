@@ -9,6 +9,7 @@ import Data.Char(isDigit)
 import Control.Monad(liftM2)
 import Debug.Trace
 import System.IO
+import CONLLReader
 import EM
 
 main = do
@@ -23,25 +24,25 @@ main = do
   let (!ex_unigrams,!ex_bigrams) = getExampleStatistics cfg es
 
   let Just eng = Map.lookup "ParseEng" (languages gr)
-  lss <- fmap (splitSentences eng . lines) $ readFile "ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-train.conllu"
-  let !en_unigrams = summarize (concat [concatMap toUnigram ls | ls <- lss])
-  let !en_bigrams  = summarize (concat [concatMap (toBigram ls) ls | ls <- lss])
+  dts <- fmap (readDepTrees eng . lines) $ readFile "ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-train.conllu"
+  let !en_unigrams = concatMap depTreeUnigrams dts
+  let !en_bigrams  = concatMap depTreeBigrams dts
 
   let Just bul = Map.lookup "ParseBul" (languages gr)
-  lss <- fmap (splitSentences bul . lines) $ readFile "ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-train.conllu"
-  let !bg_unigrams = summarize (concat [concatMap toUnigram ls | ls <- lss])
-  let !bg_bigrams  = summarize (concat [concatMap (toBigram ls) ls | ls <- lss])
+  dts <- fmap (readDepTrees bul . lines) $ readFile "ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-train.conllu"
+  let !bg_unigrams = concatMap depTreeUnigrams dts
+  let !bg_bigrams  = concatMap depTreeBigrams dts
 
   let Just swe = Map.lookup "ParseSwe" (languages gr)
-  lss <- fmap (splitSentences swe . lines) $ readFile "ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-train.conllu"
-  let !sv_unigrams = summarize (concat [concatMap toUnigram ls | ls <- lss])
-  let !sv_bigrams  = summarize (concat [concatMap (toBigram ls) ls | ls <- lss])
+  dts <- fmap (readDepTrees swe . lines) $ readFile "ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-train.conllu"
+  let !sv_unigrams = concatMap depTreeUnigrams dts
+  let !sv_bigrams  = concatMap depTreeBigrams dts
   putStrLn ""
 
-  let unigrams = null_unigrams ++ ex_unigrams ++ en_unigrams ++ bg_unigrams ++ sv_unigrams
+  let unigrams = summarize (null_unigrams ++ ex_unigrams ++ en_unigrams ++ bg_unigrams ++ sv_unigrams)
   putStrLn ("Number of unigram sets: "++show (length unigrams))
 
-  let bigrams  = ex_bigrams ++ en_bigrams  ++ bg_bigrams  ++ sv_bigrams
+  let bigrams  = summarize (ex_bigrams ++ en_bigrams ++ bg_bigrams ++ sv_bigrams)
   putStrLn ("Number of bigram sets:  "++show (length bigrams))
 
   putStrLn "Computing unigrams"
@@ -113,40 +114,6 @@ getExampleStatistics config es =
     addDep = foldl' (flip (Map.alter (maybe (Just 1) (Just . (+1)))))
     addUni = Map.alter (maybe (Just 1) (Just . (+1)))
 
-
-splitSentences cnc []   = []
-splitSentences cnc (l:ls)
-  | take 1 l == "#" = splitSentences cnc ls
-  | otherwise       = let (ls1,ls2) = break null ls
-                      in map (morpho . tsv) (l:ls1) : 
-                         case ls2 of
-                           []    -> []
-                           _:ls2 -> splitSentences cnc ls2
-  where
-    morpho fs =
-      ((Set.toList . Set.fromList . map fst3 . lookupMorpho cnc) (fs !! 1)
-      ,case reads (takeWhile isDigit (fs !! 6)) of
-         [(x,"")] -> x
-         _        -> if fs !! 6 == "_" then 0 else error (fs !! 6)
-      )
-
-    fst3 (x,y,z) = x
-
-tsv :: String -> [String]
-tsv "" = []
-tsv cs =
-  let (x,cs1) = break (=='\t') cs
-  in x : if null cs1 then [] else tsv (tail cs1)
-
-toUnigram (ax,root)
-  | null ax   = []
-  | otherwise = [(ax, 1.0)]
-
-toBigram ls (ax,root)
-  | null ax || null ay = []
-  | otherwise          = [(liftM2 (,) ay ax, 1.0)]
-  where
-    ay = if root == 0 then [] else fst (ls !! (root - 1))
 
 summarize :: Ord k => [(k,Float)] -> [(k,Float)]
 summarize = Map.toList . Map.fromListWith (+)

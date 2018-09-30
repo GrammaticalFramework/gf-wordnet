@@ -7730,7 +7730,7 @@ basic_A	basic_3_A
 basic_A	basic_4_A
 basic_N	basic_1_N
 basic_N	basic_2_N
-basically_Adv	basically_Adv
+basically_Adv	basically_AdV
 basics_N	basics_1_N
 basics_N	basics_2_N
 basidial_A	basidial_A
@@ -12930,7 +12930,7 @@ bust_V2	bust_2_V2
 bust_V2	bust_3_V2
 bust_V2	bust_4_V2
 bust_up_N	bust_up_N
-bust_up_V	bust_up_V
+bust_up_V	bust_up_V2
 bustard_N	bustard_N
 buster_N	buster_1_N
 buster_N	buster_2_N
@@ -15071,8 +15071,9 @@ cause_N	cause_2_N
 cause_N	cause_3_N
 cause_N	cause_4_N
 cause_N	cause_5_N
-cause_V2	cause_1_V2
-cause_V2V	cause_2_V2V
+cause_V2	cause_V2
+cause_V2	cause_V3
+cause_V2V	cause_V2V
 causeless_A	causeless_1_A
 causeless_A	causeless_2_A
 causerie_N	causerie_N
@@ -50968,8 +50969,6 @@ kaffiyeh_N	kaffiyeh_N
 kafkaesque_A	kafkaesque_1_A
 kafkaesque_A	kafkaesque_2_A
 kahikatea_N	kahikatea_N
-kail_N	kail_1_N
-kail_N	kail_2_N
 kainite_N	kainite_N
 kaiser_N	kaiser_N
 kajaani_PN	kajaani_PN
@@ -59424,7 +59423,7 @@ mitzvah_N	mitzvah_2_N
 mix_N	mix_1_N
 mix_N	mix_2_N
 mix_N	mix_3_N
-mix_V	mix_1_V
+mix_V	mix_1_V2
 mix_V	mix_3_V
 mix_V2	mix_2_V2
 mix_V2	mix_4_V2

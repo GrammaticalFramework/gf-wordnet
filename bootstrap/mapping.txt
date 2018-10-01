@@ -39319,7 +39319,7 @@ genip_N	genip_2_N
 genipa_N	genipa_N
 genipap_N	genipap_N
 genital_A	genital_A
-genitalia_N	genitalia_1_N
+genitalia_N	genitalia_N
 genitive_A	genitive_A
 genitive_N	genitive_N
 genitor_N	genitor_N

@@ -1,5 +1,4 @@
 all: semantics.db ../Parse.pgf SenseService
-	rsync ../Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 	@echo ""
 	@echo "********************************************************************************"
 	@echo "* Now kill the SenseService.fcgi process"
@@ -14,6 +13,7 @@ all: semantics.db ../Parse.pgf SenseService
               ../WordNet.gf ../WordNetEng.gf ../WordNetSwe.gf ../WordNetPor.gf ../WordNetBul.gf \
               ../Parse.probs
 	(cd ..; gf --make --probs=Parse.probs ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf)
+	rsync ../Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 
 semantics.db: ../WordNet.gf ../examples.txt ../Parse.bigram.probs
 	runghc glosses.hs

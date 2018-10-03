@@ -15,6 +15,7 @@ enum
 	KB_GF_WORDNET
 };
 
+
 /* Function realloc_it() is a wrapper function for standard realloc()
  * with one difference - it frees old memory pointer in case of realloc
  * failure. Thus, DO NOT use old data pointer in anyway after call to
@@ -30,12 +31,13 @@ static inline void *realloc_it(void *ptrmem, size_t size) {
 	return p;
 }
 
-gboolean gf_wordnet_lookup(gchar *word, char** json, jsmntok_t **json_toks, size_t* json_size)
+gboolean json_request(char** json, jsmntok_t **json_toks, size_t* json_size, gchar *host, gchar* url_fmt, ...)
 {
+	va_list a_list;
+    va_start(a_list, url_fmt);
+
     /* first what are we going to send and where are we going to send it? */
     int portno =        80;
-    char *host =        "cloud.grammaticalframework.org";
-    char *message_fmt = "GET /robust/Parse.pgf?command=c-lookupmorpho&input=%s&from=ParseEng HTTP/1.1\r\nhost: %s\r\n\r\n";
 
     struct hostent *server;
     struct sockaddr_in serv_addr;
@@ -43,7 +45,11 @@ gboolean gf_wordnet_lookup(gchar *word, char** json, jsmntok_t **json_toks, size
     char buffer[1024];
 
     /* fill in the parameters */
-    sprintf(buffer,message_fmt,word,host);
+    strcpy(buffer,"GET ");
+    vsnprintf(buffer+4,sizeof(buffer)-(27+strlen(host)),url_fmt,a_list);
+    strcat(buffer," HTTP/1.1\r\nhost: ");
+    strcat(buffer,host);
+    strcat(buffer,"\r\n\r\n");
 
     /* create the socket */
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -180,27 +186,164 @@ again:;
 	return TRUE;
 }
 
+static gboolean
+json_streq(gchar* js, jsmntok_t *t, gchar* key) {
+	return (t->type == JSMN_STRING &&
+	        t->end - t->start == strlen(key) &&
+			strncmp(key, js+t->start, t->end - t->start) == 0);
+}
+
+static gchar*
+json_strcpy(gchar* js, jsmntok_t *t) {
+	g_assert(t->type == JSMN_STRING);
+
+	size_t len = t->end - t->start;
+	gchar* str = malloc(len+1);
+	memcpy(str, js+t->start, len);
+	str[len] = 0;
+	
+	return str;
+}
+
+static int
+json_skip(const char *js, jsmntok_t *t, size_t count) {
+	int i, j, k;
+	if (count == 0) {
+		return 0;
+	}
+	if (t->type == JSMN_PRIMITIVE || t->type == JSMN_STRING) {
+		return 1;
+	} else if (t->type == JSMN_OBJECT) {
+		j = 0;
+		for (i = 0; i < t->size; i++) {
+			j += json_skip(js, t+1+j, count-j);
+			j += json_skip(js, t+1+j, count-j);
+		}
+		return j+1;
+	} else if (t->type == JSMN_ARRAY) {
+		j = 0;
+		for (i = 0; i < t->size; i++) {
+			j += json_skip(js, t+1+j, count-j);
+		}
+		return j+1;
+	}
+	return 0;
+}
+
+
 enum
 {
   COL_ABSTRACT = 0,
   COL_ENGLISH,
   COL_SWEDISH,
   COL_BULGARIAN,
+  COL_DEFINITION,
   NUM_COLS
 } ;
 
 static void
-populate_suggestions_list(GtkListStore* store, const char *js, jsmntok_t *t, size_t count)
+gf_wordnet_linearize(gchar* abs, gchar** eng, gchar** swe, gchar** bul) {
+	char *js;
+	jsmntok_t *t;
+	size_t count;
+
+	*eng = NULL;
+	*swe = NULL;
+	*bul = NULL;
+
+	if (!json_request(&js, &t, &count,
+	                  "cloud.grammaticalframework.org",
+	                  "/robust/Parse.pgf?command=c-linearize&to=ParseEng%20ParseSwe%20ParseBul&tree=%s",
+	                  abs))
+        return;
+
+	g_assert(t->type == JSMN_ARRAY);
+
+	int j = 1, i, k;
+    for (i = 0; i < t->size; i++) {
+		jsmntok_t *obj = t+j;  j++;
+		g_assert(obj->type == JSMN_OBJECT);
+
+		gchar** to = NULL;
+		for (k = 0; k < obj->size; k++) {
+			jsmntok_t *key = t+j;  j++;
+			jsmntok_t *val = t+j;  j++;
+
+			if (json_streq(js, key, "to")) {
+				if (json_streq(js, val, "ParseEng"))
+					to = eng;
+				else if (json_streq(js, val, "ParseSwe"))
+					to = swe;
+				else if (json_streq(js, val, "ParseBul"))
+					to = bul;
+			} else if (json_streq(js, key, "text")) {
+				if (to != NULL)
+					*to = json_strcpy(js, val);
+			} else {
+				j += json_skip(js, val, count-j+1)-1;
+			}
+		}
+    }
+
+    free(js);
+	free(t);
+}
+
+static gboolean lookup_finished = TRUE;
+
+typedef struct {
+	GtkListStore* store;
+	gchar *abs, *eng, *swe, *bul, *gloss;
+} LookupRow;
+
+static gboolean
+add_row (gpointer data)
 {
-    GtkWidget* view;
-    GtkCellRenderer* renderer;
+	LookupRow *row = data;
+
+	if (!lookup_finished) {
+		GtkTreeIter iter;
+		gtk_list_store_append (row->store, &iter);
+		gtk_list_store_set (row->store, &iter,
+							COL_ABSTRACT, row->abs,
+							COL_ENGLISH,  row->eng,
+							COL_SWEDISH,  row->swe,
+							COL_BULGARIAN,  row->bul,
+							COL_DEFINITION, row->gloss,
+							-1);
+	}
+
+	free(row->abs);
+	free(row->eng);
+	free(row->swe);
+	free(row->bul);
+	free(row->gloss);
+	free(row);
+
+	return G_SOURCE_REMOVE;
+}
+
+static void
+gf_wordnet_lookup(GtkListStore* store, gchar *word)
+{
+	char *js;
+	jsmntok_t *t;
+	size_t count;
+
+	//////////////////////////////////////////////////////////////
+	// 1. Lexical lookup. The result is a list of unique lemmas
+	// separated with %20 in variable lemmas
+	if (!json_request(&js, &t, &count,
+	                  "cloud.grammaticalframework.org",
+	                  "/robust/Parse.pgf?command=c-lookupmorpho&input=%s&from=ParseEng",
+	                  word))
+        return;
+
+	gint lemmas_len = 0;
+	gchar* lemmas = NULL;
 
     g_assert(t->type == JSMN_ARRAY);
 
-	gint lemma_count = 0;
-	gchar* lemmas[t->size];
-
-    GtkTreeIter iter;
 	int j = 0, i, k, l;
     for (i = 0; i < t->size; i++) {
 		jsmntok_t *obj = t+1+j;  j++;
@@ -208,45 +351,105 @@ populate_suggestions_list(GtkListStore* store, const char *js, jsmntok_t *t, siz
 
 		for (k = 0; k < obj->size; k++) {
 			jsmntok_t *key = t+1+j;  j++;
-			g_assert(key->type == JSMN_STRING);
-			
 			jsmntok_t *val = t+1+j;  j++;
 
-			char* lemma = "lemma";
-			if (key->end - key->start == strlen(lemma) &&
-			    strncmp(lemma, js+key->start, key->end - key->start) == 0) {
-
+			if (json_streq(js, key, "lemma")) {
 				g_assert(val->type == JSMN_STRING);
 
 				size_t len = val->end - val->start;
-				gchar* fun = malloc(len + 1);
-				memcpy(fun, js+val->start, len);
-				fun[len] = 0;
 
 				gboolean found = FALSE;
-				for (l = 0; l < lemma_count; l++) {
-					if (strcmp(lemmas[l], fun) == 0) {
-						free(fun);
-						found = TRUE;
-						break;
+				if (lemmas != NULL) {
+					for (l = 0; l <= ((int) lemmas_len)-((int) len); l++) {
+						if (strncmp(lemmas+l, js+val->start, len) == 0) {
+							found = TRUE;
+							break;
+						}
 					}
 				}
 
 				if (!found) {
-					lemmas[lemma_count++] = fun;
-
-					gtk_list_store_append (store, &iter);
-					gtk_list_store_set (store, &iter,
-										COL_ABSTRACT, fun,
-										-1);
+					lemmas = realloc_it(lemmas, lemmas_len + len + 4);
+					if (lemmas == NULL) {
+						free(js);
+						free(t);
+						return;
+					}
+					if (lemmas_len > 0) {
+						memcpy(lemmas+lemmas_len, "%20", 3);
+						lemmas_len += 3;
+					}
+					memcpy(lemmas+lemmas_len, js+val->start, len);
+					lemmas_len += len;
+					lemmas[lemmas_len] = 0;
 				}
 			}
 		}
     }
 
-    for (l = 0; l < lemma_count; l++) {
-		free(lemmas[l]);
+    free(js);
+	free(t);
+
+	//////////////////////////////////////////////////////////////
+	// 2. Semantic lookup.
+    if (!json_request(&js, &t, &count,
+	                  "www.grammaticalframework.org",
+	                  "/~krasimir/SenseService.fcgi?lexical_ids=%s",
+	                  lemmas)) {
+		free(lemmas);
+        return;
 	}
+	free(lemmas);
+
+    g_assert(t->type == JSMN_ARRAY);
+
+	j = 1;
+    for (i = 0; i < t->size; i++) {
+		jsmntok_t *obj = t+j;  j++;
+		g_assert(obj->type == JSMN_OBJECT);
+
+		gchar* gloss = NULL;
+		for (k = 0; k < obj->size; k++) {
+			jsmntok_t *key = t+j;  j++;
+			jsmntok_t *val = t+j;  j++;
+
+			if (json_streq(js, key, "gloss") && gloss == NULL) {
+				gloss = json_strcpy(js, val);
+			} else if (json_streq(js, key, "lex_ids")) {
+				g_assert(val->type == JSMN_OBJECT);
+
+				jsmntok_t *lex_obj = val;
+				for (l = 0; l < lex_obj->size; l++) {
+					jsmntok_t *key = t+j;  j++;
+					jsmntok_t *val = t+j;  j++;
+
+					LookupRow* row = malloc(sizeof(LookupRow));
+					row->store = store;
+
+					row->abs = json_strcpy(js, key);
+					gf_wordnet_linearize(row->abs,
+					                    &row->eng,
+					                    &row->swe,
+					                    &row->bul);
+
+					row->eng = row->eng ? row->eng : strdup("");
+					row->swe = row->swe ? row->swe : strdup("");
+					row->bul = row->bul ? row->bul : strdup("");
+					row->gloss = strdup(gloss);
+
+					gdk_threads_add_idle(add_row, row);
+
+					j += json_skip(js, val, count-j+1)-1;
+				}
+			} else {
+				j += json_skip(js, val, count-j+1)-1;
+			}
+		}
+		free(gloss);
+    }
+
+    free(js);
+	free(t);
 }
 
 typedef struct {
@@ -288,10 +491,10 @@ on_popup_focus_out (GtkWidget *widget,
     return TRUE;
 }
 
-gboolean
+static gboolean
 on_popup_key_press (GtkWidget *widget,
                     GdkEventKey *event,
-                    gpointer user_data)
+                    gpointer data)
 {
     switch (event->keyval)
     {
@@ -301,6 +504,26 @@ on_popup_key_press (GtkWidget *widget,
     }
 
     return FALSE; 
+}
+
+typedef struct {
+	GtkListStore* store;
+	gchar *word;
+	GThread* thread;
+} LookupThread;
+
+static void
+on_popup_destroy(GtkWidget *widget,
+                 gpointer  data)
+{
+	LookupThread *lookup_thread = data;
+
+	lookup_finished = TRUE;
+
+	g_object_unref(lookup_thread->store);
+	g_free(lookup_thread->word);
+	g_thread_unref(lookup_thread->thread);
+	g_free(lookup_thread);
 }
 
 static gchar*
@@ -339,13 +562,25 @@ destroy_sdata(gpointer data, GClosure *closure) {
 	free(data);
 }
 
-static void item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+static gpointer
+lookup_thread_cb(gpointer data) {
+	LookupThread *lookup_thread = data;
+	gf_wordnet_lookup(lookup_thread->store, lookup_thread->word);
+}
+
+static void
+item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 {
+	if (!lookup_finished)
+		return;
+
 	GeanyPlugin* plugin = (GeanyPlugin*) user_data;
     GeanyDocument *doc = document_get_current();
 
+    LookupThread* lookup_thread = malloc(sizeof(LookupThread));
+
     SelectionData* sdata = malloc(sizeof(SelectionData));
-    gchar* word = get_current_word_range(doc->editor->sci, sdata);
+    lookup_thread->word = get_current_word_range(doc->editor->sci, sdata);
 
 	gint x = scintilla_send_message (doc->editor->sci, SCI_POINTXFROMPOSITION, 0, sdata->start);
 	gint y = scintilla_send_message (doc->editor->sci, SCI_POINTYFROMPOSITION, 0, sdata->start);
@@ -362,7 +597,7 @@ static void item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
     gtk_container_set_border_width (GTK_CONTAINER (popup_window), 3);
     gtk_window_set_resizable(GTK_WINDOW (popup_window), FALSE);
     gtk_window_set_decorated(GTK_WINDOW (popup_window), FALSE);
-    gtk_widget_set_size_request (popup_window, 450, 150);
+    gtk_widget_set_size_request (popup_window, 550, 150);
     gtk_window_set_type_hint(GTK_WINDOW(popup_window), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
     gtk_window_set_transient_for(GTK_WINDOW (popup_window),GTK_WINDOW (plugin->geany_data->main_widgets->window));
     gtk_window_move (GTK_WINDOW (popup_window), win_x+x, win_y+y+20);
@@ -375,6 +610,10 @@ static void item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
                       "key-press-event",
                       G_CALLBACK(on_popup_key_press),
                       NULL);
+    g_signal_connect (G_OBJECT (popup_window),
+                      "destroy",
+                      G_CALLBACK(on_popup_destroy),
+                      lookup_thread);
 
     GtkWidget* view = gtk_tree_view_new ();
 
@@ -410,15 +649,25 @@ static void item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
                                                  "text", COL_BULGARIAN,
                                                  NULL);
 
+    renderer = gtk_cell_renderer_text_new ();
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (view),
+                                                 -1,
+                                                 "Definition",
+                                                 renderer,
+                                                 "text", COL_DEFINITION,
+                                                 NULL);
+
     g_signal_connect_data (view, "row-activated",
         G_CALLBACK(row_activated_cb), sdata,
         destroy_sdata, 0);
 
-    GtkListStore  *store = 
+    lookup_thread->store =
         gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING,
-                                      G_TYPE_STRING, G_TYPE_STRING);
+                                      G_TYPE_STRING, G_TYPE_STRING,
+                                      G_TYPE_STRING);
 
-    gtk_tree_view_set_model (GTK_TREE_VIEW (view), GTK_TREE_MODEL(store));
+    gtk_tree_view_set_model (GTK_TREE_VIEW (view),
+                             GTK_TREE_MODEL(lookup_thread->store));
 
     GtkWidget *scrolled_window = gtk_scrolled_window_new (NULL, NULL);
     gtk_container_add (GTK_CONTAINER (scrolled_window), view);
@@ -426,32 +675,24 @@ static void item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 
     gtk_widget_show_all (popup_window);
 
-	char* json = NULL;
-	jsmntok_t* json_toks = NULL;
-	size_t json_size = 0;
-    if (gf_wordnet_lookup(word,&json,&json_toks,&json_size)) {
-		populate_suggestions_list(store, json,json_toks,json_size);
-		free(json);
-		free(json_toks);
-	}
+	lookup_finished = FALSE;
+    lookup_thread->thread =
+        g_thread_new ("lookup_thread",
+                      lookup_thread_cb,
+                      lookup_thread);
 
 	gtk_widget_grab_focus (view);
-
-    /* The tree view has acquired its own reference to the
-     *  model, so we can drop ours. That way the model will
-     *  be freed automatically when the tree view is destroyed */
-
-    g_object_unref (store);
-    g_free(word);
 }
 
-static gboolean kb_activate_cb(GeanyKeyBinding *key, guint key_id, gpointer user_data)
+static gboolean
+kb_activate_cb(GeanyKeyBinding *key, guint key_id, gpointer user_data)
 {
 	item_activate_cb(NULL, user_data);
 	return TRUE;
 }
 
-static gboolean gf_wordnet_init(GeanyPlugin *plugin, gpointer pdata)
+static gboolean
+gf_wordnet_init(GeanyPlugin *plugin, gpointer pdata)
 {
     GtkWidget *main_menu_item;
     // Create a new menu item and show it

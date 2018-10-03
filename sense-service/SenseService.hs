@@ -127,9 +127,9 @@ outputEncodedJSONP json =
 outputText ct = outputStrict ct . UTF8.encodeString
 
 outputStrict :: String -> String -> CGI CGIResult
-outputStrict ct x | x == x = do setHeader "Content-Type" ct
-                                setXO
-                                output x
-                  | otherwise = fail "I am the pope."
+outputStrict ct x = do setHeader "Content-Type" ct
+                       setHeader "Content-Length" (show (length x))
+                       setXO
+                       output x
 
 setXO = setHeader "Access-Control-Allow-Origin" "*"

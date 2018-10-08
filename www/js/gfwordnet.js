@@ -18,9 +18,10 @@ gfwordnet.initialize = function () {
 
 	this.langs      = {"ParseBul": {name: "Bulgarian",  index: 1},
 		               "ParseEng": {name: "English",    index: 2},
-			           "ParsePor": {name: "Portuguese", index: 3},
-			           "ParseSwe": {name: "Swedish",    index: 4}};
-	this.langs_list = ["ParseBul", "ParseEng", "ParsePor", "ParseSwe"];
+		               "ParseFin": {name: "Finnish",    index: 3},
+			           "ParsePor": {name: "Portuguese", index: 4},
+			           "ParseSwe": {name: "Swedish",    index: 5}};
+	this.langs_list = ["ParseBul", "ParseEng", "ParseFin", "ParsePor", "ParseSwe"];
 }
 
 gfwordnet.search = function (from, input, result) {

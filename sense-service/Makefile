@@ -8,11 +8,11 @@ all: semantics.db ../Parse.pgf SenseService
 ../WordNet.gf: FORCE SenseService
 	(cd ..; runghc check.hs - $(shell ssh www.grammaticalframework.org ./www/SenseService.fcgi report))
 
-../Parse.pgf: ../Parse.gf ../ParseEng.gf ../ParsePor.gf ../ParseSwe.gf ../ParseBul.gf \
-              ../ParseExtend.gf ../ParseExtendEng.gf ../ParseExtendPor.gf ../ParseExtendSwe.gf ../ParseExtendBul.gf \
-              ../WordNet.gf ../WordNetEng.gf ../WordNetSwe.gf ../WordNetPor.gf ../WordNetBul.gf \
+../Parse.pgf: ../Parse.gf ../ParseEng.gf ../ParsePor.gf ../ParseSwe.gf ../ParseBul.gf ../ParseFin.gf \
+              ../ParseExtend.gf ../ParseExtendEng.gf ../ParseExtendPor.gf ../ParseExtendSwe.gf ../ParseExtendBul.gf ../ParseExtendFin.gf \
+              ../WordNet.gf ../WordNetEng.gf ../WordNetSwe.gf ../WordNetPor.gf ../WordNetBul.gf ../WordNetFin.gf \
               ../Parse.probs
-	(cd ..; gf --make --probs=Parse.probs ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf)
+	(cd ..; gf --make --probs=Parse.probs ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf ParseFin.gf)
 	rsync ../Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 
 semantics.db: ../WordNet.gf ../examples.txt ../Parse.bigram.probs

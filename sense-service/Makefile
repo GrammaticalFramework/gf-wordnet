@@ -13,15 +13,15 @@ all: semantics.db ../Parse.pgf SenseService
               ../WordNet.gf ../WordNetEng.gf ../WordNetSwe.gf ../WordNetPor.gf ../WordNetBul.gf ../WordNetFin.gf \
               ../Parse.probs
 	(cd ..; gf --make --probs=Parse.probs ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf ParseFin.gf)
-	rsync ../Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
+	scp ../Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 
 semantics.db: ../WordNet.gf ../examples.txt ../Parse.bigram.probs
 	runghc glosses.hs
-	rsync semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
+	scp semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
 
 SenseService: SenseService.hs SenseSchema.hs
 	ghc --make -O2 SenseService.hs
-	rsync SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
+	scp SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
 	ssh www.grammaticalframework.org mv www/SenseService www/SenseService.fcgi
 
 FORCE:

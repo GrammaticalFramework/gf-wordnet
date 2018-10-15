@@ -230,6 +230,29 @@ json_skip(const char *js, jsmntok_t *t, size_t count) {
 	return 0;
 }
 
+char rfc3986[256];
+
+static void
+url_encoder_rfc_tables_init()
+{
+    int i;
+    for (i = 0; i < 256; i++) {
+        rfc3986[i] = isalnum(i) || i == '~' || i == '-' || i == '.' || i == '_' ? i : 0;
+    }
+}
+
+static void
+url_encode(unsigned char *s, char *enc) {
+    for (; *s; s++) {
+        if (rfc3986[*s])
+			*(enc++) = rfc3986[*s];
+        else {
+			sprintf(enc, "%%%02X", *s);
+			while (*++enc);
+		}
+    }
+    *enc = 0;
+}
 
 enum
 {
@@ -330,13 +353,16 @@ gf_wordnet_lookup(GtkListStore* store, gchar *word)
 	jsmntok_t *t;
 	size_t count;
 
+	gchar encoded_word[strlen(word)*3+1];
+	url_encode(word, encoded_word);
+
 	//////////////////////////////////////////////////////////////
 	// 1. Lexical lookup. The result is a list of unique lemmas
 	// separated with %20 in variable lemmas
 	if (!json_request(&js, &t, &count,
 	                  "cloud.grammaticalframework.org",
 	                  "/robust/Parse.pgf?command=c-lookupmorpho&input=%s&from=ParseEng",
-	                  word))
+	                  encoded_word))
         return;
 
 	gint lemmas_len = 0;
@@ -716,6 +742,8 @@ gf_wordnet_init(GeanyPlugin *plugin, gpointer pdata)
 		plugin, NULL);
 
     geany_plugin_set_data(plugin, main_menu_item, NULL);
+
+    url_encoder_rfc_tables_init();
 
     return TRUE;
 }

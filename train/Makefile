@@ -1,5 +1,5 @@
-all: training.hs em.o
-	ghc --make -O2 training.hs em.o -lpgf -lgu -lm
+all: udsenser.hs EM.hs em_core.o
+	ghc --make -O2 udsenser.hs EM.hs em_core.o -lpgf -lgu -lm
 
-em.o: em.c
-	gcc -O2 -std=c99 -c em.c
+em_core.o: em_core.c
+	gcc -g3 -std=c99 -c em_core.c

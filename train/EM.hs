@@ -1,7 +1,7 @@
 module EM(EMState, DepTree,
           newEMState, freeEMState,
           setupUnigramSmoothing, setupPreserveTrees, setupRankingCallbacks,
-          importTreebank, exportAnnotatedTreebank,
+          importTreebank, loadModel, exportAnnotatedTreebank,
           getBigramCount, getUnigramCount,
           step, dump) where
 
@@ -33,6 +33,18 @@ importTreebank st fpath lang =
        else return ()
 
 foreign import ccall em_import_treebank :: EMState -> CString -> CString -> IO CInt
+
+-- | Load a precomputed statistical model
+loadModel :: EMState -> FilePath -> IO ()
+loadModel st fpath =
+  withCString fpath $ \cpath -> do
+     res <- em_load_model st cpath
+     if res == 0
+       then fail "Loading failed"
+       else return ()
+
+foreign import ccall em_load_model :: EMState -> CString -> IO CInt
+
 
 exportAnnotatedTreebank :: EMState -> Maybe FilePath -> IO ()
 exportAnnotatedTreebank st mb_fpath =

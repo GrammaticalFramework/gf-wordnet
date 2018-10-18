@@ -8,11 +8,11 @@ main = do
   args <- getArgs
   case args of
     "train":_                 -> training
-    "annotate":lang:inp:[]    -> execution lang inp Nothing
-    "annotate":lang:inp:out:_ -> execution lang inp (Just out)
+    "annotate":lang:inp:[]    -> annotation lang inp Nothing
+    "annotate":lang:inp:out:_ -> annotation lang inp (Just out)
     _                         -> do putStrLn "Syntax: udsenser train"
-                                    putStrLn "Syntax: udsenser annotate <concr syntax> <input file>"
-                                    putStrLn "Syntax: udsenser annotate <concr syntax> <input file> <output file>"
+                                    putStrLn "        udsenser annotate <concr syntax> <input file>"
+                                    putStrLn "        udsenser annotate <concr syntax> <input file> <output file>"
 
 training =
   bracket (status "Grammar Loading ..." $ newEMState "../Parse.pgf") freeEMState $ \st -> do
@@ -31,10 +31,11 @@ training =
     status "Estimation ..." $ em_loop st 0 0
     status "Dumping ..." $ dump st "../Parse.probs" "../Parse.bigram.probs"
 
-execution lang inp_path mb_out_path =
+annotation lang inp_path mb_out_path =
   bracket (status "Grammar Loading ..." $ newEMState "../Parse.pgf") freeEMState $ \st -> do
-    status "Setyp preserve trees ..." $ setupPreserveTrees st
+    status "Setup preserve trees ..." $ setupPreserveTrees st
     status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
+    status "Load model ..." $ loadModel st "../Parse.bigram.probs"
     status "Import data ..." $ do
       importTreebank st inp_path lang
     status "Export data ..." $ exportAnnotatedTreebank st mb_out_path

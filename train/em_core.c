@@ -381,7 +381,11 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 		return 0;
 	}
 
-	FILE* inp = fopen(fpath, "r");
+	FILE* inp;
+	if (fpath == NULL || *fpath == 0)
+		inp = stdin;
+	else
+		inp = fopen(fpath, "r");
 	if (!inp) {
 		fprintf(stderr, "Error opening %s\n", fpath);
 		return 0;
@@ -983,13 +987,13 @@ int
 em_export_annotated_treebank(EMState* state, GuString fpath)
 {
 	FILE *out;
-	if (fpath != NULL) {
+	if (fpath == NULL || *fpath == 0)
+		out = stdout;
+	else {
 		out = fopen(fpath, "w+");
 		if (out == NULL) {
 			return 0;
 		}
-	} else {
-		out = stdout;
 	}
 
 	size_t n_trees = gu_buf_length(state->dtrees);

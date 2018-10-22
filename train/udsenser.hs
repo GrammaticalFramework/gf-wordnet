@@ -7,12 +7,10 @@ import System.Environment
 main = do
   args <- getArgs
   case args of
-    "train":_                 -> training
-    "annotate":lang:inp:[]    -> annotation lang inp Nothing
-    "annotate":lang:inp:out:_ -> annotation lang inp (Just out)
-    _                         -> do putStrLn "Syntax: udsenser train"
-                                    putStrLn "        udsenser annotate <concr syntax> <input file>"
-                                    putStrLn "        udsenser annotate <concr syntax> <input file> <output file>"
+    "train":_         -> training
+    "annotate":lang:_ -> annotation lang
+    _                 -> do putStrLn "Syntax: udsenser train"
+                            putStrLn "        udsenser annotate <concr syntax>"
 
 training =
   bracket (status "Grammar Loading ..." $ newEMState "../Parse.pgf") freeEMState $ \st -> do
@@ -31,14 +29,14 @@ training =
     status "Estimation ..." $ em_loop st 0 0
     status "Dumping ..." $ dump st "../Parse.probs" "../Parse.bigram.probs"
 
-annotation lang inp_path mb_out_path =
+annotation lang =
   bracket (status "Grammar Loading ..." $ newEMState "../Parse.pgf") freeEMState $ \st -> do
     status "Setup preserve trees ..." $ setupPreserveTrees st
     status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
     status "Load model ..." $ loadModel st "../Parse.bigram.probs"
     status "Import data ..." $ do
-      importTreebank st inp_path lang
-    status "Export data ..." $ exportAnnotatedTreebank st mb_out_path
+      importTreebank st "" lang
+    status "Export data ..." $ exportAnnotatedTreebank st ""
 
 status msg io = do
   hPutStr stdout msg

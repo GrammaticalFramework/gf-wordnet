@@ -46,9 +46,9 @@ loadModel st fpath =
 foreign import ccall em_load_model :: EMState -> CString -> IO CInt
 
 
-exportAnnotatedTreebank :: EMState -> Maybe FilePath -> IO ()
-exportAnnotatedTreebank st mb_fpath =
-  maybe (flip ($) nullPtr) withCString mb_fpath $ \cpath -> do
+exportAnnotatedTreebank :: EMState -> FilePath -> IO ()
+exportAnnotatedTreebank st fpath =
+  withCString fpath $ \cpath -> do
      res <- em_export_annotated_treebank st cpath
      if res == 0
        then fail "Export failed"

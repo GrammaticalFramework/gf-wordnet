@@ -5,14 +5,14 @@ module EM(EMState, DepTree,
           getBigramCount, getUnigramCount,
           step, dump) where
 
+import PGF2
 import Data.Maybe
 import Foreign
 import Foreign.C
+import Matching
+import System.IO.Unsafe(unsafePerformIO)
 
 newtype EMState = EMState (Ptr ())
-newtype DepTree = DepTree (Ptr ())
-newtype SenseChoice = SenseChoice (Ptr ())
-
 
 newEMState :: FilePath -> IO EMState
 newEMState s = withCString s em_new_state
@@ -59,21 +59,23 @@ foreign import ccall em_export_annotated_treebank :: EMState -> CString -> IO CI
 foreign import ccall "em_bigram_count" getBigramCount  :: EMState -> IO CInt
 foreign import ccall "em_unigram_count" getUnigramCount :: EMState -> IO CInt
 
-type RankingCallback = DepTree -> SenseChoice -> CString -> IO CInt
+type RankingCallback = SenseChoice -> Fields -> DepTree -> Ptr CInt -> IO ()
 
-setupRankingCallbacks :: EMState -> [(String,DepTree -> SenseChoice -> String -> Int)] -> IO ()
+setupRankingCallbacks :: EMState -> [(Cat,SenseChoice -> Fields -> DepTree -> IO Stat)] -> IO ()
 setupRankingCallbacks st callbacks =
   mapM_ setRankingCallback callbacks
   where
-    setRankingCallback :: (String, DepTree -> SenseChoice -> String -> Int) -> IO ()
-    setRankingCallback (pos,f) = do
-      f <- wrapRankingCallback (\dtree choice ccat -> do
-                                    cat <- peekCString ccat
-                                    return (fromIntegral (f dtree choice cat)))
-      withCString pos (\pos -> em_set_ranking_callback st pos f)
+    setRankingCallback :: (Cat,SenseChoice -> Fields -> DepTree -> IO Stat) -> IO ()
+    setRankingCallback (cat,f) = do
+      f <- wrapRankingCallback (\choice fields dtree res_c -> do
+                                    (S res c) <- f choice fields dtree
+                                    pokeElemOff res_c 0 res
+                                    pokeElemOff res_c 1 c)
+      withCString cat (\cat -> em_set_ranking_callback st cat f)
 
 foreign import ccall em_set_ranking_callback :: EMState -> CString -> FunPtr RankingCallback -> IO ()
 foreign import ccall unsafe "wrapper" wrapRankingCallback :: RankingCallback -> IO (FunPtr RankingCallback)
+
 
 foreign import ccall "em_step" step :: EMState -> IO Float
 

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <math.h>
 #include <gu/string.h>
 #include <gu/mem.h>
@@ -9,37 +10,11 @@
 #include <gu/ucs.h>
 #include <gu/utf8.h>
 #include <pgf/pgf.h>
+#include "em_core.h"
 
 // #define DEBUG
 
-typedef struct {
-	prob_t prob;
-	prob_t count;
-} ProbCount;
-
-typedef struct {
-	PgfCId fun;
-	ProbCount pc;
-	GuMap* mods;
-} FunStats;
-
-typedef struct {
-	FunStats* stats;
-	prob_t prob;
-	ProbCount **prob_counts;
-} SenseChoice;
-
-typedef struct DepTree {
-	size_t index;
-	GuBuf* choices;
-	size_t n_children;
-	struct DepTree* child[0];
-} DepTree;
-
-typedef int (*EMRankingCallback)(DepTree* dtree,
-                                 SenseChoice* choice, PgfCId cat);
-
-typedef struct {
+struct EMState {
 	GuPool* pool;
 	PgfPGF *pgf;
 	GuBuf* dtrees;
@@ -51,7 +26,7 @@ typedef struct {
 	prob_t unigram_smoothing;
 	bool break_trees;
 	GuMap* callbacks;
-} EMState;
+};
 
 #ifdef DEBUG
 static void
@@ -270,37 +245,44 @@ static void
 filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf, GuBuf* parent_choices)
 {
 	CONLLFields* fields = gu_buf_get(buf, CONLLFields, dtree->index);
+	size_t n_choices = gu_buf_length(dtree->choices);
 
-	EMRankingCallback callback =
-		gu_map_get(state->callbacks, (*fields)[3], EMRankingCallback);
-	if (callback != NULL) {
-		size_t n_choices = gu_buf_length(dtree->choices);
+	int max[2] = {0, INT_MAX};
+	int stats[n_choices][2];
+	for (size_t i = 0; i < n_choices; i++) {
+		SenseChoice* choice =
+			gu_buf_index(dtree->choices, SenseChoice, i);
 
-		prob_t max = 0;
-		for (size_t i = 0; i < n_choices; i++) {
-			SenseChoice* choice =
-				gu_buf_index(dtree->choices, SenseChoice, i);
-			PgfType* ty =
-				pgf_function_type(state->pgf, choice->stats->fun);
-			choice->prob = callback(dtree, choice, ty->cid);
-			if (choice->prob > max) {
-				max = choice->prob;
+		PgfType* ty =
+			pgf_function_type(state->pgf, choice->stats->fun);
+
+		EMRankingCallback callback =
+			gu_map_get(state->callbacks, ty->cid, EMRankingCallback);
+		if (callback != NULL) {
+			callback(choice, buf, dtree, stats[i]);
+			if (stats[i][0] > max[0]) {
+				max[0] = stats[i][0];
+				max[1] = stats[i][1];
+			} else if (stats[i][0] == max[0]) {
+				if (stats[i][1] < max[1])
+					max[1] = stats[i][1];
 			}
 		}
-
-		size_t index = 0;
-		for (size_t i = 0; i < n_choices; i++) {
-			SenseChoice* choice =
-				gu_buf_index(dtree->choices, SenseChoice, i);
-			if (choice->prob == max) {
-				SenseChoice* dest =
-					gu_buf_index(dtree->choices, SenseChoice, index);
-				*dest = *choice;
-				index++;
-			}
-		}
-		gu_buf_trim_n(dtree->choices, n_choices - index);
 	}
+
+	size_t index = 0;
+	for (size_t i = 0; i < n_choices; i++) {
+		SenseChoice* choice =
+			gu_buf_index(dtree->choices, SenseChoice, i);
+		if (stats[i][0] == max[0] && stats[i][1] == max[1]) {
+			SenseChoice* dest =
+				gu_buf_index(dtree->choices, SenseChoice, index);
+			*dest = *choice;
+			index++;
+		}
+	}
+
+	gu_buf_trim_n(dtree->choices, n_choices - index);
 
 	init_counts(dtree, parent_choices);
 
@@ -599,11 +581,35 @@ em_bigram_count(EMState* state)
 
 void
 em_set_ranking_callback(EMState* state,
-                        GuString pos,
+                        PgfCId cat,
                         EMRankingCallback *ranking_callback)
 {
-	pos = gu_string_copy(pos, state->pool);
-	gu_map_put(state->callbacks, pos, EMRankingCallback, ranking_callback);
+	cat = gu_string_copy(cat, state->pool);
+	gu_map_put(state->callbacks, cat, EMRankingCallback, ranking_callback);
+}
+
+int
+dtree_match_label(GuBuf* buf, DepTree *dtree, GuString lbl)
+{
+	CONLLFields* fields =
+		gu_buf_index(buf, CONLLFields, dtree->index);
+			
+	if (strcmp((*fields)[7], lbl) == 0)
+		return 1;
+
+	return 0;
+}
+
+int
+dtree_match_pos(GuBuf* buf, DepTree *dtree, GuString pos)
+{
+	CONLLFields* fields =
+		gu_buf_index(buf, CONLLFields, dtree->index);
+			
+	if (strcmp((*fields)[3], pos) == 0)
+		return 1;
+
+	return 0;
 }
 
 static prob_t

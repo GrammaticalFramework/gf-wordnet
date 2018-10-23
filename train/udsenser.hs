@@ -1,4 +1,5 @@
 import EM
+import Matching
 import Control.Exception
 import System.IO
 import System.Environment
@@ -39,92 +40,54 @@ annotation lang =
     status "Export data ..." $ exportAnnotatedTreebank st ""
 
 status msg io = do
-  hPutStr stdout msg
-  hFlush stdout
+  hPutStr stderr msg
+  hFlush stderr
   r <- io
-  hPutStrLn stdout ""
+  hPutStrLn stderr ""
   return r
 
 ranking_callbacks =
-  [("ADJ", adj_ranking)
-  ,("ADV", adv_ranking)
-  ,("INTJ", intj_ranking)
-  ,("NOUN", noun_ranking)
-  ,("PROPN", propn_ranking)
-  ,("VERB", verb_ranking)
-  ,("ADP", adp_ranking)
-  ,("AUX", aux_ranking)
-  ,("CCONJ", cconj_ranking)
-  ,("DET", det_ranking)
-  ,("PRON", pron_ranking)
-  ,("SCONJ", sconj_ranking)
+  [ category "A"     [pos "ADJ"]
+  , category "A2"    [pos "ADJ"]
+  , category "ACard" [pos "ADJ"]
+  , category "Adv"   [pos "ADV"]
+  , category "AdV"   [pos "ADV"]
+  , category "AdA"   [pos "ADV"]
+  , category "AdN"   [pos "ADV"]
+  , category "Interj"[pos "INTJ"]
+  , category "N"     [pos "NOUN"]
+  , category "N2"    [pos "NOUN"]
+  , category "PN"    [pos "PROPN"]
+  , category "V0"    [pos "VERB"]
+  , category "V"     [pos "VERB"]
+  , category "V2"    [pos "VERB"
+                     ,node [best (label "obj")
+                                 (label "nsubj:pass")
+                           ]
+                     ]
+  , category "V3"    [pos "VERB"
+                     ,node [best (label "obj")
+                                 (label "nsubj:pass")
+                           ]
+                     ,node [best (label "iobj")
+                                 (label "nsubj:pass")
+                           ]
+                     ]
+  , category "VA"    [pos "VERB"]
+  , category "VS"    [pos "VERB"]
+  , category "VQ"    [pos "VERB"]
+  , category "VV"    [best (pos "VERB") (pos "AUX")]
+  , category "V2A"   [pos "VERB"]
+  , category "V2S"   [pos "VERB"]
+  , category "V2Q"   [pos "VERB"]
+  , category "V2V"   [pos "VERB"]
+  , category "Prep"  [pos "ADP"]
+  , category "Conj"  [pos "CCONJ"]
+  , category "Det"   [pos "DET"]
+  , category "Quant" [pos "DET"]
+  , category "Pron"  [pos "PRON"]
+  , category "Subj"  [pos "SCONJ"]
   ]
-
-adj_ranking tree choice cat
-  | cat == "A"     = 1
-  | cat == "A2"    = 1
-  | cat == "ACard" = 1
-  | otherwise      = 0
-
-adv_ranking tree choice cat
-  | cat == "Adv" = 1
-  | cat == "AdV" = 1
-  | cat == "AdA" = 1
-  | cat == "AdN" = 1
-  | otherwise    = 0
-
-intj_ranking tree choice cat
-  | cat == "Interj" = 1
-  | otherwise       = 0
-
-noun_ranking tree choice cat
-  | cat == "N"  = 1
-  | cat == "N2" = 1
-  | otherwise   = 0
-
-propn_ranking tree choice cat
-  | cat == "PN" = 1
-  | otherwise   = 0
-
-verb_ranking tree choice cat
-  | cat == "V0"  = 1
-  | cat == "V"   = 1
-  | cat == "V2"  = 1
-  | cat == "V3"  = 1
-  | cat == "VA"  = 1
-  | cat == "VS"  = 1
-  | cat == "VQ"  = 1
-  | cat == "VV"  = 1
-  | cat == "V2A" = 1
-  | cat == "V2S" = 1
-  | cat == "V2Q" = 1
-  | cat == "V2V" = 1
-  | otherwise    = 0
-
-adp_ranking tree choice cat
-  | cat == "Prep"= 1
-  | otherwise    = 0
-
-aux_ranking tree choice cat
-  | cat == "VV"  = 1
-  | otherwise    = 0
-
-cconj_ranking tree choice cat
-  | cat == "Conj" = 1
-  | otherwise     = 0
-
-det_ranking tree choice cat
-  | cat == "Det"   = 1
-  | cat == "Quant" = 1
-  | otherwise      = 0
-
-pron_ranking tree choice cat
-  | cat == "Pron"  = 1
-  | otherwise      = 0
-
-sconj_ranking tree choice cat
-  | cat == "Subj"  = 1
-  | otherwise      = 0
 
 em_loop st i last_corpus_prob = do
   corpus_prob <- step st

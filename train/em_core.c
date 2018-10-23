@@ -247,7 +247,7 @@ filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf, GuBuf* parent_choice
 	CONLLFields* fields = gu_buf_get(buf, CONLLFields, dtree->index);
 	size_t n_choices = gu_buf_length(dtree->choices);
 
-	int max[2] = {0, INT_MAX};
+	int max[2] = {INT_MIN, INT_MAX};
 	int stats[n_choices][2];
 	for (size_t i = 0; i < n_choices; i++) {
 		SenseChoice* choice =
@@ -260,13 +260,16 @@ filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf, GuBuf* parent_choice
 			gu_map_get(state->callbacks, ty->cid, EMRankingCallback);
 		if (callback != NULL) {
 			callback(choice, buf, dtree, stats[i]);
-			if (stats[i][0] > max[0]) {
-				max[0] = stats[i][0];
+		} else {
+			stats[i][0] = 0;
+			stats[i][1] = 0;
+		}
+		if (stats[i][0] > max[0]) {
+			max[0] = stats[i][0];
+			max[1] = stats[i][1];
+		} else if (stats[i][0] == max[0]) {
+			if (stats[i][1] < max[1])
 				max[1] = stats[i][1];
-			} else if (stats[i][0] == max[0]) {
-				if (stats[i][1] < max[1])
-					max[1] = stats[i][1];
-			}
 		}
 	}
 
@@ -609,6 +612,19 @@ dtree_match_pos(GuBuf* buf, DepTree *dtree, GuString pos)
 	if (strcmp((*fields)[3], pos) == 0)
 		return 1;
 
+	return 0;
+}
+
+int
+dtree_match_same_choice(SenseChoice *choice, DepTree *dtree)
+{
+	size_t n_choices = gu_buf_length(dtree->choices);
+	for (size_t i = 0; i < n_choices; i++) {
+		SenseChoice* mod_choice =
+			gu_buf_index(dtree->choices, SenseChoice, i);
+			if (choice->stats == mod_choice->stats)
+				return 1;
+	}
 	return 0;
 }
 

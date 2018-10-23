@@ -76,6 +76,9 @@ int
 dtree_match_pos(GuBuf* buf, DepTree *dtree, GuString pos);
 
 int
+dtree_match_same_choice(SenseChoice *choice, DepTree *dtree);
+
+int
 em_export_annotated_treebank(EMState* state, GuString fpath);
 
 #endif

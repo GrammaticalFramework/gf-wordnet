@@ -1,5 +1,5 @@
 module Matching( SenseChoice(..),Fields(..),DepTree(..),Prop,Stat(..),
-                 category, node, label, pos, best
+                 category, node, label, pos, equal_choice, best
                ) where
 
 import PGF2
@@ -58,14 +58,23 @@ pos l = Prop $ \choice fields dtree -> do
 
 foreign import ccall unsafe dtree_match_pos :: Fields -> DepTree -> CString -> IO CInt
 
+equal_choice :: Prop
+equal_choice = Prop $ \choice fields dtree  -> do
+  res <- dtree_match_same_choice choice dtree
+  stat res 1
+
+foreign import ccall unsafe dtree_match_same_choice :: SenseChoice -> DepTree -> IO CInt
+
 stat res c = return $! S res c
 
-best :: Prop -> Prop -> Prop
-best (Prop f) (Prop g) = Prop $ \choice fields dtree -> do
-  stat1 <- f choice fields dtree
-  stat2 <- g choice fields dtree
-  best stat1 stat2
+best :: [Prop] -> Prop
+best = foldl1 best
   where
-    best s1@(S res1 _) s2@(S res2 _)
-      | res1 > res2 = return $ s1
-      | otherwise   = return $ s2
+    best (Prop f) (Prop g) = Prop $ \choice fields dtree -> do
+      s1@(S res1 _) <- f choice fields dtree
+      s2@(S res2 _) <- g choice fields dtree
+      if res1 > res2
+        then return $ s1
+        else return $ s2
+
+

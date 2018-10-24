@@ -19,12 +19,35 @@ training =
     status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
     status "Collecting data ..." $ do
       importTreebank st "ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-train.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-test.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-dev.conllu" "ParseEng"
       importTreebank st "ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-train.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-test.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-dev.conllu" "ParseEng"
       importTreebank st "ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-train.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-test.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-dev.conllu" "ParseEng"
       importTreebank st "ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-train.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-test.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-dev.conllu" "ParseEng"
+      importTreebank st "ud-treebanks-v2.2/UD_English-PUD/en_pud-ud-test.conllu" "ParseEng"
       importTreebank st "ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-train.conllu" "ParseBul"
+      importTreebank st "ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-test.conllu" "ParseBul"
+      importTreebank st "ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-dev.conllu" "ParseBul"
       importTreebank st "ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-train.conllu" "ParseSwe"
+      importTreebank st "ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-test.conllu" "ParseSwe"
+      importTreebank st "ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-dev.conllu" "ParseSwe"
       importTreebank st "ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-train.conllu" "ParseSwe"
+      importTreebank st "ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-test.conllu" "ParseSwe"
+      importTreebank st "ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-dev.conllu" "ParseSwe"
+      importTreebank st "ud-treebanks-v2.2/UD_Swedish-PUD/sv_pud-ud-test.conllu" "ParseSwe"
+      importTreebank st "ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-dev.conllu" "ParseFin"
+      importTreebank st "ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-test.conllu" "ParseFin"
+      importTreebank st "ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-train.conllu" "ParseFin"
+      importTreebank st "ud-treebanks-v2.2/UD_Finnish-PUD/fi_pud-ud-test.conllu" "ParseFin"
+      importTreebank st "ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-dev.conllu" "ParseFin"
+      importTreebank st "ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-test.conllu" "ParseFin"
+      importTreebank st "ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-train.conllu" "ParseFin"
     getBigramCount  st >>= \c -> hPutStrLn stdout ("Bigrams:  "++show c)
     getUnigramCount st >>= \c -> hPutStrLn stdout ("Unigrams: "++show c)
     status "Estimation ..." $ em_loop st 0 0
@@ -194,3 +217,4 @@ em_loop st i last_corpus_prob = do
   if abs (last_corpus_prob - corpus_prob) < 1e-4
     then return ()
     else em_loop st (i+1) corpus_prob
+

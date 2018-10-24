@@ -159,44 +159,6 @@ em_setup_unigram_smoothing(EMState *state, prob_t count)
 }
 
 static void
-add_choice(LookupCallback* self, PgfCId lemma)
-{
-	SenseChoice* choice = gu_buf_extend(self->choices);
-	choice->prob = 0;
-
-	FunStats** stats =
-		gu_map_insert(self->state->stats, lemma);
-	if (*stats == NULL) {
-		*stats = gu_new(FunStats, self->state->pool);
-		(*stats)->fun = lemma;
-		(*stats)->pc.prob  = 0;
-		(*stats)->pc.count = INFINITY;
-		(*stats)->mods =
-			gu_new_string_map(ProbCount*, NULL, self->state->pool);
-	}
-	choice->stats = *stats;
-
-	size_t n_parent_choices =
-		gu_buf_length(self->parent_choices);
-	choice->prob_counts =
-		gu_new_n(ProbCount*, n_parent_choices, self->state->pool);
-	for (size_t i = 0; i < n_parent_choices; i++) {
-		SenseChoice* parent_choice =
-			gu_buf_index(self->parent_choices, SenseChoice, i);
-
-		ProbCount** pc =
-			gu_map_insert(parent_choice->stats->mods, lemma);
-		if (*pc == NULL) {
-			*pc = gu_new(ProbCount, self->state->pool);
-			(*pc)->prob  = 0;
-			(*pc)->count = INFINITY;
-		}
-
-		choice->prob_counts[i] = *pc;
-	}
-}
-
-static void
 lookup_callback(PgfMorphoCallback* callback,
 	            PgfCId lemma, GuString analysis, prob_t prob,
 	            GuExn* err)
@@ -213,12 +175,27 @@ lookup_callback(PgfMorphoCallback* callback,
 		}
 	}
 
-	if (!found)
-		add_choice(self, lemma);
+	if (!found) {
+		SenseChoice* choice = gu_buf_extend(self->choices);
+		choice->prob = 0;
+		choice->prob_counts = NULL;
+
+		FunStats** stats =
+			gu_map_insert(self->state->stats, lemma);
+		if (*stats == NULL) {
+			*stats = gu_new(FunStats, self->state->pool);
+			(*stats)->fun = lemma;
+			(*stats)->pc.prob  = 0;
+			(*stats)->pc.count = INFINITY;
+			(*stats)->mods =
+				gu_new_string_map(ProbCount*, NULL, self->state->pool);
+		}
+		choice->stats = *stats;
+	}
 }
 
 static void
-init_counts(DepTree* dtree, GuBuf* parent_choices)
+init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 {
 	size_t n_choices = gu_buf_length(dtree->choices);
 	size_t n_parent_choices = gu_buf_length(parent_choices);
@@ -234,7 +211,23 @@ init_counts(DepTree* dtree, GuBuf* parent_choices)
 		choice->stats->pc.count =
 			log_add(choice->stats->pc.count,p1);
 
+		choice->prob_counts =
+			gu_new_n(ProbCount*, n_parent_choices, state->pool);
+
 		for (int j = 0; j < n_parent_choices; j++) {
+			SenseChoice* parent_choice =
+				gu_buf_index(parent_choices, SenseChoice, j);
+
+			ProbCount** pc =
+				gu_map_insert(parent_choice->stats->mods, choice->stats->fun);
+			if (*pc == NULL) {
+				*pc = gu_new(ProbCount, state->pool);
+				(*pc)->prob  = 0;
+				(*pc)->count = INFINITY;
+			}
+
+			choice->prob_counts[j] = *pc;
+
 			choice->prob_counts[j]->count =
 				log_add(choice->prob_counts[j]->count, p2);
 		}
@@ -287,7 +280,7 @@ filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf, GuBuf* parent_choice
 
 	gu_buf_trim_n(dtree->choices, n_choices - index);
 
-	init_counts(dtree, parent_choices);
+	init_counts(state, dtree, parent_choices);
 
 	for (size_t i = 0; i < dtree->n_children; i++) {
 		filter_dep_tree(state, dtree->child[i], buf, dtree->choices);

@@ -56,6 +56,7 @@ training =
 annotation lang =
   bracket (status "Grammar Loading ..." $ newEMState "../Parse.pgf") freeEMState $ \st -> do
     status "Setup preserve trees ..." $ setupPreserveTrees st
+    status "Bigram smoothing ..." $ setupBigramSmoothing st 0.002
     status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
     status "Load model ..." $ loadModel st "../Parse.bigram.probs"
     status "Import data ..." $ do

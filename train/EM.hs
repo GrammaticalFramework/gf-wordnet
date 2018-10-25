@@ -1,6 +1,7 @@
 module EM(EMState, DepTree,
           newEMState, freeEMState,
-          setupUnigramSmoothing, setupPreserveTrees, setupRankingCallbacks,
+          setupBigramSmoothing, setupUnigramSmoothing,
+          setupPreserveTrees, setupRankingCallbacks,
           importTreebank, loadModel, exportAnnotatedTreebank,
           getBigramCount, getUnigramCount,
           step, dump) where
@@ -20,6 +21,7 @@ foreign import ccall em_new_state :: CString -> IO EMState
 
 foreign import ccall "em_free_state" freeEMState :: EMState -> IO ()
 
+foreign import ccall "em_setup_bigram_smoothing" setupBigramSmoothing :: EMState -> Float -> IO ()
 foreign import ccall "em_setup_unigram_smoothing" setupUnigramSmoothing :: EMState -> Float -> IO ()
 foreign import ccall "em_setup_preserve_trees" setupPreserveTrees :: EMState -> IO ()
 

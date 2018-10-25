@@ -23,6 +23,7 @@ struct EMState {
 	GuBuf* root_choices;
 	prob_t bigram_total;
 	prob_t unigram_total;
+	prob_t bigram_smoothing;
 	prob_t unigram_smoothing;
 	bool break_trees;
 	GuMap* callbacks;
@@ -62,6 +63,7 @@ em_new_state(char* fpath)
 	state->stats  = gu_new_string_map(FunStats*, NULL, pool);
 	state->bigram_total = 0;
 	state->unigram_total = 0;
+	state->bigram_smoothing = INFINITY;
 	state->unigram_smoothing = INFINITY;
 	state->root_choices = gu_new_buf(SenseChoice, pool);
 	state->break_trees = 0;
@@ -148,6 +150,12 @@ smoothing_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
 }
 
 void
+em_setup_bigram_smoothing(EMState *state, prob_t prob)
+{
+	state->bigram_smoothing = -log(prob);
+}
+
+void
 em_setup_unigram_smoothing(EMState *state, prob_t count)
 {
 	state->unigram_smoothing = -log(count);
@@ -194,6 +202,16 @@ lookup_callback(PgfMorphoCallback* callback,
 	}
 }
 
+static prob_t
+get_pgf_prob(EMState* state, PgfCId fun)
+{
+	PgfType* ty =
+		pgf_function_type(state->pgf, fun);
+
+	return pgf_category_prob(state->pgf, ty->cid) +
+	       pgf_function_prob(state->pgf, fun);
+}
+
 static void
 init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 {
@@ -222,7 +240,12 @@ init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 				gu_map_insert(parent_choice->stats->mods, choice->stats->fun);
 			if (*pc == NULL) {
 				*pc = gu_new(ProbCount, state->pool);
-				(*pc)->prob  = 0;
+
+				prob_t back_off =
+					get_pgf_prob(state,parent_choice->stats->fun) +
+					get_pgf_prob(state,choice->stats->fun);
+
+				(*pc)->prob  = state->bigram_smoothing + back_off;
 				(*pc)->count = INFINITY;
 			}
 
@@ -553,8 +576,19 @@ em_load_model(EMState* state, GuString fpath)
 		fields[1] = *((GuString*) gu_map_find_key(state->stats, fields[1]));
 		ProbCount** pc = gu_map_insert(stats->mods, fields[1]);
 		if (*pc == NULL) {
+			prob_t back_off =
+				get_pgf_prob(state,fields[0]) +
+				get_pgf_prob(state,fields[1]);
+
+			prob_t bigram_smoothing1m = 
+				-log1p(-exp(-state->bigram_smoothing));
+
+			prob_t prob =
+				log_add(state->bigram_smoothing + back_off,
+                        bigram_smoothing1m + atof(fields[2]));
+
 			*pc = gu_new(ProbCount, state->pool);
-			(*pc)->prob  = atof(fields[2]);
+			(*pc)->prob  = prob;
 			(*pc)->count = INFINITY;
 		}
 	}

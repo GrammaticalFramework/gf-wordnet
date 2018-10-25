@@ -941,6 +941,23 @@ get_field(CONLLFields* fields, size_t i)
 	return (fields ? (*fields)[i] : "_");
 }
 
+typedef struct {
+	PgfCId fun;
+	prob_t prob;
+} LemmaProb;
+
+static int cmp_lemma_prob(const void *p1, const void *p2)
+{
+	LemmaProb *lp1 = (LemmaProb *) p1;
+	LemmaProb *lp2 = (LemmaProb *) p2;
+	if (lp1->prob < lp2->prob)
+	  return -1;
+	else if (lp1->prob > lp2->prob)
+	  return 1;
+	else
+	  return 0;
+}
+
 static void
 print_annotated_head(FILE* out, DepTree* dtree,
                      size_t parent_index, prob_t* outside_probs,
@@ -961,17 +978,34 @@ print_annotated_head(FILE* out, DepTree* dtree,
 				 get_field(fields,8),
 				 get_field(fields,9));
 
-	bool first = true;
 	size_t n_choices = gu_buf_length(dtree->choices);
-	for (size_t j = 0; j < n_choices; j++) {
-		SenseChoice* choice =
-			gu_buf_index(dtree->choices, SenseChoice, j);
-		if (outside_probs[j]+choice->prob == 0) {
-			if (!first)
+	if (n_choices > 0) {
+		LemmaProb choices[n_choices];
+		for (size_t j = 0; j < n_choices; j++) {
+			SenseChoice* choice =
+				gu_buf_index(dtree->choices, SenseChoice, j);
+			choices[j].fun  = choice->stats->fun;
+			choices[j].prob = outside_probs[j]+choice->prob;
+		}
+		qsort(choices, n_choices, sizeof(LemmaProb), cmp_lemma_prob);
+
+		int first = 0;
+		prob_t best_prob;
+		for (size_t j = 0; j < n_choices; j++) {
+			switch (first) {
+			case 0:
+				best_prob = choices[j].prob;
+				first = 1;
+				break;
+			case 1:
+				if (choices[j].prob > best_prob) {
+					first = 2;
+					fputs(" |", out);
+				}
+			case 2:
 				fputc(' ', out);
-			else
-				first = false;
-			fputs(choice->stats->fun, out);
+			}
+			fputs(choices[j].fun, out);
 		}
 	}
 	fputc('\n', out);

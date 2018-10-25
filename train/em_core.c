@@ -962,26 +962,34 @@ print_annotated_conll_tree(FILE* out, DepTree* dtree,
 		size_t n_child_choices =
 			gu_buf_length(dtree->child[i]->choices);
 		prob_t child_outside_probs[n_child_choices];
-		for (size_t k = 0; k < n_child_choices; k++) {
-			child_outside_probs[k] = INFINITY;
-		}
 
-		for (size_t j = 0; j < n_head_choices; j++) {
-			SenseChoice* head_choice =
-				gu_buf_index(dtree->choices, SenseChoice, j);
-
-			prob_t prob =
-				outside_probs[j] + head_choice->prob -
-				tree_edge_estimation(j, dtree->child[i], log_max);
-
+		if (n_head_choices > 0) {
 			for (size_t k = 0; k < n_child_choices; k++) {
-				SenseChoice* mod_choice =
-					gu_buf_index(dtree->child[i]->choices, SenseChoice, k);
+				child_outside_probs[k] = INFINITY;
+			}
 
-				ProbCount* pc = mod_choice->prob_counts[j];
+			for (size_t j = 0; j < n_head_choices; j++) {
+				SenseChoice* head_choice =
+					gu_buf_index(dtree->choices, SenseChoice, j);
 
-				prob_t p1 = prob + pc->prob;
-				child_outside_probs[k] = log_max(child_outside_probs[k],p1);
+				prob_t prob =
+					outside_probs[j] + head_choice->prob -
+					tree_edge_estimation(j, dtree->child[i], log_max);
+
+				for (size_t k = 0; k < n_child_choices; k++) {
+					SenseChoice* mod_choice =
+						gu_buf_index(dtree->child[i]->choices, SenseChoice, k);
+
+					ProbCount* pc = mod_choice->prob_counts[j];
+
+					prob_t p1 = prob + pc->prob;
+					child_outside_probs[k] = log_max(child_outside_probs[k],p1);
+				}
+			}
+		} else {
+			prob_t sum = tree_sum_estimation(dtree->child[i], log_max);
+			for (size_t k = 0; k < n_child_choices; k++) {
+				child_outside_probs[k] = -sum;
 			}
 		}
 

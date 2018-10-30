@@ -83,7 +83,31 @@ concrete ParseExtendPor of ParseExtend =
     num x = x ;
 
   lin
-    BareN2 n2 = n2 ;
+    UseACard ac = {
+      s = \\_g => ac.s ;
+      n = Pl
+      } ;
+
+    UseAdAACard ada ac = {
+      s = \\_g => ada.s ;
+      n = Sg
+      } ;
+
+  lin
+    RelNP = GrammarPor.RelNP ;
+
+    ExtRelNP np rs = heavyNPpol np.isNeg {
+      s = \\c => (np.s ! c).ton ++ bindComma ++ rs.s ! Indic ! np.a ;
+      a = np.a ;
+      hasClit = False
+      } ;
+
+  lin ExtAdvAP ap adv = {
+        s = \\a => ap.s ! a ++ bindComma ++ adv.s ;
+        isPre = False
+        } ;
+
+  lin BareN2 n2 = n2 ;
 
   lin
     EnoughAP ap ant pol vp = {

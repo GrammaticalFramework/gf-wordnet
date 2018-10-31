@@ -110,6 +110,27 @@ concrete ParseExtendPor of ParseExtend =
   lin BareN2 n2 = n2 ;
 
   lin
+    --TODO: test and probably correct use of comp in the following
+    --TODO: create oper for neg pattern
+    ComparAdv pol cadv adv comp = let
+      neg = (negation ! pol.p).p1
+      in {
+        s = pol.s ++ neg ++ cadv.s ++ adv.s ++ comp.s ! Ag Masc Sg P3
+      } ;
+
+    CAdvAP pol cadv ap comp = let
+      neg = (negation ! pol.p).p1
+      in ap ** {
+        s = \\af => pol.s ++ neg ++ cadv.s ++ ap.s ! af ++ comp.s ! Ag Masc Sg P3
+      } ;
+
+    AdnCadv pol cadv = let
+      neg = (negation ! pol.p).p1
+      in {
+        s = pol.s ++ neg ++ cadv.s ++ "que"
+      } ;
+
+  lin
     EnoughAP ap ant pol vp = {
       s = \\af => let g : Gender = aform2gender af ;
                       n : Number = aform2number af

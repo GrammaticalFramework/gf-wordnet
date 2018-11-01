@@ -127,16 +127,16 @@ fun that_RP : RP ;
 
     -- generalize several function that take infinitive VP as argument
     -- to also support anteriority and polarity.
-fun EmbedVP : Ant -> Pol -> VP -> SC ;
-    ComplVV : VV -> Ant -> Pol -> VP -> VP ;
-    SlashVV  : VV  -> Ant -> Pol -> VPSlash -> VPSlash ;
-    SlashV2V : V2V -> Ant -> Pol -> VP -> VPSlash ;
-    SlashV2VNP : V2V -> NP -> Ant -> Pol -> VPSlash -> VPSlash ;
-    InOrderToVP : Ant -> Pol -> VP -> Adv ;
-    CompVP : Ant -> Pol -> VP -> Comp ;
-    UttVP : Ant -> Pol -> VP -> Utt ;
-    UttVPMasc : Ant -> Pol -> VP -> Utt ;
-    UttVPFem : Ant -> Pol -> VP -> Utt ;
+fun EmbedVP     : Ant -> Pol -> VP  -> SC ;
+    ComplVV     : VV  -> Ant -> Pol -> VP -> VP ;
+    SlashVV     : VV  -> Ant -> Pol -> VPSlash -> VPSlash ;
+    SlashV2V    : V2V -> Ant -> Pol -> VP -> VPSlash ;
+    SlashV2VNP  : V2V -> NP  -> Ant -> Pol -> VPSlash -> VPSlash ;
+    InOrderToVP : Ant -> Pol -> VP  -> Adv ;
+    CompVP      : Ant -> Pol -> VP  -> Comp ;
+    UttVP       : Ant -> Pol -> VP  -> Utt ;
+    UttVPMasc   : Ant -> Pol -> VP  -> Utt ;
+    UttVPFem    : Ant -> Pol -> VP  -> Utt ;
 
     -- reciprocal verbs i.e. 
     -- `We love each other` or `We love one another`.

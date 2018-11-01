@@ -83,7 +83,52 @@ concrete ParseExtendPor of ParseExtend =
     num x = x ;
 
   lin
-    BareN2 n2 = n2 ;
+    UseACard ac = {
+      s = \\_g => ac.s ;
+      n = Pl
+      } ;
+
+    UseAdAACard ada ac = {
+      s = \\_g => ada.s ;
+      n = Sg
+      } ;
+
+  lin
+    RelNP = GrammarPor.RelNP ;
+
+    ExtRelNP np rs = heavyNPpol np.isNeg {
+      s = \\c => (np.s ! c).ton ++ bindComma ++ rs.s ! Indic ! np.a ;
+      a = np.a ;
+      hasClit = False
+      } ;
+
+  lin ExtAdvAP ap adv = {
+        s = \\a => ap.s ! a ++ bindComma ++ adv.s ;
+        isPre = False
+        } ;
+
+  lin BareN2 n2 = n2 ;
+
+  lin
+    --TODO: test and probably correct use of comp in the following
+    --TODO: create oper for neg pattern
+    ComparAdv pol cadv adv comp = let
+      neg = (negation ! pol.p).p1
+      in {
+        s = pol.s ++ neg ++ cadv.s ++ adv.s ++ comp.s ! Ag Masc Sg P3
+      } ;
+
+    CAdvAP pol cadv ap comp = let
+      neg = (negation ! pol.p).p1
+      in ap ** {
+        s = \\af => pol.s ++ neg ++ cadv.s ++ ap.s ! af ++ comp.s ! Ag Masc Sg P3
+      } ;
+
+    AdnCadv pol cadv = let
+      neg = (negation ! pol.p).p1
+      in {
+        s = pol.s ++ neg ++ cadv.s ++ "que"
+      } ;
 
   lin
     EnoughAP ap ant pol vp = {

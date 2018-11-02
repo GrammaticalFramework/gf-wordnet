@@ -124,7 +124,7 @@ concrete ParseExtendPor of ParseExtend =
         s = \\af => pol.s ++ neg ++ cadv.s ++ ap.s ! af ++ comp.s ! Ag Masc Sg P3
       } ;
 
-    AdnCadv pol cadv = let
+    AdnCAdv pol cadv = let
       neg = (negation ! pol.p).p1
       in {
         s = pol.s ++ neg ++ cadv.s ++ "que"
@@ -152,16 +152,46 @@ concrete ParseExtendPor of ParseExtend =
     whatSgFem_IP = whatSg_IP ** {a = aagr Fem Sg} ;
     whatSgNeut_IP = whatSg_IP ;
 
-  lincat
-    ListComp = {s1,s2 : Agr => Str ; cop : CopulaType} ;
+  --TODO: check
+  lin that_RP = {
+        s = relPron ;
+        a = aagr Masc Sg ;
+        hasAgr = False
+        } ;
+
+  lin
+    ComplVV vv ant pol vp = let
+      neg = (negation ! pol.p).p1 ;
+      vf : Agr -> Str = \agr -> case ant.a of {
+        Simul => infVP vp agr ;
+        Anter => nominalVP (\_ -> VFin (VPres Indic) agr.n agr.p) vp agr
+        } ;
+      in
+      insertComplement (\\a => ant.s ++ pol.s ++ neg ++ prepCase vv.c2.c ++ vf a) (predV vv) ;
+    UttVP = uttVP Masc Sg ;
+    UttVPMasc = uttVP Masc Sg ;
+    UttVPFem = uttVP Fem Sg ;
+
+  oper
+    uttVP : Gender -> Number -> Ant -> Pol -> VP -> {s : Str} ;
+    uttVP g n ant pol vp = let
+      neg = (negation ! pol.p).p1
+      in {
+        s = ant.s ++ pol.s ++ neg ++ infVP vp (agrP3 g n)
+      } ;
+
+  lin FocusComp comp np = mkClause (comp.s ! np.a) np.hasClit np.isPol np.a (insertComplement (\\_ => (np.s ! Nom).ton) (predV (selectCopula comp.cop))) ;
+
+  lincat ListComp = {s1,s2 : Agr => Str ; cop : CopulaType} ;
+
   lin
     -- should one allow different copulas?
     BaseComp x y = twoTable Agr x y ** {cop = x.cop } ;
     ConsComp xs x = consrTable Agr comma xs x ** xs ;
     ConjComp conj cs = conjunctDistrTable Agr conj cs ** {cop = cs.cop} ;
 
-  lincat
-    ListImp = {s1,s2 : RPolarity => ImpForm => Gender => Str} ;
+  lincat ListImp = {s1,s2 : RPolarity => ImpForm => Gender => Str} ;
+
   lin
     BaseImp = twoTable3 RPolarity ImpForm Gender ;
     ConsImp = consrTable3 RPolarity ImpForm Gender comma ;

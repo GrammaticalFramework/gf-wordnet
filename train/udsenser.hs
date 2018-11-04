@@ -3,62 +3,44 @@ import Matching
 import Control.Exception
 import System.IO
 import System.Environment
+import System.FilePath
 
--- main = training
 main = do
   args <- getArgs
   case args of
-    "train":_         -> training
-    "annotate":lang:_ -> annotation lang
-    _                 -> do putStrLn "Syntax: udsenser train"
-                            putStrLn "        udsenser annotate <concr syntax>"
+    (fpath:args) -> bracket (status "Grammar Loading ..." $ newEMState fpath) freeEMState $ \st ->
+                      case args of
+                        "train":args      -> training st args
+                        "annotate":lang:_ -> annotation st (replaceExtension fpath "bigram.probs") lang
+                        _                 -> help
+    _                -> help
 
-training =
-  bracket (status "Grammar Loading ..." $ newEMState "../Parse.pgf") freeEMState $ \st -> do
-    status "Unigram smoothing ..." $ setupUnigramSmoothing st 1
-    status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
-    status "Collecting data ..." $ do
-      importTreebank st "ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-train.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-test.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-dev.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-train.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-test.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-dev.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-train.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-test.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-dev.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-train.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-test.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-dev.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_English-PUD/en_pud-ud-test.conllu" "ParseEng"
-      importTreebank st "ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-train.conllu" "ParseBul"
-      importTreebank st "ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-test.conllu" "ParseBul"
-      importTreebank st "ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-dev.conllu" "ParseBul"
-      importTreebank st "ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-train.conllu" "ParseSwe"
-      importTreebank st "ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-test.conllu" "ParseSwe"
-      importTreebank st "ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-dev.conllu" "ParseSwe"
-      importTreebank st "ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-train.conllu" "ParseSwe"
-      importTreebank st "ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-test.conllu" "ParseSwe"
-      importTreebank st "ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-dev.conllu" "ParseSwe"
-      importTreebank st "ud-treebanks-v2.2/UD_Swedish-PUD/sv_pud-ud-test.conllu" "ParseSwe"
-      importTreebank st "ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-dev.conllu" "ParseFin"
-      importTreebank st "ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-test.conllu" "ParseFin"
-      importTreebank st "ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-train.conllu" "ParseFin"
-      importTreebank st "ud-treebanks-v2.2/UD_Finnish-PUD/fi_pud-ud-test.conllu" "ParseFin"
-      importTreebank st "ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-dev.conllu" "ParseFin"
-      importTreebank st "ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-test.conllu" "ParseFin"
-      importTreebank st "ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-train.conllu" "ParseFin"
-    getBigramCount  st >>= \c -> hPutStrLn stdout ("Bigrams:  "++show c)
-    getUnigramCount st >>= \c -> hPutStrLn stdout ("Unigrams: "++show c)
-    status "Estimation ..." $ em_loop st 0 0
-    status "Dumping ..." $ dump st "../Parse.probs" "../Parse.bigram.probs"
+help = do
+  putStrLn "Syntax: udsenser <grammar> train"
+  putStrLn "        udsenser <grammar> annotate <concr syntax>"
 
-annotation lang =
-  bracket (status "Grammar Loading ..." $ newEMState "../Parse.pgf") freeEMState $ \st -> do
+training st args = do
+  status "Unigram smoothing ..." $ setupUnigramSmoothing st 1
+  status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
+  status "Collecting data ..." $ importTreebanks args
+  getBigramCount  st >>= \c -> hPutStrLn stdout ("Bigrams:  "++show c)
+  getUnigramCount st >>= \c -> hPutStrLn stdout ("Unigrams: "++show c)
+  status "Estimation ..." $ em_loop st 0 0
+  status "Dumping ..." $ dump st "Parse.probs" "Parse.bigram.probs"
+  where
+    importTreebanks []          = return ()
+    importTreebanks (lang:args) = do
+      let (fpaths,rest) = break (==",") args
+      mapM_ (importTreebank st lang) fpaths
+      case rest of
+        (",":args) -> importTreebanks args
+        _          -> return ()
+
+annotation st bigram_fpath lang = do
     status "Setup preserve trees ..." $ setupPreserveTrees st
     status "Bigram smoothing ..." $ setupBigramSmoothing st 0.002
     status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
-    status "Load model ..." $ loadModel st "../Parse.bigram.probs"
+    status "Load model ..." $ loadModel st bigram_fpath
     status "Import data ..." $ do
       importTreebank st "" lang
     status "Export data ..." $ exportAnnotatedTreebank st ""

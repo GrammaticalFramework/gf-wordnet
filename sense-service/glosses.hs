@@ -15,14 +15,14 @@ main = do
   when fileExists (removeFile db_name)
   db <- openSG db_name
   inTransaction db $ do
-    ls <- fmap lines $ readFile "../WordNet.gf"
+    ls <- fmap lines $ readFile "WordNet.gf"
     let fundefs = mapMaybe parseGloss ls
     let funids  = Set.fromList (map (\(fn,_,_) -> fn) fundefs)
     let glosses = [x | (fn,synset,gloss) <- fundefs, x <- glossTriples fn synset gloss]
     sequence_ [insertTriple db s p o | t@(s,p,o) <- glosses]
-    ls <- fmap lines $ readFile "../examples.txt"
+    ls <- fmap lines $ readFile "examples.txt"
     sequence_ [insertTriple db s p o | t@(s,p,o) <- parseExamples funids ls]
-    ls <- fmap lines $ readFile "../Parse.bigram.probs"
+    ls <- fmap lines $ readFile "Parse.bigram.probs"
     sequence_ [insertTriple db s p o | t@(s,p,o) <- concatMap parseContext ls]
   closeSG db
 

@@ -25,10 +25,10 @@ foreign import ccall "em_setup_bigram_smoothing" setupBigramSmoothing :: EMState
 foreign import ccall "em_setup_unigram_smoothing" setupUnigramSmoothing :: EMState -> Float -> IO ()
 foreign import ccall "em_setup_preserve_trees" setupPreserveTrees :: EMState -> IO ()
 
-importTreebank :: EMState -> FilePath -> String -> IO ()
-importTreebank st fpath lang =
-  withCString fpath $ \cpath ->
-  withCString lang  $ \clang -> do
+importTreebank :: EMState -> String -> FilePath -> IO ()
+importTreebank st lang fpath =
+  withCString lang  $ \clang -> 
+  withCString fpath $ \cpath -> do
      res <- em_import_treebank st cpath clang
      if res == 0
        then fail "Loading failed"

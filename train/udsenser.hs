@@ -37,13 +37,13 @@ training st args = do
         _          -> return ()
 
 annotation st bigram_fpath lang = do
-    status "Setup preserve trees ..." $ setupPreserveTrees st
-    status "Bigram smoothing ..." $ setupBigramSmoothing st 0.002
-    status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
-    status "Load model ..." $ loadModel st bigram_fpath
-    status "Import data ..." $ do
-      importTreebank st "" lang
-    status "Export data ..." $ exportAnnotatedTreebank st ""
+  status "Setup preserve trees ..." $ setupPreserveTrees st
+  status "Bigram smoothing ..." $ setupBigramSmoothing st 0.002
+  status "Setup ranking ..." $ setupRankingCallbacks st ranking_callbacks
+  status "Load model ..." $ loadModel st bigram_fpath
+  status "Import data ..." $ do
+    importTreebank st lang ""
+  status "Export data ..." $ exportAnnotatedTreebank st ""
 
 status msg io = do
   hPutStr stderr msg

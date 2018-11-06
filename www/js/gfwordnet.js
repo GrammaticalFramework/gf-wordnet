@@ -221,7 +221,7 @@ gfwordnet.onclick_cell = function (cell) {
 
 			details.appendChild(node("h1",{},[text("Context")]));
 
-			var canvas = node("canvas", {width: 300, height: 200}, []);
+			var canvas = node("canvas", {width: 10, height: 10}, []);
 			details.appendChild(canvas);
 			
 			WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,lex_def)});

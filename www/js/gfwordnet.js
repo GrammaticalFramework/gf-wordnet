@@ -209,6 +209,14 @@ gfwordnet.onclick_cell = function (cell) {
 			}
 		}
 		if (list.length > 1) {
+			list.sort(function(a,b) {
+			            if (a[1] > b[1])
+                          return -1;
+                        if (a[1] < b[1])
+                          return 1;
+                        return 0;
+                      });
+
 			function select_color(word, weight, fontSize, distance, theta) {
 				if (word in this.heads) {
 					return "orange";

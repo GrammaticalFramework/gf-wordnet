@@ -2,16 +2,21 @@ module EM(EMState, DepTree,
           newEMState, freeEMState,
           setupBigramSmoothing, setupUnigramSmoothing,
           setupPreserveTrees, setupRankingCallbacks,
+          addDepTree,
           importTreebank, loadModel, exportAnnotatedTreebank,
           getBigramCount, getUnigramCount,
           step, dump) where
 
 import PGF2
 import Data.Maybe
+import Data.Tree
 import Foreign
 import Foreign.C
 import Matching
 import System.IO.Unsafe(unsafePerformIO)
+import Control.Monad
+
+#include "em_core.h"
 
 newtype EMState = EMState (Ptr ())
 
@@ -24,6 +29,28 @@ foreign import ccall "em_free_state" freeEMState :: EMState -> IO ()
 foreign import ccall "em_setup_bigram_smoothing" setupBigramSmoothing :: EMState -> Float -> IO ()
 foreign import ccall "em_setup_unigram_smoothing" setupUnigramSmoothing :: EMState -> Float -> IO ()
 foreign import ccall "em_setup_preserve_trees" setupPreserveTrees :: EMState -> IO ()
+
+addDepTree :: EMState -> Tree (Fun,String) -> IO ()
+addDepTree st t = do
+  (_,dtree) <- mkRoot 0 (DepTree nullPtr) t
+  em_add_dep_tree st dtree
+  where
+    mkRoot index parent (Node (fun,lbl) ts) = do
+      dtree <- withCString fun  $ \cfun ->
+                withCString lbl  $ \clbl ->
+                 em_new_dep_tree st parent cfun clbl index (fromIntegral (length ts))
+      let DepTree ptr = dtree
+      index <- mkChildren dtree (ptr `plusPtr` (#offset DepTree, child)) (index+1) ts
+      return (index, dtree)
+
+    mkChildren parent ptr index []     = return index
+    mkChildren parent ptr index (t:ts) = do
+      (index,dtree) <- mkRoot index parent t
+      poke ptr dtree
+      mkChildren parent (ptr `plusPtr` (#size DepTree*)) index ts
+
+foreign import ccall em_new_dep_tree :: EMState -> DepTree -> CString -> CString -> (#type size_t) -> (#type size_t) -> IO DepTree
+foreign import ccall em_add_dep_tree :: EMState -> DepTree -> IO ()
 
 importTreebank :: EMState -> String -> FilePath -> IO ()
 importTreebank st lang fpath =

@@ -1,3 +1,4 @@
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Matching( SenseChoice(..),Fields(..),DepTree(..),Prop,Stat(..),
                  category, node, label, pos, equal_choice, best
                ) where
@@ -10,7 +11,7 @@ import Foreign.C
 
 newtype SenseChoice = SenseChoice (Ptr ())
 newtype Fields  = Fields  (Ptr ())
-newtype DepTree = DepTree (Ptr ())
+newtype DepTree = DepTree (Ptr ()) deriving Storable
 data Stat = S {-# UNPACK #-} !CInt {-# UNPACK #-} !CInt
 newtype Prop = Prop (SenseChoice -> Fields -> DepTree -> IO Stat)
 

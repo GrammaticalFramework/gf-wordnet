@@ -373,6 +373,72 @@ build_dep_tree(EMState* state, PgfConcr* concr,
 	return dtree;
 }
 
+DepTree*
+em_new_dep_tree(EMState* state, DepTree* parent,
+                PgfCId fun, GuString lbl,
+                size_t index, size_t n_children)
+{
+	DepTree* dtree = gu_new_flex(state->pool, DepTree, child, n_children);
+	dtree->index      = index;
+	dtree->choices    = gu_new_buf(SenseChoice, state->pool);
+	dtree->n_children = n_children;
+
+	SenseChoice* choice = gu_buf_extend(dtree->choices);
+	choice->prob = 0;
+
+	FunStats** stats =
+		gu_map_insert(state->stats, fun);
+	if (*stats == NULL) {
+		*stats = gu_new(FunStats, state->pool);
+		(*stats)->fun = fun;
+		(*stats)->pc.prob  = 0;
+		(*stats)->pc.count = INFINITY;
+		(*stats)->mods =
+			gu_new_string_map(ProbCount*, NULL, state->pool);
+	}
+	choice->stats = *stats;
+
+	choice->stats->pc.count =
+		log_add(choice->stats->pc.count,0);
+
+	choice->prob_counts =
+		gu_new_n(ProbCount*, 1, state->pool);
+
+	if (parent != NULL) {
+		SenseChoice* parent_choice =
+			gu_buf_index(parent->choices, SenseChoice, 0);
+
+		ProbCount** pc =
+			gu_map_insert(parent_choice->stats->mods, choice->stats->fun);
+		if (*pc == NULL) {
+			*pc = gu_new(ProbCount, state->pool);
+
+			prob_t back_off =
+				get_pgf_prob(state,parent_choice->stats->fun) +
+				get_pgf_prob(state,choice->stats->fun);
+
+			(*pc)->prob  = state->bigram_smoothing + back_off;
+			(*pc)->count = INFINITY;
+		}
+
+		choice->prob_counts[0] = *pc;
+
+		choice->prob_counts[0]->count =
+			log_add(choice->prob_counts[0]->count, 0);
+	}
+
+	state->unigram_total++;
+	state->bigram_total += n_children;
+
+	return dtree;
+}
+
+void
+em_add_dep_tree(EMState* state, DepTree* dtree)
+{
+	gu_buf_push(state->dtrees, DepTree*, dtree);
+}
+
 int
 em_import_treebank(EMState* state, GuString fpath, GuString lang)
 {
@@ -475,13 +541,8 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 			start = end;
 		}
 
-		if (n_fields != CONLL_NUM_FIELDS) {
-			fprintf(stderr, "Too few fields in: %s\n", line);
-			if (state->fields == NULL) {
-				gu_pool_free(tmp_pool);
-			}
-			fclose(inp);
-			return 0;
+		while (n_fields < CONLL_NUM_FIELDS) {
+			(*fields)[n_fields++] = "";
 		}
     }
 
@@ -871,7 +932,7 @@ dump_mods(GuMapItor* itor, const void* key, void* value, GuExn* err)
 	ProbCount* pc = *((ProbCount**) value);
 	
 	double val = exp(-pc->prob);
-	if (val > 1e-80)
+	if (val*self->state->bigram_total > 0.00001)
 		fprintf(self->fbigram, "%s\t%s\t%e\n",
 		                       self->head_stats->fun, mod, 
 		                       val);

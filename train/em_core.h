@@ -46,6 +46,13 @@ em_setup_preserve_trees(EMState *state);
 void
 em_setup_unigram_smoothing(EMState *state, prob_t count);
 
+DepTree*
+em_new_dep_tree(EMState* state, DepTree* parent, PgfCId fun, GuString lbl,
+                size_t index, size_t n_children);
+
+void
+em_add_dep_tree(EMState* state, DepTree* dtree);
+
 int
 em_import_treebank(EMState* state, GuString fpath, GuString lang);
 

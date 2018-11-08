@@ -1,27 +1,29 @@
--- Special labels:
---   * head - designates the source of dependencies for
---     the other arguments of the function. The label becomes
---     a shortcut for head:anchor if there are no other anchors defined.
---
---   * rel  - the name of the head function of this argument becomes 
---     a dependency label
---
---   * _    - this child is ignored
+-- Syntax: every line starts with a function name followed with
+-- one pragma for every argument of the function. The pragmas
+-- describe how this argument is incorporated in 
+-- the semantic dependency graph.
 --
 -- Pragmas:
+--   * head - implies that the graph for this argument will be 
+--   the graph for the whole function application with some additions.
 --
---   If a child has a pragma then it is attached by using a colon.
---   For example mod:anchor or mod:2.
+--   * head:<lbl>:<n> - the same as head but in addition a link 
+--   with label <lbl> is added from argument <n> to the graph for 
+--   the current argument.
 --
---   * anchor - this pragma designates the child to which 
---     the incoming dependencies should be anchored. It doesn't have to
---     be the head. If none of the children has an anchor then
---     the head gets anchored.
---   * <number N> - this pragma is used to designate that
---     they modify the Nth argument. By default the modified
---     argument is the head
---   * rev - this pragma means to reverse the dependency.
---   * rel=<label> - this pragma changes the name of the relation.
+--   * rel - the head function for the argument becomes a dependency
+--   label for the head of the function. The children in 
+--   the argument's graph are ignored.
+--
+--   * rel:<n> - the same as rel but applies to argument <n>
+--
+--   * _ - the argument is ignored
+--
+--   * anchor - the argument is not linked to the head but instead
+--   becomes a root on its own
+--
+--   * <lbl> - the argument is linked to head with label <lbl>
+
 
 AdAP mod head
 AdAdV mod head
@@ -88,13 +90,13 @@ CompNP head
 CompQS head
 CompS head
 CompVP mod mod head
-ComparA mod:anchor head
+ComparA head:mod:2 anchor
 ComparAdv _ head mod mod
 -- ComparAdvAdjS mod mod mod
 ComparAsAP head mod
 ComparAsAdv head mod
 ComplA2 head arg
-ComplBareVS head arg
+ComplBareVS head anchor
 ComplDirectVQ head arg
 ComplDirectVS head arg
 ComplN2 head arg
@@ -107,10 +109,10 @@ ComplVPI2 head obj
 ComplVPIVV head arg
 -- ComplVPS2 head obj
 ComplVQ head arg
-ComplVS head arg
-ComplVV _ _ head arg
+ComplVS head anchor
+ComplVV  head _ _ arg
 CompoundAP comp head
-CompoundN comp head
+CompoundN mod head
 ConjAP _ head
 ConjAdV _ head
 ConjAdv _ head
@@ -144,16 +146,16 @@ ConsVPS2 head head
 Cons_nr_RNP head head
 Cons_rr_RNP head head
 CountNP mod head
-DetCN mod head
+DetCN _ head
 DetCNN mod _ head
 DetDAP head
-DetQuant head head
+DetQuant head _
 DetQuantOrd head head head
 -- EmbedPresPart head
 EmbedQS head
 EmbedS head
 EmbedVP _ _ head
-EmptyRelSlash head
+EmptyRelSlash head:obj
 EnoughAP head _ _ mod
 EnoughAdv head
 ExistCN head
@@ -168,7 +170,7 @@ ExtAdvNP head mod
 ExtAdvAP head mod
 ExtAdvS mod head
 ExtAdvVP head mod
-ExtRelNP subj:anchor head
+ExtRelNP head mod
 -- FocusAdV mod mod
 -- FocusAdv mod mod
 FocusComp mod mod
@@ -177,7 +179,7 @@ FrontComplDirectVS subj head arg
 -- FunRP mod mod mod
 -- GenIP head
 -- GenModIP mod mod mod
-GenModNP mod poss head
+GenModNP _ poss head
 -- GenRP mod mod
 GenericCl head
 GerundAdv head
@@ -237,11 +239,11 @@ OrdNumeral _
 OrdNumeralSuperl head head
 OrdSuperl head
 PConjConj head
-PartNP rel head
-PassAgentVPSlash head:rel=obj subj
-PassVPSlash head:rel=obj
-PastPartAP head:rev:rel=obj
-PastPartAgentAP head:rev:rel=obj subj
+PartNP head mod
+PassAgentVPSlash head subj
+PassVPSlash head
+PastPartAP head:obj
+PastPartAgentAP head:obj subj
 PhrUtt _ head _
 PhrUttMark _ head _ _
 PositA head
@@ -251,17 +253,17 @@ PositAdvAdj head
 PossCNN_RNP mod _ head poss
 PossNP head poss
 PossPron head
-PossPronRNP poss:3 mod head mod
+PossPronRNP poss mod head mod
 -- PredAPVP mod mod
 PredSCVP mod head
 PredVP subj head
 PredVPS subj head
-PredetNP mod head
+PredetNP _ head
 PredetRNP mod head
 PrepCN rel head
 -- PrepIP mod mod
 PrepNP rel head
-PresPartAP head:rev:rel=subj
+PresPartAP head:subj
 ProDrop head
 ProgrVP head
 ProgrVPSlash head
@@ -281,8 +283,8 @@ RelCN head mod
 RelCl head
 RelNP head mod
 -- RelS mod mod
-RelSlash _ head:ref:rel=obj
-RelVP _ head:ref:rel=subj
+RelSlash _ head:obj
+RelVP _ head:subj
 SSubjS head rel mod
 -- SelfAdVVP head
 -- SelfAdvVP head
@@ -295,16 +297,16 @@ SlashBareV2S head arg
 -- SlashPrep head mod
 SlashV2A head arg
 SlashV2Q head arg
-SlashV2S head arg
-SlashV2V _ _ head arg
-SlashV2VNP head:anchor subj:3 head:only=obj
+SlashV2S head anchor
+SlashV2V head _ _ arg
+SlashV2VNP head subj:5 _ _ head
 SlashV2a head
 SlashVP subj head
 SlashVS subj head arg
 SlashVV head arg
 -- StrandQuestSlash mod mod
 -- StrandRelSlash mod mod
-SubjS rel head
+SubjS _ anchor
 -- TExclMark mod mod
 -- TFullStop mod mod
 -- TQuestMark mod mod
@@ -323,8 +325,8 @@ UseDAPMasc head
 UseN head
 UsePN head
 UsePron head
-UseQCl mod mod head
-UseRCl mod mod head
+UseQCl _ _ head
+UseRCl _ _ head
 UseSlash mod mod head
 UseV head
 UttAP head
@@ -340,9 +342,9 @@ UttDatIP head
 UttDatNP head
 UttIAdv head
 UttIP head
-UttImpPl mod head
-UttImpPol mod head
-UttImpSg mod head
+UttImpPl _ head
+UttImpPol _ head
+UttImpSg _ head
 UttInterj head
 UttNP head
 UttQS head

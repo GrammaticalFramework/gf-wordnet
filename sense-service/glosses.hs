@@ -4,6 +4,7 @@ import Data.Char
 import Data.List
 import Data.Maybe
 import qualified Data.Set as Set
+import qualified Data.Map as Map
 import SenseSchema
 import System.Directory
 import Control.Monad    
@@ -22,8 +23,9 @@ main = do
     sequence_ [insertTriple db s p o | t@(s,p,o) <- glosses]
     ls <- fmap lines $ readFile "examples.txt"
     sequence_ [insertTriple db s p o | t@(s,p,o) <- parseExamples funids ls]
+    unigrams <- fmap (Map.fromList . map parseUnigram . lines) $ readFile "Parse.probs"
     ls <- fmap lines $ readFile "Parse.bigram.probs"
-    sequence_ [insertTriple db s p o | t@(s,p,o) <- concatMap parseContext ls]
+    sequence_ [insertTriple db s p o | t@(s,p,o) <- concatMap (parseBigram unigrams) ls]
   closeSG db
 
 parseGloss l = 
@@ -90,10 +92,22 @@ parseExamples funids (l1:l2:l3:l4:l5:l6:ls)
       in ts ++ parseExamples funids ls
 parseExamples funids (l:ls)                    = parseExamples funids ls
 
+parseUnigram l = (w1,read w2 :: Double)
+  where
+    [w1,w2] = words l
 
-parseContext l = [(h,modifier,ep m p),(m,head_,ep h p)]
+parseBigram unigrams l = [(h,modifier,ep m p),(m,head_,ep h p)]
   where
     Just h  = readExpr w0
     Just m  = readExpr w1
-    p       = read w2 :: Double
+    p1      = read w2 :: Double
+    p2      = getProb w0 * getProb w1
+    p       = (1-lambda)*p1 + lambda*p2
     [w0,w1,w2] = words l
+    lambda  = 0.002
+    
+    getProb f = prob f * prob c
+      where
+        c = (reverse . takeWhile (/='_') . reverse) f
+        
+        prob x = fromMaybe 0 (Map.lookup x unigrams)

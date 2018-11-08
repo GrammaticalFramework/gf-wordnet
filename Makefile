@@ -56,24 +56,27 @@ Parse.pgf: $(GF_SOURCES) Parse.probs
 build/Parse.noprobs.pgf: $(GF_SOURCES)
 	gf --make -name=Parse.noprobs --gfo-dir=build/gfo --output-dir=build ParseBul.gf ParseEng.gf ParseFin.gf ParsePor.gf ParseSwe.gf
 
-Parse.probs Parse.bigram.probs: build/udsenser build/Parse.noprobs.pgf $(UD_BUL_TREEBANKS) $(UD_ENG_TREEBANKS) $(UD_FIN_TREEBANKS) $(UD_SWE_TREEBANKS)
-	build/udsenser build/Parse.noprobs.pgf train ParseBul $(UD_BUL_TREEBANKS) , ParseEng $(UD_ENG_TREEBANKS) , ParseFin $(UD_FIN_TREEBANKS) , ParseSwe $(UD_SWE_TREEBANKS)
+Parse.probs Parse.bigram.probs: build/udsenser build/Parse.noprobs.pgf examples.txt $(UD_BUL_TREEBANKS) $(UD_ENG_TREEBANKS) $(UD_FIN_TREEBANKS) $(UD_SWE_TREEBANKS)
+	build/udsenser build/Parse.noprobs.pgf train abstract examples.txt , ParseBul $(UD_BUL_TREEBANKS) , ParseEng $(UD_ENG_TREEBANKS) , ParseFin $(UD_FIN_TREEBANKS) , ParseSwe $(UD_SWE_TREEBANKS)
 
-build/udsenser: train/udsenser.hs train/EM.hs build/train/Matching.hs build/train/em_core.o
-	ghc --make -odir build/train -hidir build/train -O2 train/udsenser.hs train/EM.hs build/train/Matching.hs build/train/em_core.o -o $@ -lpgf -lgu -lm
+build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o
+	ghc --make -odir build/train -hidir build/train -O2 $^ -o $@ -lpgf -lgu -lm
 
 build/train/em_core.o: train/em_core.c train/em_core.h
-	gcc -O2 -std=c99 -Itrain -c train/em_core.c -o $@
+	gcc -O2 -std=c99 -Itrain -c $< -o $@
+
+build/train/EM.hs: train/EM.hsc train/em_core.h
+	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
 build/train/Matching.hs: train/Matching.hsc train/em_core.h
-	hsc2hs --cflag="-std=c99" -Itrain train/Matching.hsc -o $@
+	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
-semantics.db: WordNet.gf examples.txt Parse.bigram.probs
+semantics.db: sense-service/glosses.hs WordNet.gf examples.txt Parse.bigram.probs
 	runghc -isense-service sense-service/glosses.hs
 	scp semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
 
 build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs
-	ghc --make -odir build/sense-service -hidir build/sense-service -O2 sense-service/SenseService.hs sense-service/SenseSchema.hs -o $@
+	ghc --make -odir build/sense-service -hidir build/sense-service -O2 $^ -o $@
 	scp build/SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
 	ssh www.grammaticalframework.org mv www/SenseService www/SenseService.fcgi
 

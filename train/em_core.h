@@ -85,6 +85,15 @@ dtree_match_pos(GuBuf* buf, DepTree *dtree, GuString pos);
 int
 dtree_match_same_choice(SenseChoice *choice, DepTree *dtree);
 
+typedef struct {
+	size_t index;
+	PgfCId fun;
+	prob_t prob;
+} EMLemmaProb;
+
+GuBuf*
+em_annotate_dep_tree(DepTree* dtree, GuPool* pool);
+
 int
 em_export_annotated_treebank(EMState* state, GuString fpath);
 

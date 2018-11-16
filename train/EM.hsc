@@ -1,8 +1,8 @@
-module EM(EMState, DepTree,
+module EM(EMState(..), DepTree,
           newEMState, freeEMState,
           setupBigramSmoothing, setupUnigramSmoothing,
           setupPreserveTrees, setupRankingCallbacks,
-          addDepTree,
+          addDepTree, annotateDepTree,
           importTreebank, loadModel, exportAnnotatedTreebank,
           getBigramCount, getUnigramCount,
           step, dump) where
@@ -15,6 +15,7 @@ import Foreign.C
 import Matching
 import System.IO.Unsafe(unsafePerformIO)
 import Control.Monad
+import Control.Exception
 
 #include "em_core.h"
 
@@ -49,8 +50,33 @@ addDepTree st t = do
       poke ptr dtree
       mkChildren parent (ptr `plusPtr` (#size DepTree*)) index ts
 
-foreign import ccall em_new_dep_tree :: EMState -> DepTree -> CString -> CString -> (#type size_t) -> (#type size_t) -> IO DepTree
+foreign import ccall em_new_dep_tree :: EMState -> DepTree -> CString -> CString -> CSize -> CSize -> IO DepTree
 foreign import ccall em_add_dep_tree :: EMState -> DepTree -> IO ()
+
+annotateDepTree :: DepTree -> IO [((#type size_t), Fun, Float)]
+annotateDepTree dtree =
+  bracket gu_new_pool gu_pool_free $ \pool -> do
+    buf <- em_annotate_dep_tree dtree pool
+    seq   <- (#peek GuBuf, seq) buf
+    c_len <- (#peek GuSeq, len) seq
+    peekElems (c_len :: (#type size_t)) (seq `plusPtr` (#offset GuSeq, data))
+  where
+    peekElems 0   ptr = return []
+    peekElems len ptr = do
+      index  <- (#peek EMLemmaProb, index) ptr
+      fun    <- (#peek EMLemmaProb, fun)   ptr >>= peekCString
+      prob   <- (#peek EMLemmaProb, prob)  ptr
+      es <- peekElems (len-1) (ptr `plusPtr` (#size EMLemmaProb))
+      return ((index,fun,prob):es)
+
+
+foreign import ccall em_annotate_dep_tree :: DepTree -> Ptr () -> IO (Ptr ())
+
+foreign import ccall unsafe "gu/mem.h gu_new_pool"
+  gu_new_pool :: IO (Ptr ())
+
+foreign import ccall unsafe "gu/mem.h gu_pool_free"
+  gu_pool_free :: Ptr () -> IO ()
 
 importTreebank :: EMState -> String -> FilePath -> IO ()
 importTreebank st lang fpath =

@@ -7906,7 +7906,7 @@ battalion_N	battalion_2_N
 batten_N	batten_1_N
 batten_N	batten_2_N
 batten_V2	batten_1_V2
-batten_V2	batten_2_V2
+batten_V2	batten_down_V2
 batter_N	batter_1_N
 batter_N	batter_2_N
 batter_V	batter_3_V
@@ -7960,7 +7960,6 @@ bawbee_N	bawbee_N
 bawd_N	bawd_N
 bawdry_N	bawdry_N
 bawdy_A	bawdy_A
-bawdy_N	bawdy_N
 bawl_V	bawl_1_V
 bawl_V	bawl_2_V
 bawl_V	bawl_3_V
@@ -7994,7 +7993,7 @@ bazooka_N	bazooka_N
 bbc_PN	bbc_PN
 bdellium_N	bdellium_N
 beach_N	beach_N
-beach_V2	beach_V2
+beach_V2	beach_V
 beachcomber_N	beachcomber_N
 beachfront_N	beachfront_N
 beachhead_N	beachhead_1_N
@@ -29228,7 +29227,6 @@ drill_down_through_V2	drill_down_through_V2
 drill_into_V3	drill_into_V3
 drilling_N	drilling_1_N
 drilling_N	drilling_2_N
-drink_N	drink_1_N
 drink_N	drink_2_N
 drink_N	drink_3_N
 drink_N	drink_4_N
@@ -67615,8 +67613,6 @@ pearl_N	pearl_1_N
 pearl_N	pearl_2_N
 pearl_N	pearl_3_N
 pearl_PN	pearl_1_PN
-pearl_PN	pearl_2_PN
-pearl_PN	pearl_3_PN
 pearl_V	pearl_V
 pearl_barley_N	pearl_barley_N
 pearl_diver_N	pearl_diver_N

@@ -8153,7 +8153,6 @@ beat_V2	beat_22_V2
 beat_back_V	beat_back_V2
 beat_down_V	beat_down_2_V
 beat_down_V2	beat_down_1_V2
-beat_down_V2	beat_down_3_V2
 beat_out_V2	beat_out_2_V2
 beat_up_V2	beat_up_2_V2
 beatable_A	beatable_A
@@ -8222,7 +8221,7 @@ become_V	become_3_V
 become_V2	become_2_V2
 become_V2	become_4_V2
 become_VA	become_VA
-becomingly_Adv	becomingly_Adv
+becomingly_Adv	becomingly_AdV
 becomingness_N	becomingness_N
 bed_N	bed_1_N
 bed_N	bed_2_N
@@ -12648,7 +12647,7 @@ bunk_N	bunk_3_N
 bunk_N	bunk_4_N
 bunk_N	bunk_5_N
 bunk_N	bunk_6_N
-bunk_V	bunk_1_V
+bunk_V	bunk_1_V2
 bunk_V	bunk_2_V
 bunk_V	bunk_3_V
 bunk_off_V	bunk_off_V
@@ -93688,7 +93687,7 @@ sure_A	sure_5_A
 sure_A	sure_6_A
 sure_A	sure_7_A
 sure_A	sure_8_A
-sure_Adv	sure_Adv
+sure_Adv	sure_AdV
 sure_footed_A	sure_footed_1_A
 sure_footed_A	sure_footed_2_A
 surefooted_A	surefooted_1_A

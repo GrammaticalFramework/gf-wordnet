@@ -60,7 +60,7 @@ BaseAP head head
 BaseAdV head head
 BaseAdv head head
 BaseCN head head
-BaseCNN mod:2 head mod:4 head
+BaseCNN _ head _ head
 BaseComp head head
 BaseDAP head head
 BaseIAdv head head
@@ -225,8 +225,8 @@ MkDocument _ _ _
 MkTag _
 MkVPI head
 MkVPI2 head
-MkVPS mod mod head
-MkVPS2 mod mod head
+MkVPS _ _ head
+MkVPS2 _ _ head
 NoDefinition _
 -- NominalizeVPSlashNP mod mod
 NumCard _
@@ -250,10 +250,10 @@ PositA head
 PositAdAAdj head
 PositAdVAdj head
 PositAdvAdj head
-PossCNN_RNP mod _ head poss
+PossCNN_RNP _ _ head poss
 PossNP head poss
 PossPron head
-PossPronRNP poss mod head mod
+PossPronRNP poss _ head mod
 -- PredAPVP mod mod
 PredSCVP mod head
 PredVP subj head
@@ -275,7 +275,7 @@ QuestIComp mod head
 QuestSlash mod head
 QuestVP mod head
 ReflA2 head
-ReflPoss mod head
+ReflPoss _ head
 ReflPossCNN _ head
 ReflVPSlash head obj
 ReflVP head
@@ -404,7 +404,7 @@ tend_VP head
 weekdayN head
 -- weekdayNextAdv head
 -- weekdayPN head
--- weekdayPunctualAdv head
+weekdayPunctualAdv head
 -- what_name_QCl head
 yearAdv head
 RecipVPSlash head

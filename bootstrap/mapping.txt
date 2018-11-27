@@ -8235,7 +8235,7 @@ bed_V2	bed_1_V2
 bed_V2	bed_2_V2
 bed_V2	bed_3_V2
 bed_V2	bed_4_V2
-bed_V2	bed_5_V2
+bed_V2	bed_5_V
 bed_down_V	bed_down_V
 bed_out_V2	bed_out_V2
 bedaubed_A	bedaubed_A
@@ -8344,7 +8344,7 @@ beforehand_Adv	beforehand_Adv
 befoul_V2	befoul_V2
 befoulment_N	befoulment_N
 befriend_V2	befriend_V2
-beg_V2	beg_1_V2
+beg_V2	beg_1_V2V
 beg_V2	beg_2_V2
 beg_V2	beg_3_V2
 beg_V2	beg_4_V2
@@ -8371,7 +8371,7 @@ begin_V2	begin_10_V2
 begin_ing_VV	begin_ing_VV
 begin_to_VV	begin_to_1_VV
 begin_to_VV	begin_to_9_VV
-begin_with_V	begin_with_V
+begin_with_V	begin_with_V2
 beginner_N	beginner_1_N
 beginner_N	beginner_2_N
 beginning_N	beginning_1_N
@@ -8393,7 +8393,6 @@ beguine_N	beguine_1_N
 beguine_N	beguine_2_N
 beguine_N	beguine_3_N
 begum_N	begum_N
-behalf_N	behalf_1_N
 behalf_N	behalf_2_N
 behave_V	behave_2_V
 behave_V	behave_3_V
@@ -8425,7 +8424,7 @@ behither_Prep	behither_Prep
 behold_V2	behold_V2
 beholden_A	beholden_A
 beholder_N	beholder_N
-behove_V2	behove_1_V2
+behove_V2	behove_1_V2V
 beige_A	beige_A
 beige_N	beige_N
 beijing_PN	beijing_PN
@@ -24361,7 +24360,7 @@ deal_PN	deal_5_PN
 deal_PN	deal_6_PN
 deal_PN	deal_8_PN
 deal_PN	deal_9_PN
-deal_V	deal_1_V
+deal_V	deal_with_V2
 deal_V	deal_3_V
 deal_V	deal_6_V
 deal_V	deal_7_V
@@ -52146,9 +52145,8 @@ laetrile_N	laetrile_N
 lag_N	lag_1_N
 lag_N	lag_2_N
 lag_N	lag_3_N
-lag_V	lag_1_V
+lag_V	lag_behind_V
 lag_V	lag_3_V
-lag_V2	lag_1_V2
 lag_V2	lag_2_V2
 lag_V2	lag_3_V2
 lag_V2	lag_4_V2

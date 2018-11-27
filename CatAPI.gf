@@ -20,10 +20,12 @@ oper mkTerm = overload {
     appTerm f (fullTerm x ++ concatTerm y z) ; 
   mkTerm : Str -> (_,_,_,_ : Term) -> Term = \f,x,y,z,u -> 
     appTerm f (fullTerm x ++ fullTerm y ++ fullTerm z ++ fullTerm u) ;
+  mkTerm : {s:Str} -> Term = \s -> 
+    {s = "\""++s.s++"\"" ; f = s.s ; x,swap = [] ; par = noPar ; flat = False} ;
   } ;
 
   noPar  = <[],[]> ;
-  yesPar = <"(",")"> ;
+  yesPar = <"("++SOFT_BIND,SOFT_BIND++")"> ;
 
   appTerm : Str -> Str -> Term = \f,x -> {s = f ++ x ; f = f ; x = x ; swap = [] ; par = yesPar ; flat = False} ;
   useTerm : Term -> Str = \t -> t.f ++ t.x ++ t.swap ;

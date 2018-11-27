@@ -1,7 +1,7 @@
 GF_SOURCES = \
-	Parse.gf ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf ParseFin.gf \
+	Parse.gf ParseEng.gf ParsePor.gf ParseSwe.gf ParseBul.gf ParseFin.gf ParseAPI.gf \
 	ParseExtend.gf ParseExtendEng.gf ParseExtendPor.gf ParseExtendSwe.gf ParseExtendBul.gf ParseExtendFin.gf \
-	WordNet.gf WordNetEng.gf WordNetSwe.gf WordNetPor.gf WordNetBul.gf WordNetFin.gf \
+	WordNet.gf WordNetEng.gf WordNetSwe.gf WordNetPor.gf WordNetBul.gf WordNetFin.gf WordNetAPI.gf \
 
 UD_ENG_TREEBANKS = \
 	ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-train.conllu \
@@ -50,7 +50,7 @@ all: build_dirs Parse.pgf semantics.db build/SenseService
 	@ssh www.grammaticalframework.org
 
 Parse.pgf: $(GF_SOURCES) Parse.probs
-	gf --make --probs=Parse.probs --gfo-dir=build/gfo ParseBul.gf ParseEng.gf ParseFin.gf ParsePor.gf ParseSwe.gf
+	gf --make --probs=Parse.probs --gfo-dir=build/gfo ParseBul.gf ParseEng.gf ParseFin.gf ParsePor.gf ParseSwe.gf ParseAPI.gf
 	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 
 build/Parse.noprobs.pgf: $(GF_SOURCES)

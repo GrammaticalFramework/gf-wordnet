@@ -24,7 +24,7 @@ concrete ParseExtendPor of ParseExtend =
   lincat Mark = SS ;
 
   lin
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
     ExclMark  = {s = "!"} ;
     QuestMark = {s = "?"} ;

@@ -16,7 +16,7 @@ lin gen_Quant = DefArt ;
     UttVPSFem  vps = {s = vps.s ! Main ! (agrP3 Utr   Sg)} ;
     UttVPSPl   vps = {s = vps.s ! Main ! (agrP3 Neutr Pl)} ;
 
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
     FullStop  = {s = "."} ;
     ExclMark  = {s = "!"} ;
     QuestMark = {s = "?"} ;

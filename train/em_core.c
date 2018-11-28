@@ -52,7 +52,7 @@ print_tree(DepTree* dtree)
 #endif
 
 EMState*
-em_new_state(char* fpath)
+em_new_state(PgfPGF* pgf)
 {
 	GuPool* pool = gu_new_pool();
 
@@ -68,13 +68,7 @@ em_new_state(char* fpath)
 	state->root_choices = gu_new_buf(SenseChoice, pool);
 	state->break_trees = 0;
 	state->callbacks = gu_new_string_map(EMRankingCallback, &gu_null_struct, pool);
-
-	GuExn* err = gu_new_exn(pool);
-	state->pgf = pgf_read(fpath, state->pool, err);
-	if (state->pgf == NULL) {
-		gu_pool_free(state->pool);
-		return NULL;
-	}
+	state->pgf = pgf;
 
 	return state;
 }

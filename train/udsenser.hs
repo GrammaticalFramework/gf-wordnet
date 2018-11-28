@@ -10,12 +10,13 @@ import System.FilePath
 main = do
   args <- getArgs
   case args of
-    (fpath:args) -> bracket (status "Grammar Loading ..." $ newEMState fpath) freeEMState $ \st ->
-                      case args of
-                        "train":args      -> training st "Parse.labels" args
-                        "annotate":lang:_ -> annotation st (replaceExtension fpath "bigram.probs") lang
-                        _                 -> help
-    _                -> help
+    (fpath:args) -> do gr <- status "Grammar Loading ..." (readPGF fpath)
+                       withEMState gr $ \st ->
+                         case args of
+                           "train":args      -> training st "Parse.labels" args
+                           "annotate":lang:_ -> annotation st (replaceExtension fpath "bigram.probs") lang
+                           _                 -> help
+    _            -> help
 
 help = do
   putStrLn "Syntax: udsenser <grammar> train"

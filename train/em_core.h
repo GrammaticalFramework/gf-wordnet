@@ -35,7 +35,7 @@ typedef void (*EMRankingCallback)(SenseChoice* choice, GuBuf* buf, DepTree* dtre
 typedef struct EMState EMState;
 
 EMState*
-em_new_state(char* fpath);
+em_new_state(PgfPGF* pgf);
 
 void
 em_free_state(EMState* state);

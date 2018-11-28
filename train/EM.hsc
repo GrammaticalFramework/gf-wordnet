@@ -1,5 +1,5 @@
 module EM(EMState(..), DepTree,
-          newEMState, freeEMState,
+          withEMState,
           setupBigramSmoothing, setupUnigramSmoothing,
           setupPreserveTrees, setupRankingCallbacks,
           addDepTree, annotateDepTree,
@@ -8,6 +8,7 @@ module EM(EMState(..), DepTree,
           step, dump) where
 
 import PGF2
+import PGF2.Internal
 import Data.Maybe
 import Data.Tree
 import Foreign
@@ -21,11 +22,11 @@ import Control.Exception
 
 newtype EMState = EMState (Ptr ())
 
-newEMState :: FilePath -> IO EMState
-newEMState s = withCString s em_new_state
-foreign import ccall em_new_state :: CString -> IO EMState
+withEMState :: PGF -> (EMState -> IO a) -> IO  a
+withEMState gr = bracket (em_new_state (pgf gr)) (\st -> em_free_state st >> touchPGF gr)
 
-foreign import ccall "em_free_state" freeEMState :: EMState -> IO ()
+foreign import ccall em_new_state :: Ptr a -> IO EMState
+foreign import ccall em_free_state :: EMState -> IO ()
 
 foreign import ccall "em_setup_bigram_smoothing" setupBigramSmoothing :: EMState -> Float -> IO ()
 foreign import ccall "em_setup_unigram_smoothing" setupUnigramSmoothing :: EMState -> Float -> IO ()

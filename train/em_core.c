@@ -201,6 +201,10 @@ get_pgf_prob(EMState* state, PgfCId fun)
 {
 	PgfType* ty =
 		pgf_function_type(state->pgf, fun);
+	if (ty == NULL) {
+		printf("Unknown function %s\n", fun);
+		exit(1);
+	}
 
 	return pgf_category_prob(state->pgf, ty->cid) +
 	       pgf_function_prob(state->pgf, fun);
@@ -254,7 +258,7 @@ init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 static void
 filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf, GuBuf* parent_choices)
 {
-	CONLLFields* fields = gu_buf_get(buf, CONLLFields, dtree->index);
+	CONLLFields* fields = gu_buf_index(buf, CONLLFields, dtree->index);
 	size_t n_choices = gu_buf_length(dtree->choices);
 
 	int max[2] = {INT_MIN, INT_MAX};
@@ -314,7 +318,7 @@ build_dep_tree(EMState* state, PgfConcr* concr,
 	// first count how many children we have
 	size_t n_children = 0;
 	for (int i = 0; i < gu_buf_length(buf); i++) {
-		CONLLFields* fields = gu_buf_get(buf, CONLLFields, i);
+		CONLLFields* fields = gu_buf_index(buf, CONLLFields, i);
 		if (strcmp((*fields)[6],id) == 0) {
 			n_children++;
 		}
@@ -354,7 +358,7 @@ build_dep_tree(EMState* state, PgfConcr* concr,
 	// now build the children
 	int pos = 0;
 	for (int i = 0; i < gu_buf_length(buf); i++) {
-		CONLLFields* fields = gu_buf_get(buf, CONLLFields, i);
+		CONLLFields* fields = gu_buf_index(buf, CONLLFields, i);
 		if (strcmp((*fields)[6],id) == 0) {
 			dtree->child[pos++] = 
 				build_dep_tree(state, concr,
@@ -440,7 +444,7 @@ em_new_conll_dep_tree(EMState* state, GuString lang, GuSeq* fields)
 
 	DepTree *dtree = NULL;
 	for (int i = 0; i < gu_buf_length(buf); i++) {
-		CONLLFields* fields = gu_buf_get(buf, CONLLFields, i);
+		CONLLFields* fields = gu_buf_index(buf, CONLLFields, i);
 		if (strcmp((*fields)[6], "0") == 0) {
 			dtree = build_dep_tree(state, concr,
 								   buf, i, fields,
@@ -504,7 +508,7 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 		if (line[0] == '\n') {
 			DepTree *dtree = NULL;
 			for (int i = 0; i < gu_buf_length(buf); i++) {
-				CONLLFields* fields = gu_buf_get(buf, CONLLFields, i);
+				CONLLFields* fields = gu_buf_index(buf, CONLLFields, i);
 				if (strcmp((*fields)[6], "0") == 0) {
 					dtree = build_dep_tree(state, concr,
 					                       buf, i, fields,
@@ -695,7 +699,7 @@ em_set_ranking_callback(EMState* state,
                         EMRankingCallback *ranking_callback)
 {
 	cat = gu_string_copy(cat, state->pool);
-	gu_map_put(state->callbacks, cat, EMRankingCallback, ranking_callback);
+	gu_map_put(state->callbacks, cat, EMRankingCallback*, ranking_callback);
 }
 
 int
@@ -883,9 +887,6 @@ normalize_heads(GuMapItor* itor, const void* key, void* value, GuExn* err)
 
 	head_stats->pc.prob  = head_stats->pc.count+log(self->state->unigram_total);
 	head_stats->pc.count = self->state->unigram_smoothing;
-
-	PgfType* ty = 
-		pgf_function_type(self->state->pgf, self->head_stats->fun);
 
 	gu_map_iter(self->head_stats->mods, &self->clo2, err);
 }

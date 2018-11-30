@@ -25,6 +25,7 @@ struct EMState {
 	prob_t unigram_total;
 	prob_t bigram_smoothing;
 	prob_t unigram_smoothing;
+	GuBuf* pcs;
 	bool break_trees;
 	GuMap* callbacks;
 };
@@ -65,6 +66,8 @@ em_new_state(PgfPGF* pgf)
 	state->unigram_total = 0;
 	state->bigram_smoothing = INFINITY;
 	state->unigram_smoothing = INFINITY;
+	state->pcs = gu_new_buf(ProbCount*, pool);
+
 	state->root_choices = gu_new_buf(SenseChoice, pool);
 	state->break_trees = 0;
 	state->callbacks = gu_new_string_map(EMRankingCallback, &gu_null_struct, pool);
@@ -139,6 +142,7 @@ smoothing_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
 		(*stats)->pc.count = self->state->unigram_smoothing;
 		(*stats)->mods =
 			gu_new_string_map(ProbCount*, NULL, self->state->pool);
+		gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
 	}
 	self->state->unigram_total += exp(-self->state->unigram_smoothing);
 }
@@ -191,6 +195,7 @@ lookup_callback(PgfMorphoCallback* callback,
 			(*stats)->pc.count = INFINITY;
 			(*stats)->mods =
 				gu_new_string_map(ProbCount*, NULL, self->state->pool);
+			gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
 		}
 		choice->stats = *stats;
 	}
@@ -237,14 +242,14 @@ init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 			ProbCount** pc =
 				gu_map_insert(parent_choice->stats->mods, choice->stats->fun);
 			if (*pc == NULL) {
-				*pc = gu_new(ProbCount, state->pool);
-
 				prob_t back_off =
 					get_pgf_prob(state,parent_choice->stats->fun) +
 					get_pgf_prob(state,choice->stats->fun);
 
+				*pc = gu_new(ProbCount, state->pool);
 				(*pc)->prob  = state->bigram_smoothing + back_off;
 				(*pc)->count = INFINITY;
+				gu_buf_push(state->pcs, ProbCount*, *pc);
 			}
 
 			choice->prob_counts[j] = *pc;
@@ -393,6 +398,7 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 		(*stats)->pc.count = INFINITY;
 		(*stats)->mods =
 			gu_new_string_map(ProbCount*, NULL, state->pool);
+		gu_buf_push(state->pcs, ProbCount*, &(*stats)->pc);
 	}
 	choice->stats = *stats;
 
@@ -409,14 +415,14 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 		ProbCount** pc =
 			gu_map_insert(parent_choice->stats->mods, choice->stats->fun);
 		if (*pc == NULL) {
-			*pc = gu_new(ProbCount, state->pool);
-
 			prob_t back_off =
 				get_pgf_prob(state,parent_choice->stats->fun) +
 				get_pgf_prob(state,choice->stats->fun);
 
+			*pc = gu_new(ProbCount, state->pool);
 			(*pc)->prob  = state->bigram_smoothing + back_off;
 			(*pc)->count = INFINITY;
+			gu_buf_push(state->pcs, ProbCount*, *pc);
 		}
 
 		choice->prob_counts[0] = *pc;
@@ -598,6 +604,7 @@ function_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
 		(*stats)->pc.count = INFINITY;
 		(*stats)->mods =
 			gu_new_string_map(ProbCount*, NULL, self->state->pool);
+		gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
 	}
 }
 
@@ -674,6 +681,7 @@ em_load_model(EMState* state, GuString fpath)
 			*pc = gu_new(ProbCount, state->pool);
 			(*pc)->prob  = prob;
 			(*pc)->count = INFINITY;
+			gu_buf_push(state->pcs, ProbCount*, *pc);
 		}
 	}
 
@@ -859,48 +867,21 @@ tree_counting(EMState* state, DepTree* dtree, prob_t* outside_probs)
 		tree_counting(state, dtree->child[i], child_outside_probs);
 	}
 }
- 
-typedef struct {
-	GuMapItor clo1;
-	GuMapItor clo2;
-	EMState *state;
-	FunStats* head_stats;
-} NormIter;
-
-static void
-normalize_mods(GuMapItor* itor, const void* key, void* value, GuExn* err)
-{
-	NormIter* self = gu_container(itor, NormIter, clo2);
-	PgfCId mod = key;
-	ProbCount* pc = *((ProbCount**) value);
-	pc->prob  = pc->count+log(self->state->bigram_total);
-	pc->count = INFINITY;
-}
-
-static void
-normalize_heads(GuMapItor* itor, const void* key, void* value, GuExn* err)
-{
-	NormIter* self = gu_container(itor, NormIter, clo1);
-	FunStats* head_stats = *((FunStats**) value);
-
-	self->head_stats = head_stats;
-
-	head_stats->pc.prob  = head_stats->pc.count+log(self->state->unigram_total);
-	head_stats->pc.count = self->state->unigram_smoothing;
-
-	gu_map_iter(self->head_stats->mods, &self->clo2, err);
-}
 
 prob_t
 em_step(EMState *state)
 {
-	NormIter itor;
-	itor.state = state;
-	itor.clo1.fn = normalize_heads;
-	itor.clo2.fn = normalize_mods;
-	gu_map_iter(state->stats, &itor.clo1, NULL);
+	// Normalize counts to probabilities
+	size_t n_pcs = gu_buf_length(state->pcs);
+	for (size_t i = 0; i < n_pcs; i++) {
+		ProbCount* pc =
+			gu_buf_get(state->pcs, ProbCount*, i);
+		pc->prob  = pc->count;
+		pc->count = INFINITY;
+	}
 
-	prob_t corpus_prob = 0;
+	// Estimate the new counts
+	prob_t corpus_prob = state->bigram_total*log(state->bigram_total);
 	for (int i = 0; i < gu_buf_length(state->dtrees); i++) {
 		DepTree* dtree = gu_buf_get(state->dtrees, DepTree*, i);
 
@@ -918,6 +899,8 @@ em_step(EMState *state)
 
 		tree_counting(state, dtree, outside_probs);
 	}
+	
+	// return the new corpus probability
 	return corpus_prob;
 }
 
@@ -940,7 +923,7 @@ collect_cat_probs(GuMapItor* itor, const void* key, void* value, GuExn* err)
 		pgf_function_type(self->state->pgf, head_stats->fun);
 	prob_t *pcount =
 		gu_map_insert(self->cat_probs, ty->cid);
-	*pcount = log_add(*pcount, head_stats->pc.prob);
+	*pcount = log_add(*pcount, log_add(head_stats->pc.prob,self->state->unigram_smoothing));
 }
 
 static void
@@ -951,7 +934,7 @@ dump_mods(GuMapItor* itor, const void* key, void* value, GuExn* err)
 
 	ProbCount* pc = *((ProbCount**) value);
 	
-	double val = exp(-pc->prob);
+	double val = exp(-pc->prob)/self->state->bigram_total;
 	if (val*self->state->bigram_total > 0.00001)
 		fprintf(self->fbigram, "%s\t%s\t%e\n",
 		                       self->head_stats->fun, mod, 
@@ -969,7 +952,7 @@ dump_heads(GuMapItor* itor, const void* key, void* value, GuExn* err)
 	PgfType *ty =
 		pgf_function_type(self->state->pgf, head_stats->fun);
 
-	double val = exp(gu_map_get(self->cat_probs, ty->cid, prob_t)-head_stats->pc.prob);
+	double val = exp(gu_map_get(self->cat_probs, ty->cid, prob_t)-log_add(head_stats->pc.prob,self->state->unigram_smoothing));
 	fprintf(self->funigram, "%s\t%e\n", head_stats->fun, val);
 
 	gu_map_iter(self->head_stats->mods, &self->clo2, err);

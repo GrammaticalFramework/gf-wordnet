@@ -14,6 +14,10 @@
 
 // #define DEBUG
 
+#ifndef DISABLE_LZMA
+#include <lzma.h>
+#endif
+
 struct EMState {
 	GuPool* pool;
 	PgfPGF *pgf;
@@ -468,6 +472,62 @@ em_add_dep_tree(EMState* state, DepTree* dtree)
 	gu_buf_push(state->dtrees, DepTree*, dtree);
 }
 
+#ifndef DISABLE_LZMA
+static char*
+lzma_fgets(char* inbuf, size_t insize, char* outbuf, size_t outsize, size_t* len,
+           FILE *file, lzma_stream *stream, bool decompress)
+{
+	if (!decompress) {
+		if (!fgets(outbuf, outsize, file))
+			return NULL;
+		*len = strlen(outbuf);
+		return outbuf;
+	}
+
+	size_t index = 0;
+	lzma_action action = LZMA_RUN;
+
+	memmove(outbuf, outbuf+*len, (outsize-stream->avail_out)-*len);
+	stream->next_out  -= *len;
+	stream->avail_out += *len;
+
+	while (true) {
+		if (stream->avail_in == 0 && !feof(file)) {
+			stream->next_in = inbuf;
+			stream->avail_in =
+				fread(inbuf, 1, insize, file);
+
+			if (ferror(file)) {
+				return NULL;
+			}
+
+			// Once the end of the input file has been reached,
+			// we need to tell lzma_code() that no more input
+			// will be coming. As said before, this isn't required
+			// if the LZMA_CONATENATED flag isn't used when
+			// initializing the decoder.
+			if (feof(file))
+				action = LZMA_FINISH;
+		}
+
+		lzma_ret ret = lzma_code(stream, action);
+		if (ret != LZMA_OK && ret != LZMA_STREAM_END) {
+			return NULL;
+		}
+
+		size_t write_size = outsize - stream->avail_out;
+		while (index < write_size) {
+			if (outbuf[index++] == '\n') {
+				*len = index;
+				return outbuf;
+			}
+		}
+		if (stream->avail_out == 0)
+			return outbuf;
+	}
+}
+#endif
+
 int
 em_import_treebank(EMState* state, GuString fpath, GuString lang)
 {
@@ -478,10 +538,32 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 	}
 
 	FILE* inp;
+#ifndef DISABLE_LZMA
+	uint8_t inbuf[BUFSIZ];
+	lzma_stream stream = LZMA_STREAM_INIT;
+#endif
+	char line[BUFSIZ];
+
+	bool decompress = false;
 	if (fpath == NULL || *fpath == 0)
 		inp = stdin;
-	else
+	else {
 		inp = fopen(fpath, "r");
+
+#ifndef DISABLE_LZMA
+		if (inp != NULL && strcmp(fpath+(strlen(fpath)-3),".xz") == 0) {
+			lzma_ret ret = lzma_stream_decoder(
+								&stream, UINT64_MAX, LZMA_CONCATENATED);
+			if (ret != LZMA_OK) {
+				fprintf(stderr, "Error initializing LZMA %s\n", fpath);
+				return 0;
+			}
+			stream.next_out  = line;
+			stream.avail_out = sizeof(line);
+			decompress = true;
+		}
+#endif
+	}
 	if (!inp) {
 		fprintf(stderr, "Error opening %s\n", fpath);
 		return 0;
@@ -494,9 +576,14 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 		tmp_pool = state->pool;
 	GuBuf* buf = gu_new_buf(CONLLFields, tmp_pool);
 
-	char line[2048];
+#ifndef DISABLE_LZMA
+	size_t len = 0;
+	while (lzma_fgets(inbuf, sizeof(inbuf), line, sizeof(line), &len,
+	                      inp, &stream, decompress)) {
+#else
 	while (fgets(line, sizeof(line), inp)) {
-		int len = strlen(line);
+		size_t len = strlen(line);
+#endif
 		if (len < 1 || line[len-1] != '\n') {
 			fprintf(stderr, "Error in reading. Last read: %s\n", line);
 			if (state->fields == NULL) {
@@ -580,6 +667,9 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 	}
 
 	fclose(inp);
+#ifndef DISABLE_LZMA
+	lzma_end(&stream);
+#endif
 	return 1;
 }
 

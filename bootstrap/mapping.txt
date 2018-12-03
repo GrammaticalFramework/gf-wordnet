@@ -99812,8 +99812,8 @@ tumid_A	tumid_3_A
 tumidity_N	tumidity_N
 tummy_N	tummy_1_N
 tummy_N	tummy_2_N
-tumor_N	tumor_N
-tumour_N	tumour_1_N
+tumor_N	tumour_N
+tumour_N	tumour_N
 tumult_N	tumult_1_N
 tumult_N	tumult_2_N
 tumult_N	tumult_3_N

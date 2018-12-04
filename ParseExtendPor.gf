@@ -16,10 +16,10 @@ concrete ParseExtendPor of ParseExtend =
     UttAPMasc ap = {s = ap.s ! AF Masc Sg} ;
     UttAPFem  ap = {s = ap.s ! AF Fem Sg} ;
 
-    UttVPS = UttVPSMasc ;
-    UttVPSMasc vps = {s = vps.s ! Ag Masc Sg P3 ! Indic} ;
-    UttVPSFem vps = {s = vps.s ! Ag Fem Sg P3 ! Indic} ;
-    UttVPSPl vps = {s = vps.s ! Ag Masc Pl P3 ! Indic} ;
+    UttVPS         = UttVPSMasc ;
+    UttVPSMasc vps = {s = vps.s ! Indic ! Ag Masc Sg P3 ! True} ;
+    UttVPSFem vps  = {s = vps.s ! Indic ! Ag Fem Sg P3 ! True} ;
+    UttVPSPl vps   = {s = vps.s ! Indic ! Ag Masc Pl P3 ! True} ;
 
   lincat Mark = SS ;
 

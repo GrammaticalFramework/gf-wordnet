@@ -60,7 +60,7 @@ Parse.probs Parse.bigram.probs: build/udsenser build/Parse.noprobs.pgf examples.
 	build/udsenser build/Parse.noprobs.pgf train abstract examples.txt , ParseBul $(UD_BUL_TREEBANKS) , ParseEng $(UD_ENG_TREEBANKS) , ParseFin $(UD_FIN_TREEBANKS) , ParseSwe $(UD_SWE_TREEBANKS)
 
 build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o
-	ghc --make -odir build/train -hidir build/train -O2 $^ -o $@ -lpgf -lgu -lm
+	ghc --make -odir build/train -hidir build/train -O2 $^ -o $@ -lpgf -lgu -lm -llzma
 
 build/train/em_core.o: train/em_core.c train/em_core.h
 	gcc -O2 -std=c99 -Itrain -c $< -o $@

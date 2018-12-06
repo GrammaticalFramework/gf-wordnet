@@ -25,7 +25,8 @@ help = do
 training st labels_fpath args = do
   status "Unigram smoothing ..." $ setupUnigramSmoothing st 1
   status "Setup ranking ..." $ setupRankingCallbacks st default_ranking_callbacks
-  status "Collecting data ..." $ (readDepConfig labels_fpath >>= \config -> importTreebanks config args)
+  config <- readDepConfig labels_fpath
+  importTreebanks config args
   getBigramCount  st >>= \c -> hPutStrLn stdout ("Bigrams:  "++show c)
   getUnigramCount st >>= \c -> hPutStrLn stdout ("Unigrams: "++show c)
   status "Estimation ..." $ em_loop st 0 0
@@ -35,12 +36,16 @@ training st labels_fpath args = do
     importTreebanks config (lang:args) = do
       let (fpaths,rest) = break (==",") args
       if lang == "abstract"
-        then mapM_ (importExamples config st) fpaths
-        else mapM_ (importTreebank st lang) fpaths
+        then mapM_ (\fpath -> status ("Import "++fpath++" ...")
+                                     (importExamples config st fpath))
+                   fpaths
+        else mapM_ (\fpath -> status ("Import "++fpath++" ...")
+                                     (importTreebank st lang fpath))
+                   fpaths
       case rest of
         (",":args) -> importTreebanks config args
         _          -> return ()
-        
+
     importExamples config st fpath = do
       ls <- fmap lines $ readFile fpath
       sequence_ [addDepTree st dtree

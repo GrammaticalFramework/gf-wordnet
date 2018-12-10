@@ -1,7 +1,9 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <math.h>
+#include <pthread.h>
 #include <gu/string.h>
 #include <gu/mem.h>
 #include <gu/seq.h>
@@ -11,12 +13,19 @@
 #include <gu/utf8.h>
 #include <pgf/pgf.h>
 #include "em_core.h"
+#include <time.h>
 
 // #define DEBUG
 
 #ifndef DISABLE_LZMA
 #include <lzma.h>
 #endif
+
+typedef struct {
+	EMState* state;
+	size_t thread_idx;
+	prob_t prob;
+} EMThreadState;
 
 struct EMState {
 	GuPool* pool;
@@ -32,6 +41,11 @@ struct EMState {
 	GuBuf* pcs;
 	bool break_trees;
 	GuMap* callbacks;
+
+	bool finished;
+	size_t index;
+	pthread_barrier_t barrier1, barrier2;
+	EMThreadState threads[NUM_THREADS];
 };
 
 #ifdef DEBUG
@@ -56,6 +70,9 @@ print_tree(DepTree* dtree)
 }
 #endif
 
+static void *
+em_learner(void *arguments);
+
 EMState*
 em_new_state(PgfPGF* pgf)
 {
@@ -77,12 +94,49 @@ em_new_state(PgfPGF* pgf)
 	state->callbacks = gu_new_string_map(EMRankingCallback, &gu_null_struct, pool);
 	state->pgf = pgf;
 
+	state->finished = false;
+	state->index = 0;
+
+	if (pthread_barrier_init(&state->barrier1, NULL, NUM_THREADS+1) != 0) {
+		gu_pool_free(pool);
+		return NULL;
+	}
+
+	if (pthread_barrier_init(&state->barrier2, NULL, NUM_THREADS+1) != 0) {
+		pthread_barrier_destroy(&state->barrier1);
+		gu_pool_free(pool);
+		return NULL;
+	}
+
+	//create all learning threads one by one
+	for (size_t i = 0; i < NUM_THREADS; i++) {
+		pthread_t thread_id;
+
+		state->threads[i].state = state;
+		state->threads[i].thread_idx = i;
+		state->threads[i].prob = 0;
+		int result_code =
+			pthread_create(&thread_id, NULL, em_learner,
+			               &state->threads[i]);
+		gu_assert(!result_code);
+
+		char name[16];
+		sprintf(name, "em_learner %ld", i);
+		pthread_setname_np(thread_id, name);
+	}
+
 	return state;
 }
 
 void
 em_free_state(EMState* state)
 {
+	state->finished = true;
+
+	pthread_barrier_wait(&state->barrier1);
+
+	pthread_barrier_destroy(&state->barrier1);
+	pthread_barrier_destroy(&state->barrier2);
 	gu_pool_free(state->pool);
 }
 
@@ -143,9 +197,14 @@ smoothing_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
 		*stats = gu_new(FunStats, self->state->pool);
 		(*stats)->fun = fun;
 		(*stats)->pc.prob  = 0;
-		(*stats)->pc.count = self->state->unigram_smoothing;
 		(*stats)->mods =
 			gu_new_string_map(ProbCount*, NULL, self->state->pool);
+
+		(*stats)->pc.count[0] = self->state->unigram_smoothing;
+		for (size_t i = 1; i < NUM_THREADS; i++) {
+			(*stats)->pc.count[i] = INFINITY;
+		}
+
 		gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
 	}
 	self->state->unigram_total += exp(-self->state->unigram_smoothing);
@@ -196,9 +255,13 @@ lookup_callback(PgfMorphoCallback* callback,
 			*stats = gu_new(FunStats, self->state->pool);
 			(*stats)->fun = lemma;
 			(*stats)->pc.prob  = 0;
-			(*stats)->pc.count = INFINITY;
 			(*stats)->mods =
 				gu_new_string_map(ProbCount*, NULL, self->state->pool);
+
+			for (size_t i = 0; i < NUM_THREADS; i++) {
+				(*stats)->pc.count[i] = INFINITY;
+			}
+
 			gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
 		}
 		choice->stats = *stats;
@@ -233,8 +296,8 @@ init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 			gu_buf_index(dtree->choices, SenseChoice, i);
 
 		choice->prob = 0;
-		choice->stats->pc.count =
-			log_add(choice->stats->pc.count,p1);
+		choice->stats->pc.count[0] =
+			log_add(choice->stats->pc.count[0],p1);
 
 		choice->prob_counts =
 			gu_new_n(ProbCount*, n_parent_choices, state->pool);
@@ -252,14 +315,16 @@ init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 
 				*pc = gu_new(ProbCount, state->pool);
 				(*pc)->prob  = state->bigram_smoothing + back_off;
-				(*pc)->count = INFINITY;
+				for (size_t i = 0; i < NUM_THREADS; i++) {
+					(*pc)->count[i] = INFINITY;
+				}
 				gu_buf_push(state->pcs, ProbCount*, *pc);
 			}
 
 			choice->prob_counts[j] = *pc;
 
-			choice->prob_counts[j]->count =
-				log_add(choice->prob_counts[j]->count, p2);
+			choice->prob_counts[j]->count[0] =
+				log_add(choice->prob_counts[j]->count[0], p2);
 		}
 	}
 }
@@ -300,6 +365,10 @@ filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf, GuBuf* parent_choice
 	for (size_t i = 0; i < n_choices; i++) {
 		SenseChoice* choice =
 			gu_buf_index(dtree->choices, SenseChoice, i);
+
+		PgfType* ty =
+			pgf_function_type(state->pgf, choice->stats->fun);
+
 		if (stats[i][0] == max[0] && stats[i][1] == max[1]) {
 			SenseChoice* dest =
 				gu_buf_index(dtree->choices, SenseChoice, index);
@@ -399,15 +468,17 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 		*stats = gu_new(FunStats, state->pool);
 		(*stats)->fun = fun;
 		(*stats)->pc.prob  = 0;
-		(*stats)->pc.count = INFINITY;
 		(*stats)->mods =
 			gu_new_string_map(ProbCount*, NULL, state->pool);
+		for (size_t i = 0; i < NUM_THREADS; i++) {
+			(*stats)->pc.count[i] = INFINITY;
+		}
 		gu_buf_push(state->pcs, ProbCount*, &(*stats)->pc);
 	}
 	choice->stats = *stats;
 
-	choice->stats->pc.count =
-		log_add(choice->stats->pc.count,0);
+	choice->stats->pc.count[0] =
+		log_add(choice->stats->pc.count[0],0);
 
 	choice->prob_counts =
 		gu_new_n(ProbCount*, 1, state->pool);
@@ -425,14 +496,16 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 
 			*pc = gu_new(ProbCount, state->pool);
 			(*pc)->prob  = state->bigram_smoothing + back_off;
-			(*pc)->count = INFINITY;
+			for (size_t i = 0; i < NUM_THREADS; i++) {
+				(*pc)->count[i] = INFINITY;
+			}
 			gu_buf_push(state->pcs, ProbCount*, *pc);
 		}
 
 		choice->prob_counts[0] = *pc;
 
-		choice->prob_counts[0]->count =
-			log_add(choice->prob_counts[0]->count, 0);
+		choice->prob_counts[0]->count[0] =
+			log_add(choice->prob_counts[0]->count[0], 0);
 	}
 
 	state->unigram_total++;
@@ -691,9 +764,11 @@ function_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
 		*stats = gu_new(FunStats, self->state->pool);
 		(*stats)->fun = fun;
 		(*stats)->pc.prob  = prob;
-		(*stats)->pc.count = INFINITY;
 		(*stats)->mods =
 			gu_new_string_map(ProbCount*, NULL, self->state->pool);
+		for (size_t i = 0; i < NUM_THREADS; i++) {
+			(*stats)->pc.count[i] = INFINITY;
+		}
 		gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
 	}
 }
@@ -770,7 +845,9 @@ em_load_model(EMState* state, GuString fpath)
 
 			*pc = gu_new(ProbCount, state->pool);
 			(*pc)->prob  = prob;
-			(*pc)->count = INFINITY;
+			for (size_t i = 0; i < NUM_THREADS; i++) {
+				(*pc)->count[i] = INFINITY;
+			}
 			gu_buf_push(state->pcs, ProbCount*, *pc);
 		}
 	}
@@ -903,7 +980,8 @@ tree_estimation(DepTree* dtree, Oper oper)
 }
 
 static void
-tree_counting(EMState* state, DepTree* dtree, prob_t* outside_probs)
+tree_counting(EMState* state, DepTree* dtree, prob_t* outside_probs,
+              size_t thread_idx)
 {
 	size_t n_head_choices = gu_buf_length(dtree->choices);
 	for (size_t j = 0; j < n_head_choices; j++) {
@@ -911,8 +989,8 @@ tree_counting(EMState* state, DepTree* dtree, prob_t* outside_probs)
 			gu_buf_index(dtree->choices, SenseChoice, j);
 
 		prob_t prob = outside_probs[j] + head_choice->prob;
-		head_choice->stats->pc.count = 
-			log_add(head_choice->stats->pc.count, prob);
+		head_choice->stats->pc.count[thread_idx] =
+			log_add(head_choice->stats->pc.count[thread_idx], prob);
 	}
 
 	for (size_t i = 0; i < dtree->n_children; i++) {
@@ -943,7 +1021,7 @@ tree_counting(EMState* state, DepTree* dtree, prob_t* outside_probs)
 						prob_t p1 = prob + pc->prob;
 						prob_t p2 = p1   + mod_choice->prob;
 						child_outside_probs[k] = log_add(child_outside_probs[k],p1);
-						pc->count = log_add(pc->count,p2);
+						pc->count[thread_idx] = log_add(pc->count[thread_idx],p2);
 					}
 				}
 			}
@@ -954,8 +1032,50 @@ tree_counting(EMState* state, DepTree* dtree, prob_t* outside_probs)
 			}
 		}
 
-		tree_counting(state, dtree->child[i], child_outside_probs);
+		tree_counting(state, dtree->child[i], child_outside_probs,
+		              thread_idx);
 	}
+}
+
+static void *
+em_learner(void *arguments)
+{
+	EMThreadState* tstate = (EMThreadState *) arguments;
+	EMState* state = tstate->state;
+
+	for (;;) {
+		pthread_barrier_wait(&state->barrier1);
+
+		if (state->finished)
+			break;
+
+		// Estimate the new counts
+		tstate->prob = 0;
+		for(;;) {
+			size_t i = __atomic_fetch_add(&state->index, 1, __ATOMIC_SEQ_CST);
+			if (i >= gu_buf_length(state->dtrees))
+				break;
+
+			DepTree* dtree = gu_buf_get(state->dtrees, DepTree*, i);
+
+			tree_estimation(dtree, log_max);
+
+			prob_t sum = tree_sum_estimation(dtree, log_add);
+
+			tstate->prob += sum;
+
+			size_t n_choices = gu_buf_length(dtree->choices);
+			prob_t outside_probs[n_choices];
+			for (size_t j = 0; j < n_choices; j++) {
+				outside_probs[j] = -sum;
+			}
+
+			tree_counting(state, dtree, outside_probs, tstate->thread_idx);
+		}
+
+		pthread_barrier_wait(&state->barrier2);
+	}
+	return NULL;
 }
 
 prob_t
@@ -966,30 +1086,25 @@ em_step(EMState *state)
 	for (size_t i = 0; i < n_pcs; i++) {
 		ProbCount* pc =
 			gu_buf_get(state->pcs, ProbCount*, i);
-		pc->prob  = pc->count;
-		pc->count = INFINITY;
-	}
-
-	// Estimate the new counts
-	prob_t corpus_prob = state->bigram_total*log(state->bigram_total);
-	for (int i = 0; i < gu_buf_length(state->dtrees); i++) {
-		DepTree* dtree = gu_buf_get(state->dtrees, DepTree*, i);
-
-		tree_estimation(dtree, log_max);
-
-		prob_t sum = tree_sum_estimation(dtree, log_add);
-
-		corpus_prob += sum;
-
-		size_t n_choices = gu_buf_length(dtree->choices);
-		prob_t outside_probs[n_choices];
-		for (size_t j = 0; j < n_choices; j++) {
-			outside_probs[j] = -sum;
+		pc->prob  = INFINITY;
+		for (size_t i = 0; i < NUM_THREADS; i++) {
+			pc->prob     = log_add(pc->prob, pc->count[i]);
+			pc->count[i] = INFINITY;
 		}
-
-		tree_counting(state, dtree, outside_probs);
 	}
-	
+
+	state->index = 0;
+
+	pthread_barrier_wait(&state->barrier1);
+
+	//wait for all threads to complete
+	pthread_barrier_wait(&state->barrier2);
+
+	prob_t corpus_prob = state->bigram_total*log(state->bigram_total);
+	for (int i = 0; i < NUM_THREADS; i++) {
+		corpus_prob += state->threads[i].prob;
+	}
+
 	// return the new corpus probability
 	return corpus_prob;
 }

@@ -5,9 +5,13 @@
 #include <gu/map.h>
 #include <pgf/pgf.h>
 
+#ifndef NUM_THREADS
+#define NUM_THREADS 3
+#endif
+
 typedef struct {
 	prob_t prob;
-	prob_t count;
+	prob_t count[NUM_THREADS];
 } ProbCount;
 
 typedef struct {

@@ -4,42 +4,24 @@ GF_SOURCES = \
 	WordNet.gf WordNetEng.gf WordNetSwe.gf WordNetPor.gf WordNetBul.gf WordNetFin.gf WordNetAPI.gf \
 
 UD_ENG_TREEBANKS = \
-	ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-train.conllu \
-	ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-test.conllu \
-	ud-treebanks-v2.2/UD_English-EWT/en_ewt-ud-dev.conllu \
-	ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-train.conllu \
-	ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-test.conllu \
-	ud-treebanks-v2.2/UD_English-GUM/en_gum-ud-dev.conllu \
-	ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-train.conllu \
-	ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-test.conllu \
-	ud-treebanks-v2.2/UD_English-LinES/en_lines-ud-dev.conllu \
-	ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-train.conllu \
-	ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-test.conllu \
-	ud-treebanks-v2.2/UD_English-ParTUT/en_partut-ud-dev.conllu \
-	ud-treebanks-v2.2/UD_English-PUD/en_pud-ud-test.conllu
+	$(wildcard ud-treebanks-v2.3/UD_English-EWT/*.conllu) \
+	$(wildcard ud-treebanks-v2.3/UD_English-GUM/*.conllu) \
+	$(wildcard ud-treebanks-v2.3/UD_English-LinES/*.conllu) \
+	$(wildcard ud-treebanks-v2.3/UD_English-ParTUT/*.conllu) \
+	$(wildcard ud-treebanks-v2.3/UD_English-PUD/*.conllu)
 
 UD_BUL_TREEBANKS = \
-	ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-train.conllu \
-	ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-test.conllu \
-	ud-treebanks-v2.2/UD_Bulgarian-BTB/bg_btb-ud-dev.conllu
+	$(wildcard ud-treebanks-v2.3/UD_Bulgarian-BTB/*.conllu)
 
 UD_SWE_TREEBANKS = \
-	ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-train.conllu \
-	ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-test.conllu \
-	ud-treebanks-v2.2/UD_Swedish-Talbanken/sv_talbanken-ud-dev.conllu \
-	ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-train.conllu \
-	ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-test.conllu \
-	ud-treebanks-v2.2/UD_Swedish-LinES/sv_lines-ud-dev.conllu \
-	ud-treebanks-v2.2/UD_Swedish-PUD/sv_pud-ud-test.conllu
+	$(wildcard ud-treebanks-v2.3/UD_Swedish-Talbanken/*.conllu) \
+	$(wildcard ud-treebanks-v2.3/UD_Swedish-LinES/*.conllu) \
+	$(wildcard ud-treebanks-v2.3/UD_Swedish-PUD/*.conllu)
 
 UD_FIN_TREEBANKS = \
-	ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-dev.conllu \
-	ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-test.conllu \
-	ud-treebanks-v2.2/UD_Finnish-FTB/fi_ftb-ud-train.conllu \
-	ud-treebanks-v2.2/UD_Finnish-PUD/fi_pud-ud-test.conllu \
-	ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-dev.conllu \
-	ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-test.conllu \
-	ud-treebanks-v2.2/UD_Finnish-TDT/fi_tdt-ud-train.conllu
+	$(wildcard ud-treebanks-v2.3/UD_Finnish-FTB/*.conllu) \
+	$(wildcard ud-treebanks-v2.3/UD_Finnish-PUD/*.conllu) \
+	$(wildcard ud-treebanks-v2.3/UD_Finnish-TDT/*.conllu)
 
 
 all: build_dirs Parse.pgf semantics.db build/SenseService

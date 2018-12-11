@@ -584,7 +584,7 @@ lzma_fgets(char* inbuf, size_t insize, char* outbuf, size_t outsize, size_t* len
 		}
 
 		lzma_ret ret = lzma_code(stream, action);
-		if (ret != LZMA_OK && ret != LZMA_STREAM_END) {
+		if (ret != LZMA_OK) {
 			return NULL;
 		}
 
@@ -652,11 +652,16 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 #ifndef DISABLE_LZMA
 	size_t len = 0;
 	while (lzma_fgets(inbuf, sizeof(inbuf), line, sizeof(line), &len,
-	                      inp, &stream, decompress)) {
+	                  inp, &stream, decompress)) {
 #else
 	while (fgets(line, sizeof(line), inp)) {
 		size_t len = strlen(line);
 #endif
+		if (feof(inp)) {
+			strcpy(line, "\n");
+			len = 1;
+		}
+
 		if (len < 1 || line[len-1] != '\n') {
 			fprintf(stderr, "Error in reading. Last read: %s\n", line);
 			if (state->fields == NULL) {

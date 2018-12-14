@@ -34,8 +34,8 @@ struct EMState {
 	GuBuf* fields;
 	GuMap* stats;
 	GuBuf* root_choices;
-	prob_t bigram_total;
-	prob_t unigram_total;
+	size_t bigram_total;
+	size_t unigram_total;
 	prob_t bigram_smoothing;
 	prob_t unigram_smoothing;
 	GuBuf* pcs;
@@ -181,6 +181,7 @@ em_setup_preserve_trees(EMState *state)
 
 typedef struct {
 	GuMapItor clo;
+	size_t count;
 	EMState *state;
 } SmoothingItor;
 
@@ -207,7 +208,7 @@ smoothing_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
 
 		gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
 	}
-	self->state->unigram_total += exp(-self->state->unigram_smoothing);
+	self->count++;
 }
 
 void
@@ -223,8 +224,12 @@ em_setup_unigram_smoothing(EMState *state, prob_t count)
 
 	SmoothingItor itor;
 	itor.clo.fn  = smoothing_iter;
+	itor.count   = 0;
 	itor.state = state;
 	pgf_iter_functions(state->pgf, &itor.clo, NULL);
+
+	state->unigram_total +=
+		itor.count*exp(-state->unigram_smoothing);
 }
 
 static void
@@ -861,13 +866,13 @@ em_load_model(EMState* state, GuString fpath)
 	return 1;
 }
 
-int
+size_t
 em_unigram_count(EMState* state)
 {
 	return state->unigram_total;
 }
 
-int
+size_t
 em_bigram_count(EMState* state)
 {
 	return state->bigram_total;

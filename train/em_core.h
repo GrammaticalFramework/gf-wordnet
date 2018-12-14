@@ -63,10 +63,10 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang);
 int
 em_load_model(EMState* state, GuString fpath);
 
-int
+size_t
 em_unigram_count(EMState* state);
 
-int
+size_t
 em_bigram_count(EMState* state);
 
 void

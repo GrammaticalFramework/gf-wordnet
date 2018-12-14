@@ -39,7 +39,6 @@ struct EMState {
 	prob_t bigram_smoothing;
 	prob_t unigram_smoothing;
 	GuBuf* pcs;
-	bool break_trees;
 	GuMap* callbacks;
 
 	bool finished;
@@ -90,7 +89,6 @@ em_new_state(PgfPGF* pgf)
 	state->pcs = gu_new_buf(ProbCount*, pool);
 
 	state->root_choices = gu_new_buf(SenseChoice, pool);
-	state->break_trees = 0;
 	state->callbacks = gu_new_string_map(EMRankingCallback, &gu_null_struct, pool);
 	state->pgf = pgf;
 

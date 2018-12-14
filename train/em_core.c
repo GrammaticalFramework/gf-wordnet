@@ -29,6 +29,8 @@ typedef struct {
 
 struct EMState {
 	GuPool* pool;
+	GuPool* corpus_pool;   // corpus data should come here to make it 
+	                       // easier to swap it out
 	PgfPGF *pgf;
 	GuBuf* dtrees;
 	GuBuf* fields;
@@ -75,10 +77,14 @@ em_learner(void *arguments);
 EMState*
 em_new_state(PgfPGF* pgf)
 {
-	GuPool* pool = gu_new_pool();
+	// We use page pools to improve locality.
+	// For large corpora there will be a lot of swapping
+	GuPool* pool        = gu_new_pool();
+	GuPool* corpus_pool = gu_new_page_pool();
 
 	EMState* state = gu_new(EMState, pool);
-	state->pool = pool;
+	state->pool        = pool;
+	state->corpus_pool = corpus_pool;
 	state->dtrees = gu_new_buf(DepTree*, pool);
 	state->fields = NULL;
 	state->stats  = gu_new_string_map(FunStats*, NULL, pool);
@@ -97,12 +103,14 @@ em_new_state(PgfPGF* pgf)
 
 	if (pthread_barrier_init(&state->barrier1, NULL, NUM_THREADS+1) != 0) {
 		gu_pool_free(pool);
+		gu_pool_free(corpus_pool);
 		return NULL;
 	}
 
 	if (pthread_barrier_init(&state->barrier2, NULL, NUM_THREADS+1) != 0) {
 		pthread_barrier_destroy(&state->barrier1);
 		gu_pool_free(pool);
+		gu_pool_free(corpus_pool);
 		return NULL;
 	}
 
@@ -135,6 +143,7 @@ em_free_state(EMState* state)
 
 	pthread_barrier_destroy(&state->barrier1);
 	pthread_barrier_destroy(&state->barrier2);
+	gu_pool_free(state->corpus_pool);
 	gu_pool_free(state->pool);
 }
 
@@ -303,7 +312,7 @@ init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 			log_add(choice->stats->pc.count[0],p1);
 
 		choice->prob_counts =
-			gu_new_n(ProbCount*, n_parent_choices, state->pool);
+			gu_new_n(ProbCount*, n_parent_choices, state->corpus_pool);
 
 		for (int j = 0; j < n_parent_choices; j++) {
 			SenseChoice* parent_choice =
@@ -381,6 +390,13 @@ filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf, GuBuf* parent_choice
 	}
 
 	gu_buf_trim_n(dtree->choices, n_choices - index);
+	// here we make sure that the data for the choices is
+	// also in the corpus pool.
+	GuSeq seq = dtree->choices->seq;
+	dtree->choices->seq =
+		gu_buf_freeze(seq, state->corpus_pool);
+	gu_mem_buf_free(seq);
+	dtree->choices->avail_len = gu_buf_length(dtree->choices);
 
 	init_counts(state, dtree, parent_choices);
 
@@ -405,9 +421,9 @@ build_dep_tree(EMState* state, PgfConcr* concr,
 		}
 	}
 
-	DepTree* dtree = gu_new_flex(state->pool, DepTree, child, n_children);
+	DepTree* dtree = gu_new_flex(state->corpus_pool, DepTree, child, n_children);
 	dtree->index      = index;
-	dtree->choices    = gu_new_buf(SenseChoice, state->pool);
+	dtree->choices    = gu_new_buf(SenseChoice, state->corpus_pool);
 	dtree->n_children = n_children;
 
 	LookupCallback callback;
@@ -457,9 +473,9 @@ em_new_dep_tree(EMState* state, DepTree* parent,
                 PgfCId fun, GuString lbl,
                 size_t index, size_t n_children)
 {
-	DepTree* dtree = gu_new_flex(state->pool, DepTree, child, n_children);
+	DepTree* dtree = gu_new_flex(state->corpus_pool, DepTree, child, n_children);
 	dtree->index      = index;
-	dtree->choices    = gu_new_buf(SenseChoice, state->pool);
+	dtree->choices    = gu_new_buf(SenseChoice, state->corpus_pool);
 	dtree->n_children = n_children;
 
 	SenseChoice* choice = gu_buf_extend(dtree->choices);
@@ -484,7 +500,7 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 		log_add(choice->stats->pc.count[0],0);
 
 	choice->prob_counts =
-		gu_new_n(ProbCount*, 1, state->pool);
+		gu_new_n(ProbCount*, 1, state->corpus_pool);
 
 	if (parent != NULL) {
 		SenseChoice* parent_choice =
@@ -649,7 +665,7 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 	if (state->fields == NULL)
 		tmp_pool = gu_new_pool();
 	else
-		tmp_pool = state->pool;
+		tmp_pool = state->corpus_pool;
 	GuBuf* buf = gu_new_buf(CONLLFields, tmp_pool);
 
 #ifndef DISABLE_LZMA

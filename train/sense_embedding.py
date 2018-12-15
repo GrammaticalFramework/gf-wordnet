@@ -1,9 +1,11 @@
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+
 from scipy import sparse
-from scipy.sparse import linalg
-from scipy import spatial
 from sklearn import manifold
+from sklearn.decomposition import NMF
 import numpy
-import gtk
 import sys
 import math
 
@@ -33,7 +35,7 @@ for line in f:
 	count = count + 1
 f.close()
 
-m = sparse.csr_matrix((vals,(rows,cols)),shape=(len(dims),len(dims)))
+matrix = sparse.csr_matrix((vals,(rows,cols)),shape=(len(dims),len(dims)))
 
 del rows
 del cols
@@ -43,114 +45,155 @@ del add
 sys.setrecursionlimit(10000)
 
 class Viewer:
-	def __init__(self, X, dims, funs):
-		self.X      = X
+	def __init__(self, h, c, m, dims, funs):
+		self.h      = h
+		self.c      = c
+		self.m      = m
 		self.dims   = dims
 		self.funs   = funs
-		self.kdtree = spatial.KDTree(X)
 
-		self.r      = 2
-
-		self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+		self.window = Gtk.Window()
 		self.window.connect("destroy", self.destroy)
 		self.window.resize(1000,700)
 
-		entry = gtk.Entry()
-		btn1  = gtk.RadioButton(None, "Radius 0.5")
-		btn2  = gtk.RadioButton(btn1, "Radius 1")
-		btn3  = gtk.RadioButton(btn2, "Radius 2")
-		darea = gtk.DrawingArea()
+		entry = Gtk.Entry()
+		btn1  = Gtk.RadioButton.new_from_widget(None)
+		btn1.set_label("20")
+		btn2  = Gtk.RadioButton.new_from_widget(btn1)
+		btn2.set_label("50")
+		btn3  = Gtk.RadioButton.new_from_widget(btn2)
+		btn3.set_label("100")
+		darea = Gtk.DrawingArea()
 
-		btn1.r = 0.5
-		btn2.r = 1
-		btn3.r = 2
+		btn1.size =  20
+		btn2.size =  50
+		btn3.size = 100
 
 		btn3.set_active(True)
+		self.size = 100
 
 		entry.connect("activate", self.on_search,  darea)
 		btn1.connect("toggled", self.on_selected, darea)
 		btn2.connect("toggled", self.on_selected, darea)
 		btn3.connect("toggled", self.on_selected, darea)
-		darea.connect("expose-event", self.expose)
+		darea.connect("draw", self.draw)
 		
-		hbox = gtk.HBox()
-		hbox.pack_start(entry, True)
-		hbox.pack_start(btn1, False)
-		hbox.pack_start(btn2, False)
-		hbox.pack_start(btn3, False)
+		hbox = Gtk.HBox()
+		hbox.pack_start(entry, True, True, 0)
+		hbox.pack_start(btn1, False, True, 0)
+		hbox.pack_start(btn2, False, True, 0)
+		hbox.pack_start(btn3, False, True, 0)
 
-		vbox = gtk.VBox()
-		vbox.pack_start(hbox, False)
-		vbox.pack_start(darea, True)
+		vbox = Gtk.VBox()
+		vbox.pack_start(hbox, False, True, 0)
+		vbox.pack_start(darea, True, True, 0)
 
 		self.window.add(vbox)
 
 		self.window.show_all()
 		
 	def destroy(self, widget, data=None):
-		gtk.main_quit()
+		Gtk.main_quit()
 
 	def main(self):
-		gtk.main()
-		
+		Gtk.main()
+
 	def on_search(self, widget, darea):
-		query = widget.get_text()
-		
-		self.q      = X[dims[query]]
-		self.points = self.kdtree.query_ball_point(self.q,self.r)
+		q = widget.get_text()
+
+		self.points = []
+		if False:
+			qvector = self.h[dims[q]]
+			for i in range(self.m.shape[0]):
+				prod = numpy.inner(qvector,self.c*self.m[i])
+				for j in range(len(self.points)):
+					if self.points[j][0] < prod:
+						self.points.insert(j,(prod,i))
+						if len(self.points) > 100:
+							self.points.pop()
+						break
+				if len(self.points) < 100:
+					self.points.append((prod,i))
+		else:
+			qvector = (self.h[dims[q]] + self.m[dims[q]])/2
+			for i in range(self.m.shape[0]):
+				vector = (self.h[i] + self.m[i])/2
+				dist   = numpy.linalg.norm(qvector-vector)
+				for j in range(len(self.points)):
+					if self.points[j][0] > dist:
+						self.points.insert(j,(dist,i))
+						if len(self.points) > 100:
+							self.points.pop()
+						break
+				if len(self.points) < 100:
+					self.points.append((dist,i))
+
+		tmp = numpy.array([self.m[i] for (prod,i) in self.points[:self.size]])
+		self.X = manifold.TSNE(n_components=2, verbose=1).fit_transform(tmp)
 		darea.queue_draw()
 
 	def on_selected(self, widget, darea):
-		self.r = widget.r
+		self.size = widget.size
+		tmp = numpy.array([self.m[i] for (prod,i) in self.points[:self.size]])
+		self.X = manifold.TSNE(n_components=2, verbose=1).fit_transform(tmp)
 		darea.queue_draw()
 
-	def expose(self, widget, event):
-		if not hasattr(self, 'q'):
+	def draw(self, widget, cr):
+		if not hasattr(self, 'points'):
 			return
-
-		cr = widget.window.cairo_create()
 
 		cr.set_line_width(9)
 		cr.set_source_rgb(0.7, 0.2, 0.0)
 
-		w = self.window.allocation.width
-		h = self.window.allocation.height
-		s = min(w,h)/(2*self.r)
+		w,h = self.window.get_size()
+		(minx,maxx) = (float('inf'),float('-inf'))
+		(miny,maxy) = (float('inf'),float('-inf'))
+		for [x,y] in self.X:
+			minx = min(minx,x)
+			maxx = max(maxx,x)
+			miny = min(miny,y)
+			maxy = max(maxy,y)
+		sx = w/(maxx-minx)
+		sy = h/(maxy-miny)
+		s = min(sx,sy)
 
-		cr.translate(w/2-self.q[0]*s, h/2-self.q[1]*s)
+		cr.translate(w/2, h/2)
 		cr.set_source_rgb(0.3, 0.4, 0.6)
-		for i in range(len(self.points)):
-			p = self.X[self.points[i]]
+		for i in range(len(self.X)):
+			p = self.X[i]
 			cr.move_to(p[0]*s, p[1]*s)
-			cr.show_text(self.funs[self.points[i]])
-
+			cr.show_text(self.funs[self.points[i][1]])
 
 if training:
-	print m.shape
+	print(matrix.shape)
 
-	(u,s,v) = linalg.svds(m,5000)
-	v = numpy.transpose(v)
-	print u.shape
-	print s.shape
-	print v.shape
-
-	del m
-
-	print numpy.inner(u[dims["regatta_N"]], numpy.diag(s).dot(v[dims["lurid_4_A"]]))
-	print numpy.inner(u[dims["head_14_N"]], numpy.diag(s).dot(v[dims["both7and_DConj"]]))
-	print numpy.inner(u[dims["apple_1_N"]], numpy.diag(s).dot(v[dims["crimson_1_A"]]))
-
-	numpy.save("u.npy", u)
-	numpy.save("s.npy", s)
-	numpy.save("v.npy", v)
+	nmf = NMF(n_components=100)
+	h = nmf.fit_transform(matrix)
+	m = numpy.transpose(nmf.components_)
+	print(h.shape)
+	print(m.shape)
 	
-	X = manifold.TSNE(n_components=2, verbose=1).fit_transform(u)
-	numpy.save("X.npy", X)
-else:
-#	u = numpy.load("u.npy")
-#	s = numpy.load("s.npy")
-#	v = numpy.load("v.npy")
-	X = numpy.load("X.npy")
+	del matrix
 
-	viewer = Viewer(X,dims,funs)
+	hs = h.sum(axis=0)
+	ms = m.sum(axis=0)
+
+	h = h / hs
+	m = m / ms
+
+	c = numpy.multiply(hs,ms);
+	c = c / sum(c)
+
+	numpy.savetxt("h.txt", h)
+	numpy.savetxt("c.txt", c)
+	numpy.savetxt("m.txt", m)
+else:
+	h = numpy.loadtxt("h.txt")
+	c = numpy.loadtxt("c.txt")
+	m = numpy.loadtxt("m.txt")
+	
+	print(h[dims["apple_1_N"]])
+	print(h[dims["pear_1_N"]])
+
+	viewer = Viewer(h,c,m,dims,funs)
 	viewer.main()

@@ -6,7 +6,7 @@
 #include <pgf/pgf.h>
 
 #ifndef NUM_THREADS
-#define NUM_THREADS 3
+#define NUM_THREADS 5
 #endif
 
 typedef struct {

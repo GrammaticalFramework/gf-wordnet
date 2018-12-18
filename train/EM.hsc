@@ -112,8 +112,8 @@ exportAnnotatedTreebank st fpath =
 
 foreign import ccall em_export_annotated_treebank :: EMState -> CString -> IO CInt
 
-foreign import ccall "em_bigram_count" getBigramCount  :: EMState -> IO CInt
-foreign import ccall "em_unigram_count" getUnigramCount :: EMState -> IO CInt
+foreign import ccall "em_bigram_count" getBigramCount  :: EMState -> IO CSize
+foreign import ccall "em_unigram_count" getUnigramCount :: EMState -> IO CSize
 
 type RankingCallback = SenseChoice -> Fields -> DepTree -> Ptr CInt -> IO ()
 

@@ -6,7 +6,7 @@
 #include <pgf/pgf.h>
 
 #ifndef NUM_THREADS
-#define NUM_THREADS 3
+#define NUM_THREADS 5
 #endif
 
 typedef struct {
@@ -63,10 +63,10 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang);
 int
 em_load_model(EMState* state, GuString fpath);
 
-int
+size_t
 em_unigram_count(EMState* state);
 
-int
+size_t
 em_bigram_count(EMState* state);
 
 void

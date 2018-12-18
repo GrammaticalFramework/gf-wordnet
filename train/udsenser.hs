@@ -6,6 +6,7 @@ import Control.Exception
 import System.IO
 import System.Environment
 import System.FilePath
+import Data.Time.Clock
 
 main = do
   args <- getArgs
@@ -72,8 +73,11 @@ status msg io = do
   return r
 
 em_loop st i last_corpus_prob = do
+  t1 <- getCurrentTime
   corpus_prob <- step st
-  hPutStr stdout ("\n"++show i++" "++show corpus_prob++" ("++show (last_corpus_prob-corpus_prob)++")")
+  t2 <- getCurrentTime
+  let t = diffUTCTime t2 t1
+  hPutStr stdout ("\n"++show i++" "++show corpus_prob++" ("++show (last_corpus_prob-corpus_prob)++") "++show t)
   hFlush stdout
   if abs (last_corpus_prob - corpus_prob) < 1e-4
     then return ()

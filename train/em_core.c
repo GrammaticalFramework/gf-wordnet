@@ -29,22 +29,23 @@ typedef struct {
 
 struct EMState {
 	GuPool* pool;
+	GuPool* corpus_pool;   // corpus data should come here to make it 
+	                       // easier to swap it out
 	PgfPGF *pgf;
 	GuBuf* dtrees;
 	GuBuf* fields;
 	GuMap* stats;
 	GuBuf* root_choices;
-	prob_t bigram_total;
-	prob_t unigram_total;
+	size_t bigram_total;
+	size_t unigram_total;
 	prob_t bigram_smoothing;
 	prob_t unigram_smoothing;
 	GuBuf* pcs;
-	bool break_trees;
 	GuMap* callbacks;
 
 	bool finished;
-	size_t index;
-	pthread_barrier_t barrier1, barrier2;
+	size_t index1, index2;
+	pthread_barrier_t barrier1, barrier2, barrier3;
 	EMThreadState threads[NUM_THREADS];
 };
 
@@ -76,10 +77,14 @@ em_learner(void *arguments);
 EMState*
 em_new_state(PgfPGF* pgf)
 {
-	GuPool* pool = gu_new_pool();
+	// We use page pools to improve locality.
+	// For large corpora there will be a lot of swapping
+	GuPool* pool        = gu_new_pool();
+	GuPool* corpus_pool = gu_new_page_pool();
 
 	EMState* state = gu_new(EMState, pool);
-	state->pool = pool;
+	state->pool        = pool;
+	state->corpus_pool = corpus_pool;
 	state->dtrees = gu_new_buf(DepTree*, pool);
 	state->fields = NULL;
 	state->stats  = gu_new_string_map(FunStats*, NULL, pool);
@@ -90,21 +95,31 @@ em_new_state(PgfPGF* pgf)
 	state->pcs = gu_new_buf(ProbCount*, pool);
 
 	state->root_choices = gu_new_buf(SenseChoice, pool);
-	state->break_trees = 0;
 	state->callbacks = gu_new_string_map(EMRankingCallback, &gu_null_struct, pool);
 	state->pgf = pgf;
 
 	state->finished = false;
-	state->index = 0;
+	state->index1 = 0;
+	state->index2 = 0;
 
 	if (pthread_barrier_init(&state->barrier1, NULL, NUM_THREADS+1) != 0) {
 		gu_pool_free(pool);
+		gu_pool_free(corpus_pool);
 		return NULL;
 	}
 
-	if (pthread_barrier_init(&state->barrier2, NULL, NUM_THREADS+1) != 0) {
+	if (pthread_barrier_init(&state->barrier2, NULL, NUM_THREADS) != 0) {
 		pthread_barrier_destroy(&state->barrier1);
 		gu_pool_free(pool);
+		gu_pool_free(corpus_pool);
+		return NULL;
+	}
+
+	if (pthread_barrier_init(&state->barrier3, NULL, NUM_THREADS+1) != 0) {
+		pthread_barrier_destroy(&state->barrier1);
+		pthread_barrier_destroy(&state->barrier2);
+		gu_pool_free(pool);
+		gu_pool_free(corpus_pool);
 		return NULL;
 	}
 
@@ -137,6 +152,8 @@ em_free_state(EMState* state)
 
 	pthread_barrier_destroy(&state->barrier1);
 	pthread_barrier_destroy(&state->barrier2);
+	pthread_barrier_destroy(&state->barrier3);
+	gu_pool_free(state->corpus_pool);
 	gu_pool_free(state->pool);
 }
 
@@ -181,6 +198,7 @@ em_setup_preserve_trees(EMState *state)
 
 typedef struct {
 	GuMapItor clo;
+	size_t count;
 	EMState *state;
 } SmoothingItor;
 
@@ -207,7 +225,7 @@ smoothing_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
 
 		gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
 	}
-	self->state->unigram_total += exp(-self->state->unigram_smoothing);
+	self->count++;
 }
 
 void
@@ -223,8 +241,12 @@ em_setup_unigram_smoothing(EMState *state, prob_t count)
 
 	SmoothingItor itor;
 	itor.clo.fn  = smoothing_iter;
+	itor.count   = 0;
 	itor.state = state;
 	pgf_iter_functions(state->pgf, &itor.clo, NULL);
+
+	state->unigram_total +=
+		itor.count*exp(-state->unigram_smoothing);
 }
 
 static void
@@ -300,7 +322,7 @@ init_counts(EMState* state, DepTree* dtree, GuBuf* parent_choices)
 			log_add(choice->stats->pc.count[0],p1);
 
 		choice->prob_counts =
-			gu_new_n(ProbCount*, n_parent_choices, state->pool);
+			gu_new_n(ProbCount*, n_parent_choices, state->corpus_pool);
 
 		for (int j = 0; j < n_parent_choices; j++) {
 			SenseChoice* parent_choice =
@@ -378,6 +400,9 @@ filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf, GuBuf* parent_choice
 	}
 
 	gu_buf_trim_n(dtree->choices, n_choices - index);
+	// here we make sure that the data for the choices is
+	// also in the corpus pool.
+	gu_buf_evacuate(dtree->choices, state->corpus_pool);
 
 	init_counts(state, dtree, parent_choices);
 
@@ -402,9 +427,9 @@ build_dep_tree(EMState* state, PgfConcr* concr,
 		}
 	}
 
-	DepTree* dtree = gu_new_flex(state->pool, DepTree, child, n_children);
+	DepTree* dtree = gu_new_flex(state->corpus_pool, DepTree, child, n_children);
 	dtree->index      = index;
-	dtree->choices    = gu_new_buf(SenseChoice, state->pool);
+	dtree->choices    = gu_new_buf(SenseChoice, state->corpus_pool);
 	dtree->n_children = n_children;
 
 	LookupCallback callback;
@@ -454,9 +479,9 @@ em_new_dep_tree(EMState* state, DepTree* parent,
                 PgfCId fun, GuString lbl,
                 size_t index, size_t n_children)
 {
-	DepTree* dtree = gu_new_flex(state->pool, DepTree, child, n_children);
+	DepTree* dtree = gu_new_flex(state->corpus_pool, DepTree, child, n_children);
 	dtree->index      = index;
-	dtree->choices    = gu_new_buf(SenseChoice, state->pool);
+	dtree->choices    = gu_new_buf(SenseChoice, state->corpus_pool);
 	dtree->n_children = n_children;
 
 	SenseChoice* choice = gu_buf_extend(dtree->choices);
@@ -481,7 +506,7 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 		log_add(choice->stats->pc.count[0],0);
 
 	choice->prob_counts =
-		gu_new_n(ProbCount*, 1, state->pool);
+		gu_new_n(ProbCount*, 1, state->corpus_pool);
 
 	if (parent != NULL) {
 		SenseChoice* parent_choice =
@@ -646,7 +671,7 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 	if (state->fields == NULL)
 		tmp_pool = gu_new_pool();
 	else
-		tmp_pool = state->pool;
+		tmp_pool = state->corpus_pool;
 	GuBuf* buf = gu_new_buf(CONLLFields, tmp_pool);
 
 #ifndef DISABLE_LZMA
@@ -861,13 +886,13 @@ em_load_model(EMState* state, GuString fpath)
 	return 1;
 }
 
-int
+size_t
 em_unigram_count(EMState* state)
 {
 	return state->unigram_total;
 }
 
-int
+size_t
 em_bigram_count(EMState* state)
 {
 	return state->bigram_total;
@@ -1054,10 +1079,32 @@ em_learner(void *arguments)
 		if (state->finished)
 			break;
 
+		// Normalize counts to probabilities
+		size_t n_pcs = gu_buf_length(state->pcs);
+		while (state->index1 < n_pcs) {
+			size_t batch = 256;
+			size_t start = __atomic_fetch_add(&state->index1, batch, __ATOMIC_SEQ_CST);
+			size_t end   = start + batch;
+			if (end > n_pcs)
+				end = n_pcs;
+
+			for (size_t i = start; i < end; i++) {
+				ProbCount* pc =
+					gu_buf_get(state->pcs, ProbCount*, i);
+				pc->prob  = INFINITY;
+				for (size_t i = 0; i < NUM_THREADS; i++) {
+					pc->prob     = log_add(pc->prob, pc->count[i]);
+					pc->count[i] = INFINITY;
+				}
+			}
+		}
+
+		pthread_barrier_wait(&state->barrier2);
+
 		// Estimate the new counts
 		tstate->prob = 0;
 		for(;;) {
-			size_t i = __atomic_fetch_add(&state->index, 1, __ATOMIC_SEQ_CST);
+			size_t i = __atomic_fetch_add(&state->index2, 1, __ATOMIC_SEQ_CST);
 			if (i >= gu_buf_length(state->dtrees))
 				break;
 
@@ -1078,7 +1125,7 @@ em_learner(void *arguments)
 			tree_counting(state, dtree, outside_probs, tstate->thread_idx);
 		}
 
-		pthread_barrier_wait(&state->barrier2);
+		pthread_barrier_wait(&state->barrier3);
 	}
 	return NULL;
 }
@@ -1086,24 +1133,13 @@ em_learner(void *arguments)
 prob_t
 em_step(EMState *state)
 {
-	// Normalize counts to probabilities
-	size_t n_pcs = gu_buf_length(state->pcs);
-	for (size_t i = 0; i < n_pcs; i++) {
-		ProbCount* pc =
-			gu_buf_get(state->pcs, ProbCount*, i);
-		pc->prob  = INFINITY;
-		for (size_t i = 0; i < NUM_THREADS; i++) {
-			pc->prob     = log_add(pc->prob, pc->count[i]);
-			pc->count[i] = INFINITY;
-		}
-	}
-
-	state->index = 0;
+	state->index1 = 0;
+	state->index2 = 0;
 
 	pthread_barrier_wait(&state->barrier1);
 
 	//wait for all threads to complete
-	pthread_barrier_wait(&state->barrier2);
+	pthread_barrier_wait(&state->barrier3);
 
 	prob_t corpus_prob = state->bigram_total*log(state->bigram_total);
 	for (int i = 0; i < NUM_THREADS; i++) {

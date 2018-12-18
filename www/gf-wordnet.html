@@ -72,7 +72,7 @@
 				width: 100%
 			}
 
-			table.header-tabs > tr > td:last-child {
+			table.header-tabs > tr > td:nth-last-child(2) {
 				width: 100%;
 			}
 
@@ -92,6 +92,24 @@
 			h1.unselected {
 				color: #DFDFDF;
 				font-weight: normal;
+			}
+			
+			div.popup {
+				top: 2em;
+				left: 2em;
+				bottom: 2em;
+				right: 2em;
+				border: 1px solid #ccc;
+				background-color: #f3f3f3;
+				position:fixed;
+			}
+
+			.hidden {
+				display: none;
+			}
+			
+			div.popup > table > tr > td > img {
+				display: block;
 			}
 		</style>
 	</head>

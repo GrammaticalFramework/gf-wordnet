@@ -230,13 +230,13 @@ gfwordnet.onclick_cell = function (cell) {
 			popup = node("div",{},[]);
 			details.appendChild(popup);
 
-			tabs = node("table",{class: "header-tabs"},[tr([
-				td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
-				td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
-				td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Features")])),
-				td(node("input", {type: "range", min: 1, max: 100, value: 50})),
-				td(node("img", {src: "cross.png", class: "hidden", onclick: "gfwordnet.onclick_cross(this)"}, []))
-			])]);
+			tabs = node("table",{class: "header-tabs"},[
+			         tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
+				         td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
+				         td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Features")])),
+				         td(node("input", {type: "range", min: 1, max: 100, value: 50})),
+				         td(node("img", {src: "cross.png", class: "hidden", onclick: "gfwordnet.onclick_cross(this)"}, []))
+			            ])]);
 			popup.appendChild(tabs);
 
 			var canvas = node("canvas", {width: 10, height: 10, onclick: "gfwordnet.onclick_canvas(this)"}, []);

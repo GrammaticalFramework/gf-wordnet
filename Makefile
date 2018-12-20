@@ -23,6 +23,13 @@ UD_FIN_TREEBANKS = \
 	$(wildcard ud-treebanks-v2.3/UD_Finnish-PUD/*.conllu) \
 	$(wildcard ud-treebanks-v2.3/UD_Finnish-TDT/*.conllu)
 
+ifeq ($(USE_WIKIPEDIA),YES)
+	UD_ENG_TREEBANKS += $(wildcard English/en-wikipedia-00[01].conllu.xz)
+	UD_BUL_TREEBANKS += $(wildcard Bulgarian/bg-wikipedia-00[01].conllu.xz)
+	UD_SWE_TREEBANKS += $(wildcard Swedish/sv-wikipedia-00[01].conllu.xz)
+	UD_FIN_TREEBANKS += $(wildcard Finnish/fi-wikipedia-00[01].conllu.xz)
+endif
+
 
 all: build_dirs Parse.pgf semantics.db build/SenseService
 	@echo ""

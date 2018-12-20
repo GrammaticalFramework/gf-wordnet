@@ -54,10 +54,10 @@ addDepTree st t = do
 foreign import ccall em_new_dep_tree :: EMState -> DepTree -> CString -> CString -> CSize -> CSize -> IO DepTree
 foreign import ccall em_add_dep_tree :: EMState -> DepTree -> IO ()
 
-annotateDepTree :: DepTree -> IO [((#type size_t), Fun, Float)]
-annotateDepTree dtree =
+annotateDepTree :: EMState -> DepTree -> IO [(CSize, Fun, Float)]
+annotateDepTree state dtree =
   bracket gu_new_pool gu_pool_free $ \pool -> do
-    buf <- em_annotate_dep_tree dtree pool
+    buf <- em_annotate_dep_tree state dtree pool
     seq   <- (#peek GuBuf, seq) buf
     c_len <- (#peek GuSeq, len) seq
     peekElems (c_len :: (#type size_t)) (seq `plusPtr` (#offset GuSeq, data))
@@ -71,7 +71,7 @@ annotateDepTree dtree =
       return ((index,fun,prob):es)
 
 
-foreign import ccall em_annotate_dep_tree :: DepTree -> Ptr () -> IO (Ptr ())
+foreign import ccall em_annotate_dep_tree :: EMState -> DepTree -> Ptr () -> IO (Ptr ())
 
 foreign import ccall unsafe "gu/mem.h gu_new_pool"
   gu_new_pool :: IO (Ptr ())

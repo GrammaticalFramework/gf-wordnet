@@ -22,7 +22,6 @@ typedef struct {
 
 typedef struct {
 	FunStats* stats;
-	prob_t prob;
 	ProbCount **prob_counts;
 } SenseChoice;
 
@@ -96,7 +95,7 @@ typedef struct {
 } EMLemmaProb;
 
 GuBuf*
-em_annotate_dep_tree(DepTree* dtree, GuPool* pool);
+em_annotate_dep_tree(EMState* state, DepTree* dtree, GuPool* pool);
 
 int
 em_export_annotated_treebank(EMState* state, GuString fpath);

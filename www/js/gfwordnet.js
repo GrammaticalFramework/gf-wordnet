@@ -227,11 +227,21 @@ gfwordnet.onclick_cell = function (cell) {
 				return "black";
 			}
 
-			details.appendChild(node("h1",{},[text("Context")]));
+			popup = node("div",{},[]);
+			details.appendChild(popup);
 
-			var canvas = node("canvas", {width: 10, height: 10}, []);
-			details.appendChild(canvas);
-			
+			tabs = node("table",{class: "header-tabs"},[
+			         tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
+				         td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
+				         td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Features")])),
+				         td(node("input", {type: "range", min: 1, max: 100, value: 50})),
+				         td(node("img", {src: "cross.png", class: "hidden", onclick: "gfwordnet.onclick_cross(this)"}, []))
+			            ])]);
+			popup.appendChild(tabs);
+
+			var canvas = node("canvas", {width: 10, height: 10, onclick: "gfwordnet.onclick_canvas(this)"}, []);
+			popup.appendChild(canvas);
+
 			WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,lex_def)});
 		}
 
@@ -300,4 +310,23 @@ gfwordnet.onclick_check = function (btn) {
 	var img    = btn.parentNode.parentNode.firstChild.firstChild;
 	var lex_id = img.nextSibling.textContent;
 	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id),bind(extract_confirm,img),errcont);	
+}
+gfwordnet.onclick_tab = function (tab) {
+	var tr = tab.parentNode.parentNode;
+	var td = tr.firstChild;
+	while (td != null) {
+		if (td.firstChild == tab) {
+			td.firstChild.className = "selected";
+		} else {
+			td.firstChild.className = "unselected";
+		}
+		td = td.nextSibling;
+	}
+	
+}
+gfwordnet.onclick_canvas = function (canvas) {
+	canvas.parentNode.className = "popup";
+}
+gfwordnet.onclick_cross = function (cross) {
+	cross.parentNode.parentNode.parentNode.parentNode.className = "";
 }

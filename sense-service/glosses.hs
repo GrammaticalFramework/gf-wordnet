@@ -24,8 +24,10 @@ main = do
     ls <- fmap lines $ readFile "examples.txt"
     sequence_ [insertTriple db s p o | t@(s,p,o) <- parseExamples funids ls]
     unigrams <- fmap (Map.fromList . map parseUnigram . lines) $ readFile "Parse.probs"
-    ls <- fmap lines $ readFile "Parse.bigram.probs"
-    sequence_ [insertTriple db s p o | t@(s,p,o) <- concatMap (parseBigram unigrams) ls]
+    ls <- fmap lines $ readFile "embedding.txt"
+    let (cs,ws) = parseEmbeddings ls
+    insertTriple db global embedding cs
+    sequence_ [insertTriple db f embedding (pair h m) | (f,h,m) <- ws]
   closeSG db
 
 parseGloss l = 
@@ -96,18 +98,9 @@ parseUnigram l = (w1,read w2 :: Double)
   where
     [w1,w2] = words l
 
-parseBigram unigrams l = [(h,modifier,ep m p),(m,head_,ep h p)]
+parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
   where
-    Just h  = readExpr w0
-    Just m  = readExpr w1
-    p1      = read w2 :: Double
-    p2      = getProb w0 * getProb w1
-    p       = (1-lambda)*p1 + lambda*p2
-    [w0,w1,w2] = words l
-    lambda  = 0.002
-    
-    getProb f = prob f * prob c
-      where
-        c = (reverse . takeWhile (/='_') . reverse) f
-        
-        prob x = fromMaybe 0 (Map.lookup x unigrams)
+    parseWords []               = []
+    parseWords (l1:l2:l3:"":ls) = (mkApp l1 [],parseVector l2,parseVector l3):parseWords ls
+
+    parseVector = vector . map read . words :: String -> Expr

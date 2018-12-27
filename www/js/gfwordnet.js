@@ -122,7 +122,105 @@ gfwordnet.search = function (from, input, result) {
 
 	gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+from,extract_search,errcont);
 }
+gfwordnet.init_wordcloud = function(canvas,lex_id) {
+	var lex_def = this.lex_ids[lex_id];
 
+	var min = Number.MAX_VALUE;
+	var max = Number.MIN_VALUE;
+	for (var head in lex_def.heads) {
+		if (max < lex_def.heads[head])
+			max = lex_def.heads[head];
+		if (min > lex_def.heads[head])
+			min = lex_def.heads[head];
+	}
+	for (var mod  in lex_def.modifiers) {
+		if (max < lex_def.modifiers[mod])
+			max = lex_def.modifiers[mod];
+		if (min > lex_def.modifiers[mod])
+			min = lex_def.modifiers[mod];
+	}
+	var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));
+	var scale = fontSize*Math.min(2/max,1/(min*2));
+	var list = [];
+	for (var head in lex_def.heads) {
+		var size = lex_def.heads[head]*scale;
+		if (size > 1) {
+			if (size < 9)
+				size = 9;
+			list.push([head,size]);
+		}
+	}
+	for (var mod  in lex_def.modifiers) {
+		var size = lex_def.modifiers[mod]*scale;
+		if (size > 1) {
+			if (size < 9)
+				size = 9;
+			list.push([mod,size]);
+		}
+	}
+	if (list.length > 1) {
+		list.sort(function(a,b) {
+					if (a[1] > b[1])
+					  return -1;
+					if (a[1] < b[1])
+					  return 1;
+					return 0;
+				  });
+
+		function select_color(word, weight, fontSize, distance, theta) {
+			if (word in this.heads) {
+				return "orange";
+			}
+			if (word in this.modifiers) {
+				return "turquoise";
+			}
+			return "black";
+		}
+
+		WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,lex_def)});
+	}
+}
+gfwordnet.init_embedding = function(canvas,lex_id) {
+	var lex_def = this.lex_ids[lex_id];
+
+	var tsne = new tsnejs.tSNE({}); // create a tSNE instance
+
+	// initialize data. Here we have 3 points and some example pairwise dissimilarities
+	var dists = [];
+	for (var fun in lex_def.relations) {
+		dists.push(lex_def.relations[fun]);
+	}
+	tsne.initDataDist(dists);
+
+	for(var k = 0; k < 500; k++) {
+	  tsne.step(); // every time you call this, solution gets better
+	}
+
+	var points = tsne.getSolution(); // Y is an array of 2-D points that you can plot
+	
+	var minx = Number.MAX_VALUE;
+	var maxx = Number.MIN_VALUE;
+	var miny = Number.MAX_VALUE;
+	var maxy = Number.MIN_VALUE;
+	for (var i in points) {
+		var point = points[i];
+		if (point[0] < minx) minx = point[0];
+		if (point[0] > maxx) maxx = point[0];
+		if (point[1] < miny) miny = point[1];
+		if (point[1] > maxy) maxy = point[1];
+	}
+	var scalex = (canvas.width -60)/(maxx-minx);
+	var scaley = (canvas.height-60)/(maxy-miny);
+	var scale  = Math.min(scalex,scaley);
+
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	var i = 0;
+	for (var fun in lex_def.relations) {
+		var point = points[i++];
+		ctx.fillText(fun, (point[0]-minx)*scale, (point[1]-minx)*scale);
+	}
+}
 gfwordnet.onclick_cell = function (cell) {
 	var icon = cell.parentNode.firstChild.firstChild;
 	if (icon.src.endsWith("unchecked.png"))
@@ -175,75 +273,21 @@ gfwordnet.onclick_cell = function (cell) {
 	if (index == 0) {
 		var lex_def = this.lex_ids[lex_id];
 
-		var min = Number.MAX_VALUE;
-		var max = Number.MIN_VALUE;
-		for (var head in lex_def.heads) {
-			if (max < lex_def.heads[head])
-				max = lex_def.heads[head];
-			if (min > lex_def.heads[head])
-				min = lex_def.heads[head];
-		}
-		for (var mod  in lex_def.modifiers) {
-			if (max < lex_def.modifiers[mod])
-				max = lex_def.modifiers[mod];
-			if (min > lex_def.modifiers[mod])
-				min = lex_def.modifiers[mod];
-		}
-		var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));
-		var scale = fontSize*Math.min(2/max,1/(min*2));
-		var list = [];
-		for (var head in lex_def.heads) {
-			var size = lex_def.heads[head]*scale;
-			if (size > 1) {
-				if (size < 9)
-					size = 9;
-				list.push([head,size]);
-			}
-		}
-		for (var mod  in lex_def.modifiers) {
-			var size = lex_def.modifiers[mod]*scale;
-			if (size > 1) {
-				if (size < 9)
-					size = 9;
-				list.push([mod,size]);
-			}
-		}
-		if (list.length > 1) {
-			list.sort(function(a,b) {
-			            if (a[1] > b[1])
-                          return -1;
-                        if (a[1] < b[1])
-                          return 1;
-                        return 0;
-                      });
+		popup = node("div",{},[]);
+		details.appendChild(popup);
 
-			function select_color(word, weight, fontSize, distance, theta) {
-				if (word in this.heads) {
-					return "orange";
-				}
-				if (word in this.modifiers) {
-					return "turquoise";
-				}
-				return "black";
-			}
+		tabs = node("table",{class: "header-tabs"},[
+				 tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(\""+lex_id+"\",this)"},[text("Context")])),
+					 td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(\""+lex_id+"\",this)"},[text("Related")])),
+					 td(node("input", {type: "range", min: 1, max: 100, value: 50})),
+					 td(node("img", {src: "cross.png", class: "hidden", onclick: "gfwordnet.onclick_cross(this)"}, []))
+					])]);
+		popup.appendChild(tabs);
 
-			popup = node("div",{},[]);
-			details.appendChild(popup);
+		var canvas = node("canvas", {width: 10, height: 10, onclick: "gfwordnet.onclick_canvas(this)"}, []);
+		popup.appendChild(canvas);
 
-			tabs = node("table",{class: "header-tabs"},[
-			         tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
-				         td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
-				         td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Features")])),
-				         td(node("input", {type: "range", min: 1, max: 100, value: 50})),
-				         td(node("img", {src: "cross.png", class: "hidden", onclick: "gfwordnet.onclick_cross(this)"}, []))
-			            ])]);
-			popup.appendChild(tabs);
-
-			var canvas = node("canvas", {width: 10, height: 10, onclick: "gfwordnet.onclick_canvas(this)"}, []);
-			popup.appendChild(canvas);
-
-			WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,lex_def)});
-		}
+		this.init_wordcloud(canvas,lex_id);
 
 		var row = [];
 		if (lex_def.synonyms.length > 0) {
@@ -311,18 +355,24 @@ gfwordnet.onclick_check = function (btn) {
 	var lex_id = img.nextSibling.textContent;
 	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id),bind(extract_confirm,img),errcont);	
 }
-gfwordnet.onclick_tab = function (tab) {
+gfwordnet.onclick_tab = function (lex_id,tab) {
 	var tr = tab.parentNode.parentNode;
 	var td = tr.firstChild;
 	while (td != null) {
 		if (td.firstChild == tab) {
 			td.firstChild.className = "selected";
-		} else {
+		} else if (td.firstChild.className == "selected") {
 			td.firstChild.className = "unselected";
 		}
 		td = td.nextSibling;
 	}
-	
+
+	var canvas = tab.parentNode.parentNode.parentNode.nextSibling;
+	if (tab.innerHTML == "Context") {
+		gfwordnet.init_wordcloud(canvas,lex_id);
+	} else if (tab.innerHTML == "Related") {
+		gfwordnet.init_embedding(canvas,lex_id);
+	}
 }
 gfwordnet.onclick_canvas = function (canvas) {
 	canvas.parentNode.className = "popup";

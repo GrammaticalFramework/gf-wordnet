@@ -1,4 +1,6 @@
-module SenseSchema(synset,gloss,domain,example,secondary_example,head_,modifier,ep) where
+module SenseSchema(synset,gloss,domain,example,secondary_example,
+                   vector,embedding,pair,global
+                  ) where
 
 import PGF2
 
@@ -7,6 +9,7 @@ gloss             = mkApp "gloss"   []
 domain            = mkApp "domain"  []
 example           = mkApp "example" []
 secondary_example = mkApp "secondary_example" []
-head_             = mkApp "head" []
-modifier          = mkApp "modifier" []
-ep e p            = mkApp "ep" [e,mkFloat p]
+vector vs         = mkApp "vector" (map mkFloat vs)
+embedding         = mkApp "embedding" []
+pair x y          = mkApp "pair" [x,y]
+global            = mkApp "global" []

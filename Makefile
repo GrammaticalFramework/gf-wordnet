@@ -48,6 +48,9 @@ build/Parse.noprobs.pgf: $(GF_SOURCES)
 Parse.probs Parse.bigram.probs: build/udsenser build/Parse.noprobs.pgf examples.txt $(UD_BUL_TREEBANKS) $(UD_ENG_TREEBANKS) $(UD_FIN_TREEBANKS) $(UD_SWE_TREEBANKS)
 	build/udsenser build/Parse.noprobs.pgf train abstract examples.txt , ParseBul $(UD_BUL_TREEBANKS) , ParseEng $(UD_ENG_TREEBANKS) , ParseFin $(UD_FIN_TREEBANKS) , ParseSwe $(UD_SWE_TREEBANKS)
 
+embedding.txt: Parse.bigram.probs
+	python3 train/sense_embedding.py
+
 build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o
 	ghc --make -odir build/train -hidir build/train -O2 $^ -o $@ -lpgf -lgu -lm -llzma -lpthread
 
@@ -60,12 +63,12 @@ build/train/EM.hs: train/EM.hsc train/em_core.h
 build/train/Matching.hs: train/Matching.hsc train/em_core.h
 	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
-semantics.db: sense-service/glosses.hs WordNet.gf examples.txt Parse.bigram.probs
+semantics.db: sense-service/glosses.hs WordNet.gf examples.txt embedding.txt
 	runghc -isense-service sense-service/glosses.hs
 	scp semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
 
 build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs
-	ghc --make -odir build/sense-service -hidir build/sense-service -O2 $^ -o $@
+	ghc --make -odir build/sense-service -hidir build/sense-service -O2 -optl-static -optl-pthread $^ -o $@
 	scp build/SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
 	ssh www.grammaticalframework.org mv www/SenseService www/SenseService.fcgi
 

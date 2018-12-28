@@ -219,7 +219,7 @@ gfwordnet.init_embedding = function(canvas) {
 
 	var ctx = canvas.getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.font = (popup ? parseInt(fontSize)*2+fontSize.substring(fontSize.length - 2) : fontSize) + " Ariel";
+	ctx.font = (popup ? parseInt(fontSize)*1.5+fontSize.substring(fontSize.length - 2) : fontSize) + " Ariel";
 	var i = 0;
 	for (var fun in lex_def.relations) {
 		var point = points[i++];

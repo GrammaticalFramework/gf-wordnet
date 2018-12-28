@@ -122,8 +122,8 @@ gfwordnet.search = function (from, input, result) {
 
 	gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+from,extract_search,errcont);
 }
-gfwordnet.init_wordcloud = function(canvas,lex_id) {
-	var lex_def = this.lex_ids[lex_id];
+gfwordnet.init_wordcloud = function(canvas) {
+	var lex_def = this.lex_ids[canvas.lex_id];
 
 	var min = Number.MAX_VALUE;
 	var max = Number.MIN_VALUE;
@@ -139,8 +139,9 @@ gfwordnet.init_wordcloud = function(canvas,lex_id) {
 		if (min > lex_def.modifiers[mod])
 			min = lex_def.modifiers[mod];
 	}
+	var popup = canvas.parentNode.className == "popup";
 	var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));
-	var scale = fontSize*Math.min(2/max,1/(min*2));
+	var scale = fontSize*Math.min((popup ? 8 : 2)/max,(popup ? 2 : 0.5)/min);
 	var list = [];
 	for (var head in lex_def.heads) {
 		var size = lex_def.heads[head]*scale;
@@ -180,8 +181,8 @@ gfwordnet.init_wordcloud = function(canvas,lex_id) {
 		WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,lex_def)});
 	}
 }
-gfwordnet.init_embedding = function(canvas,lex_id) {
-	var lex_def = this.lex_ids[lex_id];
+gfwordnet.init_embedding = function(canvas) {
+	var lex_def = this.lex_ids[canvas.lex_id];
 
 	var tsne = new tsnejs.tSNE({}); // create a tSNE instance
 
@@ -213,12 +214,23 @@ gfwordnet.init_embedding = function(canvas,lex_id) {
 	var scaley = (canvas.height-60)/(maxy-miny);
 	var scale  = Math.min(scalex,scaley);
 
+	var popup = canvas.parentNode.className == "popup";
+	var fontSize = window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size');
+
 	var ctx = canvas.getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.font = (popup ? parseInt(fontSize)*2+fontSize.substring(fontSize.length - 2) : fontSize) + " Ariel";
 	var i = 0;
 	for (var fun in lex_def.relations) {
 		var point = points[i++];
 		ctx.fillText(fun, (point[0]-minx)*scale, (point[1]-minx)*scale);
+	}
+}
+gfwordnet.init_canvas = function (tab,canvas) {
+	if (tab.innerHTML == "Context") {
+		gfwordnet.init_wordcloud(canvas);
+	} else if (tab.innerHTML == "Related") {
+		gfwordnet.init_embedding(canvas);
 	}
 }
 gfwordnet.onclick_cell = function (cell) {
@@ -277,17 +289,17 @@ gfwordnet.onclick_cell = function (cell) {
 		details.appendChild(popup);
 
 		tabs = node("table",{class: "header-tabs"},[
-				 tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(\""+lex_id+"\",this)"},[text("Context")])),
-					 td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(\""+lex_id+"\",this)"},[text("Related")])),
-					 td(node("input", {type: "range", min: 1, max: 100, value: 50})),
-					 td(node("img", {src: "cross.png", class: "hidden", onclick: "gfwordnet.onclick_cross(this)"}, []))
+				 tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
+					 td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
+					 td(node("input", {type: "range", min: 1, max: 100, value: 50}))
 					])]);
 		popup.appendChild(tabs);
 
 		var canvas = node("canvas", {width: 10, height: 10, onclick: "gfwordnet.onclick_canvas(this)"}, []);
+		canvas.lex_id = lex_id;
 		popup.appendChild(canvas);
 
-		this.init_wordcloud(canvas,lex_id);
+		this.init_wordcloud(canvas);
 
 		var row = [];
 		if (lex_def.synonyms.length > 0) {
@@ -355,7 +367,7 @@ gfwordnet.onclick_check = function (btn) {
 	var lex_id = img.nextSibling.textContent;
 	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id),bind(extract_confirm,img),errcont);	
 }
-gfwordnet.onclick_tab = function (lex_id,tab) {
+gfwordnet.onclick_tab = function (tab) {
 	var tr = tab.parentNode.parentNode;
 	var td = tr.firstChild;
 	while (td != null) {
@@ -368,15 +380,32 @@ gfwordnet.onclick_tab = function (lex_id,tab) {
 	}
 
 	var canvas = tab.parentNode.parentNode.parentNode.nextSibling;
-	if (tab.innerHTML == "Context") {
-		gfwordnet.init_wordcloud(canvas,lex_id);
-	} else if (tab.innerHTML == "Related") {
-		gfwordnet.init_embedding(canvas,lex_id);
-	}
+	gfwordnet.init_canvas(tab,canvas);
 }
 gfwordnet.onclick_canvas = function (canvas) {
-	canvas.parentNode.className = "popup";
-}
-gfwordnet.onclick_cross = function (cross) {
-	cross.parentNode.parentNode.parentNode.parentNode.className = "";
+	var tab = null;
+	var tr  = canvas.parentNode.firstElementChild.firstElementChild;
+	var td  = tr.firstChild;
+	while (td != null) {
+		if (td.firstChild.className == "selected") {
+			tab = td.firstChild;
+			break;
+		}
+		td = td.nextSibling;
+	}
+	if (tab == null)
+		return;
+
+	if (canvas.parentNode.className == "popup") {
+		canvas.parentNode.className = "";
+		canvas.width  = canvas.save_width;
+		canvas.height = canvas.save_height;
+	} else {
+		canvas.parentNode.className = "popup";
+		canvas.save_width = canvas.width;
+		canvas.save_height = canvas.height;
+		canvas.width  = canvas.parentNode.offsetWidth;
+		canvas.height = canvas.parentNode.offsetHeight-canvas.offsetTop;
+	}
+	gfwordnet.init_canvas(tab,canvas);
 }

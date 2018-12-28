@@ -1078,8 +1078,10 @@ if (!window.clearImmediate) {
         if (i >= settings.list.length) {
           window.clearImmediate(timer);
           var canvasSize = computeCanvasSize();
-          canvas.width  = canvasSize[0]*settings.gridSize;
-          canvas.height = canvasSize[1]*settings.gridSize;
+          canvas.width  = Math.max(canvas.width, canvasSize[0]*settings.gridSize);
+          canvas.height = Math.max(canvas.height,canvasSize[1]*settings.gridSize);
+          canvasSize[0] = canvas.width/settings.gridSize;
+          canvasSize[1] = canvas.height/settings.gridSize;
           for (var k in infos) {
 			  var info = infos[k];
 			  info.gx += canvasSize[0]/2-center[0];

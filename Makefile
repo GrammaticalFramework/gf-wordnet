@@ -32,11 +32,6 @@ endif
 
 
 all: build_dirs Parse.pgf semantics.db build/SenseService
-	@echo ""
-	@echo "********************************************************************************"
-	@echo "* Now kill the SenseService.fcgi process"
-	@echo "********************************************************************************"
-	@ssh www.grammaticalframework.org
 
 Parse.pgf: $(GF_SOURCES) Parse.probs
 	gf --make --probs=Parse.probs --gfo-dir=build/gfo ParseBul.gf ParseEng.gf ParseFin.gf ParsePor.gf ParseSwe.gf ParseAPI.gf
@@ -70,7 +65,7 @@ semantics.db: sense-service/glosses.hs WordNet.gf examples.txt embedding.txt
 build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs
 	ghc --make -odir build/sense-service -hidir build/sense-service -O2 -optl-static -optl-pthread $^ -o $@
 	scp build/SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
-	ssh www.grammaticalframework.org mv www/SenseService www/SenseService.fcgi
+	ssh -t www.grammaticalframework.org "mv www/SenseService www/SenseService.fcgi; sudo pkill -e SenseService.*"
 
 WordNet.gf: FORCE build/SenseService
 	runghc check.hs - $(shell ssh www.grammaticalframework.org ./www/SenseService.fcgi report)

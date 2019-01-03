@@ -15,6 +15,7 @@ def add(f):
 		i = len(dims)
 		dims[f] = i
 		funs.append(f)
+
 	return i
 
 stopList = [
@@ -33,17 +34,15 @@ def stopword(fun):
 			return True
 	return False
 
-count = 0
 f = open("Parse.bigram.probs")
 for line in f:
-	[h,m,v] = line.split()	
+	[h,m,v] = line.split()
 	if stopword(h) or stopword(m):
 		continue
 
 	rows.append(add(h))
 	cols.append(add(m))
 	vals.append(float(v))
-	count = count + 1
 f.close()
 
 matrix = sparse.csr_matrix((vals,(rows,cols)),shape=(len(dims),len(dims)))
@@ -55,7 +54,7 @@ del add
 
 print(matrix.shape)
 
-nmf = NMF(n_components=100)
+nmf = NMF(n_components=100, verbose=True)
 h = nmf.fit_transform(matrix)
 m = numpy.transpose(nmf.components_)
 print(h.shape)
@@ -76,19 +75,16 @@ f = open("embedding.txt", "w+")
 f.write(" ".join(map (lambda p: '%.18E' % p, c))+"\n")
 f.write("\n")
 
-max_neighbours = 100
-
-for fun1 in funs:
-	if not (fun1 in dims):
+for fun in funs:
+	if not (fun in dims):
 		continue
 
-	h1 = h[dims[fun1]]
-	m1 = m[dims[fun1]]
-	v1 = (h1 + m1)/2
+	hvec = h[dims[fun]]
+	mvec = m[dims[fun]]
 
-	f.write(fun1+"\n")
-	f.write(" ".join(map (lambda p: '%.18E' % p, h1))+"\n")
-	f.write(" ".join(map (lambda p: '%.18E' % p, m1))+"\n")
+	f.write(fun+"\n")
+	f.write(" ".join(map (lambda p: '%.18E' % p, hvec))+"\n")
+	f.write(" ".join(map (lambda p: '%.18E' % p, mvec))+"\n")
 	f.write("\n")
 
 f.close()

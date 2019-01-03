@@ -219,11 +219,15 @@ gfwordnet.init_embedding = function(canvas) {
 
 	var ctx = canvas.getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.font = (popup ? parseInt(fontSize)*1.5+fontSize.substring(fontSize.length - 2) : fontSize) + " Ariel";
+	ctx.font = fontSize + " Ariel";
 	var i = 0;
 	for (var fun in lex_def.relations) {
 		var point = points[i++];
+		if (fun == canvas.lex_id)
+			ctx.fillStyle = '#ff0000';
 		ctx.fillText(fun, (point[0]-minx)*scale, (point[1]-minx)*scale);
+		if (fun == canvas.lex_id)
+			ctx.fillStyle = '#000000';
 	}
 }
 gfwordnet.init_canvas = function (tab,canvas) {

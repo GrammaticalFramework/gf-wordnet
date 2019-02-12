@@ -13,13 +13,13 @@ concrete ParseExtendPor of ParseExtend =
       } ;
 
     UttAP        = UttAPMasc ;
-    UttAPMasc ap = {s = ap.s ! AF Masc Sg} ;
-    UttAPFem  ap = {s = ap.s ! AF Fem Sg} ;
+    UttAPMasc ap = {s = ap.s ! (genNum2Aform Masc Sg)} ;
+    UttAPFem  ap = {s = ap.s ! (genNum2Aform Fem Sg)} ;
 
     UttVPS         = UttVPSMasc ;
     UttVPSMasc vps = {s = vps.s ! Indic ! Ag Masc Sg P3 ! True} ;
-    UttVPSFem vps  = {s = vps.s ! Indic ! Ag Fem Sg P3 ! True} ;
-    UttVPSPl vps   = {s = vps.s ! Indic ! Ag Masc Pl P3 ! True} ;
+    UttVPSFem  vps = {s = vps.s ! Indic ! Ag Fem Sg P3 ! True} ;
+    UttVPSPl   vps = {s = vps.s ! Indic ! Ag Masc Pl P3 ! True} ;
 
   lincat Mark = SS ;
 
@@ -102,9 +102,8 @@ concrete ParseExtendPor of ParseExtend =
       hasClit = False
       } ;
 
-  lin ExtAdvAP ap adv = {
-        s = \\a => ap.s ! a ++ bindComma ++ adv.s ;
-        isPre = False
+  lin ExtAdvAP ap adv = ap ** {
+        s = \\a => ap.s ! a ++ bindComma ++ adv.s
         } ;
 
   lin BareN2 n2 = n2 ;

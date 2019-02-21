@@ -1,15 +1,67 @@
-module SenseSchema(synset,gloss,domain,example,secondary_example,
-                   vector,embedding,pair,global
-                  ) where
+{-# LANGUAGE DeriveDataTypeable #-}
+
+module SenseSchema where
 
 import PGF2
+import Database.Helda
+import Data.Data
 
-synset            = mkApp "synset"  []
-gloss             = mkApp "gloss"   []
-domain            = mkApp "domain"  []
-example           = mkApp "example" []
-secondary_example = mkApp "secondary_example" []
-vector vs         = mkApp "vector" (map mkFloat vs)
-embedding         = mkApp "embedding" []
-pair x y          = mkApp "pair" [x,y]
-global            = mkApp "global" []
+type SynsetOffset = String
+
+data Synset
+  = Synset
+      { synsetOffset :: SynsetOffset
+      , gloss        :: String
+      }
+    deriving (Data,Ord,Eq,Show)
+
+data Lexeme
+  = Lexeme 
+      { lex_fun     :: Fun
+      , synset      :: Key Synset
+      , domains     :: [String]
+      , example_ids :: [Key Expr]
+      }
+    deriving (Data,Show)
+
+data Embedding
+  = Embedding
+      { emb_fun :: Fun
+      , hvec    :: [Double]
+      , mvec    :: [Double]
+      }
+    deriving (Data,Show)
+
+synsets :: Table Synset
+synsets = table "synsets"
+
+lexemes :: Table Lexeme
+lexemes = table "lexemes"
+             `withIndex` lexemes_fun
+             `withIndex` lexemes_synset
+
+lexemes_fun :: Index Lexeme Fun
+lexemes_fun = index lexemes "fun" lex_fun
+
+lexemes_synset :: Index Lexeme (Key Synset)
+lexemes_synset = index lexemes "synset" synset
+
+coefficients :: Table [Double]
+coefficients = table "coefficients"
+
+embeddings :: Table Embedding
+embeddings = table "embeddings"
+                `withIndex` embeddings_fun
+
+embeddings_fun :: Index Embedding Fun
+embeddings_fun = index embeddings "fun" emb_fun
+
+examples :: Table Expr
+examples = table "examples"
+             `withIndex` examples_fun
+
+examples_fun :: Index Expr Fun
+examples_fun = listIndex examples "fun" exprFunctions
+
+checked :: Table Fun
+checked = table "checked"

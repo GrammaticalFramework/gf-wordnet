@@ -53,7 +53,7 @@ gfwordnet.search = function (from, input, result) {
 				var icon;
 				var row = this[lex_id];
 				var domains = senses[i].lex_ids[lex_id].domains;
-				if (domains.indexOf("unchecked") >= 0 && domains.indexOf("checked") < 0) {
+				if (domains.indexOf("unchecked") >= 0) {
 					icon = img("unchecked.png");
 					if (gfwordnet.can_check)
 						row.push(td([node("button",{onclick: "gfwordnet.onclick_check(this)"},[text("Check")])]));

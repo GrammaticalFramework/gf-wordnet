@@ -123,36 +123,36 @@ gfwordnet.search = function (from, input, result) {
 	gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+from,extract_search,errcont);
 }
 gfwordnet.init_wordcloud = function(canvas) {
-	var lex_def = this.lex_ids[canvas.lex_id];
+	var context = this.lex_ids[canvas.lex_id].context;
 
 	var min = Number.MAX_VALUE;
 	var max = Number.MIN_VALUE;
-	for (var head in lex_def.heads) {
-		if (max < lex_def.heads[head])
-			max = lex_def.heads[head];
-		if (min > lex_def.heads[head])
-			min = lex_def.heads[head];
+	for (var head in context.heads) {
+		if (max < context.heads[head])
+			max = context.heads[head];
+		if (min > context.heads[head])
+			min = context.heads[head];
 	}
-	for (var mod  in lex_def.modifiers) {
-		if (max < lex_def.modifiers[mod])
-			max = lex_def.modifiers[mod];
-		if (min > lex_def.modifiers[mod])
-			min = lex_def.modifiers[mod];
+	for (var mod  in context.modifiers) {
+		if (max < context.modifiers[mod])
+			max = context.modifiers[mod];
+		if (min > context.modifiers[mod])
+			min = context.modifiers[mod];
 	}
 	var popup = canvas.parentNode.className == "popup";
 	var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));
 	var scale = fontSize*Math.min((popup ? 8 : 2)/max,(popup ? 2 : 0.5)/min);
 	var list = [];
-	for (var head in lex_def.heads) {
-		var size = lex_def.heads[head]*scale;
+	for (var head in context.heads) {
+		var size = context.heads[head]*scale;
 		if (size > 1) {
 			if (size < 9)
 				size = 9;
 			list.push([head,size]);
 		}
 	}
-	for (var mod  in lex_def.modifiers) {
-		var size = lex_def.modifiers[mod]*scale;
+	for (var mod  in context.modifiers) {
+		var size = context.modifiers[mod]*scale;
 		if (size > 1) {
 			if (size < 9)
 				size = 9;
@@ -178,18 +178,18 @@ gfwordnet.init_wordcloud = function(canvas) {
 			return "black";
 		}
 
-		WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,lex_def)});
+		WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,context)});
 	}
 }
 gfwordnet.init_embedding = function(canvas) {
-	var lex_def = this.lex_ids[canvas.lex_id];
+	var context = this.lex_ids[canvas.lex_id].context;
 
 	var tsne = new tsnejs.tSNE({}); // create a tSNE instance
 
 	// initialize data. Here we have 3 points and some example pairwise dissimilarities
 	var dists = [];
-	for (var fun in lex_def.relations) {
-		dists.push(lex_def.relations[fun]);
+	for (var fun in context.relations) {
+		dists.push(context.relations[fun]);
 	}
 	tsne.initDataDist(dists);
 
@@ -221,7 +221,7 @@ gfwordnet.init_embedding = function(canvas) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.font = fontSize + " Ariel";
 	var i = 0;
-	for (var fun in lex_def.relations) {
+	for (var fun in context.relations) {
 		var point = points[i++];
 		if (fun == canvas.lex_id)
 			ctx.fillStyle = '#ff0000';
@@ -243,6 +243,22 @@ gfwordnet.onclick_cell = function (cell) {
 		return;
 
 	function errcont(text,code) { }
+	function extract_context(context) {
+		gfwordnet.lex_ids[this.lex_id].context = context;
+		
+		var tabs = node("table",{class: "header-tabs"},[
+				 tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
+					 td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
+					 td(node("input", {type: "range", min: 1, max: 100, value: 50}))
+					])]);
+		this.popup.appendChild(tabs);
+
+		var canvas = node("canvas", {width: 10, height: 10, onclick: "gfwordnet.onclick_canvas(this)"}, []);
+		canvas.lex_id = this.lex_id;
+		this.popup.appendChild(canvas);
+
+		gfwordnet.init_wordcloud(canvas);
+	}
 	function extract_linearization(lins) {
 		var rows = []
 		for (var i in lins) {
@@ -292,18 +308,10 @@ gfwordnet.onclick_cell = function (cell) {
 		popup = node("div",{},[]);
 		details.appendChild(popup);
 
-		tabs = node("table",{class: "header-tabs"},[
-				 tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
-					 td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
-					 td(node("input", {type: "range", min: 1, max: 100, value: 50}))
-					])]);
-		popup.appendChild(tabs);
-
-		var canvas = node("canvas", {width: 10, height: 10, onclick: "gfwordnet.onclick_canvas(this)"}, []);
-		canvas.lex_id = lex_id;
-		popup.appendChild(canvas);
-
-		this.init_wordcloud(canvas);
+		if ("context" in lex_def)
+			bind(extract_context,{lex_id: lex_id, popup: popup})(lex_def.context);
+		else
+			gfwordnet.sense_call("?context_id="+encodeURIComponent(lex_id),bind(extract_context,{lex_id: lex_id, popup: popup}),errcont);	
 
 		var row = [];
 		if (lex_def.synonyms.length > 0) {
@@ -369,7 +377,7 @@ gfwordnet.onclick_check = function (btn) {
 
 	var img    = btn.parentNode.parentNode.firstChild.firstChild;
 	var lex_id = img.nextSibling.textContent;
-	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id),bind(extract_confirm,img),errcont);	
+	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id),bind(extract_confirm,img),errcont);
 }
 gfwordnet.onclick_tab = function (tab) {
 	var tr = tab.parentNode.parentNode;

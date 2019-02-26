@@ -2918,8 +2918,8 @@ amarelle_N	amarelle_1_N
 amarelle_N	amarelle_2_N
 amaretto_N	amaretto_N
 amaryllis_N	amaryllis_N
-amass_V2	amass_1_V2
-amass_V2	amass_2_V2
+amass_V	amass_V
+amass_V2	amass_V2
 amastia_N	amastia_N
 amateurFem_N	amateurFem_1_N
 amateurFem_N	amateurFem_2_N
@@ -29420,7 +29420,6 @@ drown_out_V2	drown_out_2_V2
 drowse_N	drowse_N
 drowse_V	drowse_1_V
 drowse_V	drowse_2_V
-drowse_V2	drowse_1_V2
 drowsiness_N	drowsiness_N
 drowsy_A	drowsy_A
 drub_V2	drub_V2
@@ -41656,6 +41655,7 @@ grove_N	grove_2_N
 grovel_V	grovel_V
 groveller_N	groveller_1_N
 grow_V	grow_3_V
+grow_V	grow_5_V
 grow_V	grow_6_V
 grow_V	grow_9_V
 grow_V	grow_10_V
@@ -41664,7 +41664,6 @@ grow_V2	grow_7_V2
 grow_V2	grow_8_V2
 grow_VA	grow_1_VA
 grow_VA	grow_2_VA
-grow_VA	grow_5_VA
 grow_apart_V	grow_apart_V
 grow_away_from_V2	grow_away_from_V2
 grow_back_V	grow_back_V
@@ -48046,7 +48045,6 @@ inflate_V2	inflate_1_V2
 inflate_V2	inflate_2_V2
 inflate_V2	inflate_3_V2
 inflate_V2	inflate_4_V2
-inflate_V2	inflate_5_V2
 inflater_N	inflater_1_N
 inflation_N	inflation_1_N
 inflation_N	inflation_2_N
@@ -76207,11 +76205,7 @@ re_afforestation_N	re_afforestation_N
 re_count_N	re_count_N
 re_count_V2	re_count_1_V2
 re_count_V2	re_count_2_V2
-re_cover_V2	re_cover_1_V2
-re_cover_V2	re_cover_2_V2
-re_cover_V2	re_cover_4_V2
-re_cover_V2	re_cover_5_V2
-re_cover_V2	re_cover_6_V2
+re_cover_V2	re_cover_V2
 re_create_V2	re_create_1_V2
 re_create_V2	re_create_2_V2
 re_create_V2	re_create_3_V2
@@ -79871,6 +79865,7 @@ rise_N	rise_8_N
 rise_N	rise_9_N
 rise_N	rise_10_N
 rise_V	rise_1_V
+rise_V	rise_2_V
 rise_V	rise_3_V
 rise_V	rise_4_V
 rise_V	rise_5_V
@@ -79885,7 +79880,6 @@ rise_V	rise_13_V
 rise_V	rise_14_V
 rise_V	rise_15_V
 rise_V	rise_16_V
-rise_V2	rise_2_V2
 rise_V2	rise_5_V2
 rise_V2	rise_14_V2
 rise_V2	rise_17_V2
@@ -85690,8 +85684,7 @@ shrink_V	shrink_1_V
 shrink_V	shrink_2_V
 shrink_V	shrink_4_V
 shrink_V	shrink_5_V
-shrink_V2	shrink_1_V2
-shrink_V2	shrink_3_V2
+shrink_V2	shrink_V2
 shrinkable_A	shrinkable_A
 shrinkage_N	shrinkage_1_N
 shrinkage_N	shrinkage_2_N
@@ -85701,7 +85694,6 @@ shrinking_N	shrinking_2_N
 shrive_V2	shrive_V2
 shrivel_V	shrivel_1_V
 shrivel_V	shrivel_2_V
-shrivel_V2	shrivel_1_V2
 shriveled_A	shriveled_1_A
 shriveled_A	shriveled_2_A
 shriveled_A	shriveled_3_A

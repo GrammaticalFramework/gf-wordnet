@@ -148,7 +148,7 @@ gfwordnet.init_wordcloud = function(canvas) {
 		if (size > 1) {
 			if (size < 9)
 				size = 9;
-			list.push([head,size]);
+			list.push([head,size,"orange"]);
 		}
 	}
 	for (var mod  in context.modifiers) {
@@ -156,7 +156,7 @@ gfwordnet.init_wordcloud = function(canvas) {
 		if (size > 1) {
 			if (size < 9)
 				size = 9;
-			list.push([mod,size]);
+			list.push([mod,size,"turquoise"]);
 		}
 	}
 	if (list.length > 1) {
@@ -167,18 +167,7 @@ gfwordnet.init_wordcloud = function(canvas) {
 					  return 1;
 					return 0;
 				  });
-
-		function select_color(word, weight, fontSize, distance, theta) {
-			if (word in this.heads) {
-				return "orange";
-			}
-			if (word in this.modifiers) {
-				return "turquoise";
-			}
-			return "black";
-		}
-
-		WordCloud(canvas,{list: list, shuffle: false, color: bind(select_color,context)});
+		WordCloud(canvas,{list: list, shuffle: false});
 	}
 }
 gfwordnet.init_embedding = function(canvas) {

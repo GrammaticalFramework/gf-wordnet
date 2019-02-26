@@ -8,6 +8,7 @@
  * Modified by Krasimir Angelov:
  *   - Only canvas target is now supported
  *   - The canvas will be automatically resized to fit the cloud
+ *   - The input to the word cloud is a tripple of word, size and color
  */
 
 'use strict';
@@ -171,7 +172,6 @@ if (!window.clearImmediate) {
       fontFamily: '"Trebuchet MS", "Heiti TC", "微軟正黑體", ' +
                   '"Arial Unicode MS", "Droid Fallback Sans", sans-serif',
       fontWeight: 'normal',
-      color: 'random-dark',
       minSize: 0, // 0 to disable
       weightFactor: 1,
       clearCanvas: true,
@@ -330,34 +330,6 @@ if (!window.clearImmediate) {
 
     /* timestamp for measuring each putWord() action */
     var escapeTime;
-
-    /* function for getting the color of the text */
-    var getTextColor;
-    function random_hsl_color(min, max) {
-      return 'hsl(' +
-        (Math.random() * 360).toFixed() + ',' +
-        (Math.random() * 30 + 70).toFixed() + '%,' +
-        (Math.random() * (max - min) + min).toFixed() + '%)';
-    }
-    switch (settings.color) {
-      case 'random-dark':
-        getTextColor = function getRandomDarkColor() {
-          return random_hsl_color(10, 50);
-        };
-        break;
-
-      case 'random-light':
-        getTextColor = function getRandomLightColor() {
-          return random_hsl_color(50, 90);
-        };
-        break;
-
-      default:
-        if (typeof settings.color === 'function') {
-          getTextColor = settings.color;
-        }
-        break;
-    }
 
     /* function for getting the font-weight of the text */
     var getTextFontWeight;
@@ -706,12 +678,6 @@ if (!window.clearImmediate) {
     var drawText = function drawText(info) {
 
       var fontSize = info.fontSize;
-      var color;
-      if (getTextColor) {
-        color = getTextColor(info.word, info.weight, fontSize, info.distance, [info.gx,info.gy]);
-      } else {
-        color = settings.color;
-      }
 
       // get fontWeight that will be used to set ctx.font and font style rule
       var fontWeight;
@@ -746,7 +712,7 @@ if (!window.clearImmediate) {
 
       ctx.font = fontWeight + ' ' +
                  (fontSize * mu).toString(10) + 'px ' + settings.fontFamily;
-      ctx.fillStyle = color;
+      ctx.fillStyle = info.color;
 
       // Translate the canvas position to the origin coordinate of where
       // the text should be put.
@@ -838,14 +804,15 @@ if (!window.clearImmediate) {
        calculate it's size and determine it's position, and actually
        put it on the canvas. */
     var putWord = function putWord(item) {
-      var word, weight, attributes;
+      var word, weight, color;
       if (Array.isArray(item)) {
         word = item[0];
         weight = item[1];
+        color = item[2];
       } else {
         word = item.word;
         weight = item.weight;
-        attributes = item.attributes;
+        color = item.color;
       }
       var rotateDeg = getRotateDeg();
 
@@ -888,7 +855,7 @@ if (!window.clearImmediate) {
 		info.gx = gx;
 		info.gy = gy;
 		info.distance   = maxRadius - r;
-		info.attributes = attributes;
+		info.color = color;
 
         // Mark the spaces on the grid as filled
         updateGrid(gx, gy, gw, gh, info, item);

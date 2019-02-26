@@ -186,7 +186,6 @@ gfwordnet.init_embedding = function(canvas) {
 
 	var tsne = new tsnejs.tSNE({}); // create a tSNE instance
 
-	// initialize data. Here we have 3 points and some example pairwise dissimilarities
 	var dists = [];
 	for (var fun in context.relations) {
 		dists.push(context.relations[fun]);

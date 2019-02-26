@@ -38,7 +38,7 @@ Parse.pgf: $(GF_SOURCES) Parse.probs
 	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 
 build/Parse.noprobs.pgf: $(GF_SOURCES)
-	gf --make -name=Parse.noprobs --gfo-dir=build/gfo --output-dir=build ParseBul.gf ParseEng.gf ParseFin.gf ParsePor.gf ParseSwe.gf
+	gf --make -name=Parse.noprobs --gfo-dir=build/gfo --output-dir=build ParseBul.gf ParseEng.gf ParseFin.gf ParseSwe.gf
 
 Parse.probs Parse.bigram.probs: build/udsenser build/Parse.noprobs.pgf examples.txt $(UD_BUL_TREEBANKS) $(UD_ENG_TREEBANKS) $(UD_FIN_TREEBANKS) $(UD_SWE_TREEBANKS)
 	build/udsenser build/Parse.noprobs.pgf train abstract examples.txt , ParseBul $(UD_BUL_TREEBANKS) , ParseEng $(UD_ENG_TREEBANKS) , ParseFin $(UD_FIN_TREEBANKS) , ParseSwe $(UD_SWE_TREEBANKS)

@@ -42,13 +42,7 @@ gfwordnet.search = function (from, input, result) {
 			result.appendChild(tr(node("td",{colspan: 2 + gfwordnet.langs_list.length + (gfwordnet.can_check ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
-				
-				var synonyms = senses[i].synset.slice(0);
-				var k = synonyms.indexOf(lex_id);
-				if (k > -1) {
-					synonyms.splice(k, 1);
-				}
-				gfwordnet.lex_ids[lex_id].synonyms = synonyms;
+				gfwordnet.lex_ids[lex_id].synonyms = senses[i].synset;
 
 				var icon;
 				var row = this[lex_id];
@@ -325,7 +319,7 @@ gfwordnet.onclick_cell = function (cell) {
 			gfwordnet.sense_call("?context_id="+encodeURIComponent(lex_id),bind(extract_context,{lex_id: lex_id, popup: popup}),errcont);	
 
 		var row = [];
-		if (lex_def.synonyms.length > 0) {
+		if (Object.keys(lex_def.synonyms).length > 0) {
 			details.appendChild(node("h1",{},[text("Synonyms")]));
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
@@ -333,12 +327,14 @@ gfwordnet.onclick_cell = function (cell) {
 				row.push(th(text(gfwordnet.langs[gfwordnet.langs_list[lang]].name)));
 			}
 			result.appendChild(tr(row));
-			for (var i in lex_def.synonyms) {
-				var row = [td([text(lex_def.synonyms[i])])]
+			for (var synonym in lex_def.synonyms) {
+				var checked = lex_def.synonyms[synonym].indexOf("unchecked") >= 0;
+				var row = [td([img(checked ? "unchecked.png" : "checked.png"), text(synonym)])]
+				
 				for (var lang in gfwordnet.langs_list) {
 					row.push(td([]));
 				}
-				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.synonyms[i]),bind(extract_linearization_synonym,row),errcont);
+				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row),errcont);
 				result.appendChild(tr(row));
 			}
 			details.appendChild(result);

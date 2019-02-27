@@ -319,7 +319,7 @@ gfwordnet.onclick_cell = function (cell) {
 			gfwordnet.sense_call("?context_id="+encodeURIComponent(lex_id),bind(extract_context,{lex_id: lex_id, popup: popup}),errcont);	
 
 		var row = [];
-		if (Object.keys(lex_def.synonyms).length > 0) {
+		if (Object.keys(lex_def.synonyms).length > 1) {
 			details.appendChild(node("h1",{},[text("Synonyms")]));
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
@@ -328,6 +328,8 @@ gfwordnet.onclick_cell = function (cell) {
 			}
 			result.appendChild(tr(row));
 			for (var synonym in lex_def.synonyms) {
+				if (synonym == lex_id)
+					continue;
 				var checked = lex_def.synonyms[synonym].indexOf("unchecked") >= 0;
 				var row = [td([img(checked ? "unchecked.png" : "checked.png"), text(synonym)])]
 				

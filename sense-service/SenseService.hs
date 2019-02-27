@@ -114,22 +114,20 @@ cgiMain db (cs,funs) = do
                 (rn,rid) = break (not . isDigit) s1
 
     doContext lex_id =
-      let (heads,mods,rels) =
+      let (ctxt,rels) =
              case Map.lookup lex_id funs of
-               Just (hvec,mvec,vec) -> let res1  = take 100 (sortBy (\x y -> compare (fst y) (fst x))
+               Just (hvec,mvec,vec) -> let res1  = take 200 (sortBy (\x y -> compare (fst y) (fst x))
                                                                     [res | (fun,(hvec',mvec',_)) <- Map.toList funs
                                                                          , res <- [(prod hvec cs mvec',Left fun)
                                                                                   ,(prod mvec cs hvec',Right fun)]])
-                                           heads = [(fun,showJSON prob) | (prob,Right fun) <- res1]
-                                           mods  = [(fun,showJSON prob) | (prob,Left  fun) <- res1]
+                                           ctxt = [mkFunProb fun prob | (prob,fun) <- res1]
 
-                                           res2  = take 100 (sortOn fst [(dist vec vec',(fun,vec')) | (fun,(_,_,vec')) <- Map.toList funs])
-                                           rels  = [(fun,showJSON (Vector.toList vec)) | (prob,(fun,vec)) <- res2]
-                                       in (heads,mods,rels)
-               Nothing              -> ([],[],[])
-      in return (makeObj [("heads", makeObj heads),
-                          ("modifiers", makeObj mods),
-                          ("relations", makeObj rels)
+                                           res2  = take 200 (sortOn fst [(dist vec vec',(fun,vec')) | (fun,(_,_,vec')) <- Map.toList funs])
+                                           rels  = [mkFunVec fun (Vector.toList vec) | (dist,(fun,vec)) <- res2]
+                                       in (ctxt,rels)
+               Nothing              -> ([],[])
+      in return (makeObj [("context",   showJSON ctxt),
+                          ("relations", showJSON rels)
                          ])
       where
         prod v1 v2 v3 = Vector.sum (Vector.zipWith3 (\x y z -> x*y*z) v1 v2 v3)
@@ -137,6 +135,12 @@ cgiMain db (cs,funs) = do
         dist v1 v2 = Vector.sum (Vector.zipWith diff v1 v2)
           where
             diff x y = (x-y)^2
+
+        mkFunProb fun prob = 
+          case fun of
+            Left  fun -> makeObj [("mod", showJSON fun),("prob", showJSON prob)]
+            Right fun -> makeObj [("head",showJSON fun),("prob", showJSON prob)]
+        mkFunVec  fun vec  = makeObj [("fun",showJSON fun),("vec",  showJSON vec)]
 
     doGloss lex_id = do
       glosses <- runHelda db ReadOnlyMode $

@@ -25,6 +25,10 @@
 				border-collapse: collapse;
 				border: 2px solid #66c;
 				max-width: 100%;
+				 -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
 			}
 			td.details > div > table.result {
 				margin: 5px;
@@ -111,6 +115,10 @@
 				display: block;
 				float: right;
 				padding: 4px;
+			}
+			
+			span.selected_bracket {
+				background-color: #99e;
 			}
 		</style>
 	</head>

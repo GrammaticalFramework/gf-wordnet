@@ -247,11 +247,34 @@ gfwordnet.onclick_cell = function (cell) {
 
 		gfwordnet.init_wordcloud(canvas);
 	}
+	function taggedBrackets(brackets,bind) {
+		var tags = [];
+		for (var i in brackets) {
+			if ("token" in brackets[i]) {
+				if (bind)
+					bind = false;
+				else
+					tags.push(text(" "));
+				tags.push(text(brackets[i].token));
+			} else if ("bind" in brackets[i])
+				bind = brackets[i].bind;
+			else {
+				var content = taggedBrackets(brackets[i].children, bind);
+				if (content.length > 0) {
+					tags.push(node("span", {"fid": brackets[i].fid,
+											"fun": brackets[i].fun,
+											"onclick": "gfwordnet.onclick_bracket(event, this)"},
+				                   content));
+				}
+			}
+		}
+		return tags;
+	}
 	function extract_linearization(lins) {
 		var rows = []
 		for (var i in lins) {
 			var lin = lins[i];
-			rows.push(tr([th(text(gfwordnet.langs[lin.to].name)), td(text(lin.text))]));
+			rows.push(tr([th(text(gfwordnet.langs[lin.to].name)), td(taggedBrackets(lin.brackets))]));
 		}
 		this.parentNode.insertBefore(node("table",{class: "result"},rows), this.nextSibling);
 	}
@@ -324,14 +347,14 @@ gfwordnet.onclick_cell = function (cell) {
 			var header = node("h1",{},[text("Examples")]);
 			details.appendChild(header);
 			for (var i in lex_def.examples) {
-				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i]),bind(extract_linearization,header),errcont);
+				gfwordnet.grammar_call("?command=c-bracketedLinearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i]),bind(extract_linearization,header),errcont);
 			}
 		}
 		if (lex_def.secondary_examples.length > 0) {
 			var header = node("h1",{},[text("Secondary Examples")]);
 			details.appendChild(header);
 			for (var i in lex_def.secondary_examples) {
-				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header),errcont);
+				gfwordnet.grammar_call("?command=c-bracketedLinearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header),errcont);
 			}
 		}
 	} else {
@@ -408,4 +431,45 @@ gfwordnet.onclick_canvas = function (canvas) {
 		canvas.height = canvas.parentNode.offsetHeight-canvas.offsetTop;
 	}
 	gfwordnet.init_canvas(tab,canvas);
+}
+gfwordnet.onclick_bracket = function (event, bracket) {
+	var parent   = bracket;
+	var selected = false;
+	while (parent.tagName != "TABLE") {
+		if (parent.className=="selected_bracket") {
+			selected = true;
+		}
+		
+		if (selected) {
+			bracket = parent.parentNode;
+			var count   = 0;
+			var element = bracket.firstElementChild;
+			while (element != null) {
+				count++;
+				element = element.nextElementSibling;
+			}
+			if (count > 1)
+				selected = false;
+		}
+
+		parent = parent.parentNode;
+	}
+
+	if (bracket.tagName != "SPAN")
+		bracket = null;
+
+	function select(element,fid) {
+		var child = element.firstElementChild;
+		while (child != null) {
+			if (fid != null && fid == child.getAttribute("fid"))
+				child.className="selected_bracket";
+			else
+				child.className="";
+			select(child,fid);
+			child = child.nextElementSibling;
+		}
+	}
+	select(parent,(bracket == null) ? null : bracket.getAttribute("fid"));
+
+	event.stopPropagation();
 }

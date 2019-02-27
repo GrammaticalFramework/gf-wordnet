@@ -244,22 +244,20 @@ gfwordnet.onclick_cell = function (cell) {
 	function taggedBrackets(brackets,bind) {
 		var tags = [];
 		for (var i in brackets) {
+			if (bind)
+				bind = false;
+			else
+				tags.push(text(" "));
+
 			if ("token" in brackets[i]) {
-				if (bind)
-					bind = false;
-				else
-					tags.push(text(" "));
 				tags.push(text(brackets[i].token));
 			} else if ("bind" in brackets[i])
 				bind = brackets[i].bind;
 			else {
-				var content = taggedBrackets(brackets[i].children, bind);
-				if (content.length > 0) {
-					tags.push(node("span", {"fid": brackets[i].fid,
-											"fun": brackets[i].fun,
-											"onclick": "gfwordnet.onclick_bracket(event, this)"},
-				                   content));
-				}
+				tags.push(node("span", {"fid": brackets[i].fid,
+										"fun": brackets[i].fun,
+										"onclick": "gfwordnet.onclick_bracket(event, this)"},
+			                   taggedBrackets(brackets[i].children, bind)));
 			}
 		}
 		return tags;

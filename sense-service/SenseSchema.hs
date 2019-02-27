@@ -5,6 +5,7 @@ module SenseSchema where
 import PGF2
 import Database.Helda
 import Data.Data
+import Data.List(nub)
 
 type SynsetOffset = String
 
@@ -61,7 +62,7 @@ examples = table "examples"
              `withIndex` examples_fun
 
 examples_fun :: Index Expr Fun
-examples_fun = listIndex examples "fun" exprFunctions
+examples_fun = listIndex examples "fun" (nub . exprFunctions)
 
 checked :: Table Fun
 checked = table "checked"

@@ -21,15 +21,19 @@ main = do
   case args of
     ["report"] -> doReport db
     _          -> do st <- runHelda db ReadOnlyMode $ do
-                             [cs] <- select [Vector.fromList cs | (_,cs) <- from coefficients]
-                             let avg x y = (x+y)/2
+                             [cs] <- select [cs | (_,cs) <- from coefficients]
+
+                             let norm v = zipWith (\c x -> (c*x) / len) cs v
+                                   where
+                                     len = sum (zipWith (*) cs v)
+
                              funs <- fmap Map.fromList $
                                         select [(fun, (hvec,mvec,vec))
                                                   | (_,Embedding fun hvec' mvec') <- from embeddings
                                                   , let !hvec = Vector.fromList hvec'
                                                         !mvec = Vector.fromList mvec'
-                                                        !vec  = Vector.zipWith avg hvec mvec]
-                             return (cs,funs)
+                                                        !vec  = Vector.fromList (norm (hvec'++mvec'))]
+                             return (Vector.fromList cs,funs)
 -- #ifndef mingw32_HOST_OS
 --                   runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else
@@ -47,7 +51,8 @@ cgiMain :: Database -> Embeddings -> CGI CGIResult
 cgiMain db (cs,funs) = do
   mb_s1 <- getInput "lexical_ids"
   mb_s2 <- getInput "context_id"
-  mb_s3 <- getInput "check_id"
+  mb_s3 <- getInput "gloss_id"
+  mb_s4 <- getInput "check_id"
   case mb_s1 of
     Just s  -> do json <- liftIO (doQuery (words s))
                   outputJSONP json
@@ -55,9 +60,12 @@ cgiMain db (cs,funs) = do
                  Just lex_id -> do json <- liftIO (doContext lex_id)
                                    outputJSONP json
                  Nothing     -> case mb_s3 of
-                                  Just lex_id -> do json <- liftIO (doCheck lex_id)
+                                  Just lex_id -> do json <- liftIO (doGloss lex_id)
                                                     outputJSONP json
-                                  Nothing     -> outputNothing
+                                  Nothing     -> case mb_s4 of
+                                                   Just lex_id -> do json <- liftIO (doCheck lex_id)
+                                                                     outputJSONP json
+                                                   Nothing     -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runHelda db ReadOnlyMode $
@@ -67,7 +75,7 @@ cgiMain db (cs,funs) = do
       where
         mkSenseObj (sense_id,(gloss,synset,lex_ids)) =
           makeObj [("sense_id",showJSON sense_id)
-                  ,("synset",showJSON synset)
+                  ,("synset",makeObj [(lex_fun,showJSON domains) | (lex_fun,domains) <- synset])
                   ,("gloss",showJSON gloss)
                   ,("lex_ids",mkLexObj lex_ids)
                   ]
@@ -92,7 +100,7 @@ cgiMain db (cs,funs) = do
           case Map.lookup sense_id senses of
             Just (gloss,synset,lex_ids) -> return (Map.insert sense_id (gloss,synset,(lex_id,domains,examples,sexamples):lex_ids) senses)
             Nothing                     -> do [Synset offset gloss] <- select (fromAt synsets sense_id)
-                                              synset <- select [lex_fun | (_,Lexeme lex_fun _ _ _) <- fromIndexAt lexemes_synset sense_id]
+                                              synset <- select [(lex_fun,domains) | (_,Lexeme lex_fun _ domains _) <- fromIndexAt lexemes_synset sense_id]
                                               return (Map.insert sense_id (gloss,synset,[(lex_id,domains,examples,sexamples)]) senses)
 
         addKey (sense_id,(gloss,synset,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,synset,map snd key_lex_ids)))
@@ -129,6 +137,12 @@ cgiMain db (cs,funs) = do
         dist v1 v2 = Vector.sum (Vector.zipWith diff v1 v2)
           where
             diff x y = (x-y)^2
+
+    doGloss lex_id = do
+      glosses <- runHelda db ReadOnlyMode $
+                    select [gloss s | (_,lex) <- fromIndexAt lexemes_fun lex_id,
+                                      s <- fromAt synsets (synset lex)]
+      return (showJSON glosses)
 
     doCheck lex_id =
       runHelda db ReadWriteMode $ do

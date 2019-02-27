@@ -429,6 +429,22 @@ gfwordnet.onclick_canvas = function (canvas) {
 	gfwordnet.init_canvas(tab,canvas);
 }
 gfwordnet.onclick_bracket = function (event, bracket) {
+	function errcont(text,code) { }
+	function extract_gloss(glosses) {
+		var gloss_element = parent.lastElementChild.firstElementChild;
+		if (gloss_element.tagName != "TD") {
+			gloss_element = node("td",{colspan: 2, style: "max-width: 100px"},[]);
+			this.parent.appendChild(tr([gloss_element]));
+		}
+
+		if (glosses.length == 0) {
+			this.parent.removeChild(this.parent.lastElementChild);
+		} else {
+			gloss_element.innerHTML = this.lex_id+": "+glosses[0];
+		}
+	}
+
+	var bracket0 = bracket;
 	var parent   = bracket;
 	var selected = false;
 	while (parent.tagName != "TABLE") {
@@ -453,6 +469,17 @@ gfwordnet.onclick_bracket = function (event, bracket) {
 
 	if (bracket.tagName != "SPAN")
 		bracket = null;
+
+	if (bracket == bracket0) {
+		var lex_id = bracket.getAttribute("fun");
+		if (lex_id != null) {
+			gfwordnet.sense_call("?gloss_id="+lex_id,bind(extract_gloss,{parent: parent, lex_id: lex_id}),errcont);
+		}
+	} else {
+		if (parent.lastElementChild.firstElementChild.tagName == "TD") {
+			parent.removeChild(parent.lastElementChild);
+		}
+	}
 
 	function select(element,fid) {
 		var child = element.firstElementChild;

@@ -116,9 +116,9 @@ gfwordnet.search = function (from, input, result) {
 
 	gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+from,extract_search,errcont);
 }
-gfwordnet.init_wordcloud = function(canvas) {
+gfwordnet.init_wordcloud = function(canvas, context_size_range) {
 	var context      = this.lex_ids[canvas.lex_id].context;
-	var context_size = parseInt(document.getElementById("context_size").value);
+	var context_size = parseInt(context_size_range.value);
 
 	var min = Number.MAX_VALUE;
 	var max = Number.MIN_VALUE;
@@ -147,9 +147,9 @@ gfwordnet.init_wordcloud = function(canvas) {
 		WordCloud(canvas,{list: list, shuffle: false});
 	}
 }
-gfwordnet.init_embedding = function(canvas) {
+gfwordnet.init_embedding = function(canvas, context_size_range) {
 	var relations = this.lex_ids[canvas.lex_id].relations;
-	var context_size = parseInt(document.getElementById("context_size").value);
+	var context_size = parseInt(context_size_range.value);
 
 	var tsne = new tsnejs.tSNE({}); // create a tSNE instance
 
@@ -196,11 +196,11 @@ gfwordnet.init_embedding = function(canvas) {
 			ctx.fillStyle = '#000000';
 	}
 }
-gfwordnet.init_canvas = function (tab,canvas) {
+gfwordnet.init_canvas = function (tab,canvas,context_size_range) {
 	if (tab.innerHTML == "Context") {
-		gfwordnet.init_wordcloud(canvas);
+		gfwordnet.init_wordcloud(canvas,context_size_range);
 	} else if (tab.innerHTML == "Related") {
-		gfwordnet.init_embedding(canvas);
+		gfwordnet.init_embedding(canvas,context_size_range);
 	}
 }
 gfwordnet.onclick_cell = function (cell) {
@@ -213,10 +213,11 @@ gfwordnet.onclick_cell = function (cell) {
 		gfwordnet.lex_ids[this.lex_id].context   = res.context;
 		gfwordnet.lex_ids[this.lex_id].relations = res.relations;
 		
+		var context_size_range = node("input", {id: "context_size", type: "range", min: 1, max: 200, value: 100, onchange: "gfwordnet.onchange_context_size(this)"});
 		var tabs = node("table",{class: "header-tabs"},[
 				 tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
 					 td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
-					 td(node("input", {id: "context_size", type: "range", min: 1, max: 200, value: 100, onchange: "gfwordnet.onchange_context_size(this)"}))
+					 td(context_size_range)
 					])]);
 		this.popup.appendChild(tabs);
 
@@ -224,7 +225,7 @@ gfwordnet.onclick_cell = function (cell) {
 		canvas.lex_id = this.lex_id;
 		this.popup.appendChild(canvas);
 
-		gfwordnet.init_wordcloud(canvas);
+		gfwordnet.init_wordcloud(canvas,context_size_range);
 	}
 	function taggedBrackets(brackets,bind) {
 		var tags = [];
@@ -383,12 +384,13 @@ gfwordnet.onclick_tab = function (tab) {
 		td = td.nextSibling;
 	}
 
+	var context_size_range = tr.lastElementChild.firstElementChild;
 	var canvas = tab.parentNode.parentNode.parentNode.nextSibling;
-	gfwordnet.init_canvas(tab,canvas);
+	gfwordnet.init_canvas(tab,canvas,context_size_range);
 }
-gfwordnet.onchange_context_size = function (context_size) {
+gfwordnet.onchange_context_size = function (context_size_range) {
 	var tab = null;
-	var tr  = context_size.parentNode.parentNode;
+	var tr  = context_size_range.parentNode.parentNode;
 	var canvas = tr.parentNode.nextElementSibling;
 	var td  = tr.firstChild;
 	while (td != null) {
@@ -402,9 +404,9 @@ gfwordnet.onchange_context_size = function (context_size) {
 		return;
 
 	if (tab.innerHTML == "Context") {
-		gfwordnet.init_wordcloud(canvas);
+		gfwordnet.init_wordcloud(canvas,context_size_range);
 	} else if (tab.innerHTML == "Related") {
-		gfwordnet.init_embedding(canvas);
+		gfwordnet.init_embedding(canvas,context_size_range);
 	}
 }
 gfwordnet.onclick_canvas = function (canvas) {
@@ -421,6 +423,8 @@ gfwordnet.onclick_canvas = function (canvas) {
 	if (tab == null)
 		return;
 
+	var context_size_range = tr.lastElementChild.firstElementChild;
+
 	if (canvas.parentNode.className == "popup") {
 		canvas.parentNode.className = "";
 		canvas.width  = canvas.save_width;
@@ -432,7 +436,7 @@ gfwordnet.onclick_canvas = function (canvas) {
 		canvas.width  = canvas.parentNode.offsetWidth;
 		canvas.height = canvas.parentNode.offsetHeight-canvas.offsetTop;
 	}
-	gfwordnet.init_canvas(tab,canvas);
+	gfwordnet.init_canvas(tab,canvas,context_size_range);
 }
 gfwordnet.onclick_bracket = function (event, bracket) {
 	function errcont(text,code) { }

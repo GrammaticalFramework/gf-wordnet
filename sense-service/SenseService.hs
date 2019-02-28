@@ -32,7 +32,7 @@ main = do
                                                   | (_,Embedding fun hvec' mvec') <- from embeddings
                                                   , let !hvec = Vector.fromList hvec'
                                                         !mvec = Vector.fromList mvec'
-                                                        !vec  = Vector.fromList (norm (hvec'++mvec'))]
+                                                        !vec  = Vector.fromList (norm hvec' ++ norm mvec')]
                              return (Vector.fromList cs,funs)
 -- #ifndef mingw32_HOST_OS
 --                   runFastCGIConcurrent' forkIO 100 (cgiMain db)

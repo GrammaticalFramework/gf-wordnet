@@ -49,9 +49,10 @@ main = do
   gr      <- readPGF "build/Parse.noprobs.pgf"
   src     <- fmap (toGFEntries gr)           $ readFile "WordNet.gf"
   wn30v31 <- fmap toMapping                  $ readFile "bootstrap/wn30map31.txt"
+  transl  <- fmap toTranslitEntries          $ readFile "bootstrap/translit.txt"
   dst     <- fmap (toWNEntries lang wn30v31) $ readFile ("data/wn-data-"++lang++".tab")
   gen <- newStdGen
-  let wps = addCounts (join src dst)
+  let wps = addCounts transl (join src dst)
   
   rps <- if train
            then fmap (Set.fromList . map (toReferencePair . tsv) . lines) $ readFile "data/fiwn-transls.tsv"
@@ -119,6 +120,18 @@ toMapping =
   where
     toTuple [tag,wn30,wn31] = (wn30++"-"++tag,wn31++"-"++tag)
 
+toTranslitEntries =
+  addCase .
+  Map.fromList .
+  map (toTuple . tsv) .
+  lines
+  where
+    toTuple [[c],t] = (c,t)
+
+    addCase transl =
+      let transl' = Map.fromList [(c,fromMaybe [c] (Map.lookup (toLower c) transl)) | c <- [minBound..maxBound], c /= toLower c]
+      in Map.union transl transl'
+
 toWNEntries lng wn30v31 =
   foldr addElem Map.empty .
   mapMaybe (toEntry . tsv) .
@@ -137,7 +150,7 @@ join src dst =
                     x <- xs,
                     y <- fromMaybe [] (Map.lookup sense_id dst)]
 
-addCounts src_dst =
+addCounts transl src_dst =
   [(sense_id,x,y,c,d) | (sense_id,(x,linss),y) <- src_dst, let (c,d) = counts linss y]
   where
     cmap  = Map.fromListWith (+) [((idx,lin,y),1) | (sense_id,(x,linss),y) <- src_dst, (idx,lins) <- zip [0..] linss, lin <- lins]
@@ -147,8 +160,10 @@ addCounts src_dst =
       let (cs,ds) = unzip [fromMaybe (0,0) (Map.lookup (idx,lin,y) cdmap) | (idx,lins) <- zip [0..] linss, lin <- lins]
       in (sum cs,minimum ds)
 
-    dist x y = levenshteinDistance defaultEditCosts (map toLower x) (map toLower y)
+    dist x y = levenshteinDistance defaultEditCosts (transliterate transl x) (transliterate transl y)
 
+transliterate transl cs =
+  concat [fromMaybe [c] (Map.lookup c transl) | c <- cs]
 
 toReferencePair (fis:fi:ens:en:_) = (conv ens,en,fi)
   where

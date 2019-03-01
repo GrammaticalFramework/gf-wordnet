@@ -48619,8 +48619,7 @@ instant_N	instant_2_N
 instantaneous_A	instantaneous_A
 instantiation_N	instantiation_N
 instar_N	instar_N
-instead_Adv	instead_1_Adv
-instead_Adv	instead_2_Adv
+instead_Adv	instead_Adv
 instead_of_Prep	instead_of_Prep
 instep_N	instep_1_N
 instep_N	instep_2_N
@@ -70476,7 +70475,6 @@ plus_A	plus_2_A
 plus_Conj	plus_Conj
 plus_N	plus_1_N
 plus_N	plus_2_N
-plus_Prep	plus_Prep
 plush_A	plush_A
 plush_N	plush_N
 plushy_A	plushy_1_A
@@ -97220,7 +97218,7 @@ timer_N	timer_2_N
 timer_N	timer_3_N
 times_N	times_1_N
 times_N	times_2_N
-times_Prep	times_Prep
+times_Prep	times_Conj
 timesaving_A	timesaving_A
 timeserver_N	timeserver_N
 timeserving_A	timeserving_A

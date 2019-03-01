@@ -10,6 +10,7 @@ import System.Random
 import System.Random.Shuffle -- pkg random-shuffle
 import System.Environment
 import Control.Monad(forM_)
+import PGF2
 
 {- HOW TO USE IT
    ~~~~~~~~~~~~~
@@ -44,16 +45,17 @@ train = False
 useTenFold = False
 
 main = do
-  [src,dst] <- getArgs
-  src <- fmap (toEntries src) $ readFile ("data/wn-data-"++src++".tab")
-  dst <- fmap (toEntries dst) $ readFile ("data/wn-data-"++dst++".tab")
+  [lang] <- getArgs
+  gr      <- readPGF "build/Parse.noprobs.pgf"
+  src     <- fmap (toGFEntries gr)           $ readFile "WordNet.gf"
+  wn30v31 <- fmap toMapping                  $ readFile "bootstrap/wn30map31.txt"
+  dst     <- fmap (toWNEntries lang wn30v31) $ readFile ("data/wn-data-"++lang++".tab")
   gen <- newStdGen
   let wps = addCounts (join src dst)
-
+  
   rps <- if train
            then fmap (Set.fromList . map (toReferencePair . tsv) . lines) $ readFile "data/fiwn-transls.tsv"
            else return Set.empty
-  --e2f <- fmap (Map.fromList . map (toAlignmentPair . words) . lines) $ readFile "data/europarl-v7.fi-en.lemma.intersect.lex.e2f"
 
   let features = addFeatures rps wps
 
@@ -69,7 +71,7 @@ main = do
                        writeFile "stats.tsv" (unlines [untsv [show crank,show drank,show c1,show c2] | ((crank,drank),(c1,c2)) <- Map.toList stats])
                        writeFile "table.tsv" (unlines (map (untsv . map show) tbl))
                        return tbl
-               else do fmap (map (map read . tsv) . lines) $ readFile "table.tsv"
+               else do return [[exp(-(crank+drank)) | crank <- [0..200]] | drank <- [0..200]] -- fmap (map (map read . tsv) . lines) $ readFile "table.tsv"
 
        g <- newStdGen
      --  let predictions = randomChoice g evalData
@@ -94,15 +96,38 @@ main = do
   result <- readIORef res
   writeFile ("result.tsv") (unlines [untsv ([show cls,show pred,show (c/(if useTenFold then 10 else 1))]) | ((cls,pred),c) <- Map.toList result])
 
-toEntries lng =
+
+toGFEntries gr = Map.fromListWith (++) . concatMap parseLine . lines
+  where
+    cncs = Map.elems (languages gr)
+
+    parseLine l =
+      case words l of
+        ("fun":fn:_) -> case break (=='\t') l of
+                          (l1,'\t':l2) -> let synset_id = (reverse . take 10 . reverse) l1
+                                          in [(synset_id, [(fn,[linearizeAll cnc (mkApp fn []) | cnc <- cncs])]) | arity fn == 0]
+                          _            -> []
+        _            -> []
+
+    arity fn = maybe 0 (\(hs,_,_) -> length hs) (fmap unType (functionType gr fn))
+
+toMapping =
+  Map.fromList .
+  map (toTuple . tsv) .
+  dropWhile (\l -> take 1 l == "#") .
+  lines
+  where
+    toTuple [tag,wn30,wn31] = (wn30++"-"++tag,wn31++"-"++tag)
+
+toWNEntries lng wn30v31 =
   foldr addElem Map.empty .
-  mapMaybe (toEntry lng . tsv) .
+  mapMaybe (toEntry . tsv) .
   tail .
   lines
   where
-    toEntry lng [sense_id,rel,w]
-      | rel == "lemma" || rel == lng++":lemma" = Just (sense_id,w)
-    toEntry _   _                              = Nothing
+    toEntry [sense_id,rel,w]
+      | rel == "lemma" || rel == lng++":lemma" = fmap (flip (,) w) (Map.lookup sense_id wn30v31)
+    toEntry _                                  = Nothing
 
     addElem (k,a) =
       Map.alter (\mb_as -> Just (a:fromMaybe [] mb_as)) k
@@ -113,10 +138,15 @@ join src dst =
                     y <- fromMaybe [] (Map.lookup sense_id dst)]
 
 addCounts src_dst =
-  let cmap  = Map.fromListWith (+) [((x,y),1) | (sense_id,x,y) <- src_dst]
-      cdmap = Map.mapWithKey (\(x,y) c -> (c,dist x y)) cmap
-  in [(sense_id,x,y,c,d) | (sense_id,x,y) <- src_dst, let (c,d) = fromMaybe (0,0) (Map.lookup (x,y) cdmap)]
+  [(sense_id,x,y,c,d) | (sense_id,(x,linss),y) <- src_dst, let (c,d) = counts linss y]
   where
+    cmap  = Map.fromListWith (+) [((idx,lin,y),1) | (sense_id,(x,linss),y) <- src_dst, (idx,lins) <- zip [0..] linss, lin <- lins]
+    cdmap = Map.mapWithKey (\(idx,lin,y) c -> (c,dist lin y)) cmap
+
+    counts linss y = 
+      let (cs,ds) = unzip [fromMaybe (0,0) (Map.lookup (idx,lin,y) cdmap) | (idx,lins) <- zip [0..] linss, lin <- lins]
+      in (sum cs,minimum ds)
+
     dist x y = levenshteinDistance defaultEditCosts (map toLower x) (map toLower y)
 
 
@@ -166,7 +196,7 @@ addFeatures ts ps =
                             (ps1,ps2) = break (\p1 -> get_sense_id p1 /= sense_id) ps
                         in (p : ps1, ps2)
       where
-            get_sense_id (sense_id,_,_,_,_) = sense_id
+         get_sense_id (sense_id,_,_,_,_) = sense_id
 
     addValues cds (cs,ds) (sense_id,lemma1,lemma2,c,d) =
       let cls = Set.member (sense_id,lemma1,lemma2) ts
@@ -206,8 +236,8 @@ tenfold gen ps =
   | otherwise                           = (sense_id,lemma_id1,lemma1,lemma_id2,lemma2,c,d,crank,drank,cls,False)
 -}
 classify tbl ps =
-  let (xs,ys) = takeSynset ps
-      xs'     = sortBy descProb (map pairProb xs)
+  let (xs,ys)    = takeSynset ps
+      xs'        = sortBy descProb (map pairProb xs)
       (ids,sel1) = pick1 ([],[]) xs'
       sel2       = pick2 ids xs'
       sel        = sel1++sel2

@@ -53,49 +53,17 @@ main = do
   dst     <- fmap (toWNEntries lang wn30v31) $ readFile ("data/wn-data-"++lang++".tab")
   gen <- newStdGen
   let wps = addCounts transl (join src dst)
-  
-  rps <- if train
-           then fmap (Set.fromList . map (toReferencePair . tsv) . lines) $ readFile "data/fiwn-transls.tsv"
-           else return Set.empty
 
-  let features = addFeatures rps wps
+  let features = addFeatures Set.empty wps
+  let predictions = classify features
 
-  res <- newIORef Map.empty
-  (if useTenFold
-     then forM_ (tenfold gen features)
-     else (>>=) (return (features,features)))  $ \(evalData,trainData) -> do
-       tbl <- if train
-               then do let stats = Map.fromListWith add2 [((crank,drank),(if cls then (1,0) else (0,1))) | (_,_,_,_,_,crank,drank,cls) <- trainData]
-                                   where
-                                     add2 (x1,y1) (x2,y2) = (x1+x2,y1+y2)
-                           tbl   = [[maybe 0 (\(c1,c2) -> fromIntegral c1 / fromIntegral (c1+c2)) (Map.lookup (rank,dist) stats) | dist <- [1..40]] | rank <- [1..7]]
-                       writeFile "stats.tsv" (unlines [untsv [show crank,show drank,show c1,show c2] | ((crank,drank),(c1,c2)) <- Map.toList stats])
-                       writeFile "table.tsv" (unlines (map (untsv . map show) tbl))
-                       return tbl
-               else do return [[exp(-(crank+drank)) | crank <- [0..200]] | drank <- [0..200]] -- fmap (map (map read . tsv) . lines) $ readFile "table.tsv"
-
-       g <- newStdGen
-     --  let predictions = randomChoice g evalData
-       let predictions = classify tbl evalData
-       --let predictions = alignmentChoice e2f evalData
-       writeFile "predictions.tsv" (unlines [untsv [sense_id,
-                                                    lemma1,
-                                                    lemma2,
-                                                    show c,show d,
-                                                    show crank,show drank,
-                                                    show cls,show pred]
-                                               | (sense_id,lemma1,lemma2,c,d,crank,drank,cls,pred) <- predictions])
-
-       let result0 = Map.fromListWith (+) [((cls,pred),1) | (_,_,_,_,_,_,_,cls,pred) <- predictions]
-           total   = length predictions
-           result  = Map.map (\c -> fromIntegral c / fromIntegral total) result0
-
-       sum_result <- readIORef res
-       let sum_result' = Map.fromList [let k = (cls,pred) in (k,fromMaybe 0 (Map.lookup k result)+fromMaybe 0 (Map.lookup k sum_result)) | cls <- [True,False], pred <- [True,False]]
-       writeIORef res sum_result'
-
-  result <- readIORef res
-  writeFile ("result.tsv") (unlines [untsv ([show cls,show pred,show (c/(if useTenFold then 10 else 1))]) | ((cls,pred),c) <- Map.toList result])
+  writeFile "predictions.tsv" (unlines [untsv [sense_id,
+                                               lemma1,
+                                               lemma2,
+                                               show c,show d,
+                                               show crank,show drank,
+                                               show cls,show pred]
+                                          | (sense_id,lemma1,lemma2,c,d,crank,drank,cls,pred) <- predictions])
 
 
 toGFEntries gr = Map.fromListWith (++) . concatMap parseLine . lines
@@ -249,12 +217,7 @@ tenfold gen ps =
                then []
                else (concat xs,concat (zs++ys)) : splitData len10 (xs++zs) ys
 
---classify :: [[Double]] -> (String,Int,String,Int,String,Int,Int,Int,Int,Bool) -> (String,Int,String,Int,String,Int,Int,Int,Int,Bool,Bool)
-{-classify tbl (sense_id,lemma_id1,lemma1,lemma_id2,lemma2,c,d,crank,drank,cls)
-  | tbl !! (crank-1) !! (drank-1) > 0.5 = (sense_id,lemma_id1,lemma1,lemma_id2,lemma2,c,d,crank,drank,cls,True)
-  | otherwise                           = (sense_id,lemma_id1,lemma1,lemma_id2,lemma2,c,d,crank,drank,cls,False)
--}
-classify tbl ps =
+classify ps =
   let (xs,ys)    = takeSynset ps
       xs'        = sortBy descProb (map pairProb xs)
       (ids,sel1) = pick1 ([],[]) xs'
@@ -262,23 +225,17 @@ classify tbl ps =
       sel        = sel1++sel2
   in if null xs
        then []
-       else map (annotate sel) xs ++ classify tbl ys
+       else map (annotate sel) xs ++ classify ys
   where
     takeSynset []     = ([],[])
     takeSynset (p:ps) = let sense_id = get_sense_id p
                             (ps1,ps2) = break (\p1 -> get_sense_id p1 /= sense_id) ps
                         in (p : ps1, ps2)
       where
-            get_sense_id (sense_id,_,_,_,_,_,_,_) = sense_id
+        get_sense_id (sense_id,_,_,_,_,_,_,_) = sense_id
 
     pairProb x@(sense_id,lemma1,lemma2,c,d,crank,drank,cls) =
-      let prob | length tbl  < crank = 0
-               | length line < drank = 0
-               | otherwise           = prob
-           where
-             line = tbl  !! (crank-1)
-             prob = line !! (drank-1)
-     in (lemma1,lemma2,prob)
+      (lemma1,lemma2,exp(-fromIntegral (crank+drank)))
 
     descProb (_,_,p1) (_,_,p2) = compare p2 p1
 

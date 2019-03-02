@@ -106,9 +106,13 @@ toGFEntries gr = Map.fromListWith (++) . concatMap parseLine . lines
       case words l of
         ("fun":fn:_) -> case break (=='\t') l of
                           (l1,'\t':l2) -> let synset_id = (reverse . take 10 . reverse) l1
-                                          in [(synset_id, [(fn,[linearizeAll cnc (mkApp fn []) | cnc <- cncs])]) | arity fn == 0]
+                                          in [(synset_id, [(fn,map (funLins fn) cncs)]) | arity fn == 0]
                           _            -> []
         _            -> []
+
+    funLins fn cnc
+      | hasLinearization cnc fn = linearizeAll cnc (mkApp fn [])
+      | otherwise               = []
 
     arity fn = maybe 0 (\(hs,_,_) -> length hs) (fmap unType (functionType gr fn))
 
@@ -158,7 +162,7 @@ addCounts transl src_dst =
 
     counts linss y = 
       let (cs,ds) = unzip [fromMaybe (0,0) (Map.lookup (idx,lin,y) cdmap) | (idx,lins) <- zip [0..] linss, lin <- lins]
-      in (sum cs,minimum ds)
+      in (sum cs,minimum (maxBound:ds))
 
     dist x y = levenshteinDistance defaultEditCosts (transliterate transl x) (transliterate transl y)
 

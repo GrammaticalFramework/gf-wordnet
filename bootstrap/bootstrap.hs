@@ -46,15 +46,18 @@ useTenFold = False
 
 main = do
   [lang] <- getArgs
-  gr      <- readPGF "build/Parse.noprobs.pgf"
-  src     <- fmap (toGFEntries gr)           $ readFile "WordNet.gf"
-  wn30v31 <- fmap toMapping                  $ readFile "bootstrap/wn30map31.txt"
-  transl  <- fmap toTranslitEntries          $ readFile "bootstrap/translit.txt"
-  dst     <- fmap (toWNEntries lang wn30v31) $ readFile ("data/wn-data-"++lang++".tab")
+  let lang' = case lang of
+                ""     -> ""
+                (c:cs) -> toUpper c:cs
+  gr         <- readPGF "build/Parse.noprobs.pgf"
+  (src,funs) <- fmap (toGFEntries gr)           $ readFile "WordNet.gf"
+  wn30v31    <- fmap toMapping                  $ readFile "bootstrap/wn30map31.txt"
+  transl     <- fmap toTranslitEntries          $ readFile "bootstrap/translit.txt"
+  dst        <- fmap (toWNEntries lang wn30v31) $ readFile ("data/wn-data-"++lang++".tab")
   gen <- newStdGen
   let wps = addCounts transl (join src dst)
 
-  let features = addFeatures Set.empty wps
+  let features = addFeatures wps
   let predictions = classify features
 
   writeFile "predictions.tsv" (unlines [untsv [sense_id,
@@ -62,11 +65,20 @@ main = do
                                                lemma2,
                                                show c,show d,
                                                show crank,show drank,
-                                               show cls,show pred]
-                                          | (sense_id,lemma1,lemma2,c,d,crank,drank,cls,pred) <- predictions])
+                                               show pred]
+                                          | (sense_id,lemma1,lemma2,c,d,crank,drank,pred) <- predictions])
+  let dict = Map.fromListWith (++) [(lex_id,[lemma]) | (_,lex_id,lemma,_,_,_,_,True) <- predictions]
+  writeFile ("WordNet"++lang'++".gf") (unlines
+      (["concrete WordNet"++lang'++" of WordNet = Cat"++lang'++" ** open Construction"++lang'++", Grammar"++lang'++", Paradigms"++lang'++", Prelude in {"] ++
+       [""]++
+       ["lin "++lex_id++" = "++body | lex_id <- funs, let body = maybe "variants {} ;" (prediction2gf lex_id) (Map.lookup lex_id dict)]++
+       ["}"]))
 
-
-toGFEntries gr = Map.fromListWith (++) . concatMap parseLine . lines
+toGFEntries gr s =
+  let ls = (concatMap parseLine . lines) s
+      senses = Map.fromListWith (++) [(synset_id,[(fn,lins)]) | (Just synset_id,fn,lins) <- ls]
+      funs   = [fn | (_,fn,_) <- ls]
+  in (senses,funs)
   where
     cncs = Map.elems (languages gr)
 
@@ -74,13 +86,13 @@ toGFEntries gr = Map.fromListWith (++) . concatMap parseLine . lines
       case words l of
         ("fun":fn:_) -> case break (=='\t') l of
                           (l1,'\t':l2) -> let synset_id = (reverse . take 10 . reverse) l1
-                                          in [(synset_id, [(fn,map (funLins fn) cncs)]) | arity fn == 0]
-                          _            -> []
+                                          in [(Just synset_id,fn,map (funLins fn) cncs)]
+                          _            -> [(Nothing,fn,[])]
         _            -> []
 
     funLins fn cnc
-      | hasLinearization cnc fn = linearizeAll cnc (mkApp fn [])
-      | otherwise               = []
+      | arity fn == 0 && hasLinearization cnc fn = linearizeAll cnc (mkApp fn [])
+      | otherwise                                = []
 
     arity fn = maybe 0 (\(hs,_,_) -> length hs) (fmap unType (functionType gr fn))
 
@@ -171,12 +183,12 @@ tsv cs =
 untsv :: [String] -> String
 untsv = intercalate "\t"
 
-addFeatures ts ps =
+addFeatures ps =
   let (xs,ys)   = takeSynset ps
       (cds,xs') = mapAccumL (addValues cds) (Set.empty,Set.empty) xs
   in if null xs
        then []
-       else xs' ++ addFeatures ts ys
+       else xs' ++ addFeatures ys
   where
     takeSynset []     = ([],[])
     takeSynset (p:ps) = let sense_id = get_sense_id p
@@ -186,12 +198,11 @@ addFeatures ts ps =
          get_sense_id (sense_id,_,_,_,_) = sense_id
 
     addValues cds (cs,ds) (sense_id,lemma1,lemma2,c,d) =
-      let cls = Set.member (sense_id,lemma1,lemma2) ts
-          cs' = Set.insert c cs
+      let cs' = Set.insert c cs
           ds' = Set.insert d ds
           crank = findIndex 1 c (Set.toDescList (fst cds))
           drank = findIndex 1 d (Set.toAscList  (snd cds))
-      in ((cs',ds'),(sense_id,lemma1,lemma2,c,d,crank,drank,cls))
+      in ((cs',ds'),(sense_id,lemma1,lemma2,c,d,crank,drank))
       where
         findIndex i x []     = i
         findIndex i x (y:ys)
@@ -232,9 +243,9 @@ classify ps =
                             (ps1,ps2) = break (\p1 -> get_sense_id p1 /= sense_id) ps
                         in (p : ps1, ps2)
       where
-        get_sense_id (sense_id,_,_,_,_,_,_,_) = sense_id
+        get_sense_id (sense_id,_,_,_,_,_,_) = sense_id
 
-    pairProb x@(sense_id,lemma1,lemma2,c,d,crank,drank,cls) =
+    pairProb x@(sense_id,lemma1,lemma2,c,d,crank,drank) =
       (lemma1,lemma2,exp(-fromIntegral (crank+drank)))
 
     descProb (_,_,p1) (_,_,p2) = compare p2 p1
@@ -251,8 +262,8 @@ classify ps =
    -- | not (elem lemma2 ids2) = (lemma1,lemma2) : pick2 (lemma1:ids1,lemma2:ids2) xs
       | otherwise              = pick2 ids xs
 
-    annotate sel (sense_id,lemma1,lemma2,c,d,crank,drank,cls) =
-      (sense_id,lemma1,lemma2,c,d,crank,drank,cls,elem (lemma1,lemma2) sel)
+    annotate sel (sense_id,lemma1,lemma2,c,d,crank,drank) =
+      (sense_id,lemma1,lemma2,c,d,crank,drank,elem (lemma1,lemma2) sel)
 
 randomChoice g ps =
   let (xs,ys)  = takeSynset ps
@@ -314,3 +325,49 @@ alignmentChoice e2f ps =
 
     annotate sel (sense_id,lemma1,lemma2,c,d,crank,drank,cls) =
       (sense_id,lemma1,lemma2,c,d,crank,drank,cls,elem (lemma1,lemma2) sel)
+
+
+functionMap :: Map.Map Cat (String -> String)
+functionMap = Map.fromList [
+  -- missing Card and Predet because too complicated
+  ("A"      , \s -> "mkA \""++s++"\""),
+  ("A2"     , \s -> "mkA2 (mkA \""++s++"\") noPrep"),
+  ("AdA"    , \s -> "mkAdA \""++s++"\""),
+  ("AdN"    , \s -> "mkAdN \""++s++"\""),
+  ("AdV"    , \s -> "mkAdV \""++s++"\""),
+  ("Adv"    , \s -> "mkAdv \""++s++"\""),
+  ("CN"     , \s -> "UseN (mkN \""++s++"\")"),
+  ("Interj" , \s -> "ss \""++s++"\""),
+  ("N"      , \s -> "mkN \""++s++"\""),
+  ("N2"     , \s -> "mkN2 (mkN \""++s++"\") noPrep"),
+  ("PN"     , \s -> "mkPN \""++s++"\""),
+  ("Prep"   , \s -> "mkPrep \""++s++"\""),
+  ("V"      , \s -> "mkV \""++s++"\""),
+  ("V2"     , \s -> "mkV2 (mkV \""++s++"\")"),
+  ("V2A"    , \s -> "mkV2A (mkV \""++s++"\")"),
+  ("V2S"    , \s -> "mkV2S (mkV \""++s++"\")"),
+  ("V2V"    , \s -> "mkV2V (mkV \""++s++"\")"),
+  ("V3"     , \s -> "mkV3 (mkV \""++s++"\")"),
+  ("VA"     , \s -> "mkVA (mkV \""++s++"\")"),
+  ("VQ"     , \s -> "mkVQ (mkV \""++s++"\")"),
+  ("VS"     , \s -> "mkVS (mkV \""++s++"\")"),
+  ("VV"     , \s -> "mkVV (mkV \""++s++"\")"),
+  ("Voc"    , \s -> "VocNP (MassNP (UseN (mkN \""++s++"\")))")
+  ]
+
+splitOnElemRight :: Eq a => a -> [a] -> ([a],[a])
+splitOnElemRight e = split [] . reverse
+  where
+    split xs [] = (xs, [])
+    split xs (z:zt) = if z == e
+                      then (reverse zt, xs)
+                      else split (z:xs) zt
+
+prediction2gf :: Fun -> [String] -> String
+prediction2gf absname forms = body ++ " --unchecked"
+  where
+    (abs,cat) = splitOnElemRight '_' absname
+    body      = case forms of
+                  [f] -> mkBody f ++ " ;"
+                  _   -> "variants {"++intercalate "; " (map mkBody forms)++"} ;"
+    mkBody    = Map.findWithDefault (const "variants {}") cat functionMap

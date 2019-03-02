@@ -245,10 +245,10 @@ classify ps =
                                                      in (ids',(lemma1,lemma2) : xs')
       | otherwise                                  = pick1 ids xs
 
-    pick2 ids             []       = []
+    pick2 ids             []   = []
     pick2 ids@(ids1,ids2) ((lemma1,lemma2,prob):xs)
       | not (elem lemma1 ids1) = (lemma1,lemma2) : pick2 (lemma1:ids1,lemma2:ids2) xs
-      | not (elem lemma2 ids2) = (lemma1,lemma2) : pick2 (lemma1:ids1,lemma2:ids2) xs
+   -- | not (elem lemma2 ids2) = (lemma1,lemma2) : pick2 (lemma1:ids1,lemma2:ids2) xs
       | otherwise              = pick2 ids xs
 
     annotate sel (sense_id,lemma1,lemma2,c,d,crank,drank,cls) =

@@ -51542,7 +51542,7 @@ kirtle_N	kirtle_1_N
 kirtle_N	kirtle_2_N
 kishke_N	kishke_N
 kisko_PN	kisko_PN
-kismet_N	kismet_1_N
+kismet_N	kismet_N
 kiss_N	kiss_1_N
 kiss_N	kiss_2_N
 kiss_N	kiss_3_N

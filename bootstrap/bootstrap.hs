@@ -70,10 +70,11 @@ main = do
                                                show pred]
                                           | (sense_id,lemma1,lemma2,c,d,crank,drank,pred) <- predictions])
   let dict = Map.fromListWith (++) [(lex_id,[lemma]) | (_,lex_id,lemma,_,_,_,_,True) <- predictions]
+
   writeFile ("WordNet"++lang'++".gf") (unlines
       (["concrete WordNet"++lang'++" of WordNet = Cat"++lang'++" ** open Construction"++lang'++", Grammar"++lang'++", Paradigms"++lang'++", Prelude in {"] ++
        [""]++
-       ["lin "++lex_id++" = "++body | lex_id <- funs, let body = maybe "variants {} ;" (prediction2gf morpho lex_id) (Map.lookup lex_id dict)]++
+       ["lin "++lex_id++" = "++prediction2gf morpho dict lex_id | lex_id <- funs]++
        ["}"]))
 
 toGFEntries gr s =
@@ -372,6 +373,88 @@ functionMap = Map.fromList [
       | contains "Fem_"  fun = Map.findWithDefault ("mk"++cat++" \""++lemma++"\"") (lemma++"Fem_"++cat) morphoMap
       | otherwise            = Map.findWithDefault ("mk"++cat++" \""++lemma++"\"") (lemma++"_"++cat) morphoMap
 
+structuralSet = Set.fromList [
+  "above_Prep",
+  "after_Prep",
+  "all_Predet",
+  "almost_AdA",
+  "almost_AdN",
+  "although_Subj",
+  "always_AdV",
+  "and_Conj",
+  "because_Subj",
+  "before_Prep",
+  "behind_Prep",
+  "between_Prep",
+  "both7and_DConj",
+  "but_PConj",
+  "can_VV",
+  "during_Prep",
+  "either7or_DConj",
+  "every_Det",
+  "everywhere_Adv",
+  "few_Det",
+  "for_Prep",
+  "from_Prep",
+  "he_Pron",
+  "here_Adv",
+  "how_IAdv",
+  "i_Pron",
+  "if_Subj",
+  "in_Prep",
+  "it_Pron",
+  "less_CAdv",
+  "many_Det",
+  "more_CAdv",
+  "most_Predet",
+  "much_Det",
+  "must_VV",
+  "on_Prep",
+  "only_Predet",
+  "or_Conj",
+  "otherwise_PConj",
+  "part_Prep",
+  "please_Voc",
+  "possess_Prep",
+  "quite_Adv",
+  "she_Pron",
+  "so_AdA",
+  "somewhere_Adv",
+  "that_Quant",
+  "that_Subj",
+  "there_Adv",
+  "therefore_PConj",
+  "they_Pron",
+  "this_Quant",
+  "through_Prep",
+  "to_Prep",
+  "too_AdA",
+  "under_Prep",
+  "very_AdA",
+  "want_VV",
+  "we_Pron",
+  "whatPl_IP",
+  "whatSg_IP",
+  "when_IAdv",
+  "when_Subj",
+  "where_IAdv",
+  "which_IQuant",
+  "whoPl_IP",
+  "whoSg_IP",
+  "why_IAdv",
+  "with_Prep",
+  "without_Prep",
+  "youSg_Pron",
+  "youPl_Pron",
+  "youPol_Pron",
+  "no_Quant",
+  "not_Predet",
+  "at_least_AdN",
+  "at_most_AdN",
+  "except_Prep",
+  "as_CAdv"
+  ]
+
 splitOnElemRight :: Eq a => a -> [a] -> ([a],[a])
 splitOnElemRight e = split [] . reverse
   where
@@ -385,11 +468,15 @@ contains s1 s2
   | take (length s1) s2 == s1 = True
 contains s1 (_:s2)            = contains s1 s2
 
-prediction2gf :: Map.Map Fun String -> Fun -> [String] -> String
-prediction2gf morphoMap absname forms = body ++ " --unchecked"
+prediction2gf :: Map.Map Fun String -> Map.Map Fun [String] -> Fun -> String
+prediction2gf morphoMap dict lex_id
+  | Set.member lex_id structuralSet = "S."++lex_id++" ;"
+  | otherwise                       =
+      case Map.lookup lex_id dict of
+        Just forms -> case forms of
+                        [f] -> mkBody f ++ " ; --unchecked"
+                        _   -> "variants {"++intercalate "; " (map mkBody forms)++"} ; --unchecked"
+        Nothing    -> "variants {} ;"
   where
-    (abs,cat) = splitOnElemRight '_' absname
-    body      = case forms of
-                  [f] -> mkBody f ++ " ;"
-                  _   -> "variants {"++intercalate "; " (map mkBody forms)++"} ;"
-    mkBody    = Map.findWithDefault (\_ _ _ -> "variants {}") cat functionMap morphoMap absname
+    (abs,cat) = splitOnElemRight '_' lex_id
+    mkBody    = Map.findWithDefault (\_ _ _ -> "variants {}") cat functionMap morphoMap lex_id

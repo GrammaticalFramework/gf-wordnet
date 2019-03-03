@@ -9,6 +9,7 @@ import Debug.Trace
 import System.Random
 import System.Random.Shuffle -- pkg random-shuffle
 import System.Environment
+import System.Process
 import Control.Monad(forM_)
 import PGF2
 
@@ -54,7 +55,8 @@ main = do
   wn30v31    <- fmap toMapping                  $ readFile "bootstrap/wn30map31.txt"
   transl     <- fmap toTranslitEntries          $ readFile "bootstrap/translit.txt"
   dst        <- fmap (toWNEntries lang wn30v31) $ readFile ("data/wn-data-"++lang++".tab")
-  gen <- newStdGen
+  morpho     <- fmap toMorphoEntries            $ readCreateProcess (shell ("cat lib/src/"++lang++"*/Dict???.gf lib/src/"++lang++"*/Irreg???.gf")) ""
+
   let wps = addCounts transl (join src dst)
 
   let features = addFeatures wps
@@ -71,7 +73,7 @@ main = do
   writeFile ("WordNet"++lang'++".gf") (unlines
       (["concrete WordNet"++lang'++" of WordNet = Cat"++lang'++" ** open Construction"++lang'++", Grammar"++lang'++", Paradigms"++lang'++", Prelude in {"] ++
        [""]++
-       ["lin "++lex_id++" = "++body | lex_id <- funs, let body = maybe "variants {} ;" (prediction2gf lex_id) (Map.lookup lex_id dict)]++
+       ["lin "++lex_id++" = "++body | lex_id <- funs, let body = maybe "variants {} ;" (prediction2gf morpho lex_id) (Map.lookup lex_id dict)]++
        ["}"]))
 
 toGFEntries gr s =
@@ -173,6 +175,16 @@ toAlignmentPair (eng:fin:_:prob:_) = ((mapEng eng,mapFin fin),read prob :: Doubl
         'a' -> 'a'
         'r' -> 'r'
         c   -> c)
+
+toMorphoEntries = 
+  Map.fromList .
+  concatMap parseLine .
+  lines
+  where
+    parseLine l =
+      case words l of
+        ("lin":fn:"=":ws) -> [(fn,unwords (init ws))]
+        _                 -> []
 
 tsv :: String -> [String]
 tsv "" = []
@@ -327,33 +339,38 @@ alignmentChoice e2f ps =
       (sense_id,lemma1,lemma2,c,d,crank,drank,cls,elem (lemma1,lemma2) sel)
 
 
-functionMap :: Map.Map Cat (String -> String)
+functionMap :: Map.Map Cat (Map.Map Fun String -> Fun -> String -> String)
 functionMap = Map.fromList [
   -- missing Card and Predet because too complicated
-  ("A"      , \s -> "mkA \""++s++"\""),
-  ("A2"     , \s -> "mkA2 (mkA \""++s++"\") noPrep"),
-  ("AdA"    , \s -> "mkAdA \""++s++"\""),
-  ("AdN"    , \s -> "mkAdN \""++s++"\""),
-  ("AdV"    , \s -> "mkAdV \""++s++"\""),
-  ("Adv"    , \s -> "mkAdv \""++s++"\""),
-  ("CN"     , \s -> "UseN (mkN \""++s++"\")"),
-  ("Interj" , \s -> "ss \""++s++"\""),
-  ("N"      , \s -> "mkN \""++s++"\""),
-  ("N2"     , \s -> "mkN2 (mkN \""++s++"\") noPrep"),
-  ("PN"     , \s -> "mkPN \""++s++"\""),
-  ("Prep"   , \s -> "mkPrep \""++s++"\""),
-  ("V"      , \s -> "mkV \""++s++"\""),
-  ("V2"     , \s -> "mkV2 (mkV \""++s++"\")"),
-  ("V2A"    , \s -> "mkV2A (mkV \""++s++"\")"),
-  ("V2S"    , \s -> "mkV2S (mkV \""++s++"\")"),
-  ("V2V"    , \s -> "mkV2V (mkV \""++s++"\")"),
-  ("V3"     , \s -> "mkV3 (mkV \""++s++"\")"),
-  ("VA"     , \s -> "mkVA (mkV \""++s++"\")"),
-  ("VQ"     , \s -> "mkVQ (mkV \""++s++"\")"),
-  ("VS"     , \s -> "mkVS (mkV \""++s++"\")"),
-  ("VV"     , \s -> "mkVV (mkV \""++s++"\")"),
-  ("Voc"    , \s -> "VocNP (MassNP (UseN (mkN \""++s++"\")))")
+  ("A"      , \morphoMap fun lemma -> look morphoMap fun lemma "A"),
+  ("A2"     , \morphoMap fun lemma -> "mkA2 ("++look morphoMap fun lemma "A"++") noPrep"),
+  ("AdA"    , \morphoMap fun lemma -> look morphoMap fun lemma "AdA"),
+  ("AdN"    , \morphoMap fun lemma -> look morphoMap fun lemma "AdN"),
+  ("AdV"    , \morphoMap fun lemma -> look morphoMap fun lemma "AdV"),
+  ("Adv"    , \morphoMap fun lemma -> look morphoMap fun lemma "Adv"),
+  ("CN"     , \morphoMap fun lemma -> "UseN ("++look morphoMap fun lemma "N"++")"),
+  ("Interj" , \morphoMap fun lemma -> "ss \""++lemma++"\""),
+  ("N"      , \morphoMap fun lemma -> look morphoMap fun lemma "N"),
+  ("N2"     , \morphoMap fun lemma -> "mkN2 ("++look morphoMap fun lemma "N"++") noPrep"),
+  ("PN"     , \morphoMap fun lemma -> look morphoMap fun lemma "PN"),
+  ("Prep"   , \morphoMap fun lemma -> look morphoMap fun lemma "Prep"),
+  ("V"      , \morphoMap fun lemma -> look morphoMap fun lemma "V"),
+  ("V2"     , \morphoMap fun lemma -> "mkV2 ("++look morphoMap fun lemma "V"++")"),
+  ("V2A"    , \morphoMap fun lemma -> "mkV2A ("++look morphoMap fun lemma "V"++")"),
+  ("V2S"    , \morphoMap fun lemma -> "mkV2S ("++look morphoMap fun lemma "V"++")"),
+  ("V2V"    , \morphoMap fun lemma -> "mkV2V ("++look morphoMap fun lemma "V"++")"),
+  ("V3"     , \morphoMap fun lemma -> "mkV3 ("++look morphoMap fun lemma "V"++")"),
+  ("VA"     , \morphoMap fun lemma -> "mkVA ("++look morphoMap fun lemma "V"++")"),
+  ("VQ"     , \morphoMap fun lemma -> "mkVQ ("++look morphoMap fun lemma "V"++")"),
+  ("VS"     , \morphoMap fun lemma -> "mkVS ("++look morphoMap fun lemma "V"++")"),
+  ("VV"     , \morphoMap fun lemma -> "mkVV ("++look morphoMap fun lemma "V"++")"),
+  ("Voc"    , \morphoMap fun lemma -> "ss \""++lemma++"\"")
   ]
+  where
+    look morphoMap fun lemma cat
+      | contains "Masc_" fun = Map.findWithDefault ("mk"++cat++" \""++lemma++"\"") (lemma++"Masc_"++cat) morphoMap
+      | contains "Fem_"  fun = Map.findWithDefault ("mk"++cat++" \""++lemma++"\"") (lemma++"Fem_"++cat) morphoMap
+      | otherwise            = Map.findWithDefault ("mk"++cat++" \""++lemma++"\"") (lemma++"_"++cat) morphoMap
 
 splitOnElemRight :: Eq a => a -> [a] -> ([a],[a])
 splitOnElemRight e = split [] . reverse
@@ -363,11 +380,16 @@ splitOnElemRight e = split [] . reverse
                       then (reverse zt, xs)
                       else split (z:xs) zt
 
-prediction2gf :: Fun -> [String] -> String
-prediction2gf absname forms = body ++ " --unchecked"
+contains s1 []                = False 
+contains s1 s2
+  | take (length s1) s2 == s1 = True
+contains s1 (_:s2)            = contains s1 s2
+
+prediction2gf :: Map.Map Fun String -> Fun -> [String] -> String
+prediction2gf morphoMap absname forms = body ++ " --unchecked"
   where
     (abs,cat) = splitOnElemRight '_' absname
     body      = case forms of
                   [f] -> mkBody f ++ " ;"
                   _   -> "variants {"++intercalate "; " (map mkBody forms)++"} ;"
-    mkBody    = Map.findWithDefault (const "variants {}") cat functionMap
+    mkBody    = Map.findWithDefault (\_ _ _ -> "variants {}") cat functionMap morphoMap absname

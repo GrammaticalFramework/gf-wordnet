@@ -15,31 +15,19 @@ import PGF2
 
 {- HOW TO USE IT
    ~~~~~~~~~~~~~
-   You need data from the Open Multilingual WordNet for English,
-   Finnish and the language that you are interested in.  The data
+   You need data from the Open Multilingual WordNet for 
+   the languages that you are interested in.  The data
    files for each language should be stored in `data/wn-data-<language
-   code>.tab´. You also need to store the file `fiwn-transls.tsv` from
-   the Finnish WordNet in the `data` folder (you can find it in their
-   website under the relations zip file
-   http://www.ling.helsinki.fi/en/lt/research/finnwordnet/download.shtml#data).
-   Now do the following:
-   1. Change the ´train´ variable below to ´True´ then run
-   the training:
-        > runghc classify.hs eng fin
-   This will create a file called ´table.tsv´ which you will need
-   in the next step. Everything else is irrelevant unless if you
-   are interested in Finnish.
-   2. Change the variable ´train´ back to ´False´, then
-   run the classification. For example:
-        > runghc classify.hs eng por
-   if you are interested in Portuguese. This will create a file
-   called ´predictions.tsv´ which lists a synset and
-   a pair of eng-por candidate translation from that synset.
-   If the last column in the file is ´True´ then
-   the algorithm thinks that this is a good candidate.
-   If you want to bootstrap a translation dictionary from WordNet
-   then select only the pairs for which the status is True.
-   For good quality the output still needs human validation.
+   code>.tab´. Run the command:
+   
+   runghc bootstrap/bootstrap.hs <language code>
+   
+   This will create two files `predictions.tsv` which lists the choices
+   made by the script and a draft of the new concrete syntax for WordNet.
+   The script will also look for morphology definitions in:
+   
+   lib/src/<language code>*/Dict???.gf
+   lib/src/<language code>*/Irreg???.gf
 -}
 
 train = False

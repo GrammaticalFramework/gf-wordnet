@@ -17,12 +17,13 @@ gfwordnet.initialize = function () {
 	this.can_check = window.location.href.endsWith("?can_check");
 
 	this.langs      = {"ParseBul": {name: "Bulgarian",  index: 1},
-		               "ParseEng": {name: "English",    index: 2},
-		               "ParseFin": {name: "Finnish",    index: 3},
-			           "ParsePor": {name: "Portuguese", index: 4},
-			           "ParseSpa": {name: "Spanish",    index: 5},
-			           "ParseSwe": {name: "Swedish",    index: 6}};
-	this.langs_list = ["ParseBul", "ParseEng", "ParseFin", "ParsePor", "ParseSpa", "ParseSwe"];
+		               "ParseChi": {name: "Chinese",    index: 2},
+		               "ParseEng": {name: "English",    index: 3},
+		               "ParseFin": {name: "Finnish",    index: 4},
+			           "ParsePor": {name: "Portuguese", index: 5},
+			           "ParseSpa": {name: "Spanish",    index: 6},
+			           "ParseSwe": {name: "Swedish",    index: 7}};
+	this.langs_list = ["ParseBul", "ParseChi", "ParseEng", "ParseFin", "ParsePor", "ParseSpa", "ParseSwe"];
 }
 
 gfwordnet.search = function (from, input, result) {

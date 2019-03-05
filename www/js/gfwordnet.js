@@ -15,18 +15,10 @@ gfwordnet.sense_call=function(querystring,cont,errcont) {
 gfwordnet.initialize = function () {
 	this.lex_ids   = {};
 	this.can_check = window.location.href.endsWith("?can_check");
-
-	this.langs      = {"ParseBul": {name: "Bulgarian",  index: 1},
-		               "ParseChi": {name: "Chinese",    index: 2},
-		               "ParseEng": {name: "English",    index: 3},
-		               "ParseFin": {name: "Finnish",    index: 4},
-			           "ParsePor": {name: "Portuguese", index: 5},
-			           "ParseSpa": {name: "Spanish",    index: 6},
-			           "ParseSwe": {name: "Swedish",    index: 7}};
-	this.langs_list = ["ParseBul", "ParseChi", "ParseEng", "ParseFin", "ParsePor", "ParseSpa", "ParseSwe"];
+	this.selection = {};
 }
 
-gfwordnet.search = function (from, input, result) {
+gfwordnet.search = function (selection, input, result) {
 	if (input == "")
 		return;
 
@@ -35,13 +27,13 @@ gfwordnet.search = function (from, input, result) {
 		for (var i in lins) {
 			var lin = lins[i];
 			var txt = gfwordnet.can_check ? lin.texts.join(", ") : lin.text;
-			this[gfwordnet.langs[lin.to].index].appendChild(text(txt));
+			this[selection.langs[lin.to].index].appendChild(text(txt));
 		}
 	}
 	function extract_senses(senses) {
 		var index = 1;
 		for (var i in senses) {
-			result.appendChild(tr(node("td",{colspan: 2 + gfwordnet.langs_list.length + (gfwordnet.can_check ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
+			result.appendChild(tr(node("td",{colspan: 2 + selection.langs_list.length + (gfwordnet.can_check ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
 				gfwordnet.lex_ids[lex_id].synonyms = senses[i].synset;
@@ -75,8 +67,8 @@ gfwordnet.search = function (from, input, result) {
 		var lexical_ids = ""
 		
 		var row = [th(text("Abstract"))];
-		for (var lang in gfwordnet.langs_list) {
-			row.push(th(text(gfwordnet.langs[gfwordnet.langs_list[lang]].name)));
+		for (var lang in selection.langs_list) {
+			row.push(th(text(selection.langs[selection.langs_list[lang]].name)));
 		}
 		row.push(node("th",{style: "width: 10px; font-style: italic"},[text("f")]));
 		if (gfwordnet.can_check)
@@ -96,7 +88,7 @@ gfwordnet.search = function (from, input, result) {
 			var lemma = lemmas[i].lemma;
 			if (!(lemma in rows)) {
 				var row = [cell([text(lemma)])];
-				for (var lang in gfwordnet.langs) {
+				for (var lang in selection.langs) {
 					row.push(cell([]));
 				}
 				var rank_bar = node("td",{style: "white-space: nowrap"});
@@ -110,13 +102,14 @@ gfwordnet.search = function (from, input, result) {
 				lexical_ids = lexical_ids+" "+lemma;
 
 				var cmd = gfwordnet.can_check ? "c-linearizeAll" : "c-linearize";
-				gfwordnet.grammar_call("?command="+cmd+"&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
+				gfwordnet.grammar_call("?command="+cmd+"&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
 			}
 		}
 		gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(extract_senses,rows),errcont);
     }
 
-	gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+from,extract_search,errcont);
+	this.selection = selection;
+	gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+selection.current,extract_search,errcont);
 }
 gfwordnet.init_wordcloud = function(canvas, context_size_range) {
 	var context      = this.lex_ids[canvas.lex_id].context;
@@ -254,14 +247,14 @@ gfwordnet.onclick_cell = function (cell) {
 		var rows = []
 		for (var i in lins) {
 			var lin = lins[i];
-			rows.push(tr([th(text(gfwordnet.langs[lin.to].name)), td(taggedBrackets(lin.brackets))]));
+			rows.push(tr([th(text(gfwordnet.selection.langs[lin.to].name)), td(taggedBrackets(lin.brackets))]));
 		}
 		this.parentNode.insertBefore(node("table",{class: "result"},rows), this.nextSibling);
 	}
 	function extract_linearization_synonym(lins) {
 		for (var i in lins) {
 			var lin = lins[i];
-			this[gfwordnet.langs[lin.to].index].appendChild(text(lin.text));
+			this[gfwordnet.selection.langs[lin.to].index].appendChild(text(lin.text));
 		}
 	}
 	function extract_linearization_morpho(lins) {
@@ -273,7 +266,7 @@ gfwordnet.onclick_cell = function (cell) {
 	    cell.parentNode.nextSibling.firstChild == null ||
 	    cell.parentNode.nextSibling.firstChild.className != "details") {
 		details = node("div", {}, []);
-		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 2 + gfwordnet.langs_list.length + (gfwordnet.can_check ? 1 : 0), class: "details"},[details])), cell.parentNode.nextSibling);
+		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 2 + gfwordnet.selection.langs_list.length + (gfwordnet.can_check ? 1 : 0), class: "details"},[details])), cell.parentNode.nextSibling);
 
 		cell.parentNode.firstChild.firstChild.src = "checked_minus.png";
 	} else {
@@ -309,8 +302,8 @@ gfwordnet.onclick_cell = function (cell) {
 			details.appendChild(node("h1",{},[text("Synonyms")]));
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
-			for (var lang in gfwordnet.langs_list) {
-				row.push(th(text(gfwordnet.langs[gfwordnet.langs_list[lang]].name)));
+			for (var lang in gfwordnet.selection.langs_list) {
+				row.push(th(text(gfwordnet.langs[gfwordnet.selection.langs_list[lang]].name)));
 			}
 			result.appendChild(tr(row));
 			for (var synonym in lex_def.synonyms) {
@@ -319,10 +312,10 @@ gfwordnet.onclick_cell = function (cell) {
 				var checked = lex_def.synonyms[synonym].indexOf("unchecked") >= 0;
 				var row = [td([img(checked ? "unchecked.png" : "checked.png"), text(synonym)])]
 				
-				for (var lang in gfwordnet.langs_list) {
+				for (var lang in gfwordnet.selection.langs_list) {
 					row.push(td([]));
 				}
-				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row),errcont);
+				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row),errcont);
 				result.appendChild(tr(row));
 			}
 			details.appendChild(result);
@@ -331,20 +324,20 @@ gfwordnet.onclick_cell = function (cell) {
 			var header = node("h1",{},[text("Examples")]);
 			details.appendChild(header);
 			for (var i in lex_def.examples) {
-				gfwordnet.grammar_call("?command=c-bracketedLinearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i]),bind(extract_linearization,header),errcont);
+				gfwordnet.grammar_call("?command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i]),bind(extract_linearization,header),errcont);
 			}
 		}
 		if (lex_def.secondary_examples.length > 0) {
 			var header = node("h1",{},[text("Secondary Examples")]);
 			details.appendChild(header);
 			for (var i in lex_def.secondary_examples) {
-				gfwordnet.grammar_call("?command=c-bracketedLinearize&to="+gfwordnet.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header),errcont);
+				gfwordnet.grammar_call("?command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header),errcont);
 			}
 		}
 	} else {
 		var s   = lex_id.split("_");
 		var cat = s[s.length-1];
-		gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.langs_list[index-1]+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),bind(extract_linearization_morpho,details),errcont);
+		gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.selection.langs_list[index-1]+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),bind(extract_linearization_morpho,details),errcont);
 	}
 }
 gfwordnet.onclick_minus = function (event, icon) {

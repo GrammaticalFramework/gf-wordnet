@@ -120,22 +120,71 @@
 				-khtml-user-select: none; /* webkit (konqueror) browsers */
 				-ms-user-select: none; /* IE10+ */
 			}
+
+			table.multiselect {
+				border-collapse: collapse;
+			}
+
+			table.multiselect > thead {
+			  background: linear-gradient(#F6F6F6, #E9E9E9, #DCDCDC);
+			  border: solid 1px #AEAEAE;
+			  cursor: default
+			}
+
+			table.multiselect > thead:hover {
+			  background: linear-gradient(#E9E9E9, #DCDCDC, #E9E9E9);
+			}
+
+			table.multiselect > thead > tr > th {
+			  font-weight: normal;
+			  padding: 1px;
+			}
+
+			table.multiselect > tbody {
+			  display: none;
+			  background-color: white;
+			  border: solid 1px #AEAEAE;
+			  position: absolute;
+			}
+
+			table.multiselect > tbody > tr {
+			  border: none;
+			}
+
+			table.multiselect > tbody > tr > td:first-child:hover {
+			  background-color: #AEAEAE;
+			}
+			 
+			table.multiselect > tbody > tr > td:first-child {
+			  border-right: solid 1px #AEAEAE; 
+			}
+
+			table.multiselect > tbody > tr > td:last-child {
+			  border-left:  solid 1px #AEAEAE;
+			}
 		</style>
 	</head>
 
 	<body>
 		<table><tr>
 			<td>
-			<select id="from">
-				<option value=ParseBul>Bulgarian</option>
-				<option value=ParseEng selected>English</option>
-				<option value=ParseFin>Finnish</option>
-				<option value=ParsePor>Portuguese</option>
-				<option value=ParseSwe>Swedish</option>
-			</select>
+				<table id="from" class="multiselect">
+					<thead>
+						<tr onclick="showCheckboxes(this.parentNode.parentNode)"><th>English</th><th><img src="dots.png"></th></tr>
+					</thead>
+					<tbody>
+						<tr><td onclick="changeItem(event,this)">Bulgarian</td><td><input type="checkbox" name="ParseBul" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Chinese</td><td><input type="checkbox" name="ParseChi"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">English</td><td><input type="checkbox" name="ParseEng" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Finnish</td><td><input type="checkbox" name="ParseFin" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Portuguese</td><td><input type="checkbox" name="ParsePor"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Spanish</td><td><input type="checkbox" name="ParseSpa"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Swedish</td><td><input type="checkbox" name="ParseSwe" checked="true"/></td></tr>
+					</tbody>
+				</table>
 			</td>
 			<td><input id="search" type="text"></td>
-			<td><input id="button" type="button" value="Search" onclick="gfwordnet.search(element('from').value, element('search').value, element('result')); element('search').value = ''"></td>
+			<td><input id="button" type="button" value="Search" onclick="gfwordnet.search(getMultiSelection(element('from')), element('search').value, element('result')); element('search').value = ''"></td>
 		</tr></table>
 
 		<br>
@@ -156,6 +205,65 @@
 					element("button").click();
 				}
 			});
+
+			function closeCheckboxes(e) {
+				var table      = document.getElementById("from");
+				var checkboxes = table.getElementsByTagName("TBODY")[0];
+				var node = e.target;
+				while (node != null) {
+					if (node == checkboxes)
+						break;
+					node = node.parentNode;
+				}
+
+				if (node == null) {
+					checkboxes.style.display = "none";
+					window.removeEventListener("mousedown", closeCheckboxes);
+				}
+			}
+
+			function showCheckboxes(table) {
+			  var checkboxes = table.getElementsByTagName("TBODY")[0];
+			  if (checkboxes.style.display == "block") {
+				checkboxes.style.display = "none";
+				window.removeEventListener("mousedown", closeCheckboxes);
+			  } else {
+				checkboxes.style.display = "block";
+				window.addEventListener("mousedown", closeCheckboxes);
+			  }
+			}
+
+			function changeItem(e,item) {
+				item.parentNode.parentNode.style.display = "none";
+				item.parentNode.parentNode.parentNode.firstElementChild.firstElementChild.firstElementChild.innerHTML = item.innerHTML;
+				e.stopPropagation();				
+			}
+			
+			function getMultiSelection(table) {
+				var current   = table.firstElementChild.firstElementChild.firstElementChild.innerHTML;
+				var selection = {current: null, langs: {}, langs_list: []};
+
+				var tr = table.lastElementChild.firstElementChild;
+				while (tr != null) {
+					var nameElem  = tr.firstElementChild;
+					var checkElem = tr.lastElementChild.firstElementChild;
+
+					var name = nameElem.innerHTML;
+
+					if (name == current)
+						selection.current = checkElem.name;
+
+					if (checkElem.checked) {
+						selection.langs[checkElem.name] = {
+							name:  name,
+							index: selection.langs_list.length+1
+						}
+						selection.langs_list.push(checkElem.name);
+					}
+					tr = tr.nextElementSibling;
+				}
+				return selection;
+			}
 		</script>
 	</body>
 </html>

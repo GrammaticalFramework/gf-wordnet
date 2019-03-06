@@ -300,7 +300,7 @@ gfwordnet.onclick_cell = function (cell) {
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
 			for (var lang in gfwordnet.selection.langs_list) {
-				row.push(th(text(gfwordnet.langs[gfwordnet.selection.langs_list[lang]].name)));
+				row.push(th(text(gfwordnet.selection.langs[gfwordnet.selection.langs_list[lang]].name)));
 			}
 			result.appendChild(tr(row));
 			for (var synonym in lex_def.synonyms) {

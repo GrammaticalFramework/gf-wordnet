@@ -16,6 +16,7 @@ gfwordnet.initialize = function () {
 	this.lex_ids   = {};
 	this.can_check = window.location.href.endsWith("?can_check");
 	this.selection = {};
+	this.popup     = null;
 }
 
 gfwordnet.search = function (selection, input, result) {
@@ -56,10 +57,6 @@ gfwordnet.search = function (selection, input, result) {
 		}
 	}
 	function extract_search(lemmas) {
-		function cell(contents) {
-			return node("td",{onclick: "gfwordnet.onclick_cell(this)"},contents);
-		}
-
 		gfwordnet.lex_ids = {};
 		clear(result);
 
@@ -87,9 +84,9 @@ gfwordnet.search = function (selection, input, result) {
 		for (var i in lemmas) {
 			var lemma = lemmas[i].lemma;
 			if (!(lemma in rows)) {
-				var row = [cell([text(lemma)])];
+				var row = [node("td",{onclick: "gfwordnet.onclick_cell(this)"},[text(lemma)])];
 				for (var lang in selection.langs) {
-					row.push(cell([]));
+					row.push(node("td",{onclick: "gfwordnet.onclick_cell(this)" /*, onmouseover: "gfwordnet.onmouseover_cell(this)"*/},[]));
 				}
 				var rank_bar = node("td",{style: "white-space: nowrap"});
 				var rank = Math.round(Math.exp(-lemmas[i].prob)*scale);
@@ -339,6 +336,16 @@ gfwordnet.onclick_cell = function (cell) {
 		var cat = s[s.length-1];
 		gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.selection.langs_list[index-1]+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),bind(extract_linearization_morpho,details),errcont);
 	}
+}
+gfwordnet.onmouseover_cell = function(cell) {
+	if (this.popup != null) {
+		this.popup.parentNode.removeChild(this.popup);
+	}
+	this.popup = node("img",{class: "floating", src: "validate.png", onclick: "gfwordnet.onclick_validate(this.parentNode)"},[]);
+	cell.appendChild(this.popup);
+}
+gfwordnet.onclick_validate = function (cell) {
+	alert("validate");
 }
 gfwordnet.onclick_minus = function (event, icon) {
 	if (!icon.src.endsWith("checked_minus.png"))

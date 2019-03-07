@@ -25768,8 +25768,7 @@ derv_N	derv_N
 dervish_N	dervish_N
 des_N	des_1_N
 des_N	des_2_N
-des_PN	des_1_PN
-des_PN	des_2_PN
+des_PN	des_PN
 desalinate_V2	desalinate_V2
 desalination_N	desalination_N
 desalinization_N	desalinization_1_N
@@ -46480,7 +46479,6 @@ imagination_N	imagination_2_N
 imagination_N	imagination_3_N
 imaginative_A	imaginative_A
 imagine_V2	imagine_1_V2
-imagine_VS	imagine_1_VS
 imagine_VS	imagine_2_VS
 imaging_N	imaging_1_N
 imaging_N	imaging_2_N

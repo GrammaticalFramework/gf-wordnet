@@ -26,9 +26,18 @@ gfwordnet.search = function (selection, input, result) {
 	function errcont(text,code) { }
 	function extract_linearization(lins) {
 		for (var i in lins) {
-			var lin = lins[i];
-			var txt = gfwordnet.can_check ? lin.texts.join(", ") : lin.text;
-			this[selection.langs[lin.to].index].appendChild(text(txt));
+			var lin   = lins[i];
+			var texts = []
+			if (gfwordnet.can_check) {
+				for (var i in lin.texts) {
+					if (!lin.texts[i].startsWith("["))
+						texts.push(lin.texts[i]);
+				}
+			} else {
+				if (!lin.text.startsWith("["))
+					texts.push(lin.text);
+			}
+			this[selection.langs[lin.to].index].appendChild(text(texts.join(", ")));
 		}
 	}
 	function extract_senses(senses) {
@@ -41,8 +50,16 @@ gfwordnet.search = function (selection, input, result) {
 
 				var icon;
 				var row = this[lex_id];
-				var domains = senses[i].lex_ids[lex_id].domains;
-				if (domains.indexOf("unchecked") >= 0) {
+
+				var checked = true;
+				for (var lang in gfwordnet.selection.langs) {
+					if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs) || !gfwordnet.lex_ids[lex_id].lex_defs[lang][1]) {
+						checked = false;
+						row[gfwordnet.selection.langs[lang].index].classList.add("unchecked");
+					}
+				}
+
+				if (!checked) {
 					icon = img("unchecked.png");
 					if (gfwordnet.can_check)
 						row.push(td([node("button",{onclick: "gfwordnet.onclick_check(this)"},[text("Check")])]));

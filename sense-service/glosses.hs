@@ -10,8 +10,18 @@ import Control.Monad
 import qualified Data.Map as Map
 
 main = do
+  cncdefs1 <- fmap (mapMaybe (parseCncSyn "ParseBul") . lines) $ readFile "WordNetBul.gf"
+  cncdefs2 <- fmap (mapMaybe (parseCncSyn "ParseChi") . lines) $ readFile "WordNetChi.gf"
+  cncdefs3 <- fmap (mapMaybe (parseCncSyn "ParseEng") . lines) $ readFile "WordNetEng.gf"
+  cncdefs4 <- fmap (mapMaybe (parseCncSyn "ParseFin") . lines) $ readFile "WordNetFin.gf"
+  cncdefs5 <- fmap (mapMaybe (parseCncSyn "ParsePor") . lines) $ readFile "WordNetPor.gf"
+  cncdefs6 <- fmap (mapMaybe (parseCncSyn "ParseSpa") . lines) $ readFile "WordNetSpa.gf"
+  cncdefs7 <- fmap (mapMaybe (parseCncSyn "ParseSwe") . lines) $ readFile "WordNetSwe.gf"
+
+  let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7)
+
   ls <- fmap lines $ readFile "WordNet.gf"
-  let fundefs = Map.fromListWith (++) (mapMaybe parseSynset ls)
+  let absdefs = Map.fromListWith (++) (mapMaybe parseAbsSyn ls)
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
 
@@ -29,9 +39,9 @@ main = do
                  return [(fn,[key]) | fn <- fns]
 
     createTable synsets
-    lex_infos <- forM (Map.toList fundefs) $ \(synset,funs) -> do
+    lex_infos <- forM (Map.toList absdefs) $ \(synset,funs) -> do
                    key <- insert synsets synset
-                   return [Lexeme fun key ds (fromMaybe [] (Map.lookup fun ex_keys)) | (fun,ds) <- funs]
+                   return [Lexeme fun (Map.findWithDefault [] fun cncdefs) key ds (fromMaybe [] (Map.lookup fun ex_keys)) | (fun,ds) <- funs]
 
     createTable lexemes
     mapM_ (insert lexemes) (concat lex_infos)
@@ -45,7 +55,7 @@ main = do
     createTable checked
   closeDB db
 
-parseSynset l =
+parseAbsSyn l =
   case words l of
     ("fun":fn:_) -> case break (=='\t') l of
                       (l1,'\t':l2) -> let (ds,l3) = splitDomains l2
@@ -67,6 +77,19 @@ parseSynset l =
                           in (if null x' then [] else [x'], dropWhile isSpace cs)
             _          -> ([],       cs)
     splitDomains cs = ([],cs)
+
+parseCncSyn lang l =
+  case words l of
+    ("lin":fn:"=":ws) | null ws                  -> Nothing
+                      | last ws == "--unchecked" -> Just (fn,[(lang,def,False) | def <- strip (unwords (init ws))])
+                      | otherwise                -> Just (fn,[(lang,def,True ) | def <- strip (unwords ws)])
+    _                                            -> Nothing
+  where
+    strip s = 
+      let def = (reverse . dropWhile (\c -> isSpace c || c == ';') . reverse) s
+      in if def == "variants {}"
+           then []
+           else [def]
 
 merge = intercalate "; "
 

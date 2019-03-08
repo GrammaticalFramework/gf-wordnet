@@ -19,6 +19,7 @@ data Synset
 data Lexeme
   = Lexeme 
       { lex_fun     :: Fun
+      , lex_defs    :: [(String,String,Bool)]
       , synset      :: Key Synset
       , domains     :: [String]
       , example_ids :: [Key Expr]

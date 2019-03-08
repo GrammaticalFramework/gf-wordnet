@@ -81,31 +81,35 @@ cgiMain db (cs,funs) = do
                   ]
 
         mkLexObj lex_ids =
-          makeObj [(lex_id,mkInfObj domains examples sexamples) | (lex_id,domains,examples,sexamples) <- lex_ids]
+          makeObj [(lex_id,mkInfObj lex_defs domains examples sexamples) | (lex_id,lex_defs,domains,examples,sexamples) <- lex_ids]
 
-        mkInfObj domains examples sexamples =
-          makeObj [("domains",  showJSON domains),
+        mkInfObj lex_defs domains examples sexamples =
+          makeObj [("lex_defs", mkDefsObj lex_defs),
+                   ("domains",  showJSON domains),
                    ("examples", showJSON (map (showExpr []) examples)),
                    ("secondary_examples", showJSON (map (showExpr []) sexamples))
                   ]
+
+        mkDefsObj lex_defs =
+          makeObj [(lang,showJSON (def,status)) | (lang,def,status) <- lex_defs]
 
         getSense db senses lex_id = do
           lexemes <- select (fromIndexAt lexemes_fun lex_id)
           foldM (getGloss db) senses lexemes
 
-        getGloss db senses (_,Lexeme lex_id sense_id domains ex_ids) = do
+        getGloss db senses (_,Lexeme lex_id lex_defs sense_id domains ex_ids) = do
           examples  <- select [e | ex_id <- msum (map return ex_ids), e <- fromAt examples ex_id]
           sexamples <- select [e | (id,e) <- fromIndexAt examples_fun lex_id, not (elem id ex_ids)]
 
           case Map.lookup sense_id senses of
-            Just (gloss,synset,lex_ids) -> return (Map.insert sense_id (gloss,synset,(lex_id,domains,examples,sexamples):lex_ids) senses)
+            Just (gloss,synset,lex_ids) -> return (Map.insert sense_id (gloss,synset,(lex_id,lex_defs,domains,examples,sexamples):lex_ids) senses)
             Nothing                     -> do [Synset offset gloss] <- select (fromAt synsets sense_id)
-                                              synset <- select [(lex_fun,domains) | (_,Lexeme lex_fun _ domains _) <- fromIndexAt lexemes_synset sense_id]
-                                              return (Map.insert sense_id (gloss,synset,[(lex_id,domains,examples,sexamples)]) senses)
+                                              synset <- select [(lex_fun,domains) | (_,Lexeme lex_fun _ _ domains _) <- fromIndexAt lexemes_synset sense_id]
+                                              return (Map.insert sense_id (gloss,synset,[(lex_id,lex_defs,domains,examples,sexamples)]) senses)
 
         addKey (sense_id,(gloss,synset,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,synset,map snd key_lex_ids)))
           where
-            key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_,_) <- lex_ids]
+            key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_,_,_) <- lex_ids]
 
             toKey lex_id = (reverse rid,reverse rcat,read ('0':reverse rn)::Int)
               where

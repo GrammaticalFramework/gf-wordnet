@@ -43,7 +43,7 @@ gfwordnet.search = function (selection, input, result) {
 	function extract_senses(senses) {
 		var index = 1;
 		for (var i in senses) {
-			result.appendChild(tr(node("td",{colspan: 2 + selection.langs_list.length + (gfwordnet.can_check ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
+			result.appendChild(tr(node("td",{colspan: 2 + selection.langs_list.length},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
 				gfwordnet.lex_ids[lex_id].synonyms = senses[i].synset;
@@ -55,18 +55,16 @@ gfwordnet.search = function (selection, input, result) {
 				for (var lang in gfwordnet.selection.langs) {
 					if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs) || !gfwordnet.lex_ids[lex_id].lex_defs[lang][1]) {
 						checked = false;
-						row[gfwordnet.selection.langs[lang].index].classList.add("unchecked");
+						var td = row[gfwordnet.selection.langs[lang].index];
+						td.classList.add("unchecked");
+						td.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					}
 				}
 
 				if (!checked) {
 					icon = img("unchecked.png");
-					if (gfwordnet.can_check)
-						row.push(td([node("button",{onclick: "gfwordnet.onclick_check(this)"},[text("Check")])]));
 				} else {
 					icon = node("img", {src: "checked_plus.png", onclick: "gfwordnet.onclick_minus(event,this)"});
-					if (gfwordnet.can_check)
-						row.push(td([]));
 				}
 				row[0].insertBefore(icon, row[0].firstChild);
 				result.appendChild(tr(row));
@@ -85,8 +83,6 @@ gfwordnet.search = function (selection, input, result) {
 			row.push(th(text(selection.langs[selection.langs_list[lang]].name)));
 		}
 		row.push(node("th",{style: "width: 10px; font-style: italic"},[text("f")]));
-		if (gfwordnet.can_check)
-			row.push(node("th",{style: "width: 10px"},[]));
 		result.appendChild(tr(row));
 
 		var min = Number.MAX_VALUE;
@@ -103,7 +99,7 @@ gfwordnet.search = function (selection, input, result) {
 			if (!(lemma in rows)) {
 				var row = [node("td",{onclick: "gfwordnet.onclick_cell(this)"},[text(lemma)])];
 				for (var lang in selection.langs) {
-					row.push(node("td",{onclick: "gfwordnet.onclick_cell(this)" /*, onmouseover: "gfwordnet.onmouseover_cell(this)"*/},[]));
+					row.push(node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]));
 				}
 				var rank_bar = node("td",{style: "white-space: nowrap"});
 				var rank = Math.round(Math.exp(-lemmas[i].prob)*scale);
@@ -280,7 +276,7 @@ gfwordnet.onclick_cell = function (cell) {
 	    cell.parentNode.nextSibling.firstChild == null ||
 	    cell.parentNode.nextSibling.firstChild.className != "details") {
 		details = node("div", {}, []);
-		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 2 + gfwordnet.selection.langs_list.length + (gfwordnet.can_check ? 1 : 0), class: "details"},[details])), cell.parentNode.nextSibling);
+		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 2 + gfwordnet.selection.langs_list.length, class: "details"},[details])), cell.parentNode.nextSibling);
 
 		cell.parentNode.firstChild.firstChild.src = "checked_minus.png";
 	} else {
@@ -354,12 +350,12 @@ gfwordnet.onclick_cell = function (cell) {
 		gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.selection.langs_list[index-1]+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),bind(extract_linearization_morpho,details),errcont);
 	}
 }
-gfwordnet.onmouseover_cell = function(cell) {
-	if (this.popup != null) {
-		this.popup.parentNode.removeChild(this.popup);
+gfwordnet.onmouseover_cell = function(event) {
+	if (gfwordnet.popup != null) {
+		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 	}
-	this.popup = node("img",{class: "floating", src: "validate.png", onclick: "gfwordnet.onclick_validate(this.parentNode)"},[]);
-	cell.appendChild(this.popup);
+	gfwordnet.popup = node("img",{class: "floating", src: "validate.png", onclick: "gfwordnet.onclick_validate(this.parentNode)"},[]);
+	event.target.appendChild(gfwordnet.popup);
 }
 gfwordnet.onclick_validate = function (cell) {
 	alert("validate");

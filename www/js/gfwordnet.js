@@ -232,23 +232,27 @@ gfwordnet.onclick_cell = function (cell) {
 
 		gfwordnet.init_wordcloud(canvas,context_size_range);
 	}
-	function taggedBrackets(brackets,bind) {
+	var bind_state = true;
+	function taggedBrackets(brackets) {
 		var tags = [];
 		for (var i in brackets) {
-			if (bind)
-				bind = false;
-			else
-				tags.push(text(" "));
-
-			if ("token" in brackets[i]) {
-				tags.push(text(brackets[i].token));
-			} else if ("bind" in brackets[i])
-				bind = brackets[i].bind;
+			if ("bind" in brackets[i])
+				bind_state = brackets[i].bind;
 			else {
-				tags.push(node("span", {"fid": brackets[i].fid,
-										"fun": brackets[i].fun,
-										"onclick": "gfwordnet.onclick_bracket(event, this)"},
-			                   taggedBrackets(brackets[i].children, bind)));
+				if (!bind_state) {
+					tags.push(text(" "));
+					bind_state = true;
+				}
+
+				if ("token" in brackets[i]) {
+					tags.push(text(brackets[i].token));
+					bind_state = false;
+				} else {
+					tags.push(node("span", {"fid": brackets[i].fid,
+											"fun": brackets[i].fun,
+											"onclick": "gfwordnet.onclick_bracket(event, this)"},
+								   taggedBrackets(brackets[i].children)));
+				}
 			}
 		}
 		return tags;
@@ -257,6 +261,7 @@ gfwordnet.onclick_cell = function (cell) {
 		var rows = []
 		for (var i in lins) {
 			var lin = lins[i];
+			bind_state = true;
 			rows.push(tr([th(text(gfwordnet.selection.langs[lin.to].name)), td(taggedBrackets(lin.brackets))]));
 		}
 		this.parentNode.insertBefore(node("table",{class: "result"},rows), this.nextSibling);

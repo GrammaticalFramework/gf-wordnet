@@ -269,7 +269,8 @@ gfwordnet.onclick_cell = function (cell) {
 	function extract_linearization_synonym(lins) {
 		for (var i in lins) {
 			var lin = lins[i];
-			this[gfwordnet.selection.langs[lin.to].index].appendChild(text(lin.text));
+			if (!lin.text.startsWith("["))
+				this[gfwordnet.selection.langs[lin.to].index].appendChild(text(lin.text));
 		}
 	}
 	function extract_linearization_morpho(lins) {
@@ -330,7 +331,7 @@ gfwordnet.onclick_cell = function (cell) {
 				for (var i in gfwordnet.selection.langs_list) {
 					var lang = gfwordnet.selection.langs_list[i];
 					var cell = td([]);
-					if (!(lang in lex_def.synonyms[synonym]) || !lex_def.synonyms[synonym][lang][1]) {
+					if (lang in lex_def.synonyms[synonym] && !lex_def.synonyms[synonym][lang][1]) {
 						cell.classList.add("unchecked");
 						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 						checked = false;

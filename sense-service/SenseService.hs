@@ -75,7 +75,7 @@ cgiMain db (cs,funs) = do
       where
         mkSenseObj (sense_id,(gloss,synset,lex_ids)) =
           makeObj [("sense_id",showJSON sense_id)
-                  ,("synset",makeObj [(lex_fun,showJSON domains) | (lex_fun,domains) <- synset])
+                  ,("synset",makeObj [(lex_fun,mkDefsObj lex_defs) | (lex_fun,lex_defs) <- synset])
                   ,("gloss",showJSON gloss)
                   ,("lex_ids",mkLexObj lex_ids)
                   ]
@@ -104,7 +104,7 @@ cgiMain db (cs,funs) = do
           case Map.lookup sense_id senses of
             Just (gloss,synset,lex_ids) -> return (Map.insert sense_id (gloss,synset,(lex_id,lex_defs,domains,examples,sexamples):lex_ids) senses)
             Nothing                     -> do [Synset offset gloss] <- select (fromAt synsets sense_id)
-                                              synset <- select [(lex_fun,domains) | (_,Lexeme lex_fun _ _ domains _) <- fromIndexAt lexemes_synset sense_id]
+                                              synset <- select [(lex_fun,lex_defs) | (_,Lexeme lex_fun lex_defs _ _ _) <- fromIndexAt lexemes_synset sense_id]
                                               return (Map.insert sense_id (gloss,synset,[(lex_id,lex_defs,domains,examples,sexamples)]) senses)
 
         addKey (sense_id,(gloss,synset,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,synset,map snd key_lex_ids)))

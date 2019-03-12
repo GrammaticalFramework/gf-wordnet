@@ -393,7 +393,7 @@ gfwordnet.onclick_minus = function (event, icon) {
 	
 	icon.src = "checked_plus.png"
 }
-gfwordnet.onclick_check = function (btn) {
+gfwordnet.onclick_check = function (cell) {
 	function errcont(text,code) { }
 	function extract_confirm() {
 		this.src = "checked_plus.png";
@@ -401,9 +401,15 @@ gfwordnet.onclick_check = function (btn) {
 		btn.parentNode.removeChild(btn);
 	}
 
-	var img    = btn.parentNode.parentNode.firstChild.firstChild;
-	var lex_id = img.nextSibling.textContent;
-	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id),bind(extract_confirm,img),errcont);
+	var index = 0;
+	var node  = cell;
+    while ((node = node.previousElementSibling)) {
+        index++;
+    }
+
+	var lex_id  = cell.parentNode.firstChild.firstChild.nextSibling.textContent;
+	var lang    = gfwordnet.selection.langs_list[index];
+	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),bind(extract_confirm,img),errcont);
 }
 gfwordnet.onclick_tab = function (tab) {
 	var tr = tab.parentNode.parentNode;

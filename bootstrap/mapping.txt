@@ -53081,8 +53081,7 @@ leech_N	leech_2_N
 leeds_PN	leeds_PN
 leek_N	leek_1_N
 leek_N	leek_2_N
-leek_PN	leek_1_PN
-leek_PN	leek_2_PN
+leek_PN	leek_PN
 leer_N	leer_1_N
 leer_N	leer_2_N
 leer_V	leer_V
@@ -79478,8 +79477,7 @@ richweed_N	richweed_2_N
 ricin_N	ricin_N
 rick_N	rick_1_N
 rick_N	rick_2_N
-rick_PN	rick_1_PN
-rick_PN	rick_2_PN
+rick_PN	rick_PN
 rick_V2	rick_1_V2
 rick_V2	rick_2_V2
 rickets_N	rickets_N
@@ -80413,8 +80411,7 @@ roselle_N	roselle_1_N
 rosemaling_N	rosemaling_N
 rosemary_N	rosemary_1_N
 rosemary_N	rosemary_2_N
-rosemary_PN	rosemary_1_PN
-rosemary_PN	rosemary_2_PN
+rosemary_PN	rosemary_PN
 rosette_N	rosette_1_N
 rosette_N	rosette_2_N
 rosette_N	rosette_3_N
@@ -95532,8 +95529,7 @@ ted_N	ted_N
 ted_PN	ted_PN
 teddy_N	teddy_1_N
 teddy_N	teddy_2_N
-teddy_PN	teddy_1_PN
-teddy_PN	teddy_2_PN
+teddy_PN	teddy_PN
 teddy_boy_N	teddy_boy_N
 tedious_A	tedious_1_A
 tedious_A	tedious_2_A
@@ -104129,9 +104125,7 @@ viol_N	viol_N
 viola_N	viola_1_N
 viola_N	viola_2_N
 viola_N	viola_3_N
-viola_PN	viola_1_PN
-viola_PN	viola_2_PN
-viola_PN	viola_3_PN
+viola_PN	viola_PN
 violable_A	violable_A
 violate_V2	violate_1_V2
 violate_V2	violate_2_V2
@@ -104156,8 +104150,7 @@ violent_A	violent_4_A
 violent_A	violent_5_A
 violet_N	violet_1_N
 violet_N	violet_2_N
-violet_PN	violet_1_PN
-violet_PN	violet_2_PN
+violet_PN	violet_PN
 violin_N	violin_N
 violinistFem_N	violinistFem_N
 violinistMasc_N	violinistMasc_N
@@ -105005,8 +104998,7 @@ wardrobe_N	wardrobe_3_N
 wardroom_N	wardroom_N
 ware_N	ware_1_N
 ware_N	ware_2_N
-ware_PN	ware_1_PN
-ware_PN	ware_2_PN
+ware_PN	ware_PN
 ware_V2	ware_V2
 warehouse_N	warehouse_N
 warehouser_N	warehouser_N

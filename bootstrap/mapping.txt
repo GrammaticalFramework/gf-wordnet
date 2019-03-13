@@ -26533,7 +26533,7 @@ dietetics_N	dietetics_N
 diethylstilbesterol_N	diethylstilbesterol_N
 diethylstilbestrol_N	diethylstilbestrol_N
 dietician_N	dietician_N
-dietitian_N	dietitian_N
+dietitian_N	dietician_N
 differ_V	differ_1_V
 differ_V	differ_2_V
 difference_N	difference_1_N
@@ -99068,7 +99068,7 @@ tricky_A	tricky_3_A
 triclinic_A	triclinic_A
 triclinium_N	triclinium_1_N
 triclinium_N	triclinium_2_N
-tricolor_N	tricolor_N
+tricolor_N	tricolour_N
 tricolour_N	tricolour_N
 tricorn_N	tricorn_1_N
 tricot_N	tricot_N

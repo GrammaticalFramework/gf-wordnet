@@ -9,9 +9,9 @@ concrete ParseTur of Parse =
   RelativeTur,
   ConjunctionTur,
   PhraseTur - [UttAP,UttVP],
-  TextX - [Temp,Pol,SC,Tense,Adv,CAdv,AdN,Ant], -- PPos,PNeg,CAdv
+  TextX - [CAdv,AdN],
   IdiomTur,
-  TenseX - [Temp,Pol,SC,Tense,Adv,CAdv,AdN,Ant], -- PPos,PNeg,CAdv
+  TenseX - [CAdv,AdN],
   WordNetTur
   ** {
 

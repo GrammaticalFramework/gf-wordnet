@@ -8,9 +8,9 @@ concrete ParseSlv of Parse =
   QuestionSlv,
   ConjunctionSlv,
   PhraseSlv - [UttAP,UttVP],
-  TextX - [Temp,Pol,SC,Tense,Adv,CAdv,AdN,Ant], -- PPos,PNeg,CAdv
+  TextX,
   IdiomSlv,
-  TenseX - [Temp,Pol,SC,Tense,Adv,CAdv,AdN,Ant], -- PPos,PNeg,CAdv
+  TenseX,
   WordNetSlv
   ** {
 

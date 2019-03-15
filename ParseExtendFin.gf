@@ -23,6 +23,8 @@ lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND 
          ) ;
 
 	UttAP, UttAPFem, UttAPMasc = G.UttAP ;
+	UttVPS, UttVPSMasc, UttVPSFem = \vps -> {s = vps.s ! Ag Sg P3} ;
+	UttVPSPl = \vps -> {s = vps.s ! Ag Pl P3} ;
 
     SlashV2V v ant p vp = 
       insertObj (\\_,b,a => infVP v.sc b a vp (vvtype2infform v.vi)) (predSV v) ** {c2 = v.c2} ; ----

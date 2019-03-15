@@ -9,9 +9,9 @@ concrete ParsePor of Parse =
   RelativePor,
   ConjunctionPor,
   PhrasePor - [UttAP,UttVP],
-  TextX - [Temp,Pol,SC,Tense], -- PPos,PNeg,CAdv
+  TextX - [Temp,Pol,SC,Tense,TCond,TFut,TPast,TPres,TTAnt,PNeg,PPos],
   IdiomPor,
-  TenseX - [Temp,Pol,SC,Tense], -- PPos,PNeg,CAdv
+  TenseX - [Temp,Pol,SC,Tense,TCond,TFut,TPast,TPres,TTAnt,PNeg,PPos],
   ParseExtendPor,
   WordNetPor,
   ConstructionPor,

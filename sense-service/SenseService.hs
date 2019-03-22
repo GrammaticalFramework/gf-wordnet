@@ -8,11 +8,12 @@ import Control.Monad(foldM,msum)
 import Control.Concurrent(forkIO)
 import Network.CGI
 import Network.FastCGI(runFastCGI,runFastCGIConcurrent')
+import URLEncoding
 import System.Environment
-import qualified Codec.Binary.UTF8.String as UTF8 (encodeString)
+import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import Text.JSON
 import Data.Maybe(mapMaybe)
-import Data.List(sortOn,sortBy,delete)
+import Data.List(sortOn,sortBy,delete,intercalate)
 import Data.Char
 
 main = do
@@ -43,9 +44,10 @@ main = do
   where
     doReport db = do
       res <- runHelda db ReadOnlyMode $ 
-               select (from checked)
-      mapM_ putStrLn (map snd res)
-
+               select [(lex_id,lang,[def | (lang',def,_) <- lex_defs lexeme, lang==lang']) | 
+                            (_,(lex_id,lang)) <- from checked,
+                            (_,lexeme) <- fromIndexAt lexemes_fun lex_id]
+      mapM_ (\(lex_id,lang,defs) -> putStrLn (intercalate "\t" (lex_id:lang:defs))) res
 
 cgiMain :: Database -> Embeddings -> CGI CGIResult
 cgiMain db (cs,funs) = do
@@ -53,6 +55,8 @@ cgiMain db (cs,funs) = do
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
   mb_s4 <- getInput "check_id"
+  mb_s5 <- getInput "lang"
+  mb_s6 <- fmap (fmap (urlDecodeUnicode . UTF8.decodeString)) $ getInput "def"
   case mb_s1 of
     Just s  -> do json <- liftIO (doQuery (words s))
                   outputJSONP json
@@ -62,10 +66,10 @@ cgiMain db (cs,funs) = do
                  Nothing     -> case mb_s3 of
                                   Just lex_id -> do json <- liftIO (doGloss lex_id)
                                                     outputJSONP json
-                                  Nothing     -> case mb_s4 of
-                                                   Just lex_id -> do json <- liftIO (doCheck lex_id)
-                                                                     outputJSONP json
-                                                   Nothing     -> outputNothing
+                                  Nothing     -> case (mb_s4,mb_s5,mb_s6) of
+                                                   (Just lex_id,Just lang,Just def) -> do  json <- liftIO (doCheck lex_id lang def)
+                                                                                           outputJSONP json
+                                                   _                                -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runHelda db ReadOnlyMode $
@@ -152,11 +156,17 @@ cgiMain db (cs,funs) = do
                                       s <- fromAt synsets (synset lex)]
       return (showJSON glosses)
 
-    doCheck lex_id =
+    doCheck lex_id lang def =
       runHelda db ReadWriteMode $ do
-        update lexemes (\id lexeme -> lexeme{domains=delete "unchecked" (domains lexeme)}) (fromIndexAt lexemes_fun lex_id)
-        insert checked lex_id
+        update lexemes (\id -> updateDef lang def) (fromIndexAt lexemes_fun lex_id)
+        insert checked (lex_id,lang)
         return ()
+      where
+        updateDef lang def lexeme =
+          lexeme{lex_defs=[if lang==lang' 
+                             then (lang,def,True)
+                             else (lang',def',st)
+                              | (lang',def',st) <- lex_defs lexeme]}
 
 type Embeddings = (Vector.Vector Double
                   ,Map.Map Fun (Vector.Vector Double,Vector.Vector Double,Vector.Vector Double)

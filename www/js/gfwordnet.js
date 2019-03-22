@@ -53,7 +53,9 @@ gfwordnet.search = function (selection, input, result) {
 
 				var checked = true;
 				for (var lang in gfwordnet.selection.langs) {
-					if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs) || !gfwordnet.lex_ids[lex_id].lex_defs[lang][1]) {
+					if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs)) {
+						checked = false;
+					} else if (!gfwordnet.lex_ids[lex_id].lex_defs[lang][1]) {
 						checked = false;
 						var td = row[gfwordnet.selection.langs[lang].index];
 						td.classList.add("unchecked");
@@ -331,9 +333,13 @@ gfwordnet.onclick_cell = function (cell) {
 				for (var i in gfwordnet.selection.langs_list) {
 					var lang = gfwordnet.selection.langs_list[i];
 					var cell = td([]);
-					if (lang in lex_def.synonyms[synonym] && !lex_def.synonyms[synonym][lang][1]) {
-						cell.classList.add("unchecked");
-						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+					if (lang in lex_def.synonyms[synonym]) {
+						if (!lex_def.synonyms[synonym][lang][1]) {
+							cell.classList.add("unchecked");
+							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+							checked = false;
+						}
+					} else {
 						checked = false;
 					}
 					row.push(cell);
@@ -375,7 +381,7 @@ gfwordnet.onmouseover_cell = function(event) {
 
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 	}
-	gfwordnet.popup = node("img",{class: "floating", src: "validate.png", onclick: "gfwordnet.onclick_check(this.parentNode)"},[]);
+	gfwordnet.popup = div_class("floating",[node("img",{src: "validate.png", onclick: "gfwordnet.onclick_check(this.parentNode.parentNode)"},[])/*,node("img",{src: "pen.png", onclick: "gfwordnet.onclick_check(this.parentNode.parentNode)"},[])*/]);
 	event.target.appendChild(gfwordnet.popup);
 }
 gfwordnet.onclick_minus = function (event, icon) {
@@ -394,14 +400,7 @@ gfwordnet.onclick_minus = function (event, icon) {
 	icon.src = "checked_plus.png"
 }
 gfwordnet.onclick_check = function (cell) {
-	function errcont(text,code) { }
-	function extract_confirm() {
-		this.src = "checked_plus.png";
-		this.onclick = function(event) { gfwordnet.onclick_minus(event, this) };
-		btn.parentNode.removeChild(btn);
-	}
-
-	var index = 0;
+	var index = -1;
 	var node  = cell;
     while ((node = node.previousElementSibling)) {
         index++;
@@ -409,7 +408,32 @@ gfwordnet.onclick_check = function (cell) {
 
 	var lex_id  = cell.parentNode.firstChild.firstChild.nextSibling.textContent;
 	var lang    = gfwordnet.selection.langs_list[index];
-	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),bind(extract_confirm,img),errcont);
+	var def     = gfwordnet.lex_ids[lex_id].lex_defs[lang];
+
+	function errcont(text,code) { }
+	function extract_confirm() {
+		def[1] = true;
+		cell.removeEventListener("mouseover", gfwordnet.onmouseover_cell);
+		cell.classList.remove("unchecked");
+		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
+		gfwordnet.popup = null;
+
+		var checked = true;
+		for (var lang in gfwordnet.selection.langs) {
+			if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs) || !gfwordnet.lex_ids[lex_id].lex_defs[lang][1]) {
+				checked = false;
+				break;
+			}
+		}
+
+		if (checked) {
+			var img = cell.parentNode.firstChild.firstChild;
+			img.src = "checked_plus.png";
+			img.onclick = function(event) { gfwordnet.onclick_minus(event, this) };
+		}
+	}
+
+	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def[0]),extract_confirm,errcont);
 }
 gfwordnet.onclick_tab = function (tab) {
 	var tr = tab.parentNode.parentNode;

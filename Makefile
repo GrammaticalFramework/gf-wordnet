@@ -62,13 +62,13 @@ semantics.db: sense-service/glosses.hs WordNet.gf examples.txt embedding.txt
 	runghc -isense-service sense-service/glosses.hs
 	scp semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
 
-build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs
+build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs sense-service/URLEncoding.hs
 	ghc --make -odir build/sense-service -hidir build/sense-service -O2 -optl-static -optl-pthread $^ -o $@
 	scp build/SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
 	ssh -t www.grammaticalframework.org "mv www/SenseService www/SenseService.fcgi; sudo pkill -e SenseService.*"
 
 WordNet.gf: FORCE build/SenseService
-	runghc check.hs - $(shell ssh www.grammaticalframework.org ./www/SenseService.fcgi report)
+	ssh www.grammaticalframework.org ./www/SenseService.fcgi report | runghc check.hs -
 
 FORCE:
 

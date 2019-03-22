@@ -65,5 +65,5 @@ examples = table "examples"
 examples_fun :: Index Expr Fun
 examples_fun = listIndex examples "fun" (nub . exprFunctions)
 
-checked :: Table Fun
+checked :: Table (Fun,String)
 checked = table "checked"

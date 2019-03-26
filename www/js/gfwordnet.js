@@ -72,6 +72,15 @@ gfwordnet.search = function (selection, input, result) {
 				row[0].insertBefore(icon, row[0].firstChild);
 				result.appendChild(tr(row));
 			}
+
+			for (var syn_id in senses[i].synset) {
+				if (!(syn_id in gfwordnet.lex_ids)) {
+					gfwordnet.lex_ids[syn_id] = {
+						lex_defs: senses[i].synset[syn_id],
+						synonyms: senses[i].synset
+					};
+				}
+			}
 		}
 	}
 	function extract_search(lemmas) {

@@ -59,7 +59,8 @@ gfwordnet.search = function (selection, input, result) {
 						checked = false;
 						var td = row[gfwordnet.selection.langs[lang].index];
 						td.classList.add("unchecked");
-						td.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+						if (gfwordnet.can_check)
+							td.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					}
 				}
 
@@ -336,7 +337,8 @@ gfwordnet.onclick_cell = function (cell) {
 					if (lang in lex_def.synonyms[synonym]) {
 						if (!lex_def.synonyms[synonym][lang][1]) {
 							cell.classList.add("unchecked");
-							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+							if (gfwordnet.can_check)
+								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 							checked = false;
 						}
 					} else {

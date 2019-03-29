@@ -12,6 +12,7 @@ import System.Environment
 import System.Process
 import Control.Monad(forM_)
 import PGF2
+import Transliteration
 
 {- HOW TO USE IT
    ~~~~~~~~~~~~~
@@ -41,9 +42,10 @@ main = do
   gr         <- readPGF "build/Parse.noprobs.pgf"
   (src,funs) <- fmap (toGFEntries gr)           $ readFile "WordNet.gf"
   wn30v31    <- fmap toMapping                  $ readFile "bootstrap/wn30map31.txt"
-  transl     <- fmap toTranslitEntries          $ readFile "bootstrap/translit.txt"
+  transl     <- readTransliteration "bootstrap/translit.txt"
   dst        <- fmap (toWNEntries lang wn30v31) $ readFile ("data/wn-data-"++lang++".tab")
   morpho     <- fmap toMorphoEntries            $ readCreateProcess (shell ("cat lib/src/"++lang++"*/Dict???.gf lib/src/"++lang++"*/Irreg???.gf")) ""
+  mapM_ print (Map.toList morpho)
 
   let wps = addCounts transl (join src dst)
 
@@ -95,18 +97,6 @@ toMapping =
   where
     toTuple [tag,wn30,wn31] = (wn30++"-"++tag,wn31++"-"++tag)
 
-toTranslitEntries =
-  addCase .
-  Map.fromList .
-  map (toTuple . tsv) .
-  lines
-  where
-    toTuple [[c],t] = (c,t)
-
-    addCase transl =
-      let transl' = Map.fromList [(c,fromMaybe [c] (Map.lookup (toLower c) transl)) | c <- [minBound..maxBound], c /= toLower c]
-      in Map.union transl transl'
-
 toWNEntries lng wn30v31 =
   foldr addElem Map.empty .
   mapMaybe (toEntry . tsv) .
@@ -114,7 +104,7 @@ toWNEntries lng wn30v31 =
   lines
   where
     toEntry [sense_id,rel,w]
-      | rel == "lemma" || rel == lng++":lemma" = fmap (flip (,) w) (Map.lookup sense_id wn30v31)
+      | rel == "lemma" || rel == lng++":lemma" = fmap (flip (,) w) (Just sense_id)
     toEntry _                                  = Nothing
 
     addElem (k,a) =
@@ -135,7 +125,7 @@ addCounts transl src_dst =
       let (cs,ds) = unzip [fromMaybe (0,0) (Map.lookup (idx,lin,y) cdmap) | (idx,lins) <- zip [0..] linss, lin <- lins]
       in (sum cs,minimum (maxBound:ds))
 
-    dist x y = levenshteinDistance defaultEditCosts (transliterate transl x) (transliterate transl y)
+    dist x y = levenshteinDistance defaultEditCosts (transl x) (transl y)
 
 transliterate transl cs =
   concat [fromMaybe [c] (Map.lookup c transl) | c <- cs]
@@ -172,8 +162,12 @@ toMorphoEntries =
   where
     parseLine l =
       case words l of
-        ("lin":fn:"=":ws) -> [(fn,unwords (init ws))]
+        (fn:"=":ws) -> [(unpack fn,unwords (init ws))]
         _                 -> []
+
+    unpack fn
+      | take 1 fn == "'" && take 1 (reverse fn) == "'" = init (tail fn)
+      | otherwise                                      = fn
 
 tsv :: String -> [String]
 tsv "" = []

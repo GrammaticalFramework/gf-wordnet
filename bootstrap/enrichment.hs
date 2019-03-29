@@ -13,73 +13,55 @@ main = do
   conn <- status "Open data/panlex.db" $ open "data/panlex.db"
   gr <- status "Read Parse.pgf" $ readPGF "Parse.pgf"
   let langs = Map.toList (languages gr)
-  lins <- status "Searching for extensions" $ 
-            sequence [allLins conn langs f | f <- functions gr,
-                                             ([],_,_) <- maybeToList (fmap unType (functionType gr f))]
-  status "Computing predictions" $ do
-    transl <- readTransliteration "bootstrap/translit.txt"
-    let ps = predictions transl lins
-    writeFile "predictions.tsv" (unlines [f++"\t"++
-                                          lang++"\t"++
-                                          expr++"\t"++
-                                          show t++"\t"++
-                                          show c++"\t"++
-                                          show d | (f,lang,expr,t,c,d) <- ps])
+  status "Searching for extensions" $ do
+    transl <- readTransliteration "bootstrap/translit.txt" 
+    sequence [allLins conn transl langs f | f <- functions gr,
+                                     ([],_,_) <- maybeToList (fmap unType (functionType gr f))]
   close conn
 
-allLins conn langs f = do
+allLins conn transl langs f = do
   lins <- sequence [getLin f lang langvar concr | (lang,concr) <- langs,
                                                   Just langvar <- [lookup lang langvars]]
-  lins <- enrich conn lins
-  return (f,lins)
+  lins <- enrich conn transl lins
+  sequence_ [putStrLn (f++"\t"++lang++"\t"++expr++"\t"++show l++"\t"++show t++"\t"++show (-d)) | (lang,exprs,l,t,d) <- lins, t > 0, (_,expr) <- exprs]
   where
     getLin f lang langvar concr
       | hasLinearization concr f = do idss <- mapM (getId langvar) (linearizeAll concr (mkApp f []))
-                                      return (lang,langvar,concat idss,True)
-      | otherwise                = return (lang,langvar,[],False)
+                                      return (Right (lang,concat idss))
+      | otherwise                = return (Left (lang,langvar))
 
     getId langvar lin = do
       res <- query conn "select id from expr where langvar=? and txt=?" (langvar,lin) :: IO [Only Int]
-      return [((id,lin),0) | Only id <- res]
+      return [(id,lin) | Only id <- res]
 
-enrich conn lins = do
+enrich conn transl lins = do
   new_lins <- fmap (rank . concat) (mapM retrive ids)
-  return [(lang,langvar,extend flag langvar new_lins exprs,flag) | (lang,langvar,exprs,flag) <- lins]
+  return (map (extend new_lins) lins)
   where
-    ids = concat [map (fst.fst) exprs | (_,_,exprs,_) <- lins]
+    ids  = [id         | Right (_,exprs) <- lins, (id,_ ) <- exprs]
+    txts = [transl txt | Right (_,exprs) <- lins, (_,txt) <- exprs]
 
-    retrive id =
-      query conn "select e.langvar,e.id,e.txt \
-                 \from denotation d1 \
-                 \join denotation d2 on d1.expr=? and d1.meaning=d2.meaning \
-                 \join expr as e on e.id=d2.expr" (Only id) :: IO [(Int,Int,String)]
+    retrive id = do
+      xs <- query conn "select e.langvar,e.id,e.txt \
+                       \from denotation d1 \
+                       \join denotation d2 on d1.expr=? and d1.meaning=d2.meaning \
+                       \join expr as e on e.id=d2.expr" (Only id) :: IO [(Int,Int,String)]
+      return [(x,[id]) | x <- xs]
 
-    rank xs = (Map.toList . Map.fromListWith (+)) [(x,1) | x <- xs]
+    rank = Map.toList . Map.mapWithKey counts . Map.fromListWith (++)
+      where
+        counts (_,_,expr) ids = (length (nub ids),length ids,-minimum (map (dist (transl expr)) txts))
 
-    takeBest xs = [(x,c) | (x,c) <- xs, c==maximum (map snd xs)]
+        dist x y = levenshteinDistance defaultEditCosts x y
 
-    extend True  langvar new_lins exprs = exprs
-    extend False langvar new_lins _     = takeBest [((id,expr),c) | ((langvar',id,expr),c) <- new_lins, langvar'==langvar] 
+    takeBest xs = 
+      let max_t = maximum ((0,0,0):map snd xs)
+      in ([x | (x,t) <- xs, t==max_t],max_t)
 
-predictions transl lins =
-  [(f,lang,snd expr,t,c,d)
-          | (f,lins) <- lins,
-            (lang,_,exprs,False) <- lins,
-            (expr,t) <- exprs,
-            let (c,d) = counts lins expr]
-  where
-    join xs ys = [((x,y),1) | x <- xs, y <- ys]
-    dist x y = levenshteinDistance defaultEditCosts (transl x) (transl y)
-
-    cmap  = (Map.fromListWith (+) . concat)
-                 [join [expr | (_,_,exprs,True ) <- lins, (expr,_) <- exprs]
-                       [expr | (_,_,exprs,False) <- lins, (expr,_) <- exprs] 
-                    | (f,lins) <- lins]
-    cdmap = Map.mapWithKey (\((_,expr1),(_,expr2)) c -> (c,dist expr1 expr2)) cmap
-
-    counts lins expr2 =
-      let (cs,ds) = unzip [fromMaybe (0,0) (Map.lookup (expr1,expr2) cdmap) | (lang,_,exprs,True) <- lins, (expr1,_) <- exprs]
-      in (sum cs,minimum (maxBound:ds))
+    extend new_lins (Right (lang,exprs  )) = (lang,exprs,0,0,0)
+    extend new_lins (Left  (lang,langvar)) = 
+      let (exprs,(l,t,d)) = takeBest [((id,expr),ltd) | ((langvar',id,expr),ltd) <- new_lins, langvar'==langvar]
+      in (lang,exprs,l,t,d)
 
 status msg f = do
   hPutStr stderr (msg++" ...")

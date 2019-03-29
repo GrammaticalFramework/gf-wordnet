@@ -1592,7 +1592,7 @@ advowson_N	advowson_N
 adynamia_N	adynamia_N
 adynamic_A	adynamic_1_A
 adynamic_A	adynamic_2_A
-adz_N	adz_N
+adz_N	adze_N
 adze_N	adze_N
 aecial_A	aecial_A
 aeciospore_N	aeciospore_N
@@ -3348,8 +3348,8 @@ anamorphosis_N	anamorphosis_1_N
 anamorphosis_N	anamorphosis_2_N
 anapaest_N	anapaest_N
 anapaestic_A	anapaestic_A
-anapest_N	anapest_N
-anapestic_A	anapestic_A
+anapest_N	anapaest_N
+anapestic_A	anapaestic_A
 anaphase_N	anaphase_N
 anaphasic_A	anaphasic_A
 anaphor_N	anaphor_N
@@ -6291,7 +6291,7 @@ autograph_N	autograph_1_N
 autograph_N	autograph_2_N
 autograph_V2	autograph_V2
 autographic_A	autographic_A
-autogyro_N	autogyro_N
+autogyro_N	autogiro_N
 autoicous_A	autoicous_A
 autoimmune_A	autoimmune_A
 autoimmunity_N	autoimmunity_N
@@ -6537,7 +6537,7 @@ awned_A	awned_1_A
 awning_N	awning_N
 awninged_A	awninged_A
 awnless_A	awnless_A
-awol_PN	awol_PN
+awol_PN	awol_N
 awry_A	awry_1_A
 awry_A	awry_2_A
 awry_Adv	awry_1_Adv
@@ -7225,7 +7225,7 @@ bandit_N	bandit_N
 banditry_N	banditry_N
 bandleader_N	bandleader_N
 bandmaster_N	bandmaster_N
-bandoleer_N	bandoleer_N
+bandoleer_N	bandolier_N
 bandolier_N	bandolier_N
 bandoneon_N	bandoneon_N
 bandsman_N	bandsman_N
@@ -7434,7 +7434,7 @@ barbital_N	barbital_N
 barbitone_N	barbitone_N
 barbiturate_N	barbiturate_N
 barbu_N	barbu_N
-barcarole_N	barcarole_N
+barcarole_N	barcarolle_N
 barcarolle_N	barcarolle_N
 barcelona_PN	barcelona_PN
 bard_N	bard_1_N
@@ -12012,7 +12012,7 @@ brochure_N	brochure_N
 brocket_N	brocket_1_N
 brocket_N	brocket_2_N
 brodiaea_N	brodiaea_N
-brogan_N	brogan_N
+brogan_N	brogue_N
 brogue_N	brogue_N
 broil_N	broil_N
 broil_V	broil_3_V
@@ -16618,7 +16618,7 @@ choose_V2	choose_3_V2
 choose_up_V	choose_up_V
 choose_up_V2	choose_up_V2
 choosey_A	choosey_A
-choosy_A	choosy_A
+choosy_A	choosey_A
 chop_N	chop_1_N
 chop_N	chop_2_N
 chop_N	chop_3_N
@@ -19858,8 +19858,8 @@ confessional_N	confessional_N
 confessor_N	confessor_1_N
 confessor_N	confessor_2_N
 confetti_N	confetti_N
-confidantFem_N	confidantFem_N
-confidantMasc_N	confidantMasc_N
+confidantFem_N	confidante_N
+confidantMasc_N	confidant_N
 confidante_N	confidante_N
 confide_V	confide_1_V
 confide_V2	confide_1_V2
@@ -20286,7 +20286,7 @@ consigner_N	consigner_N
 consignment_N	consignment_1_N
 consignment_N	consignment_2_N
 consignment_N	consignment_3_N
-consignor_N	consignor_N
+consignor_N	consigner_N
 consist_V	consist_1_V
 consist_V	consist_2_V
 consist_V	consist_3_V
@@ -23389,7 +23389,7 @@ curtal_A	curtal_A
 curtness_N	curtness_N
 curtsey_N	curtsey_N
 curtsey_V	curtsey_V
-curtsy_N	curtsy_N
+curtsy_N	curtsey_N
 curtsy_V	curtsy_1_V
 curtsy_V	curtsy_2_V
 curvaceously_Adv	curvaceously_Adv
@@ -27073,7 +27073,6 @@ disbelievingly_Adv	disbelievingly_Adv
 disbud_V2	disbud_1_V2
 disbud_V2	disbud_2_V2
 disburden_V2	disburden_V2
-disburse_V	disburse_V
 disburse_V2	disburse_V2
 disbursement_N	disbursement_1_N
 disbursement_N	disbursement_2_N
@@ -27384,7 +27383,7 @@ dishcloth_N	dishcloth_N
 dishearten_V2	dishearten_V2
 disheartenment_N	disheartenment_1_N
 disheartenment_N	disheartenment_2_N
-disheveled_A	disheveled_A
+disheveled_A	dishevelled_A
 dishevelled_A	dishevelled_A
 dishful_N	dishful_N
 dishonest_A	dishonest_1_A
@@ -27477,7 +27476,7 @@ dislodge_V2	dislodge_1_V2
 dislodge_V2	dislodge_2_V2
 dislodge_V2	dislodge_3_V2
 dislodgement_N	dislodgement_N
-dislodgment_N	dislodgment_N
+dislodgment_N	dislodgement_N
 disloyal_A	disloyal_1_A
 disloyal_A	disloyal_2_A
 disloyalty_N	disloyalty_N
@@ -28332,8 +28331,8 @@ dolmen_N	dolmen_N
 dolomite_N	dolomite_1_N
 dolomite_N	dolomite_2_N
 dolomitic_A	dolomitic_A
-dolor_N	dolor_N
-dolorous_A	dolorous_A
+dolor_N	dolour_N
+dolorous_A	dolourous_A
 dolour_N	dolour_N
 dolourous_A	dolourous_A
 dolphin_N	dolphin_1_N
@@ -28664,7 +28663,6 @@ dovecote_N	dovecote_N
 dover_PN	dover_PN
 dovetail_N	dovetail_N
 dovetail_V	dovetail_V
-dovetail_V2	dovetail_V2
 dovishness_N	dovishness_N
 dowager_N	dowager_N
 dowdiness_N	dowdiness_N
@@ -35030,8 +35028,8 @@ fib_N	fib_N
 fib_V	fib_V
 fibber_N	fibber_N
 fibbing_N	fibbing_N
-fiberboard_N	fiberboard_N
-fiberglass_N	fiberglass_N
+fiberboard_N	fibreboard_N
+fiberglass_N	fibreglass_N
 fiberscope_N	fiberscope_N
 fibre_N	fibre_1_N
 fibre_N	fibre_2_N
@@ -45572,7 +45570,7 @@ humor_N	humour_4_N
 humor_N	humour_5_N
 humor_N	humour_6_N
 humoral_A	humoral_A
-humorist_N	humorist_N
+humorist_N	humourist_N
 humorless_A	humorless_A
 humorous_A	humorous_1_A
 humour_N	humour_1_N
@@ -51417,7 +51415,7 @@ kind_A	kind_1_A
 kind_A	kind_2_A
 kind_A	kind_3_A
 kind_N	kind_of_N2
-kind_hearted_A	kind_hearted_A
+kind_hearted_A	kindhearted_A
 kinda_Adv	kinda_Adv
 kindergarten_N	kindergarten_N
 kindhearted_A	kindhearted_A
@@ -51955,7 +51953,7 @@ laboratory_N	laboratory_1_N
 laboratory_N	laboratory_2_N
 labored_A	labored_1_A
 labored_A	labored_2_A
-laborer_N	laborer_N
+laborer_N	labourer_N
 laborious_A	laborious_A
 laboriousness_N	laboriousness_N
 laborsaving_A	laborsaving_A
@@ -101548,7 +101546,7 @@ uniform_N	uniform_N
 uniformed_A	uniformed_A
 uniformity_N	uniformity_1_N
 uniformity_N	uniformity_2_N
-unify_V2	unify_1_V2
+unify_V2	unify_V
 unify_V2	unify_2_V2
 unify_V2	unify_3_V2
 unify_V2	unify_4_V2
@@ -103666,7 +103664,7 @@ veracious_A	veracious_1_A
 veracious_A	veracious_2_A
 veracity_N	veracity_N
 veranda_N	veranda_N
-verandah_N	verandah_N
+verandah_N	veranda_N
 verapamil_N	verapamil_N
 verb_N	verb_1_N
 verb_N	verb_2_N

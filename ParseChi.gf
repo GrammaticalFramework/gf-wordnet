@@ -9,9 +9,10 @@ concrete ParseChi of Parse =
   RelativeChi,
   ConjunctionChi,
   PhraseChi - [UttAP,UttVP],
-  TextX - [Temp,Pol,SC,Tense,Adv,Ant,TCond,TFut,TPast,TPres,TTAnt,AAnter,ASimul,PNeg,PPos],
+  TextX - [Temp,Tense,Adv,Ant,TCond,TFut,TPast,TPres,TTAnt,AAnter,ASimul],
   IdiomChi,
-  TenseX - [Temp,Pol,SC,Tense,Adv,Ant,TCond,TFut,TPast,TPres,TTAnt,AAnter,ASimul,PNeg,PPos],
+  TenseX - [Temp,Tense,Adv,Ant,TCond,TFut,TPast,TPres,TTAnt,AAnter,ASimul],
+  TenseChi,
   WordNetChi,
   ConstructionChi,
   DocumentationChi

@@ -9,10 +9,11 @@ concrete ParseEst of Parse =
   RelativeEst,
   ConjunctionEst,
   PhraseEst - [UttAP,UttVP],
-  TextX - [CAdv,AdN],
+  TextX,
   IdiomEst,
-  TenseX - [CAdv,AdN],
-  WordNetEst
+  TenseX,
+  WordNetEst,
+  DocumentationEst
   ** {
 
 -- INJECT

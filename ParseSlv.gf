@@ -11,7 +11,8 @@ concrete ParseSlv of Parse =
   TextX,
   IdiomSlv,
   TenseX,
-  WordNetSlv
+  WordNetSlv,
+  DocumentationSlv
   ** {
 
 -- INJECT

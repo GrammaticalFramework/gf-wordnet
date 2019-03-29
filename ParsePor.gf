@@ -12,6 +12,7 @@ concrete ParsePor of Parse =
   TextX - [Temp,Pol,SC,Tense,TCond,TFut,TPast,TPres,TTAnt,PNeg,PPos],
   IdiomPor,
   TenseX - [Temp,Pol,SC,Tense,TCond,TFut,TPast,TPres,TTAnt,PNeg,PPos],
+  TensePor,
   ParseExtendPor,
   WordNetPor,
   ConstructionPor,

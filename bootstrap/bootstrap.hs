@@ -104,7 +104,7 @@ toWNEntries lng wn30v31 =
   lines
   where
     toEntry [sense_id,rel,w]
-      | rel == "lemma" || rel == lng++":lemma" = fmap (flip (,) w) (Just sense_id)
+      | rel == "lemma" || rel == lng++":lemma" = fmap (flip (,) w) (Map.lookup sense_id wn30v31)
     toEntry _                                  = Nothing
 
     addElem (k,a) =

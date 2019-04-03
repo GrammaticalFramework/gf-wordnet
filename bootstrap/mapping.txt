@@ -31274,8 +31274,8 @@ encumbrance_N	encumbrance_2_N
 encumbrance_N	encumbrance_3_N
 encyclical_A	encyclical_A
 encyclical_N	encyclical_N
-encyclopaedia_N	encyclopaedia_N
-encyclopaedic_A	encyclopaedic_A
+encyclopaedia_N	encyclopedia_N
+encyclopaedic_A	encyclopedic_A
 encyclopedia_N	encyclopedia_N
 encyclopedic_A	encyclopedic_A
 encyclopedist_N	encyclopedist_1_N

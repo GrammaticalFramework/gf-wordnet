@@ -34795,7 +34795,7 @@ felon_N	felon_1_N
 felon_N	felon_2_N
 felonious_A	felonious_A
 felony_N	felony_N
-felspar_N	felspar_N
+felspar_N	feldspar_N
 felt_N	felt_N
 felted_A	felted_A
 felucca_N	felucca_N
@@ -77945,8 +77945,6 @@ removable_A	removable_2_A
 removal_N	removal_1_N
 removal_N	removal_2_N
 remove_N	remove_N
-remove_V	remove_2_V
-remove_V	remove_3_V
 remove_V	remove_6_V
 remove_V2	remove_1_V2
 remove_V2	remove_2_V2

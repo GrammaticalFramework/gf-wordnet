@@ -1,7 +1,7 @@
 GF_SOURCES = \
-	Parse.gf ParseDut.gf ParseEng.gf ParseEst.gf ParseIta.gf ParsePor.gf WordNetSlv.gf ParseSwe.gf ParseSpa.gf ParseBul.gf ParseTur.gf ParseFin.gf ParseChi.gf ParseAPI.gf \
+	Parse.gf ParseDut.gf ParseEng.gf ParseEst.gf ParseIta.gf ParsePor.gf WordNetSlv.gf ParseSwe.gf ParseSpa.gf ParseBul.gf ParseTha.gf ParseTur.gf ParseFin.gf ParseChi.gf ParseAPI.gf \
 	ParseExtend.gf ParseExtendEng.gf ParseExtendPor.gf ParseExtendSwe.gf ParseExtendSpa.gf ParseExtendBul.gf ParseExtendFin.gf \
-	WordNet.gf WordNetDut.gf WordNetEng.gf WordNetEst.gf WordNetIta.gf WordNetSlv.gf WordNetSwe.gf WordNetSpa.gf WordNetPor.gf WordNetBul.gf WordNetTur.gf WordNetFin.gf WordNetChi.gf WordNetAPI.gf \
+	WordNet.gf WordNetDut.gf WordNetEng.gf WordNetEst.gf WordNetIta.gf WordNetSlv.gf WordNetSwe.gf WordNetSpa.gf WordNetPor.gf WordNetBul.gf WordNetTha.gf WordNetTur.gf WordNetFin.gf WordNetChi.gf WordNetAPI.gf \
 
 UD_ENG_TREEBANKS = \
 	$(wildcard ud-treebanks-v2.3/UD_English-EWT/*.conllu) \
@@ -34,7 +34,7 @@ endif
 all: build_dirs Parse.pgf semantics.db build/SenseService
 
 Parse.pgf: $(GF_SOURCES) Parse.probs
-	gf --make --probs=Parse.probs --gfo-dir=build/gfo ParseBul.gf ParseChi.gf ParseDut.gf ParseEng.gf ParseEst.gf ParseFin.gf ParseIta.gf ParsePor.gf ParseSlv.gf ParseSpa.gf ParseSwe.gf ParseTur.gf ParseAPI.gf
+	gf --make --probs=Parse.probs --gfo-dir=build/gfo ParseBul.gf ParseChi.gf ParseDut.gf ParseEng.gf ParseEst.gf ParseFin.gf ParseIta.gf ParsePor.gf ParseSlv.gf ParseSpa.gf ParseSwe.gf ParseTha.gf ParseTur.gf ParseAPI.gf
 	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 
 build/Parse.noprobs.pgf: $(GF_SOURCES)

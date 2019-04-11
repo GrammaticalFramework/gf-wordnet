@@ -1230,7 +1230,7 @@ dump_mods(GuMapItor* itor, const void* key, void* value, GuExn* err)
 
 	ProbCount* pc = *((ProbCount**) value);
 	
-	double val = exp(-pc->prob)/self->state->bigram_total;
+	double val = exp(-pc->prob);
 	if (val*self->state->bigram_total > 0.00001)
 		fprintf(self->fbigram, "%s\t%s\t%e\n",
 		                       self->head_stats->fun, mod, 

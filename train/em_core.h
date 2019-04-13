@@ -54,7 +54,7 @@ void
 em_add_dep_tree(EMState* state, DepTree* dtree);
 
 void
-em_increment_count(EMState* state, PgfCId fun, size_t index);
+em_increment_count(EMState* state, PgfCId fun);
 
 int
 em_import_treebank(EMState* state, GuString fpath, GuString lang);

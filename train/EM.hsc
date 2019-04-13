@@ -48,18 +48,18 @@ addDepTree st t = do
 foreign import ccall em_new_dep_tree :: EMState -> DepTree -> CString -> CString -> CSize -> CSize -> IO DepTree
 foreign import ccall em_add_dep_tree :: EMState -> DepTree -> IO ()
 
-incrementCounts :: EMState -> Expr -> Int -> IO ()
-incrementCounts state e index = traverse e
+incrementCounts :: EMState -> Expr -> IO ()
+incrementCounts state e = traverse e
   where
     traverse e =
       case unApp e of
         Just (fun,es) 
           | not (null es) -> do withCString fun $ \cfun ->
-                                  em_increment_count state cfun (fromIntegral index)
+                                  em_increment_count state cfun
                                 mapM_ traverse es
         _                 -> return ()
 
-foreign import ccall "em_increment_count" em_increment_count :: EMState -> CString -> CSize -> IO ()
+foreign import ccall "em_increment_count" em_increment_count :: EMState -> CString -> IO ()
 
 annotateDepTree :: EMState -> DepTree -> IO [(CSize, Fun, Float)]
 annotateDepTree state dtree =

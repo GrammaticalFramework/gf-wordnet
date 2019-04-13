@@ -559,7 +559,7 @@ em_add_dep_tree(EMState* state, DepTree* dtree)
 }
 
 void
-em_increment_count(EMState* state, PgfCId fun, size_t index)
+em_increment_count(EMState* state, PgfCId fun)
 {
 	FunStats* stats =
 		gu_map_get(state->stats, fun, FunStats*);

@@ -49,7 +49,7 @@ training st labels_fpath args = do
 
     importExamples config st fpath = do
       ls <- fmap lines $ readFile fpath
-      sequence_ [addDepTree st dtree >> incrementCounts st e 0
+      sequence_ [addDepTree st dtree >> incrementCounts st e
                       | l <- ls,
                         take 4 l == "abs:",
                         Just e <- [readExpr (drop 4 l)],

@@ -44,9 +44,6 @@ void
 em_free_state(EMState* state);
 
 void
-em_setup_preserve_trees(EMState *state);
-
-void
 em_setup_unigram_smoothing(EMState *state, prob_t count);
 
 DepTree*
@@ -101,6 +98,6 @@ GuBuf*
 em_annotate_dep_tree(EMState* state, DepTree* dtree, GuPool* pool);
 
 int
-em_export_annotated_treebank(EMState* state, GuString fpath);
+em_export_abstract_treebank(EMState* state, GuString fpath);
 
 #endif

@@ -1,8 +1,7 @@
 module EM(EMState(..), DepTree,
-          withEMState,
-          setupPreserveTrees, setupRankingCallbacks,
+          withEMState, setupRankingCallbacks,
           addDepTree, incrementCounts, annotateDepTree,
-          importTreebank, loadModel, exportAnnotatedTreebank,
+          importTreebank, loadModel, exportAbstractTreebank,
           getBigramCount, getUnigramCount,
           step, dump) where
 
@@ -26,8 +25,6 @@ withEMState gr usmooth bsmooth = bracket (em_new_state (pgf gr) usmooth bsmooth)
 
 foreign import ccall em_new_state :: Ptr a -> Float -> Float -> IO EMState
 foreign import ccall em_free_state :: EMState -> IO ()
-
-foreign import ccall "em_setup_preserve_trees" setupPreserveTrees :: EMState -> IO ()
 
 addDepTree :: EMState -> Tree (Fun,String) -> IO ()
 addDepTree st t = do
@@ -112,15 +109,15 @@ loadModel st fpath =
 foreign import ccall em_load_model :: EMState -> CString -> IO CInt
 
 
-exportAnnotatedTreebank :: EMState -> FilePath -> IO ()
-exportAnnotatedTreebank st fpath =
+exportAbstractTreebank :: EMState -> FilePath -> IO ()
+exportAbstractTreebank st fpath =
   withCString fpath $ \cpath -> do
-     res <- em_export_annotated_treebank st cpath
+     res <- em_export_abstract_treebank st cpath
      if res == 0
        then fail "Export failed"
        else return ()
 
-foreign import ccall em_export_annotated_treebank :: EMState -> CString -> IO CInt
+foreign import ccall em_export_abstract_treebank :: EMState -> CString -> IO CInt
 
 foreign import ccall "em_bigram_count" getBigramCount  :: EMState -> IO CSize
 foreign import ccall "em_unigram_count" getUnigramCount :: EMState -> IO CSize

@@ -31,6 +31,7 @@ training st labels_fpath args = do
   getUnigramCount st >>= \c -> hPutStrLn stdout ("Unigrams: "++show c)
   status "Estimation ..." $ em_loop st 0 0
   status "Dumping ..." $ dump st "Parse.probs" "Parse.bigram.probs"
+  exportAbstractTreebank st "trees.txt"
   where
     importTreebanks config []          = return ()
     importTreebanks config (lang:args) = do
@@ -56,12 +57,11 @@ training st labels_fpath args = do
                       ]
 
 annotation st bigram_fpath lang = do
-  status "Setup preserve trees ..." $ setupPreserveTrees st
   status "Setup ranking ..." $ setupRankingCallbacks st default_ranking_callbacks
   status "Load model ..." $ loadModel st bigram_fpath
   status "Import data ..." $ do
     importTreebank st lang ""
-  status "Export data ..." $ exportAnnotatedTreebank st ""
+  status "Export data ..." $ exportAbstractTreebank st ""
 
 status msg io = do
   hPutStr stderr msg

@@ -45,7 +45,6 @@ struct EMState {
 	                       // easier to swap it out
 	PgfPGF *pgf;
 	GuBuf* dtrees;
-	GuBuf* fields;
 	GuMap* stats;
 	GuBuf* root_choices;
 	size_t max_tree_index;
@@ -137,7 +136,6 @@ em_new_state(PgfPGF* pgf, prob_t unigram_smoothing, prob_t bigram_smoothing)
 	state->pool        = pool;
 	state->corpus_pool = corpus_pool;
 	state->dtrees = gu_new_buf(DepTree*, pool);
-	state->fields = NULL;
 	state->stats  = gu_new_string_map(FunStats*, NULL, pool);
 	state->max_tree_index = 0;
 	state->max_tree_choices = 0;
@@ -249,12 +247,6 @@ static prob_t
 log_max(prob_t x, prob_t y)
 {
 	return ((x < y) ? x : y);
-}
-
-void
-em_setup_preserve_trees(EMState *state)
-{
-	state->fields = gu_new_buf(GuBuf*, state->pool);
 }
 
 static void
@@ -672,11 +664,7 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 		return 0;
 	}
 
-	GuPool* tmp_pool;
-	if (state->fields == NULL)
-		tmp_pool = gu_new_pool();
-	else
-		tmp_pool = state->corpus_pool;
+	GuPool* tmp_pool = gu_new_pool();
 	GuBuf* buf = gu_new_buf(CONLLFields, tmp_pool);
 
 #ifndef DISABLE_LZMA
@@ -694,9 +682,7 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 
 		if (len < 1 || line[len-1] != '\n') {
 			fprintf(stderr, "Error in reading. Last read: %s\n", line);
-			if (state->fields == NULL) {
-				gu_pool_free(tmp_pool);
-			}
+			gu_pool_free(tmp_pool);
 			fclose(inp);
 			return 0;
 		}
@@ -724,15 +710,8 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 				}
 			}
 
-			if (state->fields == NULL) {
-				// if we don't need to save the CoNLL fields,
-				// release the current pool and create a new one
-				gu_pool_free(tmp_pool);
-				tmp_pool = gu_new_pool();
-			} else {
-				// add the fields to the state
-				gu_buf_push(state->fields, GuBuf*, buf);
-			}
+			gu_pool_free(tmp_pool);
+			tmp_pool = gu_new_pool();
 			buf = gu_new_buf(CONLLFields, tmp_pool);
 			continue;
 		}
@@ -753,9 +732,7 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 
 			if (n_fields >= CONLL_NUM_FIELDS) {
 				fprintf(stderr, "Too many fields in: %s\n", line);
-				if (state->fields == NULL) {
-					gu_pool_free(tmp_pool);
-				}
+				gu_pool_free(tmp_pool);
 				fclose(inp);
 				return 0;
 			}
@@ -774,9 +751,7 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 		}
     }
 
-	if (state->fields == NULL) {
-		gu_pool_free(tmp_pool);
-	}
+	gu_pool_free(tmp_pool);
 
 	fclose(inp);
 #ifndef DISABLE_LZMA
@@ -1237,12 +1212,6 @@ em_dump(EMState *state, char* unigram_path, char* bigram_path)
 	gu_pool_free(tmp_pool);
 }
 
-static GuString
-get_field(CONLLFields* fields, size_t i)
-{
-	return (fields ? (*fields)[i] : "_");
-}
-
 typedef struct {
 	PgfCId fun;
 	prob_t prob;
@@ -1261,25 +1230,9 @@ static int cmp_lemma_prob(const void *p1, const void *p2)
 }
 
 static void
-print_annotated_head(EMThreadState* tstate, FILE* out, DepTree* dtree,
-                     size_t parent_index, prob_t* outside_probs,
-                     GuBuf* buf)
+print_abstract_head(EMThreadState* tstate, FILE* out, DepTree* dtree,
+                    prob_t* outside_probs)
 {
-	CONLLFields* fields =
-		buf ? gu_buf_index(buf, CONLLFields, dtree->index) : NULL;
-
-	fprintf(out, "%ld\t%s\t%s\t%s\t%s\t%s\t%ld\t%s\t%s\t%s\t",
-				 dtree->index+1,
-				 get_field(fields,1),
-				 get_field(fields,2),
-				 get_field(fields,3),
-				 get_field(fields,4),
-				 get_field(fields,5),
-				 parent_index,
-				 get_field(fields,7),
-				 get_field(fields,8),
-				 get_field(fields,9));
-
 	size_t n_choices = gu_buf_length(dtree->choices);
 	if (n_choices > 0) {
 		LemmaProb choices[n_choices];
@@ -1294,6 +1247,8 @@ print_annotated_head(EMThreadState* tstate, FILE* out, DepTree* dtree,
 
 		int first = 0;
 		prob_t best_prob;
+		if (n_choices > 1)
+			fputc('[', out);
 		for (size_t j = 0; j < n_choices; j++) {
 			switch (first) {
 			case 0:
@@ -1310,28 +1265,28 @@ print_annotated_head(EMThreadState* tstate, FILE* out, DepTree* dtree,
 			}
 			fputs(choices[j].fun, out);
 		}
+		if (n_choices > 1)
+			fputc(']', out);
+	} else {
+		fputs("[]", out);
 	}
-	fputc('\n', out);
 }
 
 static void
-print_annotated_conll_tree(EMThreadState* tstate,
-                           FILE* out, DepTree* dtree,
-                           size_t parent_index, prob_t* outside_probs,
-                           GuBuf* buf)
+print_abstract_tree(EMThreadState* tstate,
+                    FILE* out, DepTree* dtree,
+                    prob_t* outside_probs)
 {
 	size_t n_head_choices = gu_buf_length(dtree->choices);
 	prob_t *inside_probs = tstate->inside_probs[dtree->index];
 
-	bool print_head = true;
-	for (size_t i = 0; i < dtree->n_children; i++) {
-		if (print_head && dtree->child[i]->index > dtree->index) {
-			// print the row of the head
-			print_annotated_head(tstate, out, dtree,
-			                     parent_index, outside_probs, buf);
-			print_head = false;
-		}
+	if (dtree->n_children > 0)
+		fputc('(', out);
 
+	print_abstract_head(tstate, out, dtree,
+                        outside_probs);
+
+	for (size_t i = 0; i < dtree->n_children; i++) {
 		size_t n_child_choices =
 			gu_buf_length(dtree->child[i]->choices);
 		prob_t child_outside_probs[n_child_choices];
@@ -1366,21 +1321,17 @@ print_annotated_conll_tree(EMThreadState* tstate,
 			}
 		}
 
-		print_annotated_conll_tree(tstate, out, dtree->child[i],
-		                           dtree->index+1, child_outside_probs,
-		                           buf);
+		fputc(' ', out);
+		print_abstract_tree(tstate, out, dtree->child[i],
+		                    child_outside_probs);
 	}
-	
-	if (print_head) {
-		// print the row of the head
-		print_annotated_head(tstate, out, dtree,
-		                     parent_index, outside_probs, buf);
-		print_head = false;
-	}
+
+	if (dtree->n_children > 0)
+		fputc(')', out);
 }
 
 int
-em_export_annotated_treebank(EMState* state, GuString fpath)
+em_export_abstract_treebank(EMState* state, GuString fpath)
 {
 	EMThreadState* tstate = &state->threads[0];
 
@@ -1408,8 +1359,7 @@ em_export_annotated_treebank(EMState* state, GuString fpath)
 			outside_probs[j] = -max;
 		}
 
-		GuBuf* buf = state->fields ? gu_buf_get(state->fields, GuBuf*, i) : NULL;
-		print_annotated_conll_tree(tstate, out, dtree, 0, outside_probs, buf);
+		print_abstract_tree(tstate, out, dtree, outside_probs);
 		fprintf(out, "\n");
 	}
 

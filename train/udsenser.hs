@@ -12,7 +12,7 @@ main = do
   args <- getArgs
   case args of
     (fpath:args) -> do gr <- status "Grammar Loading ..." (readPGF fpath)
-                       withEMState gr $ \st ->
+                       withEMState gr 1 0.002 $ \st ->
                          case args of
                            "train":args      -> training st "Parse.labels" args
                            "annotate":lang:_ -> annotation st (replaceExtension fpath "bigram.probs") lang
@@ -24,7 +24,6 @@ help = do
   putStrLn "        udsenser <grammar> annotate <concr syntax>"
 
 training st labels_fpath args = do
-  status "Unigram smoothing ..." $ setupUnigramSmoothing st 1
   status "Setup ranking ..." $ setupRankingCallbacks st default_ranking_callbacks
   config <- readDepConfig labels_fpath
   importTreebanks config args
@@ -49,7 +48,7 @@ training st labels_fpath args = do
 
     importExamples config st fpath = do
       ls <- fmap lines $ readFile fpath
-      sequence_ [addDepTree st dtree
+      sequence_ [addDepTree st dtree >> incrementCounts st e 0
                       | l <- ls,
                         take 4 l == "abs:",
                         Just e <- [readExpr (drop 4 l)],
@@ -58,7 +57,6 @@ training st labels_fpath args = do
 
 annotation st bigram_fpath lang = do
   status "Setup preserve trees ..." $ setupPreserveTrees st
-  status "Bigram smoothing ..." $ setupBigramSmoothing st 0.002
   status "Setup ranking ..." $ setupRankingCallbacks st default_ranking_callbacks
   status "Load model ..." $ loadModel st bigram_fpath
   status "Import data ..." $ do

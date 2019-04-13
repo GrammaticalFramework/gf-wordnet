@@ -1,8 +1,7 @@
 module EM(EMState(..), DepTree,
           withEMState,
-          setupBigramSmoothing, setupUnigramSmoothing,
           setupPreserveTrees, setupRankingCallbacks,
-          addDepTree, annotateDepTree,
+          addDepTree, incrementCounts, annotateDepTree,
           importTreebank, loadModel, exportAnnotatedTreebank,
           getBigramCount, getUnigramCount,
           step, dump) where
@@ -22,14 +21,12 @@ import Control.Exception
 
 newtype EMState = EMState (Ptr ())
 
-withEMState :: PGF -> (EMState -> IO a) -> IO  a
-withEMState gr = bracket (em_new_state (pgf gr)) (\st -> em_free_state st >> touchPGF gr)
+withEMState :: PGF -> Float -> Float -> (EMState -> IO a) -> IO  a
+withEMState gr usmooth bsmooth = bracket (em_new_state (pgf gr) usmooth bsmooth) (\st -> em_free_state st >> touchPGF gr)
 
-foreign import ccall em_new_state :: Ptr a -> IO EMState
+foreign import ccall em_new_state :: Ptr a -> Float -> Float -> IO EMState
 foreign import ccall em_free_state :: EMState -> IO ()
 
-foreign import ccall "em_setup_bigram_smoothing" setupBigramSmoothing :: EMState -> Float -> IO ()
-foreign import ccall "em_setup_unigram_smoothing" setupUnigramSmoothing :: EMState -> Float -> IO ()
 foreign import ccall "em_setup_preserve_trees" setupPreserveTrees :: EMState -> IO ()
 
 addDepTree :: EMState -> Tree (Fun,String) -> IO ()
@@ -53,6 +50,19 @@ addDepTree st t = do
 
 foreign import ccall em_new_dep_tree :: EMState -> DepTree -> CString -> CString -> CSize -> CSize -> IO DepTree
 foreign import ccall em_add_dep_tree :: EMState -> DepTree -> IO ()
+
+incrementCounts :: EMState -> Expr -> Int -> IO ()
+incrementCounts state e index = traverse e
+  where
+    traverse e =
+      case unApp e of
+        Just (fun,es) 
+          | not (null es) -> do withCString fun $ \cfun ->
+                                  em_increment_count state cfun (fromIntegral index)
+                                mapM_ traverse es
+        _                 -> return ()
+
+foreign import ccall "em_increment_count" em_increment_count :: EMState -> CString -> CSize -> IO ()
 
 annotateDepTree :: EMState -> DepTree -> IO [(CSize, Fun, Float)]
 annotateDepTree state dtree =

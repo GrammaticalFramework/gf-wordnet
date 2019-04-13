@@ -38,7 +38,7 @@ typedef void (*EMRankingCallback)(SenseChoice* choice, GuBuf* buf, DepTree* dtre
 typedef struct EMState EMState;
 
 EMState*
-em_new_state(PgfPGF* pgf);
+em_new_state(PgfPGF* pgf, prob_t unigram_smoothing, prob_t bigram_smoothing);
 
 void
 em_free_state(EMState* state);
@@ -55,6 +55,9 @@ em_new_dep_tree(EMState* state, DepTree* parent, PgfCId fun, GuString lbl,
 
 void
 em_add_dep_tree(EMState* state, DepTree* dtree);
+
+void
+em_increment_count(EMState* state, PgfCId fun, size_t index);
 
 int
 em_import_treebank(EMState* state, GuString fpath, GuString lang);

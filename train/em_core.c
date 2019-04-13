@@ -88,8 +88,45 @@ print_tree(DepTree* dtree)
 static void *
 em_learner(void *arguments);
 
+typedef struct {
+	GuMapItor clo;
+	EMState *state;
+} FunctionItor;
+
+static void
+function_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
+{
+	FunctionItor *self = gu_container(clo, FunctionItor, clo);
+
+	PgfCId fun = (PgfCId) key;
+
+	FunStats **stats =
+		gu_map_insert(self->state->stats, fun);
+	if (*stats == NULL) {
+		PgfType* ty = pgf_function_type(self->state->pgf, fun);
+
+		*stats = gu_new(FunStats, self->state->pool);
+		(*stats)->fun = fun;
+		(*stats)->pc.prob  =
+			pgf_category_prob(self->state->pgf, ty->cid) +
+			pgf_function_prob(self->state->pgf, fun);
+
+		(*stats)->mods =
+			gu_new_string_map(ProbCount*, NULL, self->state->pool);
+
+		for (size_t i = 0; i < NUM_THREADS; i++) {
+			(*stats)->pc.count[i] = INFINITY;
+		}
+
+		if (gu_seq_length(ty->hypos) == 0)
+			gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
+
+		self->state->unigram_total += exp(-self->state->unigram_smoothing);
+	}	
+}
+
 EMState*
-em_new_state(PgfPGF* pgf)
+em_new_state(PgfPGF* pgf, prob_t unigram_smoothing, prob_t bigram_smoothing)
 {
 	// We use page pools to improve locality.
 	// For large corpora there will be a lot of swapping
@@ -106,13 +143,18 @@ em_new_state(PgfPGF* pgf)
 	state->max_tree_choices = 0;
 	state->bigram_total = 0;
 	state->unigram_total = 0;
-	state->bigram_smoothing = INFINITY;
-	state->unigram_smoothing = INFINITY;
+	state->unigram_smoothing = -log(unigram_smoothing);
+	state->bigram_smoothing  = -log(bigram_smoothing);
 	state->pcs = gu_new_buf(ProbCount*, pool);
 
 	state->root_choices = gu_new_buf(SenseChoice, pool);
 	state->callbacks = gu_new_string_map(EMRankingCallback, &gu_null_struct, pool);
 	state->pgf = pgf;
+
+	FunctionItor itor;
+	itor.clo.fn  = function_iter;
+	itor.state = state;
+	pgf_iter_functions(state->pgf, &itor.clo, NULL);
 
 	state->finished = false;
 	state->index1 = 0;
@@ -215,59 +257,6 @@ em_setup_preserve_trees(EMState *state)
 	state->fields = gu_new_buf(GuBuf*, state->pool);
 }
 
-typedef struct {
-	GuMapItor clo;
-	size_t count;
-	EMState *state;
-} SmoothingItor;
-
-static void
-smoothing_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
-{
-	SmoothingItor *self = gu_container(clo, SmoothingItor, clo);
-
-	PgfCId fun = (PgfCId) key;
-
-	FunStats **stats =
-		gu_map_insert(self->state->stats, fun);
-	if (*stats == NULL) {
-		*stats = gu_new(FunStats, self->state->pool);
-		(*stats)->fun = fun;
-		(*stats)->pc.prob  = 0;
-		(*stats)->mods =
-			gu_new_string_map(ProbCount*, NULL, self->state->pool);
-
-		(*stats)->pc.count[0] = self->state->unigram_smoothing;
-		for (size_t i = 1; i < NUM_THREADS; i++) {
-			(*stats)->pc.count[i] = INFINITY;
-		}
-
-		gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
-	}
-	self->count++;
-}
-
-void
-em_setup_bigram_smoothing(EMState *state, prob_t prob)
-{
-	state->bigram_smoothing = -log(prob);
-}
-
-void
-em_setup_unigram_smoothing(EMState *state, prob_t count)
-{
-	state->unigram_smoothing = -log(count);
-
-	SmoothingItor itor;
-	itor.clo.fn  = smoothing_iter;
-	itor.count   = 0;
-	itor.state = state;
-	pgf_iter_functions(state->pgf, &itor.clo, NULL);
-
-	state->unigram_total +=
-		itor.count*exp(-state->unigram_smoothing);
-}
-
 static void
 lookup_callback(PgfMorphoCallback* callback,
 	            PgfCId lemma, GuString analysis, prob_t prob,
@@ -289,22 +278,9 @@ lookup_callback(PgfMorphoCallback* callback,
 		SenseChoice* choice = gu_buf_extend(self->choices);
 		choice->prob_counts = NULL;
 
-		FunStats** stats =
-			gu_map_insert(self->state->stats, lemma);
-		if (*stats == NULL) {
-			*stats = gu_new(FunStats, self->state->pool);
-			(*stats)->fun = lemma;
-			(*stats)->pc.prob  = 0;
-			(*stats)->mods =
-				gu_new_string_map(ProbCount*, NULL, self->state->pool);
-
-			for (size_t i = 0; i < NUM_THREADS; i++) {
-				(*stats)->pc.count[i] = INFINITY;
-			}
-
-			gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
-		}
-		choice->stats = *stats;
+		choice->stats =
+			gu_map_get(self->state->stats, lemma, FunStats*);
+		gu_assert(choice->stats != NULL);
 	}
 }
 
@@ -511,20 +487,9 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 
 	SenseChoice* choice = gu_buf_extend(dtree->choices);
 
-	FunStats** stats =
-		gu_map_insert(state->stats, fun);
-	if (*stats == NULL) {
-		*stats = gu_new(FunStats, state->pool);
-		(*stats)->fun = fun;
-		(*stats)->pc.prob  = 0;
-		(*stats)->mods =
-			gu_new_string_map(ProbCount*, NULL, state->pool);
-		for (size_t i = 0; i < NUM_THREADS; i++) {
-			(*stats)->pc.count[i] = INFINITY;
-		}
-		gu_buf_push(state->pcs, ProbCount*, &(*stats)->pc);
-	}
-	choice->stats = *stats;
+	choice->stats =
+		gu_map_get(state->stats, fun, FunStats*);
+	assert(choice->stats != NULL);
 
 	choice->stats->pc.count[0] =
 		log_add(choice->stats->pc.count[0],0);
@@ -599,6 +564,15 @@ void
 em_add_dep_tree(EMState* state, DepTree* dtree)
 {
 	gu_buf_push(state->dtrees, DepTree*, dtree);
+}
+
+void
+em_increment_count(EMState* state, PgfCId fun, size_t index)
+{
+	FunStats* stats =
+		gu_map_get(state->stats, fun, FunStats*);
+	assert (stats != NULL);
+	stats->pc.prob = log_add(stats->pc.prob, 0);
 }
 
 #ifndef DISABLE_LZMA
@@ -811,33 +785,6 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 	return 1;
 }
 
-static void
-function_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
-{
-	SmoothingItor *self = gu_container(clo, SmoothingItor, clo);
-
-	PgfCId fun = (PgfCId) key;
-
-	FunStats **stats =
-		gu_map_insert(self->state->stats, fun);
-	if (*stats == NULL) {
-		prob_t prob =
-			pgf_category_prob(self->state->pgf,
-			                  pgf_function_type(self->state->pgf, fun)->cid) +
-			pgf_function_prob(self->state->pgf, fun);
-
-		*stats = gu_new(FunStats, self->state->pool);
-		(*stats)->fun = fun;
-		(*stats)->pc.prob  = prob;
-		(*stats)->mods =
-			gu_new_string_map(ProbCount*, NULL, self->state->pool);
-		for (size_t i = 0; i < NUM_THREADS; i++) {
-			(*stats)->pc.count[i] = INFINITY;
-		}
-		gu_buf_push(self->state->pcs, ProbCount*, &(*stats)->pc);
-	}
-}
-
 int
 em_load_model(EMState* state, GuString fpath)
 {
@@ -846,11 +793,6 @@ em_load_model(EMState* state, GuString fpath)
 		fprintf(stderr, "Error opening %s\n", fpath);
 		return 0;
 	}
-
-	SmoothingItor itor;
-	itor.clo.fn = function_iter;
-	itor.state  = state;
-	pgf_iter_functions(state->pgf, &itor.clo, NULL);
 
 	char line[2048];
 	while (fgets(line, sizeof(line), inp)) {

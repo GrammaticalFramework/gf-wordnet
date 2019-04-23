@@ -23683,7 +23683,7 @@ cyclostyle_V2	cyclostyle_V2
 cyclothymia_N	cyclothymia_N
 cyclothymic_A	cyclothymic_A
 cyclotron_N	cyclotron_N
-cyder_N	cyder_N
+cyder_N	cider_N
 cygnet_N	cygnet_N
 cylinder_N	cylinder_1_N
 cylinder_N	cylinder_2_N
@@ -35913,7 +35913,6 @@ flank_N	flank_2_N
 flank_N	flank_3_N
 flank_N	flank_4_N
 flank_V	flank_V
-flank_V2	flank_V2
 flanker_N	flanker_1_N
 flanker_N	flanker_2_N
 flannel_N	flannel_1_N
@@ -36507,7 +36506,6 @@ flummery_N	flummery_2_N
 flummox_V2	flummox_V2
 flunitrazepan_N	flunitrazepan_N
 flunk_V	flunk_V
-flunk_V2	flunk_V2
 flunkey_N	flunkey_1_N
 flunkey_N	flunkey_2_N
 flunky_N	flunky_1_N
@@ -38091,7 +38089,7 @@ frown_V	frown_V
 frown_on_V2	frown_on_V2
 frowningly_Adv	frowningly_Adv
 frowsty_A	frowsty_A
-frowsy_A	frowsy_A
+frowsy_A	frowzy_A
 frowzy_A	frowzy_A
 frozen_A	frozen_1_A
 frozen_A	frozen_2_A
@@ -38818,7 +38816,6 @@ gangplank_N	gangplank_N
 gangrene_N	gangrene_1_N
 gangrene_N	gangrene_2_N
 gangrene_V	gangrene_V
-gangrene_V2	gangrene_V2
 gangrenous_A	gangrenous_A
 gangsaw_N	gangsaw_N
 gangsta_N	gangsta_N
@@ -39335,7 +39332,7 @@ gentry_N	gentry_N
 genuflect_V	genuflect_1_V
 genuflect_V	genuflect_2_V
 genuflection_N	genuflection_N
-genuflexion_N	genuflexion_N
+genuflexion_N	genuflection_N
 genuine_A	genuine_1_A
 genuine_A	genuine_2_A
 genuine_A	genuine_3_A
@@ -40578,7 +40575,7 @@ going_N	going_2_N
 going_N	going_3_N
 going_over_N	going_over_1_N
 going_over_N	going_over_2_N
-goiter_N	goiter_N
+goiter_N	goitre_N
 goitre_N	goitre_N
 goitrogen_N	goitrogen_N
 golbourne_PN	golbourne_PN
@@ -40663,7 +40660,7 @@ goniometer_N	goniometer_N
 gonion_N	gonion_N
 gonioscopy_N	gonioscopy_N
 gonococcus_N	gonococcus_N
-gonorrhea_N	gonorrhea_N
+gonorrhea_N	gonorrhoea_N
 gonorrhoea_N	gonorrhoea_N
 goo_N	goo_N
 good_A	good_1_A
@@ -40857,10 +40854,9 @@ gown_V2	gown_V2
 gp_N	gp_N
 grab_N	grab_1_N
 grab_N	grab_2_N
-grab_V	grab_V
 grab_V2	grab_1_V2
 grab_V2	grab_2_V2
-grab_V2	grab_3_V2
+grab_V2	grab_for_V2
 grab_V2	grab_4_V2
 grab_V2	grab_5_V2
 grab_V2	grab_6_V2
@@ -41810,7 +41806,7 @@ guenon_N	guenon_N
 guerdon_N	guerdon_N
 guereza_N	guereza_N
 gueridon_N	gueridon_N
-guerilla_N	guerilla_N
+guerilla_N	guerrilla_N
 guerrilla_N	guerrilla_N
 guess_N	guess_1_N
 guess_N	guess_2_N
@@ -42387,7 +42383,7 @@ hall_N	hall_13_N
 hall_stand_N	hall_stand_N
 halle_PN	halle_PN
 hallelujah_N	hallelujah_N
-halliard_N	halliard_N
+halliard_N	halyard_N
 hallmark_N	hallmark_1_N
 hallmark_N	hallmark_2_N
 halloo_N	halloo_N
@@ -51915,8 +51911,7 @@ kärkölä_PN	kärkölä_PN
 kärsämäki_PN	kärsämäki_PN
 köyliö_PN	köyliö_PN
 l_plate_N	l_plate_N
-la_N	la_1_N
-la_N	la_3_N
+la_N	la_N
 la_PN	la_PN
 la_di_da_A	la_di_da_A
 la_habana_PN	la_habana_PN

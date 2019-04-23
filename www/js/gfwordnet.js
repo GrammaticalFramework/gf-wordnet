@@ -317,14 +317,6 @@ gfwordnet.onclick_cell = function (cell) {
 	if (index == 0) {
 		var lex_def = this.lex_ids[lex_id];
 
-		popup = node("div",{},[]);
-		details.appendChild(popup);
-
-		if ("context" in lex_def)
-			bind(extract_context,{lex_id: lex_id, popup: popup})(lex_def);
-		else
-			gfwordnet.sense_call("?context_id="+encodeURIComponent(lex_id),bind(extract_context,{lex_id: lex_id, popup: popup}),errcont);	
-
 		var row = [];
 		if (Object.keys(lex_def.synonyms).length > 1) {
 			details.appendChild(node("h1",{},[text("Synonyms")]));
@@ -376,6 +368,14 @@ gfwordnet.onclick_cell = function (cell) {
 				gfwordnet.grammar_call("?command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header),errcont);
 			}
 		}
+		
+		popup = node("div",{},[]);
+		details.appendChild(popup);
+
+		if ("context" in lex_def)
+			bind(extract_context,{lex_id: lex_id, popup: popup})(lex_def);
+		else
+			gfwordnet.sense_call("?context_id="+encodeURIComponent(lex_id),bind(extract_context,{lex_id: lex_id, popup: popup}),errcont);	
 	} else {
 		var s   = lex_id.split("_");
 		var cat = s[s.length-1];

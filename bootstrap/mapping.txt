@@ -8672,8 +8672,7 @@ benin_PN	benin_PN
 beninese_A	beninese_A
 beninese_N	beninese_N
 benison_N	benison_N
-benjamin_PN	benjamin_1_PN
-benjamin_PN	benjamin_2_PN
+benjamin_PN	benjamin_PN
 bennet_N	bennet_1_N
 bennet_N	bennet_2_N
 benny_PN	benny_1_PN
@@ -9556,7 +9555,6 @@ blackbird_N	blackbird_1_N
 blackbird_N	blackbird_2_N
 blackboard_N	blackboard_N
 blackbuck_N	blackbuck_N
-blackburn_PN	blackburn_PN
 blackcap_N	blackcap_1_N
 blackcap_N	blackcap_2_N
 blackcap_N	blackcap_3_N
@@ -14351,8 +14349,7 @@ carob_N	carob_3_N
 caroche_N	caroche_N
 carol_N	carol_1_N
 carol_N	carol_2_N
-carol_PN	carol_1_PN
-carol_PN	carol_2_PN
+carol_PN	carol_PN
 carol_V2	carol_V2
 carole_PN	carole_PN
 caroler_N	caroler_N
@@ -24322,12 +24319,7 @@ deal_N	deal_6_N
 deal_N	deal_7_N
 deal_N	deal_8_N
 deal_N	deal_9_N
-deal_PN	deal_2_PN
-deal_PN	deal_4_PN
-deal_PN	deal_5_PN
-deal_PN	deal_6_PN
-deal_PN	deal_8_PN
-deal_PN	deal_9_PN
+deal_PN	deal_PN
 deal_V	deal_with_V2
 deal_V	deal_3_V
 deal_V	deal_6_V
@@ -34994,7 +34986,7 @@ fetterbush_N	fetterbush_1_N
 fetterbush_N	fetterbush_2_N
 fettle_N	fettle_N
 fettuccine_N	fettuccine_1_N
-fetus_N	fetus_N
+fetus_N	foetus_N
 feud_N	feud_N
 feudal_A	feudal_A
 feudalism_N	feudalism_N
@@ -36125,10 +36117,7 @@ fleet_N	fleet_1_N
 fleet_N	fleet_2_N
 fleet_N	fleet_3_N
 fleet_N	fleet_4_N
-fleet_PN	fleet_1_PN
-fleet_PN	fleet_2_PN
-fleet_PN	fleet_3_PN
-fleet_PN	fleet_4_PN
+fleet_PN	fleet_PN
 fleet_street_PN	fleet_street_1_PN
 fleet_street_PN	fleet_street_2_PN
 fleeting_A	fleeting_A
@@ -41107,12 +41096,10 @@ grass_N	grass_4_N
 grass_N	grass_5_N
 grass_V	grass_1_V
 grass_V	grass_3_V
-grass_V	grass_4_V
 grass_V	grass_5_V
 grass_V2	grass_1_V2
 grass_V2	grass_2_V2
 grass_V2	grass_3_V2
-grass_V2	grass_4_V2
 grass_V2	grass_5_V2
 grass_V2	grass_6_V2
 grass_on_V2	grass_on_V2
@@ -46108,7 +46095,6 @@ ice_N	ice_5_N
 ice_N	ice_6_N
 ice_N	ice_7_N
 ice_N	ice_8_N
-ice_V	ice_V
 ice_V2	ice_1_V2
 ice_V2	ice_2_V2
 ice_V2	ice_3_V2
@@ -46889,7 +46875,7 @@ impossible_A	impossible_2_A
 impossible_A	impossible_3_A
 impossible_N	impossible_N
 imposter_N	imposter_N
-impostor_N	impostor_N
+impostor_N	imposter_N
 imposture_N	imposture_N
 impotence_N	impotence_1_N
 impotence_N	impotence_2_N
@@ -55538,7 +55524,7 @@ lunisolar_A	lunisolar_A
 lunula_N	lunula_1_N
 lunula_N	lunula_2_N
 luopioinen_PN	luopioinen_PN
-lupin_N	lupin_N
+lupin_N	lupine_N
 lupine_A	lupine_A
 lupine_N	lupine_N
 lupus_N	lupus_1_N
@@ -62369,7 +62355,7 @@ nitrofurantoin_N	nitrofurantoin_N
 nitrogen_N	nitrogen_N
 nitrogenase_N	nitrogenase_N
 nitrogenous_A	nitrogenous_A
-nitroglycerin_N	nitroglycerin_N
+nitroglycerin_N	nitroglycerine_N
 nitroglycerine_N	nitroglycerine_N
 nitrosobacteria_N	nitrosobacteria_N
 nitrous_A	nitrous_A
@@ -68038,11 +68024,11 @@ percipient_A	percipient_A
 percolate_N	percolate_N
 percolate_V	percolate_2_V
 percolate_V	percolate_4_V
+percolate_V	percolate_6_V
 percolate_V2	percolate_1_V2
 percolate_V2	percolate_3_V2
 percolate_V2	percolate_4_V2
 percolate_V2	percolate_5_V2
-percolate_V2	percolate_6_V2
 percolation_N	percolation_1_N
 percolation_N	percolation_2_N
 percolation_N	percolation_3_N
@@ -68192,7 +68178,6 @@ peripteral_A	peripteral_A
 periscope_N	periscope_N
 periselene_N	periselene_N
 perish_V	perish_V
-perish_V2	perish_V2
 perishability_N	perishability_N
 perishable_A	perishable_A
 perishable_N	perishable_N
@@ -68219,9 +68204,9 @@ perjure_V2	perjure_V2
 perjurer_N	perjurer_N
 perjury_N	perjury_N
 perk_N	perk_N
-perk_V2	perk_V2
-perk_up_V2	perk_up_1_V2
-perk_up_V2	perk_up_2_V2
+perk_V2	perk_V
+perk_up_V2	perk_up_V
+perk_up_V2	perk_up_V2
 perkiness_N	perkiness_1_N
 perkiness_N	perkiness_2_N
 perky_A	perky_A
@@ -69015,6 +69000,7 @@ pick_up_N	pick_up_7_N
 pick_up_N	pick_up_8_N
 pick_up_N	pick_up_9_N
 pick_up_V	pick_up_1_V
+pick_up_V	pick_up_5_V
 pick_up_V	pick_up_13_V
 pick_up_V	pick_up_15_V
 pick_up_V2	pick_up_1_V2
@@ -69031,7 +69017,6 @@ pick_up_V2	pick_up_12_V2
 pick_up_V2	pick_up_14_V2
 pick_up_V2	pick_up_15_V2
 pick_up_V2	pick_up_16_V2
-pick_up_after_V2	pick_up_after_V2
 pick_up_on_V2	pick_up_on_V2
 pick_yourself_up_V	pick_yourself_up_V
 pickaback_Adv	pickaback_1_Adv
@@ -77185,7 +77170,6 @@ refill_N	refill_1_N
 refill_N	refill_2_N
 refill_V2	refill_V2
 refilling_N	refilling_N
-refinance_V	refinance_V
 refinance_V2	refinance_V2
 refine_V2	refine_1_V2
 refine_V2	refine_2_V2
@@ -81573,9 +81557,7 @@ sallowness_N	sallowness_N
 sally_N	sally_1_N
 sally_N	sally_2_N
 sally_N	sally_3_N
-sally_PN	sally_1_PN
-sally_PN	sally_2_PN
-sally_PN	sally_3_PN
+sally_PN	sally_PN
 sally_V	sally_V
 sally_forth_V	sally_forth_V
 sally_out_V	sally_out_1_V
@@ -103309,8 +103291,8 @@ vapid_A	vapid_1_A
 vapid_A	vapid_2_A
 vapidity_N	vapidity_N
 vapidness_N	vapidness_N
-vapor_N	vapor_1_N
-vapor_N	vapor_2_N
+vapor_N	vapour_1_N
+vapor_N	vapour_2_N
 vaporific_A	vaporific_1_A
 vaporific_A	vaporific_2_A
 vaporization_N	vaporization_1_N
@@ -107137,8 +107119,8 @@ work_over_V2	work_over_V2
 work_study_N	work_study_N
 work_through_V2	work_through_V2
 work_together_V	work_together_V
-work_up_V	work_up_V
-work_up_V	work_up_V2
+work_up_V	work_up_1_V2
+work_up_V	work_up_2_V2
 work_V2	work_way_through_V2
 workable_A	workable_A
 workaday_A	workaday_A

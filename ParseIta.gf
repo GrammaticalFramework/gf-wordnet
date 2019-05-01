@@ -1,4 +1,4 @@
---# -path=.:../abstract:../common:../api:lib/src/finnish
+--# -path=.:../abstract:../common:../api
 concrete ParseIta of Parse =
   NounIta - [PPartNP, UseN2, RelNP, DetNP],
   VerbIta - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP],

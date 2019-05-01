@@ -4,12 +4,21 @@ import PGF2
 import Data.Maybe
 import qualified Data.Map.Strict as Map
 import Data.List
+import Data.Char
 import Database.SQLite.Simple
 import System.IO
+import System.Environment
 import Text.EditDistance -- pkg edit-distance
 import Transliteration
+import Morpho
 
 main = do
+  args <- getArgs
+  case args of
+    []     -> predictions
+    [lang] -> apply lang
+
+predictions = do
   conn <- status "Open data/panlex.db" $ open "data/panlex.db"
   gr <- status "Read Parse.pgf" $ readPGF "Parse.pgf"
   let langs = Map.toList (languages gr)
@@ -83,3 +92,28 @@ langvars =
   ,("ParseSwe",691)
   ,("ParseTur",738)
   ]
+
+
+apply lang = do
+  dict <- fmap (Map.fromList . concatMap (toPair lang . tsv) . lines) $ readFile "predictions.tsv"
+  let fname = ("WordNet"++(toUpper (head lang):tail lang))
+  ls <- fmap lines $ readFile (fname++".gf")
+  morphoMap <- readMorpho lang
+  writeFile (fname++"2.gf") (unlines (map (annotate morphoMap dict) ls))
+
+toPair lang [id,cnc,w,_,_,_]
+  | cnc == "Parse"++(toUpper (head lang):tail lang) = [(id,[w])]
+  | otherwise                                       = []
+
+annotate morphoMap dict l =
+  case words l of
+    ("lin":id:_) -> case Map.lookup id dict of
+                      Just t  -> "lin "++id++" = "++prediction2gf "guess" morphoMap dict id
+                      Nothing -> l
+    _                         -> l
+
+tsv :: String -> [String]
+tsv "" = []
+tsv cs =
+  let (x,cs1) = break (=='\t') cs
+  in x : if null cs1 then [] else tsv (tail cs1)

@@ -37638,8 +37638,6 @@ frankfurter_N	frankfurter_N
 frankie_PN	frankie_PN
 frankincense_N	frankincense_N
 franking_machine_N	franking_machine_N
-franklin_N	franklin_1_N
-franklin_N	franklin_2_N
 franklin_N	franklin_3_N
 frankly_Adv	frankly_Adv
 frankness_N	frankness_1_N
@@ -71113,7 +71111,6 @@ poplin_N	poplin_N
 popliteal_A	popliteal_A
 popover_N	popover_N
 poppa_N	poppa_N
-popper_N	popper_1_N
 popper_N	popper_2_N
 popper_N	popper_3_N
 poppet_N	poppet_N
@@ -84775,7 +84772,6 @@ shape_N	shape_3_N
 shape_N	shape_4_N
 shape_N	shape_5_N
 shape_N	shape_6_N
-shape_N	shape_7_N
 shape_N	shape_8_N
 shape_V2	shape_1_V2
 shape_V2	shape_2_V2
@@ -97220,7 +97216,7 @@ tin_V2	tin_1_V2
 tin_V2	tin_2_V2
 tin_V2	tin_3_V2
 tin_opener_N	tin_opener_N
-tin_pan_alley_N	tin_pan_alley_N
+tin_pan_alley_N	tin_pan_alley_PN
 tin_plate_N	tin_plate_1_N
 tina_PN	tina_PN
 tinamou_N	tinamou_N

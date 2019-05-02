@@ -82,10 +82,12 @@ status msg f = do
 langvars :: [(ConcName,Int)]
 langvars =
   [("ParseBul",93)
+  ,("ParseCat",101)
   ,("ParseChi",1627)
   ,("ParseEng",187)
   ,("ParseEst",190)
   ,("ParseFin",204)
+  ,("ParseIta",304)
   ,("ParsePor",579)
   ,("ParseSlv",649)
   ,("ParseSpa",666)

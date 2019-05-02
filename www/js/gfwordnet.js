@@ -55,10 +55,10 @@ gfwordnet.search = function (selection, input, result) {
 				for (var lang in gfwordnet.selection.langs) {
 					if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs)) {
 						checked = false;
-					} else if (!gfwordnet.lex_ids[lex_id].lex_defs[lang][1]) {
+					} else if (gfwordnet.lex_ids[lex_id].lex_defs[lang][1] != "checked") {
 						checked = false;
 						var td = row[gfwordnet.selection.langs[lang].index];
-						td.classList.add("unchecked");
+						td.classList.add(gfwordnet.lex_ids[lex_id].lex_defs[lang][1]);
 						if (gfwordnet.can_check)
 							td.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					}
@@ -336,8 +336,8 @@ gfwordnet.onclick_cell = function (cell) {
 					var lang = gfwordnet.selection.langs_list[i];
 					var cell = td([]);
 					if (lang in lex_def.synonyms[synonym]) {
-						if (!lex_def.synonyms[synonym][lang][1]) {
-							cell.classList.add("unchecked");
+						if (lex_def.synonyms[synonym][lang][1] != "Checked") {
+							cell.classList.add(lex_def.synonyms[synonym][lang][1]);
 							if (gfwordnet.can_check)
 								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 							checked = false;
@@ -383,7 +383,7 @@ gfwordnet.onclick_cell = function (cell) {
 	}
 }
 gfwordnet.onmouseover_cell = function(event) {
-	if (!event.target.classList.contains("unchecked"))
+	if (!event.target.classList.contains("unchecked") && !event.target.classList.contains("guessed"))
 		return;
 
 	if (gfwordnet.popup != null) {
@@ -426,12 +426,14 @@ gfwordnet.onclick_check = function (cell) {
 		def[1] = true;
 		cell.removeEventListener("mouseover", gfwordnet.onmouseover_cell);
 		cell.classList.remove("unchecked");
+		cell.classList.remove("guessed");
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 		gfwordnet.popup = null;
 
 		var checked = true;
 		for (var lang in gfwordnet.selection.langs) {
-			if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs) || !gfwordnet.lex_ids[lex_id].lex_defs[lang][1]) {
+			if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs) || 
+			    gfwordnet.lex_ids[lex_id].lex_defs[lang][1] != "checked") {
 				checked = false;
 				break;
 			}

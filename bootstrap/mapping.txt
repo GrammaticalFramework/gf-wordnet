@@ -16898,8 +16898,8 @@ cincinnati_PN	cincinnati_PN
 cincture_N	cincture_N
 cinder_N	cinder_N
 cinder_track_N	cinder_track_N
-cinderella_N	cinderella_1_N
-cinderella_N	cinderella_2_N
+cinderella_N	cinderella_N
+cinderella_N	cinderella_PN
 cinderford_PN	cinderford_PN
 cine_camera_N	cine_camera_N
 cine_film_N	cine_film_N
@@ -70487,8 +70487,6 @@ pneumothorax_N	pneumothorax_N
 png_N	png_N
 po_N	po_1_N
 po_N	po_2_N
-po_N	po_3_N
-po_N	po_4_N
 poach_V	poach_2_V
 poach_V2	poach_1_V2
 poacher_N	poacher_1_N

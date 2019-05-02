@@ -16,10 +16,14 @@ data Synset
       }
     deriving (Data,Ord,Eq,Show)
 
+data Status
+  = Guessed | Unchecked | Checked
+  deriving (Data,Show)
+
 data Lexeme
   = Lexeme 
       { lex_fun     :: Fun
-      , lex_defs    :: [(String,String,Bool)]
+      , lex_defs    :: [(String,String,Status)]
       , synset      :: Key Synset
       , domains     :: [String]
       , example_ids :: [Key Expr]

@@ -95,7 +95,7 @@ cgiMain db (cs,funs) = do
                   ]
 
         mkDefsObj lex_defs =
-          makeObj [(lang,showJSON (def,status)) | (lang,def,status) <- lex_defs]
+          makeObj [(lang,showJSON (def,map toLower (show status))) | (lang,def,status) <- lex_defs]
 
         getSense db senses lex_id = do
           lexemes <- select (fromIndexAt lexemes_fun lex_id)
@@ -164,7 +164,7 @@ cgiMain db (cs,funs) = do
       where
         updateDef lang def lexeme =
           lexeme{lex_defs=[if lang==lang' 
-                             then (lang,def,True)
+                             then (lang,def,Checked)
                              else (lang',def',st)
                               | (lang',def',st) <- lex_defs lexeme]}
 

@@ -88,8 +88,9 @@ parseAbsSyn l =
 parseCncSyn lang l =
   case words l of
     ("lin":fn:"=":ws) | null ws                  -> Nothing
-                      | last ws == "--unchecked" -> Just (fn,[(lang,def,False) | def <- strip (unwords (init ws))])
-                      | otherwise                -> Just (fn,[(lang,def,True ) | def <- strip (unwords ws)])
+                      | last ws == "--unchecked" -> Just (fn,[(lang,def,Unchecked) | def <- strip (unwords (init ws))])
+                      | last ws == "--guessed"   -> Just (fn,[(lang,def,Guessed)   | def <- strip (unwords (init ws))])
+                      | otherwise                -> Just (fn,[(lang,def,Checked)   | def <- strip (unwords ws)])
     _                                            -> Nothing
   where
     strip s = 

@@ -108,7 +108,7 @@ toPair lang [id,cnc,w,_,_,_]
 annotate morphoMap dict l =
   case words l of
     ("lin":id:_) -> case Map.lookup id dict of
-                      Just t  -> "lin "++id++" = "++prediction2gf "guess" morphoMap dict id
+                      Just t  -> "lin "++id++" = "++prediction2gf "guessed" morphoMap dict id
                       Nothing -> l
     _                         -> l
 

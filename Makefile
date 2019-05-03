@@ -47,11 +47,15 @@ endif
 
 
 all: build_dirs pull_checks Parse.pgf semantics.db build/SenseService
+ifneq ($(SERVER), NO)
 	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*"
+endif
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs $(patsubst %, build/%.pgf, $(LANGS))
+ifneq ($(SERVER), NO)
 	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
+endif
 
 build/Parse.noprobs.pgf: $(addprefix build/,$(addsuffix .pgf,$(TRAINING_LANGS)))
 	gf --make -name=Parse.noprobs --output-dir=build $^
@@ -79,12 +83,16 @@ build/train/Matching.hs: train/Matching.hsc train/em_core.h
 
 semantics.db: sense-service/glosses.hs WordNet.gf examples.txt embedding.txt
 	runghc -isense-service sense-service/glosses.hs
+ifneq ($(SERVER), NO)
 	scp semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
+endif
 
 build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs sense-service/URLEncoding.hs
 	ghc --make -odir build/sense-service -hidir build/sense-service -O2 -optl-static -optl-pthread $^ -o $@
+ifneq ($(SERVER), NO)
 	scp build/SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
 	ssh www.grammaticalframework.org "mv www/SenseService www/SenseService.fcgi"
+endif
 
 .PHONY: build_dirs, pull_checks
 
@@ -95,4 +103,6 @@ build_dirs:
 	mkdir -p build/sense-service
 
 pull_checks: $(patsubst Parse%, WordNet%.gf, $(LANGS)) build/SenseService
+ifneq ($(SERVER), NO)
 	ssh www.grammaticalframework.org ./www/SenseService.fcgi report | runghc check.hs -
+endif

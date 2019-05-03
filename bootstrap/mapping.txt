@@ -90761,7 +90761,6 @@ staurikosaur_N	staurikosaur_1_N
 stave_N	stave_1_N
 stave_N	stave_2_N
 stave_N	stave_3_N
-stave_V	stave_2_V
 stave_V2	stave_1_V2
 stave_V2	stave_2_V2
 stave_in_V2	stave_in_1_V2

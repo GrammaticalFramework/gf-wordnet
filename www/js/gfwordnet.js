@@ -423,7 +423,7 @@ gfwordnet.onclick_check = function (cell) {
 
 	function errcont(text,code) { }
 	function extract_confirm() {
-		def[1] = true;
+		def[1] = "checked";
 		cell.removeEventListener("mouseover", gfwordnet.onmouseover_cell);
 		cell.classList.remove("unchecked");
 		cell.classList.remove("guessed");

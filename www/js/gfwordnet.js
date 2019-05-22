@@ -13,9 +13,12 @@ gfwordnet.sense_call=function(querystring,cont,errcont) {
 }
 
 gfwordnet.initialize = function () {
+	var url = new URL(window.location.href);
+
 	this.lex_ids   = {};
-	this.can_check = window.location.href.endsWith("?can_check");
-	this.selection = {};
+	this.can_check = url.searchParams.get("can_check") != null;
+	this.can_select= url.searchParams.get("can_select") != null;
+	this.selection = null;
 	this.popup     = null;
 }
 
@@ -42,8 +45,11 @@ gfwordnet.search = function (selection, input, result) {
 	}
 	function extract_senses(senses) {
 		var index = 1;
+
+		var tbody = result.getElementsByTagName("TBODY")[0];
+
 		for (var i in senses) {
-			result.appendChild(tr(node("td",{colspan: 2 + selection.langs_list.length},[text(index+". "+senses[i].gloss)]))); index++;
+			tbody.appendChild(tr(node("td",{colspan: 2 + selection.langs_list.length + (gfwordnet.can_select ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
 				gfwordnet.lex_ids[lex_id].synonyms = senses[i].synset;
@@ -70,7 +76,7 @@ gfwordnet.search = function (selection, input, result) {
 					icon = node("img", {src: "checked_plus.png", onclick: "gfwordnet.onclick_minus(event,this)"});
 				}
 				row[0].insertBefore(icon, row[0].firstChild);
-				result.appendChild(tr(row));
+				tbody.appendChild(tr(row));
 			}
 
 			for (var syn_id in senses[i].synset) {
@@ -82,20 +88,33 @@ gfwordnet.search = function (selection, input, result) {
 				}
 			}
 		}
+
+		var tfoot = node("tfoot", {});
+		result.appendChild(tfoot);
 	}
 	function extract_search(lemmas) {
 		gfwordnet.lex_ids = {};
-		clear(result);
 
 		var rows        = {};
 		var lexical_ids = ""
-		
-		var row = [th(text("Abstract"))];
-		for (var lang in selection.langs_list) {
-			row.push(th(text(selection.langs[selection.langs_list[lang]].name)));
+
+		if (new_selection) {
+			var thead = result.getElementsByTagName("THEAD")[0];
+			clear(thead);
+
+			var row = [th(text("Abstract"))];
+			for (var lang in selection.langs_list) {
+				row.push(th(text(selection.langs[selection.langs_list[lang]].name)));
+			}
+			row.push(node("th",{style: "width: 10px; font-style: italic"},[text("f")]));
+			if (gfwordnet.can_select) {
+				row.push(th([]));
+			}
+			thead.appendChild(tr(row));
 		}
-		row.push(node("th",{style: "width: 10px; font-style: italic"},[text("f")]));
-		result.appendChild(tr(row));
+
+		var tbody = result.getElementsByTagName("TBODY")[0];
+		clear(tbody);
 
 		var min = Number.MAX_VALUE;
 		var max = Number.MIN_VALUE;
@@ -120,6 +139,9 @@ gfwordnet.search = function (selection, input, result) {
 					rank--;
 				}
 				row.push(rank_bar);
+				if (gfwordnet.can_select) {
+					row.push(td([node("button",{type: "checkbox", onclick: "gfwordnet.onclick_select(this.parentNode.parentNode)"},[text("\u25BC")])]));
+				}
 				rows[lemma] = row;
 				lexical_ids = lexical_ids+" "+lemma;
 
@@ -130,8 +152,15 @@ gfwordnet.search = function (selection, input, result) {
 		gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(extract_senses,rows),errcont);
     }
 
+	var new_selection = this.selection == null || !this.selection.isEqual(selection);
 	this.selection = selection;
+
 	gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+selection.current,extract_search,errcont);
+
+	if (new_selection) {
+		var tfoot = result.getElementsByTagName("TFOOT")[0];
+		clear(tfoot);
+	}
 }
 gfwordnet.init_wordcloud = function(canvas, context_size_range) {
 	var context      = this.lex_ids[canvas.lex_id].context;
@@ -294,7 +323,7 @@ gfwordnet.onclick_cell = function (cell) {
 	    cell.parentNode.nextSibling.firstChild == null ||
 	    cell.parentNode.nextSibling.firstChild.className != "details") {
 		details = node("div", {}, []);
-		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 2 + gfwordnet.selection.langs_list.length, class: "details"},[details])), cell.parentNode.nextSibling);
+		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 2 + gfwordnet.selection.langs_list.length + (gfwordnet.can_select ? 1 : 0), class: "details"},[details])), cell.parentNode.nextSibling);
 
 		cell.parentNode.firstChild.firstChild.src = "checked_minus.png";
 	} else {
@@ -463,6 +492,29 @@ gfwordnet.onclick_tab = function (tab) {
 	var context_size_range = tr.lastElementChild.firstElementChild;
 	var canvas = tab.parentNode.parentNode.parentNode.nextSibling;
 	gfwordnet.init_canvas(tab,canvas,context_size_range);
+}
+gfwordnet.onclick_select = function (row) {
+	var tbody = row.parentNode;
+	var table = tbody.parentNode;
+	var tfoot = table.getElementsByTagName("tfoot")[0];
+
+	var prev = row.previousSibling;
+	var next = row.nextSibling;
+
+	if (tfoot.childElementCount == 0)
+		tfoot.appendChild(tr(node("td",{colspan: 3 + gfwordnet.selection.langs_list.length},[node("h2",{},[text("Selected")])])));
+
+	if (prev != null && prev.firstElementChild.hasAttribute("colspan"))
+		tbody.removeChild(prev);
+	tbody.removeChild(row);
+	tfoot.appendChild(row);
+	if (next != null && next.firstElementChild.getAttribute("class")=="details") {
+		tbody.removeChild(next);
+		tfoot.appendChild(next);
+	}
+	
+	row.lastElementChild.innerHTML = "";
+	row.lastElementChild.appendChild(node("input", {type: "checkbox"}));
 }
 gfwordnet.onchange_context_size = function (context_size_range) {
 	var tab = null;

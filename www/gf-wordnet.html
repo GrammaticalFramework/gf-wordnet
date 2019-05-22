@@ -31,36 +31,41 @@
 			td.details > div > table.result {
 				margin: 5px;
 			}
-			table.result > tr > th {
+			table.result th {
 				text-align: center;
 				color: #008;
 				border: 2px solid #66c;
 				background: #99e;
 			}
-			table.result > tr > td {
+			table.result td {
 				border: 1px solid #66c;
 				background: #bdf;
 				padding: 3px;
 			}
-			table.result > tr > td[colspan] {
+			table.result td[colspan] {
 				border-width: 2px 2px 1px 2px ;
 				background: #cef;
 			}
-			table.result > tr > td.selected {
+			table.result td.selected {
 				background: white;
 				border-bottom-style: none;
 			}
-			table.result > tr > td.unselected {
+			table.result td.unselected {
 				border-bottom-style: none;
 			}
-			table.result > tr > td.details {
+			table.result td.details {
 				background: white;
 				border-top-style: none;
 			}
-			table.result > tr > td.details > div {
+			table.result td.details > div {
 				min-height: 100px;
 				max-height: 500px;
 				overflow: auto;
+			}
+			table[border="yes"] td,table[border="yes"] th {
+				background: inherit;
+				color: inherit;
+				border: 1px solid black;
 			}
 			.bar {
 				background: #ABABAB;
@@ -93,6 +98,8 @@
 			table.header-tabs > tr > td {
 				padding-left: 10px;
 				padding-right: 10px;
+				background: inherit;
+				border: inherit;
 			}
 
 			table.header-tabs > tr > td > h1 {
@@ -222,6 +229,9 @@
 		<br>
 
 		<table class="result" id="result">
+			<thead></thead>
+			<tbody></tbody>
+			<tfoot></tfoot>
 		</table>
 
 		<script src="http://cloud.grammaticalframework.org/js/support.js"></script>
@@ -294,6 +304,17 @@
 					}
 					tr = tr.nextElementSibling;
 				}
+				
+				selection.isEqual = function(other) {
+					if (other.langs_list.length != this.langs_list.length)
+						return false;
+					for (var i = 0; i < other.langs_list.length; i++) {
+						if (other.langs_list[i] != this.langs_list[i])
+							return false;
+					}
+					return true;
+				}
+
 				return selection;
 			}
 		</script>

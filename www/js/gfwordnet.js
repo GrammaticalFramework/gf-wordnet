@@ -96,7 +96,7 @@ gfwordnet.search = function (selection, input, result) {
 		gfwordnet.lex_ids = {};
 
 		var rows        = {};
-		var lexical_ids = ""
+		var lexical_ids = "";
 
 		if (new_selection) {
 			var thead = result.getElementsByTagName("THEAD")[0];
@@ -140,7 +140,7 @@ gfwordnet.search = function (selection, input, result) {
 				}
 				row.push(rank_bar);
 				if (gfwordnet.can_select) {
-					row.push(td([node("button",{type: "checkbox", onclick: "gfwordnet.onclick_select(this.parentNode.parentNode)"},[text("\u25BC")])]));
+					row.push(td([node("button",{onclick: "gfwordnet.onclick_select(this.parentNode.parentNode)"},[text("\u25BC")])]));
 				}
 				rows[lemma] = row;
 				lexical_ids = lexical_ids+" "+lemma;
@@ -365,7 +365,7 @@ gfwordnet.onclick_cell = function (cell) {
 					var lang = gfwordnet.selection.langs_list[i];
 					var cell = td([]);
 					if (lang in lex_def.synonyms[synonym]) {
-						if (lex_def.synonyms[synonym][lang][1] != "Checked") {
+						if (lex_def.synonyms[synonym][lang][1] != "checked") {
 							cell.classList.add(lex_def.synonyms[synonym][lang][1]);
 							if (gfwordnet.can_check)
 								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);

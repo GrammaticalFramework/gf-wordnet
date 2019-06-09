@@ -6,12 +6,15 @@ import PGF2
 import Database.Helda
 import Data.Data
 import Data.List(nub)
+import Interval
 
 type SynsetOffset = String
 
 data Synset
   = Synset
       { synsetOffset :: SynsetOffset
+      , parents      :: [Key Synset]
+      , children     :: Interval (Key Synset)
       , gloss        :: String
       }
     deriving (Data,Ord,Eq,Show)
@@ -24,7 +27,7 @@ data Lexeme
   = Lexeme 
       { lex_fun     :: Fun
       , lex_defs    :: [(String,String,Status)]
-      , synset      :: Key Synset
+      , synset      :: Maybe (Key Synset)
       , domains     :: [String]
       , example_ids :: [Key Expr]
       }
@@ -50,7 +53,7 @@ lexemes_fun :: Index Lexeme Fun
 lexemes_fun = index lexemes "fun" lex_fun
 
 lexemes_synset :: Index Lexeme (Key Synset)
-lexemes_synset = index lexemes "synset" synset
+lexemes_synset = maybeIndex lexemes "synset" synset
 
 coefficients :: Table [Double]
 coefficients = table "coefficients"

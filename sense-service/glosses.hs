@@ -27,10 +27,11 @@ main = do
 
   let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14)
 
-  ls <- fmap lines $ readFile "WordNet.gf"
-  let absdefs = Map.fromListWith (++) (mapMaybe parseAbsSyn ls)
+  absdefs <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
+
+  taxonomy <- fmap (map parseTaxonomy . lines) $ readFile "taxonomy.txt"
 
   ls <- fmap lines $ readFile "embedding.txt"
   let (cs,ws) = parseEmbeddings ls
@@ -46,12 +47,17 @@ main = do
                  return [(fn,[key]) | fn <- fns]
 
     createTable synsets
-    lex_infos <- forM (Map.toList absdefs) $ \(synset,funs) -> do
-                   key <- insert synsets synset
-                   return [Lexeme fun (Map.findWithDefault [] fun cncdefs) key ds (fromMaybe [] (Map.lookup fun ex_keys)) | (fun,ds) <- funs]
+    forM taxonomy $ \(key,synset) -> do
+       store synsets key synset
 
     createTable lexemes
-    mapM_ (insert lexemes) (concat lex_infos)
+    let synsetKeys = Map.fromList [(synsetOffset synset, key) | (key,synset) <- taxonomy]
+    forM absdefs $ \(mb_offset,fun,ds) -> do
+       insert lexemes (Lexeme fun 
+                              (Map.findWithDefault [] fun cncdefs)
+                              (mb_offset >>= flip Map.lookup synsetKeys)
+                              ds
+                              (fromMaybe [] (Map.lookup fun ex_keys)))
 
     createTable coefficients
     insert coefficients cs
@@ -66,10 +72,8 @@ parseAbsSyn l =
   case words l of
     ("fun":fn:_) -> case break (=='\t') l of
                       (l1,'\t':l2) -> let (ds,l3) = splitDomains l2
-                                          (es,gs) = partition isExample (parseComment l3) 
-                                          synset = Synset ((reverse . take 10 . reverse) l1) (merge gs)
-                                      in Just (synset, [(fn,ds)])
-                      _            -> Nothing
+                                      in Just (Just ((reverse . take 10 . reverse) l1), fn, ds)
+                      _            -> Just (Nothing, fn, [])
     _            -> Nothing
   where
     splitDomains ('[':cs) = split cs
@@ -99,20 +103,6 @@ parseCncSyn lang l =
            then []
            else [def]
 
-merge = intercalate "; "
-
-isExample s = not (null s) && head s == '"'
-
-parseComment ""       = [""]
-parseComment (';':cs) = "":parseComment (dropWhile isSpace cs)
-parseComment ('"':cs) = case break (=='"') cs of
-                          (y,'"':cs) -> case parseComment cs of
-                                          (x:xs) -> ('"':y++'"':x):xs
-                          _          -> case parseComment cs of
-                                          (x:xs) -> (       '"':x):xs
-parseComment (c  :cs) = case parseComment cs of
-                          (x:xs) -> (c:x):xs
-
 parseExamples []                        = []
 parseExamples (l1:l2:l3:l4:l5:l6:ls)
   | take 4 l1 == "abs:" && take 4 l5 == "key:" =
@@ -124,6 +114,11 @@ parseExamples (l1:l2:l3:l4:l5:l6:ls)
       in ts ++ parseExamples ls
 parseExamples (l:ls)                    = parseExamples ls
 
+parseTaxonomy l =
+  (read key_s :: Key Synset, Synset offset (read parents_s) (read children_s) gloss)
+  where
+    [offset,key_s,parents_s,children_s,gloss] = tsv l
+
 parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
   where
     parseWords []               = []
@@ -133,3 +128,9 @@ parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
       in sum hvec `seq` sum mvec `seq` (Embedding l1 hvec mvec):parseWords ls
 
     parseVector = map read . words :: String -> [Double]
+
+tsv :: String -> [String]
+tsv "" = []
+tsv cs =
+  let (x,cs1) = break (=='\t') cs
+  in x : if null cs1 then [] else tsv (tail cs1)

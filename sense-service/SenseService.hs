@@ -2,9 +2,10 @@
 import PGF2
 import Database.Helda
 import SenseSchema
+import Interval
 import qualified Data.Map as Map
 import qualified Data.Vector as Vector
-import Control.Monad(foldM,msum)
+import Control.Monad(foldM,msum,forM_)
 import Control.Concurrent(forkIO)
 import Network.CGI
 import Network.FastCGI(runFastCGI,runFastCGIConcurrent')
@@ -12,8 +13,8 @@ import URLEncoding
 import System.Environment
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import Text.JSON
-import Data.Maybe(mapMaybe)
-import Data.List(sortOn,sortBy,delete,intercalate)
+import Data.Maybe(mapMaybe, fromMaybe, catMaybes)
+import Data.List(sortOn,sortBy,delete,intercalate,nub)
 import Data.Char
 
 main = do
@@ -57,6 +58,7 @@ cgiMain db (cs,funs) = do
   mb_s4 <- getInput "check_id"
   mb_s5 <- getInput "lang"
   mb_s6 <- fmap (fmap (urlDecodeUnicode . UTF8.decodeString)) $ getInput "def"
+  mb_s7 <- getInput "generalize_ids"
   case mb_s1 of
     Just s  -> do json <- liftIO (doQuery (words s))
                   outputJSONP json
@@ -69,7 +71,10 @@ cgiMain db (cs,funs) = do
                                   Nothing     -> case (mb_s4,mb_s5,mb_s6) of
                                                    (Just lex_id,Just lang,Just def) -> do  json <- liftIO (doCheck lex_id lang def)
                                                                                            outputJSONP json
-                                                   _                                -> outputNothing
+                                                   _                                -> case mb_s7 of
+                                                                                         Just s  -> do json <- liftIO (doGeneralize (words s))
+                                                                                                       outputJSONP json
+                                                                                         Nothing -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runHelda db ReadOnlyMode $
@@ -77,39 +82,21 @@ cgiMain db (cs,funs) = do
       let sorted_senses = (map snd . sortOn fst . map addKey . Map.toList) senses
       return (showJSON (map mkSenseObj sorted_senses))
       where
-        mkSenseObj (sense_id,(gloss,synset,lex_ids)) =
-          makeObj [("sense_id",showJSON sense_id)
-                  ,("synset",makeObj [(lex_fun,mkDefsObj lex_defs) | (lex_fun,lex_defs) <- synset])
-                  ,("gloss",showJSON gloss)
-                  ,("lex_ids",mkLexObj lex_ids)
-                  ]
-
-        mkLexObj lex_ids =
-          makeObj [(lex_id,mkInfObj lex_defs domains examples sexamples) | (lex_id,lex_defs,domains,examples,sexamples) <- lex_ids]
-
-        mkInfObj lex_defs domains examples sexamples =
-          makeObj [("lex_defs", mkDefsObj lex_defs),
-                   ("domains",  showJSON domains),
-                   ("examples", showJSON (map (showExpr []) examples)),
-                   ("secondary_examples", showJSON (map (showExpr []) sexamples))
-                  ]
-
-        mkDefsObj lex_defs =
-          makeObj [(lang,showJSON (def,map toLower (show status))) | (lang,def,status) <- lex_defs]
-
         getSense db senses lex_id = do
           lexemes <- select (fromIndexAt lexemes_fun lex_id)
           foldM (getGloss db) senses lexemes
 
-        getGloss db senses (_,Lexeme lex_id lex_defs sense_id domains ex_ids) = do
-          examples  <- select [e | ex_id <- msum (map return ex_ids), e <- fromAt examples ex_id]
+        getGloss db senses (_,Lexeme lex_id lex_defs (Just sense_id) domains ex_ids) = do
+          examples  <- select [e | ex_id <- anyOf ex_ids, e <- fromAt examples ex_id]
           sexamples <- select [e | (id,e) <- fromIndexAt examples_fun lex_id, not (elem id ex_ids)]
 
           case Map.lookup sense_id senses of
             Just (gloss,synset,lex_ids) -> return (Map.insert sense_id (gloss,synset,(lex_id,lex_defs,domains,examples,sexamples):lex_ids) senses)
-            Nothing                     -> do [Synset offset gloss] <- select (fromAt synsets sense_id)
+            Nothing                     -> do [Synset offset _ _ gloss] <- select (fromAt synsets sense_id)
                                               synset <- select [(lex_fun,lex_defs) | (_,Lexeme lex_fun lex_defs _ _ _) <- fromIndexAt lexemes_synset sense_id]
                                               return (Map.insert sense_id (gloss,synset,[(lex_id,lex_defs,domains,examples,sexamples)]) senses)
+
+        getGloss db senses _ = return senses
 
         addKey (sense_id,(gloss,synset,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,synset,map snd key_lex_ids)))
           where
@@ -152,8 +139,8 @@ cgiMain db (cs,funs) = do
 
     doGloss lex_id = do
       glosses <- runHelda db ReadOnlyMode $
-                    select [gloss s | (_,lex) <- fromIndexAt lexemes_fun lex_id,
-                                      s <- fromAt synsets (synset lex)]
+                    select [gloss s | (_,lex@(Lexeme{synset=Just synset_id})) <- fromIndexAt lexemes_fun lex_id,
+                                      s <- fromAt synsets synset_id]
       return (showJSON glosses)
 
     doCheck lex_id lang def =
@@ -167,6 +154,75 @@ cgiMain db (cs,funs) = do
                              then (lang,def,Checked)
                              else (lang',def',st)
                               | (lang',def',st) <- lex_defs lexeme]}
+
+    doGeneralize ids = do
+      x <- runHelda db ReadOnlyMode $ fmap catMaybes $ do
+         select [synset lexeme | fun <- anyOf ids,
+                                 (_,lexeme) <- fromIndexAt lexemes_fun fun]
+
+      let up synset_id =
+            runHelda db ReadOnlyMode $ fmap head $ do
+              select [parents s | s <- fromAt synsets synset_id]
+
+      ids <- findLCA up (nub x)
+
+      fs <- runHelda db ReadOnlyMode $ do
+               select [(synset_id,(gloss,[(lex_fun,lex_defs) | (lex_fun,lex_defs,_,_,_) <- synset],synset))
+                          | int <- foldl1Q intersection 
+                                           [children s | synset_id <- anyOf ids,
+                                                         s <- fromAt synsets synset_id],
+                            (s,e) <- anyOf int,
+                            (synset_id,Synset offset _ _ gloss) <- fromInterval synsets (Including s) (Including e),
+                            synset <- listAll [(lex_fun,lex_defs,domains,examples,sexamples)
+                                                  | (_,Lexeme lex_fun lex_defs _ domains ex_ids) <- fromIndexAt lexemes_synset synset_id,
+                                                    examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- fromAt examples ex_id],
+                                                    sexamples <- listAll [e | (id,e) <- fromIndexAt examples_fun lex_fun, not (elem id ex_ids)]]]
+
+      return (showJSON (map mkSenseObj fs))
+
+    mkSenseObj (sense_id,(gloss,synset,lex_ids)) =
+      makeObj [("sense_id",showJSON sense_id)
+              ,("synset",makeObj [(lex_fun,mkDefsObj lex_defs) | (lex_fun,lex_defs) <- synset])
+              ,("gloss",showJSON gloss)
+              ,("lex_ids",mkLexObj lex_ids)
+              ]
+
+    mkLexObj lex_ids =
+      makeObj [(lex_id,mkInfObj lex_defs domains examples sexamples) | (lex_id,lex_defs,domains,examples,sexamples) <- lex_ids]
+
+    mkInfObj lex_defs domains examples sexamples =
+      makeObj [("lex_defs", mkDefsObj lex_defs),
+               ("domains",  showJSON domains),
+               ("examples", showJSON (map (showExpr []) examples)),
+               ("secondary_examples", showJSON (map (showExpr []) sexamples))
+              ]
+
+    mkDefsObj lex_defs =
+      makeObj [(lang,showJSON (def,map toLower (show status))) | (lang,def,status) <- lex_defs]
+
+findLCA :: (Monad m, Ord a) => (a -> m [a]) -> [a] -> m [a]
+findLCA up xs = alternate [([x],[]) | x <- xs] [] [] Map.empty
+  where
+    n = length xs
+
+    alternate []              []  zs set = return zs
+    alternate []              ss2 zs set = alternate ss2 []  zs set
+    alternate (([],  []):ss1) ss2 zs set = alternate ss1 ss2 zs set
+    alternate (([],  ys):ss1) ss2 zs set = alternate ((reverse ys, []):ss1) ss2 zs set
+    alternate ((x:xs,ys):ss1) ss2 zs set
+      | Map.lookup x set == Just n       = alternate ss1 ((xs,ys):ss2) zs set
+      | otherwise                        = do 
+          ws <- up x
+          (ys,zs,set) <- ascend ws ys zs set
+          alternate ss1 ((xs,ys):ss2) zs set
+
+    ascend []     ys zs set = return (ys,zs,set)
+    ascend (x:xs) ys zs set
+      | c == n           = ascend xs ys   (x:zs) set'
+      | otherwise        = ascend xs (x:ys)  zs  set'
+      where
+        c    = fromMaybe 0 (Map.lookup x set) + 1
+        set' = Map.insert x c set
 
 type Embeddings = (Vector.Vector Double
                   ,Map.Map Fun (Vector.Vector Double,Vector.Vector Double,Vector.Vector Double)

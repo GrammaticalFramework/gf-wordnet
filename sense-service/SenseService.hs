@@ -171,6 +171,7 @@ cgiMain db (cs,funs) = do
                           | int <- foldl1Q intersection 
                                            [children s | synset_id <- anyOf ids,
                                                          s <- fromAt synsets synset_id],
+                            size int < 2000,
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- fromInterval synsets (Including s) (Including e),
                             synset <- listAll [(lex_fun,lex_defs,domains,examples,sexamples)

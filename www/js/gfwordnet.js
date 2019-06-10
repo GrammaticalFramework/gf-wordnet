@@ -566,6 +566,9 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 		row = row.nextElementSibling;
 	}
 
+	document.getElementById("generalize").style.display = "none";
+	document.getElementById("delete").style.display = "none";
+
 	if (selected.length > 0) {
 		function errcont(text,code) { }
 		function extract_linearization(lins) {

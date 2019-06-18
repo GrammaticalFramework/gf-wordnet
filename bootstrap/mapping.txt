@@ -2781,10 +2781,8 @@ alright_A	alright_A
 alright_Adv	alright_1_Adv
 alright_Adv	alright_2_Adv
 alright_Adv	alright_3_Adv
-alsatianFem_N	alsatianFem_1_N
-alsatianFem_N	alsatianFem_2_N
-alsatianMasc_N	alsatianMasc_1_N
-alsatianMasc_N	alsatianMasc_2_N
+alsatianFem_N	alsatianFem_N
+alsatianMasc_N	alsatianMasc_N
 also_AdV	also_AdV
 also_Adv	also_Adv
 also_ran_N	also_ran_N

@@ -87,7 +87,7 @@ ifneq ($(SERVER), NO)
 	scp semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
 endif
 
-build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs sense-service/URLEncoding.hs
+build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs sense-service/URLEncoding.hs sense-service/Interval.hs
 	ghc --make -odir build/sense-service -hidir build/sense-service -O2 -optl-static -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
 	scp build/SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService

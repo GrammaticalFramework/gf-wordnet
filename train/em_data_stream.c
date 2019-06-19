@@ -10,6 +10,7 @@
 #include <pthread.h>
 #include "em_data_stream.h"
 
+#define DATA_STREAM_FILE "/tmp/em_data_stream"
 
 struct EMDataStream {
 	int fd;
@@ -33,7 +34,7 @@ em_new_data_stream(size_t region_size, size_t max_elem_size, size_t n_threads,
 {
 	EMDataStream* stream = gu_new(EMDataStream, pool);
 
-	stream->fd = open("/tmp", O_RDWR | O_TMPFILE, S_IRWXU);
+	stream->fd = open(DATA_STREAM_FILE, O_RDWR | O_CREAT | O_TRUNC, S_IRWXU);
 	if (stream->fd < 0) {
 		gu_raise_errno(err);
 		return NULL;
@@ -198,6 +199,10 @@ em_data_stream_close(EMDataStream* stream, GuExn* err)
 	pthread_barrier_destroy(&stream->barrier1);
 
 	if (close(stream->fd) != 0) {
+		gu_raise_errno(err);
+		return;
+	}
+	if (remove(DATA_STREAM_FILE) != 0) {
 		gu_raise_errno(err);
 		return;
 	}

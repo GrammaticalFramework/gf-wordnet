@@ -1,0 +1,191 @@
+body {
+	color: black;
+	background: #eee;
+}
+
+@media (min-resolution: 300dpi) {
+	body {
+		font-size: 200%;
+	}
+	select, input, button, table.multiselect {
+		font-size: 140%;
+	}
+}
+
+img {
+	width: 0.7em;
+}
+
+table.result {
+	border-collapse: collapse;
+	border: 2px solid #66c;
+	max-width: 100%;
+	position: relative;
+	z-index: 0;
+}
+td.details > div > table.result {
+	margin: 5px;
+}
+table.result th {
+	text-align: center;
+	color: #008;
+	border: 2px solid #66c;
+	background: #99e;
+}
+table.result td {
+	border: 1px solid #66c;
+	background: #bdf;
+	padding: 3px;
+}
+table.result td[colspan] {
+	border-width: 2px 2px 1px 2px ;
+	background: #cef;
+}
+table.result td.selected {
+	background: white;
+	border-bottom-style: none;
+}
+table.result td.unselected {
+	border-bottom-style: none;
+}
+table.result td.details {
+	background: white;
+	border-top-style: none;
+}
+table.result td.details > div {
+	min-height: 100px;
+	max-height: 500px;
+	overflow: auto;
+}
+table[border="yes"] td,table[border="yes"] th {
+	background: inherit;
+	color: inherit;
+	border: 1px solid black;
+}
+.bar {
+	background: #ABABAB;
+	width: 5px;
+	height: 15px;
+	display: inline-block;
+	margin: 1px;
+}
+
+.unchecked {
+	text-decoration: underline dotted yellow;
+}
+
+.guessed {
+	text-decoration: underline dotted red;
+}
+
+table.header-tabs {
+	width: 100%
+}
+
+table.header-tabs > tr > td:nth-last-child(2) {
+	width: 100%;
+}
+
+table.header-tabs > tr > td > input {
+	float: right;
+}
+
+table.header-tabs > tr > td {
+	padding-left: 10px;
+	padding-right: 10px;
+	background: inherit;
+	border: inherit;
+}
+
+table.header-tabs > tr > td > h1 {
+	cursor: pointer;
+}
+
+h1.unselected {
+	color: #DFDFDF;
+	font-weight: normal;
+}
+
+div.popup {
+	top: 0em;
+	left: 0em;
+	right: 0em;
+	bottom: 0em;
+	margin: 2em;
+	border: 1px solid #ccc;
+	background-color: #f3f3f3;
+	position: fixed;
+	min-width: 790px;
+	overflow: auto;
+	z-index: 100;
+}
+
+div.popup > table > tr > td > img {
+	display: block;
+	float: right;
+	padding: 4px;
+}
+
+span.selected_bracket {
+	background-color: #99e;
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+	-moz-user-select: none; /* mozilla browsers */
+	-khtml-user-select: none; /* webkit (konqueror) browsers */
+	-ms-user-select: none; /* IE10+ */
+}
+
+table.multiselect {
+	border-collapse: collapse;
+}
+
+table.multiselect > thead {
+  background: linear-gradient(#F6F6F6, #E9E9E9, #DCDCDC);
+  border: solid 1px #DCDCDC;
+  cursor: default
+}
+
+table.multiselect > thead:hover {
+  background: linear-gradient(#E9E9E9, #DCDCDC, #E9E9E9);
+}
+
+table.multiselect > thead > tr > th {
+  font-weight: normal;
+  padding: 1px;
+}
+
+table.multiselect > tbody {
+  display: none;
+  background-color: white;
+  border: solid 1px #DCDCDC;
+  position: absolute;
+  z-index: 5;
+}
+
+table.multiselect > tbody > tr {
+  border: none;
+}
+
+table.multiselect > tbody > tr > td:first-child:hover {
+  background-color: #DCDCDC;
+}
+ 
+table.multiselect > tbody > tr > td:first-child {
+  border-right: solid 1px #DCDCDC; 
+}
+
+table.multiselect > tbody > tr > td:last-child {
+  border-left:  solid 1px #DCDCDC;
+}
+
+.floating {
+	display: inline-block;
+	position: absolute;
+	padding-left: 3pt;
+	padding-right: 3pt;
+	background: #0067FF;
+	border-radius: 20%
+}
+
+.floating > #img {
+	margin: 3pt;
+}

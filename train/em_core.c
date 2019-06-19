@@ -1055,7 +1055,8 @@ em_learner(void *arguments)
 		size_t n_pcs = gu_buf_length(state->pcs);
 		while (state->index1 < n_pcs) {
 			size_t batch = 256;
-			size_t start = __atomic_fetch_add(&state->index1, batch, __ATOMIC_SEQ_CST);
+			size_t start = __sync_fetch_and_add(&state->index1, batch);
+
 			size_t end   = start + batch;
 			if (end > n_pcs)
 				end = n_pcs;

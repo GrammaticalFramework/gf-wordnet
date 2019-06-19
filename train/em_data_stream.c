@@ -152,7 +152,7 @@ em_data_stream_fetch_element(EMDataStream* stream, size_t thread_idx)
 
 	size_t i;
 	for (;;) {
-		i = __atomic_fetch_add(&stream->i_elem, 1, __ATOMIC_SEQ_CST);
+		i = __sync_fetch_and_add(&stream->i_elem, 1);
 		if (i < *((size_t*) stream->region))
 			break;
 

@@ -1132,6 +1132,7 @@ typedef struct {
 	GuMapItor clo2;
 	EMState *state;
 	GuMap *cat_probs;
+	prob_t cat_total;
 	FILE *funigram, *fbigram;
 	FunStats* head_stats;
 } DumpIter;
@@ -1146,7 +1147,9 @@ collect_cat_probs(GuMapItor* itor, const void* key, void* value, GuExn* err)
 		pgf_function_type(self->state->pgf, head_stats->fun);
 	prob_t *pcount =
 		gu_map_insert(self->cat_probs, ty->cid);
-	*pcount = log_add(*pcount, log_add(head_stats->pc.prob,self->state->unigram_smoothing));
+	prob_t prob = log_add(head_stats->pc.prob,self->state->unigram_smoothing);
+	*pcount = log_add(*pcount, prob);
+	self->cat_total = log_add(self->cat_total, prob);
 }
 
 static void
@@ -1188,7 +1191,7 @@ dump_cats(GuMapItor* itor, const void* key, void* value, GuExn* err)
 	PgfCId cat  = (PgfCId) key;
 	prob_t prob = *((prob_t*) value);
 
-	fprintf(self->funigram, "%s\t%e\n", cat, exp(-prob));
+	fprintf(self->funigram, "%s\t%e\n", cat, exp(self->cat_total-prob));
 }
 
 void
@@ -1202,6 +1205,7 @@ em_dump(EMState *state, char* unigram_path, char* bigram_path)
 	itor.state = state;
 	itor.cat_probs =
 		gu_new_string_map(prob_t, &inf, tmp_pool);
+	itor.cat_total = INFINITY;
 
 	itor.clo1.fn = collect_cat_probs;
 	gu_map_iter(state->stats, &itor.clo1, NULL);

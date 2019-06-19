@@ -31,7 +31,7 @@ training st labels_fpath args = do
   getUnigramCount st >>= \c -> hPutStrLn stdout ("Unigrams: "++show c)
   status "Estimation ..." $ em_loop st 0 0
   status "Dumping ..." $ dump st "Parse.probs" "Parse.bigram.probs"
-  exportAbstractTreebank st "trees.txt"
+--  exportAbstractTreebank st "trees.txt"
   where
     importTreebanks config []          = return ()
     importTreebanks config (lang:args) = do

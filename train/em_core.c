@@ -13,6 +13,7 @@
 #include <gu/utf8.h>
 #include <pgf/pgf.h>
 #include "em_core.h"
+#include "em_data_stream.h"
 #include <time.h>
 
 // #define DEBUG
@@ -41,12 +42,11 @@ typedef struct {
 
 struct EMState {
 	GuPool* pool;
-	GuPool* corpus_pool;   // corpus data should come here to make it 
-	                       // easier to swap it out
+	GuExn* err;
+	EMDataStream* stream;
+
 	PgfPGF *pgf;
-	GuBuf* dtrees;
 	GuMap* stats;
-	GuBuf* root_choices;
 	size_t max_tree_index;
 	size_t max_tree_choices;
 	size_t bigram_total;
@@ -125,17 +125,19 @@ function_iter(GuMapItor* clo, const void* key, void* value, GuExn* err)
 }
 
 EMState*
-em_new_state(PgfPGF* pgf, prob_t unigram_smoothing, prob_t bigram_smoothing)
+em_new_state(PgfPGF* pgf,
+             prob_t unigram_smoothing, prob_t bigram_smoothing)
 {
-	// We use page pools to improve locality.
-	// For large corpora there will be a lot of swapping
 	GuPool* pool        = gu_new_pool();
-	GuPool* corpus_pool = gu_new_page_pool();
 
 	EMState* state = gu_new(EMState, pool);
-	state->pool        = pool;
-	state->corpus_pool = corpus_pool;
-	state->dtrees = gu_new_buf(DepTree*, pool);
+	state->pool   = pool;
+	state->err    = gu_new_exn(pool);
+	state->stream = em_new_data_stream(64*1024*1024, 16*1024, NUM_THREADS, pool, state->err);
+	if (gu_exn_is_raised(state->err)) {
+		gu_pool_free(pool);
+		return NULL;
+	}
 	state->stats  = gu_new_string_map(FunStats*, NULL, pool);
 	state->max_tree_index = 0;
 	state->max_tree_choices = 0;
@@ -145,7 +147,6 @@ em_new_state(PgfPGF* pgf, prob_t unigram_smoothing, prob_t bigram_smoothing)
 	state->bigram_smoothing  = -log(bigram_smoothing);
 	state->pcs = gu_new_buf(ProbCount*, pool);
 
-	state->root_choices = gu_new_buf(SenseChoice, pool);
 	state->callbacks = gu_new_string_map(EMRankingCallback, &gu_null_struct, pool);
 	state->pgf = pgf;
 
@@ -159,23 +160,23 @@ em_new_state(PgfPGF* pgf, prob_t unigram_smoothing, prob_t bigram_smoothing)
 	state->index2 = 0;
 
 	if (pthread_barrier_init(&state->barrier1, NULL, NUM_THREADS+1) != 0) {
+		em_data_stream_close(state->stream, state->err);
 		gu_pool_free(pool);
-		gu_pool_free(corpus_pool);
 		return NULL;
 	}
 
 	if (pthread_barrier_init(&state->barrier2, NULL, NUM_THREADS) != 0) {
 		pthread_barrier_destroy(&state->barrier1);
+		em_data_stream_close(state->stream, state->err);
 		gu_pool_free(pool);
-		gu_pool_free(corpus_pool);
 		return NULL;
 	}
 
 	if (pthread_barrier_init(&state->barrier3, NULL, NUM_THREADS+1) != 0) {
 		pthread_barrier_destroy(&state->barrier1);
 		pthread_barrier_destroy(&state->barrier2);
+		em_data_stream_close(state->stream, state->err);
 		gu_pool_free(pool);
-		gu_pool_free(corpus_pool);
 		return NULL;
 	}
 
@@ -212,21 +213,17 @@ em_free_state(EMState* state)
 	pthread_barrier_destroy(&state->barrier1);
 	pthread_barrier_destroy(&state->barrier2);
 	pthread_barrier_destroy(&state->barrier3);
-	gu_pool_free(state->corpus_pool);
+	em_data_stream_close(state->stream, state->err);
 	gu_pool_free(state->pool);
 }
 
 
 
 #define CONLL_NUM_FIELDS 10
-typedef GuString CONLLFields[CONLL_NUM_FIELDS];
-
 typedef struct {
-	PgfMorphoCallback base;
-	EMState* state;
-	GuBuf* parent_choices;
-	GuBuf* choices;
-} LookupCallback;
+	GuBuf* lemmas;
+	GuString value[CONLL_NUM_FIELDS];
+} CONLLFields;
 
 typedef prob_t (*Oper)(prob_t x, prob_t y);
 
@@ -249,33 +246,6 @@ log_max(prob_t x, prob_t y)
 	return ((x < y) ? x : y);
 }
 
-static void
-lookup_callback(PgfMorphoCallback* callback,
-	            PgfCId lemma, GuString analysis, prob_t prob,
-	            GuExn* err)
-{
-	LookupCallback* self =
-		gu_container(callback, LookupCallback, base);
-
-	bool found = false;
-	for (int i = 0; i < gu_buf_length(self->choices); i++) {
-		SenseChoice* choice = gu_buf_index(self->choices, SenseChoice, i);
-		if (strcmp(choice->stats->fun,lemma) == 0) {
-			found = true;
-			break;
-		}
-	}
-
-	if (!found) {
-		SenseChoice* choice = gu_buf_extend(self->choices);
-		choice->prob_counts = NULL;
-
-		choice->stats =
-			gu_map_get(self->state->stats, lemma, FunStats*);
-		gu_assert(choice->stats != NULL);
-	}
-}
-
 static prob_t
 get_pgf_prob(EMState* state, PgfCId fun)
 {
@@ -292,10 +262,10 @@ get_pgf_prob(EMState* state, PgfCId fun)
 
 static void
 init_counts(EMState* state, DepTree* dtree,
-            GuBuf* parent_choices, size_t *p_n_tree_choices)
+            SenseChoice* parent_choices, size_t n_parent_choices,
+            size_t *p_n_tree_choices)
 {
-	size_t n_choices = gu_buf_length(dtree->choices);
-	size_t n_parent_choices = gu_buf_length(parent_choices);
+	size_t n_choices = dtree->n_choices;
 
 	prob_t p1 = log(n_choices);
 	prob_t p2 = p1 + log(n_parent_choices);
@@ -306,18 +276,16 @@ init_counts(EMState* state, DepTree* dtree,
 	*p_n_tree_choices += n_choices;
 
 	for (size_t i = 0; i < n_choices; i++) {
-		SenseChoice* choice =
-			gu_buf_index(dtree->choices, SenseChoice, i);
+		SenseChoice* choice = &dtree->choices[i];
 
 		choice->stats->pc.count[0] =
 			log_add(choice->stats->pc.count[0],p1);
 
 		choice->prob_counts =
-			gu_new_n(ProbCount*, n_parent_choices, state->corpus_pool);
+			em_data_stream_malloc(state->stream, n_parent_choices*sizeof(ProbCount*));
 
 		for (int j = 0; j < n_parent_choices; j++) {
-			SenseChoice* parent_choice =
-				gu_buf_index(parent_choices, SenseChoice, j);
+			SenseChoice* parent_choice = &parent_choices[j];
 
 			ProbCount** pc =
 				gu_map_insert(parent_choice->stats->mods, choice->stats->fun);
@@ -343,25 +311,25 @@ init_counts(EMState* state, DepTree* dtree,
 }
 
 static void
-filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf,
-                GuBuf* parent_choices, size_t *p_n_tree_choices)
+filter_dep_tree(EMState* state, DepTree* dtree, GuSeq* conll,
+                SenseChoice* parent_choices, size_t n_parent_choices,
+                size_t *p_n_tree_choices)
 {
-	CONLLFields* fields = gu_buf_index(buf, CONLLFields, dtree->index);
-	size_t n_choices = gu_buf_length(dtree->choices);
+	CONLLFields* fields = gu_seq_index(conll, CONLLFields, dtree->index);
+	size_t n_lemmas = gu_buf_length(fields->lemmas);
+
+	dtree->n_choices = 0;
 
 	int max[2] = {INT_MIN, INT_MAX};
-	int stats[n_choices][2];
-	for (size_t i = 0; i < n_choices; i++) {
-		SenseChoice* choice =
-			gu_buf_index(dtree->choices, SenseChoice, i);
-
-		PgfType* ty =
-			pgf_function_type(state->pgf, choice->stats->fun);
+	int stats[n_lemmas][2];
+	for (size_t i = 0; i < n_lemmas; i++) {
+		PgfCId fun  = gu_buf_get(fields->lemmas, PgfCId, i);
+		PgfType* ty = pgf_function_type(state->pgf, fun);
 
 		EMRankingCallback callback =
 			gu_map_get(state->callbacks, ty->cid, EMRankingCallback);
 		if (callback != NULL) {
-			callback(choice, buf, dtree, stats[i]);
+			callback(fun, conll, dtree, stats[i]);
 		} else {
 			stats[i][0] = 0;
 			stats[i][1] = 0;
@@ -369,100 +337,77 @@ filter_dep_tree(EMState* state, DepTree* dtree, GuBuf* buf,
 		if (stats[i][0] > max[0]) {
 			max[0] = stats[i][0];
 			max[1] = stats[i][1];
+			dtree->n_choices = 1;
 		} else if (stats[i][0] == max[0]) {
-			if (stats[i][1] < max[1])
+			if (stats[i][1] < max[1]) {
 				max[1] = stats[i][1];
+				dtree->n_choices = 1;
+			} else if (stats[i][1] == max[1]) {
+				dtree->n_choices++;
+			}
 		}
 	}
+
+	dtree->choices =
+		em_data_stream_malloc(state->stream, sizeof(SenseChoice)*dtree->n_choices);
 
 	size_t index = 0;
-	for (size_t i = 0; i < n_choices; i++) {
-		SenseChoice* choice =
-			gu_buf_index(dtree->choices, SenseChoice, i);
-
-		PgfType* ty =
-			pgf_function_type(state->pgf, choice->stats->fun);
-
+	for (size_t i = 0; i < n_lemmas; i++) {
 		if (stats[i][0] == max[0] && stats[i][1] == max[1]) {
-			SenseChoice* dest =
-				gu_buf_index(dtree->choices, SenseChoice, index);
-			*dest = *choice;
-			index++;
+			PgfCId lemma = gu_buf_get(fields->lemmas, PgfCId, i);
+
+			SenseChoice* choice = &dtree->choices[index++];
+			choice->prob_counts = NULL;
+			choice->stats =
+				gu_map_get(state->stats, lemma, FunStats*);
+			gu_assert(choice->stats != NULL);
 		}
 	}
 
-	gu_buf_trim_n(dtree->choices, n_choices - index);
-	// here we make sure that the data for the choices is
-	// also in the corpus pool.
-	gu_buf_evacuate(dtree->choices, state->corpus_pool);
-
-	init_counts(state, dtree, parent_choices, p_n_tree_choices);
+	init_counts(state, dtree, parent_choices, n_parent_choices, p_n_tree_choices);
 
 	for (size_t i = 0; i < dtree->n_children; i++) {
-		filter_dep_tree(state, dtree->child[i], buf,
-		                dtree->choices, p_n_tree_choices);
+		filter_dep_tree(state, dtree->children[i], conll,
+		                dtree->choices, dtree->n_choices,
+		                p_n_tree_choices);
 	}
 }
 
 static DepTree*
 build_dep_tree(EMState* state, PgfConcr* concr,
-               GuBuf* buf, size_t index, CONLLFields* fields,
-               GuBuf* parent_choices)
+               GuSeq* conll, size_t index, CONLLFields* fields)
 {
-	GuString id = (*fields)[0];
+	GuString id = fields->value[0];
 
 	// first count how many children we have
 	size_t n_children = 0;
-	for (int i = 0; i < gu_buf_length(buf); i++) {
-		CONLLFields* fields = gu_buf_index(buf, CONLLFields, i);
-		if (strcmp((*fields)[6],id) == 0) {
+	for (int i = 0; i < gu_seq_length(conll); i++) {
+		CONLLFields* fields = gu_seq_index(conll, CONLLFields, i);
+		if (strcmp(fields->value[6],id) == 0) {
 			n_children++;
 		}
 	}
 
-	DepTree* dtree = gu_new_flex(state->corpus_pool, DepTree, child, n_children);
+	DepTree* dtree = em_data_stream_malloc(state->stream,
+	                                       GU_FLEX_SIZE(DepTree, children, n_children));
 	dtree->index      = index;
-	dtree->choices    = gu_new_buf(SenseChoice, state->corpus_pool);
 	dtree->n_children = n_children;
-
-	LookupCallback callback;
-	callback.base.callback = lookup_callback;
-	callback.state = state;
-	callback.parent_choices = parent_choices;
-	callback.choices = dtree->choices;
-
-	pgf_lookup_morpho(concr, (*fields)[1], &callback.base, NULL);
-	if (gu_buf_length(dtree->choices) == 0) {
-		// try with lower case
-		char buffer[strlen((*fields)[1])*6+1];
-
-		const uint8_t* src = (uint8_t*) (*fields)[1];
-		uint8_t* dst = (uint8_t*) buffer;
-
-		while (*src) {
-			GuUCS ucs = gu_utf8_decode(&src);
-			ucs = gu_ucs_to_lower(ucs);
-			gu_utf8_encode(ucs, &dst);
-		}
-		*(dst++) = 0;
-
-		pgf_lookup_morpho(concr, buffer, &callback.base, NULL);
-	}
+	dtree->n_choices  = 0;
+	dtree->choices    = NULL;
 
 	state->unigram_total++;
 
 	// now build the children
 	int pos = 0;
-	for (int i = 0; i < gu_buf_length(buf); i++) {
-		CONLLFields* fields = gu_buf_index(buf, CONLLFields, i);
-		if (strcmp((*fields)[6],id) == 0) {
-			dtree->child[pos++] = 
+	for (int i = 0; i < gu_seq_length(conll); i++) {
+		CONLLFields* fields = gu_seq_index(conll, CONLLFields, i);
+		if (strcmp(fields->value[6],id) == 0) {
+			dtree->children[pos++] = 
 				build_dep_tree(state, concr,
-							   buf, i, fields,
-							   dtree->choices);
+							   conll, i, fields);
 			state->bigram_total++;
 		}
-	}
+		}
 
 	return dtree;
 }
@@ -472,12 +417,19 @@ em_new_dep_tree(EMState* state, DepTree* parent,
                 PgfCId fun, GuString lbl,
                 size_t index, size_t n_children)
 {
-	DepTree* dtree = gu_new_flex(state->corpus_pool, DepTree, child, n_children);
+	DepTree* dtree = em_data_stream_malloc(state->stream,
+	                                       GU_FLEX_SIZE(DepTree, children, n_children));
 	dtree->index      = index;
-	dtree->choices    = gu_new_buf(SenseChoice, state->corpus_pool);
+	dtree->n_choices  = 1;
+	dtree->choices    = em_data_stream_malloc(state->stream,sizeof(SenseChoice));
 	dtree->n_children = n_children;
 
-	SenseChoice* choice = gu_buf_extend(dtree->choices);
+	if (dtree->index > state->max_tree_index)
+		state->max_tree_index = dtree->index;
+	if (dtree->index > state->max_tree_choices)
+		state->max_tree_choices = dtree->index;
+
+	SenseChoice* choice = &dtree->choices[0];
 
 	choice->stats =
 		gu_map_get(state->stats, fun, FunStats*);
@@ -486,12 +438,11 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 	choice->stats->pc.count[0] =
 		log_add(choice->stats->pc.count[0],0);
 
-	choice->prob_counts =
-		gu_new_n(ProbCount*, 1, state->corpus_pool);
+	choice->prob_counts = em_data_stream_malloc(state->stream,
+	                                            sizeof(ProbCount*)*1);
 
 	if (parent != NULL) {
-		SenseChoice* parent_choice =
-			gu_buf_index(parent->choices, SenseChoice, 0);
+		SenseChoice* parent_choice = &parent->choices[0];
 
 		ProbCount** pc =
 			gu_map_insert(parent_choice->stats->mods, choice->stats->fun);
@@ -521,31 +472,27 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 }
 
 DepTree*
-em_new_conll_dep_tree(EMState* state, GuString lang, GuSeq* fields)
+em_new_conll_dep_tree(EMState* state, GuString lang, GuSeq* conll)
 {
 	PgfConcr* concr = pgf_get_language(state->pgf, lang);
 	if (concr == NULL)
 		return NULL;
 
-	GuBuf buf[1];
-	buf->seq = fields;
-	buf->avail_len = fields->len;
-
 	size_t n_tree_choices = 0;
 
 	DepTree *dtree = NULL;
-	for (int i = 0; i < gu_buf_length(buf); i++) {
-		CONLLFields* fields = gu_buf_index(buf, CONLLFields, i);
-		if (strcmp((*fields)[6], "0") == 0) {
+	for (int i = 0; i < gu_seq_length(conll); i++) {
+		CONLLFields* fields = gu_seq_index(conll, CONLLFields, i);
+		if (strcmp(fields->value[6], "0") == 0) {
+			em_start_dep_tree(state);
 			dtree = build_dep_tree(state, concr,
-								   buf, i, fields,
-								   state->root_choices);
-			filter_dep_tree(state, dtree, buf,
-			                state->root_choices, &n_tree_choices);
+								   conll, i, fields);
+			filter_dep_tree(state, dtree, conll,
+			                NULL, 0, &n_tree_choices);
 			break;
 		}
 	}
-	
+
 	if (state->max_tree_choices < n_tree_choices)
 		state->max_tree_choices = n_tree_choices;
 
@@ -553,9 +500,19 @@ em_new_conll_dep_tree(EMState* state, GuString lang, GuSeq* fields)
 }
 
 void
+em_start_dep_tree(EMState* state)
+{
+	em_data_stream_start_element(state->stream, state->err);
+	if (gu_exn_is_raised(state->err)) {
+		printf("em_start_dep_tree: i/o error\n");
+		exit(1);
+	}
+}
+
+void
 em_add_dep_tree(EMState* state, DepTree* dtree)
 {
-	gu_buf_push(state->dtrees, DepTree*, dtree);
+	em_data_stream_add_element(state->stream, dtree);
 }
 
 void
@@ -622,6 +579,33 @@ lzma_fgets(char* inbuf, size_t insize, char* outbuf, size_t outsize, size_t* len
 	}
 }
 #endif
+
+typedef struct {
+	PgfMorphoCallback base;
+	EMState* state;
+	GuBuf* lemmas;
+} LookupCallback;
+
+static void
+lookup_callback(PgfMorphoCallback* callback,
+	            PgfCId lemma, GuString analysis, prob_t prob,
+	            GuExn* err)
+{
+	LookupCallback* self =
+		gu_container(callback, LookupCallback, base);
+
+	bool found = false;
+	for (int i = 0; i < gu_buf_length(self->lemmas); i++) {
+		if (strcmp(gu_buf_get(self->lemmas, PgfCId, i),lemma) == 0) {
+			found = true;
+			break;
+		}
+	}
+
+	if (!found) {
+		gu_buf_push(self->lemmas, PgfCId, lemma);
+	}
+}
 
 int
 em_import_treebank(EMState* state, GuString fpath, GuString lang)
@@ -693,19 +677,20 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 
 		// empty line signals the end of a sentence
 		if (line[0] == '\n') {
-			DepTree *dtree = NULL;
-			for (int i = 0; i < gu_buf_length(buf); i++) {
-				CONLLFields* fields = gu_buf_index(buf, CONLLFields, i);
-				if (strcmp((*fields)[6], "0") == 0) {
-					dtree = build_dep_tree(state, concr,
-					                       buf, i, fields,
-					                       state->root_choices);
+			GuSeq* conll = gu_buf_data_seq(buf);
+			for (int i = 0; i < gu_seq_length(conll); i++) {
+				CONLLFields* fields = gu_seq_index(conll, CONLLFields, i);
+				if (strcmp(fields->value[6], "0") == 0) {
+					em_start_dep_tree(state);
+					DepTree *dtree = 
+						build_dep_tree(state, concr,
+					                   conll, i, fields);
 					size_t n_tree_choices = 0;
-					filter_dep_tree(state, dtree, buf, 
-					                state->root_choices, &n_tree_choices);
+					filter_dep_tree(state, dtree, conll, 
+					                NULL, 0, &n_tree_choices);
 					if (state->max_tree_choices < n_tree_choices)
 						state->max_tree_choices = n_tree_choices;
-					gu_buf_push(state->dtrees, DepTree*, dtree);
+					em_add_dep_tree(state, dtree);
 					break;
 				}
 			}
@@ -737,17 +722,43 @@ em_import_treebank(EMState* state, GuString fpath, GuString lang)
 				return 0;
 			}
 
-			(*fields)[n_fields++] = field;
+			fields->value[n_fields++] = field;
 
-			if (*end == '\n')
+			if (*end == '\n') {
 				break;
+			}
 
 			end++;
 			start = end;
 		}
 
+		LookupCallback callback;
+		callback.base.callback = lookup_callback;
+		callback.state  = state;
+		callback.lemmas = gu_new_buf(PgfCId, tmp_pool);
+
+		pgf_lookup_morpho(concr, fields->value[1], &callback.base, NULL);
+		if (gu_buf_length(callback.lemmas) == 0) {
+			// try with lower case
+			char buffer[strlen(fields->value[1])*6+1];
+
+			const uint8_t* src = (uint8_t*) fields->value[1];
+			uint8_t* dst = (uint8_t*) buffer;
+
+			while (*src) {
+				GuUCS ucs = gu_utf8_decode(&src);
+				ucs = gu_ucs_to_lower(ucs);
+				gu_utf8_encode(ucs, &dst);
+			}
+			*(dst++) = 0;
+
+			pgf_lookup_morpho(concr, buffer, &callback.base, NULL);
+		}
+
+		fields->lemmas = callback.lemmas;
+
 		while (n_fields < CONLL_NUM_FIELDS) {
-			(*fields)[n_fields++] = "";
+			fields->value[n_fields++] = "";
 		}
     }
 
@@ -860,38 +871,37 @@ em_set_ranking_callback(EMState* state,
 }
 
 int
-dtree_match_label(GuBuf* buf, DepTree *dtree, GuString lbl)
+dtree_match_label(GuSeq* conll, DepTree *dtree, GuString lbl)
 {
 	CONLLFields* fields =
-		gu_buf_index(buf, CONLLFields, dtree->index);
+		gu_seq_index(conll, CONLLFields, dtree->index);
 			
-	if (strcmp((*fields)[7], lbl) == 0)
+	if (strcmp(fields->value[7], lbl) == 0)
 		return 1;
 
 	return 0;
 }
 
 int
-dtree_match_pos(GuBuf* buf, DepTree *dtree, GuString pos)
+dtree_match_pos(GuSeq* conll, DepTree *dtree, GuString pos)
 {
 	CONLLFields* fields =
-		gu_buf_index(buf, CONLLFields, dtree->index);
-			
-	if (strcmp((*fields)[3], pos) == 0)
+		gu_seq_index(conll, CONLLFields, dtree->index);
+
+	if (strcmp(fields->value[3], pos) == 0)
 		return 1;
 
 	return 0;
 }
 
 int
-dtree_match_same_choice(SenseChoice *choice, DepTree *dtree)
+dtree_match_same_lemma(GuSeq* conll, DepTree *dtree, PgfCId lemma)
 {
-	size_t n_choices = gu_buf_length(dtree->choices);
-	for (size_t i = 0; i < n_choices; i++) {
-		SenseChoice* mod_choice =
-			gu_buf_index(dtree->choices, SenseChoice, i);
-			if (choice->stats == mod_choice->stats)
-				return 1;
+	CONLLFields* fields =
+		gu_seq_index(conll, CONLLFields, dtree->index);
+	for (size_t i = 0; i < gu_buf_length(fields->lemmas); i++) {
+		if (strcmp(lemma, gu_buf_get(fields->lemmas, PgfCId, i)) == 0)
+			return 1;
 	}
 	return 0;
 }
@@ -899,11 +909,11 @@ dtree_match_same_choice(SenseChoice *choice, DepTree *dtree)
 static prob_t
 tree_sum_estimation(EMThreadState* tstate, DepTree* dtree, Oper oper)
 {
-	size_t n_choices = gu_buf_length(dtree->choices);
+	size_t n_choices = dtree->n_choices;
 	if (n_choices == 0) {
 		prob_t prob = 0;
 		for (size_t i = 0; i < dtree->n_children; i++) {
-			prob += tree_sum_estimation(tstate, dtree->child[i], oper);
+			prob += tree_sum_estimation(tstate, dtree->children[i], oper);
 		}
 		return prob;
 	} else {
@@ -922,7 +932,7 @@ tree_edge_estimation(EMThreadState* tstate,
 {
 	prob_t edge_prob = INFINITY;
 
-	size_t n_choices = gu_buf_length(mod->choices);
+	size_t n_choices = mod->n_choices;
 	if (n_choices == 0) {
 		edge_prob = tree_sum_estimation(tstate, mod, oper);
 		if (edge_prob == INFINITY)
@@ -931,11 +941,9 @@ tree_edge_estimation(EMThreadState* tstate,
 
 	prob_t *inside_probs = tstate->inside_probs[mod->index];
 	for (size_t i = 0; i < n_choices; i++) {
-		SenseChoice* mod_choice =
-			gu_buf_index(mod->choices, SenseChoice, i);
 		edge_prob =
 		   oper(edge_prob,
-				mod_choice->prob_counts[head_i]->prob +
+				mod->choices[i].prob_counts[head_i]->prob +
 				inside_probs[i]);
 	}
 	return edge_prob;
@@ -945,12 +953,12 @@ static void
 tree_estimation(EMThreadState* tstate, DepTree* dtree, Oper oper)
 {
 	for (size_t i = 0; i < dtree->n_children; i++) {
-		tree_estimation(tstate, dtree->child[i], oper);
+		tree_estimation(tstate, dtree->children[i], oper);
 	}
 
 	gu_assert(dtree->index <= tstate->state->max_tree_index);
 
-	size_t n_choices = gu_buf_length(dtree->choices);
+	size_t n_choices = dtree->n_choices;
 	prob_t *inside_probs = &tstate->estimates[tstate->n_estimates];
 	tstate->inside_probs[dtree->index] = inside_probs;
 	tstate->n_estimates += n_choices;
@@ -960,7 +968,7 @@ tree_estimation(EMThreadState* tstate, DepTree* dtree, Oper oper)
 	for (size_t i = 0; i < n_choices; i++) {
 		prob_t prob = 0;
 		for (size_t j = 0; j < dtree->n_children; j++) {
-			prob += tree_edge_estimation(tstate, i, dtree->child[j], oper);
+			prob += tree_edge_estimation(tstate, i, dtree->children[j], oper);
 		}
 
 		inside_probs[i] = prob;
@@ -972,11 +980,10 @@ tree_counting(EMThreadState* tstate, DepTree* dtree, prob_t* outside_probs)
 {
 	EMState *state = tstate->state;
 
-	size_t n_head_choices = gu_buf_length(dtree->choices);
+	size_t n_head_choices = dtree->n_choices;
 	prob_t *inside_probs = tstate->inside_probs[dtree->index];
 	for (size_t j = 0; j < n_head_choices; j++) {
-		SenseChoice* head_choice =
-			gu_buf_index(dtree->choices, SenseChoice, j);
+		SenseChoice* head_choice = &dtree->choices[j];
 
 		prob_t prob = outside_probs[j] + inside_probs[j];
 		head_choice->stats->pc.count[tstate->thread_idx] =
@@ -984,11 +991,10 @@ tree_counting(EMThreadState* tstate, DepTree* dtree, prob_t* outside_probs)
 	}
 
 	for (size_t i = 0; i < dtree->n_children; i++) {
-		size_t n_child_choices =
-			gu_buf_length(dtree->child[i]->choices);
+		size_t n_child_choices = dtree->children[i]->n_choices;
 		prob_t child_outside_probs[n_child_choices];
 		prob_t *child_inside_probs =
-			tstate->inside_probs[dtree->child[i]->index];
+			tstate->inside_probs[dtree->children[i]->index];
 
 		if (n_head_choices > 0) {
 			for (size_t k = 0; k < n_child_choices; k++) {
@@ -999,11 +1005,11 @@ tree_counting(EMThreadState* tstate, DepTree* dtree, prob_t* outside_probs)
 				if (inside_probs[j] < INFINITY) {
 					prob_t prob =
 						outside_probs[j] + inside_probs[j] -
-						tree_edge_estimation(tstate, j, dtree->child[i], log_add);
+						tree_edge_estimation(tstate, j, dtree->children[i], log_add);
 
 					for (size_t k = 0; k < n_child_choices; k++) {
 						SenseChoice* mod_choice =
-							gu_buf_index(dtree->child[i]->choices, SenseChoice, k);
+							&dtree->children[i]->choices[k];
 
 						ProbCount* pc = mod_choice->prob_counts[j];
 
@@ -1016,13 +1022,13 @@ tree_counting(EMThreadState* tstate, DepTree* dtree, prob_t* outside_probs)
 				}
 			}
 		} else {
-			prob_t sum = tree_sum_estimation(tstate, dtree->child[i], log_add);
+			prob_t sum = tree_sum_estimation(tstate, dtree->children[i], log_add);
 			for (size_t k = 0; k < n_child_choices; k++) {
 				child_outside_probs[k] = -sum;
 			}
 		}
 
-		tree_counting(tstate, dtree->child[i], child_outside_probs);
+		tree_counting(tstate, dtree->children[i], child_outside_probs);
 	}
 }
 
@@ -1065,27 +1071,31 @@ em_learner(void *arguments)
 			}
 		}
 
+		em_data_stream_restart(state->stream, tstate->thread_idx, state->err);
+		if (gu_exn_is_raised(state->err)) {
+			printf("em_learner: i/o error\n");
+			exit(1);
+		}
+
 		pthread_barrier_wait(&state->barrier2);
 
 		// Estimate the new counts
 		tstate->prob = 0;
 		for(;;) {
-			size_t i = __atomic_fetch_add(&state->index2, 1, __ATOMIC_SEQ_CST);
-			if (i >= gu_buf_length(state->dtrees))
+			DepTree* dtree =
+				em_data_stream_fetch_element(state->stream, tstate->thread_idx);
+			if (dtree == NULL)
 				break;
-
-			DepTree* dtree = gu_buf_get(state->dtrees, DepTree*, i);
 
 			tstate->n_estimates = 0;
 			tree_estimation(tstate, dtree, log_max);
 
 			prob_t sum = tree_sum_estimation(tstate, dtree, log_add);
-
+			
 			tstate->prob += sum;
 
-			size_t n_choices = gu_buf_length(dtree->choices);
-			prob_t outside_probs[n_choices];
-			for (size_t j = 0; j < n_choices; j++) {
+			prob_t outside_probs[dtree->n_choices];
+			for (size_t j = 0; j < dtree->n_choices; j++) {
 				outside_probs[j] = -sum;
 			}
 
@@ -1233,23 +1243,21 @@ static void
 print_abstract_head(EMThreadState* tstate, FILE* out, DepTree* dtree,
                     prob_t* outside_probs)
 {
-	size_t n_choices = gu_buf_length(dtree->choices);
-	if (n_choices > 0) {
-		LemmaProb choices[n_choices];
+	if (dtree->n_choices > 0) {
+		LemmaProb choices[dtree->n_choices];
 		prob_t *inside_probs = tstate->inside_probs[dtree->index];
-		for (size_t j = 0; j < n_choices; j++) {
-			SenseChoice* choice =
-				gu_buf_index(dtree->choices, SenseChoice, j);
+		for (size_t j = 0; j < dtree->n_choices; j++) {
+			SenseChoice* choice = &dtree->choices[j];
 			choices[j].fun  = choice->stats->fun;
 			choices[j].prob = outside_probs[j]+inside_probs[j];
 		}
-		qsort(choices, n_choices, sizeof(LemmaProb), cmp_lemma_prob);
+		qsort(choices, dtree->n_choices, sizeof(LemmaProb), cmp_lemma_prob);
 
 		int first = 0;
 		prob_t best_prob;
-		if (n_choices > 1)
+		if (dtree->n_choices > 1)
 			fputc('[', out);
-		for (size_t j = 0; j < n_choices; j++) {
+		for (size_t j = 0; j < dtree->n_choices; j++) {
 			switch (first) {
 			case 0:
 				best_prob = choices[j].prob;
@@ -1265,7 +1273,7 @@ print_abstract_head(EMThreadState* tstate, FILE* out, DepTree* dtree,
 			}
 			fputs(choices[j].fun, out);
 		}
-		if (n_choices > 1)
+		if (dtree->n_choices > 1)
 			fputc(']', out);
 	} else {
 		fputs("[]", out);
@@ -1277,8 +1285,8 @@ print_abstract_tree(EMThreadState* tstate,
                     FILE* out, DepTree* dtree,
                     prob_t* outside_probs)
 {
-	size_t n_head_choices = gu_buf_length(dtree->choices);
-	prob_t *inside_probs = tstate->inside_probs[dtree->index];
+	size_t n_head_choices = dtree->n_choices;
+	prob_t *inside_probs  = tstate->inside_probs[dtree->index];
 
 	if (dtree->n_children > 0)
 		fputc('(', out);
@@ -1287,8 +1295,7 @@ print_abstract_tree(EMThreadState* tstate,
                         outside_probs);
 
 	for (size_t i = 0; i < dtree->n_children; i++) {
-		size_t n_child_choices =
-			gu_buf_length(dtree->child[i]->choices);
+		size_t n_child_choices = dtree->children[i]->n_choices;
 		prob_t child_outside_probs[n_child_choices];
 
 		if (n_head_choices > 0) {
@@ -1297,16 +1304,14 @@ print_abstract_tree(EMThreadState* tstate,
 			}
 
 			for (size_t j = 0; j < n_head_choices; j++) {
-				SenseChoice* head_choice =
-					gu_buf_index(dtree->choices, SenseChoice, j);
+				SenseChoice* head_choice = &dtree->choices[j];
 
 				prob_t prob =
 					outside_probs[j] + inside_probs[j] -
-					tree_edge_estimation(tstate, j, dtree->child[i], log_max);
+					tree_edge_estimation(tstate, j, dtree->children[i], log_max);
 
 				for (size_t k = 0; k < n_child_choices; k++) {
-					SenseChoice* mod_choice =
-						gu_buf_index(dtree->child[i]->choices, SenseChoice, k);
+					SenseChoice* mod_choice = &dtree->children[i]->choices[k];
 
 					ProbCount* pc = mod_choice->prob_counts[j];
 
@@ -1315,14 +1320,14 @@ print_abstract_tree(EMThreadState* tstate,
 				}
 			}
 		} else {
-			prob_t sum = tree_sum_estimation(tstate, dtree->child[i], log_max);
+			prob_t sum = tree_sum_estimation(tstate, dtree->children[i], log_max);
 			for (size_t k = 0; k < n_child_choices; k++) {
 				child_outside_probs[k] = -sum;
 			}
 		}
 
 		fputc(' ', out);
-		print_abstract_tree(tstate, out, dtree->child[i],
+		print_abstract_tree(tstate, out, dtree->children[i],
 		                    child_outside_probs);
 	}
 
@@ -1344,18 +1349,23 @@ em_export_abstract_treebank(EMState* state, GuString fpath)
 			return 0;
 		}
 	}
+	
+	em_data_stream_restart(state->stream, tstate->thread_idx, state->err);
+	if (gu_exn_is_raised(state->err)) {
+		printf("em_export_abstract_treebank: i/o error\n");
+		exit(1);
+	}
 
-	size_t n_trees = gu_buf_length(state->dtrees);
-	for (size_t i = 0; i < n_trees; i++) {
-		DepTree* dtree = gu_buf_get(state->dtrees, DepTree*, i);
+	for (;;) {
+		DepTree* dtree = 
+			em_data_stream_fetch_element(state->stream, tstate->thread_idx);
 
 		tstate->n_estimates = 0;
 		tree_estimation(tstate, dtree, log_max);
 
 		prob_t max = tree_sum_estimation(tstate, dtree, log_max);
-		size_t n_choices = gu_buf_length(dtree->choices);
-		prob_t outside_probs[n_choices];
-		for (size_t j = 0; j < n_choices; j++) {
+		prob_t outside_probs[dtree->n_choices];
+		for (size_t j = 0; j < dtree->n_choices; j++) {
 			outside_probs[j] = -max;
 		}
 
@@ -1373,14 +1383,13 @@ static void
 em_annotate_dep_tree_(EMThreadState* tstate,
                       GuBuf* buf, DepTree* dtree, prob_t* outside_probs)
 {
-	size_t n_head_choices = gu_buf_length(dtree->choices);
+	size_t n_head_choices = dtree->n_choices;
 	prob_t *inside_probs = tstate->inside_probs[dtree->index];
 
 	if (n_head_choices > 0) {
 		EMLemmaProb* choices = gu_buf_extend_n(buf, n_head_choices);
 		for (size_t j = 0; j < n_head_choices; j++) {
-			SenseChoice* choice =
-				gu_buf_index(dtree->choices, SenseChoice, j);
+			SenseChoice* choice = &dtree->choices[j];
 			choices[j].index= dtree->index;
 			choices[j].fun  = choice->stats->fun;
 			choices[j].prob = outside_probs[j]+inside_probs[j];
@@ -1389,8 +1398,7 @@ em_annotate_dep_tree_(EMThreadState* tstate,
 	}
 
 	for (size_t i = 0; i < dtree->n_children; i++) {
-		size_t n_child_choices =
-			gu_buf_length(dtree->child[i]->choices);
+		size_t n_child_choices = dtree->children[i]->n_choices;
 		prob_t child_outside_probs[n_child_choices];
 
 		if (n_head_choices > 0) {
@@ -1401,12 +1409,10 @@ em_annotate_dep_tree_(EMThreadState* tstate,
 			for (size_t j = 0; j < n_head_choices; j++) {
 				prob_t prob =
 					outside_probs[j] + inside_probs[j] -
-					tree_edge_estimation(tstate, j, dtree->child[i], log_max);
+					tree_edge_estimation(tstate, j, dtree->children[i], log_max);
 
 				for (size_t k = 0; k < n_child_choices; k++) {
-					SenseChoice* mod_choice =
-						gu_buf_index(dtree->child[i]->choices, SenseChoice, k);
-
+					SenseChoice* mod_choice = &dtree->children[i]->choices[k];
 					ProbCount* pc = mod_choice->prob_counts[j];
 
 					prob_t p1 = prob + pc->prob;
@@ -1414,13 +1420,13 @@ em_annotate_dep_tree_(EMThreadState* tstate,
 				}
 			}
 		} else {
-			prob_t sum = tree_sum_estimation(tstate, dtree->child[i], log_max);
+			prob_t sum = tree_sum_estimation(tstate, dtree->children[i], log_max);
 			for (size_t k = 0; k < n_child_choices; k++) {
 				child_outside_probs[k] = -sum;
 			}
 		}
 
-		em_annotate_dep_tree_(tstate, buf, dtree->child[i], child_outside_probs);
+		em_annotate_dep_tree_(tstate, buf, dtree->children[i], child_outside_probs);
 	}
 }
 
@@ -1432,9 +1438,8 @@ em_annotate_dep_tree(EMState* state, DepTree* dtree, GuPool* pool)
 	tree_estimation(tstate, dtree, log_max);
 
 	prob_t max = tree_sum_estimation(tstate, dtree, log_max);
-	size_t n_choices = gu_buf_length(dtree->choices);
-	prob_t outside_probs[n_choices];
-	for (size_t j = 0; j < n_choices; j++) {
+	prob_t outside_probs[dtree->n_choices];
+	for (size_t j = 0; j < dtree->n_choices; j++) {
 		outside_probs[j] = -max;
 	}
 

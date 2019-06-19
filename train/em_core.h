@@ -27,12 +27,15 @@ typedef struct {
 
 typedef struct DepTree {
 	size_t index;
-	GuBuf* choices;
+
+	size_t n_choices;
+	SenseChoice* choices;
+
 	size_t n_children;
-	struct DepTree* child[0];
+	struct DepTree* children[0];
 } DepTree;
 
-typedef void (*EMRankingCallback)(SenseChoice* choice, GuBuf* buf, DepTree* dtree,
+typedef void (*EMRankingCallback)(PgfCId lemma, GuSeq* conll, DepTree* dtree,
                                   int *res);
 
 typedef struct EMState EMState;
@@ -49,6 +52,9 @@ em_setup_unigram_smoothing(EMState *state, prob_t count);
 DepTree*
 em_new_dep_tree(EMState* state, DepTree* parent, PgfCId fun, GuString lbl,
                 size_t index, size_t n_children);
+
+void
+em_start_dep_tree(EMState* state);
 
 void
 em_add_dep_tree(EMState* state, DepTree* dtree);
@@ -80,13 +86,13 @@ void
 em_dump(EMState *state, char* unigram_path, char* bigram_path);
 
 int
-dtree_match_label(GuBuf* buf, DepTree *dtree, GuString lbl);
+dtree_match_label(GuSeq* conll, DepTree *dtree, GuString lbl);
 
 int
-dtree_match_pos(GuBuf* buf, DepTree *dtree, GuString pos);
+dtree_match_pos(GuSeq* conll, DepTree *dtree, GuString pos);
 
 int
-dtree_match_same_choice(SenseChoice *choice, DepTree *dtree);
+dtree_match_same_lemma(GuSeq* conll, DepTree *dtree, PgfCId lemma);
 
 typedef struct {
 	size_t index;

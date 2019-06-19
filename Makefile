@@ -69,10 +69,13 @@ Parse.probs Parse.bigram.probs: build/udsenser build/Parse.noprobs.pgf examples.
 embedding.txt: Parse.bigram.probs
 	python3 train/sense_embedding.py
 
-build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o
+build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o build/train/em_data_stream.o
 	ghc --make -odir build/train -hidir build/train -O2 $^ -o $@ -lpgf -lgu -lm -llzma -lpthread
 
-build/train/em_core.o: train/em_core.c train/em_core.h
+build/train/em_core.o: train/em_core.c train/em_core.h train/em_data_stream.h
+	gcc -O2 -std=c99 -Itrain -c $< -o $@
+
+build/train/em_data_stream.o: train/em_data_stream.c train/em_data_stream.h
 	gcc -O2 -std=c99 -Itrain -c $< -o $@
 
 build/train/EM.hs: train/EM.hsc train/em_core.h

@@ -28,6 +28,7 @@ foreign import ccall em_free_state :: EMState -> IO ()
 
 addDepTree :: EMState -> Tree (Fun,String) -> IO ()
 addDepTree st t = do
+  em_start_dep_tree st
   (_,dtree) <- mkRoot 0 (DepTree nullPtr) t
   em_add_dep_tree st dtree
   where
@@ -36,7 +37,7 @@ addDepTree st t = do
                 withCString lbl  $ \clbl ->
                  em_new_dep_tree st parent cfun clbl index (fromIntegral (length ts))
       let DepTree ptr = dtree
-      index <- mkChildren dtree (ptr `plusPtr` (#offset DepTree, child)) (index+1) ts
+      index <- mkChildren dtree (ptr `plusPtr` (#offset DepTree, children)) (index+1) ts
       return (index, dtree)
 
     mkChildren parent ptr index []     = return index
@@ -47,6 +48,8 @@ addDepTree st t = do
 
 foreign import ccall em_new_dep_tree :: EMState -> DepTree -> CString -> CString -> CSize -> CSize -> IO DepTree
 foreign import ccall em_add_dep_tree :: EMState -> DepTree -> IO ()
+foreign import ccall em_start_dep_tree :: EMState -> IO ()
+
 
 incrementCounts :: EMState -> Expr -> IO ()
 incrementCounts state e = traverse e
@@ -122,16 +125,16 @@ foreign import ccall em_export_abstract_treebank :: EMState -> CString -> IO CIn
 foreign import ccall "em_bigram_count" getBigramCount  :: EMState -> IO CSize
 foreign import ccall "em_unigram_count" getUnigramCount :: EMState -> IO CSize
 
-type RankingCallback = SenseChoice -> Fields -> DepTree -> Ptr CInt -> IO ()
+type RankingCallback = CString -> Fields -> DepTree -> Ptr CInt -> IO ()
 
-setupRankingCallbacks :: EMState -> [(Cat,SenseChoice -> Fields -> DepTree -> IO Stat)] -> IO ()
+setupRankingCallbacks :: EMState -> [(Cat,CString -> Fields -> DepTree -> IO Stat)] -> IO ()
 setupRankingCallbacks st callbacks =
   mapM_ setRankingCallback callbacks
   where
-    setRankingCallback :: (Cat,SenseChoice -> Fields -> DepTree -> IO Stat) -> IO ()
+    setRankingCallback :: (Cat,CString -> Fields -> DepTree -> IO Stat) -> IO ()
     setRankingCallback (cat,f) = do
-      f <- wrapRankingCallback (\choice fields dtree res_c -> do
-                                    (S res c) <- f choice fields dtree
+      f <- wrapRankingCallback (\lemma fields dtree res_c -> do
+                                    (S res c) <- f lemma fields dtree
                                     pokeElemOff res_c 0 res
                                     pokeElemOff res_c 1 c)
       withCString cat (\cat -> em_set_ranking_callback st cat f)

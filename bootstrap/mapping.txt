@@ -45319,7 +45319,7 @@ housecoat_N	housecoat_N
 housecraft_N	housecraft_N
 housedog_N	housedog_N
 housefather_N	housefather_N
-housefly_N	housefly_1_N
+housefly_N	housefly_N
 houseful_N	houseful_N
 household_N	household_N
 householder_N	householder_N

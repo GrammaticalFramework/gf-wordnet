@@ -70,11 +70,8 @@ gfwordnet.search = function (selection, input, result) {
 					}
 				}
 
-				if (!checked) {
-					icon = img("unchecked.png");
-				} else {
-					icon = node("img", {src: "checked_plus.png", onclick: "gfwordnet.onclick_minus(event,this)"});
-				}
+				icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
+					                onclick: "gfwordnet.onclick_minus(event,this)"});
 				row[0].insertBefore(icon, row[0].firstChild);
 				tbody.appendChild(tr(row));
 			}
@@ -253,8 +250,7 @@ gfwordnet.init_canvas = function (tab,canvas,context_size_range) {
 	}
 }
 gfwordnet.onclick_cell = function (cell) {
-	var icon = cell.parentNode.firstChild.firstChild;
-	if (icon.src.endsWith("unchecked.png"))
+	if (cell.innerHTML == "")
 		return;
 
 	function errcont(text,code) { }
@@ -328,7 +324,8 @@ gfwordnet.onclick_cell = function (cell) {
 		details = node("div", {}, []);
 		cell.parentNode.parentNode.insertBefore(tr(node("td",{colspan: 2 + gfwordnet.selection.langs_list.length + (gfwordnet.can_select ? 1 : 0), class: "details"},[details])), cell.parentNode.nextSibling);
 
-		cell.parentNode.firstChild.firstChild.src = "checked_minus.png";
+		var icon = cell.parentNode.firstChild.firstChild;
+		icon.src = icon.src.substring(0,icon.src.length-8)+"minus.png"
 	} else {
 		details = cell.parentNode.nextSibling.firstChild.firstChild;
 		clear(details);
@@ -340,9 +337,10 @@ gfwordnet.onclick_cell = function (cell) {
 		if (siblings[i] == cell) {
 			index = i;
 		}
-		siblings[i].className = "unselected"
+		siblings[i].classList.remove("selected");
+		siblings[i].classList.add("unselected");
 	}
-	cell.className = "selected";
+	cell.classList.add("selected");
 
 	var lex_id = cell.parentNode.firstChild.firstChild.nextSibling.textContent;
 
@@ -428,7 +426,7 @@ gfwordnet.onmouseover_cell = function(event) {
 	event.target.appendChild(gfwordnet.popup);
 }
 gfwordnet.onclick_minus = function (event, icon) {
-	if (!icon.src.endsWith("checked_minus.png"))
+	if (!icon.src.endsWith("_minus.png"))
 		return;
 
 	event.stopPropagation();
@@ -436,11 +434,12 @@ gfwordnet.onclick_minus = function (event, icon) {
 	var row = icon.parentNode.parentNode;
 	var siblings = row.children;
 	for (var i = 0; i < siblings.length; i++) {
-		siblings[i].className = "unselected"
+		siblings[i].classList.remove("selected");
+		siblings[i].classList.add("unselected");
 	}
 	row.parentNode.removeChild(row.nextSibling);
 	
-	icon.src = "checked_plus.png"
+	icon.src = icon.src.substring(0,icon.src.length-9)+"plus.png";
 }
 gfwordnet.onclick_check = function (cell) {
 	var index = -1;

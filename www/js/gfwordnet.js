@@ -165,14 +165,18 @@ gfwordnet.search = function (selection, input, result) {
 gfwordnet.init_wordcloud = function(canvas, context_size_range) {
 	var context      = this.lex_ids[canvas.lex_id].context;
 	var context_size = parseInt(context_size_range.value);
+	if (context_size > context.length)
+		context_size = context.length;
 
 	var min = Number.MAX_VALUE;
 	var max = Number.MIN_VALUE;
 	for (var i = 0; i < context_size; i++) {
-		if (max < context[i].prob)
-			max = context[i].prob;
-		if (min > context[i].prob)
-			min = context[i].prob;
+		if ("prob" in context[i]) {
+			if (max < context[i].prob)
+				max = context[i].prob;
+			if (min > context[i].prob)
+				min = context[i].prob;
+		}
 	}
 	var popup = canvas.parentNode.className == "popup";
 	var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));

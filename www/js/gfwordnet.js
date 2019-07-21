@@ -426,7 +426,7 @@ gfwordnet.onmouseover_cell = function(event) {
 
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 	}
-	gfwordnet.popup = div_class("floating",[node("img",{src: "validate.png", onclick: "gfwordnet.onclick_check(this.parentNode.parentNode)"},[])/*,node("img",{src: "pen.png", onclick: "gfwordnet.onclick_check(this.parentNode.parentNode)"},[])*/]);
+	gfwordnet.popup = div_class("floating",[node("img",{src: "validate.png", onclick: "gfwordnet.onclick_check(event,this.parentNode.parentNode)"},[])/*,node("img",{src: "pen.png", onclick: "gfwordnet.onclick_check(event,this.parentNode.parentNode)"},[])*/]);
 	event.target.appendChild(gfwordnet.popup);
 }
 gfwordnet.onclick_minus = function (event, icon) {
@@ -445,7 +445,9 @@ gfwordnet.onclick_minus = function (event, icon) {
 	
 	icon.src = icon.src.substring(0,icon.src.length-9)+"plus.png";
 }
-gfwordnet.onclick_check = function (cell) {
+gfwordnet.onclick_check = function (event,cell) {
+	event.stopPropagation();
+
 	var index = -1;
 	var node  = cell;
     while ((node = node.previousElementSibling)) {

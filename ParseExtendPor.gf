@@ -1,6 +1,6 @@
 concrete ParseExtendPor of ParseExtend =
   ExtendPor - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralPor - [num] **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralPor - [num], PunctuationX **
   open Prelude, ResPor, MorphoPor, GrammarPor, (E = ExtraPor), Coordination in {
 
   lin
@@ -21,13 +21,8 @@ concrete ParseExtendPor of ParseExtend =
     UttVPSFem  vps = {s = vps.s ! Indic ! Ag Fem Sg P3 ! True} ;
     UttVPSPl   vps = {s = vps.s ! Indic ! Ag Masc Pl P3 ! True} ;
 
-  lincat Mark = SS ;
-
   lin
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-    FullStop  = {s = "."} ;
-    ExclMark  = {s = "!"} ;
-    QuestMark = {s = "?"} ;
 
   --^ RNP is not implemented yet in ExtendPor
   --lin AdvRNP np prep rnp = rnp ;

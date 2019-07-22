@@ -1,14 +1,9 @@
 concrete ParseExtendFin of ParseExtend = 
   ExtendFin - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralFin - [num] **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralFin - [num], PunctuationX **
  open MorphoFin, ResFin, ParadigmsFin, StemFin, (G=GrammarFin), Prelude in {
 
-lincat Mark = {s : Str} ;
-
 lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-    FullStop  = {s = "."} ;
-    ExclMark  = {s = "!"} ;
-    QuestMark = {s = "?"} ;
 
     ComplVV v ant pol vp = 
       insertObj 

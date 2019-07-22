@@ -1,9 +1,7 @@
 concrete ParseExtendEng of ParseExtend = 
   ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralEng - [num] **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralEng - [num], PunctuationX **
   open Prelude, ResEng, MorphoEng, GrammarEng, (E = ExtraEng), Coordination in {
-
-lincat Mark = {s : Str} ;
 
 lin gen_Quant = {
       s  = \\hasCard,n => "" ;
@@ -25,9 +23,6 @@ lin gen_Quant = {
     UttVPSPl   vps = {s = vps.s ! agrgP3 Pl Neutr} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-    FullStop  = {s = "."} ;
-    ExclMark  = {s = "!"} ;
-    QuestMark = {s = "?"} ;
 
     AdvRNP np prep rnp = {s = \\a => np.s ! NPAcc ++ prep.s ++ rnp.s ! a} ;
     AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! a) vp ;

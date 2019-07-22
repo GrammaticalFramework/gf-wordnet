@@ -9,7 +9,6 @@ concrete ParseSpa of Parse =
   RelativeSpa - [IdRP],
   ConjunctionSpa,
   PhraseSpa - [UttAP, UttVP],
-  TextX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   IdiomSpa,
   TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   TenseSpa,

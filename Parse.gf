@@ -8,7 +8,6 @@ abstract Parse =
   Relative,
   Conjunction,
   Phrase - [UttAP, UttVP],
-  Text,
   Idiom,
   Tense,
   ParseExtend,

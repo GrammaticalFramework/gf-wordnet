@@ -1,8 +1,6 @@
 concrete ParseExtendBul of ParseExtend = 
   ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralBul - [num] ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
-
-lincat Mark = {s : Str} ;
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralBul - [num], PunctuationX ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
 
 lin gen_Quant = DefArt ;
 
@@ -16,9 +14,6 @@ lin gen_Quant = DefArt ;
     UttVPSPl   vps = {s = vps.s ! agrP3 GPl} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-    FullStop  = {s = "."} ;
-    ExclMark  = {s = "!"} ;
-    QuestMark = {s = "?"} ;
 
     AdvRNP np prep rnp = {s = \\role => np.s ! role ++ prep.s ++ rnp.s ! RObj prep.c; gn = np.gn; p = np.p} ;
     AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;

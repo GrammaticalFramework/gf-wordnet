@@ -8,7 +8,6 @@ concrete ParseSlv of Parse =
   QuestionSlv,
   ConjunctionSlv,
   PhraseSlv - [UttAP,UttVP],
-  TextX,
   IdiomSlv,
   TenseX,
   WordNetSlv,

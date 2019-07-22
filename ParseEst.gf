@@ -9,7 +9,6 @@ concrete ParseEst of Parse =
   RelativeEst,
   ConjunctionEst,
   PhraseEst - [UttAP,UttVP],
-  TextX,
   IdiomEst,
   TenseX,
   WordNetEst,

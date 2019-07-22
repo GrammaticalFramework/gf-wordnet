@@ -1,9 +1,7 @@
 concrete ParseExtendSwe of ParseExtend = 
   ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralSwe - [num] ** 
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralSwe - [num], PunctuationX ** 
   open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe), (P = ParadigmsSwe), (I = IrregSwe) in {
-
-lincat Mark = {s : Str} ;
 
 lin gen_Quant = DefArt ;
 
@@ -17,9 +15,6 @@ lin gen_Quant = DefArt ;
     UttVPSPl   vps = {s = vps.s ! Main ! (agrP3 Neutr Pl)} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-    FullStop  = {s = "."} ;
-    ExclMark  = {s = "!"} ;
-    QuestMark = {s = "?"} ;
 
     AdvRNP np prep rnp = {s = \\a => np.s ! NPAcc ++ prep.s ++ rnp.s ! a; isPron = False} ;
     AdvRVP vp prep rnp = insertObjPost (\\a => prep.s ++ rnp.s ! a) vp ;

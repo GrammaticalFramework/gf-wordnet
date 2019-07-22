@@ -9,7 +9,6 @@ concrete ParseIta of Parse =
   RelativeIta - [IdRP],
   ConjunctionIta,
   PhraseIta - [UttAP, UttVP],
-  TextX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   IdiomIta,
   TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   TenseIta,

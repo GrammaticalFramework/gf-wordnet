@@ -9,14 +9,12 @@ concrete ParseEng of Parse =
   RelativeEng - [IdRP],
   ConjunctionEng,
   PhraseEng - [UttAP, UttVP],
-  TextX - [Pol,PPos,PNeg,SC,CAdv],
   IdiomEng,
   TenseX - [Pol,PPos,PNeg,SC,CAdv],
   ParseExtendEng,
   WordNetEng,
   ConstructionEng,
-  DocumentationEng
-  ** open MorphoEng, ResEng, ParadigmsEng, IrregEng, (E = ExtendEng), (G = GrammarEng), (C = ConstructX), SentenceEng, ExtraEng, Prelude in {
+  DocumentationEng ** open ResEng, ExtraEng, Prelude in {
 
 lin
   PPos = {s = [] ; p = CPos} ;

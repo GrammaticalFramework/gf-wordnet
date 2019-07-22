@@ -9,7 +9,6 @@ concrete ParseCat of Parse =
   RelativeCat - [IdRP],
   ConjunctionCat,
   PhraseCat - [UttAP, UttVP],
-  TextX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   IdiomCat,
   TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   TenseCat,

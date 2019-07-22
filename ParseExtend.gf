@@ -1,5 +1,5 @@
 abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], Numeral - [num] ** {
+                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], Numeral - [num], Punctuation ** {
 
 fun gen_Quant : Quant ;       -- English often skips the article 
                               -- when in Swedish and Bulgarian definite 
@@ -16,9 +16,7 @@ fun gen_Quant : Quant ;       -- English often skips the article
     UttVPSPl   : VPS -> Utt ; -- Version of UttVPS in plural
 
     -- A version of PhrUtt which adds a punctuation mark
-cat Mark ;
 fun PhrUttMark : PConj -> Utt -> Voc -> Mark -> Phr ;
-    FullStop, ExclMark, QuestMark : Mark ;
 
     -- Extensions of the API for reflexive pronouns from 
     -- the Extend module

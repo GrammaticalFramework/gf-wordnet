@@ -9,7 +9,6 @@ concrete ParseSwe of Parse =
   RelativeSwe,
   ConjunctionSwe,
   PhraseSwe - [UttAP, UttVP],
-  TextX -[Tense,Temp],
   IdiomSwe,
   TenseSwe,
   ParseExtendSwe,

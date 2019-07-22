@@ -9,7 +9,6 @@ concrete ParseTha of Parse =
   RelativeTha - [IdRP],
   ConjunctionTha,
   PhraseTha - [UttAP, UttVP],
-  TextX,
   IdiomTha,
   TenseX,
   WordNetTha,

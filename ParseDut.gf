@@ -9,7 +9,6 @@ concrete ParseDut of Parse =
   RelativeDut,
   ConjunctionDut,
   PhraseDut - [UttAP, UttVP],
-  TextX,
   IdiomDut,
   TenseX,
   WordNetDut,

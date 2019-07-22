@@ -9,15 +9,13 @@ concrete ParseBul of Parse =
   RelativeBul,
   ConjunctionBul,
   PhraseBul - [UttAP, UttVP],
-  TextBul,
   IdiomBul,
   TenseX - [CAdv,IAdv,AdV,SC],
   ParseExtendBul,
   ConstructionBul,
   WordNetBul,
   DocumentationBul
-  ** open MorphoBul, ResBul, (G = GrammarBul), (L = LexiconBul), (E = ExtendBul), ParadigmsBul, Prelude in {
+  ** {
 
--- INJECT
 
 } ;

@@ -9,7 +9,6 @@ concrete ParseFin of Parse =
   RelativeFin - [IdRP],
   ConjunctionFin,
   PhraseFin - [UttAP, UttVP],
-  TextX - [SC],
   IdiomFin,
   TenseX - [SC],
   ParseExtendFin,

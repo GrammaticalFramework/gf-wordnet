@@ -477,9 +477,11 @@ gfwordnet.onclick_check = function (event,cell) {
 		}
 
 		if (checked) {
-			var img = cell.parentNode.firstChild.firstChild;
-			img.src = "checked_plus.png";
-			img.onclick = function(event) { gfwordnet.onclick_minus(event, this) };
+			var icon = cell.parentNode.firstChild.firstChild;
+			icon.src = icon.src.endsWith("unchecked_plus.png")  ? "checked_plus.png"  :
+			           icon.src.endsWith("unchecked_minus.png") ? "checked_minus.png" :
+			                                                      "checked.png"       ;
+			icon.onclick = function(event) { gfwordnet.onclick_minus(event, this) };
 		}
 	}
 

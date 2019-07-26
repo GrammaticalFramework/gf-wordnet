@@ -531,7 +531,7 @@ gfwordnet.onclick_save = function(event,editor) {
 		}
 
 		if (checked) {
-			var icon = cell.parentNode.firstChild.firstChild;
+			var icon = editor.cell.parentNode.firstChild.firstChild;
 			icon.src = icon.src.endsWith("unchecked_plus.png")  ? "checked_plus.png"  :
 			           icon.src.endsWith("unchecked_minus.png") ? "checked_minus.png" :
 			                                                      "checked.png"       ;
@@ -540,7 +540,6 @@ gfwordnet.onclick_save = function(event,editor) {
 	}
 
 	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
-	gfwordnet.editors.remove(editor);
 	document.body.removeChild(editor);
 }
 gfwordnet.onclick_edit = function (event,cell) {

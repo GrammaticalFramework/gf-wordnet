@@ -145,13 +145,18 @@ cgiMain db (cs,funs) = do
 
     doCheck lex_id lang def =
       runHelda db ReadWriteMode $ do
-        update lexemes (\id -> updateDef lang def) (fromIndexAt lexemes_fun lex_id)
+        res <- update lexemes (\id -> updateDef lang def) (fromIndexAt lexemes_fun lex_id)
         insert checked (lex_id,lang)
-        return ()
+        return [map toLower (show st)
+                   | (_,lexeme) <- res, 
+                     (lang',def',st) <- lex_defs lexeme,
+                     lang==lang', def==def', lex_fun lexeme==lex_id]
       where
         updateDef lang def lexeme =
-          lexeme{lex_defs=[if lang==lang' 
-                             then (lang,def,Checked)
+          lexeme{lex_defs=[if lang==lang'
+                             then (lang,def,if def==def'
+                                              then Checked
+                                              else Changed)
                              else (lang',def',st)
                               | (lang',def',st) <- lex_defs lexeme]}
 

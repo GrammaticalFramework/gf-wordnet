@@ -78,6 +78,10 @@ table[border="yes"] td,table[border="yes"] th {
 	text-decoration: underline dotted red;
 }
 
+.changed {
+	text-decoration: line-through solid black;
+}
+
 table.header-tabs {
 	width: 100%
 }
@@ -180,12 +184,26 @@ table.multiselect > tbody > tr > td:last-child {
 .floating {
 	display: inline-block;
 	position: absolute;
-	padding-left: 3pt;
-	padding-right: 3pt;
+	margin-left: 3pt;
+}
+
+.floating > img {
 	background: #0067FF;
+	padding: 3pt;
+	padding: 3pt;
+	margin-left: 3pt;
 	border-radius: 20%
 }
 
-.floating > #img {
-	margin: 3pt;
+.editor {
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color: #f3f3f3;
+	position: fixed;
+	overflow: auto;
+	z-index: 100;
+}
+
+.editor button {
+	margin-right: 10px;
 }

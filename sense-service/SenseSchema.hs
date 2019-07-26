@@ -20,7 +20,7 @@ data Synset
     deriving (Data,Ord,Eq,Show)
 
 data Status
-  = Guessed | Unchecked | Checked
+  = Guessed | Unchecked | Changed | Checked
   deriving (Data,Show)
 
 data Lexeme

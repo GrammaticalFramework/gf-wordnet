@@ -14,7 +14,7 @@ main = do
   checked <- case args of
                []    -> do es <- fmap (catMaybes . map (readExpr . drop 5) . filter (\l -> take 4 l == "abs:") . lines) $ readFile "examples.txt"
                            let ids = nub (concatMap lemmas es)
-                           return [("ParseEng",ids),("ParseSwe",ids),("ParseBul",ids)]
+                           return [("ParseSwe",ids),("ParseBul",ids)]
                ["-"] -> do ls <- fmap lines $ getContents
                            let res = [(lang,[(id,Just (unwords ws))]) | l <- ls, let (id:lang:ws) = words l]
                            return ((Map.toList . Map.fromListWith (++)) res) 
@@ -37,6 +37,7 @@ main = do
 annotate checked l =
   case words l of
     ("lin":id:"=":_) -> case lookup id checked of
-                          Just def -> (reverse . dropWhile (/=';') . reverse) l
-                          Nothing  ->                                         l
-    _                              ->                                         l
+                          Just Nothing    -> (reverse . dropWhile (/=';') . reverse) l
+                          Just (Just def) -> "lin "++id++" = "++def++" ;"
+                          Nothing         ->                                         l
+    _                                     ->                                         l

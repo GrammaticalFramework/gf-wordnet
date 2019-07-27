@@ -13,7 +13,7 @@ import URLEncoding
 import System.Environment
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import Text.JSON
-import Data.Maybe(mapMaybe, fromMaybe, catMaybes)
+import Data.Maybe(mapMaybe, fromMaybe, catMaybes, isNothing)
 import Data.List(sortOn,sortBy,delete,intercalate,nub)
 import Data.Char
 
@@ -91,18 +91,22 @@ cgiMain db (cs,funs) = do
           sexamples <- select [e | (id,e) <- fromIndexAt examples_fun lex_id, not (elem id ex_ids)]
 
           case Map.lookup sense_id senses of
-            Just (gloss,synset,lex_ids) -> return (Map.insert sense_id (gloss,synset,(lex_id,lex_defs,domains,examples,sexamples):lex_ids) senses)
-            Nothing                     -> do [Synset offset _ _ gloss] <- select (fromAt synsets sense_id)
-                                              synset <- select [(lex_fun,lex_defs) | (_,Lexeme lex_fun lex_defs _ _ _) <- fromIndexAt lexemes_synset sense_id]
-                                              return (Map.insert sense_id (gloss,synset,[(lex_id,lex_defs,domains,examples,sexamples)]) senses)
+            Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,examples,sexamples) lex_ids) senses)
+            Nothing              -> do [Synset _ _ _ gloss] <- select (fromAt synsets sense_id)
+                                       lex_ids <- select [(lex_id,lex_defs,Nothing) | (_,Lexeme lex_id lex_defs _ _ _) <- fromIndexAt lexemes_synset sense_id]
+                                       return (Map.insert sense_id (gloss,addInfo lex_id (domains,examples,sexamples) lex_ids) senses)
 
         getGloss db senses _ = return senses
 
-        addKey (sense_id,(gloss,synset,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,synset,map snd key_lex_ids)))
-          where
-            key_lex_ids = sortOn fst [(toKey lex_id,x) | x@(lex_id,_,_,_,_) <- lex_ids]
+        addInfo lex_id info lex_ids = 
+          [(lex_id',lex_defs,if lex_id == lex_id' then Just info else mb_info)
+              | (lex_id',lex_defs,mb_info) <- lex_ids]
 
-            toKey lex_id = (reverse rid,reverse rcat,read ('0':reverse rn)::Int)
+        addKey (sense_id,(gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,map snd key_lex_ids)))
+          where
+            key_lex_ids = sortOn fst [(toKey lex_id info,x) | x@(lex_id,_,info) <- lex_ids]
+
+            toKey lex_id info = (isNothing info,reverse rid,reverse rcat,read ('0':reverse rn)::Int)
               where
                 s0 = reverse lex_id
                 (rcat,'_':s1) = break (=='_') s0
@@ -172,36 +176,39 @@ cgiMain db (cs,funs) = do
       ids <- findLCA up (nub x)
 
       fs <- runHelda db ReadOnlyMode $ do
-               select [(synset_id,(gloss,[(lex_fun,lex_defs) | (lex_fun,lex_defs,_,_,_) <- synset],synset))
+               select [(synset_id,(gloss,lex_ids))
                           | int <- foldl1Q intersection 
                                            [children s | synset_id <- anyOf ids,
                                                          s <- fromAt synsets synset_id],
                             size int < 2000,
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- fromInterval synsets (Including s) (Including e),
-                            synset <- listAll [(lex_fun,lex_defs,domains,examples,sexamples)
-                                                  | (_,Lexeme lex_fun lex_defs _ domains ex_ids) <- fromIndexAt lexemes_synset synset_id,
-                                                    examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- fromAt examples ex_id],
-                                                    sexamples <- listAll [e | (id,e) <- fromIndexAt examples_fun lex_fun, not (elem id ex_ids)]]]
+                            lex_ids <- listAll [(lex_fun,lex_defs,Just (domains,examples,sexamples))
+                                                   | (_,Lexeme lex_fun lex_defs _ domains ex_ids) <- fromIndexAt lexemes_synset synset_id,
+                                                     examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- fromAt examples ex_id],
+                                                     sexamples <- listAll [e | (id,e) <- fromIndexAt examples_fun lex_fun, not (elem id ex_ids)]]]
 
       return (showJSON (map mkSenseObj fs))
 
-    mkSenseObj (sense_id,(gloss,synset,lex_ids)) =
+    mkSenseObj (sense_id,(gloss,lex_ids)) =
       makeObj [("sense_id",showJSON sense_id)
-              ,("synset",makeObj [(lex_fun,mkDefsObj lex_defs) | (lex_fun,lex_defs) <- synset])
               ,("gloss",showJSON gloss)
               ,("lex_ids",mkLexObj lex_ids)
               ]
 
     mkLexObj lex_ids =
-      makeObj [(lex_id,mkInfObj lex_defs domains examples sexamples) | (lex_id,lex_defs,domains,examples,sexamples) <- lex_ids]
+      makeObj [(lex_id,mkInfObj lex_defs info) | (lex_id,lex_defs,info) <- lex_ids]
 
-    mkInfObj lex_defs domains examples sexamples =
-      makeObj [("lex_defs", mkDefsObj lex_defs),
-               ("domains",  showJSON domains),
-               ("examples", showJSON (map (showExpr []) examples)),
-               ("secondary_examples", showJSON (map (showExpr []) sexamples))
-              ]
+    mkInfObj lex_defs info =
+      makeObj (("lex_defs", mkDefsObj lex_defs) :
+               case info of
+                 Nothing -> []
+                 Just (domains,examples,sexamples) -> [
+                         ("match", showJSON True),
+                         ("domains",  showJSON domains),
+                         ("examples", showJSON (map (showExpr []) examples)),
+                         ("secondary_examples", showJSON (map (showExpr []) sexamples))
+                         ])
 
     mkDefsObj lex_defs =
       makeObj [(lang,showJSON (def,map toLower (show status))) | (lang,def,status) <- lex_defs]

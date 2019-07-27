@@ -52,7 +52,10 @@ gfwordnet.search = function (selection, input, result) {
 			tbody.appendChild(tr(node("td",{colspan: 2 + selection.langs_list.length + (gfwordnet.can_select ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
-				gfwordnet.lex_ids[lex_id].synonyms = senses[i].synset;
+				gfwordnet.lex_ids[lex_id].synonyms = senses[i].lex_ids;
+
+				if (!gfwordnet.lex_ids[lex_id].match)
+					continue;
 
 				var icon;
 				var row = this[lex_id];
@@ -74,15 +77,6 @@ gfwordnet.search = function (selection, input, result) {
 					                onclick: "gfwordnet.onclick_minus(event,this)"});
 				row[0].insertBefore(icon, row[0].firstChild);
 				tbody.appendChild(tr(row));
-			}
-
-			for (var syn_id in senses[i].synset) {
-				if (!(syn_id in gfwordnet.lex_ids)) {
-					gfwordnet.lex_ids[syn_id] = {
-						lex_defs: senses[i].synset[syn_id],
-						synonyms: senses[i].synset
-					};
-				}
 			}
 		}
 
@@ -374,9 +368,9 @@ gfwordnet.onclick_cell = function (cell) {
 				for (var i in gfwordnet.selection.langs_list) {
 					var lang = gfwordnet.selection.langs_list[i];
 					var cell = td([]);
-					if (lang in lex_def.synonyms[synonym]) {
-						if (lex_def.synonyms[synonym][lang][1] != "checked") {
-							cell.classList.add(lex_def.synonyms[synonym][lang][1]);
+					if (lang in lex_def.synonyms[synonym].lex_defs) {
+						if (lex_def.synonyms[synonym].lex_defs[lang][1] != "checked") {
+							cell.classList.add(lex_def.synonyms[synonym].lex_defs[lang][1]);
 							if (gfwordnet.can_check)
 								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 							checked = false;
@@ -697,7 +691,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 						continue;
 
 					gfwordnet.selection.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
-					gfwordnet.selection.lex_ids[lex_id].synonyms = senses[i].synset;
+					gfwordnet.selection.lex_ids[lex_id].synonyms = senses[i].lex_ids;
 
 					var row = [node("td",{onclick: "gfwordnet.onclick_cell(this)"},[text(lex_id)])];
 
@@ -715,12 +709,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 						row.push(cell);
 					}
 
-					var icon;
-					if (!checked) {
-						icon = img("unchecked.png");
-					} else {
-						icon = node("img", {src: "checked_plus.png", onclick: "gfwordnet.onclick_minus(event,this)"});
-					}
+					var icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", onclick: "gfwordnet.onclick_minus(event,this)"});
 					row[0].insertBefore(icon, row[0].firstChild);
 
 					row.push(node("td",{style: "white-space: nowrap"}));

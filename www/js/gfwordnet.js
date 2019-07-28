@@ -547,7 +547,13 @@ gfwordnet.onclick_edit = function (event,cell) {
 	                        [tr(node("td",{colspan:3},[textarea])),
 	                         tr([td([saveBtn,cancelBtn])])]);
 	editor.style.top  = event.clientY+"px";
-	editor.style.left = event.clientX+"px";
+	if (window.matchMedia("(min-resolution: 300dpi)").matches) {
+		editor.style.left  = "0px";
+		editor.style.width = "100%";
+	} else {
+		editor.style.left  = event.clientX+"px";
+	}
+
 	editor.addEventListener('mousedown', function(event) {
 		var offset = [event.offsetX,event.offsetY];
 

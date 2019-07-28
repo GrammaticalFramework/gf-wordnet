@@ -10,6 +10,9 @@ body {
 	select, input, button, table.multiselect {
 		font-size: 140%;
 	}
+	.editor textarea {
+		font-size: 140%;
+	}
 }
 
 img {

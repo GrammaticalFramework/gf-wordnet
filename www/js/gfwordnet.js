@@ -76,7 +76,7 @@ gfwordnet.search = function (selection, input, result) {
 				icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
 					                onclick: "gfwordnet.onclick_minus(event,this)"});
 				row[0].insertBefore(icon, row[0].firstChild);
-				tbody.appendChild(tr(row));
+				tbody.appendChild(node("tr",{"data-lex-id": lex_id},row));
 			}
 		}
 
@@ -345,7 +345,7 @@ gfwordnet.onclick_cell = function (cell) {
 	}
 	cell.classList.add("selected");
 
-	var lex_id = cell.parentNode.firstChild.firstChild.nextSibling.textContent;
+	var lex_id = cell.parentNode.getAttribute("data-lex-id");
 
 	if (index == 0) {
 		var lex_def = this.lex_ids[lex_id];
@@ -383,7 +383,7 @@ gfwordnet.onclick_cell = function (cell) {
 				row.splice(0,0,td([img(checked ? "checked.png" : "unchecked.png"), text(synonym)]));
 
 				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row),errcont);
-				result.appendChild(tr(row));
+				result.appendChild(node("tr",{"data-lex-id": synonym},row));
 			}
 			details.appendChild(result);
 		}
@@ -445,30 +445,21 @@ gfwordnet.onclick_minus = function (event, icon) {
 	
 	icon.src = icon.src.substring(0,icon.src.length-9)+"plus.png";
 }
-gfwordnet.onclick_check = function (event,cell) {
-	event.stopPropagation();
+gfwordnet.update_cells = function(lex_id,lang) {
+	var index = gfwordnet.selection.langs[lang].index;
+	var def   = this.lex_ids[lex_id].lex_defs[lang];
 
-	var index = -1;
-	var node  = cell;
-    while ((node = node.previousElementSibling)) {
-        index++;
-    }
+	var rows = document.querySelectorAll("tr[data-lex-id="+lex_id+"]");
+	for (var i=0; i<rows.length; i++) {
+		var row  = rows[i];
+		var cell = row.childNodes[index];
 
-	var lex_id  = cell.parentNode.firstChild.firstChild.nextSibling.textContent;
-	var lang    = gfwordnet.selection.langs_list[index];
-	var def = gfwordnet.lex_ids[lex_id].lex_defs[lang];
-
-	function errcont(text,code) { }
-	function extract_confirm(st) {
-		def[1] = st[0];
 		cell.removeEventListener("mouseover", gfwordnet.onmouseover_cell);
 		cell.classList.remove("unchecked");
 		cell.classList.remove("guessed");
 		cell.classList.remove("changed");
-		if (st[0] != "checked")
-			editor.cell.classList.add(st[0]);
-		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
-		gfwordnet.popup = null;
+		if (def[1] != "checked")
+			cell.classList.add(def[1]);
 
 		var checked = true;
 		for (var lang in gfwordnet.selection.langs) {
@@ -480,12 +471,33 @@ gfwordnet.onclick_check = function (event,cell) {
 		}
 
 		if (checked) {
-			var icon = cell.parentNode.firstChild.firstChild;
+			var icon = row.firstChild.firstChild;
 			icon.src = icon.src.endsWith("unchecked_plus.png")  ? "checked_plus.png"  :
 			           icon.src.endsWith("unchecked_minus.png") ? "checked_minus.png" :
 			                                                      "checked.png"       ;
-			icon.onclick = function(event) { gfwordnet.onclick_minus(event, this) };
 		}
+	}
+}
+gfwordnet.onclick_check = function (event,cell) {
+	event.stopPropagation();
+
+	var index = -1;
+	var node  = cell;
+    while ((node = node.previousElementSibling)) {
+        index++;
+    }
+
+	var lex_id = cell.parentNode.getAttribute("data-lex-id");
+	var lang   = gfwordnet.selection.langs_list[index];
+	var def    = gfwordnet.lex_ids[lex_id].lex_defs[lang];
+
+	function errcont(text,code) { }
+	function extract_confirm(st) {
+		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
+		gfwordnet.popup = null;
+
+		def[1] = st[0];
+		gfwordnet.update_cells(lex_id,lang);
 	}
 
 	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def[0]),extract_confirm,errcont);
@@ -499,38 +511,17 @@ gfwordnet.onclick_save = function(event,editor) {
         index++;
     }
 
-	var lex_id  = editor.cell.parentNode.firstChild.firstChild.nextSibling.textContent;
-	var lang    = gfwordnet.selection.langs_list[index];
-	var def     = editor.firstElementChild.firstElementChild.firstElementChild.value;
+	var lex_id = editor.cell.parentNode.getAttribute("data-lex-id");
+	var lang   = gfwordnet.selection.langs_list[index];
+	var def    = editor.firstElementChild.firstElementChild.firstElementChild.value;
 
 	function errcont(text,code) { }
 	function extract_confirm(st) {
-		gfwordnet.lex_ids[lex_id].lex_defs[lang] = [def,st[0]];
-		editor.cell.removeEventListener("mouseover", gfwordnet.onmouseover_cell);
-		editor.cell.classList.remove("unchecked");
-		editor.cell.classList.remove("guessed");
-		editor.cell.classList.remove("changed");
-		if (st[0] != "checked")
-			editor.cell.classList.add(st[0]);
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 		gfwordnet.popup = null;
 
-		var checked = true;
-		for (lang in gfwordnet.selection.langs) {
-			if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs) || 
-			    gfwordnet.lex_ids[lex_id].lex_defs[lang][1] != "checked") {
-				checked = false;
-				break;
-			}
-		}
-
-		if (checked) {
-			var icon = editor.cell.parentNode.firstChild.firstChild;
-			icon.src = icon.src.endsWith("unchecked_plus.png")  ? "checked_plus.png"  :
-			           icon.src.endsWith("unchecked_minus.png") ? "checked_minus.png" :
-			                                                      "checked.png"       ;
-			icon.onclick = function(event) { gfwordnet.onclick_minus(event, this) };
-		}
+		gfwordnet.lex_ids[lex_id].lex_defs[lang] = [def,st[0]];
+		gfwordnet.update_cells(lex_id,lang);
 	}
 
 	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
@@ -545,7 +536,7 @@ gfwordnet.onclick_edit = function (event,cell) {
         index++;
     }
 
-	var lex_id  = cell.parentNode.firstChild.firstChild.nextSibling.textContent;
+	var lex_id  = cell.parentNode.getAttribute("data-lex-id");
 	var lang    = gfwordnet.selection.langs_list[index];
 	var def     = gfwordnet.lex_ids[lex_id].lex_defs[lang];
 

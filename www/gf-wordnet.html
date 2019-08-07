@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%">
 	<head>
 		<title>GF WordNet</title>
 		<link rel="stylesheet" type="text/css" href="gf-wordnet.css">
 	</head>
 
-	<body>
+	<body style="height: 100%">
 		<table><tr>
 			<td>
 				<table id="from" class="multiselect">
@@ -36,11 +36,20 @@
 
 		<br>
 
-		<table class="result" id="result">
-			<thead></thead>
-			<tbody></tbody>
-			<tfoot></tfoot>
-		</table>
+		<div style="min-height: 85%">
+			<table class="result" id="result">
+				<thead></thead>
+				<tbody></tbody>
+				<tfoot></tfoot>
+			</table>
+		</div>
+
+		<br>
+
+		<p>
+			<a href="gf-wordnet-help.html" target="_blank">What is this?</a>
+			<a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=1e94c97e812a9f502068">Log In</a>
+		</p>
 
 		<script src="https://cloud.grammaticalframework.org/js/support.js"></script>
 		<script src="js/tsnejs.js"></script>

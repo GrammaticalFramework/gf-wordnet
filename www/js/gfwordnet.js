@@ -1,12 +1,12 @@
 gfwordnet = {}
 
-gfwordnet.grammar_url = "http://cloud.grammaticalframework.org/robust/Parse.pgf"
+gfwordnet.grammar_url = "https://cloud.grammaticalframework.org/robust/Parse.pgf"
 
 gfwordnet.grammar_call=function(querystring,cont,errcont) {
     http_get_json(gfwordnet.grammar_url+querystring,cont,errcont)
 }
 
-gfwordnet.sense_url = "http://www.grammaticalframework.org/~krasimir/SenseService.fcgi"
+gfwordnet.sense_url = "https://www.grammaticalframework.org/~krasimir/SenseService.fcgi"
 
 gfwordnet.sense_call=function(querystring,cont,errcont) {
     http_get_json(gfwordnet.sense_url+querystring,cont,errcont)

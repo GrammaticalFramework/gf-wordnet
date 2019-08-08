@@ -16,8 +16,24 @@ gfwordnet.initialize = function () {
 	var url = new URL(window.location.href);
 
 	this.lex_ids   = {};
-	this.can_check = url.searchParams.get("can_check") != null;
+	this.access_token = null;
 	this.can_select= url.searchParams.get("can_select") != null;
+	this.selection = null;
+	this.popup     = null;
+}
+
+gfwordnet.set_access_token = function(access_token,result) {
+	var thead = result.getElementsByTagName("THEAD")[0];
+	thead.innerHTML = "";
+	
+	var tbody = result.getElementsByTagName("TBODY")[0];
+	tbody.innerHTML = "";
+
+	var tfoot = result.getElementsByTagName("TFOOT")[0];
+	tfoot.innerHTML = "";
+
+	this.lex_ids = {};
+	this.access_token = access_token;
 	this.selection = null;
 	this.popup     = null;
 }
@@ -31,7 +47,7 @@ gfwordnet.search = function (selection, input, result) {
 		for (var i in lins) {
 			var lin   = lins[i];
 			var texts = []
-			if (gfwordnet.can_check) {
+			if (gfwordnet.access_token != null) {
 				for (var i in lin.texts) {
 					if (!lin.texts[i].startsWith("["))
 						texts.push(lin.texts[i]);
@@ -68,7 +84,7 @@ gfwordnet.search = function (selection, input, result) {
 						checked = false;
 						var td = row[gfwordnet.selection.langs[lang].index];
 						td.classList.add(gfwordnet.lex_ids[lex_id].lex_defs[lang][1]);
-						if (gfwordnet.can_check)
+						if (gfwordnet.access_token != null)
 							td.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					}
 				}
@@ -141,7 +157,7 @@ gfwordnet.search = function (selection, input, result) {
 				rows[lemma] = row;
 				lexical_ids = lexical_ids+" "+lemma;
 
-				var cmd = gfwordnet.can_check ? "c-linearizeAll" : "c-linearize";
+				var cmd = (gfwordnet.access_token != null) ? "c-linearizeAll" : "c-linearize";
 				gfwordnet.grammar_call("?command="+cmd+"&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
 			}
 		}
@@ -371,7 +387,7 @@ gfwordnet.onclick_cell = function (cell) {
 					if (lang in lex_def.synonyms[synonym].lex_defs) {
 						if (lex_def.synonyms[synonym].lex_defs[lang][1] != "checked") {
 							cell.classList.add(lex_def.synonyms[synonym].lex_defs[lang][1]);
-							if (gfwordnet.can_check)
+							if (gfwordnet.access_token != null)
 								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 							checked = false;
 						}
@@ -669,7 +685,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 			for (var i in lins) {
 				var lin   = lins[i];
 				var texts = []
-				if (gfwordnet.can_check) {
+				if (gfwordnet.access_token != null) {
 					for (var i in lin.texts) {
 						if (!lin.texts[i].startsWith("["))
 							texts.push(lin.texts[i]);
@@ -700,7 +716,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 						} else if (senses[i].lex_ids[lex_id].lex_defs[lang][1] != "checked") {
 							checked = false;
 							cell.classList.add(senses[i].lex_ids[lex_id].lex_defs[lang][1]);
-							if (gfwordnet.can_check)
+							if (gfwordnet.access_token != null)
 								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 						}
 						row.push(cell);
@@ -714,7 +730,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 
 					tfoot.appendChild(tr(row));
 
-					var cmd = gfwordnet.can_check ? "c-linearizeAll" : "c-linearize";
+					var cmd = gfwordnet.access_token != null ? "c-linearizeAll" : "c-linearize";
 					gfwordnet.grammar_call("?command="+cmd+"&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_id),bind(extract_linearization,row),errcont);
 				}
 			}

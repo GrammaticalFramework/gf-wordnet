@@ -46,9 +46,9 @@ ifeq ($(USE_WIKIPEDIA),YES)
 endif
 
 
-all: build_dirs pull_checks Parse.pgf semantics.db build/SenseService
+all: build_dirs pull_checks Parse.pgf semantics.db build/SenseService build/ContentService
 ifneq ($(SERVER), NO)
-	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*"
+	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
 endif
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
@@ -84,17 +84,24 @@ build/train/EM.hs: train/EM.hsc train/em_core.h
 build/train/Matching.hs: train/Matching.hsc train/em_core.h
 	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
-semantics.db: sense-service/glosses.hs WordNet.gf examples.txt embedding.txt
-	runghc -isense-service sense-service/glosses.hs
+semantics.db: www-services/glosses.hs WordNet.gf examples.txt embedding.txt
+	runghc -isense-service www-services/glosses.hs
 ifneq ($(SERVER), NO)
 	scp semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
 endif
 
-build/SenseService: sense-service/SenseService.hs sense-service/SenseSchema.hs sense-service/URLEncoding.hs sense-service/Interval.hs
-	ghc --make -odir build/sense-service -hidir build/sense-service -O2 -optl-static -optl-pthread $^ -o $@
+build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
+	ghc --make -odir build/www-services -hidir build/www-services -O2 -optl-static -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
 	scp build/SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
 	ssh www.grammaticalframework.org "mv www/SenseService www/SenseService.fcgi"
+endif
+
+build/ContentService: www-services/ContentService.hs
+	ghc --make -odir build/www-services -hidir build/www-services -O2 -optl-static -optl-pthread $^ -o $@
+ifneq ($(SERVER), NO)
+	ssh www.grammaticalframework.org "rm www/ContentService"
+	scp build/ContentService www.grammaticalframework.org:/home/krasimir/www/ContentService
 endif
 
 .PHONY: build_dirs, pull_checks
@@ -103,7 +110,7 @@ build_dirs:
 	mkdir -p build
 	mkdir -p build/gfo
 	mkdir -p build/train
-	mkdir -p build/sense-service
+	mkdir -p build/www-services
 
 pull_checks: $(patsubst Parse%, WordNet%.gf, $(LANGS)) build/SenseService
 ifneq ($(SERVER), NO)

@@ -33,9 +33,9 @@ cgiMain = do
                               httpLbs req man
                      case (do JSObject obj <- runGetJSON readJSObject (UTF8.toString (responseBody res))
                               resultToEither (valFromObj "login" obj)) of
-                       Right user -> do setCookie (newCookie "access_token" token)
-                                        setCookie (newCookie "user" user)
-                                        redirect "gf-wordnet.html"
+                       Right user -> do setCookie ((newCookie "access_token" token){cookiePath=Just "/wordnet"})
+                                        setCookie ((newCookie "user" user){cookiePath=Just "/wordnet"})
+                                        redirect "/wordnet"
                        Left err     -> output err
     Nothing    -> outputNothing
 

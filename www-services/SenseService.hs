@@ -18,7 +18,7 @@ import Data.List(sortOn,sortBy,delete,intercalate,nub)
 import Data.Char
 
 main = do
-  db <- openDB "/home/krasimir/www/semantics.db"
+  db <- openDB "/usr/local/www/gf-wordnet/www/semantics.db"
   args <- getArgs
   case args of
     ["report"] -> doReport db

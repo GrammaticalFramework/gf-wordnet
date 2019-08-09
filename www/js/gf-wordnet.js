@@ -6,7 +6,7 @@ gfwordnet.grammar_call=function(querystring,cont,errcont) {
     http_get_json(gfwordnet.grammar_url+querystring,cont,errcont)
 }
 
-gfwordnet.sense_url = "https://www.grammaticalframework.org/~krasimir/SenseService.fcgi"
+gfwordnet.sense_url = "https://www.grammaticalframework.org/wordnet/SenseService.fcgi"
 
 gfwordnet.sense_call=function(querystring,cont,errcont) {
     http_get_json(gfwordnet.sense_url+querystring,cont,errcont)

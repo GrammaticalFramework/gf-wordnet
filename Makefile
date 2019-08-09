@@ -45,6 +45,7 @@ ifeq ($(USE_WIKIPEDIA),YES)
 	UD_FIN_TREEBANKS += $(wildcard data/Finnish/fi-wikipedia-00[01].conllu.xz)
 endif
 
+SERVER_PATH = /usr/local/www/gf-wordnet/www
 
 all: build_dirs pull_checks Parse.pgf semantics.db build/SenseService build/ContentService
 ifneq ($(SERVER), NO)
@@ -87,21 +88,21 @@ build/train/Matching.hs: train/Matching.hsc train/em_core.h
 semantics.db: www-services/glosses.hs WordNet.gf examples.txt embedding.txt
 	runghc -isense-service www-services/glosses.hs
 ifneq ($(SERVER), NO)
-	scp semantics.db www.grammaticalframework.org:/home/krasimir/www/semantics.db
+	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)/semantics.db
 endif
 
 build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -O2 -optl-static -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
-	scp build/SenseService www.grammaticalframework.org:/home/krasimir/www/SenseService
-	ssh www.grammaticalframework.org "mv www/SenseService www/SenseService.fcgi"
+	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/SenseService.fcgi"
+	scp build/SenseService www.grammaticalframework.org:$(SERVER_PATH)/SenseService.fcgi
 endif
 
 build/ContentService: www-services/ContentService.hs
 	ghc --make -odir build/www-services -hidir build/www-services -O2 -optl-static -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
-	ssh www.grammaticalframework.org "rm www/ContentService"
-	scp build/ContentService www.grammaticalframework.org:/home/krasimir/www/ContentService
+	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/ContentService"
+	scp build/ContentService www.grammaticalframework.org:$(SERVER_PATH)/ContentService
 endif
 
 .PHONY: build_dirs, pull_checks

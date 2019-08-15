@@ -14,6 +14,8 @@ import System.IO hiding (ReadWriteMode)
 import System.Environment
 import System.Directory
 import System.Posix.Files
+import System.Process
+import System.Exit
 import Control.Monad(liftM2,liftM3,forM_)
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import qualified Data.ByteString.Lazy.UTF8 as UTF8 (toString,fromString)
@@ -45,8 +47,8 @@ cgiMain db = do
                    Just (lex_id,lang,def) -> do json <- liftIO (doCheck lex_id lang def)
                                                 outputJSONP json
                    Nothing                -> case liftM2 (,) mb_s2 mb_s6 of
-                                               Just (token,commit) -> do json <- liftIO (doCommit token)
-                                                                         outputJSONP json
+                                               Just (token,commit) -> do res <- liftIO (doCommit token)
+                                                                         outputText "text/plain; charset=utf-8" res
                                                Nothing             -> outputNothing
   where
     doLogin code = do
@@ -108,6 +110,20 @@ cgiMain db = do
                                          groupWriteMode `unionFileModes`
                                          otherReadMode)
                   renameFile tmp_fname (SERVER_PATH++"/"++fname)
+      req0 <- parseRequest ("https://api.github.com/user?access_token="++token)
+      let req = req0{requestHeaders=(hUserAgent,BSS.fromString "GF WordNet"):requestHeaders req0}
+      man <- liftIO $ newManager tlsManagerSettings
+      res <- httpLbs req man
+      case (do JSObject obj <- runGetJSON readJSObject (UTF8.toString (responseBody res))
+               name  <- resultToEither (valFromObj "name" obj)
+               email <- resultToEither (valFromObj "email" obj)
+               return (name++" <"++email++">")) of
+        Right author -> do (res,out,err) <- 
+                               git ["pull","--no-edit"] `thenDo`
+                               git ["commit","--author",author,"--message","progress","WordNet*.gf"] `thenDo`
+                               git ["push","https://"++token++"@github.com/GrammaticalFramework/gf-wordnet"]
+                           return (show res++"\n"++out++"\n"++err)
+        Left err     -> return err
       where
         annotate checked l =
           case words l of
@@ -116,6 +132,15 @@ cgiMain db = do
                                   _          -> l
             _                                -> l
 
+
+git args = readCreateProcessWithExitCode (proc "git" args){cwd=Just SERVER_PATH} ""
+
+thenDo f g =
+  do (code1,out1,err1) <- f
+     case code1 of
+       ExitSuccess -> do (code2,out2,err2) <- g
+                         return (code2,out1++out2,err1++err2)
+       _           -> return (code1,out1,err1)
 
 outputJSONP :: JSON a => a -> CGI CGIResult
 outputJSONP = outputEncodedJSONP . encode

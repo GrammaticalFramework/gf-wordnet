@@ -12,6 +12,12 @@ gfwordnet.sense_call=function(querystring,cont,errcont) {
     http_get_json(gfwordnet.sense_url+querystring,cont,errcont)
 }
 
+gfwordnet.content_url = "https://www.grammaticalframework.org/wordnet/ContentService.fcgi"
+
+gfwordnet.content_call=function(querystring,cont,errcont) {
+    http_get_json(gfwordnet.content_url+querystring,cont,errcont)
+}
+
 gfwordnet.initialize = function () {
 	var url = new URL(window.location.href);
 
@@ -516,7 +522,7 @@ gfwordnet.onclick_check = function (event,cell) {
 		gfwordnet.update_cells(lex_id,lang);
 	}
 
-	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def[0]),extract_confirm,errcont);
+	gfwordnet.content_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def[0]),extract_confirm,errcont);
 }
 gfwordnet.onclick_save = function(event,editor) {
 	event.stopPropagation();
@@ -540,7 +546,7 @@ gfwordnet.onclick_save = function(event,editor) {
 		gfwordnet.update_cells(lex_id,lang);
 	}
 
-	gfwordnet.sense_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
+	gfwordnet.content_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
 	document.body.removeChild(editor);
 }
 gfwordnet.onclick_edit = function (event,cell) {

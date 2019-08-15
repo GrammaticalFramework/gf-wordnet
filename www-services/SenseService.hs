@@ -9,8 +9,6 @@ import Control.Monad(foldM,msum,forM_)
 import Control.Concurrent(forkIO)
 import Network.CGI
 import Network.FastCGI(runFastCGI,runFastCGIConcurrent')
-import URLEncoding
-import System.Environment
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import Text.JSON
 import Data.Maybe(mapMaybe, fromMaybe, catMaybes, isNothing)
@@ -18,46 +16,33 @@ import Data.List(sortOn,sortBy,delete,intercalate,nub)
 import Data.Char
 
 main = do
-  db <- openDB "/usr/local/www/gf-wordnet/www/semantics.db"
-  args <- getArgs
-  case args of
-    ["report"] -> doReport db
-    _          -> do st <- runHelda db ReadOnlyMode $ do
-                             [cs] <- select [cs | (_,cs) <- from coefficients]
+  db <- openDB (SERVER_PATH++"/semantics.db")
+  st <- runHelda db ReadOnlyMode $ do
+          [cs] <- select [cs | (_,cs) <- from coefficients]
 
-                             let norm v = zipWith (\c x -> (c*x) / len) cs v
-                                   where
-                                     len = sum (zipWith (*) cs v)
+          let norm v = zipWith (\c x -> (c*x) / len) cs v
+                where
+                  len = sum (zipWith (*) cs v)
 
-                             funs <- fmap Map.fromList $
-                                        select [(fun, (hvec,mvec,vec))
-                                                  | (_,Embedding fun hvec' mvec') <- from embeddings
-                                                  , let !hvec = Vector.fromList hvec'
-                                                        !mvec = Vector.fromList mvec'
-                                                        !vec  = Vector.fromList (norm hvec' ++ norm mvec')]
-                             return (Vector.fromList cs,funs)
+          funs <- fmap Map.fromList $
+                    select [(fun, (hvec,mvec,vec))
+                              | (_,Embedding fun hvec' mvec') <- from embeddings
+                              , let !hvec = Vector.fromList hvec'
+                                    !mvec = Vector.fromList mvec'
+                                    !vec  = Vector.fromList (norm hvec' ++ norm mvec')]
+          return (Vector.fromList cs,funs)
 -- #ifndef mingw32_HOST_OS
 --                   runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else
-                     runFastCGI (handleErrors $ cgiMain db st)
+  runFastCGI (handleErrors $ cgiMain db st)
 -- #endif
   closeDB db
-  where
-    doReport db = do
-      res <- runHelda db ReadOnlyMode $ 
-               select [(lex_id,lang,[def | (lang',def,_) <- lex_defs lexeme, lang==lang']) | 
-                            (_,(lex_id,lang)) <- from checked,
-                            (_,lexeme) <- fromIndexAt lexemes_fun lex_id]
-      mapM_ (\(lex_id,lang,defs) -> putStrLn (intercalate "\t" (lex_id:lang:defs))) res
 
 cgiMain :: Database -> Embeddings -> CGI CGIResult
 cgiMain db (cs,funs) = do
   mb_s1 <- getInput "lexical_ids"
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
-  mb_s4 <- getInput "check_id"
-  mb_s5 <- getInput "lang"
-  mb_s6 <- fmap (fmap (urlDecodeUnicode . UTF8.decodeString)) $ getInput "def"
   mb_s7 <- getInput "generalize_ids"
   case mb_s1 of
     Just s  -> do json <- liftIO (doQuery (words s))
@@ -68,13 +53,10 @@ cgiMain db (cs,funs) = do
                  Nothing     -> case mb_s3 of
                                   Just lex_id -> do json <- liftIO (doGloss lex_id)
                                                     outputJSONP json
-                                  Nothing     -> case (mb_s4,mb_s5,mb_s6) of
-                                                   (Just lex_id,Just lang,Just def) -> do  json <- liftIO (doCheck lex_id lang def)
-                                                                                           outputJSONP json
-                                                   _                                -> case mb_s7 of
-                                                                                         Just s  -> do json <- liftIO (doGeneralize (words s))
-                                                                                                       outputJSONP json
-                                                                                         Nothing -> outputNothing
+                                  Nothing     -> case mb_s7 of
+                                                   Just s  -> do json <- liftIO (doGeneralize (words s))
+                                                                 outputJSONP json
+                                                   Nothing -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runHelda db ReadOnlyMode $
@@ -146,23 +128,6 @@ cgiMain db (cs,funs) = do
                     select [gloss s | (_,lex@(Lexeme{synset=Just synset_id})) <- fromIndexAt lexemes_fun lex_id,
                                       s <- fromAt synsets synset_id]
       return (showJSON glosses)
-
-    doCheck lex_id lang def =
-      runHelda db ReadWriteMode $ do
-        res <- update lexemes (\id -> updateDef lang def) (fromIndexAt lexemes_fun lex_id)
-        insert checked (lex_id,lang)
-        return [map toLower (show st)
-                   | (_,lexeme) <- res, 
-                     (lang',def',st) <- lex_defs lexeme,
-                     lang==lang', def==def', lex_fun lexeme==lex_id]
-      where
-        updateDef lang def lexeme =
-          lexeme{lex_defs=[if lang==lang'
-                             then (lang,def,if def==def'
-                                              then Checked
-                                              else Changed)
-                             else (lang',def',st)
-                              | (lang',def',st) <- lex_defs lexeme]}
 
     doGeneralize ids = do
       x <- runHelda db ReadOnlyMode $ fmap catMaybes $ do

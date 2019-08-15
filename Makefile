@@ -45,9 +45,9 @@ ifeq ($(USE_WIKIPEDIA),YES)
 	UD_FIN_TREEBANKS += $(wildcard data/Finnish/fi-wikipedia-00[01].conllu.xz)
 endif
 
-SERVER_PATH = /usr/local/www/gf-wordnet/www
+SERVER_PATH = /usr/local/www/gf-wordnet
 
-all: build_dirs pull_checks Parse.pgf semantics.db build/SenseService build/ContentService
+all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService
 ifneq ($(SERVER), NO)
 	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
 endif
@@ -92,28 +92,23 @@ ifneq ($(SERVER), NO)
 endif
 
 build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
-	ghc --make -odir build/www-services -hidir build/www-services -O2 -optl-static -optl-pthread $^ -o $@
+	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-static -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
-	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/SenseService.fcgi"
-	scp build/SenseService www.grammaticalframework.org:$(SERVER_PATH)/SenseService.fcgi
+	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/www/SenseService.fcgi"
+	scp build/SenseService www.grammaticalframework.org:$(SERVER_PATH)/www/SenseService.fcgi
 endif
 
-build/ContentService: www-services/ContentService.hs
-	ghc --make -odir build/www-services -hidir build/www-services -O2 -optl-static -optl-pthread $^ -o $@
+build/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
+	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-static -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
-	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/ContentService"
-	scp build/ContentService www.grammaticalframework.org:$(SERVER_PATH)/ContentService
+	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/www/ContentService"
+	scp build/ContentService www.grammaticalframework.org:$(SERVER_PATH)/www/ContentService
 endif
 
-.PHONY: build_dirs, pull_checks
+.PHONY: build_dirs
 
 build_dirs:
 	mkdir -p build
 	mkdir -p build/gfo
 	mkdir -p build/train
 	mkdir -p build/www-services
-
-pull_checks: $(patsubst Parse%, WordNet%.gf, $(LANGS)) build/SenseService
-ifneq ($(SERVER), NO)
-	ssh www.grammaticalframework.org ./www/SenseService.fcgi report | runghc check.hs -
-endif

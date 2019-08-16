@@ -86,7 +86,7 @@ build/train/Matching.hs: train/Matching.hsc train/em_core.h
 	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
 semantics.db: www-services/glosses.hs WordNet.gf examples.txt embedding.txt
-	runghc -isense-service www-services/glosses.hs
+	runghc -iwww-services www-services/glosses.hs
 ifneq ($(SERVER), NO)
 	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)/semantics.db
 endif

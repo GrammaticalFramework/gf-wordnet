@@ -1,6 +1,6 @@
 concrete ParseExtendBul of ParseExtend = 
   ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralBul - [num], PunctuationX ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], NumeralBul - [num], PunctuationX ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
 
 lin gen_Quant = DefArt ;
 
@@ -8,10 +8,7 @@ lin gen_Quant = DefArt ;
     UttAPMasc ap = {s = ap.s ! ASg Masc Indef ! P3} ;
     UttAPFem  ap = {s = ap.s ! ASg Fem  Indef ! P3} ;
 
-    UttVPS     vps = {s = vps.s ! agrP3 (GSg Neut)} ;
-    UttVPSMasc vps = {s = vps.s ! agrP3 (GSg Masc)} ;
-    UttVPSFem  vps = {s = vps.s ! agrP3 (GSg Fem)} ;
-    UttVPSPl   vps = {s = vps.s ! agrP3 GPl} ;
+    UttVPS   p vps = {s = vps.s ! personAgr p.gn p.p} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
@@ -208,7 +205,7 @@ lin whatSgFem_IP  = mkIP "каква" "каква" (GSg Fem) ;
 
 lin that_RP = IdRP ;
 
-lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a (orPol pol.p vp.p) vp ! Perf ! agr} ;
+lin EmbedVP ant pol p vp = {s = ant.s ++ pol.s ++ daComplex ant.a (orPol pol.p vp.p) vp ! Perf ! personAgr p.gn p.p} ;
 
     ComplVV vv ant pol vp =
       insertObj (\\agr => ant.s ++ pol.s ++ 
@@ -248,14 +245,12 @@ lin EmbedVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a (orPol 
       subjCtrl = slash.subjCtrl
       } ;
 
-    InOrderToVP ant pol vp =
-      {s = "за" ++ ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! {gn=GSg Neut; p=P3}};
+    InOrderToVP ant pol p vp =
+      {s = "за" ++ ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! personAgr p.gn p.p};
 
-    CompVP ant pol vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agr; p = Pos} ;
+    CompVP ant pol p vp = {s = \\agr => ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! personAgr p.gn p.p; p = Pos} ;
 
-    UttVP ant pol vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Neut)} ;
-    UttVPMasc ant pol vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Masc)} ;
-    UttVPFem  ant pol vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! agrP3 (GSg Fem)} ;
+    UttVP ant pol p vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! personAgr p.gn p.p} ;
 
     ReflA2 a rnp = {
       s = \\aform,_ => a.s ! aform ++ a.c2.s ++ rnp.s ! RObj a.c2.c ;

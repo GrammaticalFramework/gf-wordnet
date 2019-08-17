@@ -1,5 +1,5 @@
 abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], Numeral - [num], Punctuation ** {
+                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], Numeral - [num], Punctuation ** {
 
 fun gen_Quant : Quant ;       -- English often skips the article 
                               -- when in Swedish and Bulgarian definite 
@@ -10,10 +10,7 @@ fun gen_Quant : Quant ;       -- English often skips the article
     UttAPMasc : AP -> Utt ;   -- Version of UttAP in masculine
     UttAPFem  : AP -> Utt ;   -- Version of UttAP in feminine
 
-    UttVPS     : VPS -> Utt ; -- Similar to UttVPS in the RGL but in Neutr
-    UttVPSMasc : VPS -> Utt ; -- Version of UttVPS in masculine
-    UttVPSFem  : VPS -> Utt ; -- Version of UttVPS in feminine
-    UttVPSPl   : VPS -> Utt ; -- Version of UttVPS in plural
+    UttVPS     : Pron -> VPS -> Utt ; -- Similar to UttVPS in the RGL but takes agreement from a pronoun
 
     -- A version of PhrUtt which adds a punctuation mark
 fun PhrUttMark : PConj -> Utt -> Voc -> Mark -> Phr ;
@@ -125,16 +122,14 @@ fun that_RP : RP ;
 
     -- generalize several function that take infinitive VP as argument
     -- to also support anteriority and polarity.
-fun EmbedVP     : Ant -> Pol -> VP  -> SC ;
+fun EmbedVP     : Ant -> Pol -> Pron -> VP  -> SC ;
     ComplVV     : VV  -> Ant -> Pol -> VP -> VP ;
     SlashVV     : VV  -> Ant -> Pol -> VPSlash -> VPSlash ;
     SlashV2V    : V2V -> Ant -> Pol -> VP -> VPSlash ;
     SlashV2VNP  : V2V -> NP  -> Ant -> Pol -> VPSlash -> VPSlash ;
-    InOrderToVP : Ant -> Pol -> VP  -> Adv ;
-    CompVP      : Ant -> Pol -> VP  -> Comp ;
-    UttVP       : Ant -> Pol -> VP  -> Utt ;
-    UttVPMasc   : Ant -> Pol -> VP  -> Utt ;
-    UttVPFem    : Ant -> Pol -> VP  -> Utt ;
+    InOrderToVP : Ant -> Pol -> Pron -> VP  -> Adv ;
+    CompVP      : Ant -> Pol -> Pron -> VP  -> Comp ;
+    UttVP       : Ant -> Pol -> Pron -> VP  -> Utt ;
 
     -- reciprocal verbs i.e. 
     -- `We love each other` or `We love one another`.

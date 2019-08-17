@@ -1,6 +1,6 @@
 concrete ParseExtendSwe of ParseExtend = 
   ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralSwe - [num], PunctuationX ** 
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], NumeralSwe - [num], PunctuationX ** 
   open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe), (P = ParadigmsSwe), (I = IrregSwe) in {
 
 lin gen_Quant = DefArt ;
@@ -9,10 +9,7 @@ lin gen_Quant = DefArt ;
     UttAPMasc ap = {s = ap.s ! Strong (GSg Utr)} ;
     UttAPFem  ap = {s = ap.s ! Strong (GSg Utr)} ;
 
-    UttVPS     vps = {s = vps.s ! Main ! (agrP3 Neutr Sg)} ;
-    UttVPSMasc vps = {s = vps.s ! Main ! (agrP3 Utr   Sg)} ;
-    UttVPSFem  vps = {s = vps.s ! Main ! (agrP3 Utr   Sg)} ;
-    UttVPSPl   vps = {s = vps.s ! Main ! (agrP3 Neutr Pl)} ;
+    UttVPS   p vps = {s = vps.s ! Main ! p.a} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
@@ -180,7 +177,7 @@ lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
 
 lin that_RP = IdRP ;
 
-lin EmbedVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 Utr Sg) ant.a pol.p} ; --- agr
+lin EmbedVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p} ;
 
     ComplVV vv ant pol vp = insertObjPost (\\a => vv.c2.s ++ ant.s ++ pol.s ++ infVPPlus vp a ant.a pol.p) (predV vv) ;
 
@@ -197,15 +194,13 @@ lin EmbedVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 U
         (\\a => vv.c2.s ++ np.s ! accusative ++ vv.c3.s ++ ant.s ++ pol.s ++ infVPPlus vp a ant.a pol.p) (predV vv) 
         ** {n3 = vp.n3 ; c2 = vv.c2} ;
 
-    InOrderToVP ant pol vp = {  -- infinitive: att dricka öl, att vara glad
-      s = "för att" ++ ant.s ++ pol.s ++ infVPPlus vp {g = Utr ; n = Sg ; p = P3} ant.a pol.p
+    InOrderToVP ant pol p vp = {  -- infinitive: att dricka öl, att vara glad
+      s = "för att" ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p
     } ;
 
-    CompVP ant pol vp = {s = \\agr => "att" ++ ant.s ++ pol.s ++ infVPPlus vp agr ant.a pol.p} ;
+    CompVP ant pol p vp = {s = \\agr => "att" ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p} ;
 
-    UttVP ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 Neutr Sg) ant.a pol.p} ;
-    UttVPMasc ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 Utr Sg) ant.a pol.p} ;
-    UttVPFem  ant pol vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp (agrP3 Utr Sg) ant.a pol.p} ;
+    UttVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p} ;
 
     ReflA2 a rnp = {
       s = \\ap => let agr = case ap of {

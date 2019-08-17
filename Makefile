@@ -88,7 +88,8 @@ build/train/Matching.hs: train/Matching.hsc train/em_core.h
 semantics.db: www-services/glosses.hs WordNet.gf examples.txt embedding.txt
 	runghc -iwww-services www-services/glosses.hs
 ifneq ($(SERVER), NO)
-	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)/semantics.db
+	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
+	scp build/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
 endif
 
 build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs

@@ -1,3 +1,4 @@
+{-# LANGUAGE MonadComprehensions, BangPatterns #-}
 import PGF2
 import Database.Helda
 import SenseSchema
@@ -7,7 +8,7 @@ import Data.Maybe
 import Data.Data
 import System.Directory
 import Control.Monad
-import qualified Data.Map as Map
+import qualified Data.Map.Strict as Map
 
 main = do
   cncdefs1 <- fmap (mapMaybe (parseCncSyn "ParseBul") . lines) $ readFile "WordNetBul.gf"
@@ -66,6 +67,15 @@ main = do
     mapM_ (insert embeddings) ws
     
     createTable checked
+
+  [cs] <- runHelda db ReadOnlyMode $ 
+            select $ 
+              foldlQ accumCounts Map.empty $
+                [(drop 5 lang,status)
+                           | (_,lex) <- from lexemes,
+                             (lang,_,status) <- anyOf (lex_defs lex)]
+  writeFile "build/status.svg" (renderStatus cs)
+
   closeDB db
 
 parseAbsSyn l =
@@ -128,6 +138,39 @@ parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
       in sum hvec `seq` sum mvec `seq` (Embedding l1 hvec mvec):parseWords ls
 
     parseVector = map read . words :: String -> [Double]
+
+accumCounts m (lang,status) = Map.alter (Just . add) lang m
+  where
+    add Nothing                = (0,0,0,0)
+    add (Just (!g,!u,!ca,!ce)) = case status of
+                                   Guessed   -> (g+0.001,u,ca,ce)
+                                   Unchecked -> (g,u+0.001,ca,ce)
+                                   Changed   -> (g,u,ca+0.001,ce)
+                                   Checked   -> (g,u,ca,ce+0.001)
+
+renderStatus cs =
+      let (s1,x,y) = Map.foldlWithKey renderBar  ("",5,0) cs
+          (s2,_,_) = Map.foldlWithKey renderLang ("",5,y) cs
+      in "<?xml version=\"1.0\" encoding=\"utf-8\"?>"++
+         "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\""++show x++"\" height=\""++show (y+20)++"\">\n"++
+         "<g transform=\"translate(0,"++show y++") scale(1,-1)\">\n"++
+         s1++
+         "</g>\n"++
+         s2++
+         "</svg>"
+      where
+        renderBar (s,x,y) lang (g,u,ca,ce) =
+          let bar =
+                "<rect x=\""++show x++"\" y=\""++show 0++"\" width=\"30\" height=\""++show g++"\" style=\"fill:red\"/>\n"++
+                "<rect x=\""++show x++"\" y=\""++show g++"\" width=\"30\" height=\""++show u++"\" style=\"fill:yellow\"/>\n"++
+                "<rect x=\""++show x++"\" y=\""++show (g+u)++"\" width=\"30\" height=\""++show ca++"\" style=\"fill:black\"/>\n"++
+                "<rect x=\""++show x++"\" y=\""++show (g+u+ca)++"\" width=\"30\" height=\""++show ce++"\" style=\"fill:green\"/>\n"
+          in (bar++s,x+35,max y (g+u+ca+ce))
+
+        renderLang (s,x,y) lang (g,u,ca,ce) =
+          let text =
+                "<text x=\""++show (x+3)++"\" y=\""++show (y+15)++"\">"++lang++"</text>"
+          in (text++s,x+35,y)
 
 tsv :: String -> [String]
 tsv "" = []

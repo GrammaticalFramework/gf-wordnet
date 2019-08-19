@@ -18,6 +18,12 @@ gfwordnet.content_call=function(querystring,cont,errcont) {
     http_get_json(gfwordnet.content_url+querystring,cont,errcont)
 }
 
+gfwordnet.shell_url = "https://cloud.grammaticalframework.org/gfshell"
+
+gfwordnet.shell_call=function(querystring,cont,errcont) {
+	ajax_http_get(gfwordnet.shell_url+querystring,cont,errcont)
+}
+
 gfwordnet.initialize = function () {
 	var url = new URL(window.location.href);
 
@@ -524,6 +530,40 @@ gfwordnet.onclick_check = function (event,cell) {
 
 	gfwordnet.content_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def[0]),extract_confirm,errcont);
 }
+gfwordnet.onclick_eval = function(event,editor) {
+	var index = -1;
+	var cell  = editor.cell;
+    while ((cell = cell.previousElementSibling)) {
+        index++;
+    }
+
+	var lex_id = editor.cell.parentNode.getAttribute("data-lex-id");
+	var lang   = gfwordnet.selection.langs_list[index];
+	var def    = editor.firstElementChild.firstElementChild.firstElementChild.value;
+	var dir    = "/tmp/morpho-"+lang.slice(5);
+	var cat    = lex_id.slice(lex_id.lastIndexOf("_")+1);
+
+	function errcont(text,code) { }
+	function extract_html(html) {
+		var result = editor.childNodes[2].firstElementChild.firstElementChild;
+		if (html.includes("<") && html.includes(">")) {
+			result.innerHTML = html;
+			event.target.nextElementSibling.style.display = "inline-block";
+		} else {
+			result.innerHTML = "";
+			result.appendChild(node("pre", {}, [text(html)]));
+			event.target.nextElementSibling.style.display = "none";
+		}
+	}
+	function extract_import(html) {
+		if (html != "") {
+			extract_html(html);
+			return;
+		}
+		gfwordnet.shell_call("?dir="+dir+"&command=cc%20-one%20"+encodeURIComponent("MkDocument (NoDefinition {s=\"\"}) (Inflection"+cat+" ("+def+")) {s=\"\"}"),extract_html,errcont);
+	}
+	gfwordnet.shell_call("?dir="+dir+"&command=i+-retain+morpho.gf",extract_import,errcont);
+}
 gfwordnet.onclick_save = function(event,editor) {
 	event.stopPropagation();
 
@@ -549,6 +589,10 @@ gfwordnet.onclick_save = function(event,editor) {
 	gfwordnet.content_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
 	document.body.removeChild(editor);
 }
+gfwordnet.onclick_delete = function(event,editor) {
+	editor.firstElementChild.firstElementChild.firstElementChild.value = "variants {}";
+	gfwordnet.onclick_save(event,editor);
+}
 gfwordnet.onclick_edit = function (event,cell) {
 	event.stopPropagation();
 
@@ -563,11 +607,14 @@ gfwordnet.onclick_edit = function (event,cell) {
 	var def     = gfwordnet.lex_ids[lex_id].lex_defs[lang];
 
 	var textarea = node("textarea", {rows: 4, cols: 50, spellcheck: false},[text(def[0])]);
-	var saveBtn   = node("button", {onclick: "gfwordnet.onclick_save(event,this.parentNode.parentNode.parentNode)"},[text("Save")]);
+	var evalBtn   = node("button", {onclick: "gfwordnet.onclick_eval(event,this.parentNode.parentNode.parentNode)"},[text("Eval")]);
+	var saveBtn   = node("button", {style: "display: none", onclick: "gfwordnet.onclick_save(event,this.parentNode.parentNode.parentNode)"},[text("Save")]);
+	var deleteBtn = node("button", {onclick: "gfwordnet.onclick_delete(event,this.parentNode.parentNode.parentNode)"},[text("Delete")]);
 	var cancelBtn = node("button", {onclick: "document.body.removeChild(this.parentNode.parentNode.parentNode)"},[text("Cancel")]);
 	var editor    = node("table", {"class": "editor"} ,
 	                        [tr(node("td",{colspan:3},[textarea])),
-	                         tr([td([saveBtn,cancelBtn])])]);
+	                         tr([td([evalBtn,saveBtn,deleteBtn,cancelBtn])]),
+	                         tr([td([node("div",{style: "max-height: 300px; overflow:auto"},[])])])]);
 	editor.style.top  = event.clientY+"px";
 	if (window.matchMedia("(min-resolution: 300dpi)").matches) {
 		editor.style.left  = "0px";
@@ -576,7 +623,16 @@ gfwordnet.onclick_edit = function (event,cell) {
 		editor.style.left  = event.clientX+"px";
 	}
 
+	textarea.addEventListener("keydown", function(event) {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+			evalBtn.click();
+		}
+	});
 	editor.addEventListener('mousedown', function(event) {
+		if (event.target.tagName != "TABLE")
+			return;
+
 		var offset = [event.offsetX,event.offsetY];
 
 		var onmousemove = function(event) {

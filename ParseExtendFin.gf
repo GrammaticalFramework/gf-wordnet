@@ -1,6 +1,6 @@
 concrete ParseExtendFin of ParseExtend = 
   ExtendFin - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralFin - [num], PunctuationX **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], NumeralFin - [num], PunctuationX **
  open MorphoFin, ResFin, ParadigmsFin, StemFin, (G=GrammarFin), Prelude in {
 
 lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
@@ -18,8 +18,7 @@ lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND 
          ) ;
 
 	UttAP, UttAPFem, UttAPMasc = G.UttAP ;
-	UttVPS, UttVPSMasc, UttVPSFem = \vps -> {s = vps.s ! Ag Sg P3} ;
-	UttVPSPl = \vps -> {s = vps.s ! Ag Pl P3} ;
+	UttVPS p = \vps -> {s = vps.s ! p.a} ;
 
     SlashV2V v ant p vp = 
       insertObj (\\_,b,a => infVP v.sc b a vp (vvtype2infform v.vi)) (predSV v) ** {c2 = v.c2} ; ----

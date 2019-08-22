@@ -1,6 +1,6 @@
 concrete ParseExtendEng of ParseExtend = 
   ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralEng - [num], PunctuationX **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], NumeralEng - [num], PunctuationX **
   open Prelude, ResEng, MorphoEng, GrammarEng, (E = ExtraEng), Coordination in {
 
 lin gen_Quant = {
@@ -17,10 +17,7 @@ lin gen_Quant = {
     UttAPMasc ap = {s = ap.s ! agrgP3 Sg Masc} ;
     UttAPFem  ap = {s = ap.s ! agrgP3 Sg Fem } ;
 
-    UttVPS     vps = {s = vps.s ! agrgP3 Sg Neutr}  ;
-    UttVPSMasc vps = {s = vps.s ! agrgP3 Sg Masc} ;
-    UttVPSFem  vps = {s = vps.s ! agrgP3 Sg Fem} ;
-    UttVPSPl   vps = {s = vps.s ! agrgP3 Pl Neutr} ;
+    UttVPS     p vps = {s = vps.s ! p.a}  ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
@@ -131,11 +128,10 @@ lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
 
 lin that_RP = E.that_RP ;
 
-lin EmbedVP ant pol vp = {s = 
-      variants {\\a => ant.s ++ pol.s ++ 
-                       infVP VVInf vp True  ant.a pol.p a ;
-                \\a => ant.s ++ pol.s ++ 
-                       infVP VVInf vp False ant.a pol.p a}
+lin EmbedVP ant pol p vp = {s = 
+      ant.s ++ pol.s ++ 
+      variants {infVP VVInf vp True  ant.a pol.p p.a ;
+                infVP VVInf vp False ant.a pol.p p.a}
       } ;
 
     ComplVV v ant pol vp = 
@@ -163,19 +159,17 @@ lin EmbedVP ant pol vp = {s =
                                           \\a => ant.s ++ pol.s ++ vv.c3 ++ infVP vv.typ vp False ant.a pol.p a})
                                (predVc vv)) ;
 
-    InOrderToVP ant pol vp = {s = 
+    InOrderToVP ant pol p vp = {s = 
       variants {"in order"; []} ++ ant.s ++ pol.s ++
-      infVP VVInf vp (variants {True; False}) ant.a pol.p (AgP3Sg Neutr)
+      infVP VVInf vp (variants {True; False}) ant.a pol.p p.a
       } ;
 
-    CompVP ant pol vp = {s = variants {\\a => ant.s ++ pol.s ++ 
-                                              infVP VVInf vp True  ant.a pol.p a ;
-                                       \\a => ant.s ++ pol.s ++ 
-                                              infVP VVInf vp False ant.a pol.p a}} ;
+    CompVP ant pol p vp = {s = variants {\\a => ant.s ++ pol.s ++ 
+                                                infVP VVInf vp True  ant.a pol.p p.a ;
+                                         \\a => ant.s ++ pol.s ++ 
+                                                infVP VVInf vp False ant.a pol.p p.a}} ;
 
-    UttVP ant pol vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p (agrP3 Sg)} ;
-    UttVPMasc ant pol vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p (agrgP3 Sg Masc)} ;
-    UttVPFem  ant pol vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p (agrgP3 Sg Fem)} ;
+    UttVP ant pol p vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p p.a} ;
 
     ReflVPSlash vps rnp = insertObj (\\a => vps.c2 ++ rnp.s ! a) vps ;
 

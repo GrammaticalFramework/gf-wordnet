@@ -89,7 +89,7 @@ CompIQuant head
 CompNP head
 CompQS head
 CompS head
-CompVP mod mod head
+CompVP mod mod _ head
 ComparA head:mod:2 anchor
 ComparAdv _ head mod mod
 -- ComparAdvAdjS mod mod mod
@@ -154,7 +154,7 @@ DetQuantOrd head head head
 -- EmbedPresPart head
 EmbedQS head
 EmbedS head
-EmbedVP _ _ head
+EmbedVP _ _ _ head
 EmptyRelSlash head:obj
 EnoughAP head _ _ mod
 EnoughAdv head
@@ -199,7 +199,7 @@ ImpPl1 head
 ImpVP head
 ImpersCl head
 InLanguage head
-InOrderToVP _ _ head
+InOrderToVP _ _ _ head
 InflectionA head
 InflectionA2 head
 InflectionAdv head
@@ -349,11 +349,8 @@ UttInterj head
 UttNP head
 UttQS head
 UttS head
-UttVP head
-UttVPS head
-UttVPSMasc head
-UttVPSFem head
-UttVPSPl head
+UttVP _ _ _ head
+UttVPS _ head
 UttVPShort head
 VPSlashPrep head mod
 VocNP head

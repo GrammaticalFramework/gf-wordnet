@@ -47,7 +47,7 @@ endif
 
 SERVER_PATH = /usr/local/www/gf-wordnet
 
-all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService
+all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService build/gfshell
 ifneq ($(SERVER), NO)
 	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
 endif
@@ -105,6 +105,18 @@ ifneq ($(SERVER), NO)
 	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/www/ContentService"
 	scp build/ContentService www.grammaticalframework.org:$(SERVER_PATH)/www/ContentService
 endif
+
+build/gfshell: $(WORDNETS)
+ifneq ($(SERVER), NO)
+	ssh -t www.grammaticalframework.org \
+	    "$(foreach WORDNET,$(WORDNETS),sudo mkdir -p /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
+	                                   echo \"$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))\" | \
+	                                   sudo tee /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;\
+	                                   sudo chown gf-cloud /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET)) \
+	                                                       /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;)"
+	touch $@
+endif
+
 
 .PHONY: build_dirs
 

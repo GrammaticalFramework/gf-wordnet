@@ -1,6 +1,6 @@
 concrete ParseExtendPor of ParseExtend =
   ExtendPor - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP], NumeralPor - [num], PunctuationX **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], NumeralPor - [num], PunctuationX **
   open Prelude, ResPor, MorphoPor, GrammarPor, (E = ExtraPor), Coordination in {
 
   lin
@@ -16,10 +16,7 @@ concrete ParseExtendPor of ParseExtend =
     UttAPMasc ap = {s = ap.s ! (genNum2Aform Masc Sg)} ;
     UttAPFem  ap = {s = ap.s ! (genNum2Aform Fem Sg)} ;
 
-    UttVPS         = UttVPSMasc ;
-    UttVPSMasc vps = {s = vps.s ! Indic ! Ag Masc Sg P3 ! True} ;
-    UttVPSFem  vps = {s = vps.s ! Indic ! Ag Fem Sg P3 ! True} ;
-    UttVPSPl   vps = {s = vps.s ! Indic ! Ag Masc Pl P3 ! True} ;
+    UttVPS p vps   = {s = vps.s ! Indic ! p.a ! True} ;
 
   lin
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
@@ -162,16 +159,10 @@ concrete ParseExtendPor of ParseExtend =
         } ;
       in
       insertComplement (\\a => ant.s ++ pol.s ++ neg ++ prepCase vv.c2.c ++ vf a) (predV vv) ;
-    UttVP = uttVP Masc Sg ;
-    UttVPMasc = uttVP Masc Sg ;
-    UttVPFem = uttVP Fem Sg ;
-
-  oper
-    uttVP : Gender -> Number -> Ant -> Pol -> VP -> {s : Str} ;
-    uttVP g n ant pol vp = let
+    UttVP ant pol p vp = let
       neg = (negation ! pol.p).p1
       in {
-        s = ant.s ++ pol.s ++ neg ++ infVP vp (agrP3 g n)
+        s = ant.s ++ pol.s ++ neg ++ infVP vp p.a
       } ;
 
   lin FocusComp comp np = mkClause (comp.s ! np.a) np.hasClit np.isPol np.a (insertComplement (\\_ => (np.s ! Nom).ton) (predV (selectCopula comp.cop))) ;

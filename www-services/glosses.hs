@@ -37,6 +37,9 @@ main = do
   ls <- fmap lines $ readFile "embedding.txt"
   let (cs,ws) = parseEmbeddings ls
 
+  ls <- fmap lines $ readFile "images.txt"
+  let images = parseImages ls
+
   let db_name = "semantics.db"
   fileExists <- doesFileExist db_name
   when fileExists (removeFile db_name)
@@ -58,6 +61,7 @@ main = do
                               (Map.findWithDefault [] fun cncdefs)
                               (mb_offset >>= flip Map.lookup synsetKeys)
                               ds
+                              (fromMaybe [] (Map.lookup fun images))
                               (fromMaybe [] (Map.lookup fun ex_keys)))
 
     createTable coefficients
@@ -138,6 +142,9 @@ parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
       in sum hvec `seq` sum mvec `seq` (Embedding l1 hvec mvec):parseWords ls
 
     parseVector = map read . words :: String -> [Double]
+
+parseImages ls = 
+  Map.fromList [case tsv l of {(id:urls) -> (id,urls)} | l <- ls]
 
 accumCounts m (lang,status) = Map.alter (Just . add) lang m
   where

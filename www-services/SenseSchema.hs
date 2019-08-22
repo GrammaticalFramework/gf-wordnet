@@ -29,6 +29,7 @@ data Lexeme
       , lex_defs    :: [(String,String,Status)]
       , synset      :: Maybe (Key Synset)
       , domains     :: [String]
+      , images      :: [String]
       , example_ids :: [Key Expr]
       }
     deriving (Data,Show)

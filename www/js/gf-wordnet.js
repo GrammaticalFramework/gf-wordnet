@@ -288,7 +288,7 @@ gfwordnet.onclick_cell = function (cell) {
 	function extract_context(res) {
 		gfwordnet.lex_ids[this.lex_id].context   = res.context;
 		gfwordnet.lex_ids[this.lex_id].relations = res.relations;
-		
+
 		var context_size_range = node("input", {id: "context_size", type: "range", min: 1, max: 200, value: 100, onchange: "gfwordnet.onchange_context_size(this)"});
 		var tabs = node("table",{class: "header-tabs"},[
 				 tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
@@ -377,6 +377,12 @@ gfwordnet.onclick_cell = function (cell) {
 
 	if (index == 0) {
 		var lex_def = this.lex_ids[lex_id];
+
+		for (var i in lex_def.images) {
+			details.appendChild(
+			  node("img",{"class": "thumbnail"
+				         ,src: lex_def.images[i]}));
+		}
 
 		var row = [];
 		if (Object.keys(lex_def.synonyms).length > 1) {

@@ -68,15 +68,15 @@ cgiMain db (cs,funs) = do
           lexemes <- select (fromIndexAt lexemes_fun lex_id)
           foldM (getGloss db) senses lexemes
 
-        getGloss db senses (_,Lexeme lex_id lex_defs (Just sense_id) domains ex_ids) = do
+        getGloss db senses (_,Lexeme lex_id lex_defs (Just sense_id) domains images ex_ids) = do
           examples  <- select [e | ex_id <- anyOf ex_ids, e <- fromAt examples ex_id]
           sexamples <- select [e | (id,e) <- fromIndexAt examples_fun lex_id, not (elem id ex_ids)]
 
           case Map.lookup sense_id senses of
-            Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,examples,sexamples) lex_ids) senses)
+            Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
             Nothing              -> do [Synset _ _ _ gloss] <- select (fromAt synsets sense_id)
-                                       lex_ids <- select [(lex_id,lex_defs,Nothing) | (_,Lexeme lex_id lex_defs _ _ _) <- fromIndexAt lexemes_synset sense_id]
-                                       return (Map.insert sense_id (gloss,addInfo lex_id (domains,examples,sexamples) lex_ids) senses)
+                                       lex_ids <- select [(lex_id,lex_defs,Nothing) | (_,Lexeme lex_id lex_defs _ _ _ _) <- fromIndexAt lexemes_synset sense_id]
+                                       return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
 
         getGloss db senses _ = return senses
 
@@ -148,8 +148,8 @@ cgiMain db (cs,funs) = do
                             size int < 2000,
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- fromInterval synsets (Including s) (Including e),
-                            lex_ids <- listAll [(lex_fun,lex_defs,Just (domains,examples,sexamples))
-                                                   | (_,Lexeme lex_fun lex_defs _ domains ex_ids) <- fromIndexAt lexemes_synset synset_id,
+                            lex_ids <- listAll [(lex_fun,lex_defs,Just (domains,images,examples,sexamples))
+                                                   | (_,Lexeme lex_fun lex_defs _ domains images ex_ids) <- fromIndexAt lexemes_synset synset_id,
                                                      examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- fromAt examples ex_id],
                                                      sexamples <- listAll [e | (id,e) <- fromIndexAt examples_fun lex_fun, not (elem id ex_ids)]]]
 
@@ -168,9 +168,10 @@ cgiMain db (cs,funs) = do
       makeObj (("lex_defs", mkDefsObj lex_defs) :
                case info of
                  Nothing -> []
-                 Just (domains,examples,sexamples) -> [
+                 Just (domains,images,examples,sexamples) -> [
                          ("match", showJSON True),
                          ("domains",  showJSON domains),
+                         ("images",  showJSON images),
                          ("examples", showJSON (map (showExpr []) examples)),
                          ("secondary_examples", showJSON (map (showExpr []) sexamples))
                          ])

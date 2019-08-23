@@ -379,9 +379,13 @@ gfwordnet.onclick_cell = function (cell) {
 		var lex_def = this.lex_ids[lex_id];
 
 		for (var i in lex_def.images) {
+			var path = lex_def.images[i].split("/");
+			path.splice(0,0,"https://upload.wikimedia.org/wikipedia");
+			path.splice(2,0,"thumb");
+			path.push("300px-"+path[path.length-1]);
 			details.appendChild(
 			  node("img",{"class": "thumbnail"
-				         ,src: lex_def.images[i]}));
+				         ,src: path.join("/")}));
 		}
 
 		var row = [];

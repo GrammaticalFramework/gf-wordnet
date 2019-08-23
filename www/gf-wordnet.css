@@ -20,7 +20,7 @@ img {
 }
 
 img.thumbnail {
-	width: 200pt;
+	width: auto;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;

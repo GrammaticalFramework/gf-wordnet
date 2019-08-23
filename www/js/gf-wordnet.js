@@ -380,12 +380,20 @@ gfwordnet.onclick_cell = function (cell) {
 
 		for (var i in lex_def.images) {
 			var path = lex_def.images[i].split("/");
+			var name = path[path.length-1];
 			path.splice(0,0,"https://upload.wikimedia.org/wikipedia");
-			path.splice(2,0,"thumb");
-			path.push("300px-"+path[path.length-1]);
-			details.appendChild(
-			  node("img",{"class": "thumbnail"
-				         ,src: path.join("/")}));
+			if (name.endsWith(".svg")) {
+				details.appendChild(
+				  node("img",{"class": "thumbnail"
+					         ,style: "width: 300px"
+							 ,src: path.join("/")}));
+			} else {
+				path.splice(2,0,"thumb");
+				path.push("300px-"+name);
+				details.appendChild(
+				  node("img",{"class": "thumbnail"
+							 ,src: path.join("/")}));
+			}
 		}
 
 		var row = [];

@@ -14,7 +14,6 @@ abarticulation_N	https://upload.wikimedia.org/wikipedia/commons/3/39/Ankledisloc
 abatement_1_N	https://upload.wikimedia.org/wikipedia/commons/f/f9/Not-Aus_Bet%C3%A4tiger.jpg	https://upload.wikimedia.org/wikipedia/commons/8/88/PE-mapa-Iati.png
 abattis_1_N	https://upload.wikimedia.org/wikipedia/commons/a/ad/Bacon_jam.JPG	https://upload.wikimedia.org/wikipedia/commons/8/84/Abatis_%28PSF%29.png
 abaya_N	https://upload.wikimedia.org/wikipedia/commons/8/8c/Hijab_Niqab_Muslim_Veil.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5a/Bahia_Municip_Lencois.svg
-abbe_N	https://upload.wikimedia.org/wikipedia/commons/d/d8/Solovki_genealogy.jpg
 abbess_N	https://upload.wikimedia.org/wikipedia/commons/d/de/Anonymous_Abbess_Eufemia_Szaniawska.jpg
 abbey_1_N	https://upload.wikimedia.org/wikipedia/commons/1/1b/S%C3%A9nanque_06.JPG
 abbey_2_N	https://upload.wikimedia.org/wikipedia/commons/1/1b/S%C3%A9nanque_06.JPG
@@ -58,14 +57,10 @@ abode_2_N	https://upload.wikimedia.org/wikipedia/commons/2/20/Boningen_kapelo_Ma
 abolitionism_N	https://upload.wikimedia.org/wikipedia/commons/8/80/Official_medallion_of_the_British_Anti-Slavery_Society_%281795%29.jpg
 abomasum_N	https://upload.wikimedia.org/wikipedia/commons/2/2b/Abomasum_%28PSF%29.png
 abominable_2_A	https://upload.wikimedia.org/wikipedia/commons/6/6d/Sifnos09view.jpg
-abort_1_V2	https://upload.wikimedia.org/wikipedia/commons/f/fb/Aborted_Coolness%27tival_31107_06.jpg
-abort_2_V	https://upload.wikimedia.org/wikipedia/commons/f/fb/Aborted_Coolness%27tival_31107_06.jpg
-abort_3_V	https://upload.wikimedia.org/wikipedia/commons/f/fb/Aborted_Coolness%27tival_31107_06.jpg
-abort_3_V2	https://upload.wikimedia.org/wikipedia/commons/f/fb/Aborted_Coolness%27tival_31107_06.jpg
 abortifacient_N	https://upload.wikimedia.org/wikipedia/commons/d/d4/Medievalpreg.jpg
 abracadabra_N	https://upload.wikimedia.org/wikipedia/commons/2/2b/Cluny_-_Mero_-_Croix-Talisman_motifs_magiques_bas%C3%A9_sur_Abracadabra_-_VIe-VII_si%C3%A8cle-_Ag_niell%C3%A9.jpg
 abrade_1_V2	https://upload.wikimedia.org/wikipedia/commons/0/02/Rai_em_2009_cropped.jpg
-abrader_N	https://upload.wikimedia.org/wikipedia/commons/4/4f/Walleye_painting.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e0/Random_orbit_sander.jpg
+abrader_N	https://upload.wikimedia.org/wikipedia/commons/e/e0/Random_orbit_sander.jpg
 abraham_PN	https://upload.wikimedia.org/wikipedia/commons/5/5d/Rembrandt_Abraham_Serving_the_Three_Angels.jpg
 abrasion_1_N	https://upload.wikimedia.org/wikipedia/commons/b/b7/Abrasion_on_hand_20050906.jpg
 abrasion_2_N	https://upload.wikimedia.org/wikipedia/commons/b/b9/Glacial-abrasion-ss-2006.jpg
@@ -73,12 +68,9 @@ abridge_1_V2	https://upload.wikimedia.org/wikipedia/commons/c/c5/Abridge%2C_Esse
 abridge_2_V2	https://upload.wikimedia.org/wikipedia/commons/c/c5/Abridge%2C_Essex.jpg
 abrocome_N	https://upload.wikimedia.org/wikipedia/commons/1/10/Feldmaus_Microtus_arvalis.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b9/Abrocoma_bennettii.png
 abscess_N	https://upload.wikimedia.org/wikipedia/commons/8/8a/Five_day_old_Abscess.jpg
-abscissa_N	https://upload.wikimedia.org/wikipedia/commons/a/a4/Apogee_%28PSF%29.png
 abscission_1_N	https://upload.wikimedia.org/wikipedia/commons/f/fd/Fall_Leaves.jpg
 absinthe_2_N	https://upload.wikimedia.org/wikipedia/commons/e/e2/Absinthe-glass.jpg
-absorbent_A	https://upload.wikimedia.org/wikipedia/commons/b/b8/Sanitary_towel.jpg
 absorbent_N	https://upload.wikimedia.org/wikipedia/commons/b/b8/Sanitary_towel.jpg
-absorbing_A	https://upload.wikimedia.org/wikipedia/commons/b/b8/Sanitary_towel.jpg
 absorption_1_N	https://upload.wikimedia.org/wikipedia/commons/4/46/Absorber.svg
 absorptivity_N	https://upload.wikimedia.org/wikipedia/commons/0/02/Emmen%2C_shopping_mall_De_Weiert.JPG
 abstinence_1_N	https://upload.wikimedia.org/wikipedia/commons/8/80/Purity-Rings.jpg
@@ -104,18 +96,14 @@ acarus_N	https://upload.wikimedia.org/wikipedia/commons/a/a5/8-Acarus_siro_male_
 acceleration_3_N	https://upload.wikimedia.org/wikipedia/commons/7/7d/Gravity_gravita_grave.gif
 accelerator_3_N	https://upload.wikimedia.org/wikipedia/commons/3/3f/Fermilab.jpg
 accelerator_4_N	https://upload.wikimedia.org/wikipedia/commons/6/6f/Enhancer_Nucleotide_Sequence.svg
-accent_1_V2	https://upload.wikimedia.org/wikipedia/commons/4/45/Venezuela_-_Nueva_Esparta_-_Marcano.svg
 accentor_N	https://upload.wikimedia.org/wikipedia/commons/7/72/Dunnock_crop2.jpg
-accept_8_V	https://upload.wikimedia.org/wikipedia/commons/f/f2/Du_unix_output.png
 acceptance_1_N	https://upload.wikimedia.org/wikipedia/commons/1/14/Indira_Gandhi_accepting_gift_in_New_Delhi.jpeg
 acceptance_7_N	https://upload.wikimedia.org/wikipedia/commons/1/14/Indira_Gandhi_accepting_gift_in_New_Delhi.jpeg
 accessibility_2_N	https://upload.wikimedia.org/wikipedia/commons/1/1e/Curitiba_10_2006_05_RIT.jpg
-accession_5_N	https://upload.wikimedia.org/wikipedia/commons/f/fa/Airforce_Museum_Berlin-Gatow_135.JPG
 accessory_1_N	https://upload.wikimedia.org/wikipedia/commons/2/29/Burberry_handbag.jpg
 accident_1_N	https://upload.wikimedia.org/wikipedia/commons/9/93/Partial_stadium_collapse_at_Big12_college_football_championship_-_2005.JPG
 accipitrine_A	https://upload.wikimedia.org/wikipedia/commons/6/60/Gyps_fulvus_1_Luc_Viatour.jpg	https://upload.wikimedia.org/wikipedia/commons/2/23/Bartgeier_Gypaetus_barbatus_front_Richard_Bartz.jpg
 acclimation_N	https://upload.wikimedia.org/wikipedia/commons/d/df/Aclima%C3%A7%C3%A3o.JPG
-acclimatize_V	https://upload.wikimedia.org/wikipedia/commons/0/02/Alysh_2018_stamp_of_Kyrgyzstan.jpg
 acclivity_N	https://upload.wikimedia.org/wikipedia/commons/c/c8/Escarpment_on_the_Cumberland_Plateau%2C_Tennessee.jpeg
 accolade_N	https://upload.wikimedia.org/wikipedia/commons/3/38/Accolade_by_Edmund_Blair_Leighton.jpg
 accommodation_6_N	https://upload.wikimedia.org/wikipedia/commons/e/ea/Accommodation_%28PSF%29.svg
@@ -123,11 +111,7 @@ accompaniment_2_N	https://upload.wikimedia.org/wikipedia/commons/4/47/Gitarre_co
 accord_4_N	https://upload.wikimedia.org/wikipedia/commons/9/95/Igreja_de_Planalto%2C_munic%C3%ADpio_de_Conc%C3%B3rdia.jpg
 accordion_N	https://upload.wikimedia.org/wikipedia/commons/e/e9/A_convertor_free-bass_piano-accordion_and_a_Russian_bayan.jpg
 accra_PN	https://upload.wikimedia.org/wikipedia/commons/7/7b/Central_accra-2.jpg
-accretion_1_N	https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg
-accretion_3_N	https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg
-accretion_4_N	https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg	https://upload.wikimedia.org/wikipedia/commons/9/9d/HL_Tau_protoplanetary_disk.jpg
-accretion_5_N	https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a4/Slovenia_relief_map.png	https://upload.wikimedia.org/wikipedia/commons/9/9d/HL_Tau_protoplanetary_disk.jpg
-accretion_6_N	https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg	https://upload.wikimedia.org/wikipedia/commons/9/9d/HL_Tau_protoplanetary_disk.jpg
+accretion_3_N	https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg	https://upload.wikimedia.org/wikipedia/commons/9/9d/HL_Tau_protoplanetary_disk.jpg
 accrington_PN	https://upload.wikimedia.org/wikipedia/commons/2/2e/Town_Hall._-_geograph.org.uk_-_525051.jpg
 acculturation_1_N	https://upload.wikimedia.org/wikipedia/commons/a/a1/Collage_showing_cultural_assimilation_of_Native_Americans.jpg
 acculturation_3_N	https://upload.wikimedia.org/wikipedia/commons/a/a1/Collage_showing_cultural_assimilation_of_Native_Americans.jpg
@@ -648,7 +632,7 @@ alma_mater_N	https://upload.wikimedia.org/wikipedia/commons/4/4d/Columbia_Univer
 almanac_1_N	https://upload.wikimedia.org/wikipedia/en/0/0c/Old_Farmer%27s_Almanac_Evergreen_Cover.png
 almandine_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c9/Almandin.jpg
 almeria_PN	https://upload.wikimedia.org/wikipedia/commons/3/3f/Vistas_Alcazaba_Almer%C3%ADa.jpg
-almond_1_N	https://en.wikipedia.org/wiki/Almond#/media/File:Ametllesjuliol.jpg
+almond_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c2/Ametllesjuliol.jpg
 almond_2_N	https://upload.wikimedia.org/wikipedia/commons/8/89/Prunus_dulcis_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-250.jpg
 almoner_N	https://upload.wikimedia.org/wikipedia/commons/6/65/La_retraite_de_l%27aum%C3%B4nier_ou_Le_br%C3%A9viaire.jpg
 alms_N	https://upload.wikimedia.org/wikipedia/commons/4/48/Thorma_Alms.jpg
@@ -1055,7 +1039,7 @@ anthracite_N	https://upload.wikimedia.org/wikipedia/commons/a/a4/Anthracite_chun
 anthrax_1_N	https://upload.wikimedia.org/wikipedia/commons/4/46/Tcherbon_tch%C3%A5s_operaedje.jpg
 anthrax_2_N	https://upload.wikimedia.org/wikipedia/commons/5/5f/Anthrax_PHIL_2033.png
 anthropoid_1_N	https://upload.wikimedia.org/wikipedia/commons/b/be/Orang_Utan%2C_Semenggok_Forest_Reserve%2C_Sarawak%2C_Borneo%2C_Malaysia.JPG
-anthropoid_2_N	https://upload.wikimedia.org/wikipedia/commons/6/64/20150512_ESC_2015_Maimuna_4707.jpg	https://upload.wikimedia.org/wikipedia/commons/b/be/Orang_Utan%2C_Semenggok_Forest_Reserve%2C_Sarawak%2C_Borneo%2C_Malaysia.JPG
+anthropoid_2_N	https://upload.wikimedia.org/wikipedia/commons/b/be/Orang_Utan%2C_Semenggok_Forest_Reserve%2C_Sarawak%2C_Borneo%2C_Malaysia.JPG
 anthropometry_N	https://upload.wikimedia.org/wikipedia/commons/c/c0/Computer_Workstation_Variables_cleanup.png
 anthropomorphism_N	https://upload.wikimedia.org/wikipedia/commons/5/52/The_North_Wind_and_the_Sun_-_Wind_-_Project_Gutenberg_etext_19994.jpg
 anthropophagy_N	https://upload.wikimedia.org/wikipedia/commons/b/b6/Os_Filhos_de_Pindorama._Cannibalism_in_Brazil_in_1557.jpg
@@ -1124,9 +1108,9 @@ apathy_1_N	https://upload.wikimedia.org/wikipedia/commons/f/f6/Challenge_vs_skil
 apathy_2_N	https://upload.wikimedia.org/wikipedia/commons/f/f6/Challenge_vs_skill.svg
 apatite_N	https://upload.wikimedia.org/wikipedia/commons/9/97/Apatity_and_Khibiny_mountains.JPG	https://upload.wikimedia.org/wikipedia/commons/2/23/Apatite_Canada.jpg
 apatosaur_1_N	https://upload.wikimedia.org/wikipedia/commons/3/3a/Louisae.jpg
-ape_1_N	https://upload.wikimedia.org/wikipedia/commons/0/09/Totenkopfaeffchen.jpg	https://upload.wikimedia.org/wikipedia/commons/6/64/20150512_ESC_2015_Maimuna_4707.jpg
-ape_2_N	https://upload.wikimedia.org/wikipedia/commons/0/09/Totenkopfaeffchen.jpg	https://upload.wikimedia.org/wikipedia/commons/6/64/20150512_ESC_2015_Maimuna_4707.jpg
-ape_3_N	https://upload.wikimedia.org/wikipedia/commons/0/09/Totenkopfaeffchen.jpg	https://upload.wikimedia.org/wikipedia/commons/6/64/20150512_ESC_2015_Maimuna_4707.jpg
+ape_1_N	https://upload.wikimedia.org/wikipedia/commons/0/09/Totenkopfaeffchen.jpg
+ape_2_N	https://upload.wikimedia.org/wikipedia/commons/0/09/Totenkopfaeffchen.jpg
+ape_3_N	https://upload.wikimedia.org/wikipedia/commons/0/09/Totenkopfaeffchen.jpg
 apeldoorn_PN	https://upload.wikimedia.org/wikipedia/commons/3/39/Apeldoorn_Raadhuis.JPG
 aperture_2_N	https://upload.wikimedia.org/wikipedia/commons/f/f8/Lenses_with_different_apertures.jpg
 apex_2_N	https://upload.wikimedia.org/wikipedia/commons/5/54/Solar_apex.png
@@ -1201,7 +1185,7 @@ approach_5_V2	https://upload.wikimedia.org/wikipedia/commons/8/81/SNO_Approachin
 appropriateness_1_N	https://upload.wikimedia.org/wikipedia/commons/2/2c/Compatibility_testing_concerning_RBCs_2014-02-01_00-42.jpg
 approximation_1_N	https://upload.wikimedia.org/wikipedia/commons/1/10/Church_St_Mary%2C_Gissing%2C_Norfolk%2C_England-11March2010.jpg
 apraxia_N	https://upload.wikimedia.org/wikipedia/commons/a/ac/Apraxia_001.jpg
-apricot_1_N	https://en.wikipedia.org/wiki/Apricot#/media/File:Turkey.Pasa_Baglari005.jpg
+apricot_1_N	https://upload.wikimedia.org/wikipedia/commons/2/29/Turkey.Pasa_Baglari005.jpg
 apricot_2_N	https://upload.wikimedia.org/wikipedia/commons/2/2a/Apricot_and_cross_section.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f9/Apricots.jpg
 apron_1_N	https://upload.wikimedia.org/wikipedia/commons/6/69/Redapr.jpg	https://upload.wikimedia.org/wikipedia/commons/2/24/Schortens_in_FRI.svg	https://upload.wikimedia.org/wikipedia/commons/c/cd/Child_and_Doll.jpg
 apron_2_N	https://upload.wikimedia.org/wikipedia/commons/6/69/Redapr.jpg	https://upload.wikimedia.org/wikipedia/commons/2/24/Schortens_in_FRI.svg	https://upload.wikimedia.org/wikipedia/commons/c/cd/Child_and_Doll.jpg
@@ -1598,7 +1582,7 @@ atelectasis_N	https://upload.wikimedia.org/wikipedia/commons/8/8d/Atelectasia1.j
 atelier_N	https://upload.wikimedia.org/wikipedia/commons/b/b5/%C3%89cole_des_beaux-arts_%28from_the_live%29.jpg	https://upload.wikimedia.org/wikipedia/commons/d/df/Adriaen_van_Ostade_006.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a4/Courbet_LAtelier_du_peintre.jpg
 athanor_N	https://upload.wikimedia.org/wikipedia/commons/1/10/Athanor.jpg
 athens_1_PN	https://upload.wikimedia.org/wikipedia/commons/8/8e/Athens_Montage_L.png
-athens_2_PN	https://upload.wikimedia.org/wikipedia/commons/a/af/City_Hall%2C_Athens%2C_Southeast_view_20160630_1.jpg
+athens_2_PN	https://upload.wikimedia.org/wikipedia/commons/8/8e/Athens_oh_03.jpg
 athens_3_PN	https://upload.wikimedia.org/wikipedia/commons/a/af/City_Hall%2C_Athens%2C_Southeast_view_20160630_1.jpg
 atheroma_N	https://upload.wikimedia.org/wikipedia/commons/4/48/Carotid_Plaque.jpg	https://upload.wikimedia.org/wikipedia/commons/d/da/Inflamed_epidermal_inclusion_cyst.jpg
 atherosclerosis_N	https://upload.wikimedia.org/wikipedia/commons/9/9a/Endo_dysfunction_Athero.PNG
@@ -2038,7 +2022,8 @@ bamboo_1_N	https://upload.wikimedia.org/wikipedia/commons/6/6c/Huangshan_bamboo.
 bamboo_2_N	https://upload.wikimedia.org/wikipedia/commons/6/6c/Huangshan_bamboo.jpg	https://upload.wikimedia.org/wikipedia/commons/3/37/Starr_070906-8504_Bambusa_textilis.jpg
 ban_1_N	https://upload.wikimedia.org/wikipedia/commons/6/6b/No_Smoking.svg
 ban_4_N	https://upload.wikimedia.org/wikipedia/commons/6/6b/No_Smoking.svg
-banana_2_N	https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg	https://upload.wikimedia.org/wikipedia/commons/b/bb/Starr_050826-4195_Musa_sp..jpg
+banana_1_N	https://upload.wikimedia.org/wikipedia/commons/b/bb/Starr_050826-4195_Musa_sp..jpg
+banana_2_N	https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg
 banbury_PN	https://upload.wikimedia.org/wikipedia/commons/8/87/Banbury_Town_Hall.jpg
 band_12_N	https://upload.wikimedia.org/wikipedia/commons/f/f7/Example2ofironcross.jpg
 band_2_N	https://upload.wikimedia.org/wikipedia/commons/9/9f/Beatles_ad_1965_just_the_beatles_crop.jpg
@@ -2443,9 +2428,6 @@ becket_2_N	https://upload.wikimedia.org/wikipedia/commons/4/46/Stroppo_panorama_
 become_2_V2	https://upload.wikimedia.org/wikipedia/en/2/2d/Gentils_domna%2C_ven%C3%A7a.us_humilitatz.jpg
 become_3_V	https://upload.wikimedia.org/wikipedia/commons/b/b6/Arco_di_Augusto_Fano_illuminato.jpg
 bed_1_N	https://upload.wikimedia.org/wikipedia/commons/0/04/2008-04-12_Freilichtmuseum_Detmold_%2811%29.jpg
-bed_4_V2	https://upload.wikimedia.org/wikipedia/commons/6/6b/Jaure_mairie.JPG
-bed_5_N	https://upload.wikimedia.org/wikipedia/commons/0/0b/Turine_Papyrus%2C_ca._1320_v.C..jpg
-bed_7_N	https://upload.wikimedia.org/wikipedia/commons/0/04/2008-04-12_Freilichtmuseum_Detmold_%2811%29.jpg
 bedbug_1_N	https://upload.wikimedia.org/wikipedia/commons/8/87/Bed_bug%2C_Cimex_lectularius.jpg	https://upload.wikimedia.org/wikipedia/commons/3/36/Wasserl%C3%A4ufer_bei_der_Paarung_crop.jpg	https://upload.wikimedia.org/wikipedia/commons/3/35/Bed_bug%2C_Cimex_lectularius_%289627010587%29.jpg
 beddau_PN	https://upload.wikimedia.org/wikipedia/commons/a/ac/Beddau_Square.jpg
 bedder_N	https://upload.wikimedia.org/wikipedia/commons/1/11/Clare_College%2C_back_of_Old_Court.jpeg	https://upload.wikimedia.org/wikipedia/commons/6/6b/Shetland_ponies_in_harness.JPG
@@ -3188,27 +3170,20 @@ bolivar_2_PN	https://upload.wikimedia.org/wikipedia/commons/b/b5/Bolivar_in_Vene
 bolivia_1_PN	https://upload.wikimedia.org/wikipedia/commons/d/de/Flag_of_Bolivia_%28state%29.svg
 bolivian_N	https://upload.wikimedia.org/wikipedia/commons/d/de/Flag_of_Bolivia_%28state%29.svg
 boll_N	https://upload.wikimedia.org/wikipedia/commons/a/aa/Ideogram_human_chromosome_2.svg
-bollard_N	https://upload.wikimedia.org/wikipedia/commons/e/e3/Colonno_from_Lake_Como_ferry.jpg	https://upload.wikimedia.org/wikipedia/commons/6/66/Bollard_aboard_the_RV_Thomas_G._Thompson.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b7/Recycle-barge.jpg
+bollard_N	https://upload.wikimedia.org/wikipedia/commons/6/66/Bollard_aboard_the_RV_Thomas_G._Thompson.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b7/Recycle-barge.jpg
 bollington_PN	https://upload.wikimedia.org/wikipedia/commons/8/8a/Bollington.jpg
 bollworm_N	https://upload.wikimedia.org/wikipedia/commons/8/89/Bollworm_7329.jpg
 bologna_1_PN	https://upload.wikimedia.org/wikipedia/commons/b/b1/Bologna_montage_HD.jpg
-bologna_2_N	https://upload.wikimedia.org/wikipedia/commons/b/be/Mortadella.jpg	https://upload.wikimedia.org/wikipedia/commons/e/eb/Groninger_metworst.JPG
+bologna_2_N	https://upload.wikimedia.org/wikipedia/commons/b/be/Mortadella.jpg
 bolometer_N	https://upload.wikimedia.org/wikipedia/commons/c/c5/JPL_Spiderweb_Bolometer.jpg
 bolshevik_1_N	https://upload.wikimedia.org/wikipedia/commons/0/00/Presidium_of_the_9th_Congress_of_the_Russian_Communist_Party_%28Bolsheviks%29.jpg
 bolshevik_2_N	https://upload.wikimedia.org/wikipedia/commons/0/00/Presidium_of_the_9th_Congress_of_the_Russian_Communist_Party_%28Bolsheviks%29.jpg
 bolsover_PN	https://upload.wikimedia.org/wikipedia/commons/9/90/Bolsover_Castle_from_Stockley_Trail.jpg
-bolster_N	https://upload.wikimedia.org/wikipedia/commons/d/d6/Bolst.JPG	https://upload.wikimedia.org/wikipedia/commons/b/b6/Goias_Municip_Cabeceiras.svg
-bolt_1_V	https://upload.wikimedia.org/wikipedia/commons/4/45/Xia_dynasty.svg
-bolt_3_V	https://upload.wikimedia.org/wikipedia/commons/4/45/Xia_dynasty.svg
-bolt_4_N	https://upload.wikimedia.org/wikipedia/commons/f/f7/Bolt_and_nut%2C_annotated.jpg
-bolt_4_V	https://upload.wikimedia.org/wikipedia/commons/4/45/Xia_dynasty.svg	https://upload.wikimedia.org/wikipedia/commons/6/6a/Leisnig%2C_Burg_Mildenstein_-_Amtsstube_im_Vorderschloss_%2801-2%29.jpg
-bolt_5_V	https://upload.wikimedia.org/wikipedia/commons/4/45/Xia_dynasty.svg
+bolster_N	https://upload.wikimedia.org/wikipedia/commons/d/d6/Bolst.JPG
 bolt_6_N	https://upload.wikimedia.org/wikipedia/commons/f/f7/Bolt_and_nut%2C_annotated.jpg
 bolton_PN	https://upload.wikimedia.org/wikipedia/commons/d/d1/Bolton_Town_Hall.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c9/Old_School_and_School_House%2C_Bolton_New_Houses.jpg
 bolzano_PN	https://upload.wikimedia.org/wikipedia/commons/2/27/Panoramic_view_of_Bolzano.jpg
-bomb_1_N	https://upload.wikimedia.org/wikipedia/commons/7/78/MOAB_bomb.jpg	https://upload.wikimedia.org/wikipedia/commons/8/88/Boms_in_RV.svg
-bomb_2_N	https://upload.wikimedia.org/wikipedia/commons/8/88/Boms_in_RV.svg
-bomb_3_N	https://upload.wikimedia.org/wikipedia/commons/8/88/Boms_in_RV.svg
+bomb_1_N	https://upload.wikimedia.org/wikipedia/commons/7/78/MOAB_bomb.jpg
 bomb_proof_A	https://upload.wikimedia.org/wikipedia/commons/3/3f/Tateyama_air-raid_shelter.JPG
 bomb_sight_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Bombsight.jpg
 bombard_1_V2	https://upload.wikimedia.org/wikipedia/commons/d/d5/Target_223_Savage_10FP_25_shot.jpg
@@ -3366,7 +3341,6 @@ bouffant_A	https://upload.wikimedia.org/wikipedia/commons/7/73/Patsy_Cline_at_th
 bouffant_N	https://upload.wikimedia.org/wikipedia/commons/7/73/Patsy_Cline_at_the_Mint_Casino_in_Las_Vegas%2C_Nevada._Circa_1962.jpg
 bougainvillea_N	https://upload.wikimedia.org/wikipedia/commons/4/4c/Bougainvillea_closeup.jpg
 bouillabaisse_N	https://upload.wikimedia.org/wikipedia/commons/2/24/Bullabessa.jpg
-bouillon_N	https://upload.wikimedia.org/wikipedia/commons/c/c4/A_Panoramic_View_%28Explore%29_%286693947035%29.jpg
 boulder_1_N	https://upload.wikimedia.org/wikipedia/commons/6/68/Bigrock.jpg	https://upload.wikimedia.org/wikipedia/commons/6/66/Santa_Sofia_and_town_hall_%28Canaro%29.jpg
 boulder_2_PN	https://upload.wikimedia.org/wikipedia/commons/7/7e/BoulderBearPeak.jpg	https://upload.wikimedia.org/wikipedia/commons/2/2f/Balanced_Rock.jpg	https://upload.wikimedia.org/wikipedia/commons/9/98/Bouldering.jpg
 boulevard_N	https://upload.wikimedia.org/wikipedia/commons/f/f8/Blv-haussmann-lafayette.jpg
@@ -3566,12 +3540,11 @@ bream_3_N	https://upload.wikimedia.org/wikipedia/commons/a/a7/Bream.jpg
 bream_4_N	https://upload.wikimedia.org/wikipedia/commons/f/fb/Carp_bream1.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a7/Bream.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b9/SilverBreamBliccaBjoerknaCropped.JPG
 breast_1_N	https://upload.wikimedia.org/wikipedia/commons/4/48/Weibliche_brust_en.jpg
 breast_2_N	https://upload.wikimedia.org/wikipedia/commons/4/48/Weibliche_brust_en.jpg
-breast_3_N	https://upload.wikimedia.org/wikipedia/commons/a/a0/Heteroptera_morphology-d.svg	https://upload.wikimedia.org/wikipedia/commons/a/a5/Roast_chicken.jpg
-breast_4_N	https://upload.wikimedia.org/wikipedia/commons/4/48/Weibliche_brust_en.jpg
+breast_3_N	https://upload.wikimedia.org/wikipedia/commons/a/a5/Roast_chicken.jpg
 breast_plate_N	https://upload.wikimedia.org/wikipedia/commons/8/8e/George_Augustus_Sala_British_journalist.jpg	https://upload.wikimedia.org/wikipedia/commons/9/91/15th_century_Gothic_breastplate.jpg
 breaston_PN	https://upload.wikimedia.org/wikipedia/commons/b/be/Breaston_Village_Green.jpg
 breaststroke_N	https://upload.wikimedia.org/wikipedia/commons/f/f8/Phelps_400m_IM_Missouri_GP_2008_retouched.jpg
-breastwork_N	https://upload.wikimedia.org/wikipedia/commons/4/46/Breastwork_trench_at_Armentieres_1916.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e5/Branik1.JPG
+breastwork_N	https://upload.wikimedia.org/wikipedia/commons/4/46/Breastwork_trench_at_Armentieres_1916.jpg
 breathalyzer_N	https://upload.wikimedia.org/wikipedia/commons/a/a2/Bafometro.JPG
 breathe_1_V	https://upload.wikimedia.org/wikipedia/commons/5/5e/Respiratory_system_complete_en.svg
 breathe_6_V2	https://upload.wikimedia.org/wikipedia/commons/5/5e/Respiratory_system_complete_en.svg
@@ -3694,7 +3667,7 @@ bristlegrass_1_N	https://upload.wikimedia.org/wikipedia/commons/0/09/Starr_04071
 bristletail_N	https://upload.wikimedia.org/wikipedia/commons/5/54/Silberfischchen.jpg
 bristol_PN	https://upload.wikimedia.org/wikipedia/commons/9/96/The_Cabot_Tower%2C_Bristol_-_geograph.org.uk_-_904859.jpg
 brit_1_N	https://upload.wikimedia.org/wikipedia/commons/b/be/Roderic_O%27Conor_-_Une_Jeune_Bretone.jpg
-britain_PN	https://en.wikipedia.org/wiki/United_Kingdom#/media/File:Flag_of_the_United_Kingdom.svg
+britain_PN	https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg
 britonFem_N	https://upload.wikimedia.org/wikipedia/commons/f/f9/Map_Gaels_Brythons_Picts_GB.png
 britonMasc_N	https://upload.wikimedia.org/wikipedia/commons/f/f9/Map_Gaels_Brythons_Picts_GB.png
 briton_2_N	https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg
@@ -3901,8 +3874,7 @@ bugloss_1_N	https://upload.wikimedia.org/wikipedia/commons/2/22/Anchusa_officina
 build_3_V2	https://upload.wikimedia.org/wikipedia/commons/7/7b/Fabbrico3.jpg
 build_6_V2	https://upload.wikimedia.org/wikipedia/commons/7/7b/Fabbrico3.jpg
 build_7_V	https://upload.wikimedia.org/wikipedia/commons/7/7b/Fabbrico3.jpg
-building_3_N	https://upload.wikimedia.org/wikipedia/commons/d/d3/Viaduct_in_Puxi%2C_Shanghai.jpg
-building_4_N	https://upload.wikimedia.org/wikipedia/commons/5/53/Ishtar_gate_in_Pergamon_museum_in_Berlin..jpg
+building_1_N	https://upload.wikimedia.org/wikipedia/commons/d/d3/Viaduct_in_Puxi%2C_Shanghai.jpg
 bulb_1_N	https://upload.wikimedia.org/wikipedia/commons/5/53/Shallots-Whole.jpg
 bulb_2_N	https://upload.wikimedia.org/wikipedia/commons/b/b4/Gluehlampe_01_KMJ.png
 bulb_4_N	https://upload.wikimedia.org/wikipedia/commons/3/39/Allium_sativum_Woodwill_1793.jpg
@@ -3914,21 +3886,13 @@ bulgarian_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Bulgarska_Azbuka
 bulge_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/Remise_en_jeu_-_Hockey.ogv	https://upload.wikimedia.org/wikipedia/commons/5/5d/Military_cemetery_of_the_United_States_in_Bony%2C_France.jpg
 bulgur_1_N	https://upload.wikimedia.org/wikipedia/commons/8/8a/Bulgur2.jpg
 bulimia_1_N	https://upload.wikimedia.org/wikipedia/commons/5/50/BulemiaEnamalLoss.JPG
-bulimia_2_N	https://upload.wikimedia.org/wikipedia/commons/5/50/BulemiaEnamalLoss.JPG
-bulk_1_V	https://upload.wikimedia.org/wikipedia/commons/4/4f/Hud_on_the_cat.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg
+bulk_1_V	https://upload.wikimedia.org/wikipedia/commons/4/4f/Hud_on_the_cat.jpg
 bulkhead_N	https://upload.wikimedia.org/wikipedia/commons/e/e8/Compartments_and_watertight_subdivision_of_a_ship%27s_hull_%28Seaman%27s_Pocket-Book%2C_1943%29.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c9/%C5%BDupna_Crkva_Uznesenja_Bla%C5%BEene_Djevice_Marije%2C_Pregrada.jpg
 bulkiness_N	https://upload.wikimedia.org/wikipedia/commons/c/ca/Volumes_2017.jpg
 bulkington_PN	https://upload.wikimedia.org/wikipedia/commons/8/8f/St_James%27_Church_Bulkington.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5f/Christchurch%2C_Bulkington_-_geograph.org.uk_-_1437480.jpg
-bull_10_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/Remise_en_jeu_-_Hockey.ogv	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg
-bull_11_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f0/Barcos_na_Lagoa_do_Sal_%281352011111%29.jpg
-bull_1_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f0/Barcos_na_Lagoa_do_Sal_%281352011111%29.jpg
-bull_2_N	https://upload.wikimedia.org/wikipedia/commons/f/f0/Barcos_na_Lagoa_do_Sal_%281352011111%29.jpg
-bull_4_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg
-bull_5_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg
-bull_6_N	https://upload.wikimedia.org/wikipedia/commons/f/f0/Barcos_na_Lagoa_do_Sal_%281352011111%29.jpg
-bull_7_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f0/Barcos_na_Lagoa_do_Sal_%281352011111%29.jpg
-bull_8_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Taurus_by_Johannes_Hevelius.JPG	https://upload.wikimedia.org/wikipedia/commons/f/f0/Barcos_na_Lagoa_do_Sal_%281352011111%29.jpg
-bull_9_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f0/Barcos_na_Lagoa_do_Sal_%281352011111%29.jpg
+bull_1_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg
+bull_8_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Taurus_by_Johannes_Hevelius.JPG
+bull_11_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Taureau_charolais_au_pr%C3%A9.jpg
 bull_terrier_N	https://upload.wikimedia.org/wikipedia/commons/6/62/Bull_terrier_2.jpg
 bulla_1_N	https://upload.wikimedia.org/wikipedia/commons/5/5e/Bullasv.jpg
 bulla_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/Remise_en_jeu_-_Hockey.ogv	https://upload.wikimedia.org/wikipedia/commons/c/ca/Magni_aestimamus.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5e/Bullasv.jpg	https://upload.wikimedia.org/wikipedia/commons/d/d2/Papal.bull.JPG
@@ -3947,12 +3911,9 @@ bullhead_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d3/Silurus_glanis_
 bullion_1_N	https://upload.wikimedia.org/wikipedia/commons/a/a5/Gold_Bars.jpg
 bullion_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a5/Gold_Bars.jpg
 bullnose_N	https://upload.wikimedia.org/wikipedia/en/2/23/Bullnose-ct.jpg
-bullock_1_N	https://upload.wikimedia.org/wikipedia/commons/6/6a/Volsci.jpg	https://upload.wikimedia.org/wikipedia/commons/1/1a/Ossen.JPG
-bullock_2_N	https://upload.wikimedia.org/wikipedia/commons/6/6a/Volsci.jpg	https://upload.wikimedia.org/wikipedia/commons/1/1a/Ossen.JPG
 bullocky_A	https://upload.wikimedia.org/wikipedia/commons/a/a4/Bullock_team.jpg	https://upload.wikimedia.org/wikipedia/commons/6/6a/Volsci.jpg
-bullpen_1_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/Jacob%27s_Field_Fultz_and_Betancourt_in_the_Bullpen.jpg	https://upload.wikimedia.org/wikipedia/commons/0/07/Office-landscape-plan.jpg
-bullpen_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/Jacob%27s_Field_Fultz_and_Betancourt_in_the_Bullpen.jpg
-bullring_N	https://upload.wikimedia.org/wikipedia/commons/3/3f/Arenas.Malaga.1.JPG	https://upload.wikimedia.org/wikipedia/commons/1/1a/Spain_Andalusia_Malaga_BW_2015-10-24_09-52-48.jpg
+bullpen_1_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/Jacob%27s_Field_Fultz_and_Betancourt_in_the_Bullpen.jpg
+bullring_N	https://upload.wikimedia.org/wikipedia/commons/1/1a/Spain_Andalusia_Malaga_BW_2015-10-24_09-52-48.jpg
 bullshit_V	https://upload.wikimedia.org/wikipedia/commons/f/f1/Lieg_in_COC.svg
 bullying_N	https://upload.wikimedia.org/wikipedia/commons/f/fb/Bizutage_pilote_gazelle.jpg	https://upload.wikimedia.org/wikipedia/commons/0/05/Saynotobullying.jpg	https://upload.wikimedia.org/wikipedia/commons/f/fa/Bullying_on_Instituto_Regional_Federico_Err%C3%A1zuriz_%28IRFE%29_in_March_5%2C_2007.jpg
 bulrush_1_N	https://upload.wikimedia.org/wikipedia/commons/e/e0/Teatro_junqueno.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b7/Schoenoplectus_lacustris_260605.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e3/Typha_flwrs.jpg
@@ -4128,7 +4089,6 @@ butler_3_PN	https://upload.wikimedia.org/wikipedia/commons/0/0e/White_House_Butl
 butt_1_V	https://upload.wikimedia.org/wikipedia/commons/3/35/BolataCove1.jpg
 butt_1_V2	https://upload.wikimedia.org/wikipedia/commons/e/e8/Village_de_Cozzano_%28Corse%29.jpg
 butt_2_V2	https://upload.wikimedia.org/wikipedia/commons/e/e8/Village_de_Cozzano_%28Corse%29.jpg
-butt_9_N	https://upload.wikimedia.org/wikipedia/commons/4/44/Spicara_smaris_2.jpg
 butte_2_PN	https://upload.wikimedia.org/wikipedia/commons/e/e6/Monument_Valley%2C_late_afternoon.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c7/Butte%2C_Montana_collage.png
 butter_1_N	https://upload.wikimedia.org/wikipedia/commons/d/d3/%C5%A0v%C3%A9dsk%C3%BD_kol%C3%A1%C4%8D_naruby_904_%28cropped%29.JPG	https://upload.wikimedia.org/wikipedia/commons/e/ee/Vila_de_Manteigas_no_Ver%C3%A3o.JPG
 butter_V2	https://upload.wikimedia.org/wikipedia/commons/2/20/RiodeJaneiro_Municip_Mage.svg	https://upload.wikimedia.org/wikipedia/commons/8/8d/New_Roanoke_Marshes_Light%2C_Manteo%2C_North_Carolina.JPG
@@ -4657,7 +4617,6 @@ carnage_N	https://upload.wikimedia.org/wikipedia/commons/d/d9/Cuba_-_Matanzas_-_
 carnallite_N	https://upload.wikimedia.org/wikipedia/commons/0/03/Carnallit_cristalls.jpg
 carnassial_A	https://upload.wikimedia.org/wikipedia/commons/b/b6/Brechschere-Hund.jpg
 carnation_1_N	https://upload.wikimedia.org/wikipedia/commons/6/6d/Moondust-carnation.JPG	https://upload.wikimedia.org/wikipedia/commons/3/3d/Red_campion_close_700.jpg
-carnation_2_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Roses_mit_Sporthafen.jpg
 carnation_A	https://upload.wikimedia.org/wikipedia/commons/a/ab/Heraldic_Tincture_Carnation.png
 carnauba_1_N	https://upload.wikimedia.org/wikipedia/commons/0/01/Carnauba.jpg	https://upload.wikimedia.org/wikipedia/commons/0/0b/Carnauba_wax.jpg
 carnauba_2_N	https://upload.wikimedia.org/wikipedia/commons/0/01/Carnauba.jpg	https://upload.wikimedia.org/wikipedia/commons/0/0b/Carnauba_wax.jpg
@@ -4688,7 +4647,6 @@ carpal_N	https://upload.wikimedia.org/wikipedia/commons/b/b7/Carpal_bones.svg
 carpenteria_N	https://upload.wikimedia.org/wikipedia/commons/f/f1/Carpenteria_californica.jpg
 carpentry_N	https://upload.wikimedia.org/wikipedia/commons/d/de/Woodcarvings_of_cranes.jpg	https://upload.wikimedia.org/wikipedia/commons/f/fc/Fotothek_df_n-10_0000828.jpg
 carpet_1_N	https://upload.wikimedia.org/wikipedia/commons/e/e7/Wollteppich_1.jpg	https://upload.wikimedia.org/wikipedia/commons/3/3c/Keuruun_ryijy.jpg
-carpet_2_N	https://upload.wikimedia.org/wikipedia/commons/e/e7/Wollteppich_1.jpg	https://upload.wikimedia.org/wikipedia/commons/1/18/Hotamis_Kilim.jpg
 carpet_beater_N	https://upload.wikimedia.org/wikipedia/commons/8/86/Huisvrouwengymnastiek.jpg
 carpet_sweeper_N	https://upload.wikimedia.org/wikipedia/commons/7/70/US_Navy_100116-N-1688B-064_ailors_aboard_the_Nimitz-class_aircraft_carrier_USS_Dwight_D._Eisenhower_%28CVN_69%29_scrub_dirt_from_the_flight_deck._Dwight_D._Eisenhower.jpg	https://upload.wikimedia.org/wikipedia/commons/4/41/Carpet_sweeper.png
 carpetbag_N	https://upload.wikimedia.org/wikipedia/commons/2/2d/Samsonite_Pro-DLX_4_Rolling_Tote_16.4_Inch_Black.jpg
@@ -4876,7 +4834,7 @@ caterpillar_2_N	https://upload.wikimedia.org/wikipedia/commons/f/f3/Chenille_de_
 catfish_1_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Somme.JPG	https://upload.wikimedia.org/wikipedia/commons/4/48/Barbe_Tiergarten_Schoenbrunn.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e0/Micronema_apogon2.jpg	https://upload.wikimedia.org/wikipedia/commons/d/d3/Silurus_glanis_02.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a0/Anarhichas_lupus_Brest.jpg
 catfish_2_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Somme.JPG	https://upload.wikimedia.org/wikipedia/commons/a/a0/Anarhichas_lupus_Brest.jpg
 catfish_3_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Somme.JPG	https://upload.wikimedia.org/wikipedia/commons/e/e0/Micronema_apogon2.jpg	https://upload.wikimedia.org/wikipedia/commons/9/94/Ameiurus_melas_by_Duane_Raver.png	https://upload.wikimedia.org/wikipedia/commons/d/d3/Silurus_glanis_02.jpg
-catgut_2_N	https://upload.wikimedia.org/wikipedia/commons/8/8b/Catgut.jpg	https://upload.wikimedia.org/wikipedia/commons/c/ce/Flatwound_01.JPG
+catgut_2_N	https://upload.wikimedia.org/wikipedia/commons/8/8b/Catgut.jpg
 cathedra_N	https://upload.wikimedia.org/wikipedia/commons/9/9d/Roma-san_giovanni03.jpg
 cathedral_1_N	https://upload.wikimedia.org/wikipedia/commons/5/56/Catedral_da_S%C3%A9_em_S%C3%A3o_Paulo.jpg
 cathedral_2_N	https://upload.wikimedia.org/wikipedia/commons/5/56/Catedral_da_S%C3%A9_em_S%C3%A3o_Paulo.jpg
@@ -4910,7 +4868,7 @@ caul_1_N	https://upload.wikimedia.org/wikipedia/commons/4/44/Sobo_1909_564.png
 cauldron_N	https://upload.wikimedia.org/wikipedia/commons/5/5c/Gulyas080.jpg
 cauliflower_1_N	https://upload.wikimedia.org/wikipedia/commons/2/25/Cauliflower.JPG
 cauliflower_2_N	https://upload.wikimedia.org/wikipedia/commons/2/25/Cauliflower.JPG
-caulk_N	https://upload.wikimedia.org/wikipedia/commons/b/be/Caulking%2C_USAF.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f7/Kittie_at_the_Cathouse_in_Glasgow.jpg
+caulk_N	https://upload.wikimedia.org/wikipedia/commons/b/be/Caulking%2C_USAF.jpg
 caulk_V2	https://upload.wikimedia.org/wikipedia/commons/b/be/Caulking%2C_USAF.jpg
 cause_3_N	https://upload.wikimedia.org/wikipedia/commons/3/31/Net_Neutrality_Vigil_%2815727220061%29.jpg
 causerie_N	https://upload.wikimedia.org/wikipedia/commons/7/79/Faworki_%28close-up%29.jpg
@@ -4959,8 +4917,6 @@ cefuroxime_N	https://upload.wikimedia.org/wikipedia/commons/b/bc/Cefuroxime.svg
 ceibo_N	https://upload.wikimedia.org/wikipedia/commons/7/76/Erythrina_crista-galli2.jpg
 ceilidh_N	https://upload.wikimedia.org/wikipedia/commons/8/87/Wilhelm_Gause_Hofball_in_Wien.jpg
 ceiling_1_N	https://upload.wikimedia.org/wikipedia/commons/e/ef/Ravenna%2C_basilica_di_San_Vitale_%28036%29.jpg
-ceiling_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ef/Ravenna%2C_basilica_di_San_Vitale_%28036%29.jpg
-ceiling_4_N	https://upload.wikimedia.org/wikipedia/commons/e/ef/Ravenna%2C_basilica_di_San_Vitale_%28036%29.jpg
 celandine_1_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Potapsco_fg13.jpg	https://upload.wikimedia.org/wikipedia/commons/0/0f/Flowers_%282425723494%29_cropped.jpg
 celandine_2_N	https://upload.wikimedia.org/wikipedia/commons/0/0f/Flowers_%282425723494%29_cropped.jpg	https://upload.wikimedia.org/wikipedia/commons/8/8c/Chelidonium_majus_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-033.jpg
 celebrated_A	https://upload.wikimedia.org/wikipedia/commons/c/c5/Brama_Koszali%C5%84ska.jpg
@@ -4976,11 +4932,10 @@ celesta_N	https://upload.wikimedia.org/wikipedia/commons/4/46/Celesta_Schiedmaye
 celestial_1_A	https://upload.wikimedia.org/wikipedia/commons/4/41/G%C3%B6ksel2016_%28cropped%29.jpg
 celibacy_2_N	https://upload.wikimedia.org/wikipedia/commons/6/61/KateriTekakwitha.jpg
 celibate_N	https://upload.wikimedia.org/wikipedia/commons/a/ab/Scapoli_da_Rocchetta.jpg
-cell_2_N	https://upload.wikimedia.org/wikipedia/commons/3/3b/WP_20140904_019.jpg	https://upload.wikimedia.org/wikipedia/commons/3/37/Wilson1900Fig2.jpg	https://upload.wikimedia.org/wikipedia/commons/2/2c/Rakke_jaamahoone.jpg
-cell_4_N	https://upload.wikimedia.org/wikipedia/commons/3/3b/WP_20140904_019.jpg	https://upload.wikimedia.org/wikipedia/commons/3/37/Wilson1900Fig2.jpg	https://upload.wikimedia.org/wikipedia/commons/2/2c/Rakke_jaamahoone.jpg
+cell_2_N	https://upload.wikimedia.org/wikipedia/commons/3/37/Wilson1900Fig2.jpg
 cell_5_N	https://upload.wikimedia.org/wikipedia/commons/d/d6/Mobile_phone_evolution.jpg
-cell_6_N	https://upload.wikimedia.org/wikipedia/commons/3/3b/WP_20140904_019.jpg	https://upload.wikimedia.org/wikipedia/commons/1/12/Hermit%27s_Cell_-_geograph.org.uk_-_83433.jpg	https://upload.wikimedia.org/wikipedia/commons/2/2c/Rakke_jaamahoone.jpg
-cell_7_N	https://upload.wikimedia.org/wikipedia/commons/1/12/Hermit%27s_Cell_-_geograph.org.uk_-_83433.jpg	https://upload.wikimedia.org/wikipedia/commons/2/25/Haftraum.JPG
+cell_6_N	https://upload.wikimedia.org/wikipedia/commons/1/12/Hermit%27s_Cell_-_geograph.org.uk_-_83433.jpg
+cell_1_N	https://upload.wikimedia.org/wikipedia/commons/2/25/Haftraum.JPG
 cellar_3_N	https://upload.wikimedia.org/wikipedia/commons/9/9e/Schramsberg_Vineyards%2C_July_2019-7579%2B7580.jpg
 cello_N	https://upload.wikimedia.org/wikipedia/commons/5/5f/Cello_front_side.png
 cellophane_N	https://upload.wikimedia.org/wikipedia/commons/3/36/Cellofan.jpg
@@ -5320,7 +5275,7 @@ cheque_N	https://upload.wikimedia.org/wikipedia/commons/b/b9/CanadianChequeSampl
 chequer_1_V2	https://upload.wikimedia.org/wikipedia/commons/1/11/Chequers2.jpg
 chequer_2_V2	https://upload.wikimedia.org/wikipedia/commons/1/11/Chequers2.jpg
 cherimoya_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d1/Cherimoya_tree_hg.jpg
-cheroot_N	https://upload.wikimedia.org/wikipedia/commons/b/ba/Cheroot_making_leaves_or_cheroot_leaves_2013-07-03_11-19.jpg	https://upload.wikimedia.org/wikipedia/commons/8/8a/Cigar_tube_and_cutter.jpg
+cheroot_N	https://upload.wikimedia.org/wikipedia/commons/8/8a/Cigar_tube_and_cutter.jpg
 cherry_1_N	https://upload.wikimedia.org/wikipedia/commons/5/50/Rondonia_Municip_Cerejeiras.svg
 cherry_2_N	https://upload.wikimedia.org/wikipedia/commons/5/50/Rondonia_Municip_Cerejeiras.svg	https://upload.wikimedia.org/wikipedia/commons/d/dd/Kirschbaumbluete_2007.JPG	https://upload.wikimedia.org/wikipedia/commons/4/49/Prunus_avium_fruit.jpg
 cherry_3_N	https://upload.wikimedia.org/wikipedia/commons/f/f9/Chidorigafuchi_sakura.JPG
@@ -5392,7 +5347,7 @@ chimaera_3_N	https://upload.wikimedia.org/wikipedia/commons/f/f9/Hydrolagus_coll
 chime_N	https://upload.wikimedia.org/wikipedia/commons/b/bf/Kolbenluftpumpe_hg.jpg	https://upload.wikimedia.org/wikipedia/commons/5/53/Yamaha_Deagan_chimes_%28from_LA_Percussion_Rentals%29.jpg
 chimera_1_N	https://upload.wikimedia.org/wikipedia/commons/f/f9/Hydrolagus_colliei.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b3/Chimera_Apulia_Louvre_K362.jpg
 chimera_2_N	https://upload.wikimedia.org/wikipedia/commons/f/f9/Hydrolagus_colliei.jpg
-chimney_1_N	https://upload.wikimedia.org/wikipedia/en/d/d9/Kominite.jpg	https://upload.wikimedia.org/wikipedia/commons/9/9f/Chimney_Smoke_Stack.jpg	https://upload.wikimedia.org/wikipedia/commons/9/9c/LocationChimeneas.png
+chimney_1_N	https://upload.wikimedia.org/wikipedia/commons/9/9f/Chimney_Smoke_Stack.jpg
 chimney_2_N	https://upload.wikimedia.org/wikipedia/commons/9/9c/LocationChimeneas.png
 chimney_sweep_N	https://upload.wikimedia.org/wikipedia/commons/a/ab/Chimneysweep.png
 chimneypot_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Old_and_new_%28518089725%29.jpg	https://upload.wikimedia.org/wikipedia/commons/9/9c/LocationChimeneas.png
@@ -5614,10 +5569,8 @@ chum_V	https://upload.wikimedia.org/wikipedia/commons/b/b1/Ash.png
 chunga_N	https://upload.wikimedia.org/wikipedia/commons/6/68/Cariama_cristata.jpg	https://upload.wikimedia.org/wikipedia/commons/4/40/Blacklegged.jpg
 chungking_PN	https://upload.wikimedia.org/wikipedia/commons/5/51/Chongqing_montage_newest_2013.png
 chunnel_PN	https://upload.wikimedia.org/wikipedia/commons/4/4f/Course_Channeltunnel_en.svg
-church_1_N	https://upload.wikimedia.org/wikipedia/commons/3/38/Church%27s_Burwood_Met_studded_glossed-leather_brogues.gif
-church_2_N	https://upload.wikimedia.org/wikipedia/commons/3/3a/Madeleine_Paris.jpg	https://upload.wikimedia.org/wikipedia/commons/7/79/Sveti_Nikole_Center%2C_Macedonia.JPG	https://upload.wikimedia.org/wikipedia/commons/3/38/Church%27s_Burwood_Met_studded_glossed-leather_brogues.gif	https://upload.wikimedia.org/wikipedia/commons/1/1c/Hortus_Deliciarum%2C_Das_Geb%C3%A4ude_der_Kirche_mit_den_Gl%C3%A4ubigen.JPG	https://upload.wikimedia.org/wikipedia/commons/5/51/Cattedrale_Iglesias.jpg
-church_3_N	https://upload.wikimedia.org/wikipedia/commons/6/67/Religion-Pearce-Highsmith-detail-1.jpeg	https://upload.wikimedia.org/wikipedia/commons/3/3a/Madeleine_Paris.jpg	https://upload.wikimedia.org/wikipedia/commons/7/79/Sveti_Nikole_Center%2C_Macedonia.JPG	https://upload.wikimedia.org/wikipedia/commons/3/38/Church%27s_Burwood_Met_studded_glossed-leather_brogues.gif	https://upload.wikimedia.org/wikipedia/commons/0/0b/Silver_Pagoda_%281502645829%29.jpg	https://upload.wikimedia.org/wikipedia/commons/6/68/At_altar.JPG	https://upload.wikimedia.org/wikipedia/commons/5/51/Cattedrale_Iglesias.jpg
-church_4_N	https://upload.wikimedia.org/wikipedia/commons/3/3a/Madeleine_Paris.jpg	https://upload.wikimedia.org/wikipedia/commons/7/79/Sveti_Nikole_Center%2C_Macedonia.JPG	https://upload.wikimedia.org/wikipedia/commons/3/38/Church%27s_Burwood_Met_studded_glossed-leather_brogues.gif	https://upload.wikimedia.org/wikipedia/commons/5/51/Cattedrale_Iglesias.jpg
+church_2_N	https://upload.wikimedia.org/wikipedia/commons/5/51/Cattedrale_Iglesias.jpg
+church_3_N	https://upload.wikimedia.org/wikipedia/commons/6/67/Religion-Pearce-Highsmith-detail-1.jpeg
 churchyard_N	https://upload.wikimedia.org/wikipedia/commons/8/8c/Cemetery_in_China.jpg	https://upload.wikimedia.org/wikipedia/commons/2/28/Sventorius.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e7/Hill_kyrkog%C3%A5rden.jpg
 churl_1_N	https://upload.wikimedia.org/wikipedia/commons/6/62/Earldoms_of_Anglo-Saxon_England.svg	https://upload.wikimedia.org/wikipedia/commons/c/c2/Fat_man.jpg
 churl_2_N	https://upload.wikimedia.org/wikipedia/commons/9/96/Harpax_english.jpg	https://upload.wikimedia.org/wikipedia/commons/6/62/Earldoms_of_Anglo-Saxon_England.svg	https://upload.wikimedia.org/wikipedia/commons/c/c2/Fat_man.jpg
@@ -5634,11 +5587,10 @@ cicerone_N	https://upload.wikimedia.org/wikipedia/commons/3/32/Tour_Guide.jpg
 cichlid_N	https://upload.wikimedia.org/wikipedia/commons/6/6e/Freshwater_angelfish_biodome.jpg
 cider_N	https://upload.wikimedia.org/wikipedia/commons/2/23/Apple_juice_with_3apples.jpg	https://upload.wikimedia.org/wikipedia/commons/c/ce/2013-09-08_Apfelwein_im_Gerippten_0%2C25l.jpg
 cigar_N	https://upload.wikimedia.org/wikipedia/commons/8/8a/Cigar_tube_and_cutter.jpg
-cigarette_1_N	https://upload.wikimedia.org/wikipedia/commons/4/49/Tabak_9290019.JPG	https://upload.wikimedia.org/wikipedia/commons/b/bb/Cigarette_DS.jpg
+cigarette_1_N	https://upload.wikimedia.org/wikipedia/commons/b/bb/Cigarette_DS.jpg
 cigarette_case_N	https://upload.wikimedia.org/wikipedia/commons/2/2f/OPA%27s_cigarette_case-inside.jpg
 cigarette_holder_N	https://upload.wikimedia.org/wikipedia/commons/3/35/Rio_Grande_Village_Overlook_2.JPG	https://upload.wikimedia.org/wikipedia/commons/5/5a/Embouchure_profil.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b1/Cigarette_holder.png
 cigarette_paper_N	https://upload.wikimedia.org/wikipedia/commons/a/a2/Cigarette_diagram.svg
-cigarillo_N	https://upload.wikimedia.org/wikipedia/commons/f/f4/DunhillEarlyMorningPipeMurrays.jpg
 ciliate_3_A	https://upload.wikimedia.org/wikipedia/commons/a/a9/Ciliate_collage.jpg
 ciliate_N	https://upload.wikimedia.org/wikipedia/commons/a/a9/Ciliate_collage.jpg
 cilium_1_N	https://upload.wikimedia.org/wikipedia/commons/3/39/Bronchiolar_epithelium_3_-_SEM.jpg
@@ -5830,31 +5782,20 @@ cliche_N	https://upload.wikimedia.org/wikipedia/commons/a/ac/1885_Punch_head_tos
 click_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d0/VR_complex.svg
 click_7_V	https://upload.wikimedia.org/wikipedia/commons/d/da/Cles_-_panorama_-_02.JPG
 client_3_N	https://upload.wikimedia.org/wikipedia/commons/c/c9/Client-server-model.svg
-cliff_N	https://upload.wikimedia.org/wikipedia/commons/7/74/White_Cliffs_of_Dover_02.JPG	https://upload.wikimedia.org/wikipedia/commons/7/76/Klippan_Railway_Station-1.jpg
+cliff_N	https://upload.wikimedia.org/wikipedia/commons/7/74/White_Cliffs_of_Dover_02.JPG
 cliff_hanger_2_N	https://upload.wikimedia.org/wikipedia/commons/8/8c/Perilsofpauline.jpg
 climate_1_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/ShipTracks_MODIS_2005may11.jpg
-climate_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/ShipTracks_MODIS_2005may11.jpg
 climatology_N	https://upload.wikimedia.org/wikipedia/commons/a/a5/Clouds-1099739_1280.jpg
 climax_4_N	https://upload.wikimedia.org/wikipedia/commons/e/eb/Vincenzo_Camuccini_-_La_morte_di_Cesare.jpg
 climax_5_N	https://upload.wikimedia.org/wikipedia/commons/e/eb/Vincenzo_Camuccini_-_La_morte_di_Cesare.jpg
 climb_down_N	https://upload.wikimedia.org/wikipedia/commons/c/cc/Napoleons_retreat_from_moscow.jpg
 climber_2_N	https://upload.wikimedia.org/wikipedia/commons/2/2f/Brown_Treecreeper_bowra_apr07.jpg
 climber_4_N	https://upload.wikimedia.org/wikipedia/commons/e/e5/Marco_Pantani%2C_1997.jpg
-clime_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/ShipTracks_MODIS_2005may11.jpg	https://upload.wikimedia.org/wikipedia/commons/c/cd/Macrobian_climatic_zones.gif
-clinch_1_V2	https://upload.wikimedia.org/wikipedia/commons/b/be/G5151Clinching_Phases_from_Lambiase_%22Clinch_joining_of_heat-treatable_aluminum_AA6082-T6_alloy_under_warm_conditions%22.png
-clinch_2_V	https://upload.wikimedia.org/wikipedia/commons/b/be/G5151Clinching_Phases_from_Lambiase_%22Clinch_joining_of_heat-treatable_aluminum_AA6082-T6_alloy_under_warm_conditions%22.png
-clinch_2_V2	https://upload.wikimedia.org/wikipedia/commons/b/be/G5151Clinching_Phases_from_Lambiase_%22Clinch_joining_of_heat-treatable_aluminum_AA6082-T6_alloy_under_warm_conditions%22.png
+clime_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/ShipTracks_MODIS_2005may11.jpg
 clinch_3_N	https://upload.wikimedia.org/wikipedia/commons/9/90/Rivet01.jpg
-clinch_3_V2	https://upload.wikimedia.org/wikipedia/commons/b/be/G5151Clinching_Phases_from_Lambiase_%22Clinch_joining_of_heat-treatable_aluminum_AA6082-T6_alloy_under_warm_conditions%22.png
 clinch_4_N	https://upload.wikimedia.org/wikipedia/commons/0/0b/Lucas_in_the_pool.jpg
-clinch_4_V	https://upload.wikimedia.org/wikipedia/commons/b/be/G5151Clinching_Phases_from_Lambiase_%22Clinch_joining_of_heat-treatable_aluminum_AA6082-T6_alloy_under_warm_conditions%22.png
-clinch_4_V2	https://upload.wikimedia.org/wikipedia/commons/b/be/G5151Clinching_Phases_from_Lambiase_%22Clinch_joining_of_heat-treatable_aluminum_AA6082-T6_alloy_under_warm_conditions%22.png
-clinch_5_V2	https://upload.wikimedia.org/wikipedia/commons/b/be/G5151Clinching_Phases_from_Lambiase_%22Clinch_joining_of_heat-treatable_aluminum_AA6082-T6_alloy_under_warm_conditions%22.png
-clinch_6_V2	https://upload.wikimedia.org/wikipedia/commons/b/be/G5151Clinching_Phases_from_Lambiase_%22Clinch_joining_of_heat-treatable_aluminum_AA6082-T6_alloy_under_warm_conditions%22.png
 clincher_3_N	https://upload.wikimedia.org/wikipedia/commons/b/b1/2017_Zszywacz_biurowy.jpg
-cling_3_V	https://upload.wikimedia.org/wikipedia/commons/5/5a/Assisi-skyline.jpg	https://upload.wikimedia.org/wikipedia/commons/3/3e/Eating_Asida.JPG
 clinic_1_N	https://upload.wikimedia.org/wikipedia/commons/9/9a/VelikiVrag-Medpunkt-1435.jpg
-clinic_2_N	https://upload.wikimedia.org/wikipedia/commons/9/9a/VelikiVrag-Medpunkt-1435.jpg
 clinic_3_N	https://upload.wikimedia.org/wikipedia/commons/9/9a/VelikiVrag-Medpunkt-1435.jpg
 clinid_N	https://upload.wikimedia.org/wikipedia/commons/7/71/Heterostichus_rostratus.jpg
 clinker_1_N	https://upload.wikimedia.org/wikipedia/commons/8/89/Campfire_scar_08319.JPG
@@ -6341,9 +6282,7 @@ comparability_N	https://upload.wikimedia.org/wikipedia/commons/e/e6/Infinite_lat
 comparison_1_N	https://upload.wikimedia.org/wikipedia/commons/8/83/An_anxious_man_comparing_his_own_head_to_a_skull%2C_using_the_Wellcome_V0009466.jpg
 comparison_2_N	https://upload.wikimedia.org/wikipedia/commons/8/83/An_anxious_man_comparing_his_own_head_to_a_skull%2C_using_the_Wellcome_V0009466.jpg
 comparison_3_N	https://upload.wikimedia.org/wikipedia/commons/8/83/An_anxious_man_comparing_his_own_head_to_a_skull%2C_using_the_Wellcome_V0009466.jpg
-compass_1_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Kompas_Sofia.JPG	https://upload.wikimedia.org/wikipedia/commons/6/67/Tallinn_kompassi_asum.png
-compass_2_N	https://upload.wikimedia.org/wikipedia/commons/c/c2/Range_bassoon.svg
-compass_3_N	https://upload.wikimedia.org/wikipedia/commons/6/67/Tallinn_kompassi_asum.png
+compass_1_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Kompas_Sofia.JPG
 compass_4_N	https://upload.wikimedia.org/wikipedia/commons/4/49/Zirkel.jpg
 compassion_1_N	https://upload.wikimedia.org/wikipedia/commons/7/77/There%27s_no_crying_in_baseball%21_%284549295140%29_2.jpg
 compassion_2_N	https://upload.wikimedia.org/wikipedia/commons/7/77/There%27s_no_crying_in_baseball%21_%284549295140%29_2.jpg
@@ -6584,14 +6523,7 @@ consistory_N	https://upload.wikimedia.org/wikipedia/commons/a/a7/Strasbourg-Cons
 consolation_1_N	https://upload.wikimedia.org/wikipedia/commons/1/13/Consolation.jpg
 consolation_2_N	https://upload.wikimedia.org/wikipedia/commons/1/13/Consolation.jpg
 console_1_N	https://upload.wikimedia.org/wikipedia/commons/7/71/Bracket2_%28PSF%29.jpg
-console_2_N	https://upload.wikimedia.org/wikipedia/commons/7/71/Bracket2_%28PSF%29.jpg
 console_3_N	https://upload.wikimedia.org/wikipedia/commons/7/71/Bracket2_%28PSF%29.jpg
-console_4_N	https://upload.wikimedia.org/wikipedia/commons/7/71/Bracket2_%28PSF%29.jpg
-consolidate_1_V	https://upload.wikimedia.org/wikipedia/en/3/3f/Consolida-ambigua.jpg
-consolidate_2_V2	https://upload.wikimedia.org/wikipedia/en/3/3f/Consolida-ambigua.jpg
-consolidate_3_V2	https://upload.wikimedia.org/wikipedia/en/3/3f/Consolida-ambigua.jpg
-consolidate_4_V	https://upload.wikimedia.org/wikipedia/en/3/3f/Consolida-ambigua.jpg
-consolidate_5_V2	https://upload.wikimedia.org/wikipedia/en/3/3f/Consolida-ambigua.jpg
 consomme_N	https://upload.wikimedia.org/wikipedia/commons/4/43/Consomme_de_volaille.jpg
 consonance_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a5/Perfect_octave_on_C.png
 consonant_2_N	https://upload.wikimedia.org/wikipedia/commons/c/c7/Latin_alphabet_Tt.svg
@@ -6617,7 +6549,7 @@ construction_4_N	https://upload.wikimedia.org/wikipedia/commons/0/0c/GoldenGateB
 construction_7_N	https://upload.wikimedia.org/wikipedia/commons/d/d3/Viaduct_in_Puxi%2C_Shanghai.jpg	https://upload.wikimedia.org/wikipedia/commons/d/d6/Construction_site_in_Cologne%2C_Germany_%282017%29.jpg
 consubstantiation_N	https://upload.wikimedia.org/wikipedia/commons/9/97/St_Michael_the_Archangel%2C_Findlay%2C_OH_-_bread_and_wine_crop_1.jpg
 consuetude_N	https://upload.wikimedia.org/wikipedia/commons/9/92/Map_of_the_Legal_systems_of_the_world_%28en%29.png
-consul_N	https://upload.wikimedia.org/wikipedia/commons/6/6f/17.4.14_1_Lisbon_325_%2813909208546%29.jpg	https://upload.wikimedia.org/wikipedia/commons/f/fc/Gcmenotti.jpg
+consul_N	https://upload.wikimedia.org/wikipedia/commons/f/fc/Gcmenotti.jpg
 consumer_N	https://upload.wikimedia.org/wikipedia/commons/3/36/People_are_buying_fruits.jpg
 consumerism_1_N	https://upload.wikimedia.org/wikipedia/commons/f/fd/Mall_culture_jakarta35.jpg
 consummation_1_N	https://upload.wikimedia.org/wikipedia/commons/0/03/52-aspetti_di_vita_quotidiana%2C_amore%2CTaccuino_Sanitatis%2C_Cas.jpg
@@ -7366,7 +7298,6 @@ crow_1_N	https://upload.wikimedia.org/wikipedia/commons/0/0a/Corvus-brachyrhynch
 crowbar_N	https://upload.wikimedia.org/wikipedia/commons/9/9a/Ayuntamiento_de_Palanques_%28Castell%C3%B3n%29.JPG
 crowberry_N	https://upload.wikimedia.org/wikipedia/commons/5/53/Black_crowberry.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5a/Empetrum_nigrum_by_Maseltov_2.jpg
 crowborough_PN	https://upload.wikimedia.org/wikipedia/commons/4/4c/Crowborough_Cross_-_geograph.org.uk_-_456437.jpg
-crowd_1_N	https://upload.wikimedia.org/wikipedia/commons/3/38/Max-Heap.svg
 crowd_1_V2	https://upload.wikimedia.org/wikipedia/commons/0/0a/CrowdingDemo.gif
 crowd_2_V2	https://upload.wikimedia.org/wikipedia/commons/0/0a/CrowdingDemo.gif
 crowd_3_N	https://upload.wikimedia.org/wikipedia/en/7/7c/Crowd_in_street.jpg	https://upload.wikimedia.org/wikipedia/commons/3/38/Max-Heap.svg
@@ -7821,7 +7752,7 @@ darling_2_PN	https://upload.wikimedia.org/wikipedia/commons/c/c1/Aerial_view_of_
 darlington_PN	https://upload.wikimedia.org/wikipedia/commons/5/54/Darlo_town_centre.JPG
 darmstadt_PN	https://upload.wikimedia.org/wikipedia/commons/5/57/Hessen_DA.png
 darmstadtium_N	https://upload.wikimedia.org/wikipedia/commons/a/a3/Cubic-body-centered.svg
-darn_V2	https://upload.wikimedia.org/wikipedia/commons/d/d0/Municipio_Cervia.jpg	https://upload.wikimedia.org/wikipedia/commons/4/4b/Polish_stable_in_Gdansk.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg
+darn_V2	https://upload.wikimedia.org/wikipedia/commons/d/d0/Municipio_Cervia.jpg	https://upload.wikimedia.org/wikipedia/commons/4/4b/Polish_stable_in_Gdansk.jpg
 darning_N	https://upload.wikimedia.org/wikipedia/commons/7/78/Enc_cashmere_darning.jpg
 darning_needle_1_N	https://upload.wikimedia.org/wikipedia/commons/2/25/Libellula_depressa.jpg
 darning_needle_2_N	https://upload.wikimedia.org/wikipedia/commons/2/25/Libellula_depressa.jpg
@@ -9324,7 +9255,7 @@ earplug_1_N	https://upload.wikimedia.org/wikipedia/commons/5/5e/Loudness_of_comm
 earplug_2_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/Types_of_Earplugs.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a8/Kronenkorken_01_KMJ.jpg
 earring_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/Roman_ear_ring_%28FindID_387929%29.jpg
 earshot_N	https://upload.wikimedia.org/wikipedia/commons/f/fb/Earshot_NO_TITLE.jpg
-earth_1_N	https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg
+earth_1_N	https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg
 earth_1_V2	https://upload.wikimedia.org/wikipedia/commons/7/78/Tereo.jpg	https://upload.wikimedia.org/wikipedia/commons/6/6a/Cohunu_koala%2C_2013%286%29.JPG
 earth_2_V2	https://upload.wikimedia.org/wikipedia/commons/7/78/Tereo.jpg	https://upload.wikimedia.org/wikipedia/commons/6/6a/Cohunu_koala%2C_2013%286%29.JPG
 earthball_N	https://upload.wikimedia.org/wikipedia/commons/3/35/Single_lycoperdon_perlatum.jpg
@@ -9774,8 +9705,7 @@ enschede_PN	https://upload.wikimedia.org/wikipedia/commons/6/63/Enschede_Rijksmu
 ensemble_1_N	https://upload.wikimedia.org/wikipedia/commons/9/9f/Beatles_ad_1965_just_the_beatles_crop.jpg	https://upload.wikimedia.org/wikipedia/commons/b/bd/Jazzing_orchestra_1921.png
 enshrine_1_V2	https://upload.wikimedia.org/wikipedia/commons/e/ed/TAPI-EIA.png
 enshrine_2_V2	https://upload.wikimedia.org/wikipedia/commons/e/ed/TAPI-EIA.png	https://upload.wikimedia.org/wikipedia/commons/5/5c/Looft_in_IZ.png
-ensign_1_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Hikitia_2_August_2014.JPG
-ensign_2_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Bayrakl%C4%B1_0565.JPG	https://upload.wikimedia.org/wikipedia/commons/d/d8/Flickr_-_%E2%80%A6trialsanderrors_-_Johnson%27s_new_chart_of_national_emblems%2C_1868.jpg	https://upload.wikimedia.org/wikipedia/commons/9/98/Hikitia_2_August_2014.JPG
+ensign_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d8/Flickr_-_%E2%80%A6trialsanderrors_-_Johnson%27s_new_chart_of_national_emblems%2C_1868.jpg
 ensign_3_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Hikitia_2_August_2014.JPG
 enslavement_1_N	https://upload.wikimedia.org/wikipedia/commons/2/2c/Flock_of_sheep.jpg
 enslavement_2_N	https://upload.wikimedia.org/wikipedia/commons/2/2c/Flock_of_sheep.jpg
@@ -10560,9 +10490,7 @@ feminization_1_N	https://upload.wikimedia.org/wikipedia/commons/a/aa/Mice_X_Y_ch
 femtochemistry_N	https://upload.wikimedia.org/wikipedia/commons/b/b1/Pump-probe_techniques_in_physics.ogv
 fen_1_N	https://upload.wikimedia.org/wikipedia/commons/7/71/Casa_do_concello_de_Fene.JPG
 fen_2_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Rich-fen-primula-farinosa.jpeg	https://upload.wikimedia.org/wikipedia/commons/7/74/BA-026%2C_Brej%C3%B5es.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a4/PE-mapa-Brej%C3%A3o.png	https://upload.wikimedia.org/wikipedia/commons/5/59/Vineyard_and_sea_2_%C2%A9_Leif_Carlsson_for_Monteverro.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f8/Rcnwr-6.jpg	https://upload.wikimedia.org/wikipedia/commons/8/89/Illustrated_diagram_of_a_fen.jpg
-fence_1_N	https://upload.wikimedia.org/wikipedia/commons/d/dc/Bahia_Brazil_Barreiras_em_2017.jpg	https://upload.wikimedia.org/wikipedia/commons/1/13/Dalriada.png
-fence_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a2/Westtown.jpg
-fence_2_V2	https://upload.wikimedia.org/wikipedia/commons/3/38/Traditional_Rugs_from_Ait_Bougemez_and_Ait_M%27hamed.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c7/Ruins_of_Tanis.jpg	https://upload.wikimedia.org/wikipedia/commons/0/0d/DM-SD-01-06042.jpg
+fence_1_N	https://upload.wikimedia.org/wikipedia/commons/a/a2/Westtown.jpg
 fencing_1_N	https://upload.wikimedia.org/wikipedia/commons/8/8d/Profiled_Welded_Wire_Mesh_Fencing.jpg
 fencing_3_N	https://upload.wikimedia.org/wikipedia/commons/1/10/Final_Trophee_Monal_2012_n08.jpg
 fender_2_N	https://upload.wikimedia.org/wikipedia/commons/0/06/1911_Baldwin_2-8-0_Steam_at_Texas_Transportation_museum_3.jpg
@@ -10877,12 +10805,8 @@ fizgig_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Cal12_N%C2%B08.jp
 fizz_V	https://upload.wikimedia.org/wikipedia/commons/1/14/High_Priest_Offering_Sacrifice_of_a_Goat.jpg
 fjord_N	https://upload.wikimedia.org/wikipedia/commons/7/78/Geirangerfjord_%286-2007%29.jpg
 flag_1_N	https://upload.wikimedia.org/wikipedia/commons/d/d8/United_Nations_Flags_-_cropped.jpg
-flag_2_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Bayrakl%C4%B1_0565.JPG	https://upload.wikimedia.org/wikipedia/commons/6/64/Ionia%2C_Asia_Minor_Map%2C_Classical_Atlas%2C_1886%2C_Keith_Johnston.jpg
 flag_3_N	https://upload.wikimedia.org/wikipedia/commons/4/49/Iris_germanica_%28Purple_bearded_Iris%29%2C_Wakehurst_Place%2C_UK_-_Diliff.jpg
 flag_4_V2	https://upload.wikimedia.org/wikipedia/commons/e/ed/USS_Constitution_fires_a_17-gun_salute.jpg
-flag_5_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Bayrakl%C4%B1_0565.JPG
-flag_6_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Bayrakl%C4%B1_0565.JPG
-flag_7_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Bayrakl%C4%B1_0565.JPG
 flagellant_1_N	https://upload.wikimedia.org/wikipedia/commons/a/af/Nuremberg_chronicles_-_Flagellants_%28CCXVr%29.jpg
 flagellant_2_N	https://upload.wikimedia.org/wikipedia/commons/a/af/Nuremberg_chronicles_-_Flagellants_%28CCXVr%29.jpg
 flagellate_A	https://upload.wikimedia.org/wikipedia/commons/5/52/Haeckel_Flagellata.jpg
@@ -11570,8 +11494,8 @@ frock_1_N	https://upload.wikimedia.org/wikipedia/commons/0/0f/Charles_Blair_%28d
 frock_2_N	https://upload.wikimedia.org/wikipedia/commons/0/0f/Charles_Blair_%28detail_of_The_Honorable_Henry_Fane_%281739%E2%80%931802%29_with_Inigo_Jones_and_Charles_Blair.jpg
 frock_3_N	https://upload.wikimedia.org/wikipedia/commons/0/0f/Charles_Blair_%28detail_of_The_Honorable_Henry_Fane_%281739%E2%80%931802%29_with_Inigo_Jones_and_Charles_Blair.jpg
 frock_coat_N	https://upload.wikimedia.org/wikipedia/commons/f/f3/Frock_Coat_April_1904.jpg
-frog_1_N	https://upload.wikimedia.org/wikipedia/commons/3/39/European_Common_Frog_Rana_temporaria.jpg	https://upload.wikimedia.org/wikipedia/commons/3/33/Koni_crop.jpg
-frog_3_N	https://upload.wikimedia.org/wikipedia/commons/3/3d/Douay-uniforme.jpg	https://upload.wikimedia.org/wikipedia/commons/0/01/Anoures.jpg	https://upload.wikimedia.org/wikipedia/commons/3/33/Koni_crop.jpg
+frog_1_N	https://upload.wikimedia.org/wikipedia/commons/3/39/European_Common_Frog_Rana_temporaria.jpg
+frog_3_N	https://upload.wikimedia.org/wikipedia/commons/3/3d/Douay-uniforme.jpg
 frogbit_N	https://upload.wikimedia.org/wikipedia/commons/d/d9/Hydrocharis.jpg	https://upload.wikimedia.org/wikipedia/commons/a/ad/HydrocharisMorsus-ranae2.jpg
 frogfish_N	https://upload.wikimedia.org/wikipedia/commons/3/3d/Antennarius_striatus.jpg
 froghopper_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Prosapia_bicincta_Kaldari.jpg	https://upload.wikimedia.org/wikipedia/commons/3/3b/Blutzikade_Cercopis_vulnerata.jpg
@@ -12330,7 +12254,7 @@ glitter_1_N	https://upload.wikimedia.org/wikipedia/commons/2/2a/Glitter_close_up
 glitter_2_N	https://upload.wikimedia.org/wikipedia/commons/2/2a/Glitter_close_up.jpg	https://upload.wikimedia.org/wikipedia/commons/7/71/Vista_parcial_de_Resplendor_MG.jpg
 glitter_V	https://upload.wikimedia.org/wikipedia/commons/2/2a/Glitter_close_up.jpg
 gloat_N	https://upload.wikimedia.org/wikipedia/commons/7/7d/Eduardo_Zamacois_y_Zabala_-_Regreso_al_convento.jpg
-globe_1_N	https://upload.wikimedia.org/wikipedia/commons/5/58/BachstrKlotenI.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg
+globe_1_N	https://upload.wikimedia.org/wikipedia/commons/5/58/BachstrKlotenI.jpg
 globe_2_N	https://upload.wikimedia.org/wikipedia/commons/5/58/BachstrKlotenI.jpg	https://upload.wikimedia.org/wikipedia/commons/c/cf/Blue_ball.png
 globe_3_N	https://upload.wikimedia.org/wikipedia/commons/5/58/BachstrKlotenI.jpg	https://upload.wikimedia.org/wikipedia/commons/7/7c/MEK_II-14.jpg
 globeflower_1_N	https://upload.wikimedia.org/wikipedia/commons/d/d4/Trollius_europaeus_020503.jpg
@@ -12365,7 +12289,6 @@ gloss_3_V2	https://upload.wikimedia.org/wikipedia/commons/c/c1/Plume_moth_on_Boe
 gloss_4_N	https://upload.wikimedia.org/wikipedia/commons/5/51/Lustra.jpg
 gloss_4_V2	https://upload.wikimedia.org/wikipedia/commons/3/3b/Colombia_-_Cundinamarca_-_Pul%C3%AD.svg
 gloss_over_2_V2	https://upload.wikimedia.org/wikipedia/en/1/1c/Sopes1.jpg
-glossary_N	https://upload.wikimedia.org/wikipedia/commons/4/48/Ahmad_ibn_Muhammad_ibn_%27Ali_al-Muqri_al_Fayyumi_-_Glossary_of_Islamic_Legal_Terminology_-_Walters_W590_-_Bottom_Exterior.jpg
 glossitis_N	https://upload.wikimedia.org/wikipedia/commons/0/02/Scharlach.JPG
 glossolalia_N	https://upload.wikimedia.org/wikipedia/commons/d/db/Pentecost_icon.jpg
 glossop_PN	https://upload.wikimedia.org/wikipedia/commons/2/2b/GlossopSnakePass6275.JPG
@@ -12548,7 +12471,7 @@ gorge_1_N	https://upload.wikimedia.org/wikipedia/commons/e/e8/Kuru.sijainti.suom
 gorge_3_N	https://upload.wikimedia.org/wikipedia/commons/2/28/Cantaloupes.jpg
 gorgeous_A	https://upload.wikimedia.org/wikipedia/commons/2/23/Krasno_1953.jpg
 gorgerin_N	https://upload.wikimedia.org/wikipedia/commons/a/ab/Frisian_languages_in_Europe.svg
-gorget_N	https://upload.wikimedia.org/wikipedia/commons/6/68/Belgian_barquentine_Mercator._Trinidad%2C_c._1960.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c7/Washington_1772.jpg
+gorget_N	https://upload.wikimedia.org/wikipedia/commons/c/c7/Washington_1772.jpg
 gorgon_N	https://upload.wikimedia.org/wikipedia/commons/e/ef/Crat%C3%A8re_de_Vix_0007.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e5/Island_of_Gorgona.jpg
 gorgonzola_N	https://upload.wikimedia.org/wikipedia/commons/2/2a/Gorgonzola_Naviglio_Martesana.jpg
 gorilla_N	https://upload.wikimedia.org/wikipedia/commons/4/4c/Gorille.jpg	https://upload.wikimedia.org/wikipedia/commons/5/50/Male_gorilla_in_SF_zoo.jpg
@@ -12958,8 +12881,8 @@ guayaquil_PN	https://upload.wikimedia.org/wikipedia/commons/8/80/Guayaquil_monta
 guayule_N	https://upload.wikimedia.org/wikipedia/commons/6/63/Parthenium_argentatum_%28USDA%29.jpg
 gudgeon_1_N	https://upload.wikimedia.org/wikipedia/en/c/c8/Image_depicitng_a_gudgeon_with_a_pintle.png	https://upload.wikimedia.org/wikipedia/commons/3/34/Gobius_cobitis.004_-_Aquarium_Finisterrae.JPG
 gudgeon_2_N	https://upload.wikimedia.org/wikipedia/en/c/c8/Image_depicitng_a_gudgeon_with_a_pintle.png	https://upload.wikimedia.org/wikipedia/commons/3/34/Gobius_cobitis.004_-_Aquarium_Finisterrae.JPG	https://upload.wikimedia.org/wikipedia/commons/4/48/Gobio_gobio2.jpg
-guelder_rose_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Roses_mit_Sporthafen.jpg	https://upload.wikimedia.org/wikipedia/commons/7/70/Viburnum_01.JPG
-guenon_N	https://upload.wikimedia.org/wikipedia/commons/3/3c/DianaMonkey_Darwin.jpg	https://upload.wikimedia.org/wikipedia/commons/6/64/20150512_ESC_2015_Maimuna_4707.jpg	https://upload.wikimedia.org/wikipedia/commons/d/de/Silvery_marmoset.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a0/Chlorocebus_pygerythrus.jpg
+guelder_rose_N	https://upload.wikimedia.org/wikipedia/commons/7/70/Viburnum_01.JPG
+guenon_N	https://upload.wikimedia.org/wikipedia/commons/3/3c/DianaMonkey_Darwin.jpg	https://upload.wikimedia.org/wikipedia/commons/d/de/Silvery_marmoset.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a0/Chlorocebus_pygerythrus.jpg
 guereza_N	https://upload.wikimedia.org/wikipedia/commons/6/6b/Colubusmonkey.JPG	https://upload.wikimedia.org/wikipedia/commons/e/e6/Mantelaffe-mit-Baby-Zoo-Muenster.jpg
 gueridon_N	https://upload.wikimedia.org/wikipedia/commons/3/3c/Chart_for_roundtable_discussion.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f6/RedRoomGueridon.jpg
 guerrilla_N	https://upload.wikimedia.org/wikipedia/commons/0/0d/6-de-junio-1808.jpg	https://upload.wikimedia.org/wikipedia/commons/c/cb/Yeomen_of_the_Guard.JPG
@@ -13303,7 +13226,6 @@ handyman_N	https://upload.wikimedia.org/wikipedia/commons/c/c6/FEMA_-_42428_-_Ho
 hang_1_N	https://upload.wikimedia.org/wikipedia/commons/4/46/Isola_del_Tino_-_Panorama.jpg
 hang_5_V	https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Sark.svg
 hang_6_V	https://upload.wikimedia.org/wikipedia/commons/b/be/Piedbutcherbird.jpg
-hang_over_V2	hang_together_V
 hangar_N	https://upload.wikimedia.org/wikipedia/commons/f/f8/Hangar.svg
 hangdog_A	https://upload.wikimedia.org/wikipedia/commons/7/79/Schuld_%28ZDF%29.png
 hanger_on_N	https://upload.wikimedia.org/wikipedia/commons/3/3f/Pump_Jack_labelled.png
@@ -13562,7 +13484,6 @@ hearsay_N	https://upload.wikimedia.org/wikipedia/commons/e/e9/Spiderwort_Blue_Fl
 hearse_N	https://upload.wikimedia.org/wikipedia/commons/b/b5/Reagan_hearse.jpg
 heart_10_N	https://upload.wikimedia.org/wikipedia/commons/5/57/Playing_card_heart_A.svg	https://upload.wikimedia.org/wikipedia/commons/f/fc/Hearts_Penalty_Cards.jpg
 heart_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a0/Heart_anterior_exterior_view.jpg
-heart_3_N	https://upload.wikimedia.org/wikipedia/commons/0/01/Lleida_-_Iglesia_de_Tremp.jpg
 heart_failure_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Heartfailure.jpg
 heartache_N	https://upload.wikimedia.org/wikipedia/commons/9/9c/Barcelona_2_368.JPG
 heartbeat_1_N	https://upload.wikimedia.org/wikipedia/commons/2/2e/Beating_Frequency.svg
@@ -14024,7 +13945,6 @@ homestead_3_N	https://upload.wikimedia.org/wikipedia/commons/6/62/Ali-Pacha.jpg
 homework_N	https://upload.wikimedia.org/wikipedia/commons/1/15/Homework_-_vector_maths.jpg
 homiletics_1_N	https://upload.wikimedia.org/wikipedia/commons/f/f1/Bishop_Patrick_Joseph_McGrath_070602_1.jpg
 hominid_N	https://upload.wikimedia.org/wikipedia/commons/4/41/Hominidae_%28extant_species%29.jpg
-hominoid_N	https://upload.wikimedia.org/wikipedia/commons/6/64/20150512_ESC_2015_Maimuna_4707.jpg
 hominy_N	https://upload.wikimedia.org/wikipedia/commons/6/6a/Hominy_%28maize%29.JPG
 homo_1_N	https://upload.wikimedia.org/wikipedia/commons/b/be/Burg_Neuhaus_%28Gais%29_005_-_K.jpg
 homo_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ed/Homo_erectus_adult_female_-_head_model_-_Smithsonian_Museum_of_Natural_History_-_2012-05-17.jpg
@@ -14579,8 +14499,8 @@ icicle_N	https://upload.wikimedia.org/wikipedia/commons/c/cf/Icicles.jpg
 icing_1_N	https://upload.wikimedia.org/wikipedia/commons/9/94/Icing.svg	https://upload.wikimedia.org/wikipedia/commons/9/91/Slano_i_okolica_093905.jpg
 icing_2_N	https://upload.wikimedia.org/wikipedia/commons/e/e3/Lemon_shortbread_cookies_with_lemon_royal_icing.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5e/Powdered_Sugar_-_Macro.jpg
 icing_3_N	https://upload.wikimedia.org/wikipedia/commons/9/94/Icing.svg	https://upload.wikimedia.org/wikipedia/commons/9/91/Slano_i_okolica_093905.jpg
-icon_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c2/Ordiales_asturias.jpg
-icon_3_N	https://upload.wikimedia.org/wikipedia/commons/a/a8/0105_%EC%95%84%EC%9D%B4%EC%BD%98%28iKON%29_%EB%B0%94%EB%B9%84X%EC%A0%95%EC%B0%AC%EC%9A%B0_%ED%8F%AC%EC%BB%A4%EC%8A%A4_33%ED%9A%8C_%EA%B3%A8%EB%93%A0%EB%94%94%EC%8A%A4%ED%81%AC_%EC%8B%9C%EC%83%81%EC%8B%9D_%EB%A0%88%EB%93%9C%EC%B9%B4%ED%8E%AB_4K%EC%98%81%EC%83%81_2m_53s.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c2/Ordiales_asturias.jpg	https://upload.wikimedia.org/wikipedia/commons/f/fb/The_Ladder_of_Divine_Ascent.jpg
+icon_1_N	https://upload.wikimedia.org/wikipedia/commons/4/40/Data-transfer.svg	https://upload.wikimedia.org/wikipedia/commons/c/ce/Awaiting.svg	https://upload.wikimedia.org/wikipedia/commons/5/56/Run.svg
+icon_3_N	https://upload.wikimedia.org/wikipedia/commons/f/fb/The_Ladder_of_Divine_Ascent.jpg
 iconoclasm_N	https://upload.wikimedia.org/wikipedia/commons/6/6b/Irenekirken.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b5/Triumph_orthodoxy.jpg
 iconography_N	https://upload.wikimedia.org/wikipedia/commons/8/88/Hans_Holbein_the_Younger_-_The_Ambassadors_-_Google_Art_Project.jpg	https://upload.wikimedia.org/wikipedia/commons/6/63/Jnana_Vigraham.jpg
 iconoscope_N	https://upload.wikimedia.org/wikipedia/commons/3/35/Zworykin_and_iconoscope.jpg
@@ -15121,7 +15041,6 @@ involvement_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d1/Michel_Fanol
 involvement_5_N	https://upload.wikimedia.org/wikipedia/commons/d/d1/Michel_Fanoli_-_Politics_in_an_Oyster_House_Dedicated_To_HB_Latrobe_Esq_-_Walters_93145.jpg
 iodinated_A	https://upload.wikimedia.org/wikipedia/commons/9/9b/Iodate_anion.svg
 iodine_1_N	https://upload.wikimedia.org/wikipedia/commons/0/0a/Sample_of_iodine.jpg
-ion_N	https://upload.wikimedia.org/wikipedia/commons/2/20/Jonen03.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b6/Phocaea_map.jpg	https://upload.wikimedia.org/wikipedia/commons/5/54/Mairie_Jons_face.JPG
 ionosphere_N	https://upload.wikimedia.org/wikipedia/commons/1/18/Atmosphere_with_Ionosphere.svg
 iota_1_N	https://upload.wikimedia.org/wikipedia/commons/c/cb/Joatham_rex.jpg	https://upload.wikimedia.org/wikipedia/commons/8/85/Pingos_near_Tuk.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b3/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_Yota.png
 iota_2_N	https://upload.wikimedia.org/wikipedia/commons/c/cb/Joatham_rex.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b3/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_Yota.png
@@ -15370,7 +15289,7 @@ jejunostomy_N	https://upload.wikimedia.org/wikipedia/commons/a/ae/Jejunostomy.jp
 jejunum_N	https://upload.wikimedia.org/wikipedia/commons/3/3d/Illu_small_intestine.jpg
 jell_V	https://upload.wikimedia.org/wikipedia/commons/6/6a/Ledeni_live_in_F-_club%2C_Ljubljana.jpeg	https://upload.wikimedia.org/wikipedia/commons/b/b1/Cuajada.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c0/2016_1221_Kerststol.jpg	https://upload.wikimedia.org/wikipedia/commons/f/fb/Jelling_Kommune.jpg
 jellaba_N	https://upload.wikimedia.org/wikipedia/commons/a/ad/Morocco%2C_djellaba%2C_end_of_20th_century_-_Bunka_Gakuen_Costume_Museum_-_DSC05317.JPG
-jelly_2_N	https://upload.wikimedia.org/wikipedia/commons/2/21/Rainbow-Jello-Cut-2004-Jul-30.jpg
+jelly_1_N	https://upload.wikimedia.org/wikipedia/commons/2/21/Rainbow-Jello-Cut-2004-Jul-30.jpg
 jelly_V2	https://upload.wikimedia.org/wikipedia/commons/c/c0/2016_1221_Kerststol.jpg
 jellyfish_1_N	https://upload.wikimedia.org/wikipedia/commons/8/88/Cauliflour_Jellyfish%2C_Cephea_cephea_at_Marsa_Shouna%2C_Red_Sea%2C_Egypt_SCUBA.jpg	https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg
 jellyfish_2_N	https://upload.wikimedia.org/wikipedia/commons/8/88/Cauliflour_Jellyfish%2C_Cephea_cephea_at_Marsa_Shouna%2C_Red_Sea%2C_Egypt_SCUBA.jpg
@@ -15531,11 +15450,8 @@ juggernaut_2_N	https://upload.wikimedia.org/wikipedia/commons/c/cb/Juggernaut.jp
 juggernaut_3_N	https://upload.wikimedia.org/wikipedia/commons/c/cb/Juggernaut.jpeg	https://upload.wikimedia.org/wikipedia/commons/1/1d/Aust_config2.png
 juggle_2_N	https://upload.wikimedia.org/wikipedia/commons/8/8f/5_ball_juggling.jpg
 jugular_1_N	https://upload.wikimedia.org/wikipedia/commons/f/ff/Juggular.jpg
-juice_1_N	https://upload.wikimedia.org/wikipedia/commons/a/ad/Sokacityoffice.jpg	https://upload.wikimedia.org/wikipedia/commons/2/2c/Garcinia_indica_yellow_and_red_syrups_and_drinks.jpg	https://upload.wikimedia.org/wikipedia/commons/6/6b/Iglesia_de_Sucs.jpg	https://upload.wikimedia.org/wikipedia/commons/f/fd/Orange_juice_1.jpg
-juice_2_N	https://upload.wikimedia.org/wikipedia/commons/a/ad/Sokacityoffice.jpg	https://upload.wikimedia.org/wikipedia/commons/2/2c/Garcinia_indica_yellow_and_red_syrups_and_drinks.jpg	https://upload.wikimedia.org/wikipedia/commons/6/6b/Iglesia_de_Sucs.jpg	https://upload.wikimedia.org/wikipedia/commons/f/fd/Orange_juice_1.jpg
+juice_1_N	https://upload.wikimedia.org/wikipedia/commons/6/6b/Iglesia_de_Sucs.jpg	https://upload.wikimedia.org/wikipedia/commons/f/fd/Orange_juice_1.jpg
 juice_3_N	https://upload.wikimedia.org/wikipedia/commons/b/b4/Ohm%27s_Law_with_Voltage_source_TeX.svg
-juice_4_N	https://upload.wikimedia.org/wikipedia/commons/a/ad/Sokacityoffice.jpg	https://upload.wikimedia.org/wikipedia/commons/2/2c/Garcinia_indica_yellow_and_red_syrups_and_drinks.jpg	https://upload.wikimedia.org/wikipedia/commons/6/6b/Iglesia_de_Sucs.jpg
-juice_up_V2	https://upload.wikimedia.org/wikipedia/commons/b/bb/Karottensaft.JPG
 juju_1_N	https://upload.wikimedia.org/wikipedia/commons/c/cc/Ju-ju_house.png	https://upload.wikimedia.org/wikipedia/commons/1/1d/Yoruba-bronze-head.jpg
 juju_2_N	https://upload.wikimedia.org/wikipedia/commons/c/cc/Ju-ju_house.png
 jujube_1_N	https://upload.wikimedia.org/wikipedia/commons/1/1e/ZiziphusJujubaVarSpinosa.jpg
@@ -15552,7 +15468,6 @@ jump_13_V2	https://upload.wikimedia.org/wikipedia/commons/d/d0/2007_Military_Wor
 jumping_2_N	https://upload.wikimedia.org/wikipedia/commons/a/ae/SplitLeap.gif
 jun_PN	https://upload.wikimedia.org/wikipedia/commons/b/bb/Huaxiasiyi.svg	https://upload.wikimedia.org/wikipedia/commons/d/dd/Bandera_de_jun.jpg
 junco_N	https://upload.wikimedia.org/wikipedia/commons/e/e0/Teatro_junqueno.jpg	https://upload.wikimedia.org/wikipedia/commons/0/04/Junco_hyemalis_hyemalis_CT2.jpg
-jungle_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a7/Tioman_Rainforest.JPG
 jungle_3_N	https://upload.wikimedia.org/wikipedia/commons/a/a7/Tioman_Rainforest.JPG
 juniper_1_N	https://upload.wikimedia.org/wikipedia/commons/a/a1/Jeneverbes.jpg
 juniper_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a1/Jeneverbes.jpg	https://upload.wikimedia.org/wikipedia/commons/1/10/Juniperus_osteosperma_1.jpg
@@ -15795,7 +15710,7 @@ kidlington_PN	https://upload.wikimedia.org/wikipedia/commons/d/d7/Kidlington_old
 kidnap_V2	https://upload.wikimedia.org/wikipedia/commons/3/31/RLS_Kidnapped_1886_US.jpg
 kidnapper_1_N	https://upload.wikimedia.org/wikipedia/commons/3/36/Electro_Opical_Image_from_RAPTOR_Reconnaisance_Pod_on_RAF_Tornado_Jet_of_Floods_MOD_45157016.jpg
 kidnapping_N	https://upload.wikimedia.org/wikipedia/commons/c/c9/Mauricio_rugendas_-_el_malon.jpg
-kidney_N	https://upload.wikimedia.org/wikipedia/commons/d/d6/Blausen_0592_KidneyAnatomy_01.png	https://upload.wikimedia.org/wikipedia/commons/0/05/Weeze_Niers.jpg
+kidney_N	https://upload.wikimedia.org/wikipedia/commons/d/d6/Blausen_0592_KidneyAnatomy_01.png
 kidney_bean_1_N	https://upload.wikimedia.org/wikipedia/commons/2/27/Red_Rajma_BNC.jpg	https://upload.wikimedia.org/wikipedia/commons/7/79/Snijboonplanten_Phaseolus_vulgaris.jpg
 kidney_bean_2_N	https://upload.wikimedia.org/wikipedia/commons/2/27/Red_Rajma_BNC.jpg	https://upload.wikimedia.org/wikipedia/commons/7/79/Snijboonplanten_Phaseolus_vulgaris.jpg
 kidsgrove_PN	https://upload.wikimedia.org/wikipedia/commons/e/ea/Kidsgrove.jpg
@@ -17048,6 +16963,7 @@ log_jam_1_N	https://upload.wikimedia.org/wikipedia/commons/f/f5/Cul_de_sac.jpg
 log_rolling_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c6/A_Horse_and_His_Trader.jpg
 loganberry_1_N	https://upload.wikimedia.org/wikipedia/commons/2/27/Rubus_loganobaccus.jpg
 loganberry_2_N	https://upload.wikimedia.org/wikipedia/commons/2/27/Rubus_loganobaccus.jpg
+log_2_N	https://upload.wikimedia.org/wikipedia/commons/8/81/Logarithm_plots.png
 logarithm_N	https://upload.wikimedia.org/wikipedia/commons/8/81/Logarithm_plots.png
 logbook_N	https://upload.wikimedia.org/wikipedia/commons/9/95/Grand_Turk%2834%29.jpg
 loge_1_N	https://upload.wikimedia.org/wikipedia/commons/0/0e/Performance_in_the_Bolshoi_Theatre.JPG
@@ -17364,7 +17280,7 @@ maastricht_PN	https://upload.wikimedia.org/wikipedia/commons/4/4b/2017_Maastrich
 macabre_A	https://upload.wikimedia.org/wikipedia/commons/e/e2/Bar-le-Duc_-_Eglise_Saint-Etienne_-_Le_Transi_-191.jpg
 macadam_1_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Fall_Country_Road_%28Macadam%29.jpg	https://upload.wikimedia.org/wikipedia/commons/0/0f/Gotthard_alte_Strasse.jpg	https://upload.wikimedia.org/wikipedia/commons/0/09/20mm-aggregate.jpg
 macadamia_N	https://upload.wikimedia.org/wikipedia/commons/9/96/Macadamia_nuts_on_tree.JPG	https://upload.wikimedia.org/wikipedia/commons/9/96/Macadamia_integrifolia.jpg
-macaque_N	https://upload.wikimedia.org/wikipedia/commons/6/64/20150512_ESC_2015_Maimuna_4707.jpg	https://upload.wikimedia.org/wikipedia/commons/4/43/Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg
+macaque_N	https://upload.wikimedia.org/wikipedia/commons/4/43/Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg
 macaroni_1_N	https://upload.wikimedia.org/wikipedia/commons/1/11/VanillaMacaron.jpg
 macaroni_2_N	https://upload.wikimedia.org/wikipedia/commons/0/01/Macaroni2.jpg	https://upload.wikimedia.org/wikipedia/commons/1/11/VanillaMacaron.jpg
 macaroon_N	https://upload.wikimedia.org/wikipedia/commons/a/a7/Almond_macaroon_and_coconut_macaroon.jpeg	https://upload.wikimedia.org/wikipedia/commons/1/11/VanillaMacaron.jpg
@@ -17844,6 +17760,7 @@ marry_1_V2	https://upload.wikimedia.org/wikipedia/commons/2/25/Strindberg%27s_re
 marry_2_V2	https://upload.wikimedia.org/wikipedia/commons/2/25/Strindberg%27s_reception_in_Stockholm_20-10-1884.jpg	https://upload.wikimedia.org/wikipedia/commons/6/68/Casares.svg	https://upload.wikimedia.org/wikipedia/commons/8/84/Cazats_Mairie.jpg	https://upload.wikimedia.org/wikipedia/commons/3/30/NCMap-doton-Casar.PNG
 marry_in_V	https://upload.wikimedia.org/wikipedia/commons/2/25/Strindberg%27s_reception_in_Stockholm_20-10-1884.jpg
 mars_1_PN	https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg
+mars_2_PN	https://upload.wikimedia.org/wikipedia/commons/9/97/0_Statue_de_Mars_%28Pyrrhus%29_-_Musei_Capitolini_-_MC0058_%282%29.JPG
 marsala_N	https://upload.wikimedia.org/wikipedia/commons/5/56/Stagnone_di_Marsala.jpg
 marseillaise_N	https://upload.wikimedia.org/wikipedia/commons/8/83/Le_D%C3%A9part_des_Volontaires_%28La_Marseillaise%29_par_Rude%2C_Arc_de_Triomphe_Etoile_Paris.jpg
 marseille_1_PN	https://upload.wikimedia.org/wikipedia/commons/e/ec/Marseille_20131005_17.jpg
@@ -18134,7 +18051,7 @@ medlar_3_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Medlar_pomes_and_
 medlar_4_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Medlar_pomes_and_leaves.jpg	https://upload.wikimedia.org/wikipedia/commons/0/08/Mispeln.jpg
 medroxyprogesterone_N	https://upload.wikimedia.org/wikipedia/commons/2/29/Medroxyprogesterone.svg
 medulla_2_N	https://upload.wikimedia.org/wikipedia/commons/6/69/1311_Brain_Stem.jpg
-medusa_2_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Gorgona_pushkin.jpg
+medusa_1_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Gorgona_pushkin.jpg
 meek_1_A	https://upload.wikimedia.org/wikipedia/commons/1/17/MeeK_live_at_Comedy_Club_Paris_2009.jpg
 meek_2_A	https://upload.wikimedia.org/wikipedia/commons/1/17/MeeK_live_at_Comedy_Club_Paris_2009.jpg
 meek_3_A	https://upload.wikimedia.org/wikipedia/commons/1/17/MeeK_live_at_Comedy_Club_Paris_2009.jpg
@@ -18285,10 +18202,7 @@ mesa_2_PN	https://upload.wikimedia.org/wikipedia/commons/9/9b/IslandInTheSky.JPG
 mescaline_N	https://upload.wikimedia.org/wikipedia/commons/5/5a/Mescaline_Structural_Formula.svg
 mesenchyme_N	https://upload.wikimedia.org/wikipedia/commons/5/52/MSC_high_magnification.jpg
 mesentery_N	https://upload.wikimedia.org/wikipedia/commons/1/19/Gray1038.png
-mesh_1_V	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg
-mesh_2_V	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg
-mesh_3_N	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg
-mesh_3_V	https://upload.wikimedia.org/wikipedia/commons/1/11/South_Asia_historical_AD375_EN.svg	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e1/Malin_City_sign.JPG
+mesh_3_V	https://upload.wikimedia.org/wikipedia/commons/1/11/South_Asia_historical_AD375_EN.svg	https://upload.wikimedia.org/wikipedia/commons/e/e1/Malin_City_sign.JPG
 mesoderm_N	https://upload.wikimedia.org/wikipedia/commons/e/e3/Gray21.png
 mesohippus_N	https://upload.wikimedia.org/wikipedia/commons/9/9d/Mesohippus_barbouri_Harvard.jpg
 mesolithic_A	https://upload.wikimedia.org/wikipedia/commons/d/d6/Hunter_gatherer%27s_camp_at_Irish_National_Heritage_Park_-_geograph.org.uk_-_1252699.jpg
@@ -18676,7 +18590,7 @@ mitre_2_N	https://upload.wikimedia.org/wikipedia/commons/3/3e/Gonyeli_Monument_o
 mitre_3_N	https://upload.wikimedia.org/wikipedia/commons/3/36/Mitre.svg	https://upload.wikimedia.org/wikipedia/commons/b/b5/Mithras_tauroctony_Louvre_Ma3441b.jpg
 mitre_joint_N	https://upload.wikimedia.org/wikipedia/commons/3/3e/Gonyeli_Monument_of_National_Struggle_and_Liberty.jpg
 mitt_1_N	https://upload.wikimedia.org/wikipedia/commons/3/32/Human-Hands-Front-Back.jpg
-mitt_2_N	https://upload.wikimedia.org/wikipedia/commons/b/bd/Armwarmers.jpg
+mitt_3_N	https://upload.wikimedia.org/wikipedia/commons/b/bd/Armwarmers.jpg
 mitten_N	https://upload.wikimedia.org/wikipedia/commons/5/54/Baking_glove.jpg
 mix_2_N	https://upload.wikimedia.org/wikipedia/commons/9/9f/FOH_Pete_Keppler_with_digidesign_VENUE_Profile_live_digital_mixer_and_Genelec_monitoring.jpg
 mix_3_V	https://upload.wikimedia.org/wikipedia/commons/b/b6/2010_Dimi_Messinias_numbered.svg	https://upload.wikimedia.org/wikipedia/commons/7/72/Mesen_skyline.jpg
@@ -18889,15 +18803,8 @@ monument_3_N	https://upload.wikimedia.org/wikipedia/commons/a/ae/Harvest_Moon_ri
 monza_PN	https://upload.wikimedia.org/wikipedia/commons/0/0e/Collage_Monza.jpg
 moo_N	https://upload.wikimedia.org/wikipedia/commons/9/90/Vincent_Hancock_at_2008_Summer_Olympics_men%27s_skeet_finals_2008-08-16.JPG
 moocher_1_N	https://upload.wikimedia.org/wikipedia/commons/7/77/Gyps_africanus_Torgos_tracheliotus.jpg
-moon_1_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Ortonovo_Nicola.JPG	https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg	https://upload.wikimedia.org/wikipedia/commons/0/0a/LunPort.jpg
-moon_1_V	https://upload.wikimedia.org/wikipedia/commons/e/e8/Seychelles_003.JPG
-moon_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Ortonovo_Nicola.JPG	https://upload.wikimedia.org/wikipedia/commons/0/0a/LunPort.jpg
-moon_2_V	https://upload.wikimedia.org/wikipedia/commons/e/e8/Seychelles_003.JPG	https://upload.wikimedia.org/wikipedia/commons/0/0a/LunPort.jpg
-moon_2_V2	https://upload.wikimedia.org/wikipedia/commons/8/85/Martin_Van_Maele_-_La_Grande_Danse_macabre_des_vifs_-_01.jpg	https://upload.wikimedia.org/wikipedia/commons/0/0a/LunPort.jpg
-moon_3_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Ortonovo_Nicola.JPG
-moon_3_V2	https://upload.wikimedia.org/wikipedia/commons/8/85/Martin_Van_Maele_-_La_Grande_Danse_macabre_des_vifs_-_01.jpg	https://upload.wikimedia.org/wikipedia/commons/0/0a/LunPort.jpg
-moon_4_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Ortonovo_Nicola.JPG
-moon_6_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Ortonovo_Nicola.JPG	https://upload.wikimedia.org/wikipedia/commons/0/0a/LunPort.jpg
+moon_1_N	https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg
+moon_3_V2	https://upload.wikimedia.org/wikipedia/commons/8/85/Martin_Van_Maele_-_La_Grande_Danse_macabre_des_vifs_-_01.jpg
 moonfish_1_N	https://upload.wikimedia.org/wikipedia/commons/a/af/Fish_Harmonie_Bonn_20101123.JPG
 moonfish_2_N	https://upload.wikimedia.org/wikipedia/commons/0/0b/PanoramaRio_%28cropped%29.jpg	https://upload.wikimedia.org/wikipedia/commons/a/af/Fish_Harmonie_Bonn_20101123.JPG
 moonlight_N	https://upload.wikimedia.org/wikipedia/commons/8/8f/Holma_Boat_Club_by_the_light_of_the_moon.jpg
@@ -19501,10 +19408,8 @@ necrosis_N	https://upload.wikimedia.org/wikipedia/commons/6/69/Structural_change
 nectar_1_N	https://upload.wikimedia.org/wikipedia/commons/2/21/Nectar.jpg
 need_3_N	https://upload.wikimedia.org/wikipedia/commons/c/cc/Saiki_City_Kamae_Development_Bureau.JPG
 need_3_V2	https://upload.wikimedia.org/wikipedia/commons/3/3f/Indra%2C_Chief_of_the_Gods_LACMA_M.69.13.4_%281_of_5%29.jpg
-needle_1_N	https://upload.wikimedia.org/wikipedia/commons/2/27/A_depiction_of_needle.JPG	https://upload.wikimedia.org/wikipedia/commons/3/3f/Barret_eg1.JPG
 needle_1_V2	https://upload.wikimedia.org/wikipedia/commons/a/a1/Aepyceros_melampus_petersi_female_8014.jpg
 needle_2_V2	https://upload.wikimedia.org/wikipedia/commons/a/a1/Aepyceros_melampus_petersi_female_8014.jpg
-needle_3_N	https://upload.wikimedia.org/wikipedia/commons/2/27/A_depiction_of_needle.JPG
 needle_4_N	https://upload.wikimedia.org/wikipedia/commons/2/27/A_depiction_of_needle.JPG
 needlefish_1_N	https://upload.wikimedia.org/wikipedia/commons/1/19/Exvol_u0.gif	https://upload.wikimedia.org/wikipedia/commons/d/dd/Hound_600.jpg
 needlefish_2_N	https://upload.wikimedia.org/wikipedia/commons/0/03/Entelurus_aequoreus.jpg	https://upload.wikimedia.org/wikipedia/commons/7/7d/Syngnathus_acus.jpg	https://upload.wikimedia.org/wikipedia/commons/c/ca/Alligator_Pipefish_2.jpg
@@ -19558,7 +19463,7 @@ nephritis_N	https://upload.wikimedia.org/wikipedia/commons/7/7a/Hunter_enlarged_
 nephrology_N	https://upload.wikimedia.org/wikipedia/commons/a/ab/KidneyStructures_PioM.svg
 nephron_N	https://upload.wikimedia.org/wikipedia/commons/9/98/Kidney_Nephron.png
 nephthytis_N	https://upload.wikimedia.org/wikipedia/commons/2/26/Nephthytis_swainei_-_Berlin_Botanical_Garden_-_IMG_8683.JPG
-neptune_1_PN	https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg
+neptune_1_PN	https://upload.wikimedia.org/wikipedia/commons/6/68/Sousse_neptune.jpg
 neptune_2_PN	https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg
 neptunium_N	https://upload.wikimedia.org/wikipedia/commons/0/03/Np_sphere.jpg
 nereid_N	https://upload.wikimedia.org/wikipedia/commons/b/b0/Nereid-Voyager2.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f6/The_Nereid_Monument._From_Xanthos_%28Lycia%29%2C_modern-day_Antalya_Province%2C_Turkey._390-380_BCE._Room_17%2C_the_British_Museum%2C_London.jpg
@@ -19630,7 +19535,7 @@ new_cumnock_PN	https://upload.wikimedia.org/wikipedia/commons/0/09/New_Cumnock%2
 new_mills_PN	https://upload.wikimedia.org/wikipedia/commons/0/06/New_mills_619280_883f5111.jpg
 new_orleans_PN	https://upload.wikimedia.org/wikipedia/commons/a/a3/New_Orleans_header_collage.png
 new_tredegar_PN	https://upload.wikimedia.org/wikipedia/commons/e/e6/Terraced_Houses%2C_New_Tredegar_-_geograph.org.uk_-_531283.jpg
-new_york_3_PN	https://upload.wikimedia.org/wikipedia/commons/9/9d/NYC_Montage_2014_4_-_Jleon.jpg
+new_york_1_PN	https://upload.wikimedia.org/wikipedia/commons/9/9d/NYC_Montage_2014_4_-_Jleon.jpg
 newark_PN	https://upload.wikimedia.org/wikipedia/commons/6/64/Newark_Skyline_Northwest_View.jpg
 newarthill_PN	https://upload.wikimedia.org/wikipedia/commons/2/2a/Newarthill_Main_Road.jpg
 newbury_PN	https://upload.wikimedia.org/wikipedia/commons/1/19/Newbury-clocktower-2018.jpg
@@ -19897,7 +19802,6 @@ notch_2_V2	https://upload.wikimedia.org/wikipedia/commons/d/d7/Stonechat_%28Saxi
 notch_4_N	https://upload.wikimedia.org/wikipedia/commons/d/d8/Woodworking-joint-groove.gif
 note_3_N	https://upload.wikimedia.org/wikipedia/commons/5/57/Treble_a.svg
 note_3_V2	https://upload.wikimedia.org/wikipedia/en/4/49/Carter-notes-pope-mtg-xl.jpg
-note_5_N	https://upload.wikimedia.org/wikipedia/commons/5/57/Treble_a.svg
 note_6_N	https://upload.wikimedia.org/wikipedia/commons/e/e9/Billets_de_5000.jpg
 note_8_N	https://upload.wikimedia.org/wikipedia/commons/a/ae/Guido_Reni_-_Portrait_of_Bernardino_Spada.jpg
 note_9_N	https://upload.wikimedia.org/wikipedia/commons/4/43/Burma_1926_Promissory_Note.jpg
@@ -19921,7 +19825,6 @@ nousiainen_PN	https://upload.wikimedia.org/wikipedia/commons/e/e4/Nousiaisten_ki
 nova_N	https://upload.wikimedia.org/wikipedia/commons/1/19/NOvA_Far_Detector.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e4/Sur_la_berge_du_L%C3%A9man_%C3%A0_Noville_%28VD%29%2C_Suisse.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5d/Making_a_Nova.jpg
 nova_scotia_2_PN	https://upload.wikimedia.org/wikipedia/commons/c/c0/Flag_of_Nova_Scotia.svg
 novara_PN	https://upload.wikimedia.org/wikipedia/commons/0/04/Novara_panoramica08.jpg
-novel_1_A	https://upload.wikimedia.org/wikipedia/commons/b/bb/Novell_Provo_headquarters.jpg	https://upload.wikimedia.org/wikipedia/commons/0/09/Novel2.JPG	https://upload.wikimedia.org/wikipedia/commons/1/19/Novella-village.jpg
 novena_N	https://upload.wikimedia.org/wikipedia/commons/8/8b/Novena_Square_3.JPG	https://upload.wikimedia.org/wikipedia/commons/8/8a/Novena_a_Nuestra_Senora_del_Perpetuo_Socorro_in_Brasil.jpg
 novillada_N	https://upload.wikimedia.org/wikipedia/commons/f/fc/CorridaTorosDesfile.JPG
 novitiate_1_N	https://upload.wikimedia.org/wikipedia/commons/f/f7/Zusters_in_Sevilla.JPG
@@ -19952,7 +19855,6 @@ null_A	https://upload.wikimedia.org/wikipedia/commons/2/2d/Eglise_Nully.JPG
 nullah_N	https://upload.wikimedia.org/wikipedia/commons/e/e7/Croatia_-_Dolin.PNG
 nullification_2_N	https://upload.wikimedia.org/wikipedia/commons/f/f9/Not-Aus_Bet%C3%A4tiger.jpg
 numbat_N	https://upload.wikimedia.org/wikipedia/commons/0/05/Numbat.jpg
-number_11_N	https://upload.wikimedia.org/wikipedia/commons/a/a0/NumberSetinC.svg
 number_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a0/NumberSetinC.svg
 number_4_N	https://upload.wikimedia.org/wikipedia/commons/b/bd/Waehlscheibe-kurzwahlnummern.jpg
 numberplate_N	https://upload.wikimedia.org/wikipedia/commons/3/35/Golf_cart_with_license_plate.jpg
@@ -20157,7 +20059,7 @@ ogre_2_N	https://upload.wikimedia.org/wikipedia/commons/c/c7/Kulturen_-_Riesin_H
 ogress_N	https://upload.wikimedia.org/wikipedia/commons/3/3e/RO_MS_Castelul_Haller_din_Ogra_%2870%29.JPG
 oh_Interj	https://upload.wikimedia.org/wikipedia/commons/c/c4/A_with_Ring_in_Doulos_SIL..png
 ohio_1_PN	https://upload.wikimedia.org/wikipedia/commons/5/58/Ohio_in_United_States.svg
-ohio_2_PN	https://upload.wikimedia.org/wikipedia/commons/b/b4/Ohiorivermap.png	https://upload.wikimedia.org/wikipedia/commons/5/58/Ohio_in_United_States.svg
+ohio_2_PN	https://upload.wikimedia.org/wikipedia/commons/b/b4/Ohiorivermap.png
 ohm_1_N	https://upload.wikimedia.org/wikipedia/commons/b/b7/Om_symbol.svg
 ohm_2_PN	https://upload.wikimedia.org/wikipedia/commons/e/ef/Leeds_and_Northrup_one_ohm_standard_resistance.jpg
 ohmmeter_N	https://upload.wikimedia.org/wikipedia/commons/4/4e/Ohmmeter.jpg
@@ -21407,7 +21309,7 @@ pellagra_N	https://upload.wikimedia.org/wikipedia/commons/9/93/Pellagra2.jpg
 pellet_2_N	https://upload.wikimedia.org/wikipedia/commons/e/e6/LeadPlombs_contenu_1_cartouche.jpg
 pellitory_1_N	https://upload.wikimedia.org/wikipedia/commons/6/67/Parietaria_judaica_000.jpg
 pello_PN	https://upload.wikimedia.org/wikipedia/commons/3/30/Pello.kuntakilpi.jpg
-pelmet_N	https://upload.wikimedia.org/wikipedia/commons/e/e5/%28Ireland%29_Dublin_Castle_Interior_%28State_Drawing_Room%29.jpg	https://upload.wikimedia.org/wikipedia/commons/b/bf/Gogol_Palto.jpg
+pelmet_N	https://upload.wikimedia.org/wikipedia/commons/e/e5/%28Ireland%29_Dublin_Castle_Interior_%28State_Drawing_Room%29.jpg
 pelota_N	https://upload.wikimedia.org/wikipedia/commons/8/83/Ustaritz_Fronton_Pala.jpg	https://upload.wikimedia.org/wikipedia/commons/7/74/HotelManta.JPG	https://upload.wikimedia.org/wikipedia/commons/e/e8/Jai_alai_players.jpg
 pelt_1_V2	https://upload.wikimedia.org/wikipedia/commons/d/d5/Target_223_Savage_10FP_25_shot.jpg
 pelt_2_V2	https://upload.wikimedia.org/wikipedia/commons/d/d5/Target_223_Savage_10FP_25_shot.jpg
@@ -21419,8 +21321,7 @@ pembroke_PN	https://upload.wikimedia.org/wikipedia/commons/6/6d/Pembroke_Main_St
 pemmican_1_N	https://upload.wikimedia.org/wikipedia/commons/b/ba/Pemmican.jpg
 pemphigus_N	https://upload.wikimedia.org/wikipedia/commons/3/3c/Pemphigus_immunofluorescence.jpg
 pen_1_N	https://upload.wikimedia.org/wikipedia/commons/a/ae/Carandache_Ecridor.jpg
-pen_2_N	https://upload.wikimedia.org/wikipedia/commons/9/9b/Kartena.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f0/Staje.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c6/Sheep_Fold.jpg
-pen_5_N	https://upload.wikimedia.org/wikipedia/commons/d/dc/Iglesia_de_Puerto_Cisnes.jpg
+pen_2_N	https://upload.wikimedia.org/wikipedia/commons/c/c6/Sheep_Fold.jpg
 pen_friend_N	https://upload.wikimedia.org/wikipedia/commons/b/b5/US_Navy_050322-N-5319A-013_Iraqi_schoolchildren_study_grammar_as_U.S._Army_Soldiers_assigned_to_the_155th_Brigade_Combat_Team_%28BCT%29_from_Tupelo%2C_Miss.%2C_deliver_school_supplies.jpg
 penal_1_A	https://upload.wikimedia.org/wikipedia/commons/4/41/Criminal_age.svg
 penal_2_A	https://upload.wikimedia.org/wikipedia/commons/4/41/Criminal_age.svg
@@ -21448,7 +21349,7 @@ penguin_N	https://upload.wikimedia.org/wikipedia/commons/0/08/South_Shetland-201
 penicillamine_N	https://upload.wikimedia.org/wikipedia/commons/c/c3/Penicillamine_structure.svg
 penicillin_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Penicillin_core.svg
 penicillinase_N	https://upload.wikimedia.org/wikipedia/commons/8/87/PDB_1bsg_EBI.jpg
-peninsula_N	https://upload.wikimedia.org/wikipedia/commons/2/2e/STS-95_Florida_From_Space.jpg	https://upload.wikimedia.org/wikipedia/commons/8/88/Neman_river.jpg
+peninsula_N	https://upload.wikimedia.org/wikipedia/commons/2/2e/STS-95_Florida_From_Space.jpg
 penis_N	https://upload.wikimedia.org/wikipedia/commons/d/dc/Penis_asiatischer_Elefant.JPG
 penki_PN	https://upload.wikimedia.org/wikipedia/commons/1/1d/Outline_Map_of_Perm_Krai.svg
 penknife_N	https://upload.wikimedia.org/wikipedia/commons/2/28/Pocket-knife.jpg
@@ -22005,11 +21906,11 @@ pinion_1_V2	https://upload.wikimedia.org/wikipedia/commons/9/9f/Life_on_the_uppe
 pinion_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a9/Annular_%28PSF%29.svg
 pinion_2_V2	https://upload.wikimedia.org/wikipedia/commons/9/9f/Life_on_the_upper_Thames_-_swan-upping_%281875%29.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a9/Annular_%28PSF%29.svg
 pinion_3_N	https://upload.wikimedia.org/wikipedia/commons/a/a9/Annular_%28PSF%29.svg
-pink_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg	https://upload.wikimedia.org/wikipedia/commons/5/55/Roses_mit_Sporthafen.jpg	https://upload.wikimedia.org/wikipedia/commons/7/77/Pink_sapphire_ring.jpg	https://upload.wikimedia.org/wikipedia/commons/1/1c/Rosans_-_Mairie.jpg
+pink_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg	https://upload.wikimedia.org/wikipedia/commons/7/77/Pink_sapphire_ring.jpg	https://upload.wikimedia.org/wikipedia/commons/1/1c/Rosans_-_Mairie.jpg
 pink_1_V2	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg
 pink_2_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg	https://upload.wikimedia.org/wikipedia/commons/4/42/Dianthus_caryophyllus_L_%28Clove_pink%29.JPG	https://upload.wikimedia.org/wikipedia/commons/1/1c/Rosans_-_Mairie.jpg
 pink_2_V	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg
-pink_3_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg	https://upload.wikimedia.org/wikipedia/commons/5/55/Roses_mit_Sporthafen.jpg	https://upload.wikimedia.org/wikipedia/commons/1/1c/Rosans_-_Mairie.jpg
+pink_3_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg	https://upload.wikimedia.org/wikipedia/commons/1/1c/Rosans_-_Mairie.jpg
 pink_3_V	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg	https://upload.wikimedia.org/wikipedia/commons/4/45/Concello_de_Rois.JPG
 pink_3_V2	https://upload.wikimedia.org/wikipedia/commons/c/c1/PINKS_ALL_OUT_-_Milan_Dragway.jpg	https://upload.wikimedia.org/wikipedia/commons/4/45/Concello_de_Rois.JPG
 pink_A	https://upload.wikimedia.org/wikipedia/commons/7/77/Pink_sapphire_ring.jpg
@@ -22189,8 +22090,7 @@ plant_4_V2	https://upload.wikimedia.org/wikipedia/commons/a/a7/%C3%9Altims_retoc
 plant_5_V2	https://upload.wikimedia.org/wikipedia/commons/a/a7/%C3%9Altims_retocs_a_la_falla.ogv
 plant_louse_N	https://upload.wikimedia.org/wikipedia/commons/6/6c/PhiloThevet.jpg	https://upload.wikimedia.org/wikipedia/commons/1/19/Soybeanaphid.jpg
 plantain_1_N	https://upload.wikimedia.org/wikipedia/commons/6/6e/Plantago_major.jpg	https://upload.wikimedia.org/wikipedia/commons/3/33/Grote_weegbree_bloeiwijze_Plantago_major_subsp._major.jpg
-plantain_2_N	https://upload.wikimedia.org/wikipedia/commons/5/57/Plantains.jpg
-plantain_3_N	https://upload.wikimedia.org/wikipedia/commons/5/57/Plantains.jpg	https://upload.wikimedia.org/wikipedia/commons/0/08/Platani-map-bjs.jpg
+plantain_3_N	https://upload.wikimedia.org/wikipedia/commons/5/57/Plantains.jpg
 plantation_1_N	https://upload.wikimedia.org/wikipedia/commons/6/63/Pinus_taeda_plantation.jpg
 plasm_2_N	https://upload.wikimedia.org/wikipedia/commons/1/1d/FreshFrozenPlasma.JPG
 plasma_3_N	https://upload.wikimedia.org/wikipedia/commons/4/4b/Lightning3.jpg
@@ -23481,10 +23381,9 @@ pylorus_N	https://upload.wikimedia.org/wikipedia/commons/1/11/Gray1050.png
 pyocyanin_N	https://upload.wikimedia.org/wikipedia/commons/5/5f/Pyocyanin.png
 pyongyang_PN	https://upload.wikimedia.org/wikipedia/commons/b/b1/Pyongyang_montage.png
 pyralid_N	https://upload.wikimedia.org/wikipedia/commons/f/fb/Pyralis_farinalis01.jpg
-pyramid_1_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Chatham-Islands_map_topo_en.svg	https://upload.wikimedia.org/wikipedia/commons/9/91/Pyramid.svg	https://upload.wikimedia.org/wikipedia/commons/9/94/Giza-pyramids.JPG
-pyramid_2_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Chatham-Islands_map_topo_en.svg	https://upload.wikimedia.org/wikipedia/commons/9/91/Pyramid.svg	https://upload.wikimedia.org/wikipedia/commons/9/94/Giza-pyramids.JPG
-pyramid_3_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Chatham-Islands_map_topo_en.svg	https://upload.wikimedia.org/wikipedia/commons/9/91/Pyramid.svg
-pyre_N	https://upload.wikimedia.org/wikipedia/commons/6/6b/Ubud_Cremation_1.jpg	https://upload.wikimedia.org/wikipedia/commons/8/82/Celler_del_Sindicat_Agr%C3%ADcola_de_Pira_1.jpg
+pyramid_1_N	https://upload.wikimedia.org/wikipedia/commons/9/91/Pyramid.svg
+pyramid_3_N	https://upload.wikimedia.org/wikipedia/commons/9/94/Giza-pyramids.JPG
+pyre_N	https://upload.wikimedia.org/wikipedia/commons/6/6b/Ubud_Cremation_1.jpg
 pyrene_1_N	https://upload.wikimedia.org/wikipedia/commons/0/0a/Pyrene.svg
 pyrene_2_N	https://upload.wikimedia.org/wikipedia/commons/3/3c/Ossi%2C_panorama_%2801%29.jpg
 pyrethrum_1_N	https://upload.wikimedia.org/wikipedia/commons/4/40/Tanacetum_cinerariifolium_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-269.jpg
@@ -23650,8 +23549,8 @@ quillwort_N	https://upload.wikimedia.org/wikipedia/commons/2/2b/Illustration_Iso
 quilt_N	https://upload.wikimedia.org/wikipedia/commons/5/53/Russellquilter.jpg
 quilting_1_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Quilter_and_quilting_in_the_Bazaar_of_Nishapur_11.JPG
 quilting_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d5/Quilter_and_quilting_in_the_Bazaar_of_Nishapur_11.JPG
-quince_1_N	https://en.wikipedia.org/wiki/Quince#/media/File:Cydonia.jpg
-quince_2_N	https://en.wikipedia.org/wiki/Quince#/media/File:Quince_(10889s).jpg
+quince_1_N	https://upload.wikimedia.org/wikipedia/commons/d/d6/Cydonia.jpg
+quince_2_N	https://upload.wikimedia.org/wikipedia/commons/0/01/Quince_%2810889s%29.jpg
 quinidine_N	https://upload.wikimedia.org/wikipedia/commons/b/b3/Quinidine_structure.svg
 quinine_N	https://upload.wikimedia.org/wikipedia/commons/e/e4/Quinine-2D-skeletal.png
 quinone_N	https://upload.wikimedia.org/wikipedia/commons/6/66/Benzoquinones.png
@@ -23862,7 +23761,7 @@ ramsbottom_PN	https://upload.wikimedia.org/wikipedia/commons/6/69/View_of_Ramsbo
 ramsgate_PN	https://upload.wikimedia.org/wikipedia/commons/c/cb/Ramsgate_2.jpg
 ranch_N	https://upload.wikimedia.org/wikipedia/commons/c/c5/Grant-Kohrs_Ranch.jpg
 ranching_N	https://upload.wikimedia.org/wikipedia/commons/0/0b/Cattle_Feedlot_near_Rocky_Ford%2C_CO_IMG_5651-2.jpg
-rand_1_N	https://en.wikipedia.org/wiki/South_African_rand#/media/File:South_Africa-Money-Old01.jpg
+rand_1_N	https://upload.wikimedia.org/wikipedia/commons/b/bd/South_Africa-Money-Old01.jpg
 randomness_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/RandomBitmap.png
 range_2_N	https://upload.wikimedia.org/wikipedia/commons/4/48/ProjectileRange.jpg
 range_4_N	https://upload.wikimedia.org/wikipedia/commons/e/e2/Serres-greece_-_panoramio_-_frang947.jpg
@@ -24862,7 +24761,6 @@ ron_PN	https://upload.wikimedia.org/wikipedia/commons/f/f8/H%C3%B4tel_de_pr%C3%A
 ronald_PN	https://upload.wikimedia.org/wikipedia/commons/c/c8/Real_Valladolid-Valencia_CF%2C_2019-05-18_%2890%29_%28cropped%29.jpg
 rood_N	https://upload.wikimedia.org/wikipedia/commons/4/4b/Gotland-Lye_kyrka_06.jpg
 roof_1_N	https://upload.wikimedia.org/wikipedia/commons/5/58/Churches_in_Olomouc.jpg
-roof_3_N	https://upload.wikimedia.org/wikipedia/commons/5/58/Churches_in_Olomouc.jpg
 roof_garden_N	https://upload.wikimedia.org/wikipedia/commons/8/84/30_Rockefeller_Center_rooftop.jpg
 roof_tree_N	https://upload.wikimedia.org/wikipedia/commons/3/34/Terek.png
 roofer_N	https://upload.wikimedia.org/wikipedia/commons/9/91/Reetdach_P7040055.JPG
@@ -24903,9 +24801,9 @@ rosalind_PN	https://upload.wikimedia.org/wikipedia/commons/3/34/Rosalindmoon.png
 rosario_PN	https://upload.wikimedia.org/wikipedia/commons/e/ea/Montaje_Rosario_01.jpg
 rosary_N	https://upload.wikimedia.org/wikipedia/commons/4/47/Bernardo_Cavallino_-_La_Visione_di_San_Domenico_%28anni_1640%29.jpg	https://upload.wikimedia.org/wikipedia/commons/8/8c/Four_Kombologia.jpg
 roscommon_PN	https://upload.wikimedia.org/wikipedia/commons/6/6f/Breezes_of_Marshes.jpg
-rose_1_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Roses_mit_Sporthafen.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e6/Rosa_rubiginosa_1.jpg
+rose_1_N	https://upload.wikimedia.org/wikipedia/commons/e/e6/Rosa_rubiginosa_1.jpg
 rose_2_N	https://upload.wikimedia.org/wikipedia/commons/4/4b/Schramsberg_Vineyards%2C_July_2019-7605.jpg
-rose_3_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Roses_mit_Sporthafen.jpg	https://upload.wikimedia.org/wikipedia/commons/e/ec/Color_icon_pink.svg
+rose_3_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/Color_icon_pink.svg
 rose_V	https://upload.wikimedia.org/wikipedia/commons/4/45/Concello_de_Rois.JPG
 rose_V2	https://upload.wikimedia.org/wikipedia/commons/4/45/Concello_de_Rois.JPG
 rose_bed_N	https://upload.wikimedia.org/wikipedia/commons/6/6c/Aramaki_rose_park04s2400.jpg
@@ -24917,9 +24815,8 @@ rosemaling_N	https://upload.wikimedia.org/wikipedia/commons/c/ca/Uvdal_Stave_Ros
 rosemary_1_N	https://upload.wikimedia.org/wikipedia/commons/3/35/Rosemary_%28390002797%29.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a3/Rosemary_in_bloom.JPG
 rosemary_2_N	https://upload.wikimedia.org/wikipedia/commons/3/35/Rosemary_%28390002797%29.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a3/Rosemary_in_bloom.JPG
 rosette_1_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/Orna115-Rosetten.png
-rosette_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/Orna115-Rosetten.png	https://upload.wikimedia.org/wikipedia/commons/1/1c/Dandilion_plant.jpg
-rosette_3_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/Orna115-Rosetten.png	https://upload.wikimedia.org/wikipedia/commons/1/1c/Dandilion_plant.jpg
-rosette_4_N	https://upload.wikimedia.org/wikipedia/commons/5/55/Roses_mit_Sporthafen.jpg	https://upload.wikimedia.org/wikipedia/commons/b/bf/Strassburg_Rose_exterior.jpg
+rosette_3_N	https://upload.wikimedia.org/wikipedia/commons/1/1c/Dandilion_plant.jpg
+rosette_4_N	https://upload.wikimedia.org/wikipedia/commons/b/bf/Strassburg_Rose_exterior.jpg
 rosewood_2_N	https://upload.wikimedia.org/wikipedia/commons/e/e3/Rio-Palisander%2C_dunkel_Holz.JPG
 rosin_N	https://upload.wikimedia.org/wikipedia/commons/1/1c/Rosin.jpg
 roslyn_PN	https://upload.wikimedia.org/wikipedia/commons/e/e0/Roslyn-1.jpg
@@ -25040,10 +24937,8 @@ royal_1_N	https://upload.wikimedia.org/wikipedia/commons/7/78/Miradouro_da_Faj%C
 royston_PN	https://upload.wikimedia.org/wikipedia/commons/3/33/Royston-Church-St-ga.jpg
 rub_1_V2	https://upload.wikimedia.org/wikipedia/commons/e/e2/Igreja_Matriz_de_Ovar.JPG
 rub_2_V	https://upload.wikimedia.org/wikipedia/commons/1/18/Galena_Sofia_Pride_2019_1.png	https://upload.wikimedia.org/wikipedia/commons/8/80/Galenus.jpg
-rubber_1_N	https://upload.wikimedia.org/wikipedia/commons/1/1d/Hevea_brasiliensis_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-071.jpg	https://upload.wikimedia.org/wikipedia/commons/4/49/Latex_-_Hevea_-_Cameroun.JPG
-rubber_5_N	https://upload.wikimedia.org/wikipedia/commons/a/ad/Condom.jpg
-rubber_A	https://upload.wikimedia.org/wikipedia/commons/0/05/Zeeboid_burnout.jpg
-rubber_V2	https://upload.wikimedia.org/wikipedia/commons/e/ed/Palolem_beach.jpg	https://upload.wikimedia.org/wikipedia/commons/9/9f/Eglise_Goin.JPG
+rubber_1_N	https://upload.wikimedia.org/wikipedia/commons/4/49/Latex_-_Hevea_-_Cameroun.JPG
+rubber_5_N	https://upload.wikimedia.org/wikipedia/commons/0/04/Kondom.jpg
 rubber_stamp_1_V2	https://upload.wikimedia.org/wikipedia/commons/d/dc/RubberStamp_blank.jpg
 rubber_stamp_2_V2	https://upload.wikimedia.org/wikipedia/commons/1/18/Hokusai%2C_The_Underwave_off_Kanagawa.jpg	https://upload.wikimedia.org/wikipedia/commons/4/47/%C3%89glise_d%27Estampes_%28Gers%2C_France%29.JPG
 rubberneck_V	https://upload.wikimedia.org/wikipedia/commons/6/66/Badin_Lake%2C_North_Carolina.jpg
@@ -25326,19 +25221,15 @@ saintly_A	https://upload.wikimedia.org/wikipedia/commons/2/26/Postcard_of_Sveto.
 sake_2_N	https://upload.wikimedia.org/wikipedia/commons/d/d7/Japanese_-_Sake_Bottle_%28%22Tokkuri%22%29_with_Children_-_Walters_49966_-_View_C.jpg
 saki_1_PN	https://upload.wikimedia.org/wikipedia/en/c/cc/Hector_Hugh_Munro_aka_Saki%2C_by_E_O_Hoppe%2C_1913.jpg
 salaam_V	https://upload.wikimedia.org/wikipedia/commons/7/77/Neftianikov_street_salavat.JPG
-salad_N	https://upload.wikimedia.org/wikipedia/commons/e/e4/Lactuca_tuberosa_2.jpg	https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg
+salad_N	https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg
 salamanca_PN	https://upload.wikimedia.org/wikipedia/commons/6/6d/Salamanca_2008.jpg
 salamander_1_N	https://upload.wikimedia.org/wikipedia/commons/e/ef/Salamandra_atra.jpg	https://upload.wikimedia.org/wikipedia/commons/4/49/Notophthalmus_viridescensPCCA20040816-3983A.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b2/SpottedSalamander.jpg	https://upload.wikimedia.org/wikipedia/commons/d/dd/Neurergus_Kaiseri.jpg
-salamander_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ef/Salamandra_atra.jpg	https://upload.wikimedia.org/wikipedia/commons/4/49/Notophthalmus_viridescensPCCA20040816-3983A.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b2/SpottedSalamander.jpg	https://upload.wikimedia.org/wikipedia/commons/d/dd/Neurergus_Kaiseri.jpg
-salamander_3_N	https://upload.wikimedia.org/wikipedia/commons/4/49/Notophthalmus_viridescensPCCA20040816-3983A.jpg	https://upload.wikimedia.org/wikipedia/commons/d/dd/Neurergus_Kaiseri.jpg
-salami_N	https://upload.wikimedia.org/wikipedia/commons/5/58/View_of_Salamina_1.jpg	https://upload.wikimedia.org/wikipedia/commons/1/18/Salami_aka.jpg
-salary_N	https://upload.wikimedia.org/wikipedia/commons/a/a0/Coin_of_Maximian.jpg
-salat_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c2/Salat_Positions_and_Prayers_-_transparent_background_-_RGB.jpg	https://upload.wikimedia.org/wikipedia/commons/9/97/Sala_vapen.svg
+salami_N	https://upload.wikimedia.org/wikipedia/commons/1/18/Salami_aka.jpg
+salat_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c2/Salat_Positions_and_Prayers_-_transparent_background_-_RGB.jpg
 sale_1_N	https://upload.wikimedia.org/wikipedia/commons/9/9b/Salesman_-beach_-_bikini-_sun-27Dec2008.jpg
 sale_PN	https://upload.wikimedia.org/wikipedia/commons/8/87/Sale_Town_Hall_-_geograph.org.uk_-_1749852.jpg
 salerno_PN	https://upload.wikimedia.org/wikipedia/commons/c/cd/SalernoCanalone.jpg	https://upload.wikimedia.org/wikipedia/commons/9/94/Salerno_BW_2013-05-17_11-24-20.jpg
 saleroom_1_N	https://upload.wikimedia.org/wikipedia/commons/5/5e/20180919_Poel-38.tif
-salesgirl_N	https://upload.wikimedia.org/wikipedia/commons/1/12/Map_of_Russia_-_Komi_%28Crimea_disputed%29.svg
 salford_PN	https://upload.wikimedia.org/wikipedia/commons/e/ef/Salfords_Community_Centre%2C_Public_Phone_Box_and_News_Agent_-_geograph.org.uk_-_66794.jpg
 salient_2_A	https://upload.wikimedia.org/wikipedia/commons/9/9b/Wa-map.gif
 saline_N	https://upload.wikimedia.org/wikipedia/commons/0/0c/NaCl_0%2C9%25_500ml_white_background.jpg
@@ -26305,7 +26196,6 @@ sewing_machine_N	https://upload.wikimedia.org/wikipedia/commons/c/c7/Sewingmachi
 sex_1_N	https://upload.wikimedia.org/wikipedia/commons/e/e0/Thomas_Rowlandson_%2815%29.jpg
 sex_2_N	https://upload.wikimedia.org/wikipedia/commons/e/e1/Combotrans.svg	https://upload.wikimedia.org/wikipedia/commons/a/aa/Mice_X_Y_chromosomes.jpg
 sex_3_N	https://upload.wikimedia.org/wikipedia/commons/e/e0/Thomas_Rowlandson_%2815%29.jpg
-sex_4_N	https://upload.wikimedia.org/wikipedia/commons/a/aa/Mice_X_Y_chromosomes.jpg
 sexism_N	https://upload.wikimedia.org/wikipedia/commons/a/aa/Suffragette_arrest%2C_London%2C_1914.jpg
 sextant_1_N	https://upload.wikimedia.org/wikipedia/commons/a/a7/Sextant.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e6/Sextans_IAU.svg
 sextant_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a7/Sextant.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e6/Sextans_IAU.svg
@@ -26852,7 +26742,7 @@ silvia_PN	https://upload.wikimedia.org/wikipedia/commons/5/51/Santa_Silvia.jpg	h
 silviculture_N	https://upload.wikimedia.org/wikipedia/commons/2/2b/White_Mountain_Apache_Arizona-105.jpg
 sima_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/Swedish_Mead.JPG	https://upload.wikimedia.org/wikipedia/commons/d/dd/Sima_and_tippaleip%C3%A4_2.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b1/Dique_del_SIMA.jpg
 simazine_N	https://upload.wikimedia.org/wikipedia/commons/7/7d/Simazine.svg
-simian_N	https://upload.wikimedia.org/wikipedia/commons/6/64/20150512_ESC_2015_Maimuna_4707.jpg	https://upload.wikimedia.org/wikipedia/commons/4/46/Old_%26_New_World_monkey_faces.JPG
+simian_N	https://upload.wikimedia.org/wikipedia/commons/4/46/Old_%26_New_World_monkey_faces.JPG
 similar_1_A	https://upload.wikimedia.org/wikipedia/commons/a/a2/SorokinPS_Gerkules%26Lihas.jpg
 similar_2_A	https://upload.wikimedia.org/wikipedia/commons/a/a2/SorokinPS_Gerkules%26Lihas.jpg
 similar_3_A	https://upload.wikimedia.org/wikipedia/commons/a/a2/SorokinPS_Gerkules%26Lihas.jpg
@@ -26873,7 +26763,8 @@ simvastatin_N	https://upload.wikimedia.org/wikipedia/commons/8/89/Simvastatin.sv
 sin_4_PN	https://upload.wikimedia.org/wikipedia/commons/f/f0/Khashkhamer_seal_moon_worship.jpg	https://upload.wikimedia.org/wikipedia/commons/8/84/Sins-Preghejo_321.jpg
 sinciput_N	https://upload.wikimedia.org/wikipedia/commons/7/79/Lomas%2C_Palencia_01.jpg
 sindhi_Language	https://upload.wikimedia.org/wikipedia/commons/f/f2/Sindhi.svg
-sine_N	https://upload.wikimedia.org/wikipedia/commons/7/72/Sinus_und_Kosinus_am_Einheitskreis_1.svg	https://upload.wikimedia.org/wikipedia/commons/c/c3/Sines06_edit1.jpg
+sin_N	https://upload.wikimedia.org/wikipedia/commons/7/72/Sinus_und_Kosinus_am_Einheitskreis_1.svg
+sine_N	https://upload.wikimedia.org/wikipedia/commons/7/72/Sinus_und_Kosinus_am_Einheitskreis_1.svg
 sinew_1_N	https://upload.wikimedia.org/wikipedia/commons/2/2a/Pezens_1.JPG
 sing_1_V2	https://upload.wikimedia.org/wikipedia/commons/8/8c/Cover_Sjung.jpg
 sing_2_V	https://upload.wikimedia.org/wikipedia/commons/8/8c/Cover_Sjung.jpg	https://upload.wikimedia.org/wikipedia/commons/2/26/Slave-ship.jpg
@@ -26910,7 +26801,7 @@ singular_6_A	https://upload.wikimedia.org/wikipedia/commons/a/a1/Ainoa_summer_20
 singularity_2_N	https://upload.wikimedia.org/wikipedia/commons/0/03/Black_hole_lensing_web.gif
 sinhala_N	https://upload.wikimedia.org/wikipedia/commons/0/07/%E0%B7%83%E0%B7%92%E0%B6%82%E0%B7%84%E0%B6%BD_in_Noto_Serif_Sinhala_Black.svg
 sinhalese_2_N	https://upload.wikimedia.org/wikipedia/commons/0/07/%E0%B7%83%E0%B7%92%E0%B6%82%E0%B7%84%E0%B6%BD_in_Noto_Serif_Sinhala_Black.svg	https://upload.wikimedia.org/wikipedia/en/a/aa/Sinhalese_of_India%2C_Mumbai%2C_India%2C_1897.jpg
-sink_2_N	https://upload.wikimedia.org/wikipedia/commons/4/4a/Luxury_sink.jpg
+sink_1_N	https://upload.wikimedia.org/wikipedia/commons/4/4a/Luxury_sink.jpg
 sinker_2_N	https://upload.wikimedia.org/wikipedia/commons/e/ea/Ponte_dei_Sospiri_Ponte_de_la_Canonica_a_Venezia.jpg
 sinkhole_N	https://upload.wikimedia.org/wikipedia/commons/6/66/RedLakeCroatia.JPG	https://upload.wikimedia.org/wikipedia/commons/9/98/RakovSkocjan3.jpg
 sinlessness_N	https://upload.wikimedia.org/wikipedia/commons/c/c7/Pureza_-_State_of_Rio_Grande_do_Norte%2C_Brazil_-_panoramio_%281%29.jpg
@@ -27287,7 +27178,6 @@ smoke_bomb_N	https://upload.wikimedia.org/wikipedia/commons/7/74/Fumig%C3%A8nes_
 smoke_out_V2	https://upload.wikimedia.org/wikipedia/commons/a/a2/Picswiss_BE-91-01_Freilichtmuseum_Ballenberg-.jpg
 smoke_screen_1_N	https://upload.wikimedia.org/wikipedia/commons/2/20/Smoke_screen.jpg
 smokehouse_N	https://upload.wikimedia.org/wikipedia/commons/1/17/Reitman%27s_Smokehouse%3B_Campbell_County%2C_Kentucky.JPG
-smokestack_N	https://upload.wikimedia.org/wikipedia/en/d/d9/Kominite.jpg	https://upload.wikimedia.org/wikipedia/commons/9/9c/LocationChimeneas.png
 smoking_1_N	https://upload.wikimedia.org/wikipedia/commons/f/f4/DunhillEarlyMorningPipeMurrays.jpg	https://upload.wikimedia.org/wikipedia/commons/5/56/Papierosa_1_ubt_0069.jpeg
 smoking_room_N	https://upload.wikimedia.org/wikipedia/en/8/8b/Camelsmokinglounge.jpg	https://upload.wikimedia.org/wikipedia/commons/8/85/Day_333_-_West_Midlands_Police_-_Crack_house_closure_in_Brierley_Hill_%288228676615%29.jpg
 smooth_2_V2	https://upload.wikimedia.org/wikipedia/commons/3/3b/Colombia_-_Cundinamarca_-_Pul%C3%AD.svg
@@ -27442,10 +27332,7 @@ snuggle_2_V2	https://upload.wikimedia.org/wikipedia/commons/e/e7/JAXA_Greenhouse
 soak_1_V	https://upload.wikimedia.org/wikipedia/commons/8/89/Leoti.JPG
 soak_3_V2	https://upload.wikimedia.org/wikipedia/commons/a/ae/Kastellet_April_2014_02.jpg
 soak_6_V	https://upload.wikimedia.org/wikipedia/commons/2/27/Remojadas_figurine_and_face_%28Frida27Ponce%29.jpg
-soap_1_N	https://upload.wikimedia.org/wikipedia/commons/b/b5/Decorative_Soaps.jpg	https://upload.wikimedia.org/wikipedia/commons/9/95/Webservice_xrpc.png
-soap_2_N	https://upload.wikimedia.org/wikipedia/commons/9/95/Webservice_xrpc.png
-soap_3_N	https://upload.wikimedia.org/wikipedia/commons/9/95/Webservice_xrpc.png
-soap_V2	https://upload.wikimedia.org/wikipedia/commons/9/95/Webservice_xrpc.png
+soap_1_N	https://upload.wikimedia.org/wikipedia/commons/b/b5/Decorative_Soaps.jpg
 soap_bubble_N	https://upload.wikimedia.org/wikipedia/commons/9/94/Reflection_in_a_soap_bubble_edit.jpg
 soapberry_N	https://upload.wikimedia.org/wikipedia/commons/8/8d/Sapindus_marginatus.jpg
 soapbox_1_N	https://upload.wikimedia.org/wikipedia/commons/5/50/Snake-oil_salesman_Professor_Thaddeus_Schmidlap_at_Enchanted_Springs_Ranch%2C_Boerne%2C_Texas%2C_USA_28650a.jpg
@@ -27524,8 +27411,7 @@ solarization_1_N	https://upload.wikimedia.org/wikipedia/commons/4/41/Ice_Cream_D
 solder_N	https://upload.wikimedia.org/wikipedia/commons/2/2a/Solderedjoint.jpg
 solder_V2	https://upload.wikimedia.org/wikipedia/commons/8/8f/Desoldering.jpg	https://upload.wikimedia.org/wikipedia/commons/c/c1/AndorraSoldeuView.JPG
 soldering_iron_N	https://upload.wikimedia.org/wikipedia/commons/4/4a/Soldering_gun.jpg	https://upload.wikimedia.org/wikipedia/commons/4/45/Erlenmeyer_Flasks.jpg
-soldier_1_N	https://upload.wikimedia.org/wikipedia/commons/5/53/A_South_African_soldier_with_the_9th_South_African_Infantry_Battalion%2C_2013.jpg	https://upload.wikimedia.org/wikipedia/commons/a/a8/Spachides_Flag.svg
-soldier_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a8/Spachides_Flag.svg
+soldier_1_N	https://upload.wikimedia.org/wikipedia/commons/5/53/A_South_African_soldier_with_the_9th_South_African_Infantry_Battalion%2C_2013.jpg
 sole_2_N	https://upload.wikimedia.org/wikipedia/commons/c/cd/Solea_solea_1.jpg
 sole_4_N	https://upload.wikimedia.org/wikipedia/commons/7/73/Pegusa_lascaris.jpg	https://upload.wikimedia.org/wikipedia/commons/c/cd/Solea_solea_1.jpg
 sole_V2	https://upload.wikimedia.org/wikipedia/commons/3/31/Soling_Line_Drawing.svg	https://upload.wikimedia.org/wikipedia/commons/c/c2/Kagoshima_Pref_Road_2_Takarabe_Ct_2016.JPG	https://upload.wikimedia.org/wikipedia/commons/e/e1/Ph_locator_eastern_samar_sulat.png
@@ -29549,7 +29435,6 @@ tan_1_V2	https://upload.wikimedia.org/wikipedia/commons/5/56/Saint_Michael_Churc
 tan_2_N	https://upload.wikimedia.org/wikipedia/commons/b/b6/Chestnut_Oak_Bark.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5a/Urbanitzaci%C3%B3_les_Palmeres_%28Canyelles%29.jpg
 tan_2_V	https://upload.wikimedia.org/wikipedia/commons/2/2b/LakeWilloughbyPisgah.jpg	https://upload.wikimedia.org/wikipedia/commons/2/24/Garor4.jpg
 tan_2_V2	https://upload.wikimedia.org/wikipedia/commons/2/2b/LakeWilloughbyPisgah.jpg
-tan_3_N	https://upload.wikimedia.org/wikipedia/commons/d/df/Tanit_ibiza.jpg
 tan_A	https://upload.wikimedia.org/wikipedia/commons/5/5a/Urbanitzaci%C3%B3_les_Palmeres_%28Canyelles%29.jpg
 tanager_N	https://upload.wikimedia.org/wikipedia/commons/6/6c/Green-headed_Tanager_Ubatuba.jpg
 tanbark_N	https://upload.wikimedia.org/wikipedia/commons/3/33/Barchan.jpg	https://upload.wikimedia.org/wikipedia/commons/2/2f/Peeling_hemlock_bark_for_tanning.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b3/Ferrari_166MM.JPG
@@ -29858,7 +29743,6 @@ telstar_PN	https://upload.wikimedia.org/wikipedia/commons/c/c1/Telstar.jpg	https
 temazepam_N	https://upload.wikimedia.org/wikipedia/commons/6/63/Temazepam.svg
 temp_N	https://upload.wikimedia.org/wikipedia/commons/6/69/Humanitarian_aid_OCPA-2005-10-28-090517a.jpg
 temper_3_V	https://upload.wikimedia.org/wikipedia/commons/b/b7/ArthurSiegelcoke1.jpg
-temper_4_N	https://upload.wikimedia.org/wikipedia/commons/0/01/Lleida_-_Iglesia_de_Tremp.jpg
 tempera_N	https://upload.wikimedia.org/wikipedia/commons/b/bd/Duccio_The-Madonna-and-Child-128.jpg
 temperance_1_N	https://upload.wikimedia.org/wikipedia/commons/b/b7/Luca_Giordano_017.jpg
 temperature_1_N	https://upload.wikimedia.org/wikipedia/commons/a/aa/Annual_Average_Temperature_Map.jpg
@@ -30452,7 +30336,7 @@ titration_N	https://upload.wikimedia.org/wikipedia/commons/f/fa/Acid_and_Base_Ti
 titrator_N	https://upload.wikimedia.org/wikipedia/commons/c/c0/20000_Nautilus_Nemo_room.jpg
 tittle_N	https://upload.wikimedia.org/wikipedia/commons/c/ca/Tittles.svg
 tittle_tattle_N	https://upload.wikimedia.org/wikipedia/commons/7/79/Faworki_%28close-up%29.jpg
-toad_N	https://upload.wikimedia.org/wikipedia/commons/0/08/Bufo_bufo_sitting-Iric2006.jpg	https://upload.wikimedia.org/wikipedia/commons/3/31/Bombina_bombina_1_%28Marek_Szczepanek%29.jpg	https://upload.wikimedia.org/wikipedia/commons/1/17/Bufo_bufo.jpg	https://upload.wikimedia.org/wikipedia/commons/3/33/Koni_crop.jpg
+toad_N	https://upload.wikimedia.org/wikipedia/commons/0/08/Bufo_bufo_sitting-Iric2006.jpg	https://upload.wikimedia.org/wikipedia/commons/3/31/Bombina_bombina_1_%28Marek_Szczepanek%29.jpg	https://upload.wikimedia.org/wikipedia/commons/1/17/Bufo_bufo.jpg
 toadfish_N	https://upload.wikimedia.org/wikipedia/commons/e/e1/Opsanus_beta_1.jpg	https://upload.wikimedia.org/wikipedia/commons/9/91/OysterToadfish.jpeg
 toadflax_N	https://upload.wikimedia.org/wikipedia/commons/0/09/Bombus_ruderarius_-_Linaria_vulgaris_-_Valingu2.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f6/Linaria_vulgaris_-_harilik_k%C3%A4okannus_Valingu.jpg
 toadstool_N	https://upload.wikimedia.org/wikipedia/commons/9/99/Amanita_phalloides_1.JPG
@@ -30687,7 +30571,6 @@ touchdown_2_N	https://upload.wikimedia.org/wikipedia/commons/4/4a/An_Eagle_is_la
 touchline_N	https://upload.wikimedia.org/wikipedia/commons/2/2c/Lateral_line_01.JPG
 touchstone_N	https://upload.wikimedia.org/wikipedia/commons/d/d9/Tennis_shake_hands_after_match.jpg
 tough_1_N	https://upload.wikimedia.org/wikipedia/commons/b/b5/Raga_du_soir_au_Coll%C3%A8ge_des_Bernardins_cropped.jpg
-toughness_3_N	https://upload.wikimedia.org/wikipedia/commons/0/01/Lleida_-_Iglesia_de_Tremp.jpg
 toulon_PN	https://upload.wikimedia.org/wikipedia/commons/b/b3/Montage_Toulon.JPG
 toulouse_PN	https://upload.wikimedia.org/wikipedia/commons/d/d0/Montage_Toulouse_3.jpg
 tour_2_N	https://upload.wikimedia.org/wikipedia/commons/7/76/Aeneas_and_Turnus.jpg	https://upload.wikimedia.org/wikipedia/commons/3/32/La_Grand-Place_de_Tournai.jpg
@@ -31111,8 +30994,7 @@ troika_3_N	https://upload.wikimedia.org/wikipedia/commons/1/16/Troika_akron.jpg
 trojan_1_N	https://upload.wikimedia.org/wikipedia/commons/f/f3/InnerSolarSystem-en.png
 trojan_2_N	https://upload.wikimedia.org/wikipedia/commons/4/42/Replica_of_Trojan_Horse_-_Canakkale_Waterfront_-_Dardanelles_-_Turkey_%285747677790%29.jpg	https://upload.wikimedia.org/wikipedia/commons/6/6a/Hector_Berlioz%2C_Les_Troyens_vocal_score_cover_-_Restoration.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f3/InnerSolarSystem-en.png
 troll_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c7/John_Bauer_1915.jpg
-troll_2_N	https://upload.wikimedia.org/wikipedia/commons/c/cf/Canon_example.png	https://upload.wikimedia.org/wikipedia/commons/c/c7/John_Bauer_1915.jpg
-troll_4_N	https://upload.wikimedia.org/wikipedia/commons/c/c7/John_Bauer_1915.jpg
+troll_2_N	https://upload.wikimedia.org/wikipedia/commons/c/cf/Canon_example.png
 troll_6_V2	https://upload.wikimedia.org/wikipedia/commons/5/56/Piazza_duomo_lodi.jpg	https://upload.wikimedia.org/wikipedia/commons/6/68/Karte_Gemeinden_des_Bezirks_Vallemaggia_2003.png
 trolley_N	https://upload.wikimedia.org/wikipedia/commons/a/a8/ICE_3_Oberhaider-Wald-Tunnel.jpg
 trolleybus_N	https://upload.wikimedia.org/wikipedia/commons/a/ac/Trolleybus_Low_Floor_4_1500_-_Sao_Paulo%2C_Brazil.JPG
@@ -31145,8 +31027,6 @@ trough_4_N	https://upload.wikimedia.org/wikipedia/commons/d/d6/Castiglione_delle
 trough_5_N	https://upload.wikimedia.org/wikipedia/commons/8/88/MoldeRooftops.jpg	https://upload.wikimedia.org/wikipedia/commons/d/d6/Castiglione_delle_Stiviere_-_Fontana.jpg
 trough_6_N	https://upload.wikimedia.org/wikipedia/commons/d/d6/Castiglione_delle_Stiviere_-_Fontana.jpg
 trounce_3_V2	https://upload.wikimedia.org/wikipedia/commons/b/b0/Warszawa_Praga.png	https://upload.wikimedia.org/wikipedia/commons/c/c9/Fachi-Bilma-D%C3%BCnen.jpg
-trouper_1_N	https://upload.wikimedia.org/wikipedia/commons/a/a8/Spachides_Flag.svg
-trouper_2_N	https://upload.wikimedia.org/wikipedia/commons/a/a8/Spachides_Flag.svg
 trouser_N	https://upload.wikimedia.org/wikipedia/commons/d/da/Trousers-colourisolated.jpg
 trout_2_N	https://upload.wikimedia.org/wikipedia/commons/3/35/Bachforelle_Zeichnung.jpg
 trove_N	https://upload.wikimedia.org/wikipedia/commons/0/07/Nakhodka_from_West.jpg
@@ -31942,9 +31822,8 @@ venturous_A	https://upload.wikimedia.org/wikipedia/commons/7/74/Georgian_dialect
 venue_1_N	https://upload.wikimedia.org/wikipedia/commons/3/39/Alianza_Republicana_Nacionalista.svg	https://upload.wikimedia.org/wikipedia/commons/1/1d/MuezzinMahfili.jpg
 venue_2_N	https://upload.wikimedia.org/wikipedia/commons/3/39/Alianza_Republicana_Nacionalista.svg
 venule_1_N	https://upload.wikimedia.org/wikipedia/commons/e/ec/Capillaries.jpg
-venus_1_PN	https://upload.wikimedia.org/wikipedia/commons/6/67/Aphrodite_Anadyomene_from_Pompeii_cropped.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg
-venus_2_PN	https://upload.wikimedia.org/wikipedia/commons/6/67/Aphrodite_Anadyomene_from_Pompeii_cropped.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg
-venus_3_PN	https://upload.wikimedia.org/wikipedia/commons/6/67/Aphrodite_Anadyomene_from_Pompeii_cropped.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg
+venus_1_PN	https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg
+venus_2_PN	https://upload.wikimedia.org/wikipedia/commons/6/67/Aphrodite_Anadyomene_from_Pompeii_cropped.jpg
 vera_PN	https://upload.wikimedia.org/wikipedia/commons/c/c4/Werra_bei_Werleshausen.jpg
 veranda_N	https://upload.wikimedia.org/wikipedia/commons/7/75/GrandeVerandah.jpg
 verbena_N	https://upload.wikimedia.org/wikipedia/commons/3/38/Eisenkraut%2C_Passau.JPG	https://upload.wikimedia.org/wikipedia/commons/4/42/Verbena_bonariensis1.jpg
@@ -32239,8 +32118,6 @@ vortex_1_N	https://upload.wikimedia.org/wikipedia/commons/f/fe/Airplane_vortex_e
 vorticella_N	https://upload.wikimedia.org/wikipedia/commons/7/72/Vorticella.JPG
 votary_3_N	https://upload.wikimedia.org/wikipedia/commons/b/b9/Noctua.comes.jpg
 vote_2_N	https://upload.wikimedia.org/wikipedia/commons/a/ad/Parthenon_from_west.jpg
-voucher_1_N	https://upload.wikimedia.org/wikipedia/en/b/bc/Army_Voucher.jpg
-voucher_2_N	https://upload.wikimedia.org/wikipedia/en/b/bc/Army_Voucher.jpg
 voucher_3_N	https://upload.wikimedia.org/wikipedia/en/b/bc/Army_Voucher.jpg
 voussoir_N	https://upload.wikimedia.org/wikipedia/commons/d/da/Old_College%2C_University_of_Edinburgh_courtyard_facade_detail.jpg	https://upload.wikimedia.org/wikipedia/commons/e/e1/Barrels2.jpg
 vow_N	https://upload.wikimedia.org/wikipedia/commons/2/21/Bukva_-_Zapis_iz_okoline_Crne_Trave.JPG	https://upload.wikimedia.org/wikipedia/commons/1/1b/Edens_-_Edense_Molen.jpg
@@ -32421,11 +32298,9 @@ washerwoman_1_N	https://upload.wikimedia.org/wikipedia/commons/3/3f/ElHuasoYLaLa
 washing_1_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/Woman_washing_hands.jpg
 washing_2_N	https://upload.wikimedia.org/wikipedia/commons/c/c1/Woman_washing_hands.jpg
 washing_machine_N	https://upload.wikimedia.org/wikipedia/commons/0/08/LGwashingmachine.jpg
-washington_1_PN	https://upload.wikimedia.org/wikipedia/commons/3/30/Washington_in_United_States.svg	https://upload.wikimedia.org/wikipedia/commons/8/81/Washington_Montage_2016.png
-washington_2_PN	https://upload.wikimedia.org/wikipedia/commons/3/30/Washington_in_United_States.svg	https://upload.wikimedia.org/wikipedia/commons/8/81/Washington_Montage_2016.png
-washington_3_PN	https://upload.wikimedia.org/wikipedia/commons/3/30/Washington_in_United_States.svg	https://upload.wikimedia.org/wikipedia/commons/8/81/Washington_Montage_2016.png
-washington_4_PN	https://upload.wikimedia.org/wikipedia/commons/3/30/Washington_in_United_States.svg	https://upload.wikimedia.org/wikipedia/commons/8/81/Washington_Montage_2016.png
-washington_5_PN	https://upload.wikimedia.org/wikipedia/commons/3/30/Washington_in_United_States.svg	https://upload.wikimedia.org/wikipedia/commons/8/81/Washington_Montage_2016.png
+washington_1_PN	https://upload.wikimedia.org/wikipedia/commons/8/81/Washington_Montage_2016.png
+washington_2_PN	https://upload.wikimedia.org/wikipedia/commons/3/30/Washington_in_United_States.svg
+washington_4_PN	https://upload.wikimedia.org/wikipedia/commons/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg
 washstand_1_N	https://upload.wikimedia.org/wikipedia/commons/2/2c/Servante.JPG
 washup_1_N	https://upload.wikimedia.org/wikipedia/commons/9/91/Washing_of_the_Feet_-_Capella_dei_Scrovegni_-_Padua_2016.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5d/TM_washing.JPG
 washup_2_N	https://upload.wikimedia.org/wikipedia/commons/9/91/Washing_of_the_Feet_-_Capella_dei_Scrovegni_-_Padua_2016.jpg
@@ -32444,9 +32319,9 @@ watchmaker_N	https://upload.wikimedia.org/wikipedia/commons/1/12/Clockmakers_by_
 watchman_N	https://upload.wikimedia.org/wikipedia/commons/6/6c/Lookoutboy.jpg	https://upload.wikimedia.org/wikipedia/commons/f/f7/Private_factory_guard.jpg
 watchtower_N	https://upload.wikimedia.org/wikipedia/commons/4/49/St_Thomas_Tower.jpg
 watchword_2_N	https://upload.wikimedia.org/wikipedia/commons/f/f1/Mediawiki_1.25_sign_in_form.png
-water_1_N	https://en.wikipedia.org/wiki/Water#/media/File:Waterdrops_(4648726722).jpg
+water_1_N	https://upload.wikimedia.org/wikipedia/commons/a/a6/Waterdrops_%284648726722%29.jpg
 water_2_N	https://upload.wikimedia.org/wikipedia/commons/4/41/Iceberg_with_hole_near_Sandersons_Hope_2007-07-28_2.jpg
-water_6_N	https://en.wikipedia.org/wiki/Water#/media/File:Waterdrops_(4648726722).jpg
+water_6_N	https://upload.wikimedia.org/wikipedia/commons/a/a6/Waterdrops_%284648726722%29.jpg
 water_biscuit_N	https://upload.wikimedia.org/wikipedia/commons/7/79/Crackers_with_herring_and_garlic_sauce.jpg	https://upload.wikimedia.org/wikipedia/commons/5/51/Cream_crackers_with_cheese_spread.jpg
 water_bottle_N	https://upload.wikimedia.org/wikipedia/commons/8/8a/W%C3%A4rmflaschealt1.jpg	https://upload.wikimedia.org/wikipedia/commons/5/5e/Sports_cap_%28bottle%29_-_closed.jpg
 water_buffalo_N	https://upload.wikimedia.org/wikipedia/commons/e/ed/Water-buffalo.jpg
@@ -32643,7 +32518,6 @@ welwitschia_N	https://upload.wikimedia.org/wikipedia/commons/9/9f/Welwitschia_at
 welwyn_PN	https://upload.wikimedia.org/wikipedia/commons/8/8e/St_Mary_the_Virgin%2C_Welwyn%2C_Herts_-_geograph.org.uk_-_348869.jpg
 welwyn_garden_city_PN	https://upload.wikimedia.org/wikipedia/commons/0/05/The_Parkway_Fountain.jpg
 wen_N	https://upload.wikimedia.org/wikipedia/commons/c/cb/Entamoeba_histolytica_01.jpg	https://upload.wikimedia.org/wikipedia/commons/d/da/Inflamed_epidermal_inclusion_cyst.jpg
-wench_V	https://upload.wikimedia.org/wikipedia/commons/c/c4/Dinant_Meuse_R01.jpg
 wend_V2	https://upload.wikimedia.org/wikipedia/commons/f/f3/4_Gift_Bringers_of_Otto_III.jpg
 wendover_PN	https://upload.wikimedia.org/wikipedia/commons/1/1d/Wendover_Clock_Tower.JPG
 wendy_PN	https://upload.wikimedia.org/wikipedia/commons/7/7e/Wendy_Darling.PNG
@@ -33084,7 +32958,6 @@ woolgathering_N	https://upload.wikimedia.org/wikipedia/commons/e/e8/Asparagus_se
 worcester_1_PN	https://upload.wikimedia.org/wikipedia/commons/d/d9/Worcester_from_Fort_Royal_Hill.jpg
 word_9_N	https://upload.wikimedia.org/wikipedia/commons/e/ee/Set-point_control.png
 word_processing_N	https://upload.wikimedia.org/wikipedia/commons/9/9c/TOSHIBA_JW-10.JPG	https://upload.wikimedia.org/wikipedia/commons/f/f4/P.Oxy.6.993_text_transcribed.svg
-wordnet_1_N	https://upload.wikimedia.org/wikipedia/commons/b/b8/WordNet.PNG
 wordnet_2_N	https://upload.wikimedia.org/wikipedia/commons/b/b8/WordNet.PNG
 work_22_V2	https://upload.wikimedia.org/wikipedia/commons/b/b6/2010_Dimi_Messinias_numbered.svg	https://upload.wikimedia.org/wikipedia/commons/7/72/Mesen_skyline.jpg
 work_6_V2	https://upload.wikimedia.org/wikipedia/commons/7/70/Entrena_%28La_Rioja%29.jpg
@@ -33336,7 +33209,7 @@ youth_3_N	https://upload.wikimedia.org/wikipedia/commons/2/2f/Yngling_%28keelboa
 youth_4_N	https://upload.wikimedia.org/wikipedia/commons/2/2f/Yngling_%28keelboat%29.svg	https://upload.wikimedia.org/wikipedia/commons/9/9c/1970sgirls.jpg
 youth_6_N	https://upload.wikimedia.org/wikipedia/commons/2/2f/Yngling_%28keelboat%29.svg	https://upload.wikimedia.org/wikipedia/commons/9/9c/1970sgirls.jpg
 ypäjä_PN	https://upload.wikimedia.org/wikipedia/commons/5/5d/Ypaja_church.jpg
-yr_N	ёhttps://upload.wikimedia.org/wikipedia/commons/b/b5/V_cursiva.gif	https://upload.wikimedia.org/wikipedia/commons/5/55/Aars_-_hovedgaden.JPG
+yr_N	https://upload.wikimedia.org/wikipedia/commons/b/b5/V_cursiva.gif	https://upload.wikimedia.org/wikipedia/commons/5/55/Aars_-_hovedgaden.JPG
 ystradgynlais_PN	https://upload.wikimedia.org/wikipedia/commons/a/a7/Ystradgynlais_Town%2C_Junction.jpg
 ytterbium_N	https://upload.wikimedia.org/wikipedia/commons/c/ce/Ytterbium-3.jpg
 yttrium_N	https://upload.wikimedia.org/wikipedia/commons/1/19/Yttrium_sublimed_dendritic_and_1cm3_cube.jpg
@@ -33441,3 +33314,5 @@ zymology_N	https://upload.wikimedia.org/wikipedia/commons/0/03/Wye_Valley_fermen
 computer_1_N	https://upload.wikimedia.org/wikipedia/commons/4/40/Intertec_Superbrain.jpg
 policeman_N	https://upload.wikimedia.org/wikipedia/commons/0/01/SA_police_force.jpg
 car_1_N	https://upload.wikimedia.org/wikipedia/commons/5/5d/401_Gridlock.jpg
+gothenburg_1_PN	https://upload.wikimedia.org/wikipedia/commons/0/02/Gothenburg_new_montage_2015-2.png
+key_1_N	https://upload.wikimedia.org/wikipedia/commons/6/60/Solex_99_30_padlock_with_keys_%28DSCF2659%29.jpg

@@ -43651,7 +43651,6 @@ lin hemochromatosis_N = mkN "血色沉着病" ; --unchecked
 lin hemodialysis_1_N = variants {} ;
 lin hemodynamic_A = variants {} ;
 lin hemodynamics_N = variants {} ;
-lin hemoglobin_N = mkN "血红蛋白" ; --unchecked
 lin hemoglobinemia_1_N = mkN "血红蛋白血" ; --unchecked
 lin hemoglobinopathy_1_N = mkN "血红蛋白病" ; --unchecked
 lin hemoglobinuria_1_N = mkN "血红蛋白尿" ; --unchecked

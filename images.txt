@@ -5047,10 +5047,8 @@ chaldron_N	commons/6/6f/The_collier.jpeg
 chalet_N	commons/0/09/Swiss_chalet.jpg	commons/7/74/Breslauer_H%C3%BCtte_1.jpg
 chalfont_PN	en/a/af/Main_Street_Chalfont.jpg
 chalice_N	commons/4/4c/Derrynaflan_chalice.jpg
-chalk_1_N	commons/a/a9/Chalks_%2816417290264%29.jpg	commons/8/83/The_Needles.jpg
-chalk_2_N	commons/0/01/Island_of_Crete%2C_Greece.JPG	commons/8/83/The_Needles.jpg
-chalk_3_N	commons/8/83/The_Needles.jpg
-chalk_4_N	commons/a/a9/Chalks_%2816417290264%29.jpg	commons/8/83/The_Needles.jpg
+chalk_1_N	commons/8/83/The_Needles.jpg
+chalk_4_N	commons/a/a9/Chalks_%2816417290264%29.jpg
 chalk_V2	commons/8/83/The_Needles.jpg
 chalk_up_to_V3	commons/8/82/Partitions_of_6-set_with_3_singletons.svg
 chalky_1_A	commons/5/59/Haeckel_Calcispongiae.jpg
@@ -5058,11 +5056,6 @@ chalky_2_A	commons/5/59/Haeckel_Calcispongiae.jpg
 challah_1_N	commons/0/09/Challah_Bread_Six_Braid_1.JPG
 challis_N	commons/5/5c/Challis-Idaho.jpg
 chalybeate_A	commons/f/f8/Mineral_Stains%2C_Rosedale_Cliffs_-_geograph.org.uk_-_1455022.jpg	commons/f/fa/Iron%28II%29_oxide.jpg
-chamber_1_N	commons/c/c9/Cameri_piazzaDante.jpg	commons/9/94/Flag_of_the_Comoros.svg
-chamber_2_N	commons/c/c9/Cameri_piazzaDante.jpg
-chamber_3_N	commons/c/c9/Cameri_piazzaDante.jpg
-chamber_4_N	commons/c/c9/Cameri_piazzaDante.jpg	commons/6/68/Camarina_QuartierAltare_02.jpg
-chamber_5_N	commons/c/c9/Cameri_piazzaDante.jpg	commons/6/68/Camarina_QuartierAltare_02.jpg
 chamberlain_1_PN	en/9/9a/Neville_Chamberlain_by_Walter_Stoneman.jpg
 chamberlain_3_N	commons/b/b6/18257_Kammerherren%C3%B8kkel.jpg
 chamberpot_N	commons/8/82/Celadon_urine_bottle_251_CE._Nanjing%2C_China.jpg
@@ -12112,12 +12105,6 @@ glance_2_V2	commons/c/c8/Blue_eyes.JPG	commons/a/ae/Nadym_Torgoviy_Centr.jpg
 gland_N	commons/a/a1/Gray1026.png
 glanders_N	commons/e/e4/Foot_and_mouth_disease_in_mouth.jpg
 glans_N	commons/9/99/Glans_Penis_of_A_Human.jpg
-glare_1_N	commons/b/ba/An_exploded_view_of_a_GLARE_hybrid_sheet.jpg
-glare_1_V	commons/b/ba/An_exploded_view_of_a_GLARE_hybrid_sheet.jpg	commons/1/1f/FranceNormandieGlosEglise.jpg
-glare_2_N	commons/b/ba/An_exploded_view_of_a_GLARE_hybrid_sheet.jpg
-glare_2_V2	commons/b/ba/An_exploded_view_of_a_GLARE_hybrid_sheet.jpg
-glare_3_N	commons/b/ba/An_exploded_view_of_a_GLARE_hybrid_sheet.jpg
-glare_3_V	commons/b/ba/An_exploded_view_of_a_GLARE_hybrid_sheet.jpg	commons/1/1f/FranceNormandieGlosEglise.jpg
 glasgow_PN	commons/a/a8/Glasgow_new_montage%2C_2017.jpg
 glass_1_N	commons/f/f3/Soda-lime_glass_jar_showing_bubbles_trapped_within.jpg
 glass_1_V2	commons/a/a5/%D0%A0%D0%BE%D0%B7%D0%BE%D1%87%D0%BA%D0%B0_%D0%B1%D0%B5%D0%BB%D0%BE%D0%B5_%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE.jpg	commons/5/51/Kozare.JPG	commons/2/2a/Cem-in-italy.jpg	commons/a/a7/Geu_%C3%A9glise.JPG
@@ -15836,7 +15823,7 @@ kung_fu_N	commons/9/9f/Shi_DeRu_and_Shi_DeYang.jpg
 kunming_PN	commons/c/c4/Kunming_montage.png
 kuopio_PN	commons/d/d8/Puijontornista.jpg
 kuortane_PN	commons/1/18/Kuortane_church_2012.jpg
-kurd_N	commons/b/b9/Idioma_kurdo.PNG	commons/a/a0/Roj_emblem.svg
+kurd_N	commons/a/a0/Roj_emblem.svg
 kurikka_PN	commons/d/d6/Kurikka_Church%2C_Finland.jpg
 kurta_N	commons/3/31/Kurta_traditional_front_sandalwood_buttons.jpg	commons/5/56/Saint_Michael_Church.JPG
 kuru_N	commons/e/e8/Kuru.sijainti.suomi.2008.svg	commons/f/fa/PMC4235695_pathogens-02-00472-g009.png
@@ -15850,7 +15837,7 @@ kuwait_1_PN	commons/a/aa/Flag_of_Kuwait.svg
 kuwait_2_PN	commons/a/aa/Flag_of_Kuwait.svg
 kuwait_city_PN	commons/5/53/Kuwait_City_cropped.jpg
 kuybyshev_PN	commons/6/66/Kuybyshev_23_06_09.JPG
-kvass_N	commons/9/97/Mint_bread_kvas.jpg	commons/6/6a/Fartygsmodell-Galeas._1948_-_1950_-_Sj%C3%B6historiska_museet_-_S_5831.tif
+kvass_N	commons/9/97/Mint_bread_kvas.jpg
 kwanza_2_N	commons/d/d8/Kwanzaa_Candles-Kinara.svg
 kwashiorkor_N	commons/4/47/Starved_girl.jpg
 kyanite_1_N	commons/0/00/Kyanite_crystals.jpg
@@ -16661,9 +16648,8 @@ liposuction_N	commons/c/c5/Fat_removal_using_cannula_during_tumescent_liposuctio
 lipstick_N	commons/3/3e/Applying_red_lipstick_-_model_Eve_Casini.jpg
 liqueur_N	commons/0/00/Benedictine_01_08.jpg
 liquid_1_N	commons/5/5e/Water_drop_001.jpg
-liquid_3_N	commons/1/13/SPAD_SVII_4.jpg	commons/5/5e/Water_drop_001.jpg
+liquid_3_N	commons/5/5e/Water_drop_001.jpg
 liquidambar_2_N	commons/6/6a/2014-11-02_13_06_29_Sweet_Gum_during_autumn_along_Lower_Ferry_Road_in_Ewing%2C_New_Jersey.JPG	commons/c/cb/CopalmeDAmerique.jpg
-liquidambar_3_N	commons/6/6a/2014-11-02_13_06_29_Sweet_Gum_during_autumn_along_Lower_Ferry_Road_in_Ewing%2C_New_Jersey.JPG
 liquidator_2_N	commons/8/8f/Liquidators_of_Chernobyl_by_Tom_Skipp.jpg
 liquidity_3_N	commons/a/a5/Gold_Bars.jpg
 liquidizer_1_N	commons/0/06/ElectricBlender.jpg

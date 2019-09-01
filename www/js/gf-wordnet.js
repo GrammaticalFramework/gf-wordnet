@@ -808,7 +808,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 					row.push(node("td",{style: "white-space: nowrap"}));
 					row.push(td([node("input", {type: "checkbox", onclick: "gfwordnet.onclick_selected_item(this.parentNode.parentNode.parentNode)"})]));
 
-					tfoot.appendChild(tr(row));
+					tfoot.appendChild(node("tr",{"data-lex-id": lex_id},row));
 
 					var cmd = gfwordnet.access_token != null ? "c-linearizeAll" : "c-linearize";
 					gfwordnet.grammar_call("?command="+cmd+"&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_id),bind(extract_linearization,row),errcont);

@@ -408,9 +408,9 @@ agonist_3_N	commons/1/11/Agonist_full_and_partial.svg	commons/2/2e/View_of_Visce
 agonist_4_N	commons/1/11/Agonist_full_and_partial.svg
 agonistic_1_A	commons/0/0e/Atletico-1.jpg
 agonized_1_A	commons/6/6d/Deerlijk_Hugo_Verriest_-4.JPG
-agora_1_N	commons/d/df/THES-Agora_East_stoa.jpg
-agora_2_N	commons/7/75/Torii_de_Miyajima_2.JPG
-agora_3_N	commons/7/75/Torii_de_Miyajima_2.JPG
+agora_1_N	commons/1/1b/1-New-Agora-aluminium-hatasham-RJP.jpg
+agora_2_N	commons/d/df/THES-Agora_East_stoa.jpg
+agora_3_N	commons/d/df/THES-Agora_East_stoa.jpg
 agoraphobia_N	commons/1/14/Agora_of_the_Competaliasts_01_%28cropped%29.jpg
 agouti_N	commons/9/9f/Dasyprocta_punctata_%28Mexico%29.jpg	commons/f/ff/Ideogram_human_chromosome_20.svg	commons/8/8f/Red-rumped_Agouti_%2817380318590%29.jpg
 agra_PN	commons/e/ed/Taj_Mahal_in_India.jpg
@@ -973,7 +973,7 @@ anklet_3_N	commons/4/43/Anklet-ToeRing1.jpg
 ankylosaur_1_N	commons/f/f0/Ankylosaur_head_-_cast_-_Custer_County_Montana_-_Museum_of_the_Rockies_-_2013-07-08.jpg
 ankylosis_1_N	commons/1/16/North_Atlantic_right_whale_Ankylosis_Picture_0119.jpg
 ann_PN	commons/2/26/Angelos_Akotanos_-_Saint_Anne_with_the_Virgin_-_15th_century.jpg	commons/e/ea/Anna%2C_vista_del_nucli_antic.JPG
-anna_N	commons/6/67/Annaz_-_Bom_Jesus.JPG	commons/8/88/Ankh_%28SVG%29_blu.svg	commons/e/ea/Anna%2C_vista_del_nucli_antic.JPG
+anna_N	commons/a/a7/1_Indian_Anna.jpg
 anna_PN	commons/2/26/Angelos_Akotanos_-_Saint_Anne_with_the_Virgin_-_15th_century.jpg	commons/e/ea/Anna%2C_vista_del_nucli_antic.JPG
 annabel_PN	commons/8/89/Entrance_to_Annabel%27s.jpg
 annan_PN	commons/1/16/Flag_of_Colonial_Annam.svg
@@ -1745,7 +1745,6 @@ aviation_3_N	commons/4/40/Pan_Am_Boeing_747-121_N732PA_Bidini.jpg
 aviatorMasc_N	commons/b/b7/White-throated_Swift_%28Aeronautes_saxatalis%29_in_flight.jpg
 avignon_PN	commons/e/e2/Vue_a%C3%A9rienne_2_JP_Campomar.jpg	commons/4/4d/Avinyo.jpg
 avionics_N	commons/0/08/Cessna501_radar.JPG
-avo_N	commons/1/19/Emblem_of_the_State_Protection_Authority.svg
 avocado_1_N	commons/f/f2/Persea_americana_fruit_2.JPG	en/8/8d/Persea_borbonia_foliage_and_fruit_%28USGS_photo%29.jpg
 avocado_2_N	en/8/8d/Persea_borbonia_foliage_and_fruit_%28USGS_photo%29.jpg
 avocation_N	commons/a/a2/Photograph_of_First_Lady_Bess_Truman_at_the_White_House_with_a_delegation_of_Girl_Scouts%2C_who_are_presenting_her_with..._-_NARA_-_200404.jpg
@@ -1924,7 +1923,6 @@ bailey_2_PN	commons/4/44/Pearl_Bailey_-_publicity.jpg
 bailiff_N	commons/8/89/Warning_do_not_enter_certificated_bailiffs_London_2.JPG
 bailiwick_2_N	commons/c/c2/Range_bassoon.svg
 bairn_N	commons/9/97/Sandy_%28or_James%29_Linton%2C_his_boat_and_bairns.jpg
-baiza_1_N	commons/1/19/Baixas%2C_ruelle_du_village_01.jpg
 baize_N	commons/e/ee/Hallstatt_LaTene.png	commons/e/e6/Snooker_table.jpg
 bake_1_V2	commons/9/9e/Postcard_of_Pe%C4%8De.jpg
 bake_2_V2	commons/9/9e/Postcard_of_Pe%C4%8De.jpg
@@ -2003,6 +2001,8 @@ baluster_N	commons/5/59/Orna138-Docken-Baluster.png
 bamboo_1_N	commons/6/6c/Huangshan_bamboo.jpg
 bamboo_2_N	commons/6/6c/Huangshan_bamboo.jpg	commons/3/37/Starr_070906-8504_Bambusa_textilis.jpg
 ban_1_N	commons/6/6b/No_Smoking.svg
+ban_2_N	commons/6/6f/1ban-md.png	commons/5/51/5bani-md.png	commons/0/04/10bani-md.png	commons/2/25/25bani-md.png	commons/b/ba/50bani-md.png
+ban_3_N	commons/e/ed/50_de_bani_-_Neagoe_Basarab_-_2012.jpg
 ban_4_N	commons/6/6b/No_Smoking.svg
 banana_1_N	commons/b/bb/Starr_050826-4195_Musa_sp..jpg
 banana_2_N	commons/d/de/Bananavarieties.jpg
@@ -2164,7 +2164,7 @@ barrack_N	commons/d/d6/Oldenburg_provisorische_Bankfiliale.jpg	commons/3/34/The_
 barracouta_N	commons/e/eb/Barracuda_laban.jpg
 barracuda_N	commons/e/eb/Barracuda_laban.jpg	commons/8/81/Great_Barracuda_off_the_Netherland_Antilles.jpg
 barramundi_N	commons/8/86/Queensland_Lungfish_%28Neoceratodus_forsteri%29.jpg	commons/b/be/Barramundi.jpg	commons/c/cf/Isle_of_Barra_flag.svg
-barranquilla_PN	commons/f/f0/Colombia_-_Atl%C3%A1ntico_-_Barranquilla.svg
+barranquilla_PN	commons/8/82/Barranquilla%2C_Colombia.jpg
 barrel_1_N	commons/8/8d/Moscow_July_2011-10a.jpg	commons/0/0e/NASA%E2%80%99s_BARREL_Mission_Launches_20_Balloons.jpg
 barrel_2_N	commons/6/6c/Oak-wine-barrel-at-toneleria-nacional-chile.jpg	commons/0/0e/NASA%E2%80%99s_BARREL_Mission_Launches_20_Balloons.jpg
 barrel_3_N	commons/0/0e/NASA%E2%80%99s_BARREL_Mission_Launches_20_Balloons.jpg
@@ -2468,7 +2468,7 @@ belching_2_N	commons/e/ec/Rots-eglise.jpg
 beldam_1_N	commons/8/80/Babur_of_India.jpg
 beldame_1_N	en/1/1d/Beldame_the_horse_%28Frank_O%27Neill_riding%29.jpg	en/6/6c/Haxan_sv_poster.jpg	commons/1/19/Bucegi-Babele.JPG
 beldame_2_N	en/1/1d/Beldame_the_horse_%28Frank_O%27Neill_riding%29.jpg	en/6/6c/Haxan_sv_poster.jpg	commons/1/19/Bucegi-Babele.JPG
-belem_PN	commons/c/c2/Bethlehem_skyline%2C_West_Bank.jpg	commons/3/3a/Collage_Bel%C3%A9m.png
+belem_PN	commons/3/3a/Collage_Bel%C3%A9m.png
 belemnite_N	commons/0/07/Passaloteuthis_bisulcata.JPG
 belfast_PN	commons/a/a6/Wikibelfast1.jpg
 belfry_1_N	commons/0/05/Wat_Rakang_bells.jpg
@@ -4164,8 +4164,8 @@ cagoule_N	commons/0/02/Peter_Storm_vintage_cagoule_front.jpg
 cairn_1_N	commons/4/4a/Cairn_at_Garvera%2C_Surselva%2C_Graubuenden%2C_Switzerland.jpg	commons/8/86/Cairns_view_of_CBD_3.jpg	commons/e/ef/Grave_Creek_Mound.jpg
 cairn_2_N	commons/4/4a/Cairn_at_Garvera%2C_Surselva%2C_Graubuenden%2C_Switzerland.jpg	commons/b/b0/Cairn-Terrier-Garten1.jpg	commons/8/86/Cairns_view_of_CBD_3.jpg
 cairngorm_N	commons/3/32/Smoky-quartz-TUCQTZ09-03-arkenstone-irocks.png	commons/e/ee/Cairn_Gorm_-_geograph.org.uk_-_366811.jpg
-cairo_1_PN	commons/1/1f/Towers_on_the_Nile.jpg	commons/9/98/Kairos-Relief_von_Lysippos%2C_Kopie_in_Trogir.jpg
-cairo_2_PN	commons/1/1f/Towers_on_the_Nile.jpg	commons/9/98/Kairos-Relief_von_Lysippos%2C_Kopie_in_Trogir.jpg
+cairo_1_PN	commons/b/bb/PublicLibraryCairoIL.jpg
+cairo_2_PN	commons/1/1f/Towers_on_the_Nile.jpg
 caisson_1_N	commons/0/03/Ryobiraki_tansu.jpg
 caisson_4_N	commons/e/ef/Caisson_Schematic.svg
 caitiff_A	commons/c/ce/PuenteArga.jpg	commons/a/a1/Jolfa-Aras2.jpg	commons/6/67/Fatada_Colegiul_National_Moise_Nicoara.jpg	commons/1/1a/China_Xinjiang_Aral.svg	commons/4/48/Insigne_du_Antiteroristini%C5%B3_Operacij%C5%B3_Rinktin%C4%97_%28ARAS%29.svg
@@ -4636,8 +4636,8 @@ cart_2_V2	commons/d/d6/DogChar2.jpg
 cart_off_V2	commons/d/d6/DogChar2.jpg
 cart_out_V	commons/d/d6/DogChar2.jpg
 cart_track_N	commons/b/b6/DirtRoadCows.jpg
-cartagena_1_PN	commons/e/e9/Location_map_Greater_Tunis.png	commons/a/ab/Cartagena_palacio_consistorial5.jpg
-cartagena_2_PN	commons/e/e9/Location_map_Greater_Tunis.png	commons/a/ab/Cartagena_palacio_consistorial5.jpg
+cartagena_1_PN	commons/a/ab/Cartagena_palacio_consistorial5.jpg
+cartagena_2_PN	commons/1/1d/Montaje_Cartagena%2C_Colombia.jpg
 carter_1_PN	commons/b/b7/Carterskelseymeyerlandplaza.jpg	commons/2/24/Howard_carter.jpg
 carter_2_PN	commons/b/b7/Carterskelseymeyerlandplaza.jpg	commons/5/5a/JimmyCarterPortrait2.jpg
 carthorse_1_N	commons/e/e2/Aa_shirehorse.jpg
@@ -5419,8 +5419,6 @@ cholesterol_1_N	commons/9/9a/Cholesterol.svg
 choline_N	commons/f/f9/Choline-skeletal.png
 cholinergic_A	commons/f/f9/Choline-skeletal.png
 cholinesterase_N	commons/e/e3/Acethylcholinesterase_TC_1EA5.png
-chon_1_N	commons/c/c0/Chon23.jpg	commons/1/14/CHNOPS.svg
-chon_2_N	commons/c/c0/Chon23.jpg	commons/1/14/CHNOPS.svg
 chondrite_N	commons/7/74/NWA869Meteorite.jpg
 chondroma_N	commons/0/06/Lantern_slide%3B_Multiple_chondromata_of_fingers._Wellcome_L0028445.jpg
 chondrosarcoma_N	commons/4/4f/Chondrosarcoma_%281%29.jpg
@@ -6077,7 +6075,7 @@ cologne_2_N	commons/8/8f/BCCYMCA_Waterfront.JPG
 colombia_PN	commons/2/21/Flag_of_Colombia.svg
 colombian_N	commons/2/21/Flag_of_Colombia.svg
 colon_1_N	commons/1/11/Intestine-diagram.svg
-colon_4_PN	commons/3/3f/Romancoloniae.jpg
+colon_4_PN	commons/9/9f/Colon_Panama.jpg
 colonialism_N	commons/9/99/Musee-de-lArmee-IMG_0976.jpg
 colonnade_1_N	commons/4/44/Wikimedia_Conference_2015_photo_by_Pine_-_28.jpg
 colonoscopy_N	commons/3/31/US_Navy_110405-N-KA543-028_Hospitalman_Urian_D._Thompson%2C_left%2C_Lt._Cmdr._Eric_A._Lavery_and_Registered_Nurse_Steven_Cherry_review_the_monitor_whil.jpg
@@ -6657,6 +6655,7 @@ cord_1_N	commons/a/a8/Blue%2BRed_String_Under_Microscope_%2840x%29.jpg
 cord_3_N	commons/a/a8/Blue%2BRed_String_Under_Microscope_%2840x%29.jpg
 cordierite_N	commons/d/db/Cordierite-den07-06aa.jpg
 cordite_N	commons/7/76/N110_ruuti.jpg	commons/0/0c/Sectioned_British_18-pounder_shrapnel_round_photograph.jpg
+cordoba_1_N	commons/e/ee/Nicaragua_1_Cordoba_banknote_of_1941.jpg
 cordoba_2_PN	commons/3/3a/Collage_de_la_ciudad_de_C%C3%B3rdoba%2C_Andaluc%C3%ADa%2C_Espa%C3%B1a.png
 cordoba_3_PN	commons/3/3a/Collage_de_la_ciudad_de_C%C3%B3rdoba%2C_Andaluc%C3%ADa%2C_Espa%C3%B1a.png	commons/e/ee/Nicaragua_1_Cordoba_banknote_of_1941.jpg
 cordoba_4_PN	commons/3/3a/Collage_de_la_ciudad_de_C%C3%B3rdoba%2C_Andaluc%C3%ADa%2C_Espa%C3%B1a.png
@@ -8264,15 +8263,13 @@ dimple_2_V	commons/c/ce/Clotho.jpg
 dimple_3_N	commons/9/92/Windswept_Cary_Grant_photo_with_annotation_arrows.jpg
 din_1_N	commons/c/c6/Picswiss_TI-20-02.jpg	commons/9/9b/Traffic_jam_Sao_Paulo_09_2006_30a.jpg
 din_2_N	commons/c/c6/Picswiss_TI-20-02.jpg	commons/9/9b/Traffic_jam_Sao_Paulo_09_2006_30a.jpg
-dinar_1_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
-dinar_2_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
-dinar_3_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
-dinar_4_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
-dinar_5_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
-dinar_6_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
-dinar_7_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
-dinar_8_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
-dinar_9_N	commons/1/15/Relief_map_of_Croatia.png	commons/1/11/Dinar.svg
+dinar_1_N	commons/c/c8/5r-type1-obv-reza.jpg
+dinar_2_N	commons/f/f1/1000-Dinara-1920.jpg
+dinar_3_N	commons/5/5b/Tunisian_dinars_and_millimes.jpg
+dinar_5_N	commons/3/3d/1_Kuwaiti_dinar_in_2014_Obverse.jpg
+dinar_6_N	commons/3/34/Jordanian_currecy.jpeg
+dinar_7_N	en/f/ff/Dinar-25000.jpg
+dinar_9_N	en/6/6b/Algeria_09.gif
 dine_1_V	commons/5/5a/Cene_panorama_01.jpg	commons/7/79/Dinera.ferina2.-.lindsey.jpg	commons/9/93/ValCeno.JPG
 dine_2_V	commons/7/79/Dinera.ferina2.-.lindsey.jpg
 dine_out_V	commons/5/5a/Cene_panorama_01.jpg	commons/7/79/Dinera.ferina2.-.lindsey.jpg	commons/9/93/ValCeno.JPG
@@ -8639,7 +8636,7 @@ donate_V2	commons/d/d7/Dono_I.jpg
 donation_2_N	commons/a/a9/Freebox.JPG	commons/e/e6/The_three_dimensions_of_Islam.png
 doncaster_PN	commons/e/eb/St_Georges_Doncaster_3.jpg
 donetsk_PN	commons/8/8d/Donetsk_montage_%282015%29.png
-dong_N	commons/c/c2/Ethic_Dong_Liping_Guizhou_China.jpg
+dong_N	en/8/8f/500_dong.jpg
 dongle_N	commons/7/7b/Drone_4.jpg
 donjon_N	commons/6/65/York_Castle_diorama.JPG	commons/e/e0/Temnica_-_panoramio_-_Uzel.jpg
 donkey_1_N	commons/7/7b/Donkey_1_arp_750px.jpg
@@ -8801,8 +8798,7 @@ drainage_basin_N	commons/2/2d/Beach_at_Albufeira.JPG
 drainpipe_N	commons/1/10/Storm_drain_pipe_%28crop%29.JPG	commons/9/94/Dakgoot_001.jpg
 drake_1_PN	commons/8/81/Drake_at_the_Velvet_Underground_-_2017_%2835986086223%29_%28cropped%29.jpg	commons/2/20/1590_or_later_Marcus_Gheeraerts%2C_Sir_Francis_Drake_Buckland_Abbey%2C_Devon.jpg
 drake_2_N	commons/b/b7/Female_mallard_nest_-_natures_pics_edit2.jpg	commons/4/45/Panorama_de_Patos-27-06-17.jpg
-dram_2_N	commons/9/9b/MT4C1024-HD.jpg
-dram_3_N	commons/9/9b/MT4C1024-HD.jpg	commons/5/5b/Union_brygge.jpg
+dram_3_N	commons/b/b3/100%2C000_Armenian_dram_-_2009_%28obverse%29.jpg
 draper_N	commons/6/65/Adriaen_Bloem_-_In_the_Draper%C2%B4s_Shop_-_Google_Art_Project.jpg
 drapery_1_N	commons/6/6a/Gordijnen_aan_venster.JPG
 drapery_2_N	commons/6/6a/Gordijnen_aan_venster.JPG
@@ -9801,8 +9797,8 @@ eschatology_N	commons/2/29/Durer_Revelation_Four_Riders.jpg
 escherichia_N	commons/b/bc/E_coli_at_10000x%2C_original.jpg
 escolar_N	commons/d/de/Lepidocybium_flavobrunneum_NOAA.jpg
 escrow_N	commons/2/20/SampleBankbook.png
-escudo_1_N	commons/0/09/Escudo_Juana-Carlos_I.jpg
-escudo_2_N	commons/0/09/Escudo_Juana-Carlos_I.jpg
+escudo_1_N	commons/3/3e/Portugal_1_escudo.JPG	commons/1/1d/Portugal_1_escudo_2.JPG
+escudo_2_N	commons/1/17/CVcoins.png
 esfahan_PN	commons/2/2b/295A7533.jpg
 esker_N	commons/3/3e/Fulufjalletesker.jpg	commons/5/52/Old_church_in_%C3%85sarna.jpg
 eskimo_1_N	commons/3/3a/Inuit_conf_map.png
@@ -10390,7 +10386,6 @@ female_1_N	commons/6/66/Venus_symbol.svg
 female_2_N	commons/b/b8/Poster_-_Women%2C_The_01.jpg
 femininity_N	commons/6/64/Titian_-_Venus_with_a_Mirror_-_Google_Art_Project.jpg
 feminization_1_N	commons/a/aa/Mice_X_Y_chromosomes.jpg
-fen_1_N	commons/7/71/Casa_do_concello_de_Fene.JPG
 fen_2_N	commons/9/98/Rich-fen-primula-farinosa.jpeg	commons/7/74/BA-026%2C_Brej%C3%B5es.jpg	commons/a/a4/PE-mapa-Brej%C3%A3o.png	commons/5/59/Vineyard_and_sea_2_%C2%A9_Leif_Carlsson_for_Monteverro.jpg	commons/8/89/Illustrated_diagram_of_a_fen.jpg
 fence_1_N	commons/a/a2/Westtown.jpg
 fencing_1_N	commons/8/8d/Profiled_Welded_Wire_Mesh_Fencing.jpg
@@ -12733,7 +12728,7 @@ guanaco_N	commons/2/29/Guanaco_de_San_Carlos.jpg
 guanine_N	commons/3/3f/Guanin.svg
 guano_N	commons/4/49/Guano.jpg
 guar_N	commons/9/9b/Cluster_bean-guar-Cyamopsis_psoralioides-Cyamopsis_tetragonolobus-TAMIL_NADU73.jpg
-guarani_1_N	commons/3/35/Map-Guaraniphone_World.svg
+guarani_1_N	commons/f/f9/Paraguay_100_Paraguayan_guaran%C3%AD_banknote_of_1952.jpg
 guarani_2_N	commons/3/35/Map-Guaraniphone_World.svg	commons/2/24/Guaranis.jpg
 guarani_3_N	commons/3/35/Map-Guaraniphone_World.svg
 guaranty_N	commons/1/1e/Vereinigte_Ostindische_Compagnie_bond_-_Middelburg_-_Amsterdam_-_1622.jpg
@@ -12971,8 +12966,8 @@ halcyon_1_A	commons/1/15/Locator_map_of_Feliz_in_Rio_Grande_do_Sul.svg
 halcyon_1_N	commons/6/6b/Alcyone_and_Ceyx_transformed_into_Halycons_%28cropped%29.jpg
 halcyon_3_N	commons/6/6b/Alcyone_and_Ceyx_transformed_into_Halycons_%28cropped%29.jpg
 hale_A	commons/5/5d/Hale_Brothers_Department_Store_%28San_Francisco%29.JPG
-haler_1_N	commons/8/8c/LocatieHaler.png
-haler_2_N	commons/8/8c/LocatieHaler.png
+haler_1_N	commons/a/a1/Svk-10_hal-01.png	commons/1/13/Svk-20_hal-01.png	commons/b/ba/SK_50h93_a.png	commons/f/f1/SK_50h96_a.png
+haler_2_N	commons/f/fb/10h_CZK.png
 halesowen_PN	commons/8/8c/St_John_the_Baptists_Church_Halesowen_-_geograph.org.uk_-_58802.jpg
 half_3_A	commons/5/56/Halver_in_MK.svg	commons/7/70/Eye_of_Horus_square.png
 half_breed_N	commons/4/4e/PaulKane-BuffaloHunt-ROM.jpg	commons/2/2c/A_M%C3%A9tis_man_and_his_two_wives%2C_circa_1825-1826.jpg
@@ -13112,11 +13107,10 @@ hanker_for_V2	commons/3/35/Donato_Bramante.jpg
 hanko_PN	commons/0/07/Eastern_Harbour_coastline_Hanko.jpg
 hanky_panky_N	commons/d/d9/34-caccia_tortore%2CTaccuino_Sanitatis%2C_Casanatense_4182..jpg
 hanoi_PN	commons/1/17/Hanoi_Montage.jpg
-hanover_1_PN	commons/9/90/Hannover_in_H.svg
+hanover_1_PN	commons/6/68/Neues_Rathaus_Hannover_abends.jpg
 hanover_2_PN	commons/e/e9/Royal_Arms_of_the_Kingdom_of_Hanover.svg
 hansard_N	en/5/5f/Hansard-1832.jpg
 hansom_N	commons/c/c9/HansomCab.jpg
-hao_N	commons/0/05/Hao2.jpg
 hap_N	commons/2/23/Haps%2C_kerk_foto3_2011-03-08_13.25.JPG
 hap_V	commons/c/c9/Fachi-Bilma-D%C3%BCnen.jpg	commons/2/23/Haps%2C_kerk_foto3_2011-03-08_13.25.JPG
 haplotype_N	commons/2/2e/Dna-SNP.svg
@@ -13456,7 +13450,7 @@ helmetflower_2_N	commons/3/33/Coryanthes_verrucolineata_Orchi_02.jpg
 helminth_N	commons/4/45/Collage_of_various_helminth_eggs.png
 helminthiasis_N	commons/8/83/Ascaris_infection_in_the_x-ray_image-_ascaris_arranged_tidily_along_the_long_axis_of_the_small_bowel_%28South_Africa%29_%2816424840021%29.jpg
 helping_N	commons/7/71/Denarius%2C_M._Porcius_Laeca%2C125_BC%2C_RRC_270-1.jpg
-helsinki_PN	commons/b/b4/Helsinki_uusimaa.png
+helsinki_PN	commons/6/61/Helsinki_montage_2015.jpg
 helston_PN	commons/3/3e/Coinagehall_Street_Helston_-_geograph.org.uk_-_1300488.jpg
 helve_N	commons/4/46/Varrel_in_DH.svg
 helvella_N	commons/8/8b/Helvella_crispa_031130w.jpg
@@ -13843,7 +13837,7 @@ honeypot_N	commons/3/3d/Protea_cynaroides_3.jpg
 honeysuckle_1_N	commons/8/81/Lonicera-linedrawing1897.svg	commons/d/d0/Lonicera_caprifolium002.jpg
 honeysuckle_2_N	commons/d/d0/Lonicera_caprifolium002.jpg
 honeysuckle_3_N	commons/d/d0/Lonicera_caprifolium002.jpg
-hong_kong_PN	commons/5/5b/Flag_of_Hong_Kong.svg
+hong_kong_PN	commons/1/18/Hong_Kong_Night_Skyline.jpg
 honkajoki_PN	commons/b/bf/Honkajoki.sijainti.suomi.2008.svg
 honker_1_N	commons/3/32/Heckel_Biebrich_Bassoon_Bocal_-_themusicgrove.jpg
 honker_2_N	commons/3/32/Heckel_Biebrich_Bassoon_Bocal_-_themusicgrove.jpg
@@ -15600,7 +15594,7 @@ kimberley_PN	commons/e/ea/Downtown_Kimberley_seen_from_the_west_2015.JPG	commons
 kimberlite_N	commons/7/76/Kimberlite_picture.jpg
 kimito_PN	commons/e/ee/Kemi%C3%B6.sijainti.suomi.2008.svg
 kimono_N	commons/c/c2/Wedding_kimono.jpg
-kina_N	commons/2/2e/Quini_1983.jpg
+kina_N	en/e/ec/K50back.jpg
 kinase_N	commons/a/ae/Active_site_of_Dihydroxyacetone_Kinase.png
 kindergarten_N	commons/a/a7/Kindergarten_in_VN.jpg
 kindling_1_N	commons/5/57/Map_of_Borino_municipality_%28Smolyan_Province%29.png
@@ -15767,8 +15761,8 @@ korpilahti_PN	commons/7/7a/Landscape_of_Korpilahti.jpg
 korsholm_PN	commons/0/03/Replot_Bridge_in_Korsholm.jpg
 korsnäs_PN	commons/0/0a/Korsn%C3%A4s.sijainti.suomi.2008.svg
 kortesjärvi_PN	commons/9/95/Kortesj%C3%A4rvi_Church.jpg
-koruna_1_N	commons/7/7c/2_Czechoslovak_koruna.jpg
-koruna_2_N	commons/7/7c/2_Czechoslovak_koruna.jpg
+koruna_1_N	commons/d/d7/500sk_hlava.jpg
+koruna_2_N	commons/0/07/CZK_Banknotes_2014.png
 kotka_PN	commons/8/82/City_of_kotka.png
 koto_N	commons/6/64/Japanese_Koto.jpg
 kotow_V	commons/0/00/Rheinwaldhorn0001.jpg
@@ -16045,8 +16039,8 @@ larder_1_N	commons/0/04/Residential-pantry.jpg	commons/e/e8/Pastry_Larder_at_The
 larder_2_N	commons/e/e8/Pastry_Larder_at_The_Regency_Town_House_in_Hove.jpg
 largemouth_N	commons/2/29/Largemouth.JPG
 largs_PN	commons/e/ec/DPP_00226.JPG
-lari_1_N	commons/1/1a/Sign_of_Georgian_Lari.svg	commons/f/fe/2004-04-10_Larus_michahellis_ad.jpg
-lari_2_N	commons/1/1a/Sign_of_Georgian_Lari.svg
+lari_1_N	commons/1/1a/Sign_of_Georgian_Lari.svg	commons/2/2b/Lari_banknotes.png
+lari_2_N	commons/f/fe/2004-04-10_Larus_michahellis_ad.jpg
 lariat_N	commons/9/92/Lazi_Municipal_Hall.JPG
 larid_N	commons/7/7f/Larus_argentatus_ad.jpg
 lark_3_N	commons/d/d8/Alauda_arvensis_2.jpg
@@ -16106,7 +16100,7 @@ latin_Language	commons/b/b7/Rome_Colosseum_inscription_2.jpg
 latinate_A	commons/0/0c/Vista_panoramica_latina.jpg
 latitude_1_N	commons/4/44/Division_of_the_Earth_into_Gauss-Krueger_zones_-_Globe.svg
 latrine_N	commons/4/44/Ostia-Toilets.JPG
-lats_N	commons/9/9c/Spokane_County_Washington_Incorporated_and_Unincorporated_areas_Latah_Highlighted.svg
+lats_N	commons/0/0a/1Lats_salmon.png
 latten_N	commons/7/70/LattesMaurin_Place_Arcades_11042006.JPG
 latter_N	commons/1/16/Ruined_Gates_of_Haozdar.jpg
 lattice_3_N	commons/5/50/Rhodes_meander_hg.jpg
@@ -16299,7 +16293,7 @@ lemongrass_1_N	commons/a/a9/Mobile_County_Alabama_Incorporated_and_Unincorporate
 lemongrass_2_N	commons/7/7e/Gardenology.org-IMG_2892_rbgs11jan.jpg	commons/a/a9/Mobile_County_Alabama_Incorporated_and_Unincorporated_areas_Citronelle_Highlighted_0115064.svg
 lemonwood_1_N	commons/a/a4/Limonlu_Mersin_Province.jpg
 lemony_A	commons/a/ad/Agres_bajando_del_Montcabrer.JPG
-lempira_N	commons/3/3a/Lempira.jpg	commons/b/bb/Lempire_%28Aisne%29_mairie.JPG
+lempira_N	en/5/5c/1Lempira.jpg	en/b/be/2Lempira.jpg	en/b/bf/5Lempira.jpg	en/9/99/10Lempira.jpg	en/a/a5/20Lempira.jpg	commons/a/a6/20_lempiras_own.jpg	commons/1/18/50_lempiras_own.jpg	commons/1/14/50_new.png	en/8/8e/100Lempira.jpg	commons/d/d6/100_new.png	commons/d/d2/500_lempiras_own.jpg	commons/1/15/500_new.png
 lempäälä_PN	commons/e/e8/Lempaalankanava.jpg
 lemu_PN	commons/e/ef/Lemu.sijainti.suomi.2008.svg
 lemur_N	commons/3/37/Extant_Strepsirrhini.jpg	commons/4/4e/Lemuroidea.jpg	commons/b/b7/Common_brown_lemur_%28Eulemur_fulvus%29_female_with_juvenile.jpg
@@ -17566,7 +17560,7 @@ market_town_N	commons/5/54/Cmglee_Wymondham_Market_Place.jpg
 marketplace_2_N	commons/5/57/The_Moorish_Bazaar.jpg	commons/a/af/Main_square_of_Ostr%C3%B3w_Wielkopolski_%28Rynek_i_ratusz_w_Ostrowie_Wielkopolskim%29.jpg	commons/7/75/Torii_de_Miyajima_2.JPG
 markhor_1_N	commons/3/38/Markhor_Schraubenziege_Capra_falconeri_Zoo_Augsburg-02.jpg
 marking_1_N	commons/e/ef/Sankt-georgen-kaernten.jpg
-markka_N	commons/1/1f/Mars_Pyrrhus_cropped.jpg	commons/6/6f/African_Mask_1_3quarter.jpg
+markka_N	commons/d/df/Finland_1_markka.jpg
 marksman_N	commons/7/7d/Nouba_1er_R%C3%A9giment_Tirailleurs_%C3%89pinal.jpg
 marl_N	commons/9/95/Piece_of_marl.JPG
 marlberry_N	commons/2/28/Ardisia_crenata_plant.jpg
@@ -17601,7 +17595,7 @@ mars_1_PN	commons/0/02/OSIRIS_Mars_true_color.jpg
 mars_2_PN	commons/9/97/0_Statue_de_Mars_%28Pyrrhus%29_-_Musei_Capitolini_-_MC0058_%282%29.JPG
 marsala_N	commons/5/56/Stagnone_di_Marsala.jpg
 marseillaise_N	commons/8/83/Le_D%C3%A9part_des_Volontaires_%28La_Marseillaise%29_par_Rude%2C_Arc_de_Triomphe_Etoile_Paris.jpg
-marseille_1_PN	commons/e/ec/Marseille_20131005_17.jpg
+marseille_1_PN	commons/4/4b/Marseille_panorama.jpg
 marsh_1_N	commons/9/93/Wye_Marsh_panorama1.jpg
 marshal_1_N	commons/f/f5/Marshall%27s_at_Millenia_Plaza.JPG
 marshal_2_N	commons/f/f5/Marshall%27s_at_Millenia_Plaza.JPG
@@ -18444,7 +18438,7 @@ moan_V	commons/4/4f/Okres_revuca.png	commons/4/45/Glem_Slovenia.jpg
 moat_N	commons/3/32/Matsumoto_castle_3.jpg
 mobcap_N	commons/0/0d/Old_woman_in_sunbonnet_by_Doris_Ulmann.jpg	commons/6/65/Oussama_Mellouli_1.jpg
 mobile_1_PN	commons/a/ab/Calder-redmobile.jpg	commons/5/5d/Mobile_Montage-2.jpg	commons/d/d6/Mobile_phone_evolution.jpg
-mobile_2_PN	commons/a/ab/Calder-redmobile.jpg	commons/5/5d/Mobile_Montage-2.jpg
+mobile_2_PN	commons/5/5d/Mobile_Montage-2.jpg
 mobile_3_N	commons/d/d6/Mobile_phone_evolution.jpg
 mobilization_1_N	commons/5/56/Messangers_were_sent_to_every_village.jpg
 moccasin_1_N	commons/6/68/Osage_%28Native_American%29._Pair_of_Moccasins%2C_early_20th_century.jpg
@@ -18556,7 +18550,6 @@ money_order_N	commons/d/d8/PostanwBaunschw1867.jpg	commons/8/83/PostalorderTBack
 moneychanger_N	commons/3/30/Puppen-Wickeltisch_c1900_Berlin_SlgKiJu.jpg
 moneymaking_N	commons/1/15/Amplification2.svg
 moneywort_N	commons/9/9b/Lysimachia_nummularia0.jpg
-mongo_N	commons/d/d7/Map_of_Guera_Region.jpg	commons/d/d1/Mongo_family_in_Equateur_Province.jpg
 mongolia_2_PN	commons/4/4c/Flag_of_Mongolia.svg
 mongolian_2_N	commons/7/7e/Mongols-map.png
 mongolism_N	commons/b/b1/Drill.jpg
@@ -19395,7 +19388,7 @@ newsstand_N	commons/e/e7/Ephesus_library-650px.jpg
 newt_N	commons/9/9d/Common_Newt.jpg	commons/0/0a/A_Crowned_Merman_-_Arthur_Rackham.jpg	commons/4/49/Notophthalmus_viridescensPCCA20040816-3983A.jpg	commons/e/e0/Kammmolchmaennchen.jpg	commons/b/b2/SpottedSalamander.jpg	commons/d/dd/Neurergus_Kaiseri.jpg
 newton_1_PN	commons/9/9d/Illustration_on_One_Newton%2C_2018-07-06.png
 newtown_PN	commons/f/fb/Newtown%2C_Wales.jpg
-ngultrum_N	commons/7/7c/Bhutanese_ngultrum-dz.svg
+ngultrum_N	en/e/ee/Bhutan_1_Ngultrum.JPG	en/8/87/Bhutan_1_Ngultrum_back_50_percent.JPG	commons/9/9d/Ngultrum1.jpg	en/5/5c/Bhutan_5_Ngultrum_back.JPG	commons/0/05/10_Ngultrum_Vorderseite.jpg	commons/1/17/10_Ngultrum_R%C3%BCckseite.jpg	commons/f/ff/20_Ngultrum_Vorderseite.jpg	commons/0/02/20_Ngultrum_R%C3%BCckseite.jpg	commons/a/ae/50_Ngultrum_Vorderseite.jpg	commons/1/1d/50_Ngultrum_R%C3%BCckseite.jpg	commons/5/54/100_Ngultrum_Vorderseite.jpg	commons/1/1d/100_Ngultrum_R%C3%BCckseite.jpg
 nibble_1_N	commons/b/bf/Octets_in_CP866_ordered_by_nibbles.png
 nibbler_N	commons/4/4e/Nibbler1.jpg
 nicaragua_PN	commons/1/19/Flag_of_Nicaragua.svg
@@ -19557,7 +19550,7 @@ nordic_1_A	commons/a/a2/Old_norse%2C_ca_900.PNG
 nordic_2_A	commons/a/a2/Old_norse%2C_ca_900.PNG
 nordic_3_A	commons/a/a2/Old_norse%2C_ca_900.PNG
 nordic_N	commons/0/0a/Lenguas_n%C3%B3rdicas.PNG
-norfolk_PN	commons/3/3f/Flag_of_Norfolk.svg
+norfolk_PN	commons/9/9c/MontageNorfolkVAUSA.jpg
 norgestrel_N	commons/7/7e/Levonorgestrel.svg
 noria_N	commons/a/a0/Hama-3_norias.jpg
 norm_1_N	commons/d/d9/Tennis_shake_hands_after_match.jpg
@@ -20723,6 +20716,7 @@ papyrus_1_N	commons/4/41/Papyrus.jpg
 papyrus_2_N	commons/3/33/Cyperus_papyrus6.jpg
 par_1_N	commons/6/62/Alcock_Nelson_Jug.jpg
 par_2_N	commons/6/62/Alcock_Nelson_Jug.jpg
+para_1_N	commons/7/71/Jugoslavia_5_para.JPG
 para_4_PN	commons/c/c0/Para_in_Brazil.svg
 para_5_PN	commons/c/c0/Para_in_Brazil.svg
 parable_2_N	commons/9/93/Rembrandt_Harmensz_van_Rijn_-_Return_of_the_Prodigal_Son_-_Google_Art_Project.jpg
@@ -20923,7 +20917,7 @@ pasty_1_A	commons/b/bf/Cornish_pasty.jpeg
 pasty_1_N	commons/b/b0/Piroshki.JPG	commons/7/77/Pastry-Turnover-Apple.jpg	commons/b/bf/Cornish_pasty.jpeg	commons/4/4c/Milo_Moir%C3%A9.jpg
 pasty_2_A	commons/9/9b/Galium_aparine_b.jpg	commons/b/bf/Cornish_pasty.jpeg
 pasty_2_N	commons/b/b0/Piroshki.JPG	commons/b/bf/Cornish_pasty.jpeg	commons/4/4c/Milo_Moir%C3%A9.jpg
-pataca_N	commons/5/50/Macau_Economy.png
+pataca_N	en/9/97/MOP100.JPG
 patas_N	commons/c/c6/Patas_Monkey.jpg	commons/3/32/Lamu_Pate_Map.jpg	commons/4/40/Nepal_Patan_Mangal.jpg
 patch_1_V2	commons/8/86/Patching_Church_-_geograph.org.uk_-_18770.jpg
 patch_2_V2	commons/8/86/Patching_Church_-_geograph.org.uk_-_18770.jpg
@@ -21344,14 +21338,13 @@ perverse_3_A	commons/0/0e/Anomala_mongolica_leaf.jpg
 pescara_PN	commons/d/d0/Pescara_Montage_2018.png
 peseta_N	commons/8/85/100_pesetas.png
 peshmerga_N	commons/4/43/Peshmerga_soldiers_prepare_to_conduct_a_combined_arms_live-fire_exercise_near_Erbil%2C_Iraq.jpg
-peso_1_N	commons/0/05/Peso_Users_Map.svg
-peso_2_N	commons/0/05/Peso_Users_Map.svg
-peso_3_N	commons/0/05/Peso_Users_Map.svg
-peso_4_N	commons/0/05/Peso_Users_Map.svg
-peso_5_N	commons/0/05/Peso_Users_Map.svg
-peso_6_N	commons/0/05/Peso_Users_Map.svg
-peso_7_N	commons/0/05/Peso_Users_Map.svg
-peso_8_N	commons/0/05/Peso_Users_Map.svg
+peso_1_N	commons/6/64/UYnewcoin2011.PNG
+peso_2_N	en/5/5b/PHP_20_obv.jpg	en/b/b1/PHP20_reverse.jpg
+peso_3_N	en/1/15/MexicoNEW1000s-2008o.JPG
+peso_5_N	commons/9/9d/Dom2002onepesoobv.jpg	commons/c/c4/Dom2002onepesorev.jpg
+peso_6_N	en/e/ef/Cuban3Pesos.jpg
+peso_7_N	commons/5/54/Moneda_Colombiana_-_Colombian_Coins.JPG
+peso_8_N	en/4/4e/Chilean_notes.jpg
 pessary_N	commons/f/f5/Pessaries.JPG	commons/5/5d/Contraceptive_diaphragm.jpg
 pest_1_N	commons/1/15/Yersinia_pestis_fluorescent.jpeg
 pest_4_N	commons/e/ee/Sceliphron_and_pest.jpg
@@ -21546,8 +21539,6 @@ pianissimo_A	commons/0/01/01_Calanche_Piana.jpg
 pianistMasc_N	commons/f/f4/RCM_Piano_2015_Grade_5_List_B_No7_Hummel_Romance_in_G_Op52_No4_by_Alan_-_YouTube.webm
 piano_1_N	commons/c/c8/Grand_piano_and_upright_piano.jpg
 pianoforte_N	commons/4/4e/FortepianoByMcNultyAfterWalter1805.jpg
-piastre_1_N	commons/1/16/French_Indochina_Piastre_1885_without_background.png
-piastre_2_N	commons/1/16/French_Indochina_Piastre_1885_without_background.png
 piazza_N	commons/7/75/Torii_de_Miyajima_2.JPG
 picador_N	commons/4/49/Picador_1.jpg
 piccalilli_N	commons/6/69/Piccalilli.jpg	commons/3/30/Mixed_Pickles_%289370-72%29.jpg
@@ -22379,9 +22370,9 @@ portland_2_PN	commons/a/aa/Oregon_Convention_Center_Dusk_1.jpg
 portmanteau_2_N	commons/2/2d/Samsonite_Pro-DLX_4_Rolling_Tote_16.4_Inch_Black.jpg
 porto_alegre_PN	commons/e/ec/Collage_of_Porto_Alegre.png
 portrait_2_N	commons/3/3c/Achaemenid_Satrap_Asia_Minor_end_of_6th_century_BCE.jpg
-portsmouth_1_PN	commons/5/56/City_Flag_of_Portsmouth.svg
-portsmouth_2_PN	commons/5/56/City_Flag_of_Portsmouth.svg
-portsmouth_3_PN	commons/5/56/City_Flag_of_Portsmouth.svg
+portsmouth_1_PN	commons/8/83/US_Navy_030820-N-9851B-011_Tug_boats_guide_USS_Harry_S._Truman_%28CVN_75%29_up_the_Elizabeth_River%2C_past_Portsmouth_landmarks.jpg
+portsmouth_2_PN	commons/5/5a/Portsmouth%2C_NH_-_Market_Square.JPG
+portsmouth_3_PN	commons/0/00/Portsmouth_montage.png
 portugal_PN	commons/5/5c/Flag_of_Portugal.svg
 portuguese_1_N	commons/3/3c/Map_of_the_portuguese_language_in_the_world.svg
 portuguese_2_N	commons/5/5c/Flag_of_Portugal.svg
@@ -22485,6 +22476,12 @@ poultice_N	commons/a/ab/Schoolgirl_Into_Nurse-_Medical_Training_in_Britain%2C_19
 poultry_1_N	commons/1/14/Poultry_of_the_world.jpg
 pounce_N	commons/6/60/Col_de_Mente_summit.jpg
 pound_10_N	commons/8/86/PoundTroy.jpg
+pound_2_N	en/b/b9/Bank_of_England_%C2%A350_obverse.jpg
+pound_4_N	commons/e/e9/NewSyrian1000front.png
+pound_5_N	commons/8/88/SUDAN.png
+pound_7_N	en/3/3b/Irish_pound_%28reverse%29.png
+pound_8_N	commons/9/9a/EGP_200_Pounds_Apr_2007_%28Front%29.jpg
+pound_9_N	en/b/b9/20_cy_pound_front.jpg
 pound_11_PN	commons/6/66/Lustra_%28private_print%29_-_Ezra_Pound_-_Frontispiece.jpg
 pound_4_V	commons/a/ae/Kaldari_Martella_male_01.jpg
 pour_1_V2	commons/a/ab/Zantedeschia_-_Calla_Lilly2.jpg
@@ -23013,8 +23010,7 @@ puka_1_N	commons/5/54/Luttrellpsaltertaborer.png	commons/5/50/Apteek-elamu_Pukas
 puka_2_N	commons/5/54/Luttrellpsaltertaborer.png	commons/5/50/Apteek-elamu_Pukas_Kesk_8.jpg
 pukkila_PN	commons/f/f8/Pukkila.sijainti.suomi.2008.svg
 puku_N	commons/1/1f/Puku_male.jpg
-pul_N	commons/a/ab/PuliBlack_wb.jpg
-pula_N	commons/6/62/Anfiteatro_de_Pula%2C_Croacia%2C_2017-04-17%2C_DD_22-24_HDR.jpg
+pula_N	en/5/57/Botswana_2-pula_banknote_%281980s%29.png	en/8/84/2pulab.png
 pulasan_1_N	commons/b/bf/Nephelium_ramboutan-ake3.jpg
 pulasan_2_N	commons/b/bf/Nephelium_ramboutan-ake3.jpg
 pulkkila_PN	commons/a/a4/Pulkkila.sijainti.suomi.2008.svg
@@ -23321,7 +23317,7 @@ question_1_N	commons/8/80/Ayr%C4%B1dam.jpg
 question_3_N	commons/8/80/Ayr%C4%B1dam.jpg
 questioning_N	commons/8/80/Ayr%C4%B1dam.jpg
 questionnaire_N	commons/d/d0/Questionaire_in_Thai.png	commons/0/09/Dewey_Defeats_Truman.jpg
-quetzal_1_N	commons/0/02/Golden-headed_Quetzal.jpg	commons/7/70/Quetzal01.jpg
+quetzal_1_N	en/e/e0/GuatemalanBanknoteQ100BothSides.jpg
 quetzal_2_N	commons/0/02/Golden-headed_Quetzal.jpg	commons/7/70/Quetzal01.jpg
 queue_1_N	commons/5/52/Data_Queue.svg	commons/6/61/Queue-to-the-Louvre.jpg
 queue_3_N	commons/6/61/Queue-to-the-Louvre.jpg
@@ -23338,7 +23334,6 @@ quick_freeze_V2	commons/1/13/Sint_Bonifatiuskerk_Vries.jpg
 quicklime_N	commons/4/4d/Lipe_Ljubljana_Slovenia.jpg	commons/e/e0/Limestone_quarry.jpg
 quicksand_2_N	commons/b/ba/Quicksand_warning.jpg
 quickstep_2_N	commons/d/de/Ballroom.jpg
-quid_1_N	commons/1/1a/Royal_Coat_of_Arms_of_the_United_Kingdom_%28HM_Government%29.svg
 quid_pro_quo_N	en/5/5e/PapalPolitics2.JPG
 quiddity_2_N	commons/0/05/Benozzo_Gozzoli_004a.jpg
 quiescence_2_N	commons/5/5c/Power_sleep_2mm.svg
@@ -24738,8 +24733,7 @@ rubberneck_V	commons/6/66/Badin_Lake%2C_North_Carolina.jpg
 rubble_N	commons/7/7d/Demolition_waste.jpg
 rubicon_1_N	commons/3/32/Foce_rubicone_1_by_Stefano_Bolognini.JPG
 rubidium_N	commons/c/c9/Rb5.JPG
-ruble_1_N	commons/1/11/100000-rubles-Belarus-2000-f.jpg
-ruble_2_N	commons/1/11/100000-rubles-Belarus-2000-f.jpg
+ruble_2_N	commons/a/a0/2000_rubles_2017_obverse.jpg	commons/9/94/200_rubles_2017_reverse.jpg
 rubric_5_N	commons/d/d8/Missel_dominicain_MG_2117.jpg
 ruby_1_N	commons/f/f0/Ruby_gem.JPG	commons/c/c4/Cut_Ruby.jpg
 ruby_2_N	commons/4/49/Corundum-winza-17d.jpg
@@ -24833,7 +24827,12 @@ runway_4_N	commons/9/9f/Palm_Springs_International_Airport_photo_D_Ramey_Logan.j
 ruokolahti_PN	commons/1/1b/Ruokolahden_kirkko_2012_2.jpg
 ruotsinpyhtää_PN	commons/f/f7/Routsinpyhtaa1.JPG
 ruovesi_PN	commons/6/6c/Ruovesi_Hauptstrasse.jpg
-rupee_1_N	commons/4/48/Countries_that_use_the_rupee.png
+rupee_1_N	commons/f/f2/Shri-lanka3.jpg
+rupee_2_N	commons/e/e4/RupiaSeszelska1943.jpg
+rupee_3_N	commons/a/a9/Nepalese_Obverse_of_1000_%E2%82%A8_%282010%29_01.jpg
+rupee_4_N	commons/f/f5/Mauritius_-_1_Rupee_-_coin.jpg
+rupee_5_N	commons/8/84/PKR_Rs_1000.jpg
+rupee_6_N	commons/8/8c/India_1_R_2015%2C_obverse.jpg	commons/9/9a/5_Rupees_%28Obverse%29.jpg	commons/7/7c/India_new_10_INR%2C_MG_series%2C_2018%2C_obverse.jpg	commons/5/53/India_new_20_INR%2C_MG_series%2C_2019%2C_obverse.jpg	commons/3/3f/India_new_50_INR%2C_MG_series%2C_2018%2C_obverse.jpg	commons/d/d1/100_rs_note_obverse.jpg	commons/f/fa/India%2C_200_INR%2C_2018%2C_obverse.jpg	commons/2/2e/India_new_500_INR%2C_MG_series%2C_2016%2C_obverse.jpg	commons/0/07/India_new_2000_INR%2C_MG_series%2C_2016%2C_obverse.jpg
 rupert_PN	commons/8/89/Wilsontheatrerupertidaho.JPG
 rush_2_N	commons/9/96/Freud%27s_couch%2C_London%2C_2004_%282%29.jpeg
 rush_3_N	commons/b/b7/Schoenoplectus_lacustris_260605.jpg	commons/8/88/Juncus.conglomeratus.2.jpg
@@ -25193,7 +25192,9 @@ sansevieria_N	commons/f/f0/Jan_Moninckx06.jpg
 sanskrit_N	commons/6/65/The_word_%E0%A4%B8%E0%A4%82%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%AE%E0%A5%8D_%28Sanskrit%29_in_Sanskrit.svg
 santa_claus_PN	commons/4/42/MerryOldSanta.jpg	en/d/d9/Father_Christmas%2C_Tuck_Photo_Oilette_postcard_1919%2C_front.jpg
 santander_PN	commons/c/c7/El_Palacio_de_la_Magdalena_%282%29.jpg
-santiago_4_PN	commons/4/4b/Santiago_de_chile_collage.png
+santiago_1_PN	commons/5/5c/Monument_to_the_Heroes_of_the_Restoration1.JPG
+santiago_2_PN	commons/a/af/Stgo_de_Cuba_CF9A6089a.jpg
+santiago_3_PN	commons/4/4b/Santiago_de_chile_collage.png
 santo_domingo_PN	commons/f/fa/Santo_Domingo_montage.JPG
 santos_PN	commons/6/6f/Santos_Collage.png
 sap_1_N	commons/a/ad/Sokacityoffice.jpg
@@ -25440,7 +25441,7 @@ schedule_1_N	commons/0/00/Wikimania2007_everythings_a_wiki.jpg
 schedule_2_N	commons/0/00/Wikimania2007_everythings_a_wiki.jpg
 scheelite_N	commons/6/60/Scheelite-224167.jpg
 scheme_1_N	commons/f/f6/Planes_desde_la_carretera.jpg
-schilling_N	commons/7/74/SCHILLINGS.gif
+schilling_N	en/6/6b/Austrian_20-Schilling_note%2C_circa_1988.jpg	commons/5/50/Austria-coin-1992-20S-K%C3%A4rnten-RS.jpg
 schipperke_N	commons/5/58/Schipperke0001.jpg
 schist_N	commons/6/6f/Schist_detail.jpg
 schistosome_N	commons/7/75/Schistosoma_mansoni.jpg	commons/5/5f/Schistosoma_mansoni2.jpg
@@ -25830,7 +25831,6 @@ send_5_V	commons/0/05/View_of_Pratella_%28CE%29_%28cropped%29.jpg
 send_in_2_V	commons/0/05/View_of_Pratella_%28CE%29_%28cropped%29.jpg
 send_off_for_V2	commons/0/05/View_of_Pratella_%28CE%29_%28cropped%29.jpg
 send_out_for_V2	commons/0/05/View_of_Pratella_%28CE%29_%28cropped%29.jpg
-sene_N	commons/a/a2/Sena_people_geographical_distribution_in_Mozambique_Malawi_Zimbabwe.png
 senegal_PN	commons/f/fd/Flag_of_Senegal.svg
 senescence_1_N	commons/8/87/Nursing_home.JPG
 senescence_2_N	commons/8/87/Nursing_home.JPG
@@ -25845,7 +25845,6 @@ sense_organ_N	commons/8/82/Gray722.svg
 sensibility_1_N	commons/8/87/Emma_Hamilton...Stipple_engraving%2C_1789._Wellcome_L0075392.jpg
 sensibility_3_N	commons/8/87/Emma_Hamilton...Stipple_engraving%2C_1789._Wellcome_L0075392.jpg
 sensor_N	commons/2/27/Light_sensor.png
-sent_N	commons/f/f3/Cath%C3%A9drale_Saint-Pierre_de_Saintes%2C_Saintes%2C_Charente-Maritime%2C_France_-_panoramio.jpg
 sentence_1_N	commons/3/38/Free_Library_of_Philadelphia%2C_Lewis_E_170%2C_1r.jpg
 sentence_2_N	commons/6/64/Kafka_Das_Urteil_1916.jpg
 sentence_3_N	commons/6/64/Kafka_Das_Urteil_1916.jpg
@@ -26175,9 +26174,12 @@ shigellosis_N	commons/2/29/Shigella_stool.jpg
 shiitake_N	commons/6/64/Shiitakegrowing.jpg
 shildon_PN	commons/8/88/Shildon_Railway_Museum_-_geograph.org.uk_-_2538781.jpg
 shill_N	commons/2/2e/Quixo-panza.jpg	commons/0/0e/Biddle_decoy.png
-shilling_2_N	commons/5/59/1933_Scottish_Shilling.jpg
-shilling_3_N	commons/5/59/1933_Scottish_Shilling.jpg
-shilling_6_N	commons/5/59/1933_Scottish_Shilling.jpg	commons/9/97/British_shilling_1963_obverse.png
+shilling_1_N	en/c/ce/UgandanShillings1000.jpg
+shilling_2_N	commons/0/03/1000_tz_shillings_front.jpg
+shilling_3_N	commons/f/fe/Somshil5r.jpg
+shilling_4_N	commons/b/b6/KES0050v.jpg
+shilling_5_N	commons/9/97/British_shilling_1963_obverse.png
+shilling_6_N	commons/5/59/1933_Scottish_Shilling.jpg
 shimmer_1_V	commons/7/72/Glommerasten.JPG
 shimmy_2_N	commons/a/a5/Camisade_pu%C3%B1o_doble.jpg
 shimmy_3_N	commons/e/e8/Sheet_music_cover_-_EV%27RYBODY_SHIMMIES_NOW_%281918%29.jpg
@@ -28557,7 +28559,6 @@ sucker_7_N	commons/1/11/Pirul%C3%AD.jpg	commons/b/b5/Longnose_sucker.jpg	commons
 sucking_N	commons/0/02/Emmen%2C_shopping_mall_De_Weiert.JPG
 sucking_pig_N	commons/d/d4/Suckling_pig.jpg
 sucralfate_N	commons/d/d2/Sucralfate.png
-sucre_N	commons/f/fb/Bolivarian_Alliance_for_the_Peoples_of_Our_America_%28orthographic_projection%29_Without_Honduras.svg
 sucre_PN	commons/6/62/20170805_Bolivia_1214_Sucre_sRGB_%2826204168039%29.jpg
 sucrose_N	commons/1/1a/Saccharose2.svg
 suction_1_N	commons/e/ed/Pain_MTR_20110619_14.jpg
@@ -29196,7 +29197,7 @@ tang_4_N	commons/8/84/Tangs_2012_0281.jpg
 tang_5_N	commons/8/84/Tangs_2012_0281.jpg
 tang_6_N	commons/8/84/Tangs_2012_0281.jpg
 tang_7_N	commons/8/84/Tangs_2012_0281.jpg
-tanga_2_PN	commons/1/19/Tanga_aerial_view.JPG	commons/b/b1/Pinagbuyutan_Private_Beach.jpg
+tanga_2_PN	commons/1/19/Tanga_aerial_view.JPG
 tangelo_1_N	commons/a/a4/Minneola_fruit_3.jpg
 tangelo_2_N	commons/a/a4/Minneola_fruit_3.jpg	commons/0/07/Uniq_Fruit_from_Jamaica.jpg
 tangency_2_N	commons/0/0e/Afghanistan_Badakhshan_Kishim_district_location.PNG
@@ -29670,7 +29671,6 @@ thaw_3_N	commons/7/77/KAS-Bonitz%2C_Peter-Bild-15535-1.jpg	commons/3/38/Tauwette
 the_hague_PN	commons/8/8f/Den_Haag_Scheveningen_Kurhaus_02.jpg
 theatre_1_N	commons/7/71/Palais_Garnier._December_5%2C_2010.jpg
 theatre_2_N	commons/4/4e/Bernhardt_Hamlet2.jpg
-thebe_N	commons/1/1b/Thebe.jpg	commons/5/5d/Thebes%2C_Illinois_Courthouse.jpg
 theca_1_N	commons/4/4e/Anther01.jpg
 theca_2_N	commons/4/4e/Anther01.jpg
 thecodont_N	commons/d/da/Rutiodon_validus_21DB.jpg
@@ -31643,13 +31643,13 @@ vicegerent_N	commons/3/30/Antonio_Moro_-_Willem_I_van_Nassau.jpg
 vicenza_PN	commons/b/b4/Collage_Vicenza.jpg
 vichyssoise_N	commons/a/a5/Vichyssoise.jpg
 victimizer_1_N	commons/7/79/Schuld_%28ZDF%29.png
-victoria_1_PN	commons/e/e3/Queen_Victoria_by_Bassano.jpg	commons/b/b5/Victorias_Milling_Co.JPG
-victoria_2_PN	commons/e/e3/Queen_Victoria_by_Bassano.jpg	commons/b/b5/Victorias_Milling_Co.JPG
-victoria_3_PN	commons/e/e3/Queen_Victoria_by_Bassano.jpg	commons/b/b5/Victorias_Milling_Co.JPG	commons/e/e6/Africa_Zambezi_Relief_Location_Map.jpg
-victoria_4_PN	commons/e/e3/Queen_Victoria_by_Bassano.jpg	commons/b/b5/Victorias_Milling_Co.JPG
-victoria_5_PN	commons/e/e3/Queen_Victoria_by_Bassano.jpg	commons/b/b5/Victorias_Milling_Co.JPG
-victoria_6_PN	commons/e/e3/Queen_Victoria_by_Bassano.jpg	commons/b/b5/Victorias_Milling_Co.JPG
-victoria_7_PN	commons/e/e3/Queen_Victoria_by_Bassano.jpg	commons/b/b5/Victorias_Milling_Co.JPG
+victoria_1_PN	commons/e/e3/Queen_Victoria_by_Bassano.jpg
+victoria_2_PN	commons/2/2b/Berlin_Siegess%C3%A4ule_8245.jpg
+victoria_3_PN	commons/1/13/Cataratas_Victoria%2C_Zambia-Zimbabue%2C_2018-07-27%2C_DD_16-20_PAN.jpg	commons/e/e6/Africa_Zambezi_Relief_Location_Map.jpg
+victoria_4_PN	commons/4/48/Goingtovic.jpg
+victoria_5_PN	commons/7/7d/Victoria_%28Seychelles%29.jpg
+victoria_6_PN	commons/0/08/Flag_of_Victoria_%28Australia%29.svg
+victoria_7_PN	commons/e/e9/VICTORIA-BC-COLLAGE.jpg
 victorian_1_A	commons/1/19/Altar_della_Patria_September_2015-1.jpg
 victorian_2_A	commons/1/19/Altar_della_Patria_September_2015-1.jpg
 victorian_3_A	commons/1/19/Altar_della_Patria_September_2015-1.jpg
@@ -32879,9 +32879,7 @@ yellowhammer_2_N	commons/6/62/Goldammer_Emberiza_citrinella.jpg
 yellowlegs_N	commons/e/ee/Casa_do_Concello_de_Mazaricos-Galiza.jpg	commons/a/a9/Common_Greenshank_%26_Common_Redshank.jpg
 yellowthroat_N	commons/d/d8/Common_Yellowthroat_by_Dan_Pancamo.jpg	commons/e/ed/Commonyellowthroat159.jpg
 yemen_PN	commons/8/89/Flag_of_Yemen.svg
-yen_1_N	commons/0/05/Yens_007.jpg
-yen_2_N	commons/0/05/Yens_007.jpg	commons/c/c2/JPY_coins_2.png
-yen_V	commons/0/05/Yens_007.jpg
+yen_2_N	commons/c/c2/JPY_coins_2.png
 yeomanry_2_N	commons/b/ba/A_Zemessardze_%28Latvian_National_Guardsman%29_guards_the_battalion_tactical_operations_center_during_the_Strong_Guard_2016.jpg
 yeovil_PN	commons/d/d5/Yeovil_County_Court.jpg
 yep_Interj	commons/9/93/Yes_concert.jpg
@@ -33049,3 +33047,60 @@ iud_N	commons/5/5b/IUD_with_scale.jpg
 pakistan_PN	commons/3/32/Flag_of_Pakistan.svg
 mongolia_1_PN	commons/4/4c/Flag_of_Mongolia.svg
 benin_PN	commons/0/0a/Flag_of_Benin.svg
+chicago_1_PN	commons/3/38/Chicago_montage1.jpg
+newcastle_PN	commons/5/5c/Newcastle-upon-Tyne-bridges-and-skyline_cropped.jpg
+hamilton_5_PN	commons/7/73/Collage_of_Tourist_Spots_in_Hamilton%2C_Ontario%2C_Canada.jpg
+djibouti_1_PN	commons/2/26/Djibcapital.jpg
+leu_1_N	commons/2/2b/MD_100_lei_av.jpg	commons/8/85/MD_1_leu_av.jpg
+leu_2_N	commons/9/9b/50_lei._Romania%2C_2005_a.jpg
+lira_1_N	en/e/ec/Maltese_banknotes.jpg
+lira_2_N	commons/a/a7/New_Turkish_Lira-set.jpg
+punt_1_N	en/3/3b/Irish_pound_%28reverse%29.png
+boliviano_N	commons/f/f5/Bolivianos_moneda.png
+ouguiya_N	en/f/f5/Ouguiya_1.png	en/b/b0/Ouguiya_2.png
+chetrum_N	en/8/87/Bhutanese_coin.jpg
+naira_N	commons/9/94/Nigeria_naira.jpg
+kobo_N	commons/5/5e/Nigeria%27s_kobo.JPG
+deutschmark_N	commons/8/8d/100_Mark_%28O%29.jpg
+mark_7_N	commons/8/8d/100_Mark_%28O%29.jpg
+zloty_N	en/9/95/200zl_r.jpg
+zaire_1_N	commons/7/7d/10_New_Zaire_note_%28back%29.jpg	commons/2/2e/10_New_Zaire_note_%28front%29.jpg
+yuan_1_N	en/2/22/Renminbi_banknotes.JPG
+tugrik_1_N	commons/8/8b/20000_Togrog.jpg
+taka_N	en/9/94/1000_Bangladeshi_taka_Obs_2011.jpg
+sucre_N	commons/c/c6/1000%2BSucres%2BEcuador%2B1996.jpg	en/a/ac/SucresWiki.jpg
+rupiah_N	commons/3/30/Indonesian_Rupiah_%28IDR%29_banknotes.png
+som_1_N	commons/d/da/100_000_SUM_REVERS.png
+som_2_N	commons/5/5d/5000_som_2009_ob.jpg
+hryvnia_N	commons/d/d9/50_hryvnia_2004_front.jpg
+manat_1_N	en/c/c5/Turkmenistan_007.jpg
+manat_2_N	commons/0/05/1_manat_obv.jpg
+litas_N	commons/7/73/LTU_200_Litu_1997_obv.jpg
+kroon_N	commons/3/30/EST-coins-overview.jpg
+rouble_N	commons/a/a0/2000_rubles_2017_obverse.jpg	commons/9/94/200_rubles_2017_reverse.jpg
+ringgit_N	en/5/5c/New_Malaysian_Currency_Design.jpg
+riel_N	commons/6/63/Cambriel.svg	commons/0/0f/Cambodia_2002_50r_obverse.jpg	commons/0/0d/Cambodia_2002_50r_reverse.jpg
+cordoba_N	commons/e/ee/Nicaragua_1_Cordoba_banknote_of_1941.jpg
+stotinka_N	commons/4/4a/Bulgaria_20_stotinka.JPG
+leone_N	commons/9/9c/500Leone.png
+kyat_N	en/0/0b/1_Kyat.jpg	en/3/36/1000_Kyat_.jpg
+kwacha_1_N	commons/b/b1/Zambia_P-54_O.jpg
+kwacha_2_N	commons/e/e2/MalawiK.png
+krone_1_N	commons/e/e5/Norwegian_coins_as_of_2015.png
+krone_2_N	en/7/7a/DKK_100_obverse_%282009%29.jpg
+krona_1_N	en/d/d5/Collage_SEK.png
+krona_2_N	commons/0/08/Iceland_500_Kronur_banknote_of_1928.jpg
+inti_N	en/2/2a/Jose_Gabriel_Condorcanqui_TupacAmaru_II.jpg
+gulden_1_N	commons/9/98/Surinam_100_Awers.JPG
+gulden_2_N	commons/0/00/Netherlands-1850-proof.jpg
+at_2_N	commons/9/94/10_Laotian_att_in_1980_Obverse.jpg	commons/d/d9/10_Laotian_att_in_1980_Reverse.jpg
+pengo_1_N	commons/3/33/HUP_100MB_1946_obverse.jpg
+dobra_N	en/7/71/50%2C000Dobra.jpg
+drachma_2_N	commons/d/d1/NBG_banknote-1912.jpg
+dram_6_N	commons/d/d1/NBG_banknote-1912.jpg
+real_2_N	commons/4/4f/1_Brazil_real_First_Obverse_01.jpg	commons/5/5c/1_Brazil_real_First_Reverse.jpg	commons/c/c4/2_Brazil_real_First_Obverse.jpg	commons/1/12/2_Brazil_real_First_Reverse.jpg	commons/a/a0/5_Brazil_real_First_Obverse.jpg	commons/9/91/5_Brazil_real_First_Reverse.jpg
+bolivar_1_N	commons/f/fa/BsS.jpg
+balboa_1_N	commons/d/d5/50_centavos_de_balboa.jpg	commons/a/af/50_centavos_de_balboa_-_reverso.jpg
+baht_N	en/0/08/Thai_money.jpg
+austral_N	en/f/fd/Autral_50000_A.jpg	en/0/09/Autral_50000_B.jpg
+afghani_1_N	commons/8/8a/Afgh%C4%81nest%C4%81n_paper_money.JPG

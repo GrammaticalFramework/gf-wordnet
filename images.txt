@@ -1376,7 +1376,6 @@ arnold_2_PN	commons/5/50/Benedict_Arnold._Copy_of_engraving_by_H._B._Hall_after_
 aroma_2_N	commons/0/03/Benzene_resonance_structures.png	commons/0/0a/Perfume_shelf_536pix.jpg
 aromatherapy_N	commons/c/c3/Aromatas.JPG
 arose_V2	commons/d/d5/Sorge_%28Harz%29_in_HZ.png
-arouse_V	commons/9/9f/Aydin_in_Turkey.svg
 arquebus_1_N	commons/8/8b/Harquebus_%28PSF%29.png
 arrack_1_N	commons/1/11/Arak_with_water_and_ice.jpg	commons/1/1b/Bottlesofarrack.jpg	commons/a/a5/Montage_of_Arak.png
 arrangement_5_N	commons/c/c9/Fliegende_Hollander_Wagner_Sousa_25.jpg
@@ -1751,10 +1750,8 @@ avocet_N	commons/c/c5/Pied_Avocet_Recurvirostra_avosetta.jpg	commons/1/1a/Black-
 avoid_3_V2	commons/6/67/Barleria_siamensis.jpg
 avoirdupois_1_N	commons/9/9c/200_-_gram_balance_scales.jpg
 avowal_N	commons/1/12/Confessions_Rousseau_Aldus_P028.jpg
-awake_1_A	commons/e/ec/Ten-meter-long_plasma_cell.png	commons/3/3e/Rodberget38d.jpg
-awake_2_A	commons/e/ec/Ten-meter-long_plasma_cell.png	commons/3/3e/Rodberget38d.jpg
-awake_V	commons/9/9f/Aydin_in_Turkey.svg	commons/e/ec/Ten-meter-long_plasma_cell.png
-awaken_2_V2	commons/9/9f/Aydin_in_Turkey.svg
+awake_1_A	commons/3/3e/Rodberget38d.jpg
+awake_2_A	commons/3/3e/Rodberget38d.jpg
 award_3_N	commons/d/d9/Mall_culture_jakarta59.jpg
 away_11_Adv	commons/b/b0/Scaphium_macropodum.jpg
 awe_V2	commons/1/1a/HIV-budding-Color.jpg
@@ -9297,7 +9294,7 @@ egg_2_N	commons/5/54/Adolphe_Millot_oeufs-fixed.jpg
 egg_2_V2	commons/2/29/Jiri_Paroubek_egg_attack.jpg	commons/a/a5/Different_color_of_egg_yolk.jpg
 egg_cup_1_N	commons/0/0f/2007-11-12EierbecherGelbmit_braunem_Ei01.jpg
 egg_on_V2	commons/2/29/Jiri_Paroubek_egg_attack.jpg
-egghead_N	commons/9/9f/Aydin_in_Turkey.svg	commons/b/bf/AdlaiEStevenson1900-1965.jpg
+egghead_N	commons/b/bf/AdlaiEStevenson1900-1965.jpg
 eggnog_N	commons/a/a7/Eggnog2.jpg	commons/0/03/GBRRompopeVCarbon.JPG
 eggplant_1_N	commons/7/76/Solanum_melongena_24_08_2012_%281%29.JPG
 eggplant_2_N	commons/7/76/Solanum_melongena_24_08_2012_%281%29.JPG
@@ -28404,8 +28401,6 @@ stub_5_N	commons/4/44/Spicara_smaris_2.jpg
 stubble_1_N	commons/f/f5/Stoppie_With_Mountain_Bike.jpg
 stubble_2_N	commons/f/f5/Stoppie_With_Mountain_Bike.jpg
 stucco_N	commons/2/27/Architecture121.JPG
-stud_1_V2	commons/9/9f/Aydin_in_Turkey.svg
-stud_2_V2	commons/9/9f/Aydin_in_Turkey.svg
 stud_farm_N	commons/0/04/Murrurundi_NSW_2.JPG
 studentMasc_1_N	commons/6/62/Karenko_girls_high.jpg
 studentFem_1_N	commons/6/62/Karenko_girls_high.jpg

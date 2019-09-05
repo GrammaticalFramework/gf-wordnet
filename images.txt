@@ -1441,7 +1441,6 @@ artless_3_A	commons/4/4f/Anser_albifrons_30050.JPG
 artlessness_1_N	commons/f/f7/MatoGrossodoSul_Municip_Inocencia.svg
 artwork_N	commons/3/38/Denis_Bourez_-_British_Museum%2C_London_%288747049029%29_%282%29.jpg
 arum_2_N	commons/8/82/Xanthosoma_sagittifolium_at_Kadavoor.jpg	commons/5/53/Arum_palaestinum_flower.jpg
-as_Prep	commons/2/2d/Como_and_it%27s_lake.jpg
 asafetida_1_N	commons/5/50/Asafoetida2.jpg
 asana_N	commons/9/9b/Asanas_Composite.jpg
 asarabacca_N	commons/c/c3/Asarum_europaeum_170406.jpg
@@ -5992,8 +5991,9 @@ cohesiveness_1_N	commons/1/16/Simply_connected%2C_connected%2C_and_non-connected
 coho_2_N	commons/9/91/Oncorhynchus_keta.jpeg
 coif_1_N	commons/f/f6/Bradford_Industrial_Museum_073.jpg
 coif_2_N	commons/4/49/Hans_Holbein_the_Younger_Young_Woman_with_a_White_Coif_1541_LACMA_M44_2_9_2.jpg
-coiffeur_N	commons/6/60/Frisoerin_fcm.jpg
-coiffure_N	commons/4/44/Cartaz_Corte_de_Cabelo.jpg
+hairdresser_N	commons/6/60/Frisoerin_fcm.jpg
+hairstylist_N	commons/6/60/Frisoerin_fcm.jpg
+coiffure_N	commons/8/8a/Old_Chinese_woman_with_elaborate_hair_style._John_Thomson._China%2C_1869._The_Wellcome_Collection%2C_London.jpg
 coil_1_V	commons/d/d9/Merlet.jpg
 coil_2_V	commons/d/d9/Merlet.jpg
 coil_2_V2	commons/d/d9/Merlet.jpg
@@ -8876,13 +8876,12 @@ drill_4_N	commons/5/5c/Vaja_l%C3%A9gifot%C3%B3.jpg	commons/1/17/Tag_des_Sieges_1
 drill_5_V2	commons/8/83/Forino_%E2%80%93_Panorama_%282017%29.jpg
 drilling_1_N	commons/9/9f/Boring_bar_001.jpg
 drilling_2_N	commons/2/23/Percage_sineholing_mitis.jpg
-drink_1_V2	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg	commons/f/f3/Youngbrood_0005.jpg
-drink_2_V	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg	commons/f/f3/Youngbrood_0005.jpg
+drink_1_V2	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg
+drink_2_V	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg
 drink_3_N	commons/3/37/Nice_Cup_of_Tea.jpg
-drink_3_V	commons/f/f3/Youngbrood_0005.jpg
 drink_4_N	commons/3/37/Nice_Cup_of_Tea.jpg	commons/2/29/Pare_Watene_by_Gottfried_Lindauer_1878.jpg
-drink_4_V	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg	commons/f/f3/Youngbrood_0005.jpg	commons/e/e9/Bebe_-_MN_Gredos_-_02.jpg
-drink_5_V	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg	commons/f/f3/Youngbrood_0005.jpg	commons/e/e9/Bebe_-_MN_Gredos_-_02.jpg
+drink_4_V	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg	commons/e/e9/Bebe_-_MN_Gredos_-_02.jpg
+drink_5_V	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg	commons/e/e9/Bebe_-_MN_Gredos_-_02.jpg
 drinking_1_N	commons/2/2d/Nordkirchen-100415-12272-Trinkender.jpg
 drinking_2_N	commons/1/19/Drinkhoorn_roordahuizum.JPG
 drinking_fountain_N	commons/f/fe/Bubbler.jpg
@@ -9181,10 +9180,6 @@ eastbourne_PN	commons/3/3e/Eastbourne_Beach_-_geograph.org.uk_-_1582936.jpg
 easter_PN	commons/b/b2/Resurrection_%2824%29.jpg
 eastleigh_PN	commons/2/27/Old_Town_Hall_Eastleigh.JPG
 easygoingness_N	commons/f/f6/Challenge_vs_skill.svg
-eat_1_V	commons/2/2d/Como_and_it%27s_lake.jpg
-eat_2_V	commons/2/2d/Como_and_it%27s_lake.jpg
-eat_3_V2	commons/2/2d/Como_and_it%27s_lake.jpg
-eat_out_V	commons/2/2d/Como_and_it%27s_lake.jpg
 eating_N	commons/7/7e/Anopheles_stephensi.jpeg
 eating_apple_N	commons/8/8a/%C3%95una_k%C3%B5rtsi_varemed_20120831_by_Ahsoous.jpg
 eau_de_vie_N	commons/b/bd/Eaudeviebottles.jpg
@@ -10760,8 +10755,6 @@ flare_9_N	commons/0/06/US_Army_52253_Best_Warrior_At_Night.jpg	commons/4/43/Bott
 flash_2_N	commons/4/49/Blinkgla.jpg
 flash_4_N	commons/4/49/Blinkgla.jpg
 flash_7_N	commons/4/43/Bottle_Rockets.jpg
-flashbulb_1_N	commons/2/21/Macrogl_Stellat.jpg
-flashgun_N	commons/2/21/Macrogl_Stellat.jpg
 flashlight_N	commons/e/e4/LED_Flashlights.jpg
 flashpoint_2_N	commons/7/77/Hotspot%28geology%29-1.svg
 flashpoint_3_N	commons/e/e7/Flaming_cocktails.jpg
@@ -12947,8 +12940,7 @@ hair_4_N	commons/2/25/Gray945.png
 hair_dye_N	commons/d/d0/Haircoloring.jpg	commons/7/7d/Hair_colors.jpg
 hairball_1_N	commons/b/b6/Bezoare.jpg
 hairbrush_N	commons/3/39/Conair-brush.jpg
-haircut_1_N	commons/4/44/Cartaz_Corte_de_Cabelo.jpg
-haircut_2_N	commons/8/8a/Old_Chinese_woman_with_elaborate_hair_style._John_Thomson._China%2C_1869._The_Wellcome_Collection%2C_London.jpg
+haircut_1_N	commons/8/8a/Old_Chinese_woman_with_elaborate_hair_style._John_Thomson._China%2C_1869._The_Wellcome_Collection%2C_London.jpg
 hairnet_N	commons/2/25/Bundesarchiv_Bild_183-F0804-0015-001%2C_Schwarza%2C_finnische_Obersch%C3%BClerinnen.jpg
 hairpin_N	commons/a/a2/Bicycle_fork_labeled.svg	commons/3/35/Hair_pins_old.jpg
 hairstyle_1_N	commons/8/8a/Old_Chinese_woman_with_elaborate_hair_style._John_Thomson._China%2C_1869._The_Wellcome_Collection%2C_London.jpg
@@ -14433,7 +14425,6 @@ imago_1_N	commons/6/62/Cicada_molting_animated-2.gif
 imago_2_N	commons/6/62/Cicada_molting_animated-2.gif
 imam_1_N	commons/3/30/Allah1_no_honorific.png	commons/4/4f/Prayer_in_Cairo_1865.jpg
 imatra_PN	commons/f/f9/Imatrankoski_power_plant.jpg
-imbibe_3_V2	commons/f/f3/Youngbrood_0005.jpg
 imbricate_1_A	commons/f/fa/Sobreposta.jpg
 imbrication_N	commons/9/99/Hampton_stacks.JPG
 imbue_2_V2	commons/8/8b/Amaro%28UD%29Piazza.jpg	commons/f/f7/LocalAmares.svg	commons/7/79/2010_Dimos_Amariou.svg
@@ -16339,10 +16330,7 @@ lesbian_1_N	commons/6/6c/Sappho_and_Erinna_in_a_Garden_at_Mytilene.jpg
 lese_majesty_N	commons/e/ed/Newton_Bull_farts_G3.jpg
 lesotho_PN	commons/4/4a/Flag_of_Lesotho.svg
 less_CAdv	commons/e/e0/AZ_Alkmaar.svg
-lesson_1_N	commons/5/56/William-Adolphe_Bouguereau_%281825-1905%29_-_The_Difficult_Lesson_%281884%29.jpg	commons/8/80/Spb_nev_rybatskoye.svg
-lesson_2_N	commons/5/56/William-Adolphe_Bouguereau_%281825-1905%29_-_The_Difficult_Lesson_%281884%29.jpg
-lesson_3_N	commons/5/56/William-Adolphe_Bouguereau_%281825-1905%29_-_The_Difficult_Lesson_%281884%29.jpg
-lesson_4_N	commons/5/56/William-Adolphe_Bouguereau_%281825-1905%29_-_The_Difficult_Lesson_%281884%29.jpg
+lesson_1_N	commons/5/56/William-Adolphe_Bouguereau_%281825-1905%29_-_The_Difficult_Lesson_%281884%29.jpg
 lessor_N	commons/2/29/Powerful_landlord_in_chariot._Eastern_Han_25-220_CE._Anping%2C_Hebei.jpg
 lestijärvi_PN	commons/b/b5/Lestij%C3%A4rvi.sijainti.suomi.2008.svg
 let_1_PN	commons/d/d7/Flag_of_Lashkar-e-Taiba.svg
@@ -17019,7 +17007,7 @@ lumpenproletariat_N	commons/7/79/Marx_and_Engels.jpg
 lumpfish_N	commons/b/b6/Jielbeaumadier_poisson_gris_2_paris_2014.jpeg
 lumpsucker_N	commons/4/46/Cyclopterus_lumpus_2.JPG	commons/b/b6/Jielbeaumadier_poisson_gris_2_paris_2014.jpeg
 lunch_N	commons/b/b2/Lunch_at_DC_Public_Schools_on_2012-10-09.jpg
-lunch_V	commons/2/2d/Como_and_it%27s_lake.jpg	commons/f/f7/Dinant_reflected.jpg
+lunch_V	commons/f/f7/Dinant_reflected.jpg
 lunching_N	commons/7/77/Fiji_vs_Canada_RWC2007_cibi.jpg
 lunette_1_N	commons/2/2e/Rest-Pearce-Highsmith.jpeg	commons/2/28/Horses_2.jpg
 lunette_2_N	commons/2/28/Horses_2.jpg
@@ -17274,7 +17262,7 @@ major_domo_N	commons/7/7a/Un_maitre_d%27hotel_des_Deux_Magots%2C_Paris_25_Novemb
 make_23_V2	commons/1/11/17970001.JPG
 make_39_V3	commons/3/3a/GUISANDO%2C_%C3%81vila._Espa%C3%B1a-Spain.jpg
 make_out_7_V	commons/0/03/Lubim_Flag.gif	commons/d/df/Crkva_Ljubis.jpg
-make_out_V2V	commons/2/2d/Como_and_it%27s_lake.jpg	commons/b/b0/F_cursiva.gif
+make_out_V2V	commons/b/b0/F_cursiva.gif
 make_up_1_N	commons/e/e5/Grimma_Stadt.jpg
 make_up_1_V2	commons/0/0b/UZS500_1999_front.jpg
 make_up_2_N	commons/e/e5/Grimma_Stadt.jpg
@@ -25386,7 +25374,7 @@ scalp_1_V2	commons/2/25/Karl_Bodmer_-_Scalp_Dance_of_the_Minitarres_-_Google_Art
 scalp_2_V2	commons/2/25/Karl_Bodmer_-_Scalp_Dance_of_the_Minitarres_-_Google_Art_Project.jpg
 scalp_N	commons/2/25/Karl_Bodmer_-_Scalp_Dance_of_the_Minitarres_-_Google_Art_Project.jpg	commons/5/55/Layers_of_the_scalp_and_meninges.png
 scalpel_N	commons/9/92/Various_scalpels.png
-scalper_N	commons/f/f3/Youngbrood_0005.jpg	commons/9/9e/Eglise_de_Limas.jpg
+scalper_N	commons/9/9e/Eglise_de_Limas.jpg
 scaly_2_A	commons/d/dd/Blue-toungued_skink444.jpg
 scam_N	commons/0/04/A_Confidence_Trick_-_JM_Staniforth.png
 scamp_N	commons/4/47/Schedel%27sche_Weltchronik-Dog_head.jpg	commons/3/38/Bengel_in_WIL.svg
@@ -29871,13 +29859,10 @@ thumbtack_N	commons/a/a1/Brass_thumbtack.jpg
 thump_2_N	commons/4/47/Ayuntamiento_de_Batres.jpg
 thunder_1_N	commons/4/42/11.06.17_An_agricultural_Roller.JPG
 thunder_1_V	commons/0/05/Indiantava.jpg
-thunder_2_N	commons/9/98/Anvil_shaped_cumulus_panorama_edit_crop.jpg	commons/8/8e/%C3%9Cksik_puu_lumisel_v%C3%A4ljal_Triigi_k%C3%BClas%2C_Harjumaal.jpg
-thunder_3_N	commons/8/8e/%C3%9Cksik_puu_lumisel_v%C3%A4ljal_Triigi_k%C3%BClas%2C_Harjumaal.jpg
+thunder_2_N	commons/9/98/Anvil_shaped_cumulus_panorama_edit_crop.jpg
 thunder_3_V	commons/8/8f/Map_NL_-_Tynaarlo_-_Donderen.png
 thunder_4_V	commons/8/8f/Map_NL_-_Tynaarlo_-_Donderen.png
 thunderbird_N	commons/9/9c/Thunderbird_on_Totem_Pole.jpg
-thunderbolt_1_N	commons/a/a9/Epirus234bc.jpg
-thunderbolt_2_N	commons/a/a9/Epirus234bc.jpg
 thunderclap_1_N	commons/8/8e/%C3%9Cksik_puu_lumisel_v%C3%A4ljal_Triigi_k%C3%BClas%2C_Harjumaal.jpg
 thunderclap_2_N	commons/8/8e/%C3%9Cksik_puu_lumisel_v%C3%A4ljal_Triigi_k%C3%BClas%2C_Harjumaal.jpg
 thunderstorm_N	commons/8/82/Lightning_Pritzerbe_01_%28MK%29.jpg
@@ -30037,7 +30022,7 @@ tipper_2_N	commons/5/56/Thwaites_dumper_in_action_498_3.jpg
 tipperary_PN	commons/4/46/Tipperary_Main_Street.jpg
 tippet_N	en/4/48/Lewis_memin-tippet.jpg
 tipple_N	commons/1/15/Clarksburg_Fuel_Co_Tipple_1908.jpg
-tipple_V	commons/f/f3/Youngbrood_0005.jpg	commons/e/e9/Bebe_-_MN_Gredos_-_02.jpg	commons/1/15/Clarksburg_Fuel_Co_Tipple_1908.jpg
+tipple_V	commons/e/e9/Bebe_-_MN_Gredos_-_02.jpg	commons/1/15/Clarksburg_Fuel_Co_Tipple_1908.jpg
 tipple_V2	commons/1/15/Clarksburg_Fuel_Co_Tipple_1908.jpg
 tipstaff_N	commons/c/c6/BLW_Tipstaves_at_Bedford_Museum.jpg
 tiptoe_Adv	commons/5/50/PointeShoes.jpg
@@ -32931,7 +32916,7 @@ yr_N	commons/b/b5/V_cursiva.gif	commons/5/55/Aars_-_hovedgaden.JPG
 ystradgynlais_PN	commons/a/a7/Ystradgynlais_Town%2C_Junction.jpg
 ytterbium_N	commons/c/ce/Ytterbium-3.jpg
 yttrium_N	commons/1/19/Yttrium_sublimed_dendritic_and_1cm3_cube.jpg
-yuan_2_N	commons/9/96/Yuen_Dynasty_1294_-_Goryeo_as_vassal.png
+yuan_PN	commons/9/96/Yuen_Dynasty_1294_-_Goryeo_as_vassal.png
 yucca_N	commons/5/56/Yucca_filamentosa.jpg	commons/6/69/YukiTribe.jpg
 yugoslavia_2_PN	commons/e/e5/Flag_of_Yugoslavia_%281918%E2%80%931941%29.svg
 yukon_1_PN	commons/e/e2/Yukon_River%2C_Whitehorse_%2816209595096%29.jpg	commons/6/69/Flag_of_Yukon.svg
@@ -33065,7 +33050,7 @@ deutschmark_N	commons/8/8d/100_Mark_%28O%29.jpg
 mark_7_N	commons/8/8d/100_Mark_%28O%29.jpg
 zloty_N	en/9/95/200zl_r.jpg
 zaire_1_N	commons/7/7d/10_New_Zaire_note_%28back%29.jpg	commons/2/2e/10_New_Zaire_note_%28front%29.jpg
-yuan_1_N	en/2/22/Renminbi_banknotes.JPG
+yuan_N	en/2/22/Renminbi_banknotes.JPG
 tugrik_1_N	commons/8/8b/20000_Togrog.jpg
 taka_N	en/9/94/1000_Bangladeshi_taka_Obs_2011.jpg
 sucre_N	commons/c/c6/1000%2BSucres%2BEcuador%2B1996.jpg	en/a/ac/SucresWiki.jpg

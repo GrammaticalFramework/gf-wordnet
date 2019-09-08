@@ -1,6 +1,6 @@
 concrete ParseExtendBul of ParseExtend = 
   ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], NumeralBul - [num], PunctuationX ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralBul - [num], PunctuationX ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
 
 lin gen_Quant = DefArt ;
 
@@ -354,9 +354,9 @@ lin BaseImp x y =
       s  = \\p,gn => linCoord [] ! conj.sep ++ ss.s!p!gn!conj.sep ++ conj.s ++ ss.s!p!gn!4
       } ;
 
-lin ProgrVPSlash vp = vp ** {
+{-lin ProgrVPSlash vp = vp ** {
       s   = \\_ => vp.s ! Imperf
-      } ;
+      } ;-}
 
 }
 	

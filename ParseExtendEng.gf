@@ -1,6 +1,6 @@
 concrete ParseExtendEng of ParseExtend = 
   ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], NumeralEng - [num], PunctuationX **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralEng - [num], PunctuationX **
   open Prelude, ResEng, MorphoEng, GrammarEng, (E = ExtraEng), Coordination in {
 
 lin gen_Quant = {
@@ -218,11 +218,11 @@ lin BaseImp = twoTable2 CPolarity ImpForm ;
     ConsImp = consrTable2 CPolarity ImpForm comma ;
     ConjImp conj ss = conjunctDistrTable2 CPolarity ImpForm conj ss ;
 
-lin ProgrVPSlash vp = 
+{-lin ProgrVPSlash vp = 
       insertObj (\\a => vp.ad ! a ++ vp.prp ++ vp.p ++ vp.s2 ! a) (predAux auxBe) **
         { c2 = vp.c2 ;
           gapInMiddle = vp.gapInMiddle ;
           missingAdv = vp.missingAdv
-        } ;
+        } ;-}
 
 }

@@ -1,7 +1,7 @@
 concrete ParseExtendFin of ParseExtend = 
   ExtendFin - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralFin - [num], PunctuationX **
- open MorphoFin, ResFin, ParadigmsFin, StemFin, (G=GrammarFin), Prelude in {
+ open MorphoFin, ResFin, ParadigmsFin, StemFin, (G=GrammarFin), (S=SyntaxFin), Prelude in {
 
 lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
@@ -49,5 +49,10 @@ lin
 lin whatSgFem_IP, whatSgNeut_IP = G.whatSg_IP ;
 
 lin that_RP = G.IdRP ;
+
+-- AR 2019-09-12
+lin gen_Quant = S.a_Quant ;
+lin IdRP = S.that_RP ;
+----lin ReflVPSlash vpslash rnp = 
 
 }

@@ -1,17 +1,14 @@
 a_la_carte_Adv	commons/6/6f/Steak_%C3%A0_la_carte.jpg
-aa_2_N	commons/d/d4/AA_-_Medalj.jpg
 aachen_PN	commons/1/16/KaiserKarlsGymnasium.jpg
 aardvark_N	commons/8/8a/Porc_formiguer.JPG	commons/3/3b/Myresluger2.jpg
 aardwolf_N	commons/0/0b/Proteles_cristatus1.jpg
 aarhus_PN	commons/8/8b/Montage_of_Aarhus_-_view_from_city_hall%2C_city_hall_by_night%2C_isbjerget%2C_park_alle.jpg
-aba_1_N	commons/1/1a/Rengoonie%27s_Mosque_1.jpg
-aba_2_N	commons/1/1a/Rengoonie%27s_Mosque_1.jpg
 abaca_1_N	commons/5/5f/COLLECTIE_TROPENMUSEUM_Het_verpakken_van_manilla-hennep_%28musa_textilis%29_in_balen_op_onderneming_Kali_Telepak_Besoeki_Oost-Java_TMnr_10011535.jpg
 abaca_2_N	commons/4/4c/AmCyc_Manila_Hemp.jpg
 abacus_2_N	commons/e/ea/Boulier1.JPG
 abalone_N	commons/3/33/LivingAbalone.JPG
 abarticulation_N	commons/3/39/Ankledislocation.JPG
-abattis_1_N	commons/a/ad/Bacon_jam.JPG	commons/8/84/Abatis_%28PSF%29.png
+abattis_1_N	commons/8/84/Abatis_%28PSF%29.png
 abaya_N	commons/8/8c/Hijab_Niqab_Muslim_Veil.jpg	commons/5/5a/Bahia_Municip_Lencois.svg
 abbess_N	commons/d/de/Anonymous_Abbess_Eufemia_Szaniawska.jpg
 abbey_1_N	commons/1/1b/S%C3%A9nanque_06.JPG
@@ -92,8 +89,7 @@ acarid_N	commons/8/8d/Trombidium_holosericeum_%28aka%29.jpg
 acarine_N	commons/8/8d/Trombidium_holosericeum_%28aka%29.jpg
 acarus_N	commons/a/a5/8-Acarus_siro_male_dors_DIC40_BMOC_01-0903-003.jpg
 acceleration_3_N	commons/7/7d/Gravity_gravita_grave.gif
-accelerator_3_N	commons/3/3f/Fermilab.jpg
-accelerator_4_N	commons/6/6f/Enhancer_Nucleotide_Sequence.svg
+accelerator_4_N	commons/3/3f/Fermilab.jpg
 accentor_N	commons/7/72/Dunnock_crop2.jpg
 acceptance_1_N	commons/1/14/Indira_Gandhi_accepting_gift_in_New_Delhi.jpeg
 acceptance_7_N	commons/1/14/Indira_Gandhi_accepting_gift_in_New_Delhi.jpeg
@@ -154,8 +150,8 @@ acidification_N	commons/b/b1/Origins_of_acid_rain.svg
 acidify_2_V	commons/b/b1/Origins_of_acid_rain.svg
 acinus_1_N	commons/9/99/Gray1105.png
 acinus_2_N	commons/9/99/Gray1105.png
-ackee_1_N	commons/1/1d/Akita_montage.jpg
-ackee_2_N	commons/c/cf/Ackee_001.jpg	commons/1/1d/Akita_montage.jpg
+ackee_1_N	commons/c/cf/Ackee_001.jpg
+ackee_2_N	commons/c/cf/Ackee_001.jpg
 acne_N	commons/f/f0/Acne_vulgaris_on_a_very_oily_skin.jpg
 acolyte_N	commons/f/f7/Solomon_Abraham_The_Acolyte.jpg
 aconite_N	commons/f/ff/Aconitum_variegatum_110807f.jpg
@@ -8914,12 +8910,7 @@ ducat_N	commons/d/d9/Gold-Dukaten-KFJ.jpg
 duce_N	commons/1/1f/Flag_of_Prime_Minister_of_Italy_%281927-1943%29.svg
 duchy_A	commons/3/3a/Voivodeships_of_Poland.svg
 duchy_N	commons/4/42/Duke_%26_Duchess_of_Scania_1905.jpg
-duck_1_N	commons/b/b7/Female_mallard_nest_-_natures_pics_edit2.jpg	commons/b/bf/Bucephala-albeola-010.jpg	commons/d/d8/Tunnel_of_ducks.jpg	commons/4/45/Panorama_de_Patos-27-06-17.jpg	commons/3/33/%D7%91%D7%A8%D7%95%D7%95%D7%96%D7%99%D7%99%D7%9D-01.jpg
-duck_1_V	commons/f/f0/Scansano%2C_porta_del_paese.JPG
-duck_2_N	commons/b/b7/Female_mallard_nest_-_natures_pics_edit2.jpg
-duck_2_V2	commons/f/f0/Scansano%2C_porta_del_paese.JPG
-duck_3_N	commons/b/b7/Female_mallard_nest_-_natures_pics_edit2.jpg	commons/b/bf/Bucephala-albeola-010.jpg	commons/4/45/Panorama_de_Patos-27-06-17.jpg
-duck_4_N	commons/b/b7/Female_mallard_nest_-_natures_pics_edit2.jpg	commons/4/45/Panorama_de_Patos-27-06-17.jpg
+duck_1_N	commons/b/b7/Female_mallard_nest_-_natures_pics_edit2.jpg	commons/b/bf/Bucephala-albeola-010.jpg	commons/d/d8/Tunnel_of_ducks.jpg	commons/3/33/%D7%91%D7%A8%D7%95%D7%95%D7%96%D7%99%D7%99%D7%9D-01.jpg
 duckbill_A	commons/f/f2/Platypus.jpg
 duckpins_N	commons/8/8e/Kegeln-Kugel.jpg
 duckweed_N	commons/7/7b/Kleine_Wasserlinse_%28Entengr%C3%BCtze%29.JPG
@@ -23409,12 +23400,6 @@ raptorial_1_A	commons/3/35/MantisLegGBMNH.jpg
 raptorial_2_A	commons/3/35/MantisLegGBMNH.jpg
 rapture_1_N	commons/5/53/Teachings_of_Jesus_40_of_40._the_rapture._one_in_the_bed._Jan_Luyken_etching._Bowyer_Bible.gif
 rapture_2_N	commons/2/2f/Rom%2C_Santa_Maria_della_Vittoria%2C_Die_Verz%C3%BCckung_der_Heiligen_Theresa_%28Bernini%29.jpg	commons/3/3b/Giuseppe_Bazzani_-_The_Ecstasy_of_St_Therese_-_WGA01527.jpg
-rare_1_A	commons/e/ef/Maestramadre10.JPG	commons/7/7a/Rare_HQ.jpg
-rare_2_A	commons/e/ef/Maestramadre10.JPG	commons/c/cc/E_Min_Tower.JPG	commons/7/7a/Rare_HQ.jpg
-rare_3_A	commons/e/ef/Maestramadre10.JPG	commons/7/7a/Rare_HQ.jpg
-rare_4_A	commons/e/ef/Maestramadre10.JPG	commons/7/7a/Rare_HQ.jpg
-rare_5_A	commons/e/ef/Maestramadre10.JPG	commons/7/7a/Rare_HQ.jpg
-rare_6_A	commons/e/ef/Maestramadre10.JPG	commons/7/7a/Rare_HQ.jpg
 rarebit_N	commons/5/5e/Rarebit_loz.png
 rarefaction_N	commons/6/62/Onde_compression_impulsion_1d_30_petit.gif
 rascal_1_N	commons/6/64/Illu_stomach2.jpg
@@ -32112,8 +32097,6 @@ wicket_gate_N	commons/a/a2/PopePalaceAvignonDoor.jpg	commons/f/fd/Wettinerbrunne
 wicket_keeper_N	commons/6/6f/Cricket_wicket_keeper.jpg
 wickford_PN	commons/2/2b/Wickford_sign_1.jpg
 wickiup_1_N	commons/e/e7/Terme_di_diocleziano%2C_tombe_a_capanna%2C_01.JPG
-widen_1_V2	commons/4/48/Ensanche_-_eixample_-_Barcelona.jpg
-widen_2_V2	commons/4/48/Ensanche_-_eixample_-_Barcelona.jpg
 wideness_1_N	commons/6/65/Mapa_municipal_de_Anchuras.png
 wideness_2_N	commons/5/5c/Isabel_II_y_su_Estado_Mayor%2C_a_caballo.jpg
 widgeon_1_N	commons/5/53/Mareca_penelope_kuribo_cropped.jpg	commons/4/40/Mareca_penelope_2.jpg

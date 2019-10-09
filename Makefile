@@ -137,3 +137,4 @@ install:
 	mkdir -p $(INSTALL_PATH)
 	install build/gfo/WordNet*.gfo     $(INSTALL_PATH)
 	install build/gfo/ParseExtend*.gfo $(INSTALL_PATH)
+	install build/gfo/Punctuation*.gfo $(INSTALL_PATH)

@@ -41,10 +41,19 @@ sub extract_page {
   while(<F>){
     while(/\((\d+),[^']+'((?:[^'\\]|\\.)*)'[^)]+/g) {
       my ($p, $m) = ($1,$2);
+      next if $m =~ /^$/;
+      next if $m =~ /^\s*$/;
+      next if $m =~ /wikipedia:|Image:|talk:|\.jpg|\.png|Module:|Project:|MediaWiki:|user:|Help:|User:|Wikisource:|Wikipedia:|Special:|File:template:|Template:|Category:/i;
+
       $m =~ s/\\'/'/g;
       $m =~ s/\\"/"/g;
       $m =~ s/_/ /g;
       $m =~ s/–/-/g;
+      $m =~ s/Author:|Portal://g;
+      $m =~ s/\([^)]+\)//;
+      $m =~ s/\s+/ /g;
+      $m =~ s/\s+$//g;
+
       $d{$p}{$lang}=$m;
       $dc++;
     }
@@ -67,10 +76,18 @@ sub extract_langlinks {
     while(/\((\d+),'([^']+)','((?:[^'\\]|\\.)*)'/g) {
       my ($p, $lang, $m) = ($1,$2, $3);
       next if $m =~ /^$/;
+      next if $m =~ /^\s*$/;
+      next if $m =~ /wikipedia:|Image:|talk:|\.jpg|\.png|Module:|Project:|MediaWiki:|user:|Help:|User:|Wikisource:|Wikipedia:|Special:|File:template:|Template:|Category:/i;
+
       $m =~ s/\\'/'/g;
       $m =~ s/\\"/"/g;
       $m =~ s/_/ /g;
       $m =~ s/–/-/g;
+      $m =~ s/Author:|Portal://g;
+      $m =~ s/\([^)]+\)//;
+      $m =~ s/\s+/ /g;
+      $m =~ s/\s+$//g;
+
       $d{$p}{$lang}=$m;
       $dc++;
     }

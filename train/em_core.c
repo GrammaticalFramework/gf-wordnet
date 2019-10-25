@@ -426,8 +426,8 @@ em_new_dep_tree(EMState* state, DepTree* parent,
 
 	if (dtree->index > state->max_tree_index)
 		state->max_tree_index = dtree->index;
-	if (dtree->index > state->max_tree_choices)
-		state->max_tree_choices = dtree->index;
+	if (dtree->index+1 > state->max_tree_choices)
+		state->max_tree_choices = dtree->index+1;
 
 	SenseChoice* choice = &dtree->choices[0];
 

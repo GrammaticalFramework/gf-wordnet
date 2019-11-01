@@ -3121,7 +3121,7 @@ cassia_3_N	460587;Cinnamomum_cassia;commons/c/c4/Cinnamomum_aromaticum_-_K%C3%B6
 cassiterite_N	399328;Cassiterite;commons/f/fa/4447M-cassiterite.jpg
 cassock_N	331200;Cassock;commons/f/fb/Cassock_priest_french_african.jpg
 cassowary_N	59166;Cassowary;commons/5/54/Southern_Cassowary_7071.jpg	448891;Casuariidae;commons/b/b0/Darica_Cossowary_00975.jpg
-cast_1_N	31813447;Mayan_(band);commons/2/25/MaYaN_2.jpg	1589270;Casting_(fishing);commons/3/39/Fly_Casting_Workshop_at_the_Golden_Gate_Park_casting_pools_%283431879413%29.jpg
+cast_1_N	1428218;Casting_(performing_arts);commons/8/80/Casting_Cats.jpg
 castaway_2_N	3318183;Castaway;en/e/e2/Rescue_by_seamen_of_USNS_Passumpsic.jpg
 caste_2_N	7257;Caste;commons/1/13/Basor_Dalit_caste.jpg
 caste_3_N	7257;Caste;commons/1/13/Basor_Dalit_caste.jpg
@@ -9369,7 +9369,7 @@ indianMasc_2_N	14745;Indian;en/4/41/Flag_of_India.svg
 indiana_1_PN	21883857;Indiana;commons/d/d2/Indiana_in_United_States.svg
 indiana_2_PN	1074577;Robert_Indiana;commons/e/e9/BobIndianaRestingMaine_%28cropped%29.jpg
 indianapolis_PN	57707;Indianapolis;commons/6/6f/Indianapolis_Montage_2.jpg
-indies_PN	23041;Puerto_Rico;commons/2/28/Flag_of_Puerto_Rico.svg
+indies_PN	76488;East_Indies;commons/4/4f/Map_of_the_East_Indies_by_Jodocus_Hondius_in_1606.jpg
 indignation_N	8843988;Indignation;commons/8/84/C._Darwin%2C_On_the_Expression_of_the_Emotions_Wellcome_L0031428.jpg
 indigo_1_N	15250;Indigo;commons/d/d8/Indian_indigo_dye_lump.jpg
 indigo_3_N	15250;Indigo;commons/d/d8/Indian_indigo_dye_lump.jpg
@@ -21321,7 +21321,7 @@ zirconium_N	34422;Zirconium;commons/9/92/Zirconium_crystal_bar_and_1cm3_cube.jpg
 zither_1_N	194819;Zither;commons/0/0d/2012-03-04-Trachselwald_%28Foto_Dietrich_Michael_Weidmann%29_002.JPG
 ziti_N	1266369;Ziti;commons/9/99/Baked_Ziti.jpg
 zodiac_1_N	34411;Zodiac;commons/d/de/Ecliptic_path.jpg
-zodiac_2_N	1243483;Zodiac_P.I.;commons/1/12/Venice_ast_sm.jpg
+zodiac_2_N	34411;Zodiac;commons/5/5e/Zodiac_%28PSF%29.png
 zombie_1_N	9810476;Zombie;commons/5/56/Zombies_NightoftheLivingDead.jpg
 zone_2_N	8782181;Geographical_zone;commons/a/aa/Annual_Average_Temperature_Map.jpg
 zoning_N	56313;Zoning;commons/4/4c/GUP_Skopje_2002_mal.jpg

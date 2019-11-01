@@ -379,18 +379,20 @@ gfwordnet.onclick_cell = function (cell) {
 		var lex_def = this.lex_ids[lex_id];
 
 		for (var i in lex_def.images) {
-			var path = lex_def.images[i].split("/");
+			var path = lex_def.images[i][1].split("/");
 			var name = path[path.length-1];
 			path.splice(0,0,"https://upload.wikimedia.org/wikipedia");
+			var a = node("a", {href: "https://www.wikipedia.org/wiki/"+lex_def.images[i][0], target: "_blank"}, []);
+			details.appendChild(a);
 			if (name.endsWith(".svg")) {
-				details.appendChild(
+				a.appendChild(
 				  node("img",{"class": "thumbnail"
 					         ,style: "width: 300px"
 							 ,src: path.join("/")}));
 			} else {
 				path.splice(2,0,"thumb");
 				path.push("300px-"+name);
-				details.appendChild(
+				a.appendChild(
 				  node("img",{"class": "thumbnail"
 							 ,src: path.join("/")}));
 			}

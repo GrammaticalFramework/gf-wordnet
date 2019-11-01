@@ -144,7 +144,7 @@ parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
     parseVector = map read . words :: String -> [Double]
 
 parseImages ls = 
-  Map.fromList [case tsv l of {(id:urls) -> (id,urls)} | l <- ls]
+  Map.fromList [case tsv l of {(id:urls) -> (id,map (\s -> case cosv s of {[_,pg,im] -> (pg,im); _ -> error l}) urls)} | l <- ls]
 
 accumCounts m (lang,status) = Map.alter (Just . add) lang m
   where
@@ -184,3 +184,9 @@ tsv "" = []
 tsv cs =
   let (x,cs1) = break (=='\t') cs
   in x : if null cs1 then [] else tsv (tail cs1)
+
+cosv :: String -> [String]
+cosv "" = []
+cosv cs =
+  let (x,cs1) = break (==';') cs
+  in x : if null cs1 then [] else cosv (tail cs1)

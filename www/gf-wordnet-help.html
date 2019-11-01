@@ -3,8 +3,136 @@
 	<head>
 		<title>GF WordNet</title>
 		<link rel="stylesheet" type="text/css" href="gf-wordnet.css">
+		<style>
+		p, li {
+		  max-width: 600pt;
+		  text-align: justify
+		}
+		
+		body {
+		  font-size: 15pt;
+		}
+		</style>
 	</head>
 	<body>
-		<img src="status.svg" style="width: 400pt"/>
+		<h1>GF WordNet</h1>
+		<p>GF WordNet is a large interlingual lexicon created by combining
+		resources such as 
+		<a href="https://wordnet.princeton.edu">WordNet</a>,
+		<a href="https://panlex.org">PanLex</a> and
+		<a href="https://www.wikipedia.org/">Wikipedia</a>, plus 
+		several translation dictionaries and morphological lexicons.
+		The lexicon consists of abstract lemmas such as <tt>apple_1_N</tt>
+		which are mapped for each language to an inflection
+		table. The table contains all possible forms for the most
+		appropriate verbalization of the lemma.
+		</p>
+
+		<p>Like in WordNet, the abstract lemmas are organized in synsets
+		which group together lemmas with similar meaning. The synsets,
+		on the other hand, are oganized into a semantic graph copied 
+		from WordNet.
+		</p>
+
+		<p>The lexicon is compatible with the 
+		<a href="http://www.grammaticalframework.org/lib/doc/synopsis/index.html">GF's Resource Grammars Library</a>.
+		Moreover, the grammar can be used to render 
+		the examples in the WordNet glosses to different languages.
+		We use the examples to ensure that each abstract lemma 
+		is mapped into an appropriate translation for all languages.
+		Since the translations of the examples are generated from
+		a single interlingual abstract syntax tree, it is also
+		possible to compute the alignment between the translations.
+		We show the alignment when the user clicks on a word
+		from the examples.</p>
+
+		<p>When there is a corresponding Wikipedia article for
+		a lemma, then we also show the tumbnail image from the
+		corresponding article. Clicking on the image opens
+		the article itself in a new tab.</p>
+
+		<p>The lexicon is a work in progress. The status of each verbalization
+		is shown as follows:</p>
+		<ul>
+			<li>If the verbalization is underlined with a <span class="unchecked">yellow line</span>,
+			 then the translation comes from the equivalent synset
+			for the corresponding language. This means that the chosen
+			word has the right meaning but it still might not be the best
+			fitting translation.</li>
+			<li>If the verbalization is underlined with a <span class="guessed">red line</span>
+			 then the translation comes from PanLex. This means that the chosen word
+			 is a possible translation, but it might be for another
+			 sense. When we add a new language, we use the already existing
+			 languages as a guide to find the best translation in 
+			 the target language. Basically we look up all translations in PanLex
+			 from each existing language to the target language. After that
+			 we pick the translation which fits as many of the existing languages
+			 as possible. Often this is enough to also do sense
+			 diambiguation but mistakes do happen.</li>
+			<li>If the verbalization is striked through with
+			a <span class="changed">black line</span> then someone
+			has already changed the verbalization, but the
+			grammar is not recompiled yet and you see
+			the old version.</li>
+			<li>If there is no special marking then the verbalization
+			has already been validated.</li>
+		</ul>
+			
+		<p>The lexicon contains about 100 000 lemmas, however, only
+		for English all lemmas have a verbalization. The relative lexicon
+		sizes for different languages as well as the current lamma statuses
+		are summarized in the diagram bellow:
+		<br>
+		<center><img src="status.svg" style="width: 90%"/></center>
+		<br>
+		here the green colour corresponds to verbalizations that have
+		already been validated.</p>
+		
+		<p>The following is a list of all resources in addition to 
+		Wikipedia and PanLex that have been used in the creation of the current lexicon:<p>
+		<table class="result">
+			<tr><th>Language</th><th>Resource</th><th>Source</th><th>Info</th></tr>
+
+			<tr><td rowspan="3">Bulgarian</td><td><a href="http://www.bultreebank.org/" target="_blank">BulTreeBank Wordnet</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr><td><a href="https://sourceforge.net/projects/bgoffice" target="_blank">BG Office</a></td><td><a href="https://sourceforge.net/projects/bgoffice" target="_blank">BG Office</a></td><td>Morphology</td></tr>
+			<tr><td>SA Dictionary</td><td><a href="https://sourceforge.net/projects/kbedic" target="_blank">SourceForge</a></td><td>Translations</td></tr>
+
+			<tr><td rowspan="2">Catalan</td><td rowspan="2"><a href="http://www.talp.upc.edu/demo-detail/440/MRC" target="_blank">Multilingual&nbsp;Central&nbsp;Repository</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr>                                                                                          <td><a href="http://nlp.lsi.upc.edu/freeling/index.php/node/1" target="_blank">FreeLing</a></td><td>Morphology</td></tr>
+
+			<tr><td>Chinese</td><td><a href="http://compling.hss.ntu.edu.sg/cow/" target="_blank">Chinese Open Wordnet</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+
+			<tr><td>Dutch</td><td><a href="http://wordpress.let.vupr.nl/odwn/">Open Dutch WordNet</a></td><td><a href="http://wordpress.let.vupr.nl/odwn/" target="_blank">Computational Lexicology Lab</a></td><td>Translations+Morphology</td></tr>
+
+			<tr><td rowspan="2">English</td><td><a href="https://wordnet.princeton.edu" target="_blank">Princeton WordNet</a></td><td><a href="https://wordnet.princeton.edu" target="_blank">Princeton</a> and <a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr>                            <td>Oxford Advanced Learner's Dictionary</td><td></td><td>Morphology</td></tr>
+
+			<tr><td rowspan="2">Estonian</td><td><a href="https://www.cl.ut.ee/ressursid/teksaurus/" target="_blank">Estonian WordNet</a></td><td><a href="https://www.cl.ut.ee/ressursid/teksaurus/" target="_blank">Estonian WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr>                             <td><a href="https://github.com/GF-Estonian/GF-Estonian" target="_blank">GF-Estonian</a></td><td><a href="https://github.com/GF-Estonian/GF-Estonian" target="_blank">GF-Estonian</a></td><td>Morphology</td></tr>
+
+			<tr><td rowspan="2">Finnish</td><td><a href="http://www.ling.helsinki.fi/en/lt/research/finnwordnet/" target="_blank">FinnWordNet</a></td><td><a href="http://www.ling.helsinki.fi/en/lt/research/finnwordnet/" target="_blank">FinnWordNet</a> and <a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr>                            <td><a href="https://www.kotus.fi/en/corpora_and_other_material/lexical_corpora" target="_blank">Kotus</a></td><td><a href="https://www.kotus.fi/en/corpora_and_other_material/lexical_corpora" target="_blank">Kotus</a></td><td>Morphology</td></tr>
+
+			<tr><td rowspan="2">Italian</td><td><a href="http://multiwordnet.fbk.eu/english/home.php">MultiWordNet</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr>                            <td><a href="http://nlp.lsi.upc.edu/freeling/index.php/node/1" target="_blank">FreeLing</a></td><td><a href="http://nlp.lsi.upc.edu/freeling/index.php/node/1" target="_blank">FreeLing</a></td><td>Morphology</td></tr>
+			
+			<tr><td rowspan="2">Portuguese</td><td><a href="https://github.com/arademaker/openWordnet-PT">OpenWN-PT</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr>                               <td><a href="https://github.com/LFG-PTBR/MorphoBr" target="_blank">MorphoBr</a></td><td><a href="https://github.com/LFG-PTBR/MorphoBr" target="_blank">MorphoBr</a></td><td>Morphology</td></tr>
+			
+			<tr><td rowspan="2">Slovenian</td><td><a href="http://lojze.lugos.si/darja/research/slownet/">SloWNet</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr>                              <td><a href="http://www.slovenscina.eu/sloleks" target="_blank">SLOLEKS</a></td><td><a href="http://www.slovenscina.eu/sloleks" target="_blank">SLOLEKS</a></td><td>Morphology</td></tr>
+			
+			<tr><td>Spanish</td><td><a href="http://www.talp.upc.edu/demo-detail/440/MRC" target="_blank">Multilingual&nbsp;Central&nbsp;Repository</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+
+			<tr><td rowspan="3">Swedish</td><td><a href="https://spraakbanken.gu.se/swe/resurs/wordnet-saldo" target="_blank">WordNet-SALDO</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+			<tr>                            <td><a href="https://www2.lingfil.uu.se/ling/swn.html" target="_blank">Svenskt OrdNät</a></td><td><a href="https://www2.lingfil.uu.se/ling/swn.html">Svenskt OrdNät</a></td><td>Translations/Senses</td></tr>
+			<tr>                            <td><a href="https://spraakbanken.gu.se/eng/resource/saldo" target="_blank">SALDO</a></td><td><a href="https://spraakbanken.gu.se/eng/resource/saldo" target="_blank">SALDO</a></td><td>Morphology</td></tr>
+
+			<tr><td>Thai</td><td><a href="http://th.asianwordnet.org/" target="_blank">Thai Wordnet</a></td><td><a href="http://compling.hss.ntu.edu.sg/omw" target="_blank">Open Multilingual WordNet</a></td><td>Translations/Senses</td></tr>
+
+			<tr><td rowspan="2">Turkish</td><td><a href="https://github.com/olcaytaner/TurkishWordNet-CPP" target="_blank">KeNet</a></td><td><a href="https://github.com/olcaytaner/TurkishWordNet-CPP" target="_blank">KeNet</a></td><td>Translations/Senses</td></tr>
+			<tr><td><a href="https://github.com/ahmetaa/zemberek-nlp" target="_blank">Zamberek</a></td><td><a href="https://github.com/ahmetaa/zemberek-nlp" target="_blank">Zamberek</a></td><td>Morphology</td></tr>
+		</table>
+		</p>
 	</body>
 </html>

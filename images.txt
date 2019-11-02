@@ -518,7 +518,6 @@ amoebic_1_A	43815710;Amoeba;commons/f/ff/Amoeba_collage.jpg
 amorousness_1_N	1525643;Falling_in_love;commons/b/bd/Albert_Schr%C3%B6der_Musikalische_Unterhaltung_1885.jpg
 amorpha_N	1687769;Amorpha;commons/9/9d/Amorpha_fruiticosa.jpg
 amorphophallus_N	61665;Amorphophallus;commons/c/c0/Titan-arum1web.jpg
-amount_3_N	106304;Graduated_cylinder;commons/c/c5/Different_types_of_graduated_cylinder-_10ml%2C_25ml%2C_50ml_and_100_ml_graduated_cylinder.jpg
 amoxicillin_N	2885;Amoxicillin;commons/0/02/Amoxicillin.svg
 amp_2_N	89229;Adenosine_monophosphate;commons/c/c4/Adenosinmonophosphat_protoniert.svg
 ampere_1_N	772;Ampere;commons/3/3d/Amperemeter_hg.jpg
@@ -571,8 +570,8 @@ anatoxin_N	1860157;Toxoid;commons/4/40/Ruby_Hirose.jpg
 anchor_1_N	1358;Anchor;commons/d/d1/Kotwica_SS_Pozna%C5%84.JPG
 anchorage_3_PN	7004698;Anchorage,_Alaska;commons/4/4a/Anchorage_on_an_April_evening.jpg
 anchorite_N	273424;Anchorite;commons/f/f3/Anchorites_Skipton.JPG
-anchovy_1_N	26577371;Stolephorus;commons/8/81/XRF-Stolephorus_indicus.jpg	23476857;Anchovy;commons/0/0f/Anchovy_closeup.jpg
-anchovy_2_N	26577371;Stolephorus;commons/8/81/XRF-Stolephorus_indicus.jpg	23476857;Anchovy;commons/0/0f/Anchovy_closeup.jpg	18949335;European_anchovy;commons/9/9f/Ansjovis.jpg
+anchovy_1_N	23476857;Anchovy;commons/0/0f/Anchovy_closeup.jpg
+anchovy_2_N	23476857;Anchovy;commons/0/0f/Anchovy_closeup.jpg	18949335;European_anchovy;commons/9/9f/Ansjovis.jpg
 anchusa_N	2020280;Anchusa;commons/6/67/Anchusa_officinalis_16-06-2006_19.44.06.JPG
 ancientness_N	51320;Ancient_history;commons/6/6c/Ancient_Figurine%2C_National_Museum%2C_Addis_Ababa%2C_Ethiopia_%282130296832%29.jpg
 ancona_PN	52612;Ancona;commons/6/64/AnkonPanorama.jpg
@@ -859,7 +858,6 @@ arcade_2_N	237122;Arcade_(architecture);commons/e/e6/Great_Mosque_of_Kairouan_ga
 arcadian_N	2180;Arcadius;commons/4/41/Arcadius_Istanbul_Museum.PNG
 arcella_N	22701910;Arcella;commons/0/01/Mikrofoto.de-arcella_3.jpg
 arch_1_N	52070;Arch;commons/e/e4/Arch_illustration.svg
-arch_2_N	52070;Arch;commons/e/e4/Arch_illustration.svg
 arch_3_N	52070;Arch;commons/e/e4/Arch_illustration.svg
 arch_4_N	52070;Arch;commons/e/e4/Arch_illustration.svg
 archaeopteryx_1_N	2995;Archaeopteryx;commons/9/9d/Archaeopteryx_lithographica_%28Berlin_specimen%29.jpg
@@ -2071,9 +2069,7 @@ bock_N	4119;Bock;commons/e/ef/Winterbock2.jpg
 bodega_N	47419;Convenience_store;commons/0/04/Convenience_store_interior.jpg	239196;Grocery_store;commons/1/13/Supermarkt.jpg
 bodice_N	1352936;Bodice;commons/6/67/Bodice_%28PSF%29.jpg
 bodmin_PN	4858;Bodmin;commons/5/57/Bodmin_Public_Rooms_-_geograph.org.uk_-_1064189.jpg
-body_11_N	5339220;Automobile_repair_shop;commons/6/6b/2008-04-17_1989_Saab_900_Turbo_getting_new_tyres.jpg
 bodybuilding_N	4360;Bodybuilding;commons/0/05/Arnold_Schwarzenegger_1974.jpg
-bodywork_1_N	5339220;Automobile_repair_shop;commons/6/6b/2008-04-17_1989_Saab_900_Turbo_getting_new_tyres.jpg
 bodywork_2_N	5339220;Automobile_repair_shop;commons/6/6b/2008-04-17_1989_Saab_900_Turbo_getting_new_tyres.jpg
 boer_N	4971;Boer;commons/d/d2/Boerfamily1886.jpg
 bog_N	147341;Bog;commons/9/94/Kemeru_Bog.jpg
@@ -2371,7 +2367,6 @@ bridle_road_N	6238099;Bridle_path;commons/3/31/Hillingdon_bridleway.JPG
 bridlington_PN	350329;Bridlington;commons/8/80/Bridlington_South_Sands_-_geograph.org.uk_-_845210.jpg
 bridport_PN	374498;Bridport;commons/b/b6/Bridport%2C_Dorset_-_geograph.org.uk_-_47461.jpg
 briefcase_N	1527344;Briefcase;commons/d/d9/ANTORINI_Executive_Leather_Briefcase.jpg
-brier_2_N	424725;Cirsium;en/f/fc/Thistles-2.jpg	1567060;Carduus;commons/8/8a/Carduus_crispus_-_Keila.jpg
 brier_3_N	305717;Rosa_dumalis;commons/e/e4/RosaDumalis1UME.jpg	1034735;Rosa_rubiginosa;commons/9/94/Pink_Rose2.jpg
 brig_PN	15609203;Brig-Glis;commons/5/5c/Brig-Schweiz.jpg
 brigand_N	423530;Highwayman;commons/8/85/Asalto_al_coche.jpg
@@ -2444,7 +2439,7 @@ brown_1_A	38902;Brown;commons/b/bd/Rembrandt_van_Rijn_-_Self-Portrait_-_Google_A
 brownie_3_N	497794;Chocolate_brownie;commons/6/68/Chocolatebrownie.JPG
 brownstone_1_N	1648366;Brownstone;commons/a/a4/HarlemBrownstones.JPG
 brownstone_2_N	1648366;Brownstone;commons/a/a4/HarlemBrownstones.JPG
-browse_1_N	99421;Coppicing;commons/7/74/Coppice_stool.jpg	51668;Shoot;commons/4/4a/Cucumber_leaf.jpg
+browse_1_N	51668;Shoot;commons/4/4a/Cucumber_leaf.jpg
 broxburn_PN	387476;Broxburn;commons/5/54/Union_Canal%2C_Broxburn_-_geograph.org.uk_-_862710.jpg
 bruce_1_PN	2257142;David_Bruce_(microbiologist);commons/e/e8/Davidbruce.JPG
 bruce_2_PN	734886;Bruce;commons/3/35/Robert_The_Bruce_Marischal_College.JPG
@@ -3056,7 +3051,6 @@ carpentry_N	189274;Carpentry;commons/f/fc/Fotothek_df_n-10_0000828.jpg
 carpet_1_N	264268;Carpet;commons/e/e7/Wollteppich_1.jpg	13630021;Ryijy;commons/3/3c/Keuruun_ryijy.jpg
 carpet_beater_N	3282728;Carpet_beater;commons/8/86/Huisvrouwengymnastiek.jpg
 carpet_sweeper_N	42977625;Scrubber_(brush);commons/7/70/US_Navy_100116-N-1688B-064_ailors_aboard_the_Nimitz-class_aircraft_carrier_USS_Dwight_D._Eisenhower_%28CVN_69%29_scrub_dirt_from_the_flight_deck._Dwight_D._Eisenhower.jpg	3264897;Carpet_sweeper;commons/4/41/Carpet_sweeper.png
-carpetbag_N	303326;Suitcase;commons/2/2d/Samsonite_Pro-DLX_4_Rolling_Tote_16.4_Inch_Black.jpg
 carpetbagger_N	491908;Carpetbagger;commons/e/e3/Carpetbagger.jpg
 carport_1_N	1111491;Carport;commons/f/f3/Carport_In_Front_Of_Garages.jpg
 carrack_1_N	878537;Carrack;commons/3/35/Medieval_carrack_-_detail_by_Pieter_Bruegel_the_Elder.jpg
@@ -3249,7 +3243,6 @@ ceftazidime_N	1994705;Ceftazidime;commons/9/9e/Ceftazidime.svg
 ceftriaxone_N	989186;Ceftriaxone;commons/6/6d/Ceftriaxone-skeletal.svg
 cefuroxime_N	1159557;Cefuroxime;commons/b/bc/Cefuroxime.svg
 ceibo_N	2437062;Erythrina_crista-galli;commons/7/76/Erythrina_crista-galli2.jpg
-ceilidh_N	1738568;Ball_(dance_party);commons/8/87/Wilhelm_Gause_Hofball_in_Wien.jpg
 ceiling_1_N	844811;Ceiling;commons/e/ef/Ravenna%2C_basilica_di_San_Vitale_%28036%29.jpg
 celandine_1_N	212595;Ficaria_verna;commons/0/0f/Flowers_%282425723494%29_cropped.jpg
 celandine_2_N	212595;Ficaria_verna;commons/0/0f/Flowers_%282425723494%29_cropped.jpg	1700024;Chelidonium_majus;commons/8/8c/Chelidonium_majus_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-033.jpg
@@ -3408,7 +3401,6 @@ chancroid_N	402041;Chancroid;commons/c/c2/Chancroid_lesion_haemophilus_ducreyi_P
 chandelier_N	614700;Chandelier;commons/f/f8/GreenRoomChandelier.JPG
 chandelle_N	8354779;Chandelle;commons/3/32/Chandelle.jpg
 chandler_1_PN	25663;Raymond_Chandler;en/b/bc/RaymondChandlerPromoPhoto.jpg
-chandlery_2_N	27008;Ship;commons/7/72/Container_ship_Reecon_Whale_on_Black_Sea_near_Constan%C8%9Ba_Romania.jpg
 changchun_PN	250126;Changchun;commons/0/0e/Changchun_Montage_2017.png
 changeling_2_N	396412;Changeling;commons/0/0f/F%C3%BCssli_-_Der_Wechselbalg_-_1780.jpeg
 changer_1_N	6490640;Money_changer;commons/3/38/Changeur_juif_-_Tunisie_-_avant_1910.jpg
@@ -4608,7 +4600,7 @@ coverall_N	1273359;Boilersuit;commons/f/fa/Boilersuit2.jpg
 cowardice_N	165119;Cowardice;commons/c/cb/Cowardly_lion2.jpg
 cowbell_N	396024;Cowbell_(instrument);commons/4/46/Koebel.jpg
 cowbird_N	2008140;Shiny_cowbird;commons/0/03/Shiny_cowbird_%28Molothrus_bonariensis%29_male.JPG	1428324;Cowbird;commons/f/f6/Molothrus_ater1.jpg
-cowboy_1_N	167744;Cowboy;commons/d/d1/HerdQuit.jpg
+cowboy_2_N	167744;Cowboy;commons/d/d1/HerdQuit.jpg
 cowcatcher_N	360820;Pilot_(locomotive);commons/0/06/1911_Baldwin_2-8-0_Steam_at_Texas_Transportation_museum_3.jpg
 cowdenbeath_PN	469850;Cowdenbeath;commons/7/7c/Cowdenbeath_High_Street.jpg
 cowes_PN	352551;Cowes;commons/3/3a/Buildings_in_Cowes_as_seen_from_esplanade.jpg
@@ -5076,7 +5068,6 @@ dance_hall_N	1203937;Dance_hall;commons/0/0a/%22Hovey%27s_Dance_Hall_at_Clifton%
 dandelion_N	19230414;Taraxacum;commons/4/4f/DandelionFlower.jpg	10783290;Taraxacum_officinale;commons/b/b2/Taraxacum_officinale_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-135.jpg
 dandruff_2_N	393023;Dandruff;commons/f/f5/Dandruff01.jpg
 dandy_1_N	8859;Dandy;commons/9/97/Dandys_1830.jpg
-dangle_V	53313;Vitaceae;commons/d/d9/Grapes03.jpg
 daniel_1_PN	17181248;Daniel_(biblical_figure);commons/f/f1/Daniellion.jpg
 daniel_3_PN	7343842;Daniel;commons/f/f1/Daniellion.jpg
 danish_1_N	8227;Danish_language;commons/d/de/Codex_Holmiensis_CE_1350.jpg
@@ -5835,7 +5826,6 @@ dronabinol_N	25566420;Dronabinol;commons/a/a8/Cannabis_leaf.svg
 drone_1_N	979064;Drone_(bee);commons/7/74/Drone_bee_%2832-image_macro_stack%29.jpg
 drone_4_N	58900;Unmanned_aerial_vehicle;commons/b/b0/MQ-9_Reaper_in_flight_%282007%29.jpg
 dronfield_PN	443444;Dronfield;commons/7/7d/Dronfield_High_Street.01.jpg
-drop_13_V	53313;Vitaceae;commons/d/d9/Grapes03.jpg
 drop_1_N	41068;Drop_(liquid);commons/b/bd/Water_drop_animation_enhanced_small.gif
 droshky_1_N	13865321;Droshky;commons/6/6f/Dorozka_Aleksander_Or%C5%82owski_1.png
 drosophila_N	9032;Drosophila;commons/c/cb/Drosophila_pseudoobscura-Male.png	173204;Drosophila_melanogaster;commons/9/95/Drosophila_melanogaster_Proboscis.jpg	1408022;Drosophilidae;commons/2/22/Drosophila.jpg
@@ -7268,9 +7258,8 @@ freight_2_N	28362;Freight_transport;commons/3/39/Shipping_routes_red_black.png
 freight_train_N	2234123;Rail_freight_transport;commons/1/19/WCML_freight_train.jpg
 freighter_N	786056;Cargo_ship;commons/7/7e/Colombo.Express.wmt.jpg
 freightliner_N	2234123;Rail_freight_transport;commons/1/19/WCML_freight_train.jpg
-french_A	10597;French_language;commons/f/f6/New-Map-Francophone_World.svg
-fresco_1_N	16224;Jonah;commons/f/fe/Sistine_jonah.jpg
-fresco_2_N	16224;Jonah;commons/f/fe/Sistine_jonah.jpg
+fresco_1_N	11144;Fresco;commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg
+fresco_2_N	11144;Fresco;commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg
 freshener_N	1082976;Air_freshener;commons/f/f4/Febreze_air_fresheners.JPG
 freshet_N	1818327;Freshet;commons/9/9c/Ouareau_jps0029.jpg
 freshman_1_N	11541500;Freshman;commons/7/72/1920_Locust_yearbook_p._095_%28Freshman%29.jpg
@@ -8736,7 +8725,7 @@ highroad_N	1396050;Arterial_road;commons/9/9e/PageMillRoad.png
 highway_N	1396050;Arterial_road;commons/9/9e/PageMillRoad.png
 highwayman_N	423530;Highwayman;commons/8/85/Asalto_al_coche.jpg
 hijab_1_N	68301;Hijab;commons/e/e4/Female_hijab_in_Islam.jpg
-hike_1_N	854046;Backpacking_(wilderness);commons/2/20/Backpacking_in_Grand_Teton_NP-NPS.jpg	6719478;Caminata;commons/7/79/Caminata_Val_Tidone.jpg	147313;Hiking;commons/f/fc/Huxley_River_swing_bridge.jpg
+hike_1_N	147313;Hiking;commons/f/fc/Huxley_River_swing_bridge.jpg
 hill_1_N	1408983;Hill;commons/1/1d/Bacin_zari_2015.jpg
 hill_2_N	2421260;Terp;commons/f/f7/Hallig_Hooge_2005.jpg	1408983;Hill;commons/1/1d/Bacin_zari_2015.jpg
 hill_billy_N	14011;Hillbilly;commons/7/70/HatfieldClan.jpg
@@ -13473,7 +13462,7 @@ overcast_2_N	6446739;Overcast;commons/2/2f/Overcast_Mehamn.jpg	2600038;Multifunc
 overcast_3_N	6446739;Overcast;commons/2/2f/Overcast_Mehamn.jpg	2600038;Multifunctional_Utility/Logistics_and_Equipment_vehicle;commons/1/1e/Unmanned_MULE_platform_basic_configurations.jpg
 overcast_4_N	6446739;Overcast;commons/2/2f/Overcast_Mehamn.jpg	2600038;Multifunctional_Utility/Logistics_and_Equipment_vehicle;commons/1/1e/Unmanned_MULE_platform_basic_configurations.jpg
 overcast_A	6446739;Overcast;commons/2/2f/Overcast_Mehamn.jpg
-overcoat_2_N	339769;Coat_(clothing);commons/8/8e/FalatJulian.PortretAntoniegoWodzickiego.1900.ws.jpg
+overcoat_1_N	339769;Coat_(clothing);commons/8/8e/FalatJulian.PortretAntoniegoWodzickiego.1900.ws.jpg
 overdose_N	313009;Drug_overdose;commons/c/c8/Woodstock_festival_medical.jpg
 overdraft_N	3238808;Overdraft;commons/e/e6/Overdraft_-_Punch_cartoon_-_Project_Gutenberg_eText_16113.png
 overdrive_2_N	6325194;Distortion_(music);commons/5/5d/Boss_turbopedal_used.jpg
@@ -20819,7 +20808,6 @@ wellington_2_PN	33804;Wellington;commons/0/0c/Wellington_montage_2.jpg
 wells_PN	13459;H._G._Wells;commons/4/4b/H.G._Wells_by_Beresford.jpg
 welsh_1_N	2030193;Welsh_people;commons/a/a9/Flag_of_Wales_%281959%E2%80%93present%29.svg
 welsh_2_N	33545;Welsh_language;commons/a/a9/Flag_of_Wales_%281959%E2%80%93present%29.svg
-welsh_A	33545;Welsh_language;commons/a/a9/Flag_of_Wales_%281959%E2%80%93present%29.svg
 welshman_N	2030193;Welsh_people;commons/a/a9/Flag_of_Wales_%281959%E2%80%93present%29.svg
 welshpool_PN	480604;Welshpool;commons/3/36/Welshpool_Town_Hall.jpg
 welwitschia_N	68073;Welwitschia;commons/9/9f/Welwitschia_at_Ugab_River_basin.jpg

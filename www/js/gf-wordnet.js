@@ -50,7 +50,22 @@ gfwordnet.set_access_token = function(access_token,result) {
 	this.popup     = null;
 }
 
-gfwordnet.search = function (selection, input, result) {
+gfwordnet.populate_domains = function (domains_table) {
+	function errcont(text,code) { }
+	function extract_domains(domains) {
+		var thead = domains_table.getElementsByTagName("THEAD")[0];
+		thead.appendChild(tr(th(text("Domains"))));
+
+		var tbody = domains_table.getElementsByTagName("TBODY")[0];
+		tbody.style.height = "400px";
+		for (var i = 0; i < domains.length; i++) {
+			tbody.appendChild(tr(td([node("input", {type: "checkbox"}),text(domains[i])])));
+		}
+	}
+	gfwordnet.sense_call("?list_domains",bind(extract_domains),errcont);
+}
+
+gfwordnet.search = function (selection, input, domains, result) {
 	if (input == "")
 		return;
 
@@ -74,10 +89,16 @@ gfwordnet.search = function (selection, input, result) {
 	function extract_senses(senses) {
 		var index = 1;
 
-		var tbody = result.getElementsByTagName("TBODY")[0];
+		var result_tbody  = result.getElementsByTagName("TBODY")[0];
+		var domains_tbody = domains.getElementsByTagName("TBODY")[0];
+
+		var domains_map = {};
+		var domains_row = null;
 
 		for (var i in senses) {
-			tbody.appendChild(tr(node("td",{colspan: 2 + selection.langs_list.length + (gfwordnet.can_select ? 1 : 0)},[text(index+". "+senses[i].gloss)]))); index++;
+			result_tbody.appendChild(tr(node("td",{colspan: 2 + selection.langs_list.length + (gfwordnet.can_select ? 1 : 0)},[text(index+". "+senses[i].gloss)])));
+			index++;
+
 			for (var lex_id in senses[i].lex_ids) {
 				gfwordnet.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
 				gfwordnet.lex_ids[lex_id].synonyms = senses[i].lex_ids;
@@ -94,17 +115,30 @@ gfwordnet.search = function (selection, input, result) {
 						checked = false;
 					} else if (gfwordnet.lex_ids[lex_id].lex_defs[lang][1] != "checked") {
 						checked = false;
-						var td = row[gfwordnet.selection.langs[lang].index];
-						td.classList.add(gfwordnet.lex_ids[lex_id].lex_defs[lang][1]);
+						var cell = row[gfwordnet.selection.langs[lang].index];
+						cell.classList.add(gfwordnet.lex_ids[lex_id].lex_defs[lang][1]);
 						if (gfwordnet.access_token != null)
-							td.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					}
 				}
 
 				icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
 					                onclick: "gfwordnet.onclick_minus(event,this)"});
 				row[0].insertBefore(icon, row[0].firstChild);
-				tbody.appendChild(node("tr",{"data-lex-id": lex_id},row));
+				result_tbody.appendChild(node("tr",{"data-lex-id": lex_id},row));
+
+				for (var j in gfwordnet.lex_ids[lex_id].domains) {
+					var domain = gfwordnet.lex_ids[lex_id].domains[j];
+					if (!(domain in domains_map)) {
+						if (domains_row == null || domains_row.childElementCount > 5) {
+							domains_row = tr([]);
+							domains_tbody.appendChild(domains_row);
+						}
+						var cell = td([node("input", {type: "checkbox"}),text(domain)]);
+						domains_map[domain] = cell;
+						domains_row.appendChild(cell);
+					}
+				}
 			}
 		}
 
@@ -132,8 +166,15 @@ gfwordnet.search = function (selection, input, result) {
 			thead.appendChild(tr(row));
 		}
 
-		var tbody = result.getElementsByTagName("TBODY")[0];
-		clear(tbody);
+		var result_tbody = result.getElementsByTagName("TBODY")[0];
+		clear(result_tbody);
+
+		var domains_thead = domains.getElementsByTagName("THEAD")[0];
+		clear(domains_thead);
+
+		var domains_tbody = domains.getElementsByTagName("TBODY")[0];
+		clear(domains_tbody);
+		domains_tbody.style.height = "auto";
 
 		var editors = document.body.getElementsByClassName("editor");
 		for (var i=0; i < editors.length; i++) {
@@ -434,6 +475,16 @@ gfwordnet.onclick_cell = function (cell) {
 				result.appendChild(node("tr",{"data-lex-id": synonym},row));
 			}
 			details.appendChild(result);
+		}
+		if (lex_def.domains.length > 0) {
+			var header = node("h1",{},[text("Domains")]);
+			details.appendChild(header);
+
+			var row = [];
+			for (var j in lex_def.domains) {
+				row.push(td([text(lex_def.domains[j])]));
+			}
+			details.appendChild(node("table",{class: "domains"},[tr(row)]));
 		}
 		if (lex_def.examples.length > 0) {
 			var header = node("h1",{},[text("Examples")]);

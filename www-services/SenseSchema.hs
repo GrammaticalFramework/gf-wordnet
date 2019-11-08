@@ -49,12 +49,16 @@ lexemes :: Table Lexeme
 lexemes = table "lexemes"
              `withIndex` lexemes_fun
              `withIndex` lexemes_synset
+             `withIndex` lexemes_domain
 
 lexemes_fun :: Index Lexeme Fun
 lexemes_fun = index lexemes "fun" lex_fun
 
 lexemes_synset :: Index Lexeme (Key Synset)
 lexemes_synset = maybeIndex lexemes "synset" synset
+
+lexemes_domain :: Index Lexeme String
+lexemes_domain = listIndex lexemes "domain" domains
 
 coefficients :: Table [Double]
 coefficients = table "coefficients"

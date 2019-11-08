@@ -4,6 +4,7 @@ import Database.Helda
 import SenseSchema
 import Interval
 import qualified Data.Map as Map
+import qualified Data.Set as Set
 import qualified Data.Vector as Vector
 import Control.Monad(foldM,msum,forM_)
 import Control.Concurrent(forkIO)
@@ -44,6 +45,7 @@ cgiMain db (cs,funs) = do
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
   mb_s7 <- getInput "generalize_ids"
+  mb_s8 <- getInput "list_domains"
   case mb_s1 of
     Just s  -> do json <- liftIO (doQuery (words s))
                   outputJSONP json
@@ -56,7 +58,10 @@ cgiMain db (cs,funs) = do
                                   Nothing     -> case mb_s7 of
                                                    Just s  -> do json <- liftIO (doGeneralize (words s))
                                                                  outputJSONP json
-                                                   Nothing -> outputNothing
+                                                   Nothing -> case mb_s8 of
+                                                                Just _  -> do json <- liftIO doListDomains
+                                                                              outputJSONP json
+                                                                Nothing -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runHelda db ReadOnlyMode $
@@ -154,6 +159,11 @@ cgiMain db (cs,funs) = do
                                                      sexamples <- listAll [e | (id,e) <- fromIndexAt examples_fun lex_fun, not (elem id ex_ids)]]]
 
       return (showJSON (map mkSenseObj fs))
+
+    doListDomains = do
+      x <- runHelda db ReadOnlyMode $ do
+         select [domain | (domain,_) <- fromList lexemes_domain]
+      return (showJSON x)
 
     mkSenseObj (sense_id,(gloss,lex_ids)) =
       makeObj [("sense_id",showJSON sense_id)

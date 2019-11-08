@@ -1,0 +1,502 @@
+-- UD lables for Wordnet grammar
+-- example usage for Latex outpus: rf -file="trees.txt" -tree -lines  | vd -abslabels=Parse.udlabels -output=latex -cnclabels=ParseEng.udlabels -view=open
+-- for CoNLL output: vd -abslabels=Parse.udlabels -output=conll -cnclabels=ParseEng.udlabels
+-- unsure configs are marked with ---, sometimes with the Parse.labels tags
+
+AdAP advmod head
+AdAdV amod head
+AdAdv amod head
+AdNum advmod head
+AdVVP advmod head
+AdVVPSlash advmod head
+AddAdvQVP head advmod
+AdjAsCN head
+AdjAsNP head
+AdjCN amod head
+AdjDAP head amod
+AdjOrd head
+AdnCAdv empty head
+AdvAP head advmod
+AdvAdv head advmod
+AdvCN head nmod
+AdvIAdv advmod head
+AdvIP head advmod
+AdvImp advmod head
+AdvIsNP head nsubj
+AdvNP head nmod
+AdvQVP head obj
+AdvRAP head case nmod
+AdvRNP head case nmod
+AdvRVP head case nmod
+AdvS advmod head
+AdvSlash head advmod
+AdvVP head advmod
+AdvVPSlash head advmod
+ApposCN head appos
+ApposNP head appos
+BareN2 head
+BaseAP head conj
+BaseAdV head conj
+BaseAdv head conj
+BaseCN head conj
+BaseCNN nummod head nummod conj --- _ head _ head
+BaseComp head conj
+BaseDAP head conj
+BaseIAdv head conj
+BaseImp head conj
+BaseNP head conj
+BaseRS head conj
+BaseS head conj
+BaseVPI head conj
+BaseVPI2 head conj
+BaseVPS head conj
+BaseVPS2 head conj
+Base_nr_RNP head conj
+Base_rn_RNP head conj
+Base_rr_RNP head conj
+ByVP head
+CAdvAP empty case amod head --- * 4 mod head mod
+CleftAdv head advcl --- mod mod
+CleftNP head acl --- mod mod
+CompAP head
+CompAdv head
+CompBareCN head
+CompCN head
+CompIAdv head
+CompIP head
+CompIQuant head
+CompNP head
+CompQS head
+CompS head
+CompVP empty empty nsubj head --- mod mod _ head
+ComparA amod head
+ComparAdv empty case head nmod --- _ head mod mod
+ComplA2 head nmod
+ComplBareVS head ccomp
+ComplDirectVQ head ccomp
+ComplDirectVS head ccomp
+ComplN2 head nmod
+ComplN3 head nmod --- head arg
+ComplSlash head obj
+ComplSlashIP head obj
+ComplSlashPartLast head obj
+ComplVA head xcomp
+ComplVPI2 head comp
+ComplVPIVV head xcomp
+ComplVPS2 head obj
+ComplVQ head ccomp
+ComplVS head ccomp
+ComplVV head empty empty xcomp
+CompoundAP nmod head --- comp head
+CompoundN compound head
+ConjAP cc head
+ConjAdV cc head
+ConjAdv cc head
+ConjCN cc head
+ConjComp cc head
+ConjDet cc head
+ConjIAdv cc head
+ConjImp cc head
+ConjNP cc head
+ConjRNP cc head
+ConjRS cc head
+ConjS cc head
+ConjVPI cc head
+ConjVPI2 cc head
+ConjVPS cc head
+ConjVPS2 cc head
+ConsAP head conj
+ConsAdV head conj
+ConsAdv head conj
+ConsCN head conj
+ConsComp head conj
+ConsDAP head conj
+ConsIAdv head conj
+ConsImp head conj
+ConsNP head conj
+ConsRS head conj
+ConsS head conj
+ConsVPI head conj
+ConsVPI2 head conj
+ConsVPS head conj
+ConsVPS2 head conj
+Cons_nr_RNP head conj
+Cons_rr_RNP head conj
+CountNP det head
+DetCN det head
+DetCNN det cc head --- mod _ head
+DetDAP head
+DetQuant head nummod
+DetQuantOrd head nummod amod
+EmbedPresPart head
+EmbedQS head
+EmbedS head
+EmbedSSlash head
+EmbedVP empty empty obj head --- _ _ _ head
+EmptyRelSlash head
+EnoughAP head empty empty xcomp --- head _ _ mod
+EnoughAdv head
+ExistIP head
+ExistIPAdv head advmod
+ExistMassCN head
+ExistNP head
+ExistNPAdv head nmod
+ExistPluralCN head
+ExistsNP head
+ExtAdvAP head advmod
+ExtAdvNP head nmod
+ExtAdvS advmod head
+ExtAdvVP head advmod
+ExtRelNP head acl
+FocusAdV advmod head
+FocusAdv advmod head
+FocusComp nmod head --- mod mod
+FocusObj obj head
+FrontComplDirectVQ nsubj head ccomp
+FrontComplDirectVS nsubj head ccomp
+FunRP case nmod head
+GenIP head
+GenModIP nummod nmod head --- mod mod mod
+GenModNP nummod nmod head --- _ poss head
+GenRP nummod head
+GenericCl head
+GerundAdv head
+GerundCN head
+GerundNP head
+IAdvAdv head
+ICompAP head
+IDig head
+IIDig head goeswith
+IdetCN det head
+IdetIP head
+IdetQuant head nummod
+ImpP3 obj head --- mod mod
+ImpPl1 head
+ImpVP head
+ImpersCl head
+InLanguage head
+InOrderToVP empty empty nmod head * --- _ _ _ head
+InflectionA head
+InflectionA2 head
+InflectionAdv head
+InflectionN head
+InflectionN2 head
+InflectionN3 head
+InflectionPrep head
+InflectionV head
+InflectionV2 head
+InflectionV2A head
+InflectionV2Q head
+InflectionV2S head
+InflectionV2V head
+InflectionV3 head
+InflectionVA head
+InflectionVQ head
+InflectionVS head
+InflectionVV head
+MassNP head
+MkDefinition nsubj head --- _ _
+MkDefinitionEx nsubj head advmod --- _ _ _
+MkDocument head advmod nmod --- _ _ _
+MkTag head
+MkVPI head
+MkVPI2 head
+MkVPS empty empty head
+MkVPS2 empty empty head
+NoDefinition head
+NumCard head
+NumDigits head
+NumLess head
+NumMore head
+NumNumeral head
+OrdDigits head
+OrdNumeral head
+OrdNumeralSuperl nummod head
+OrdSuperl head
+PConjConj head
+PartNP head nmod
+PassAgentVPSlash head nmod
+PassVPSlash head
+PastPartAP head
+PastPartAgentAP head obj
+PhrUtt cc head discourse
+PhrUttMark cc head discourse mark --- _ head _ _
+PositA head
+PositAdAAdj head
+PositAdVAdj head
+PositAdvAdj head
+PossCNN_RNP det cc head nmod --- _ _ head poss
+PossNP head nmod
+PossPron head
+PossPronRNP nmod nummod head nmod --- poss _ head mod
+PredAPVP amod head --- mod mod
+PredIAdvVP advmod head
+PredSCVP csubj head
+PredVP nsubj head
+PredVPS nsubj head
+PredetNP det head
+PredetRNP det head
+PrepCN case head
+PrepIP case head
+PrepNP case head
+PresPartAP head
+ProgrVP head
+ProgrVPSlash head
+QuestCl head
+QuestIAdv advmod head
+QuestIComp head nsubj
+QuestQVP nsubj head
+QuestSlash obj head
+QuestVP nsubj head
+RecipVPSlash head
+RecipVPSlashCN head obj
+ReflA2 head nmod
+ReflPoss nummod head
+ReflPossCNN cc head
+ReflVPSlash head obj
+RelCN head acl
+RelCl head
+RelNP head acl
+RelS head advcl
+RelSlash mark head
+RelVP mark head
+SSubjS head mark advcl
+SelfAdVVP head
+SelfAdvVP head
+SelfNP head
+SentAP head acl --- head mod
+SentCN head acl --- head mod
+Slash2V3 head iobj --- head obj
+Slash3V3 head obj
+SlashBareV2S head ccomp
+SlashPrep head case
+SlashV2A head xcomp
+SlashV2Q head ccomp
+SlashV2S head ccomp
+SlashV2V head empty empty xcomp
+SlashV2VNP head obj empty empty xcomp
+SlashV2a head
+SlashVP nsubj head
+SlashVS nsubj head ccomp
+SlashVV head empty empty acl
+StrandQuestSlash obj head *
+StrandRelSlash * obj head
+SubjRelNP head acl ---
+SubjS mark head
+TTAnt empty head --- head head
+TimeNP head
+Use2N3 head
+Use3N3 head
+UseA2 head
+UseACard head
+UseAdAACard advmod head
+UseCl empty empty head
+UseComp head
+UseComp_estar head
+UseComparA head
+UseDAP head
+UseDAPFem head
+UseDAPMasc head
+UseN head
+UsePN head
+UsePron head
+UseQCl empty empty head
+UseRCl empty empty head
+UseSlash empty empty head
+UseV head
+UttAP head
+UttAPFem head
+UttAPMasc head
+UttAccIP head
+UttAccNP head
+UttAdV head
+UttAdv head
+UttCN head
+UttCard head
+UttDatIP head
+UttDatNP head
+UttIAdv head
+UttIP head
+UttImpPl empty head
+UttImpPol empty head
+UttImpSg empty head
+UttInterj head
+UttNP head
+UttQS head
+UttS head
+UttVP empty empty obj head --- _ _ _ head
+UttVPS obj head --- _ head
+UttVPShort head
+VPSlashPrep head case --- head mod
+VocNP head
+WithoutVP head
+bottle_of_CN head
+come_to_VP head
+come_to_adj_VP amod head --- mod head
+cup_of_CN head
+dayMonthAdv head nmod --- mod mod
+dayMonthYearAdv head nmod advmod --- mod mod mod
+few_X_short_of_Y head nmod nmod --- mod mod mod
+glass_of_CN head
+has_age_VP head
+have_name_Cl nmod head --- mod mod
+how_far_QCl head
+how_old_QCl head
+intMonthday head
+intYear head
+languageCN head
+languageNP head
+married_Cl nsubj head --- mod mod
+monthAdv head
+monthN head
+monthPN head
+monthYearAdv head nmod --- mod mod
+n_unit_CN nummod nmod head ---
+n_units_AP nummod nmod head --- mod mod head
+n_units_of_NP nummod head nmod --- mod mod mod
+none_of_NP_affair_VP head
+num head
+---pot0 head
+---pot0as1 head
+---pot1 head
+---pot1as2 head
+---pot1plus *
+---pot1to19 head
+---pot2 head
+---pot2as3 head
+---pot2plus *
+---pot3 head
+---pot3as4 head
+---pot3plus *
+---pot4 head
+---pot4plus *
+tend_VP head
+timeHour head
+---timeHourMinute *
+timeunitAdv nummod head
+timeunitRange nummod nummod head ---
+weather_adjCl head
+weekdayHabitualAdv head
+weekdayLastAdv head
+weekdayN head
+weekdayNextAdv head
+weekdayPN head
+weekdayPunctualAdv head
+what_name_QCl head
+yearAdv head
+
+A ADJ
+A2 ADJ
+ACard ADV
+AP ADJ
+AdA ADV
+AdN ADV
+AdV ADV
+Adv ADV
+Ant X
+Bracket X
+CAdv ADV
+CN NOUN
+CNN NOUN
+Card NUM
+Cl X
+ClSlash X
+Comp X
+Conj CONJ
+DAP DET
+Definition X
+Det DET
+Dig NUM
+Digit NUM
+Digits NUM
+Document X
+Float NUM
+Hour NUM
+IAdv ADV
+IComp X
+IDet DET
+IP PRON
+IQuant DET
+Imp VERB
+Inflection X
+Int NUM
+Interj INTJ
+Language NOUN
+ListAP X
+ListAdV X
+ListAdv X
+ListCN X
+ListComp X
+ListDAP X
+ListIAdv X
+ListImp X
+ListNP X
+ListRS X
+ListS X
+ListVPI X
+ListVPI2 X
+ListVPS X
+ListVPS2 X
+Mark PUNCT
+Month NOUN
+Monthday NUM
+N NOUN
+N2 NOUN
+N3 NOUN
+NP PRON ---
+Num NUM
+Numeral NUM
+Ord NUM
+PConj CONJ
+PN PROPN
+Phr X
+Pol X
+Predet DET
+Prep ADP
+Pron PRON
+QCl X
+QS X
+QVP X
+Quant DET
+Quote PUNCT
+RCl X
+RNP PRON
+RNPList X
+RP PRON
+RS X
+S X
+SC X
+SSlash X
+String PROPN ---
+Sub10 NUM
+Sub100 NUM
+Sub1000 NUM
+Sub1000000 NUM
+Sub1000000000 NUM
+Subj SCONJ
+Tag X
+Temp X
+Tense X
+Text X
+Timeunit NOUN
+Utt X
+V VERB
+V2 VERB
+V2A VERB
+V2Q VERB
+V2S VERB
+V2V VERB
+V3 VERB
+VA VERB
+VP X
+VPI X
+VPI2 X
+VPS X
+VPS2 X
+VPSlash X
+VQ VERB
+VS VERB
+VV VERB
+Voc NOUN ---
+Weekday NOUN
+Year NUM

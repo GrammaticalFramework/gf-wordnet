@@ -3,9 +3,9 @@ UseV,ComplVV,ComplVS,ComplVQ,ComplVA,SlashV2a,SlashV2V,SlashV2A,SlashV2S,Slash2V
 UseV,UseComp {"to"} PART mark head
 UseComp,CompAdv,CompAP,CompNP,CompCN,ProgrVP,QuestIComp {"is","are","am","was","were","been","be"} VERB cop head
 CompCN {"a","an"} DET det head
-PassV2 {"is","are","am","was","were""been","be"} VERB auxpass head
+PassV2,PassAgentVPSlash,PassVPSlash {"is","are","am","was","were""been","be"} VERB auxpass head
 ComplVV {"to"} PART mark xcomp
-ComplVS {"that"} PART mark ccomp
+ComplVS,SlashV2S {"that"} PART mark ccomp
 EmbedVP {"to"} PART mark head
 EmbedS {"that"} PART mark head
 SentCN {"that","to"} PART mark acl
@@ -15,7 +15,11 @@ ExistNPAdv,ExistNP {"has","had","have","will","would","do","does","did"} AUX aux
 ExistNPAdv,ExistNP {"is","are","am","was","were""been","be"} VERB cop head
 ExistNPAdv,ExistNP {"there"} PART expl head
 PossNP,PartNP {"of"} ADP case nmod
-* {","} PUNCT head
+ReflPoss,ReflPossCNN {"my","your","his","her","our","their","its"} PRON nmod head
+ImpersCl {"it"} PRON nsubj head
+* {","} PUNCT punct head
+* {"about","after","at","behind","by","for","from","in","of","on","over","through","to","under","with"} ADP case obj
+* {"aback","adrift","ahead","aloft","along","apart","around","away","back","down","off","out","up"} ADV advmod head
 
 -- morphological feature labels
 @Pron Nom Acc

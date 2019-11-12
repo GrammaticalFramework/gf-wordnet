@@ -76,7 +76,7 @@ main = do
             select $ 
               foldlQ accumCounts Map.empty $
                 [(drop 5 lang,status)
-                           | (_,lex) <- from lexemes,
+                           | (_,lex) <- from lexemes everything,
                              (lang,_,status) <- anyOf (lex_defs lex)]
   writeFile "build/status.svg" (renderStatus cs)
 

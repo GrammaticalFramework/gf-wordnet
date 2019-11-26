@@ -47,6 +47,7 @@ abrasion_1_N	1002640;Abrasion_(medical);commons/b/b7/Abrasion_on_hand_20050906.j
 abrasion_2_N	8113846;Abrasion_(geology);commons/b/b9/Glacial-abrasion-ss-2006.jpg
 abrocome_N	2438172;Chinchilla_rat;commons/b/b9/Abrocoma_bennettii.png
 abscess_N	1032;Abscess;commons/8/8a/Five_day_old_Abscess.jpg
+absinthe_1_N	975338;Artemisia_absinthium;commons/e/eb/Artemisia_absinthium_P1210748.jpg
 absinthe_2_N	11789724;Absinthe;commons/e/e2/Absinthe-glass.jpg
 absorbent_N	780166;Sanitary_napkin;commons/b/b8/Sanitary_towel.jpg
 absorption_1_N	1383986;Absorption_(chemistry);commons/4/46/Absorber.svg
@@ -120,6 +121,7 @@ acrobatics_1_N	207038;Acrobatics;commons/7/7d/Chinese_acrobat_in_midair_being_wa
 acromion_N	211364;Acromion;commons/4/42/Acromion_of_left_scapula01.png
 acrophobia_N	455905;Acrophobia;commons/8/85/3_Window_Washers_-_Cleaning_the_Westlake_Center_Office_Tower.jpg
 acropolis_N	33321113;Refuge_castle;commons/a/aa/Raddusch_07-2017_img01.jpg	156693;Hillfort;commons/9/97/Aerial_photograph_of_Maiden_Castle%2C_1935.jpg	1536;Acropolis;commons/4/43/AthensAcropolisDawnAdj06028.jpg
+acrostic_1_N	3299370;Acrostic_(puzzle);commons/3/3b/St._Nicholas_%28serial%29_%281873%29_%2814779387861%29.jpg
 acrostic_2_N	219730;Acrostic;commons/1/10/1850_acrostic_Dearborn.png
 acrylamide_N	56239;Acrylamide;commons/c/cb/Acrylamide-MW-2000-3D-vdW.png
 acrylic_3_N	2838;Acrylic_paint;commons/9/97/Pyrrole_Red_Dab.JPG
@@ -467,6 +469,7 @@ amah_1_N	269676;Wet_nurse;commons/f/ff/Louis_XIV_as_an_infant_with_his_nurse_Lon
 amalgam_1_N	19074264;Amalgam_(chemistry);commons/e/e9/Amalgam-200675.jpg
 amanuensis_N	9649051;Amanuensis;commons/9/9e/Dr_A.T._Still_and_Mrs._Annie_Morris%2C_his_amanuensis._Wellcome_L0040493.jpg
 amaranth_2_N	1542;Amaranth;commons/9/91/Amaranthus_tricolor0.jpg
+amarelle_1_N	78195;Prunus_cerasus;commons/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg
 amarelle_2_N	78195;Prunus_cerasus;commons/2/2a/Prunus_cerasus_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-113.jpg
 amaretto_N	538184;Amaretto;commons/8/8b/Amaretto_Bottles_4.JPG
 amaryllis_N	1912594;Amaryllis_belladonna;commons/e/ea/Amaryllis_belladonna.jpg
@@ -803,7 +806,6 @@ applesauce_1_N	46484;Apple_sauce;commons/f/fa/Applesauce.jpg
 applewood_N	289445;Malus;commons/2/2f/Purple_prince_crabapple_tree.JPG
 appliance_2_N	185982;Home_appliance;commons/6/67/Breville.jpg
 application_4_N	454746;Application_software;commons/2/2c/Gimp-utility-window-hint.png
-applicator_N	609096;Cotton_swab;commons/f/f9/White_menbo.jpg
 applique_N	89968;Appliqu%C3%A9;commons/7/71/Quilt_block_applique_flower_detail.jpg
 apprentice_N	162619;Apprenticeship;commons/e/e8/Electrician_Mike_Hughes_Installing_Meter_Base.jpg
 apraxia_N	56458;Apraxia;commons/a/ac/Apraxia_001.jpg
@@ -892,7 +894,7 @@ argent_A	44101908;Metallic_color;commons/5/55/Silver_crystal.jpg
 argentina_1_PN	18951905;Argentina;commons/1/1a/Flag_of_Argentina.svg
 argentine_N	4557343;Argentinidae;commons/1/19/Argentina_sphyraena.jpg
 argentinosaur_N	584992;Argentinosaurus;commons/0/06/Argentinosaurus_skeleton%2C_PLoS_ONE.png
-argentite_N	740869;Acanthite;commons/9/9c/Acanthite_on_Calcite_-_Freiberg%2C_Erzgebirge%2C_Saxony%2C_Germany.jpg	594014;Argentite;commons/0/0c/Argentite.jpg
+argentite_N	594014;Argentite;commons/0/0c/Argentite.jpg
 argentous_A	884387;Argenta,_Emilia%E2%80%93Romagna;commons/b/b5/Bonifica.JPG
 argillite_N	2634598;Argillite;commons/a/a3/Argillite.JPG
 arginine_N	63550;Arginine;commons/a/a7/Arginine-3D-balls-by-AHRLS-2012.png
@@ -1093,7 +1095,7 @@ atrophy_1_N	712319;Atrophy;commons/a/ad/Mouse_with_spinal_muscular_atrophy.jpg
 atropine_N	145159;Atropine;commons/6/64/Atropine.svg
 attachment_1_N	884589;Attachment_theory;commons/1/14/Eskimo_Family_NGM-v31-p564-2.jpg
 attack_4_N	10519497;Naval_boarding;commons/e/eb/Capture_of_the_Esmeralda_%281820%29.jpg
-attar_1_N	281028;Essential_oil;commons/5/56/SandalwoodEssOil.png	2161644;Rose_oil;commons/1/1b/RoseEssentialOil.png
+attar_1_N	281028;Essential_oil;commons/5/56/SandalwoodEssOil.png
 attention_1_N	68753;Attention;commons/c/c8/Scout_Girl_in_Concentration.jpg
 attention_5_N	68753;Attention;commons/c/c8/Scout_Girl_in_Concentration.jpg
 attenuator_N	4232047;Attenuator_(electronics);commons/9/9f/RF_Attenuator_30dB_5W.jpg
@@ -1675,10 +1677,10 @@ belo_horizonte_PN	82198;Belo_Horizonte;commons/8/8f/Belo_Horizonte_Collage.png
 belper_PN	350516;Belper;commons/6/63/Belper_kingst.jpg
 belt_2_N	172485;Belt_(clothing);commons/9/91/Belt-clothing.jpg
 beltway_N	51922;Ring_road;commons/6/69/Sheffield_inner_ring-road.png
-beluga_1_N	3491629;European_sea_sturgeon;commons/6/6f/Acipenser_sturio_1879.jpg	1334840;Beluga_(sturgeon);commons/0/04/%D0%91%D1%96%D0%BB%D1%83%D0%B3%D0%B0_%28Huso_huso%29.jpg
-beluga_2_N	306613;Monodontidae;commons/e/ee/Belugawhale_MMC.jpg	230920;Beluga_whale;commons/1/19/Beluga03.jpg
+beluga_1_N	1334840;Beluga_(sturgeon);commons/0/04/%D0%91%D1%96%D0%BB%D1%83%D0%B3%D0%B0_%28Huso_huso%29.jpg
+beluga_2_N	230920;Beluga_whale;commons/1/19/Beluga03.jpg
 belvedere_1_N	23431172;Bassia_scoparia;commons/7/74/Kochia_aka_Fire_bush_7128.JPG
-belvedere_2_N	747164;Belvedere_(structure);commons/3/31/Blenheim_Palace_from_the_Water_Terraces_October_2016.jpg	2040288;Observation_tower;commons/1/13/Auersberg_observation_tower_%28aka%29.jpg
+belvedere_2_N	747164;Belvedere_(structure);commons/3/31/Blenheim_Palace_from_the_Water_Terraces_October_2016.jpg
 ben_N	4917;Ben_Nevis;commons/0/09/BenNevis2005.jpg
 bench_1_N	4929533;Bench_(furniture);commons/8/85/Garden_bench_001.jpg
 bench_2_N	504290;Terrace_(agriculture);commons/6/6d/Jati_Luwih.jpg
@@ -1847,7 +1849,6 @@ birch_1_N	67252;Birch;commons/8/81/Birke_Multiplex.JPG
 birch_2_N	67252;Birch;commons/4/46/Betula_pendula_001.jpg
 bird_1_N	3410;Bird;commons/b/bf/Bird_Diversity_2013.png
 bird_3_N	304428;The_Birds_(film);commons/c/c0/The_Birds_original_poster.jpg
-bird_5_N	4341449;Peteca;commons/a/aa/Modernpeteca.jpg
 birdbath_N	782680;Bird_bath;commons/c/ca/Bird_bath_backyard_summer_mockingbird.jpg
 birdcage_N	6777407;Birdcage;commons/0/04/Kersting_-_Zwei_Kinder_vor_einem_Papageienbauer.jpg
 birdcall_1_N	369978;Bird_vocalization;commons/b/ba/Solsort.jpg
@@ -2135,6 +2136,7 @@ bookbinding_N	23277840;Bookbinding;commons/3/3a/Relieur_JPG01.jpg
 bookcase_N	1032603;Bookcase;commons/1/12/Chethams_library_interior.jpg
 bookkeeping_N	18473;Luca_Pacioli;commons/2/2a/Pacioli.jpg
 booklet_N	264757;Pamphlet;en/5/58/Girl_with_a_Basket_of_Pamphlets.jpg
+bookmaker_1_N	23277840;Bookbinding;commons/3/3a/Relieur_JPG01.jpg
 bookmaker_2_N	58683;Bookmaker;commons/e/ec/Bookmakers.jpg
 bookmark_N	5826415;Bookmark;commons/e/e8/Bookmark.jpg
 bookmobile_N	1128106;Bookmobile;commons/e/ef/Bookmobile.jpg
@@ -2145,7 +2147,7 @@ bookworm_1_N	369453;Bibliophilia;commons/0/04/Carl_Spitzweg_021.jpg
 boom_2_V2	2025128;Keikogi;commons/1/15/Judo_newaza.jpg
 boom_5_N	1658669;Boom_(sailing);commons/9/96/Boom_%28Sailing%29.svg
 boomerang_1_N	4359;Boomerang;commons/b/be/Boomerang.jpg
-booster_5_N	373603;Booster_(rocketry);commons/6/66/Delta_II_GEM_40_Booster.jpg	1306157;Launch_vehicle;commons/f/f4/Soyuz_TMA-5_launch.jpg
+booster_5_N	373603;Booster_(rocketry);commons/6/66/Delta_II_GEM_40_Booster.jpg
 boot_1_N	191574;Boot;commons/4/42/Cowboy_boots.jpg
 bootblack_N	12860125;Shoeshiner;commons/4/47/Shoe-polish-guy-Bombay.jpg
 bootee_1_N	1273449;Bootee;commons/f/f7/Bootee.jpg
@@ -2249,8 +2251,8 @@ brachycephaly_N	232060;Brachycephaly;commons/9/90/PSM_V52_D333_Brachycephalic_an
 brachydactyly_1_N	89977;Brachydactyly;commons/6/63/Brachydactyly.svg
 brachypterous_A	441046;Rove_beetle;commons/9/9c/Jacobs14.jpg
 brachyuran_N	25407263;Eubrachyura;commons/1/12/Liocarcinus_vernalis.jpg
-bracken_1_N	2237729;Dryopteris_filix-mas;commons/4/40/Dryopteris_filix_mas_nf.jpg
-bracken_2_N	66560;Bracken;commons/2/2c/Pteridium_aquilinum_nf.jpg	2135249;Pteridium_aquilinum;commons/5/5c/Adelaarsvaren_planten_Pteridium_aquilinum.jpg
+bracken_1_N	27797787;Pteridium_esculentum;commons/8/87/Pteridium_esculentum_Chatswood_West.jpg
+bracken_2_N	66560;Bracken;commons/2/2c/Pteridium_aquilinum_nf.jpg
 bracknell_PN	302268;Bracknell;commons/0/09/Fujitsu_-_geograph.org.uk_-_524505.jpg
 bract_N	612098;Bract;commons/4/43/Yellow-rattle_close_700.jpg
 bradawl_N	5155749;Bradawl;commons/3/35/Marples_brand_Bradawl%2C_March_2013.jpg	2686159;Stitching_awl;commons/7/72/7alenebott.png
@@ -2340,7 +2342,7 @@ brest_PN	57912;Brest,_France;commons/6/65/Brest_-_Le_Ch%C3%A2teau_-_PA00089847_-
 breviary_N	46590247;Breviary;commons/7/75/Brevarium_Strengnense.jpg
 brewery_N	19555342;Brewery;commons/a/a4/8210_Brewery_in_Abbaye_Notre-Dame_de_Saint-Remy_Rochefort_2007_Luca_Galuzzi.jpg
 brewing_N	4410;Brewing;commons/2/24/The_Brewer_designed_and_engraved_in_the_Sixteenth._Century_by_J_Amman.png
-briar_1_N	305717;Rosa_dumalis;commons/e/e4/RosaDumalis1UME.jpg
+briar_1_N	1034735;Rosa_rubiginosa;commons/9/94/Pink_Rose2.jpg
 briard_N	646563;Briard;commons/6/60/Briard_fauve.JPG
 briarroot_N	218955;Erica_arborea;commons/8/88/Erica_arborea_JPG1.jpg
 briarwood_1_N	218955;Erica_arborea;commons/8/88/Erica_arborea_JPG1.jpg
@@ -2510,7 +2512,7 @@ buffet_1_N	27070776;Welsh_dresser;commons/2/2d/Dresser_%28PSF%29.png
 buffet_2_N	969285;Buffet;commons/7/7a/Breakfast_Buffet_%2821720094978%29.jpg
 bufflehead_N	264547;Bufflehead;commons/0/0f/Bucephala-albeola-007.jpg
 buffoon_2_N	377819;Pagliacci;commons/a/a9/Pagliacci_Original_Score_Cover.jpg
-bug_4_N	211411;Heteroptera;commons/3/36/Wasserl%C3%A4ufer_bei_der_Paarung_crop.jpg	207600;Hemiptera;commons/e/e4/Acanthasoma_hamorrhoidale_adult.jpg
+bug_4_N	207600;Hemiptera;commons/e/e4/Acanthasoma_hamorrhoidale_adult.jpg
 bugaboo_1_N	365785;Bogeyman;commons/3/34/Goya_-_Que_viene_el_coco_%28Here_Comes_the_Bogey-Man%29.jpg
 buggery_N	2460;Anal_sex;commons/d/d7/Wiki-analsex.png
 bugleweed_1_N	5822235;Lycopus;commons/f/ff/Illustration_Lycopus_europaeus0.jpg
@@ -2617,7 +2619,7 @@ burton_2_PN	45967;Richard_Burton;commons/8/8e/Richard_Burton_-_The_Robe.jpg
 burundi_PN	21490998;Burundi;commons/5/50/Flag_of_Burundi.svg
 bury_PN	300812;Bury,_Greater_Manchester;commons/f/f4/Bury_Town_Hall_April_2017.jpg
 busby_N	1287241;Busby;commons/2/2f/King%27s_Troop%2C_Royal_Horse_Artillery.JPG
-bush_2_N	1059617;Old-growth_forest;commons/b/bc/Biogradska_suma.jpg
+bush_2_N	3231426;The_bush;commons/2/29/Australian_bush.jpg
 bush_3_N	7455;Chaparral;commons/9/93/Chaparral1.jpg
 bush_5_PN	32767;Vannevar_Bush;commons/e/ea/Vannevar_Bush_portrait.jpg
 bush_7_N	155117;Pubic_hair;commons/0/04/Male_and_Female_Pubic_Hair.jpg
@@ -2665,8 +2667,8 @@ button_1_N	309492;Button;commons/3/3b/Reserveknapper_til_Hans%27_uniform.jpg
 button_6_N	1508243;Push-button;commons/a/af/Arcade_video_game_buttons.jpg
 buttonhole_1_N	3259645;Buttonhole;commons/d/df/Keyhole_buttonhole.jpg
 buttonhook_N	27681363;Buttonhook;commons/f/fb/Button_hook_from_Ziefle_%26_Nissle%2C_Fine_Shoes%2C_Ann_Arbor%2C_Michigan..jpg
-buttonwood_N	3796570;Ficus_sycomorus;commons/d/df/Ficus_sycomorus_0003.jpg
-buttress_N	430379;Flying_buttress;commons/7/79/L%C3%BCbeck_Marienkirche_Strebeb%C3%B6gen.jpg
+buttonwood_N	428725;Platanus_occidentalis;commons/2/23/Sycamore_Platanus_occidentalis.jpg
+buttress_N	663464;Buttress;commons/d/d2/Vicolo_di_Formia.JPG
 butyrin_N	1836302;Tributyrin;commons/b/bc/Tributyrin.png
 buxton_PN	124259;Buxton;commons/2/22/Buxton_scene%2C_autumn_%28geograph_3191760%29.jpg
 buzzard_1_N	186622;Old_World_vulture;commons/7/77/Gyps_africanus_Torgos_tracheliotus.jpg
@@ -2703,7 +2705,6 @@ cactus_N	7819;Cactus;commons/1/1c/Various_Cactaceae.jpg
 cad_2_N	37315;Computer-aided_design;commons/8/89/Schneckengetriebe.png
 cadaverine_N	51896;Cadaverine;commons/8/8c/Cadaverine-3D-balls.png
 caddie_N	7837;Caddie;en/7/7d/The_caddy_233.jpg
-cadence_1_N	84026;Metre_(music);commons/3/38/Meter_%281%29.jpg
 cadenza_N	43661;Cadenza;commons/9/9a/Beethoven_-_Concerto_in_C_minor%2C_cadenza.png
 cadet_N	636194;Cadet;commons/8/8b/Defense.gov_photo_essay_090527-F-1631A-001.jpg
 cadiz_PN	52738;C%C3%A1diz;commons/2/2e/Catedral_Cadiz.jpg
@@ -2767,8 +2768,7 @@ calisthenics_1_N	189023;Calisthenics;commons/b/b0/US_Navy_090611-N-3271W-003_Loc
 calisthenics_2_N	189023;Calisthenics;commons/b/b0/US_Navy_090611-N-3271W-003_Local_area_children_test_their_fitness_skills_during_a_Junior_Seal_Fitness.jpg
 call_1_N	406703;Telephone_call;commons/8/8d/CandlestickTelephoneGal.jpg
 call_5_N	369978;Bird_vocalization;commons/b/ba/Solsort.jpg
-call_box_1_N	53689205;Orelh%C3%A3o;commons/6/66/Orelh%C3%A3o_em_S%C3%A3o_Paulo.png	413248;Call_box;commons/e/e5/Police_call_box_Wash_DC_1912.jpg	334626;Telephone_booth;commons/1/10/Lightmatter_phonebooths.jpg
-call_box_2_N	413248;Call_box;commons/e/e5/Police_call_box_Wash_DC_1912.jpg
+call_box_1_N	334626;Telephone_booth;commons/1/10/Lightmatter_phonebooths.jpg
 call_up_N	15134834;Posse_comitatus;commons/5/56/Ruby_Murders_posse_and_two_prisoners.jpg
 calliandra_N	1945905;Calliandra;commons/c/c8/Starr_071024-9938_Calliandra_haematocephala.jpg
 calligraphy_N	53682;Calligraphy;commons/f/f8/1798_%E1%83%AC._%E1%83%92%E1%83%98%E1%83%9D%E1%83%A0%E1%83%92%E1%83%98_XII-%E1%83%98%E1%83%A1_%E1%83%90%E1%83%96%E1%83%9C%E1%83%90%E1%83%A3%E1%83%A0%E1%83%98%E1%83%A1%E1%83%A8%E1%83%95%E1%83%98%E1%83%9A%E1%83%9D%E1%83%91%E1%83%98%E1%83%A1_%E1%83%AC%E1%83%A7%E1%83%90%E1%83%9A%E1%83%9D%E1%83%91%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%92%E1%83%94%E1%83%9A%E1%83%98.jpg
@@ -2814,7 +2814,6 @@ cameo_N	252938;Cameo_(carving);commons/8/87/Great_Cameo_of_France_CdM_Paris_Bab2
 camera_1_N	52648;Camera;commons/9/99/LEI0440_Leica_IIIf_chrom_-_Sn._580566_1951-52-M39_Blitzsynchron_front_view-6531_hf-.jpg
 cameraman_N	377453;Camera_operator;commons/3/35/Riot_PetionVille.jpg
 cameroon_2_PN	5447;Cameroon;commons/4/4f/Flag_of_Cameroon.svg
-camise_N	211628;Kazakhs;commons/d/d2/%D0%97%D0%BD%D0%B0%D1%82%D1%8C_%D0%A2%D1%83%D1%80%D0%B0%D0%BD%D0%B0.jpg
 camisole_1_N	1350677;Camisole;commons/7/70/Whitecamisole.jpg
 camomile_1_N	651289;Matricaria_chamomilla;commons/c/c8/Matricaria_February_2008-1.jpg	651286;Matricaria;commons/4/4c/Matricaria_chamomilla.jpg	166716;Chamomile;commons/2/26/Kamomillasaunio_%28Matricaria_recutita%29.JPG	1548577;Anthemis;commons/8/89/Illustration_Anthemis_arvensis0.jpg
 camouflage_3_N	6446;Camouflage;commons/6/68/Flower_flounder_in_Kona_may_2010.jpg
@@ -2892,7 +2891,7 @@ cantabile_A	2599937;Canora,_Saskatchewan;commons/3/3f/Welcome_to_Canora.JPG
 cantaloupe_2_N	79713;Cantaloupe;commons/2/28/Cantaloupes.jpg
 canteen_1_N	19163297;Canteen_(bottle);commons/f/f7/Canteen_0002.jpg
 canteen_2_N	1062051;Cantina;commons/3/34/Joaqu%C3%ADn_Agrasot_-_Mosqueteros_sentados_fuera_de_una_cantina.jpg
-canteen_3_N	554471;Cafeteria;commons/f/f2/Infosys.Electronic.City.Cafeteria.JPG	1062051;Cantina;commons/3/34/Joaqu%C3%ADn_Agrasot_-_Mosqueteros_sentados_fuera_de_una_cantina.jpg
+canteen_3_N	1062051;Cantina;commons/3/34/Joaqu%C3%ADn_Agrasot_-_Mosqueteros_sentados_fuera_de_una_cantina.jpg
 canterbury_PN	48274;Canterbury;commons/a/a4/River_Stour_in_Canterbury%2C_England_-_May_08.jpg
 canthus_N	1721029;Canthus;commons/a/a9/Gray892.png
 cantilever_N	160663;Cantilever;commons/e/e8/Cantilever_examples.svg
@@ -3057,7 +3056,6 @@ carrack_1_N	878537;Carrack;commons/3/35/Medieval_carrack_-_detail_by_Pieter_Brue
 carrel_1_PN	1051;Alexis_Carrel;commons/9/9e/Alexis_Carrel_02.jpg
 carriage_2_N	229714;Carriage;commons/b/b2/Grand_Gala_Berlin.jpg
 carriageway_N	3478614;Carriageway;commons/7/7a/Carriageway_diagram.svg
-carrier_5_N	5925943;Shipping_line;commons/a/a8/Nagasaki_Maru_of_Nagasaki_port%2C_Postcard.jpg
 carrier_6_N	153217;Carrier_wave;commons/9/9a/Modulated_radio_signal_frequency_spectrum.svg
 carrier_9_N	679680;Asymptomatic_carrier;commons/f/fd/Mallon-Mary_01.jpg
 carrier_bag_N	2086634;Paper_bag;commons/3/3d/5450801_m-1-.jpg
@@ -3132,7 +3130,7 @@ castor_oil_N	172190;Castor_oil;commons/6/66/Castor_beans.jpg
 castration_1_N	69414;Castration;commons/6/6e/Charaf-ed-Din._Operation_for_castration_%281466%29.jpg
 casuarina_N	1810434;Casuarina;commons/f/fa/Casuarina_equisetifolia_0004.jpg
 cat_1_N	6678;Cat;commons/0/0b/Cat_poster_1.jpg	244841;Felis;commons/c/cb/Wildkatze_MGH.jpg
-cat_7_N	6678;Cat;commons/0/0b/Cat_poster_1.jpg	244841;Felis;commons/c/cb/Wildkatze_MGH.jpg
+cat_7_N	6678;Cat;commons/5/5b/The_Felidae.jpg
 cat_8_N	50982;CT_scan;commons/2/27/UPMCEast_CTscan.jpg
 catabolism_1_N	214571;Catabolism;commons/1/11/Catabolism_schematic.svg
 catacomb_N	64523;Catacombs;commons/f/fb/A-Procession-in-the-Catacomb-of-Callistus.jpg
@@ -3150,7 +3148,6 @@ catamite_N	308804;Catamite;commons/0/0c/Warren_Cup_BM_GR_1999.4-26.1_n2.jpg
 catananche_N	6487888;Catananche;commons/a/a4/Catananche_caerulea4.jpg
 catania_PN	44776;Catania;commons/5/55/Catania-Etna-Sicilia-Italy-Castielli_CC0_HQ1.JPG
 cataphyll_N	32297007;Cataphyll;commons/a/a1/Leaf_bud_of_American_Sweet_gum_%28Liquidambar_styraciflua%29_showing_imbricate_cataphylls_5405.jpg
-catapult_2_N	7063;Catapult;commons/1/18/Mang2.png	43380;Trebuchet;commons/b/b2/Trebuchet_Castelnaud.jpg
 catapult_3_N	43380;Trebuchet;commons/b/b2/Trebuchet_Castelnaud.jpg
 cataract_1_N	88931;Cataract;commons/b/ba/Cataract_in_human_eye.png
 catarrhine_A	423188;Catarrhini;commons/1/14/Macaca_arctoides.png
@@ -3161,7 +3158,6 @@ catch_crop_N	1396491;Catch_crop;commons/6/6c/Gorczyca_biala-pole.jpg
 catcher_1_N	436699;Catcher;commons/0/04/Baseball_C.svg
 catcher_2_N	436699;Catcher;commons/0/04/Baseball_C.svg
 catchment_basin_N	191162;Drainage_basin;commons/a/a6/Hydrographic_basin.svg
-catchword_1_N	2083320;Catchword;commons/e/e4/Brevis_Commentarivs%2Cp15.png
 catchword_2_N	2083320;Catchword;commons/e/e4/Brevis_Commentarivs%2Cp15.png
 catechesis_N	3898753;Catechesis;commons/8/8c/Jules-Alexis_Muenier_-_La_Le%C3%A7on_de_cat%C3%A9chisme.jpg
 catechin_N	1077688;Catechin;commons/4/44/%28%2B%29-Catechin.png
@@ -3197,7 +3193,6 @@ caucasianMasc_N	3631006;Peoples_of_the_Caucasus;commons/b/b0/Caucasus-ethnic_en.
 caucasian_1_A	39282;Caucasus;commons/1/17/Caucasus_topographic_map-en.svg
 caucasian_2_A	39282;Caucasus;commons/1/17/Caucasus_topographic_map-en.svg
 caucasian_N	618592;Languages_of_the_Caucasus;commons/b/b0/Caucasus-ethnic_en.svg
-caucus_N	3267525;Party_conference;commons/5/58/Scottish_Green_Party_conference.jpg
 caudate_1_A	29657;Salamander;commons/b/b2/SpottedSalamander.jpg
 caudex_1_N	12001152;Caudex;commons/3/37/Dicksonia_antarctica_%28Tasmanian_Fern_Tree%29.jpg
 caudex_2_N	334463;Corm;commons/c/c2/Colocasia_esculenta_dsc07801.jpg
@@ -3367,13 +3362,13 @@ chair_4_N	75215;Electric_chair;commons/7/75/Florida_electric-chair.jpg
 chair_lift_1_N	299120;Chairlift;commons/8/83/Hunter4.jpg
 chaise_1_N	1252792;Chaise_longue;commons/2/2a/Chaise_longue_sofa_2.jpg
 chaise_2_N	2652866;Chaise;commons/7/7c/Chaise_%28PSF%29.jpg
-chaise_longue_N	5555424;Divan_(furniture);commons/e/ea/FrancisLevettLiotard.jpg
+chaise_longue_N	1252792;Chaise_longue;commons/2/2a/Chaise_longue_sofa_2.jpg
 chaja_N	1820994;Chauna;commons/6/69/Chauna_torquata.jpg
 chalazion_N	844668;Chalazion;commons/1/1e/Chalazion2_01242005_%28cropped%29.jpg
 chalcedony_1_N	44599;Chalcedony;commons/5/50/Quartz-83325.jpg
 chalcocite_N	872402;Chalcocite;commons/9/99/Chalcocite-253980.jpg
 chalcopyrite_N	158916;Chalcopyrite;commons/2/2c/Chalcopyrite-199453.jpg
-chalet_N	958171;Chalet;commons/0/09/Swiss_chalet.jpg	1713163;Mountain_hut;commons/7/74/Breslauer_H%C3%BCtte_1.jpg
+chalet_N	958171;Chalet;commons/0/09/Swiss_chalet.jpg
 chalfont_PN	131512;Chalfont,_Pennsylvania;en/a/af/Main_Street_Chalfont.jpg
 chalice_N	251034;Chalice;commons/4/4c/Derrynaflan_chalice.jpg
 chalk_1_N	44734;Chalk;commons/8/83/The_Needles.jpg
@@ -3771,6 +3766,7 @@ citadel_N	6695;Citadel;commons/5/59/Casale_Monferrato_map_%28018_003%29.jpg
 citation_2_N	97585;Citation;commons/3/31/Webcomic_xkcd_-_Wikipedian_protester.png
 citation_3_N	97585;Citation;commons/3/31/Webcomic_xkcd_-_Wikipedian_protester.png
 citation_4_N	97585;Citation;commons/3/31/Webcomic_xkcd_-_Wikipedian_protester.png
+citation_PN	481790;Citation_(horse);commons/9/91/Citation_%28USA%29.jpg
 citrange_1_N	5057876;Citrange;commons/9/9f/Pomological_Watercolor_POM00006386.jpg
 citrange_2_N	5057876;Citrange;commons/9/9f/Pomological_Watercolor_POM00006386.jpg	370312;Bitter_orange;commons/2/2e/Citrus_aurantium.jpg
 citron_1_N	367867;Citron;commons/e/ef/Chinesische_Zedrat_Zitrone.jpg
@@ -3825,6 +3821,7 @@ cleaner_3_N	9675622;Cleaner;commons/a/a4/Atlanta_parking_garage_settled_particul
 cleaners_N	11803513;Self-service_laundry;commons/7/7c/Wash_%26_Fold_Sign.jpg
 cleaning_1_N	253875;Cleaning;commons/c/c1/Woman_washing_hands.jpg
 clearing_1_N	41459249;Cleaning_(forestry);commons/b/bc/Weeding_After_2.jpg
+cleat_1_N	11091679;Cleat_(shoe);commons/8/87/Cleats.jpg
 cleat_2_N	4292580;Cleat_(nautical);commons/5/59/An_original_cleat_from_HMY_Britannia_-_K1_Britannia_%282%29.jpg
 cleats_N	2055457;Football_boot;commons/a/a0/Football_boots_1930-2002.JPG
 cleavage_3_N	36869;Cell_division;commons/d/df/Three_cell_growth_types.svg
@@ -4140,7 +4137,7 @@ common_room_N	2390461;Common_room;commons/0/0d/Common_Room_at_I.I.T._Delhi.jpg
 commonwealth_3_N	21175158;Commonwealth_of_Nations;commons/e/e2/Member_states_of_the_Commonwealth_of_Nations.svg	17926;League_of_Nations;commons/c/c5/Flag_of_the_League_of_Nations_%281939%29.svg
 commune_2_N	999521;Commune;commons/f/f2/Peckham_Bruderhof.jpg
 community_1_N	5695;Community;commons/f/f5/Stonehenge_Summer_Solstice_eve_02.jpg
-community_6_N	543770;Residential_area;commons/6/6a/HelenaMT_II.jpg
+community_6_N	19038;Municipality;commons/a/a2/Ponce_City_Hall.JPG
 commutator_N	216794;Commutator_(electric);commons/f/f1/Universal_motor_commutator.jpg
 commute_2_V	255426;Commuting;commons/7/71/NYC_subway_riders_with_their_newspapers.jpg
 commute_2_V2	255426;Commuting;commons/7/71/NYC_subway_riders_with_their_newspapers.jpg
@@ -4398,7 +4395,7 @@ copse_N	2208839;Shrubland;commons/8/88/Starr_010831-0016_Morella_faya.jpg
 copt_1_N	202367;Copts;commons/9/93/Coptic_flag.svg
 copt_2_N	202367;Copts;commons/9/93/Coptic_flag.svg
 copyist_N	3120054;Copyist;commons/2/2b/Art-students_and_copyists_in_the_Louvre_gallery%2C_Paris.jpg
-coquetry_N	1932759;Making_out;commons/9/97/We_believe_in_a_thing_called_love.jpg	11702;Flirting;commons/f/f7/Das_werdenSie_ja_nachher_schon_sehen.jpg
+coquetry_N	11702;Flirting;commons/f/f7/Das_werdenSie_ja_nachher_schon_sehen.jpg
 coquettish_A	172008;Coquette_(film);commons/c/cc/Coquettemp.jpg
 cor_anglais_N	87950;Cor_anglais;commons/8/80/English_Horn_picture.jpg
 coracle_N	236609;Coracle;commons/b/b4/Coracles_River_Teifi.jpg
@@ -4578,7 +4575,8 @@ court_1_N	75358;Court;commons/f/f3/Old_Bailey_Microcosm_edited.jpg
 court_3_N	229718;Royal_court;commons/9/9b/Siamese_envoys_at_Versailles.jpg
 court_5_PN	244345;Margaret_Court;commons/c/c4/Margaret_Court_1964.jpg
 court_8_N	75358;Court;commons/f/f3/Old_Bailey_Microcosm_edited.jpg
-court_martial_2_N	3076828;Drumhead_court-martial;commons/c/c1/15.Pr_Kentt%C3%A4oikeus1944.jpg
+court_martial_1_N	58625;Court-martial;commons/c/c1/15.Pr_Kentt%C3%A4oikeus1944.jpg
+court_martial_2_N	58625;Court-martial;commons/c/c1/15.Pr_Kentt%C3%A4oikeus1944.jpg
 courthouse_1_N	58609;Courthouse;commons/e/ed/Bulloch_county_courthouse_statesboro_georgia_2005.jpg
 courthouse_2_N	58609;Courthouse;commons/e/ed/Bulloch_county_courthouse_statesboro_georgia_2005.jpg
 courtier_N	227295;Courtier;commons/c/c5/Robert_Dudley_Leicester.jpg
@@ -4879,7 +4877,7 @@ cumulus_1_N	47532;Cumulus_cloud;commons/3/3c/GoldenMedows.jpg
 cuneiform_N	350137;Cuneiform;commons/e/e1/Xerxes_Cuneiform_Van.JPG
 cunnilingus_1_N	22669899;Cunnilingus;commons/2/20/Wiki-cunnilingus.png
 cup_1_N	41395970;Cup;commons/d/da/Cup_and_Saucer_LACMA_47.35.6a-b_%281_of_3%29.jpg
-cup_4_N	939680;Single-elimination_tournament;commons/9/9d/Mitbat-2007-bracket-large.png
+cup_4_N	2968115;Cup_(unit);commons/2/27/Simple_Measuring_Cup.jpg
 cupboard_N	1890510;Cupboard;commons/1/16/Der_Schrank.jpg
 cupcake_N	910272;Cupcake;commons/0/0d/R%C3%B6da_kakor.jpg
 cupflower_1_N	6659129;Nierembergia;commons/1/18/Nierembergia_frutescens.jpg
@@ -5439,7 +5437,7 @@ dill_1_N	7985;Dill;commons/1/10/Illustration_Anethum_graveolens0.jpg
 dill_2_N	7985;Dill;commons/1/10/Illustration_Anethum_graveolens0.jpg
 dillenia_N	5321192;Dillenia;commons/f/f4/Leaves_%26_Buds_I_IMG_8416.jpg
 diltiazem_N	724723;Diltiazem;commons/7/7f/Diltiazem_structure.svg
-dilution_1_N	3736547;Dilution_(equation);commons/9/9b/Dilution.png
+dilution_2_N	3736547;Dilution_(equation);commons/9/9b/Dilution.png
 dimenhydrinate_N	652948;Dimenhydrinate;commons/3/37/Dimenhydrinate.svg
 dimension_3_N	8398;Dimension;commons/2/25/Squarecubetesseract.png
 dimer_N	261366;Dimer_(chemistry);commons/c/c9/Carboxylic_acid_dimers.png
@@ -5527,7 +5525,6 @@ dismemberment_N	693320;Dismemberment;commons/2/28/Dieric_Bouts_013.jpg
 dismissal_2_N	855322;Dismissal_(employment);commons/c/c7/1909_Tyee_-_Faculty_Foot.jpg
 disparagement_2_N	15834;Satires_(Juvenal);commons/e/eb/Juvenalcrowned.gif
 dispensary_N	7331527;Dispensary;commons/1/12/Discount_Medical_Marijuana_-_2.jpg
-dispersal_N	23773247;Statistical_dispersion;commons/f/f9/Comparison_standard_deviations.svg
 dispersion_3_N	23773247;Statistical_dispersion;commons/f/f9/Comparison_standard_deviations.svg
 displacement_2_N	859275;Displacement_(vector);commons/4/40/Distancedisplacement.svg
 displacement_3_N	859275;Displacement_(vector);commons/4/40/Distancedisplacement.svg
@@ -5539,7 +5536,7 @@ dissembler_N	1167893;Tartuffe;commons/d/d2/Tartuffe.jpg
 dissemination_3_N	23773247;Statistical_dispersion;commons/f/f9/Comparison_standard_deviations.svg
 dissent_2_N	63221;Dissent;commons/2/2a/Dissent_develops_democracy_sticker.jpg
 dissident_N	286526;Dissident;commons/b/b0/Mohammed_bin_Salman%27s_Saudi_Arabia_A_Deeper_Look_%2840917729462%29.jpg
-dissonance_3_N	415167;Semitone;commons/b/ba/Minor_second_on_C.png
+dissonance_3_N	1664363;Consonance_and_dissonance;commons/a/a5/Perfect_octave_on_C.png	1664363;Consonance_and_dissonance;commons/b/ba/Minor_second_on_C.png
 distaff_2_N	17947615;Distaff;commons/7/71/Reine_Berthe_et_les_fileueses%2C_1888.jpg
 distemper_1_N	97839;Canine_distemper;commons/3/31/Canine_Distemper_Virus_Cytoplasmic_Inclusion_Body_%28Blood_smear%2C_Wright%27s_stain%29.jpg	1982686;Feline_panleukopenia;commons/8/85/Canines_Parvovirus.jpg
 distemper_4_N	8652943;Distemper_(paint);commons/b/b4/Dieric_Bouts_-_The_Entombment_-_Artron.jpg
@@ -5595,7 +5592,6 @@ dna_N	7955;DNA;commons/4/4c/DNA_Structure%2BKey%2BLabelled.pn_NoBB.png
 dnepropetrovsk_PN	494909;Dnipropetrovsk_Oblast;commons/d/da/Dnipropetrovsk_in_Ukraine.svg
 do_2_N	49220;C_(musical_note);commons/0/03/Middle_C.png
 dobson_2_N	1476259;Megaloptera;commons/3/38/Sialis_spPCCA20050708-9036A.jpg
-dock_1_N	567952;Penalty_box;commons/1/18/Yellow_Card_-_Rugby_union.JPG
 dock_4_V2	8882453;Docking_(animal);commons/a/a0/Two_lambs_rubber_ring_tail_docking%2C_cropped.jpg
 dock_5_N	676393;Dock_(maritime);commons/9/9a/Cruise_ship_dock_in_St_Maarten.JPG
 dock_7_N	8882453;Docking_(animal);commons/a/a0/Two_lambs_rubber_ring_tail_docking%2C_cropped.jpg
@@ -5728,7 +5724,6 @@ dower_2_N	3044226;Dower;commons/7/7b/Proikosymfono_Kastoria_1905.JPG
 dower_V2	3044226;Dower;commons/7/7b/Proikosymfono_Kastoria_1905.JPG
 dowitcher_N	244091;Dowitcher;commons/f/f6/Longbilleddowitcher06.jpg
 down_1_N	1084904;Down_feather;commons/1/16/Daune_down_feather.jpg
-down_and_out_N	420724;Verdict;commons/e/e0/Waiting_for_the_Verdict_by_Abraham_Solomon%2C_1859%2C_Getty_Center.JPG
 downhill_2_N	218183;Downhill_(ski_competition);commons/7/7b/Andrej_%C5%A0porn_at_the_2010_Winter_Olympic_downhill.jpg
 downing_street_1_PN	54862;Downing_Street;commons/8/81/Downing_Street_gates.jpg
 downing_street_2_PN	54862;Downing_Street;commons/8/81/Downing_Street_gates.jpg
@@ -5793,7 +5788,7 @@ drey_N	1127029;Drey;commons/c/c2/Squirrels_drey.JPG
 drier_2_N	986413;Hair_dryer;commons/e/ea/Hairdryer_20101109.jpg
 drier_2_N	317900;Clothes_dryer;commons/1/1c/Modern_front_load_tumble_dryer.JPG
 driffield_PN	544367;Driffield;commons/4/4b/Market_Place%2C_Driffield_-_geograph.org.uk_-_453770.jpg
-drift_ice_N	343225;Sea_ice;commons/6/68/Arctic_ice.jpg
+drift_ice_N	665139;Drift_ice;commons/0/0b/Greenland_East_Coast_7.jpg
 drift_wood_N	44750;Driftwood;commons/e/ef/Driftwood_NZ.jpg
 driftfish_1_N	5142196;Man-of-war_fish;commons/5/57/Man-of-war-fish.jpg	4573338;Driftfish;commons/f/fc/Psenes_pellucidus.jpg
 driftfish_2_N	5142196;Man-of-war_fish;commons/5/57/Man-of-war-fish.jpg
@@ -5979,8 +5974,8 @@ ebony_3_N	184073;Ebony;commons/3/3e/%C3%89bano.jpg
 ebony_A	248314;Ebenaceae;commons/4/4d/Starr_040513-0060_Diospyros_sandwicensis.jpg
 eccentricity_2_N	1239472;Eccentricity_(mathematics);commons/b/bd/Eccentricity.svg
 eccentricity_3_N	1239472;Eccentricity_(mathematics);commons/b/bd/Eccentricity.svg
-ecchymosis_1_N	948990;Ecchymosis;commons/e/e6/Bilateral_periorbital_ecchymosis_%28raccoon_eyes%29.jpg	641156;Bruise;commons/6/63/Pferdekuss.jpg
-ecchymosis_2_N	948990;Ecchymosis;commons/e/e6/Bilateral_periorbital_ecchymosis_%28raccoon_eyes%29.jpg	641156;Bruise;commons/6/63/Pferdekuss.jpg
+ecchymosis_1_N	948990;Ecchymosis;commons/e/e6/Bilateral_periorbital_ecchymosis_%28raccoon_eyes%29.jpg
+ecchymosis_2_N	948990;Ecchymosis;commons/e/e6/Bilateral_periorbital_ecchymosis_%28raccoon_eyes%29.jpg
 echidna_1_N	80393;Echidna;commons/e/e9/Short-beaked_echidna_in_ANBG.jpg	1837721;Short-beaked_echidna;commons/c/c9/Wild_shortbeak_echidna.jpg
 echidna_2_N	1837721;Short-beaked_echidna;commons/c/c9/Wild_shortbeak_echidna.jpg
 echinocactus_N	1497312;Echinocactus;commons/9/9b/Golden_Barrel_cactus%2C_Huntington_Desert_Garden.jpg
@@ -6041,7 +6036,6 @@ efflux_N	4400374;Surface_runoff;commons/b/b0/Runoff.jpg
 effort_4_N	12230179;Civil_society_campaign;commons/3/31/Net_Neutrality_Vigil_%2815727220061%29.jpg
 effortfulness_N	13619556;Effortfulness;commons/7/78/Veronica_Foster%2C_ww2_gunsmith%2C_hard_at_work_-b.jpg
 effusion_2_N	229619;Effusion;commons/d/dc/Effusion.svg
-eft_N	71097;Smooth_newt;commons/9/9d/Common_Newt.jpg	371545;Salamandridae;commons/4/49/Notophthalmus_viridescensPCCA20040816-3983A.jpg	976094;Northern_crested_newt;commons/e/e0/Kammmolchmaennchen.jpg	29657;Salamander;commons/b/b2/SpottedSalamander.jpg
 egg_1_N	484939;Egg;commons/5/54/Adolphe_Millot_oeufs-fixed.jpg
 egg_1_V2	5117132;Egging;commons/2/29/Jiri_Paroubek_egg_attack.jpg
 egg_2_N	19196010;Egg_as_food;commons/f/f7/Eggs%2C_parmesan_and_carrots_with_cream.jpeg
@@ -6145,7 +6139,7 @@ emerald_2_N	10045;Emerald;commons/1/1a/5_Emeralds_from_Colombia.JPG
 emergence_1_N	37436;Emergence;commons/c/c2/SnowflakesWilsonBentley.jpg
 emergency_1_N	146334;Emergency;commons/1/13/Woman_collapses_in_the_East_Village_of_New_York.jpg
 emergency_2_N	298608;State_of_emergency;commons/5/55/Malay_Regiment_operatives_1949.JPG
-emergency_3_N	627961;Emergency_brake_(train);commons/b/b1/Davis_Metcalfe_Brake_Handle.jpg	3509798;Parking_brake;commons/7/7c/Handbrake_lever.JPG
+emergency_3_N	627961;Emergency_brake_(train);commons/b/b1/Davis_Metcalfe_Brake_Handle.jpg
 emigrant_N	3656882;Muhacir;commons/3/3c/Muhajir.jpg
 emir_N	178427;Emir;commons/2/24/Shuja_Shah_Durrani_of_Afghanistan_in_1839.jpg
 emmer_N	89367;Emmer;commons/5/5f/Usdaemmer1.jpg
@@ -6709,7 +6703,7 @@ female_1_N	20913864;Female;commons/6/66/Venus_symbol.svg
 female_2_N	19978736;The_Women_(1939_film);commons/b/b8/Poster_-_Women%2C_The_01.jpg
 femininity_N	240059;Femininity;commons/6/64/Titian_-_Venus_with_a_Mirror_-_Google_Art_Project.jpg
 feminization_1_N	11726116;Feminization_(biology);commons/a/aa/Mice_X_Y_chromosomes.jpg
-fen_2_N	30073679;Rich_fen;commons/9/98/Rich-fen-primula-farinosa.jpeg	113530;Fen;commons/8/89/Illustrated_diagram_of_a_fen.jpg
+fen_2_N	113530;Fen;commons/8/89/Illustrated_diagram_of_a_fen.jpg
 fence_1_N	42273;Fence;commons/a/a2/Westtown.jpg
 fencing_1_N	12532225;Perimeter_fence;commons/8/8d/Profiled_Welded_Wire_Mesh_Fencing.jpg
 fencing_3_N	10893;Fencing;commons/1/10/Final_Trophee_Monal_2012_n08.jpg
@@ -6873,7 +6867,7 @@ firebomb_N	290330;Incendiary_device;commons/0/09/Fire-ball_Veste-Coburg.jpg
 firebrat_N	2021152;Firebrat;commons/a/ac/Ofenfischchen1.jpg
 firebreak_N	1032659;Firebreak;commons/b/b6/Firebreak.JPG
 firebrick_N	1059742;Fire_brick;commons/2/2b/Torpedo_car_refractory_bricks.JPG
-firebug_2_N	211411;Heteroptera;commons/3/36/Wasserl%C3%A4ufer_bei_der_Paarung_crop.jpg
+firebug_2_N	1710722;Pyrrhocoris_apterus;commons/9/9f/Pyrrhocoris_apterus_%28aka%29.jpg
 firecracker_N	853610;Squib_(explosive);commons/4/4f/Box_of_squibs.jpg	418188;Firecracker;commons/8/87/Firecrackers.png
 firefly_1_N	10534042;Lampyris_noctiluca;commons/5/5d/Lampyridae_-_Lampyris_noctiluca.JPG
 firefly_2_N	3143231;Pyrophorus_(beetle);commons/0/01/Pyrophorus_noctilucus_click_beetle.jpg
@@ -7011,7 +7005,7 @@ flock_1_N	3125398;Church_(congregation);commons/e/ed/%C3%89glise_Saint-Hippolyte
 flock_2_N	2046388;Quelea;commons/9/95/Red-billed_quelea_flocking_at_waterhole.jpg
 flock_4_N	928595;Crowd;en/7/7c/Crowd_in_street.jpg
 flock_5_N	969684;Herd;commons/6/67/Sheep_and_herder_India.jpg
-floe_N	343225;Sea_ice;commons/6/68/Arctic_ice.jpg
+floe_N	504495;Ice_floe;commons/5/57/In_the_Arctic_Sea_-_An_Ice_Floe_Adrift_%28NBY_439626%29.jpg
 flood_4_N	50482;Flood;commons/3/36/Urban_flood_cropped.jpg
 floodgate_1_N	2516037;Floodgate;commons/d/d8/Floodgate_Tokyo.jpg
 floodgate_2_N	2516037;Floodgate;commons/d/d8/Floodgate_Tokyo.jpg
@@ -7086,7 +7080,7 @@ flytrap_N	310678;Venus_flytrap;commons/3/37/Venus_Flytrap_showing_trigger_hairs.
 flywheel_N	89480;Flywheel;commons/6/68/Thinktank_Birmingham_-_Trevithick_Locomotive%281%29.jpg
 fm_1_N	10835;Frequency_modulation;commons/a/a4/Amfm3-en-de.gif
 foal_N	1181806;Foal;commons/4/4c/Standingarabianfoalone.jpg
-foam_2_N	268420;Foam;commons/f/f4/Foam_-_big.jpg
+foam_1_N	268420;Foam;commons/f/f4/Foam_-_big.jpg
 foam_rubber_N	2888511;Foam_rubber;commons/b/b4/Mattress.jpg
 foamflower_N	4464229;Tiarella;commons/1/17/Foamflower_Tiarella_%27Cygnet%27_Flower_Closeup_2000px.JPG
 focus_6_N	1032610;Focus_(optics);commons/c/c2/Focusing_on_retina.svg
@@ -7199,7 +7193,7 @@ fossorial_A	3072173;Fossorial;commons/f/f1/Erdh%C3%B6rnchen_011.jpg
 fothergilla_1_N	26991518;Fothergilla_major;commons/3/3e/Fothergilla_major_%28Witch_alder%29.JPG	1964595;Fothergilla;commons/d/d2/Fothergilla_gardenii.jpg
 fothergilla_2_N	1964595;Fothergilla;commons/d/d2/Fothergilla_gardenii.jpg
 foulard_N	11419344;Foulard;commons/5/58/Casol_square_silk_scarf_as_head_scarf.jpg
-foundry_N	2853363;Foundry;commons/9/9f/Fra_Burmeister_og_Wains_jernst%C3%B8beri.jpg	1082009;Sand_casting;commons/3/3c/SandMoldCopeDragCores.jpg
+foundry_N	2853363;Foundry;commons/9/9f/Fra_Burmeister_og_Wains_jernst%C3%B8beri.jpg
 fountain_1_N	384701;Fountain;commons/f/f5/Fountains_Collage.jpg
 fountain_pen_N	60284;Fountain_pen;commons/7/7b/Fountain_pen_writing_%28literacy%29.jpg
 fovea_N	749853;Fovea_centralis;commons/1/1e/Schematic_diagram_of_the_human_eye_en.svg
@@ -7244,7 +7238,7 @@ freckle_N	58180;Freckle;commons/e/ea/Vesnuschki.jpg
 freckleton_PN	2450880;Freckleton;commons/a/a4/Holy_Trinity_Church%2C_Freckleton.jpg
 frederick_PN	51177;Frederick,_Maryland;commons/9/9c/Bridge_Reflections_on_the_Carroll_Creek_-_panoramio.jpg
 frederiksberg_PN	20528378;Frederiksberg;commons/8/8b/Frederiksberg_Slot.jpg
-freemasonry_1_N	11227;Freemasonry;commons/a/ac/Square_compasses.svg
+freemasonry_2_N	11227;Freemasonry;commons/a/ac/Square_compasses.svg
 freesia_N	345327;Freesia;commons/4/42/Freesia.jpg
 freestyle_N	23272431;Freestyle_swimming;commons/7/7c/2008_LEN_European_Championships_Final_400m_Freestyle_Women.JPG	1123339;Freestyle_wrestling;commons/3/3b/FreestyleWrestling2.jpg
 freetail_N	801513;Mexican_free-tailed_bat;commons/4/43/Tadarida_brasiliensis.jpg	487141;Tadarida;commons/1/18/Tadarida_brasiliensis_-_Bahamas_-_Long_Island_%28sic%29_-_Cartwright_Cave_-_March_2006_-_2.jpg
@@ -7268,15 +7262,15 @@ freshman_A	11541500;Freshman;commons/7/72/1920_Locust_yearbook_p._095_%28Freshma
 freshwater_N	230001;Fresh_water;commons/5/5e/Amazonas%2C_Iquitos_-_Leticia%2C_Kolumbien_%2811472506936%29.jpg
 fret_4_N	185704;Fret;commons/3/36/Frets%2C_guitar_neck%2C_C-major_chord.jpg
 fretsaw_N	43113112;Jigsaw_(tool);commons/7/74/Jigsaw_AccuMaster.jpg
-fretwork_N	996230;Meander_(art);commons/5/50/Rhodes_meander_hg.jpg
+fretwork_N	1276374;Fretwork;commons/6/6c/Ventilation-grille.jpg
 friar_N	312753;Friar;commons/4/44/Agustinos_Recoletos.jpg
 fricassee_N	9125820;Fricassee;commons/b/be/Chicken_fricassee.jpg
 friction_2_N	11062;Friction;commons/2/24/Friction_between_surfaces.jpg
 friction_3_N	11062;Friction;commons/2/24/Friction_between_surfaces.jpg
 friendship_N	17157119;Friendship;commons/a/a5/El_cuentito.jpg
 frieze_1_N	147964;Frieze;commons/a/a3/20100410_athina108.JPG
-frigate_1_N	11464;Frigate;commons/f/fa/La-fregate-de-18-la-penelope-1802-1816-par-francois-roux-18772.jpg	1138566;Full-rigged_ship;commons/b/be/Christian_Radich_aft_foto_Ulrich_Grun.jpg
-frigate_2_N	11464;Frigate;commons/f/fa/La-fregate-de-18-la-penelope-1802-1816-par-francois-roux-18772.jpg	1138566;Full-rigged_ship;commons/b/be/Christian_Radich_aft_foto_Ulrich_Grun.jpg
+frigate_1_N	11464;Frigate;commons/f/fa/La-fregate-de-18-la-penelope-1802-1816-par-francois-roux-18772.jpg
+frigate_2_N	11464;Frigate;commons/f/fa/La-fregate-de-18-la-penelope-1802-1816-par-francois-roux-18772.jpg
 frijole_1_N	491135;Phaseolus_coccineus;commons/f/f7/Illustration_Phaseolus_coccineus0.jpg
 frijole_2_N	491135;Phaseolus_coccineus;commons/f/f7/Illustration_Phaseolus_coccineus0.jpg
 frill_3_N	8810538;Ruffle;commons/8/80/Gullager_Salisbury.jpg
@@ -7302,7 +7296,7 @@ frogmouth_N	262032;Frogmouth;commons/4/44/Tawny_frogmouth_wholebody444.jpg
 frome_PN	370358;Frome;commons/f/fc/Cheap_Street%2C_Frome%2C_16_February_2018.jpeg
 frond_N	480597;Frond;commons/1/18/Fern_frond_lobed.jpg
 front_7_N	2188689;Weather_front;commons/5/5d/Unusually_well_defined_warm_front.jpg
-frontage_3_N	30069779;Frontispiece_(architecture);commons/4/45/Capella_Sant_Jordi.jpg
+frontage_3_N	332666;Facade;commons/e/e6/Fa%C3%A7ade_of_St._Peter%27s_Basilica_2.JPG
 frontier_1_N	50344;Frontier;commons/6/62/1800s_Texas_House.JPG
 frost_1_N	11763;Frost;commons/b/b3/Saint-Amant_16_Gel%C3%A9e_blanche_2008.jpg
 frost_PN	25951;Robert_Frost;commons/b/b5/Robert_Frost_NYWTS.jpg
@@ -7326,7 +7320,7 @@ frying_N	26301130;Frying;commons/5/5c/Frying_latkes.jpg
 frying_pan_N	26301156;Frying_pan;commons/5/5c/Pfanne_%28Edelstahl%29.jpg
 fuchsia_N	268216;Fuchsia;commons/b/bf/Brincos_De_Princesa.jpg
 fucoid_2_N	233271;Brown_algae;commons/8/8e/Kelp-forest-Monterey.jpg
-fucus_N	233271;Brown_algae;commons/8/8e/Kelp-forest-Monterey.jpg	1424029;Fucus;commons/8/89/Fucus_serratus2.jpg
+fucus_N	1424029;Fucus;commons/8/89/Fucus_serratus2.jpg
 fudge_N	614586;Fudge;commons/9/91/Handmade_fruit_fudge_squares.jpg
 fugitive_1_N	406792;Fugitive;commons/2/22/John_Walsh_filming_a_segment_for_America%27s_Most_Wanted.jpg
 fugitive_2_N	406792;Fugitive;commons/2/22/John_Walsh_filming_a_segment_for_America%27s_Most_Wanted.jpg
@@ -7435,7 +7429,7 @@ galway_PN	92639;Galway;commons/0/0a/Galwaycitycollage.jpg
 gambia_PN	65656;The_Gambia;commons/7/77/Flag_of_The_Gambia.svg
 gambit_3_N	173514;Gambit;commons/d/d7/Chessboard480.svg
 gamble_1_N	11921;Gambling;commons/8/8e/Caravaggio_%28Michelangelo_Merisi%29_-_The_Cardsharps_-_Google_Art_Project.jpg
-gambling_N	53481;Game_of_chance;commons/0/06/Playing_roulette%2C_Las_Vegas%2C_Nevada_%2874663%29.jpg	11921;Gambling;commons/8/8e/Caravaggio_%28Michelangelo_Merisi%29_-_The_Cardsharps_-_Google_Art_Project.jpg
+gambling_N	11921;Gambling;commons/8/8e/Caravaggio_%28Michelangelo_Merisi%29_-_The_Cardsharps_-_Google_Art_Project.jpg
 gambling_den_N	11921;Gambling;commons/f/ff/Daiichhisega.jpg
 gamboge_1_N	1705111;Gamboge;commons/3/3a/Gummi_gutti1.JPG
 gambrel_N	2523651;Gambrel;commons/4/43/Appletons%27_Harvard_John_-_Harvard_hall.jpg
@@ -7516,8 +7510,8 @@ gastrulation_N	222177;Gastrulation;commons/d/d9/Blastula.png
 gasworks_N	2739199;Gasworks;commons/1/16/Gazownia_Grobla_RB3.JPG
 gate_1_N	12821;Gate;commons/9/95/Bucuresti%2C_Romania%2C_BCR_%28Poarta%29_%28B-II-m-A-18675%29.jpg
 gatehouse_N	3084010;Gatehouse;commons/e/ef/Pergamon_Museum_Berlin_2007110.jpg
-gatekeeper_1_N	4817717;Gatekeeper;commons/4/4c/Gate_Keeper%2C_Srivaikundam.jpg	13604460;Doorman_(profession);commons/e/e4/Hotel_Doormen_in_London.jpg
-gatekeeper_2_N	4817717;Gatekeeper;commons/4/4c/Gate_Keeper%2C_Srivaikundam.jpg	13604460;Doorman_(profession);commons/e/e4/Hotel_Doormen_in_London.jpg
+gatekeeper_1_N	4817717;Gatekeeper;commons/4/4c/Gate_Keeper%2C_Srivaikundam.jpg
+gatekeeper_2_N	4817717;Gatekeeper;commons/4/4c/Gate_Keeper%2C_Srivaikundam.jpg
 gateshead_PN	266656;Gateshead;commons/1/16/Newcastle_Quayside_with_bridges.jpg
 gaucho_N	386905;Gaucho;commons/0/0b/Gaucho1868b.jpg
 gauge_3_N	267139;Track_gauge;commons/5/5d/Rail_gauge_world.svg
@@ -7630,7 +7624,7 @@ germanite_N	252058;Germanite;commons/7/70/Germanite.jpg
 germanium_N	12242;Germanium;commons/0/08/Polycrystalline-germanium.jpg
 germany_PN	11867;Germany;en/b/ba/Flag_of_Germany.svg
 germinal_A	227478;Germination;commons/7/75/Sunflower_seedlings.jpg
-germination_2_N	227478;Germination;commons/7/75/Sunflower_seedlings.jpg
+germination_1_N	227478;Germination;commons/7/75/Sunflower_seedlings.jpg
 gerrymander_N	12987;Gerrymandering;commons/d/d3/DifferingApportionment.svg
 gerrymander_V2	12987;Gerrymandering;commons/d/d3/DifferingApportionment.svg
 gesneria_N	3700383;Gesneria;commons/5/54/Gesneria_venticosa.jpg
@@ -7707,7 +7701,7 @@ gitano_N	26152;Romani_people;commons/1/10/Flag_of_the_Romani_people.svg
 giveaway_3_N	13135;Game_show;commons/6/6f/Wheel_of_Fortune_Navy.jpg
 gizzard_N	377341;Gizzard;commons/5/5a/Gizzard_of_Chicken.JPG
 glabella_N	2026684;Glabella;commons/e/e9/Glabella.PNG
-glaciation_2_N	15361;Ice_age;commons/b/b4/IceAgeEarth.jpg
+glaciation_2_N	1067415;Glacial_period;commons/c/c9/Co2_glacial_cycles_800k.png
 glacier_N	12463;Glacier;commons/9/91/Baltoro_glacier_from_air.jpg
 glade_N	4425382;Glade_(geography);commons/0/07/Cox_Valley2.JPG
 gladiator_1_N	12336;Gladiator;commons/7/7e/Gladiators_from_the_Zliten_mosaic_3.JPG
@@ -7957,8 +7951,7 @@ grapevine_2_N	53313;Vitaceae;commons/d/d9/Grapes03.jpg	413408;Vitis_vinifera;com
 graph_1_N	325806;Graph_(discrete_mathematics);commons/5/5b/6n-graf.svg
 graph_3_N	8305;Dyslexia;commons/7/71/Writing_Systems_Template_Image.svg
 graphite_N	12366;Graphite;commons/3/3d/Graphite-233436.jpg
-grapnel_1_N	26048064;Harpax;commons/9/96/Harpax_english.jpg
-grapnel_2_N	1248473;Grappling_hook;commons/2/20/MS812-3.gif
+grapnel_1_N	1248473;Grappling_hook;commons/2/20/MS812-3.gif
 grappa_N	890025;Grappa;commons/4/4c/A_glass_of_tasty_grappa.jpg
 grapple_2_V	12564;Grappling;commons/3/35/Pankratiasten_in_fight_greek_statue_2_century_bC.jpg
 grappling_iron_N	1248473;Grappling_hook;commons/2/20/MS812-3.gif
@@ -8083,8 +8076,7 @@ grouper_1_N	12613517;Epinephelus_marginatus;commons/9/91/Merou.jpg
 grouper_2_N	48873;Serranidae;commons/c/c8/Cromileptes_altivelis_-_Paddelbarsch_-_Panther_grouper.jpg	407822;Grouper;commons/2/29/Epinephelus_malabaricus.jpg	12613517;Epinephelus_marginatus;commons/9/91/Merou.jpg
 grouse_1_N	339255;Red-legged_partridge;commons/8/8c/Perdrix_rouge.jpg	3092298;Lagopus;commons/d/d5/Ptarmigan9.jpg
 grouse_2_N	63570;Grouse;commons/b/bd/SageGrouse21.jpg
-grout_N	407480;Grout;commons/d/de/Applying_grout.jpg	324498;Mortar_(masonry);commons/6/6f/Three_old_bricks_held_together_with_mortar.jpg
-growing_1_N	22469;Ontogeny;commons/0/06/HumanEmbryogenesis.svg
+grout_N	407480;Grout;commons/d/de/Applying_grout.jpg
 groyne_N	307279;Groyne;commons/c/c5/53sitges.jpg	1018652;Breakwater_(structure);commons/d/db/Breakwater_break1_new%28USGS%29.jpg
 gruel_N	882813;Gruel;commons/b/be/Rice_gruel.jpg
 grunt_3_N	4477142;Haemulidae;commons/5/51/Haemulon_album.jpg
@@ -8131,7 +8123,7 @@ guide_1_N	3162270;Tour_guide;commons/3/32/Tour_Guide.jpg
 guide_3_N	2036479;Guide_book;commons/2/20/Guide_Book_of_the_Panama_California_Exposition.jpg
 guide_2_N	3162270;Tour_guide;commons/3/32/Tour_Guide.jpg
 guild_N	12369;Guild;commons/3/33/Windsorguildhall.jpg
-guild_hall_N	383746;Seat_of_local_government;commons/e/e7/HH_Rathaus_pano1.jpg	1659162;Guildhall;commons/e/e2/Guildhall%2C_City_of_London_-_Diliff.jpg
+guild_hall_N	1659162;Guildhall;commons/e/e2/Guildhall%2C_City_of_London_-_Diliff.jpg
 guilder_1_N	58341;Guilder;commons/f/f3/Behrens_66.jpg
 guilder_2_N	58341;Guilder;commons/f/f3/Behrens_66.jpg
 guildford_PN	77783;Guildford;commons/e/e1/Gulidford_Guildhall.jpg
@@ -8191,7 +8183,6 @@ gusset_3_N	3706186;Gusset;commons/9/9c/3-piantagione_Taccuino_Sanitatis_Casanate
 gut_3_N	1945335;String_(music);commons/c/ce/Flatwound_01.JPG
 gutta_percha_N	339747;Gutta-percha;commons/f/fa/Palaquium_gutta_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-099.jpg
 gutter_1_N	7804521;Rain_gutter;commons/d/d4/Ch%C3%A9neau%2C_bande_d%27%C3%A9gout_et_noue_en_plomb..JPG
-gutter_4_N	7804521;Rain_gutter;commons/d/d4/Ch%C3%A9neau%2C_bande_d%27%C3%A9gout_et_noue_en_plomb..JPG
 guyana_PN	17238691;Guyana;commons/9/99/Flag_of_Guyana.svg
 guyot_N	167520;Guyot;commons/a/a4/Bear_Seamount_guyot.jpg
 gwent_PN	7271399;Gwent_(county);commons/7/74/Gwent_Preserved_County_in_Wales.svg
@@ -8268,7 +8259,7 @@ haler_1_N	2572558;Slovak_koruna;commons/a/a1/Svk-10_hal-01.png	2572558;Slovak_ko
 haler_2_N	1307572;Czech_koruna;commons/f/fb/10h_CZK.png
 halesowen_PN	401192;Halesowen;commons/8/8c/St_John_the_Baptists_Church_Halesowen_-_geograph.org.uk_-_58802.jpg
 half_3_A	464963;One_half;commons/7/70/Eye_of_Horus_square.png
-half_breed_N	448533;Half-breed;commons/4/4e/PaulKane-BuffaloHunt-ROM.jpg	1236047;M%C3%A9tis;commons/2/2c/A_M%C3%A9tis_man_and_his_two_wives%2C_circa_1825-1826.jpg
+half_breed_N	448533;Half-breed;commons/4/4e/PaulKane-BuffaloHunt-ROM.jpg
 half_caste_N	447776;Half-caste;commons/d/db/Last_of_the_Tasmanians_Woodcut_12_-_Walter_George_Arthur_and_Mary_Anne.jpg	1236047;M%C3%A9tis;commons/2/2c/A_M%C3%A9tis_man_and_his_two_wives%2C_circa_1825-1826.jpg
 half_tracked_1_A	826034;Half-track;commons/0/0b/1931_Citro%C3%ABn_Autochenille_P17_Croisi%C3%A8re_Jaune_photo_2.jpg
 halfback_1_N	548981;Midfielder;commons/c/c9/Boisko.svg
@@ -8360,7 +8351,6 @@ hangover_1_N	12274183;Hangover;commons/3/38/Edvard_Munch-The_Day_After.jpg
 hank_N	2110087;Hank_(textile);commons/a/ad/Yarn_hank_uncoiled.png
 hankasalmi_PN	774339;Hankasalmi;commons/f/fe/Hankasalmen_rautatieasema.JPG
 hanko_PN	196638;Hanko;commons/0/07/Eastern_Harbour_coastline_Hanko.jpg
-hanky_panky_N	6520040;Trapping;commons/d/d9/34-caccia_tortore%2CTaccuino_Sanitatis%2C_Casanatense_4182..jpg
 hanoi_PN	56667;Hanoi;commons/1/17/Hanoi_Montage.jpg
 hanover_1_PN	11253433;New_Town_Hall_(Hanover);commons/6/68/Neues_Rathaus_Hannover_abends.jpg
 hanover_2_PN	176558;House_of_Hanover;commons/e/e9/Royal_Arms_of_the_Kingdom_of_Hanover.svg
@@ -8488,7 +8478,6 @@ headache_2_N	69893;Headache;commons/a/ad/Migraine.jpg
 headband_N	2624624;Headband;commons/8/82/Headband.PNG
 header_2_N	9348572;Fireplace_mantel;commons/5/5c/Arlington_House_-_State_Dining_Room_-_fireplace_mantel_-_2011.jpg
 headgear_1_N	28877519;Headgear;commons/3/3d/Hoofddeksels.jpg
-heading_2_N	276837;Point_of_sail;commons/4/4b/Points_of_sail.svg
 headlamp_N	418780;Headlamp;commons/8/84/Scooter_headlights.jpg
 headland_N	28890666;Neemi;commons/c/ca/Mihkel_Ranna_dendraariumi_v%C3%A4rav.jpg	226852;Neman;commons/8/88/Neman_river.jpg
 headlinese_N	624766;Headlinese;commons/f/f7/Los_Angeles_Herald%2C_Number_180%2C_29_May_1916_front_page.jpg
@@ -8730,7 +8719,7 @@ hill_1_N	1408983;Hill;commons/1/1d/Bacin_zari_2015.jpg
 hill_2_N	2421260;Terp;commons/f/f7/Hallig_Hooge_2005.jpg	1408983;Hill;commons/1/1d/Bacin_zari_2015.jpg
 hill_billy_N	14011;Hillbilly;commons/7/70/HatfieldClan.jpg
 hillingdon_PN	1282819;Hillingdon;commons/b/b4/Hillingdon_Court_Park_-_Aimee_Atkinson.jpg
-hillock_N	40578140;Lomas_de_Campos;commons/7/79/Lomas%2C_Palencia_01.jpg
+hillock_N	6091238;Hillock;commons/d/d4/Kornbuehl_Salmendinger-Kapelle.jpg	6091238;Hillock;commons/5/53/Braine-L%27Alleud_-_Butte_du_Lion_dite_de_Waterloo.jpg
 hillside_N	33050739;Backen;commons/f/f8/Kyrkv%C3%A4gen_%28Backen%29.JPG
 hilltop_N	21787548;Klance;commons/3/3e/Klance1.jpg
 hilt_N	64480;Hilt;commons/3/35/Rapiere-Morges-1.jpg
@@ -9072,7 +9061,7 @@ hurricane_N	8282374;Tropical_cyclone;commons/0/04/Hurricane_Isabel_from_ISS.jpg
 hurstpierpoint_PN	1074146;Hurstpierpoint;commons/0/0c/Hurstpierpoint_High_Street.jpg
 husband_N	4318352;Husband;commons/4/4b/Bride-groom-kiss.jpg
 husk_1_N	47863633;Husk;commons/c/c4/E8025-Milyanfan-corn-huskers.jpg
-husky_N	530115;Husky;commons/7/7a/Huskiesatrest.jpg	273243;Sled_dog;commons/6/64/Corrie_Mile_9_Landscape_-_Jacob_W._Frank_%288636566476%29.jpg
+husky_N	530115;Husky;commons/7/7a/Huskiesatrest.jpg
 hussar_N	232653;Hussar;commons/f/fb/Istv%C3%A1n_n%C3%A1dor_Zalder.jpg
 hustler_1_N	321026;Street_prostitution;commons/7/71/10.3010_Torino-nightlife.v2.jpg
 hut_2_N	1713163;Mountain_hut;commons/7/74/Breslauer_H%C3%BCtte_1.jpg
@@ -9240,7 +9229,7 @@ idea_3_N	161999;Idea;commons/4/4a/Plato-raphael.jpg
 idea_of_N2	161999;Idea;commons/4/4a/Plato-raphael.jpg
 identifier_N	41250;Identifier;commons/5/5f/Louvre_identifiers_Ma1274-MR242.jpg
 identikit_N	4118738;Facial_composite;commons/f/f3/DBCooper.jpg
-ideograph_N	8305;Dyslexia;commons/7/71/Writing_Systems_Template_Image.svg
+ideograph_N	14731;Ideogram;commons/7/71/Writing_Systems_Template_Image.svg
 idesia_N	11884284;Idesia;commons/7/71/Idesia_leaves_fruit_041181.jpg
 idiot_N	15004;Idiot;commons/7/7e/Larock-The_Idiot.jpg
 idleness_2_N	728513;Laziness;commons/a/a9/British_club_scene.jpg
@@ -9448,7 +9437,6 @@ insectivore_1_N	80680;Insectivora;commons/4/44/Hedgehog-en.jpg	239448;Eulipotyph
 insectivore_2_N	80680;Insectivora;commons/4/44/Hedgehog-en.jpg	239409;Insectivore;commons/1/16/Aardwolfskull.jpg
 insectivorous_A	80680;Insectivora;commons/4/44/Hedgehog-en.jpg
 insemination_2_N	213070;Artificial_insemination;commons/3/3d/Blausen_0058_ArtificialInsemination.png
-inset_3_N	28228337;Lining_(sewing);commons/7/74/Boris_Kustodiev_-_Portrait_of_Fyodor_Chaliapin_-_Google_Art_Project.jpg
 insight_2_N	19218437;Eureka_effect;commons/4/47/Archimedes_bath.jpg
 insight_3_N	19218437;Eureka_effect;commons/4/47/Archimedes_bath.jpg
 insight_in_N2	19218437;Eureka_effect;commons/4/47/Archimedes_bath.jpg
@@ -9499,7 +9487,7 @@ interrupter_N	15624602;Interrupter;en/a/af/Golding_Bird%27s_interrupter.jpg
 intersection_1_N	41780044;Intersection;commons/8/81/Circle-line_intersection.svg
 intersection_2_N	157009;Intersection_(road);commons/b/be/%D0%9F%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D1%8C_%D0%A2%D0%B2%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%97%D0%B0%D1%81%D1%82%D0%B0%D0%B2%D0%B0_%28%D0%B2%D0%B8%D0%B4_%D1%81%D0%B2%D0%B5%D1%80%D1%85%D1%83%29.jpg
 intersection_3_N	41780044;Intersection;commons/8/81/Circle-line_intersection.svg
-intersection_4_N	18152;Logical_conjunction;commons/9/99/Venn0001.svg
+intersection_4_N	41780044;Intersection;commons/9/99/Venn0001.svg
 intertidal_A	581326;Littoral_zone;commons/2/28/Littoral_Zones.jpg
 intertrigo_N	1656889;Intertrigo;commons/6/63/Axillary_intertrigo.png
 interview_1_N	45273635;Interview_(journalism);commons/3/32/Thed_Bj%C3%B6rk_interview_2012.jpg
@@ -9525,7 +9513,6 @@ inverness_PN	144968;Inverness;commons/0/09/Inverness_Castle_and_River_Ness_Inver
 invertebrate_N	15223;Invertebrate;commons/4/4c/Drosophila_melanogaster_-_side_%28aka%29.jpg
 inverter_N	223356;Power_inverter;commons/6/65/M%C3%BCllberg_Speyer_-_2.JPG
 inverurie_PN	408203;Inverurie;commons/c/c5/Inverurie_Town_Hall.jpg
-investing_N	1137241;Savings_account;commons/2/20/SampleBankbook.png
 investment_2_N	30857467;Investment_fund;en/9/99/Financial_info.jpg
 invisibility_N	153911;Invisibility;commons/9/9b/INVIS_MIRROR.png
 invisible_1_A	37737;The_Invisible_Man;commons/1/1c/Wells_-_The_Invisible_Man_-_Pearson_cover_1897.jpg
@@ -9701,7 +9688,7 @@ java_1_PN	69336;Java;commons/4/43/Java_Topography.png
 java_3_PN	15881;Java_(programming_language);en/3/30/Java_programming_language_logo.svg
 javanese_1_N	491665;Javanese_people;commons/f/f2/Traditional_Javanese_marriage_costume.jpg
 javanese_2_N	366911;Javanese_language;commons/0/0b/Javanese_language_distribution.png
-javelin_1_N	8700358;Javelin;commons/f/fb/Javeleer.png	16078;Javelin_throw;commons/f/f1/Thomas_R%C3%B6hler_2011.jpg
+javelin_1_N	16078;Javelin_throw;commons/f/f1/Thomas_R%C3%B6hler_2011.jpg
 javelin_2_N	8700358;Javelin;commons/f/fb/Javeleer.png
 jaw_1_N	243577;Jaw;commons/e/ed/Human_jawbone_left.jpg
 jawfish_N	3082693;Opistognathidae;commons/d/d5/Opistognathus_aurifrons.jpg
@@ -9801,11 +9788,11 @@ joss_house_N	19328658;Chinese_temple_architecture;commons/2/2c/Quanzhou_Tonghuai
 jot_1_N	1699819;Note-taking;en/4/49/Carter-notes-pope-mtg-xl.jpg
 jotting_N	1699819;Note-taking;en/4/49/Carter-notes-pope-mtg-xl.jpg
 journalist_1_N	50100;Journalist;commons/6/6a/Reporter_from_CN8_at_the_Petco_gas_explosion_20050304.jpg
+joust_N	221562;Jousting;commons/d/d0/Paulus_Hector_Mair_Tjost_fig2.jpg
 joust_V	221562;Jousting;commons/d/d0/Paulus_Hector_Mair_Tjost_fig2.jpg
 joutsa_PN	779013;Joutsa;commons/1/1d/Joutsan_kirkko.jpg
 joutseno_PN	779019;Joutseno;commons/6/6a/Joutsenon_kirkko.jpg
 jove_PN	40255;Jupiter_(mythology);commons/7/7b/Giove%2C_I_sec_dc%2C_con_parti_simulanti_il_bronzo_moderne_02.JPG
-jowl_2_N	743997;Cheek;commons/a/a9/Chica_cachetona.jpg
 joy_2_N	185918;Joy;commons/1/12/A_Smiling_boy_from_Bangladesh.jpg
 joy_stick_2_N	16229;Joystick;commons/d/dd/Joyopis.svg
 joy_stick_1_N	1823944;Yoke_(aeronautics);commons/2/24/Yoke.png
@@ -10036,7 +10023,7 @@ khmer_1_N	5216;Khmer_language;commons/6/6f/Se_asia_lang_map.png
 khmer_2_N	1429661;Khmer_people;commons/8/83/Flag_of_Cambodia.svg
 kiang_N	1597976;Kiang;commons/1/15/Kiang_in_Hellabrunn.jpg
 kibbutz_N	106200;Kibbutz;commons/1/18/Kfar_Masaryk_6699.JPG
-kick_5_N	16831;Kick;commons/9/9b/Kick.JPG
+kick_1_N	16831;Kick;commons/9/9b/Kick.JPG
 kicker_N	1821412;Punter_(football);commons/5/51/Shane_Lechler_punts_at_Falcons_at_Raiders_11-2-08.JPG	1116805;Placekicker;en/a/a3/Ampkicker.JPG
 kickoff_1_N	2111813;Kick-off_(association_football);commons/3/3d/Ansto%C3%9F_im_Finale_Confed-Cup_2005.JPG
 kickstand_N	8170365;Bicycle_parking_rack;commons/d/d8/Witte_fietsen_de_hoge_veluwe.jpg	2263602;Kickstand;commons/2/22/Utility_bicycle_kickstand.jpg
@@ -10185,7 +10172,7 @@ kola_1_N	35072527;Cola_(plant);commons/9/91/Cola_acuminata_-_K%C3%B6hler%E2%80%9
 kola_nut_1_N	87249;Kola_nut;commons/d/d6/Kolanut.jpg
 kolari_PN	662944;Kolari;commons/5/5c/Yllas_Kesanki.jpg
 komondor_N	17273;Komondor;commons/8/8b/Komondor_delvin.jpg
-konini_N	881136;Fuchsia_(color);commons/0/08/DoubleFuchsias_wb.jpg
+konini_N	4113799;Fuchsia_excorticata;commons/f/ff/Konini_02.jpg
 konnevesi_PN	782327;Konnevesi;commons/0/00/Kunnantalo_Konnevesi.JPG
 kontiolahti_PN	782329;Kontiolahti;commons/a/a1/Kontiolahden_kirkko_IMG_1295_C.JPG
 kook_N	623811;C%C3%BAcuta;commons/d/d0/Parque_en_el_Malec%C3%B3n_C%C3%BAcuta_%282%29.JPG
@@ -10361,7 +10348,7 @@ lander_2_N	184638;Lander_(spacecraft);commons/b/b6/Apollo_16_LM.jpg
 landfill_N	211285;Landfill;commons/7/70/Wysypisko.jpg
 landgrave_N	317239;Landgrave;commons/9/98/T10_Landgraf.svg
 landing_3_N	5002284;Water_landing;commons/3/38/8Q-MAI_%2816252881394%29.jpg
-landing_craft_N	539716;Landing_craft;commons/2/2d/Landing-Craft-Infantry-LIFE-1944.jpg	14318464;Amphibious_assault_ship;commons/0/03/USS_Essex_Thailand.jpg
+landing_craft_N	539716;Landing_craft;commons/2/2d/Landing-Craft-Infantry-LIFE-1944.jpg
 landing_net_N	18961805;Hand_net;commons/2/27/FraserRiverSalmonFishing.jpg
 landing_party_N	58321650;Landing_party;commons/a/a7/Landing_of_US_sailors_Puerto_Cortes.jpg
 landlady_N	20862;Manorialism;commons/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg
@@ -10403,16 +10390,16 @@ lapland_PN	27861;S%C3%A1pmi;commons/1/1b/Sami_flag.svg
 lappajärvi_PN	782530;Lappaj%C3%A4rvi;commons/0/0e/Lappaj%C3%A4rviMontage_2014.png
 lappeenranta_PN	252753;Lappeenranta;commons/b/bb/Lappeenranta.sijainti.suomi.2010.svg
 lappet_2_N	1986766;Lappet;commons/3/31/A_history_of_hand-made_lace_-_dealing_with_the_origin_of_lace%2C_the_growth_of_the_great_lace_centres%2C_the_mode_of_manufacture%2C_the_methods_of_distinguishing_and_the_care_of_various_kinds_of_lace_%281900%29_%2814749268556%29.jpg
-lappet_3_N	66633;Moth;commons/f/fc/Emperor_Gum_Moth.jpg
+lappet_3_N	19258883;Gastropacha_quercifolia;commons/6/67/Gastropacha_quercifolia01.jpg
 lappi_PN	782532;Lappi,_Finland;commons/e/ee/Lappi.sijainti.suomi.2008.svg
 laptop_N	198584;Laptop;commons/e/e4/Lenovo_G500s_laptop-2905.jpg
 lapua_PN	782538;Lapua;commons/4/4d/Lapuan_tuomiokirkko.jpg
-lapwing_N	592497;Vanellus;commons/2/2f/Vanellus_miles_novaehollandiae.jpg	264589;Lapwing;commons/4/42/Vanellus_armatus_%28taxobox%29.jpg	170635;Northern_lapwing;commons/2/2f/Northern-Lapwing-Vanellus-vanellus.jpg	1436825;Southern_lapwing;commons/e/e8/Southern_lapwing_%28Vanellus_chilenis_lampronotus%29.JPG
+lapwing_N	264589;Lapwing;commons/4/42/Vanellus_armatus_%28taxobox%29.jpg
 larceny_N	161305;Larceny;commons/6/63/Paul-Charles_Chocarne-Moreau_The_Cunning_Thief.jpg
 larch_1_N	99384;Larch;commons/8/8c/SubalpineLarch_7735tl.jpg	1584580;Larix_decidua;commons/b/bd/L%27A_de_Bran%2C_%281798_m%29_Val_d%27Anniviers._Europese_larix_%28Larix_decidua%29_01.JPG
 larch_2_N	438963;Pinus_nigra;commons/8/80/Forest_in_Bulgaria_near_Dundukovo_dam.jpg	1584580;Larix_decidua;commons/b/bd/L%27A_de_Bran%2C_%281798_m%29_Val_d%27Anniviers._Europese_larix_%28Larix_decidua%29_01.JPG
 lard_1_V2	3686582;Lardo;commons/9/9a/Il_candido_Lardo_di_Colonnata.JPG
-lard_N	3686582;Lardo;commons/9/9a/Il_candido_Lardo_di_Colonnata.JPG	18621997;Lard;commons/a/af/Homelard.jpg
+lard_N	18621997;Lard;commons/a/af/Homelard.jpg
 larder_2_N	1565519;Larder;commons/e/e8/Pastry_Larder_at_The_Regency_Town_House_in_Hove.jpg
 largemouth_N	48843;Largemouth_bass;commons/2/29/Largemouth.JPG
 largs_PN	393105;Largs;commons/e/ec/DPP_00226.JPG
@@ -10501,7 +10488,7 @@ lay_off_N	611343;Termination_of_employment;commons/c/c7/1909_Tyee_-_Faculty_Foot
 lay_out_1_N	2361047;Page_layout;commons/9/9a/Zeitschriften.JPG
 layer_cake_N	1720902;Layer_cake;commons/2/2e/Meyer_lemon_chiffon_cake%2C_chocolate.jpg
 lazarus_1_PN	3587416;Lazarus_of_Bethany;commons/5/55/Lazarus_Athens.JPG
-laziness_1_N	728513;Laziness;commons/a/a9/British_club_scene.jpg	6934934;Acedia;commons/6/6a/Hieronymus_Wierix_-_Acedia_-_WGA25736.jpg
+laziness_1_N	728513;Laziness;commons/a/a9/British_club_scene.jpg
 laziness_2_N	728513;Laziness;commons/a/a9/British_club_scene.jpg
 laziness_3_N	326922;Sloth_(deadly_sin);commons/0/01/Jheronimus_Bosch_Table_of_the_Mortal_Sins_%28Accidia%29.jpg
 le_havre_PN	54004;Le_Havre;commons/8/81/Panorama_of_Le_Havre%2C_September_2019.jpg
@@ -10720,8 +10707,8 @@ lift_10_N	3892712;Airlift;commons/e/e6/C5_galaxy.jpg
 lift_5_N	7907848;Surface_lift;commons/d/d8/T-bar_lift.JPG
 lift_9_N	1443213;Rhytidectomy;commons/4/40/Mid_facelift_%28rhytidectomy%29_upper_incision.png
 liftman_N	2828266;Elevator_operator;commons/2/22/Lift_Ladies.JPG
-ligament_1_N	228845;Connective_tissue;commons/d/dc/Hist.Technik_%282%29.jpg
-ligament_2_N	228845;Connective_tissue;commons/d/dc/Hist.Technik_%282%29.jpg
+ligament_1_N	17874;Ligament;commons/2/20/Ligament.jpg
+ligament_2_N	17874;Ligament;commons/2/20/Ligament.jpg
 ligand_N	18589;Ligand;commons/4/41/HCo%28CO%294-3D-balls.png
 ligature_2_N	400582;Orthographic_ligature;commons/8/8b/Long_S-I_Garamond_sort_001.png
 liger_N	299049;Liger;commons/7/71/Liger_couple.jpg
@@ -10765,7 +10752,7 @@ limoges_PN	177195;Limoges;commons/5/51/Limoges_Mairie.jpg
 limonene_N	1779163;Limonene;commons/a/af/Limonene.gif
 limonite_N	60777;Limonite;commons/2/2e/LimoniteUSGOV.jpg
 limousine_N	22059223;Limousine;commons/0/06/1908StudeLimo.jpg
-limpet_1_N	19512911;Turritella_communis;commons/f/fe/Turritella_communis_01.JPG	1738148;Limpet;commons/f/f4/Common_limpets1.jpg
+limpet_1_N	1738148;Limpet;commons/f/f4/Common_limpets1.jpg
 limpet_2_N	20683023;Patella_vulgata;commons/f/f4/Common_limpets1.jpg
 linalool_N	1380144;Linalool;commons/3/36/%28S%29-Linalool_molecule_ball.png
 lincoln_1_PN	307;Abraham_Lincoln;commons/a/ab/Abraham_Lincoln_O-77_matte_collodion_print.jpg
@@ -10776,7 +10763,6 @@ linden_2_N	437928;Tilia_cordata;commons/5/52/Tilia-cordata2.JPG
 linden_tree_N	261463;Tilia;commons/8/8d/Tilia_tomentosa.jpg
 lindy_N	39809074;Lindy_Hop;commons/0/0c/Lindy_hop.jpg
 line_15_N	946963;Telephone_line;commons/7/72/Phone_pole3.jpg
-line_3_N	25265;Queue_(abstract_data_type);commons/5/52/Data_Queue.svg
 line_up_1_N	886957;Batting_order_(baseball);commons/6/61/StlAtl_032701_lineupcard.jpg
 linebacker_2_N	492475;Linebacker;commons/2/21/Football-Formation-LB.svg
 linen_1_N	56212;Linen;commons/2/2c/Handkerchief.jpg
@@ -10894,7 +10880,7 @@ loafer_2_N	303335;Slip-on_shoe;commons/2/2c/White_ballerina_shoes.jpg
 loam_N	1164768;Loam;commons/4/4b/Bama_soil.png
 loanhead_PN	2194812;Loanhead;commons/e/ed/Loanhead_-_geograph.org.uk_-_26430.jpg
 loasa_N	6666650;Loasa;commons/c/c7/Loasa_vulcanica_-_Andre.jpg
-lobby_1_N	49401;Hall;commons/9/9d/Marwar_Hall.jpg
+lobby_1_N	8684186;Lobby_(room);commons/d/d5/World_Trade_Center_South_Tower_lobby_interior%2C_1988.jpg
 lobectomy_N	2448661;Lobectomy;commons/6/62/Liver_lobectomy_02.jpg
 lobelia_N	430886;Lobelia;commons/8/86/Lobelia_%28aka%29.jpg
 lobotomy_N	46187;Lobotomy;commons/5/53/Turning_the_Mind_Inside_Out_Saturday_Evening_Post_24_May_1941_a_detail_1.jpg
@@ -11014,7 +11000,7 @@ louis_PN	147863;Joe_Louis;commons/3/30/Joe_Louis_by_van_Vechten.jpg
 louisiana_PN	18130;Louisiana;commons/2/2a/Louisiana_in_United_States.svg
 louisville_PN	58592;Louisville,_Kentucky;commons/7/74/Louisville_montage.jpg
 lounge_1_N	7675110;Canap%C3%A9_(furniture);commons/5/59/VshSenateSofa.JPG
-lounge_chair_N	7899248;Wing_chair;commons/b/b5/Easy_chair%2C_probably_Boston%2C_Massachusetts%2C_1760-1780%2C_mahogany%2C_soft_maple%2C_reproduction_wool_upholstery_-_Winterthur_Museum_-_DSC01384.JPG	7715601;Berg%C3%A8re;commons/5/51/Bergeres.jpg
+lounge_chair_N	1252792;Chaise_longue;commons/2/2a/Chaise_longue_sofa_2.jpg
 lounger_1_N	2618295;Fl%C3%A2neur;commons/4/42/Rosler-LeFlaneur.jpg
 loupe_N	658084;Magnifying_glass;commons/2/2e/Magnifying-glass-green-brass.png
 louse_1_N	58288;Louse;commons/3/3c/Fahrenholzia_pinnata.JPG	250238;Pediculus_humanus;commons/4/45/Male_human_head_louse.jpg
@@ -11059,7 +11045,6 @@ luddite_2_N	17864;Luddite;commons/7/73/Luddite.jpg
 ludlow_PN	59003;Ludlow;commons/5/50/A_frosty_Ludlow.jpg
 ludo_N	18666;Ludo_(board_game);commons/c/c5/Ludo_Pieces.JPG
 ludwigshafen_PN	145612;Ludwigshafen;commons/e/e7/Ludwigshafenmitte_ausderluft.jpg
-luff_2_N	526180;Centreboard;commons/2/28/Centerboard_%28PSF%29.svg
 luffa_2_N	80993;Luffa;commons/7/7d/Luffa_aegyptica.jpg
 lug_1_PN	18307;Lugh;commons/6/62/Lugh_spear_Millar.jpg
 lug_4_N	1865856;Tubifex_tubifex;commons/b/bd/TUBIFEX.gif
@@ -11307,7 +11292,7 @@ malmo_PN	19021;Malm%C3%B6;commons/6/6d/Malm%C3%B6_Collage2.jpg
 malnutrition_N	258979;Malnutrition;commons/9/90/Orange_ribbon.svg
 malocclusion_N	2156884;Malocclusion;commons/f/fa/Dental_problem_in_10-year-old_girl_-_1.jpg
 malope_N	6560581;Malope;commons/a/a9/MalopeTrifida3.jpg
-malt_1_N	241554;Milkshake;commons/7/72/Strawberry_milkshake.jpg
+malt_1_N	241554;Malt_drink;commons/7/72/Strawberry_milkshake.jpg
 malt_2_N	55801192;Malt_drink;commons/2/22/Kvass_brands.jpeg
 malt_2_V	5963160;Mash_ingredients;en/a/ad/Milled_Malted_Barley.JPG
 malt_3_N	20853;Malt;commons/9/98/Gr%C3%BCnmalz.jpg
@@ -11339,7 +11324,7 @@ man_at_arms_N	653194;Man-at-arms;commons/e/eb/Duerer_-_Studie_Reiter_1495.jpg
 man_eater_2_N	43619;Great_white_shark;commons/5/56/White_shark.jpg
 man_of_war_1_N	322148;Man-of-war;commons/e/ed/Het_Kanonschot_-_Canon_fired_%28Willem_van_de_Velde_II%2C_1707%29.jpg
 man_of_war_2_N	152952;Portuguese_man_o%27_war;commons/c/c3/Portuguese_Man-O-War_%28Physalia_physalis%29.jpg
-manacle_N	2952247;Cuff;commons/e/e1/Anton_van_Dyck_-_The_Cardinal-Infante_Fernando_de_Austria.jpg
+manacle_N	168072;Handcuffs;commons/0/0e/Hiatt104Darby.JPG
 management_1_N	19881;Management;commons/9/9d/USCG_Org_Chart.jpg
 manakin_3_N	263274;Manakin;commons/6/6a/Flickr_-_Rainbirder_-_Long-tailed_Manakin_%28Chiroxiphia_linearis%29.jpg
 manatee_N	26768;Sirenia;commons/8/81/Manatee.jpg	20204;Manatee;commons/6/6f/FL_fig04.jpg
@@ -12033,7 +12018,7 @@ mimosa_2_N	20876;Mimosa;commons/c/c2/Mimosa-pudica-flower.jpg
 min_3_PN	97105;Min_(god);commons/5/5b/Min.svg
 minaret_N	233490;Minaret;commons/0/08/Grande_mosqu%C3%A9e_de_testour.jpg
 mince_N	4806581;Picadillo;commons/e/e2/Picadillo_and_rice.jpg	47826193;Ground_meat;commons/a/a0/Sausage_making-H-1.jpg
-mince_pie_N	46876;Mince_pie;commons/d/d0/Mince_Pie.jpg	44400938;Joulutorttu;commons/f/f1/Joulutorttuja.jpg
+mince_pie_N	46876;Mince_pie;commons/d/d0/Mince_Pie.jpg
 mincemeat_N	996555;Mincemeat;commons/6/68/Mince_Pie_open.jpg	7491682;Hamburg_steak;commons/6/6e/Hamburg_steak1.jpg	11415;Forcemeat;commons/7/7d/Squab_forcemeat.jpg
 mincer_N	694564;Meat_grinder;commons/5/54/22_HFG.jpg
 mind_1_N	19378;Mind;commons/f/fa/Phrenology1.jpg
@@ -12076,7 +12061,6 @@ mint_3_N	18955;Mentha;commons/2/2f/Mint_2014-06-01_00-53.jpg
 mint_4_N	18955;Mentha;commons/2/2f/Mint_2014-06-01_00-53.jpg
 minuet_1_N	44108;Minuet;commons/e/eb/Minuet_%28PSF%29.png
 minuet_2_N	44108;Minuet;commons/e/eb/Minuet_%28PSF%29.png
-minute_gun_N	11966;Firearm;commons/3/38/US_Navy_100714-N-4965F-174_Chief_Mass_Communication_Specialist_Paula_Ludwick%2C_assigned_to_Fleet_Combat_Camera_Group_Pacific%2C_shoots_at_a_target_during_a_Navy_Rifle_Qualification_Course.jpg
 minuteman_1_N	27677647;Minutemen;commons/4/4b/Minute_Man_Statue_Lexington_Massachusetts_cropped.jpg
 minutes_N	901046;Minutes;commons/c/cf/1931_Hawkes_Bay_Earthquake_-_Minutes_of_First_Meeting_of_the_Hawkes_Bay_Earthquake_Relief_Fund_Committee_%2824631618026%29.jpg
 minyan_N	570855;Minyan;commons/4/48/JaffaMaariv.jpg
@@ -12116,7 +12100,7 @@ mitre_joint_N	1636581;Miter_joint;commons/4/43/Mitre_joint_square.png
 mitt_1_N	19166474;Hand;commons/3/32/Human-Hands-Front-Back.jpg
 mitt_3_N	1485009;Arm_warmer;commons/b/bd/Armwarmers.jpg
 mitten_N	5014630;Oven_glove;commons/5/54/Baking_glove.jpg
-mixer_3_N	1886340;Mixer_(appliance);commons/c/c3/Handheld_Electric_Beater.jpg
+mixer_3_N	482952;Frequency_mixer;commons/0/05/IdealMixer.svg
 mixer_4_N	1886340;Mixer_(appliance);commons/c/c3/Handheld_Electric_Beater.jpg
 mizzen_2_N	947588;Spanker_(sail);commons/5/5d/Sail_plan_ship.svg
 mnemonic_N	40411;Mnemonic;commons/9/9b/Month_-_Knuckles_%28en%29.svg
@@ -12278,7 +12262,7 @@ moorgame_N	320162;Red_grouse;commons/f/fc/2014-04-21_Lagopus_lagopus_scotica%2C_
 moorhen_1_N	512443;Moorhen;commons/b/b0/Dusky_Moorhen%2C_Gallinula_tenebrosa_in_Victoria%2C_Australia.jpg
 moorhen_2_N	320162;Red_grouse;commons/f/fc/2014-04-21_Lagopus_lagopus_scotica%2C_Hawsen_Burn_1.jpg
 mooring_1_N	263276;Mooring;commons/3/3f/Mooring.jpg
-moorland_N	14669196;Barren_vegetation;commons/7/72/Luzerne_%28Pennsylvania%292.jpg
+moorland_N	553383;Moorland;commons/0/07/Desert_of_wales_from_Drygarn_Fawr.JPG
 moose_N	20501;Moose;commons/8/8b/Moose_superior.jpg
 moosewood_1_N	2561660;Acer_pensylvanicum;commons/5/5a/Moosewood_leaves.jpg
 mop_N	1166229;Mop;commons/e/e7/Janitor%27s_bucket_with_mop.jpg
@@ -12378,7 +12362,7 @@ mound_4_N	2417700;Mound;commons/e/ef/Grave_Creek_Mound.jpg
 mound_5_N	7140901;Baseball_stirrups;commons/7/73/Baseball_pitch_release.jpg
 mountain_N	37754;Mountain;commons/6/6e/Monasterio_Khor_Virap%2C_Armenia%2C_2016-10-01%2C_DD_25.jpg
 mountaineering_N	45669706;Mountain_sport;commons/6/6f/Aiguille_fg35.jpg	20341;Mountaineering;commons/5/51/Summitting_Island_Peak.jpg
-mourner_N	5287125;Mourner;commons/6/69/Tumulo_de_D._Pedro_I_57a.jpg	15476968;Professional_mourning;commons/a/a2/Mourner_E27247_mp3h9194.jpg
+mourner_N	5287125;Mourner;commons/6/69/Tumulo_de_D._Pedro_I_57a.jpg
 mourning_1_N	234798;Grief;commons/d/d9/Grief_-_old_woman_%2870-ies%29.jpg	188399;Mourning;commons/5/50/Girl_in_mourning_dress_holding_framed_photograph_of_her_father.jpg
 mourning_2_N	188399;Mourning;commons/5/50/Girl_in_mourning_dress_holding_framed_photograph_of_her_father.jpg
 mourning_band_N	11119539;Black_armband;commons/d/d2/Richard_Norris_Wolfenden.jpg
@@ -12481,7 +12465,6 @@ muntjac_N	774640;Muntjac;commons/2/24/Muntiacus_sp_-_Hai_Hong_Karni.jpg	1671181;
 muonio_PN	662947;Muonio;commons/d/df/Muonio_Church_corrected.jpg
 mural_N	18816;Mural;commons/a/ac/Capitole_Toulouse_-_Salle_des_Illustres_-_Toulouse_coop%C3%A9rant_%C3%A0_la_d%C3%A9fense_nationale_1897_-_Jean-Andr%C3%A9_Rixens.jpg
 murder_N	20171;Murder;commons/8/8c/The_Murder_Of_Agamemnon_-_Project_Gutenberg_eText_14994.png
-murmur_2_N	237419;Heart_murmur;commons/4/4a/Phonocardiograms_from_normal_and_abnormal_heart_sounds.png
 murmur_3_N	237419;Heart_murmur;commons/4/4a/Phonocardiograms_from_normal_and_abnormal_heart_sounds.png
 murre_N	7105069;Uria;commons/c/cc/ThickbilledMurre23.jpg
 muscat_1_N	890864;Muscat_(grape);commons/1/1f/Muscat_blanc_et_Muscat_noir_by_JM_Rosier.jpg
@@ -12506,7 +12489,7 @@ music_3_N	18839;Music;commons/9/9b/Music_lesson_Staatliche_Antikensammlungen_242
 music_4_N	18839;Music;commons/9/9b/Music_lesson_Staatliche_Antikensammlungen_2421.jpg
 music_box_N	1002039;Music_box;commons/4/4e/Polyphon_Spieldose_%281%29.jpg
 music_hall_1_N	232692;Music_hall;commons/5/58/1830_Eagle_Tavern.jpg
-music_hall_2_N	484148;Singspiel;commons/1/12/Entfuhrung_aus_dem_Serail484.jpg
+music_hall_2_N	232692;Music_hall;commons/5/58/1830_Eagle_Tavern.jpg
 music_stand_N	10156160;Music_stand;commons/1/1e/Pupitre_bois.jpg
 musical_N	20572;Musical_theatre;commons/c/c2/Crookfinale.jpg	19029;Musical_film;commons/a/a3/TopHatORGI.jpg
 musicianFem_1_N	16945908;Spelman_(music);commons/8/82/Spelm%C3%A4n%2C_J%C3%B6nk%C3%B6ping.jpg
@@ -12822,7 +12805,7 @@ newsroom_1_N	1525349;Newsroom;commons/d/d0/The_New_York_Times_newsroom_1942.jpg
 newsroom_2_N	1525349;Newsroom;commons/d/d0/The_New_York_Times_newsroom_1942.jpg
 newsroom_3_N	5482223;Study_hall;commons/e/e2/Jerome_Library_7th_floor_group_study.jpg
 newsstand_N	964270;Newsagent%27s_shop;commons/3/3a/Street_Scene_-_Salta_-_Argentina.jpg
-newt_N	71097;Smooth_newt;commons/9/9d/Common_Newt.jpg	371545;Salamandridae;commons/4/49/Notophthalmus_viridescensPCCA20040816-3983A.jpg	976094;Northern_crested_newt;commons/e/e0/Kammmolchmaennchen.jpg	29657;Salamander;commons/b/b2/SpottedSalamander.jpg	19321517;Newt;commons/d/dd/Neurergus_Kaiseri.jpg
+newt_N	19321517;Newt;commons/d/dd/Neurergus_Kaiseri.jpg
 newton_1_PN	14627;Isaac_Newton;commons/3/39/GodfreyKneller-IsaacNewton-1689.jpg
 newton_2_N	72540;Newton_(unit);commons/9/9d/Illustration_on_One_Newton%2C_2018-07-06.png
 newtown_PN	621873;Newtown,_Powys;commons/f/fb/Newtown%2C_Wales.jpg
@@ -12884,7 +12867,7 @@ niqab_N	1322219;Niq%C4%81b;commons/0/07/Woman_in_niqab%2C_Aleppo_%282010%29.jpg
 nirvana_1_N	21233;Nirvana;commons/4/42/Photo_of_lord_adinath_bhagwan_at_kundalpur.JPG
 nitrate_N	21497;Nitrate;commons/3/3b/Nitrate-3D-balls.png
 nitrazepam_N	1102364;Nitrazepam;commons/6/6e/Nitrazepam.svg
-nitre_1_N	64212;Potassium_nitrate;commons/b/b3/Potassium_nitrate.jpg	573054;Niter;commons/7/70/KNO3_crystal.jpg
+nitre_1_N	573054;Niter;commons/7/70/KNO3_crystal.jpg
 nitrification_1_N	361028;Nitrification;commons/f/fe/Nitrogen_Cycle.svg
 nitrification_2_N	361028;Nitrification;commons/f/fe/Nitrogen_Cycle.svg
 nitrite_N	379307;Nitrite;commons/e/ec/Nitrit-Ion2.svg
@@ -13071,8 +13054,8 @@ oat_1_N	46573;Oat;commons/f/f7/Avena_sativa_L.jpg
 oat_2_N	46573;Oat;commons/f/f7/Avena_sativa_L.jpg
 oatcake_N	19344587;Oatcake;commons/e/e0/Oatcakes_%281%29.jpg
 oath_3_N	273418;Oath;commons/a/a1/Sec_of_State_Kissinger.png
-oatmeal_1_N	2762999;Rolled_oats;commons/9/97/Rolled_oats.jpg	193310;Oatmeal;commons/3/39/Oatmeal.jpg
-oatmeal_2_N	2762999;Rolled_oats;commons/9/97/Rolled_oats.jpg
+oatmeal_1_N	193310;Oatmeal;commons/3/39/Oatmeal.jpg
+oatmeal_2_N	193310;Oatmeal;commons/3/39/Oatmeal.jpg
 ob_PN	56876;Ob_River;commons/a/a5/Ob_u_Barnaulu.jpg
 oban_PN	18848063;Oban;commons/d/da/Oban_.jpg
 oberhausen_PN	179938;Oberhausen;commons/6/66/Rhein-Herne-Kanal_bei_Oberhausen.jpg
@@ -13091,7 +13074,7 @@ observation_2_N	22649;Observation;commons/c/cb/Lennuliiklust_uurimas.jpg
 observatory_1_N	58968;Observatory;commons/d/de/Sphinx_Observatory.jpg
 obsidian_N	22721;Obsidian;commons/1/17/Lipari-Obsidienne_%285%29.jpg
 obstacle_2_N	22214599;Obstacle;commons/7/75/Ferguson-slide.jpg
-oca_N	737656;Oxalis_acetosella;commons/e/ef/Oxalis_acetosella_LC0190.jpg
+oca_N	450912;Oxalis_tuberosa;commons/9/90/OxalisTuberosa.jpg
 ocarina_N	145233;Ocarina;commons/3/34/2016-01_Ocarina_front.jpg
 occident_2_PN	2393552;New_World;commons/0/0a/Map_of_America_by_Sebastian_Munster.JPG
 occidental_2_N	22761;Interlingue;commons/b/bb/Unde_yelb.svg
@@ -13362,7 +13345,7 @@ orphenadrine_N	1983341;Orphenadrine;commons/5/57/Orphenadrine.svg
 orphrey_N	2474731;Orphrey;commons/9/99/Turkey_Weft-patterned_orphrey_%28detail%29_01.jpg
 orpiment_N	946319;Orpiment;commons/5/55/Orpiment%2C_r%C3%A9algar%2C_barytine%2C_calcite_300.4.FS2014.jpg
 orpine_1_N	9167954;Sedum_telephium;commons/c/cc/Sedum_telephium_240808e.jpg	14506835;Hylotelephium;commons/4/4b/Sedum_spectabile_-_blossom_top_%28aka%29.jpg
-orrery_N	60549;Orrery;commons/8/88/Orrery_small.jpg	1425862;Tellurion;commons/f/fd/Tellurian_in_Putnam_Gallery%2C_2009-11-24.jpg
+orrery_N	60549;Orrery;commons/8/88/Orrery_small.jpg
 orthoclase_N	45165;Orthoclase;commons/3/31/OrthoclaseBresil.jpg
 orthodontics_1_N	336806;Orthodontics;commons/5/54/Brackets06.jpg
 orthodoxy_1_N	262629;Orthodoxy;commons/3/31/Nicaea_icon.jpg
@@ -13378,7 +13361,6 @@ os_3_N	22194;Operating_system;commons/e/e1/Operating_system_placement.svg
 osaka_PN	52230;Osaka;commons/4/4b/Osaka_montage.jpg
 oscillation_1_N	22522;Oscillation;commons/2/25/Animated-mass-spring.gif
 oscillator_N	9920;Electronic_oscillator;commons/1/15/OpAmpHystereticOscillator.svg
-oscillogram_N	18938075;Screenshot;commons/4/42/Main_menu_of_Wikipedia.png
 oscilloscope_N	15361791;Oscilloscope;commons/0/07/Oscilloscopic_tube.jpg
 osier_1_N	91983;Willow;commons/0/00/Salix_alba_Morton.jpg
 osier_2_N	91983;Willow;commons/0/00/Salix_alba_Morton.jpg	1290265;Salix_viminalis;commons/7/78/Salix-viminalis.JPG
@@ -13465,7 +13447,6 @@ overcast_A	6446739;Overcast;commons/2/2f/Overcast_Mehamn.jpg
 overcoat_1_N	339769;Coat_(clothing);commons/8/8e/FalatJulian.PortretAntoniegoWodzickiego.1900.ws.jpg
 overdose_N	313009;Drug_overdose;commons/c/c8/Woodstock_festival_medical.jpg
 overdraft_N	3238808;Overdraft;commons/e/e6/Overdraft_-_Punch_cartoon_-_Project_Gutenberg_eText_16113.png
-overdrive_2_N	6325194;Distortion_(music);commons/5/5d/Boss_turbopedal_used.jpg
 overexploitation_N	25111839;Overexploitation;commons/5/54/Surexploitation_morue_surp%C3%AAcheEn.jpg
 overflight_N	7291975;Flypast;commons/1/1b/Mikoyan_MiG-29-Chengdu_F-7.jpg
 overhead_1_N	9525663;Overhead_(business);commons/f/f9/Money_Cash.jpg
@@ -13494,7 +13475,7 @@ ox_1_N	2630435;Ox;commons/0/09/India.Mumbai.04.jpg
 ox_2_N	2630435;Ox;commons/0/09/India.Mumbai.04.jpg
 oxacillin_N	4522192;Oxacillin;commons/a/ae/Oxacillin_skeletal.svg
 oxalate_N	716222;Oxalate;commons/d/db/Oxalate-ion-2D-skeletal.png
-oxalis_N	737656;Oxalis_acetosella;commons/e/ef/Oxalis_acetosella_LC0190.jpg	737321;Oxalis;commons/8/87/Oxalis_griffithii1.jpg
+oxalis_N	737321;Oxalis;commons/8/87/Oxalis_griffithii1.jpg
 oxaprozin_N	1310798;Oxaprozin;commons/a/a7/Oxaprozin.svg
 oxazepam_N	1545842;Oxazepam;commons/d/de/Oxazepam.svg
 oxbow_3_N	1989818;Oxbow;commons/6/6a/Abraham_Lincoln%2C_the_boy_and_the_man_%281908%29_%2814770709635%29.jpg
@@ -13570,7 +13551,6 @@ page_1_N	2727018;Page_(paper);commons/2/24/Blank_page_intentionally_end_of_book.
 page_2_PN	638501;Frederick_Handley_Page;en/b/b3/Sir_Frederick_Handley-Page.jpg
 page_3_PN	835735;Thomas_Nelson_Page;commons/1/14/Portrait_of_Thomas_Nelson_Page.jpg
 pageboy_2_N	1327275;Pageboy;commons/8/8f/English_Country_Cottage_%282364756846%29_crop.jpg
-pagination_N	2361047;Page_layout;commons/9/9a/Zeitschriften.JPG
 pagoda_N	287061;Pagoda;commons/e/ed/Horyu-ji09s3200.jpg
 pail_1_N	352453;Bucket;commons/f/f5/Gotland-Bottarve_Museumshof_07.jpg
 pail_2_N	352453;Bucket;commons/f/f5/Gotland-Bottarve_Museumshof_07.jpg
@@ -13587,7 +13567,7 @@ paintbrush_N	47621338;Paintbrush;commons/3/39/Paintbrushes.jpg
 painter_2_N	2571590;House_painter_and_decorator;commons/2/27/Men_painting_fence_green.jpg
 painting_2_N	18622193;Painting;commons/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg
 pairing_1_N	357632;Mating;commons/c/c0/Blue-tailed_damselflies_%28Ischnura_elegans%29_mating%2C_female_typica_2.jpg
-paisley_N	497463;Cashmere_wool;commons/0/01/Kaschmirschal_1.jpg
+paisley_N	197025;Paisley_(design);commons/7/75/Shawl_LACMA_M.84.244.1.jpg
 paisley_PN	319744;Paisley,_Renfrewshire;commons/1/15/Paisley_Town_Hall_from_Gauze_Street_-_geograph.org.uk_-_927930.jpg
 pajama_2_N	153865;Pajamas;commons/e/e4/Muslim_girl_india1844.jpg
 palace_1_N	23931;Palace;commons/4/45/Schwerin_Palace_Park_Garden_Mecklenburg_Germany_Schweriner_Schloss_Garten_BUGA_2009.jpg
@@ -13725,8 +13705,6 @@ paradox_N	24390;Paradox;commons/7/73/LargeTribarGotschuchenAustria.JPG
 paraffin_1_N	24006;Paraffin_wax;commons/d/d7/Paraffin.jpg
 paraffin_3_N	16992;Kerosene;commons/2/27/Kerosene_bottle.jpg
 parafovea_N	41875449;Parafovea;commons/6/6c/Macula.svg
-paragon_1_N	49048;Sampler_(needlework);commons/7/7b/Sampler_%28USA%29%2C_1831_%28CH_18564023%29.jpg
-paragon_2_N	49048;Sampler_(needlework);commons/7/7b/Sampler_%28USA%29%2C_1831_%28CH_18564023%29.jpg
 paragonite_N	2489506;Paragonite;commons/6/6d/ParagoniteWithGarnet_3392.jpg
 paragraph_N	29464167;Section_(typography);commons/9/92/Section_break_01_by_Pengo.jpg
 paraguay_PN	23420;Paraguay;commons/2/27/Flag_of_Paraguay.svg
@@ -13736,7 +13714,7 @@ parallelepiped_1_N	23975;Parallelepiped;commons/0/0e/Parallelepiped_2013-11-29.s
 parallelogram_N	133496;Parallelogram;commons/4/41/Parallelogram.svg
 paramagnetism_N	23750;Paramagnetism;commons/1/11/Liquid_oxygen_in_a_magnet.jpg
 paramecium_1_N	191149;Paramecium;commons/c/cb/Paramecium.jpg
-paramedic_1_N	75006;Paramedic;commons/a/a0/ACTAS_Paramedics-photo.jpg	1543288;Feldsher;commons/7/74/Ambulanz_zu_Fr%C3%B6schweiler_August_1870_-_deutscher_Feldscher.jpg
+paramedic_1_N	75006;Paramedic;commons/a/a0/ACTAS_Paramedics-photo.jpg
 paramilitary_A	146730;Paramilitary;commons/b/b7/SWAT_team_prepared_%284132135578%29.jpg
 paramyxovirus_N	198520;Paramyxoviridae;commons/5/54/Mumps_virus.jpg
 parapet_1_N	354988;Parapet;commons/4/4f/Kyrenia_01-2017_img07_Castle_bastion.jpg
@@ -13819,7 +13797,7 @@ particle_1_N	30778041;Particle;commons/a/aa/GMAW.welding.af.ncs.jpg
 particulate_N	30876688;Particulates;en/d/df/Airborne-particulate-size-chart.svg
 partisan_3_N	1039546;Partisan_(weapon);commons/c/cb/Yeomen_of_the_Guard.JPG
 partnership_1_N	222783;Partnership;commons/5/5b/Society.svg
-partridge_1_N	63640;Partridge;commons/b/bb/CRESTED_WOOD-PARTRIDGE_%287181284331%29.jpg	339255;Red-legged_partridge;commons/8/8c/Perdrix_rouge.jpg	3043936;Perdix;commons/6/6f/Perdix_perdix_%28Marek_Szczepanek%29.jpg
+partridge_1_N	63640;Partridge;commons/b/bb/CRESTED_WOOD-PARTRIDGE_%287181284331%29.jpg
 partridge_2_N	339255;Red-legged_partridge;commons/8/8c/Perdrix_rouge.jpg	317338;Grey_partridge;commons/6/6f/Perdix_perdix_%28Marek_Szczepanek%29.jpg
 partridge_3_N	63640;Partridge;commons/b/bb/CRESTED_WOOD-PARTRIDGE_%287181284331%29.jpg
 partridge_4_N	4529;Northern_bobwhite;commons/0/0c/Virginiawachtel_2007-06-16_065.jpg	339255;Red-legged_partridge;commons/8/8c/Perdrix_rouge.jpg	317338;Grey_partridge;commons/6/6f/Perdix_perdix_%28Marek_Szczepanek%29.jpg
@@ -13858,7 +13836,7 @@ pastiche_2_N	65821;Pastiche;commons/6/61/Pastiche.jpg
 pastille_1_N	3496191;Pastille;commons/4/46/Sakuma_Drops.jpg
 pastis_N	258657;Pastis;commons/4/47/Pastis.jpg
 pastor_2_N	7627710;Sturnus;commons/3/32/Star_Sturnus_vulgaris.jpg
-pastoral_3_A	1633271;Eclogues;commons/9/9c/RomanVirgilFolio001rEclogues.jpg
+pastoral_3_A	204406;Pastoral;commons/9/90/Pastoral_Landscape_by_Alvan_Fisher%2C_1854.jpg
 pastoral_3_N	8391255;Pastorela;commons/0/00/BnF_ms._12473_fol._102_-_Marcabru_%282%29.jpg
 pastorale_N	1535827;Pastorale;commons/4/43/Liksom_en_herdinna_music.jpg
 pastrami_N	664632;Pastrami;commons/1/12/Pastrami.jpg	1330224;Pancetta;commons/a/a4/Pancetta.jpg	1226536;Pastirma;commons/8/89/Basturma_or_Pastroma_from_Armenia_1.JPG
@@ -13966,7 +13944,7 @@ pediculosis_N	172318;Pediculosis;commons/3/32/Pediculus_humanus_var_capitis.jpg
 pedicure_N	429711;Pedicure;commons/b/bc/A_woman_with_nail_art.jpg
 pedigree_2_N	666695;Pedigree_chart;commons/d/db/Costados_de_Anselmo_Braamcamp_Freire.jpg
 pedigree_3_N	666695;Pedigree_chart;commons/d/db/Costados_de_Anselmo_Braamcamp_Freire.jpg
-pediment_N	180091;Pediment;commons/8/86/Frontons.png	11920944;Tympanum_(architecture);commons/c/c4/02_Basilique_Ste-Marie-Madeleine_de_V%C3%A9zelay_-_Tympan.jpg
+pediment_N	180091;Pediment;commons/8/86/Frontons.png
 pedometer_N	680772;Pedometer;commons/7/7e/Omron_HJ112.jpg
 peduncle_2_N	3808092;Peduncle_(botany);commons/c/c8/Pokeberries.png
 peebles_PN	393118;Peebles;commons/7/73/Tweed_Bridge%2C_Peebles.jpg
@@ -13978,8 +13956,8 @@ peepshow_2_N	490309;Peep_show;commons/8/80/Peep_Show_by_David_Shankbone.jpg
 peepul_1_N	1753471;Ficus_religiosa;commons/9/94/Ficus_religiosa_Bo.jpg
 peer_2_N	636327;Peer_of_the_realm;commons/2/25/Uniforme_dos_Pares_do_Reino_%281860%29_-_Manuel_Maria_Bordalo_Pinheiro%2C_Arquivo_Hist%C3%B3rico_Parlamentar.png
 peeress_N	58254;Peerages_in_the_United_Kingdom;commons/2/20/Coronet_of_a_British_Duke.svg
-peewit_1_N	592497;Vanellus;commons/2/2f/Vanellus_miles_novaehollandiae.jpg	170635;Northern_lapwing;commons/2/2f/Northern-Lapwing-Vanellus-vanellus.jpg	1436825;Southern_lapwing;commons/e/e8/Southern_lapwing_%28Vanellus_chilenis_lampronotus%29.JPG
-peewit_2_N	592497;Vanellus;commons/2/2f/Vanellus_miles_novaehollandiae.jpg	1436825;Southern_lapwing;commons/e/e8/Southern_lapwing_%28Vanellus_chilenis_lampronotus%29.JPG
+peewit_1_N	264589;Lapwing;commons/4/42/Vanellus_armatus_%28taxobox%29.jpg
+peewit_2_N	412971;Eastern_wood_pewee;commons/3/3b/Eastern_Peewee-Yucat%C3%A1n.jpg
 pegmatite_N	38306;Pegmatite;commons/6/6e/Alkaline_pegmatite.jpg
 peignoir_N	1349981;Peignoir;commons/0/0b/908PEIGNOIRen_molleton_american_grand_col_garnoPout_filiettes_de11a16ans1.png
 pekinese_1_N	456079;Pekingese;commons/2/24/1AKC_Pekingese_Dog_Show_2011.jpg
@@ -14193,9 +14171,9 @@ petunia_1_N	261210;Petunia;commons/f/fb/Petunia_exserta_by_Scott_Zona_-_004_%281
 petäjävesi_PN	783445;Pet%C3%A4j%C3%A4vesi;commons/d/d8/Pet%C3%A4j%C3%A4vesi_Old_Church_2018.jpg
 pew_N	577471;Pew;commons/4/4b/GustafVasa_Benches.jpg
 pewee_N	412971;Eastern_wood_pewee;commons/e/ef/WesternWoodPewee23.jpg
-pewit_1_N	592497;Vanellus;commons/2/2f/Vanellus_miles_novaehollandiae.jpg	252628;Black-headed_gull;commons/2/29/Chroicocephalus_ridibundus_%28summer%29.jpg
-pewit_2_N	592497;Vanellus;commons/2/2f/Vanellus_miles_novaehollandiae.jpg	1436825;Southern_lapwing;commons/e/e8/Southern_lapwing_%28Vanellus_chilenis_lampronotus%29.JPG
-pewit_3_N	592497;Vanellus;commons/2/2f/Vanellus_miles_novaehollandiae.jpg	1436825;Southern_lapwing;commons/e/e8/Southern_lapwing_%28Vanellus_chilenis_lampronotus%29.JPG
+pewit_1_N	252628;Black-headed_gull;commons/2/29/Chroicocephalus_ridibundus_%28summer%29.jpg
+pewit_2_N	264589;Lapwing;commons/4/42/Vanellus_armatus_%28taxobox%29.jpg
+pewit_3_N	412971;Eastern_wood_pewee;commons/3/3b/Eastern_Peewee-Yucat%C3%A1n.jpg
 peyote_1_N	18952953;Peyote;commons/6/6d/Peyote_Cactus.jpg
 pfannkuchen_N	1510490;Berliner_(doughnut);commons/4/4c/Berliner-Pfannkuchen.jpg
 pfennig_N	603180;Pfennig;commons/7/79/PRU001.JPG
@@ -14362,7 +14340,7 @@ picture_gallery_N	66076;Art_museum;commons/5/53/Le_Louvre_-_Aile_Richelieu.jpg
 picturesque_1_A	1419031;Picturesque;commons/7/7b/A_view_of_the_Roman_Campagna_from_Tivoli%2C_evening_%281644-5%29%3B_Claude_Gell%C3%A9e%2C_called_Le_Lorrain.jpg
 picul_N	4962816;Picul;commons/e/e5/Arya.picul.pikul.2013.jpg
 piculet_N	255518;Piculet;commons/0/06/Picumnus_temminckii2.jpg	13161723;Picumnus_(bird);commons/2/27/Picumnus_temminckii1.jpg
-pie_1_N	90796;Pie;commons/9/91/Tarte_aux_poires_2a.jpg	30796899;Coulibiac;commons/3/38/Koulibiak_au_saumon.jpg
+pie_1_N	90796;Pie;commons/9/91/Tarte_aux_poires_2a.jpg
 piebald_A	763646;Piebald;commons/e/e7/Irish_Tinker_horse_2.JPG
 piece_4_N	47962;Musical_composition;commons/1/1a/Scherzo_in_A_flat_%28Borodin%29.png
 piedmont_3_PN	25061;Piedmont;commons/3/39/LagoMaggiore.jpg
@@ -14371,7 +14349,7 @@ pielavesi_PN	783455;Pielavesi;commons/b/bb/The_birthplace_Lepikon_Torppa_of_the_
 pieplant_N	56277;Rhubarb;commons/2/2b/Rheum_rhabarbarum.2006-04-27.uellue.jpg
 pier_1_N	277353;Pier;commons/f/f2/Chelsea_Piers.jpg
 pier_glass_N	4648028;Pier_glass;commons/b/b9/Amalienburg_Spiegelsaal-2.jpg
-pierid_N	797487;Pieris_brassicae;commons/5/56/Large_White._Pieris_brassicae_-_Flickr_-_gailhampshire_%281%29.jpg	292320;Pieridae;commons/a/ad/Common_Jezebel_Delias_eucharis_edit_by_kadavoor.jpg
+pierid_N	292320;Pieridae;commons/a/ad/Common_Jezebel_Delias_eucharis_edit_by_kadavoor.jpg
 pierrot_N	51126;Pierrot;commons/5/52/Paul_Legrand_by_Nadar_c1855.jpg
 piety_N	49895;Piety;commons/c/c6/British_-_Piety_-_Google_Art_Project.jpg
 piezoelectricity_N	24975;Piezoelectricity;commons/8/8f/Piezoelectric_balance_presented_by_Pierre_Curie_to_Lord_Kelvin%2C_Hunterian_Museum%2C_Glasgow.jpg
@@ -14985,7 +14963,7 @@ precipitate_3_V2	3484425;Satava;commons/4/49/Turku%2C_Satava.png
 precipitation_3_N	286260;Precipitation;commons/b/b7/Precipitation_longterm_mean.gif
 precipitator_N	1839752;Electrostatic_precipitator;commons/a/ab/Inside_of_the_electrostatic_precipitator.jpg
 predation_2_N	57559;Predation;commons/5/5e/Polar_bear_%28Ursus_maritimus%29_with_its_prey.jpg
-predestination_1_N	23705;Predestination;commons/2/26/Juan_de_la_Abad%C3%ADa%2C_%27The_Elder%27_-_Saint_Michael_Weighing_Souls_-_Google_Art_Project.jpg
+predestination_2_N	23705;Predestination;commons/2/26/Juan_de_la_Abad%C3%ADa%2C_%27The_Elder%27_-_Saint_Michael_Weighing_Souls_-_Google_Art_Project.jpg
 prednisolone_N	634316;Prednisolone;commons/0/05/Prednisolone-2D-skeletal.svg
 prednisone_N	530515;Prednisone;commons/b/b5/Prednisone.svg
 preeclampsia_1_N	414967;Pre-eclampsia;commons/f/fc/Hypertrophic_decidual_vasculopathy_high_mag.jpg
@@ -15165,7 +15143,7 @@ prostate_N	55924;Prostate;commons/9/97/Gray1160.png
 prostatectomy_N	2332185;Prostatectomy;commons/2/2f/Gray1152.png
 prostatitis_N	55922;Prostatitis;commons/1/1d/Inflammation_of_prostate.jpg
 prosthesis_N	72750;Prosthesis;commons/a/a3/86_ACPS_Atlanta_1996_Swimming_General_Views.jpg
-prosthodontics_1_N	637333;Dentures;commons/e/ea/Mr_M%27s_Complete_Denture2.jpg
+prosthodontics_1_N	1356602;Prosthodontics;commons/e/ea/Mr_M%27s_Complete_Denture2.jpg
 prostitution_N	15157915;Prostitution;commons/f/f5/Toulouse-Lautrec_Prostitutes_DMA.jpg
 prostration_3_N	7547202;Prostration;en/e/e6/Minister_prostrates_at_the_start_of_United_Methodist_Good_Friday_liturgy.jpg
 protactinium_1_N	23322;Protactinium;en/0/05/Protactinium.jpg
@@ -15625,7 +15603,7 @@ rantasalmi_PN	783970;Rantasalmi;commons/b/b7/Rantasalmi_centre.JPG
 rantsila_PN	783977;Rantsila;commons/9/9a/Rantsila.sijainti.suomi.2008.svg
 ranua_PN	662966;Ranua;commons/b/ba/Church_of_Ranua.jpg
 ranula_N	3620729;Ranula;commons/4/4b/Ranula_human_09.jpg
-rap_3_V2	25421;Rapping;commons/5/5a/Myl3z_raps_in_a_garage_-_July_-_2019.jpg
+rap_3_V	25421;Rapping;commons/5/5a/Myl3z_raps_in_a_garage_-_July_-_2019.jpg
 rap_5_N	18945847;Hip_hop_music;commons/8/8e/DJ_Hypnotize_and_Baby_Cee.jpg
 rapeseed_N	219545;Rapeseed;commons/5/57/Brassica_napus_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-169.jpg
 raphe_1_N	28067176;Seam_(sewing);commons/0/0f/Quilting_seam.jpg
@@ -15836,6 +15814,7 @@ relaxation_4_N	26644416;Relaxation_(psychology);commons/f/f6/Challenge_vs_skill.
 relaxation_6_N	26644416;Relaxation_(psychology);commons/f/f6/Challenge_vs_skill.svg
 relaxin_N	3220480;Relaxin;commons/c/ce/Relaxin.png
 relay_4_N	182796;Relay_race;commons/5/5b/Gold_Relay_UK_WOC_2008-crop.jpg
+relay_5_N	26590;Relay;commons/2/24/Relay.jpg
 release_8_N	1508243;Push-button;commons/a/af/Arcade_video_game_buttons.jpg
 reliance_2_N	850663;Trust_(social_science);commons/f/f2/Gustav_Adolph_Hennig_-_The_Artist%27s_Daughters_on_the_Way_to_School.JPG
 relic_1_N	226651;Relic;commons/9/99/St._Yves.JPG
@@ -16050,7 +16029,7 @@ ring_mail_N	6696;Chain_mail;commons/a/a4/Eastern_riveted_armor.JPG
 ring_road_N	51922;Ring_road;commons/6/69/Sheffield_inner_ring-road.png
 ringdove_2_N	323559;Common_wood_pigeon;commons/f/f5/Columba_palumbus_-garden_post-8.jpg
 ringhals_1_N	12624320;Rinkhals;commons/c/c0/Rinkhals2.jpg
-ringlet_4_N	2333934;Satyrinae;commons/a/a2/Butterfly_April_2008-2a.jpg	2218133;Ringlet;commons/0/07/2014.07.14.-15-Machern--Schornsteinfeger.jpg
+ringlet_4_N	2218133;Ringlet;commons/0/07/2014.07.14.-15-Machern--Schornsteinfeger.jpg
 ringmaster_N	2906657;Ringmaster_(circus);commons/9/92/RingmasterAtaydeFeria09.JPG
 rings_N	230367;Rings_(gymnastics);commons/f/f7/Example2ofironcross.jpg
 ringtail_1_N	154237;Ring-tailed_cat;commons/b/ba/Squaw-ringtail-28073.jpg
@@ -16256,7 +16235,8 @@ ruby_1_N	14878257;Ruby_(color);commons/f/f0/Ruby_gem.JPG	43551;Ruby;commons/c/c4
 ruby_2_N	43551;Ruby;commons/4/49/Corundum-winza-17d.jpg
 rucksack_N	183952;Backpack;commons/d/d7/Rucksack1.jpg
 rudd_N	1355765;Common_rudd;commons/4/41/Scardinius_erythropthalmus_2009_G1.jpg
-rudder_1_N	219794;Rudder;commons/d/db/Brosen_propelersterntychy.jpg
+rudder_1_N	219794;Rudder;commons/e/e9/Light_aircraft_rudder_and_trim_tab.JPG
+rudder_2_N	219794;Rudder;commons/d/db/Brosen_propelersterntychy.jpg
 rudderfish_1_N	4604648;Black_ruff;commons/5/58/Centrolophus_niger_%28Rudderfish%29.gif
 rudderfish_2_N	4604648;Black_ruff;commons/5/58/Centrolophus_niger_%28Rudderfish%29.gif
 rudiment_N	308981;Vestigiality;commons/a/ad/Gray536.png
@@ -16781,13 +16761,12 @@ scourge_1_N	168175;Scourge;commons/d/df/Gordon%2C_scourged_back%2C_NPG%2C_1863.j
 scours_N	53951;Diarrhea;commons/7/7c/Multiple_rotavirus_particles.jpg
 scout_2_N	89807;Scout_(Scouting);commons/8/8c/Eurojam_song.jpg
 scoutmaster_N	3860309;Scout_leader;commons/8/8d/Leaders_welcoming_boy_into_Mexico_Scouting.jpg
-scow_1_N	5917686;Hopper_barge;commons/8/80/Split_hopper_dredge_Currituck_at_Virginia_Beach_3.jpg	256425;Scow;commons/c/c3/Sailing_Scow_In_New_Zealand.jpg	2543338;Punt_(boat);commons/d/dc/CambridgePunt.jpg
+scow_1_N	256425;Scow;commons/c/c3/Sailing_Scow_In_New_Zealand.jpg
 scow_2_N	4177;Barge;commons/8/82/Barge_on_River_Thames%2C_London_-_Dec_2009.jpg
 scowl_N	3496971;Frown;commons/d/db/Albrecht_D%C3%BCrer_-_Bildnis_eines_unbekannten_Mannes.jpg
 scrag_end_N	23840295;Scrag_end;commons/7/7d/British_Lamb_Cuts.svg
 scram_V	431093;Scram;commons/f/ff/EBR-I_-_SCRAM_button.jpg
 scramble_2_V	183369;Scrambling;en/3/31/Snowdonia_scrambling.jpg
-scrambler_2_N	254052;Motocross;commons/b/b3/Mundial_de_motocross.JPG
 scrap_iron_N	1068262;Scrap;commons/5/5e/Allegheny_Ludlum_Steel_Corp_Scrap_Piles.jpg
 scrapbook_N	1041456;Scrapbooking;commons/9/91/Vintage_Scrapbook.jpg
 scrapie_N	221689;Scrapie;commons/1/1d/Sheep-scrapie2.jpg
@@ -17054,12 +17033,11 @@ shackle_2_N	275735;Shackle;commons/0/0e/Mannheim_Germany_Shackles-in-a-workshop-
 shad_1_N	25931278;Pontic_shad;commons/f/fa/Caspialosa_kessleri_pontica_Dunai_hering.jpg	1261377;American_shad;commons/b/b1/Dentonshad1904.jpg	12603225;Allis_shad;commons/1/11/Maifisch.JPG
 shad_2_N	45288446;Alosinae;commons/d/de/Alosa_fallax.jpg	25931278;Pontic_shad;commons/f/fa/Caspialosa_kessleri_pontica_Dunai_hering.jpg	12603225;Allis_shad;commons/1/11/Maifisch.JPG
 shade_tree_N	67610;Shade_tree;commons/8/8e/Starr_080531-4730_Ficus_microcarpa.jpg
-shading_1_N	250304;Shading;commons/6/69/Gouraud_high.gif	1980381;Hatching;commons/e/e0/Veronica.jpg
+shading_1_N	250304;Shading;commons/6/69/Gouraud_high.gif
 shadow_1_N	217296;Shadow;commons/3/33/Looking_down_from_The_Eiffel_Tower%2C_Paris_8_April_2007.jpg
 shadow_boxing_N	1164786;Shadowboxing;commons/1/1c/Jab3.jpg
 shaft_11_N	48665888;Shaft_(mechanical_engineering);commons/f/fa/Shaft_animation.gif
 shag_1_N	2279535;Shag_(tobacco);commons/6/68/Shag-tobacco-01_%28xndr%29.jpg
-shag_4_N	38410;Group_sex;commons/d/d1/Peter_Fendi_scene_erotique.jpg
 shaggymane_N	4664489;Coprinus_comatus;commons/b/b0/Coprinus_comatus_G4.JPG
 shah_N	64648;Shah;commons/9/9e/Pahlavi_Crown_of_Imperial_Iran_%28heraldry%29.svg
 shaitan_1_N	31322095;Shaitan;en/4/44/Depiction_of_a_demon_in_Islamic_mythology.jpg
@@ -17107,7 +17085,7 @@ shebeen_N	928855;Shebeen;commons/7/75/Shebeen_in_Joe_Slovo_Park.JPG
 shed_N	264502;Shed;commons/8/86/Schuppen_7235.jpg
 shedding_1_N	317695;Moulting;commons/6/66/Dragonfly_metamorphosis.jpg
 sheep_1_N	2980764;Ovis;commons/3/3a/Ovis_canadensis_2.jpg
-sheepdog_1_N	514072;Herding_dog;commons/b/bb/Kelpie_walking_across_the_backs_of_sheep.jpg	177290;Sheep_dog;commons/e/ed/Old_English_Sheepdog_%28side%29.jpg
+sheepdog_1_N	177290;Sheep_dog;commons/e/ed/Old_English_Sheepdog_%28side%29.jpg
 sheepherder_N	21188297;Shepherd;commons/5/50/Shepherds%2C_Chambal%2C_India.jpg
 sheepshank_N	38833;Sheepshank;commons/4/4d/Sheepshank_knot.jpg
 sheepshead_N	47581;Archosargus_probatocephalus;commons/6/66/Sheepshead.jpg
@@ -17181,7 +17159,6 @@ shoal_1_N	295148;Shoal;commons/0/0a/GughSandbar.JPG
 shoal_3_N	22782655;Shoaling_and_schooling;commons/5/50/Maldives_Surgeonfish%2C_Acanthurus_leucosternon.jpg
 shock_10_N	170829;Shock_absorber;commons/a/a4/Mini_Shocks.JPG
 shock_7_N	3146611;Stook;commons/1/1c/Wheat_sheaves_near_King%27s_Somborne_-_geograph.org.uk_-_889992.jpg
-shocker_1_N	13451;Horror_film;en/b/ba/NosferatuShadow.jpg
 shoe_1_N	27178;Shoe;commons/0/00/Skor_fr%C3%A5n_1700-_till_1960-talet_-_Nordiska_Museet_-_NMA.0056302.jpg
 shoe_4_N	16590925;Brake_shoe;commons/e/ef/Brake_shoes.jpg
 shoebill_1_N	237566;Balaenicipitidae;commons/c/c0/Balaeniceps_rex.jpg
@@ -17330,7 +17307,8 @@ silicosis_N	633241;Silicosis;en/8/87/Cutting_through_bricks.jpg
 silique_1_N	3259539;Silique;commons/a/a7/Cardamine.impatiens.pods.jpg
 silk_1_N	51510;Silk;commons/8/8f/Meyers_b14_s0826a.jpg
 silk_2_N	51510;Silk;commons/8/8f/Meyers_b14_s0826a.jpg
-silkworm_2_N	70866;Bombyx_mori;commons/4/47/Pairedmoths.jpg
+silkworm_1_N	70866;Bombyx_mori;commons/0/0f/Silkworms3000px.jpg
+silkworm_2_N	70866;Bombyx_mori;commons/0/0f/Silkworms3000px.jpg
 sill_2_N	1105295;Sill_(geology);commons/f/f1/The_difference_between_a_sill_and_a_dike.jpg
 silo_1_N	3246948;Silo;commons/f/fb/Ralls_Texas_Grain_Silos_2010.jpg
 silo_2_N	25911903;Missile_launch_facility;commons/c/cb/Minuteman_II_in_silo_1980.jpg
@@ -17483,7 +17461,7 @@ sleeping_car_N	132696;Sleeping_car;commons/6/6b/Pullman_sleeping_car_circa_1860s
 sleeping_pill_N	14269;Hypnotic;commons/b/b3/Stilnoct2.JPG
 sleeping_sickness_N	141029;African_trypanosomiasis;commons/2/23/Trypanosoma_sp._PHIL_613_lores.jpg
 sleepover_N	878968;Sleepover;commons/1/17/Children_at_a_sleepover.png
-sleepwalker_N	354425;La_sonnambula;commons/8/8e/Sonnambula_atto_3.jpg
+sleepwalker_N	249357;Sleepwalking;commons/a/a7/John_Everett_Millais%2C_The_Somnambulist.jpg
 sleepwalking_N	249357;Sleepwalking;commons/a/a7/John_Everett_Millais%2C_The_Somnambulist.jpg
 sleet_N	18160997;Rain_and_snow_mixed;commons/0/0b/2014-03-04_06_31_33_Slush_produced_from_a_mixture_of_rain_and_snow_%28Commonwealth_definition_of_sleet%29.JPG
 sleeve_1_N	1865451;Sleeve;commons/8/89/Mabel_Love_with_a_bicycle.jpg
@@ -17499,7 +17477,7 @@ slide_4_N	7396194;Playground_slide;commons/c/cf/A_girl_sliding_in_Valparaiso%2C_
 slide_6_N	335687;Reversal_film;commons/4/46/Slide.jpg
 slide_rule_N	28743;Slide_rule;commons/6/6e/Sliderule.PickettN902T.agr.jpg
 slider_3_N	71100;Red-eared_slider;commons/6/66/Trachemys_scripta_elegans_%28Wied%29_%281865%29_by_Karl_Bodmer.jpg
-slider_4_N	467819;Slider;commons/d/dc/Sliderillustration.png
+slider_4_N	467819;Slider_(baseball);commons/d/dc/Sliderillustration.png
 sling_2_N	28347;Sling_(weapon);commons/8/8e/Weapon_Sling_1.jpg
 sling_4_N	28347;Sling_(weapon);commons/8/8e/Weapon_Sling_1.jpg
 slingback_N	13773394;Slingback;commons/6/62/Slingback-shoes.jpg
@@ -17594,7 +17572,7 @@ snakefly_N	2026577;Snakefly;commons/6/6d/Dichrostigma_flavipes_beentree.jpg
 snap_fastener_N	2111169;Snap_fastener;commons/6/6d/Druckknopf.jpg
 snapdragon_N	260893;Antirrhinum;commons/6/66/Antirrhinum_majus_from_Thasos.JPG
 snapper_3_N	172753;Christmas_cracker;commons/6/6c/ChristmasCrackers_2.jpg
-snapper_4_N	10469500;Gilt-head_bream;commons/9/95/Sparus_aurata_Sardegna.jpg
+snapper_4_N	6051544;Australasian_snapper;commons/8/81/Snapper03_melb_aquarium.jpg
 snapper_6_N	440872;Common_snapping_turtle;commons/8/88/Common_Snapping_Turtle.jpg
 snapshot_N	2135963;Snapshot_(photography);commons/3/3c/Snapshot-baby-antics.jpg
 snare_drum_N	47338;Fishing_reel;commons/9/98/Fishing_reel.jpg
@@ -17715,8 +17693,8 @@ soliton_N	51654;Soliton;commons/4/4f/Soliton_hydro.jpg
 solitude_2_N	962509;Solitude;commons/c/cd/Frederick_Leighton_-_Solitude.jpg
 solmization_1_N	1594005;Solmization;commons/4/47/The_Hand_of_Guido.jpg
 solmization_2_N	1594005;Solmization;commons/4/47/The_Hand_of_Guido.jpg
-solo_3_N	377234;Solo_(music);commons/0/0e/Louis_Armstrong_restored.jpg
-solo_A	377234;Solo_(music);commons/0/0e/Louis_Armstrong_restored.jpg	2109619;Solor;commons/8/83/Solorarchipel.png
+solo_2_N	377234;Solo_(music);commons/0/0e/Louis_Armstrong_restored.jpg
+solo_A	377234;Solo_(music);commons/0/0e/Louis_Armstrong_restored.jpg
 solomon_PN	28329;Solomon;commons/1/1d/Salomons_dom.jpg
 solon_PN	58230;Solon;commons/4/4c/Solon.jpg
 solution_1_N	28729;Solution;commons/8/89/SaltInWaterSolutionLiquid.jpg
@@ -17780,7 +17758,7 @@ sound_3_N	18994087;Sound;commons/4/4b/Thoth08BigasDrumEvansChalmette.jpg
 sound_7_N	55268;%C3%98resund;commons/8/85/Map_of_%C3%98resund_new_version.JPG
 sound_7_V2	20620848;Depth_sounding;commons/c/c0/Olaus_Magnus_-_On_the_Vast_Depths_of_the_Norwegian_Coasts.jpg
 sound_recording_N	2417230;Sound_recording_and_reproduction;commons/1/1b/Frances_Densmore_recording_Mountain_Chief2.jpg
-soundbox_N	239734;Sound_box;commons/7/76/Guitarist_girl.jpg	1299353;Pickup_(music_technology);commons/8/84/Pickup-SSH.jpg
+soundbox_N	239734;Sound_box;commons/7/76/Guitarist_girl.jpg
 sounding_2_N	20620848;Depth_sounding;commons/c/c0/Olaus_Magnus_-_On_the_Vast_Depths_of_the_Norwegian_Coasts.jpg
 sounding_board_2_N	26862725;Sounding_board;commons/f/f3/Wineglasspulpit.jpg
 soundproof_V2	340201;Soundproofing;commons/5/52/Anechoic_chamber.jpg
@@ -17961,8 +17939,6 @@ splashdown_N	88259;Splashdown;commons/e/e7/Apollo_15_splashdown.jpg	5002284;Wate
 splayfoot_N	1079375;Flat_feet;commons/8/89/Flatfoot.jpg
 spleenwort_N	18851062;Asplenium_trichomanes;commons/4/43/Asplenium_trichomanes_subsp_quadrivalens.jpg
 splenomegaly_N	1018359;Splenomegaly;commons/c/c4/Splenomegalie_bei_CLL_%28labeled%29.jpg
-splice_1_N	1095160;Rope_splicing;commons/4/48/1871_illustration_rope_splices.png
-splice_2_N	113266;Woodworking_joints;commons/2/25/Timber_Mortising_Machine.jpg
 spline_1_N	16465515;Flat_spline;commons/f/fd/Spline_%28PSF%29.png
 splint_2_N	711783;Splint_(medicine);commons/2/2f/Ankle_foot_orthosis_splint.JPG
 splinter_N	33067333;Splinter;commons/f/f6/Splinter.jpg
@@ -18092,7 +18068,7 @@ stage_7_N	1408745;Stage_(theatre);commons/0/0b/SFOperaHouse2_%288189967420%29.jp
 stage_8_N	386100;Microscope_slide;commons/a/ab/MicroscopeSlides.jpg
 stagecoach_N	214764;Stagecoach;commons/0/0b/Concord_Coach_no._251.jpg
 stagecraft_N	324276;Stagecraft;commons/3/37/Robert_Edmond_Jones.jpg
-stagehand_N	236918;Concert;commons/3/3e/Live_music_set.jpg
+stagehand_N	2907611;Stagehand;commons/c/c8/StageHands_after_setting_up_equipment_for_a_concert.jpg
 stager_1_N	170593;Stage_management;commons/e/ed/Stage_managers_panel.jpg
 staghound_N	970584;Norwegian_Elkhound;commons/d/d4/Norwegian_Elkhound.jpg
 stain_2_V2	4884616;Stain;commons/d/d6/Br%C4%85zowe_plamy_ubt.jpeg
@@ -18237,7 +18213,6 @@ steward_4_N	2965467;Union_representative;commons/2/2c/A_Day_in_the_Life_of_a_Sho
 stewardess_N	173394;Flight_attendant;commons/d/d4/Austrian_Airlines_flight_attendant_and_passenger.jpg
 stewart_2_PN	174717;Dugald_Stewart;commons/0/09/DugaldStewart.jpg
 steyning_PN	922649;Steyning;commons/6/6c/Steyning_High_Street%2C_Looking_South-east._-_geograph.org.uk_-_175394.jpg
-sthene_N	1063435;Normal_force;commons/c/c7/Incline.svg
 stibnite_N	403400;Stibnite;commons/a/a9/StibineRoumanie.jpg
 stick_3_N	1823944;Yoke_(aeronautics);commons/2/24/Yoke.png
 stick_6_N	6385084;Ice_hockey_stick;commons/c/cc/Hockey_stick.svg
@@ -18293,7 +18268,7 @@ stocksbridge_PN	343142;Stocksbridge;commons/7/7a/Stocksbridge_-_Leisure_Centre_f
 stoichiometry_N	28650;Stoichiometry;commons/7/7c/Combustion_reaction_of_methane.jpg
 stoicism_2_N	19224834;Stoicism;commons/b/bc/Paolo_Monti_-_Servizio_fotografico_%28Napoli%2C_1969%29_-_BEIC_6353768.jpg
 stoker_PN	3992;Bram_Stoker;commons/3/34/Bram_Stoker_1906.jpg
-stole_N	488737;Stole_(vestment);commons/d/dd/Kazuivel_II.jpg
+stole_N	1168988;Shawl#Stole;commons/d/d0/Stole%2C_designed_by_Mme._Jeanne_Paquin_%28French%2C_1869%E2%80%931936%29.jpg
 stoma_1_N	85746;Stoma;commons/0/09/Tomato_leaf_stomate_1-color.jpg
 stomach_2_N	39747;Stomach;commons/e/e0/Stomach_diagram.svg
 stomach_ache_1_N	593703;Abdominal_pain;commons/4/4d/Gray1220.png
@@ -18474,7 +18449,6 @@ sublime_1_A	744036;Sublime_(philosophy);commons/b/b9/Caspar_David_Friedrich_-_Wa
 submarine_1_N	28825;Submarine;commons/b/bb/US_Navy_040730-N-1234E-002_PCU_Virginia_%28SSN_774%29_returns_to_the_General_Dynamics_Electric_Boat_shipyard.jpg
 submersible_1_N	575135;Submersible;commons/1/10/Submersible_named_Star_III_in_front_of_Scripps_Institution_of_Oceanography.JPG
 submucosa_N	6834050;Submucosa;commons/f/fb/GI_Organization.svg
-subordination_5_N	240727;Sphere_of_influence;commons/a/ad/Monroe_doctrine.jpg
 subrogation_N	1300546;Subrogation;commons/d/d9/Court_of_Chancery_edited.jpg
 subshrub_N	860440;Subshrub;commons/f/f4/Lavandula-stoechas-habitat1.JPG
 subsidence_3_N	183957;Subsidence;en/9/95/Crooked_house_dudley.jpg
@@ -18871,7 +18845,7 @@ tamarin_N	1237983;Tamarin;commons/8/85/Tamarin_portrait_2_edit3.jpg
 tamarind_1_N	227931;Tamarind;commons/2/2e/Tamarindus_indica_pods.JPG
 tamarisk_N	510103;Tamarix;commons/c/c2/Tamarix_aphylla.jpg
 tambon_N	626823;Tambon;commons/5/5d/Bang_Bai_Mai_TAO_office.JPG
-tambourine_N	403558;Daf;commons/c/c9/Pair_of_dafs.jpg	29680;Tambourine;commons/c/c6/Godward%2C_La_tambourine%2C_1906_%285613764847%29.jpg	1923551;Dayereh;commons/3/3b/Daf-Khalaj.jpg
+tambourine_N	29680;Tambourine;commons/c/c6/Godward%2C_La_tambourine%2C_1906_%285613764847%29.jpg
 tamburica_N	26532771;Tambouras;commons/9/9e/Vrakoforos_Tabouras.jpg
 tamil_1_N	300548;Tamils;commons/f/f4/Tamil_distribution.png
 tamil_2_N	29919;Tamil_language;commons/3/35/Word_Tamil.svg
@@ -18887,7 +18861,6 @@ tanager_N	261376;Tanager;commons/6/6c/Green-headed_Tanager_Ubatuba.jpg
 tanbark_N	14886368;Tanbark;commons/2/2f/Peeling_hemlock_bark_for_tanning.jpg
 tandem_1_N	677931;Tandem;commons/4/4d/Paarden_tandem.jpg
 tandem_2_N	86681;Tandem_bicycle;commons/4/47/Single_speed_tandem_bicycle.jpg
-tandem_Adv	86681;Tandem_bicycle;commons/4/47/Single_speed_tandem_bicycle.jpg	677931;Tandem;commons/4/4d/Paarden_tandem.jpg
 tandoor_N	30875830;Tandoor;commons/f/fd/Tandoors.ca.jpg
 tang_2_N	43455;Tang_dynasty;commons/e/ee/Tang_China_669AD.jpg
 tanga_2_PN	373004;Tanga,_Tanzania;commons/1/19/Tanga_aerial_view.JPG
@@ -19119,7 +19092,7 @@ tennis_court_N	30311;Tennis_court;commons/c/c4/Universityofbath_indoor_tennis_co
 tennis_elbow_N	960460;Tennis_elbow;commons/1/18/En-elbow_joint.svg
 tenosynovitis_1_N	272541;Tenosynovitis;commons/f/f0/Tenosynovitis-3.JPG
 tenpin_N	17198746;Nine-pin_bowling;commons/8/8e/Kegeln-Kugel.jpg
-tenpins_N	17198746;Nine-pin_bowling;commons/8/8e/Kegeln-Kugel.jpg
+tenpins_N	207747;Ten-pin_bowling;commons/f/fa/10-pin-bowling-strike.gif
 tenrec_1_N	312933;Tenrec;commons/b/bc/Tanrek.jpg
 tenseness_2_N	31595228;Psychological_stress;commons/1/1e/Headache-1557872_960_720.jpg
 tensimeter_N	33238388;Tensiometer_(soil_science);commons/7/77/Tensiometer.png
@@ -19175,7 +19148,7 @@ test_tube_N	106304;Graduated_cylinder;commons/c/c5/Different_types_of_graduated_
 testis_N	67193;Testicle;commons/5/55/Figure_28_01_03.JPG
 testosterone_N	30983;Testosterone;commons/c/ce/Testosteron.svg
 testudo_1_N	39831;Battering_ram;commons/a/a2/Medieval_battering_ram.JPG	39831;Battering_ram;commons/1/11/Baba_Vida_Klearchos_2_battering_ram.jpg
-tetanus_2_N	45831;Tetanus;commons/d/d8/Opisthotonus_in_a_patient_suffering_from_tetanus_-_Painting_by_Sir_Charles_Bell_-_1809.jpg
+tetanus_1_N	45831;Tetanus;commons/d/d8/Opisthotonus_in_a_patient_suffering_from_tetanus_-_Painting_by_Sir_Charles_Bell_-_1809.jpg
 tetartanopia_N	7397;Color_blindness;commons/e/e0/Ishihara_9.png
 tete_a_tete_N	22830958;Narcissus_asturiensis;commons/1/1f/NarcissusasturiensisPicos.JPG
 tetherball_N	820822;Tetherball;commons/d/d6/Tetherball_flickr.jpg
@@ -19385,7 +19358,7 @@ till_1_N	44545;Till;commons/2/20/Geschiebemergel.JPG
 till_2_N	268515;Public_finance;commons/c/cd/Government-Vedder-Highsmith-detail-1.jpeg
 tillage_2_N	46191;Tillage;commons/0/04/Fendt_Tractor_Ripping_up_Kulin.jpg
 tiller_3_N	724926;Tiller;commons/5/5c/Rumpel.JPG
-tilt_1_N	435800;Tournament_(medieval);commons/1/1d/Codex_Manesse_%28Herzog%29_von_Anhalt.jpg
+tilt_1_N	221562;Jousting;commons/d/d0/Paulus_Hector_Mair_Tjost_fig2.jpg
 tilt_1_V	14952843;Angle_of_list;commons/9/95/Ivory_Tirupati_with_heavy_list_3.jpg
 tilt_4_N	259162;Grade_(slope);commons/d/dc/Grade_dimension.svg
 tiltyard_N	7820490;Tiltyard;commons/d/d5/Wenceslas_Hollar_-_Kenilworth_Castle._Plan.jpg
@@ -19397,7 +19370,7 @@ time_signal_N	182679;Time_signal;commons/d/d6/Time_clocks-1905.jpg
 timecard_1_N	956709;Time_clock;commons/a/a8/Clocking_device.jpg
 timecard_2_N	956709;Time_clock;commons/a/a8/Clocking_device.jpg
 timeline_N	55557;Timeline;commons/1/1e/A_New_Chart_of_History_color.jpg
-timer_1_N	530016;Timer;commons/e/e0/Farberware-Minute-Timer-White.jpg	1564176;Egg_timer;commons/5/59/Digital_egg_timer.jpg
+timer_1_N	530016;Timer;commons/e/e0/Farberware-Minute-Timer-White.jpg
 timer_3_N	1564176;Egg_timer;commons/5/59/Digital_egg_timer.jpg
 timetable_2_N	8624576;Public_transport_timetable;commons/3/31/FahrplanTiefenbrunnen.JPG
 timolol_N	2402369;Timolol;commons/3/38/Timolol_structure.svg
@@ -19406,7 +19379,6 @@ timothy_2_PN	30963;Saint_Timothy;commons/d/d2/Saint_Timothy.jpg
 timothy_3_N	5616515;Phleum;commons/5/56/Timothee_%28Phleum_pratense_subsp._pratense%29.jpg	305721;Timothy-grass;commons/6/6e/Timothy_grass.jpg
 timpanist_N	38490;Drummer;commons/6/61/Two_hand_drummers%2C_both_wearing_sunglasses%2C_about_1966.jpg
 tin_1_N	30042;Tin;commons/2/2b/Sn-Alpha-Beta.jpg
-tin_2_N	251613;Baker;commons/8/87/USS_John_C._Stennis_baker.jpg
 tin_3_N	1843832;Tin_box;commons/9/9f/Altoidstins1.jpg
 tin_4_N	383115;Drink_can;commons/f/ff/Drinking_can_ring-pull_tab.jpg
 tin_opener_N	536197;Can_opener;commons/7/7b/Kitchen-Modern-Can-Opener.jpg
@@ -19635,7 +19607,7 @@ track_4_N	25451514;Running_track;commons/7/7f/Athletics_track.jpg
 track_6_N	125371;Continuous_track;commons/f/f5/Caterpillar_track_shingle.JPG
 trackball_N	31106;Trackball;commons/9/96/Trackball-Kensington-ExpertMouse5.jpg
 tract_2_N	419100;Organ_system;commons/9/9c/SystemExample.jpg
-traction_engine_N	6758231;Portable_engine;commons/a/a8/Steam_lokomobile_2_%28aka%29.jpg	517490;Traction_engine;commons/2/27/General_Purpose_Engine_BJ_7155_GDSF.JPG
+traction_engine_N	517490;Traction_engine;commons/2/27/General_Purpose_Engine_BJ_7155_GDSF.JPG
 tractor_1_N	152692;Tractor;commons/b/b5/Tractors.jpg
 tracy_PN	45782;Spencer_Tracy;commons/1/1c/Spencer_tracy_state_of_the_union.jpg
 trade_1_N	29678;Trade;commons/2/24/Kaufmann-1568.png
@@ -19724,6 +19696,7 @@ transsexualism_N	21694424;Transsexual;commons/b/bc/TransgenreatParis2005.JPG
 transshipment_N	491968;Transshipment;commons/8/80/Loading_platform.jpg
 transubstantiation_1_N	30907;Transubstantiation;commons/9/97/St_Michael_the_Archangel%2C_Findlay%2C_OH_-_bread_and_wine_crop_1.jpg
 transvestism_1_N	162483;Transvestism;commons/7/78/Gloeden%2C_Wilhem_von_%281856-1931%29_-_n._0923_-_da_-_Amore_e_arte%2C_p._32.jpg
+transvestite_N	162483;Transvestism;commons/7/78/Gloeden%2C_Wilhem_von_%281856-1931%29_-_n._0923_-_da_-_Amore_e_arte%2C_p._32.jpg
 tranylcypromine_N	416390;Tranylcypromine;commons/9/91/Tranylcypromine.svg
 trap_1_N	6520040;Trapping;commons/d/d9/34-caccia_tortore%2CTaccuino_Sanitatis%2C_Casanatense_4182..jpg
 trap_2_N	7707347;Trap_(plumbing);commons/8/86/Annotated_plumbing_trap.jpg
@@ -19763,6 +19736,7 @@ trellis_N	12221449;Trellis_(architecture);commons/9/94/Flower_trellis_1.jpg
 tremolite_N	1023396;Tremolite;commons/b/b9/Tremolite_Campolungo.jpg
 tremor_3_N	37642;Tremor;commons/9/91/Writing_by_a_Parkinson%27s_disease_patient.png
 trench_1_N	401883;Defensive_fighting_position;commons/c/c1/Foxhole_-_Lebanon_-_Beirut_-_July_1958.jpg
+trench_2_N	145694;Oceanic_trench;commons/c/ce/Subduction-en.svg
 trench_3_N	182255;Trench;commons/1/17/Polyethylene_gas_main.jpg
 trepang_N	240616;Sea_cucumber;commons/1/11/Actinopyga_echinites1.jpg
 trephination_N	162921;Trepanning;commons/5/55/Hieronymus_Bosch_053_detail.jpg
@@ -19904,6 +19878,7 @@ trunk_2_N	856797;Trunk_(luggage);commons/d/df/Trunk_1.jpg
 trunk_line_1_N	3181947;Trunk_Line;commons/8/8b/Hovedbanen_Norway_first_trial_run_1853.jpg
 trunk_road_N	1396050;Arterial_road;commons/9/9e/PageMillRoad.png
 truro_PN	30892;Truro;commons/d/d7/Truro_rooftops.jpg
+truss_1_N	899082;Truss_(medicine);commons/d/d9/A_Reference_handbook_of_the_medical_sciences_-_embracing_the_entire_range_of_scientific_and_practical_medicine_and_allied_science_%281885%29_%2814597569749%29.jpg
 truss_2_N	397263;Truss;commons/c/c5/RRTrussBridgeSideView.jpg
 trust_3_N	850663;Trust_(social_science);commons/f/f2/Gustav_Adolph_Hennig_-_The_Artist%27s_Daughters_on_the_Way_to_School.JPG
 truth_3_N	29920;Truth;commons/8/82/Time_Saving_Truth_from_Falsehood_and_Envy.jpg
@@ -20373,7 +20348,7 @@ verticilliosis_N	1618993;Wilting;commons/2/2a/Tigridia_pavonia_-_wilted_overnigh
 verticillium_N	2478471;Verticillium;commons/d/d6/Verticillium_theobromae_culture.jpg
 vertigo_N	2614714;Vertigo;commons/b/b6/Optokinetic_nystagmus.gif
 vesanto_PN	784951;Vesanto;commons/a/a1/Vesanto.sijainti.suomi.2008.svg
-vesicant_N	46126;Sulfur_mustard;commons/4/4c/Sulfur-mustard-3D-vdW.png
+vesicant_N	624160;Blister_agent;commons/b/bd/Blister-arm.jpg
 vesiculovirus_N	3981043;Vesiculovirus;commons/1/1a/Vesicular_stomatitis_virus_%28VSV%29_EM_18_lores.jpg
 vesilahti_PN	784953;Vesilahti;commons/9/9a/Vesilahti.sijainti.suomi.2008.svg
 vespers_N	185242;Vespers;commons/8/89/BenedictineVespers.jpg
@@ -20648,7 +20623,6 @@ warthog_N	240336;Common_warthog;commons/4/45/Southern_warthog_%28Phacochoerus_af
 warwick_PN	200313;Warwick;commons/3/31/Warwick_overview_from_the_castle.jpg
 warwickshire_PN	383648;Warwickshire;commons/0/0d/Flag_of_Warwickshire.svg
 wasabi_2_N	33637;Wasabi;commons/5/53/Wasabia_japonica_4.JPG
-wash_8_N	19390;Money_laundering;commons/c/c2/Money-laundering.svg
 wash_house_N	16286633;Lavoir;commons/0/05/Bonnat_lavoir_0425.jpg
 washbasin_1_N	148414;Sink;commons/4/4a/Luxury_sink.jpg
 washbasin_2_N	148414;Sink;commons/4/4a/Luxury_sink.jpg
@@ -20702,7 +20676,6 @@ water_spaniel_N	765968;Water_dog;commons/4/47/Barbet_from_1915.JPG
 water_supply_N	684928;Water_supply;commons/a/ae/Drinking_water.jpg
 water_tower_N	44958;Water_tower;commons/c/cc/Chateau_eau_mondeville_france.jpg
 water_waggon_N	2863776;Tank_truck;commons/e/ed/Ford_Shell_Fuel_Lkw_IMG_20180417_192801.jpg
-water_wagon_N	2863776;Tank_truck;commons/e/ed/Ford_Shell_Fuel_Lkw_IMG_20180417_192801.jpg
 water_wheel_1_N	34053;Water_turbine;commons/0/09/Water_turbine_%28en_2%29.svg
 water_wheel_2_N	150248;Water_wheel;commons/d/d4/Berry_Schools%27_Old_Mill%2C_Floyd_County%2C_Georgia.jpg
 waterbird_1_N	12306505;Water_bird;commons/1/17/Belmont_lake_birds.jpg
@@ -20873,7 +20846,7 @@ whiskey_1_N	33153;Whisky;commons/a/a2/Whiskyhogmanay2010.jpg
 whispering_gallery_N	1037163;Whispering_gallery;commons/9/90/St_Paul%27s_Cathedral_Whispering_Gallery.jpg
 whist_N	33062;Whist;commons/6/69/Whist_marker.jpg
 whistle_1_V	325480;Whistling;commons/f/f1/Duveneck_Whistling_Boy.jpg
-whistle_3_N	42387;Whistle;commons/1/1b/Party_whistle_on_radio.jpg	19736676;Apito;commons/f/f1/SambaWhistle.jpg
+whistle_3_N	42387;Whistle;commons/1/1b/Party_whistle_on_radio.jpg
 whistle_3_V2	325480;Whistling;commons/f/f1/Duveneck_Whistling_Boy.jpg
 whistle_4_N	19736676;Apito;commons/f/f1/SambaWhistle.jpg
 whistle_5_N	42380;Tin_whistle;commons/d/d9/Tin_Whistles.jpg
@@ -20900,8 +20873,6 @@ whitehall_1_PN	146416;Whitehall;commons/5/59/Whitehall_2012.JPG
 whitehaven_PN	291743;Whitehaven;commons/5/5f/Whitehaven_market_hall.jpg
 whitethorn_N	701217;Crataegus_monogyna;commons/c/c0/Common_hawthorn.jpg	170744;Crataegus;commons/2/21/Crataegus%2C_various_species%2C_fruit.jpg
 whitewash_2_N	464274;Whitewash;commons/d/d3/Yarloop_wkshop_gnangarra_13.jpg
-whiting_1_N	37205436;Saltwater_fish;commons/2/29/Goldspotted_spinefoot_Saltwater_Fish_3008px.jpg
-whiting_2_N	37205436;Saltwater_fish;commons/2/29/Goldspotted_spinefoot_Saltwater_Fish_3008px.jpg
 whiting_3_N	16789556;Blue_whiting;commons/6/6d/Micromesistius_poutassou_Gervais.jpg
 whiting_4_N	1992713;Merlangius;commons/2/2a/Wijting002.jpg
 whiting_6_N	1992713;Merlangius;commons/2/2a/Wijting002.jpg
@@ -21289,7 +21260,6 @@ zebu_N	50111;Zebu;commons/1/11/Bos_taurus_indicus.jpg
 zenith_N	48909;Zenith;commons/4/47/Zenith-Nadir-Horizon.svg
 zeolite_N	92389;Zeolite;commons/e/e8/ZeolitesUSGOV.jpg
 zeppelin_PN	34440;Zeppelin;commons/f/f4/USS_Los_Angeles_moored_to_USS_Patoka%2C_1931.jpg
-zero_3_N	264210;Zero_of_a_function;commons/9/98/X-intercepts.svg
 zidovudine_N	195187;Zidovudine;commons/3/32/Zidovudine.svg
 ziggurat_1_N	81746;Ziggurat;commons/9/93/Ancient_ziggurat_at_Ali_Air_Base_Iraq_2005.jpg
 zimbabwe_PN	34399;Zimbabwe;commons/6/6a/Flag_of_Zimbabwe.svg
@@ -21415,3 +21385,15 @@ breakfast_N	68768;Breakfast;commons/4/4b/AmCountryBreakfast.JPG
 prison_1_N	19008450;Prison;commons/6/6e/Pentonvilleiso19.jpg
 hanger_2_N	80230;Clothes_hanger;commons/c/c2/Wire-and-Wooden-CoatHangers.JPG
 nit_2_N	243916;Head_louse;commons/d/d6/Head_louse_egg_2.jpg
+fox_6_N	2314798;Meskwaki;commons/a/ae/Kee-shes-wa.jpg
+fox_7_N	3563275;Fox_language;commons/f/fb/Oklahoma_Indian_Languages.png
+constitution_PN	32298;USS_Constitution;commons/e/ed/USS_Constitution_fires_a_17-gun_salute.jpg
+rabbit_1_N	26573;Rabbit;commons/1/1f/Oryctolagus_cuniculus_Rcdo.jpg
+rabbit_3_N	26573;Rabbit;commons/2/2d/Kitchen_-_Hotel_Dieu%2C_Beaune.jpg
+cat_6_N	125371;Continuous_track;commons/f/f5/Caterpillar_track_shingle.JPG
+capuchin_2_N	1238652;Capuchin_monkey;commons/4/40/Capuchin_Costa_Rica.jpg
+capulin_1_N	1804896;Prunus_serotina;commons/0/0d/Amerikaanse_vogelkers_Prunus_serotina_closeup.jpg
+capulin_2_N	1804896;Prunus_serotina;commons/f/f0/Amerikaanse_vogelkers_bessen_Prunus_serotina.jpg
+column_5_N	7271934;Column_(periodical);commons/9/98/Don_Marquis_column.gif
+firewall_2_N	26173989;Firewall_(computing);commons/b/ba/Gufw_10.04.4.png
+shanty_2_N	311643;Sea_shanty;commons/2/22/Halyards.jpg

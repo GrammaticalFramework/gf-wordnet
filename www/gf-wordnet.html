@@ -31,7 +31,7 @@
 				</table>
 			</td>
 			<td><input id="search" type="text"></td>
-			<td><input id="button" type="button" value="Search" onclick="gfwordnet.search(getMultiSelection(element('from')), element('search').value, element('domains'), element('result')); element('search').value = ''"></td>
+			<td><input id="button" type="button" value="Search" onclick="gfwordnet.search(getMultiSelection(element('from')), element('search').value, element('domains'), element('result'), domain_listener); element('search').value = ''"></td>
 		</tr></table>
 
 		<br>
@@ -62,7 +62,11 @@
 		<script src="js/multiselect.js"></script>
 		<script>
 			gfwordnet.initialize()
-			gfwordnet.populate_domains(element('domains'));
+
+			domain_listener = function() {
+				gfwordnet.search(getMultiSelection(element('from')), null, element('domains'), element('result'), arguments.callee);
+			};
+			gfwordnet.populate_domains(element('domains'), domain_listener);
 
 			element("search").addEventListener("keyup", function(event) {
 				event.preventDefault();

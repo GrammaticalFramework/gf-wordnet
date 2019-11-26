@@ -150,14 +150,13 @@ cgiMain db (cs,funs) = do
 
     doDomainQuery db d ds = do
       runHelda db ReadOnlyMode $ do
-        m <- fmap Map.fromList $ select (fromIndex lexemes_domain (at d))
-        m <- foldM (\m d -> fmap Map.fromList $ select [res | res@(id,_) <- fromIndex lexemes_domain (at d), Map.member id m]) 
-                   m ds
-        let lexemes = take maxResultLength (Map.toList m)
-        senses <- foldM (getGloss db) Map.empty lexemes
+        lexemes0 <- select [res | res@(_,lexeme) <- fromIndex lexemes_domain (at d),
+                                  all (flip elem (domains lexeme)) ds]
+        let lexemes1 = take maxResultLength lexemes0
+        senses <- foldM (getGloss db) Map.empty lexemes1
         let sorted_senses = (sortSenses . Map.toList) senses
-        return (makeObj [("total",     showJSON (Map.size m))
-                        ,("retrieved", showJSON (length lexemes))
+        return (makeObj [("total",     showJSON (length lexemes0))
+                        ,("retrieved", showJSON (length lexemes1))
                         ,("result",    showJSON (map mkSenseObj sorted_senses))
                         ])
 

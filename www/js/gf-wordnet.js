@@ -71,24 +71,22 @@ gfwordnet.populate_domains = function (domains, domain_listener) {
 	gfwordnet.sense_call("?list_domains",bind(extract_domains),errcont);
 }
 
-gfwordnet.search = function (selection, input, domains, result, domain_listener) {
+gfwordnet.get_selected_domains = function(domains) {
 	var items        = domains.querySelectorAll("input");
 	var domains_map  = {};
-	var domain_query = "";
 	for (var i=0; i<items.length; i++) {
 		if (items[i].checked) {
 			var domain = items[i].nextSibling.textContent;
 			domains_map[domain] = null;
-
-			if (domain_query != "")
-				domain_query = domain_query+"&";
-			domain_query = domain_query + 
-				           "domain=" + 
-				           encodeURIComponent(items[i].nextSibling.textContent);
 		}
 	}
+	return domains_map;
+}
 
-	if ((input == "" || input == null) && domain_query == "") {
+gfwordnet.search = function (selection, input, domains, result, domain_listener) {
+	var domains_map = this.get_selected_domains(domains);
+
+	if ((input == "" || input == null) && Object.keys(domains_map).length === 0) {
 		this.selection = null;
 
 		var result_thead = result.getElementsByTagName("THEAD")[0];
@@ -151,7 +149,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 					continue;
 
 				var icon;
-				var row = this[lex_id];
+				var row = this.rows[lex_id];
 
 				var checked = true;
 				for (var lang in gfwordnet.selection.langs) {
@@ -166,23 +164,25 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 					}
 				}
 
-				icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
-					                onclick: "gfwordnet.onclick_minus(event,this)"});
-				row[0].insertBefore(icon, row[0].firstChild);
+				if (row[0].firstElementChild == null) {
+					icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
+										onclick: "gfwordnet.onclick_minus(event,this)"});
+					row[0].insertBefore(icon, row[0].firstChild);
+				}
 				result_tbody.appendChild(node("tr",{"data-lex-id": lex_id},row));
 
 				for (var j in gfwordnet.lex_ids[lex_id].domains) {
 					var domain = gfwordnet.lex_ids[lex_id].domains[j];
-					if (domains_map[domain] == null) {
+					if (this.domains_map[domain] == null) {
 						if (domains_row == null || domains_row.childElementCount >= 5) {
 							domains_row = tr([]);
 							domains_tbody.appendChild(domains_row);
 						}
 						var checkbox = node("input", {type: "checkbox"});
-						checkbox.checked = domain in domains_map;
-						checkbox.addEventListener("change", domain_listener);
+						checkbox.checked = domain in this.domains_map;
+						checkbox.addEventListener("change", this.domain_listener);
 						var cell = td([checkbox,text(domain)]);
-						domains_map[domain] = cell;
+						this.domains_map[domain] = cell;
 						domains_row.appendChild(cell);
 					}
 				}
@@ -265,13 +265,60 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		}
 		return rows;
     }
+    function domain_search_listener() {
+		this.domains_map = gfwordnet.get_selected_domains(domains);
+		var new_senses  = {total:     this.senses.total
+			              ,retrieved: 0
+			              ,result:    []
+			              };
+
+		for (var i in this.senses.result) {
+			var sense = this.senses.result[i];
+
+			var new_sense = Object.create(sense);
+			new_sense.lex_ids = {}
+
+			for (var lex_id in sense.lex_ids) {
+				var is_included = true;
+				for (var domain in this.domains_map) {
+					if (sense.lex_ids[lex_id].domains == null ||
+					    !sense.lex_ids[lex_id].domains.includes(domain)) {
+						is_included = false;
+						break;
+					}
+				}
+				if (is_included) {
+					new_sense.lex_ids[lex_id] = sense.lex_ids[lex_id];
+					new_senses.retrieved++;
+				}
+			}
+			
+			if (Object.keys(new_sense.lex_ids).length > 0) {
+				new_senses.result.push(new_sense);
+			}
+		}
+		new_senses.total = new_senses.retrieved;
+
+		var result_tbody = result.getElementsByTagName("TBODY")[0];
+		clear(result_tbody);
+
+		var domains_tbody = domains.getElementsByTagName("TBODY")[0];
+		clear(domains_tbody);
+
+		bind(extract_senses,this)(new_senses);
+	}
 	function extract_search(lemmas) {
-		var rows = create_rows(lemmas);
+		var obj = {rows: create_rows(lemmas), domains_map: domains_map};
+		obj.domain_listener = bind(domain_search_listener,obj);
 		var lexical_ids = "";
-		for (lemma in rows) {
+		for (lemma in obj.rows) {
 			lexical_ids = lexical_ids+" "+lemma;
 		}
-		gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(extract_senses,rows),errcont);
+		var helper = function (senses) {
+			this.senses = senses; // save the result to be used for filtering
+			bind(extract_senses,this)(senses);
+		}
+		gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,obj),errcont);
 	}
 	function extract_domains(senses) {
 		var lemmas = [];
@@ -280,8 +327,10 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 				lemmas.push({lemma: lemma, prob: Infinity});
 			}
 		}
-		var rows = create_rows(lemmas);
-		bind(extract_senses,rows)(senses);
+		var obj = {rows: create_rows(lemmas),
+			       domain_listener: domain_listener,
+			       domains_map: domains_map};
+		bind(extract_senses,obj)(senses);
 	}
 
 	var new_selection = this.selection == null || !selection.isEqual(this.selection);
@@ -291,6 +340,13 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		             };
 
 	if (input == "" || input == null) {
+		var domain_query = "";
+		for (var domain in domains_map) {
+			if (domain_query != "")
+				domain_query = domain_query+"&";
+			domain_query = domain_query + 
+				           "domain=" + encodeURIComponent(domain);
+		}
 		gfwordnet.sense_call("?"+domain_query,extract_domains,errcont);
 	} else {
 		gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+selection.current,extract_search,errcont);

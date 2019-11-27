@@ -47,6 +47,12 @@ endif
 
 SERVER_PATH = /usr/local/www/gf-wordnet
 
+ifndef GF_LIB_PATH
+INSTALL_PATH=$(shell cat ../gf-core/DATA_DIR)/lib/wordnet
+else
+INSTALL_PATH=$(GF_LIB_PATH)/lib/wordnet
+endif
+
 all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService build/gfshell
 ifneq ($(SERVER), NO)
 	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
@@ -85,7 +91,7 @@ build/train/EM.hs: train/EM.hsc train/em_core.h
 build/train/Matching.hs: train/Matching.hsc train/em_core.h
 	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
-semantics.db: www-services/glosses.hs WordNet.gf examples.txt embedding.txt
+semantics.db: www-services/glosses.hs WordNet.gf examples.txt embedding.txt images.txt
 	runghc -iwww-services www-services/glosses.hs
 ifneq ($(SERVER), NO)
 	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
@@ -125,3 +131,10 @@ build_dirs:
 	mkdir -p build/gfo
 	mkdir -p build/train
 	mkdir -p build/www-services
+
+
+install:
+	mkdir -p $(INSTALL_PATH)
+	install build/gfo/WordNet*.gfo     $(INSTALL_PATH)
+	install build/gfo/ParseExtend*.gfo $(INSTALL_PATH)
+	install build/gfo/Punctuation*.gfo $(INSTALL_PATH)

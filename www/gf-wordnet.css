@@ -19,6 +19,14 @@ img {
 	width: 0.7em;
 }
 
+img.thumbnail {
+	width: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #cccccc;
+}
+
 table.result {
 	border-collapse: collapse;
 	border: 2px solid #66c;
@@ -60,6 +68,19 @@ table.result td.details > div {
 	max-height: 500px;
 	overflow: auto;
 }
+
+table.domains tbody {
+	display: block;
+    overflow-y: auto;
+}
+
+table.domains td {
+	border: 1px solid #cccccc;
+	background: #ddd;
+	padding: 2px;
+	border-radius: 4px;
+}
+
 table[border="yes"] td,table[border="yes"] th {
 	background: inherit;
 	color: inherit;

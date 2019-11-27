@@ -37,6 +37,9 @@ main = do
   ls <- fmap lines $ readFile "embedding.txt"
   let (cs,ws) = parseEmbeddings ls
 
+  ls <- fmap lines $ readFile "images.txt"
+  let images = parseImages ls
+
   let db_name = "semantics.db"
   fileExists <- doesFileExist db_name
   when fileExists (removeFile db_name)
@@ -58,6 +61,7 @@ main = do
                               (Map.findWithDefault [] fun cncdefs)
                               (mb_offset >>= flip Map.lookup synsetKeys)
                               ds
+                              (fromMaybe [] (Map.lookup fun images))
                               (fromMaybe [] (Map.lookup fun ex_keys)))
 
     createTable coefficients
@@ -72,7 +76,7 @@ main = do
             select $ 
               foldlQ accumCounts Map.empty $
                 [(drop 5 lang,status)
-                           | (_,lex) <- from lexemes,
+                           | (_,lex) <- from lexemes everything,
                              (lang,_,status) <- anyOf (lex_defs lex)]
   writeFile "build/status.svg" (renderStatus cs)
 
@@ -139,6 +143,9 @@ parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
 
     parseVector = map read . words :: String -> [Double]
 
+parseImages ls = 
+  Map.fromList [case tsv l of {(id:urls) -> (id,map (\s -> case cosv s of {[_,pg,im] -> (pg,im); _ -> error l}) urls)} | l <- ls]
+
 accumCounts m (lang,status) = Map.alter (Just . add) lang m
   where
     add Nothing                = (0,0,0,0)
@@ -177,3 +184,9 @@ tsv "" = []
 tsv cs =
   let (x,cs1) = break (=='\t') cs
   in x : if null cs1 then [] else tsv (tail cs1)
+
+cosv :: String -> [String]
+cosv "" = []
+cosv cs =
+  let (x,cs1) = break (==';') cs
+  in x : if null cs1 then [] else cosv (tail cs1)

@@ -4,6 +4,7 @@ import Database.Helda
 import SenseSchema
 import Interval
 import qualified Data.Map as Map
+import qualified Data.Set as Set
 import qualified Data.Vector as Vector
 import Control.Monad(foldM,msum,forM_)
 import Control.Concurrent(forkIO)
@@ -18,7 +19,7 @@ import Data.Char
 main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
   st <- runHelda db ReadOnlyMode $ do
-          [cs] <- select [cs | (_,cs) <- from coefficients]
+          [cs] <- select [cs | (_,cs) <- from coefficients everything]
 
           let norm v = zipWith (\c x -> (c*x) / len) cs v
                 where
@@ -26,7 +27,7 @@ main = do
 
           funs <- fmap Map.fromList $
                     select [(fun, (hvec,mvec,vec))
-                              | (_,Embedding fun hvec' mvec') <- from embeddings
+                              | (_,Embedding fun hvec' mvec') <- from embeddings everything
                               , let !hvec = Vector.fromList hvec'
                                     !mvec = Vector.fromList mvec'
                                     !vec  = Vector.fromList (norm hvec' ++ norm mvec')]
@@ -38,12 +39,16 @@ main = do
 -- #endif
   closeDB db
 
+maxResultLength = 500
+
 cgiMain :: Database -> Embeddings -> CGI CGIResult
 cgiMain db (cs,funs) = do
   mb_s1 <- getInput "lexical_ids"
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
   mb_s7 <- getInput "generalize_ids"
+  mb_s8 <- getInput "list_domains"
+  s9    <- fmap (\xs -> [value | ("domain",value) <- xs]) getInputs
   case mb_s1 of
     Just s  -> do json <- liftIO (doQuery (words s))
                   outputJSONP json
@@ -56,43 +61,26 @@ cgiMain db (cs,funs) = do
                                   Nothing     -> case mb_s7 of
                                                    Just s  -> do json <- liftIO (doGeneralize (words s))
                                                                  outputJSONP json
-                                                   Nothing -> outputNothing
+                                                   Nothing -> case mb_s8 of
+                                                                Just _  -> do json <- liftIO doListDomains
+                                                                              outputJSONP json
+                                                                Nothing -> case s9 of
+                                                                             (d:ds) -> do json <- liftIO (doDomainQuery db d ds)
+                                                                                          outputJSONP json
+                                                                             _     -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runHelda db ReadOnlyMode $
                   foldM (getSense db) Map.empty lex_ids
-      let sorted_senses = (map snd . sortOn fst . map addKey . Map.toList) senses
-      return (showJSON (map mkSenseObj sorted_senses))
+      let sorted_senses = (sortSenses . Map.toList) senses
+      return (makeObj [("total",     showJSON (length lex_ids))
+                      ,("retrieved", showJSON (length lex_ids))
+                      ,("result",    showJSON (map mkSenseObj sorted_senses))
+                      ])
       where
         getSense db senses lex_id = do
-          lexemes <- select (fromIndexAt lexemes_fun lex_id)
+          lexemes <- select (fromIndex lexemes_fun (at lex_id))
           foldM (getGloss db) senses lexemes
-
-        getGloss db senses (_,Lexeme lex_id lex_defs (Just sense_id) domains ex_ids) = do
-          examples  <- select [e | ex_id <- anyOf ex_ids, e <- fromAt examples ex_id]
-          sexamples <- select [e | (id,e) <- fromIndexAt examples_fun lex_id, not (elem id ex_ids)]
-
-          case Map.lookup sense_id senses of
-            Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,examples,sexamples) lex_ids) senses)
-            Nothing              -> do [Synset _ _ _ gloss] <- select (fromAt synsets sense_id)
-                                       lex_ids <- select [(lex_id,lex_defs,Nothing) | (_,Lexeme lex_id lex_defs _ _ _) <- fromIndexAt lexemes_synset sense_id]
-                                       return (Map.insert sense_id (gloss,addInfo lex_id (domains,examples,sexamples) lex_ids) senses)
-
-        getGloss db senses _ = return senses
-
-        addInfo lex_id info lex_ids = 
-          [(lex_id',lex_defs,if lex_id == lex_id' then Just info else mb_info)
-              | (lex_id',lex_defs,mb_info) <- lex_ids]
-
-        addKey (sense_id,(gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,map snd key_lex_ids)))
-          where
-            key_lex_ids = sortOn fst [(toKey lex_id info,x) | x@(lex_id,_,info) <- lex_ids]
-
-            toKey lex_id info = (isNothing info,reverse rid,reverse rcat,read ('0':reverse rn)::Int)
-              where
-                s0 = reverse lex_id
-                (rcat,'_':s1) = break (=='_') s0
-                (rn,rid) = break (not . isDigit) s1
 
     doContext lex_id =
       let (ctxt,rels) =
@@ -111,7 +99,7 @@ cgiMain db (cs,funs) = do
                           ("relations", showJSON rels)
                          ])
       where
-        prod v1 v2 v3 = Vector.sum (Vector.zipWith3 (\x y z -> x*y*z) v1 v2 v3)
+        prod v1 v2 v3 = Vector.sum (Vector.zipWith3 (\x y z -> x*z) v1 v2 v3)
 
         dist v1 v2 = Vector.sum (Vector.zipWith diff v1 v2)
           where
@@ -125,18 +113,18 @@ cgiMain db (cs,funs) = do
 
     doGloss lex_id = do
       glosses <- runHelda db ReadOnlyMode $
-                    select [gloss s | (_,lex@(Lexeme{synset=Just synset_id})) <- fromIndexAt lexemes_fun lex_id,
-                                      s <- fromAt synsets synset_id]
+                    select [gloss s | (_,lex@(Lexeme{synset=Just synset_id})) <- fromIndex lexemes_fun (at lex_id),
+                                      s <- from synsets (at synset_id)]
       return (showJSON glosses)
 
     doGeneralize ids = do
       x <- runHelda db ReadOnlyMode $ fmap catMaybes $ do
          select [synset lexeme | fun <- anyOf ids,
-                                 (_,lexeme) <- fromIndexAt lexemes_fun fun]
+                                 (_,lexeme) <- fromIndex lexemes_fun (at fun)]
 
       let up synset_id =
             runHelda db ReadOnlyMode $ fmap head $ do
-              select [parents s | s <- fromAt synsets synset_id]
+              select [parents s | s <- from synsets (at synset_id)]
 
       ids <- findLCA up (nub x)
 
@@ -144,16 +132,61 @@ cgiMain db (cs,funs) = do
                select [(synset_id,(gloss,lex_ids))
                           | int <- foldl1Q intersection 
                                            [children s | synset_id <- anyOf ids,
-                                                         s <- fromAt synsets synset_id],
+                                                         s <- from synsets (at synset_id)],
                             size int < 2000,
                             (s,e) <- anyOf int,
-                            (synset_id,Synset offset _ _ gloss) <- fromInterval synsets (Including s) (Including e),
-                            lex_ids <- listAll [(lex_fun,lex_defs,Just (domains,examples,sexamples))
-                                                   | (_,Lexeme lex_fun lex_defs _ domains ex_ids) <- fromIndexAt lexemes_synset synset_id,
-                                                     examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- fromAt examples ex_id],
-                                                     sexamples <- listAll [e | (id,e) <- fromIndexAt examples_fun lex_fun, not (elem id ex_ids)]]]
+                            (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
+                            lex_ids <- listAll [(lex_fun,lex_defs,Just (domains,images,examples,sexamples))
+                                                   | (_,Lexeme lex_fun lex_defs _ domains images ex_ids) <- fromIndex lexemes_synset (at synset_id),
+                                                     examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
+                                                     sexamples <- listAll [e | (id,e) <- fromIndex examples_fun (at lex_fun), not (elem id ex_ids)]]]
 
       return (showJSON (map mkSenseObj fs))
+
+    doListDomains = do
+      x <- runHelda db ReadOnlyMode $ do
+         select [domain | (domain,_) <- fromList lexemes_domain everything]
+      return (showJSON x)
+
+    doDomainQuery db d ds = do
+      runHelda db ReadOnlyMode $ do
+        lexemes0 <- select [res | res@(_,lexeme) <- fromIndex lexemes_domain (at d),
+                                  all (flip elem (domains lexeme)) ds]
+        let lexemes1 = take maxResultLength lexemes0
+        senses <- foldM (getGloss db) Map.empty lexemes1
+        let sorted_senses = (sortSenses . Map.toList) senses
+        return (makeObj [("total",     showJSON (length lexemes0))
+                        ,("retrieved", showJSON (length lexemes1))
+                        ,("result",    showJSON (map mkSenseObj sorted_senses))
+                        ])
+
+    getGloss db senses (_,Lexeme lex_id lex_defs (Just sense_id) domains images ex_ids) = do
+      examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
+      sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
+
+      case Map.lookup sense_id senses of
+        Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
+        Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
+                                   lex_ids <- select [(lex_id,lex_defs,Nothing) | (_,Lexeme lex_id lex_defs _ _ _ _) <- fromIndex lexemes_synset (at sense_id)]
+                                   return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
+      where
+        addInfo lex_id info lex_ids = 
+          [(lex_id',lex_defs,if lex_id == lex_id' then Just info else mb_info)
+              | (lex_id',lex_defs,mb_info) <- lex_ids]
+
+    getGloss db senses _ = return senses
+
+    sortSenses = map snd . sortOn fst . map addKey
+      where
+        addKey (sense_id,(gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,map snd key_lex_ids)))
+          where
+            key_lex_ids = sortOn fst [(toKey lex_id info,x) | x@(lex_id,_,info) <- lex_ids]
+
+        toKey lex_id info = (isNothing info,reverse rid,reverse rcat,read ('0':reverse rn)::Int)
+          where
+            s0 = reverse lex_id
+            (rcat,'_':s1) = break (=='_') s0
+            (rn,rid) = break (not . isDigit) s1
 
     mkSenseObj (sense_id,(gloss,lex_ids)) =
       makeObj [("sense_id",showJSON sense_id)
@@ -168,9 +201,10 @@ cgiMain db (cs,funs) = do
       makeObj (("lex_defs", mkDefsObj lex_defs) :
                case info of
                  Nothing -> []
-                 Just (domains,examples,sexamples) -> [
+                 Just (domains,images,examples,sexamples) -> [
                          ("match", showJSON True),
                          ("domains",  showJSON domains),
+                         ("images",  showJSON images),
                          ("examples", showJSON (map (showExpr []) examples)),
                          ("secondary_examples", showJSON (map (showExpr []) sexamples))
                          ])

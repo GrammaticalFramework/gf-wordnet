@@ -29,6 +29,7 @@ data Lexeme
       , lex_defs    :: [(String,String,Status)]
       , synset      :: Maybe (Key Synset)
       , domains     :: [String]
+      , images      :: [(String,String)]
       , example_ids :: [Key Expr]
       }
     deriving (Data,Show)
@@ -48,12 +49,16 @@ lexemes :: Table Lexeme
 lexemes = table "lexemes"
              `withIndex` lexemes_fun
              `withIndex` lexemes_synset
+             `withIndex` lexemes_domain
 
 lexemes_fun :: Index Lexeme Fun
 lexemes_fun = index lexemes "fun" lex_fun
 
 lexemes_synset :: Index Lexeme (Key Synset)
 lexemes_synset = maybeIndex lexemes "synset" synset
+
+lexemes_domain :: Index Lexeme String
+lexemes_domain = listIndex lexemes "domain" domains
 
 coefficients :: Table [Double]
 coefficients = table "coefficients"

@@ -1,5 +1,5 @@
 abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop], Numeral - [num], Punctuation ** {
+                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], Numeral - [num], Punctuation ** {
 
 fun gen_Quant : Quant ;       -- English often skips the article 
                               -- when in Swedish and Bulgarian definite 
@@ -135,11 +135,6 @@ fun EmbedVP     : Ant -> Pol -> Pron -> VP  -> SC ;
     -- `We love each other` or `We love one another`.
 fun RecipVPSlash   : VPSlash -> VP ;
     RecipVPSlashCN : VPSlash -> CN -> VP ;
-
-    -- ProgrVP makes a progressive VP but sometimes, 
-    -- e.g. when we build ClSlash, we need to make the VPSlash 
-    -- progressive since the VP will never be built.    
-fun ProgrVPSlash : VPSlash -> VPSlash ;
 
     -- A clause which uses copula but the complement 
     -- is shifted to the front.

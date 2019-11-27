@@ -164,11 +164,9 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 					}
 				}
 
-				if (row[0].firstElementChild == null) {
-					icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
-										onclick: "gfwordnet.onclick_minus(event,this)"});
-					row[0].insertBefore(icon, row[0].firstChild);
-				}
+				icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
+									onclick: "gfwordnet.onclick_minus(event,this)"});
+				row[0].insertBefore(icon, row[0].firstChild);
 				result_tbody.appendChild(node("tr",{"data-lex-id": lex_id},row));
 
 				for (var j in gfwordnet.lex_ids[lex_id].domains) {
@@ -305,10 +303,21 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		var domains_tbody = domains.getElementsByTagName("TBODY")[0];
 		clear(domains_tbody);
 
+		for (var lex_id in this.rows) {
+			var row  = this.rows[lex_id];
+			var icon = row[0].firstElementChild;
+			if (icon != null) {
+				icon.parentElement.removeChild(icon);
+			}
+			for (var i in row) {
+				row[i].removeAttribute("class");
+			}
+		}
+
 		bind(extract_senses,this)(new_senses);
 	}
 	function extract_search(lemmas) {
-		var obj = {rows: create_rows(lemmas), domains_map: domains_map};
+		var obj = {rows: create_rows(lemmas), domains_map: {}};
 		obj.domain_listener = bind(domain_search_listener,obj);
 		var lexical_ids = "";
 		for (lemma in obj.rows) {

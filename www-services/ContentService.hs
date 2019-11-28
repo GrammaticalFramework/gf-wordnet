@@ -1,6 +1,6 @@
 {-# LANGUAGE CPP, MonadComprehensions #-}
 
-import Database.Helda
+import Database.Daison
 import SenseSchema
 import Text.JSON
 import Text.JSON.String
@@ -25,7 +25,7 @@ import qualified Data.Map as Map
 import Data.Char
 
 main = do
-  db <- openDB (SERVER_PATH++"/semantics.db")
+  db <- openDB (SERVER_PATH++"/sources.db")
 -- #ifndef mingw32_HOST_OS
 --    runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else
@@ -41,6 +41,7 @@ cgiMain db = do
   mb_s4 <- getInput "lang"
   mb_s5 <- fmap (fmap (urlDecodeUnicode . UTF8.decodeString)) $ getInput "def"
   mb_s6 <- getInput "commit"
+  mb_s7 <- getInput "push"
   case mb_s1 of
     Just code -> doLogin code
     Nothing   -> case liftM3 (,,) mb_s3 mb_s4 mb_s5 of
@@ -49,7 +50,10 @@ cgiMain db = do
                    Nothing                -> case liftM2 (,) mb_s2 mb_s6 of
                                                Just (token,commit) -> do res <- liftIO (doCommit token)
                                                                          outputText "text/plain; charset=utf-8" res
-                                               Nothing             -> outputNothing
+                                               Nothing             -> case mb_s7 of
+                                                                        Just _  -> do (res,out,err) <- liftIO (git ["pull","--no-edit"])
+                                                                                      outputText "text/plain; charset=utf-8" (out++"\n"++err++"\n"++show res)
+                                                                        Nothing -> outputNothing
   where
     doLogin code = do
       man <- liftIO $ newManager tlsManagerSettings
@@ -71,8 +75,8 @@ cgiMain db = do
         Nothing    -> outputNothing
 
     doCheck lex_id lang def =
-      runHelda db ReadWriteMode $ do
-        res <- update lexemes (\id -> updateDef lang def) (fromIndexAt lexemes_fun lex_id)
+      runDaison db ReadWriteMode $ do
+        res <- update lexemes (\id -> updateDef lang def) (fromIndex lexemes_fun (at lex_id))
         insert checked (lex_id,lang)
         return [map toLower (show st)
                    | (_,lexeme) <- res, 
@@ -88,10 +92,10 @@ cgiMain db = do
                               | (lang',def',st) <- lex_defs lexeme]}
 
     doCommit token = do
-      res <- runHelda db ReadOnlyMode $
+      res <- runDaison db ReadOnlyMode $
                select [(lang,[(lex_id,[def | (lang',def,_) <- lex_defs lexeme, lang==lang'])]) | 
-                            (_,(lex_id,lang)) <- from checked,
-                            (_,lexeme) <- fromIndexAt lexemes_fun lex_id]
+                            (_,(lex_id,lang)) <- from checked everything,
+                            (_,lexeme) <- fromIndex lexemes_fun (at lex_id)]
       forM_ ((Map.toList . Map.fromListWith (++)) res) $ \(lang,ids) ->
         if null ids
           then return ()
@@ -119,7 +123,6 @@ cgiMain db = do
                email <- resultToEither (valFromObj "email" obj)
                return (name++" <"++email++">")) of
         Right author -> do (res,out,err) <- 
-                               git ["pull","--no-edit"] `thenDo`
                                git ["commit","--author",author,"--message","progress","WordNet*.gf"] `thenDo`
                                git ["push","https://"++token++"@github.com/GrammaticalFramework/gf-wordnet"]
                            return (show res++"\n"++out++"\n"++err)
@@ -141,6 +144,7 @@ thenDo f g =
        ExitSuccess -> do (code2,out2,err2) <- g
                          return (code2,out1++out2,err1++err2)
        _           -> return (code1,out1,err1)
+
 
 outputJSONP :: JSON a => a -> CGI CGIResult
 outputJSONP = outputEncodedJSONP . encode

@@ -3,7 +3,7 @@
 module SenseSchema where
 
 import PGF2
-import Database.Helda
+import Database.Daison
 import Data.Data
 import Data.List(nub)
 import Interval

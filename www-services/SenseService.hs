@@ -1,6 +1,6 @@
 {-# LANGUAGE CPP, BangPatterns, MonadComprehensions #-}
 import PGF2
-import Database.Helda
+import Database.Daison
 import SenseSchema
 import Interval
 import qualified Data.Map as Map
@@ -18,7 +18,7 @@ import Data.Char
 
 main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
-  st <- runHelda db ReadOnlyMode $ do
+  st <- runDaison db ReadOnlyMode $ do
           [cs] <- select [cs | (_,cs) <- from coefficients everything]
 
           let norm v = zipWith (\c x -> (c*x) / len) cs v
@@ -70,7 +70,7 @@ cgiMain db (cs,funs) = do
                                                                              _     -> outputNothing
   where
     doQuery lex_ids = do
-      senses <- runHelda db ReadOnlyMode $
+      senses <- runDaison db ReadOnlyMode $
                   foldM (getSense db) Map.empty lex_ids
       let sorted_senses = (sortSenses . Map.toList) senses
       return (makeObj [("total",     showJSON (length lex_ids))
@@ -112,23 +112,23 @@ cgiMain db (cs,funs) = do
         mkFunVec  fun vec  = makeObj [("fun",showJSON fun),("vec",  showJSON vec)]
 
     doGloss lex_id = do
-      glosses <- runHelda db ReadOnlyMode $
+      glosses <- runDaison db ReadOnlyMode $
                     select [gloss s | (_,lex@(Lexeme{synset=Just synset_id})) <- fromIndex lexemes_fun (at lex_id),
                                       s <- from synsets (at synset_id)]
       return (showJSON glosses)
 
     doGeneralize ids = do
-      x <- runHelda db ReadOnlyMode $ fmap catMaybes $ do
+      x <- runDaison db ReadOnlyMode $ fmap catMaybes $ do
          select [synset lexeme | fun <- anyOf ids,
                                  (_,lexeme) <- fromIndex lexemes_fun (at fun)]
 
       let up synset_id =
-            runHelda db ReadOnlyMode $ fmap head $ do
+            runDaison db ReadOnlyMode $ fmap head $ do
               select [parents s | s <- from synsets (at synset_id)]
 
       ids <- findLCA up (nub x)
 
-      fs <- runHelda db ReadOnlyMode $ do
+      fs <- runDaison db ReadOnlyMode $ do
                select [(synset_id,(gloss,lex_ids))
                           | int <- foldl1Q intersection 
                                            [children s | synset_id <- anyOf ids,
@@ -144,12 +144,12 @@ cgiMain db (cs,funs) = do
       return (showJSON (map mkSenseObj fs))
 
     doListDomains = do
-      x <- runHelda db ReadOnlyMode $ do
+      x <- runDaison db ReadOnlyMode $ do
          select [domain | (domain,_) <- fromList lexemes_domain everything]
       return (showJSON x)
 
     doDomainQuery db d ds = do
-      runHelda db ReadOnlyMode $ do
+      runDaison db ReadOnlyMode $ do
         lexemes0 <- select [res | res@(_,lexeme) <- fromIndex lexemes_domain (at d),
                                   all (flip elem (domains lexeme)) ds]
         let lexemes1 = take maxResultLength lexemes0

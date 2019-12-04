@@ -56,7 +56,7 @@ cgiMain db = do
                                                       outputJSONP json
                                     Nothing     -> case liftM2 doCommit mb_s2 mb_s7 of
                                                      Just action -> do res <- liftIO action
-                                                                       outputText "text/plain; charset=utf-8" res
+                                                                       outputJSONP res
                                                      Nothing     -> case fmap doPull mb_s8 of
                                                                       Just action -> do s <- liftIO action
                                                                                         outputText "text/plain; charset=utf-8" s

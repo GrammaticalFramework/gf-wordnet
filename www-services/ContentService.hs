@@ -138,7 +138,7 @@ cgiMain db = do
                return (name++" <"++email++">")) of
         Right author -> do (res,out,err) <- 
                                git ["commit","--author",author,"--message","progress","WordNet*.gf"]
-                           return (unwords ["$", "git", "commit","--author",author,"--message","progress","WordNet*.gf"]++"\n"++show res++"\n"++out++"\n"++err)
+                           return (unwords ["$", "git", "commit","--author",author,"--message","progress","WordNet*.gf"]++"\n"++out++"\n"++err++"\n"++show res)
         Left err     -> return err
       where
         annotate updated l =

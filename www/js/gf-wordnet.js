@@ -1169,3 +1169,11 @@ gfwordnet.onclick_bracket = function (event, bracket) {
 
 	event.stopPropagation();
 }
+
+gfwordnet.commit = function(commit) {
+	var errcont = function(text,code) { };
+	var extract_confirm = function(msg) {
+		alert(msg);
+	};
+	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&commit=1",extract_confirm,errcont);
+}

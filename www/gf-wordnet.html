@@ -53,6 +53,7 @@
 		<p>
 			<a href="gf-wordnet-help.html" target="_blank">What is this?</a>
 			<a id="logIn" href="https://github.com/login/oauth/authorize?scope=user:email%20public_repo&client_id=1e94c97e812a9f502068">Log In</a>
+			<a id="commit" href="javascript:gfwordnet.commit(this)" style="display: none">Commit</a>
 		</p>
 
 		<script src="https://cloud.grammaticalframework.org/js/support.js"></script>
@@ -96,17 +97,21 @@
 
 			var user = getCookie("user");
 			if (user != null) {
-				var logIn = element('logIn');
+				var logIn  = element('logIn');
+				var commit = element('commit');
 				logIn.innerHTML = "Log Out "+user;
 				logIn.onclick = function(event) {
 					event.stopPropagation();
 					gfwordnet.set_access_token(null,element('result'));
 					logIn.innerHTML = "Log In";
 					logIn.onclick = null;
+					commit.style.display = "none";
 					deleteCookie("user");
 					deleteCookie("access_token");
 					return false;
 				};
+				
+				commit.style.display = "inline";
 			}
 			var access_token = getCookie("access_token");
 			gfwordnet.set_access_token(access_token,element('result'));

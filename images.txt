@@ -1484,8 +1484,8 @@ baseboard_N	1302124;Baseboard;commons/b/b5/Interior_Moldings.png
 basel_PN	4911;Basel;commons/f/f5/Basel_-_M%C3%BCnsterpfalz1.jpg
 basement_1_N	568963;Basement;commons/6/6b/Basement-after.jpg
 basenji_N	4765;Basenji;commons/c/c5/Basenji_Profile_%28loosercrop%29.jpg
-basic_1_N	4015;BASIC;commons/c/c9/AtariBasic.png
-basic_2_N	47850038;Staple_food;commons/a/a8/Various_types_of_potatoes_for_sale.jpg
+basic_PN	4015;BASIC;commons/c/c9/AtariBasic.png
+basic_N	47850038;Staple_food;commons/a/a8/Various_types_of_potatoes_for_sale.jpg
 basidiocarp_N	1088600;Basidiocarp;commons/a/a6/Basidium_schematic.svg
 basidiospore_N	2237139;Basidiospore;commons/a/ad/Agaricus_bisporus_spores_SEM_1.jpg
 basidium_N	140599;Basidium;commons/a/a6/Basidium_schematic.svg
@@ -21397,3 +21397,4 @@ capulin_2_N	1804896;Prunus_serotina;commons/f/f0/Amerikaanse_vogelkers_bessen_Pr
 column_5_N	7271934;Column_(periodical);commons/9/98/Don_Marquis_column.gif
 firewall_2_N	26173989;Firewall_(computing);commons/b/ba/Gufw_10.04.4.png
 shanty_2_N	311643;Sea_shanty;commons/2/22/Halyards.jpg
+circumcision_1_N	2546333;Feast_of_the_Circumcision_of_Christ;commons/8/8d/Menologion_of_Basil_047.jpg

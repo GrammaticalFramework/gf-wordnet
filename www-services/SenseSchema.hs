@@ -24,9 +24,9 @@ data Status
   deriving (Data,Show)
 
 data Lexeme
-  = Lexeme 
+  = Lexeme
       { lex_fun     :: Fun
-      , lex_defs    :: [(String,String,Status)]
+      , status      :: [(String,Status)]
       , synset      :: Maybe (Key Synset)
       , domains     :: [String]
       , images      :: [(String,String)]
@@ -41,6 +41,15 @@ data Embedding
       , mvec    :: [Double]
       }
     deriving (Data,Show)
+
+data Update
+  = Update
+     { token  :: String
+     , lex_id :: Fun
+     , lang   :: String
+     , def    :: String
+     }
+   deriving (Data,Show)
 
 synsets :: Table Synset
 synsets = table "synsets"
@@ -77,5 +86,13 @@ examples = table "examples"
 examples_fun :: Index Expr Fun
 examples_fun = listIndex examples "fun" (nub . exprFunctions)
 
-checked :: Table (Fun,String)
-checked = table "checked"
+updates :: Table Update
+updates = table "updates"
+            `withIndex` updates_idx
+            `withIndex` updates_tkn
+
+updates_idx :: Index Update (String,Fun,String)
+updates_idx = index updates "idx" (\u -> (token u,lex_id u,lang u))
+
+updates_tkn :: Index Update String
+updates_tkn = index updates "tkn" token

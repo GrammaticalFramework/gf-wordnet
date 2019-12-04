@@ -23,9 +23,10 @@ import qualified Data.ByteString.Lazy as BS
 import qualified Data.ByteString.UTF8 as BSS
 import qualified Data.Map as Map
 import Data.Char
+import Data.Maybe
 
 main = do
-  db <- openDB (SERVER_PATH++"/sources.db")
+  db <- openDB (SERVER_PATH++"/semantics.db")
 -- #ifndef mingw32_HOST_OS
 --    runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else
@@ -37,23 +38,29 @@ cgiMain :: Database -> CGI CGIResult
 cgiMain db = do
   mb_s1 <- getInput "code"
   mb_s2 <- getInput "access_token"
-  mb_s3 <- getInput "check_id"
-  mb_s4 <- getInput "lang"
-  mb_s5 <- fmap (fmap (urlDecodeUnicode . UTF8.decodeString)) $ getInput "def"
-  mb_s6 <- getInput "commit"
-  mb_s7 <- getInput "push"
+  mb_s3 <- getInput "update_id"
+  mb_s4 <- getInput "get_id"
+  mb_s5 <- getInput "lang"
+  mb_s6 <- fmap (fmap (urlDecodeUnicode . UTF8.decodeString)) $ getInput "def"
+  mb_s7 <- getInput "commit"
+  mb_s8 <- getInput "push"
   case mb_s1 of
     Just code -> doLogin code
-    Nothing   -> case liftM3 (,,) mb_s3 mb_s4 mb_s5 of
-                   Just (lex_id,lang,def) -> do json <- liftIO (doCheck lex_id lang def)
-                                                outputJSONP json
-                   Nothing                -> case liftM2 (,) mb_s2 mb_s6 of
-                                               Just (token,commit) -> do res <- liftIO (doCommit token)
-                                                                         outputText "text/plain; charset=utf-8" res
-                                               Nothing             -> case mb_s7 of
-                                                                        Just _  -> do (res,out,err) <- liftIO (git ["pull","--no-edit"])
-                                                                                      outputText "text/plain; charset=utf-8" (out++"\n"++err++"\n"++show res)
-                                                                        Nothing -> outputNothing
+    Nothing   -> case liftM3 doGet mb_s2 mb_s4 mb_s5 of
+                   Just action -> do res <- liftIO action
+                                     case res of
+                                       Just def -> outputJSONP (showJSON def)
+                                       Nothing  -> outputNothing
+                   Nothing     -> case liftM3 doUpdate mb_s2 mb_s3 mb_s5 of
+                                    Just action -> do json <- liftIO (action mb_s6)
+                                                      outputJSONP json
+                                    Nothing     -> case liftM2 doCommit mb_s2 mb_s7 of
+                                                     Just action -> do res <- liftIO action
+                                                                       outputText "text/plain; charset=utf-8" res
+                                                     Nothing     -> case fmap doPull mb_s8 of
+                                                                      Just action -> do s <- liftIO action
+                                                                                        outputText "text/plain; charset=utf-8" s
+                                                                      Nothing     -> outputNothing
   where
     doLogin code = do
       man <- liftIO $ newManager tlsManagerSettings
@@ -74,40 +81,47 @@ cgiMain db = do
                            Left err     -> output err
         Nothing    -> outputNothing
 
-    doCheck lex_id lang def =
-      runDaison db ReadWriteMode $ do
-        res <- update lexemes (\id -> updateDef lang def) (fromIndex lexemes_fun (at lex_id))
-        insert checked (lex_id,lang)
-        return [map toLower (show st)
-                   | (_,lexeme) <- res, 
-                     (lang',def',st) <- lex_defs lexeme,
-                     lang==lang', def==def', lex_fun lexeme==lex_id]
-      where
-        updateDef lang def lexeme =
-          lexeme{lex_defs=[if lang==lang'
-                             then (lang,def,if def==def'
-                                              then Checked
-                                              else Changed)
-                             else (lang',def',st)
-                              | (lang',def',st) <- lex_defs lexeme]}
+    doGet token lex_id lang = do
+      res <- runDaison db ReadWriteMode $ do
+               select (fromIndex updates_idx (at (token,lex_id,lang)))
+      case res of
+        (_,u):_ -> do return (Just (def u))
+        _       -> do s <- readSourceFile lang
+                      return (getDefinition lex_id s)
 
-    doCommit token = do
-      res <- runDaison db ReadOnlyMode $
-               select [(lang,[(lex_id,[def | (lang',def,_) <- lex_defs lexeme, lang==lang'])]) | 
-                            (_,(lex_id,lang)) <- from checked everything,
-                            (_,lexeme) <- fromIndex lexemes_fun (at lex_id)]
+    doUpdate token lex_id lang mb_def = do
+      mb_def' <- doGet token lex_id lang
+      let (def,s) = case mb_def of
+                      Just def | mb_def /= mb_def' -> (def,                  Changed)
+                      _                            -> (fromMaybe "" mb_def', Checked)
+      runDaison db ReadWriteMode $ do
+        res <- update lexemes [(id, updateStatus lang s lex) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
+        insert_ updates (Update token lex_id lang def)
+        return [map toLower (show st)
+                   | (_,lexeme) <- res,
+                     (lang',st) <- status lexeme,
+                     lang==lang']
+      where
+        updateStatus lang s lexeme = 
+          lexeme{status=[(lang',if lang==lang'
+                                  then s
+                                  else s')
+                             | (lang',s') <- status lexeme]}
+
+    doCommit token commit = do
+      res <- runDaison db ReadWriteMode $ do
+               res <- select [(lang,[(lex_id,def)]) | (_,Update _ lex_id lang def) <- fromIndex updates_tkn (at token)]
+               delete updates (from updates_tkn (at token))
+               return res
       forM_ ((Map.toList . Map.fromListWith (++)) res) $ \(lang,ids) ->
         if null ids
           then return ()
           else do let fname = "WordNet"++drop 5 lang++".gf"
-                  hInp <- openFile (SERVER_PATH++"/"++fname) ReadMode
-                  hSetEncoding hInp utf8
-                  ls <- fmap lines $ hGetContents hInp
+                  ls <- fmap lines $ readSourceFile lang
                   (tmp_fname,hTmp) <- openTempFile SERVER_PATH fname
                   hSetEncoding hTmp utf8
                   mapM_ (hPutStrLn hTmp . annotate ids) ls 
                   hClose hTmp
-                  hClose hInp
                   setFileMode tmp_fname (ownerReadMode `unionFileModes`
                                          ownerWriteMode `unionFileModes`
                                          groupReadMode `unionFileModes`
@@ -123,28 +137,62 @@ cgiMain db = do
                email <- resultToEither (valFromObj "email" obj)
                return (name++" <"++email++">")) of
         Right author -> do (res,out,err) <- 
-                               git ["commit","--author",author,"--message","progress","WordNet*.gf"] `thenDo`
-                               git ["push","https://"++token++"@github.com/GrammaticalFramework/gf-wordnet"]
-                           return (show res++"\n"++out++"\n"++err)
+                               git ["commit","--author",author,"--message","progress","WordNet*.gf"]
+                           return (unwords ["$", "git", "commit","--author",author,"--message","progress","WordNet*.gf"]++"\n"++show res++"\n"++out++"\n"++err)
         Left err     -> return err
       where
-        annotate checked l =
+        annotate updated l =
           case words l of
-            ("lin":id:"=":_) -> case lookup id checked of
-                                  Just [def] -> "lin "++id++" = "++def++" ;"
-                                  _          -> l
-            _                                -> l
+            ("lin":id:"=":_) -> case lookup id updated of
+                                  Just def -> "lin "++id++" = "++def++" ;"
+                                  _        -> l
+            _                              -> l
 
+    doPull _ = do
+      (res,out,err) <- git ["pull","--no-edit"]
+      return (out++"\n"++err++"\n"++show res)
 
 git args = readCreateProcessWithExitCode (proc "git" args){cwd=Just SERVER_PATH} ""
 
-thenDo f g =
-  do (code1,out1,err1) <- f
-     case code1 of
-       ExitSuccess -> do (code2,out2,err2) <- g
-                         return (code2,out1++out2,err1++err2)
-       _           -> return (code1,out1,err1)
+readSourceFile lang = do
+  let fname = "WordNet"++drop 5 lang++".gf"
+  hInp <- openFile (SERVER_PATH++"/"++fname) ReadMode
+  hSetEncoding hInp utf8
+  hGetContents hInp                
 
+getDefinition w s = seek s
+  where
+    seek []                        = Nothing
+    seek ('\n':'l':'i':'n':' ':cs) = match w (dropWhile isSpace cs)
+    seek (c:cs)                    = seek cs
+
+    match []     cs     = case dropWhile isSpace cs of
+                            ('=':cs) -> Just (def 0 (dropWhile isSpace cs))
+                            cs       -> seek cs
+    match (d:ds) (c:cs)
+      | d == c          = match ds cs
+      | otherwise       = seek cs
+
+    def c []        = []
+    def 0 (c@';' :cs) = []
+    def i (c@'(' :cs) = c:def (i+1)         cs
+    def i (c@'[' :cs) = c:def (i+1)         cs
+    def i (c@'{' :cs) = c:def (i+1)         cs
+    def i (c@')' :cs) = c:def (max 0 (i-1)) cs
+    def i (c@']' :cs) = c:def (max 0 (i-1)) cs
+    def i (c@'}' :cs) = c:def (max 0 (i-1)) cs
+    def i (c@'"' :cs) = c:str i c cs
+    def i (c@'\'':cs) = c:str i c cs
+    def i (c@' ' :cs) = case def i cs of
+                          [] -> []
+                          cs -> c:cs
+    def i (c     :cs) = c:def i cs
+
+    str i d []          = []
+    str i d ('\\':c:cs) = '\\':c:str i d cs
+    str i d (     c:cs)
+      | d == c             = c:def i   cs
+      | otherwise          = c:str i d cs
 
 outputJSONP :: JSON a => a -> CGI CGIResult
 outputJSONP = outputEncodedJSONP . encode

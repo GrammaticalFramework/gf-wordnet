@@ -153,12 +153,12 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 
 				var checked = true;
 				for (var lang in gfwordnet.selection.langs) {
-					if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs)) {
+					if (!(lang in gfwordnet.lex_ids[lex_id].status)) {
 						checked = false;
-					} else if (gfwordnet.lex_ids[lex_id].lex_defs[lang][1] != "checked") {
+					} else if (gfwordnet.lex_ids[lex_id].status[lang] != "checked") {
 						checked = false;
 						var cell = row[gfwordnet.selection.langs[lang].index];
-						cell.classList.add(gfwordnet.lex_ids[lex_id].lex_defs[lang][1]);
+						cell.classList.add(gfwordnet.lex_ids[lex_id].status[lang]);
 						if (gfwordnet.access_token != null)
 							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					}
@@ -593,9 +593,9 @@ gfwordnet.onclick_cell = function (cell) {
 				for (var i in gfwordnet.selection.langs_list) {
 					var lang = gfwordnet.selection.langs_list[i];
 					var cell = td([]);
-					if (lang in lex_def.synonyms[synonym].lex_defs) {
-						if (lex_def.synonyms[synonym].lex_defs[lang][1] != "checked") {
-							cell.classList.add(lex_def.synonyms[synonym].lex_defs[lang][1]);
+					if (lang in lex_def.synonyms[synonym].status) {
+						if (lex_def.synonyms[synonym].status[lang] != "checked") {
+							cell.classList.add(lex_def.synonyms[synonym].status[lang]);
 							if (gfwordnet.access_token != null)
 								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 							checked = false;
@@ -681,8 +681,8 @@ gfwordnet.onclick_minus = function (event, icon) {
 	icon.src = icon.src.substring(0,icon.src.length-9)+"plus.png";
 }
 gfwordnet.update_cells = function(lex_id,lang) {
-	var index = gfwordnet.selection.langs[lang].index;
-	var def   = this.lex_ids[lex_id].lex_defs[lang];
+	var index  = gfwordnet.selection.langs[lang].index;
+	var status = this.lex_ids[lex_id].status[lang];
 
 	var rows = document.querySelectorAll("tr[data-lex-id="+lex_id+"]");
 	for (var i=0; i<rows.length; i++) {
@@ -693,13 +693,13 @@ gfwordnet.update_cells = function(lex_id,lang) {
 		cell.classList.remove("unchecked");
 		cell.classList.remove("guessed");
 		cell.classList.remove("changed");
-		if (def[1] != "checked")
-			cell.classList.add(def[1]);
+		if (status != "checked")
+			cell.classList.add(status);
 
 		var checked = true;
 		for (var lang in gfwordnet.selection.langs) {
-			if (!(lang in gfwordnet.lex_ids[lex_id].lex_defs) || 
-			    gfwordnet.lex_ids[lex_id].lex_defs[lang][1] != "checked") {
+			if (!(lang in gfwordnet.lex_ids[lex_id].status) || 
+			    gfwordnet.lex_ids[lex_id].status[lang] != "checked") {
 				checked = false;
 				break;
 			}
@@ -724,18 +724,17 @@ gfwordnet.onclick_check = function (event,cell) {
 
 	var lex_id = cell.parentNode.getAttribute("data-lex-id");
 	var lang   = gfwordnet.selection.langs_list[index];
-	var def    = gfwordnet.lex_ids[lex_id].lex_defs[lang];
 
 	function errcont(text,code) { }
 	function extract_confirm(st) {
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 		gfwordnet.popup = null;
 
-		def[1] = st[0];
+		gfwordnet.lex_ids[lex_id].status[lang] = st;
 		gfwordnet.update_cells(lex_id,lang);
 	}
 
-	gfwordnet.content_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def[0]),extract_confirm,errcont);
+	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_confirm,errcont);
 }
 gfwordnet.onclick_eval = function(event,editor) {
 	var index = -1;
@@ -789,11 +788,11 @@ gfwordnet.onclick_save = function(event,editor) {
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 		gfwordnet.popup = null;
 
-		gfwordnet.lex_ids[lex_id].lex_defs[lang] = [def,st[0]];
+		gfwordnet.lex_ids[lex_id].status[lang] = st;
 		gfwordnet.update_cells(lex_id,lang);
 	}
 
-	gfwordnet.content_call("?check_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
+	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
 	document.body.removeChild(editor);
 }
 gfwordnet.onclick_delete = function(event,editor) {
@@ -811,53 +810,57 @@ gfwordnet.onclick_edit = function (event,cell) {
 
 	var lex_id  = cell.parentNode.getAttribute("data-lex-id");
 	var lang    = gfwordnet.selection.langs_list[index];
-	var def     = gfwordnet.lex_ids[lex_id].lex_defs[lang];
 
-	var textarea = node("textarea", {rows: 4, cols: 50, spellcheck: false},[text(def[0])]);
-	var evalBtn   = node("button", {onclick: "gfwordnet.onclick_eval(event,this.parentNode.parentNode.parentNode)"},[text("Eval")]);
-	var saveBtn   = node("button", {style: "display: none", onclick: "gfwordnet.onclick_save(event,this.parentNode.parentNode.parentNode)"},[text("Save")]);
-	var deleteBtn = node("button", {onclick: "gfwordnet.onclick_delete(event,this.parentNode.parentNode.parentNode)"},[text("Delete")]);
-	var cancelBtn = node("button", {onclick: "document.body.removeChild(this.parentNode.parentNode.parentNode)"},[text("Cancel")]);
-	var editor    = node("table", {"class": "editor"} ,
-	                        [tr(node("td",{colspan:3},[textarea])),
-	                         tr([td([evalBtn,saveBtn,deleteBtn,cancelBtn])]),
-	                         tr([td([node("div",{style: "max-height: 300px; overflow:auto"},[])])])]);
-	editor.style.top  = event.clientY+"px";
-	if (window.matchMedia("(min-resolution: 300dpi)").matches) {
-		editor.style.left  = "0px";
-		editor.style.width = "100%";
-	} else {
-		editor.style.left  = event.clientX+"px";
+	function errcont(text,code) { }
+	function extract_def(def) {
+		var textarea = node("textarea", {rows: 4, cols: 50, spellcheck: false},[text(def)]);
+		var evalBtn   = node("button", {onclick: "gfwordnet.onclick_eval(event,this.parentNode.parentNode.parentNode)"},[text("Eval")]);
+		var saveBtn   = node("button", {style: "display: none", onclick: "gfwordnet.onclick_save(event,this.parentNode.parentNode.parentNode)"},[text("Save")]);
+		var deleteBtn = node("button", {onclick: "gfwordnet.onclick_delete(event,this.parentNode.parentNode.parentNode)"},[text("Delete")]);
+		var cancelBtn = node("button", {onclick: "document.body.removeChild(this.parentNode.parentNode.parentNode)"},[text("Cancel")]);
+		var editor    = node("table", {"class": "editor"} ,
+								[tr(node("td",{colspan:3},[textarea])),
+								 tr([td([evalBtn,saveBtn,deleteBtn,cancelBtn])]),
+								 tr([td([node("div",{style: "max-height: 300px; overflow:auto"},[])])])]);
+		editor.style.top  = event.clientY+"px";
+		if (window.matchMedia("(min-resolution: 300dpi)").matches) {
+			editor.style.left  = "0px";
+			editor.style.width = "100%";
+		} else {
+			editor.style.left  = event.clientX+"px";
+		}
+
+		textarea.addEventListener("keydown", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				evalBtn.click();
+			}
+		});
+		editor.addEventListener('mousedown', function(event) {
+			if (event.target.tagName != "TABLE")
+				return;
+
+			var offset = [event.offsetX,event.offsetY];
+
+			var onmousemove = function(event) {
+				event.preventDefault();
+				editor.style.left = (event.clientX - offset[0]) + 'px';
+				editor.style.top  = (event.clientY - offset[1]) + 'px';
+			};
+			var onmouseup = function(event) {
+				document.removeEventListener('mousemove', onmousemove);
+				document.removeEventListener('mouseup',   onmouseup);
+			};
+			document.addEventListener('mousemove', onmousemove, false);
+			document.addEventListener('mouseup', onmouseup, false);
+		}, true);
+
+		editor.cell = cell;
+		document.body.appendChild(editor);
+		textarea.focus();
 	}
 
-	textarea.addEventListener("keydown", function(event) {
-		if (event.keyCode === 13) {
-			event.preventDefault();
-			evalBtn.click();
-		}
-	});
-	editor.addEventListener('mousedown', function(event) {
-		if (event.target.tagName != "TABLE")
-			return;
-
-		var offset = [event.offsetX,event.offsetY];
-
-		var onmousemove = function(event) {
-			event.preventDefault();
-			editor.style.left = (event.clientX - offset[0]) + 'px';
-			editor.style.top  = (event.clientY - offset[1]) + 'px';
-		};
-		var onmouseup = function(event) {
-			document.removeEventListener('mousemove', onmousemove);
-			document.removeEventListener('mouseup',   onmouseup);
-		};
-		document.addEventListener('mousemove', onmousemove, false);
-		document.addEventListener('mouseup', onmouseup, false);
-	}, true);
-
-	editor.cell = cell;
-	document.body.appendChild(editor);
-	textarea.focus();
+	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&get_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_def,errcont);
 }
 gfwordnet.onclick_tab = function (tab) {
 	var tr = tab.parentNode.parentNode;
@@ -980,11 +983,11 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 					var checked = true;
 					for (var lang in gfwordnet.selection.langs) {
 						var cell = node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]);
-						if (!(lang in senses[i].lex_ids[lex_id].lex_defs)) {
+						if (!(lang in senses[i].lex_ids[lex_id].status)) {
 							checked = false;
-						} else if (senses[i].lex_ids[lex_id].lex_defs[lang][1] != "checked") {
+						} else if (senses[i].lex_ids[lex_id].status[lang] != "checked") {
 							checked = false;
-							cell.classList.add(senses[i].lex_ids[lex_id].lex_defs[lang][1]);
+							cell.classList.add(senses[i].lex_ids[lex_id].status[lang]);
 							if (gfwordnet.access_token != null)
 								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 						}

@@ -136,8 +136,8 @@ cgiMain db (cs,funs) = do
                             size int < 2000,
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
-                            lex_ids <- listAll [(lex_fun,lex_defs,Just (domains,images,examples,sexamples))
-                                                   | (_,Lexeme lex_fun lex_defs _ domains images ex_ids) <- fromIndex lexemes_synset (at synset_id),
+                            lex_ids <- listAll [(lex_fun,status,Just (domains,images,examples,sexamples))
+                                                   | (_,Lexeme lex_fun status _ domains images ex_ids) <- fromIndex lexemes_synset (at synset_id),
                                                      examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
                                                      sexamples <- listAll [e | (id,e) <- fromIndex examples_fun (at lex_fun), not (elem id ex_ids)]]]
 
@@ -160,19 +160,19 @@ cgiMain db (cs,funs) = do
                         ,("result",    showJSON (map mkSenseObj sorted_senses))
                         ])
 
-    getGloss db senses (_,Lexeme lex_id lex_defs (Just sense_id) domains images ex_ids) = do
+    getGloss db senses (_,Lexeme lex_id status (Just sense_id) domains images ex_ids) = do
       examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
       sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
 
       case Map.lookup sense_id senses of
         Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
         Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
-                                   lex_ids <- select [(lex_id,lex_defs,Nothing) | (_,Lexeme lex_id lex_defs _ _ _ _) <- fromIndex lexemes_synset (at sense_id)]
+                                   lex_ids <- select [(lex_id,status,Nothing) | (_,Lexeme lex_id status _ _ _ _) <- fromIndex lexemes_synset (at sense_id)]
                                    return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
       where
         addInfo lex_id info lex_ids = 
-          [(lex_id',lex_defs,if lex_id == lex_id' then Just info else mb_info)
-              | (lex_id',lex_defs,mb_info) <- lex_ids]
+          [(lex_id',status,if lex_id == lex_id' then Just info else mb_info)
+              | (lex_id',status,mb_info) <- lex_ids]
 
     getGloss db senses _ = return senses
 
@@ -195,10 +195,10 @@ cgiMain db (cs,funs) = do
               ]
 
     mkLexObj lex_ids =
-      makeObj [(lex_id,mkInfObj lex_defs info) | (lex_id,lex_defs,info) <- lex_ids]
+      makeObj [(lex_id,mkInfObj status info) | (lex_id,status,info) <- lex_ids]
 
-    mkInfObj lex_defs info =
-      makeObj (("lex_defs", mkDefsObj lex_defs) :
+    mkInfObj status info =
+      makeObj (("status", mkStatusObj status) :
                case info of
                  Nothing -> []
                  Just (domains,images,examples,sexamples) -> [
@@ -209,8 +209,8 @@ cgiMain db (cs,funs) = do
                          ("secondary_examples", showJSON (map (showExpr []) sexamples))
                          ])
 
-    mkDefsObj lex_defs =
-      makeObj [(lang,showJSON (def,map toLower (show status))) | (lang,def,status) <- lex_defs]
+    mkStatusObj status =
+      makeObj [(lang,showJSON (map toLower (show s))) | (lang,s) <- status]
 
 findLCA :: (Monad m, Ord a) => (a -> m [a]) -> [a] -> m [a]
 findLCA up xs = alternate [([x],[]) | x <- xs] [] [] Map.empty

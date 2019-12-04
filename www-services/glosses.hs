@@ -1,6 +1,6 @@
 {-# LANGUAGE MonadComprehensions, BangPatterns #-}
 import PGF2
-import Database.Helda
+import Database.Daison
 import SenseSchema
 import Data.Char
 import Data.List(partition,intercalate)
@@ -44,40 +44,40 @@ main = do
   fileExists <- doesFileExist db_name
   when fileExists (removeFile db_name)
   db <- openDB db_name
-  runHelda db ReadWriteMode $ do
+  runDaison db ReadWriteMode $ do
     createTable examples
     ex_keys <- fmap (Map.fromListWith (++) . concat) $ forM fn_examples $ \(fns,e) -> do
-                 key <- insert examples e
+                 key <- insert_ examples e
                  return [(fn,[key]) | fn <- fns]
 
     createTable synsets
     forM taxonomy $ \(key,synset) -> do
-       store synsets key synset
+       store synsets (Just key) synset
 
     createTable lexemes
     let synsetKeys = Map.fromList [(synsetOffset synset, key) | (key,synset) <- taxonomy]
     forM absdefs $ \(mb_offset,fun,ds) -> do
-       insert lexemes (Lexeme fun 
-                              (Map.findWithDefault [] fun cncdefs)
-                              (mb_offset >>= flip Map.lookup synsetKeys)
-                              ds
-                              (fromMaybe [] (Map.lookup fun images))
-                              (fromMaybe [] (Map.lookup fun ex_keys)))
+       insert_ lexemes (Lexeme fun 
+                               (Map.findWithDefault [] fun cncdefs)
+                               (mb_offset >>= flip Map.lookup synsetKeys)
+                               ds
+                               (fromMaybe [] (Map.lookup fun images))
+                               (fromMaybe [] (Map.lookup fun ex_keys)))
 
     createTable coefficients
-    insert coefficients cs
+    insert_ coefficients cs
 
     createTable embeddings
-    mapM_ (insert embeddings) ws
+    mapM_ (insert_ embeddings) ws
     
-    createTable checked
+    createTable updates
 
-  [cs] <- runHelda db ReadOnlyMode $ 
+  [cs] <- runDaison db ReadOnlyMode $ 
             select $ 
               foldlQ accumCounts Map.empty $
                 [(drop 5 lang,status)
                            | (_,lex) <- from lexemes everything,
-                             (lang,_,status) <- anyOf (lex_defs lex)]
+                             (lang,status) <- anyOf (status lex)]
   writeFile "build/status.svg" (renderStatus cs)
 
   closeDB db
@@ -106,9 +106,9 @@ parseAbsSyn l =
 parseCncSyn lang l =
   case words l of
     ("lin":fn:"=":ws) | null ws                  -> Nothing
-                      | last ws == "--unchecked" -> Just (fn,[(lang,def,Unchecked) | def <- strip (unwords (init ws))])
-                      | last ws == "--guessed"   -> Just (fn,[(lang,def,Guessed)   | def <- strip (unwords (init ws))])
-                      | otherwise                -> Just (fn,[(lang,def,Checked)   | def <- strip (unwords ws)])
+                      | last ws == "--unchecked" -> Just (fn,[(lang,Unchecked) | def <- strip (unwords (init ws))])
+                      | last ws == "--guessed"   -> Just (fn,[(lang,Guessed)   | def <- strip (unwords (init ws))])
+                      | otherwise                -> Just (fn,[(lang,Checked)   | def <- strip (unwords ws)])
     _                                            -> Nothing
   where
     strip s = 

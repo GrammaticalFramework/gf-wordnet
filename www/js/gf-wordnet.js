@@ -696,7 +696,6 @@ gfwordnet.update_cells = function(lex_id,lang) {
 		var row  = rows[i];
 		var cell = row.childNodes[index];
 
-		cell.removeEventListener("mouseover", gfwordnet.onmouseover_cell);
 		cell.classList.remove("unchecked");
 		cell.classList.remove("guessed");
 		cell.classList.remove("changed");

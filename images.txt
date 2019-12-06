@@ -15304,7 +15304,6 @@ purine_2_N	23652;Purine;commons/d/d6/Purin_num2.svg
 purism_N	2077282;Purism;en/9/97/Le_Corbusier_%28Charles_Edouard_Jeanneret%29%2C_1922%2C_Nature_morte_verticale_%28Vertical_Still_Life%29%2C_oil_on_canvas%2C_146.3_x_89.3_cm%2C_Kunstmuseum%2C_Basel.jpg
 puritan_1_N	24091;Puritans;commons/8/8b/The_Puritan_by_Augustus_Saint-Gaudens_-_Springfield%2C_Massachusetts_-_DSC02513.JPG
 purple_1_A	37948;Purple;commons/6/67/CreepingPhlox-CentralMA-20140513.jpg
-purple_2_N	37948;Purple;commons/c/cf/Ghent_Altarpiece_D_-_Popes_-_Bishops.jpg
 purplish_A	37948;Purple;commons/6/67/CreepingPhlox-CentralMA-20140513.jpg
 purpura_N	1157632;Purpura;commons/5/5e/Vasculitis.JPG
 purslane_N	862740;Portulaca_oleracea;commons/2/2f/Portulaca_oleracea.jpg

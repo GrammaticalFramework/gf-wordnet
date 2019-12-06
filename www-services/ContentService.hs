@@ -95,18 +95,17 @@ cgiMain db = do
                       Just def | mb_def /= mb_def' -> (def,                  Changed)
                       _                            -> (fromMaybe "" mb_def', Checked)
       runDaison db ReadWriteMode $ do
-        res <- update lexemes [(id, updateStatus lang s lex) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
+        res <- update lexemes [(id, lex{status=updateStatus lang s (status lex)}) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
         insert_ updates (Update token lex_id lang def)
-        return [map toLower (show st)
-                   | (_,lexeme) <- res,
-                     (lang',st) <- status lexeme,
-                     lang==lang']
+        return (head [map toLower (show st)
+                        | (_,lexeme) <- res,
+                          (lang',st) <- status lexeme,
+                          lang==lang'])
       where
-        updateStatus lang s lexeme = 
-          lexeme{status=[(lang',if lang==lang'
-                                  then s
-                                  else s')
-                             | (lang',s') <- status lexeme]}
+        updateStatus lang s []                  = [(lang,s)]
+        updateStatus lang s ((lang',s'):status)
+          | lang==lang'                         = (lang,s) : status
+        updateStatus lang s (x:status)          = x : updateStatus lang s status
 
     doCommit token commit = do
       res <- runDaison db ReadWriteMode $ do

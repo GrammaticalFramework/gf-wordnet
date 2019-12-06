@@ -700,7 +700,7 @@ gfwordnet.update_cells = function(lex_id,lang) {
 		cell.classList.remove("unchecked");
 		cell.classList.remove("guessed");
 		cell.classList.remove("changed");
-		if (status != "checked")
+		if (status != null && status != "checked")
 			cell.classList.add(status);
 
 		var checked = true;

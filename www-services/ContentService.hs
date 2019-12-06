@@ -37,13 +37,14 @@ main = do
 cgiMain :: Database -> CGI CGIResult
 cgiMain db = do
   mb_s1 <- getInput "code"
-  mb_s2 <- getInput "access_token"
+  mb_s2 <- getInput "user"
   mb_s3 <- getInput "update_id"
   mb_s4 <- getInput "get_id"
   mb_s5 <- getInput "lang"
   mb_s6 <- fmap (fmap (urlDecodeUnicode . UTF8.decodeString)) $ getInput "def"
   mb_s7 <- getInput "commit"
   mb_s8 <- getInput "push"
+  mb_s9 <- getInput "author"
   case mb_s1 of
     Just code -> doLogin code
     Nothing   -> case liftM3 doGet mb_s2 mb_s4 mb_s5 of
@@ -54,7 +55,7 @@ cgiMain db = do
                    Nothing     -> case liftM3 doUpdate mb_s2 mb_s3 mb_s5 of
                                     Just action -> do json <- liftIO (action mb_s6)
                                                       outputJSONP json
-                                    Nothing     -> case liftM2 doCommit mb_s2 mb_s7 of
+                                    Nothing     -> case liftM3 doCommit mb_s2 mb_s9 mb_s7 of
                                                      Just action -> do res <- liftIO action
                                                                        outputJSONP res
                                                      Nothing     -> case fmap doPull mb_s8 of
@@ -74,43 +75,50 @@ cgiMain db = do
                                   let req = req0{requestHeaders=(hUserAgent,BSS.fromString "GF WordNet"):requestHeaders req0}
                                   httpLbs req man
                          case (do JSObject obj <- runGetJSON readJSObject (UTF8.toString (responseBody res))
-                                  resultToEither (valFromObj "login" obj)) of
-                           Right user -> do setCookie ((newCookie "access_token" token){cookiePath=Just "/wordnet"})
-                                            setCookie ((newCookie "user" user){cookiePath=Just "/wordnet"})
-                                            redirect "/wordnet"
+                                  user  <- resultToEither (valFromObj "login" obj)
+                                  name  <- resultToEither (valFromObj "name" obj)
+                                  email <- resultToEither (valFromObj "email" obj)
+                                  return (user, name++" <"++email++">")) of
+                           Right (user,author) -> do count <- liftIO (runDaison db ReadOnlyMode $
+                                                                        fmap length $ select (from updates_usr everything))
+                                                     setCookie ((newCookie "user" user){cookiePath=Just "/wordnet"})
+                                                     setCookie ((newCookie "author" author){cookiePath=Just "/wordnet"})
+                                                     setCookie ((newCookie "count" (show count)){cookiePath=Just "/wordnet"})
+                                                     redirect "/wordnet"
                            Left err     -> output err
         Nothing    -> outputNothing
 
-    doGet token lex_id lang = do
+    doGet user lex_id lang = do
       res <- runDaison db ReadWriteMode $ do
-               select (fromIndex updates_idx (at (token,lex_id,lang)))
+               select (fromIndex updates_idx (at (user,lex_id,lang)))
       case res of
         (_,u):_ -> do return (Just (def u))
         _       -> do s <- readSourceFile lang
                       return (getDefinition lex_id s)
 
-    doUpdate token lex_id lang mb_def = do
-      mb_def' <- doGet token lex_id lang
+    doUpdate user lex_id lang mb_def = do
+      mb_def' <- doGet user lex_id lang
       let (def,s) = case mb_def of
                       Just def | mb_def /= mb_def' -> (def,                  Changed)
                       _                            -> (fromMaybe "" mb_def', Checked)
       runDaison db ReadWriteMode $ do
         res <- update lexemes [(id, lex{status=updateStatus lang s (status lex)}) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
-        insert_ updates (Update token lex_id lang def)
-        return (head [map toLower (show st)
-                        | (_,lexeme) <- res,
-                          (lang',st) <- status lexeme,
-                          lang==lang'])
+        insert_ updates (Update user lex_id lang def)
+        count <- fmap length $ select (from updates_usr everything)
+        return (count,head [map toLower (show st)
+                              | (_,lexeme) <- res,
+                                (lang',st) <- status lexeme,
+                                lang==lang'])
       where
         updateStatus lang s []                  = [(lang,s)]
         updateStatus lang s ((lang',s'):status)
           | lang==lang'                         = (lang,s) : status
         updateStatus lang s (x:status)          = x : updateStatus lang s status
 
-    doCommit token commit = do
+    doCommit user author commit = do
       res <- runDaison db ReadWriteMode $ do
-               res <- select [(lang,[(lex_id,def)]) | (_,Update _ lex_id lang def) <- fromIndex updates_tkn (at token)]
-               delete updates (from updates_tkn (at token))
+               res <- select [(lang,[(lex_id,def)]) | (_,Update _ lex_id lang def) <- fromIndex updates_usr (at user)]
+               delete updates (from updates_usr (at user))
                return res
       forM_ ((Map.toList . Map.fromListWith (++)) res) $ \(lang,ids) ->
         if null ids
@@ -127,18 +135,8 @@ cgiMain db = do
                                          groupWriteMode `unionFileModes`
                                          otherReadMode)
                   renameFile tmp_fname (SERVER_PATH++"/"++fname)
-      req0 <- parseRequest ("https://api.github.com/user?access_token="++token)
-      let req = req0{requestHeaders=(hUserAgent,BSS.fromString "GF WordNet"):requestHeaders req0}
-      man <- liftIO $ newManager tlsManagerSettings
-      res <- httpLbs req man
-      case (do JSObject obj <- runGetJSON readJSObject (UTF8.toString (responseBody res))
-               name  <- resultToEither (valFromObj "name" obj)
-               email <- resultToEither (valFromObj "email" obj)
-               return (name++" <"++email++">")) of
-        Right author -> do (res,out,err) <- 
-                               git ["commit","--author",author,"--message","progress","WordNet*.gf"]
-                           return (unwords ["$", "git", "commit","--author",author,"--message","progress","WordNet*.gf"]++"\n"++out++"\n"++err++"\n"++show res)
-        Left err     -> return err
+      (res,out,err) <- git ["commit","--author",author,"--message","progress","WordNet*.gf"]
+      return (unwords ["$", "git", "commit","--author",author,"--message","progress","WordNet*.gf"]++"\n"++out++"\n"++err++"\n"++show res)
       where
         annotate updated l =
           case words l of

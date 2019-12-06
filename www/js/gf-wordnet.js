@@ -27,14 +27,16 @@ gfwordnet.shell_call=function(querystring,cont,errcont) {
 gfwordnet.initialize = function () {
 	var url = new URL(window.location.href);
 
-	this.lex_ids   = {};
-	this.access_token = null;
-	this.can_select= url.searchParams.get("can_select") != null;
-	this.selection = null;
-	this.popup     = null;
+	this.lex_ids     = {};
+	this.user        = null;
+	this.author      = null;
+	this.can_select  = url.searchParams.get("can_select") != null;
+	this.selection   = null;
+	this.popup       = null;
+	this.commit_link = null;
 }
 
-gfwordnet.set_access_token = function(access_token,result) {
+gfwordnet.set_user = function(user,author,count,result,commit_link) {
 	var thead = result.getElementsByTagName("THEAD")[0];
 	thead.innerHTML = "";
 	
@@ -45,9 +47,13 @@ gfwordnet.set_access_token = function(access_token,result) {
 	tfoot.innerHTML = "";
 
 	this.lex_ids = {};
-	this.access_token = access_token;
-	this.selection = null;
-	this.popup     = null;
+	this.user        = user;
+	this.author      = author;
+	this.selection   = null;
+	this.popup       = null;
+	this.commit_link = commit_link;
+	
+	this.update_count(count);
 }
 
 gfwordnet.populate_domains = function (domains, domain_listener) {
@@ -110,7 +116,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		for (var i in lins) {
 			var lin   = lins[i];
 			var texts = []
-			if (gfwordnet.access_token != null) {
+			if (gfwordnet.user != null) {
 				for (var i in lin.texts) {
 					if (!lin.texts[i].startsWith("["))
 						texts.push(lin.texts[i]);
@@ -242,7 +248,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 				var row = [node("td",{onclick: "gfwordnet.onclick_cell(this)"},[text(lemma)])];
 				for (var lang in selection.langs) {
 					var cell = node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]);
-					if (gfwordnet.access_token != null)
+					if (gfwordnet.user != null)
 						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					row.push(cell);
 				}
@@ -258,7 +264,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 				}
 				rows[lemma] = row;
 
-				var cmd = (gfwordnet.access_token != null) ? "c-linearizeAll" : "c-linearize";
+				var cmd = (gfwordnet.user != null) ? "c-linearizeAll" : "c-linearize";
 				gfwordnet.grammar_call("?command="+cmd+"&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
 			}
 		}
@@ -597,7 +603,7 @@ gfwordnet.onclick_cell = function (cell) {
 					if (lang in lex_def.synonyms[synonym].status) {
 						if (lex_def.synonyms[synonym].status[lang] != "checked") {
 							cell.classList.add(lex_def.synonyms[synonym].status[lang]);
-							if (gfwordnet.access_token != null)
+							if (gfwordnet.user != null)
 								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 							checked = false;
 						}
@@ -738,11 +744,12 @@ gfwordnet.onclick_check = function (event) {
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 		gfwordnet.popup = null;
 
-		gfwordnet.lex_ids[lex_id].status[lang] = st;
+		gfwordnet.lex_ids[lex_id].status[lang] = st[1];
 		gfwordnet.update_cells(lex_id,lang);
+		gfwordnet.update_count(st[0]);
 	}
 
-	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_confirm,errcont);
+	gfwordnet.content_call("?user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_confirm,errcont);
 }
 gfwordnet.onclick_eval = function(event,editor) {
 	var editor = event.target.parentNode.parentNode.parentNode;
@@ -800,11 +807,13 @@ gfwordnet.onclick_save = function(event) {
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 		gfwordnet.popup = null;
 
-		gfwordnet.lex_ids[lex_id].status[lang] = st;
+		gfwordnet.lex_ids[lex_id].status[lang] = st[1];
 		gfwordnet.update_cells(lex_id,lang);
+		
+		gfwordnet.update_count(st[0]);
 	}
 
-	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
+	gfwordnet.content_call("?user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
 	document.body.removeChild(editor);
 }
 gfwordnet.onclick_delete = function(event) {
@@ -854,31 +863,14 @@ gfwordnet.onclick_edit = function (event) {
 		evalBtn.addEventListener("click", gfwordnet.onclick_eval, false);
 		saveBtn.addEventListener("click", gfwordnet.onclick_save, false);
 		deleteBtn.addEventListener("click", gfwordnet.onclick_delete, false);
-		editor.addEventListener('mousedown', function(event) {
-			if (event.target.tagName != "TABLE")
-				return;
-
-			var offset = [event.offsetX,event.offsetY];
-
-			var onmousemove = function(event) {
-				event.preventDefault();
-				editor.style.left = (event.clientX - offset[0]) + 'px';
-				editor.style.top  = (event.clientY - offset[1]) + 'px';
-			};
-			var onmouseup = function(event) {
-				document.removeEventListener('mousemove', onmousemove);
-				document.removeEventListener('mouseup',   onmouseup);
-			};
-			document.addEventListener('mousemove', onmousemove, false);
-			document.addEventListener('mouseup', onmouseup, false);
-		}, true);
+		editor.addEventListener('mousedown', gfwordnet.onmove_dialog, true);
 
 		editor.cell = cell;
 		document.body.appendChild(editor);
 		textarea.focus();
 	}
 
-	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&get_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_def,errcont);
+	gfwordnet.content_call("?user="+gfwordnet.user+"&get_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_def,errcont);
 }
 gfwordnet.onclick_tab = function (tab) {
 	var tr = tab.parentNode.parentNode;
@@ -975,7 +967,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 			for (var i in lins) {
 				var lin   = lins[i];
 				var texts = []
-				if (gfwordnet.access_token != null) {
+				if (gfwordnet.user != null) {
 					for (var i in lin.texts) {
 						if (!lin.texts[i].startsWith("["))
 							texts.push(lin.texts[i]);
@@ -1001,7 +993,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 					var checked = true;
 					for (var lang in gfwordnet.selection.langs) {
 						var cell = node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]);
-						if (gfwordnet.access_token != null)
+						if (gfwordnet.user != null)
 							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 						if (!(lang in senses[i].lex_ids[lex_id].status)) {
 							checked = false;
@@ -1020,7 +1012,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 
 					tfoot.appendChild(node("tr",{"data-lex-id": lex_id},row));
 
-					var cmd = gfwordnet.access_token != null ? "c-linearizeAll" : "c-linearize";
+					var cmd = gfwordnet.user != null ? "c-linearizeAll" : "c-linearize";
 					gfwordnet.grammar_call("?command="+cmd+"&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_id),bind(extract_linearization,row),errcont);
 				}
 			}
@@ -1188,10 +1180,45 @@ gfwordnet.onclick_bracket = function (event, bracket) {
 	event.stopPropagation();
 }
 
+gfwordnet.onmove_dialog = function(event) {
+	if (event.target.tagName != "TABLE")
+		return;
+
+	var editor = event.target;
+	var offset = [event.offsetX,event.offsetY];
+
+	var onmousemove = function(event) {
+		event.preventDefault();
+		editor.style.left = (event.clientX - offset[0]) + 'px';
+		editor.style.top  = (event.clientY - offset[1]) + 'px';
+	};
+	var onmouseup = function(event) {
+		document.removeEventListener('mousemove', onmousemove);
+		document.removeEventListener('mouseup',   onmouseup);
+	};
+	document.addEventListener('mousemove', onmousemove, false);
+	document.addEventListener('mouseup', onmouseup, false);
+}
+
 gfwordnet.commit = function(commit) {
 	var errcont = function(text,code) { };
 	var extract_confirm = function(msg) {
-		alert(msg);
+		gfwordnet.update_count(0);
+		var textarea = node("textarea", {rows: 10, cols: 100, spellcheck: false, readonly:true},[text(msg)]);
+		var closeBtn = node("button", {onclick: "document.body.removeChild(this.parentNode.parentNode.parentNode)"},[text("Close")]);
+		var editor   = node("table", {"class": "editor"} ,
+								[tr(td(textarea)),
+								 tr(td(closeBtn))]);
+
+		editor.addEventListener("mousedown", gfwordnet.onmove_dialog);
+
+		document.body.appendChild(editor);
+
+		editor.style.top   = ((window.innerHeight-editor.clientHeight)/2)+"px";
+		editor.style.left  = ((window.innerWidth -editor.clientWidth )/2)+"px";
 	};
-	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&commit=1",extract_confirm,errcont);
+	gfwordnet.content_call("?user="+gfwordnet.user+"&author="+gfwordnet.author+"&commit=1",extract_confirm,errcont);
+}
+gfwordnet.update_count = function(count) {
+	this.commit_link.innerHTML = "Commit ("+count+")";
 }

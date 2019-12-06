@@ -104,7 +104,7 @@
 				logIn.innerHTML = "Log Out "+user;
 				logIn.onclick = function(event) {
 					event.stopPropagation();
-					gfwordnet.set_user(user,author,0,null,element('result'),null);
+					gfwordnet.set_user(null,null,0,null,element('result'),null);
 					logIn.innerHTML = "Log In";
 					logIn.onclick = null;
 					commit.style.display = "none";

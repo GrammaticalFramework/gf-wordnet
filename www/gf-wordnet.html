@@ -95,26 +95,28 @@
 			  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			}
 
-			var user = getCookie("user");
-			if (user != null) {
+			var user   = getCookie("user");
+			var author = getCookie("author");
+			var count  = getCookie("count");
+			if (user != null && count != null && author != 0) {
 				var logIn  = element('logIn');
 				var commit = element('commit');
 				logIn.innerHTML = "Log Out "+user;
 				logIn.onclick = function(event) {
 					event.stopPropagation();
-					gfwordnet.set_access_token(null,element('result'));
+					gfwordnet.set_user(user,author,0,null,element('result'),null);
 					logIn.innerHTML = "Log In";
 					logIn.onclick = null;
 					commit.style.display = "none";
 					deleteCookie("user");
-					deleteCookie("access_token");
+					deleteCookie("author");
+					deleteCookie("count");
 					return false;
 				};
-				
+
+				gfwordnet.set_user(user,author,count,element('result'),commit);
 				commit.style.display = "inline";
 			}
-			var access_token = getCookie("access_token");
-			gfwordnet.set_access_token(access_token,element('result'));
 		</script>
 	</body>
 </html>

@@ -44,7 +44,7 @@ data Embedding
 
 data Update
   = Update
-     { token  :: String
+     { user   :: String
      , lex_id :: Fun
      , lang   :: String
      , def    :: String
@@ -89,10 +89,10 @@ examples_fun = listIndex examples "fun" (nub . exprFunctions)
 updates :: Table Update
 updates = table "updates"
             `withIndex` updates_idx
-            `withIndex` updates_tkn
+            `withIndex` updates_usr
 
 updates_idx :: Index Update (String,Fun,String)
-updates_idx = index updates "idx" (\u -> (token u,lex_id u,lang u))
+updates_idx = index updates "idx" (\u -> (user u,lex_id u,lang u))
 
-updates_tkn :: Index Update String
-updates_tkn = index updates "tkn" token
+updates_usr :: Index Update String
+updates_usr = index updates "usr" user

@@ -94,6 +94,16 @@
 			function deleteCookie(name) {
 			  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			}
+			
+			function logOut() {
+				gfwordnet.set_user(null,null,0,element('result'),null);
+				logIn.innerHTML = "Log In";
+				logIn.href = "https://github.com/login/oauth/authorize?scope=user:email%20public_repo&client_id=1e94c97e812a9f502068";
+				commit.style.display = "none";
+				deleteCookie("user");
+				deleteCookie("author");
+				deleteCookie("count");
+			}
 
 			var user   = getCookie("user");
 			var author = getCookie("author");
@@ -102,17 +112,7 @@
 				var logIn  = element('logIn');
 				var commit = element('commit');
 				logIn.innerHTML = "Log Out "+user;
-				logIn.onclick = function(event) {
-					event.stopPropagation();
-					gfwordnet.set_user(null,null,0,null,element('result'),null);
-					logIn.innerHTML = "Log In";
-					logIn.onclick = null;
-					commit.style.display = "none";
-					deleteCookie("user");
-					deleteCookie("author");
-					deleteCookie("count");
-					return false;
-				};
+				logIn.href = "javascript:logOut()"
 
 				gfwordnet.set_user(user,author,count,element('result'),commit);
 				commit.style.display = "inline";

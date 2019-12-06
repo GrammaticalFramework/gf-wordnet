@@ -1220,5 +1220,6 @@ gfwordnet.commit = function(commit) {
 	gfwordnet.content_call("?user="+gfwordnet.user+"&author="+gfwordnet.author+"&commit=1",extract_confirm,errcont);
 }
 gfwordnet.update_count = function(count) {
-	this.commit_link.innerHTML = "Commit ("+count+")";
+	if (this.commit_link != null)
+		this.commit_link.innerHTML = "Commit ("+count+")";
 }

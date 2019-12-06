@@ -159,8 +159,6 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 						checked = false;
 						var cell = row[gfwordnet.selection.langs[lang].index];
 						cell.classList.add(gfwordnet.lex_ids[lex_id].status[lang]);
-						if (gfwordnet.access_token != null)
-							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					}
 				}
 
@@ -243,7 +241,10 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 			if (!(lemma in rows)) {
 				var row = [node("td",{onclick: "gfwordnet.onclick_cell(this)"},[text(lemma)])];
 				for (var lang in selection.langs) {
-					row.push(node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]));
+					var cell = node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]);
+					if (gfwordnet.access_token != null)
+						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+					row.push(cell);
 				}
 				var rank_bar = node("td",{style: "white-space: nowrap"});
 				var rank = Math.round(Math.exp(-lemmas[i].prob)*scale);
@@ -651,17 +652,23 @@ gfwordnet.onclick_cell = function (cell) {
 	}
 }
 gfwordnet.onmouseover_cell = function(event) {
-	if (!event.target.classList.contains("unchecked") && !event.target.classList.contains("guessed"))
+	if (event.target.tagName != "TD")
 		return;
-
 	if (gfwordnet.popup != null) {
 		if (gfwordnet.popup.parentNode == event.target)
 			return;
-
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 	}
-	gfwordnet.popup = div_class("floating",[node("img",{src: "validate.png", onclick: "gfwordnet.onclick_check(event,this.parentNode.parentNode)"},[]),
-	                                        node("img",{src: "edit.png", onclick: "gfwordnet.onclick_edit(event,this.parentNode.parentNode)"},[])]);
+	var row = [];
+	if (event.target.classList.contains("unchecked") || event.target.classList.contains("guessed")) {
+		var btn = img("validate.png");
+		btn.addEventListener("click", gfwordnet.onclick_check, false);
+		row.push(btn);
+	}
+	var btn = img("edit.png");
+	btn.addEventListener("click", gfwordnet.onclick_edit, false);
+	row.push(btn);
+	gfwordnet.popup = div_class("floating",row);
 	event.target.appendChild(gfwordnet.popup);
 }
 gfwordnet.onclick_minus = function (event, icon) {
@@ -713,8 +720,10 @@ gfwordnet.update_cells = function(lex_id,lang) {
 		}
 	}
 }
-gfwordnet.onclick_check = function (event,cell) {
+gfwordnet.onclick_check = function (event) {
 	event.stopPropagation();
+
+	var cell = event.target.parentNode.parentNode;
 
 	var index = -1;
 	var node  = cell;
@@ -737,6 +746,8 @@ gfwordnet.onclick_check = function (event,cell) {
 	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_confirm,errcont);
 }
 gfwordnet.onclick_eval = function(event,editor) {
+	var editor = event.target.parentNode.parentNode.parentNode;
+	
 	var index = -1;
 	var cell  = editor.cell;
     while ((cell = cell.previousElementSibling)) {
@@ -770,8 +781,10 @@ gfwordnet.onclick_eval = function(event,editor) {
 	}
 	gfwordnet.shell_call("?dir="+dir+"&command=i+-retain+morpho.gf",extract_import,errcont);
 }
-gfwordnet.onclick_save = function(event,editor) {
+gfwordnet.onclick_save = function(event) {
 	event.stopPropagation();
+
+	var editor = event.target.parentNode.parentNode.parentNode;
 
 	var index = -1;
 	var node  = editor.cell;
@@ -795,12 +808,15 @@ gfwordnet.onclick_save = function(event,editor) {
 	gfwordnet.content_call("?access_token="+gfwordnet.access_token+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
 	document.body.removeChild(editor);
 }
-gfwordnet.onclick_delete = function(event,editor) {
+gfwordnet.onclick_delete = function(event) {
+	var editor = event.target.parentNode.parentNode.parentNode;
 	editor.firstElementChild.firstElementChild.firstElementChild.value = "variants {}";
-	gfwordnet.onclick_save(event,editor);
+	gfwordnet.onclick_save(event);
 }
-gfwordnet.onclick_edit = function (event,cell) {
+gfwordnet.onclick_edit = function (event) {
 	event.stopPropagation();
+
+	var cell = event.target.parentNode.parentNode;
 
 	var index = -1;
 	var n  = cell;
@@ -814,9 +830,9 @@ gfwordnet.onclick_edit = function (event,cell) {
 	function errcont(text,code) { }
 	function extract_def(def) {
 		var textarea = node("textarea", {rows: 4, cols: 50, spellcheck: false},[text(def)]);
-		var evalBtn   = node("button", {onclick: "gfwordnet.onclick_eval(event,this.parentNode.parentNode.parentNode)"},[text("Eval")]);
-		var saveBtn   = node("button", {style: "display: none", onclick: "gfwordnet.onclick_save(event,this.parentNode.parentNode.parentNode)"},[text("Save")]);
-		var deleteBtn = node("button", {onclick: "gfwordnet.onclick_delete(event,this.parentNode.parentNode.parentNode)"},[text("Delete")]);
+		var evalBtn   = node("button", {},[text("Eval")]);
+		var saveBtn   = node("button", {style: "display: none"},[text("Save")]);
+		var deleteBtn = node("button", {},[text("Delete")]);
 		var cancelBtn = node("button", {onclick: "document.body.removeChild(this.parentNode.parentNode.parentNode)"},[text("Cancel")]);
 		var editor    = node("table", {"class": "editor"} ,
 								[tr(node("td",{colspan:3},[textarea])),
@@ -836,6 +852,9 @@ gfwordnet.onclick_edit = function (event,cell) {
 				evalBtn.click();
 			}
 		});
+		evalBtn.addEventListener("click", gfwordnet.onclick_eval, false);
+		saveBtn.addEventListener("click", gfwordnet.onclick_save, false);
+		deleteBtn.addEventListener("click", gfwordnet.onclick_delete, false);
 		editor.addEventListener('mousedown', function(event) {
 			if (event.target.tagName != "TABLE")
 				return;
@@ -983,13 +1002,13 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 					var checked = true;
 					for (var lang in gfwordnet.selection.langs) {
 						var cell = node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]);
+						if (gfwordnet.access_token != null)
+							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 						if (!(lang in senses[i].lex_ids[lex_id].status)) {
 							checked = false;
 						} else if (senses[i].lex_ids[lex_id].status[lang] != "checked") {
 							checked = false;
 							cell.classList.add(senses[i].lex_ids[lex_id].status[lang]);
-							if (gfwordnet.access_token != null)
-								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 						}
 						row.push(cell);
 					}

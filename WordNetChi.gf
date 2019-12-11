@@ -94781,7 +94781,6 @@ lin tape_2_N = mkN "磁带" ; --unchecked
 lin tape_3_N = variants {} ;
 lin tape_4_N = mkN "卷尺" ; --unchecked
 lin tape_5_N = mkN "磁带" ; --unchecked
-lin tape_2_V = variants {} ;
 lin tape_1_V2 = variants {} ;
 lin tape_2_V2 = variants {} ;
 lin tape_3_V2 = mkV2 (mkV "记录") ; --unchecked

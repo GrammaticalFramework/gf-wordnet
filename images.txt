@@ -21399,3 +21399,5 @@ circumcision_1_N	2546333;Feast_of_the_Circumcision_of_Christ;commons/8/8d/Menolo
 grace_6_N	79539;Charites;commons/5/52/Canova-Three_Graces_0_degree_view.jpg
 psyche_PN	760054;Cupid_and_Psyche;commons/a/a6/Gerard_FrancoisPascalSimon-Cupid_Psyche_end.jpg
 crater_PN	210880;Crater_(constellation);commons/a/ad/Crater_IAU.svg
+brahman_4_N	484727;Brahman_cattle;commons/3/3e/Brahman_%28EMAPA%29_110307_REFON_2.jpg
+brahmin_4_N	484727;Brahman_cattle;commons/3/3e/Brahman_%28EMAPA%29_110307_REFON_2.jpg

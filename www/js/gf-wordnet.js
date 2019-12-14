@@ -89,6 +89,217 @@ gfwordnet.get_selected_domains = function(domains) {
 	return domains_map;
 }
 
+gfwordnet.render_rows = function(result,selection,new_selection,lemmas) {
+	var rows        = {};
+
+	var result_thead = result.getElementsByTagName("THEAD")[0];
+
+	if (new_selection) {
+		clear(result_thead);
+
+		var row = [th(text("Abstract"))];
+		for (var lang in selection.langs_list) {
+			row.push(th(text(selection.langs[selection.langs_list[lang]].name)));
+		}
+		row.push(node("th",{style: "width: 10px; font-style: italic"},[text("f")]));
+		if (gfwordnet.can_select) {
+			row.push(th([]));
+		}
+		result_thead.appendChild(tr(row));
+	}
+	
+	if (result_thead.firstElementChild != null &&
+		result_thead.firstElementChild.nextElementSibling != null)
+			result_thead.removeChild(result_thead.firstElementChild.nextElementSibling);
+
+	var result_tbody = result.getElementsByTagName("TBODY")[0];
+	clear(result_tbody);
+
+	var editors = document.body.getElementsByClassName("editor");
+	for (var i=0; i < editors.length; i++) {
+		document.body.removeChild(editors[i]);
+	}
+
+	var min = Number.MAX_VALUE;
+	var max = Number.MIN_VALUE;
+	for (var i in lemmas) {
+		var prob = Math.exp(-lemmas[i].prob);
+		if (min > prob) min = prob;
+		if (max < prob) max = prob;
+	}
+	var scale = Math.min(5/max,3/min);
+
+	function errcont(text,code) { }
+	function extract_linearization(lins) {
+		for (var i in lins) {
+			var lin   = lins[i];
+			var texts = []
+			if (gfwordnet.user != null) {
+				for (var i in lin.texts) {
+					if (!lin.texts[i].startsWith("["))
+						texts.push(lin.texts[i]);
+				}
+			} else {
+				if (!lin.text.startsWith("["))
+					texts.push(lin.text);
+			}
+			this[selection.langs[lin.to].index].appendChild(text(texts.join(", ")));
+		}
+	}
+
+	for (var i in lemmas) {
+		var lemma = lemmas[i].lemma;
+		if (!(lemma in rows)) {
+			var row = [node("td",{onclick: "gfwordnet.onclick_cell(this)"},[text(lemma)])];
+			for (var lang in selection.langs) {
+				var cell = node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]);
+				if (gfwordnet.user != null)
+					cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+				row.push(cell);
+			}
+			var rank_bar = node("td",{style: "white-space: nowrap"});
+			var rank = Math.round(Math.exp(-lemmas[i].prob)*scale);
+			while (rank > 0) {
+				rank_bar.appendChild(div_class("bar",[]));
+				rank--;
+			}
+			row.push(rank_bar);
+			if (gfwordnet.can_select) {
+				row.push(td([node("button",{style: "float: right", onclick: "gfwordnet.onclick_select(this.parentNode.parentNode)"},[text("\u25BC")])]));
+			}
+			rows[lemma] = row;
+
+			var cmd = (gfwordnet.user != null) ? "c-linearizeAll" : "c-linearize";
+			gfwordnet.grammar_call("?command="+cmd+"&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
+		}
+	}
+	return rows;
+}
+
+gfwordnet.render_senses = function(ctxt,selection,result,domains,senses) {
+	var index = 1;
+
+	var colspan = selection.langs_list.length + 2 + (gfwordnet.can_select ? 1 : 0);
+
+	var result_thead  = result.getElementsByTagName("THEAD")[0];
+	if (senses.total > senses.retrieved) {
+		result_thead.appendChild(tr([node("th",{colspan: colspan},[text(senses.retrieved+" out of "+senses.total)])]));
+	}
+
+	var result_tbody  = result.getElementsByTagName("TBODY")[0];
+	var domains_tbody = (domains != null) ? domains.getElementsByTagName("TBODY")[0] : null;
+
+	var domains_row = null;
+
+	for (var i in senses.result) {
+		result_tbody.appendChild(tr(node("td",{colspan: colspan},[text(index+". "+senses.result[i].gloss)])));
+		index++;
+
+		for (var lex_id in senses.result[i].lex_ids) {
+			if (!(lex_id in gfwordnet.lex_ids && gfwordnet.lex_ids[lex_id].match)) {
+				gfwordnet.lex_ids[lex_id] = senses.result[i].lex_ids[lex_id];
+				gfwordnet.lex_ids[lex_id].synonyms = senses.result[i].lex_ids;
+			}
+
+			if (!senses.result[i].lex_ids[lex_id].match)
+				continue;
+
+			var icon;
+			var row = ctxt.rows[lex_id];
+
+			var checked = true;
+			for (var lang in gfwordnet.selection.langs) {
+				if (!(lang in gfwordnet.lex_ids[lex_id].status)) {
+					checked = false;
+				} else if (gfwordnet.lex_ids[lex_id].status[lang] != "checked") {
+					checked = false;
+					var cell = row[gfwordnet.selection.langs[lang].index];
+					cell.classList.add(gfwordnet.lex_ids[lex_id].status[lang]);
+				}
+			}
+
+			icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
+								onclick: "gfwordnet.onclick_minus(event,this)"});
+			row[0].insertBefore(icon, row[0].firstChild);
+			result_tbody.appendChild(node("tr",{"data-lex-id": lex_id},row));
+
+			if (domains != null) {
+				for (var j in gfwordnet.lex_ids[lex_id].domains) {
+					var domain = gfwordnet.lex_ids[lex_id].domains[j];
+					if (ctxt.domains_map[domain] == null) {
+						if (domains_row == null || domains_row.childElementCount >= 5) {
+							domains_row = tr([]);
+							domains_tbody.appendChild(domains_row);
+						}
+						var checkbox = node("input", {type: "checkbox"});
+						checkbox.checked = domain in ctxt.domains_map;
+						checkbox.addEventListener("change", ctxt.domain_listener);
+						var cell = td([checkbox,text(domain)]);
+						ctxt.domains_map[domain] = cell;
+						domains_row.appendChild(cell);
+					}
+				}
+			}
+		}
+	}
+
+	var tfoot = node("tfoot", {});
+	result.appendChild(tfoot);
+}
+function domain_search_listener() {
+	this.domains_map = gfwordnet.get_selected_domains(domains);
+	var new_senses  = {total:     this.senses.total
+					  ,retrieved: 0
+					  ,result:    []
+					  };
+
+	for (var i in this.senses.result) {
+		var sense = this.senses.result[i];
+
+		var new_sense = Object.create(sense);
+		new_sense.lex_ids = {}
+
+		for (var lex_id in sense.lex_ids) {
+			var is_included = true;
+			for (var domain in this.domains_map) {
+				if (sense.lex_ids[lex_id].domains == null ||
+					!sense.lex_ids[lex_id].domains.includes(domain)) {
+					is_included = false;
+					break;
+				}
+			}
+			if (is_included) {
+				new_sense.lex_ids[lex_id] = sense.lex_ids[lex_id];
+				new_senses.retrieved++;
+			}
+		}
+		
+		if (Object.keys(new_sense.lex_ids).length > 0) {
+			new_senses.result.push(new_sense);
+		}
+	}
+	new_senses.total = new_senses.retrieved;
+
+	var result_tbody = result.getElementsByTagName("TBODY")[0];
+	clear(result_tbody);
+
+	var domains_tbody = domains.getElementsByTagName("TBODY")[0];
+	clear(domains_tbody);
+
+	for (var lex_id in this.rows) {
+		var row  = this.rows[lex_id];
+		var icon = row[0].firstElementChild;
+		if (icon != null) {
+			icon.parentElement.removeChild(icon);
+		}
+		for (var i in row) {
+			row[i].removeAttribute("class");
+		}
+	}
+
+	gfwordnet.render_senses(this,gfwordnet.selection,result,domains,new_senses);
+}
+
 gfwordnet.search = function (selection, input, domains, result, domain_listener) {
 	var domains_map = this.get_selected_domains(domains);
 
@@ -112,219 +323,10 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 	}
 
 	function errcont(text,code) { }
-	function extract_linearization(lins) {
-		for (var i in lins) {
-			var lin   = lins[i];
-			var texts = []
-			if (gfwordnet.user != null) {
-				for (var i in lin.texts) {
-					if (!lin.texts[i].startsWith("["))
-						texts.push(lin.texts[i]);
-				}
-			} else {
-				if (!lin.text.startsWith("["))
-					texts.push(lin.text);
-			}
-			this[selection.langs[lin.to].index].appendChild(text(texts.join(", ")));
-		}
-	}
-	function extract_senses(senses) {
-		var index = 1;
-
-		var colspan = selection.langs_list.length + 2 + (gfwordnet.can_select ? 1 : 0);
-
-		var result_thead  = result.getElementsByTagName("THEAD")[0];
-		if (senses.total > senses.retrieved) {
-			result_thead.appendChild(tr([node("th",{colspan: colspan},[text(senses.retrieved+" out of "+senses.total)])]));
-		}
-
-		var result_tbody  = result.getElementsByTagName("TBODY")[0];
-		var domains_tbody = domains.getElementsByTagName("TBODY")[0];
-
-		var domains_row = null;
-
-		for (var i in senses.result) {
-			result_tbody.appendChild(tr(node("td",{colspan: colspan},[text(index+". "+senses.result[i].gloss)])));
-			index++;
-
-			for (var lex_id in senses.result[i].lex_ids) {
-				gfwordnet.lex_ids[lex_id] = senses.result[i].lex_ids[lex_id];
-				gfwordnet.lex_ids[lex_id].synonyms = senses.result[i].lex_ids;
-
-				if (!gfwordnet.lex_ids[lex_id].match)
-					continue;
-
-				var icon;
-				var row = this.rows[lex_id];
-
-				var checked = true;
-				for (var lang in gfwordnet.selection.langs) {
-					if (!(lang in gfwordnet.lex_ids[lex_id].status)) {
-						checked = false;
-					} else if (gfwordnet.lex_ids[lex_id].status[lang] != "checked") {
-						checked = false;
-						var cell = row[gfwordnet.selection.langs[lang].index];
-						cell.classList.add(gfwordnet.lex_ids[lex_id].status[lang]);
-					}
-				}
-
-				icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
-									onclick: "gfwordnet.onclick_minus(event,this)"});
-				row[0].insertBefore(icon, row[0].firstChild);
-				result_tbody.appendChild(node("tr",{"data-lex-id": lex_id},row));
-
-				for (var j in gfwordnet.lex_ids[lex_id].domains) {
-					var domain = gfwordnet.lex_ids[lex_id].domains[j];
-					if (this.domains_map[domain] == null) {
-						if (domains_row == null || domains_row.childElementCount >= 5) {
-							domains_row = tr([]);
-							domains_tbody.appendChild(domains_row);
-						}
-						var checkbox = node("input", {type: "checkbox"});
-						checkbox.checked = domain in this.domains_map;
-						checkbox.addEventListener("change", this.domain_listener);
-						var cell = td([checkbox,text(domain)]);
-						this.domains_map[domain] = cell;
-						domains_row.appendChild(cell);
-					}
-				}
-			}
-		}
-
-		var tfoot = node("tfoot", {});
-		result.appendChild(tfoot);
-	}
-	function create_rows(lemmas) {
+	function extract_search(lemmas) {
 		gfwordnet.lex_ids = Object.create(gfwordnet.selection.lex_ids);
 
-		var rows        = {};
-
-		var result_thead = result.getElementsByTagName("THEAD")[0];
-
-		if (new_selection) {
-			clear(result_thead);
-
-			var row = [th(text("Abstract"))];
-			for (var lang in selection.langs_list) {
-				row.push(th(text(selection.langs[selection.langs_list[lang]].name)));
-			}
-			row.push(node("th",{style: "width: 10px; font-style: italic"},[text("f")]));
-			if (gfwordnet.can_select) {
-				row.push(th([]));
-			}
-			result_thead.appendChild(tr(row));
-		}
-		
-		if (result_thead.firstElementChild != null &&
-		    result_thead.firstElementChild.nextElementSibling != null)
-				result_thead.removeChild(result_thead.firstElementChild.nextElementSibling);
-
-		var result_tbody = result.getElementsByTagName("TBODY")[0];
-		clear(result_tbody);
-
-		var domains_thead = domains.getElementsByTagName("THEAD")[0];
-		clear(domains_thead);
-
-		var domains_tbody = domains.getElementsByTagName("TBODY")[0];
-		clear(domains_tbody);
-
-		var editors = document.body.getElementsByClassName("editor");
-		for (var i=0; i < editors.length; i++) {
-			document.body.removeChild(editors[i]);
-		}
-
-		var min = Number.MAX_VALUE;
-		var max = Number.MIN_VALUE;
-		for (var i in lemmas) {
-			var prob = Math.exp(-lemmas[i].prob);
-			if (min > prob) min = prob;
-			if (max < prob) max = prob;
-		}
-		var scale = Math.min(5/max,3/min);
-
-		for (var i in lemmas) {
-			var lemma = lemmas[i].lemma;
-			if (!(lemma in rows)) {
-				var row = [node("td",{onclick: "gfwordnet.onclick_cell(this)"},[text(lemma)])];
-				for (var lang in selection.langs) {
-					var cell = node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]);
-					if (gfwordnet.user != null)
-						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
-					row.push(cell);
-				}
-				var rank_bar = node("td",{style: "white-space: nowrap"});
-				var rank = Math.round(Math.exp(-lemmas[i].prob)*scale);
-				while (rank > 0) {
-					rank_bar.appendChild(div_class("bar",[]));
-					rank--;
-				}
-				row.push(rank_bar);
-				if (gfwordnet.can_select) {
-					row.push(td([node("button",{style: "float: right", onclick: "gfwordnet.onclick_select(this.parentNode.parentNode)"},[text("\u25BC")])]));
-				}
-				rows[lemma] = row;
-
-				var cmd = (gfwordnet.user != null) ? "c-linearizeAll" : "c-linearize";
-				gfwordnet.grammar_call("?command="+cmd+"&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
-			}
-		}
-		return rows;
-    }
-    function domain_search_listener() {
-		this.domains_map = gfwordnet.get_selected_domains(domains);
-		var new_senses  = {total:     this.senses.total
-			              ,retrieved: 0
-			              ,result:    []
-			              };
-
-		for (var i in this.senses.result) {
-			var sense = this.senses.result[i];
-
-			var new_sense = Object.create(sense);
-			new_sense.lex_ids = {}
-
-			for (var lex_id in sense.lex_ids) {
-				var is_included = true;
-				for (var domain in this.domains_map) {
-					if (sense.lex_ids[lex_id].domains == null ||
-					    !sense.lex_ids[lex_id].domains.includes(domain)) {
-						is_included = false;
-						break;
-					}
-				}
-				if (is_included) {
-					new_sense.lex_ids[lex_id] = sense.lex_ids[lex_id];
-					new_senses.retrieved++;
-				}
-			}
-			
-			if (Object.keys(new_sense.lex_ids).length > 0) {
-				new_senses.result.push(new_sense);
-			}
-		}
-		new_senses.total = new_senses.retrieved;
-
-		var result_tbody = result.getElementsByTagName("TBODY")[0];
-		clear(result_tbody);
-
-		var domains_tbody = domains.getElementsByTagName("TBODY")[0];
-		clear(domains_tbody);
-
-		for (var lex_id in this.rows) {
-			var row  = this.rows[lex_id];
-			var icon = row[0].firstElementChild;
-			if (icon != null) {
-				icon.parentElement.removeChild(icon);
-			}
-			for (var i in row) {
-				row[i].removeAttribute("class");
-			}
-		}
-
-		bind(extract_senses,this)(new_senses);
-	}
-	function extract_search(lemmas) {
-		var obj = {rows: create_rows(lemmas), domains_map: {}};
+		var obj = {rows: gfwordnet.render_rows(result, selection, new_selection, lemmas), domains_map: {}};
 		obj.domain_listener = bind(domain_search_listener,obj);
 		var lexical_ids = "";
 		for (lemma in obj.rows) {
@@ -332,7 +334,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		}
 		var helper = function (senses) {
 			this.senses = senses; // save the result to be used for filtering
-			bind(extract_senses,this)(senses);
+			gfwordnet.render_senses(this,selection,result,domains,senses);
 		}
 		gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,obj),errcont);
 	}
@@ -343,10 +345,11 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 				lemmas.push({lemma: lemma, prob: Infinity});
 			}
 		}
-		var obj = {rows: create_rows(lemmas),
+		gfwordnet.lex_ids = Object.create(gfwordnet.selection.lex_ids);
+		var obj = {rows: gfwordnet.render_rows(result, selection, new_selection, lemmas),
 			       domain_listener: domain_listener,
 			       domains_map: domains_map};
-		bind(extract_senses,obj)(senses);
+		gfwordnet.render_senses(obj,selection,result,domains,senses);
 	}
 
 	var new_selection = this.selection == null || !selection.isEqual(this.selection);
@@ -354,6 +357,12 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		             , langs:      selection.langs
 		             , lex_ids:    this.selection==null ? {} : this.selection.lex_ids
 		             };
+
+	var domains_thead = domains.getElementsByTagName("THEAD")[0];
+	clear(domains_thead);
+
+	var domains_tbody = domains.getElementsByTagName("TBODY")[0];
+	clear(domains_tbody);
 
 	if (input == "" || input == null) {
 		var domain_query = "";
@@ -627,7 +636,7 @@ gfwordnet.onclick_cell = function (cell) {
 			for (var j in lex_def.domains) {
 				row.push(td([text(lex_def.domains[j])]));
 			}
-			details.appendChild(node("table",{class: "domains"},[tr(row)]));
+			details.appendChild(node("table",{class: "selectors"},[tr(row)]));
 		}
 		if (lex_def.examples.length > 0) {
 			var header = node("h1",{},[text("Examples")]);
@@ -1222,4 +1231,137 @@ gfwordnet.commit = function(commit) {
 gfwordnet.update_count = function(count) {
 	if (this.commit_link != null)
 		this.commit_link.innerHTML = "Commit ("+count+")";
+}
+
+gfwordnet.populate_classes = function (classes, class_div, class_listener) {
+	function errcont(text,code) { }
+	function extract_classes(res) {
+		var thead = classes.getElementsByTagName("THEAD")[0];
+		clear(thead);
+		thead.appendChild(tr(th(text("Classes"))));
+
+		var tbody = classes.getElementsByTagName("TBODY")[0];
+		clear(tbody);
+		var trow  = null;
+		for (var i = 0; i < res.length; i++) {
+			var checkbox = node("input", {type: "checkbox"});
+			checkbox.addEventListener("change", class_listener.bind(null,res[i][0]));
+			if (trow == null || trow.childElementCount >= 5) {
+				trow = tr([]);
+				tbody.appendChild(trow);
+			}
+			trow.appendChild(td([checkbox,text(res[i][1])]));
+		}
+
+		clear(class_div);
+	}
+	gfwordnet.sense_call("?list_top_classes",bind(extract_classes),errcont);
+}
+
+gfwordnet.render_class = function (selection, classes, class_div, id, class_listener) {
+	this.selection = { langs_list: selection.langs_list
+		             , langs:      selection.langs
+		             , lex_ids:    this.selection==null ? {} : this.selection.lex_ids
+		             };
+
+	function errcont(text,code) { }
+	function render_pattern(vars,pattern) {
+		var indices = [];
+		for (var i = 0; i < vars.length; i++) {
+			indices.push({index: pattern.indexOf(vars[i][0]), v: vars[i][0]});
+		}
+		function compare(a, b) {
+			return (a.index - b.index)
+		}
+		indices.sort(compare);
+
+		var row   = []
+		var start = 0;
+		for (var i = 0; i < indices.length; i++) {
+			var index = indices[i].index;
+			if (index < 0)
+				continue;
+
+			var chunk = pattern.substring(start,index);
+			if (chunk.length > 0)
+				row.push(text(chunk));
+			row.push(span_class("role",text(indices[i].v)));
+
+			start = index + indices[i].v.length;
+		}
+
+		var chunk = pattern.substring(start);
+		if (chunk.length > 0)
+			row.push(text(chunk));
+
+		return row;
+	}
+	function render(cls,all_vars) {
+		if (cls.vars.length > 0) {
+			class_div.appendChild(node("h2",{},[text("Roles")]));
+			var rows = [];
+			for (var i in cls.vars) {
+				var v   = cls.vars[i];
+				var row = [span_class("role",text(v[0]))];
+				for (var j in v[1]) {
+					row.push(span_class("restriction",text(v[1][j])));
+				}
+				rows.push(li(row));
+			}
+			class_div.appendChild(node("ul",{},rows));
+		}
+
+		gfwordnet.lex_ids = Object.create(gfwordnet.selection.lex_ids);
+		class_div.appendChild(node("h2",{},[text("Frames")]));
+		var rows = [];
+		for (var i in cls.frames) {
+			var frame = cls.frames[i];
+
+			var lemmas = [];
+			var lexical_ids = "";
+			for (var j in frame.fun) {
+				lexical_ids = lexical_ids+" "+frame.fun[j];
+				lemmas.push({lemma: frame.fun[j], prob: Infinity});
+			}
+
+			var result = node("table",{class: "result"},[
+			               node("thead",{},[]),
+			               node("tbody",{},[]),
+			             ]);
+
+			var ctx = {rows:   gfwordnet.render_rows(result,selection,true,lemmas)
+				      ,result: result
+				      };
+			var helper = function (senses) {
+				gfwordnet.render_senses(this,selection,this.result,null,senses);
+			}
+
+			gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,ctx),errcont);
+
+			rows.push(li([span_class("pattern",render_pattern(all_vars,frame.pattern)),node("div",{style: "padding: 10px"},[result])]));
+		}
+		class_div.appendChild(node("ul",{},rows));
+
+		for (var i in cls.subclasses) {
+			var subclass = cls.subclasses[i];
+			class_div.appendChild(node("table",{class: "selectors"},[tr(td(text(subclass.name)))]));
+			render(subclass,all_vars.concat(subclass.vars));
+		}
+	}
+	function extract_class(cls) {
+		var thead = classes.getElementsByTagName("THEAD")[0];
+		clear(thead);
+
+		var tbody = classes.getElementsByTagName("TBODY")[0];
+		clear(tbody);
+
+		var checkbox = node("input", {type: "checkbox"});
+		checkbox.checked = true;
+		checkbox.addEventListener("change", class_listener);
+		tbody.appendChild(tr(td([checkbox,text(cls[0].name)])));
+
+		clear(class_div);
+		render(cls[0],[["Verb"]].concat(cls[0].vars));
+	}
+	gfwordnet.sense_call("?class_id="+id,bind(extract_class),errcont);
 }

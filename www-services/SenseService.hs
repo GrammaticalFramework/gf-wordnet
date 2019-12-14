@@ -49,6 +49,8 @@ cgiMain db (cs,funs) = do
   mb_s7 <- getInput "generalize_ids"
   mb_s8 <- getInput "list_domains"
   s9    <- fmap (\xs -> [value | ("domain",value) <- xs]) getInputs
+  mb_s10<- getInput "list_top_classes"
+  mb_s11<- getInput "class_id"
   case mb_s1 of
     Just s  -> do json <- liftIO (doQuery (words s))
                   outputJSONP json
@@ -65,9 +67,15 @@ cgiMain db (cs,funs) = do
                                                                 Just _  -> do json <- liftIO doListDomains
                                                                               outputJSONP json
                                                                 Nothing -> case s9 of
-                                                                             (d:ds) -> do json <- liftIO (doDomainQuery db d ds)
+                                                                             (d:ds) -> do json <- liftIO (doDomainQuery d ds)
                                                                                           outputJSONP json
-                                                                             _     -> outputNothing
+                                                                             _      -> case mb_s10 of
+                                                                                         Just _  -> do json <- liftIO doListTopClasses
+                                                                                                       outputJSONP json
+                                                                                         Nothing -> case mb_s11 of
+                                                                                                      Just id -> do json <- liftIO (doClassQuery (read id))
+                                                                                                                    outputJSONP json
+                                                                                                      Nothing -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runDaison db ReadOnlyMode $
@@ -80,7 +88,7 @@ cgiMain db (cs,funs) = do
       where
         getSense db senses lex_id = do
           lexemes <- select (fromIndex lexemes_fun (at lex_id))
-          foldM (getGloss db) senses lexemes
+          foldM getGloss senses lexemes
 
     doContext lex_id =
       let (ctxt,rels) =
@@ -137,7 +145,7 @@ cgiMain db (cs,funs) = do
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
                             lex_ids <- listAll [(lex_fun,status,Just (domains,images,examples,sexamples))
-                                                   | (_,Lexeme lex_fun status _ domains images ex_ids) <- fromIndex lexemes_synset (at synset_id),
+                                                   | (_,Lexeme lex_fun status _ domains images ex_ids _) <- fromIndex lexemes_synset (at synset_id),
                                                      examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
                                                      sexamples <- listAll [e | (id,e) <- fromIndex examples_fun (at lex_fun), not (elem id ex_ids)]]]
 
@@ -148,33 +156,58 @@ cgiMain db (cs,funs) = do
          select [domain | (domain,_) <- fromList lexemes_domain everything]
       return (showJSON x)
 
-    doDomainQuery db d ds = do
+    doDomainQuery d ds = do
       runDaison db ReadOnlyMode $ do
         lexemes0 <- select [res | res@(_,lexeme) <- fromIndex lexemes_domain (at d),
                                   all (flip elem (domains lexeme)) ds]
         let lexemes1 = take maxResultLength lexemes0
-        senses <- foldM (getGloss db) Map.empty lexemes1
+        senses <- foldM getGloss Map.empty lexemes1
         let sorted_senses = (sortSenses . Map.toList) senses
         return (makeObj [("total",     showJSON (length lexemes0))
                         ,("retrieved", showJSON (length lexemes1))
                         ,("result",    showJSON (map mkSenseObj sorted_senses))
                         ])
 
-    getGloss db senses (_,Lexeme lex_id status (Just sense_id) domains images ex_ids) = do
+    doListTopClasses = do
+      x <- runDaison db ReadOnlyMode $ do
+         select [(id,name cls) | (id,cls) <- from classes everything, isNothing (super_id cls)]
+      return (showJSON x)
+      
+    doClassQuery id = do
+      x <- runDaison db ReadOnlyMode $ do
+         select [mkClassObj cls frames subclasses
+                   | cls <- from classes (at id),
+                     frames <- listAll (getFrames id),
+                     subclasses <- listAll (getChildren id)]
+      return (showJSON x)
+      where
+        getChildren super_id =
+          [mkClassObj cls frames subclasses 
+             | (id,cls)  <- fromIndex classes_super (at super_id),
+               frames <- listAll (getFrames id),
+               subclasses <- listAll (getChildren id)
+             ]
+
+        getFrames class_id =
+          [(pattern frm,map (lex_fun . snd) lexemes)
+             | (id,frm) <- fromIndex frames_class (at class_id),
+               lexemes <- listAll (fromIndex lexemes_frame (at id))]
+
+    getGloss senses (_,Lexeme lex_id status (Just sense_id) domains images ex_ids _) = do
       examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
       sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
 
       case Map.lookup sense_id senses of
         Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
         Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
-                                   lex_ids <- select [(lex_id,status,Nothing) | (_,Lexeme lex_id status _ _ _ _) <- fromIndex lexemes_synset (at sense_id)]
+                                   lex_ids <- select [(lex_id,status,Nothing) | (_,Lexeme lex_id status _ _ _ _ _) <- fromIndex lexemes_synset (at sense_id)]
                                    return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
       where
         addInfo lex_id info lex_ids = 
           [(lex_id',status,if lex_id == lex_id' then Just info else mb_info)
               | (lex_id',status,mb_info) <- lex_ids]
 
-    getGloss db senses _ = return senses
+    getGloss senses _ = return senses
 
     sortSenses = map snd . sortOn fst . map addKey
       where
@@ -211,6 +244,18 @@ cgiMain db (cs,funs) = do
 
     mkStatusObj status =
       makeObj [(lang,showJSON (map toLower (show s))) | (lang,s) <- status]
+      
+    mkClassObj cls frames subclasses =
+      makeObj [("name",       showJSON (name cls))
+              ,("vars",       showJSON (vars cls))
+              ,("frames",     showJSON (map mkFrameObj frames))
+              ,("subclasses", showJSON subclasses)
+              ]
+
+    mkFrameObj (pattern,funs) =
+      makeObj [("pattern", showJSON (showExpr [] pattern)),
+               ("fun",     showJSON funs)
+              ]
 
 findLCA :: (Monad m, Ord a) => (a -> m [a]) -> [a] -> m [a]
 findLCA up xs = alternate [([x],[]) | x <- xs] [] [] Map.empty

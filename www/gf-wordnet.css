@@ -69,12 +69,12 @@ table.result td.details > div {
 	overflow: auto;
 }
 
-table.domains tbody {
+table.selectors tbody {
 	display: block;
     overflow-y: auto;
 }
 
-table.domains td {
+table.selectors td {
 	border: 1px solid #cccccc;
 	background: #ddd;
 	padding: 2px;
@@ -230,4 +230,19 @@ table.multiselect > tbody > tr > td:last-child {
 
 .editor button {
 	margin-right: 10px;
+}
+
+span.role {
+	font-size: 12pt;
+    font-variant: small-caps;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+span.restriction {
+	padding: 5px;
+	color: orangered;
+	font-size: 12pt;
+    font-variant: small-caps;
+    font-weight: bold;
 }

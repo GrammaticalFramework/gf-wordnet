@@ -9,6 +9,7 @@ import Data.Data
 import System.Directory
 import Control.Monad
 import qualified Data.Map.Strict as Map
+import Debug.Trace
 
 main = do
   cncdefs1 <- fmap (mapMaybe (parseCncSyn "ParseBul") . lines) $ readFile "WordNetBul.gf"
@@ -46,9 +47,10 @@ main = do
   db <- openDB db_name
   runDaison db ReadWriteMode $ do
     createTable examples
-    ex_keys <- fmap (Map.fromListWith (++) . concat) $ forM fn_examples $ \(fns,e) -> do
-                 key <- insert_ examples e
-                 return [(fn,[key]) | fn <- fns]
+    createTable classes
+    createTable frames
+    ex_keys <- let combine (xs1,ys1) (xs2,ys2) = (xs1++xs2,ys1++ys2)
+               in fmap (Map.fromListWith combine) $ insertExamples [] fn_examples
 
     createTable synsets
     forM taxonomy $ \(key,synset) -> do
@@ -57,12 +59,13 @@ main = do
     createTable lexemes
     let synsetKeys = Map.fromList [(synsetOffset synset, key) | (key,synset) <- taxonomy]
     forM absdefs $ \(mb_offset,fun,ds) -> do
+       let (es,fs) = fromMaybe ([],[]) (Map.lookup fun ex_keys)
        insert_ lexemes (Lexeme fun 
                                (Map.findWithDefault [] fun cncdefs)
                                (mb_offset >>= flip Map.lookup synsetKeys)
                                ds
                                (fromMaybe [] (Map.lookup fun images))
-                               (fromMaybe [] (Map.lookup fun ex_keys)))
+                               es fs)
 
     createTable coefficients
     insert_ coefficients cs
@@ -117,16 +120,49 @@ parseCncSyn lang l =
            then []
            else [def]
 
-parseExamples []                        = []
+data Entry
+  = ClassE String [(String,[String])]
+  | FrameE   Expr [Fun]
+  | ExampleE Expr [Fun]
+
+parseExamples []                            = []
 parseExamples (l1:l2:l3:l4:l5:l6:ls)
   | take 4 l1 == "abs:" && take 4 l5 == "key:" =
       let (w:ws) = words (drop 5 l5)
           fns    = take (read w) ws
-          ts     = case readExpr (drop 5 l1) of
-                     Just e  -> [(fns, e)]
-                     Nothing -> []
-      in ts ++ parseExamples ls
-parseExamples (l:ls)                    = parseExamples ls
+      in case readExpr (drop 5 l1) of
+           Just e  -> ExampleE e fns : parseExamples ls
+           Nothing -> trace ("FAILED: "++l1) (parseExamples ls)
+parseExamples (l1:l2:ls)
+  | take 4 l1 == "frm:" && take 4 l2 == "key:" =
+      case readExpr (drop 5 l1) of
+        Just e  -> FrameE e (words (drop 5 l2)) : parseExamples ls
+        Nothing -> trace ("FAILED: "++l1) (parseExamples ls)
+parseExamples (l1:ls)
+  | take 6 l1 == "class:"                      =
+      let (vs,ls') = break (\l -> take 5 l /= "role:") ls
+      in ClassE (drop 7 l1) (map (toVar . drop 6) vs) : parseExamples ls'
+  where
+    toVar l = let (v:cs) = words l in (v,cs)
+parseExamples (l:ls)                        = parseExamples ls
+
+
+insertExamples ps []                    = do return []
+insertExamples ps (ClassE name vs : es) = case ps of
+                                            []                                                   -> do id <- insert_ classes (Class name vs Nothing)
+                                                                                                       insertExamples [(name,id)] es
+                                            ((name',id'):ps) | take (length name') name == name' -> do id <- insert_ classes (Class name vs (Just id'))
+                                                                                                       insertExamples ((name,id) : (name',id') : ps) es
+                                                             | otherwise                         -> do insertExamples ps (ClassE name vs : es)
+insertExamples ps (FrameE   e fns : es) = do key <- case ps of
+                                                      (_,class_id):_ -> insert_ frames (Frame class_id e)
+                                                      _              -> fail "Frame without class"
+                                             xs  <- insertExamples ps es
+                                             return ([(fn,([],[key])) | fn <- fns] ++ xs)
+insertExamples ps (ExampleE e fns : es) = do key <- insert_ examples e
+                                             xs  <- insertExamples ps es
+                                             return ([(fn,([key],[])) | fn <- fns] ++ xs)
+
 
 parseTaxonomy l =
   (read key_s :: Key Synset, Synset offset (read parents_s) (read children_s) gloss)

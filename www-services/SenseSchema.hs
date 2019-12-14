@@ -31,6 +31,7 @@ data Lexeme
       , domains     :: [String]
       , images      :: [(String,String)]
       , example_ids :: [Key Expr]
+      , frame_ids   :: [Key Frame]
       }
     deriving (Data,Show)
 
@@ -41,6 +42,21 @@ data Embedding
       , mvec    :: [Double]
       }
     deriving (Data,Show)
+
+data Class
+  = Class
+      { name     :: String
+      , vars     :: [(String,[String])]
+      , super_id :: Maybe (Key Class)
+      }
+   deriving (Data,Show)
+
+data Frame
+  = Frame
+      { class_id :: Key Class
+      , pattern  :: Expr
+      }
+   deriving (Data,Show)
 
 data Update
   = Update
@@ -59,6 +75,7 @@ lexemes = table "lexemes"
              `withIndex` lexemes_fun
              `withIndex` lexemes_synset
              `withIndex` lexemes_domain
+             `withIndex` lexemes_frame
 
 lexemes_fun :: Index Lexeme Fun
 lexemes_fun = index lexemes "fun" lex_fun
@@ -68,6 +85,9 @@ lexemes_synset = maybeIndex lexemes "synset" synset
 
 lexemes_domain :: Index Lexeme String
 lexemes_domain = listIndex lexemes "domain" domains
+
+lexemes_frame :: Index Lexeme (Key Frame)
+lexemes_frame = listIndex lexemes "frames" frame_ids
 
 coefficients :: Table [Double]
 coefficients = table "coefficients"
@@ -85,6 +105,22 @@ examples = table "examples"
 
 examples_fun :: Index Expr Fun
 examples_fun = listIndex examples "fun" (nub . exprFunctions)
+
+classes :: Table Class
+classes = table "classes"
+            `withIndex` classes_super
+            `withForeignKey` classes_super
+
+classes_super :: Index Class (Key Class)
+classes_super = maybeIndex classes "super" super_id
+
+frames :: Table Frame
+frames = table "frames"
+           `withIndex` frames_class
+           `withForeignKey` lexemes_frame
+
+frames_class :: Index Frame (Key Class)
+frames_class = index frames "super" class_id
 
 updates :: Table Update
 updates = table "updates"

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+	<head>
+		<title>GF VerbNet</title>
+		<link rel="stylesheet" type="text/css" href="gf-wordnet.css">
+	</head>
+
+	<body>
+		<table><tr>
+			<td>
+				<table id="from" class="multiselect">
+					<thead>
+						<tr onclick="showCheckboxes(this.parentNode.parentNode)"><th>English</th><th><img src="triangle.png"></th></tr>
+					</thead>
+					<tbody>
+						<tr><td onclick="changeItem(event,this)">Bulgarian</td><td><input type="checkbox" name="ParseBul" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Catalan</td><td><input type="checkbox" name="ParseCat"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Chinese</td><td><input type="checkbox" name="ParseChi"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Dutch</td><td><input type="checkbox" name="ParseDut"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">English</td><td><input type="checkbox" name="ParseEng" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Estonian</td><td><input type="checkbox" name="ParseEst"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Finnish</td><td><input type="checkbox" name="ParseFin"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Italian</td><td><input type="checkbox" name="ParseIta"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Portuguese</td><td><input type="checkbox" name="ParsePor"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Slovenian</td><td><input type="checkbox" name="ParseSlv"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Spanish</td><td><input type="checkbox" name="ParseSpa"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Swedish</td><td><input type="checkbox" name="ParseSwe" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Thai</td><td><input type="checkbox" name="ParseTha"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Turkish</td><td><input type="checkbox" name="ParseTur"/></td></tr>
+					</tbody>
+				</table>
+			</td>
+		</tr></table>
+
+		<br>
+
+		<table class="selectors" id="classes">
+			<thead></thead>
+			<tbody></tbody>
+		</table>
+		<div id="class_div">
+		</div>
+
+		<script src="https://cloud.grammaticalframework.org/js/support.js"></script>
+		<script src="js/tsnejs.js"></script>
+		<script src="js/gf-wordnet.js"></script>
+		<script src="js/wordcloud2.js"></script>
+		<script src="js/multiselect.js"></script>
+		<script>
+			gfwordnet.initialize()
+
+			var close_class = function() {
+				gfwordnet.populate_classes(element('classes'), element("class_div"), class_listener);
+			}
+			var class_listener = function(id) {
+				gfwordnet.render_class(getMultiSelection(element('from')), element('classes'), element("class_div"),id,close_class);
+			};
+			close_class();
+		</script>
+	</body>
+</html>

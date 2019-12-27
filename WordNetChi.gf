@@ -12181,6 +12181,7 @@ lin brush_8_N = variants {} ;
 lin brush_9_N = variants {} ;
 lin brush_2_V = variants {} ;
 lin brush_1_V2 = mkV2 (mkV "刷") ; --unchecked
+lin brush_2_V2 = variants {} ;
 lin brush_3_V2 = variants {} ;
 lin brush_4_V2 = variants {} ;
 lin brush_5_V2 = variants {} ;

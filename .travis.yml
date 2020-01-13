@@ -2,8 +2,6 @@ sudo: required
 
 language: minimal
 
-services:
-  - docker
-
 script:
+  - wget -q http://www.grammaticalframework.org/download/gf_3.10-2_amd64.deb && dpkg -i gf_3.10-2_amd64.deb && rm gf_3.10-2_amd64.deb
   - make SERVER=NO

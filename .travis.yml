@@ -1,6 +1,9 @@
 sudo: required
 
-language: c
+language: minimal
 
 services:
   - docker
+
+script:
+  - make SERVER=NO

@@ -1,12 +1,12 @@
 sudo: required
 
-language: generic
+language: minimal
 
 services:
   - docker
 
 before_install:
-  - docker pull odanoburu/gf:3.9
+  - docker pull odanoburu/haskell-gf:3.9
 
 script:
   - docker run --mount src="$(pwd)",target=/home/gfer,type=bind odanoburu/gf:3.9 /bin/bash -c "cd /home/gfer && make SERVER=NO"

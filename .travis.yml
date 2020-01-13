@@ -9,4 +9,4 @@ before_install:
   - docker pull krangelov/gf-wordnet
 
 script:
-  - docker run --mount src="$(pwd)",target=/home/gf-wordnet,type=bind odanoburu/gf:3.9 /bin/bash -c "make SERVER=NO"
+  - docker run --mount src="$(pwd)",target=/home/gf-wordnet,type=bind krangelov/gf-wordnet /bin/bash -c "make SERVER=NO"

@@ -16,7 +16,8 @@ import System.Directory
 import System.Posix.Files
 import System.Process
 import System.Exit
-import Control.Monad(liftM2,liftM3,forM_)
+import Control.Monad(liftM2,liftM3,liftM4,forM_)
+import Control.Concurrent
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import qualified Data.ByteString.Lazy.UTF8 as UTF8 (toString,fromString)
 import qualified Data.ByteString.Lazy as BS
@@ -45,6 +46,7 @@ cgiMain db = do
   mb_s7 <- getInput "commit"
   mb_s8 <- getInput "push"
   mb_s9 <- getInput "author"
+  mb_s10<- getInput "token"
   case mb_s1 of
     Just code -> doLogin code
     Nothing   -> case liftM3 doGet mb_s2 mb_s4 mb_s5 of
@@ -55,12 +57,16 @@ cgiMain db = do
                    Nothing     -> case liftM3 doUpdate mb_s2 mb_s3 mb_s5 of
                                     Just action -> do json <- liftIO (action mb_s6)
                                                       outputJSONP json
-                                    Nothing     -> case liftM3 doCommit mb_s2 mb_s9 mb_s7 of
-                                                     Just action -> do res <- liftIO action
-                                                                       outputJSONP res
+                                    Nothing     -> case liftM4 doCommit mb_s2 mb_s9 mb_s10 mb_s7 of
+                                                     Just action -> do setHeader "Cache-Control" "no-cache"
+                                                                       setHeader "X-Content-Type-Options" "nosniff"
+                                                                       setHeader "Content-Type" "text/plain; charset=utf-8"
+                                                                       res <- liftIO action
+                                                                       outputFPS res
                                                      Nothing     -> case fmap doPull mb_s8 of
-                                                                      Just action -> do s <- liftIO action
-                                                                                        outputText "text/plain; charset=utf-8" s
+                                                                      Just action -> do setHeader "Content-Type" "text/plain; charset=utf-8"
+                                                                                        s <- liftIO action
+                                                                                        outputFPS s
                                                                       Nothing     -> outputNothing
   where
     doLogin code = do
@@ -83,6 +89,7 @@ cgiMain db = do
                                                                         fmap length $ select (from updates_usr everything))
                                                      setCookie ((newCookie "user" user){cookiePath=Just "/wordnet"})
                                                      setCookie ((newCookie "author" author){cookiePath=Just "/wordnet"})
+                                                     setCookie ((newCookie "token" token){cookiePath=Just "/wordnet"})
                                                      setCookie ((newCookie "count" (show count)){cookiePath=Just "/wordnet"})
                                                      redirect "/wordnet"
                            Left err     -> output err
@@ -115,7 +122,7 @@ cgiMain db = do
           | lang==lang'                         = (lang,s) : status
         updateStatus lang s (x:status)          = x : updateStatus lang s status
 
-    doCommit user author commit = do
+    doCommit user author token commit = do
       res <- runDaison db ReadWriteMode $ do
                res <- select [(lang,[(lex_id,def)]) | (_,Update _ lex_id lang def) <- fromIndex updates_usr (at user)]
                delete updates (from updates_usr (at user))
@@ -135,8 +142,9 @@ cgiMain db = do
                                          groupWriteMode `unionFileModes`
                                          otherReadMode)
                   renameFile tmp_fname (SERVER_PATH++"/"++fname)
-      (res,out,err) <- git ["commit","--author",author,"--message","progress","WordNet*.gf"]
-      return (unwords ["$", "git", "commit","--author",author,"--message","progress","WordNet*.gf"]++"\n"++out++"\n"++err++"\n"++show res)
+      git [["commit","--author",author,"--message","progress","WordNet*.gf"]
+          ,["push", "https://"++user++":"++token++"@github.com/GrammaticalFramework/gf-wordnet"]
+          ]
       where
         annotate updated l =
           case words l of
@@ -145,11 +153,30 @@ cgiMain db = do
                                   _        -> l
             _                              -> l
 
-    doPull _ = do
-      (res,out,err) <- git ["pull","--no-edit"]
-      return (out++"\n"++err++"\n"++show res)
+    doPull _ = git [["pull","--no-edit"]]
 
-git args = readCreateProcessWithExitCode (proc "git" args){cwd=Just SERVER_PATH} ""
+git commands = do
+  (out,inp) <- createPipe
+  forkIO (doCommands inp commands)
+  BS.hGetContents out
+  where
+    doCommands inp []                 = hClose inp
+    doCommands inp (command:commands) = do
+      hPutStrLn inp (unwords ("$":"git":map censor command))
+      hFlush inp
+      (_,_,_,ph) <- createProcess_ "git"
+                                   (proc "git" command){std_out=UseHandle inp
+                                                       ,std_err=UseHandle inp
+                                                       ,cwd=Just SERVER_PATH
+                                                       }
+      code <- waitForProcess ph
+      case code of
+        ExitSuccess -> doCommands inp commands
+        _           -> hClose inp
+
+    censor ('h':'t':'t':'p':'s':':':'/':'/':cs) = 
+      'h':'t':'t':'p':'s':':':'/':'/':drop 1 (dropWhile (/='@') cs)
+    censor s = s
 
 readSourceFile lang = do
   let fname = "WordNet"++drop 5 lang++".gf"

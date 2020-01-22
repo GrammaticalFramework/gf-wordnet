@@ -30,13 +30,14 @@ gfwordnet.initialize = function () {
 	this.lex_ids     = {};
 	this.user        = null;
 	this.author      = null;
+	this.token       = null;
 	this.can_select  = url.searchParams.get("can_select") != null;
 	this.selection   = null;
 	this.popup       = null;
 	this.commit_link = null;
 }
 
-gfwordnet.set_user = function(user,author,count,result,commit_link) {
+gfwordnet.set_user = function(user,author,token,count,result,commit_link) {
 	var thead = result.getElementsByTagName("THEAD")[0];
 	thead.innerHTML = "";
 	
@@ -49,6 +50,7 @@ gfwordnet.set_user = function(user,author,count,result,commit_link) {
 	this.lex_ids = {};
 	this.user        = user;
 	this.author      = author;
+	this.token       = token;
 	this.selection   = null;
 	this.popup       = null;
 	this.commit_link = commit_link;
@@ -1210,23 +1212,31 @@ gfwordnet.onmove_dialog = function(event) {
 }
 
 gfwordnet.commit = function(commit) {
-	var errcont = function(text,code) { };
-	var extract_confirm = function(msg) {
+	var textarea = node("textarea", {rows: 10, cols: 100, spellcheck: false, readonly:true},[]);
+	var closeBtn = node("button", {onclick: "document.body.removeChild(this.parentNode.parentNode.parentNode)"},[text("Close")]);
+	var editor   = node("table", {"class": "editor"} ,
+							[tr(td(textarea)),
+							 tr(td(closeBtn))]);
+
+	editor.addEventListener("mousedown", gfwordnet.onmove_dialog);
+
+	document.body.appendChild(editor);
+
+	editor.style.top   = ((window.innerHeight-editor.clientHeight)/2)+"px";
+	editor.style.left  = ((window.innerWidth -editor.clientWidth )/2)+"px";
+
+	var xmlHttp = GetXmlHttpObject();
+	xmlHttp.onreadystatechange = function() {
 		gfwordnet.update_count(0);
-		var textarea = node("textarea", {rows: 10, cols: 100, spellcheck: false, readonly:true},[text(msg)]);
-		var closeBtn = node("button", {onclick: "document.body.removeChild(this.parentNode.parentNode.parentNode)"},[text("Close")]);
-		var editor   = node("table", {"class": "editor"} ,
-								[tr(td(textarea)),
-								 tr(td(closeBtn))]);
-
-		editor.addEventListener("mousedown", gfwordnet.onmove_dialog);
-
-		document.body.appendChild(editor);
-
-		editor.style.top   = ((window.innerHeight-editor.clientHeight)/2)+"px";
-		editor.style.left  = ((window.innerWidth -editor.clientWidth )/2)+"px";
+		textarea.value = xmlHttp.responseText;
+		textarea.scrollTop = textarea.scrollHeight;
 	};
-	gfwordnet.content_call("?user="+gfwordnet.user+"&author="+gfwordnet.author+"&commit=1",extract_confirm,errcont);
+	xmlHttp.open("GET", gfwordnet.content_url+"?user="+gfwordnet.user
+	                                         +"&author="+gfwordnet.author
+	                                         +"&token="+gfwordnet.token
+	                                         +"&commit=1",
+	                                         true); // true for asynchronous 
+	xmlHttp.send(null);
 }
 gfwordnet.update_count = function(count) {
 	if (this.commit_link != null)

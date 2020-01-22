@@ -94,7 +94,7 @@
 			function deleteCookie(name) {
 			  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			}
-			
+
 			function logOut() {
 				gfwordnet.set_user(null,null,0,element('result'),null);
 				logIn.innerHTML = "Log In";
@@ -107,6 +107,7 @@
 
 			var user   = getCookie("user");
 			var author = getCookie("author");
+			var token  = getCookie("token");
 			var count  = getCookie("count");
 			if (user != null && count != null && author != 0) {
 				var logIn  = element('logIn');
@@ -114,7 +115,7 @@
 				logIn.innerHTML = "Log Out "+user;
 				logIn.href = "javascript:logOut()"
 
-				gfwordnet.set_user(user,author,count,element('result'),commit);
+				gfwordnet.set_user(user,author,token,count,element('result'),commit);
 				commit.style.display = "inline";
 			}
 		</script>

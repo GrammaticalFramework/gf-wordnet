@@ -3,3 +3,8 @@
 *.o
 *.hi
 *.db
+.gitconfig
+www/ContentService
+www/ContentService.fcgi
+www/SenseService.fcgi
+www/status.svg

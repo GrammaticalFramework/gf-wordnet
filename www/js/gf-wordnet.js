@@ -6,31 +6,7 @@ gfwordnet.languages = ["ParseBul", "ParseCat", "ParseChi"
                       ,"ParseSlv", "ParseSpa", "ParseSwe"
                       ,"ParseTha", "ParseTur"];
 
-gfwordnet.grammar_url = "https://cloud.grammaticalframework.org/robust/Parse.pgf"
-
-gfwordnet.grammar_call=function(querystring,cont,errcont) {
-    http_get_json(gfwordnet.grammar_url+querystring,cont,errcont)
-}
-
-gfwordnet.sense_url = "https://www.grammaticalframework.org/wordnet/SenseService.fcgi"
-
-gfwordnet.sense_call=function(querystring,cont,errcont) {
-    http_get_json(gfwordnet.sense_url+querystring,cont,errcont)
-}
-
-gfwordnet.content_url = "https://www.grammaticalframework.org/wordnet/ContentService.fcgi"
-
-gfwordnet.content_call=function(querystring,cont,errcont) {
-    http_get_json(gfwordnet.content_url+querystring,cont,errcont)
-}
-
-gfwordnet.shell_url = "https://cloud.grammaticalframework.org/gfshell"
-
-gfwordnet.shell_call=function(querystring,cont,errcont) {
-	ajax_http_get(gfwordnet.shell_url+querystring,cont,errcont)
-}
-
-gfwordnet.initialize = function () {
+(function(){
 	var url = new URL(window.location.href);
 
 	this.lex_ids     = {};
@@ -41,6 +17,34 @@ gfwordnet.initialize = function () {
 	this.selection   = null;
 	this.popup       = null;
 	this.commit_link = null;
+
+	var scripts= document.getElementsByTagName('script');
+	var path= scripts[scripts.length-1].src.split('?')[0];      // remove any ?query
+	gfwordnet.script_url = path.split('/').slice(0, -1).join('/')+'/';
+})();
+
+gfwordnet.grammar_url = "https://cloud.grammaticalframework.org/robust/Parse.pgf"
+
+gfwordnet.grammar_call=function(querystring,cont,errcont) {
+    http_get_json(gfwordnet.grammar_url+querystring,cont,errcont)
+}
+
+gfwordnet.sense_url = gfwordnet.script_url + "../SenseService.fcgi"
+
+gfwordnet.sense_call=function(querystring,cont,errcont) {
+    http_get_json(gfwordnet.sense_url+querystring,cont,errcont)
+}
+
+gfwordnet.content_url = gfwordnet.script_url + "../ContentService.fcgi"
+
+gfwordnet.content_call=function(querystring,cont,errcont) {
+    http_get_json(gfwordnet.content_url+querystring,cont,errcont)
+}
+
+gfwordnet.shell_url = "https://cloud.grammaticalframework.org/gfshell"
+
+gfwordnet.shell_call=function(querystring,cont,errcont) {
+	ajax_http_get(gfwordnet.shell_url+querystring,cont,errcont)
 }
 
 gfwordnet.set_user = function(user,author,token,count,result,commit_link) {
@@ -226,7 +230,7 @@ gfwordnet.render_senses = function(ctxt,selection,result,domains,senses) {
 				}
 			}
 
-			icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", 
+			icon = node("img", {src: gfwordnet.script_url+(checked ? "../checked_plus.png" : "../unchecked_plus.png"),
 								onclick: "gfwordnet.onclick_minus(event,this)"});
 			row[0].insertBefore(icon, row[0].firstChild);
 			result_tbody.appendChild(node("tr",{"data-lex-id": lex_id},row));
@@ -629,7 +633,7 @@ gfwordnet.onclick_cell = function (cell) {
 					}
 					row.push(cell);
 				}
-				row.splice(0,0,td([img(checked ? "checked.png" : "unchecked.png"), text(synonym)]));
+				row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(synonym)]));
 
 				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row),errcont);
 				result.appendChild(node("tr",{"data-lex-id": synonym},row));
@@ -684,11 +688,11 @@ gfwordnet.onmouseover_cell = function(event) {
 	}
 	var row = [];
 	if (event.target.classList.contains("unchecked") || event.target.classList.contains("guessed")) {
-		var btn = img("validate.png");
+		var btn = img(gfwordnet.script_url+"../validate.png");
 		btn.addEventListener("click", gfwordnet.onclick_check, false);
 		row.push(btn);
 	}
-	var btn = img("edit.png");
+	var btn = img(gfwordnet.script_url+"../edit.png");
 	btn.addEventListener("click", gfwordnet.onclick_edit, false);
 	row.push(btn);
 	gfwordnet.popup = div_class("floating",row);
@@ -1021,7 +1025,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 						row.push(cell);
 					}
 
-					var icon = node("img", {src: checked ? "checked_plus.png" : "unchecked_plus.png", onclick: "gfwordnet.onclick_minus(event,this)"});
+					var icon = node("img", {src: gfwordnet.script_url+(checked ? "checked_plus.png" : "unchecked_plus.png"), onclick: "gfwordnet.onclick_minus(event,this)"});
 					row[0].insertBefore(icon, row[0].firstChild);
 
 					row.push(node("td",{style: "white-space: nowrap"}));

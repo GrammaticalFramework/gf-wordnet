@@ -62,8 +62,6 @@
 		<script src="js/wordcloud2.js"></script>
 		<script src="js/multiselect.js"></script>
 		<script>
-			gfwordnet.initialize()
-
 			domain_listener = function() {
 				gfwordnet.search(getMultiSelection(element('from')), null, element('domains'), element('result'), arguments.callee);
 			};

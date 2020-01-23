@@ -1215,8 +1215,7 @@ gfwordnet.commit = function(commit) {
 	var textarea = node("textarea", {rows: 10, cols: 100, spellcheck: false, readonly:true},[]);
 	var closeBtn = node("button", {onclick: "document.body.removeChild(this.parentNode.parentNode.parentNode)"},[text("Close")]);
 	var editor   = node("table", {"class": "editor"} ,
-							[tr(td(textarea)),
-							 tr(td(closeBtn))]);
+							[tr(td(textarea))]);
 
 	editor.addEventListener("mousedown", gfwordnet.onmove_dialog);
 
@@ -1229,6 +1228,10 @@ gfwordnet.commit = function(commit) {
 	xmlHttp.onreadystatechange = function() {
 		gfwordnet.update_count(0);
 		textarea.value = xmlHttp.responseText;
+		if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete") {
+			textarea.value += "\n\nDone."
+			editor.appendChild(tr(td(closeBtn)));
+		}
 		textarea.scrollTop = textarea.scrollHeight;
 	};
 	xmlHttp.open("GET", gfwordnet.content_url+"?user="+gfwordnet.user

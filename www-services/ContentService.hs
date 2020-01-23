@@ -123,29 +123,38 @@ cgiMain db = do
         updateStatus lang s (x:status)          = x : updateStatus lang s status
 
     doCommit user author token commit = do
-      res <- runDaison db ReadWriteMode $ do
-               res <- select [(lang,[(lex_id,def)]) | (_,Update _ lex_id lang def) <- fromIndex updates_usr (at user)]
-               delete updates (from updates_usr (at user))
-               return res
-      forM_ ((Map.toList . Map.fromListWith (++)) res) $ \(lang,ids) ->
-        if null ids
-          then return ()
-          else do let fname = "WordNet"++drop 5 lang++".gf"
-                  ls <- fmap lines $ readSourceFile lang
-                  (tmp_fname,hTmp) <- openTempFile SERVER_PATH fname
-                  hSetEncoding hTmp utf8
-                  mapM_ (hPutStrLn hTmp . annotate ids) ls 
-                  hClose hTmp
-                  setFileMode tmp_fname (ownerReadMode `unionFileModes`
-                                         ownerWriteMode `unionFileModes`
-                                         groupReadMode `unionFileModes`
-                                         groupWriteMode `unionFileModes`
-                                         otherReadMode)
-                  renameFile tmp_fname (SERVER_PATH++"/"++fname)
-      git [["commit","--author",author,"--message","progress","WordNet*.gf"]
-          ,["push", "https://"++user++":"++token++"@github.com/GrammaticalFramework/gf-wordnet"]
-          ]
+      (out,inp) <- createPipe
+      forkIO (patchUp inp >>
+              hPutStrLn inp "" >>
+              hFlush inp >>
+              git inp [["commit","--author",author,"--message","progress","WordNet*.gf"]
+                      ,["push", "https://"++user++":"++token++"@github.com/GrammaticalFramework/gf-wordnet"]
+                      ])
+      BS.hGetContents out
       where
+        patchUp inp = do
+          res <- runDaison db ReadWriteMode $ do
+                   res <- select [(lang,[(lex_id,def)]) | (_,Update _ lex_id lang def) <- fromIndex updates_usr (at user)]
+                   delete updates (from updates_usr (at user))
+                   return res
+          forM_ ((Map.toList . Map.fromListWith (++)) res) $ \(lang,ids) ->
+            if null ids
+              then return ()
+              else do let fname = "WordNet"++drop 5 lang++".gf"
+                      hPutStrLn inp ("Patch up "++fname)
+                      hFlush inp
+                      ls <- fmap lines $ readSourceFile lang
+                      (tmp_fname,hTmp) <- openTempFile SERVER_PATH fname
+                      hSetEncoding hTmp utf8
+                      mapM_ (hPutStrLn hTmp . annotate ids) ls 
+                      hClose hTmp
+                      setFileMode tmp_fname (ownerReadMode `unionFileModes`
+                                             ownerWriteMode `unionFileModes`
+                                             groupReadMode `unionFileModes`
+                                             groupWriteMode `unionFileModes`
+                                             otherReadMode)
+                      renameFile tmp_fname (SERVER_PATH++"/"++fname)
+
         annotate updated l =
           case words l of
             ("lin":id:"=":_) -> case lookup id updated of
@@ -153,27 +162,25 @@ cgiMain db = do
                                   _        -> l
             _                              -> l
 
-    doPull _ = git [["pull","--no-edit"]]
+    doPull _ = do
+      (out,inp) <- createPipe
+      git inp [["pull","--no-edit"]]
+      BS.hGetContents out
 
-git commands = do
-  (out,inp) <- createPipe
-  forkIO (doCommands inp commands)
-  BS.hGetContents out
+git inp []                 = hClose inp
+git inp (command:commands) = do
+  hPutStrLn inp (unwords ("$":"git":map censor command))
+  hFlush inp
+  (_,_,_,ph) <- createProcess_ "git"
+                               (proc "git" command){std_out=UseHandle inp
+                                                   ,std_err=UseHandle inp
+                                                   ,cwd=Just SERVER_PATH
+                                                   }
+  code <- waitForProcess ph
+  case code of
+    ExitSuccess -> git inp commands
+    _           -> hClose inp
   where
-    doCommands inp []                 = hClose inp
-    doCommands inp (command:commands) = do
-      hPutStrLn inp (unwords ("$":"git":map censor command))
-      hFlush inp
-      (_,_,_,ph) <- createProcess_ "git"
-                                   (proc "git" command){std_out=UseHandle inp
-                                                       ,std_err=UseHandle inp
-                                                       ,cwd=Just SERVER_PATH
-                                                       }
-      code <- waitForProcess ph
-      case code of
-        ExitSuccess -> doCommands inp commands
-        _           -> hClose inp
-
     censor ('h':'t':'t':'p':'s':':':'/':'/':cs) = 
       'h':'t':'t':'p':'s':':':'/':'/':drop 1 (dropWhile (/='@') cs)
     censor s = s

@@ -1,5 +1,11 @@
 gfwordnet = {}
 
+gfwordnet.languages = ["ParseBul", "ParseCat", "ParseChi"
+                      ,"ParseDut", "ParseEng", "ParseEst"
+                      ,"ParseFin", "ParseIta", "ParsePor"
+                      ,"ParseSlv", "ParseSpa", "ParseSwe"
+                      ,"ParseTha", "ParseTur"];
+
 gfwordnet.grammar_url = "https://cloud.grammaticalframework.org/robust/Parse.pgf"
 
 gfwordnet.grammar_call=function(querystring,cont,errcont) {

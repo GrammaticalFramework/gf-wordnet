@@ -228,6 +228,17 @@ table.multiselect > tbody > tr > td:last-child {
 	z-index: 100;
 }
 
+.search_popup {
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color: #f3f3f3;
+	position: fixed;
+	overflow: auto;
+	z-index: 100;
+	display: none;
+	max-height: 500px;
+}
+
 .editor button {
 	margin-right: 10px;
 }

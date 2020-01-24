@@ -4325,7 +4325,6 @@ contrail_N	47525;Contrail;commons/b/b0/A340-313X.jpg
 contrast_5_N	5611461;Contrast_(vision);commons/b/be/Photo_editing_contrast_correction.jpg
 contrition_N	984784;Contrition;commons/e/e7/Francisco_Jos%C3%A9_de_Goya_-_The_Repentant_St._Peter_-_Google_Art_Project.jpg	3929834;Regret;commons/3/36/Maud-Muller-Brown.jpeg
 controller_1_N	729806;The_Government_Inspector;commons/c/cf/Nikolai_Gogol_-_Revizor_cover_%281836%29.jpg
-controller_2_N	29869732;Director_(business);commons/1/17/Intel_Board_of_Directors.jpg
 contusion_1_N	3726299;Blunt_trauma;commons/7/76/Black_eye_2.jpg
 contusion_2_N	3726299;Blunt_trauma;commons/7/76/Black_eye_2.jpg
 conundrum_N	268683;Riddle;commons/e/e7/Rembrandt_Harmensz._van_Rijn_146.jpg
@@ -12648,7 +12647,6 @@ nasturtium_2_N	8309978;Tropaeolum_majus;commons/8/87/Tropaeolum_majus_2005_G1.jp
 nasturtium_3_N	8309978;Tropaeolum_majus;commons/8/87/Tropaeolum_majus_2005_G1.jpg	54404;Tropaeolum;commons/7/78/Nasturtium-Tropaeolum.jpg
 nationalist_1_N	1820400;Patriottentijd;commons/d/d9/Exercitiegenootschap_Sneek_by_Hermanus_van_der_Velde.jpg
 native_1_N	45281;Indigenous_peoples;commons/d/d9/Guarani_Family.JPG
-native_2_A	2454631;Rodna_Mountains;commons/8/86/Rodnei_Mountains%2C_Maramures%2C_Romania._%2841659834262%29.jpg
 nato_PN	21133;NATO;commons/5/55/NATO_OTAN_landscape_logo.svg
 natrolite_N	1202351;Natrolite;commons/5/5f/Natroliteinde1.jpg
 natterjack_N	584196;Natterjack_toad;commons/d/d7/Bufo_calamita_%28Marek_Szczepanek%29.jpg
@@ -20753,7 +20751,7 @@ weeder_2_N	4075466;Weeder;commons/a/af/Weeder.jpg
 week_1_N	33538;Week;commons/b/b4/CLM_14456_71r_detail.jpg
 week_3_N	33538;Week;commons/b/b4/CLM_14456_71r_detail.jpg
 weevil_N	339399;Weevil;commons/6/62/Weevil_September_2008-1.jpg
-weft_N	802029;Warp_and_weft];en/e/ea/Warp_and_weft.jpg
+weft_N	802029;Warp_and_weft;en/e/ea/Warp_and_weft.jpg
 weigela_N	2149336;Weigela;commons/f/f4/Weigela_florida_BG_Tallinn.jpg
 weightlessness_N	18603506;Weightlessness;commons/c/c4/Foale_ZeroG.jpg
 weightlifting_N	33619;Olympic_weightlifting;commons/5/5f/Lasha_Talakhadze_Rio_2016.jpg
@@ -21401,3 +21399,4 @@ psyche_PN	760054;Cupid_and_Psyche;commons/a/a6/Gerard_FrancoisPascalSimon-Cupid_
 crater_PN	210880;Crater_(constellation);commons/a/ad/Crater_IAU.svg
 brahman_4_N	484727;Brahman_cattle;commons/3/3e/Brahman_%28EMAPA%29_110307_REFON_2.jpg
 brahmin_4_N	484727;Brahman_cattle;commons/3/3e/Brahman_%28EMAPA%29_110307_REFON_2.jpg
+annulet_2_N	3720388;Annulet_(architecture);commons/2/2b/Hammond-Harwood_House_volutes_HABS_MD%2C2-ANNA%2C18-26.jpg

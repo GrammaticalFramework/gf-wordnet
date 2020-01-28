@@ -1,4 +1,4 @@
---# -path=.:../abstract:../common:../api:lib/src/finnish
+--# -path=.:../abstract:../common:../api
 concrete ParseFin of Parse =
   NounFin - [PPartNP, UseN2, RelNP, DetNP],
   VerbFin - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP],

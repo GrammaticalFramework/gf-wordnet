@@ -48,9 +48,9 @@ endif
 SERVER_PATH = /usr/local/www/gf-wordnet
 
 ifndef GF_LIB_PATH
-INSTALL_PATH=$(shell cat ../gf-core/DATA_DIR)/lib/wordnet
+INSTALL_PATH=$(shell cat ../gf-core/DATA_DIR)/lib
 else
-INSTALL_PATH=$(GF_LIB_PATH)/lib/wordnet
+INSTALL_PATH=$(GF_LIB_PATH)/lib
 endif
 
 all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService build/gfshell
@@ -62,12 +62,19 @@ Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs $(patsubst %, build/%.pgf, $(LANGS))
 ifneq ($(SERVER), NO)
 	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
+	scp -p build/gfo/WordNet*.gfo www.grammaticalframework.org:/usr/local/www/gf-wordnet
+	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
 endif
 
 build/Parse.noprobs.pgf: $(addprefix build/,$(addsuffix .pgf,$(TRAINING_LANGS)))
 	gf --make -name=Parse.noprobs --output-dir=build $^
 
-build/Parse%.pgf: Parse%.gf Parse.gf WordNet%.gf WordNet.gf
+build/gfo/WordNet.gfo:
+
+build/gfo/WordNet%.gfo: WordNet%.gf WordNet.gf
+	gf --batch --gfo-dir=build/gfo --no-pmcfg $<
+
+build/Parse%.pgf: Parse%.gf Parse.gf build/gfo/WordNet%.gfo build/gfo/WordNet.gfo
 	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
 
 Parse.probs Parse.bigram.probs: build/udsenser build/Parse.noprobs.pgf examples.txt $(UD_BUL_TREEBANKS) $(UD_ENG_TREEBANKS) $(UD_FIN_TREEBANKS) $(UD_ITA_TREEBANKS) $(UD_POR_TREEBANKS) $(UD_SLV_TREEBANKS) $(UD_SWE_TREEBANKS)
@@ -123,6 +130,7 @@ ifneq ($(SERVER), NO)
 	touch $@
 endif
 
+.SECONDARY:
 
 .PHONY: build_dirs
 
@@ -136,5 +144,3 @@ build_dirs:
 install:
 	mkdir -p $(INSTALL_PATH)
 	install build/gfo/WordNet*.gfo     $(INSTALL_PATH)
-	install build/gfo/ParseExtend*.gfo $(INSTALL_PATH)
-	install build/gfo/Punctuation*.gfo $(INSTALL_PATH)

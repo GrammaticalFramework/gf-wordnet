@@ -9,14 +9,14 @@ gfwordnet.languages = ["ParseBul", "ParseCat", "ParseChi"
 (function(){
 	var url = new URL(window.location.href);
 
-	this.lex_ids     = {};
-	this.user        = null;
-	this.author      = null;
-	this.token       = null;
-	this.can_select  = url.searchParams.get("can_select") != null;
-	this.selection   = null;
-	this.popup       = null;
-	this.commit_link = null;
+	gfwordnet.lex_ids     = {};
+	gfwordnet.user        = null;
+	gfwordnet.author      = null;
+	gfwordnet.token       = null;
+	gfwordnet.can_select  = url.searchParams.get("can_select") != null;
+	gfwordnet.selection   = null;
+	gfwordnet.popup       = null;
+	gfwordnet.commit_link = null;
 
 	var scripts= document.getElementsByTagName('script');
 	var path= scripts[scripts.length-1].src.split('?')[0];      // remove any ?query

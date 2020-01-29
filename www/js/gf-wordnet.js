@@ -1025,7 +1025,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 						row.push(cell);
 					}
 
-					var icon = node("img", {src: gfwordnet.script_url+(checked ? "checked_plus.png" : "unchecked_plus.png"), onclick: "gfwordnet.onclick_minus(event,this)"});
+					var icon = node("img", {src: gfwordnet.script_url+(checked ? "../checked_plus.png" : "../unchecked_plus.png"), onclick: "gfwordnet.onclick_minus(event,this)"});
 					row[0].insertBefore(icon, row[0].firstChild);
 
 					row.push(node("td",{style: "white-space: nowrap"}));

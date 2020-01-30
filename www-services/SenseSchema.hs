@@ -53,8 +53,9 @@ data Class
 
 data Frame
   = Frame
-      { class_id :: Key Class
-      , pattern  :: Expr
+      { class_id      :: Key Class
+      , base_class_id :: Key Class
+      , pattern       :: Expr
       }
    deriving (Data,Show)
 

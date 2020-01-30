@@ -138,16 +138,21 @@ cgiMain db (cs,funs) = do
 
       fs <- runDaison db ReadOnlyMode $ do
                select [(synset_id,(gloss,lex_ids))
-                          | int <- foldl1Q intersection 
-                                           [children s | synset_id <- anyOf ids,
-                                                         s <- from synsets (at synset_id)],
+                          | int <- query (foldRows1 intersection)
+                                         [children s | synset_id <- anyOf ids,
+                                                       s <- from synsets (at synset_id)],
                             size int < 2000,
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
-                            lex_ids <- listAll [(lex_fun,status,Just (domains,images,examples,sexamples))
-                                                   | (_,Lexeme lex_fun status _ domains images ex_ids _) <- fromIndex lexemes_synset (at synset_id),
-                                                     examples  <- listAll [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
-                                                     sexamples <- listAll [e | (id,e) <- fromIndex examples_fun (at lex_fun), not (elem id ex_ids)]]]
+                            lex_ids <- select [(lex_fun,status,frame_inf,Just (domains,images,examples,sexamples))
+                                                   | (_,Lexeme lex_fun status _ domains images ex_ids fs) <- fromIndex lexemes_synset (at synset_id),
+                                                     examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
+                                                     sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_fun), not (elem id ex_ids)],
+                                                     frame_inf <- select [(name cls,base_class_id f,frame_id)
+                                                                            | frame_id <- anyOf fs
+                                                                            , f <- from frames (at frame_id)
+                                                                            , cls <- from classes (at (base_class_id f))]
+                                                     ]]
 
       return (showJSON (map mkSenseObj fs))
 
@@ -177,21 +182,21 @@ cgiMain db (cs,funs) = do
       x <- runDaison db ReadOnlyMode $ do
          select [mkClassObj cls frames subclasses
                    | cls <- from classes (at id),
-                     frames <- listAll (getFrames id),
-                     subclasses <- listAll (getChildren id)]
+                     frames <- select (getFrames id),
+                     subclasses <- select (getChildren id)]
       return (showJSON x)
       where
         getChildren super_id =
           [mkClassObj cls frames subclasses 
              | (id,cls)  <- fromIndex classes_super (at super_id),
-               frames <- listAll (getFrames id),
-               subclasses <- listAll (getChildren id)
+               frames <- select (getFrames id),
+               subclasses <- select (getChildren id)
              ]
 
         getFrames class_id =
           [(pattern frm,map (lex_fun . snd) lexemes)
              | (id,frm) <- fromIndex frames_class (at class_id),
-               lexemes <- listAll (fromIndex lexemes_frame (at id))]
+               lexemes <- select (fromIndex lexemes_frame (at id))]
 
     getGloss senses (_,Lexeme lex_id status (Just sense_id) domains images ex_ids _) = do
       examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
@@ -200,12 +205,17 @@ cgiMain db (cs,funs) = do
       case Map.lookup sense_id senses of
         Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
         Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
-                                   lex_ids <- select [(lex_id,status,Nothing) | (_,Lexeme lex_id status _ _ _ _ _) <- fromIndex lexemes_synset (at sense_id)]
+                                   lex_ids <- select [(lex_id,status,frame_inf,Nothing)
+                                                          | (_,Lexeme lex_id status _ _ _ _ fs) <- fromIndex lexemes_synset (at sense_id),
+                                                            frame_inf <- select [(name cls,base_class_id f,frame_id)
+                                                                                      | frame_id <- anyOf fs
+                                                                                      , f <- from frames (at frame_id)
+                                                                                      , cls <- from classes (at (base_class_id f))]]
                                    return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
       where
         addInfo lex_id info lex_ids = 
-          [(lex_id',status,if lex_id == lex_id' then Just info else mb_info)
-              | (lex_id',status,mb_info) <- lex_ids]
+          [(lex_id',status,frames,if lex_id == lex_id' then Just info else mb_info)
+              | (lex_id',status,frames,mb_info) <- lex_ids]
 
     getGloss senses _ = return senses
 
@@ -213,7 +223,7 @@ cgiMain db (cs,funs) = do
       where
         addKey (sense_id,(gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,map snd key_lex_ids)))
           where
-            key_lex_ids = sortOn fst [(toKey lex_id info,x) | x@(lex_id,_,info) <- lex_ids]
+            key_lex_ids = sortOn fst [(toKey lex_id info,x) | x@(lex_id,_,_,info) <- lex_ids]
 
         toKey lex_id info = (isNothing info,reverse rid,reverse rcat,read ('0':reverse rn)::Int)
           where
@@ -228,10 +238,11 @@ cgiMain db (cs,funs) = do
               ]
 
     mkLexObj lex_ids =
-      makeObj [(lex_id,mkInfObj status info) | (lex_id,status,info) <- lex_ids]
+      makeObj [(lex_id,mkInfObj status frames info) | (lex_id,status,frames,info) <- lex_ids]
 
-    mkInfObj status info =
+    mkInfObj status frames info =
       makeObj (("status", mkStatusObj status) :
+               ("frames", showJSON frames) :
                case info of
                  Nothing -> []
                  Just (domains,images,examples,sexamples) -> [

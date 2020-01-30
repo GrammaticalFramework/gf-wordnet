@@ -75,12 +75,11 @@ main = do
     
     createTable updates
 
-  [cs] <- runDaison db ReadOnlyMode $ 
-            select $ 
-              foldlQ accumCounts Map.empty $
-                [(drop 5 lang,status)
-                           | (_,lex) <- from lexemes everything,
-                             (lang,status) <- anyOf (status lex)]
+  cs <- runDaison db ReadOnlyMode $ 
+          query (foldRows accumCounts Map.empty) $ 
+            [(drop 5 lang,status)
+                       | (_,lex) <- from lexemes everything,
+                         (lang,status) <- anyOf (status lex)]
   writeFile "build/status.svg" (renderStatus cs)
 
   closeDB db
@@ -155,7 +154,7 @@ insertExamples ps (ClassE name vs : es) = case ps of
                                                                                                        insertExamples ((name,id) : (name',id') : ps) es
                                                              | otherwise                         -> do insertExamples ps (ClassE name vs : es)
 insertExamples ps (FrameE   e fns : es) = do key <- case ps of
-                                                      (_,class_id):_ -> insert_ frames (Frame class_id e)
+                                                      (_,class_id):_ -> insert_ frames (Frame class_id (snd (last ps)) e)
                                                       _              -> fail "Frame without class"
                                              xs  <- insertExamples ps es
                                              return ([(fn,([],[key])) | fn <- fns] ++ xs)

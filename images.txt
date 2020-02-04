@@ -5826,7 +5826,8 @@ drought_2_N	37335;Drought;commons/e/e1/Drought.jpg
 drover_N	340405;Herder;commons/3/31/Maasai_man%2C_Eastern_Serengeti%2C_October_2006.jpg
 drown_3_V	219367;Drowning;commons/a/a5/Wassilij_Grigorjewitsch_Perow_002.jpg
 drown_5_V	219367;Drowning;commons/a/a5/Wassilij_Grigorjewitsch_Perow_002.jpg
-drug_N	180121;Medication;commons/6/65/12-08-18-tilidin-retard.jpg
+drug_1_N	9311172;Drug;commons/1/1d/Macro_cannabis_bud.jpg
+drug_2_N	9311172;Drug;commons/b/bf/Aspirine_macro_shot.jpg
 drugstore_N	4465295;Boticas;commons/3/31/Estrada_Boticas_-_Salto_%28239332559%29.jpg
 druid_N	33931676;Druid;commons/2/27/Two_Druids.PNG
 druidism_N	33544044;Druidry_(modern);commons/7/75/Druids_celebrating_at_Stonehenge_%281%29.png
@@ -9628,7 +9629,8 @@ jack_plane_N	1282933;Jack_plane;commons/9/96/Jack_Plane_No._5.jpg
 jackal_N	16188;Jackal;commons/3/37/Flickr_-_Rainbirder_-_Golden_Jackal_%281%29.jpg	1554274;Golden_jackal;commons/2/28/Jackal_in_evening_breeze_%28cropped%29.jpg
 jackboot_N	3587362;Jackboot;commons/6/60/JackbootsHouseholdCavalry.jpg
 jackdaw_N	22947407;Coloeus;commons/8/80/Corvus_monedula_01.JPG	212989;Western_jackdaw;commons/b/b1/Coloeus_monedula_-Ham_Common%2C_London_Borough_of_Richmond_upon_Thames%2C_England-8.jpg
-jacket_1_N	679878;Jacket;commons/3/3e/Jacket2-1.jpg
+jacket_1a_N	679878;Jacket;commons/3/3e/Jacket2-1.jpg
+jacket_1b_N	679878;Jacket;commons/8/8e/Bomber_jacket.jpg
 jacket_3_N	1340551;Crown_(dentistry);commons/4/4f/Frontzahnkronen_Unterkiefer_20100304_007.JPG
 jackfruit_1_N	335098;Jackfruit;commons/b/ba/Jackfruit_hanging.JPG
 jackfruit_2_N	335098;Jackfruit;commons/b/ba/Jackfruit_hanging.JPG

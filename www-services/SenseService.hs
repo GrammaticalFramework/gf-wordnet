@@ -229,7 +229,10 @@ cgiMain db (cs,funs) = do
           where
             s0 = reverse lex_id
             (rcat,'_':s1) = break (=='_') s0
-            (rn,rid) = break (not . isDigit) s1
+            (rn,rid) =
+              case break (=='_') s1 of
+                (s2,'_':s3) -> (takeWhile isDigit (dropWhile isAlpha s2),s3)
+                _           -> ("0",s1)
 
     mkSenseObj (sense_id,(gloss,lex_ids)) =
       makeObj [("sense_id",showJSON sense_id)

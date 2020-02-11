@@ -34,7 +34,6 @@ aberystwyth_PN	18950817;Aberystwyth;commons/2/22/Aberystwyth_shore.jpg
 abetalipoproteinemia_N	68451;Abetalipoproteinemia;commons/2/25/Abetalipoproteinemia_-_very_high_mag.jpg
 abingdon_PN	155482;Abingdon-on-Thames;commons/7/79/Blason_ville_uk_Abingdon_%28Oxfordshire%29.svg
 abiogenesis_N	19179706;Abiogenesis;commons/a/aa/Champagne_vent_white_smokers.jpg
-ablation_1_N	529953;Ablation;commons/f/f4/Ablation_of_quartz_glass_in_a_flashtube.jpg
 ablution_N	68554;Ablution_in_Christianity;commons/9/91/Washing_of_the_Feet_-_Capella_dei_Scrovegni_-_Padua_2016.jpg
 abode_2_N	6429146;Boningen;commons/2/20/Boningen_kapelo_Mariahilf_kaj_vilagha_grejnejo_171.JPG
 abolitionism_N	38894;Abolitionism;commons/8/80/Official_medallion_of_the_British_Anti-Slavery_Society_%281795%29.jpg
@@ -5956,6 +5955,7 @@ earthquake_2_N	10106;Earthquake;commons/d/db/Quake_epicenters_1963-98.png
 earthwork_N	9710517;Embankment_(transportation);commons/5/5f/Embankment_1_%28PSF%29.png	32540089;Terreplein;commons/b/b9/Casemate.png
 earthworm_N	379602;Lumbricidae;commons/3/30/Regenwurm1.jpg	19681430;Earthworm;commons/6/6a/Earthworm.JPG
 earwax_N	425379;Earwax;commons/f/f2/OhrenSchmalzBrocken.jpg
+cerumen_N	425379;Earwax;commons/f/f2/OhrenSchmalzBrocken.jpg
 earwig_N	675308;Forficula_auricularia;commons/5/54/F-auricularia_M_-_HngFBK20080915_A023.jpg	246275;Earwig;commons/3/34/Earwig_on_white_background.jpg
 easel_N	297438;Easel;commons/4/44/StateLibQld_1_102016_Interior_of_Brisbane_Technical_College_Signwriting_class%2C_ca._1900.jpg
 east_4_N	61028;East;commons/7/7d/Compass_Rose_English_East.svg

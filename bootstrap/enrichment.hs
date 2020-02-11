@@ -54,6 +54,7 @@ enrich conn transl lins = do
       xs <- query conn "select e.langvar,e.id,e.txt \
                        \from denotation d1 \
                        \join denotation d2 on d1.expr=? and d1.meaning=d2.meaning \
+                       \join meaning m on m.id=d1.meaning and m.source not in (364,469,609,975,1884,2594,2840,2841,3324,3326,3335,3340,3397,3419,3497,3933,4620,5608,5609,6524,6743,7048,3991)\
                        \join expr as e on e.id=d2.expr" (Only id) :: IO [(Int,Int,String)]
       return [(x,[id]) | x <- xs]
 
@@ -84,6 +85,7 @@ langvars =
   [("ParseBul",93)
   ,("ParseCat",101)
   ,("ParseChi",1627)
+  ,("ParseDut",512)
   ,("ParseEng",187)
   ,("ParseEst",190)
   ,("ParseFin",204)
@@ -92,9 +94,9 @@ langvars =
   ,("ParseSlv",649)
   ,("ParseSpa",666)
   ,("ParseSwe",691)
+  ,("ParseTha",712)
   ,("ParseTur",738)
   ]
-
 
 apply lang = do
   dict <- fmap (Map.fromList . concatMap (toPair lang . tsv) . lines) $ readFile "predictions.tsv"
@@ -113,9 +115,11 @@ annotate morphoMap dict l =
                       Just t  -> "lin "++id++" = "++prediction2gf "guessed" morphoMap dict id
                       Nothing -> l
     _                         -> l
+        
 
 tsv :: String -> [String]
 tsv "" = []
 tsv cs =
   let (x,cs1) = break (=='\t') cs
   in x : if null cs1 then [] else tsv (tail cs1)
+

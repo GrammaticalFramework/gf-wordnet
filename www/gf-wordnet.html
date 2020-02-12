@@ -6,7 +6,7 @@
 	</head>
 
 	<body style="height: 100%">
-		<table><tr>
+		<table style="table-layout:fixed"><tr>
 			<td>
 				<table id="from" class="multiselect">
 					<thead>
@@ -31,7 +31,10 @@
 				</table>
 			</td>
 			<td><input id="search" type="text" placeholder="Search for a word"></td>
-			<td><input id="button" type="button" value="Search" onclick="gfwordnet.search(getMultiSelection(element('from')), element('search').value, element('domains'), element('result'), domain_listener); element('search').value = ''"></td>
+			<td align="right">
+				<span id="expand_button" class="expand_button" onclick="expand(this)">&#x21F2;</span>
+			    <input id="search_button" type="button" value="Search" onclick="gfwordnet.search(getMultiSelection(element('from')), getSearchQuery(), element('domains'), element('result'), domain_listener); element('search').value = ''">
+			</td>
 		</tr></table>
 
 		<br>
@@ -70,7 +73,7 @@
 			element("search").addEventListener("keyup", function(event) {
 				event.preventDefault();
 				if (event.keyCode === 13) {
-					element("button").click();
+					element("search_button").click();
 				}
 			});
 			
@@ -115,6 +118,29 @@
 
 				gfwordnet.set_user(user,author,token,count,element('result'),commit);
 				commit.style.display = "inline";
+			}
+			
+			function expand(expand_button) {
+				var row = expand_button.parentNode.parentNode;
+				if (expand_button.innerHTML == "\u21F2") {
+					var textarea = node("div", {id: "text", contenteditable: true}, []);
+					textarea.style.minWidth = (row.clientWidth-10)+"px";
+					row.parentNode.appendChild(tr(node("td", {colspan: 3}, [textarea])));
+					expand_button.parentNode.previousElementSibling.firstElementChild.style.display="none";
+					expand_button.innerHTML = "\u21F1"
+				} else {
+					row.parentNode.removeChild(row.nextElementSibling);
+					expand_button.innerHTML = "\u21F2"
+					expand_button.parentNode.previousElementSibling.firstElementChild.style.display="block";
+				}
+			}
+			
+			function getSearchQuery() {
+				if (element('expand_button').innerHTML == "\u21F2") {
+					return element('search').value;
+				} else {
+					return element('text').innerHTML;
+				}
 			}
 		</script>
 	</body>

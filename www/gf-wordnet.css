@@ -257,3 +257,28 @@ span.restriction {
     font-variant: small-caps;
     font-weight: bold;
 }
+
+.expand_button {
+	position: absolute;
+	color: #aaa;
+	margin: 3px -20px 0;
+}
+
+.expand_button:hover {
+	color: black;
+	cursor: pointer; 
+}
+
+div[contentEditable=true] {
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    border: 1px solid gray;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    overflow: auto;
+    padding: 2px;
+    resize: both;
+	width:100%;
+	height: 100px;
+	background: white;
+}

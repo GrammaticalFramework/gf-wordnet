@@ -30,7 +30,7 @@
 					</tbody>
 				</table>
 			</td>
-			<td><input id="search" type="text" placeholder="Search for a word"></td>
+			<td><input id="search" type="text" placeholder="Search for a word" spellcheck="false"></td>
 			<td align="right">
 				<span id="expand_button" class="expand_button" onclick="expand(this)">&#x21F2;</span>
 			    <input id="search_button" type="button" value="Search" onclick="gfwordnet.search(getMultiSelection(element('from')), getSearchQuery(), element('domains'), element('result'), domain_listener); element('search').value = ''">
@@ -123,7 +123,7 @@
 			function expand(expand_button) {
 				var row = expand_button.parentNode.parentNode;
 				if (expand_button.innerHTML == "\u21F2") {
-					var textarea = node("div", {id: "text", contenteditable: true, placeholder: "Enter text to be tagged"}, []);
+					var textarea = node("div", {id: "text", contenteditable: true, placeholder: "Enter text to be tagged", spellcheck: false}, []);
 					textarea.addEventListener("paste", function(event) {
 						event.preventDefault();
             
@@ -149,7 +149,7 @@
 				if (element('expand_button').innerHTML == "\u21F2") {
 					return element('search').value;
 				} else {
-					return element('text').innerHTML;
+					return element('text');
 				}
 			}
 		</script>

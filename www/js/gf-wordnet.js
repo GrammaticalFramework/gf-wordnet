@@ -335,7 +335,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 	}
 
 	function errcont(text,code) { }
-	function extract_search(lemmas) {
+	function extract_morpho(lemmas) {
 		gfwordnet.lex_ids = Object.create(gfwordnet.selection.lex_ids);
 
 		var obj = {rows: gfwordnet.render_rows(result, selection, new_selection, lemmas), domains_map: {}};
@@ -349,6 +349,60 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 			gfwordnet.render_senses(this,selection,result,domains,senses);
 		}
 		gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,obj),errcont);
+	}
+	function extract_cohorts(cohorts) {
+		gfwordnet.lex_ids = Object.create(gfwordnet.selection.lex_ids);
+
+		function onclick_word(event) {
+			event.preventDefault();
+
+			var domains_thead = domains.getElementsByTagName("THEAD")[0];
+			clear(domains_thead);
+
+			var domains_tbody = domains.getElementsByTagName("TBODY")[0];
+			clear(domains_tbody);
+
+			var result_tbody = result.getElementsByTagName("TBODY")[0];
+			clear(result_tbody);
+
+			var domains_thead = domains.getElementsByTagName("THEAD")[0];
+			clear(domains_thead);
+
+			var domains_tbody = domains.getElementsByTagName("TBODY")[0];
+			clear(domains_tbody);
+
+			extract_morpho(cohorts[parseInt(event.target.getAttribute("data-index"))].morpho);
+			return false;
+		}
+
+		var last   = 0;
+		var s      = input.innerText; clear(input);
+		for (var i in cohorts) {
+			while (cohorts[i].start > last) {
+				var next = last;
+				while (s[next] != "\r" && s[next] != "\n" &&
+				       cohorts[i].start > next)
+					next++;
+				if (next > last) {
+					var chunk = s.substring(last,next);
+					input.appendChild(text(chunk));
+					last = next;
+				}
+				if (s[last] == '\n') {
+					input.appendChild(node("br",{},[]));
+					last++;
+				}
+				if (s[last] == "\r" && s[last+1] == "\n") {
+					input.appendChild(node("br",{},[]));
+					last += 2;
+				}
+			}
+			var chunk = s.substring(cohorts[i].start,cohorts[i].end);
+			var link  = node("a",{contenteditable: false, href: "#", "data-index": i},[text(chunk)]);
+			link.addEventListener("click", onclick_word);
+			input.appendChild(link);
+			last = cohorts[i].end;
+		}
 	}
 	function extract_domains(senses) {
 		var lemmas = [];
@@ -364,7 +418,8 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		gfwordnet.render_senses(obj,selection,result,domains,senses);
 	}
 
-	var new_selection = this.selection == null || !selection.isEqual(this.selection);
+	var new_selection = this.selection == null || !selection.isEqual(this.selection) ||
+	                    typeof input !== 'string';
 	this.selection = { langs_list: selection.langs_list
 		             , langs:      selection.langs
 		             , lex_ids:    this.selection==null ? {} : this.selection.lex_ids
@@ -385,8 +440,16 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 				           "domain=" + encodeURIComponent(domain);
 		}
 		gfwordnet.sense_call("?"+domain_query,extract_domains,errcont);
+	} else if (typeof input === 'string') {
+		gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+selection.current,extract_morpho,errcont);
 	} else {
-		gfwordnet.grammar_call("?command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+selection.current,extract_search,errcont);
+		var result_thead = result.getElementsByTagName("THEAD")[0];
+		clear(result_thead);
+
+		var result_tbody = result.getElementsByTagName("TBODY")[0];
+		clear(result_tbody);
+
+		gfwordnet.grammar_call("?command=c-lookupcohorts&longest=true&input="+encodeURIComponent(input.innerText)+"&from="+selection.current,extract_cohorts,errcont);
 	}
 
 	if (new_selection) {

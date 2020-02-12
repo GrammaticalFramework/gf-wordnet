@@ -123,7 +123,7 @@
 			function expand(expand_button) {
 				var row = expand_button.parentNode.parentNode;
 				if (expand_button.innerHTML == "\u21F2") {
-					var textarea = node("div", {id: "text", contenteditable: true}, []);
+					var textarea = node("div", {id: "text", contenteditable: true, placeholder: "Enter text to be tagged"}, []);
 					textarea.style.minWidth = (row.clientWidth-10)+"px";
 					row.parentNode.appendChild(tr(node("td", {colspan: 3}, [textarea])));
 					expand_button.parentNode.previousElementSibling.firstElementChild.style.display="none";

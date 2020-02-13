@@ -198,26 +198,27 @@ cgiMain db (cs,funs) = do
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
-    getGloss senses (_,Lexeme lex_id status (Just sense_id) domains images ex_ids _) = do
+    getGloss senses (_,Lexeme lex_id status mb_sense_id domains images ex_ids _) = do
       examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
       sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
 
-      case Map.lookup sense_id senses of
-        Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
-        Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
-                                   lex_ids <- select [(lex_id,status,frame_inf,Nothing)
-                                                          | (_,Lexeme lex_id status _ _ _ _ fs) <- fromIndex lexemes_synset (at sense_id),
-                                                            frame_inf <- select [(name cls,base_class_id f,frame_id)
-                                                                                      | frame_id <- anyOf fs
-                                                                                      , f <- from frames (at frame_id)
-                                                                                      , cls <- from classes (at (base_class_id f))]]
-                                   return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
+      case mb_sense_id of
+        Just sense_id -> 
+          case Map.lookup sense_id senses of
+            Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
+            Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
+                                       lex_ids <- select [(lex_id,status,frame_inf,Nothing)
+                                                              | (_,Lexeme lex_id status _ _ _ _ fs) <- fromIndex lexemes_synset (at sense_id),
+                                                                frame_inf <- select [(name cls,base_class_id f,frame_id)
+                                                                                          | frame_id <- anyOf fs
+                                                                                          , f <- from frames (at frame_id)
+                                                                                          , cls <- from classes (at (base_class_id f))]]
+                                       return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
+        Nothing -> return (Map.insert (fromIntegral (5000000+Map.size senses)) ("",[(lex_id,status,[],Just (domains,images,examples,sexamples))]) senses)
       where
         addInfo lex_id info lex_ids = 
           [(lex_id',status,frames,if lex_id == lex_id' then Just info else mb_info)
               | (lex_id',status,frames,mb_info) <- lex_ids]
-
-    getGloss senses _ = return senses
 
     sortSenses = map snd . sortOn fst . map addKey
       where
@@ -258,7 +259,7 @@ cgiMain db (cs,funs) = do
 
     mkStatusObj status =
       makeObj [(lang,showJSON (map toLower (show s))) | (lang,s) <- status]
-      
+
     mkClassObj cls frames subclasses =
       makeObj [("name",       showJSON (name cls))
               ,("vars",       showJSON (vars cls))

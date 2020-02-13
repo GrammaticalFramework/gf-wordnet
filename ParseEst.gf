@@ -15,7 +15,8 @@ concrete ParseEst of Parse =
   DocumentationEst
   ** {
 
--- INJECT
+flags
+  case_sensitive = off;
 
 } ;
 

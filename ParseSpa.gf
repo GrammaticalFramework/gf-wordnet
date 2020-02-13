@@ -18,6 +18,7 @@ concrete ParseSpa of Parse =
   DocumentationSpa
   ** {
 
--- INJECT
+flags
+  case_sensitive = off;
 
 } ;

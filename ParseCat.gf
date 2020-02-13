@@ -17,6 +17,7 @@ concrete ParseCat of Parse =
   DocumentationCat
   ** {
 
--- INJECT
+flags
+  case_sensitive = off;
 
 } ;

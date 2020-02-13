@@ -15,10 +15,8 @@ abstract Parse =
   WordNet,
   Documentation ** {
   
-  flags
-    startcat = Phr ;
-
--- INJECT
+flags
+  startcat = Phr ;
 
 }
 

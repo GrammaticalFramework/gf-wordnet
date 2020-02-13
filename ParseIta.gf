@@ -17,6 +17,7 @@ concrete ParseIta of Parse =
   DocumentationIta
   ** {
 
--- INJECT
+flags
+  case_sensitive = off;
 
 } ;

@@ -15,4 +15,7 @@ concrete ParseDut of Parse =
   ConstructionDut,
   DocumentationDut ** {
 
+flags
+  case_sensitive = off;
+
 } ;

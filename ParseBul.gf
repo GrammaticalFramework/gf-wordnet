@@ -17,5 +17,7 @@ concrete ParseBul of Parse =
   DocumentationBul
   ** {
 
+flags
+  case_sensitive = off;
 
 } ;

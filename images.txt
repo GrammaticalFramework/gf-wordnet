@@ -20191,7 +20191,7 @@ uvula_N	168738;Palatine_uvula;commons/a/a2/LuettePalatineUvula.svg
 uxorious_A	163320;Maccabees;commons/d/d4/Maccabean_dynasty.PNG
 vaala_PN	510010;Vaala;commons/4/49/Vaalankurkku_railway_bridge.jpg
 vaasa_PN	33652818;Vaasa;commons/2/22/Vaasa_Trinity_Church.jpg
-vacation_1_N	509409;Vacation;commons/6/6f/Joss_Bay%2C_Broadstairs%2C_England_-_Aug_2008.jpg
+vacation_1a_N	509409;Vacation;commons/6/6f/Joss_Bay%2C_Broadstairs%2C_England_-_Aug_2008.jpg
 vaccination_1_N	32473;Vaccination;commons/2/2e/Vaccination-polio-india.jpg
 vaccine_1_N	32653;Vaccine;commons/c/ca/SalkatPitt.jpg
 vaccinia_1_N	339633;Vaccinia;commons/8/8c/Vaccinia_virus_PHIL_2143_lores.jpg
@@ -21402,3 +21402,5 @@ brahman_4_N	484727;Brahman_cattle;commons/3/3e/Brahman_%28EMAPA%29_110307_REFON_
 brahmin_4_N	484727;Brahman_cattle;commons/3/3e/Brahman_%28EMAPA%29_110307_REFON_2.jpg
 annulet_2_N	3720388;Annulet_(architecture);commons/2/2b/Hammond-Harwood_House_volutes_HABS_MD%2C2-ANNA%2C18-26.jpg
 circus_4_N	4132677;Circus_(building);commons/9/97/RomaCircoMassimoDaNord1.JPG
+blue_5_N	3140268;Bluing_(fabric);https://upload.wikimedia.org/wikipedia/commons/b/b8/M0354_1951-77-038_2.jpg
+bluing_1_N	3140268;Bluing_(fabric);https://upload.wikimedia.org/wikipedia/commons/b/b8/M0354_1951-77-038_2.jpg

@@ -14,7 +14,8 @@ concrete ParseSlv of Parse =
   DocumentationSlv
   ** {
 
--- INJECT
+flags
+  case_sensitive = off;
 
 } ;
 

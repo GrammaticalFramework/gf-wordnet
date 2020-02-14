@@ -17,6 +17,4 @@ concrete ParseChi of Parse =
   DocumentationChi
   ** {
 
--- INJECT
-
 } ;

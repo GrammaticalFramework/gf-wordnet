@@ -16,6 +16,9 @@ concrete ParseEng of Parse =
   ConstructionEng,
   DocumentationEng ** open ResEng, ExtraEng, Prelude in {
 
+flags
+  case_sensitive = off;
+
 lin
   PPos = {s = [] ; p = CPos} ;
   PNeg = {s = [] ; p = CNeg (variants {True; False})} ; -- contracted: don't

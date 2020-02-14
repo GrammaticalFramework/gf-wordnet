@@ -449,7 +449,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		var result_tbody = result.getElementsByTagName("TBODY")[0];
 		clear(result_tbody);
 
-		gfwordnet.grammar_call("?command=c-lookupcohorts&longest=true&input="+encodeURIComponent(input.innerText)+"&from="+selection.current,extract_cohorts,errcont);
+		ajax_http_post(gfwordnet.grammar_url,"command=c-lookupcohorts&longest=true&from="+selection.current+"&input="+encodeURIComponent(input.innerText), with_json(extract_cohorts,errcont), errcont);
 	}
 
 	if (new_selection) {

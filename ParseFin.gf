@@ -17,6 +17,7 @@ concrete ParseFin of Parse =
   DocumentationFin
   ** {
 
--- INJECT
+flags
+  case_sensitive = off;
 
 } ;

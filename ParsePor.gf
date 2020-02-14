@@ -16,8 +16,9 @@ concrete ParsePor of Parse =
   WordNetPor,
   ConstructionPor,
   DocumentationPor
-  ** open MorphoPor, ResPor, ParadigmsPor, IrregPor, (E = ExtendPor), (G = GrammarPor), (C = ConstructX), SentencePor, ExtraPor, Prelude in {
+  ** {
 
--- INJECT
+flags
+  case_sensitive = off;
 
 } ;

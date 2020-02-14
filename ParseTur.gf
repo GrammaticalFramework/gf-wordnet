@@ -14,7 +14,8 @@ concrete ParseTur of Parse =
   WordNetTur,
   DocumentationTur ** {
 
--- INJECT
+flags
+  case_sensitive = off;
 
 } ;
 

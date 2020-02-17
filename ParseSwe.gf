@@ -1,7 +1,7 @@
 --# -path=.:../scandinavian:../abstract:../common:../api
 concrete ParseSwe of Parse =
   NounSwe - [PPartNP, UseN2, RelNP, DetNP],
-  VerbSwe - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP],
+  VerbSwe - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP, UseCopula],
   AdjectiveSwe - [ReflA2, CAdvAP],
   AdverbSwe - [ComparAdvAdj, ComparAdvAdjS, AdnCAdv],
   SentenceSwe - [EmbedVP],

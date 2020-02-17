@@ -1,7 +1,7 @@
 --# -path=.:../abstract:../common:../api
 concrete ParseChi of Parse =
   NounChi - [PPartNP, UseN2, RelNP, DetNP], --*
-  VerbChi - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP], --*
+  VerbChi - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula], --*
   AdjectiveChi - [ReflA2,CAdvAP],
   AdverbChi - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceChi - [EmbedVP],

@@ -346,7 +346,6 @@ lin StrandRelSlash rp clslash = mkTerm "StrandRelSlash" rp clslash;
 lin TimeNP np = mkTerm "TimeNP" np;
 lin UseACard acard = mkTerm "UseACard" acard;
 lin UseAdAACard ada acard = mkTerm "UseAdAACard" ada acard;
-lin UseCopula = mkTerm "UseCopula";
 lin UseDAP dap = mkTerm "UseDAP" dap;
 lin UseDAPFem dap = mkTerm "UseDAPFem" dap;
 lin UseDAPMasc dap = mkTerm "UseDAPMasc" dap;

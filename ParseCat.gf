@@ -1,7 +1,7 @@
 --# -path=.:../abstract:../common:../api
 concrete ParseCat of Parse =
   NounCat - [PPartNP, UseN2, RelNP, DetNP],
-  VerbCat - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP],
+  VerbCat - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
   AdjectiveCat - [ReflA2,CAdvAP],
   AdverbCat - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceCat - [EmbedVP],

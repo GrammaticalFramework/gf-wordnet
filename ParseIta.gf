@@ -1,7 +1,7 @@
 --# -path=.:../abstract:../common:../api
 concrete ParseIta of Parse =
   NounIta - [PPartNP, UseN2, RelNP, DetNP],
-  VerbIta - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP],
+  VerbIta - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
   AdjectiveIta - [ReflA2,CAdvAP],
   AdverbIta - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceIta - [EmbedVP],

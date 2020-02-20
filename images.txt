@@ -21402,5 +21402,7 @@ brahman_4_N	484727;Brahman_cattle;commons/3/3e/Brahman_%28EMAPA%29_110307_REFON_
 brahmin_4_N	484727;Brahman_cattle;commons/3/3e/Brahman_%28EMAPA%29_110307_REFON_2.jpg
 annulet_2_N	3720388;Annulet_(architecture);commons/2/2b/Hammond-Harwood_House_volutes_HABS_MD%2C2-ANNA%2C18-26.jpg
 circus_4_N	4132677;Circus_(building);commons/9/97/RomaCircoMassimoDaNord1.JPG
-blue_5_N	3140268;Bluing_(fabric);https://upload.wikimedia.org/wikipedia/commons/b/b8/M0354_1951-77-038_2.jpg
-bluing_1_N	3140268;Bluing_(fabric);https://upload.wikimedia.org/wikipedia/commons/b/b8/M0354_1951-77-038_2.jpg
+blue_5_N	3140268;Bluing_(fabric);commons/b/b8/M0354_1951-77-038_2.jpg
+bluing_1_N	3140268;Bluing_(fabric);commons/b/b8/M0354_1951-77-038_2.jpg
+diode_2_N	8254;Diode;commons/d/d5/Diode-closeup.jpg
+brace_6_N	701780;Suspenders;commons/a/a4/Josh_Wilson_005.JPG

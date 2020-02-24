@@ -684,11 +684,11 @@ gfwordnet.onclick_cell = function (cell) {
 				for (var i in gfwordnet.selection.langs_list) {
 					var lang = gfwordnet.selection.langs_list[i];
 					var cell = td([]);
+					if (gfwordnet.user != null)
+						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 					if (lang in lex_def.synonyms[synonym].status) {
 						if (lex_def.synonyms[synonym].status[lang] != "checked") {
 							cell.classList.add(lex_def.synonyms[synonym].status[lang]);
-							if (gfwordnet.user != null)
-								cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
 							checked = false;
 						}
 					} else {

@@ -666,41 +666,79 @@ gfwordnet.onclick_cell = function (cell) {
 			}
 		}
 
-		var row = [];
-		if (Object.keys(lex_def.synonyms).length > 1) {
+		var frames        = lex_def.frames;
+		var synonyms_list = Object.keys(lex_def.synonyms);
+		if (synonyms_list.length > 1) {
 			details.appendChild(node("h1",{},[text("Synonyms")]));
+
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
 			for (var lang in gfwordnet.selection.langs_list) {
 				row.push(th(text(gfwordnet.selection.langs[gfwordnet.selection.langs_list[lang]].name)));
 			}
 			result.appendChild(tr(row));
-			for (var synonym in lex_def.synonyms) {
-				if (synonym == lex_id)
-					continue;
 
-				var row = []
-				var checked = true;
-				for (var i in gfwordnet.selection.langs_list) {
-					var lang = gfwordnet.selection.langs_list[i];
-					var cell = td([]);
-					if (gfwordnet.user != null)
-						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
-					if (lang in lex_def.synonyms[synonym].status) {
-						if (lex_def.synonyms[synonym].status[lang] != "checked") {
-							cell.classList.add(lex_def.synonyms[synonym].status[lang]);
+			var pos = 0;
+			for (;;) {
+				if (pos > 0 || frames.length > 0) {
+					var item  = node("td",{colspan: 1 + gfwordnet.selection.langs_list.length},[]);
+					var comma = false;
+					for (var i = 0; i < frames.length; i++) {
+						if (comma) {
+							item.appendChild(text(", "));
+						}
+						item.appendChild(node("a",{href: "gf-verbnet.html?class_id="+frames[i][1]+"#frame-"+frames[i][2], target: "verbnet"},[text(frames[i][0]+"/"+frames[i][2])]));
+						comma = true;
+					}
+					result.appendChild(tr(item));
+				}
+
+				var k = 0;
+				while (k < synonyms_list.length) {
+					var synonym = synonyms_list[k];
+					if (synonym == lex_id) {
+						synonyms_list.splice(k, 1);
+						continue;
+					}
+					if (JSON.stringify(lex_def.synonyms[synonym].frames) != JSON.stringify(frames)) {
+						k++;
+						continue;
+					}
+
+					var row = []
+					var checked = true;
+					for (var i in gfwordnet.selection.langs_list) {
+						var lang = gfwordnet.selection.langs_list[i];
+						var cell = td([]);
+						if (gfwordnet.user != null)
+							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+						if (lang in lex_def.synonyms[synonym].status) {
+							if (lex_def.synonyms[synonym].status[lang] != "checked") {
+								cell.classList.add(lex_def.synonyms[synonym].status[lang]);
+								checked = false;
+							}
+						} else {
 							checked = false;
 						}
-					} else {
-						checked = false;
+						row.push(cell);
 					}
-					row.push(cell);
-				}
-				row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(synonym)]));
+					row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(synonym)]));
 
-				gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row),errcont);
-				result.appendChild(node("tr",{"data-lex-id": synonym},row));
+					gfwordnet.grammar_call("?command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row),errcont);
+
+					result.appendChild(node("tr",{"data-lex-id": synonym},row));
+
+					synonyms_list.splice(k, 1);
+				}
+
+				if (synonyms_list.length > 0) {
+					frames = lex_def.synonyms[synonyms_list[0]].frames;
+					pos++;
+				} else {
+					break;
+				}
 			}
+
 			details.appendChild(result);
 		}
 		if (lex_def.domains.length > 0) {
@@ -1344,11 +1382,13 @@ gfwordnet.populate_classes = function (classes, class_div, class_listener) {
 	gfwordnet.sense_call("?list_top_classes",bind(extract_classes),errcont);
 }
 
-gfwordnet.render_class = function (selection, classes, class_div, id, class_listener) {
+gfwordnet.render_class = function (selection, classes, class_div, id, class_listener, sel_frame) {
 	this.selection = { langs_list: selection.langs_list
 		             , langs:      selection.langs
 		             , lex_ids:    this.selection==null ? {} : this.selection.lex_ids
 		             };
+
+	var count = 0;
 
 	function errcont(text,code) { }
 	function render_pattern(vars,pattern) {
@@ -1420,11 +1460,21 @@ gfwordnet.render_class = function (selection, classes, class_div, id, class_list
 				      };
 			var helper = function (senses) {
 				gfwordnet.render_senses(this,selection,this.result,null,senses);
+
+				count--;
+				if (count == 0) {
+					if (sel_frame != null) {
+						var frame = element(sel_frame);
+						if (frame != null)
+							frame.scrollIntoView();
+					}
+				}
 			}
 
+			count++;
 			gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,ctx),errcont);
 
-			rows.push(li([span_class("pattern",render_pattern(all_vars,frame.pattern)),node("div",{style: "padding: 10px"},[result])]));
+			rows.push(node("li",{id:"frame-"+frame.id},[text(cls.name+"/"+frame.id+": "),span_class("pattern",render_pattern(all_vars,frame.pattern)),node("div",{style: "padding: 10px"},[result])]));
 		}
 		class_div.appendChild(node("ul",{},rows));
 

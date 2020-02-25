@@ -194,7 +194,7 @@ cgiMain db (cs,funs) = do
              ]
 
         getFrames class_id =
-          [(pattern frm,map (lex_fun . snd) lexemes)
+          [(id,pattern frm,map (lex_fun . snd) lexemes)
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
@@ -267,8 +267,9 @@ cgiMain db (cs,funs) = do
               ,("subclasses", showJSON subclasses)
               ]
 
-    mkFrameObj (pattern,funs) =
-      makeObj [("pattern", showJSON (showExpr [] pattern)),
+    mkFrameObj (id,pattern,funs) =
+      makeObj [("id",      showJSON id),
+               ("pattern", showJSON (showExpr [] pattern)),
                ("fun",     showJSON funs)
               ]
 

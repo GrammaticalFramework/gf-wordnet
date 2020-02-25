@@ -49,7 +49,7 @@ main = do
     createTable examples
     createTable classes
     createTable frames
-    ex_keys <- let combine (xs1,ys1) (xs2,ys2) = (xs1++xs2,ys1++ys2)
+    ex_keys <- let combine (xs1,ys1) (xs2,ys2) = (xs2++xs1,ys2++ys1)
                in fmap (Map.fromListWith combine) $ insertExamples [] fn_examples
 
     createTable synsets

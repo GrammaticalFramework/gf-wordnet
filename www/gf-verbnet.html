@@ -51,9 +51,15 @@
 				gfwordnet.populate_classes(element('classes'), element("class_div"), class_listener);
 			}
 			var class_listener = function(id) {
-				gfwordnet.render_class(getMultiSelection(element('from')), element('classes'), element("class_div"),id,close_class);
+				gfwordnet.render_class(getMultiSelection(element('from')), element('classes'), element("class_div"),id,close_class,null);
 			};
-			close_class();
+			var urlParams = new URLSearchParams(window.location.search);
+			var class_id = urlParams.get('class_id');
+			if (class_id == null)
+				close_class();
+			else {
+				gfwordnet.render_class(getMultiSelection(element('from')), element('classes'), element("class_div"),class_id,close_class,window.location.hash.substring(1));
+			}
 		</script>
 	</body>
 </html>

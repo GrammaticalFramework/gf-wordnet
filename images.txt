@@ -921,7 +921,7 @@ armilla_1_N	174410;Armillary_sphere;commons/e/e4/Armillary_sphere_with_astronomi
 armistice_N	61111;Armistice;commons/8/8a/Westfaelischer_Friede_in_Muenster_%28Gerard_Terborch_1648%29.jpg
 armlet_N	1446987;Armband;commons/4/45/20090905_Kevin_Grady.jpg
 armorial_A	2943150;Roll_of_arms;commons/1/1b/Hyghalmen_Roll_Late_1400s.jpg
-armour_2_N	1334113;Body_armor;commons/6/62/US_Navy_100714-M-6044V-029_Marine_Corps_Sgt._Krystal_L._Marshall%2C_left%2C_communications_detachment_maintenance_chief%2C_and_1st_Lt._Briana_Carter%2C_assistant_operations_officer_of_Combat_Logistics_Battalion_15.jpg
+armour_2_N	1334113;Body_armor;commons/6/62/US_Navy_100714-M-6044V-029_Marine_Corps_Sgt._Krystal_L._Marshall%2C_left%2C_communications_detachment_maintenance_chief%2C_and_1st_Lt._Briana_Carter%2C_assistant_operations_officer_of_Combat_Logistics_Battalion_15.jpg	1334113;Body_armor;commons/3/3c/Japanese_warrior_in_armor._%2810797305704%29.jpg	1334113;Body_armor;commons/e/e0/Mycenaean_armour_1400BC.jpg
 armourer_1_N	5409406;Bladesmith;commons/a/a6/Landauer_I_048_v.jpg
 armpit_N	767600;Axilla;commons/4/41/Arm_pit_%E2%80%93_Juno.jpg
 armrest_N	6235793;Armrest;commons/2/24/Adrien_karbowsky%2C_poltrona%2C_parigi_1912-13_ca.JPG

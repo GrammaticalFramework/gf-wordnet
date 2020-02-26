@@ -21406,3 +21406,5 @@ blue_5_N	3140268;Bluing_(fabric);commons/b/b8/M0354_1951-77-038_2.jpg
 bluing_1_N	3140268;Bluing_(fabric);commons/b/b8/M0354_1951-77-038_2.jpg
 diode_2_N	8254;Diode;commons/d/d5/Diode-closeup.jpg
 brace_6_N	701780;Suspenders;commons/a/a4/Josh_Wilson_005.JPG
+sweeper_2_N	3264897;Carpet_sweeper;commons/4/41/Carpet_sweeper.png
+carpet_sweeper_N	3264897;Carpet_sweeper;commons/4/41/Carpet_sweeper.png

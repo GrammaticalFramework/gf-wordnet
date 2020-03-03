@@ -687,7 +687,11 @@ gfwordnet.onclick_cell = function (cell) {
 						if (comma) {
 							item.appendChild(text(", "));
 						}
-						item.appendChild(node("a",{href: "gf-verbnet.html?class_id="+frames[i][1]+"#frame-"+frames[i][2], target: "verbnet"},[text(frames[i][0]+"/"+frames[i][2])]));
+						item.appendChild(node("a",{href: "gf-verbnet.html?class_id="+frames[i][1]+"#frame-"+frames[i][2].id,
+						                           class: "frame-link",
+							                       target: "verbnet"}
+							                     ,[text(frames[i][0]+"/"+frames[i][2].id)
+							                      ,gfwordnet.render_frame([],frames[i][2],"tooltiptext")]));
 						comma = true;
 					}
 					result.appendChild(tr(item));
@@ -1391,37 +1395,6 @@ gfwordnet.render_class = function (selection, classes, class_div, id, class_list
 	var count = 0;
 
 	function errcont(text,code) { }
-	function render_pattern(vars,pattern) {
-		var indices = [];
-		for (var i = 0; i < vars.length; i++) {
-			indices.push({index: pattern.indexOf(vars[i][0]), v: vars[i][0]});
-		}
-		function compare(a, b) {
-			return (a.index - b.index)
-		}
-		indices.sort(compare);
-
-		var row   = []
-		var start = 0;
-		for (var i = 0; i < indices.length; i++) {
-			var index = indices[i].index;
-			if (index < 0)
-				continue;
-
-			var chunk = pattern.substring(start,index);
-			if (chunk.length > 0)
-				row.push(text(chunk));
-			row.push(span_class("role",text(indices[i].v)));
-
-			start = index + indices[i].v.length;
-		}
-
-		var chunk = pattern.substring(start);
-		if (chunk.length > 0)
-			row.push(text(chunk));
-
-		return row;
-	}
 	function render(cls,all_vars) {
 		if (cls.vars.length > 0) {
 			class_div.appendChild(node("h2",{},[text("Roles")]));
@@ -1474,9 +1447,12 @@ gfwordnet.render_class = function (selection, classes, class_div, id, class_list
 			count++;
 			gfwordnet.sense_call("?lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,ctx),errcont);
 
-			rows.push(node("li",{id:"frame-"+frame.id},[text(cls.name+"/"+frame.id+": "),span_class("pattern",render_pattern(all_vars,frame.pattern)),node("div",{style: "padding: 10px"},[result])]));
+			rows.push(node("li",{id:"frame-"+frame.id,value: frame.id},
+			                    [gfwordnet.render_frame(all_vars,frame)
+			                    ,node("div",{style: "padding: 10px"},[result])
+			                    ]));
 		}
-		class_div.appendChild(node("ul",{},rows));
+		class_div.appendChild(node("ol",{},rows));
 
 		for (var i in cls.subclasses) {
 			var subclass = cls.subclasses[i];
@@ -1500,4 +1476,45 @@ gfwordnet.render_class = function (selection, classes, class_div, id, class_list
 		render(cls[0],[["Verb"]].concat(cls[0].vars));
 	}
 	gfwordnet.sense_call("?class_id="+id,bind(extract_class),errcont);
+}
+
+gfwordnet.render_frame = function(all_vars,frame,style) {
+	function render_pattern(vars,pattern) {
+		var indices = [];
+		for (var i = 0; i < vars.length; i++) {
+			indices.push({index: pattern.indexOf(vars[i][0]), v: vars[i][0]});
+		}
+		function compare(a, b) {
+			return (a.index - b.index)
+		}
+		indices.sort(compare);
+
+		var row   = []
+		var start = 0;
+		for (var i = 0; i < indices.length; i++) {
+			var index = indices[i].index;
+			if (index < 0)
+				continue;
+
+			var chunk = pattern.substring(start,index);
+			if (chunk.length > 0)
+				row.push(text(chunk));
+			row.push(span_class("role",text(indices[i].v)));
+
+			start = index + indices[i].v.length;
+		}
+
+		var chunk = pattern.substring(start);
+		if (chunk.length > 0)
+			row.push(text(chunk));
+
+		return row;
+	}
+
+	var bold = {style: "font-weight: bold"};
+	var info = node("table",{class: style},
+					 [tr([node("td",bold,[text("syntax:")]),td(span_class("pattern",render_pattern(all_vars,frame.pattern)))])
+					 ,tr([node("td",bold,[text("semantics:")]),td(text(frame.semantics))])
+					 ])
+	return info;
 }

@@ -56,6 +56,7 @@ data Frame
       { class_id      :: Key Class
       , base_class_id :: Key Class
       , pattern       :: Expr
+      , semantics     :: String
       }
    deriving (Data,Show)
 

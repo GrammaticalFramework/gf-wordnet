@@ -287,3 +287,34 @@ div[contenteditable]:empty::before {
     content: attr(placeholder);
     color: #555; 
 }
+
+.frame-link {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.frame-link .tooltiptext {
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  padding: 5px 0;
+  border-radius: 6px;
+  border: 2px solid #cccccc;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+table.tooltiptext td {
+  background-color: white;
+  white-space: nowrap;
+  border: none;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.frame-link:hover .tooltiptext {
+  visibility: visible;
+}

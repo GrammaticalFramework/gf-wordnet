@@ -121,7 +121,7 @@ parseCncSyn lang l =
 
 data Entry
   = ClassE String [(String,[String])]
-  | FrameE   Expr [Fun]
+  | FrameE   Expr String [Fun]
   | ExampleE Expr [Fun]
 
 parseExamples []                            = []
@@ -132,10 +132,10 @@ parseExamples (l1:l2:l3:l4:l5:l6:ls)
       in case readExpr (drop 5 l1) of
            Just e  -> ExampleE e fns : parseExamples ls
            Nothing -> trace ("FAILED: "++l1) (parseExamples ls)
-parseExamples (l1:l2:ls)
-  | take 4 l1 == "frm:" && take 4 l2 == "key:" =
+parseExamples (l1:l2:l3:ls)
+  | take 4 l1 == "frm:" && take 4 l2 == "sem:" && take 4 l3 == "key:" =
       case readExpr (drop 5 l1) of
-        Just e  -> FrameE e (words (drop 5 l2)) : parseExamples ls
+        Just e  -> FrameE e (drop 5 l2) (words (drop 5 l2)) : parseExamples ls
         Nothing -> trace ("FAILED: "++l1) (parseExamples ls)
 parseExamples (l1:ls)
   | take 6 l1 == "class:"                      =
@@ -153,8 +153,8 @@ insertExamples ps (ClassE name vs : es) = case ps of
                                             ((name',id'):ps) | take (length name') name == name' -> do id <- insert_ classes (Class name vs (Just id'))
                                                                                                        insertExamples ((name,id) : (name',id') : ps) es
                                                              | otherwise                         -> do insertExamples ps (ClassE name vs : es)
-insertExamples ps (FrameE   e fns : es) = do key <- case ps of
-                                                      (_,class_id):_ -> insert_ frames (Frame class_id (snd (last ps)) e)
+insertExamples ps (FrameE e sem fns : es)=do key <- case ps of
+                                                      (_,class_id):_ -> insert_ frames (Frame class_id (snd (last ps)) e sem)
                                                       _              -> fail "Frame without class"
                                              xs  <- insertExamples ps es
                                              return ([(fn,([],[key])) | fn <- fns] ++ xs)

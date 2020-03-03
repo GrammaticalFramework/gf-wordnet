@@ -148,11 +148,11 @@ cgiMain db (cs,funs) = do
                                                    | (_,Lexeme lex_fun status _ domains images ex_ids fs) <- fromIndex lexemes_synset (at synset_id),
                                                      examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
                                                      sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_fun), not (elem id ex_ids)],
-                                                     frame_inf <- select [(name cls,base_class_id f,frame_id)
+                                                     frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                             | frame_id <- anyOf fs
                                                                             , f <- from frames (at frame_id)
                                                                             , cls <- from classes (at (base_class_id f))]
-                                                     ]]
+                                                   ]]
 
       return (showJSON (map mkSenseObj fs))
 
@@ -194,7 +194,7 @@ cgiMain db (cs,funs) = do
              ]
 
         getFrames class_id =
-          [(id,pattern frm,map (lex_fun . snd) lexemes)
+          [(id,pattern frm,semantics frm,Just (map (lex_fun . snd) lexemes))
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
@@ -209,7 +209,7 @@ cgiMain db (cs,funs) = do
             Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
                                        lex_ids <- select [(lex_id,status,frame_inf,Nothing)
                                                               | (_,Lexeme lex_id status _ _ _ _ fs) <- fromIndex lexemes_synset (at sense_id),
-                                                                frame_inf <- select [(name cls,base_class_id f,frame_id)
+                                                                frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                                           | frame_id <- anyOf fs
                                                                                           , f <- from frames (at frame_id)
                                                                                           , cls <- from classes (at (base_class_id f))]]
@@ -246,7 +246,7 @@ cgiMain db (cs,funs) = do
 
     mkInfObj status frames info =
       makeObj (("status", mkStatusObj status) :
-               ("frames", showJSON frames) :
+               ("frames", showJSON [(cid,bcid,mkFrameObj frame) | (cid,bcid,frame) <- zip [1..] frames]) :
                case info of
                  Nothing -> []
                  Just (domains,images,examples,sexamples) -> [
@@ -267,11 +267,14 @@ cgiMain db (cs,funs) = do
               ,("subclasses", showJSON subclasses)
               ]
 
-    mkFrameObj (id,pattern,funs) =
-      makeObj [("id",      showJSON id),
-               ("pattern", showJSON (showExpr [] pattern)),
-               ("fun",     showJSON funs)
-              ]
+    mkFrameObj (id,pattern,semantics,mb_funs) =
+      makeObj (("id",        showJSON id) :
+               ("pattern",   showJSON (showExpr [] pattern)) :
+               ("semantics", showJSON semantics) :
+               case mb_funs of
+                 Nothing -> []
+                 Just funs -> [("fun", showJSON (funs :: [String]))]
+              )
 
 findLCA :: (Monad m, Ord a) => (a -> m [a]) -> [a] -> m [a]
 findLCA up xs = alternate [([x],[]) | x <- xs] [] [] Map.empty

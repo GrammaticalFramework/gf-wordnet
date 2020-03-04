@@ -135,7 +135,7 @@ parseExamples (l1:l2:l3:l4:l5:l6:ls)
 parseExamples (l1:l2:l3:ls)
   | take 4 l1 == "frm:" && take 4 l2 == "sem:" && take 4 l3 == "key:" =
       case readExpr (drop 5 l1) of
-        Just e  -> FrameE e (drop 5 l2) (words (drop 5 l2)) : parseExamples ls
+        Just e  -> FrameE e (drop 5 l2) (words (drop 5 l3)) : parseExamples ls
         Nothing -> trace ("FAILED: "++l1) (parseExamples ls)
 parseExamples (l1:ls)
   | take 6 l1 == "class:"                      =

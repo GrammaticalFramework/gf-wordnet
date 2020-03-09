@@ -182,6 +182,7 @@
 						var re = new RegExp(lex_id, 'g');
 						element("example").value =
 							element("example").value.replace(re,new_lex_id);
+						on_linearize();
 					}
 
 					var word = lex_id.substring(0,index);

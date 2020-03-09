@@ -246,7 +246,7 @@ cgiMain db (cs,funs) = do
 
     mkInfObj status frames info =
       makeObj (("status", mkStatusObj status) :
-               ("frames", showJSON [(cid,bcid,mkFrameObj frame) | (cid,bcid,frame) <- zip [1..] frames]) :
+               ("frames", showJSON [(cid,bcid,mkFrameObj frame) | (cid,bcid,frame) <- frames]) :
                case info of
                  Nothing -> []
                  Just (domains,images,examples,sexamples) -> [

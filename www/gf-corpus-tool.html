@@ -31,7 +31,6 @@
 				</table>
 			</td>
 			<td align="center">
-			    <input id="search_button" type="button" value="Search" disabled="true" onclick="gfwordnet.search(getMultiSelection(element('from')), getSearchQuery(), element('domains'), element('result'), domain_listener)">
 			    <input id="linearize_button" type="button" value="Linearize" onclick="on_linearize()">
 			    <input id="next_button" type="button" value="Next" onclick="on_next()">
 			</td>
@@ -85,13 +84,6 @@
 
 				gfwordnet.set_user(user,author,token,count,element('result'),commit);
 				commit.style.display = "inline";
-			}
-
-			function getSearchQuery() {
-				var txtarea = element('example');
-				var start = txtarea.selectionStart;
-				var end   = txtarea.selectionEnd;
-				return txtarea.value.substring(start, end);
 			}
 			
 			function on_selection() {
@@ -147,7 +139,7 @@
 							} else {
 								tags.push(node("span", {"fid": brackets[i].fid,
 														"fun": brackets[i].fun,
-														"onclick": "gfwordnet.onclick_bracket(event, this)"},
+														"onclick": "onclick_bracket(event, this)"},
 											   taggedBrackets(brackets[i].children)));
 							}
 						}
@@ -174,6 +166,16 @@
 					on_linearize();
 				}
 				gfwordnet.content_call("?pick_example=1",extract_example,errcont);
+			}
+
+			function onclick_bracket(event, bracket) {
+				gfwordnet.onclick_bracket(event, bracket);
+				var fun = bracket.getAttribute("fun");
+				var index = fun.indexOf('_');
+				if (index > 0) {
+					var word = fun.substring(0,index);
+					gfwordnet.search(getMultiSelection(element('from')), word, element('domains'), element('result'), domain_listener);
+				}
 			}
 		</script>
 	</body>

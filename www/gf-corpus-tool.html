@@ -163,6 +163,9 @@
 				function errcont(text,code) { }
 				function extract_example(exmpl) {
 					element("example").value = exmpl;
+					clear(element("result").getElementsByTagName("THEAD")[0]);
+					clear(element("result").getElementsByTagName("TBODY")[0]);
+					clear(element("result").getElementsByTagName("TFOOT")[0]);
 					on_linearize();
 				}
 				gfwordnet.content_call("?pick_example=1",extract_example,errcont);

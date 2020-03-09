@@ -170,10 +170,18 @@
 
 			function onclick_bracket(event, bracket) {
 				gfwordnet.onclick_bracket(event, bracket);
-				var fun = bracket.getAttribute("fun");
-				var index = fun.indexOf('_');
+				var lex_id = bracket.getAttribute("fun");
+				var index  = lex_id.indexOf('_');
 				if (index > 0) {
-					var word = fun.substring(0,index);
+					gfwordnet.can_select = true;
+					gfwordnet.onclick_select = function(row) {
+						var new_lex_id = row.firstElementChild.firstElementChild.nextSibling.data;
+						var re = new RegExp(lex_id, 'g');
+						element("example").value =
+							element("example").value.replace(re,new_lex_id);
+					}
+
+					var word = lex_id.substring(0,index);
 					gfwordnet.search(getMultiSelection(element('from')), word, element('domains'), element('result'), domain_listener);
 				}
 			}

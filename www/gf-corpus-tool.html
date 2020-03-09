@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+	<head>
+		<title>GF Corpus Tool</title>
+		<link rel="stylesheet" type="text/css" href="gf-wordnet.css">
+	</head>
+
+	<body style="height: 100%">
+		<table><tr>
+			<td>
+				<table id="from" class="multiselect">
+					<thead>
+						<tr onclick="showCheckboxes(this.parentNode.parentNode)"><th>English</th><th><img src="triangle.png"></th></tr>
+					</thead>
+					<tbody>
+						<tr><td onclick="changeItem(event,this)">Bulgarian</td><td><input type="checkbox" name="ParseBul" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Catalan</td><td><input type="checkbox" name="ParseCat"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Chinese</td><td><input type="checkbox" name="ParseChi"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Dutch</td><td><input type="checkbox" name="ParseDut"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">English</td><td><input type="checkbox" name="ParseEng" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Estonian</td><td><input type="checkbox" name="ParseEst"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Finnish</td><td><input type="checkbox" name="ParseFin"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Italian</td><td><input type="checkbox" name="ParseIta"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Portuguese</td><td><input type="checkbox" name="ParsePor"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Slovenian</td><td><input type="checkbox" name="ParseSlv"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Spanish</td><td><input type="checkbox" name="ParseSpa"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Swedish</td><td><input type="checkbox" name="ParseSwe" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Thai</td><td><input type="checkbox" name="ParseTha"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Turkish</td><td><input type="checkbox" name="ParseTur"/></td></tr>
+					</tbody>
+				</table>
+			</td>
+			<td align="center">
+			    <input id="search_button" type="button" value="Search" disabled="true" onclick="gfwordnet.search(getMultiSelection(element('from')), getSearchQuery(), element('domains'), element('result'), domain_listener)">
+			    <input id="linearize_button" type="button" value="Linearize" onclick="on_linearize()">
+			    <input id="next_button" type="button" value="Next" onclick="on_next()">
+			</td>
+			<td align="right">
+			    <input id="approve_button" type="button" value="Approve" onclick="??">
+			</td>
+		</tr><tr>
+			<td colspan="3"><textarea id="example" style="min-width: 500pt; min-height: 200pt;", spellcheck="false"></textarea></td>
+		</tr></table>
+
+		<br>
+
+		<div id="linearization" style="min-height: 10%">
+		</div>
+
+		<br>
+
+		<div style="min-height: 45%">
+			<table class="selectors" id="domains">
+				<thead></thead>
+				<tbody></tbody>
+			</table>
+			<table class="result" id="result">
+				<thead></thead>
+				<tbody></tbody>
+				<tfoot></tfoot>
+			</table>
+		</div>
+
+		<br>
+
+		<p>
+			<a id="commit" href="javascript:gfwordnet.commit(this)" style="display: none">Commit</a>
+		</p>
+
+		<script src="https://cloud.grammaticalframework.org/js/support.js"></script>
+		<script src="js/gf-wordnet.js"></script>
+		<script src="js/multiselect.js"></script>
+		<script src="js/cookies.js"></script>
+		<script>
+			domain_listener = function() {
+				gfwordnet.search(getMultiSelection(element('from')), null, element('domains'), element('result'), arguments.callee);
+			};
+
+			var user   = getCookie("user");
+			var author = getCookie("author");
+			var token  = getCookie("token");
+			var count  = getCookie("count");
+			if (user != null && count != null && author != 0) {
+				var commit     = element('commit');
+
+				gfwordnet.set_user(user,author,token,count,element('result'),commit);
+				commit.style.display = "inline";
+			}
+
+			function getSearchQuery() {
+				var txtarea = element('example');
+				var start = txtarea.selectionStart;
+				var end   = txtarea.selectionEnd;
+				return txtarea.value.substring(start, end);
+			}
+			
+			function on_selection() {
+				var activeElement = document.activeElement
+				if (activeElement && activeElement.id === "example") {
+					element("search_button").disabled = 
+						(activeElement.selectionStart == activeElement.selectionEnd);
+				}
+			}
+
+			document.addEventListener('selectionchange', on_selection)
+			
+			function on_linearize() {
+				var str = element("example").value;
+				var index = str.search(/abs(\*|\:|\^)/);
+				if (index < 0)
+					return;
+
+				index += 4;
+				var start = index;
+				var count = 0;
+				while (index < str.length &&
+				       (str[index] != '\n' || count > 0)) {
+					if (str[index] == '(')
+						count++;
+					else if (str[index] == ')')
+						count--;
+					index++;
+				}
+				if (count > 0)
+					return;
+				var end   = index;
+				var exmpl = str.substring(start,end).trim();
+
+				var selection = getMultiSelection(element('from'));
+
+				function errcont(text,code) { }
+				var bind_state = true;
+				function taggedBrackets(brackets) {
+					var tags = [];
+					for (var i in brackets) {
+						if ("bind" in brackets[i])
+							bind_state = brackets[i].bind;
+						else {
+							if (!bind_state) {
+								tags.push(text(" "));
+								bind_state = true;
+							}
+
+							if ("token" in brackets[i]) {
+								tags.push(text(brackets[i].token));
+								bind_state = false;
+							} else {
+								tags.push(node("span", {"fid": brackets[i].fid,
+														"fun": brackets[i].fun,
+														"onclick": "gfwordnet.onclick_bracket(event, this)"},
+											   taggedBrackets(brackets[i].children)));
+							}
+						}
+					}
+					return tags;
+				}
+				function extract_linearization(lins) {
+					var rows = []
+					for (var i in lins) {
+						var lin = lins[i];
+						bind_state = true;
+						rows.push(tr([th(text(selection.langs[lin.to].name)), td(taggedBrackets(lin.brackets))]));
+					}
+					clear(element("linearization"))
+					element("linearization").appendChild(node("table",{class: "result"},rows));
+				}
+				gfwordnet.grammar_call("?command=c-bracketedLinearize&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(exmpl),extract_linearization,errcont);
+			}
+
+			function on_next() {
+				function errcont(text,code) { }
+				function extract_example(exmpl) {
+					element("example").value = exmpl;
+					on_linearize();
+				}
+				gfwordnet.content_call("?pick_example=1",extract_example,errcont);
+			}
+		</script>
+	</body>
+</html>

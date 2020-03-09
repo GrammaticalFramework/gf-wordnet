@@ -56,6 +56,7 @@
 		<p>
 			<a href="gf-wordnet-help.html" target="_blank">What is this?</a>
 			<a id="logIn" href="https://github.com/login/oauth/authorize?scope=user:email%20public_repo&client_id=1e94c97e812a9f502068">Log In</a>
+			<a id="corpus-tool" href="gf-corpus-tool.html" style="display: none">Corpus Tool</a>
 			<a id="commit" href="javascript:gfwordnet.commit(this)" style="display: none">Commit</a>
 		</p>
 
@@ -64,6 +65,7 @@
 		<script src="js/gf-wordnet.js"></script>
 		<script src="js/wordcloud2.js"></script>
 		<script src="js/multiselect.js"></script>
+		<script src="js/cookies.js"></script>
 		<script>
 			domain_listener = function() {
 				gfwordnet.search(getMultiSelection(element('from')), null, element('domains'), element('result'), arguments.callee);
@@ -76,31 +78,13 @@
 					element("search_button").click();
 				}
 			});
-			
-			function getCookie(cname) {
-			  var name = cname + "=";
-			  var ca = document.cookie.split(';');
-			  for(var i = 0; i < ca.length; i++) {
-			    var c = ca[i];
-			    while (c.charAt(0) == ' ') {
-			      c = c.substring(1);
-			    }
-			    if (c.indexOf(name) == 0) {
-			      return decodeURIComponent(c.substring(name.length, c.length));
-			    }
-			  }
-			  return null;
-			}
-
-			function deleteCookie(name) {
-			  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			}
 
 			function logOut() {
-				gfwordnet.set_user(null,null,0,element('result'),null);
+				gfwordnet.set_user(null,null,null,0,element('result'),null);
 				logIn.innerHTML = "Log In";
 				logIn.href = "https://github.com/login/oauth/authorize?scope=user:email%20public_repo&client_id=1e94c97e812a9f502068";
 				commit.style.display = "none";
+				corpusTool.style.display = "none";
 				deleteCookie("user");
 				deleteCookie("author");
 				deleteCookie("count");
@@ -111,15 +95,17 @@
 			var token  = getCookie("token");
 			var count  = getCookie("count");
 			if (user != null && count != null && author != 0) {
-				var logIn  = element('logIn');
-				var commit = element('commit');
+				var logIn      = element('logIn');
+				var commit     = element('commit');
+				var corpusTool = element('corpus-tool');
 				logIn.innerHTML = "Log Out "+user;
 				logIn.href = "javascript:logOut()"
 
 				gfwordnet.set_user(user,author,token,count,element('result'),commit);
 				commit.style.display = "inline";
+				corpusTool.style.display = "inline";
 			}
-        
+
 			function expand(expand_button) {
 				var row = expand_button.parentNode.parentNode;
 				if (expand_button.innerHTML == "\u21F2") {

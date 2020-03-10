@@ -87,17 +87,7 @@
 				gfwordnet.set_user(user,author,token,count,element('result'),commit);
 				commit.style.display = "inline";
 			}
-			
-			function on_selection() {
-				var activeElement = document.activeElement
-				if (activeElement && activeElement.id === "example") {
-					element("search_button").disabled = 
-						(activeElement.selectionStart == activeElement.selectionEnd);
-				}
-			}
 
-			document.addEventListener('selectionchange', on_selection)
-			
 			function on_linearize() {
 				var str = element("example").value;
 				var index = str.search(/abs(\*|\:|\^)/);

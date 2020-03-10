@@ -186,6 +186,8 @@
 					}
 
 					var word = lex_id.substring(0,index);
+					var selection = getMultiSelection(element('from'));
+					selection.isEqual = function(other) { return false; };
 					gfwordnet.search(getMultiSelection(element('from')), word, element('domains'), element('result'), domain_listener);
 				}
 			}

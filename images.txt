@@ -21411,3 +21411,4 @@ carpet_sweeper_N	3264897;Carpet_sweeper;commons/4/41/Carpet_sweeper.png
 bluegrass_1_N	362605;Poa_pratensis;commons/5/5a/Veldbeemdgras_Poa_pratensis.jpg
 bluegrass_3_N	60590;Bluegrass_music;commons/2/2e/Bluegrass_group_jamming.jpg
 bluegrass_PN	390409;Bluegrass_region;commons/6/62/KYphysiography.jpg
+burner_2_N	3934737;Cooktop;commons/e/ec/Cooking_pot_kockum.JPG

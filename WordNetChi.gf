@@ -11470,6 +11470,7 @@ lin break_3_V2 = variants {} ;
 lin break_4_V2 = variants {} ;
 lin break_5_V2 = variants {} ;
 lin break_6_V2 = mkV2 (mkV "犯罪") ; --unchecked
+lin break_7_V2 = mkV2 (mkV "突然逃跑") ; --unchecked
 lin break_13_V2 = mkV2 (mkV "妨碍") ; --unchecked
 lin break_14_V2 = variants {} ;
 lin break_15_V2 = mkV2 (mkV "揭发") ; --unchecked

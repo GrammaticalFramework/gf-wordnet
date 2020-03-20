@@ -23,3 +23,4 @@ process gr (l0:l1:l2:l3:l4:l5:ls)
     l1m = elem (map toLower (drop 5 l1)) (map (map toLower) (linearizeAll eng e))
     l2m = elem (map toLower (drop 5 l2)) (map (map toLower) (linearizeAll swe e))
     l3m = elem (map toLower (drop 5 l3)) (map (map toLower) (linearizeAll bul e))
+process gr (l:ls) = process gr ls

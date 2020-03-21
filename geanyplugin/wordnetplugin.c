@@ -256,28 +256,49 @@ url_encode(unsigned char *s, char *enc) {
 
 enum
 {
-  COL_ABSTRACT = 0,
-  COL_ENGLISH,
-  COL_SWEDISH,
-  COL_BULGARIAN,
-  COL_DEFINITION,
+  COL_SELECTED = 0,
+  COL_CHECKED,
+  COL_LANGUAGE,
+  COL_CONCRETE,
   NUM_COLS
 } ;
 
+typedef struct {
+	GeanyPlugin* plugin;
+	GtkWidget* main_menu_item;
+	GtkListStore* store;
+	gboolean lookup_finished;
+} WordNetPlugin;
+
+#define CNC_LEN 8
+
+typedef struct {
+	GtkListStore* store;
+	GtkWidget* view;
+	gchar *word;
+	WordNetPlugin* wn_data;
+	GThread* thread;
+
+	gint  n_cols;
+	gchar selected_lang[CNC_LEN+1];
+	gchar checked_langs[];
+} LookupThread;
+
+typedef struct {
+	LookupThread* lookup_thread;
+	gchar *cols[];
+} LookupRow;
+
 static void
-gf_wordnet_linearize(gchar* abs, gchar** eng, gchar** swe, gchar** bul) {
+gf_wordnet_linearize(LookupRow* row) {
 	char *js;
 	jsmntok_t *t;
 	size_t count;
 
-	*eng = NULL;
-	*swe = NULL;
-	*bul = NULL;
-
 	if (!json_request(&js, &t, &count,
 	                  "cloud.grammaticalframework.org",
-	                  "/robust/Parse.pgf?command=c-linearize&to=ParseEng%20ParseSwe%20ParseBul&tree=%s",
-	                  abs))
+	                  "/robust/Parse.pgf?command=c-linearize&tree=%s&to=%s",
+	                  row->cols[0], row->lookup_thread->checked_langs))
         return;
 
 	g_assert(t->type == JSMN_ARRAY);
@@ -287,21 +308,21 @@ gf_wordnet_linearize(gchar* abs, gchar** eng, gchar** swe, gchar** bul) {
 		jsmntok_t *obj = t+j;  j++;
 		g_assert(obj->type == JSMN_OBJECT);
 
-		gchar** to = NULL;
+		gint to = 0;
 		for (k = 0; k < obj->size; k++) {
 			jsmntok_t *key = t+j;  j++;
 			jsmntok_t *val = t+j;  j++;
 
 			if (json_streq(js, key, "to")) {
-				if (json_streq(js, val, "ParseEng"))
-					to = eng;
-				else if (json_streq(js, val, "ParseSwe"))
-					to = swe;
-				else if (json_streq(js, val, "ParseBul"))
-					to = bul;
+				gchar *concr = json_strcpy(js, val);
+				char *s = strstr(row->lookup_thread->checked_langs, concr);
+				if (s != NULL) {
+					to = (s-row->lookup_thread->checked_langs)/11+1;
+				}
+				free(concr);
 			} else if (json_streq(js, key, "text")) {
-				if (to != NULL)
-					*to = json_strcpy(js, val);
+				if (to > 0)
+					row->cols[to] = json_strcpy(js, val);
 			} else {
 				j += json_skip(js, val, count-j+1)-1;
 			}
@@ -311,14 +332,6 @@ gf_wordnet_linearize(gchar* abs, gchar** eng, gchar** swe, gchar** bul) {
     free(js);
 	free(t);
 }
-
-static gboolean lookup_finished = TRUE;
-
-typedef struct {
-	GtkListStore* store;
-	GtkWidget* view;
-	gchar *abs, *eng, *swe, *bul, *gloss;
-} LookupRow;
 
 static gboolean
 on_popup_focus_out (GtkWidget *widget,
@@ -334,54 +347,59 @@ add_row (gpointer data)
 {
 	LookupRow *row = data;
 
-	if (!lookup_finished) {
+	if (!row->lookup_thread->wn_data->lookup_finished) {
 		GtkTreeIter iter;
-		gtk_list_store_append (row->store, &iter);
-		gtk_list_store_set (row->store, &iter,
-							COL_ABSTRACT, row->abs,
-							COL_ENGLISH,  row->eng,
-							COL_SWEDISH,  row->swe,
-							COL_BULGARIAN,  row->bul,
-							COL_DEFINITION, row->gloss,
-							-1);
-
-		gint nrRows = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(row->store), NULL);
-		if (nrRows == 1) {
-			gtk_widget_grab_focus(row->view);
-			g_signal_connect (G_OBJECT (gtk_widget_get_toplevel(row->view)),
-							  "focus-out-event",
-							  G_CALLBACK (on_popup_focus_out),
-							  NULL);
+		gtk_list_store_append (row->lookup_thread->store, &iter);
+		
+		for (gint i = 0; i < row->lookup_thread->n_cols; i++) {
+			if (row->cols[i] != NULL) {
+				GValue val = G_VALUE_INIT;
+				g_value_init(&val, G_TYPE_STRING);
+				g_value_set_string(&val,row->cols[i]);
+				gtk_list_store_set_value(GTK_LIST_STORE(row->lookup_thread->store),&iter,i,&val);
+			}
 		}
 	}
 
-	free(row->abs);
-	free(row->eng);
-	free(row->swe);
-	free(row->bul);
-	free(row->gloss);
+	for (gint i = 0; i < row->lookup_thread->n_cols; i++) {
+		free(row->cols[i]);
+	}
 	free(row);
 
 	return G_SOURCE_REMOVE;
 }
 
+static gboolean
+set_focus (gpointer data)
+{
+	LookupThread *lookup_thread = data;
+	gtk_widget_grab_focus(lookup_thread->view);
+	g_signal_connect (G_OBJECT (gtk_widget_get_toplevel(lookup_thread->view)),
+					  "focus-out-event",
+					  G_CALLBACK (on_popup_focus_out),
+					  NULL);
+
+	return G_SOURCE_REMOVE;
+}
+
 static void
-gf_wordnet_lookup(GtkListStore* store, GtkWidget* view, gchar *word)
+gf_wordnet_lookup(LookupThread *lookup_thread)
 {
 	char *js;
 	jsmntok_t *t;
 	size_t count;
 
-	gchar encoded_word[strlen(word)*3+1];
-	url_encode(word, encoded_word);
+	gchar encoded_word[strlen(lookup_thread->word)*3+1];
+	url_encode(lookup_thread->word, encoded_word);
 
 	//////////////////////////////////////////////////////////////
 	// 1. Lexical lookup. The result is a list of unique lemmas
 	// separated with %20 in variable lemmas
 	if (!json_request(&js, &t, &count,
 	                  "cloud.grammaticalframework.org",
-	                  "/robust/Parse.pgf?command=c-lookupmorpho&input=%s&from=ParseEng",
-	                  encoded_word))
+	                  "/robust/Parse.pgf?command=c-lookupmorpho&input=%s&from=%s",
+	                  encoded_word,
+	                  lookup_thread->selected_lang))
         return;
 
 	gint lemmas_len = 0;
@@ -491,20 +509,14 @@ gf_wordnet_lookup(GtkListStore* store, GtkWidget* view, gchar *word)
 					}
 
 					if (match) {
-						LookupRow* row = malloc(sizeof(LookupRow));
-						row->store = store;
-						row->view  = view;
+						LookupRow* row = malloc(sizeof(LookupRow)+
+						                        sizeof(gchar*)*lookup_thread->n_cols);
+						row->lookup_thread = lookup_thread;
+						memset(row->cols,sizeof(gchar*)*lookup_thread->n_cols,0);
 
-						row->abs = json_strcpy(js, lex_id);
-						gf_wordnet_linearize(row->abs,
-											&row->eng,
-											&row->swe,
-											&row->bul);
-
-						row->eng = row->eng ? row->eng : strdup("");
-						row->swe = row->swe ? row->swe : strdup("");
-						row->bul = row->bul ? row->bul : strdup("");
-						row->gloss = strdup(gloss);
+						row->cols[0] = json_strcpy(js, lex_id);
+						gf_wordnet_linearize(row);
+						row->cols[lookup_thread->n_cols-1] = strdup(gloss);
 
 						gdk_threads_add_idle(add_row, row);
 					}
@@ -518,6 +530,8 @@ gf_wordnet_lookup(GtkListStore* store, GtkWidget* view, gchar *word)
 
     free(js);
 	free(t);
+
+    gdk_threads_add_idle(set_focus, lookup_thread);
 }
 
 typedef struct {
@@ -540,7 +554,7 @@ row_activated_cb (GtkTreeView       *tree_view,
 
 	gchar* abs_id;
 	gtk_tree_model_get (model, &iter,
-                        COL_ABSTRACT, &abs_id,
+                        0, &abs_id,
                         -1);
 	sci_set_selection_start(sdata->sci, sdata->start);
 	sci_set_selection_end(sdata->sci, sdata->end);
@@ -565,20 +579,13 @@ on_popup_key_press (GtkWidget *widget,
     return FALSE; 
 }
 
-typedef struct {
-	GtkListStore* store;
-	GtkWidget* view;
-	gchar *word;
-	GThread* thread;
-} LookupThread;
-
 static void
 on_popup_destroy(GtkWidget *widget,
                  gpointer  data)
 {
 	LookupThread *lookup_thread = data;
 
-	lookup_finished = TRUE;
+	lookup_thread->wn_data->lookup_finished = TRUE;
 
 	g_object_unref(lookup_thread->store);
 	g_free(lookup_thread->word);
@@ -628,19 +635,25 @@ destroy_sdata(gpointer data, GClosure *closure) {
 static gpointer
 lookup_thread_cb(gpointer data) {
 	LookupThread *lookup_thread = data;
-	gf_wordnet_lookup(lookup_thread->store, lookup_thread->view, lookup_thread->word);
+	gf_wordnet_lookup(lookup_thread);
+	return NULL;
 }
 
 static void
 item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 {
-	if (!lookup_finished)
+	WordNetPlugin* wn_data = (WordNetPlugin*) user_data;
+    GeanyDocument* doc = document_get_current();
+
+	if (!wn_data->lookup_finished)
 		return;
 
-	GeanyPlugin* plugin = (GeanyPlugin*) user_data;
-    GeanyDocument *doc = document_get_current();
+	size_t n_langs =
+		gtk_tree_model_iter_n_children(GTK_TREE_MODEL(wn_data->store), NULL);
 
-    LookupThread* lookup_thread = malloc(sizeof(LookupThread));
+    LookupThread* lookup_thread = malloc(sizeof(LookupThread)+(CNC_LEN+3)*n_langs+1);
+    lookup_thread->wn_data = wn_data;
+    lookup_thread->n_cols = 0;
 
     SelectionData* sdata = malloc(sizeof(SelectionData));
     lookup_thread->word = get_current_word_range(doc->editor->sci, sdata);
@@ -661,14 +674,14 @@ item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
     GtkWidget *popup_window;
     popup_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_can_focus(popup_window, TRUE);
-    gtk_window_set_title (GTK_WINDOW (popup_window), "Pop Up window");
+    gtk_window_set_title (GTK_WINDOW (popup_window), "GF WordNet");
     gtk_container_set_border_width (GTK_CONTAINER (popup_window), 3);
     gtk_window_set_resizable(GTK_WINDOW (popup_window), FALSE);
     gtk_window_set_decorated(GTK_WINDOW (popup_window), FALSE);
     gtk_widget_set_size_request (popup_window, 550, 150);
     gtk_window_set_skip_taskbar_hint (GTK_WINDOW (popup_window), TRUE);
     gtk_window_set_skip_pager_hint (GTK_WINDOW (popup_window), TRUE);
-    gtk_window_set_transient_for(GTK_WINDOW (popup_window),GTK_WINDOW (plugin->geany_data->main_widgets->window));
+    gtk_window_set_transient_for(GTK_WINDOW (popup_window),GTK_WINDOW (wn_data->plugin->geany_data->main_widgets->window));
     gtk_window_move (GTK_WINDOW (popup_window), win_x+x, win_y+y+20);
     gtk_widget_set_events(popup_window, GDK_FOCUS_CHANGE_MASK);
     g_signal_connect (G_OBJECT (popup_window),
@@ -682,55 +695,87 @@ item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 
     GtkWidget* view = gtk_tree_view_new ();
 
+    GType* types = 
+		malloc((n_langs+2)*sizeof(GType));
+
+	types[lookup_thread->n_cols] = G_TYPE_STRING;
     GtkCellRenderer *renderer = gtk_cell_renderer_text_new ();
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (view),
                                                  -1,      
                                                  "Abstract",
                                                  renderer,
-                                                 "text", COL_ABSTRACT,
+                                                 "text", lookup_thread->n_cols++,
                                                  NULL);
 
-    renderer = gtk_cell_renderer_text_new ();
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (view),
-                                                 -1,      
-                                                 "English",  
-                                                 renderer,
-                                                 "text", COL_ENGLISH,
-                                                 NULL);
+	gint  pos = 0;
+    GtkTreeIter iter;    
+    gboolean more =
+        gtk_tree_model_get_iter_first(GTK_TREE_MODEL(wn_data->store),
+                                      &iter);
+    while (more) {
+		GValue sel_value = G_VALUE_INIT;
+		gtk_tree_model_get_value(GTK_TREE_MODEL(wn_data->store), &iter, COL_SELECTED, &sel_value);
 
-    renderer = gtk_cell_renderer_text_new ();
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (view),
-                                                 -1,      
-                                                 "Swedish",  
-                                                 renderer,
-                                                 "text", COL_SWEDISH,
-                                                 NULL);
+		GValue check_value = G_VALUE_INIT;
+		gtk_tree_model_get_value(GTK_TREE_MODEL(wn_data->store), &iter, COL_CHECKED, &check_value);
 
-    renderer = gtk_cell_renderer_text_new ();
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (view),
-                                                 -1,
-                                                 "Bulgarian",
-                                                 renderer,
-                                                 "text", COL_BULGARIAN,
-                                                 NULL);
+		GValue lang_value = G_VALUE_INIT;
+		gtk_tree_model_get_value(GTK_TREE_MODEL(wn_data->store), &iter, COL_LANGUAGE, &lang_value);
 
+		GValue cnc_value = G_VALUE_INIT;
+		gtk_tree_model_get_value(GTK_TREE_MODEL(wn_data->store), &iter, COL_CONCRETE, &cnc_value);
+
+		const gchar* cnc = g_value_get_string(&cnc_value);
+
+		if (g_value_get_boolean(&sel_value)) {
+			strcpy(lookup_thread->selected_lang,cnc);
+		}
+
+		if (g_value_get_boolean(&check_value)) {
+			types[lookup_thread->n_cols] = G_TYPE_STRING;
+			renderer = gtk_cell_renderer_text_new ();
+			gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW(view),
+														 -1,
+														 g_value_get_string(&lang_value),
+														 renderer,
+														 "text", lookup_thread->n_cols++,
+														 NULL);
+
+			if (pos > 0) {
+				strcpy(lookup_thread->checked_langs+pos,"%20");
+				pos += 3;
+			}
+			strcpy(lookup_thread->checked_langs+pos,cnc);
+			pos += strlen(cnc);
+		}
+
+		g_value_unset(&cnc_value);
+		g_value_unset(&lang_value);
+		g_value_unset(&check_value);
+		g_value_unset(&sel_value);
+
+		more = 
+		    gtk_tree_model_iter_next(GTK_TREE_MODEL(wn_data->store),
+                                     &iter);
+    }
+
+	types[lookup_thread->n_cols] = G_TYPE_STRING;
     renderer = gtk_cell_renderer_text_new ();
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (view),
                                                  -1,
                                                  "Definition",
                                                  renderer,
-                                                 "text", COL_DEFINITION,
+                                                 "text", lookup_thread->n_cols++,
                                                  NULL);
 
     g_signal_connect_data (view, "row-activated",
         G_CALLBACK(row_activated_cb), sdata,
         destroy_sdata, 0);
 
-    lookup_thread->store =
-        gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING,
-                                      G_TYPE_STRING, G_TYPE_STRING,
-                                      G_TYPE_STRING);
+    lookup_thread->store = gtk_list_store_newv (lookup_thread->n_cols, types);
     lookup_thread->view  = view;
+
+    free(types);
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (view),
                              GTK_TREE_MODEL(lookup_thread->store));
@@ -741,7 +786,7 @@ item_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 
     gtk_widget_show_all (popup_window);
 
-	lookup_finished = FALSE;
+	wn_data->lookup_finished = FALSE;
     lookup_thread->thread =
         g_thread_new ("lookup_thread",
                       lookup_thread_cb,
@@ -758,39 +803,235 @@ kb_activate_cb(GeanyKeyBinding *key, guint key_id, gpointer user_data)
 static gboolean
 gf_wordnet_init(GeanyPlugin *plugin, gpointer pdata)
 {
-    GtkWidget *main_menu_item;
+	WordNetPlugin* wn_data = malloc(sizeof(WordNetPlugin));
+	wn_data->plugin = plugin;
+    wn_data->lookup_finished = TRUE;
+    geany_plugin_set_data(plugin, wn_data, free);
+
     // Create a new menu item and show it
-    main_menu_item = gtk_menu_item_new_with_mnemonic("GF WordNet Search");
-    gtk_widget_show(main_menu_item);
-    ui_add_document_sensitive(main_menu_item);
+    wn_data->main_menu_item = gtk_menu_item_new_with_mnemonic("GF WordNet Search");
+    gtk_widget_show(wn_data->main_menu_item);
+    ui_add_document_sensitive(wn_data->main_menu_item);
     // Attach the new menu item to the Tools menu
     gtk_container_add(GTK_CONTAINER(plugin->geany_data->main_widgets->tools_menu),
-        main_menu_item);
+        wn_data->main_menu_item);
     // Connect the menu item with a callback function
     // which is called when the item is clicked
-    g_signal_connect(main_menu_item, "activate",
-        G_CALLBACK(item_activate_cb), plugin);
+    g_signal_connect(wn_data->main_menu_item, "activate",
+        G_CALLBACK(item_activate_cb), wn_data);
 
     GeanyKeyGroup* key_group =
 		plugin_set_key_group(plugin, "gf_wordnet_chars", KB_GF_WORDNET, NULL);
 	keybindings_set_item_full(key_group, KB_LOOKUP_WORD,
 	    GDK_w, GDK_MOD1_MASK, "Alt+W",
-	    "lookup word", main_menu_item,
+	    "lookup word", wn_data->main_menu_item,
 	    kb_activate_cb,
-		plugin, NULL);
+		wn_data, NULL);
 
-    geany_plugin_set_data(plugin, main_menu_item, NULL);
+	/* create list store */
+	wn_data->store =
+		gtk_list_store_new (NUM_COLS, G_TYPE_BOOLEAN, G_TYPE_BOOLEAN, G_TYPE_STRING, G_TYPE_STRING);
+
+	GtkTreeIter iter;
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CHECKED,  TRUE,
+		COL_LANGUAGE, "Bulgarian",
+		COL_CONCRETE, "ParseBul", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CHECKED, FALSE,
+		COL_LANGUAGE, "Catalan",
+		COL_CONCRETE, "ParseCat", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CHECKED, FALSE,
+		COL_LANGUAGE, "Chinese",
+		COL_CONCRETE, "ParseChi", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CHECKED, FALSE,
+		COL_LANGUAGE, "Dutch",
+		COL_CONCRETE, "ParseDut", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, TRUE,
+		COL_CHECKED, TRUE,
+		COL_LANGUAGE, "English",
+		COL_CONCRETE, "ParseEng", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CHECKED, FALSE,
+		COL_LANGUAGE, "Estonian",
+		COL_CONCRETE, "ParseEst", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CONCRETE, FALSE,
+		COL_LANGUAGE, "Finnish",
+		COL_CONCRETE, "ParseFin", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CONCRETE, FALSE,
+		COL_LANGUAGE, "Italian",
+		COL_CONCRETE, "ParseIta", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CONCRETE, FALSE,
+		COL_LANGUAGE, "Portuguese",
+		COL_CONCRETE, "ParsePor", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CONCRETE, FALSE,
+		COL_LANGUAGE, "Slovenian",
+		COL_CONCRETE, "ParseSlv", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CONCRETE, FALSE,
+		COL_LANGUAGE, "Spanish",
+		COL_CONCRETE, "ParseSpa", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CHECKED, TRUE,
+		COL_LANGUAGE, "Swedish",
+		COL_CONCRETE, "ParseSwe", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CHECKED, FALSE,
+		COL_LANGUAGE, "Thai",
+		COL_CONCRETE, "ParseTha", -1);
+
+	gtk_list_store_append(GTK_LIST_STORE(wn_data->store), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(wn_data->store), &iter,
+		COL_SELECTED, FALSE,
+		COL_CHECKED, FALSE,
+		COL_LANGUAGE, "Turkish",
+		COL_CONCRETE, "ParseTur", -1);
 
     url_encoder_rfc_tables_init();
 
     return TRUE;
 }
 
+static void language_selected_cb(GtkCellRendererToggle *cell,
+                                 gchar                 *path_string,
+                                 gpointer               user_data)
+{
+	WordNetPlugin* wn_data = user_data;
+
+	GValue val = G_VALUE_INIT;
+	g_value_init(&val, G_TYPE_BOOLEAN);
+	g_value_set_boolean(&val,FALSE);
+
+    GtkTreeIter iter;    
+    gboolean more =
+        gtk_tree_model_get_iter_first(GTK_TREE_MODEL(wn_data->store),
+                                      &iter);
+    while (more) {
+		gtk_list_store_set_value(GTK_LIST_STORE(wn_data->store),&iter,COL_SELECTED,&val);
+
+		more = 
+		    gtk_tree_model_iter_next(GTK_TREE_MODEL(wn_data->store),
+                                     &iter);
+    }
+
+	gtk_tree_model_get_iter_from_string(GTK_TREE_MODEL(wn_data->store),&iter,path_string);
+	
+	g_value_set_boolean(&val,TRUE);
+	gtk_list_store_set_value(GTK_LIST_STORE(wn_data->store),&iter,COL_SELECTED,&val);
+}
+
+static void language_checked_cb(GtkCellRendererToggle *cell,
+                                gchar                 *path_string,
+                                gpointer               user_data)
+{
+	WordNetPlugin* wn_data = user_data;
+
+    GtkTreeIter iter;
+	gtk_tree_model_get_iter_from_string(GTK_TREE_MODEL(wn_data->store),&iter,path_string);
+
+	GValue val = G_VALUE_INIT;
+	g_value_init(&val, G_TYPE_BOOLEAN);
+	gtk_tree_model_get_value(GTK_TREE_MODEL(wn_data->store), &iter, COL_CHECKED, &val);
+	g_value_set_boolean(&val,!g_value_get_boolean(&val));
+	gtk_list_store_set_value(GTK_LIST_STORE(wn_data->store), &iter, COL_CHECKED, &val);
+}
+
+static GtkWidget* gf_wordnet_configure(GeanyPlugin *plugin, GtkDialog *parent, gpointer pdata)
+{
+	GtkWidget *lbox;
+	GtkTreeViewColumn *column;
+	GtkCellRenderer *render;
+
+	WordNetPlugin* wn_data = pdata;
+
+	/* create tree view */
+	lbox = gtk_tree_view_new_with_model(GTK_TREE_MODEL(wn_data->store));
+	gtk_tree_selection_set_mode(gtk_tree_view_get_selection(GTK_TREE_VIEW(lbox)), GTK_SELECTION_SINGLE);
+
+	/* add columns to the tree view */
+	render = gtk_cell_renderer_toggle_new();
+	gtk_cell_renderer_toggle_set_activatable(GTK_CELL_RENDERER_TOGGLE(render), TRUE);
+	gtk_cell_renderer_toggle_set_radio(GTK_CELL_RENDERER_TOGGLE(render), TRUE);
+	g_signal_connect (render, "toggled",
+        G_CALLBACK(language_selected_cb), wn_data);
+	column = gtk_tree_view_column_new_with_attributes ("",
+				render,
+				"active",
+				COL_SELECTED,
+				NULL);
+	gtk_tree_view_append_column (GTK_TREE_VIEW(lbox), column);
+
+	render = gtk_cell_renderer_toggle_new();
+	gtk_cell_renderer_toggle_set_activatable(GTK_CELL_RENDERER_TOGGLE(render), TRUE);
+	g_signal_connect (render, "toggled",
+        G_CALLBACK(language_checked_cb), wn_data);
+	column = gtk_tree_view_column_new_with_attributes ("",
+				render,
+				"active",
+				COL_CHECKED,
+				NULL);
+	gtk_tree_view_append_column (GTK_TREE_VIEW(lbox), column);
+
+	column = gtk_tree_view_column_new_with_attributes ("Language",
+				gtk_cell_renderer_text_new (),
+				"text",
+				COL_LANGUAGE,
+				NULL);
+	gtk_tree_view_append_column (GTK_TREE_VIEW(lbox), column);
+
+	return lbox;
+}
+
 static void gf_wordnet_cleanup(GeanyPlugin *plugin, gpointer pdata)
 {
-    GtkWidget *main_menu_item = (GtkWidget *) pdata;
+    WordNetPlugin *wn_data = (WordNetPlugin *) pdata;
 
-    gtk_widget_destroy(main_menu_item);
+    gtk_widget_destroy(wn_data->main_menu_item);
+    g_object_unref (wn_data->store);
 }
 
 void geany_load_module(GeanyPlugin *plugin) {
@@ -801,7 +1042,9 @@ void geany_load_module(GeanyPlugin *plugin) {
     plugin->info->author = "Krasimir Angelov <krasimir@digitalgrammars.com>";
     /* Step 2: Set functions */
     plugin->funcs->init = gf_wordnet_init;
+    plugin->funcs->configure = gf_wordnet_configure;
     plugin->funcs->cleanup = gf_wordnet_cleanup;
+
     /* Step 3: Register! */
     GEANY_PLUGIN_REGISTER(plugin, 225);
 }

@@ -112,7 +112,7 @@ ifneq ($(SERVER), NO)
 	scp build/SenseService www.grammaticalframework.org:$(SERVER_PATH)/www/SenseService.fcgi
 endif
 
-build/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
+build/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/ContentSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-static -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
 	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/www/ContentService"
@@ -141,6 +141,6 @@ build_dirs:
 	mkdir -p build/www-services
 
 
-install:
+install: $(patsubst %.gf,build/gfo/%.gfo,$(WORDNETS))
 	mkdir -p $(INSTALL_PATH)
 	install build/gfo/WordNet*.gfo     $(INSTALL_PATH)

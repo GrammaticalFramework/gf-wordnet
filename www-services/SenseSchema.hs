@@ -21,7 +21,7 @@ data Synset
 
 data Status
   = Guessed | Unchecked | Changed | Checked
-  deriving (Data,Show)
+  deriving (Data,Show,Eq)
 
 data Lexeme
   = Lexeme
@@ -58,15 +58,6 @@ data Frame
       , pattern       :: Expr
       , semantics     :: String
       }
-   deriving (Data,Show)
-
-data Update
-  = Update
-     { user   :: String
-     , lex_id :: Fun
-     , lang   :: String
-     , def    :: String
-     }
    deriving (Data,Show)
 
 synsets :: Table Synset
@@ -123,14 +114,3 @@ frames = table "frames"
 
 frames_class :: Index Frame (Key Class)
 frames_class = index frames "super" class_id
-
-updates :: Table Update
-updates = table "updates"
-            `withIndex` updates_idx
-            `withIndex` updates_usr
-
-updates_idx :: Index Update (String,Fun,String)
-updates_idx = index updates "idx" (\u -> (user u,lex_id u,lang u))
-
-updates_usr :: Index Update String
-updates_usr = index updates "usr" user

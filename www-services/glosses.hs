@@ -2,6 +2,7 @@
 import PGF2
 import Database.Daison
 import SenseSchema
+import ContentSchema
 import Data.Char
 import Data.List(partition,intercalate)
 import Data.Maybe

@@ -1,7 +1,8 @@
-{-# LANGUAGE CPP, MonadComprehensions #-}
+{-# LANGUAGE CPP, MonadComprehensions, BangPatterns #-}
 
 import Database.Daison
 import SenseSchema
+import ContentSchema
 import Text.JSON
 import Text.JSON.String
 import URLEncoding
@@ -14,17 +15,20 @@ import System.IO hiding (ReadWriteMode)
 import System.Environment
 import System.Directory
 import System.Posix.Files
+import System.Random
 import System.Process
 import System.Exit
-import Control.Monad(liftM2,liftM3,liftM4,forM_)
+import Control.Monad(liftM2,liftM3,liftM4,forM_,forM)
 import Control.Concurrent
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import qualified Data.ByteString.Lazy.UTF8 as UTF8 (toString,fromString)
 import qualified Data.ByteString.Lazy as BS
 import qualified Data.ByteString.UTF8 as BSS
 import qualified Data.Map as Map
+import qualified Data.Set as Set
 import Data.Char
 import Data.Maybe
+import PGF2
 
 main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
@@ -47,6 +51,8 @@ cgiMain db = do
   mb_s8 <- getInput "push"
   mb_s9 <- getInput "author"
   mb_s10<- getInput "token"
+  mb_s11<- getInput "pick_example"
+  mb_s12<- getInput "update_example"
   case mb_s1 of
     Just code -> doLogin code
     Nothing   -> case liftM3 doGet mb_s2 mb_s4 mb_s5 of
@@ -67,7 +73,11 @@ cgiMain db = do
                                                                       Just action -> do setHeader "Content-Type" "text/plain; charset=utf-8"
                                                                                         s <- liftIO action
                                                                                         outputFPS s
-                                                                      Nothing     -> outputNothing
+                                                                      Nothing     -> case fmap doPickExample mb_s11 of
+                                                                                        Just action -> liftIO action >>= outputJSONP
+                                                                                        Nothing     -> case liftM3 doUpdateExample mb_s2 (fmap read mb_s12) mb_s6 of
+                                                                                                         Just action -> liftIO action >>= outputJSONP
+                                                                                                         Nothing     -> outputNothing
   where
     doLogin code = do
       man <- liftIO $ newManager tlsManagerSettings
@@ -97,11 +107,10 @@ cgiMain db = do
 
     doGet user lex_id lang = do
       res <- runDaison db ReadWriteMode $ do
-               select (fromIndex updates_idx (at (user,lex_id,lang)))
+               select (fromIndex updates_lex_idx (at (user,lex_id,lang)))
       case res of
-        (_,u):_ -> do return (Just (def u))
-        _       -> do s <- readSourceFile lang
-                      return (getDefinition lex_id s)
+        (_,u):_ -> return (Just (def u))
+        _       -> fmap (Map.lookup lex_id) (getDefinitions (Set.singleton lex_id) lang)
 
     doUpdate user lex_id lang mb_def = do
       mb_def' <- doGet user lex_id lang
@@ -110,9 +119,9 @@ cgiMain db = do
                       _                            -> (fromMaybe "" mb_def', Checked)
       runDaison db ReadWriteMode $ do
         res <- update lexemes [(id, lex{status=updateStatus lang s (status lex)}) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
-        insert_ updates (Update user lex_id lang def)
-        count <- fmap length $ select (from updates_usr everything)
-        return (count,head [map toLower (show st)
+        insert_ updates (UpdateLexeme user lex_id lang def)
+        c <- query countRows (from updates_usr everything)
+        return (c,head [map toLower (show st)
                               | (_,lexeme) <- res,
                                 (lang',st) <- status lexeme,
                                 lang==lang'])
@@ -127,26 +136,25 @@ cgiMain db = do
       forkIO (patchUp inp >>
               hPutStrLn inp "" >>
               hFlush inp >>
-              git inp [["commit","--author",author,"--message","progress","WordNet*.gf"]
+              git inp [["commit","--author",author,"--message","progress","WordNet*.gf","examples.txt"]
                       ,["push", "https://"++user++":"++token++"@github.com/GrammaticalFramework/gf-wordnet"]
                       ])
       BS.hGetContents out
       where
         patchUp inp = do
           res <- runDaison db ReadWriteMode $ do
-                   res <- select [(lang,[(lex_id,def)]) | (_,Update _ lex_id lang def) <- fromIndex updates_usr (at user)]
+                   res <- query groupRows [(fileName u,u) | (_,u) <- fromIndex updates_usr (at user)]
                    delete updates (from updates_usr (at user))
                    return res
-          forM_ ((Map.toList . Map.fromListWith (++)) res) $ \(lang,ids) ->
-            if null ids
+          forM_ (Map.toList res) $ \(fname,us) ->
+            if null us
               then return ()
-              else do let fname = "WordNet"++drop 5 lang++".gf"
-                      hPutStrLn inp ("Patch up "++fname)
+              else do hPutStrLn inp ("Patch up "++fname)
                       hFlush inp
-                      ls <- fmap lines $ readSourceFile lang
+                      ls <- fmap lines $ readUtf8File fname
                       (tmp_fname,hTmp) <- openTempFile SERVER_PATH fname
                       hSetEncoding hTmp utf8
-                      mapM_ (hPutStrLn hTmp . annotate ids) ls 
+                      mapM_ (hPutStrLn hTmp) (annotate fname us 1 ls)
                       hClose hTmp
                       setFileMode tmp_fname (ownerReadMode `unionFileModes`
                                              ownerWriteMode `unionFileModes`
@@ -155,17 +163,82 @@ cgiMain db = do
                                              otherReadMode)
                       renameFile tmp_fname (SERVER_PATH++"/"++fname)
 
-        annotate updated l =
-          case words l of
-            ("lin":id:"=":_) -> case lookup id updated of
-                                  Just def -> "lin "++id++" = "++def++" ;"
-                                  _        -> l
-            _                              -> l
+        fileName (UpdateLexeme _ lex_id lang def) = "WordNet"++drop 5 lang++".gf"
+        fileName (UpdateExample _ _ _)            = "examples.txt"
+
+        annotate fname updates !line_no []     = []
+        annotate fname updates !line_no (l:ls)
+          | fname == "examples.txt"            =
+              case [def | UpdateExample _ no def <- updates, line_no==no] of
+                (def:_) -> let def_ls = lines def
+                               n      = length def_ls
+                           in def_ls ++ annotate fname updates (line_no+n) (drop n (l:ls))
+                _       -> l : annotate fname updates (line_no+1) ls
+        annotate fname updates !line_no (l:ls) =
+          (case words l of
+             ("lin":id:"=":_) -> case [def | UpdateLexeme _ lex_id lang def <- updates, lex_id==id] of
+                                   (def:_) -> "lin "++id++" = "++def++" ;"
+                                   _       -> l
+             _                -> l)  : annotate fname updates (line_no+1) ls
+             
 
     doPull _ = do
       (out,inp) <- createPipe
       git inp [["pull","--no-edit"]]
       BS.hGetContents out
+
+    doPickExample _ = do
+      g  <- newStdGen
+      ls <- fmap lines $ readUtf8File "examples.txt"
+      return (showJSON (pick g 36000 1 ls))
+      where
+        pick :: StdGen -> Int -> Int -> [String] -> (Int,String)
+        pick g n line_no ls = find i line_no ls
+          where
+            (i,g') = randomR (0,n) g
+
+            find i !line_no []     = pick g' i 1 ls
+            find i !line_no (l:ls)
+              | take 8 l == "abs* Phr"
+                                   = if i == 0
+                                       then (line_no,unlines (l:take 4 ls))
+                                       else find (i-1) (line_no+1) ls
+              | otherwise          = find i (line_no+1) ls
+
+    doUpdateExample user line_no def =
+      case map (readExpr . drop 4) def_ls of
+        (Just e : _) -> do let fns = exprFunctions e
+                           lex_defs <- fmap Map.fromList (mapM (\lang -> fmap ((,) lang)
+                                                                              (getDefinitions (Set.fromList fns) lang))
+                                                               ["ParseBul","ParseSwe"])
+                           runDaison db ReadWriteMode $ do
+                             insert_ updates (UpdateExample user line_no def)
+                             ex_id <- insert_ examples e
+                             st <- fmap concat (mapM (updateLexeme ex_id lex_defs) fns)
+                             c  <- query countRows (from updates_usr everything)
+                             return (showJSON (c,st))
+        _            -> fail "Invalid expression"
+      where
+        def_ls = lines def
+
+        updateLexeme ex_id lex_defs lex_id = do
+          res <- select (fromIndex lexemes_fun (at lex_id))
+          forM res $ \(id,lex) -> do
+            status' <- mapM check (status lex)
+            store lexemes (Just id)
+                          (lex{status     =status',
+                               example_ids=if elem lex_id (words (last def_ls)) && not (elem ex_id (example_ids lex))
+                                             then ex_id:example_ids lex
+                                             else example_ids lex
+                              })
+            return (lex_id,[(lang,map toLower (show st)) | (lang,st) <- status', Map.member lang lex_defs])
+          where
+            check (lang,st)
+              | st /= Checked = case Map.lookup lang lex_defs >>= Map.lookup lex_id of
+                                  Just def -> do insert_ updates (UpdateLexeme user lex_id lang def)
+                                                 return (lang,Checked)
+                                  Nothing  -> do return (lang,st)
+              | otherwise    = return (lang,st)
 
 git inp []                 = hClose inp
 git inp (command:commands) = do
@@ -185,26 +258,32 @@ git inp (command:commands) = do
       'h':'t':'t':'p':'s':':':'/':'/':drop 1 (dropWhile (/='@') cs)
     censor s = s
 
-readSourceFile lang = do
-  let fname = "WordNet"++drop 5 lang++".gf"
+readUtf8File fname = do
   hInp <- openFile (SERVER_PATH++"/"++fname) ReadMode
   hSetEncoding hInp utf8
-  hGetContents hInp                
+  hGetContents hInp
 
-getDefinition w s = seek s
+getDefinitions lex_ids lang = do
+  s <- readUtf8File ("WordNet"++drop 5 lang++".gf")
+  return (seek lex_ids s)
   where
-    seek []                        = Nothing
-    seek ('\n':'l':'i':'n':' ':cs) = match w (dropWhile isSpace cs)
-    seek (c:cs)                    = seek cs
+    seek lex_ids _  | Set.null lex_ids     = Map.empty
+    seek lex_ids []                        = Map.empty
+    seek lex_ids ('\n':'l':'i':'n':' ':cs) = match lex_ids (dropWhile isSpace cs)
+    seek lex_ids (c:cs)                    = seek lex_ids cs
 
-    match []     cs     = case dropWhile isSpace cs of
-                            ('=':cs) -> Just (def 0 (dropWhile isSpace cs))
-                            cs       -> seek cs
-    match (d:ds) (c:cs)
-      | d == c          = match ds cs
-      | otherwise       = seek cs
+    match lex_ids cs =
+      let (id,cs1) = break isSpace cs
+      in if Set.member id lex_ids
+           then case dropWhile isSpace cs1 of
+                  ('=':cs2) -> let cs3 = dropWhile isSpace cs2
+                                   d   = def 0 cs3
+                                   cs4 = drop (length d) cs3
+                               in Map.insert id d (seek (Set.delete id lex_ids) cs4)
+                  cs2       -> seek lex_ids cs2
+           else seek lex_ids cs1
 
-    def c []        = []
+    def c []          = []
     def 0 (c@';' :cs) = []
     def i (c@'(' :cs) = c:def (i+1)         cs
     def i (c@'[' :cs) = c:def (i+1)         cs

@@ -31,11 +31,11 @@
 				</table>
 			</td>
 			<td align="center">
-			    <input id="linearize_button" type="button" value="Linearize" onclick="on_linearize()">
+			    <input id="linearize_button" type="button" value="Linearize" disabled onclick="on_linearize()">
 			    <input id="next_button" type="button" value="Next" onclick="on_next()">
 			</td>
 			<td align="right">
-			    <input id="approve_button" type="button" value="Approve" onclick="??">
+			    <input id="approve_button" type="button" value="Approve" disabled onclick="on_approve()">
 			</td>
 		</tr><tr>
 			<td colspan="3"><textarea id="example" style="min-width: 500pt; min-height: 200pt;", spellcheck="false"></textarea></td>
@@ -73,6 +73,8 @@
 		<script src="js/multiselect.js"></script>
 		<script src="js/cookies.js"></script>
 		<script>
+			var exmpl_id = null;
+
 			domain_listener = function() {
 				gfwordnet.search(getMultiSelection(element('from')), null, element('domains'), element('result'), arguments.callee);
 			};
@@ -87,6 +89,8 @@
 				gfwordnet.set_user(user,author,token,count,element('result'),commit);
 				commit.style.display = "inline";
 			}
+
+			function errcont(text,code) { }
 
 			function on_linearize() {
 				var str = element("example").value;
@@ -112,7 +116,6 @@
 
 				var selection = getMultiSelection(element('from'));
 
-				function errcont(text,code) { }
 				var bind_state = true;
 				function taggedBrackets(brackets) {
 					var tags = [];
@@ -152,15 +155,41 @@
 			}
 
 			function on_next() {
-				function errcont(text,code) { }
 				function extract_example(exmpl) {
-					element("example").value = exmpl;
+					exmpl_id = exmpl[0];
+					element("example").value = exmpl[1];
+					element("approve_button").disabled=false;
+					element("linearize_button").disabled=false;
+					clear(element("domains").getElementsByTagName("TBODY")[0]);
 					clear(element("result").getElementsByTagName("THEAD")[0]);
 					clear(element("result").getElementsByTagName("TBODY")[0]);
 					clear(element("result").getElementsByTagName("TFOOT")[0]);
 					on_linearize();
 				}
 				gfwordnet.content_call("?pick_example=1",extract_example,errcont);
+			}
+
+			function on_approve() {
+				if (exmpl_id != null) {
+					var value = element("example").value.trim();
+					value = value.replace("abs*","abs:");
+					function extract_count(res) {
+						element("example").value = value;
+						for (var i in res[1]) {
+							var lex_id = res[1][i][0];
+							if (lex_id in gfwordnet.lex_ids) {
+								for (var j in res[1][i][1]) {
+									var lang = res[1][i][1][j][0];
+									var st   = res[1][i][1][j][1];
+									gfwordnet.lex_ids[lex_id].status[lang] = st;
+									gfwordnet.update_cells(lex_id,lang);
+								}
+							}
+						}
+						gfwordnet.update_count(res[0]);
+					}
+					gfwordnet.content_call("?update_example="+exmpl_id+"&def="+encodeURIComponent(value)+"&user="+user,extract_count,errcont);
+				}
 			}
 
 			function onclick_bracket(event, bracket) {

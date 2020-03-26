@@ -234,11 +234,12 @@ cgiMain db = do
             return (lex_id,[(lang,map toLower (show st)) | (lang,st) <- status', Map.member lang lex_defs])
           where
             check (lang,st)
-              | st /= Checked = case Map.lookup lang lex_defs >>= Map.lookup lex_id of
-                                  Just def -> do insert_ updates (UpdateLexeme user lex_id lang def)
-                                                 return (lang,Checked)
-                                  Nothing  -> do return (lang,st)
-              | otherwise    = return (lang,st)
+              | st == Unchecked || st == Guessed
+                          = case Map.lookup lang lex_defs >>= Map.lookup lex_id of
+                              Just def -> do insert_ updates (UpdateLexeme user lex_id lang def)
+                                             return (lang,Checked)
+                              Nothing  -> do return (lang,st)
+              | otherwise = return (lang,st)
 
 git inp []                 = hClose inp
 git inp (command:commands) = do

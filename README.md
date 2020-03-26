@@ -128,3 +128,11 @@ When possible these translations should be used.
 
 ## Browsing and Editing
 
+An online search interface for the lexicon is available here:
+
+https://cloud.grammaticalframework.org/wordnet/
+
+Via the interface it is also possible to log in with your GitHub
+account and edit the data. Both the lexicon and the corpus are editable.
+Once you finish a batch of changes you can also commit directly
+to the repository.

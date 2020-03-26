@@ -126,45 +126,5 @@ If the same synset has translations in either BulTreebank WordNet
 or Svenskt OrdNät then they are also listed after the offset. 
 When possible these translations should be used.
 
-## Mapping
+## Browsing and Editing
 
-The file [mapping.txt](mapping.txt) contains a mapping from the translation lexicon
-in GF to the WordNet lexicon. Hopefully later this could be used
-to easily port the other languages in the translation lexicon.
-
-## Editing
-
-The Python script [wordnet-ide](wordnet-ide) is a simple IDE for editing the lexicon.
-It lets us to see simultaneously the abstract syntax together with the
-three concrete syntaxes and the corresponding treebank entries.
-All the information could be edited and then saved in the original files.
-
-The IDE automatically compiles the grammar in the beginning but later
-when some changes are made only the affected part of the grammar is recompiled
-to speed up the compilation. Otherwise compiling the whole lexicon every
-time is far too slow.
-
-In order to use the IDE you must create in the current folder
-a symlink to the lib folder of the RGL. After that do this:
-```
-cp ParseExtend.gf lib/src/abstract
-cp ParseExtendEng.gf lib/src/english
-cp ParseExtendSwe.gf lib/src/swedish
-cp ParseExtendBul.gf lib/src/bulgarian
-```
-
-When changing entries from the lexicon this can affect several entries
-in the lexicon. It is a good idea to run the [sanity.hs](sanity.hs) script regularly.
-It creates a second file `examples2.txt` with two kinds of annotations:
-
-1. For those entries that are already checked it verifies that the grammar
-still produces the same linearization as the one in the treebank. 
-If it doesn't then the wrong linearizations are marked with `FIX:`.
-Either the grammar or the linearization for those entries needs to be fixed.
-
-2. For those entries that are not checked yet, it verifies whether the
-grammar produces the same output as the output from Google Translate.
-If they match the the abstract syntax tree is marked with `DONE:`.
-When that happen then maybe the GF lexicon is now better and it has
-managed to produce the right linearization. However, this might be bogus
-since the translations from Google Translate are not perfect either.

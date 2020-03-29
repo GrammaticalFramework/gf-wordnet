@@ -94588,6 +94588,7 @@ lin talk_out_V2 = variants {} ;
 lin talk_out_of_V3 = variants {} ;
 lin talk_over_V2 = mkV2 (mkV "洽谈") ; --unchecked
 lin talk_round_V2 = variants {} ;
+lin talk_show_N = variants {} ;
 lin talk_through_V3 = variants {} ;
 lin talk_up_V2 = variants {} ;
 lin talk_yourself_out_V = variants {} ;

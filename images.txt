@@ -18159,7 +18159,7 @@ steatopygia_N	973312;Steatopygia;commons/7/71/Woman_with_steatopygia.jpg
 steel_1_N	27058;Steel;commons/d/d6/FagerstaRA%C3%842.jpg
 steelworks_N	1143008;Steel_mill;commons/a/aa/Hoogovens.JPG
 steelyard_N	7095838;Steelyard_balance;commons/7/79/19th-century_steelyard.png
-steenbok_1_N	8406952;Raphicerus;commons/7/75/Raphicerus_campestris.jpg	8020216;Steenbok;commons/d/d4/Raphicerus_campestris_male_%28Etosha%2C_2012%29.jpg
+steenbok_1_N	8020216;Steenbok;commons/d/d4/Raphicerus_campestris_male_%28Etosha%2C_2012%29.jpg
 steep_2_V2	1035742;Steeping;commons/c/cb/Tea_leaves_steeping_in_a_zhong_%C4%8Daj_05.jpg
 steeple_N	1440220;Steeple;commons/d/df/Steeple_structure.png
 steeplechase_1_N	4527358;Steeplechase_(athletics);commons/7/7a/Steeplechase_by_Augustas_Didzgalvis.jpg

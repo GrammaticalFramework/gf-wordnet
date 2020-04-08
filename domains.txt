@@ -1,0 +1,391 @@
+- doctrines
+    - archaeology
+    - astrology
+    - history
+        - heraldry
+            - heraldic cross
+        - Middle Ages
+        - ancient Greece
+        - ancient Rome
+    - linguistics
+        - grammar
+            - sentence connector
+            - quantifier
+            - metonymy
+        - prosody
+        - phonetics
+        - phonology
+        - Yiddish
+        - historical linguistics
+    - literature
+        - philology
+        - poetry
+        - poetic
+    - philosophy
+        - Marxism
+        - ethics
+        - existentialism
+        - metaphysics
+    - psychology
+        - psychoanalysis
+        - psychological features
+    - art
+        - dance
+            - ballet
+        - drawing
+            - painting
+            - philately
+        - music
+            - musical instrument
+        - photography
+        - plastic arts
+            - jewellery
+            - numismatics
+            - sculpture
+        - graphic arts
+        - theatre
+        - rhetoric
+    - religion
+        - mythology
+            - Greek mythology
+            - Roman mythology
+            - classical mythology
+        - occultism
+        - theology
+            - Christian theology
+        - Christianity
+            - New Testament
+            - Old Testament
+            - Catholics
+                - roman catholic
+        - Islam
+        - Judaism
+        - Buddhism
+        - Hinduism
+        - voodooism
+        - spiritualism
+        - Gnosticism
+- free time
+    - play
+        - betting
+        - card
+            - poker
+            - bridge
+        - board games
+            - chess
+    - sport
+        - American football
+        - archery
+        - athletics
+        - badminton
+        - baseball
+        - basketball
+        - bowling
+            - tenpin bowling
+        - boxing
+        - cricket
+        - cycling
+        - diving
+        - fencing
+        - fishing
+        - football
+        - golf
+        - hockey
+        - hunting
+        - ice hockey
+        - mountaineering
+        - polo
+        - racing
+        - rowing
+        - rugby
+        - skating
+        - skiing
+        - soccer
+        - sub
+        - swimming
+        - table tennis
+        - tennis
+        - volleyball
+        - wrestling
+- applied science
+    - agriculture
+    - alimentation
+        - gastronomy
+    - architecture
+        - town planning
+            - roads
+        - building industry
+        - furniture
+    - computer science
+        - computer graphics
+    - engineering
+        - mechanics
+        - astronautics
+        - electronics
+        - electrotechnics
+        - hydraulics
+    - library science
+    - microscopy
+    - medicine
+        - dentistry
+            - tooth
+        - pharmacy
+            - drug
+        - pharmacology
+        - psychiatry
+        - radiology
+        - surgery
+        - neurology
+        - neuroscience
+        - obstetrics
+            - pregnancy
+        - ophthalmology
+        - orthopedics
+        - pathology
+        - histology
+    - veterinary
+        - zootechnics
+    - animal husbandry
+- pure science
+    - astronomy
+        - topography
+    - biology
+        - biochemistry
+            - toxicology
+        - botany
+            - plants
+                - plant ovule
+                - petals
+                - seeds
+                - leaf
+                    - leaf shape
+            - lichens
+        - ecology
+        - embryology
+        - zoology
+            - entomology
+            - animals
+        - anatomy
+            - female body
+        - physiology
+            - neurophysiology
+        - genetics
+        - microbiology
+            - virology
+            - bacteriology
+            - epidemiology
+            - cytology
+                - cell nucleus
+            - immunology
+    - chemistry
+        - mineralogy
+    - earth
+        - geology
+            - volcano
+        - meteorology
+        - oceanography
+        - paleontology
+        - geography
+    - mathematics
+        - geometry
+        - set theory
+        - logic
+        - statistics
+    - physics
+        - acoustics
+        - atomic physic
+        - cosmology
+        - electricity
+        - optics
+        - thermodynamics
+- social science
+    - administration
+    - anthropology
+        - ethnology
+            - folklore
+    - artisanship
+    - body care
+    - commerce
+    - economy
+        - banking
+        - book keeping
+        - enterprise
+        - exchange
+        - finance
+        - insurance
+        - money
+        - tax
+    - fashion
+        - clothing
+        - trousers
+    - humanities
+    - industry
+    - law
+        - state
+        - international law
+            - maritime law
+    - military
+    - pedagogy
+        - school
+        - university
+    - politics
+        - diplomacy
+    - publishing
+    - sexuality
+    - sociology
+    - telecommunication
+        - cinema
+            - film
+        - post
+        - radio
+        - telegraphy
+        - telephony
+        - tv
+    - tourism
+    - transport
+        - aeronautic
+        - nautical
+        - auto
+        - merchant navy
+        - railway
+- factotum
+    - number
+    - color
+    - time period
+    - person
+    - quality
+    - metrology
+
+- action
+- angling
+- anthers
+- antiquity
+- archaic
+- arrow
+- artifacts
+- attitude
+- aviation
+- barristers
+- behavior
+    - behavioral attributes
+- bird
+- blood
+- body care
+- broadcasting
+- buildings
+- business
+- carpets
+- celestial body
+- ceramics
+- champagne
+- circumstances
+- coffee
+- colloquial
+- communication theory
+- complexion
+- consistency
+- contract bridge
+- contracts
+- corporation
+- current
+- disease
+- dressage
+- eggs
+- environment
+- ethnic slur
+- euphemism
+- event
+- expressions
+- fabric
+- falconry
+- feathers
+- ferns
+- figurative
+- fish
+- flowers
+- food
+- formal
+- fruits
+- fund
+- fur
+- gas
+- glass
+- hair
+- hatchlings
+- health
+- home
+- hooves
+- horse
+- idea
+- images
+- infant
+- informal
+- information
+- intelligence operations
+- investments
+- language
+- laundry
+- lawyers
+- leather
+- light
+- liquid
+- liquor
+- literary
+- mammals
+- manuscript
+- marriage
+- memory
+- metal
+- mosses
+- paper
+    - paper making
+- paranormal
+- principles
+- printing
+- promises
+- quantity
+- radiate organisms
+- record
+- representations
+- reproduction
+- reputation
+- rooms
+- rubber
+- rugs
+- shrubs
+- situation
+- skin
+- slang
+- sleep
+- soap
+- society
+- soil
+- solids
+- solution
+- sound
+- speaking
+- speech
+- speed
+- statements
+- story
+- substance
+- sun
+- surface
+- tactics
+- technology
+- tempo
+- textures
+- time period
+- title
+- vegetation
+- vehicles
+- verse
+- ship
+- vessel
+- voice
+- war
+- water
+- weather
+- wood
+- wool
+- writing

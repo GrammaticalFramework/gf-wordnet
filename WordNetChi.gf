@@ -106803,6 +106803,7 @@ lin work_25_V2 = variants {} ;
 lin work_27_V2 = variants {} ;
 lin work_VA = mkVA (mkV "劳动") ; --unchecked
 lin work_in_N = variants {} ;
+lin work_of_art_N = variants {} ;
 lin work_off_V2 = mkV2 (mkV "排除") ; --unchecked
 lin work_on_1_V2 = mkV2 (mkV "从事") ; --unchecked
 lin work_on_15_V2 = mkV2 (mkV "左右") ; --unchecked

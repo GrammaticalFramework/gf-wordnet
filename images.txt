@@ -3033,7 +3033,8 @@ carnivore_1_N	5221;Carnivora;commons/4/43/Carnivora_portraits.jpg
 carnivore_2_N	6543;Carnivore;commons/6/63/Carnivore-lion.jpg
 carnotite_N	365036;Carnotite;commons/7/71/Carnotit_auf_fossilisiertem_Holz_-_St-George%2C_Utah.jpg
 carnoustie_PN	871248;Carnoustie;commons/f/f8/Carnoustiehighstreet.JPG
-carob_2_N	3637480;Ceratonia;commons/0/0a/Illustration_Ceratonia_siliqua0.jpg	346939;Carob;commons/1/1d/Ceratonia_siliqua_Keciboynuzu_1370984_Nevit.jpg
+carob_1_N	346939;Carob;commons/1/1d/Ceratonia_siliqua_Keciboynuzu_1370984_Nevit.jpg
+carob_2_N	346939;Carob;commons/1/1d/Ceratonia_siliqua_Keciboynuzu_1370984_Nevit.jpg
 carol_1_N	153568;Christmas_carol;commons/6/67/Christmas_carol_group_BNC.jpg
 carol_2_N	153568;Christmas_carol;commons/6/67/Christmas_carol_group_BNC.jpg
 carotene_2_N	6986;Carotene;commons/9/9e/CarrotDiversityLg.jpg

@@ -5931,7 +5931,7 @@ dysplasia_N	2205504;Dysplasia;commons/d/d5/Squamous_cells.jpg	16587682;Hip_dyspl
 dysprosium_N	8102;Dysprosium;commons/a/a8/Dy_chips.jpg
 dystrophy_1_N	18982;Muscular_dystrophy;commons/7/75/MuscularDystrophy.png
 e_mail_N	9738;Email;commons/e/ed/Evolution_36_mail.png
-eagle_1_N	37602;Eagle;commons/1/19/%C3%81guila_calva.jpg	2877357;Aquila_(genus);commons/8/84/Aquila_chrysaetos_Flickr.jpg
+eagle_1_N	37602;Eagle;commons/1/19/%C3%81guila_calva.jpg
 eaglescliffe_PN	894741;Eaglescliffe;commons/0/01/Preston_Hall%2C_Preston_Park_-_geograph.org.uk_-_1066447.jpg
 ealing_PN	150301;Ealing;commons/e/e9/Town_hall_ealing_804.JPG
 ear_1_N	768413;Ear;commons/1/1d/Earrr.JPG
@@ -6598,7 +6598,7 @@ fairytale_1_N	43494;Fairy_tale;commons/1/13/D%C3%A4umling.jpg
 faith_healing_N	11627;Faith_healing;commons/2/25/6257_-_MI_-_Cappella_Portinari_-_Arca_S._Pietro_-_Retro_-_Foto_Giovanni_Dall%27Orto_1-Mar-2007.jpg
 falafel_1_N	164311;Falafel;commons/5/57/Falafels_2.jpg
 falchion_N	57988;Falchion;commons/f/f3/Falchion_MET_244431.jpg
-falcon_N	87691;Accipitridae;commons/e/ed/Spizaetus-ornatus-001.jpg	54444;Falcon;commons/3/39/Brown-Falcon%2C-Vic%2C-3.1.2008.jpg
+falcon_N	54444;Falcon;commons/3/39/Brown-Falcon%2C-Vic%2C-3.1.2008.jpg
 falconry_N	169696;Falconry;commons/4/45/Falconry_sport_of_kings_%281920%29_chart.png
 falkirk_PN	353265;Falkirk;commons/2/29/FalkirkHighStreet.jpg
 fall_1_N	3049;Autumn;commons/b/be/New_hampshire_in_autumn.jpg
@@ -8453,7 +8453,7 @@ haw_haw_2_N	1536068;Ha-ha;commons/e/eb/Ha_ha_wall_diagram.jpg
 hawaii_1_PN	13270;Hawaii;commons/4/48/Hawaii_in_United_States_%28zoom%29_%28US50%29_%28-grid%29.svg
 hawfinch_N	386106;Coccothraustes;commons/6/67/Coccothraustes_coccothraustes_1_%28Marek_Szczepanek%29.jpg	365217;Hawfinch;commons/8/85/Coccothraustes_coccothraustes_Parco_Della_Piana_around_Firenze%2C_Italy.jpg
 hawick_PN	13983;Hawick;commons/8/8e/Hawick_from_the_top_of_the_Motte_-_geograph.org.uk_-_767662.jpg
-hawk_1_N	87691;Accipitridae;commons/e/ed/Spizaetus-ornatus-001.jpg	56890;Hawk;commons/3/32/Red-tailed_Hawk.jpg	441598;Accipitrinae;commons/8/80/Shikra_%28Accipiter_badius%29_with_a_Garden_Lizard_W_IMG_8988.jpg	378763;Accipiter;commons/1/1f/Collared_Sparrowhawk_kobble08.JPG
+hawk_1_N	56890;Hawk;commons/3/32/Red-tailed_Hawk.jpg
 hawker_1_N	1603109;Peddler;commons/0/0f/A_Peking_costermonger_selling_fruit_Wellcome_L0018863.jpg
 hawkweed_1_N	338228;Hieracium;commons/c/cd/Yellow_Hawkweed.jpg	1430815;Pilosella_officinarum;commons/b/b0/Hieracium_pilosella_plant.jpg
 hawkweed_2_N	338228;Hieracium;commons/c/cd/Yellow_Hawkweed.jpg

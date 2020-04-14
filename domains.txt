@@ -284,7 +284,6 @@
 - communication theory
 - complexion
 - consistency
-- contract bridge
 - contracts
 - corporation
 - current

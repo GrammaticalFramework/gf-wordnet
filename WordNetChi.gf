@@ -63096,7 +63096,6 @@ lin nursing_1_N = variants {} ;
 lin nursing_2_N = variants {} ;
 lin nursing_3_N = variants {} ;
 lin nursing_home_N = mkN "疗养所" ; --unchecked
-lin nursling_N = variants {} ;
 lin nurtural_A = variants {} ;
 lin nurturance_N = variants {} ;
 lin nurturant_A = variants {} ;

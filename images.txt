@@ -5828,7 +5828,9 @@ drown_3_V	219367;Drowning;commons/a/a5/Wassilij_Grigorjewitsch_Perow_002.jpg
 drown_5_V	219367;Drowning;commons/a/a5/Wassilij_Grigorjewitsch_Perow_002.jpg
 drug_1_N	9311172;Drug;commons/1/1d/Macro_cannabis_bud.jpg
 drug_2_N	9311172;Drug;commons/b/bf/Aspirine_macro_shot.jpg
-drugstore_N	4465295;Boticas;commons/3/31/Estrada_Boticas_-_Salto_%28239332559%29.jpg
+drugstore_N	15493918;Pharmacy_(shop);commons/6/62/Walgreens_store.jpg	15493918;Pharmacy_(shop);commons/6/65/Vitusapotek_2012.JPG
+pharmacy_1_N	297350;Pharmacy;commons/a/a7/PharmacistsMortar.svg
+pharmacy_2_N	15493918;Pharmacy_(shop);commons/6/62/Walgreens_store.jpg	15493918;Pharmacy_(shop);commons/6/65/Vitusapotek_2012.JPG
 druid_N	33931676;Druid;commons/2/27/Two_Druids.PNG
 druidism_N	33544044;Druidry_(modern);commons/7/75/Druids_celebrating_at_Stonehenge_%281%29.png
 drum_1_N	7950;Drum;commons/2/26/TalkingDrum.jpg

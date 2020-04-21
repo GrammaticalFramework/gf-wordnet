@@ -19895,6 +19895,8 @@ tub_2_N	55597797;Tub_(container);commons/f/ff/Rice_in_the_wooden_tub.jpg
 tub_3_N	55597797;Tub_(container);commons/f/ff/Rice_in_the_wooden_tub.jpg
 tube_1_N	26878637;Tube (fluid conveyance);commons/2/23/Plastic_tubing.jpg
 tube_2_N	32496;Vacuum_tube;commons/e/e9/Elektronenroehren-auswahl.jpg
+tube_5_N	18361733;Rapid_transit;commons/a/aa/Lancaster_Gate_tube.jpg
+tube_6_N	12265223;Tube_(container);commons/a/a8/Tandpasta.jpg
 tube_well_N	5361967;Tube_well;commons/1/12/Tube_well_in_India_in_1968.jpg
 tubeless_N	18098170;Tubular_tyre;commons/c/cc/Schlauchreifen.jpg
 tuber_1_N	143471;Tuber;commons/f/f3/Ullucus_tuberosus_%28South_Peru%29.jpg

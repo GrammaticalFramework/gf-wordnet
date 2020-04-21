@@ -99274,6 +99274,7 @@ lin tube_2_N = variants {} ;
 lin tube_3_N = mkN "管" ;
 lin tube_4_N = mkN "管状结构" ; --unchecked
 lin tube_5_N = mkN "地下铁路" ; --unchecked
+lin tube_6_N = variants {} ;
 lin tube_well_N = mkN "打入管井" ; --unchecked
 lin tubed_A = mkA "有内胎+的" ; --unchecked
 lin tubeless_A = mkA "无内胎+的" ; --unchecked

@@ -87854,6 +87854,7 @@ lin soft_18_A = mkA "温和+的" ; --unchecked
 lin soft_19_A = variants {} ;
 lin soft_boiled_1_A = variants {} ;
 lin soft_boiled_2_A = variants {} ;
+lin soft_drink_N = variants {} ;
 lin soft_footed_A = variants {} ;
 lin soft_headed_A = variants {} ;
 lin soft_hearted_A = variants {} ;

@@ -18082,7 +18082,7 @@ stalemate_1_N	105181;Deadlock;commons/2/28/Process_deadlock.svg
 stalemate_2_N	266632;Stalemate;commons/d/d7/Chessboard480.svg
 stalk_2_N	18952693;Plant_stem;commons/2/29/Plant_nodes_c.jpg
 stall_1_N	2287787;Animal_stall;commons/4/4b/Polish_stable_in_Gdansk.jpg
-stall_2_N	34082291;Sergia_(gens);commons/1/12/Croatia_Pula_Arch_of_the_Sergii_2014-10-11_12-22-20.jpg
+stall_2_N	8831712;Market_stall;commons/8/89/Greek_sponges.JPG
 stall_5_V	81511;Stall_(fluid_dynamics);commons/f/f2/1915ca_abger_fluegel_%28cropped_and_mirrored%29.jpg
 stall_6_V	81511;Stall_(fluid_dynamics);commons/f/f2/1915ca_abger_fluegel_%28cropped_and_mirrored%29.jpg
 stallion_N	4413048;Stallion;commons/0/04/Puerto_rican-Paso-Fino-Horse-chestnut.jpg

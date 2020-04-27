@@ -63832,7 +63832,6 @@ lin oitti_PN = variants {} ;
 lin ok_Interj = variants {} ;
 lin oka_1_N = mkN "奥卡" ; --unchecked
 lin oka_2_N = mkN "奥卡" ; --unchecked
-lin oka_3_N = mkN "酢浆草" ; --unchecked
 lin okapi_N = mkN "㺢㹢狓" ; --unchecked
 lin okay_1_A = mkA "令人满意+的" ; --unchecked
 lin okay_Adv = variants {} ;

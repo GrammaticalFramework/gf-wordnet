@@ -11323,6 +11323,7 @@ lin brand_1_V2 = mkV2 (mkV "打上烙印") ; --unchecked
 lin brand_2_V2 = mkV2 (mkV "痛斥") ; --unchecked
 lin brand_3_V2 = variants {} ;
 lin brand_4_V2 = variants {} ;
+lin brand_4_V3 = variants {} ;
 lin brand_new_A = variants {} ;
 lin branderburgh_PN = variants {} ;
 lin branding_iron_N = mkN "烙铁" ; --unchecked

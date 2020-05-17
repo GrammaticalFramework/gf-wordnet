@@ -65781,7 +65781,6 @@ lin paean_2_N = variants {} ;
 lin paederasty_N = variants {} ;
 lin paediatrics_N = variants {} ;
 lin paella_N = variants {} ;
-lin paeony_N = variants {} ;
 lin pagan_A = variants {} ;
 lin pagan_1_N = variants {} ;
 lin pagan_2_N = variants {} ;

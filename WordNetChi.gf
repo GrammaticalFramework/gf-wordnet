@@ -2658,6 +2658,7 @@ lin allotrope_N = mkN "同素体" ; --unchecked
 lin allotropic_1_A = mkA "同素异形+的" ; --unchecked
 lin allotropy_N = mkN "同素" ; --unchecked
 lin allover_A = mkA "全幅的" ; --unchecked
+lin allow_2_V2 = mkV2 (mkV "允许") ; --unchecked
 lin allow_3_V2 = mkV2 (mkV "许可") ; --unchecked
 lin allow_4_V2 = mkV2 (mkV "指定用途") ; --unchecked
 lin allow_5_V2 = variants {} ;

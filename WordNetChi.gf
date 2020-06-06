@@ -25401,6 +25401,7 @@ lin deny_3_V3 = mkV3 (mkV "拒绝") ; --unchecked
 lin deny_4_V3 = mkV3 (mkV "拒绝") ; --unchecked
 lin deny_5_V3 = mkV3 (mkV "拒绝接受") ; --unchecked
 lin deny_6_V3 = variants {} ;
+lin deny_1_VS = mkVS (mkV "拒绝接受") ; --unchecked
 lin deodar_N = variants {} ;
 lin deodorant_1_N = mkN "体香剂" ; --unchecked
 lin deodorize_1_V2 = mkV2 (mkV "防臭") ; --unchecked

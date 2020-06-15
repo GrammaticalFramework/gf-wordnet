@@ -4699,7 +4699,7 @@ crescent_N	156629;Crescent;commons/7/74/Crescent.svg
 cress_1_N	472195;Garden_cress;commons/4/4d/Img_0717_garden_cress.jpg
 cress_2_N	472195;Garden_cress;commons/4/4d/Img_0717_garden_cress.jpg
 crest_4_N	867055;Crest_(heraldry);commons/a/a8/Cavalieredicasata.JPG
-crest_5_N	1681164;Comb_(anatomy);commons/6/60/Rooster_portrait2.jpg
+crest_5_N	4098190;Crest_(feathers);commons/1/16/Balearica_regulorum_portrait_3.jpg
 cretinism_N	6352;Congenital_iodine_deficiency_syndrome;commons/8/86/Joseph_le_cr%C3%A9tin_-_Fonds_Trutat_-_MHNT.PHa.912.PR34_cropped.jpg
 crevasse_N	374163;Crevasse;commons/e/e6/Glaciereaston.jpg
 crew_1_N	6801;Crew;commons/7/72/STS-112_crew.jpg

@@ -2379,7 +2379,7 @@ brighton_PN	49796;Brighton;commons/e/e0/Brighton_Pier_at_dusk.jpg
 brill_N	4558319;Brill_(fish);commons/2/25/Scophthalmus_rhombus.jpg
 brimstone_N	27127;Sulfur;commons/4/44/Sulfur-sample.jpg
 brindled_1_A	1105231;Brindle;commons/4/40/Harlis-2009-15-10.jpg
-brine_2_N	70663;Brine;commons/9/98/Water_salinity_diagram.png	41398335;Saramur%C4%83;commons/2/23/Saramura_de_chefal.jpg
+brine_2_N	70663;Brine;commons/9/98/Water_salinity_diagram.png
 brinkmanship_N	241187;Brinkmanship;commons/7/70/Cubacrisis_17_Oct_1962.jpg
 brioche_N	330827;Brioche;commons/4/4a/Brioche.jpg
 briquet_N	700190;Briquette;commons/f/f2/Charcoal_Briquette.JPG

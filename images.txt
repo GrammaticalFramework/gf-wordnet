@@ -149,7 +149,6 @@ acyl_N	81634;Acyl_group;commons/6/6d/Acyl_group_V.0.svg
 ada_PN	1264968;Adenosine_deaminase;commons/c/c6/Adenosine_deaminase_1VFL.png
 adam_1_PN	3775581;Adam;commons/c/c8/Monreale_adam_entering.jpg
 adam_2_PN	113575;Robert_Adam;commons/b/b5/Robert-adam.jpg
-adapter_1_N	4937692;Adapter_(computing);commons/a/ad/Adapter_2011-02-27.jpg	1169469;AC_adapter;commons/c/c8/Lenovo_Power_Adapter_AC_65W_20V.jpg
 adapter_2_N	642387;Adapter;commons/9/98/Mains_plug_travel_adaptor.jpg
 adaptor_N	4937692;Adapter_(computing);commons/a/ad/Adapter_2011-02-27.jpg	1169469;AC_adapter;commons/c/c8/Lenovo_Power_Adapter_AC_65W_20V.jpg
 addax_N	904386;Addax;commons/8/8d/A_big_male_Addax_showing_as_the_power_of_his_horns.jpg
@@ -1363,7 +1362,6 @@ bandolier_N	205322;Bandolier;commons/5/5e/Pancho_Villa_bandolier_crop.jpg
 bandoneon_N	209519;Bandoneon;commons/6/66/Buenos_Aires_-_Bandoneon_tango_player_-_7435.jpg
 bandstand_N	789422;Bandstand;commons/9/92/HornimanBandstandsmall.jpg	5970299;Shell_(theater);commons/e/e3/Julia_Davis_Bandshell.JPG
 bandung_PN	353661;Bandung;commons/7/7a/Montage_of_Bandung.jpg
-bandwidth_N	3967;Bandwidth_(signal_processing);en/4/48/Baseband.svg
 bandy_2_V2	4444;Bandy;commons/0/02/Bandy_players.jpg
 bandy_A	4444;Bandy;commons/0/02/Bandy_players.jpg
 baneberry_1_N	891896;Actaea_(plant);commons/0/08/Actaea-pachypoda.jpg

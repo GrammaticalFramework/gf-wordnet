@@ -111,7 +111,7 @@ for text in tree.getroot():
 			else:
 				sentDict[w] = [t]
 
-		print("text = "+" ".join(ws))
+		print("# text = "+" ".join(ws))
 		for i,w in enumerate(ws):
 			if w not in sentDict or len(sentDict[w]) == 0:
 				tag = "_"

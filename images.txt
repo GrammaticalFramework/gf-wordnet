@@ -15737,7 +15737,7 @@ reductionism_1_N	49198;Reductionism;commons/8/8f/Digesting_Duck.jpg
 reductionism_2_N	49198;Reductionism;commons/8/8f/Digesting_Duck.jpg
 redwing_2_N	185197;Redwing;commons/c/c1/Redwing_Turdus_iliacus.jpg
 redwood_1_N	23536889;Sequoia_sempervirens;commons/0/03/US_199_Redwood_Highway.jpg
-reed_1_N	2603863;Scirpus;commons/6/61/Scirpus_atrovirens_NRCS-3.jpg
+reed_1_N	346491;Reed_(plant);commons/8/88/Reeds%2C_Reeds%2C_Reeds._-_geograph.org.uk_-_366871.jpg
 reed_2_PN	143436;John_Reed_(journalist);commons/2/24/Johnreed1.jpg
 reed_4_N	58984;Reed_(mouthpiece);commons/6/65/Saxophone_reeds-alto%2C_tenor.jpeg
 reed_5_N	58984;Reed_(mouthpiece);commons/6/65/Saxophone_reeds-alto%2C_tenor.jpeg

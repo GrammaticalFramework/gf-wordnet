@@ -11,7 +11,7 @@ function closeCheckboxes(e) {
 	if (node == null) {
 		checkboxes.style.display = "none";
 		window.removeEventListener("mousedown", closeCheckboxes);
-	}
+	}	
 }
 
 function showCheckboxes(table) {
@@ -21,14 +21,38 @@ function showCheckboxes(table) {
 	window.removeEventListener("mousedown", closeCheckboxes);
   } else {
 	checkboxes.style.display = "block";
+	table.old_selection = getMultiSelection(table);
 	window.addEventListener("mousedown", closeCheckboxes);
   }
 }
 
-function changeItem(e,item) {
+function clickItem(e) {
+	var item  = e.target.parentNode.previousElementSibling;
+	var table = item.parentNode.parentNode.parentNode;
+
+	// Dispatch the event.
+	var multisel_event = new Event('multisel_changed');
+	multisel_event.selection = getMultiSelection(table);
+	multisel_event.new_current  = false;
+	multisel_event.new_language = true;
+	table.dispatchEvent(multisel_event);
+}
+
+function changeItem(e) {
+	var item  = e.target;
+	var table = item.parentNode.parentNode.parentNode;
+
 	item.parentNode.parentNode.style.display = "none";
-	item.parentNode.parentNode.parentNode.firstElementChild.firstElementChild.firstElementChild.innerHTML = item.innerHTML;
-	e.stopPropagation();				
+	table.firstElementChild.firstElementChild.firstElementChild.innerHTML = item.innerHTML;
+
+	// Dispatch the event.
+	var multisel_event = new Event('multisel_changed');
+	multisel_event.selection = getMultiSelection(table);
+	multisel_event.new_current  = true;
+	multisel_event.new_language = false;
+	table.dispatchEvent(multisel_event);
+
+	e.stopPropagation();
 }
 
 function getMultiSelection(table) {

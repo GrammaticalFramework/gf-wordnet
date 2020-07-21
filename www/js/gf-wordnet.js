@@ -23,28 +23,32 @@ gfwordnet.languages = ["ParseBul", "ParseCat", "ParseChi"
 	gfwordnet.script_url = path.split('/').slice(0, -1).join('/')+'/';
 })();
 
+gfwordnet.errcont=function(text,code) {
+	alert(text);
+}
+
 gfwordnet.grammar_url = "https://cloud.grammaticalframework.org/robust/Parse.pgf"
 
-gfwordnet.grammar_call=function(querystring,cont,errcont) {
-    ajax_http_post_querystring_json(gfwordnet.grammar_url,querystring,cont,errcont);
+gfwordnet.grammar_call=function(querystring,cont) {
+    ajax_http_post_querystring_json(gfwordnet.grammar_url,querystring,cont,gfwordnet.errcont);
 }
 
 gfwordnet.sense_url = gfwordnet.script_url + "../SenseService.fcgi"
 
-gfwordnet.sense_call=function(querystring,cont,errcont) {
-	ajax_http_post_querystring_json(gfwordnet.sense_url,querystring,cont,errcont);
+gfwordnet.sense_call=function(querystring,cont) {
+	ajax_http_post_querystring_json(gfwordnet.sense_url,querystring,cont,gfwordnet.errcont);
 }
 
 gfwordnet.content_url = gfwordnet.script_url + "../ContentService.fcgi"
 
-gfwordnet.content_call=function(querystring,cont,errcont) {
-    http_get_json(gfwordnet.content_url+querystring,cont,errcont)
+gfwordnet.content_call=function(querystring,cont) {
+    http_get_json(gfwordnet.content_url+"?"+querystring,cont,gfwordnet.errcont)
 }
 
 gfwordnet.shell_url = "https://cloud.grammaticalframework.org/gfshell"
 
-gfwordnet.shell_call=function(querystring,cont,errcont) {
-	ajax_http_get(gfwordnet.shell_url+querystring,cont,errcont)
+gfwordnet.shell_call=function(querystring,cont) {
+	ajax_http_get(gfwordnet.shell_url+"?"+querystring,cont,gfwordnet.errcont)
 }
 
 gfwordnet.set_user = function(user,author,token,count,result,commit_link) {
@@ -69,7 +73,6 @@ gfwordnet.set_user = function(user,author,token,count,result,commit_link) {
 }
 
 gfwordnet.populate_domains = function (domains, domain_listener) {
-	function errcont(text,code) { }
 	function extract_domains(res) {
 		var thead = domains.getElementsByTagName("THEAD")[0];
 		thead.appendChild(tr(th(text("Domains"))));
@@ -86,7 +89,7 @@ gfwordnet.populate_domains = function (domains, domain_listener) {
 			trow.appendChild(td([checkbox,text(res[i])]));
 		}
 	}
-	gfwordnet.sense_call("list_domains",bind(extract_domains),errcont);
+	gfwordnet.sense_call("list_domains",bind(extract_domains));
 }
 
 gfwordnet.get_selected_domains = function(domains) {
@@ -141,7 +144,6 @@ gfwordnet.render_rows = function(result,selection,new_selection,lemmas) {
 	}
 	var scale = Math.min(5/max,3/min);
 
-	function errcont(text,code) { }
 	function extract_linearization(lins) {
 		for (var i in lins) {
 			var lin   = lins[i];
@@ -182,7 +184,7 @@ gfwordnet.render_rows = function(result,selection,new_selection,lemmas) {
 			rows[lemma] = row;
 
 			var cmd = (gfwordnet.user != null) ? "c-linearizeAll" : "c-linearize";
-			gfwordnet.grammar_call("command="+cmd+"&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lemma),bind(extract_linearization,row),errcont);
+			gfwordnet.grammar_call("command="+cmd+"&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lemma),bind(extract_linearization,row));
 		}
 	}
 	return rows;
@@ -334,7 +336,6 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		return;
 	}
 
-	function errcont(text,code) { }
 	function extract_morpho(lemmas) {
 		gfwordnet.lex_ids = Object.create(gfwordnet.selection.lex_ids);
 
@@ -348,7 +349,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 			this.senses = senses; // save the result to be used for filtering
 			gfwordnet.render_senses(this,selection,result,domains,senses);
 		}
-		gfwordnet.sense_call("lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,obj),errcont);
+		gfwordnet.sense_call("lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,obj));
 	}
 	function extract_cohorts(cohorts) {
 		gfwordnet.lex_ids = Object.create(gfwordnet.selection.lex_ids);
@@ -439,9 +440,9 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 			domain_query = domain_query + 
 				           "domain=" + encodeURIComponent(domain);
 		}
-		gfwordnet.sense_call(domain_query,extract_domains,errcont);
+		gfwordnet.sense_call(domain_query,extract_domains);
 	} else if (typeof input === 'string') {
-		gfwordnet.grammar_call("command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+selection.current,extract_morpho,errcont);
+		gfwordnet.grammar_call("command=c-lookupmorpho&input="+encodeURIComponent(input)+"&from="+selection.current,extract_morpho);
 	} else {
 		var result_thead = result.getElementsByTagName("THEAD")[0];
 		clear(result_thead);
@@ -449,7 +450,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		var result_tbody = result.getElementsByTagName("TBODY")[0];
 		clear(result_tbody);
 
-		ajax_http_post(gfwordnet.grammar_url,"command=c-lookupcohorts&longest=true&from="+selection.current+"&input="+encodeURIComponent(input.innerText), with_json(extract_cohorts,errcont), errcont);
+		ajax_http_post(gfwordnet.grammar_url,"command=c-lookupcohorts&longest=true&from="+selection.current+"&input="+encodeURIComponent(input.innerText), with_json(extract_cohorts,gfwordnet.errcont), gfwordnet.errcont);
 	}
 
 	if (new_selection) {
@@ -552,7 +553,6 @@ gfwordnet.onclick_cell = function (cell) {
 	if (cell.innerHTML == "")
 		return;
 
-	function errcont(text,code) { }
 	function extract_context(res) {
 		gfwordnet.lex_ids[this.lex_id].context   = res.context;
 		gfwordnet.lex_ids[this.lex_id].relations = res.relations;
@@ -728,7 +728,7 @@ gfwordnet.onclick_cell = function (cell) {
 					}
 					row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(synonym)]));
 
-					gfwordnet.grammar_call("command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row),errcont);
+					gfwordnet.grammar_call("command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row));
 
 					result.appendChild(node("tr",{"data-lex-id": synonym},row));
 
@@ -759,14 +759,14 @@ gfwordnet.onclick_cell = function (cell) {
 			var header = node("h1",{},[text("Examples")]);
 			details.appendChild(header);
 			for (var i in lex_def.examples) {
-				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i]),bind(extract_linearization,header),errcont);
+				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i]),bind(extract_linearization,header));
 			}
 		}
 		if (lex_def.secondary_examples.length > 0) {
 			var header = node("h1",{},[text("Secondary Examples")]);
 			details.appendChild(header);
 			for (var i in lex_def.secondary_examples) {
-				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header),errcont);
+				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header));
 			}
 		}
 		
@@ -776,11 +776,11 @@ gfwordnet.onclick_cell = function (cell) {
 		if ("context" in lex_def)
 			bind(extract_context,{lex_id: lex_id, popup: popup})(lex_def);
 		else
-			gfwordnet.sense_call("context_id="+encodeURIComponent(lex_id),bind(extract_context,{lex_id: lex_id, popup: popup}),errcont);	
+			gfwordnet.sense_call("context_id="+encodeURIComponent(lex_id),bind(extract_context,{lex_id: lex_id, popup: popup}));	
 	} else {
 		var s   = lex_id.split("_");
 		var cat = s[s.length-1];
-		gfwordnet.grammar_call("command=c-linearize&to="+gfwordnet.selection.langs_list[index-1]+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),bind(extract_linearization_morpho,details),errcont);
+		gfwordnet.grammar_call("command=c-linearize&to="+gfwordnet.selection.langs_list[index-1]+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),bind(extract_linearization_morpho,details));
 	}
 }
 gfwordnet.onmouseover_cell = function(event) {
@@ -865,7 +865,6 @@ gfwordnet.onclick_check = function (event) {
 	var lex_id = cell.parentNode.getAttribute("data-lex-id");
 	var lang   = gfwordnet.selection.langs_list[index];
 
-	function errcont(text,code) { }
 	function extract_confirm(st) {
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 		gfwordnet.popup = null;
@@ -875,7 +874,7 @@ gfwordnet.onclick_check = function (event) {
 		gfwordnet.update_count(st[0]);
 	}
 
-	gfwordnet.content_call("?user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_confirm,errcont);
+	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_confirm);
 }
 gfwordnet.onclick_eval = function(event,editor) {
 	var editor = event.target.parentNode.parentNode.parentNode;
@@ -892,7 +891,6 @@ gfwordnet.onclick_eval = function(event,editor) {
 	var dir    = "/tmp/morpho-"+lang.slice(5);
 	var cat    = lex_id.slice(lex_id.lastIndexOf("_")+1);
 
-	function errcont(text,code) { }
 	function extract_html(html) {
 		var result = editor.childNodes[2].firstElementChild.firstElementChild;
 		if (html.includes("<") && html.includes(">")) {
@@ -909,9 +907,9 @@ gfwordnet.onclick_eval = function(event,editor) {
 			extract_html(html);
 			return;
 		}
-		gfwordnet.shell_call("?dir="+dir+"&command=cc%20-one%20"+encodeURIComponent("MkDocument (NoDefinition {s=\"\"}) (Inflection"+cat+" ("+def+")) {s=\"\"}"),extract_html,errcont);
+		gfwordnet.shell_call("dir="+dir+"&command=cc%20-one%20"+encodeURIComponent("MkDocument (NoDefinition {s=\"\"}) (Inflection"+cat+" ("+def+")) {s=\"\"}"),extract_html);
 	}
-	gfwordnet.shell_call("?dir="+dir+"&command=i+-retain+morpho.gf",extract_import,errcont);
+	gfwordnet.shell_call("dir="+dir+"&command=i+-retain+morpho.gf",extract_import);
 }
 gfwordnet.onclick_save = function(event) {
 	event.stopPropagation();
@@ -928,7 +926,6 @@ gfwordnet.onclick_save = function(event) {
 	var lang   = gfwordnet.selection.langs_list[index];
 	var def    = editor.firstElementChild.firstElementChild.firstElementChild.value;
 
-	function errcont(text,code) { }
 	function extract_confirm(st) {
 		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
 		gfwordnet.popup = null;
@@ -939,7 +936,7 @@ gfwordnet.onclick_save = function(event) {
 		gfwordnet.update_count(st[0]);
 	}
 
-	gfwordnet.content_call("?user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm,errcont);
+	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm);
 	document.body.removeChild(editor);
 }
 gfwordnet.onclick_delete = function(event) {
@@ -961,7 +958,6 @@ gfwordnet.onclick_edit = function (event) {
 	var lex_id  = cell.parentNode.getAttribute("data-lex-id");
 	var lang    = gfwordnet.selection.langs_list[index];
 
-	function errcont(text,code) { }
 	function extract_def(def) {
 		var textarea = node("textarea", {rows: 4, cols: 50, spellcheck: false},[text(def)]);
 		var evalBtn   = node("button", {},[text("Eval")]);
@@ -996,7 +992,7 @@ gfwordnet.onclick_edit = function (event) {
 		textarea.focus();
 	}
 
-	gfwordnet.content_call("?user="+gfwordnet.user+"&get_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_def,errcont);
+	gfwordnet.content_call("user="+gfwordnet.user+"&get_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_def);
 }
 gfwordnet.onclick_tab = function (tab) {
 	var tr = tab.parentNode.parentNode;
@@ -1088,7 +1084,6 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 	document.getElementById("delete").style.display = "none";
 
 	if (selected.length > 0) {
-		function errcont(text,code) { }
 		function extract_linearization(lins) {
 			for (var i in lins) {
 				var lin   = lins[i];
@@ -1139,12 +1134,12 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 					tfoot.appendChild(node("tr",{"data-lex-id": lex_id},row));
 
 					var cmd = gfwordnet.user != null ? "c-linearizeAll" : "c-linearize";
-					gfwordnet.grammar_call("command="+cmd+"&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_id),bind(extract_linearization,row),errcont);
+					gfwordnet.grammar_call("command="+cmd+"&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_id),bind(extract_linearization,row));
 				}
 			}
 		}
 
-		gfwordnet.sense_call("generalize_ids="+encodeURIComponent(selected.join(' ')),extract_generalizations,errcont);
+		gfwordnet.sense_call("generalize_ids="+encodeURIComponent(selected.join(' ')),extract_generalizations);
 	}
 }
 gfwordnet.onclick_delete_selected_item = function (tfoot) {
@@ -1238,7 +1233,6 @@ gfwordnet.onclick_canvas = function (canvas) {
 	gfwordnet.init_canvas(tab,canvas,context_size_range);
 }
 gfwordnet.onclick_bracket = function (event, bracket) {
-	function errcont(text,code) { }
 	function extract_gloss(glosses) {
 		var gloss_element = parent.lastElementChild.firstElementChild;
 		if (gloss_element.tagName != "TD") {
@@ -1282,7 +1276,7 @@ gfwordnet.onclick_bracket = function (event, bracket) {
 	if (bracket == bracket0) {
 		var lex_id = bracket.getAttribute("fun");
 		if (lex_id != null) {
-			gfwordnet.sense_call("gloss_id="+lex_id,bind(extract_gloss,{parent: parent, lex_id: lex_id}),errcont);
+			gfwordnet.sense_call("gloss_id="+lex_id,bind(extract_gloss,{parent: parent, lex_id: lex_id}));
 		}
 	} else {
 		if (parent.lastElementChild.firstElementChild.tagName == "TD") {
@@ -1362,7 +1356,6 @@ gfwordnet.update_count = function(count) {
 }
 
 gfwordnet.populate_classes = function (classes, class_div, class_listener) {
-	function errcont(text,code) { }
 	function extract_classes(res) {
 		var thead = classes.getElementsByTagName("THEAD")[0];
 		clear(thead);
@@ -1383,7 +1376,7 @@ gfwordnet.populate_classes = function (classes, class_div, class_listener) {
 
 		clear(class_div);
 	}
-	gfwordnet.sense_call("list_top_classes",bind(extract_classes),errcont);
+	gfwordnet.sense_call("list_top_classes",bind(extract_classes));
 }
 
 gfwordnet.render_class = function (selection, classes, class_div, id, class_listener, sel_frame) {
@@ -1394,7 +1387,6 @@ gfwordnet.render_class = function (selection, classes, class_div, id, class_list
 
 	var count = 0;
 
-	function errcont(text,code) { }
 	function render(cls,all_vars) {
 		if (cls.vars.length > 0) {
 			class_div.appendChild(node("h2",{},[text("Roles")]));
@@ -1445,7 +1437,7 @@ gfwordnet.render_class = function (selection, classes, class_div, id, class_list
 			}
 
 			count++;
-			gfwordnet.sense_call("lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,ctx),errcont);
+			gfwordnet.sense_call("lexical_ids="+encodeURIComponent(lexical_ids),bind(helper,ctx));
 
 			rows.push(node("li",{id:"frame-"+frame.id,value: frame.id},
 			                    [gfwordnet.render_frame(all_vars,frame)
@@ -1475,7 +1467,7 @@ gfwordnet.render_class = function (selection, classes, class_div, id, class_list
 		clear(class_div);
 		render(cls[0],[["Verb"]].concat(cls[0].vars));
 	}
-	gfwordnet.sense_call("class_id="+id,bind(extract_class),errcont);
+	gfwordnet.sense_call("class_id="+id,bind(extract_class));
 }
 
 gfwordnet.render_frame = function(all_vars,frame,style) {

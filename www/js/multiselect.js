@@ -21,7 +21,6 @@ function showCheckboxes(table) {
 	window.removeEventListener("mousedown", closeCheckboxes);
   } else {
 	checkboxes.style.display = "block";
-	table.old_selection = getMultiSelection(table);
 	window.addEventListener("mousedown", closeCheckboxes);
   }
 }

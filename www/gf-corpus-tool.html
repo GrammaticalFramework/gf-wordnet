@@ -149,7 +149,7 @@
 					clear(element("linearization"))
 					element("linearization").appendChild(node("table",{class: "result"},rows));
 				}
-				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+selection.langs_list.join("%20")+"&tree="+exmpl,extract_linearization);
+				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(exmpl),extract_linearization);
 			}
 
 			function on_next() {
@@ -186,7 +186,7 @@
 						}
 						gfwordnet.update_count(res[0]);
 					}
-					gfwordnet.content_call("update_example="+exmpl_id+"&def="+value+"&user="+user,extract_count);
+					gfwordnet.content_call("update_example="+exmpl_id+"&def="+encodeURIComponent(value)+"&user="+user,extract_count);
 				}
 			}
 

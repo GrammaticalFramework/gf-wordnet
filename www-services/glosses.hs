@@ -59,11 +59,14 @@ main = do
 
     createTable lexemes
     let synsetKeys = Map.fromList [(synsetOffset synset, key) | (key,synset) <- taxonomy]
-    forM absdefs $ \(mb_offset,fun,ds) -> do
+    forM absdefs $ \(mb_offset,fun,ds,gloss) -> do
        let (es,fs) = fromMaybe ([],[]) (Map.lookup fun ex_keys)
+       mb_synsetid <- case mb_offset >>= flip Map.lookup synsetKeys of
+                        Nothing | not (null gloss) -> fmap Just (store synsets Nothing (Synset "" [] [] gloss))
+                        mb_id                      -> return mb_id
        insert_ lexemes (Lexeme fun 
                                (Map.findWithDefault [] fun cncdefs)
-                               (mb_offset >>= flip Map.lookup synsetKeys)
+                               mb_synsetid
                                ds
                                (fromMaybe [] (Map.lookup fun images))
                                es fs)
@@ -89,8 +92,8 @@ parseAbsSyn l =
   case words l of
     ("fun":fn:_) -> case break (=='\t') l of
                       (l1,'\t':l2) -> let (ds,l3) = splitDomains l2
-                                      in Just (Just ((reverse . take 10 . reverse) l1), fn, ds)
-                      _            -> Just (Nothing, fn, [])
+                                      in Just (Just ((reverse . take 10 . reverse) l1), fn, ds, l3)
+                      _            -> Just (Nothing, fn, [], "")
     _            -> Nothing
   where
     splitDomains ('[':cs) = split cs

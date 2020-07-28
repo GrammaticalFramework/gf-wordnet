@@ -211,9 +211,8 @@ table.multiselect > tbody > tr > td:last-child {
 	margin-left: 3pt;
 }
 
-.floating > img {
+.floating > * {
 	background: #0067FF;
-	padding: 3pt;
 	padding: 3pt;
 	margin-left: 3pt;
 	border-radius: 20%

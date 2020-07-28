@@ -4355,7 +4355,6 @@ cookhouse_1_N	30530147;Caboose_(ship%27s_galley);commons/3/3c/Caboose_%28ship_st
 cookhouse_2_N	20711449;Cookhouse;commons/2/2a/Station_Cookhouse_EC.JPG
 cookie_1_N	7218;Cookie;commons/f/f1/2ChocolateChipCookies.jpg	174910;Cracker_(food);commons/7/79/Crackers_with_herring_and_garlic_sauce.jpg
 cooking_N	2597318;Culinary_arts;commons/2/29/20150319-OC-LSC-0194_%2816682627630%29.jpg
-cooky_2_N	174910;Cracker_(food);commons/7/79/Crackers_with_herring_and_garlic_sauce.jpg
 cooler_1_N	1767371;Cooler;commons/6/6d/PortableIceChestPatent1955.jpg
 cooler_2_N	857823;Snow_cone;commons/3/38/Sno_cone.jpg
 coolie_1_N	339953;Coolie;commons/e/e2/Coolieresting.jpg

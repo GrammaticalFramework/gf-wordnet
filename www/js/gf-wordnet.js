@@ -571,39 +571,9 @@ gfwordnet.onclick_cell = function (cell) {
 
 		gfwordnet.init_wordcloud(canvas,context_size_range);
 	}
-	var bind_state = true;
-	function taggedBrackets(brackets) {
-		var tags = [];
-		for (var i in brackets) {
-			if ("bind" in brackets[i])
-				bind_state = brackets[i].bind;
-			else {
-				if (!bind_state) {
-					tags.push(text(" "));
-					bind_state = true;
-				}
-
-				if ("token" in brackets[i]) {
-					tags.push(text(brackets[i].token));
-					bind_state = false;
-				} else {
-					tags.push(node("span", {"fid": brackets[i].fid,
-											"fun": brackets[i].fun,
-											"onclick": "gfwordnet.onclick_bracket(event, this)"},
-								   taggedBrackets(brackets[i].children)));
-				}
-			}
-		}
-		return tags;
-	}
 	function extract_linearization(lins) {
-		var rows = []
-		for (var i in lins) {
-			var lin = lins[i];
-			bind_state = true;
-			rows.push(tr([th(text(gfwordnet.selection.langs[lin.to].name)), td(taggedBrackets(lin.brackets))]));
-		}
-		this.parentNode.insertBefore(node("table",{class: "result"},rows), this.nextSibling);
+		const table = gfwordnet.build_alignment_table(lins);
+		this.parentNode.insertBefore(table, this.nextSibling);
 	}
 	function extract_linearization_synonym(lins) {
 		for (var i in lins) {
@@ -1232,74 +1202,123 @@ gfwordnet.onclick_canvas = function (canvas) {
 	}
 	gfwordnet.init_canvas(tab,canvas,context_size_range);
 }
-gfwordnet.onclick_bracket = function (event, bracket) {
-	function extract_gloss(glosses) {
-		var gloss_element = parent.lastElementChild.firstElementChild;
-		if (gloss_element.tagName != "TD") {
-			gloss_element = node("td",{colspan: 2, style: "max-width: 100px"},[]);
-			this.parent.appendChild(tr([gloss_element]));
-		}
-
-		if (glosses.length == 0) {
-			this.parent.removeChild(this.parent.lastElementChild);
-		} else {
-			gloss_element.innerHTML = this.lex_id+": "+glosses[0];
-		}
+gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket) {
+	if (select_bracket == null) {
+		select_bracket = gfwordnet.select_bracket;
 	}
-
-	var bracket0 = bracket;
-	var parent   = bracket;
-	var selected = false;
-	while (parent.tagName != "TABLE") {
-		if (parent.className=="selected_bracket") {
-			selected = true;
-		}
-		
-		if (selected) {
-			bracket = parent.parentNode;
-			var count   = 0;
-			var element = bracket.firstElementChild;
-			while (element != null) {
-				count++;
-				element = element.nextElementSibling;
+	function onclick_bracket (event) {
+		let bracket  = this;
+		let parent   = bracket;
+		let selected = false;
+		while (parent.tagName != "TABLE") {
+			if (parent.className=="selected_bracket") {
+				selected = true;
 			}
-			if (count > 1)
-				selected = false;
+
+			if (selected) {
+				bracket = parent.parentNode;
+				var count   = 0;
+				var element = bracket.firstElementChild;
+				while (element != null) {
+					count++;
+					element = element.nextElementSibling;
+				}
+				if (count > 1)
+					selected = false;
+			}
+
+			parent = parent.parentNode;
 		}
 
-		parent = parent.parentNode;
+		if (bracket.tagName != "SPAN")
+			bracket = null;
+
+		let lex_id = null;
+		if (bracket == this)
+			lex_id = bracket.dataset.fun;
+		select_bracket(parent,colspan,(bracket == null) ? null : bracket.dataset.fid, lex_id);
+
+		event.stopPropagation();
 	}
 
-	if (bracket.tagName != "SPAN")
-		bracket = null;
+	let bind_state = true;
+	function taggedBrackets(brackets) {
+		let tags = [];
+		for (let i in brackets) {
+			if ("bind" in brackets[i])
+				bind_state = brackets[i].bind;
+			else {
+				if (!bind_state) {
+					tags.push(text(" "));
+					bind_state = true;
+				}
 
-	if (bracket == bracket0) {
-		var lex_id = bracket.getAttribute("fun");
-		if (lex_id != null) {
-			gfwordnet.sense_call("gloss_id="+lex_id,bind(extract_gloss,{parent: parent, lex_id: lex_id}));
+				if ("token" in brackets[i]) {
+					tags.push(text(brackets[i].token));
+					bind_state = false;
+				} else {
+					const span = node("span", {},
+								      taggedBrackets(brackets[i].children));
+					span.dataset.fid = brackets[i].fid;
+					span.dataset.fun = brackets[i].fun;
+					span.addEventListener("click", onclick_bracket);
+					tags.push(span);
+				}
+			}
 		}
+		return tags;
+	}
+
+	let rows = []
+	for (let i in lins) {
+		const lin = lins[i];
+
+		if (lin.to != skip_lang) {
+			bind_state = true;
+			const cell = td(taggedBrackets(lin.brackets));
+			if (colspan != null)
+				cell.colSpan = colspan;
+			rows.push(tr([th(text(gfwordnet.selection.langs[lin.to].name)), cell]));
+		}
+	}
+	return node("table",{class: "result"},rows);
+}
+gfwordnet.select_bracket = function (table,colspan,fid,lex_id) {
+	if (lex_id != null) {
+		gfwordnet.sense_call("gloss_id="+lex_id, function(glosses) {
+			let gloss_element = table.lastElementChild.firstElementChild;
+			if (!gloss_element.dataset.is_gloss) {
+				gloss_element = node("td",{colspan: (colspan ? colspan : 1)+1, style: "max-width: 100px"},[]);
+				gloss_element.dataset.is_gloss = 1;
+				table.appendChild(tr([gloss_element]));
+			}
+
+			if (glosses.length == 0) {
+				table.removeChild(table.lastElementChild);
+			} else {
+				gloss_element.innerHTML = lex_id+": "+glosses[0];
+			}
+		});
 	} else {
-		if (parent.lastElementChild.firstElementChild.tagName == "TD") {
-			parent.removeChild(parent.lastElementChild);
+		if (table.lastElementChild.firstElementChild.dataset.is_gloss) {
+			table.removeChild(table.lastElementChild);
 		}
 	}
 
 	function select(element,fid) {
-		var child = element.firstElementChild;
+		let child = element.firstElementChild;
 		while (child != null) {
-			if (fid != null && fid == child.getAttribute("fid"))
-				child.className="selected_bracket";
+			if (fid != null && fid == child.dataset.fid)
+				child.classList.add("selected_bracket");
 			else
-				child.className="";
+				child.classList.remove("selected_bracket");
 			select(child,fid);
 			child = child.nextElementSibling;
 		}
 	}
-	select(parent,(bracket == null) ? null : bracket.getAttribute("fid"));
 
-	event.stopPropagation();
+	select(table,fid);
 }
-
 gfwordnet.onmove_dialog = function(event) {
 	if (event.target.tagName != "TABLE")
 		return;

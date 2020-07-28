@@ -162,21 +162,25 @@
 			}
 
 			function select_bracket(table,colspan,fid,lex_id) {
-				var index  = lex_id.indexOf('_');
-				if (index > 0) {
-					gfwordnet.can_select = true;
-					gfwordnet.onclick_select = function(row) {
-						var new_lex_id = row.firstElementChild.firstElementChild.nextSibling.data;
-						var re = new RegExp(lex_id, 'g');
-						element("example").value =
-							element("example").value.replace(re,new_lex_id);
-						on_linearize();
-					}
+				gfwordnet.select_bracket(table,colspan,fid,lex_id);
 
-					let word = lex_id.substring(0,index);
-					let selection = getMultiSelection(element('from'));
-					selection.isEqual = function(other) { return false; };
-					gfwordnet.search(selection, word, element('domains'), element('result'), domain_listener);
+				if (lex_id != null) {
+					var index  = lex_id.indexOf('_');
+					if (index > 0) {
+						gfwordnet.can_select = true;
+						gfwordnet.onclick_select = function(row) {
+							var new_lex_id = row.firstElementChild.firstElementChild.nextSibling.data;
+							var re = new RegExp(lex_id, 'g');
+							element("example").value =
+								element("example").value.replace(re,new_lex_id);
+							on_linearize();
+						}
+
+						let word = lex_id.substring(0,index);
+						let selection = getMultiSelection(element('from'));
+						selection.isEqual = function(other) { return false; };
+						gfwordnet.search(selection, word, element('domains'), element('result'), domain_listener);
+					}
 				}
 			}
 		</script>

@@ -1202,7 +1202,10 @@ gfwordnet.onclick_canvas = function (canvas) {
 	}
 	gfwordnet.init_canvas(tab,canvas,context_size_range);
 }
-gfwordnet.build_alignment_table = function(lins,colspan,skip_lang) {
+gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket) {
+	if (select_bracket == null) {
+		select_bracket = gfwordnet.select_bracket;
+	}
 	function onclick_bracket (event) {
 		let bracket  = this;
 		let parent   = bracket;
@@ -1230,33 +1233,10 @@ gfwordnet.build_alignment_table = function(lins,colspan,skip_lang) {
 		if (bracket.tagName != "SPAN")
 			bracket = null;
 
-		function extract_gloss(glosses) {
-			var gloss_element = parent.lastElementChild.firstElementChild;
-			if (!gloss_element.dataset.is_gloss) {
-				gloss_element = node("td",{colspan: (colspan ? colspan : 1)+1, style: "max-width: 100px"},[]);
-				gloss_element.dataset.is_gloss = 1;
-				this.parent.appendChild(tr([gloss_element]));
-			}
-
-			if (glosses.length == 0) {
-				this.parent.removeChild(this.parent.lastElementChild);
-			} else {
-				gloss_element.innerHTML = this.lex_id+": "+glosses[0];
-			}
-		}
-
-		if (bracket == this) {
-			var lex_id = bracket.dataset.fun;
-			if (lex_id != null) {
-				gfwordnet.sense_call("gloss_id="+lex_id,bind(extract_gloss,{parent: parent, lex_id: lex_id}));
-			}
-		} else {
-			if (parent.lastElementChild.firstElementChild.dataset.is_gloss) {
-				parent.removeChild(parent.lastElementChild);
-			}
-		}
-
-		gfwordnet.select_bracket(parent,(bracket == null) ? null : bracket.dataset.fid);
+		let lex_id = null;
+		if (bracket == this)
+			lex_id = bracket.dataset.fun;
+		select_bracket(parent,colspan,(bracket == null) ? null : bracket.dataset.fid, lex_id);
 
 		event.stopPropagation();
 	}
@@ -1303,16 +1283,41 @@ gfwordnet.build_alignment_table = function(lins,colspan,skip_lang) {
 	}
 	return node("table",{class: "result"},rows);
 }
-gfwordnet.select_bracket = function (element,fid) {
-	let child = element.firstElementChild;
-	while (child != null) {
-		if (fid != null && fid == child.dataset.fid)
-			child.classList.add("selected_bracket");
-		else
-			child.classList.remove("selected_bracket");
-		gfwordnet.select_bracket(child,fid);
-		child = child.nextElementSibling;
+gfwordnet.select_bracket = function (table,colspan,fid,lex_id) {
+	if (lex_id != null) {
+		gfwordnet.sense_call("gloss_id="+lex_id, function(glosses) {
+			let gloss_element = table.lastElementChild.firstElementChild;
+			if (!gloss_element.dataset.is_gloss) {
+				gloss_element = node("td",{colspan: (colspan ? colspan : 1)+1, style: "max-width: 100px"},[]);
+				gloss_element.dataset.is_gloss = 1;
+				table.appendChild(tr([gloss_element]));
+			}
+
+			if (glosses.length == 0) {
+				table.removeChild(table.lastElementChild);
+			} else {
+				gloss_element.innerHTML = lex_id+": "+glosses[0];
+			}
+		});
+	} else {
+		if (table.lastElementChild.firstElementChild.dataset.is_gloss) {
+			table.removeChild(table.lastElementChild);
+		}
 	}
+
+	function select(element,fid) {
+		let child = element.firstElementChild;
+		while (child != null) {
+			if (fid != null && fid == child.dataset.fid)
+				child.classList.add("selected_bracket");
+			else
+				child.classList.remove("selected_bracket");
+			select(child,fid);
+			child = child.nextElementSibling;
+		}
+	}
+
+	select(table,fid);
 }
 gfwordnet.onmove_dialog = function(event) {
 	if (event.target.tagName != "TABLE")

@@ -112,44 +112,15 @@
 				var end   = index;
 				var exmpl = str.substring(start,end).trim();
 
-				var selection = getMultiSelection(element('from'));
+				gfwordnet.selection = getMultiSelection(element('from'));
+				gfwordnet.selection.lex_ids = {};
 
-				var bind_state = true;
-				function taggedBrackets(brackets) {
-					var tags = [];
-					for (var i in brackets) {
-						if ("bind" in brackets[i])
-							bind_state = brackets[i].bind;
-						else {
-							if (!bind_state) {
-								tags.push(text(" "));
-								bind_state = true;
-							}
-
-							if ("token" in brackets[i]) {
-								tags.push(text(brackets[i].token));
-								bind_state = false;
-							} else {
-								tags.push(node("span", {"fid": brackets[i].fid,
-														"fun": brackets[i].fun,
-														"onclick": "onclick_bracket(event, this)"},
-											   taggedBrackets(brackets[i].children)));
-							}
-						}
-					}
-					return tags;
-				}
 				function extract_linearization(lins) {
-					var rows = []
-					for (var i in lins) {
-						var lin = lins[i];
-						bind_state = true;
-						rows.push(tr([th(text(selection.langs[lin.to].name)), td(taggedBrackets(lin.brackets))]));
-					}
+					const table = gfwordnet.build_alignment_table(lins,null,null,select_bracket);
 					clear(element("linearization"))
-					element("linearization").appendChild(node("table",{class: "result"},rows));
+					element("linearization").appendChild(table);
 				}
-				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+selection.langs_list.join("%20")+"&tree="+encodeURIComponent(exmpl),extract_linearization);
+				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(exmpl),extract_linearization);
 			}
 
 			function on_next() {
@@ -190,9 +161,7 @@
 				}
 			}
 
-			function onclick_bracket(event, bracket) {
-				gfwordnet.onclick_bracket(event, bracket);
-				var lex_id = bracket.getAttribute("fun");
+			function select_bracket(table,colspan,fid,lex_id) {
 				var index  = lex_id.indexOf('_');
 				if (index > 0) {
 					gfwordnet.can_select = true;
@@ -204,8 +173,8 @@
 						on_linearize();
 					}
 
-					var word = lex_id.substring(0,index);
-					var selection = getMultiSelection(element('from'));
+					let word = lex_id.substring(0,index);
+					let selection = getMultiSelection(element('from'));
 					selection.isEqual = function(other) { return false; };
 					gfwordnet.search(selection, word, element('domains'), element('result'), domain_listener);
 				}

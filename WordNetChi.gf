@@ -63902,6 +63902,7 @@ lin olive_4_N = variants {} ;
 lin olive_5_N = variants {} ;
 lin olive_PN = variants {} ;
 lin olive_tree_N = variants {} ;
+lin olive_oil_N = variants {} ;
 lin olivelike_1_A = mkA "橄榄状+的" ; --unchecked
 lin olivenite_N = mkN "橄榄铜矿" ; --unchecked
 lin oliver_PN = variants {} ;

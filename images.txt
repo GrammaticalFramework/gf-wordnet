@@ -17982,7 +17982,6 @@ spring_1_N	316532;Spring_(season);commons/9/92/Colorful_spring_garden.jpg
 spring_2_N	316617;Spring_(device);commons/d/d5/Springs_009.jpg
 spring_4_N	316612;Spring_(hydrology);commons/0/07/Big_Spring_Missouri_1-02Aug08.jpg
 springboard_1_N	1951467;Springboard;commons/1/17/Diving.jpg
-springboard_2_N	1951467;Springboard;commons/1/17/Diving.jpg
 springbok_1_N	28580;Springbok;commons/8/89/Antidorcas_marsupialis%2C_male_%28Etosha%2C_2012%29.jpg
 springfield_1_PN	57706;Springfield,_Illinois;commons/f/f8/Downtown_Springfield.JPG
 springfield_2_PN	150728;Springfield,_Missouri;commons/2/2c/A_Nighttime_view_of_Hammon%27s_Tower_-_panoramio.jpg

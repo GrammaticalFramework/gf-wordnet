@@ -21420,3 +21420,4 @@ new_england_PN	21531764;New_England;commons/c/ca/Boston_skyline_from_Longfellow_
 truck_2_N	2096519;Hand_truck;commons/9/91/Handtruck.JPG
 power_2_N	24236;Power_(physics);commons/3/3a/Gluehlampe_01_KMJ.jpg
 cinnabar_2_N	1992040;Tyria_jacobaeae;commons/a/ae/Tyria_jacobaeae-04_%28xndr%29.jpg
+satori_N	237526;Satori;commons/d/df/Satori.svg

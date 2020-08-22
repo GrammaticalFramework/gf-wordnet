@@ -3550,6 +3550,8 @@ chimaera_3_N	490225;Chimaera;commons/f/f9/Hydrolagus_colliei.jpg
 chime_N	166362;Tubular_bells;commons/5/53/Yamaha_Deagan_chimes_%28from_LA_Percussion_Rentals%29.jpg
 chimney_1_N	238377;Chimney;commons/9/9f/Chimney_Smoke_Stack.jpg
 chimney_sweep_N	254206;Chimney_sweep;commons/a/ab/Chimneysweep.png
+chimneysweeper_N	254206;Chimney_sweep;commons/a/ab/Chimneysweep.png
+sweep_2_N	254206;Chimney_sweep;commons/a/ab/Chimneysweep.png
 chimneypot_N	1726685;Funnel_(ship);commons/5/55/Old_and_new_%28518089725%29.jpg
 chimpanzee_N	78882;Pan_(genus);commons/3/3f/Composite_image_of_male_chimpanzee_%28left%29_and_male_bonobo_%28right%29.jpg	7844;Chimpanzee;commons/6/68/Eastern_Chimpanzee_%28Pan_troglodytes_schweinfurthii%29_%287068198095%29_%28cropped%29.jpg
 china_1_PN	5405;China;commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg

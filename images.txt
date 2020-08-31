@@ -8342,7 +8342,8 @@ handset_N	1932228;Handset;commons/2/2e/FeAp_92-1a_-_handset-4975.jpg
 handshake_N	165458;Handshake;commons/6/69/Hermandad_-_friendship.jpg
 handspike_N	3194198;Handspike;commons/b/bd/Marlspieker.jpg
 handstand_N	930830;Handstand;commons/d/d1/AcroDanceHandstand.jpg
-handwriting_1_N	369505;Handwriting;commons/2/2f/1_QIsa_example_of_damage_col_12-13.jpg
+script_2_N	19167;Manuscript;commons/c/cb/Codex_Bruchsal_1_68r.jpg
+handwriting_2_N	369505;Handwriting;commons/2/2f/1_QIsa_example_of_damage_col_12-13.jpg
 handyman_N	350095;Handyman;commons/c/c6/FEMA_-_42428_-_Home_Repair_after_Flood.jpg
 hangar_N	1011776;Hangar;commons/f/f8/Hangar.svg
 hanging_2_N	155019;Hanging;commons/d/dc/Pisanello_010.jpg

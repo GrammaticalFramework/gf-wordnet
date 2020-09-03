@@ -93443,7 +93443,6 @@ lin suspect_2_V2 = variants {} ;
 lin suspect_3_V2 = variants {} ;
 lin suspect_of_V3 = variants {} ;
 lin suspect_VS = variants {} ;
-lin suspend_V = mkV "暂停" ; --unchecked
 lin suspend_1_V2 = variants {} ;
 lin suspend_2_V2 = variants {} ;
 lin suspend_3_V2 = mkV2 (mkV "禁止") ; --unchecked

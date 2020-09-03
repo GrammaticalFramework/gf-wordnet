@@ -11469,7 +11469,6 @@ marjoram_2_N	18956;Marjoram;commons/c/c4/Majoram_spice.jpg
 mark_7_N	88160;Deutsche_Mark;commons/8/8d/100_Mark_%28O%29.jpg
 mark_8_PN	39201;Mark_the_Evangelist;commons/f/f5/Grandes_Heures_Anne_de_Bretagne_Saint_Marc.jpg
 mark_12_PN	12490;Gospel_of_Mark;commons/5/5c/P46.jpg
-marker_1_N	478314;Permanent_marker;commons/f/fc/Permanent_ink_marker_-_chisel_tip.jpg
 marker_3_N	478313;Marker_pen;commons/f/f7/Felt_Tip.jpg
 market_5_N	55903941;Market_hall;commons/0/09/%C3%96stermalms_saluhall_1.jpg
 market_cross_N	272990;Market_cross;commons/3/38/Malmesbury.market.cross.arp.jpg

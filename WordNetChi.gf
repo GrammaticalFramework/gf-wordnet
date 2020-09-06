@@ -29858,7 +29858,6 @@ lin earl_shilton_PN = variants {} ;
 lin earldom_1_N = mkN "伯爵爵位" ; --unchecked
 lin earldom_2_N = variants {} ;
 lin earless_A = variants {} ;
-lin earlier_A = variants {} ;
 lin earlier_1_Adv = variants {} ;
 lin earlier_2_Adv = variants {} ;
 lin earlier_3_Adv = variants {} ;

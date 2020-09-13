@@ -1375,7 +1375,6 @@ bangor_1_PN	116100;Bangor,_Maine;commons/5/5b/BANGOR_ME.jpg
 bangor_2_PN	368020;Bangor,_Gwynedd;commons/1/16/Panorama_Bangor_03_977.png
 banian_tree_N	228195;Ficus_benghalensis;commons/9/9f/Great_banyan_tree_kol.jpg	228192;Banyan;commons/0/0d/Big_Banyan_Tree_at_Bangalore.jpg
 banjo_N	3846;Banjo;commons/7/79/BluegrassBanjo.jpg
-bank_7_N	259162;Grade_(slope);commons/d/dc/Grade_dimension.svg
 bank_8_N	236305;Piggy_bank;commons/e/e2/Sparschwein_Haspa02.jpg
 bank_9_N	19360669;Bank;commons/a/a8/London.bankofengland.arp.jpg
 bank_book_N	1236407;Passbook;commons/2/20/SampleBankbook.png

@@ -66,7 +66,7 @@ cgiMain db (cs,funs) = do
                                                    Nothing -> case mb_s8 of
                                                                 Just _  -> do json <- liftIO doListDomains
                                                                               outputJSONP json
-                                                                Nothing -> case s9 of
+                                                                Nothing -> case map read s9 of
                                                                              (d:ds) -> do json <- liftIO (doDomainQuery d ds)
                                                                                           outputJSONP json
                                                                              _      -> case mb_s10 of
@@ -145,7 +145,12 @@ cgiMain db (cs,funs) = do
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
                             lex_ids <- select [(lex_fun,status,frame_inf,Just (domains,images,examples,sexamples))
-                                                   | (_,Lexeme lex_fun status _ domains images ex_ids fs) <- fromIndex lexemes_synset (at synset_id),
+                                                   | (_,Lexeme lex_fun status _ domain_ids images ex_ids fs) <- fromIndex lexemes_synset (at synset_id),
+                                                     domains   <- select [makeObj [ ("id",showJSON domain_id)
+                                                                                  , ("name",showJSON (domain_name d))
+                                                                                  ]
+                                                                            | domain_id <- anyOf domain_ids
+                                                                            , d <- from domains (at domain_id)],
                                                      examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
                                                      sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_fun), not (elem id ex_ids)],
                                                      frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
@@ -156,15 +161,25 @@ cgiMain db (cs,funs) = do
 
       return (showJSON (map mkSenseObj fs))
 
-    doListDomains = do
-      x <- runDaison db ReadOnlyMode $ do
-         select [domain | (domain,_) <- fromList lexemes_domain everything]
-      return (showJSON x)
+    doListDomains =
+      runDaison db ReadOnlyMode $ do
+        roots <- listDomains 0
+        return (showJSON roots)
+      where
+        listDomains :: QueryMonad m => Key Domain -> m [JSValue] 
+        listDomains parent =
+          select [makeObj [("id",   showJSON id)
+                          ,("name", showJSON (domain_name domain))
+                          ,("children", showJSON children)
+                          ]
+                     | (id,domain) <- fromIndex domains_parent (at parent)
+                     , children <- listDomains id
+                     ]
 
     doDomainQuery d ds = do
       runDaison db ReadOnlyMode $ do
         lexemes0 <- select [res | res@(_,lexeme) <- fromIndex lexemes_domain (at d),
-                                  all (flip elem (domains lexeme)) ds]
+                                  all (flip elem (domain_ids lexeme)) ds]
         let lexemes1 = take maxResultLength lexemes0
         senses <- foldM getGloss Map.empty lexemes1
         let sorted_senses = (sortSenses . Map.toList) senses
@@ -198,7 +213,12 @@ cgiMain db (cs,funs) = do
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
-    getGloss senses (_,Lexeme lex_id status mb_sense_id domains images ex_ids _) = do
+    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _) = do
+      domains   <- select [makeObj [ ("id",showJSON domain_id)
+                                   , ("name",showJSON (domain_name d))
+                                   ]
+                               | domain_id <- anyOf domain_ids
+                               , d <- from domains (at domain_id)]
       examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
       sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
 

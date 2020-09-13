@@ -23,12 +23,19 @@ data Status
   = Guessed | Unchecked | Changed | Checked
   deriving (Data,Show,Eq)
 
+data Domain
+  = Domain
+      { domain_name   :: String
+      , domain_parent :: Key Domain
+      }
+    deriving Data
+
 data Lexeme
   = Lexeme
       { lex_fun     :: Fun
       , status      :: [(String,Status)]
       , synset      :: Maybe (Key Synset)
-      , domains     :: [String]
+      , domain_ids  :: [Key Domain]
       , images      :: [(String,String)]
       , example_ids :: [Key Expr]
       , frame_ids   :: [Key Frame]
@@ -63,6 +70,13 @@ data Frame
 synsets :: Table Synset
 synsets = table "synsets"
 
+domains :: Table Domain
+domains = table "domains"
+             `withIndex` domains_parent
+
+domains_parent :: Index Domain (Key Domain)
+domains_parent = index domains "parent" domain_parent
+
 lexemes :: Table Lexeme
 lexemes = table "lexemes"
              `withIndex` lexemes_fun
@@ -76,8 +90,8 @@ lexemes_fun = index lexemes "fun" lex_fun
 lexemes_synset :: Index Lexeme (Key Synset)
 lexemes_synset = maybeIndex lexemes "synset" synset
 
-lexemes_domain :: Index Lexeme String
-lexemes_domain = listIndex lexemes "domain" domains
+lexemes_domain :: Index Lexeme (Key Domain)
+lexemes_domain = listIndex lexemes "domain" domain_ids
 
 lexemes_frame :: Index Lexeme (Key Frame)
 lexemes_frame = listIndex lexemes "frames" frame_ids

@@ -7,6 +7,7 @@ import Data.Char
 import Data.List(partition,intercalate)
 import Data.Maybe
 import Data.Data
+import Data.Tree
 import System.Directory
 import Control.Monad
 import qualified Data.Map.Strict as Map
@@ -36,6 +37,8 @@ main = do
 
   taxonomy <- fmap (map parseTaxonomy . lines) $ readFile "taxonomy.txt"
 
+  domain_forest <- fmap (parseDomains [] . lines) $ readFile "domains.txt"
+
   ls <- fmap lines $ readFile "embedding.txt"
   let (cs,ws) = parseEmbeddings ls
 
@@ -57,6 +60,9 @@ main = do
     forM taxonomy $ \(key,synset) -> do
        store synsets (Just key) synset
 
+    createTable domains
+    ids <- insertDomains Map.empty 0 domain_forest
+
     createTable lexemes
     let synsetKeys = Map.fromList [(synsetOffset synset, key) | (key,synset) <- taxonomy]
     forM absdefs $ \(mb_offset,fun,ds,gloss) -> do
@@ -67,7 +73,7 @@ main = do
        insert_ lexemes (Lexeme fun 
                                (Map.findWithDefault [] fun cncdefs)
                                mb_synsetid
-                               ds
+                               (map (\d -> fromMaybe (error ("Unknown domain "++d)) (Map.lookup d ids)) ds)
                                (fromMaybe [] (Map.lookup fun images))
                                es fs)
 
@@ -171,6 +177,37 @@ parseTaxonomy l =
   (read key_s :: Key Synset, Synset offset (read parents_s) (read children_s) gloss)
   where
     [offset,key_s,parents_s,children_s,gloss] = tsv l
+
+parseDomains levels []     = attach levels
+  where
+    attach ((i,t):(j,Node parent ts):levels)
+      | i  >  j   = attach ((j,Node parent (reverseChildren t:ts)):levels)
+    attach levels = reverse (map snd levels)
+parseDomains levels (l:ls) =
+  parseDomains ((i',Node domain []):attach levels) ls
+  where
+    (i',domain) = stripIndent l
+
+    attach ((i,t):(j,Node parent ts):levels)
+      | i' <  i   = attach ((j,Node parent (reverseChildren t:ts)):levels)
+    attach ((i,t):(j,Node parent ts):levels)
+      | i' == i &&
+        i  >  j   = (j,Node parent (reverseChildren t:ts)):levels
+    attach levels
+      | otherwise = levels
+
+    stripIndent ""       = (0,"")
+    stripIndent (' ':cs) = let (i,domain) = stripIndent cs
+                           in (i+1,domain)
+    stripIndent ('-':cs) = (0,dropWhile isSpace cs)
+
+reverseChildren (Node x ts) = Node x (reverse ts)
+
+insertDomains !ids parent []                      = return ids
+insertDomains !ids parent (Node name children:ts) = do
+  id  <- insert_ domains (Domain name parent)
+  ids <- insertDomains (Map.insert name id ids) id children
+  insertDomains ids parent ts
 
 parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
   where

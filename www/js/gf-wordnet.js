@@ -74,22 +74,46 @@ gfwordnet.set_user = function(user,author,token,count,result,commit_link) {
 
 gfwordnet.populate_domains = function (domains, domain_listener) {
 	function extract_domains(res) {
-		var thead = domains.getElementsByTagName("THEAD")[0];
+		const thead = domains.getElementsByTagName("THEAD")[0];
 		thead.appendChild(tr(th(text("Domains"))));
 
-		var tbody = domains.getElementsByTagName("TBODY")[0];
-		var trow  = null;
-		for (var i = 0; i < res.length; i++) {
-			var checkbox = node("input", {type: "checkbox"});
-			checkbox.addEventListener("change", domain_listener);
-			if (trow == null || trow.childElementCount >= 5) {
-				trow = tr([]);
-				tbody.appendChild(trow);
-			}
-			trow.appendChild(td([checkbox,text(res[i])]));
-		}
+		const tbody = domains.getElementsByTagName("TBODY")[0];
+
+        function count_domains(domains) {
+            var count = 0
+            for (var i = 0; i < domains.length; i++) {
+                count += 1+count_domains(domains[i].children);
+            }
+            return count;
+        }
+
+        const cols_per_row = 5;
+        const count = count_domains(res);
+        for (var i = 0; i < count; i += cols_per_row) {
+            tbody.appendChild(tr([]));
+        }
+
+        var trow = tbody.firstElementChild;
+
+        function insert_domains(domains, indent) {
+            for (var i = 0; i < domains.length; i++) {
+                var checkbox = node("input", {type:  "checkbox",
+                                              value: domains[i].id});
+                checkbox.style.marginRight = indent+"px";
+                checkbox.addEventListener("change", domain_listener);
+                trow.appendChild(td([checkbox,text(domains[i].name)]));
+
+                trow = trow.nextElementSibling;
+                if (trow == null)
+                    trow = tbody.firstElementChild;
+
+                insert_domains(domains[i].children,indent+10);
+            }
+        }
+
+		insert_domains(res,5);
 	}
-	gfwordnet.sense_call("list_domains",bind(extract_domains));
+	gfwordnet.sense_call("list_domains",extract_domains);
 }
 
 gfwordnet.get_selected_domains = function(domains) {
@@ -97,8 +121,7 @@ gfwordnet.get_selected_domains = function(domains) {
 	var domains_map  = {};
 	for (var i=0; i<items.length; i++) {
 		if (items[i].checked) {
-			var domain = items[i].nextSibling.textContent;
-			domains_map[domain] = null;
+			domains_map[items[i].value] = null;
 		}
 	}
 	return domains_map;
@@ -240,16 +263,17 @@ gfwordnet.render_senses = function(ctxt,selection,result,domains,senses) {
 			if (domains != null) {
 				for (var j in gfwordnet.lex_ids[lex_id].domains) {
 					var domain = gfwordnet.lex_ids[lex_id].domains[j];
-					if (ctxt.domains_map[domain] == null) {
+					if (ctxt.domains_map[domain.id] == null) {
 						if (domains_row == null || domains_row.childElementCount >= 5) {
 							domains_row = tr([]);
 							domains_tbody.appendChild(domains_row);
 						}
-						var checkbox = node("input", {type: "checkbox"});
-						checkbox.checked = domain in ctxt.domains_map;
+						var checkbox = node("input", {type: "checkbox",
+                                                      value: domain.id});
+						checkbox.checked = domain.id in ctxt.domains_map;
 						checkbox.addEventListener("change", ctxt.domain_listener);
-						var cell = td([checkbox,text(domain)]);
-						ctxt.domains_map[domain] = cell;
+						var cell = td([checkbox,text(domain.name)]);
+						ctxt.domains_map[domain.id] = cell;
 						domains_row.appendChild(cell);
 					}
 				}
@@ -721,7 +745,7 @@ gfwordnet.onclick_cell = function (cell) {
 
 			var row = [];
 			for (var j in lex_def.domains) {
-				row.push(td([text(lex_def.domains[j])]));
+				row.push(td([text(lex_def.domains[j].name)]));
 			}
 			details.appendChild(node("table",{class: "selectors"},[tr(row)]));
 		}

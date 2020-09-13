@@ -298,20 +298,27 @@ function domain_search_listener() {
 		new_sense.lex_ids = {}
 
 		for (var lex_id in sense.lex_ids) {
-			var is_included = true;
-			for (var domain in this.domains_map) {
-				if (sense.lex_ids[lex_id].domains == null ||
-					!sense.lex_ids[lex_id].domains.includes(domain)) {
-					is_included = false;
-					break;
-				}
+			var is_included = false;
+            var is_empty    = true;
+            var lex_domains = sense.lex_ids[lex_id].domains;
+            scan:
+            for (var domain_id in this.domains_map) {
+                is_empty = false;
+                if (lex_domains != null) {
+                    for (var j in lex_domains) {
+                        if (lex_domains[j].id == domain_id) {
+                            is_included = true;
+                            break scan;
+                        }
+                    }
+                }
 			}
-			if (is_included) {
+			if (is_empty || is_included) {
 				new_sense.lex_ids[lex_id] = sense.lex_ids[lex_id];
 				new_senses.retrieved++;
 			}
 		}
-		
+
 		if (Object.keys(new_sense.lex_ids).length > 0) {
 			new_senses.result.push(new_sense);
 		}

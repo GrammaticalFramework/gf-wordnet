@@ -16499,7 +16499,6 @@ sandarac_3_N	2268820;Tetraclinis;commons/0/04/Tetraclinis_articulata.JPG
 sandbach_PN	849299;Sandbach;commons/8/8f/Sandbach.jpg
 sandbag_N	723712;Sandbag;commons/1/14/FEMA_-_3228_-_Photograph_by_Andrea_Booher_taken_on_07-09-1993.jpg
 sandbank_N	295148;Shoal;commons/0/0a/GughSandbar.JPG
-sandblast_N	13198770;Abrasive_blasting;commons/8/80/Sandblasting1.jpg
 sandbox_2_N	60217543;Sandpit;commons/7/74/Sandpit.jpg
 sanderling_N	286976;Sanderling;commons/7/73/Calidris_alba_-_Laem_Phak_Bia.jpg
 sandfly_1_N	5594239;Phlebotominae;commons/4/46/Phlebotomus_pappatasi_bloodmeal_continue2.jpg	1471115;Sandfly;commons/b/bf/Biting_sandfly.jpg

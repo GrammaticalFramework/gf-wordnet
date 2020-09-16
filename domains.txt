@@ -149,6 +149,7 @@
 - pure science
     - astronomy
         - topography
+        - celestial body
     - biology
         - biochemistry
             - toxicology
@@ -274,7 +275,6 @@
 - buildings
 - business
 - carpets
-- celestial body
 - ceramics
 - champagne
 - circumstances

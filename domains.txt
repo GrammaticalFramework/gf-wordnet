@@ -160,6 +160,7 @@
                 - seeds
                 - leaf
                     - leaf shape
+                - fruits
             - lichens
         - ecology
         - embryology
@@ -303,7 +304,6 @@
 - flowers
 - food
 - formal
-- fruits
 - fund
 - fur
 - gas

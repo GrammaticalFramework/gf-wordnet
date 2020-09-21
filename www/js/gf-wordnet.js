@@ -481,7 +481,7 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		var result_tbody = result.getElementsByTagName("TBODY")[0];
 		clear(result_tbody);
 
-		ajax_http_post(gfwordnet.grammar_url,"command=c-lookupcohorts&longest=true&from="+selection.current+"&input="+encodeURIComponent(input.innerText), with_json(extract_cohorts,gfwordnet.errcont), gfwordnet.errcont);
+		ajax_http_post(gfwordnet.grammar_url,"command=c-lookupcohorts&filter=longest&from="+selection.current+"&input="+encodeURIComponent(input.innerText), with_json(extract_cohorts,gfwordnet.errcont), gfwordnet.errcont);
 	}
 
 	if (new_selection) {

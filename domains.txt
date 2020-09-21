@@ -167,6 +167,7 @@
         - zoology
             - entomology
             - animals
+                - mammals
         - anatomy
             - female body
         - physiology
@@ -329,7 +330,6 @@
 - liquid
 - liquor
 - literary
-- mammals
 - manuscript
 - marriage
 - memory

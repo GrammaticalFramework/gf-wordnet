@@ -13780,7 +13780,6 @@ parr_1_PN	47406;Catherine_Parr;commons/4/49/Catherine_Parr_from_NPG.jpg
 parrot_1_N	62267;Psittacidae;commons/f/fe/Amazona_aestiva_-Chapada_Imperial%2C_Brazilian_Federal_District%2C_Brazil-8a.jpg	21051888;Parrot;commons/a/a5/Parrot_montage.jpg
 parrotfish_N	452162;Parrotfish;commons/f/f2/Scarus_frenatus_by_Ewa_Barska.jpg
 parsec_N	23335;Parsec;commons/7/7d/Stellarparallax_parsec1.svg
-parsee_1_N	2287787;Animal_stall;commons/4/4b/Polish_stable_in_Gdansk.jpg
 parsley_1_N	23206;Parsley;commons/e/e4/Petroselinum.jpg
 parsley_2_N	23206;Parsley;commons/e/e4/Petroselinum.jpg
 parsnip_1_N	21905935;Pastinaca;commons/8/8c/Parsnips-1.jpg

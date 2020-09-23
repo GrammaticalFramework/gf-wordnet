@@ -10,14 +10,44 @@ import Interval
 
 type SynsetOffset = String
 
+data DomainType
+  = Topic
+  | Region
+  | Usage
+  deriving (Data,Show)
+
+data PointerSymbol
+  = Antonym
+  | Hypernym
+  | InstanceHypernym
+  | Hyponym
+  | InstanceHyponym
+  | MemberHolonym
+  | SubstanceHolonym
+  | PartHolonym
+  | MemberMeronym
+  | SubstanceMeronym
+  | PartMeronym
+  | Attribute
+  | DomainOfSynset DomainType
+  | MemberOfDomain DomainType
+  | Entailment
+  | Cause
+  | AlsoSee
+  | VerbGroup
+  | SimilarTo
+  | Derived
+  | Participle
+  deriving (Data,Show)
+
 data Synset
   = Synset
       { synsetOffset :: SynsetOffset
-      , parents      :: [Key Synset]
+      , pointers     :: [(PointerSymbol,Key Synset)]
       , children     :: Interval (Key Synset)
       , gloss        :: String
       }
-    deriving (Data,Ord,Eq,Show)
+    deriving (Data,Show)
 
 data Status
   = Guessed | Unchecked | Changed | Checked
@@ -32,13 +62,14 @@ data Domain
 
 data Lexeme
   = Lexeme
-      { lex_fun     :: Fun
-      , status      :: [(String,Status)]
-      , synset      :: Maybe (Key Synset)
-      , domain_ids  :: [Key Domain]
-      , images      :: [(String,String)]
-      , example_ids :: [Key Expr]
-      , frame_ids   :: [Key Frame]
+      { lex_fun      :: Fun
+      , status       :: [(String,Status)]
+      , synset       :: Maybe (Key Synset)
+      , domain_ids   :: [Key Domain]
+      , images       :: [(String,String)]
+      , example_ids  :: [Key Expr]
+      , frame_ids    :: [Key Frame]
+      , lex_pointers :: [(PointerSymbol,Key Lexeme)]
       }
     deriving (Data,Show)
 

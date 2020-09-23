@@ -132,7 +132,8 @@ cgiMain db (cs,funs) = do
 
       let up synset_id =
             runDaison db ReadOnlyMode $ fmap head $ do
-              select [parents s | s <- from synsets (at synset_id)]
+              select [[id | (Hypernym,id) <- pointers s]
+                              | s <- from synsets (at synset_id)]
 
       ids <- findLCA up (nub x)
 
@@ -145,7 +146,7 @@ cgiMain db (cs,funs) = do
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
                             lex_ids <- select [(lex_fun,status,frame_inf,Just (domains,images,examples,sexamples))
-                                                   | (_,Lexeme lex_fun status _ domain_ids images ex_ids fs) <- fromIndex lexemes_synset (at synset_id),
+                                                   | (_,Lexeme lex_fun status _ domain_ids images ex_ids fs _) <- fromIndex lexemes_synset (at synset_id),
                                                      domains   <- select [makeObj [ ("id",showJSON domain_id)
                                                                                   , ("name",showJSON (domain_name d))
                                                                                   ]
@@ -213,7 +214,7 @@ cgiMain db (cs,funs) = do
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
-    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _) = do
+    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _ _) = do
       domains   <- select [makeObj [ ("id",showJSON domain_id)
                                    , ("name",showJSON (domain_name d))
                                    ]
@@ -228,7 +229,7 @@ cgiMain db (cs,funs) = do
             Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
             Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
                                        lex_ids <- select [(lex_id,status,frame_inf,Nothing)
-                                                              | (_,Lexeme lex_id status _ _ _ _ fs) <- fromIndex lexemes_synset (at sense_id),
+                                                              | (_,Lexeme lex_id status _ _ _ _ fs _) <- fromIndex lexemes_synset (at sense_id),
                                                                 frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                                           | frame_id <- anyOf fs
                                                                                           , f <- from frames (at frame_id)

@@ -6,6 +6,7 @@ import ContentSchema
 import Data.Char
 import Data.List(partition,intercalate)
 import Data.Maybe
+import Data.Either
 import Data.Data
 import Data.Tree
 import System.Directory
@@ -35,7 +36,9 @@ main = do
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
 
-  taxonomy <- fmap (map parseTaxonomy . lines) $ readFile "taxonomy.txt"
+  (taxonomy,lexrels) <-
+     fmap (partitionEithers . map parseTaxonomy . lines) $
+       readFile "taxonomy.txt"
 
   domain_forest <- fmap (parseDomains [] . lines) $ readFile "domains.txt"
 
@@ -65,7 +68,7 @@ main = do
 
     createTable lexemes
     let synsetKeys = Map.fromList [(synsetOffset synset, key) | (key,synset) <- taxonomy]
-    forM absdefs $ \(mb_offset,fun,ds,gloss) -> do
+    forM_ absdefs $ \(mb_offset,fun,ds,gloss) -> do
        let (es,fs) = fromMaybe ([],[]) (Map.lookup fun ex_keys)
        mb_synsetid <- case mb_offset >>= flip Map.lookup synsetKeys of
                         Nothing | not (null gloss) -> fmap Just (store synsets Nothing (Synset "" [] [] gloss))
@@ -75,7 +78,16 @@ main = do
                                mb_synsetid
                                (map (\d -> fromMaybe (error ("Unknown domain "++d)) (Map.lookup d ids)) ds)
                                (fromMaybe [] (Map.lookup fun images))
-                               es fs)
+                               es fs [])
+       return ()
+
+    forM_ lexrels $ \(fun,ptrs) ->
+      update lexemes [(id,lex{lex_pointers=ptr'})
+                         | (id,lex) <- fromIndex lexemes_fun (at fun)
+                         , ptr' <- select [(sym,id)
+                                             | (sym,fun) <- anyOf ptrs
+                                             , id <- from lexemes_fun (at fun)]
+                         ]
 
     createTable coefficients
     insert_ coefficients cs
@@ -173,10 +185,45 @@ insertExamples ps (ExampleE e fns : es) = do key <- insert_ examples e
                                              return ([(fn,([key],[])) | fn <- fns] ++ xs)
 
 
-parseTaxonomy l =
-  (read key_s :: Key Synset, Synset offset (read parents_s) (read children_s) gloss)
+parseTaxonomy l
+  | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs read ws2) (read children_s) gloss)
+  | otherwise         = Right (id, readPtrs (\id->id) ws0)
   where
-    [offset,key_s,parents_s,children_s,gloss] = tsv l
+    (id:ws0) = words l
+    key_s:children_s:ws1 = ws0
+    (ws2,"|":ws3) = break (=="|") ws1
+    gloss = unwords ws3
+
+    readPtrs f []            = []
+    readPtrs f (sym_s:id:ws) = (sym,f id):readPtrs f ws
+      where
+        sym = case sym_s of
+                "!"  -> Antonym
+                "@"  -> Hypernym 
+                "@i" -> InstanceHypernym 
+                "~"  -> Hyponym 
+                "~i" -> InstanceHyponym 
+                "#m" -> MemberHolonym 
+                "#s" -> SubstanceHolonym 
+                "#p" -> PartHolonym 
+                "%m" -> MemberMeronym 
+                "%s" -> SubstanceMeronym 
+                "%p" -> PartMeronym 
+                "="  -> Attribute 
+                ";c" -> DomainOfSynset Topic 
+                "-c" -> MemberOfDomain Topic 
+                ";r" -> DomainOfSynset Region 
+                "-r" -> MemberOfDomain Region 
+                ";u" -> DomainOfSynset Usage 
+                "-u" -> MemberOfDomain Usage 
+                "*"  -> Entailment
+                ">"  -> Cause
+                "^"  -> AlsoSee 
+                "$"  -> VerbGroup 
+                "&"  -> SimilarTo
+                "+"  -> Derived
+                "\\" -> Derived
+                "<"  -> Participle
 
 parseDomains levels []     = attach levels
   where

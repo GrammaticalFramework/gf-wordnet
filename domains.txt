@@ -186,6 +186,7 @@
         - geology
             - volcano
         - meteorology
+            - weather
         - oceanography
         - paleontology
         - geography
@@ -228,6 +229,7 @@
         - international law
             - maritime law
     - military
+        - war
     - pedagogy
         - school
         - university
@@ -381,9 +383,7 @@
 - ship
 - vessel
 - voice
-- war
 - water
-- weather
 - wood
 - wool
 - writing

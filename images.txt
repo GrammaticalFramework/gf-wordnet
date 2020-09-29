@@ -13827,7 +13827,7 @@ past_2_N	758833;Past;commons/8/80/Maximov_Everything_In_the_Past.jpg
 pasta_1_N	23871;Pasta;commons/e/ea/CSIRO_ScienceImage_11385_Pasta_made_from_durum_wheat.jpg
 pasta_2_N	23871;Pasta;commons/3/3f/%28Pasta%29_by_David_Adam_Kess_%28pic.2%29.jpg
 paste_3_N	24168682;Wallpaper_paste;commons/8/84/Wallpaper_paste_flakes.JPG
-pastel_N	24533;Pastel;commons/e/e5/Mpv3_%28cropped%29.jpg
+pastel_N	24533;Pastel;commons/0/0c/Commercial_pastels.JPG
 paster_2_N	367681;Decal;commons/d/d3/C.O.L.B.E.R.T._decal_placement.jpg
 pastern_N	6322091;Pastern;commons/5/56/Equine-dist-forelimb-bones.png	3291685;Fetlock;commons/e/ed/TrimmedLeg.jpg
 pastiche_2_N	65821;Pastiche;commons/6/61/Pastiche.jpg

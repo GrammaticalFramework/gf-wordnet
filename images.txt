@@ -3756,8 +3756,8 @@ cirrhosis_N	21365918;Cirrhosis;commons/a/a3/Hepaticfailure.jpg
 cirrocumulus_N	166740;Cirrocumulus_cloud;commons/a/ad/Cirrocumulus_20040830.jpg
 cirrostratus_N	166741;Cirrostratus_cloud;commons/3/36/Cirrostratus_with_mock_sun.jpg
 cirrus_2_N	47510;Cirrus_cloud;commons/2/2e/CirrusField-color.jpg
-cisco_1_N	46205;Whitefish_(fisheries_term);commons/1/16/Gadus_morhua-idlm2006.jpg
-cisco_2_N	46205;Whitefish_(fisheries_term);commons/1/16/Gadus_morhua-idlm2006.jpg
+cisco_1_N	1191531;Cisco_(fish);commons/8/84/Cisco.jpg
+cisco_2_N	1191531;Cisco_(fish);commons/8/84/Cisco.jpg
 cistern_3_N	1262082;Cistern;commons/0/07/El_Jadida_cistern.jpg
 citadel_N	6695;Citadel;commons/5/59/Casale_Monferrato_map_%28018_003%29.jpg
 citation_2_N	97585;Citation;commons/3/31/Webcomic_xkcd_-_Wikipedian_protester.png
@@ -21420,3 +21420,4 @@ truck_2_N	2096519;Hand_truck;commons/9/91/Handtruck.JPG
 power_2_N	24236;Power_(physics);commons/3/3a/Gluehlampe_01_KMJ.jpg
 cinnabar_2_N	1992040;Tyria_jacobaeae;commons/a/ae/Tyria_jacobaeae-04_%28xndr%29.jpg
 satori_N	237526;Satori;commons/d/df/Satori.svg
+calabash_1_N    884908;Calabash;commons/a/a2/Courge_encore_verte.jpg

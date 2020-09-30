@@ -111,6 +111,8 @@
     - agriculture
     - alimentation
         - gastronomy
+            - food
+                - eggs
     - architecture
         - town planning
             - roads
@@ -292,7 +294,6 @@
 - current
 - disease
 - dressage
-- eggs
 - environment
 - ethnic slur
 - euphemism
@@ -305,7 +306,6 @@
 - figurative
 - fish
 - flowers
-- food
 - formal
 - fund
 - fur

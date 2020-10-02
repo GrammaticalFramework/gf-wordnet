@@ -37,6 +37,7 @@
             - philately
         - music
             - musical instrument
+            - tempo
         - photography
         - plastic arts
             - jewellery
@@ -88,6 +89,7 @@
         - diving
         - fencing
         - fishing
+            - angling
         - football
         - golf
         - hockey
@@ -148,30 +150,42 @@
     - veterinary
         - zootechnics
     - animal husbandry
+        - falconry
 - pure science
     - astronomy
         - topography
         - celestial body
+            - sun
     - biology
         - biochemistry
             - toxicology
         - botany
             - plants
                 - plant ovule
-                - petals
                 - seeds
                 - leaf
                     - leaf shape
                 - fruits
+            - flowers
+                - petals
+            - shrubs
             - lichens
+            - mosses
         - ecology
         - embryology
         - zoology
             - entomology
             - animals
                 - mammals
+                    - fur
+                - bird
+                    - feathers
+                    - hatchlings
+                - fish
+                - radiate organisms
         - anatomy
             - female body
+            - skin
         - physiology
             - neurophysiology
         - genetics
@@ -263,7 +277,6 @@
     - quality
     - metrology
 - action
-- angling
 - anthers
 - antiquity
 - archaic
@@ -274,9 +287,7 @@
 - barristers
 - behavior
     - behavioral attributes
-- bird
 - blood
-- body care
 - broadcasting
 - buildings
 - business
@@ -300,19 +311,13 @@
 - event
 - expressions
 - fabric
-- falconry
-- feathers
 - ferns
 - figurative
-- fish
-- flowers
 - formal
 - fund
-- fur
 - gas
 - glass
 - hair
-- hatchlings
 - health
 - home
 - hooves
@@ -336,7 +341,6 @@
 - marriage
 - memory
 - metal
-- mosses
 - paper
     - paper making
 - paranormal
@@ -344,7 +348,6 @@
 - printing
 - promises
 - quantity
-- radiate organisms
 - record
 - representations
 - reproduction
@@ -352,9 +355,7 @@
 - rooms
 - rubber
 - rugs
-- shrubs
 - situation
-- skin
 - slang
 - sleep
 - soap
@@ -369,13 +370,10 @@
 - statements
 - story
 - substance
-- sun
 - surface
 - tactics
 - technology
-- tempo
 - textures
-- time period
 - title
 - vegetation
 - vehicles

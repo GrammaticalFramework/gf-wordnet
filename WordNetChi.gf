@@ -2151,7 +2151,6 @@ lin aim_1_N = mkN "目标" ; --unchecked
 lin aim_2_N = mkN "目的" ; --unchecked
 lin aim_3_N = mkN "对准" ; --unchecked
 lin aim_4_N = variants {} ;
-lin aim_1_V = mkV "瞄准" ; --unchecked
 lin aim_3_V = variants {} ;
 lin aim_4_V = variants {} ;
 lin aim_7_V = variants {} ;

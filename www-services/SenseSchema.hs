@@ -56,6 +56,7 @@ data Status
 data Domain
   = Domain
       { domain_name   :: String
+      , domain_is_dim :: Bool
       , domain_parent :: Key Domain
       }
     deriving Data

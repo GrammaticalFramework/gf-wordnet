@@ -1,13 +1,13 @@
 - doctrines
-    - archaeology
-    - astrology
-    - history
+    - archaeology *
+    - astrology *
+    - history *
         - heraldry
             - heraldic cross
         - Middle Ages
         - ancient Greece
         - ancient Rome
-    - linguistics
+    - linguistics *
         - grammar
             - sentence connector
             - quantifier
@@ -17,19 +17,19 @@
         - phonology
         - Yiddish
         - historical linguistics
-    - literature
+    - literature *
         - philology
         - poetry
         - poetic
-    - philosophy
+    - philosophy *
         - Marxism
         - ethics
         - existentialism
         - metaphysics
-    - psychology
+    - psychology *
         - psychoanalysis
         - psychological features
-    - art
+    - art *
         - dance
             - ballet
         - drawing
@@ -46,7 +46,7 @@
         - graphic arts
         - theatre
         - rhetoric
-    - religion
+    - religion *
         - mythology
             - Greek mythology
             - Roman mythology
@@ -67,14 +67,14 @@
         - spiritualism
         - Gnosticism
 - free time
-    - play
+    - play *
         - betting
         - card
             - poker
             - bridge
         - board games
             - chess
-    - sport
+    - sport *
         - American football
         - archery
         - athletics
@@ -110,27 +110,27 @@
         - volleyball
         - wrestling
 - applied science
-    - agriculture
-    - alimentation
+    - agriculture *
+    - alimentation *
         - gastronomy
             - food
                 - eggs
-    - architecture
+    - architecture *
         - town planning
             - roads
         - building industry
         - furniture
-    - computer science
+    - computer science *
         - computer graphics
-    - engineering
+    - engineering *
         - mechanics
         - astronautics
         - electronics
         - electrotechnics
         - hydraulics
-    - library science
-    - microscopy
-    - medicine
+    - library science *
+    - microscopy *
+    - medicine *
         - dentistry
             - tooth
         - pharmacy
@@ -147,16 +147,16 @@
         - orthopedics
         - pathology
         - histology
-    - veterinary
+    - veterinary *
         - zootechnics
-    - animal husbandry
+    - animal husbandry *
         - falconry
 - pure science
-    - astronomy
+    - astronomy *
         - topography
         - celestial body
             - sun
-    - biology
+    - biology *
         - biochemistry
             - toxicology
         - botany
@@ -198,9 +198,9 @@
             - cytology
                 - cell nucleus
             - immunology
-    - chemistry
+    - chemistry *
         - mineralogy
-    - earth
+    - earth *
         - geology
             - volcano
         - meteorology
@@ -208,12 +208,12 @@
         - oceanography
         - paleontology
         - geography
-    - mathematics
+    - mathematics *
         - geometry
         - set theory
         - logic
         - statistics
-    - physics
+    - physics *
         - acoustics
         - atomic physic
         - cosmology
@@ -221,14 +221,14 @@
         - optics
         - thermodynamics
 - social science
-    - administration
-    - anthropology
+    - administration *
+    - anthropology *
         - ethnology
             - folklore
-    - artisanship
-    - body care
-    - commerce
-    - economy
+    - artisanship *
+    - body care *
+    - commerce *
+    - economy *
         - banking
         - book keeping
         - enterprise
@@ -238,26 +238,26 @@
         - investments
         - money
         - tax
-    - fashion
+    - fashion *
         - clothing
         - trousers
-    - humanities
-    - industry
-    - law
+    - humanities *
+    - industry *
+    - law *
         - state
         - international law
             - maritime law
-    - military
+    - military *
         - war
-    - pedagogy
+    - pedagogy *
         - school
         - university
-    - politics
+    - politics *
         - diplomacy
-    - publishing
-    - sexuality
-    - sociology
-    - telecommunication
+    - publishing *
+    - sexuality *
+    - sociology *
+    - telecommunication *
         - cinema
             - film
         - post
@@ -265,8 +265,8 @@
         - telegraphy
         - telephony
         - tv
-    - tourism
-    - transport
+    - tourism *
+    - transport *
         - aeronautic
         - nautical
         - auto

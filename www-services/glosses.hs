@@ -231,9 +231,9 @@ parseDomains levels []     = attach levels
       | i  >  j   = attach ((j,Node parent (reverseChildren t:ts)):levels)
     attach levels = reverse (map snd levels)
 parseDomains levels (l:ls) =
-  parseDomains ((i',Node domain []):attach levels) ls
+  parseDomains ((i',Node (domain,is_dim) []):attach levels) ls
   where
-    (i',domain) = stripIndent l
+    (i',domain,is_dim) = stripIndent l
 
     attach ((i,t):(j,Node parent ts):levels)
       | i' <  i   = attach ((j,Node parent (reverseChildren t:ts)):levels)
@@ -243,16 +243,21 @@ parseDomains levels (l:ls) =
     attach levels
       | otherwise = levels
 
-    stripIndent ""       = (0,"")
-    stripIndent (' ':cs) = let (i,domain) = stripIndent cs
-                           in (i+1,domain)
-    stripIndent ('-':cs) = (0,dropWhile isSpace cs)
+    stripIndent ""       = (0,"",False)
+    stripIndent (' ':cs) = let (i,domain,is_dim) = stripIndent cs
+                           in (i+1,domain,is_dim)
+    stripIndent ('-':cs) = let cs1 = dropWhile isSpace cs
+                               rcs = reverse cs1
+                               (is_dim,cs2)
+                                  | take 1 rcs == "*" = (True,  reverse (dropWhile isSpace (tail rcs)))
+                                  | otherwise         = (False, cs1)
+                           in (0,cs2,is_dim)
 
 reverseChildren (Node x ts) = Node x (reverse ts)
 
-insertDomains !ids parent []                      = return ids
-insertDomains !ids parent (Node name children:ts) = do
-  id  <- insert_ domains (Domain name parent)
+insertDomains !ids parent []                               = return ids
+insertDomains !ids parent (Node (name,is_dim) children:ts) = do
+  id  <- insert_ domains (Domain name is_dim parent)
   ids <- insertDomains (Map.insert name id ids) id children
   insertDomains ids parent ts
 

@@ -20886,7 +20886,6 @@ whooper_1_N	362371;Whooping_crane;commons/7/7f/Grus_americana_Sasata.jpg
 whooper_2_N	307018;Whooper_swan;commons/1/1c/Cygnus_cygnus_Singschwan.jpg
 whooping_cough_N	170927;Whooping_cough;commons/2/2a/Pertussis.jpg
 whorehouse_N	206013;Brothel;commons/6/6b/Joachim_Beuckelaer_-_Brothel_-_Walters_371784.jpg
-wick_1_N	3247273;Candle_wick;commons/9/92/Docht_einer_Kerze_2008-01-18.jpg
 wick_2_N	3247273;Candle_wick;commons/9/92/Docht_einer_Kerze_2008-01-18.jpg
 wicker_1_N	1412775;Wicker;commons/4/4a/WickerCatPole.jpg
 wicker_2_N	1412775;Wicker;commons/4/4a/WickerCatPole.jpg

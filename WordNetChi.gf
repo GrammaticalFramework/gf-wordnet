@@ -59199,6 +59199,7 @@ lin mobile_5_A = mkA "易变+的" ; --unchecked
 lin mobile_1_PN = variants {} ;
 lin mobile_2_PN = variants {} ;
 lin mobile_3_N = variants {} ;
+lin mobile_phone_N = variants {} ;
 lin mobility_N = variants {} ;
 lin mobilization_1_N = variants {} ;
 lin mobilization_2_N = variants {} ;

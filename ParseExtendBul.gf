@@ -354,9 +354,10 @@ lin BaseImp x y =
       s  = \\p,gn => linCoord [] ! conj.sep ++ ss.s!p!gn!conj.sep ++ conj.s ++ ss.s!p!gn!4
       } ;
 
-{-lin ProgrVPSlash vp = vp ** {
-      s   = \\_ => vp.s ! Imperf
-      } ;-}
+lin ProgrVPSlash vp = vp ** {
+      s   = \\_ => vp.s ! Imperf ;
+      isSimple = False
+      } ;
 
 }
 	

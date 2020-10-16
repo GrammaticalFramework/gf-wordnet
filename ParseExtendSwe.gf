@@ -1,5 +1,5 @@
 concrete ParseExtendSwe of ParseExtend = 
-  ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+  ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, ProgrVPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSwe - [num], PunctuationX ** 
   open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe), (P = ParadigmsSwe), (I = IrregSwe) in {
 
@@ -239,10 +239,10 @@ lin BaseImp = twoTable2 Polarity Number ;
     ConsImp = consrTable2 Polarity Number comma ;
     ConjImp conj ss = conjunctDistrTable2 Polarity Number conj ss ;
 
-{-lin ProgrVPSlash vp = 
+lin ProgrVPSlash vp = 
       insertObj (\\a => "att" ++ infVP vp a) (predV (P.partV I.hålla_V "på")) **
         { n3 = vp.n3 ;
           c2 = vp.c2
-        } ;-}
+        } ;
 
 }

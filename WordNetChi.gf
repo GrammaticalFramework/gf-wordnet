@@ -35269,6 +35269,7 @@ lin find_5_V2A = variants {} ;
 lin find_11_V2A = variants {} ;
 lin find_5_V2V = variants {} ;
 lin find_10_V2V = mkV2V (mkV "设法拥有") ; --unchecked
+lin find_11_V2V = variants {} ;
 lin find_VS = variants {} ;
 lin find_out_2_V2 = variants {} ;
 lin find_out_3_V2 = variants {} ;

@@ -1623,7 +1623,7 @@ bedspring_N	20357845;Bed_base;commons/9/90/Lattenbodem.JPG
 bedstead_N	7152162;Bed_frame;commons/8/81/2_Linak_hospital_bed_frames.JPG
 bedstraw_N	1226427;Galium;commons/d/de/Flowers_February_2008-4.jpg
 bee_1_N	58261;Honey_bee;commons/1/11/The_Lone_Pollinator.jpg	4654;Bee;commons/7/76/Tetragonula_carbonaria_%2814521993792%29.jpg	226167;Apoidea;commons/d/d3/Bee_PD_foto_explained1.jpg
-bee_2_N	58261;Honey_bee;commons/1/11/The_Lone_Pollinator.jpg	1667421;Communal_work;commons/4/4c/Digby_County_%2818178365406%29.jpg
+bee_2_N	1667421;Communal_work;commons/4/4c/Digby_County_%2818178365406%29.jpg
 beebread_N	418151;Royal_jelly;commons/8/89/Weiselzellen_68a.jpg
 beech_1_N	437762;Fagus_sylvatica;commons/e/e4/Fagus-sylvatica-cansiglio-forest-italy.jpg	165252;Beech;commons/b/ba/Fagus_sylvatica_Purpurea_JPG4a.jpg
 beef_1_N	6461408;Beef_cattle;commons/c/c0/WhiteBull.jpg
@@ -21423,3 +21423,4 @@ cinnabar_2_N	1992040;Tyria_jacobaeae;commons/a/ae/Tyria_jacobaeae-04_%28xndr%29.
 satori_N	237526;Satori;commons/d/df/Satori.svg
 calabash_1_N    884908;Calabash;commons/a/a2/Courge_encore_verte.jpg
 ackee_1_N   15580374;Blighia_sapida;commons/c/cf/Ackee_001.jpg
+divestiture_2_N	981983;Divestment;commons/d/d7/Philippine-stock-market-board.jpg

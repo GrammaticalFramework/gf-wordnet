@@ -26409,6 +26409,7 @@ lin diemaker_N = variants {} ;
 lin diencephalon_N = variants {} ;
 lin diesel_1_PN = variants {} ;
 lin diesel_2_N = mkN "柴油" ; --unchecked
+lin diesel_oil_N = variants {} ;
 lin diestock_N = mkN "板牙铰手" ; --unchecked
 lin diestrous_1_A = mkA "间情期+的" ; --unchecked
 lin diestrus_1_N = mkN "动情间期" ; --unchecked

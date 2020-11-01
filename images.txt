@@ -3969,6 +3969,7 @@ cochineal_2_N	18952719;Cochineal;commons/a/a8/Cochineal_drawing.jpg
 cochlea_N	134971;Cochlea;commons/c/cb/Cochlea-crosssection.svg
 cock_2_N	510132;Tap_(valve);commons/7/73/Wasserhahn.jpg
 cock_3_N	8110214;Hammer_(firearms);commons/0/0a/M9A1Uncockedhammer.JPG
+hammer_1_N	8110214;Hammer_(firearms);commons/0/0a/M9A1Uncockedhammer.JPG
 cock_4_N	144355;Galliformes;commons/2/22/Flickr_-_Rainbirder_-_Ceylon_Junglefowl_%28Gallus_lafayetii%29_Male.jpg
 cockade_N	405980;Cockade;commons/7/70/Grottger-pozegnanie_fragm.jpg
 cockateel_1_N	315729;Cockatiel;commons/c/cf/Cockatielmale.jpg
@@ -11290,6 +11291,7 @@ mallard_N	230456;Mallard;commons/b/bf/Anas_platyrhynchos_male_female_quadrat.jpg
 mallet_1_N	647768;Mallet;commons/1/13/Rubber_mallets.jpg
 mallet_3_N	647768;Mallet;commons/1/13/Rubber_mallets.jpg
 malleus_N	55793042;Malleus;commons/6/6b/Gray916.png
+hammer_3_N	55793042;Malleus;commons/6/6b/Gray916.png
 mallow_N	1575696;Malva;commons/5/56/Malva-sylvestris-20070430-1.jpg
 malmo_PN	19021;Malm%C3%B6;commons/6/6d/Malm%C3%B6_Collage2.jpg
 malnutrition_N	258979;Malnutrition;commons/9/90/Orange_ribbon.svg
@@ -21424,3 +21426,4 @@ satori_N	237526;Satori;commons/d/df/Satori.svg
 calabash_1_N    884908;Calabash;commons/a/a2/Courge_encore_verte.jpg
 ackee_1_N   15580374;Blighia_sapida;commons/c/cf/Ackee_001.jpg
 divestiture_2_N	981983;Divestment;commons/d/d7/Philippine-stock-market-board.jpg
+hammer_5_N  43720;Hammer_throw;commons/6/61/John_Flanagan.jpg

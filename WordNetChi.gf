@@ -25722,7 +25722,6 @@ lin desensitization_1_N = mkN "减敏现象" ; --unchecked
 lin desensitize_1_V2 = mkV2 (mkV "使不敏感") ; --unchecked
 lin desensitize_2_V2 = variants {} ;
 lin desensitizing_1_A = mkA "使不敏感+的" ; --unchecked
-lin desert_A = variants {} ;
 lin desert_1_N = mkN "沙漠" ; --unchecked
 lin desert_2_N = variants {} ;
 lin desert_1_V2 = mkV2 (mkV "离弃") ; --unchecked

@@ -51376,7 +51376,6 @@ lin kite_4_N = variants {} ;
 lin kite_balloon_N = mkN "风筝气球" ; --unchecked
 lin kitee_PN = variants {} ;
 lin kith_N = variants {} ;
-lin kitsch_A = variants {} ;
 lin kitsch_N = mkN "庸俗艺术" ; --unchecked
 lin kittee_N = variants {} ;
 lin kitten_N = mkN "猫仔" ; --unchecked

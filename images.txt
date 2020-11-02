@@ -10001,7 +10001,7 @@ ketose_N	557759;Ketose;commons/5/5a/DL-Fructose.svg
 ketosteroid_N	5497013;Ketosteroid;commons/d/df/Trimethyl_steroid-nomenclature.png
 kettering_PN	350452;Kettering;commons/8/85/Kettering_Market_Place.JPG
 kettle_1_N	953864;Kettle;commons/c/c8/Bernadotte_Wasserkessel.jpg
-kettle_2_N	953864;Kettle;commons/c/c8/Bernadotte_Wasserkessel.jpg	4297598;Kotel,_Bulgaria;commons/9/9c/Bulgaria-Kotel-04.jpg
+kettle_2_N	953864;Kettle;commons/c/c8/Bernadotte_Wasserkessel.jpg
 kettle_3_N	3123668;Giant%27s_kettle;commons/e/ef/Glacial_pothole_WI.jpg
 keuruu_PN	779742;Keuruu;commons/9/98/Keuruu_Old_Church_1.jpg
 key_14_N	3708640;Boss_(architecture);commons/7/73/Chelmno_fara_zwornik_nawa_pn_03.jpg

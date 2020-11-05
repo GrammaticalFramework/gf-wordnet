@@ -40198,6 +40198,7 @@ lin go_28_V = variants {} ;
 lin go_29_V = variants {} ;
 lin go_30_V = variants {} ;
 lin go_7_V = mkV "延伸" ; --unchecked
+lin go_4_VA = variants {} ;
 lin go_10_VA = variants {} ;
 lin go_27_VA = variants {} ;
 lin go_26_VV = mkVV "合适" ; --unchecked

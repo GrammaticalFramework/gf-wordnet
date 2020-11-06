@@ -12958,7 +12958,8 @@ note_3_N	22026;Musical_note;commons/5/57/Treble_a.svg
 note_6_N	208286;Banknote;commons/e/e9/Billets_de_5000.jpg
 note_8_N	1704861;His_Eminence;commons/a/ae/Guido_Reni_-_Portrait_of_Bernardino_Spada.jpg
 note_9_N	1006501;Promissory_note;commons/4/43/Burma_1926_Promissory_Note.jpg
-notebook_2_N	170508;Notebook;commons/e/ea/Notebooks.jpg
+notebook_1_N	170508;Notebook;commons/e/ea/Notebooks.jpg
+notebook_2_N	198584;Laptop;commons/e/e4/Lenovo_G500s_laptop-2905.jpg
 notepaper_N	598223;Post-it_Note;commons/4/42/PostItNotePad.JPG
 nothosaur_N	2467853;Nothosaurus;commons/2/21/Skeleton_Nothosauria_naturkundemuseum_Berlin.jpg	2274306;Nothosaur;commons/2/23/Nothosaurus_BW.jpg
 notice_4_N	611343;Termination_of_employment;commons/c/c7/1909_Tyee_-_Faculty_Foot.jpg

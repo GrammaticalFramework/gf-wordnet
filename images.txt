@@ -10636,9 +10636,8 @@ lev_N	268071;Bulgarian_lev;commons/7/78/BG_coin.jpg
 levallorphan_N	16747112;Levallorphan;commons/7/7e/Levallorphan.svg
 levant_2_PN	18138;Levant;commons/1/1d/Levant_%28orthographic_projection%29.png
 levantine_A	341854;Latin_Church_in_the_Middle_East;commons/1/1d/Levant_%28orthographic_projection%29.png
-levee_1_N	43024;Levee;commons/6/69/Sacramento_River_Levee.jpg	20534559;Dijken;commons/f/f4/Klokkenstoel_Dijken_03w.JPG
-levee_2_N	43024;Levee;commons/6/69/Sacramento_River_Levee.jpg	20534559;Dijken;commons/f/f4/Klokkenstoel_Dijken_03w.JPG
-levee_3_N	20534559;Dijken;commons/f/f4/Klokkenstoel_Dijken_03w.JPG
+levee_2_N	43024;Levee;commons/6/69/Sacramento_River_Levee.jpg
+levee_3_N	43024;Levee;commons/6/69/Sacramento_River_Levee.jpg
 level_1_N	1910313;Level_(video_gaming);commons/2/26/Edge_%28video_game%29_level_layout.png
 level_1_V2	1034969;Levelling;commons/1/1a/Tide_station_leveling.jpg
 level_2_V2	1034969;Levelling;commons/1/1a/Tide_station_leveling.jpg

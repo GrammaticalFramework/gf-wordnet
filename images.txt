@@ -10408,7 +10408,7 @@ largs_PN	393105;Largs;commons/e/ec/DPP_00226.JPG
 lari_1_N	904025;Georgian_lari;commons/1/1a/Sign_of_Georgian_Lari.svg
 lari_2_N	265104;Lari;commons/f/fe/2004-04-10_Larus_michahellis_ad.jpg
 larid_N	223396;Laridae;commons/7/7f/Larus_argentatus_ad.jpg
-lark_1_N	150261;Lark;commons/d/d8/Alauda_arvensis_2.jpg
+lark_1_N	1995921;Meadowlark;commons/1/17/Sturnella_magna_-Mexico-8.jpg
 lark_2_N	150261;Lark;commons/d/d8/Alauda_arvensis_2.jpg
 lark_3_N	150261;Lark;commons/d/d8/Alauda_arvensis_2.jpg
 larkhall_PN	646219;Larkhall;commons/a/a4/Avon_Water_at_Millheugh_Bridge_-_geograph.org.uk_-_165433.jpg
@@ -12045,7 +12045,7 @@ minibus_N	1094925;Minibus;commons/e/eb/Minibus_ZET_Zagreb.jpg
 minicomputer_N	20272;Minicomputer;commons/6/6d/PDP-8.jpg
 minim_3_N	88691;Half_note;commons/0/0c/Duple_note_values_comparison.png
 minimalism_N	20836;Minimalism;commons/b/bc/IKB_191.jpg
-mining_1_N	20381;Mining;commons/b/b3/Strip_coal_mining.jpg
+mining_1_N	20381;Mining;commons/3/3c/Kalgoorlie_open_cast_mine.jpg
 miniskirt_N	201458;Miniskirt;commons/a/a3/Woman_in_a_red_miniskirt_and_green_cardigan_crop.jpg
 minisub_N	612372;Midget_submarine;commons/7/72/Kure_midget_subs1.jpg
 miniver_N	5734427;Miniver;commons/3/33/Van_Eyck_-_Arnolfini_Portrait.jpg

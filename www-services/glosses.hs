@@ -229,7 +229,7 @@ parseDomains levels []     = attach levels
   where
     attach ((i,t):(j,Node parent ts):levels)
       | i  >  j   = attach ((j,Node parent (reverseChildren t:ts)):levels)
-    attach levels = reverse (map snd levels)
+    attach levels = reverse (map (reverseChildren . snd) levels)
 parseDomains levels (l:ls) =
   parseDomains ((i',Node (domain,is_dim) []):attach levels) ls
   where

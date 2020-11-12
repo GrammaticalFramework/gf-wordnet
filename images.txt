@@ -5111,7 +5111,7 @@ day_3_N	10304194;Daytime;commons/e/e7/Sky_with_puffy_clouds.JPG
 day_4_N	10304194;Daytime;commons/e/e7/Sky_with_puffy_clouds.JPG
 day_5_N	10304194;Daytime;commons/e/e7/Sky_with_puffy_clouds.JPG
 day_8_N	48837;Sidereal_time;commons/a/a5/ConantClock.png
-day_PN	13945109;Douglas_Day;en/2/2c/Douglasday.jpg
+day_PN	1186074;Clarence_Day;commons/4/4a/Clarence_Day_Monument_1000.jpg
 day_labourer_N	2878172;Day_labor;commons/1/15/Workers_At_Dusk%2C_GEC%2C_Chittagong.jpg
 daybed_1_N	8069383;Daybed;commons/7/74/WLA_haa_Ming_Daybed.jpg
 daybed_2_N	8069383;Daybed;commons/7/74/WLA_haa_Ming_Daybed.jpg

@@ -41096,6 +41096,7 @@ lin greater_A = variants {} ;
 lin greatest_A = mkA "最高级+的" ; --unchecked
 lin greathearted_A = variants {} ;
 lin greatly_Adv = variants {} ;
+lin greatly_AdA = variants {} ;
 lin greatness_1_N = variants {} ;
 lin greatness_2_N = variants {} ;
 lin greave_N = mkN "护胫" ; --unchecked

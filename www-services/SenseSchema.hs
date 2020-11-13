@@ -38,6 +38,7 @@ data PointerSymbol
   | SimilarTo
   | Derived
   | Participle
+  | CoOccurrence
   deriving (Data,Show)
 
 data Synset
@@ -70,15 +71,8 @@ data Lexeme
       , images       :: [(String,String)]
       , example_ids  :: [Key Expr]
       , frame_ids    :: [Key Frame]
-      , lex_pointers :: [(PointerSymbol,Key Lexeme)]
-      }
-    deriving (Data,Show)
-
-data Embedding
-  = Embedding
-      { emb_fun :: Fun
-      , hvec    :: [Double]
-      , mvec    :: [Double]
+      , lex_pointers :: [(PointerSymbol,Key Lexeme,Double)]
+      , lex_vector   :: [Double]
       }
     deriving (Data,Show)
 
@@ -127,16 +121,6 @@ lexemes_domain = listIndex lexemes "domain" domain_ids
 
 lexemes_frame :: Index Lexeme (Key Frame)
 lexemes_frame = listIndex lexemes "frames" frame_ids
-
-coefficients :: Table [Double]
-coefficients = table "coefficients"
-
-embeddings :: Table Embedding
-embeddings = table "embeddings"
-                `withIndex` embeddings_fun
-
-embeddings_fun :: Index Embedding Fun
-embeddings_fun = index embeddings "fun" emb_fun
 
 examples :: Table Expr
 examples = table "examples"

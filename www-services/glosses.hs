@@ -9,10 +9,17 @@ import Data.Maybe
 import Data.Either
 import Data.Data
 import Data.Tree
+import System.Random
 import System.Directory
 import Control.Monad
 import qualified Data.Map.Strict as Map
 import Debug.Trace
+
+data Vertex
+       = SynsetV (Key Synset)
+       | LexemeV (Key Lexeme)
+       | DomainV (Key Domain)
+       deriving (Eq,Ord,Show)
 
 main = do
   cncdefs1 <- fmap (mapMaybe (parseCncSyn "ParseBul") . lines) $ readFile "WordNetBul.gf"
@@ -36,9 +43,16 @@ main = do
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
 
-  (taxonomy,lexrels) <-
+  (taxonomy,lexrels0) <-
      fmap (partitionEithers . map parseTaxonomy . lines) $
        readFile "taxonomy.txt"
+
+  bigrams <-
+     fmap (concatMap parseBigrams . lines) $
+       readFile "Parse.bigram.probs"
+
+  let lexrels = (Map.toList . Map.fromListWith (++))
+                      (lexrels0 ++ bigrams)
 
   domain_forest <- fmap (parseDomains [] . lines) $ readFile "domains.txt"
 
@@ -47,6 +61,8 @@ main = do
 
   ls <- fmap lines $ readFile "images.txt"
   let images = parseImages ls
+
+  g <- newStdGen
 
   let db_name = "semantics.db"
   fileExists <- doesFileExist db_name
@@ -78,23 +94,38 @@ main = do
                                mb_synsetid
                                (map (\d -> fromMaybe (error ("Unknown domain "++d)) (Map.lookup d ids)) ds)
                                (fromMaybe [] (Map.lookup fun images))
-                               es fs [])
+                               es fs [] [])
        return ()
 
     forM_ lexrels $ \(fun,ptrs) ->
       update lexemes [(id,lex{lex_pointers=ptr'})
                          | (id,lex) <- fromIndex lexemes_fun (at fun)
-                         , ptr' <- select [(sym,id)
-                                             | (sym,fun) <- anyOf ptrs
+                         , ptr' <- select [(sym,id,p)
+                                             | (sym,fun,p) <- anyOf ptrs
                                              , id <- from lexemes_fun (at fun)]
                          ]
 
-    createTable coefficients
-    insert_ coefficients cs
+    graph1 <- fmap Map.fromList $
+             select [(SynsetV id,map (\(_,id) -> (1,SynsetV id)) (pointers s))
+                         | (id,s) <- from synsets everything
+                         , not (null (pointers s))]
 
-    createTable embeddings
-    mapM_ (insert_ embeddings) ws
-    
+    graph2 <- fmap (Map.mapMaybe (\xs -> if null xs then Nothing else Just xs) . Map.fromListWith (++) . concat) $
+             select [(case synset l of
+                        Nothing  -> []
+                        Just sid -> [(LexemeV id,[(1,SynsetV sid)]),(SynsetV sid,[(1,LexemeV id)])])++
+                     ((LexemeV id,[(1,DomainV did) | did <- domain_ids l]):
+                      [(DomainV did,[(1,LexemeV id)]) | did <- domain_ids l])++
+                     [(LexemeV id,map (\(_,id,_) -> (1,LexemeV id)) (lex_pointers l))]
+                         | (id,l) <- from lexemes everything]
+
+    let graph  = Map.unionsWith (++) [graph1, graph2]
+    let graph' = visualize g 1e-4 20 graph
+
+    update lexemes [(v,lex{lex_vector=xs})
+                       | (LexemeV v,(xs,es)) <- anyOf (Map.toList graph')
+                       , lex <- from lexemes (at v)]
+
     createTable updates
 
   cs <- runDaison db ReadOnlyMode $ 
@@ -186,8 +217,8 @@ insertExamples ps (ExampleE e fns : es) = do key <- insert_ examples e
 
 
 parseTaxonomy l
-  | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs read ws2) (read children_s) gloss)
-  | otherwise         = Right (id, readPtrs (\id->id) ws0)
+  | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs (\sym id -> (sym,read id)) ws2) (read children_s) gloss)
+  | otherwise         = Right (id, readPtrs (\sym id->(sym,id,1)) ws0)
   where
     (id:ws0) = words l
     key_s:children_s:ws1 = ws0
@@ -195,7 +226,7 @@ parseTaxonomy l
     gloss = unwords ws3
 
     readPtrs f []            = []
-    readPtrs f (sym_s:id:ws) = (sym,f id):readPtrs f ws
+    readPtrs f (sym_s:id:ws) = f sym id:readPtrs f ws
       where
         sym = case sym_s of
                 "!"  -> Antonym
@@ -224,6 +255,14 @@ parseTaxonomy l
                 "+"  -> Derived
                 "\\" -> Derived
                 "<"  -> Participle
+
+parseBigrams l =
+  [(id1, [(CoOccurrence,id2,p)])
+  ,(id2, [(CoOccurrence,id1,p)])
+  ]
+  where
+    [id1,id2,s] = words l
+    p = read s :: Double
 
 parseDomains levels []     = attach levels
   where
@@ -267,7 +306,7 @@ parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
     parseWords (l1:l2:l3:"":ls) = 
       let hvec = parseVector l2
           mvec = parseVector l3
-      in sum hvec `seq` sum mvec `seq` (Embedding l1 hvec mvec):parseWords ls
+      in sum hvec `seq` sum mvec `seq` (l1,hvec,mvec):parseWords ls
 
     parseVector = map read . words :: String -> [Double]
 
@@ -306,6 +345,74 @@ renderStatus cs =
           let text =
                 "<text x=\""++show (x+3)++"\" y=\""++show (y+15)++"\">"++lang++"</text>"
           in (text++s,x+35,y)
+
+visualize
+  :: (RandomGen g, Show g, Ord k) =>
+     g -> Double -> Int -> Map.Map k [(Double, k)] -> Map.Map k ([Double], [(Double, k)])
+visualize g epsilon n graph = finish (dimensions g (n+1) [] (prepare graph))
+  where
+    prepare =
+      fmap (\es -> let !d = sum (map fst es)
+                   in (d,[],es))
+
+    finish =
+      fmap (\(d,xs,es) -> (tail (reverse xs),es))
+
+    dimensions g 0 dns graph = graph
+    dimensions g n dns graph =
+      let (!graph',!g')    = initialize g graph
+          (!dns',!graph'') = commit dns (converge dns graph')
+      in trace (show (Map.size graph')) (dimensions g' (n-1) dns' graph'')
+
+    initialize g graph =
+       let ((g',x2),graph') =
+               Map.mapAccum (\(g,x2) (d,xs,es) ->
+                                let (!x,!g') = random g
+                                    !x2' = x2+x*x
+                                in ((g',x2'),(x/norm,d,xs,es)))
+                            (g,0) graph
+           norm = sqrt x2
+       in (graph',g')
+
+    converge dns graph =
+      let (graph',prod) = update dns graph
+      in if prod > 1 - epsilon
+           then graph
+           else trace (show prod) (converge dns graph')
+
+    commit dns graph =
+      let dn     = dnorm graph
+          graph' = fmap (\(x,d,xs,es) -> (d,x:xs,es)) graph
+      in (dn:dns,graph')
+
+    dnorm =
+      Map.foldl (\s (x,d,xs,es) -> s + x*d*x) 0
+
+    project dns = Map.foldr foo (map (const 0) dns)
+      where
+        foo (x,d,[]   ,es) []     = []
+        foo (x,d,x':xs,es) (y:ys) = (x*d*x' + y) : foo (x,d,xs,es) ys
+
+    orthogonalize dps dns =
+      fmap (\(x,d,xs,es) -> (x - sum (zipWith3 (\dp dn x -> (dp*x)/dn) dps dns xs),d,xs,es))
+
+    update dns graph =
+      let dps    = project dns graph
+          graph' = orthogonalize dps dns graph
+          ((x2,p),graph'') =
+              Map.mapAccum (\(x2,p) (x,d,xs,es) ->
+                                let !x'  = (x + (sum graph' es)/d)/2
+                                    !x2' = x2 + x'*x'
+                                    !p'  = p + x*x'
+                                in ((x2',p'),(x'/norm,d,xs,es)))
+                           (0,0) graph'
+          norm = sqrt x2
+      in (graph'',p/norm)
+      where
+        sum graph []              = 0
+        sum graph ((w,vertex):es) =
+          let Just (x,_,_,_) = Map.lookup vertex graph
+          in w * x + sum graph es
 
 tsv :: String -> [String]
 tsv "" = []

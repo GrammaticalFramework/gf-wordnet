@@ -534,7 +534,7 @@ gfwordnet.init_embedding = function(canvas, context_size_range) {
 	for (var i = 0; i < context_size; i++) {
 		dists.push(relations[i].vec);
 	}
-	tsne.initDataDist(dists);
+	tsne.initDataRaw(dists);
 
 	for(var k = 0; k < 500; k++) {
 	  tsne.step(); // every time you call this, solution gets better

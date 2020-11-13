@@ -1,5 +1,4 @@
 LANGS = ParseBul ParseCat ParseChi ParseDut ParseEng ParseEst ParseFin ParseIta ParsePor ParseSlv ParseSpa ParseSwe ParseTha ParseTur ParseAPI
-TRAINING_LANGS = ParseBul ParseEng ParseFin ParseIta ParsePor ParseSlv ParseSwe
 
 WORDNETS = $(patsubst Parse%,WordNet%.gf,$(LANGS))
 
@@ -66,8 +65,8 @@ ifneq ($(SERVER), NO)
 	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
 endif
 
-build/Parse.noprobs.pgf: $(addprefix build/,$(addsuffix .pgf,$(TRAINING_LANGS)))
-	gf --make -name=Parse.noprobs --output-dir=build $^
+build/ParseAbs.pgf: Parse.gf ParseExtend.gf WordNet.gf
+	gf --make -name=ParseAbs --output-dir=build Parse.gf
 
 build/gfo/WordNet.gfo:
 
@@ -77,11 +76,8 @@ build/gfo/WordNet%.gfo: WordNet%.gf WordNet.gf
 build/Parse%.pgf: Parse%.gf Parse.gf build/gfo/WordNet%.gfo build/gfo/WordNet.gfo
 	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
 
-Parse.probs Parse.bigram.probs: build/udsenser build/Parse.noprobs.pgf examples.txt $(UD_BUL_TREEBANKS) $(UD_ENG_TREEBANKS) $(UD_FIN_TREEBANKS) $(UD_ITA_TREEBANKS) $(UD_POR_TREEBANKS) $(UD_SLV_TREEBANKS) $(UD_SWE_TREEBANKS)
-	build/udsenser build/Parse.noprobs.pgf train abstract examples.txt , ParseBul $(UD_BUL_TREEBANKS) , ParseEng $(UD_ENG_TREEBANKS) , ParseFin $(UD_FIN_TREEBANKS) , ParseIta $(UD_ITA_TREEBANKS) , ParsePor $(UD_POR_TREEBANKS) , ParseSlv $(UD_SLV_TREEBANKS) , ParseSwe $(UD_SWE_TREEBANKS)
-
-embedding.txt: Parse.bigram.probs
-	python3 train/sense_embedding.py
+Parse.probs Parse.bigram.probs: train/statistics.hs WordNet.gf examples.txt build/ParseAbs.pgf
+	runghc $^
 
 build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o build/train/em_data_stream.o
 	ghc --make -odir build/train -hidir build/train -O2 $^ -o $@ -lpgf -lgu -lm -llzma -lpthread
@@ -98,12 +94,15 @@ build/train/EM.hs: train/EM.hsc train/em_core.h
 build/train/Matching.hs: train/Matching.hsc train/em_core.h
 	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
-semantics.db: www-services/glosses.hs WordNet.gf examples.txt embedding.txt images.txt
-	runghc -iwww-services www-services/glosses.hs
+semantics.db: build/glosses WordNet.gf examples.txt embedding.txt images.txt
+	build/glosses
 ifneq ($(SERVER), NO)
 	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
 	scp build/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
 endif
+
+build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
+	ghc --make -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@
 
 build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-static -optl-pthread $^ -o $@

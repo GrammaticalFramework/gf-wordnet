@@ -18,31 +18,21 @@ import Data.Char
 
 main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
-  st <- runDaison db ReadOnlyMode $ do
-          [cs] <- select [cs | (_,cs) <- from coefficients everything]
-
-          let norm v = zipWith (\c x -> (c*x) / len) cs v
-                where
-                  len = sum (zipWith (*) cs v)
-
-          funs <- fmap Map.fromList $
-                    select [(fun, (hvec,mvec,vec))
-                              | (_,Embedding fun hvec' mvec') <- from embeddings everything
-                              , let !hvec = Vector.fromList hvec'
-                                    !mvec = Vector.fromList mvec'
-                                    !vec  = Vector.fromList (norm hvec' ++ norm mvec')]
-          return (Vector.fromList cs,funs)
+  funs <- runDaison db ReadOnlyMode $ do
+            fmap Map.fromList $
+              select [(lex_fun lex, Vector.fromList (lex_vector lex))
+                        | (_,lex) <- from lexemes everything]
 -- #ifndef mingw32_HOST_OS
 --                   runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else
-  runFastCGI (handleErrors $ cgiMain db st)
+  runFastCGI (handleErrors $ cgiMain db funs)
 -- #endif
   closeDB db
 
 maxResultLength = 500
 
 cgiMain :: Database -> Embeddings -> CGI CGIResult
-cgiMain db (cs,funs) = do
+cgiMain db funs = do
   mb_s1 <- getInput "lexical_ids"
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
@@ -90,34 +80,27 @@ cgiMain db (cs,funs) = do
           lexemes <- select (fromIndex lexemes_fun (at lex_id))
           foldM getGloss senses lexemes
 
-    doContext lex_id =
-      let (ctxt,rels) =
+    doContext lex_id = do
+      ctxt <- runDaison db ReadOnlyMode $
+                select [mkFunProb (lex_fun lex) d
+                          | (_,lex) <- fromIndex lexemes_fun (at lex_id)
+                          , (CoOccurrence,id,d) <- anyOf (lex_pointers lex)
+                          , lex <- from lexemes (at id)]
+      let rels =
              case Map.lookup lex_id funs of
-               Just (hvec,mvec,vec) -> let res1  = take 200 (sortBy (\x y -> compare (fst y) (fst x))
-                                                                    [res | (fun,(hvec',mvec',_)) <- Map.toList funs
-                                                                         , res <- [(prod hvec cs mvec',Left fun)
-                                                                                  ,(prod mvec cs hvec',Right fun)]])
-                                           ctxt = [mkFunProb fun prob | (prob,fun) <- res1]
-
-                                           res2  = take 200 (sortOn fst [(dist vec vec',(fun,vec')) | (fun,(_,_,vec')) <- Map.toList funs])
-                                           rels  = [mkFunVec fun (Vector.toList vec) | (dist,(fun,vec)) <- res2]
-                                       in (ctxt,rels)
-               Nothing              -> ([],[])
-      in return (makeObj [("context",   showJSON ctxt),
-                          ("relations", showJSON rels)
-                         ])
+               Just vec -> let res = take 200 (sortOn fst [(dist vec vec',(fun,vec')) | (fun,vec') <- Map.toList funs, not (null vec')])
+                           in [mkFunVec fun (Vector.toList vec) | (dist,(fun,vec)) <- res]
+               Nothing  -> []
+      return (makeObj [("context",  showJSON ctxt)
+                      ,("relations",showJSON rels)
+                      ])
       where
-        prod v1 v2 v3 = Vector.sum (Vector.zipWith3 (\x y z -> x*z) v1 v2 v3)
-
-        dist v1 v2 = Vector.sum (Vector.zipWith diff v1 v2)
+        dist v1 v2 = sqrt (Vector.sum (Vector.zipWith diff v1 v2))
           where
             diff x y = (x-y)^2
 
-        mkFunProb fun prob = 
-          case fun of
-            Left  fun -> makeObj [("mod", showJSON fun),("prob", showJSON prob)]
-            Right fun -> makeObj [("head",showJSON fun),("prob", showJSON prob)]
-        mkFunVec  fun vec  = makeObj [("fun",showJSON fun),("vec",  showJSON vec)]
+        mkFunProb fun prob = makeObj [("mod", showJSON fun),("prob", showJSON prob)]
+        mkFunVec  fun vec  = makeObj [("fun", showJSON fun),("vec",  showJSON vec )]
 
     doGloss lex_id = do
       glosses <- runDaison db ReadOnlyMode $
@@ -145,15 +128,15 @@ cgiMain db (cs,funs) = do
                             size int < 2000,
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
-                            lex_ids <- select [(lex_fun,status,frame_inf,Just (domains,images,examples,sexamples))
-                                                   | (_,Lexeme lex_fun status _ domain_ids images ex_ids fs _) <- fromIndex lexemes_synset (at synset_id),
+                            lex_ids <- select [(lex_id,status,frame_inf,Just (domains,images,examples,sexamples))
+                                                   | (_,Lexeme lex_id status _ domain_ids images ex_ids fs ptrs _) <- fromIndex lexemes_synset (at synset_id),
                                                      domains   <- select [makeObj [ ("id",showJSON domain_id)
                                                                                   , ("name",showJSON (domain_name d))
                                                                                   ]
                                                                             | domain_id <- anyOf domain_ids
                                                                             , d <- from domains (at domain_id)],
                                                      examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
-                                                     sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_fun), not (elem id ex_ids)],
+                                                     sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)],
                                                      frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                             | frame_id <- anyOf fs
                                                                             , f <- from frames (at frame_id)
@@ -214,7 +197,7 @@ cgiMain db (cs,funs) = do
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
-    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _ _) = do
+    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _ _ _) = do
       domains   <- select [makeObj [ ("id",showJSON domain_id)
                                    , ("name",showJSON (domain_name d))
                                    ]
@@ -229,7 +212,7 @@ cgiMain db (cs,funs) = do
             Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
             Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
                                        lex_ids <- select [(lex_id,status,frame_inf,Nothing)
-                                                              | (_,Lexeme lex_id status _ _ _ _ fs _) <- fromIndex lexemes_synset (at sense_id),
+                                                              | (_,Lexeme lex_id status _ _ _ _ fs _ _) <- fromIndex lexemes_synset (at sense_id),
                                                                 frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                                           | frame_id <- anyOf fs
                                                                                           , f <- from frames (at frame_id)
@@ -321,9 +304,7 @@ findLCA up xs = alternate [([x],[]) | x <- xs] [] [] Map.empty
         c    = fromMaybe 0 (Map.lookup x set) + 1
         set' = Map.insert x c set
 
-type Embeddings = (Vector.Vector Double
-                  ,Map.Map Fun (Vector.Vector Double,Vector.Vector Double,Vector.Vector Double)
-                  )
+type Embeddings = Map.Map Fun (Vector.Vector Double)
 
 outputJSONP :: JSON a => a -> CGI CGIResult
 outputJSONP = outputEncodedJSONP . encode

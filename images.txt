@@ -14622,8 +14622,8 @@ plumbago_2_N	3986076;Plumbago;commons/4/45/Plumbago.jpg	12437895;Plumbago_auricu
 plumber_N	239068;Plumber;commons/f/fa/Plumber_at_work.jpg
 plumbing_1_N	43982;Plumbing;commons/c/cc/Pipes_various.jpg
 plumbing_2_N	43982;Plumbing;commons/c/cc/Pipes_various.jpg
-plumcot_1_N	23772;Pluot;en/2/23/Raspberry_jewel_pluot.jpg
-plumcot_2_N	23772;Pluot;en/2/23/Raspberry_jewel_pluot.jpg
+plumcot_1_N	23772;Pluot;commons/2/23/Raspberry_jewel_pluot.jpg
+plumcot_2_N	23772;Pluot;commons/2/23/Raspberry_jewel_pluot.jpg
 plummet_N	2887043;Plumb_bob;commons/9/9d/Plumb_bob.jpg
 plumule_N	1084904;Down_feather;commons/1/16/Daune_down_feather.jpg
 plunderage_N	209811;Looting;commons/4/4e/Pluenderung_der_Judengasse_1614.jpg

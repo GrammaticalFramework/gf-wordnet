@@ -115,7 +115,8 @@ cgiMain db funs = do
 
       let up synset_id =
             runDaison db ReadOnlyMode $ fmap head $ do
-              select [[id | (Hypernym,id) <- pointers s]
+              select [[id | (rel,id) <- pointers s
+                          , elem rel [Hypernym, InstanceHypernym]]
                               | s <- from synsets (at synset_id)]
 
       ids <- findLCA up (nub x)

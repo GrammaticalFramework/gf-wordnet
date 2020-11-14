@@ -14,7 +14,7 @@ data DomainType
   = Topic
   | Region
   | Usage
-  deriving (Data,Show)
+  deriving (Data,Eq,Show)
 
 data PointerSymbol
   = Antonym
@@ -39,7 +39,7 @@ data PointerSymbol
   | Derived
   | Participle
   | CoOccurrence
-  deriving (Data,Show)
+  deriving (Data,Eq,Show)
 
 data Synset
   = Synset

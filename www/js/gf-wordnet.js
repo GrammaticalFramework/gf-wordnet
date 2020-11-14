@@ -848,7 +848,8 @@ gfwordnet.update_cells = function(lex_id,lang) {
 			var icon = row.firstChild.firstChild;
 			icon.src = icon.src.endsWith("unchecked_plus.png")  ? "checked_plus.png"  :
 			           icon.src.endsWith("unchecked_minus.png") ? "checked_minus.png" :
-			                                                      "checked.png"       ;
+                       icon.src.endsWith("unchecked.png")       ? "checked.png"       :
+			                                                      icon.src ;
 		}
 	}
 }

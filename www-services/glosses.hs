@@ -56,9 +56,6 @@ main = do
 
   domain_forest <- fmap (parseDomains [] . lines) $ readFile "domains.txt"
 
-  ls <- fmap lines $ readFile "embedding.txt"
-  let (cs,ws) = parseEmbeddings ls
-
   ls <- fmap lines $ readFile "images.txt"
   let images = parseImages ls
 
@@ -299,16 +296,6 @@ insertDomains !ids parent (Node (name,is_dim) children:ts) = do
   id  <- insert_ domains (Domain name is_dim parent)
   ids <- insertDomains (Map.insert name id ids) id children
   insertDomains ids parent ts
-
-parseEmbeddings (l:"":ls) = (parseVector l, parseWords ls)
-  where
-    parseWords []               = []
-    parseWords (l1:l2:l3:"":ls) = 
-      let hvec = parseVector l2
-          mvec = parseVector l3
-      in sum hvec `seq` sum mvec `seq` (l1,hvec,mvec):parseWords ls
-
-    parseVector = map read . words :: String -> [Double]
 
 parseImages ls = 
   Map.fromList [case tsv l of {(id:urls) -> (id,map (\s -> case cosv s of {[_,pg,im] -> (pg,im); _ -> error l}) urls)} | l <- ls]

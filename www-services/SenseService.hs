@@ -122,7 +122,7 @@ cgiMain db funs = do
 
       fs <- runDaison db ReadOnlyMode $ do
                select [(synset_id,(gloss,lex_ids))
-                          | int <- query (foldRows1 intersection)
+                          | int <- query (foldRows intersection [(0,maxBound)])
                                          [children s | synset_id <- anyOf ids,
                                                        s <- from synsets (at synset_id)],
                             size int < 2000,

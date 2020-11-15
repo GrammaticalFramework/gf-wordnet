@@ -14612,7 +14612,7 @@ plover_N	263327;Charadriidae;commons/0/0a/Snowy_Plover_Morro_Strand.jpg	160710;P
 plow_1_V2	24096;Plough;commons/a/a2/04-09-12-Schaupfl%C3%BCgen-Fahrenwalde-RalfR-IMG_1232.jpg
 plowing_N	24096;Plough;commons/a/a2/04-09-12-Schaupfl%C3%BCgen-Fahrenwalde-RalfR-IMG_1232.jpg
 plowshare_N	1527720;Plowshare;commons/7/7c/Old_plough_schema.svg
-plug_5_N	152654;Electrical_connector;commons/f/f4/Amp_back.jpg
+plug_5_N	152654;Electrical_connector;commons/6/60/Nikko_TRM-800_Amp_back.jpg
 plum_1_N	67656;Prunus;commons/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg
 plum_2_N	56884;Plum;commons/2/24/Red-Plums.jpg	21972921;Prunus_domestica;commons/8/8d/Plum_on_tree.jpg
 plumage_N	944625;Plumage;commons/4/48/Guiraca_caeruleaAAP086CB.jpg

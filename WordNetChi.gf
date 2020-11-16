@@ -61934,7 +61934,6 @@ lin newtonian_N = variants {} ;
 lin newtown_PN = variants {} ;
 lin next_2_A = mkA "毗邻+的" ; --unchecked
 lin next_3_A = variants {} ;
-lin next_Prep = variants {} ;
 lin next_to_Prep = variants {} ;
 lin nexus_1_N = mkN "联合" ; --unchecked
 lin nexus_2_N = variants {} ;

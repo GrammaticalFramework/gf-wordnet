@@ -29741,7 +29741,6 @@ lin dwindle_away_V = variants {} ;
 lin dwindle_down_V = variants {} ;
 lin dwindling_N = variants {} ;
 lin dyadic_A = mkA "一双+的" ; --unchecked
-lin dyarchy_N = variants {} ;
 lin dybbuk_1_N = variants {} ;
 lin dye_N = mkN "染料" ; --unchecked
 lin dye_V2 = variants {} ;

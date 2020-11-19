@@ -13448,7 +13448,7 @@ overcast_3_N	6446739;Overcast;commons/2/2f/Overcast_Mehamn.jpg	2600038;Multifunc
 overcast_4_N	6446739;Overcast;commons/2/2f/Overcast_Mehamn.jpg	2600038;Multifunctional_Utility/Logistics_and_Equipment_vehicle;commons/1/1e/Unmanned_MULE_platform_basic_configurations.jpg
 overcast_A	6446739;Overcast;commons/2/2f/Overcast_Mehamn.jpg
 overcoat_1_N	339769;Coat_(clothing);commons/8/8e/FalatJulian.PortretAntoniegoWodzickiego.1900.ws.jpg
-overdose_N	313009;Drug_overdose;commons/c/c8/Woodstock_festival_medical.jpg
+overdose_N	313009;Drug_overdose;commons/0/0c/DrugOverdose.jpg
 overdraft_N	3238808;Overdraft;commons/e/e6/Overdraft_-_Punch_cartoon_-_Project_Gutenberg_eText_16113.png
 overexploitation_N	25111839;Overexploitation;commons/5/54/Surexploitation_morue_surp%C3%AAcheEn.jpg
 overflight_N	7291975;Flypast;commons/1/1b/Mikoyan_MiG-29-Chengdu_F-7.jpg

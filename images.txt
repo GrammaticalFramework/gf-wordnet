@@ -5227,7 +5227,7 @@ deltoid_N	575531;Deltoid_muscle;commons/9/93/Deltoideus.png
 deluge_3_N	36425475;Genesis_flood_narrative;commons/a/a8/Francis_Danby_deluge.jpg
 demantoid_N	1584447;Demantoid;commons/0/06/Andradite-Stilbite-Ca-dem05a.jpg
 dementia_N	38390;Dementia;commons/a/a5/Alzheimer%27s_disease_brain_comparison.jpg
-demerara_3_PN	792248;Demerara;commons/4/41/Flag_of_the_Dutch_West_India_Company.svg
+demerara_3_PN	792248;Demerara;commons/4/41/Flag_of_the_Dutch_West_India_Company.svg	792248;Demerara;commons/1/1e/Map_of_Demerara%2C_1759.jpg
 demigod_2_N	274463;Demigod;commons/6/60/Cuslayshound.jpg
 demijohn_N	372921;Wine_bottle;commons/3/35/Wine_bottle.JPG
 demitasse_1_N	841047;Demitasse;commons/6/6d/Demitasse_set.jpg
@@ -21423,8 +21423,9 @@ truck_2_N	2096519;Hand_truck;commons/9/91/Handtruck.JPG
 power_2_N	24236;Power_(physics);commons/3/3a/Gluehlampe_01_KMJ.jpg
 cinnabar_2_N	1992040;Tyria_jacobaeae;commons/a/ae/Tyria_jacobaeae-04_%28xndr%29.jpg
 satori_N	237526;Satori;commons/d/df/Satori.svg
-calabash_1_N    884908;Calabash;commons/a/a2/Courge_encore_verte.jpg
-ackee_1_N   15580374;Blighia_sapida;commons/c/cf/Ackee_001.jpg
+calabash_1_N	884908;Calabash;commons/a/a2/Courge_encore_verte.jpg
+ackee_1_N	15580374;Blighia_sapida;commons/c/cf/Ackee_001.jpg
 divestiture_2_N	981983;Divestment;commons/d/d7/Philippine-stock-market-board.jpg
-hammer_5_N  43720;Hammer_throw;commons/6/61/John_Flanagan.jpg
-sound_8_N   385319;Sound_(geography);commons/f/f8/Aldersund.jpg
+hammer_5_N	43720;Hammer_throw;commons/6/61/John_Flanagan.jpg
+sound_8_N	385319;Sound_(geography);commons/f/f8/Aldersund.jpg
+demerara_2_PN	1599929;Demerara_River;commons/9/97/Demerara_Harbour_bridge_crossing.JPG

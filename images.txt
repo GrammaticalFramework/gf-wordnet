@@ -6629,7 +6629,7 @@ farandole_N	3233141;Farandole;commons/8/81/Farandole_lors_de_la_f%C3%AAte_votive
 farce_1_N	142464;Farce;commons/4/45/Theatre_Farce_%28Petrov-Vodkin%29.jpg
 farce_2_N	371698;Meatloaf;commons/4/4d/MeatloafWithSauce.jpg
 farfalle_N	3141956;Farfalle;commons/a/ac/Farfalle_Pasta.JPG
-farm_N	59790;Farm;commons/a/af/Round_farm_2007.jpg	46369050;Cortijo;commons/e/e0/Cortijo_en_P%C3%AD%C3%B1ar_II.JPG
+farm_N	59790;Farm;commons/a/af/Round_farm_2007.jpg
 farmer_3_N	1511887;Fannie_Farmer;commons/c/c6/Fanny_farmer_cookbook_1996.jpeg
 farmer_1_N	58688;Farmer;commons/8/80/Farmer%2C_Nicaragua.jpg
 farmhouse_N	46369050;Cortijo;commons/e/e0/Cortijo_en_P%C3%AD%C3%B1ar_II.JPG

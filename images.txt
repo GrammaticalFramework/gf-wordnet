@@ -4225,7 +4225,7 @@ confession_3_N	217474;Confession_(religion);commons/a/ab/St.leonhard-ffm-beichts
 confessional_N	577474;Confessional;commons/c/c0/Cath%C3%A9drale_Saint-%C3%89tienne_de_Toulouse_-_chapelle_des_reliques_-_Confessionnal_PM31000752.jpg
 confetti_N	732857;Confetti;commons/1/19/Confetti_au_Moma.jpg
 confidante_N	3462324;Emergency_telephone;commons/c/cf/Freeway_callbox.jpg
-confidence_2_N	850663;Trust_(social_science);commons/f/f2/Gustav_Adolph_Hennig_-_The_Artist%27s_Daughters_on_the_Way_to_School.JPG	2973525;Confidence;commons/3/3e/Self-confidence.jpg
+confidence_2_N	2973525;Confidence;commons/c/ce/Plutchik-wheel.svg	2973525;Confidence;commons/a/ad/Plutchik_Dyads.svg
 confirmation_5_N	22842616;Confirmation_(Lutheran_Church);commons/a/ab/Lutherrose.svg	217733;Confirmation;en/9/9e/LutheranClergy.JPG
 confiture_N	47546890;Confiture;commons/e/e0/Bassine_%C3%A0_confiture.JPG
 confluence_1_N	15101961;Confluencia_Department;commons/1/1c/Confluencia_Department%2C_Neuquen%2C_Argentina_-_panoramio_%2810%29.jpg

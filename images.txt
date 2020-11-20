@@ -12994,8 +12994,9 @@ nucleoside_N	89095;Nucleoside;commons/1/16/Guanosin.svg
 nucleosynthesis_N	48903;Nucleosynthesis;commons/3/3c/Ilc_9yr_moll4096.png
 nucleotide_N	21505;Nucleotide;commons/c/cb/DAMP_chemical_structure.png
 nucleus_1_N	6235;Cell_nucleus;commons/6/6c/HeLa_cells_stained_with_Hoechst_33258.jpg
-nude_1_N	14775345;Nude_(art);commons/d/d5/David_von_Michelangelo.jpg
-nude_3_N	14775345;Nude_(art);commons/d/d5/David_von_Michelangelo.jpg
+nude_1_N	14775345;Nude_(art);commons/8/8e/John_Vanderlyn_001.jpg
+nude_3_N	18841893;Nudity;commons/8/8a/Bundesarchiv_Bild_183-1989-0710-419%2C_Berlin%2C_M%C3%BCggelsee%2C_Sonnenbad.jpg
+nude_4_N	14775345;Nude_(art);commons/d/d5/David_von_Michelangelo.jpg
 nugget_N	479804;Gold_nugget;commons/9/9b/Goldinpan.jpg
 nuijamaa_PN	56096533;Nuijamaa;commons/4/4a/Nuijamaa.sijainti.svg
 nullah_N	29546934;Dolin_(island);commons/e/e7/Croatia_-_Dolin.PNG

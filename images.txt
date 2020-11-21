@@ -5028,7 +5028,7 @@ dagga_N	355501;Leonotis;commons/f/f2/Leonotis_leonurus.jpg
 dagger_1_N	8972;Dagger;commons/3/39/Fs-dagger.jpg
 daguerreotype_N	103177;Daguerreotype;commons/2/2e/Louis_Daguerre_2.jpg
 dahlia_N	68853;Dahlia;commons/1/18/Dahlia_flower_-_colour.jpg
-daily_N	2423507;P%C3%A4iv%C3%A4lehti;commons/7/72/P%C3%A4iv%C3%A4lehti.jpg
+daily_N	15580374;Newspaper#Daily;commons/7/79/Old_man_reading_news_paper_early_in_the_morning_at_Basantapur-IMG_6800.jpg
 daiquiri_N	380904;Daiquiri;commons/f/fd/Classic_Daiquiri_in_Cocktail_Glass.jpg
 dairy_N	56228;Dairy;commons/e/ec/Alte_Batzenalpe_2014_Interior_06.jpg
 dairy_farming_N	449934;Dairy_farming;commons/3/3f/Melkkarussell.jpg

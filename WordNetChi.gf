@@ -76670,6 +76670,7 @@ lin red_1_N = mkN "红色" ; --unchecked
 lin red_2_PN = variants {} ;
 lin red_3_N = variants {} ;
 lin red_4_N = mkN "赤字" ; --unchecked
+lin red_cross_PN = variants {} ;
 lin red_hot_1_A = mkA "性感+的" ; --unchecked
 lin red_hot_2_A = variants {} ;
 lin red_hot_3_A = variants {} ;

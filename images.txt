@@ -21431,3 +21431,5 @@ hammer_5_N	43720;Hammer_throw;commons/6/61/John_Flanagan.jpg
 sound_8_N	385319;Sound_(geography);commons/f/f8/Aldersund.jpg
 demerara_2_PN	1599929;Demerara_River;commons/9/97/Demerara_Harbour_bridge_crossing.JPG
 binary_2_N	217392;Executable;commons/2/29/Binary_executable_file2.png
+operating_system_N	22194;Operating_system;commons/e/e1/Operating_system_placement.svg
+source_code_N	27661;Source_code;commons/b/bd/Hello_world_c.svg

@@ -32164,7 +32164,6 @@ lin esmolol_N = mkN "艾司洛尔" ; --unchecked
 lin esophageal_A = mkA "食管+的" ; --unchecked
 lin esophagitis_1_N = mkN "食管炎" ; --unchecked
 lin esophagoscope_1_N = mkN "食管镜" ; --unchecked
-lin esophagus_N = variants {} ;
 lin esoteric_A = variants {} ;
 lin esoterica_N = variants {} ;
 lin esp_N = variants {} ;

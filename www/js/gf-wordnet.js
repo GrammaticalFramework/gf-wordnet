@@ -242,13 +242,17 @@ gfwordnet.render_senses = function(ctxt,selection,result,domains,senses) {
 				continue;
 
             for (var ant_id in senses.result[i].lex_ids[lex_id].antonym) {
-                gfwordnet.lex_ids[ant_id] = senses.result[i].lex_ids[lex_id].antonym[ant_id];
-                gfwordnet.lex_ids[ant_id].match = false;
+                if (!(ant_id in gfwordnet.lex_ids)) {
+                    gfwordnet.lex_ids[ant_id] = senses.result[i].lex_ids[lex_id].antonym[ant_id];
+                    gfwordnet.lex_ids[ant_id].match = false;
+                }
             }
 
             for (var der_id in senses.result[i].lex_ids[lex_id].derived) {
-                gfwordnet.lex_ids[der_id] = senses.result[i].lex_ids[lex_id].derived[der_id];
-                gfwordnet.lex_ids[der_id].match = false;
+                if (!(der_id in gfwordnet.lex_ids)) {
+                    gfwordnet.lex_ids[der_id] = senses.result[i].lex_ids[lex_id].derived[der_id];
+                    gfwordnet.lex_ids[der_id].match = false;
+                }
             }
 
 			var icon;

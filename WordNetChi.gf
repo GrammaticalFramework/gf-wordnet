@@ -26301,7 +26301,6 @@ lin diazo_A = mkA "二氮化合物+的" ; --unchecked
 lin diazonium_N = mkN "重氮化合物" ; --unchecked
 lin diazoxide_N = mkN "氯苯甲噻二嗪" ; --unchecked
 lin dibber_N = mkN "挖穴器" ; --unchecked
-lin dibble_N = mkN "挖洞器" ; --unchecked
 lin dibble_1_V2 = variants {} ;
 lin dibble_2_V2 = mkV2 (mkV "挖洞") ; --unchecked
 lin dibranchiate_N = mkN "二鳃目" ; --unchecked

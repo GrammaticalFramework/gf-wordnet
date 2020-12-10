@@ -746,6 +746,80 @@ gfwordnet.onclick_cell = function (cell) {
 
 			details.appendChild(result);
 		}
+		if (Object.keys(lex_def.antonyms).length > 0) {
+			details.appendChild(node("h1",{},[text("Antonyms")]));
+
+			var result = node("table",{class: "result"},[]);
+			var row = [th(text("Abstract"))]
+			for (var lang in gfwordnet.selection.langs_list) {
+				row.push(th(text(gfwordnet.selection.langs[gfwordnet.selection.langs_list[lang]].name)));
+			}
+			result.appendChild(tr(row));
+
+			for (var antonym in lex_def.antonyms) {
+				var row = []
+				var checked = true;
+				for (var i in gfwordnet.selection.langs_list) {
+					var lang = gfwordnet.selection.langs_list[i];
+					var cell = td([]);
+					if (gfwordnet.user != null)
+						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+					if (lang in lex_def.antonyms[antonym].status) {
+						if (lex_def.antonyms[antonym].status[lang] != "checked") {
+							cell.classList.add(lex_def.antonyms[antonym].status[lang]);
+							checked = false;
+						}
+					} else {
+						checked = false;
+					}
+					row.push(cell);
+				}
+				row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(antonym)]));
+
+				gfwordnet.grammar_call("command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(antonym),bind(extract_linearization_synonym,row));
+
+				result.appendChild(node("tr",{"data-lex-id": antonym},row));
+			}
+
+			details.appendChild(result);
+		}
+		if (Object.keys(lex_def.derived).length > 0) {
+			details.appendChild(node("h1",{},[text("Derived")]));
+
+			var result = node("table",{class: "result"},[]);
+			var row = [th(text("Abstract"))]
+			for (var lang in gfwordnet.selection.langs_list) {
+				row.push(th(text(gfwordnet.selection.langs[gfwordnet.selection.langs_list[lang]].name)));
+			}
+			result.appendChild(tr(row));
+
+			for (var derived in lex_def.derived) {
+				var row = []
+				var checked = true;
+				for (var i in gfwordnet.selection.langs_list) {
+					var lang = gfwordnet.selection.langs_list[i];
+					var cell = td([]);
+					if (gfwordnet.user != null)
+						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+					if (lang in lex_def.derived[derived].status) {
+						if (lex_def.derived[derived].status[lang] != "checked") {
+							cell.classList.add(lex_def.derived[derived].status[lang]);
+							checked = false;
+						}
+					} else {
+						checked = false;
+					}
+					row.push(cell);
+				}
+				row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(derived)]));
+
+				gfwordnet.grammar_call("command=c-linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(derived),bind(extract_linearization_synonym,row));
+
+				result.appendChild(node("tr",{"data-lex-id": derived},row));
+			}
+
+			details.appendChild(result);
+		}
 		if (lex_def.domains.length > 0) {
 			var header = node("h1",{},[text("Domains")]);
 			details.appendChild(header);

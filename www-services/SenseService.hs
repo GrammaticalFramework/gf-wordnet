@@ -129,8 +129,8 @@ cgiMain db funs = do
                             size int < 2000,
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
-                            lex_ids <- select [(lex_id,status,frame_inf,Just (domains,images,examples,sexamples))
-                                                   | (_,Lexeme lex_id status _ domain_ids images ex_ids fs ptrs _) <- fromIndex lexemes_synset (at synset_id),
+                            lex_ids <- select [(lex_id,status,frame_inf,Just (domains,images,examples,sexamples,ptrs))
+                                                   | (_,Lexeme lex_id status _ domain_ids images ex_ids fs ptrs0 _) <- fromIndex lexemes_synset (at synset_id),
                                                      domains   <- select [makeObj [ ("id",showJSON domain_id)
                                                                                   , ("name",showJSON (domain_name d))
                                                                                   ]
@@ -138,6 +138,7 @@ cgiMain db funs = do
                                                                             , d <- from domains (at domain_id)],
                                                      examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
                                                      sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)],
+                                                     ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id,_) <- anyOf ptrs0, lex <- from lexemes (at id)],
                                                      frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                             | frame_id <- anyOf fs
                                                                             , f <- from frames (at frame_id)
@@ -198,7 +199,7 @@ cgiMain db funs = do
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
-    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _ _ _) = do
+    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _ ptrs0 _) = do
       domains   <- select [makeObj [ ("id",showJSON domain_id)
                                    , ("name",showJSON (domain_name d))
                                    ]
@@ -207,10 +208,12 @@ cgiMain db funs = do
       examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
       sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
 
+      ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id,_) <- anyOf ptrs0, lex <- from lexemes (at id)]
+
       case mb_sense_id of
         Just sense_id -> 
           case Map.lookup sense_id senses of
-            Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
+            Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
             Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
                                        lex_ids <- select [(lex_id,status,frame_inf,Nothing)
                                                               | (_,Lexeme lex_id status _ _ _ _ fs _ _) <- fromIndex lexemes_synset (at sense_id),
@@ -218,8 +221,8 @@ cgiMain db funs = do
                                                                                           | frame_id <- anyOf fs
                                                                                           , f <- from frames (at frame_id)
                                                                                           , cls <- from classes (at (base_class_id f))]]
-                                       return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples) lex_ids) senses)
-        Nothing -> return (Map.insert (fromIntegral (5000000+Map.size senses)) ("",[(lex_id,status,[],Just (domains,images,examples,sexamples))]) senses)
+                                       return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
+        Nothing -> return (Map.insert (fromIntegral (5000000+Map.size senses)) ("",[(lex_id,status,[],Just (domains,images,examples,sexamples,ptrs))]) senses)
       where
         addInfo lex_id info lex_ids = 
           [(lex_id',status,frames,if lex_id == lex_id' then Just info else mb_info)
@@ -254,12 +257,14 @@ cgiMain db funs = do
                ("frames", showJSON [(cid,bcid,mkFrameObj frame) | (cid,bcid,frame) <- frames]) :
                case info of
                  Nothing -> []
-                 Just (domains,images,examples,sexamples) -> [
+                 Just (domains,images,examples,sexamples,ptrs) -> [
                          ("match", showJSON True),
                          ("domains",  showJSON domains),
                          ("images",  showJSON images),
                          ("examples", showJSON (map (showExpr []) examples)),
-                         ("secondary_examples", showJSON (map (showExpr []) sexamples))
+                         ("secondary_examples", showJSON (map (showExpr []) sexamples)),
+                         ("antonyms", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Antonym,id,status) <- ptrs]),
+                         ("derived", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Derived,id,status) <- ptrs])
                          ])
 
     mkStatusObj status =

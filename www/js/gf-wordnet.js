@@ -243,7 +243,7 @@ gfwordnet.render_senses = function(ctxt,selection,result,domains,senses) {
 
             for (var ant_id in senses.result[i].lex_ids[lex_id].antonyms) {
                 if (!(ant_id in gfwordnet.lex_ids)) {
-                    gfwordnet.lex_ids[ant_id] = senses.result[i].lex_ids[lex_id].antonym[ant_id];
+                    gfwordnet.lex_ids[ant_id] = senses.result[i].lex_ids[lex_id].antonyms[ant_id];
                     gfwordnet.lex_ids[ant_id].match = false;
                 }
             }

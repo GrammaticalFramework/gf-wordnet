@@ -7483,6 +7483,7 @@ garrison_1_N	338427;Garrison;commons/0/01/Siege_of_malta_1.jpg
 garrison_2_PN	149837;William_Lloyd_Garrison;commons/c/c6/William_Lloyd_Garrison%2C_abolitionist%2C_journalist%2C_and_editor_of_The_Liberator_LCCN2017660623_%28cropped%29.jpg
 garrotte_N	972078;Garrote;commons/8/83/Garrote_Execution_-_1901.png
 garter_N	10383135;Garter;commons/4/4b/Wedding_garter_in_plastic_holder.jpg
+garter_snake_N	613480;Garter_snake;commons/7/76/Coast_Garter_Snake.jpg
 gary_PN	12650;Gary,_Indiana;commons/e/ec/Genesis_Towers_%26_Gary_State_Bank.JPG
 gas_1_N	18993869;Gas;commons/2/21/Gas_particle_movement.svg
 gas_2_N	18993869;Gas;commons/2/21/Gas_particle_movement.svg

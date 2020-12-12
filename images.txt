@@ -20650,7 +20650,7 @@ watch_glass_1_N	1388325;Watch_glass;commons/6/68/Caesium_fluoride.jpg
 watchdog_2_N	1116804;Guard_dog;commons/6/6c/A_raggedly_dressed_man_being_bitten_by_a_guard_dog_Wellcome_L0049795.jpg
 watcherMasc_2_N	6901997;Lookout;commons/6/6c/Lookoutboy.jpg
 watchmaker_N	480750;Clockmaker;commons/1/12/Clockmakers_by_Jost_Amman.png	417622;Watchmaker;commons/0/0a/Watchmaker.jpg
-watchman_N	6901997;Lookout;commons/6/6c/Lookoutboy.jpg	19283898;Security_guard;commons/f/f7/Private_factory_guard.jpg
+watchman_N	19283898;Security_guard;commons/f/f7/Private_factory_guard.jpg
 watchtower_N	2183637;Watchtower;commons/4/49/St_Thomas_Tower.jpg
 watchword_2_N	24304;Password;commons/f/f1/Mediawiki_1.25_sign_in_form.png
 water_1_N	33306;Water;commons/a/a6/Waterdrops_%284648726722%29.jpg

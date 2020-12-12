@@ -83205,6 +83205,7 @@ lin security_6_N = variants {} ;
 lin security_7_N = variants {} ;
 lin security_8_N = mkN "安全体系" ; --unchecked
 lin security_9_N = variants {} ;
+lin security_guard_N = variants {};
 lin sedan_1_N = variants {} ;
 lin sedan_2_N = variants {} ;
 lin sedan_chair_N = variants {} ;

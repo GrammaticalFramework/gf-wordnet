@@ -9720,6 +9720,7 @@ jerky_N	167612;Jerky;commons/6/64/Jerky_%281%29.jpg
 jeroboam_1_PN	16123;Jeroboam;commons/c/c2/Jeroboam_sets_up_two_golden_calves.jpg
 jerome_PN	16005;Jerome;commons/9/90/Bernardino_Pinturicchio_-_Saint_Jerome_in_the_Wilderness_-_Walters_371089.jpg
 jersey_1_PN	21648;New_Jersey;commons/8/84/New_Jersey_in_United_States_%28zoom%29.svg
+new_jersey_1_PN	21648;New_Jersey;commons/8/84/New_Jersey_in_United_States_%28zoom%29.svg
 jersey_2_PN	15693;Jersey;commons/1/1c/Flag_of_Jersey.svg
 jersey_5_N	223515;Jersey_cattle;commons/9/96/Walworth_Gate_010.jpg
 jesus_PN	1095706;Jesus;commons/6/63/Cefal%C3%B9_Pantocrator_retouched.jpg

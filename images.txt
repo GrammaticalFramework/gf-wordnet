@@ -7648,7 +7648,7 @@ ghetto_2_N	92903;Ghetto;commons/4/49/Ghetto_%28Venice%29_Panorama.jpg
 ghetto_3_N	92903;Ghetto;commons/4/49/Ghetto_%28Venice%29_Panorama.jpg
 ghost_3_N	12514;Ghost;en/0/02/Hammersmith_Ghost.PNG
 ghost_writer_N	238777;Ghostwriter;commons/4/4c/Tom_Clancy_at_Burns_Library%2C_Boston_College.jpg
-ghoul_1_N	223328;Ghoul;commons/0/0e/Amine_Discovered_with_the_Goule.jpg
+ghoul_2_N	223328;Ghoul;commons/0/0e/Amine_Discovered_with_the_Goule.jpg
 giant_4_N	78470;Giants_(Greek_mythology);commons/e/e1/Poseidon_Polybotes_Cdm_Paris_573.jpg
 giant_6_N	88664;J%C3%B6tunn;commons/c/c7/Kulturen_-_Riesin_Holdrykka.jpg	53903;Giant;commons/0/07/Rhinegold_and_the_Valkyries_p_032.jpg
 giant_7_N	568726;Giant_star;commons/6/67/HR-diag-no-text-2.svg

@@ -105474,7 +105474,6 @@ lin well_water_N = mkN "井水" ; --unchecked
 lin well_wisher_N = variants {} ;
 lin well_worn_1_A = mkA "用旧了+的" ; --unchecked
 lin well_worn_2_A = variants {} ;
-lin wellbeing_N = mkN "安宁" ; --unchecked
 lin wellerism_N = variants {} ;
 lin wellhead_1_N = variants {} ;
 lin wellhead_2_N = variants {} ;

@@ -21434,3 +21434,4 @@ demerara_2_PN	1599929;Demerara_River;commons/9/97/Demerara_Harbour_bridge_crossi
 binary_2_N	217392;Executable;commons/2/29/Binary_executable_file2.png
 operating_system_N	22194;Operating_system;commons/e/e1/Operating_system_placement.svg
 source_code_N	27661;Source_code;commons/b/bd/Hello_world_c.svg
+pyrrhic_2_N	6898506;Pyrrhichios;commons/d/db/0509_-_Archaeological_Museum%2C_Athens_-_Pyrric_dancers_-_Photo_by_Giovanni_Dall%27Orto%2C_Nov_10_2009.jpg

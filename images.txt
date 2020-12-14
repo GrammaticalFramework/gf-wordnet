@@ -11853,7 +11853,6 @@ meteorite_N	19937;Meteorite;commons/1/18/Namibie_Hoba_Meteorite_05.JPG
 meteoroid_N	63793;Meteoroid;commons/6/63/Meteoroid_meteor_meteorite.gif
 meteorology_1_N	73231;Weather_forecasting;commons/a/ac/Day5pressureforecast.png
 meteorology_2_N	19904;Meteorology;commons/e/ee/ShipTracks_MODIS_2005may11.jpg
-meter_3_N	84026;Metre_(music);commons/3/38/Meter_%281%29.jpg
 meterstick_1_N	1298322;Meterstick;commons/d/d9/FullSizeRenderCC.jpg
 metformin_N	253720;Metformin;commons/4/46/Metformin.svg
 methacholine_N	2377257;Methacholine;commons/9/97/Methacholine.svg
@@ -11874,8 +11873,8 @@ methuselah_PN	53617;Methuselah;commons/e/e2/Methuselah_Stained_glass.jpg
 methyldopa_N	995108;Methyldopa;commons/9/9f/Methyldopa.svg
 methylphenidate_N	205878;Methylphenidate;commons/7/7b/Methylphenidate-2D-skeletal.svg
 methyltestosterone_N	723442;Methyltestosterone;commons/1/14/Methyltestosterone.svg
-metre_1_N	18947;Metre;commons/1/10/Metric_seal.svg
-metre_2_N	84026;Metre_(music);commons/3/38/Meter_%281%29.jpg
+meter_1_N	18947;Metre;commons/1/10/Metric_seal.svg
+meter_3_N	84026;Metre_(music);commons/3/38/Meter_%281%29.jpg
 metrical_1_A	44142;Metric_system;commons/c/c1/FourMetricInstruments.JPG
 metrication_N	20353;Metrication;en/a/a6/Speedometer-dualsystem.jpeg
 metrification_2_N	20353;Metrication;en/a/a6/Speedometer-dualsystem.jpeg

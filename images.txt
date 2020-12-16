@@ -4150,8 +4150,6 @@ compass_4_N	492445;Compass_(drawing_tool);commons/4/49/Zirkel.jpg
 compassion_1_N	327443;Compassion;commons/7/77/There%27s_no_crying_in_baseball%21_%284549295140%29_2.jpg
 compassion_2_N	327443;Compassion;commons/7/77/There%27s_no_crying_in_baseball%21_%284549295140%29_2.jpg
 competition_3_N	4715992;Competition_(economics);commons/5/50/Mining_and_Scientific_Press_-_1885-07-18_-_Frue_and_Triump_ore_concentrators.jpg	181592;Competition;commons/4/44/Athletics_competitions.jpg
-complementarity_1_N	30865488;Complementarity_(molecular_biology);commons/2/21/GC_base_pair_jypx3.png
-complementarity_2_N	30865488;Complementarity_(molecular_biology);commons/2/21/GC_base_pair_jypx3.png
 complex_2_N	7304;Coordination_complex;commons/9/96/Cisplatin-3D-balls.png
 composer_N	198778;Composer;commons/1/16/Louis-Nicolas_Clerambault.jpg
 compositeness_N	82289;Composite_number;commons/f/f0/Primes-vs-composites.svg

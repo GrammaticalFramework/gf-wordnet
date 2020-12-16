@@ -76754,7 +76754,6 @@ lin redolent_3_A = mkA "芬芳+的" ; --unchecked
 lin redouble_2_V = variants {} ;
 lin redouble_3_V = variants {} ;
 lin redouble_1_V2 = variants {} ;
-lin redouble_2_V2 = variants {} ;
 lin redouble_3_V2 = variants {} ;
 lin redoubt_1_N = variants {} ;
 lin redoubt_2_N = variants {} ;

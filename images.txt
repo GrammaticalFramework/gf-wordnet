@@ -3188,7 +3188,6 @@ caucasianMasc_N	3631006;Peoples_of_the_Caucasus;commons/b/b0/Caucasus-ethnic_en.
 caucasian_1_A	39282;Caucasus;commons/1/17/Caucasus_topographic_map-en.svg
 caucasian_2_A	39282;Caucasus;commons/1/17/Caucasus_topographic_map-en.svg
 caucasian_N	618592;Languages_of_the_Caucasus;commons/b/b0/Caucasus-ethnic_en.svg
-caudate_1_A	29657;Salamander;commons/b/b2/SpottedSalamander.jpg
 caudex_1_N	12001152;Caudex;commons/3/37/Dicksonia_antarctica_%28Tasmanian_Fern_Tree%29.jpg
 caudex_2_N	334463;Corm;commons/c/c2/Colocasia_esculenta_dsc07801.jpg
 caul_1_N	4638658;Greater_omentum;commons/4/44/Sobo_1909_564.png

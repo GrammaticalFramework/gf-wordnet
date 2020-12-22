@@ -65,9 +65,6 @@ ifneq ($(SERVER), NO)
 	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
 endif
 
-build/ParseAbs.pgf: Parse.gf ParseExtend.gf WordNet.gf
-	gf --make -name=ParseAbs --output-dir=build Parse.gf
-
 build/gfo/WordNet.gfo:
 
 build/gfo/WordNet%.gfo: WordNet%.gf WordNet.gf
@@ -76,7 +73,7 @@ build/gfo/WordNet%.gfo: WordNet%.gf WordNet.gf
 build/Parse%.pgf: Parse%.gf Parse.gf build/gfo/WordNet%.gfo build/gfo/WordNet.gfo
 	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
 
-Parse.probs Parse.bigram.probs: train/statistics.hs WordNet.gf examples.txt build/ParseAbs.pgf
+Parse.probs Parse.bigram.probs: train/statistics.hs WordNet.gf examples.txt build/ParseAPI.pgf
 	runghc $^
 
 build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o build/train/em_data_stream.o

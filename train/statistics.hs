@@ -4,7 +4,7 @@ import qualified Data.Set as Set
 import qualified Data.Map.Strict as Map
 
 main = do
-  gr  <- readPGF "build/ParseAbs.pgf"
+  gr  <- readPGF "build/ParseAPI.pgf"
   fns <- fmap (Set.fromList . mapMaybe toFun . lines) $ readFile "WordNet.gf"
   ls  <- fmap lines $ readFile "examples.txt"
   let funs = [exprFunctions e

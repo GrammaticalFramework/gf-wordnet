@@ -529,18 +529,11 @@ gfwordnet.init_wordcloud = function(container, context_size_range) {
 	}
 	var popup = canvas.parentNode.className == "popup";
 	var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));
-	var scale = fontSize*Math.min((popup ? 8 : 2)/max,(popup ? 2 : 0.5)/min);
+	var scale = fontSize/(max-min);
 	var list = [];
 	for (var i = 0; i < context_size; i++) {
-		var size = context[i].prob*scale;
-		if (size > 1) {
-			if (size < 9)
-				size = 9;
-			if ("head" in context[i])
-				list.push([context[i].head,size,"orange"]);
-			else
-				list.push([context[i].mod, size,"turquoise"]);
-		}
+		var size = fontSize + (context[i].prob-min)*scale;
+		list.push([context[i].mod, size ,"turquoise"]);
 	}
 	if (list.length > 1) {
 		WordCloud(canvas,{list: list, shuffle: false});

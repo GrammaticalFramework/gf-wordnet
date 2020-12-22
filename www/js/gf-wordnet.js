@@ -507,8 +507,12 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		clear(tfoot);
 	}
 }
-gfwordnet.init_wordcloud = function(canvas, context_size_range) {
-	var context      = this.lex_ids[canvas.lex_id].context;
+gfwordnet.init_wordcloud = function(container, context_size_range) {
+    container.innerHTML = "";
+    var canvas = node("canvas", {width: 10, height: 10}, []);
+	container.appendChild(canvas);
+
+	var context      = this.lex_ids[container.dataset.lexId].context;
 	var context_size = parseInt(context_size_range.value);
 	if (context_size > context.length)
 		context_size = context.length;
@@ -542,8 +546,8 @@ gfwordnet.init_wordcloud = function(canvas, context_size_range) {
 		WordCloud(canvas,{list: list, shuffle: false});
 	}
 }
-gfwordnet.init_embedding = function(canvas, context_size_range) {
-	var graph = this.lex_ids[canvas.lex_id].graph;
+gfwordnet.init_embedding = function(container, context_size_range) {
+	var graph = this.lex_ids[container.dataset.lexId].graph;
 
     var data = {
           nodes: new vis.DataSet(),
@@ -555,14 +559,14 @@ gfwordnet.init_embedding = function(canvas, context_size_range) {
       for (var i in graph[sense_id].funs) {
           var fun = graph[sense_id].funs[i];
           var color = "lightgreen";
-          if (canvas.lex_id == fun)
+          if (container.dataset.lexId == fun)
             color = "red";
           data.nodes.add({id: fun, label: fun, shape: "ellipse", color: color});
           data.edges.add({from: sense_id, to: fun, color: color})
       }
       for (var i in graph[sense_id].ptrs) {
-          var ptr = graph[sense_id].ptrs[i]
-          data.edges.add({from: sense_id, to: ptr[1], label: ptr[0], arrows: "to"})
+          var ptr = graph[sense_id].ptrs[i];
+          data.edges.add({from: sense_id, to: ptr[1], label: ptr[0], arrows: "to"});
       }
     }
 
@@ -571,13 +575,13 @@ gfwordnet.init_embedding = function(canvas, context_size_range) {
            nodes: {shape: "dot", size: 5},
            physics: {stabilization: {enabled: true, iterations: 100}}
         };
-    var network = new vis.Network(canvas.parentNode, data, options);
+    var network = new vis.Network(container, data, options);
 }
-gfwordnet.init_canvas = function (tab,canvas,context_size_range) {
+gfwordnet.init_canvas = function (tab,container,context_size_range) {
 	if (tab.innerHTML == "Context") {
-		gfwordnet.init_wordcloud(canvas,context_size_range);
+		gfwordnet.init_wordcloud(container,context_size_range);
 	} else if (tab.innerHTML == "Related") {
-		gfwordnet.init_embedding(canvas,context_size_range);
+		gfwordnet.init_embedding(container,context_size_range);
 	}
 }
 gfwordnet.onclick_cell = function (cell) {
@@ -596,11 +600,11 @@ gfwordnet.onclick_cell = function (cell) {
 					])]);
 		this.popup.appendChild(tabs);
 
-		var canvas = node("canvas", {width: 10, height: 10, onclick: "gfwordnet.onclick_canvas(this)"}, []);
-		canvas.lex_id = this.lex_id;
-		this.popup.appendChild(canvas);
+		var container = node("div", {width: 500, height: 500, onclick: "gfwordnet.onclick_canvas_container(this)"}, []);
+		container.dataset.lexId = this.lex_id;
+		this.popup.appendChild(container);
 
-		gfwordnet.init_wordcloud(canvas,context_size_range);
+		gfwordnet.init_wordcloud(container,context_size_range);
 	}
 	function extract_linearization(lins) {
 		const table = gfwordnet.build_alignment_table(lins);
@@ -1083,8 +1087,8 @@ gfwordnet.onclick_tab = function (tab) {
 	}
 
 	var context_size_range = tr.lastElementChild.firstElementChild;
-	var canvas = tab.parentNode.parentNode.parentNode.nextSibling;
-	gfwordnet.init_canvas(tab,canvas,context_size_range);
+	var container = tab.parentNode.parentNode.parentNode.nextSibling;
+	gfwordnet.init_canvas(tab,container,context_size_range);
 }
 gfwordnet.onclick_select = function (row) {
 	var tbody = row.parentNode;
@@ -1261,7 +1265,7 @@ gfwordnet.onclick_clear_selection = function (tfoot) {
 gfwordnet.onchange_context_size = function (context_size_range) {
 	var tab = null;
 	var tr  = context_size_range.parentNode.parentNode;
-	var canvas = tr.parentNode.nextElementSibling;
+	var container = tr.parentNode.nextElementSibling;
 	var td  = tr.firstChild;
 	while (td != null) {
 		if (td.firstChild.className == "selected") {
@@ -1273,15 +1277,11 @@ gfwordnet.onchange_context_size = function (context_size_range) {
 	if (tab == null)
 		return;
 
-	if (tab.innerHTML == "Context") {
-		gfwordnet.init_wordcloud(canvas,context_size_range);
-	} else if (tab.innerHTML == "Related") {
-		gfwordnet.init_embedding(canvas,context_size_range);
-	}
+    gfwordnet.init_canvas(tab,container,context_size_range);
 }
-gfwordnet.onclick_canvas = function (canvas) {
+gfwordnet.onclick_canvas_container = function (container) {
 	var tab = null;
-	var tr  = canvas.parentNode.firstElementChild.firstElementChild;
+	var tr  = container.parentNode.firstElementChild.firstElementChild;
 	var td  = tr.firstChild;
 	while (td != null) {
 		if (td.firstChild.className == "selected") {
@@ -1295,18 +1295,18 @@ gfwordnet.onclick_canvas = function (canvas) {
 
 	var context_size_range = tr.lastElementChild.firstElementChild;
 
-	if (canvas.parentNode.className == "popup") {
-		canvas.parentNode.className = "";
-		canvas.width  = canvas.save_width;
-		canvas.height = canvas.save_height;
+	if (container.parentNode.className == "popup") {
+		container.parentNode.className = "";
+		container.width  = container.save_width;
+		container.height = container.save_height;
 	} else {
-		canvas.parentNode.className = "popup";
-		canvas.save_width = canvas.width;
-		canvas.save_height = canvas.height;
-		canvas.width  = canvas.parentNode.offsetWidth;
-		canvas.height = canvas.parentNode.offsetHeight-canvas.offsetTop;
+		container.parentNode.className = "popup";
+		container.save_width = container.width;
+		container.save_height = container.height;
+		container.width  = container.parentNode.offsetWidth;
+		container.height = container.parentNode.offsetHeight-container.offsetTop;
 	}
-	gfwordnet.init_canvas(tab,canvas,context_size_range);
+	gfwordnet.init_canvas(tab,container,context_size_range);
 }
 gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket) {
 	if (select_bracket == null) {

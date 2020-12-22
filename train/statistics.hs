@@ -34,23 +34,3 @@ mkUnigrams gr cs = (Map.union cat_ps fun_ps,ucp_ps)
         Nothing -> Nothing
 
 mkCounts xs = Map.fromListWith (+) (map (\x -> (x,1)) xs)
-
-mkBigrams unigrams cs = Map.mapMaybeWithKey toPPMI cs
-  where
-    total  = sum cs
-
-    uni (f,g) =
-      case (Map.lookup f unigrams, Map.lookup g unigrams) of
-        (Just p1,Just p2) -> p1*p2
-        _                 -> 0
-
-    toPPMI x c =
-      let ppmi = log ((c/total)/uni x)
-      in if ppmi > 3
-           then Just ppmi
-           else Nothing
-
-toFun l =
-  case words l of
-    ("fun":id:_) -> Just id
-    _            -> Nothing

@@ -940,7 +940,7 @@ arrack_1_N	590260;Arak_(drink);commons/1/11/Arak_with_water_and_ice.jpg	1848091;
 arrangement_5_N	2414;Arrangement;commons/c/c9/Fliegende_Hollander_Wagner_Sousa_25.jpg
 arrangement_6_N	2414;Arrangement;commons/c/c9/Fliegende_Hollander_Wagner_Sousa_25.jpg
 arrest_1_N	170638;Arrest;commons/5/52/ICE.XCheckII.3cops1arrest.jpg
-arrow_2_N	51513;Arrow;en/8/86/DFRArrow.jpg
+arrow_2_N	51513;Arrow;commons/d/dc/Two_arrows.jpg
 arrowhead_N	1017709;Arrowhead;commons/7/74/Fleche_Cartailhac_MHNT_PRE_2009.0.232.2_simple.jpg
 arrowroot_2_N	105875;Maranta_arundinacea;commons/1/16/Marant_arund_090103-5154_rwg.JPG
 arrowroot_3_N	105875;Maranta_arundinacea;commons/1/16/Marant_arund_090103-5154_rwg.JPG

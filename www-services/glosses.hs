@@ -40,12 +40,11 @@ main = do
      fmap (partitionEithers . map parseTaxonomy . lines) $
        readFile "taxonomy.txt"
 
-  bigrams <-
-     fmap (concatMap parseBigrams . lines) $
-       readFile "Parse.bigram.probs"
+  probs <-
+     fmap (Map.fromList . map parseProbs . lines) $
+       readFile "Parse.uncond.probs"
 
-  let lexrels = (Map.toList . Map.fromListWith (++))
-                      (lexrels0 ++ bigrams)
+  let lexrels = (Map.toList . Map.fromListWith (++)) lexrels0
 
   domain_forest <- fmap (parseDomains [] . lines) $ readFile "domains.txt"
 
@@ -77,7 +76,7 @@ main = do
        mb_synsetid <- case mb_offset >>= flip Map.lookup synsetKeys of
                         Nothing | not (null gloss) -> fmap Just (store synsets Nothing (Synset "" [] [] gloss))
                         mb_id                      -> return mb_id
-       insert_ lexemes (Lexeme fun 
+       insert_ lexemes (Lexeme fun (fromMaybe 0 (Map.lookup fun probs))
                                (Map.findWithDefault [] fun cncdefs)
                                mb_synsetid
                                (map (\d -> fromMaybe (error ("Unknown domain "++d)) (Map.lookup d ids)) ds)
@@ -86,10 +85,10 @@ main = do
        return ()
 
     forM_ lexrels $ \(fun,ptrs) ->
-      update lexemes [(id,lex{lex_pointers=ptr'})
+      update lexemes [(id,lex{lex_pointers=ptrs'})
                          | (id,lex) <- fromIndex lexemes_fun (at fun)
-                         , ptr' <- select [(sym,id,p)
-                                             | (sym,fun,p) <- anyOf ptrs
+                         , ptrs' <- select [(sym,id)
+                                             | (sym,fun) <- anyOf ptrs
                                              , id <- from lexemes_fun (at fun)]
                          ]
 
@@ -185,7 +184,7 @@ insertExamples ps (ExampleE e fns : es) = do key <- insert_ examples e
 
 parseTaxonomy l
   | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs (\sym id -> (sym,read id)) ws2) (read children_s) gloss)
-  | otherwise         = Right (id, readPtrs (\sym id->(sym,id,1)) ws0)
+  | otherwise         = Right (id, readPtrs (,) ws0)
   where
     (id:ws0) = words l
     key_s:children_s:ws1 = ws0
@@ -223,13 +222,10 @@ parseTaxonomy l
                 "\\" -> Derived
                 "<"  -> Participle
 
-parseBigrams l =
-  [(id1, [(CoOccurrence,id2,p)])
-  ,(id2, [(CoOccurrence,id1,p)])
-  ]
+parseProbs l = (id, p)
   where
-    [id1,id2,s] = words l
-    p = read s :: Double
+    [id,s] = words l
+    p = read s :: Float
 
 parseDomains levels []     = attach levels
   where

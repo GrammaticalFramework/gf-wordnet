@@ -73,7 +73,7 @@ build/gfo/WordNet%.gfo: WordNet%.gf WordNet.gf
 build/Parse%.pgf: Parse%.gf Parse.gf build/gfo/WordNet%.gfo build/gfo/WordNet.gfo
 	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
 
-Parse.probs Parse.bigram.probs: train/statistics.hs WordNet.gf examples.txt build/ParseAPI.pgf
+Parse.probs Parse.uncond.probs: train/statistics.hs examples.txt build/ParseAPI.pgf
 	runghc $^
 
 build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o build/train/em_data_stream.o
@@ -91,7 +91,7 @@ build/train/EM.hs: train/EM.hsc train/em_core.h
 build/train/Matching.hs: train/Matching.hsc train/em_core.h
 	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
-semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.bigram.probs images.txt
+semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.uncond.probs images.txt
 	build/glosses
 ifneq ($(SERVER), NO)
 	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)

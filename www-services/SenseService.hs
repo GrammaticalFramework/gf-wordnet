@@ -18,17 +18,23 @@ import Data.Char
 
 main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
+  bigram_total <- runDaison db ReadOnlyMode $ do
+    query sumRows
+          [c*(c - 1) `div` 2
+             | (ex_id,ex) <- from examples everything
+             , c <- query countRows [f | f <- anyOf (exprFunctions ex)
+             ,      _ <- from lexemes_fun (at f)]]
 -- #ifndef mingw32_HOST_OS
 --                   runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else
-  runFastCGI (handleErrors $ cgiMain db)
+  runFastCGI (handleErrors $ cgiMain db bigram_total)
 -- #endif
   closeDB db
 
 maxResultLength = 500
 
-cgiMain :: Database -> CGI CGIResult
-cgiMain db = do
+cgiMain :: Database -> Int -> CGI CGIResult
+cgiMain db bigram_total = do
   mb_s1 <- getInput "lexical_ids"
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
@@ -78,23 +84,27 @@ cgiMain db = do
 
     doContext lex_id = do
       runDaison db ReadOnlyMode $ do
-        ctxt <- select [mkFunProb (lex_fun lex) d
+        ctxt <- query (groupRowsWith (+) 0)
+                      [(lex_id', 1/(lex_prob lex * lex_prob lex' * fromIntegral bigram_total))
                           | (_,lex) <- fromIndex lexemes_fun (at lex_id)
-                          , (CoOccurrence,id,d) <- anyOf (lex_pointers lex)
-                          , lex <- from lexemes (at id)]
+                          , (ex_id,ex) <- fromIndex examples_fun (at lex_id)
+                          , lex_id' <- anyOf (exprFunctions ex)
+                          , lex_id' /= lex_id
+                          , (_,lex') <- fromIndex lexemes_fun (at lex_id')]
+                  `having` (\x -> x > 1)
         synsets <- select [synset_id
                              | (_,lex) <- fromIndex lexemes_fun (at lex_id)
                              , Just synset_id <- return (synset lex)]
         graph <- foldM (crawlGraph 2) Map.empty synsets
-        return (makeObj [("context",  showJSON ctxt)
-                        ,("graph",    makeObj [(show key,mkNode node) | (key,node) <- Map.toList graph])
+        return (makeObj [("context", showJSON (map mkFunProb (Map.toList ctxt)))
+                        ,("graph",   makeObj [(show key,mkNode node) | (key,node) <- Map.toList graph])
                         ])
       where
         dist v1 v2 = sqrt (Vector.sum (Vector.zipWith diff v1 v2))
           where
             diff x y = (x-y)^2
 
-        mkFunProb fun prob = makeObj [("mod", showJSON fun),("prob", showJSON prob)]
+        mkFunProb (fun,prob) = makeObj [("mod", showJSON fun),("prob", showJSON (log prob))]
 
         mkNode (gloss,funs,ptrs) =
           makeObj [("gloss",showJSON gloss)
@@ -130,7 +140,7 @@ cgiMain db = do
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
                             lex_ids <- select [(lex_id,status,frame_inf,Just (domains,images,examples,sexamples,ptrs))
-                                                   | (_,Lexeme lex_id status _ domain_ids images ex_ids fs ptrs0) <- fromIndex lexemes_synset (at synset_id),
+                                                   | (_,Lexeme lex_id _ status _ domain_ids images ex_ids fs ptrs0) <- fromIndex lexemes_synset (at synset_id),
                                                      domains   <- select [makeObj [ ("id",showJSON domain_id)
                                                                                   , ("name",showJSON (domain_name d))
                                                                                   ]
@@ -138,7 +148,7 @@ cgiMain db = do
                                                                             , d <- from domains (at domain_id)],
                                                      examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
                                                      sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)],
-                                                     ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id,_) <- anyOf ptrs0, lex <- from lexemes (at id)],
+                                                     ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id) <- anyOf ptrs0, lex <- from lexemes (at id)],
                                                      frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                             | frame_id <- anyOf fs
                                                                             , f <- from frames (at frame_id)
@@ -199,7 +209,7 @@ cgiMain db = do
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
-    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _ ptrs0) = do
+    getGloss senses (_,Lexeme lex_id _ status mb_sense_id domain_ids images ex_ids _ ptrs0) = do
       domains   <- select [makeObj [ ("id",showJSON domain_id)
                                    , ("name",showJSON (domain_name d))
                                    ]
@@ -208,7 +218,7 @@ cgiMain db = do
       examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
       sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
 
-      ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id,_) <- anyOf ptrs0, lex <- from lexemes (at id)]
+      ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id) <- anyOf ptrs0, lex <- from lexemes (at id)]
 
       case mb_sense_id of
         Just sense_id -> 
@@ -216,7 +226,7 @@ cgiMain db = do
             Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
             Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
                                        lex_ids <- select [(lex_id,status,frame_inf,Nothing)
-                                                              | (_,Lexeme lex_id status _ _ _ _ fs _) <- fromIndex lexemes_synset (at sense_id),
+                                                              | (_,Lexeme lex_id _ status _ _ _ _ fs _) <- fromIndex lexemes_synset (at sense_id),
                                                                 frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                                           | frame_id <- anyOf fs
                                                                                           , f <- from frames (at frame_id)

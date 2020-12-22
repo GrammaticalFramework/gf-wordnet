@@ -38,7 +38,6 @@ data PointerSymbol
   | SimilarTo
   | Derived
   | Participle
-  | CoOccurrence
   deriving (Data,Eq,Show)
 
 data Synset
@@ -65,13 +64,14 @@ data Domain
 data Lexeme
   = Lexeme
       { lex_fun      :: Fun
+      , lex_prob     :: Float
       , status       :: [(String,Status)]
       , synset       :: Maybe (Key Synset)
       , domain_ids   :: [Key Domain]
       , images       :: [(String,String)]
       , example_ids  :: [Key Expr]
       , frame_ids    :: [Key Frame]
-      , lex_pointers :: [(PointerSymbol,Key Lexeme,Double)]
+      , lex_pointers :: [(PointerSymbol,Key Lexeme)]
       }
     deriving (Data,Show)
 

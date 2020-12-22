@@ -5,29 +5,23 @@ import qualified Data.Map.Strict as Map
 
 main = do
   gr  <- readPGF "build/ParseAPI.pgf"
-  fns <- fmap (Set.fromList . mapMaybe toFun . lines) $ readFile "WordNet.gf"
   ls  <- fmap lines $ readFile "examples.txt"
   let funs = [exprFunctions e
                 | l <- ls,
                   take 4 l == "abs:",
                   Just e <- [readExpr (drop 4 l)]
                 ]
-      unigrams = mkUnigrams gr (mkCounts (concat funs++functions gr))
-      bigram   = mkBigrams unigrams
-                   (mkCounts
-                       (concatMap (\fs -> [(f,g) | f <- fs,
-                                                   Set.member f fns,
-                                                   g <- fs,
-                                                   Set.member g fns,
-                                                   f < g]) funs))
+      (unigrams,ucp_ps) = mkUnigrams gr (mkCounts (concat funs++functions gr))
   writeFile "Parse.probs" (unlines [x++"\t"++show p | (x,p) <- Map.toList unigrams])
-  writeFile "Parse.bigram.probs" (unlines [f++"\t"++g++"\t"++show p | ((f,g),p) <- Map.toList bigram])
+  writeFile "Parse.uncond.probs" (unlines [x++"\t"++show p | (x,p) <- Map.toList ucp_ps])
 
-mkUnigrams gr cs = Map.union cat_ps fun_ps
+mkUnigrams gr cs = (Map.union cat_ps fun_ps,ucp_ps)
   where
+    total  = sum cs
     cat_cs = Map.foldlWithKey addCount Map.empty cs
-    cat_ps = Map.map (\c -> c/sum cat_cs) cat_cs
+    cat_ps = Map.map (\c -> c/total) cat_cs
     fun_ps = Map.mapMaybeWithKey normalize cs
+    ucp_ps = Map.map (\c -> c/total) cs
 
     addCount cs f c =
       case fmap unType (PGF2.functionType gr f) of

@@ -72,7 +72,6 @@ data Lexeme
       , example_ids  :: [Key Expr]
       , frame_ids    :: [Key Frame]
       , lex_pointers :: [(PointerSymbol,Key Lexeme,Double)]
-      , lex_vector   :: [Double]
       }
     deriving (Data,Show)
 

@@ -543,53 +543,35 @@ gfwordnet.init_wordcloud = function(canvas, context_size_range) {
 	}
 }
 gfwordnet.init_embedding = function(canvas, context_size_range) {
-	var relations = this.lex_ids[canvas.lex_id].relations;
-	var context_size = parseInt(context_size_range.value);
+	var graph = this.lex_ids[canvas.lex_id].graph;
 
-	var tsne = new tsnejs.tSNE({}); // create a tSNE instance
+    var data = {
+          nodes: new vis.DataSet(),
+          edges: new vis.DataSet(),
+        };
 
-	var dists = [];
-	for (var i = 0; i < context_size; i++) {
-		dists.push(relations[i].vec);
-	}
-	tsne.initDataRaw(dists);
+    for (var sense_id in graph) {
+      data.nodes.add({id: sense_id, title: graph[sense_id].gloss});
+      for (var i in graph[sense_id].funs) {
+          var fun = graph[sense_id].funs[i];
+          var color = "lightgreen";
+          if (canvas.lex_id == fun)
+            color = "red";
+          data.nodes.add({id: fun, label: fun, shape: "ellipse", color: color});
+          data.edges.add({from: sense_id, to: fun, color: color})
+      }
+      for (var i in graph[sense_id].ptrs) {
+          var ptr = graph[sense_id].ptrs[i]
+          data.edges.add({from: sense_id, to: ptr[1], label: ptr[0], arrows: "to"})
+      }
+    }
 
-	for(var k = 0; k < 500; k++) {
-	  tsne.step(); // every time you call this, solution gets better
-	}
-
-	var points = tsne.getSolution(); // Y is an array of 2-D points that you can plot
-	
-	var minx = Number.MAX_VALUE;
-	var maxx = Number.MIN_VALUE;
-	var miny = Number.MAX_VALUE;
-	var maxy = Number.MIN_VALUE;
-	for (var i in points) {
-		var point = points[i];
-		if (point[0] < minx) minx = point[0];
-		if (point[0] > maxx) maxx = point[0];
-		if (point[1] < miny) miny = point[1];
-		if (point[1] > maxy) maxy = point[1];
-	}
-	var scalex = (canvas.width -60)/(maxx-minx);
-	var scaley = (canvas.height-60)/(maxy-miny);
-	var scale  = Math.min(scalex,scaley);
-
-	var popup = canvas.parentNode.className == "popup";
-	var fontSize = window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size');
-
-	var ctx = canvas.getContext("2d");
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.font = fontSize + " Ariel";
-	for (var i = 0; i < context_size; i++) {
-		var point = points[i];
-		var fun   = relations[i].fun;
-		if (fun == canvas.lex_id)
-			ctx.fillStyle = '#ff0000';
-		ctx.fillText(fun, (point[0]-minx)*scale, (point[1]-minx)*scale);
-		if (fun == canvas.lex_id)
-			ctx.fillStyle = '#000000';
-	}
+    // create a network
+    var options = {
+           nodes: {shape: "dot", size: 5},
+           physics: {stabilization: {enabled: true, iterations: 100}}
+        };
+    var network = new vis.Network(canvas.parentNode, data, options);
 }
 gfwordnet.init_canvas = function (tab,canvas,context_size_range) {
 	if (tab.innerHTML == "Context") {
@@ -604,7 +586,7 @@ gfwordnet.onclick_cell = function (cell) {
 
 	function extract_context(res) {
 		gfwordnet.lex_ids[this.lex_id].context   = res.context;
-		gfwordnet.lex_ids[this.lex_id].relations = res.relations;
+		gfwordnet.lex_ids[this.lex_id].graph     = res.graph;
 
 		var context_size_range = node("input", {id: "context_size", type: "range", min: 1, max: 200, value: 100, onchange: "gfwordnet.onchange_context_size(this)"});
 		var tabs = node("table",{class: "header-tabs"},[

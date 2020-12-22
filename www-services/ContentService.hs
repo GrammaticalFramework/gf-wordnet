@@ -90,7 +90,10 @@ cgiMain db = do
                                   req0 <- parseRequest ("https://api.github.com/user?access_token="++token)
                                   let req = req0{requestHeaders=(hUserAgent,BSS.fromString "GF WordNet"):requestHeaders req0}
                                   httpLbs req man
-                         case (do JSObject obj <- runGetJSON readJSObject (UTF8.toString (responseBody res))
+                         case (do res <- runGetJSON readJSObject (UTF8.toString (responseBody res))
+                                  obj <- case res of
+                                           JSObject obj -> return obj
+                                           _            -> fail "Didn't get an object from api.github.com"
                                   user  <- resultToEither (valFromObj "login" obj)
                                   name  <- resultToEither (valFromObj "name" obj)
                                   email <- resultToEither (valFromObj "email" obj)

@@ -18,21 +18,17 @@ import Data.Char
 
 main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
-  funs <- runDaison db ReadOnlyMode $ do
-            fmap Map.fromList $
-              select [(lex_fun lex, Vector.fromList (lex_vector lex))
-                        | (_,lex) <- from lexemes everything]
 -- #ifndef mingw32_HOST_OS
 --                   runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else
-  runFastCGI (handleErrors $ cgiMain db funs)
+  runFastCGI (handleErrors $ cgiMain db)
 -- #endif
   closeDB db
 
 maxResultLength = 500
 
-cgiMain :: Database -> Embeddings -> CGI CGIResult
-cgiMain db funs = do
+cgiMain :: Database -> CGI CGIResult
+cgiMain db = do
   mb_s1 <- getInput "lexical_ids"
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
@@ -81,26 +77,30 @@ cgiMain db funs = do
           foldM getGloss senses lexemes
 
     doContext lex_id = do
-      ctxt <- runDaison db ReadOnlyMode $
-                select [mkFunProb (lex_fun lex) d
+      runDaison db ReadOnlyMode $ do
+        ctxt <- select [mkFunProb (lex_fun lex) d
                           | (_,lex) <- fromIndex lexemes_fun (at lex_id)
                           , (CoOccurrence,id,d) <- anyOf (lex_pointers lex)
                           , lex <- from lexemes (at id)]
-      let rels =
-             case Map.lookup lex_id funs of
-               Just vec -> let res = take 200 (sortOn fst [(dist vec vec',(fun,vec')) | (fun,vec') <- Map.toList funs, not (null vec')])
-                           in [mkFunVec fun (Vector.toList vec) | (dist,(fun,vec)) <- res]
-               Nothing  -> []
-      return (makeObj [("context",  showJSON ctxt)
-                      ,("relations",showJSON rels)
-                      ])
+        synsets <- select [synset_id
+                             | (_,lex) <- fromIndex lexemes_fun (at lex_id)
+                             , Just synset_id <- return (synset lex)]
+        graph <- foldM (crawlGraph 2) Map.empty synsets
+        return (makeObj [("context",  showJSON ctxt)
+                        ,("graph",    makeObj [(show key,mkNode node) | (key,node) <- Map.toList graph])
+                        ])
       where
         dist v1 v2 = sqrt (Vector.sum (Vector.zipWith diff v1 v2))
           where
             diff x y = (x-y)^2
 
         mkFunProb fun prob = makeObj [("mod", showJSON fun),("prob", showJSON prob)]
-        mkFunVec  fun vec  = makeObj [("fun", showJSON fun),("vec",  showJSON vec )]
+
+        mkNode (gloss,funs,ptrs) =
+          makeObj [("gloss",showJSON gloss)
+                  ,("funs",showJSON funs)
+                  ,("ptrs",showJSON [(show sym,showJSON id) | (sym,id) <- ptrs])
+                  ]
 
     doGloss lex_id = do
       glosses <- runDaison db ReadOnlyMode $
@@ -130,7 +130,7 @@ cgiMain db funs = do
                             (s,e) <- anyOf int,
                             (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
                             lex_ids <- select [(lex_id,status,frame_inf,Just (domains,images,examples,sexamples,ptrs))
-                                                   | (_,Lexeme lex_id status _ domain_ids images ex_ids fs ptrs0 _) <- fromIndex lexemes_synset (at synset_id),
+                                                   | (_,Lexeme lex_id status _ domain_ids images ex_ids fs ptrs0) <- fromIndex lexemes_synset (at synset_id),
                                                      domains   <- select [makeObj [ ("id",showJSON domain_id)
                                                                                   , ("name",showJSON (domain_name d))
                                                                                   ]
@@ -199,7 +199,7 @@ cgiMain db funs = do
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
-    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _ ptrs0 _) = do
+    getGloss senses (_,Lexeme lex_id status mb_sense_id domain_ids images ex_ids _ ptrs0) = do
       domains   <- select [makeObj [ ("id",showJSON domain_id)
                                    , ("name",showJSON (domain_name d))
                                    ]
@@ -216,7 +216,7 @@ cgiMain db funs = do
             Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
             Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
                                        lex_ids <- select [(lex_id,status,frame_inf,Nothing)
-                                                              | (_,Lexeme lex_id status _ _ _ _ fs _ _) <- fromIndex lexemes_synset (at sense_id),
+                                                              | (_,Lexeme lex_id status _ _ _ _ fs _) <- fromIndex lexemes_synset (at sense_id),
                                                                 frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                                           | frame_id <- anyOf fs
                                                                                           , f <- from frames (at frame_id)
@@ -310,7 +310,36 @@ findLCA up xs = alternate [([x],[]) | x <- xs] [] [] Map.empty
         c    = fromMaybe 0 (Map.lookup x set) + 1
         set' = Map.insert x c set
 
-type Embeddings = Map.Map Fun (Vector.Vector Double)
+
+type Graph   = Map.Map (Key Synset) (String,[Fun],[(PointerSymbol,Key Synset)])
+
+crawlGraph :: Int -> Graph -> Key Synset -> Daison Graph
+crawlGraph depth graph synset_id
+  | Map.member synset_id graph
+                 = return graph
+  | depth == 0   = do details <- getDetails False synset_id
+                      return (addDetails details graph)
+  | otherwise    = do details@(gloss,funs,ptrs) <- getDetails True synset_id
+                      foldM (crawlGraph (depth-1)) (addDetails details graph) (map snd ptrs)
+  where
+    getDetails use_new synset_id = do
+      (gloss,ptrs) <- query firstRow
+                          [( gloss synset
+                           , [ptr | ptr@(sym,tgt) <- pointers synset
+                                  , match synset_id tgt]
+                           )
+                              | synset <- from synsets (at synset_id)
+                              ]
+      funs <- select [lex_fun lex
+                        | (_,lex) <- fromIndex lexemes_synset (at synset_id)]
+      return (gloss,funs,ptrs)
+      where
+        match src tgt =
+          case Map.lookup tgt graph of
+            Just (_,_,ptrs) -> not (elem src (map snd ptrs))
+            Nothing         -> use_new
+
+    addDetails details graph = Map.insert synset_id details graph
 
 outputJSONP :: JSON a => a -> CGI CGIResult
 outputJSONP = outputEncodedJSONP . encode

@@ -9,17 +9,10 @@ import Data.Maybe
 import Data.Either
 import Data.Data
 import Data.Tree
-import System.Random
 import System.Directory
 import Control.Monad
 import qualified Data.Map.Strict as Map
 import Debug.Trace
-
-data Vertex
-       = SynsetV (Key Synset)
-       | LexemeV (Key Lexeme)
-       | DomainV (Key Domain)
-       deriving (Eq,Ord,Show)
 
 main = do
   cncdefs1 <- fmap (mapMaybe (parseCncSyn "ParseBul") . lines) $ readFile "WordNetBul.gf"
@@ -59,8 +52,6 @@ main = do
   ls <- fmap lines $ readFile "images.txt"
   let images = parseImages ls
 
-  g <- newStdGen
-
   let db_name = "semantics.db"
   fileExists <- doesFileExist db_name
   when fileExists (removeFile db_name)
@@ -91,7 +82,7 @@ main = do
                                mb_synsetid
                                (map (\d -> fromMaybe (error ("Unknown domain "++d)) (Map.lookup d ids)) ds)
                                (fromMaybe [] (Map.lookup fun images))
-                               es fs [] [])
+                               es fs [])
        return ()
 
     forM_ lexrels $ \(fun,ptrs) ->
@@ -101,27 +92,6 @@ main = do
                                              | (sym,fun,p) <- anyOf ptrs
                                              , id <- from lexemes_fun (at fun)]
                          ]
-
-    graph1 <- fmap Map.fromList $
-             select [(SynsetV id,map (\(_,id) -> (1,SynsetV id)) (pointers s))
-                         | (id,s) <- from synsets everything
-                         , not (null (pointers s))]
-
-    graph2 <- fmap (Map.mapMaybe (\xs -> if null xs then Nothing else Just xs) . Map.fromListWith (++) . concat) $
-             select [(case synset l of
-                        Nothing  -> []
-                        Just sid -> [(LexemeV id,[(1,SynsetV sid)]),(SynsetV sid,[(1,LexemeV id)])])++
-                     ((LexemeV id,[(1,DomainV did) | did <- domain_ids l]):
-                      [(DomainV did,[(1,LexemeV id)]) | did <- domain_ids l])++
-                     [(LexemeV id,map (\(_,id,_) -> (1,LexemeV id)) (lex_pointers l))]
-                         | (id,l) <- from lexemes everything]
-
-    let graph  = Map.unionsWith (++) [graph1, graph2]
-    let graph' = visualize g 1e-4 20 graph
-
-    update lexemes [(v,lex{lex_vector=xs})
-                       | (LexemeV v,(xs,es)) <- anyOf (Map.toList graph')
-                       , lex <- from lexemes (at v)]
 
     createTable updates
 
@@ -332,74 +302,6 @@ renderStatus cs =
           let text =
                 "<text x=\""++show (x+3)++"\" y=\""++show (y+15)++"\">"++lang++"</text>"
           in (text++s,x+35,y)
-
-visualize
-  :: (RandomGen g, Show g, Ord k) =>
-     g -> Double -> Int -> Map.Map k [(Double, k)] -> Map.Map k ([Double], [(Double, k)])
-visualize g epsilon n graph = finish (dimensions g (n+1) [] (prepare graph))
-  where
-    prepare =
-      fmap (\es -> let !d = sum (map fst es)
-                   in (d,[],es))
-
-    finish =
-      fmap (\(d,xs,es) -> (tail (reverse xs),es))
-
-    dimensions g 0 dns graph = graph
-    dimensions g n dns graph =
-      let (!graph',!g')    = initialize g graph
-          (!dns',!graph'') = commit dns (converge dns graph')
-      in trace (show (Map.size graph')) (dimensions g' (n-1) dns' graph'')
-
-    initialize g graph =
-       let ((g',x2),graph') =
-               Map.mapAccum (\(g,x2) (d,xs,es) ->
-                                let (!x,!g') = random g
-                                    !x2' = x2+x*x
-                                in ((g',x2'),(x/norm,d,xs,es)))
-                            (g,0) graph
-           norm = sqrt x2
-       in (graph',g')
-
-    converge dns graph =
-      let (graph',prod) = update dns graph
-      in if prod > 1 - epsilon
-           then graph
-           else trace (show prod) (converge dns graph')
-
-    commit dns graph =
-      let dn     = dnorm graph
-          graph' = fmap (\(x,d,xs,es) -> (d,x:xs,es)) graph
-      in (dn:dns,graph')
-
-    dnorm =
-      Map.foldl (\s (x,d,xs,es) -> s + x*d*x) 0
-
-    project dns = Map.foldr foo (map (const 0) dns)
-      where
-        foo (x,d,[]   ,es) []     = []
-        foo (x,d,x':xs,es) (y:ys) = (x*d*x' + y) : foo (x,d,xs,es) ys
-
-    orthogonalize dps dns =
-      fmap (\(x,d,xs,es) -> (x - sum (zipWith3 (\dp dn x -> (dp*x)/dn) dps dns xs),d,xs,es))
-
-    update dns graph =
-      let dps    = project dns graph
-          graph' = orthogonalize dps dns graph
-          ((x2,p),graph'') =
-              Map.mapAccum (\(x2,p) (x,d,xs,es) ->
-                                let !x'  = (x + (sum graph' es)/d)/2
-                                    !x2' = x2 + x'*x'
-                                    !p'  = p + x*x'
-                                in ((x2',p'),(x'/norm,d,xs,es)))
-                           (0,0) graph'
-          norm = sqrt x2
-      in (graph'',p/norm)
-      where
-        sum graph []              = 0
-        sum graph ((w,vertex):es) =
-          let Just (x,_,_,_) = Map.lookup vertex graph
-          in w * x + sum graph es
 
 tsv :: String -> [String]
 tsv "" = []

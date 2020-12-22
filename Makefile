@@ -105,17 +105,17 @@ build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/
 	ghc --make -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@
 
 build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
-	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-static -optl-pthread $^ -o $@
+	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
-	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/www/SenseService.fcgi"
-	scp build/SenseService www.grammaticalframework.org:$(SERVER_PATH)/www/SenseService.fcgi
+	rm -f $(SERVER_PATH)/www/SenseService.fcgi
+	cp build/SenseService $(SERVER_PATH)/www/SenseService.fcgi
 endif
 
 build/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/ContentSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
-	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-static -optl-pthread $^ -o $@
+	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
-	ssh www.grammaticalframework.org "rm -f $(SERVER_PATH)/www/ContentService"
-	scp build/ContentService www.grammaticalframework.org:$(SERVER_PATH)/www/ContentService
+	rm -f $(SERVER_PATH)/www/ContentService
+	cp build/ContentService $(SERVER_PATH)/www/ContentService
 endif
 
 build/gfshell: $(WORDNETS)

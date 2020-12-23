@@ -20,10 +20,9 @@ main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
   bigram_total <- runDaison db ReadOnlyMode $ do
     query sumRows
-          [c*(c - 1) `div` 2
+          [c*c
              | (ex_id,ex) <- from examples everything
-             , c <- query countRows [f | f <- anyOf (exprFunctions ex)
-             ,      _ <- from lexemes_fun (at f)]]
+             , let c = length (exprFunctions ex)]
 -- #ifndef mingw32_HOST_OS
 --                   runFastCGIConcurrent' forkIO 100 (cgiMain db)
 -- #else

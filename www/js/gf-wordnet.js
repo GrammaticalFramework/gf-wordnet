@@ -527,12 +527,13 @@ gfwordnet.init_wordcloud = function(container, context_size_range) {
 				min = context[i].prob;
 		}
 	}
-	var popup = canvas.parentNode.className == "popup";
+	var popup = container.parentNode.className == "popup";
 	var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));
-	var scale = fontSize/(max-min);
+    var init  = fontSize * (popup ? 1 : 0.5);
+	var scale = (fontSize * (popup ? 2 : 1))/(max-min);
 	var list = [];
 	for (var i = 0; i < context_size; i++) {
-		var size = fontSize + (context[i].prob-min)*scale;
+		var size = init + (context[i].prob-min)*scale;
 		list.push([context[i].mod, size ,"turquoise"]);
 	}
 	if (list.length > 1) {

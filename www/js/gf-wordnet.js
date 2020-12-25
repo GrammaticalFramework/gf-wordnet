@@ -620,6 +620,7 @@ gfwordnet.onclick_cell = function (cell) {
 
 		var container = node("div", {}, []);
         container.addEventListener("click", gfwordnet.onclick_container);
+        container.style.width = "100px";
 		container.dataset.lexId = this.lex_id;
 		this.popup.appendChild(container);
 

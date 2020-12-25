@@ -554,20 +554,25 @@ gfwordnet.init_embedding = function(container, context_size_range) {
           edges: new vis.DataSet(),
         };
 
+	var depth = parseInt(context_size_range.value)/50;
+
     for (var sense_id in graph) {
-      data.nodes.add({id: sense_id, title: graph[sense_id].gloss});
-      for (var i in graph[sense_id].funs) {
+        if (graph[sense_id].dist > depth)
+            continue;
+
+        data.nodes.add({id: sense_id, title: graph[sense_id].gloss});
+        for (var i in graph[sense_id].funs) {
           var fun = graph[sense_id].funs[i];
           var color = "lightgreen";
           if (container.dataset.lexId == fun)
             color = "red";
           data.nodes.add({id: fun, label: fun, shape: "ellipse", color: color});
           data.edges.add({from: sense_id, to: fun, color: color})
-      }
-      for (var i in graph[sense_id].ptrs) {
+        }
+        for (var i in graph[sense_id].ptrs) {
           var ptr = graph[sense_id].ptrs[i];
           data.edges.add({from: sense_id, to: ptr[1], label: ptr[0], arrows: "to"});
-      }
+        }
     }
 
     var canvas = container.firstElementChild;

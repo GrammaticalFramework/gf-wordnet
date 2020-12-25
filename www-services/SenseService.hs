@@ -94,7 +94,7 @@ cgiMain db bigram_total = do
         synsets <- select [synset_id
                              | (_,lex) <- fromIndex lexemes_fun (at lex_id)
                              , Just synset_id <- return (synset lex)]
-        graph <- foldM (crawlGraph 2) Map.empty synsets
+        graph <- foldM (crawlGraph 0 4) Map.empty synsets
         return (makeObj [("context", showJSON (map mkFunProb (Map.toList ctxt)))
                         ,("graph",   makeObj [(show key,mkNode node) | (key,node) <- Map.toList graph])
                         ])
@@ -105,10 +105,11 @@ cgiMain db bigram_total = do
 
         mkFunProb (fun,prob) = makeObj [("mod", showJSON fun),("prob", showJSON (log prob))]
 
-        mkNode (gloss,funs,ptrs) =
+        mkNode (gloss,funs,ptrs,dist) =
           makeObj [("gloss",showJSON gloss)
-                  ,("funs",showJSON funs)
-                  ,("ptrs",showJSON [(show sym,showJSON id) | (sym,id) <- ptrs])
+                  ,("funs", showJSON funs)
+                  ,("ptrs", showJSON [(show sym,showJSON id) | (sym,id) <- ptrs])
+                  ,("dist", showJSON dist)
                   ]
 
     doGloss lex_id = do
@@ -320,16 +321,16 @@ findLCA up xs = alternate [([x],[]) | x <- xs] [] [] Map.empty
         set' = Map.insert x c set
 
 
-type Graph   = Map.Map (Key Synset) (String,[Fun],[(PointerSymbol,Key Synset)])
+type Graph   = Map.Map (Key Synset) (String,[Fun],[(PointerSymbol,Key Synset)],Int)
 
-crawlGraph :: Int -> Graph -> Key Synset -> Daison Graph
-crawlGraph depth graph synset_id
+crawlGraph :: Int -> Int -> Graph -> Key Synset -> Daison Graph
+crawlGraph dist depth graph synset_id
   | Map.member synset_id graph
-                 = return graph
-  | depth == 0   = do details <- getDetails False synset_id
-                      return (addDetails details graph)
-  | otherwise    = do details@(gloss,funs,ptrs) <- getDetails True synset_id
-                      foldM (crawlGraph (depth-1)) (addDetails details graph) (map snd ptrs)
+                  = return graph
+  | dist >= depth = do details <- getDetails False synset_id
+                       return (addDetails details graph)
+  | otherwise     = do details@(gloss,funs,ptrs,_) <- getDetails True synset_id
+                       foldM (crawlGraph (dist+1) depth) (addDetails details graph) (map snd ptrs)
   where
     getDetails use_new synset_id = do
       (gloss,ptrs) <- query firstRow
@@ -341,12 +342,12 @@ crawlGraph depth graph synset_id
                               ]
       funs <- select [lex_fun lex
                         | (_,lex) <- fromIndex lexemes_synset (at synset_id)]
-      return (gloss,funs,ptrs)
+      return (gloss,funs,ptrs,dist)
       where
         match src tgt =
           case Map.lookup tgt graph of
-            Just (_,_,ptrs) -> not (elem src (map snd ptrs))
-            Nothing         -> use_new
+            Just (_,_,ptrs,_) -> not (elem src (map snd ptrs))
+            Nothing           -> use_new
 
     addDetails details graph = Map.insert synset_id details graph
 

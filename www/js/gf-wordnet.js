@@ -538,6 +538,12 @@ gfwordnet.init_wordcloud = function(container, context_size_range) {
 	}
 	if (list.length > 1) {
 		WordCloud(canvas,{list: list, shuffle: false});
+        canvas.addEventListener('wordcloudstop', function() {
+            if (container.parentNode.className != "popup") {
+                container.style.width=canvas.width+"px";
+                container.style.height=canvas.height+"px";
+            }
+        });
 	}
 }
 gfwordnet.init_embedding = function(container, context_size_range) {
@@ -564,12 +570,21 @@ gfwordnet.init_embedding = function(container, context_size_range) {
       }
     }
 
+    var canvas = container.firstElementChild;
+    var interactive = (container.parentNode.className == "popup");
+
     // create a network
     var options = {
-           nodes: {shape: "dot", size: 5},
-           physics: {stabilization: {enabled: true, iterations: 100}}
+            nodes: {shape: "dot", size: 5},
+            interaction:{
+                dragNodes: interactive,
+                dragView: interactive,
+                zoomView: interactive,
+                selectable: interactive
+            },
+            physics: {stabilization: {enabled: true, iterations: 50}}
         };
-    var network = new vis.Network(container, data, options);
+    new vis.Network(container, data, options);
 }
 gfwordnet.init_canvas = function (tab,container,context_size_range) {
 	if (tab.innerHTML == "Context") {
@@ -587,14 +602,19 @@ gfwordnet.onclick_cell = function (cell) {
 		gfwordnet.lex_ids[this.lex_id].graph     = res.graph;
 
 		var context_size_range = node("input", {id: "context_size", type: "range", min: 1, max: 200, value: 100, onchange: "gfwordnet.onchange_context_size(this)"});
+		var close_button = node("input", {id: "close_button", type: "button", value: "Close"});
+        close_button.style.display = "none";
+        close_button.addEventListener("click", gfwordnet.onclick_close_container_button);
 		var tabs = node("table",{class: "header-tabs"},[
 				 tr([td(node("h1",{class: "selected",   onclick: "gfwordnet.onclick_tab(this)"},[text("Context")])),
 					 td(node("h1",{class: "unselected", onclick: "gfwordnet.onclick_tab(this)"},[text("Related")])),
-					 td(context_size_range)
+					 td(context_size_range),
+					 td(close_button)
 					])]);
 		this.popup.appendChild(tabs);
 
-		var container = node("div", {width: 500, height: 500, onclick: "gfwordnet.onclick_canvas_container(this)"}, []);
+		var container = node("div", {}, []);
+        container.addEventListener("click", gfwordnet.onclick_container);
 		container.dataset.lexId = this.lex_id;
 		this.popup.appendChild(container);
 
@@ -1080,7 +1100,7 @@ gfwordnet.onclick_tab = function (tab) {
 		td = td.nextSibling;
 	}
 
-	var context_size_range = tr.lastElementChild.firstElementChild;
+	var context_size_range = tr.lastElementChild.previousElementSibling.firstElementChild;
 	var container = tab.parentNode.parentNode.parentNode.nextSibling;
 	gfwordnet.init_canvas(tab,container,context_size_range);
 }
@@ -1273,7 +1293,14 @@ gfwordnet.onchange_context_size = function (context_size_range) {
 
     gfwordnet.init_canvas(tab,container,context_size_range);
 }
-gfwordnet.onclick_canvas_container = function (container) {
+gfwordnet.onclick_container = function (event) {
+    var container = event.target;
+    while (container.dataset.lexId == null)
+        container = container.parentNode;
+
+    if (container.parentNode.className == "popup")
+        return;
+
 	var tab = null;
 	var tr  = container.parentNode.firstElementChild.firstElementChild;
 	var td  = tr.firstChild;
@@ -1287,19 +1314,44 @@ gfwordnet.onclick_canvas_container = function (container) {
 	if (tab == null)
 		return;
 
-	var context_size_range = tr.lastElementChild.firstElementChild;
+	var context_size_range = tr.lastElementChild.previousElementSibling.firstElementChild;
+	var close_button       = tr.lastElementChild.firstElementChild;
 
-	if (container.parentNode.className == "popup") {
-		container.parentNode.className = "";
-		container.width  = container.save_width;
-		container.height = container.save_height;
-	} else {
-		container.parentNode.className = "popup";
-		container.save_width = container.width;
-		container.save_height = container.height;
-		container.width  = container.parentNode.offsetWidth;
-		container.height = container.parentNode.offsetHeight-container.offsetTop;
+    container.parentNode.className = "popup";
+    container.save_width = container.style.width;
+    container.save_height = container.style.height;
+    container.style.width  = container.parentNode.offsetWidth + "px";
+    container.style.height = (container.parentNode.offsetHeight-container.offsetTop) + "px";
+    close_button.style.display = "block";
+
+	gfwordnet.init_canvas(tab,container,context_size_range);
+}
+gfwordnet.onclick_close_container_button = function(event) {
+    var container = event.target.parentNode.parentNode.parentNode.nextElementSibling;
+
+    if (container.parentNode.className != "popup")
+        return;
+
+	var tab = null;
+	var tr  = container.parentNode.firstElementChild.firstElementChild;
+	var td  = tr.firstChild;
+	while (td != null) {
+		if (td.firstChild.className == "selected") {
+			tab = td.firstChild;
+			break;
+		}
+		td = td.nextSibling;
 	}
+	if (tab == null)
+		return;
+
+	var context_size_range = tr.lastElementChild.previousElementSibling.firstElementChild;
+	var close_button       = tr.lastElementChild.firstElementChild;
+
+    container.parentNode.className = "";
+    container.style.width  = container.save_width;
+    container.style.height = container.save_height;
+    close_button.style.display = "none";
 	gfwordnet.init_canvas(tab,container,context_size_range);
 }
 gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket) {

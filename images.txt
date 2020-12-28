@@ -879,7 +879,7 @@ architrave_2_N	714055;Architrave;commons/c/c9/9607_-_Milano_-_Sant%27Ambrogio_-_
 archive_N	316723;Archive;commons/9/93/Fondos_archivo.jpg
 archivist_N	578673;Archivist;commons/3/38/Archivist_Survey.jpg
 archosaur_N	492039;Archosaur;commons/1/1a/Yellow-billed_stork_kazinga.jpg
-arctic_1_N	2208;Arctic_fox;commons/8/83/Iceland-1979445_%28cropped_3%29.jpg
+arctic_1_N	36971;Arctic;commons/9/92/Arctic_%28orthographic_projection%29.svg
 ardrossan_PN	971207;Ardrossan;commons/f/fb/Ardrossan_Scotland.jpg
 are_3_PN	6717041;Arre,_Veneto;commons/6/63/Arre.jpg
 area_6_N	1209;Area;commons/b/b9/Area.svg

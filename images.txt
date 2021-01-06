@@ -21433,3 +21433,4 @@ operating_system_N	22194;Operating_system;commons/e/e1/Operating_system_placemen
 source_code_N	27661;Source_code;commons/b/bd/Hello_world_c.svg
 pyrrhic_2_N	6898506;Pyrrhichios;commons/d/db/0509_-_Archaeological_Museum%2C_Athens_-_Pyrric_dancers_-_Photo_by_Giovanni_Dall%27Orto%2C_Nov_10_2009.jpg
 calc_1_N	18712692;Caulkin;commons/2/21/Calk_%28PSF%29.jpg
+pearl_harbor_PN	21285632;Pearl_Harbor;commons/0/00/Ford_Island_aerial_photo_RIMPAC_1986.JPEG

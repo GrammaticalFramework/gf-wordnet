@@ -102649,7 +102649,6 @@ lin use_4_N = mkN "消费" ; --unchecked
 lin use_5_N = mkN "习惯" ; --unchecked
 lin use_6_N = variants {} ;
 lin use_7_N = variants {} ;
-lin use_V = variants {} ;
 lin use_1_V2 = variants {} ;
 lin use_2_V2 = variants {} ;
 lin use_3_V2 = variants {} ;

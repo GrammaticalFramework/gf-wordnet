@@ -20807,7 +20807,7 @@ weymouth_PN	17545729;Weymouth,_Dorset;commons/2/2f/Uk_dor_portharbour.JPG
 whale_2_N	33777;Whale;commons/e/e2/Southern_right_whale.jpg
 whaleboat_N	900799;Whaleboat;commons/6/64/Mystic_whaleboat.jpg
 whalebone_N	231070;Baleen;commons/1/19/Baleen.jpg
-whaler_2_N	3703284;Whaler;commons/7/71/Steamwhaler.jpg	28855418;Whalers_(film);commons/8/87/A-scene-from-the-film-Valf%C3%A5ngare-1939-391852610886.jpg
+whaler_2_N	3703284;Whaler;commons/7/71/Steamwhaler.jpg	28855418
 whaley_bridge_PN	869029;Whaley_Bridge;commons/2/23/WhaleyBridge2.JPG
 wharf_N	3414512;Loading_dock;commons/6/6b/Modern_loading_dock.jpg
 wheat_1_N	36858;Wheat;commons/b/b4/Wheat_close-up.JPG	3636124;Common_wheat;commons/1/11/Triticum_aestivum_subsp._aestivum_MHNT.BOT.2015.2.31.jpg

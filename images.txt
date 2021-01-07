@@ -17451,7 +17451,7 @@ slavey_N	337828;Slavey;commons/9/98/Slavey_girls_Mackenzie_River_Northwest_Terri
 sleaford_PN	200149;Sleaford;commons/e/e3/The_Church_of_St_Denys%2C_Sleaford.jpg
 sled_N	153862;Sled;commons/2/2e/Uphill_Sleigh_Ride.jpg
 sledding_1_N	466301;Sledding;commons/9/93/Sledding_by_David_Shankbone.jpg
-sledge_1_N	1089891;Travois;commons/e/e4/Cheyenne_using_travois.jpg
+sledge_1_N	153862;Sled;commons/2/2e/Uphill_Sleigh_Ride.jpg	153862;Sled;commons/c/c3/Volunteer_Mushing_on_Wonder_Lake_%287065286379%29.jpg
 sledgehammer_N	910251;Sledgehammer;commons/1/15/Sledgehammers-1.jpg
 sleep_1_N	27834;Sleep;commons/a/a8/Sleeping-girl.jpg
 sleeper_4_N	529780;Railroad_tie;commons/8/88/Railroad_tieswoodconcrete.jpg

@@ -1864,7 +1864,7 @@ biscuit_2_N	314994;Biscuit;commons/6/60/BiscuitsAmerican%26British.png	174910;Cr
 bise_1_N	2265988;Bise;commons/1/13/Bise.svg
 bisection_N	152547;Bisection;commons/5/57/Bisectors.svg
 bisexuality_2_N	21378368;Bisexuality;commons/2/2a/Bisexual_Pride_Flag.svg
-bishop_3_N	47616;Bishop_(chess);commons/1/1d/Chess_piece_-_White_bishop.JPG
+bishop_3_N	47616;Bishop_(chess);commons/1/1d/Chess_piece_-_White_bishop.JPG	47616;Bishop_(chess);commons/b/ba/Chess_piece_-_Black_bishop.JPG
 bishopric_N	50549;Diocese;commons/0/03/Alencastre_Window.jpg
 bishopry_N	199657;Episcopal_see;commons/9/9d/Roma-san_giovanni03.jpg
 bismuth_N	18933196;Bismuth;commons/e/ef/Bismuth_crystals_and_1cm3_cube.jpg
@@ -10146,7 +10146,7 @@ kneeler_2_N	8907566;Kneeler;en/0/07/Nave_St_Marys_Bideford_2018.jpg
 knesset_1_N	74656;Knesset;commons/5/56/Israel_Knesset_2019.svg
 knife_1_N	17160;Knife;commons/3/33/Damascus_Bowie.jpg
 knight_1_N	16897;Knight;commons/1/1e/Codex_Manesse_Hartmann_von_Aue.jpg
-knight_2_N	47619;Knight_(chess);commons/3/31/Chess_piece_-_White_knight.JPG
+knight_2_N	47619;Knight_(chess);commons/3/31/Chess_piece_-_White_knight.JPG	47619;Knight_(chess);commons/f/ff/Chess_piece_-_Black_knight.JPG
 knight_errant_N	579577;Knight-errant;commons/d/da/Amadis_de_Gaula_1533.jpg
 kniphofia_N	890738;Kniphofia;commons/d/d7/Kniphofia02.jpg
 knish_N	1081936;Knish;commons/6/62/Knysh.jpg
@@ -13884,7 +13884,7 @@ pavlova_2_N	67081;Pavlova_(cake);commons/6/67/Pavlova_dessert.JPG
 pavlova_1_PN	63157;Anna_Pavlova;commons/5/55/Anna_pavlova_-c._1905.jpg
 paw_1_N	398501;Paw;commons/8/8d/Paw_and_pads.jpg
 pawl_N	57185399;Pawl;commons/2/24/Trinquete_no_watermark.png
-pawn_3_N	47624;Pawn_(chess);commons/e/ed/Chess_piece_-_White_pawn.JPG
+pawn_3_N	47624;Pawn_(chess);commons/e/ed/Chess_piece_-_White_pawn.JPG	47624;Pawn_(chess);commons/7/7e/Chess_piece_-_Black_pawn.JPG
 pawnshop_N	2543813;The_Pawnshop;commons/3/37/%27The_Pawnshop%27.jpg	24268;Pawnbroker;commons/e/e1/Leihhaus_20140220.jpg
 pawpaw_2_N	4270664;Asimina_triloba;commons/1/15/Asimina_triloba3.jpg
 pawpaw_3_N	4270664;Asimina_triloba;commons/1/15/Asimina_triloba3.jpg
@@ -21434,3 +21434,7 @@ source_code_N	27661;Source_code;commons/b/bd/Hello_world_c.svg
 pyrrhic_2_N	6898506;Pyrrhichios;commons/d/db/0509_-_Archaeological_Museum%2C_Athens_-_Pyrric_dancers_-_Photo_by_Giovanni_Dall%27Orto%2C_Nov_10_2009.jpg
 calc_1_N	18712692;Caulkin;commons/2/21/Calk_%28PSF%29.jpg
 pearl_harbor_PN	21285632;Pearl_Harbor;commons/0/00/Ford_Island_aerial_photo_RIMPAC_1986.JPEG
+castle_3_N	47615;Rook_(chess);commons/f/fe/Chess_piece_-_White_rook.JPG	47615;Rook_(chess);commons/1/19/Chess_piece_-_Black_rook.JPG
+rook_1_N	47615;Rook_(chess);commons/f/fe/Chess_piece_-_White_rook.JPG	47615;Rook_(chess);commons/1/19/Chess_piece_-_Black_rook.JPG
+queen_8_N	47505;Queen_(chess);commons/a/af/Chess_piece_-_White_queen.jpg	47505;Queen_(chess);commons/d/d3/Chess_piece_-_Black_queen.JPG
+king_10_N	47485;King_(chess);commons/7/7e/Chess_piece_-_White_king.jpg	47485;King_(chess);commons/f/f1/Chess_piece_-_Black_king.JPG

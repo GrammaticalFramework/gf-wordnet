@@ -43269,7 +43269,6 @@ lin heave_3_N = variants {} ;
 lin heave_4_N = variants {} ;
 lin heave_5_N = variants {} ;
 lin heave_6_N = variants {} ;
-lin heave_2_V = variants {} ;
 lin heave_3_V = mkV "汹涌" ; --unchecked
 lin heave_4_V = variants {} ;
 lin heave_5_V = mkV "行驶" ; --unchecked

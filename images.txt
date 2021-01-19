@@ -12013,7 +12013,8 @@ milt_1_N	2586311;Milt;commons/1/18/Milt_collection.jpg
 milt_2_N	2586311;Milt;commons/1/18/Milt_collection.jpg
 milwaukee_PN	53117;Milwaukee;commons/b/bf/Milwaukee_Collage_New.jpg
 mime_1_N	2101689;Mime_artist;commons/9/90/Jean_%2B_Brigitte_Soubeyran_Im_Zirkus.JPG
-mimeograph_N	3552130;Cyclostyle_(copier);commons/3/30/Stencil_machine_with_its_last_paper_in%2C_Hendrik_Conscience_Heritage_Library%2C_Antwerp%2C_Belgium%2C_2016-07-26.jpg	19935;Mimeograph;commons/a/a5/Mimeograph.svg
+cyclostyle_N	3552130;Cyclostyle_(copier);commons/3/30/Stencil_machine_with_its_last_paper_in%2C_Hendrik_Conscience_Heritage_Library%2C_Antwerp%2C_Belgium%2C_2016-07-26.jpg
+mimeograph_N	19935;Mimeograph;commons/a/a5/Mimeograph.svg
 mimicry_2_N	247151;Mimicry;commons/9/95/Batesplate_ArM.jpg
 mimosa_2_N	20876;Mimosa;commons/c/c2/Mimosa-pudica-flower.jpg
 min_3_PN	97105;Min_(god);commons/5/5b/Min.svg

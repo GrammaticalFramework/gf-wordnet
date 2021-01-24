@@ -76875,7 +76875,6 @@ lin reel_5_N = variants {} ;
 lin reel_6_N = variants {} ;
 lin reel_1_V = variants {} ;
 lin reel_2_V = mkV "使旋转" ; --unchecked
-lin reel_3_V = variants {} ;
 lin reel_3_V2 = variants {} ;
 lin reel_in_V2 = variants {} ;
 lin reel_off_1_V2 = variants {} ;

@@ -8807,7 +8807,7 @@ hollywood_3_PN	53849;Hollywood;commons/3/33/Map_of_Hollywood_district%2C_Los_Ang
 holm_oak_1_N	344877;Quercus_ilex;commons/d/d0/Quercus_ilex_rotundifolia.jpg
 holmfirth_PN	90665;Holmfirth;commons/0/08/Holmfirth_20060521%28RLH%29.JPG
 holmium_N	13465;Holmium;commons/0/0a/Holmium2.jpg
-holocaust_2_N	10396793;The_Holocaust;commons/8/89/Selection_Birkenau_ramp.jpg
+holocaust_2_N	10396793;The_Holocaust;commons/3/3b/Selection_on_the_ramp_at_Auschwitz-Birkenau%2C_1944_%28Auschwitz_Album%29_1a.jpg
 holocephalan_1_N	946334;Holocephali;commons/f/f9/Hydrolagus_colliei.jpg
 holography_N	66338;Holography;commons/5/5f/Holomouse2.jpg
 holster_1_N	1452790;Handgun_holster;commons/2/25/Open_Carry_of_a_9mm_Browning_Hi_Power_in_Eagle%2C_Colorado.jpg

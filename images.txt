@@ -12378,7 +12378,7 @@ mousse_1_N	20151;Mousse;commons/c/cb/Chocolate_coffee_mousse.jpg
 moustache_N	224101;Moustache;commons/2/2f/PazyrikHorseman.JPG
 mouth_1_N	9293603;Mouth;commons/7/79/Australien-Krokodil.JPG
 mouth_2_N	9293603;Mouth;commons/7/79/Australien-Krokodil.JPG
-mouth_4_N	621549;Base_level;commons/4/45/Desembocadura_del_Ebro.jpg	21789178;River_mouth;commons/c/c9/Iss016e019375.jpg
+mouth_4_N	21789178;River_mouth;commons/c/c9/Iss016e019375.jpg
 mouthful_1_N	7748571;Lokma;commons/0/08/Loukoumades.jpg
 mouthful_2_N	7748571;Lokma;commons/0/08/Loukoumades.jpg
 mouthpart_N	5760505;Arthropod_mouthparts;commons/e/e5/Caterpillar_face_close_up.jpg

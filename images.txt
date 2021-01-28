@@ -11659,7 +11659,7 @@ mechanize_3_V2	365765;Machining;commons/d/d4/Mobile_Machine_Shop_US_Army_1943.jp
 meclizine_N	28955677;Meclizine;commons/5/59/Meclizine.svg
 meconium_N	20453;Meconium;commons/e/e6/Meconium.jpg
 medal_N	375211;Medal;commons/2/25/Pisanello%2C_Medaglia_di_Cecilia_Gonzaga%2C_2011.JPG
-medalist_1_N	2530171;Medalist;commons/3/39/Ferdinand_II_White_Mountain_Battle_av.JPG
+medallist_1_N	2530171;Medalist;commons/3/39/Ferdinand_II_White_Mountain_Battle_av.JPG
 medan_PN	360758;Medan;commons/7/79/Great_Mosque_Medan_Indonesia.JPG
 medellin_PN	340197;Medell%C3%ADn;commons/f/f5/Metro_de_Medell%C3%ADn%2C_Colombia.jpg
 mediaeval_1_A	18836;Middle_Ages;commons/0/0a/JuengeresMathildenkreuz.jpg

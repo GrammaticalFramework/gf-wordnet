@@ -19864,7 +19864,7 @@ truancy_N	338894;Truancy;commons/f/fd/Truancy_hotline.jpg
 truce_N	4170780;Interim_Peace;commons/7/72/Finnish_flag_at_half-mast_interim_peace_Helsinki_1940.jpg
 truck_1_N	31456;Truck;commons/1/11/Freightliner_M2_106_6x4_2014_%2814240376744%29.jpg
 truffle_1_N	291692;Truffle;commons/2/26/Truffe_noire_du_P%C3%A9rigord.jpg
-truffle_2_N	32402085;Tuber_(fungus);commons/7/7c/Tuber_gibbosum_85547.jpg	291692;Truffle;commons/2/26/Truffe_noire_du_P%C3%A9rigord.jpg
+truffle_2_N	32402085;Tuber_(fungus);commons/7/7c/Tuber_gibbosum_85547.jpg
 trump_3_N	30353;Trumpet;commons/3/30/Trumpet_1.png
 trump_2_N	1538159;Briscola;commons/c/c4/Carte_napoletane_al_completo.jpg
 trumpet_N	30353;Trumpet;commons/3/30/Trumpet_1.png

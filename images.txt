@@ -8708,7 +8708,6 @@ highland_PN	142012;Highland_(council_area);commons/1/1f/Highland_in_Scotland.svg
 highlander_1_N	1852286;Queen%27s_Own_Highlanders_(Seaforth_and_Camerons);commons/a/ac/Queen%27s_Own_Highlanders.gif
 highlander_2_N	22216220;Gaels;commons/a/ac/Queen%27s_Own_Highlanders.gif
 highlighter_2_N	851849;Highlighter;en/5/5c/Highmark.jpg
-highness_2_N	10427403;Cotes,_Valencia;commons/9/94/Clot_del_Negre.JPG
 highroad_N	1396050;Arterial_road;commons/9/9e/PageMillRoad.png
 highway_N	1396050;Arterial_road;commons/9/9e/PageMillRoad.png
 highwayman_N	423530;Highwayman;commons/8/85/Asalto_al_coche.jpg

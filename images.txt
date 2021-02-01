@@ -6816,7 +6816,6 @@ filipino_1_N	2298105;Filipinos;commons/9/99/Flag_of_the_Philippines.svg
 filipino_2_N	31438;Tagalog_language;commons/f/f7/Tagalosphere.png
 fillet_1_N	5396209;Fillet_(cut);commons/7/72/Doryfill.JPG
 filly_N	776838;Filly;commons/a/ab/Rock%27s-anne-supreme-winner.jpg
-film_1_V2	3543446;Diving_(association_football);commons/d/df/Possible_soccer_dive.jpg
 film_3_N	21556842;Photographic_film;commons/8/89/Undeveloped_film.png	21555729;Film;commons/d/dd/Muybridge_race_horse_animated.gif
 filming_N	3543446;Diving_(association_football);commons/d/df/Possible_soccer_dive.jpg
 fils_2_N	1612432;Fils_(currency);commons/4/48/100_Fils_%281965%29.jpg

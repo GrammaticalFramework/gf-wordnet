@@ -86143,6 +86143,7 @@ lin sinusoid_2_N = mkN "正弦曲线" ; --unchecked
 lin sinusoidal_A = mkA "正弦曲线+的" ; --unchecked
 lin sioux_N = variants {} ;
 lin sip_N = variants {} ;
+lin sip_V = mkV "啜" ;
 lin sip_V2 = mkV2 (mkV "啜") ;
 lin siphon_1_V = variants {} ;
 lin siphon_1_V2 = variants {} ;

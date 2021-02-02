@@ -4703,7 +4703,6 @@ crew_cut_N	845473;Crew_cut;commons/7/7e/Crew_Cut_Ice_Hockey_Player_Billy_Harris.
 crew_neck_N	28236391;Crew_neck;commons/0/0c/Crew_neck_T-shirt.jpg
 crewe_PN	176880;Crewe;commons/d/dc/Crewe_Market_Hall.jpg
 crewman_1_N	553934;Seaman_(rank);commons/a/aa/Jean-Bart_seaman_Bastille_Day_2008.jpg
-crib_3_N	261038;Manger;commons/2/25/Livestock_trough_near_Empire_Ranch_Arizona_2007.jpg
 cribbage_N	198148;Cribbage;commons/4/4a/Travel_Cribbage_Board_%2838669697446%29.jpg
 crick_2_PN	11461;Francis_Crick;commons/9/99/Francis_Crick_crop.jpg
 cricket_1_N	3269272;House_cricket;commons/9/95/Acheta_domesticus%2C_adultes_Weibchen.jpg	21481963;Cricket_(insect);commons/1/10/Gryllus_campestris_MHNT.jpg

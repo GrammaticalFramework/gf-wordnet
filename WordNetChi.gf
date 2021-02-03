@@ -25434,6 +25434,7 @@ lin departer_N = variants {} ;
 lin department_1_N = variants {} ;
 lin department_2_N = variants {} ;
 lin department_3_N = variants {} ;
+lin department_store_N = variants {} ;
 lin departmental_A = mkA "各部+的" ; --unchecked
 lin departure_1_N = mkN "出发" ; --unchecked
 lin departure_2_N = variants {} ;

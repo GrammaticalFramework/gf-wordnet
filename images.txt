@@ -21437,3 +21437,4 @@ castle_3_N	47615;Rook_(chess);commons/f/fe/Chess_piece_-_White_rook.JPG	47615;Ro
 rook_1_N	47615;Rook_(chess);commons/f/fe/Chess_piece_-_White_rook.JPG	47615;Rook_(chess);commons/1/19/Chess_piece_-_Black_rook.JPG
 queen_8_N	47505;Queen_(chess);commons/a/af/Chess_piece_-_White_queen.jpg	47505;Queen_(chess);commons/d/d3/Chess_piece_-_Black_queen.JPG
 king_10_N	47485;King_(chess);commons/7/7e/Chess_piece_-_White_king.jpg	47485;King_(chess);commons/f/f1/Chess_piece_-_Black_king.JPG
+department_store_N	249171;Department_store;commons/c/cd/Bon_March%C3%A9%2C_Paris_-_interior_view.JPG

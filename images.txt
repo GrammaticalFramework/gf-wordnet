@@ -10823,7 +10823,7 @@ lira_3_N	187948;Lira;commons/6/64/100_Lira_%28Italy%29.jpg
 lisbon_PN	18091;Lisbon;commons/d/d2/Montagem_de_Lisboa.png
 lisinopril_N	1267022;Lisinopril;commons/d/d5/Lisinopril_structure.svg
 liskeard_PN	353400;Liskeard;commons/6/6b/The_Guildhall%2C_Market_Street%2C_Liskeard_-_geograph.org.uk_-_666030.jpg
-lisp_2_N	18016;Lisp_(programming_language);commons/f/f4/Lisplogo.png
+lisp_2_PN	18016;Lisp_(programming_language);commons/f/f4/Lisplogo.png
 listen_V	233050;Listening;commons/7/7b/Shimer_College_Susan_Henking_listening_2013_cropped.jpg
 listen_to_1_V2	233050;Listening;commons/7/7b/Shimer_College_Susan_Henking_listening_2013_cropped.jpg
 listen_to_2_V2	233050;Listening;commons/7/7b/Shimer_College_Susan_Henking_listening_2013_cropped.jpg
@@ -21438,3 +21438,4 @@ rook_1_N	47615;Rook_(chess);commons/f/fe/Chess_piece_-_White_rook.JPG	47615;Rook
 queen_8_N	47505;Queen_(chess);commons/a/af/Chess_piece_-_White_queen.jpg	47505;Queen_(chess);commons/d/d3/Chess_piece_-_Black_queen.JPG
 king_10_N	47485;King_(chess);commons/7/7e/Chess_piece_-_White_king.jpg	47485;King_(chess);commons/f/f1/Chess_piece_-_Black_king.JPG
 department_store_N	249171;Department_store;commons/c/cd/Bon_March%C3%A9%2C_Paris_-_interior_view.JPG
+c_PN	5200013;C_(programming_language);commons/3/35/The_C_Programming_Language_logo.svg

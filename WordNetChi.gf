@@ -25764,7 +25764,6 @@ lin design_6_V2 = variants {} ;
 lin designate_A = variants {} ;
 lin designate_1_V = variants {} ;
 lin designate_2_V = mkV "指派" ; --unchecked
-lin designate_3_V = mkV "指出" ; --unchecked
 lin designate_1_V2 = variants {} ;
 lin designate_2_V2 = mkV2 (mkV "委派") ; --unchecked
 lin designate_3_V2 = mkV2 (mkV "指") ; --unchecked

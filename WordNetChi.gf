@@ -49699,7 +49699,6 @@ lin itch_1_N = mkN "疥癣" ; --unchecked
 lin itch_2_N = mkN "冲动" ; --unchecked
 lin itch_3_N = variants {} ;
 lin itch_2_V = mkV "发痒" ; --unchecked
-lin itch_3_V = variants {} ;
 lin itch_4_V = variants {} ;
 lin itch_1_V2 = mkV2 (mkV "抓") ;
 lin itch_3_V2 = variants {} ;

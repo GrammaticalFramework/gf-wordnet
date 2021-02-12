@@ -21439,3 +21439,5 @@ queen_8_N	47505;Queen_(chess);commons/a/af/Chess_piece_-_White_queen.jpg	47505;Q
 king_10_N	47485;King_(chess);commons/7/7e/Chess_piece_-_White_king.jpg	47485;King_(chess);commons/f/f1/Chess_piece_-_Black_king.JPG
 department_store_N	249171;Department_store;commons/c/cd/Bon_March%C3%A9%2C_Paris_-_interior_view.JPG
 c_PN	5200013;C_(programming_language);commons/3/35/The_C_Programming_Language_logo.svg
+mission_1_N	666270;Christian_mission;commons/8/87/Christian_cross.svg
+mission_4_N	666270;Christian_mission;commons/8/87/Christian_cross.svg

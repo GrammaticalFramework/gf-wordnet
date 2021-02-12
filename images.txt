@@ -6464,7 +6464,7 @@ eviction_1_N	538394;Eviction;commons/a/ab/Sat_ud_%28Henningsen%29.jpg
 evijärvi_PN	771535;Evij%C3%A4rvi;commons/4/4e/Evij%C3%A4rvi_church.jpg
 evil_2_N	9897;Evil;commons/c/c4/Extermination_of_Evil_Sendan_Kendatsuba_crop.jpg
 evil_3_N	9897;Evil;commons/c/c4/Extermination_of_Evil_Sendan_Kendatsuba_crop.jpg
-ewe_1_N	28993191;Lamba_(garment);commons/6/66/Sakalava_Cuill%C3%A8res.jpg
+ewe_1_N	1730727;Ewe_people;commons/f/fb/Raccolte_Extraeuropee_-_Passar%C3%A9_00217_-_Statua_Ewe_-_Togo_Ghana.jpg
 ewe_2_N	502512;Ewe_language;commons/0/03/Gbe_languages.png
 ewell_PN	2434441;Ewell;commons/6/69/Dog_Gate_Bourne_Hall_and_Spring_Street_Ewell_-_geograph.org.uk_-_365409.jpg
 ewer_N	5677258;Aquamanile;commons/4/47/Anonymous_Romanesque_aquamanile_in_the_form_of_a_lion.jpg

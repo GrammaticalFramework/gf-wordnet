@@ -84761,6 +84761,7 @@ lin shell_5_V2 = variants {} ;
 lin shell_6_V2 = mkV2 (mkV "征服") ; --unchecked
 lin shell_7_V2 = variants {} ;
 lin shell_8_V2 = variants {} ;
+lin shell_game_N = variants {} ;
 lin shell_out_V2 = mkV2 (mkV "分发") ; --unchecked
 lin shell_shock_N = mkN "战斗疲劳症" ; --unchecked
 lin shellac_1_N = mkN "紫胶虫胶" ; --unchecked

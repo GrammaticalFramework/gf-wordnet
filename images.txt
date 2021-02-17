@@ -2387,7 +2387,7 @@ bristlegrass_1_N	12351279;Setaria;commons/0/09/Starr_040713-0118_Setaria_parvifl
 bristletail_N	1560585;Lepisma;commons/5/54/Silberfischchen.jpg
 bristol_PN	36741;Bristol;commons/9/96/The_Cabot_Tower%2C_Bristol_-_geograph.org.uk_-_904859.jpg
 brit_1_N	3362281;Bretons;commons/b/be/Roderic_O%27Conor_-_Une_Jeune_Bretone.jpg
-britain_PN	13530298;Great_Britain;en/a/ae/Flag_of_the_United_Kingdom.svg
+britain_PN	158019;Kingdom_of_Great_Britain;en/a/ae/Flag_of_the_United_Kingdom.svg
 britonFem_N	2208391;Celtic_Britons;commons/f/f9/Map_Gaels_Brythons_Picts_GB.png
 britonMasc_N	2208391;Celtic_Britons;commons/f/f9/Map_Gaels_Brythons_Picts_GB.png
 briton_2_N	19097669;British_people;en/a/ae/Flag_of_the_United_Kingdom.svg
@@ -21443,3 +21443,14 @@ mission_1_N	666270;Christian_mission;commons/8/87/Christian_cross.svg
 mission_4_N	666270;Christian_mission;commons/8/87/Christian_cross.svg
 graft_3_N	14080493;Grafting;commons/3/3b/Zweij%C3%A4hrige-Gei%C3%9Ffu%C3%9Fveredelu.jpg
 shell_game_N	15580374;Shell_game;commons/d/d4/Shell_game.jpg
+alps_PN	981;Alps;commons/8/82/Mont_Blanc_oct_2004.JPG
+gulf_of_mexico_PN	21076367;Gulf_of_Mexico;commons/4/47/Gfp-texas-galveston-island-state-park-inlet-shore.jpg
+united_kingdom_PN	8711726;United_kingdom;en/a/ae/Flag_of_the_United_Kingdom.svg
+united_states_PN	3434750;United_States;en/a/a4/Flag_of_the_United_States.svg
+great_harwood_PN	1501388;Great_Harwood;commons/7/7b/Great_Harwood.jpg
+great_malvern_PN	637216;Great_Malvern;commons/e/e1/The_top_of_Church_Street._-_geograph.org.uk_-_56973.jpg
+great_shelford_PN	1203168;Great_Shelford;commons/e/e8/Great_Shelford_village_centre.JPG
+great_yarmouth_PN	98933;Great_Yarmouth;commons/a/af/Aerial_View_of_Great_Yarmouth.jpg
+gb_6_PN	13530298;Great_Britain;commons/5/53/MODIS_-_Great_Britain_and_Ireland_-_2012-06-04_during_heat_wave.jpg
+great_britain_1_PN	158019;Kingdom_of_Great_Britain;en/a/ae/Flag_of_the_United_Kingdom.svg
+great_britain_2_PN	13530298;Great_Britain;commons/5/53/MODIS_-_Great_Britain_and_Ireland_-_2012-06-04_during_heat_wave.jpg

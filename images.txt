@@ -21454,3 +21454,6 @@ great_yarmouth_PN	98933;Great_Yarmouth;commons/a/af/Aerial_View_of_Great_Yarmout
 gb_6_PN	13530298;Great_Britain;commons/5/53/MODIS_-_Great_Britain_and_Ireland_-_2012-06-04_during_heat_wave.jpg
 great_britain_1_PN	158019;Kingdom_of_Great_Britain;en/a/ae/Flag_of_the_United_Kingdom.svg
 great_britain_2_PN	13530298;Great_Britain;commons/5/53/MODIS_-_Great_Britain_and_Ireland_-_2012-06-04_during_heat_wave.jpg
+new_windsor_PN	259961;New_Windsor,_New_York;commons/b/bf/Downtown_New_Windsor%2C_NY.jpg
+newcastle_under_lyme_PN	213585;Newcastle-under-Lyme;commons/9/9b/Guildhall%2C_Newcastle-under-Lyme.jpg
+newcastle_upon_tyne_PN	70348;Newcastle_upon_Tyne;commons/5/5c/Newcastle-upon-Tyne-bridges-and-skyline_cropped.jpg	70348;Newcastle_upon_Tyne;commons/f/fe/St_James_Park_Newcastle_south_west_corner.jpg	70348;Newcastle_upon_Tyne;commons/c/c3/Theatre_Royal%2C_Newcastle_upon_Tyne.jpg	70348;Newcastle_upon_Tyne;commons/3/36/Newcastle_greys_monument.jpg	70348;Newcastle_upon_Tyne;commons/3/3d/Newcastle_schloss.jpg

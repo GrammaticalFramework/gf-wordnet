@@ -72470,7 +72470,6 @@ lin principle_4_N = mkN "原理" ; --unchecked
 lin principle_5_N = variants {} ;
 lin principle_6_N = variants {} ;
 lin principled_A = variants {} ;
-lin principles_N = variants {} ;
 lin prink_1_V2 = variants {} ;
 lin prink_2_V2 = variants {} ;
 lin print_1_N = variants {} ;

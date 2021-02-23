@@ -13125,7 +13125,6 @@ lin cabinet_maker_N = variants {} ;
 lin cabinetmaking_N = variants {} ;
 lin cabinetwork_1_N = mkN "细木家具" ; --unchecked
 lin cabinetwork_2_N = variants {} ;
-lin cable's_length_N = mkN "1海里单位" ; --unchecked
 lin cable_1_N = variants {} ;
 lin cable_2_N = mkN "电报" ; --unchecked
 lin cable_3_N = mkN "电缆" ; --unchecked

@@ -21457,3 +21457,4 @@ great_britain_2_PN	13530298;Great_Britain;commons/5/53/MODIS_-_Great_Britain_and
 new_windsor_PN	259961;New_Windsor,_New_York;commons/b/bf/Downtown_New_Windsor%2C_NY.jpg
 newcastle_under_lyme_PN	213585;Newcastle-under-Lyme;commons/9/9b/Guildhall%2C_Newcastle-under-Lyme.jpg
 newcastle_upon_tyne_PN	70348;Newcastle_upon_Tyne;commons/5/5c/Newcastle-upon-Tyne-bridges-and-skyline_cropped.jpg	70348;Newcastle_upon_Tyne;commons/f/fe/St_James_Park_Newcastle_south_west_corner.jpg	70348;Newcastle_upon_Tyne;commons/c/c3/Theatre_Royal%2C_Newcastle_upon_Tyne.jpg	70348;Newcastle_upon_Tyne;commons/3/36/Newcastle_greys_monument.jpg	70348;Newcastle_upon_Tyne;commons/3/3d/Newcastle_schloss.jpg
+boat_1_N	3996;Boat;commons/d/d9/Motorboat_at_Kankaria_lake.JPG

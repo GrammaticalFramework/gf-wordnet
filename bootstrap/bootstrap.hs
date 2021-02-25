@@ -39,7 +39,7 @@ main = do
   let lang' = case lang of
                 ""     -> ""
                 (c:cs) -> toUpper c:cs
-  gr         <- readPGF "build/Parse.noprobs.pgf"
+  gr         <- readPGF "Parse.pgf"
   (src,funs) <- fmap (toGFEntries gr)           $ readFile "WordNet.gf"
   wn30v31    <- fmap toMapping                  $ readFile "bootstrap/wn30map31.txt"
   transl     <- readTransliteration "bootstrap/translit.txt"

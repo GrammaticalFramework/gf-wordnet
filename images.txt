@@ -18933,6 +18933,7 @@ tashkent_PN	57533;Tashkent;commons/2/26/Vue_de_l%27Aqua-Park_-_Tachkent.jpg
 taskmaster_N	4541297;Schulthei%C3%9F;commons/f/f9/Schultheiss.png
 taskmistress_N	4541297;Schulthei%C3%9F;commons/f/f9/Schultheiss.png
 tasmania_1_PN	29944;Tasmania;commons/4/46/Flag_of_Tasmania.svg
+tasmania_2_PN	29944;Tasmania;commons/e/e6/Tasmania_in_Australia.svg
 tassel_N	182214;Tassel;commons/9/94/Tassel2.svg
 tasset_1_N	8459993;Tassets;commons/9/9f/HJRK_A_79_-_Tasset_of_Maximilian_I%2C_c._1495.jpg
 taste_7_N	21282070;Taste;commons/0/0e/Taste_bud.svg

@@ -21495,3 +21495,12 @@ namtar_PN	245924;Namtar;commons/c/c3/Chaos_Monster_and_Sun_God.png
 nergal_PN	85483;Nergal;commons/c/c5/Ancient_Parthian_relief_carving_of_the_god_Nergal_from_Hatra.jpg
 ningal_PN	678477;Ningal;commons/c/c3/Chaos_Monster_and_Sun_God.png
 tiamat_PN	181591;Tiamat;commons/8/82/Tiamat.JPG
+scandinavia_1_PN	26740;Scandinavia;commons/f/f1/Scandinavia_M2002074_lrg.jpg
+scandinavia_2_PN	26740;Scandinavia;commons/9/9f/Map_of_Scandinavia.png
+balkans_1_PN	4829;Balkans;commons/4/46/Todorini_kukli_north.jpg	4829;Balkans;commons/b/bc/Marichin_cirkus_IMG_1452.jpg
+balkans_2_PN	4829;Balkans;commons/b/b6/Balkan_topo_en.jpg
+balkans_3_PN	4829;Balkans;commons/8/80/Karte_Suedosteuropa_03_01.png
+danube_PN	21209639;Danube;commons/1/17/Danube_at_Budapest%2C_Margit_Bridge.jpg
+volga_PN	63639;Volga;commons/f/f0/Yaroslavl._Volga_River._Cathedral_of_the_Dormition_P5212700_2200.jpg
+siberia_PN	29639;Siberia;commons/6/69/Siberia-FederalSubjects.svg
+baikal_PN	13612694;Baikal;commons/b/be/Olkhon_2014-06-13_07-38-36_IMG_6874-36-2-2_%2832577582872%29.jpg

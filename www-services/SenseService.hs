@@ -326,7 +326,7 @@ type Graph   = Map.Map (Key Synset) (String,[Fun],[(PointerSymbol,Key Synset)],I
 crawlGraph :: Int -> Int -> Graph -> Key Synset -> Daison Graph
 crawlGraph dist depth graph synset_id
   | Map.member synset_id graph
-                  = return graph
+                  = return (updateDepth graph)
   | dist >= depth = do details <- getDetails False synset_id
                        return (addDetails details graph)
   | otherwise     = do details@(gloss,funs,ptrs,_) <- getDetails True synset_id
@@ -350,6 +350,8 @@ crawlGraph dist depth graph synset_id
             Nothing           -> use_new
 
     addDetails details graph = Map.insert synset_id details graph
+    
+    updateDepth graph = Map.adjust (\(gloss,funs,ptrs,_) -> (gloss,funs,ptrs,dist)) synset_id graph
 
 outputJSONP :: JSON a => a -> CGI CGIResult
 outputJSONP = outputEncodedJSONP . encode

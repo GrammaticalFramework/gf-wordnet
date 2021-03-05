@@ -92686,7 +92686,6 @@ lin sudaneseMasc_N = variants {} ;
 lin sudatorium_N = variants {} ;
 lin sudbury_PN = variants {} ;
 lin sudden_A = mkA "突然+的" ; --unchecked
-lin sudden_N = variants {} ;
 lin suddenness_N = variants {} ;
 lin sudoku_N = variants {} ;
 lin sudorific_N = variants {} ;

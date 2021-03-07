@@ -12158,7 +12158,6 @@ mollusc_N	19773328;Mollusca;commons/9/9e/Tonicella-lineata.jpg
 molluscum_N	411682;Molluscum_contagiosum;commons/a/a4/Molluscaklein.jpg
 molly_N	25119;Poeciliidae;commons/1/14/Xiphophorus_helleri_03.jpg
 moloch_2_PN	143379;Moloch;commons/9/98/Moloch_the_god.gif
-molt_N	317695;Moulting;commons/6/66/Dragonfly_metamorphosis.jpg
 molybdenite_N	465064;Molybdenite;commons/0/04/Molybdenite_quebec2.jpg
 molybdenum_N	19052;Molybdenum;commons/3/32/Molybdenum_crystaline_fragment_and_1cm3_cube.jpg
 mombin_1_N	4251439;Spondias_mombin;commons/7/7c/Spondias_mombin_MS4005.JPG	2565277;Spondias;commons/a/a7/Starr_071024-0339_Spondias_mombin.jpg

@@ -8439,7 +8439,6 @@ lin behove_1_V2V = mkV2V (mkV "应该") ; --unchecked
 lin beige_A = mkA "浅褐色+的" ; --unchecked
 lin beige_N = variants {} ;
 lin beijing_PN = variants {} ;
-lin being_A = variants {} ;
 lin being_1_N = mkN "存在" ; --unchecked
 lin being_2_N = mkN "生物" ; --unchecked
 lin beirut_PN = variants {} ;

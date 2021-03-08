@@ -5,6 +5,7 @@ aardwolf_N	681;Aardwolf;commons/0/0b/Proteles_cristatus1.jpg
 aarhus_PN	1038;Aarhus;commons/8/8b/Montage_of_Aarhus_-_view_from_city_hall%2C_city_hall_by_night%2C_isbjerget%2C_park_alle.jpg
 abaca_1_N	184272;Manila_hemp;commons/5/5f/COLLECTIE_TROPENMUSEUM_Het_verpakken_van_manilla-hennep_%28musa_textilis%29_in_balen_op_onderneming_Kali_Telepak_Besoeki_Oost-Java_TMnr_10011535.jpg
 abaca_2_N	2473;Abac%C3%A1;commons/4/4c/AmCyc_Manila_Hemp.jpg
+abacus_1_N	355288;Abacus_(architecture);commons/d/d5/Nouveau_Larousse_illustr%C3%A9%2C_1898%2C_I_%28page_22-1_crop%29.jpg
 abacus_2_N	655;Abacus;commons/e/ea/Boulier1.JPG
 abalone_N	44039217;Haliotis;commons/3/33/LivingAbalone.JPG
 abarticulation_N	1168570;Joint_dislocation;commons/3/39/Ankledislocation.JPG

@@ -2311,7 +2311,7 @@ bream_1_N	1355530;Bream;commons/a/a7/Bream.jpg
 bream_2_N	1355530;Bream;commons/a/a7/Bream.jpg
 bream_3_N	1355530;Bream;commons/a/a7/Bream.jpg
 bream_4_N	1355530;Bream;commons/a/a7/Bream.jpg
-breast_1_N	4489;Breast;commons/4/48/Weibliche_brust_en.jpg
+breast_1_N	262601;Thorax;commons/d/db/Chest.jpg
 breast_2_N	4489;Breast;commons/4/48/Weibliche_brust_en.jpg
 breast_3_N	2019285;White_meat;commons/a/a5/Roast_chicken.jpg
 breast_plate_N	1697069;Breastplate;commons/9/91/15th_century_Gothic_breastplate.jpg
@@ -3505,6 +3505,7 @@ chess_2_N	5134;Chess;commons/6/6f/ChessSet.jpg
 chessboard_N	47449;Chessboard;commons/c/c3/Chess_board_opening_staunton.jpg
 chessman_N	47618;Chess_piece;commons/f/f7/JaquesCookStaunton.jpg
 chest_2_N	1147451;Chest_(furniture);commons/3/30/ColonialEraChestMayer.jpg
+chest_3_N	262601;Thorax;commons/d/db/Chest.jpg
 chester_PN	153718;Chester;commons/b/b2/Bridge_Street%2C_Chester.jpg
 chesterfield_1_PN	148950;Chesterfield;commons/d/d1/Chestefield.jpg
 chestnut_1_N	67733;Chestnut;commons/a/a7/Edelkastanie.jpg

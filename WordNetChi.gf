@@ -87239,6 +87239,7 @@ lin smell_2_N = mkN "味儿" ; --unchecked
 lin smell_3_N = mkN "心情" ; --unchecked
 lin smell_4_N = mkN "嗅觉" ; --unchecked
 lin smell_5_N = variants {} ;
+lin smell_2_V = mkV "发出气味" ; --unchecked
 lin smell_3_V = mkV "发臭" ; --unchecked
 lin smell_4_V = mkV "散发" ; --unchecked
 lin smell_1_V2 = mkV2 (mkV "嗅") ;

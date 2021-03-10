@@ -10547,7 +10547,6 @@ lin bolt_5_N = mkN "一匹" ; --unchecked
 lin bolt_6_N = mkN "螺栓" ; --unchecked
 lin bolt_7_N = variants {} ;
 lin bolt_1_V = mkV "猛冲" ; --unchecked
-lin bolt_3_V = variants {} ;
 lin bolt_4_V = mkV "逃走" ; --unchecked
 lin bolt_5_V = mkV "匆匆离开" ; --unchecked
 lin bolt_2_V2 = variants {} ;

@@ -106780,6 +106780,7 @@ lin word_9_N = mkN "密码" ; --unchecked
 lin word_10_N = mkN "圣经" ; --unchecked
 lin word_V2 = mkV2 (mkV "表达") ; --unchecked
 lin word_division_N = mkN "分词" ; --unchecked
+lin word_order_N = variants {} ;
 lin word_painter_N = variants {} ;
 lin word_perfect_A = variants {} ;
 lin word_picture_N = variants {} ;

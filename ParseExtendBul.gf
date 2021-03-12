@@ -25,16 +25,6 @@ lin FocusComp comp np =
       mkClause (comp.s ! personAgr np.gn np.p) np.gn (NounP3 comp.p)
                (insertObj (\\_ => np.s ! RSubj) (personPol np.p) (predV verbBe)) ;
 
-lincat [Comp] = {s : Agr => Ints 4 => Str} ;
-lin BaseComp x y =
-      {s = \\agr=>table {4 => y.s!agr; _ => x.s!agr}} ;
-    ConsComp x xs =
-      {s = \\agr=>table {4 => xs.s!agr!4; t => x.s!agr++linCoord bindComma!t++xs.s!agr!t}} ;
-    ConjComp conj ss = {
-      s = \\agr => linCoord [] ! conj.sep ++ ss.s!agr!conj.sep ++ conj.s ++ ss.s!agr!4 ;
-      p = Pos
-      } ;
-
 lincat CNN = {s : Species => Role => Ints 4 => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
 
 lin BaseCNN num1 cn1 num2 cn2 = 
@@ -196,10 +186,6 @@ lin UseDAP dap = {
       p  = NounP3 dap.p
       } ;
 
-lin AdvImp adv imp = {
-      s = \\pol,gennum => adv.s ++ imp.s ! pol ! gennum
-    } ;
-
 lin whatSgFem_IP  = mkIP "каква" "каква" (GSg Fem) ;
     whatSgNeut_IP = mkIP "какво" "какво" (GSg Neut) ;
 
@@ -344,20 +330,6 @@ lin pot3as4 n = n ;
     } ;
 
     num x = {s = \\c => x.s ! c ! Formal; n=x.n} ;
-
-lincat ListImp = {s : Polarity => GenNum => Ints 4 => Str} ;
-lin BaseImp x y =
-      {s  = \\p,gn=>table {4 => y.s!p!gn; _ => x.s!p!gn}} ;
-    ConsImp x xs =
-      {s  = \\p,gn=>table {4 => xs.s!p!gn!4; t => x.s!p!gn++linCoord bindComma!t++xs.s!p!gn!t}} ;
-    ConjImp conj ss = {
-      s  = \\p,gn => linCoord [] ! conj.sep ++ ss.s!p!gn!conj.sep ++ conj.s ++ ss.s!p!gn!4
-      } ;
-
-lin ProgrVPSlash vp = vp ** {
-      s   = \\_ => vp.s ! Imperf ;
-      isSimple = False
-      } ;
 
 }
 	

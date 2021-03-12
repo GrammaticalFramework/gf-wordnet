@@ -109,9 +109,6 @@ fun UseDAP     : DAP -> NP ;
     UseDAPMasc : DAP -> NP ;
     UseDAPFem  : DAP -> NP ;
 
-    -- Make it possible to insert an adverb in front of an imperative
-fun AdvImp : Adv -> Imp -> Imp ;
-
     -- gender specific version of whatSg_IP.
 fun whatSgFem_IP : IP ;
     whatSgNeut_IP : IP ;
@@ -139,13 +136,5 @@ fun RecipVPSlash   : VPSlash -> VP ;
     -- A clause which uses copula but the complement 
     -- is shifted to the front.
 fun FocusComp : Comp -> NP -> Cl ;
-
-    -- Conjunction of copula complements
-cat [Comp]{2} ;
-fun ConjComp : Conj -> ListComp -> Comp ;
-
-    -- Conjunction of imperatives
-cat [Imp] {2} ;
-fun ConjImp : Conj -> ListImp -> Imp ;
 
 }

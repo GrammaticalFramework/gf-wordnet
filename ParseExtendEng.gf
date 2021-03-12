@@ -29,11 +29,6 @@ lin gen_Quant = {
 
 lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! npNom) (predAux auxBe)) ;
 
-lincat [Comp] = {s1,s2 : Agr => Str} ;
-lin BaseComp x y = twoTable Agr x y ;
-    ConsComp xs x = consrTable Agr comma xs x ;
-    ConjComp conj ss = conjunctDistrTable Agr conj ss ;
-
 lincat CNN = {s1 : Bool => Case => Str; s2 : Case => Str; n1,n : Number; g1 : Gender; hasCard : Bool} ;
 
 lin BaseCNN num1 cn1 num2 cn2 = {
@@ -118,10 +113,6 @@ lin UseDAPMasc dap = {
 lin UseDAPFem dap = {
       s = dap.sp ! Fem ! False ;
       a = agrgP3 dap.n Fem
-    } ;
-
-lin AdvImp adv imp = {
-      s = \\pol,impform => adv.s ++ imp.s ! pol ! impform
     } ;
 
 lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
@@ -212,17 +203,5 @@ lin pot3as4 n = n ;
     } ;
 
     num x = x ;
-
-lincat ListImp = {s1,s2 : CPolarity => ImpForm => Str} ;
-lin BaseImp = twoTable2 CPolarity ImpForm ;
-    ConsImp = consrTable2 CPolarity ImpForm comma ;
-    ConjImp conj ss = conjunctDistrTable2 CPolarity ImpForm conj ss ;
-
-{-lin ProgrVPSlash vp = 
-      insertObj (\\a => vp.ad ! a ++ vp.prp ++ vp.p ++ vp.s2 ! a) (predAux auxBe) **
-        { c2 = vp.c2 ;
-          gapInMiddle = vp.gapInMiddle ;
-          missingAdv = vp.missingAdv
-        } ;-}
 
 }

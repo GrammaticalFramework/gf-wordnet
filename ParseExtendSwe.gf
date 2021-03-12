@@ -29,11 +29,6 @@ lin gen_Quant = DefArt ;
 
 lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! MorphoSwe.nominative) (predV verbBe)) ;
 
-lincat [Comp] = {s1,s2 : Agr => Str} ;
-lin BaseComp x y = twoTable Agr x y ;
-    ConsComp xs x = consrTable Agr comma xs x ;
-    ConjComp conj ss = conjunctDistrTable Agr conj ss ;
-
 lincat CNN = {s1,s2 : DetSpecies => Case => Str ; n1,n : Number ; g1 : NGender ; isMod,isDet : Bool} ;
 
 lin BaseCNN num1 cn1 num2 cn2 = {
@@ -169,10 +164,6 @@ lin UseDAPMasc, UseDAPFem = \dap ->
         isPron = False
       } ;
 
-lin AdvImp adv imp = {
-      s = \\p,n => adv.s ++ imp.s ! p ! n
-    } ;
-
 lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
 
 lin that_RP = IdRP ;
@@ -233,16 +224,5 @@ lin pot3as4 n = n ;
     pot41 = numPl (cardOrd "miljon" "miljonde") ;
 
     num x = x ;
-
-lincat ListImp = {s1,s2 : Polarity => Number => Str} ;
-lin BaseImp = twoTable2 Polarity Number ;
-    ConsImp = consrTable2 Polarity Number comma ;
-    ConjImp conj ss = conjunctDistrTable2 Polarity Number conj ss ;
-
-lin ProgrVPSlash vp = 
-      insertObj (\\a => "att" ++ infVP vp a) (predV (P.partV I.hålla_V "på")) **
-        { n3 = vp.n3 ;
-          c2 = vp.c2
-        } ;
 
 }

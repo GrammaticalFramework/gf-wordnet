@@ -135,11 +135,6 @@ concrete ParseExtendPor of ParseExtend =
     AdvAdv adv1 adv2 = {s = adv1.s ++ adv2.s} ;
 
   lin
-    AdvImp adv imp = {
-      s = \\pol,impform,g => imp.s ! pol ! impform ! g ++ adv.s
-      } ;
-
-  lin
     whatSgFem_IP = whatSg_IP ** {a = aagr Fem Sg} ;
     whatSgNeut_IP = whatSg_IP ;
 
@@ -166,20 +161,5 @@ concrete ParseExtendPor of ParseExtend =
       } ;
 
   lin FocusComp comp np = mkClause (comp.s ! np.a) np.hasClit np.isPol np.a (insertComplement (\\_ => (np.s ! Nom).ton) (predV (selectCopula comp.cop))) ;
-
-  lincat ListComp = {s1,s2 : Agr => Str ; cop : CopulaType} ;
-
-  lin
-    -- should one allow different copulas?
-    BaseComp x y = twoTable Agr x y ** {cop = x.cop } ;
-    ConsComp xs x = consrTable Agr comma xs x ** xs ;
-    ConjComp conj cs = conjunctDistrTable Agr conj cs ** {cop = cs.cop} ;
-
-  lincat ListImp = {s1,s2 : RPolarity => ImpForm => Gender => Str} ;
-
-  lin
-    BaseImp = twoTable3 RPolarity ImpForm Gender ;
-    ConsImp = consrTable3 RPolarity ImpForm Gender comma ;
-    ConjImp conj is = conjunctDistrTable3 RPolarity ImpForm Gender conj is ;
 
 } ;

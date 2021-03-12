@@ -89619,7 +89619,6 @@ lin spring_6_N = variants {} ;
 lin spring_1_V = mkV "跳跃" ; --unchecked
 lin spring_2_V = mkV "形成" ; --unchecked
 lin spring_3_V = variants {} ;
-lin spring_2_V2 = mkV2 (mkV "成形") ; --unchecked
 lin spring_4_V2 = variants {} ;
 lin spring_5_V2 = variants {} ;
 lin spring_back_V = variants {} ;

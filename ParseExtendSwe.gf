@@ -1,7 +1,7 @@
 concrete ParseExtendSwe of ParseExtend = 
   ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, ProgrVPSlash,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSwe - [num], PunctuationX ** 
-  open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, (M = MakeStructuralSwe), (P = ParadigmsSwe), (I = IrregSwe) in {
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSwe - [num], PunctuationX ** 
+  open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, ExtendSwe, (M = MakeStructuralSwe), (P = ParadigmsSwe), (I = IrregSwe) in {
 
 lin gen_Quant = DefArt ;
 
@@ -12,20 +12,6 @@ lin gen_Quant = DefArt ;
     UttVPS   p vps = {s = vps.s ! Main ! p.a} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-
-    AdvRNP np prep rnp = {s = \\a => np.s ! NPAcc ++ prep.s ++ rnp.s ! a; isPron = False} ;
-    AdvRVP vp prep rnp = insertObjPost (\\a => prep.s ++ rnp.s ! a) vp ;
-    AdvRAP ap prep rnp = {
-      s = \\a => let agr = case a of {
-                              Strong (GSg g) => agrP3 g Sg ;
-                              Strong GPl => agrP3 Utr Pl ;
-                              Weak n => agrP3 Utr n
-                            }
-                  in ap.s ! a ++ prep.s ++ rnp.s ! agr ;
-      isPre = ap.isPre
-      } ;
-
-    PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = \\_ => rnp.s ! pron.a; a = pron.a; isPron=False})) ;
 
 lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! MorphoSwe.nominative) (predV verbBe)) ;
 
@@ -193,20 +179,8 @@ lin EmbedVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a an
 
     UttVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p} ;
 
-    ReflA2 a rnp = {
-      s = \\ap => let agr = case ap of {
-                              Strong (GSg g) => agrP3 g Sg ;
-                              Strong GPl => agrP3 Utr Pl ;
-                              Weak n => agrP3 Utr n
-                            }
-                  in a.s ! AF (APosit ap) Nom ++ a.c2.s ++ rnp.s ! agr ;
-      isPre = False
-      } ;
-
-    ReflVPSlash vps rnp = 
-      insertObjPron (andB (notB vps.c2.hasPrep) rnp.isPron)
-                    rnp.s
-	                (insertObj (\\a => vps.c2.s ++ vps.n3 ! a) vps) ;
+    ReflA2 = ExtendSwe.ReflA2RNP ;
+    ReflVPSlash = ExtendSwe.ReflRNP ;
 
 lin RecipVPSlash slash = GrammarSwe.ComplSlash slash (regNP "varandra" "varandra" Utr Sg);
     RecipVPSlashCN slash cn = GrammarSwe.ComplSlash slash (DetCN (M.mkDet "varandras" Pl) cn);

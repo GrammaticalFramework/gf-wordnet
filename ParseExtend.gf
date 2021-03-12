@@ -1,5 +1,5 @@
 abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], Numeral - [num], Punctuation ** {
+                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], Numeral - [num], Punctuation ** {
 
 fun gen_Quant : Quant ;       -- English often skips the article 
                               -- when in Swedish and Bulgarian definite 
@@ -15,13 +15,8 @@ fun gen_Quant : Quant ;       -- English often skips the article
     -- A version of PhrUtt which adds a punctuation mark
 fun PhrUttMark : PConj -> Utt -> Voc -> Mark -> Phr ;
 
-    -- Extensions of the API for reflexive pronouns from 
-    -- the Extend module
-fun AdvRNP : NP -> Prep -> RNP -> RNP ;
-    AdvRVP : VP -> Prep -> RNP -> VP ;
-    AdvRAP : AP -> Prep -> RNP -> AP ;
-    PossPronRNP : Pron -> Num -> CN -> RNP -> NP ;
-    ReflA2 : A2 -> RNP -> AP ;
+    -- These are nicer names for RelfA2RNP and ReflRNP
+fun ReflA2 : A2 -> RNP -> AP ;
     ReflVPSlash : VPSlash -> RNP -> VP ;
 
     -- CNN is a version of CN category where the number is already

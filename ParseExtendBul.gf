@@ -1,6 +1,6 @@
 concrete ParseExtendBul of ParseExtend = 
   ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralBul - [num], PunctuationX ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralBul - [num], PunctuationX ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
 
 lin gen_Quant = DefArt ;
 
@@ -11,15 +11,6 @@ lin gen_Quant = DefArt ;
     UttVPS   p vps = {s = vps.s ! personAgr p.gn p.p} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-
-    AdvRNP np prep rnp = {s = \\role => np.s ! role ++ prep.s ++ rnp.s ! RObj prep.c; gn = np.gn; p = np.p} ;
-    AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! RObj prep.c) Pos vp ;
-    AdvRAP ap prep rnp = {
-      s = \\aform,p => ap.s ! aform ! p ++ prep.s ++ rnp.s ! RObj prep.c ;
-      isPre = False
-    } ;
-
-    PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = rnp.s; gn = rnp.gn; p=NounP3 Pos})) ;    
 
 lin FocusComp comp np =
       mkClause (comp.s ! personAgr np.gn np.p) np.gn (NounP3 comp.p)
@@ -238,20 +229,8 @@ lin EmbedVP ant pol p vp = {s = ant.s ++ pol.s ++ daComplex ant.a (orPol pol.p v
 
     UttVP ant pol p vp = {s = ant.s ++ pol.s ++ daComplex ant.a pol.p vp ! Perf ! personAgr p.gn p.p} ;
 
-    ReflA2 a rnp = {
-      s = \\aform,_ => a.s ! aform ++ a.c2.s ++ rnp.s ! RObj a.c2.c ;
-      isPre = False
-      } ;
-
-    ReflVPSlash slash rnp = {
-      s   = slash.s ;
-      ad  = slash.ad ;
-      clitics = slash.clitics ;
-      compl = \\a => slash.compl1 ! a ++ slash.c2.s ++ rnp.s ! RObj slash.c2.c ++ slash.compl2 ! agrP3 rnp.gn ;
-      vtype = slash.vtype ;
-      p     = slash.p ;
-      isSimple = False
-    } ;
+    ReflA2 = ExtendBul.ReflA2RNP ;
+    ReflVPSlash = ExtendBul.ReflRNP ;
 
 lin RecipVPSlash slash = {
       s   = slash.s ;

@@ -1,7 +1,7 @@
 concrete ParseExtendEng of ParseExtend = 
   ExtendEng - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralEng - [num], PunctuationX **
-  open Prelude, ResEng, MorphoEng, GrammarEng, (E = ExtraEng), Coordination in {
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralEng - [num], PunctuationX **
+  open Prelude, ResEng, MorphoEng, GrammarEng, (E = ExtraEng), ExtendEng, Coordination in {
 
 lin gen_Quant = {
       s  = \\hasCard,n => "" ;
@@ -20,12 +20,6 @@ lin gen_Quant = {
     UttVPS     p vps = {s = vps.s ! p.a}  ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-
-    AdvRNP np prep rnp = {s = \\a => np.s ! NPAcc ++ prep.s ++ rnp.s ! a} ;
-    AdvRVP vp prep rnp = insertObj (\\a => prep.s ++ rnp.s ! a) vp ;
-    AdvRAP ap prep rnp = {s = \\a => ap.s ! a ++ prep.s ++ rnp.s ! a ; isPre = False} ;
-
-    PossPronRNP pron num cn rnp = DetCN (DetQuant (PossPron pron) num) (PossNP cn (lin NP {s = \\_ => rnp.s ! pron.a; a = pron.a})) ;
 
 lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! npNom) (predAux auxBe)) ;
 
@@ -162,12 +156,8 @@ lin EmbedVP ant pol p vp = {s =
 
     UttVP ant pol p vp = {s = ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p p.a} ;
 
-    ReflVPSlash vps rnp = insertObj (\\a => vps.c2 ++ rnp.s ! a) vps ;
-
-    ReflA2 a rnp = {
-      s = \\ag => a.s ! AAdj Posit Nom ++ a.c2 ++ rnp.s ! ag ; 
-      isPre = False
-      } ;
+    ReflA2 = ExtendEng.ReflA2RNP ;
+    ReflVPSlash = ExtendEng.ReflRNP ;
 
 lin RecipVPSlash slash = GrammarEng.ComplSlash slash (variants {mkNP "each other"  "each other"  "each other"  Sg P3 Masc ;
                                                                 mkNP "one another" "one another" "one another" Sg P3 Masc});

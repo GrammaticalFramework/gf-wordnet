@@ -1870,7 +1870,7 @@ bishopric_N	50549;Diocese;commons/0/03/Alencastre_Window.jpg
 bishopry_N	199657;Episcopal_see;commons/9/9d/Roma-san_giovanni03.jpg
 bismuth_N	18933196;Bismuth;commons/e/ef/Bismuth_crystals_and_1cm3_cube.jpg
 bison_N	4583;Bison;commons/8/8d/American_bison_k5680-1.jpg
-bisque_N	5940610;Chorba;commons/9/97/Ready_kurban_chorba.JPG
+bisque_N	2212333;Bisque_(food);commons/8/89/Lobster_bisque.jpg
 bistro_N	2308482;Bistro;commons/9/96/Jean_B%C3%A9raud_Au_Bistro.jpg
 bit_5_N	8866835;Bit_(horse);commons/2/27/Hunt_bridle_head.jpg
 bitartrate_N	40729977;Bitartrate;commons/4/42/Bitartrate.svg

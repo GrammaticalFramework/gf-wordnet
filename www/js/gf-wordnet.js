@@ -516,6 +516,11 @@ gfwordnet.init_wordcloud = function(container, context_size_range) {
 	var context_size = parseInt(context_size_range.value);
 	if (context_size > context.length)
 		context_size = context.length;
+    else {
+        context.sort(function(a, b) {
+            return b.prob-a.prob;
+        });
+    }
 
 	var min = Number.MAX_VALUE;
 	var max = Number.MIN_VALUE;
@@ -527,13 +532,15 @@ gfwordnet.init_wordcloud = function(container, context_size_range) {
 				min = context[i].prob;
 		}
 	}
+	min = Math.round(min);
+	max = Math.round(max)
 	var popup = container.parentNode.className == "popup";
 	var fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0]).getPropertyValue('font-size'));
     var init  = fontSize * (popup ? 1 : 0.5);
 	var scale = (fontSize * (popup ? 2 : 1))/(max-min);
 	var list = [];
 	for (var i = 0; i < context_size; i++) {
-		var size = init + (context[i].prob-min)*scale;
+		var size = init + (Math.round(context[i].prob)-min)*scale;
 		list.push([context[i].mod, size ,"turquoise"]);
 	}
 	if (list.length > 1) {

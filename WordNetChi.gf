@@ -40397,7 +40397,6 @@ lin god_2_N = mkN "上帝" ; --unchecked
 lin god_3_N = variants {} ;
 lin god_4_N = mkN "上帝" ; --unchecked
 lin god_1_PN = variants {} ;
-lin god_2_PN = mkPN "上帝" ; --unchecked
 lin god_damn_Interj = variants {} ;
 lin god_damn_A = variants {} ;
 lin god_damned_A = variants {} ;

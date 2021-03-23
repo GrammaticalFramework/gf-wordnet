@@ -21054,7 +21054,7 @@ woodwaxen_1_N	12027147;Genista_tinctoria;commons/9/9b/Genista_tinctoria.jpg
 woodwind_N	33882;Woodwind_instrument;commons/6/65/Saxophone_reeds-alto%2C_tenor.jpeg
 woodwork_2_N	33118;Woodworking;commons/d/de/Woodcarvings_of_cranes.jpg
 woodworm_N	646643;Woodworm;commons/d/de/Holzwurm_anobium_punctuatum_in_hole.jpg
-woofer_N	191608;Woofer;en/a/a0/Modernwoofer.jpg
+woofer_N	191608;Woofer;commons/c/cd/Speaker-cross-section.svg
 wool_1_N	145158;Worsted;commons/c/c2/Worsted_wool_yarn.JPG
 wool_2_N	38431;Wool;commons/8/88/Royal_Winter_Fair_Wool_2.jpg
 wool_3_N	38431;Wool;commons/8/88/Royal_Winter_Fair_Wool_2.jpg

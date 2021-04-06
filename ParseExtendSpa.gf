@@ -5,4 +5,12 @@ concrete ParseExtendSpa of ParseExtend =
 
 lin PhrUttMark pconj utt voc mark = {s = mark.s1 ++ SOFT_BIND ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s2} ;
 
+lincat Sub1000000000 = {s : CardOrd => Str ; n : Number} ;
+
+lin pot3as4 n = n ;
+
+    num x = x ;
+
+lin BareN2 n = n ;
+
 }

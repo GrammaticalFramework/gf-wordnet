@@ -12,6 +12,7 @@ concrete ParseCat of Parse =
   IdiomCat,
   TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   TenseCat,
+  ParseExtendCat,
   WordNetCat,
   ConstructionCat,
   DocumentationCat

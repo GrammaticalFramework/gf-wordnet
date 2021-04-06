@@ -11,6 +11,7 @@ concrete ParseEst of Parse =
   PhraseEst - [UttAP,UttVP],
   IdiomEst,
   TenseX,
+  ParseExtendEst,
   WordNetEst,
   DocumentationEst
   ** {

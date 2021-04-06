@@ -12,6 +12,7 @@ concrete ParseIta of Parse =
   IdiomIta,
   TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   TenseIta,
+  ParseExtendIta,
   WordNetIta,
   ConstructionIta,
   DocumentationIta

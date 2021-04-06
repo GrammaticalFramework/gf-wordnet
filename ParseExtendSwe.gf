@@ -5,11 +5,8 @@ concrete ParseExtendSwe of ParseExtend =
 
 lin gen_Quant = DefArt ;
 
-    UttAP     ap = {s = ap.s ! Strong (GSg Neutr)} ;
-    UttAPMasc ap = {s = ap.s ! Strong (GSg Utr)} ;
-    UttAPFem  ap = {s = ap.s ! Strong (GSg Utr)} ;
-
-    UttVPS   p vps = {s = vps.s ! Main ! p.a} ;
+    UttAP  p ap  = {s = ap.s ! Strong (gennum p.a.g p.a.n)} ;
+    UttVPS p vps = {s = vps.s ! Main ! p.a} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 

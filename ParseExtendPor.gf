@@ -12,11 +12,8 @@ concrete ParseExtendPor of ParseExtend =
       isNeg = False
       } ;
 
-    UttAP        = UttAPMasc ;
-    UttAPMasc ap = {s = ap.s ! (genNum2Aform Masc Sg)} ;
-    UttAPFem  ap = {s = ap.s ! (genNum2Aform Fem Sg)} ;
-
-    UttVPS p vps   = {s = vps.s ! Indic ! p.a ! True} ;
+    UttAP  p ap = {s = ap.s ! (genNum2Aform p.a.g p.a.n)} ;
+    UttVPS p vps= {s = vps.s ! Indic ! p.a ! True} ;
 
   lin
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;

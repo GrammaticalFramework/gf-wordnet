@@ -13,11 +13,8 @@ lin gen_Quant = {
       isDef = True
       } ;
 
-    UttAP     ap = {s = ap.s ! agrgP3 Sg Neutr} ;
-    UttAPMasc ap = {s = ap.s ! agrgP3 Sg Masc} ;
-    UttAPFem  ap = {s = ap.s ! agrgP3 Sg Fem } ;
-
-    UttVPS     p vps = {s = vps.s ! p.a}  ;
+    UttAP  p ap  = {s = ap.s ! p.a} ;
+    UttVPS p vps = {s = vps.s ! p.a}  ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 

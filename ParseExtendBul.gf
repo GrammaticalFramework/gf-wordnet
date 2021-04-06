@@ -4,11 +4,8 @@ concrete ParseExtendBul of ParseExtend =
 
 lin gen_Quant = DefArt ;
 
-    UttAP     ap = {s = ap.s ! ASg Neut Indef ! P3} ;
-    UttAPMasc ap = {s = ap.s ! ASg Masc Indef ! P3} ;
-    UttAPFem  ap = {s = ap.s ! ASg Fem  Indef ! P3} ;
-
-    UttVPS   p vps = {s = vps.s ! personAgr p.gn p.p} ;
+    UttAP  p ap  = {s = ap.s ! aform p.gn Indef RSubj ! P3} ;
+    UttVPS p vps = {s = vps.s ! personAgr p.gn p.p} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 

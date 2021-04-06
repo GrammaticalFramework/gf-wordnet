@@ -17,8 +17,8 @@ lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND 
                }
          ) ;
 
-	UttAP, UttAPFem, UttAPMasc = G.UttAP ;
-	UttVPS p = \vps -> {s = vps.s ! p.a} ;
+	UttAP  p ap  = {s = ap.s ! False ! NCase (complNumAgr p.a) Nom} ;
+	UttVPS p vps = {s = vps.s ! p.a} ;
 
     SlashV2V v ant p vp = 
       insertObj (\\_,b,a => infVP v.sc b a vp (vvtype2infform v.vi)) (predSV v) ** {c2 = v.c2} ; ----

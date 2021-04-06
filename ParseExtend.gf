@@ -6,11 +6,8 @@ fun gen_Quant : Quant ;       -- English often skips the article
                               -- article is needed. This is usually
                               -- for things in general.
 
-    UttAP     : AP -> Utt ;   -- Similar to UttAP in the RGL but in Neutr
-    UttAPMasc : AP -> Utt ;   -- Version of UttAP in masculine
-    UttAPFem  : AP -> Utt ;   -- Version of UttAP in feminine
-
-    UttVPS     : Pron -> VPS -> Utt ; -- Similar to UttVPS in the RGL but takes agreement from a pronoun
+    UttAP  : Pron -> AP  -> Utt ;  -- Similar to UttAP  in the RGL but takes agreement from a pronoun
+    UttVPS : Pron -> VPS -> Utt ;  -- Similar to UttVPS in the RGL but takes agreement from a pronoun
 
     -- A version of PhrUtt which adds a punctuation mark
 fun PhrUttMark : PConj -> Utt -> Voc -> Mark -> Phr ;

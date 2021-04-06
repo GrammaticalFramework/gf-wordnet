@@ -1,7 +1,10 @@
 concrete ParseExtendEst of ParseExtend = 
-  NumeralEst - [num], PunctuationX ** open Prelude, ResEst in {
+  ExtendEst - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralEst - [num], PunctuationX ** open Prelude, ResEst in {
 
-lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+lin UttAP  p ap  = {s = ap.s ! False ! NCase (complNumAgr p.a) Nom} ;
+
+    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lincat Sub1000000000 = {s : CardOrd => Str ; n : Number} ;
 

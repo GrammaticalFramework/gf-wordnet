@@ -20956,6 +20956,7 @@ wineglass_N	3675632;Wine_glass;commons/2/22/Twisted_stem_glass.JPG
 winemaking_1_N	373172;Winemaking;commons/6/6b/Grapes.jpg
 winepress_N	1048596;Winepress;commons/9/9b/Wine_press_from_16th_century.jpg
 winery_N	617040;Winery;commons/f/fc/NorCal2018_-020_Sterling_Vineyards_-_Wine_Barrels_-_Napa_Valley_-S0240208.jpg
+wing_1_N	33537;Wing;commons/e/e4/Seagull_wing.jpg	33537;Wing;commons/1/15/PikiWiki_Israel_11327_Wildlife_and_Plants_of_Israel-Bat-003.jpg
 wing_2_N	33537;Wing;commons/7/76/Wing.two.arp.600pix.jpg
 wing_nut_1_N	985001;Pterocarya;commons/6/6f/Pterocarya-rhoifolia-Detail.jpg
 wingate_PN	1398997;Wingate,_County_Durham;commons/5/53/Holy_Trinity_Church%2C_Wingate._-_geograph.org.uk_-_419858.jpg

@@ -78633,6 +78633,7 @@ lin retail_Adv = variants {} ;
 lin retail_N = variants {} ;
 lin retail_V = mkV "零售" ; --unchecked
 lin retail_V2 = mkV2 (mkV "零售") ; --unchecked
+lin retail_chain_N = variants {} ;
 lin retailer_N = mkN "零售商人" ; --unchecked
 lin retailing_N = variants {} ;
 lin retain_1_V2 = mkV2 (mkV "保持") ; --unchecked

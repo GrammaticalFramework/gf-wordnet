@@ -2666,7 +2666,7 @@ buttonwood_N	428725;Platanus_occidentalis;commons/2/23/Sycamore_Platanus_occiden
 buttress_N	663464;Buttress;commons/d/d2/Vicolo_di_Formia.JPG
 butyrin_N	1836302;Tributyrin;commons/b/bc/Tributyrin.png
 buxton_PN	124259;Buxton;commons/2/22/Buxton_scene%2C_autumn_%28geograph_3191760%29.jpg
-buzzard_1_N	186622;Old_World_vulture;commons/7/77/Gyps_africanus_Torgos_tracheliotus.jpg
+buzzard_1_N	194347;Turkey_vulture;commons/7/78/Cathartes_aura_-Santa_Teresa_County_Park%2C_San_Jose%2C_California%2C_USA_-adult-8a.jpg
 buzzard_2_N	203847;Buteo;commons/c/cd/Buteo_buteo_-Netherlands-8.jpg
 buzzer_2_N	1998798;Electric_bell;commons/c/c1/DoorBell_001.jpg
 bypass_1_N	3220876;Bypass_(road);commons/9/96/Chittagong_Bypass_to_N1%2C_September_2009.jpg

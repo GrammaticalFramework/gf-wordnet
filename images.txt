@@ -6628,8 +6628,9 @@ farce_1_N	142464;Farce;commons/4/45/Theatre_Farce_%28Petrov-Vodkin%29.jpg
 farce_2_N	371698;Meatloaf;commons/4/4d/MeatloafWithSauce.jpg
 farfalle_N	3141956;Farfalle;commons/a/ac/Farfalle_Pasta.JPG
 farm_N	59790;Farm;commons/a/af/Round_farm_2007.jpg
-farmer_3_N	1511887;Fannie_Farmer;commons/c/c6/Fanny_farmer_cookbook_1996.jpeg
 farmer_1_N	58688;Farmer;commons/8/80/Farmer%2C_Nicaragua.jpg
+farmer_2_PN	327306;James_Farmer;commons/a/a6/James_L_Farmer_Jr.jpg
+farmer_3_PN	1511887;Fannie_Farmer;commons/c/c6/Fanny_farmer_cookbook_1996.jpeg
 farmhouse_N	46369050;Cortijo;commons/e/e0/Cortijo_en_P%C3%AD%C3%B1ar_II.JPG
 farmplace_1_N	30136768;Masia;commons/8/8b/Masia_%28Girona_2007%29.jpg	14706698;Mas_(Proven%C3%A7al_farmhouse);commons/4/44/Mas_%28Provencal_Farmhouse%29.jpg
 farmstead_1_N	30747429;Cascina_a_corte;commons/e/e7/Catasto_Carolo_VI_-_Boscajola_2.jpg

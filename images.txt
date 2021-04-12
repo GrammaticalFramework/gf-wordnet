@@ -2059,7 +2059,7 @@ bobolink_N	381776;Bobolink;commons/6/6b/Bobolink%2C_Mer_Bleue.jpg
 bobsled_2_N	39693;Bobsleigh;commons/6/64/USA_I_in_heat_1_of_2_man_bobsleigh_at_2010_Winter_Olympics_2010-02-20.jpg
 bobsleigh_2_N	39693;Bobsleigh;commons/6/64/USA_I_in_heat_1_of_2_man_bobsleigh_at_2010_Winter_Olympics_2010-02-20.jpg
 bobwhite_N	4529;Northern_bobwhite;commons/0/0c/Virginiawachtel_2007-06-16_065.jpg	339255;Red-legged_partridge;commons/8/8c/Perdrix_rouge.jpg
-bocce_1_N	4300;Bocce;commons/1/1a/Bocce_players_scoring.jpg	1009369;Boccia;commons/0/0c/Paralympics_Beijing_2008_286.JPG
+bocce_1_N	4300;Bocce;commons/1/1a/Bocce_players_scoring.jpg
 bochum_PN	179042;Bochum;commons/7/77/Bergbaumuseum.jpg
 bock_N	4119;Bock;commons/e/ef/Winterbock2.jpg
 bodega_N	47419;Convenience_store;commons/0/04/Convenience_store_interior.jpg	239196;Grocery_store;commons/1/13/Supermarkt.jpg

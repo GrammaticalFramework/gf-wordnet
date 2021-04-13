@@ -11377,7 +11377,6 @@ manila_PN	184334;Manila;commons/3/3d/ManilaMontage.jpg
 manitoba_PN	18926;Manitoba;commons/c/c4/Flag_of_Manitoba.svg
 manna_1_N	904984;Sap;commons/1/16/Sap_of_Sansevieria_trifasciata.jpg	904984;Sap;commons/4/47/Common_jassid_nymph_feeding.jpg
 manna_2_N	95563;Manna;commons/5/51/Tissot_The_Gathering_of_the_Manna_%28color%29.jpg
-manners_N	46403;Passover_Seder;commons/2/25/Sedertable.jpg
 mannheim_PN	99627;Mannheim;commons/3/3c/Der_Friedrichsplatz_und_der_Wasserturm.jpg
 mannitol_N	1015846;Mannitol;commons/6/66/D-Mannitol_3d_space_fill.png
 manor_1_N	769412;Manor_house;commons/3/3b/SchlossBasedowSee.JPG

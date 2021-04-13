@@ -67232,7 +67232,6 @@ lin pay_for_2_V3 = variants {} ;
 lin pay_into_V3 = variants {} ;
 lin pay_off_1_V = mkV "取得成功" ; --unchecked
 lin pay_off_2_V = mkV "偿付" ; --unchecked
-lin pay_off_3_V = variants {} ;
 lin pay_off_5_V = mkV "收买" ; --unchecked
 lin pay_off_2_V2 = mkV2 (mkV "偿付") ; --unchecked
 lin pay_off_3_V2 = variants {} ;

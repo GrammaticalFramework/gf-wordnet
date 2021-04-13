@@ -17813,7 +17813,6 @@ lin cloud_5_N = mkN "疑云" ; --unchecked
 lin cloud_6_N = variants {} ;
 lin cloud_1_V = mkV "使阴暗" ; --unchecked
 lin cloud_3_V = mkV "变得多云" ; --unchecked
-lin cloud_7_V = variants {} ;
 lin cloud_1_V2 = mkV2 (mkV "使多云") ; --unchecked
 lin cloud_4_V2 = variants {} ;
 lin cloud_5_V2 = variants {} ;

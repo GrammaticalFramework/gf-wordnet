@@ -53935,7 +53935,6 @@ lin line_27_N = variants {} ;
 lin line_28_N = mkN "短信" ; --unchecked
 lin line_29_N = mkN "界限" ; --unchecked
 lin line_30_N = mkN "生产线" ; --unchecked
-lin line_V = variants {} ;
 lin line_1_V2 = mkV2 (mkV "排") ;
 lin line_2_V2 = variants {} ;
 lin line_3_V2 = variants {} ;

@@ -21009,7 +21009,7 @@ witney_PN	358157;Witney;commons/f/fb/St_Mary_the_Virgin_Church%2C_Church_Green%2
 wittol_N	19526001;Cuckold;commons/2/2f/Love_Outside_The_Box.svg
 wizard_2_N	48489;Magic_(supernatural);commons/a/ab/Magician_visconti.jpg
 woad_1_N	251147;Isatis_tinctoria;commons/9/9b/Isatis_tinctoria02.JPG
-woad_2_N	251147;Isatis_tinctoria;commons/9/9b/Isatis_tinctoria02.JPG
+woad_2_N	251147;Isatis_tinctoria;commons/f/f8/Isatis_tinctoria_003.JPG
 woburn_PN	382038;Woburn,_Bedfordshire;commons/6/67/Woburn_ParishChurch1.JPG
 wok_N	33693;Wok;commons/b/ba/Wok_cooking.jpg
 wokingham_PN	194885;Wokingham;commons/3/38/Wokingham-town-hall.jpg

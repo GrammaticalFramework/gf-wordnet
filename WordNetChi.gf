@@ -29439,7 +29439,6 @@ lin dub_1_V2 = variants {} ;
 lin dub_2_V2 = variants {} ;
 lin dub_3_V2 = mkV2 (mkV "授予称号") ; --unchecked
 lin dub_1_V3 = variants {} ;
-lin dub_2_V3 = variants {} ;
 lin dubbin_N = mkN "皮革用防水油" ; --unchecked
 lin dubbing_N = mkN "皮革用防水油" ; --unchecked
 lin dubiety_N = mkN "怀疑" ; --unchecked

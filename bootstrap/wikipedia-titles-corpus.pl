@@ -15,6 +15,14 @@ my @langs = @ARGV;
 my $d = extract_page($pages);
    $d = extract_langlinks($links, \%$d);
 
+my $h  = "ID";
+foreach (@langs)
+{
+  $h .= "\t$_";
+}
+$h .= "\n";
+print $h;
+
 for my $k (sort keys %$d) {
   my $fl = $d->{$k};
   my $s  = "$k";

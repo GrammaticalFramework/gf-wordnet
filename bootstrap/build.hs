@@ -63,7 +63,7 @@ applyChanges morphoMap patches draft = [patch l | l <- draft]
         _            -> l
 
 readMorpho lang =
-  fmap toMorphoEntries $ readCreateProcess (shell ("cat lib/src/"++dir++"*/Dict???.gf lib/src/"++dir++"*/Irreg???.gf")) ""
+  fmap toMorphoEntries $ readCreateProcess (shell ("cat lib/src/"++dir++"*/Dict???.gf")) ""
   where
     dir = map toLower lang
 

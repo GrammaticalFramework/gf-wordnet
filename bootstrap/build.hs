@@ -23,10 +23,10 @@ readPredictions fname =
   fmap (Map.fromListWith (Map.unionWith (++)) . map parseLine . lines)
        (readFile fname)
   where
-    parseLine line = (cnc,Map.singleton fn [(lin,o,s,w,l,t,c,d)])
+    parseLine line = (cnc,Map.singleton fn [(lin,o,s,w,l,c,d)])
       where
         [fn,cnc,lin,str] = tsv line
-        (o,s,w,l,t,c,d)  = read str :: (Int,Int,Int,Int,Int,Int,Int)
+        (o,s,w,l,c,d)  = read str :: (Int,Int,Int,Int,Int,Int)
 
 readDraft fname lang = do
   exists <- doesFileExist fname
@@ -56,9 +56,9 @@ applyChanges morphoMap patches draft = [patch l | l <- draft]
     patch l =
       case words l of
         ("lin":fn:_) -> case Map.lookup fn patches of
-                          Nothing                                           -> l
-                          Just lins | all (\(_,o,_,_,_,_,_,_) -> o==0) lins -> l
-                                    | otherwise                             -> "lin "++fn++" = "++prediction2gf morphoMap fn lins
+                          Nothing                                         -> l
+                          Just lins | all (\(_,o,_,_,_,_,_) -> o==0) lins -> l
+                                    | otherwise                           -> "lin "++fn++" = "++prediction2gf morphoMap fn lins
         _            -> l
 
 readMorpho lang =
@@ -87,14 +87,15 @@ prediction2gf morphoMap fn lins =
   where
     status =
       case head lins of
-        (lin,o,s,w,l,t,c,d) | s == 0          -> ""
-                            | s == 1 && l > 2 -> ""
-                            | w == 0 && l > 2 -> ""
-                            | s == 1          -> " --unchecked"
-                            | otherwise       -> " --guessed"
+        (lin,o,s,w,l,c,d) | s == 0          -> ""
+                          | s == 1 && l > 1 -> ""
+                          | w == 0 && l > 1 -> ""
+                          | w == 0 && s == 1-> ""
+                          | s == 1          -> " --unchecked"
+                          | otherwise       -> " --guessed"
 
     (abs,cat) = splitOnElemRight '_' fn
-    mkBody (lin,o,s,w,l,t,c,d) =
+    mkBody (lin,o,s,w,l,c,d) =
       Map.findWithDefault (\_ _ _ -> "variants {}") cat functionMap morphoMap fn lin
 
 functionMap :: Map.Map Cat (Map.Map Fun String -> Fun -> String -> String)

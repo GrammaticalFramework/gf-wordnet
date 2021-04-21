@@ -28,10 +28,10 @@ main = do
     let state2 = selectBest state
     writeFile predictions_fname
               (unlines
-                 [intercalate "\t" [fn,cnc,lin,show (o,s,w,l,t,c,d)]
+                 [intercalate "\t" [fn,cnc,lin,show (o,s,w,l,c,d)]
                     | (fn,(_,cnc_lins)) <- Map.toList state2
                     , (cnc,lins) <- Map.toList cnc_lins
-                    , (lin,o,s,w,l,t,c,d) <- lins
+                    , (lin,o,s,w,l,c,d) <- lins
                  ])
   hPutStrLn stderr ("Predictions stored in "++predictions_fname)
 
@@ -59,7 +59,7 @@ readWordNetConcrete gr state cnc =
         ("lin":fn:ws) -> if not (elem "--guessed" ws) && arity fn == 0 && hasLinearization cnc fn
                            then let s | elem "--unchecked" ws = 1
                                       | otherwise             = 0
-                                    lins = [(lin,0,s,1,0,0) | lin <- linearizeAll cnc (mkApp fn [])]
+                                    lins = [(lin,0,s,1,0) | lin <- linearizeAll cnc (mkApp fn [])]
                                 in Map.adjust (addLins lins) fn state
                            else state
         _             -> state
@@ -121,10 +121,10 @@ readOpenMultiWordNet wn30v31 state = do
                            in (Just synset_id,cnc_lins')
         addSynonyms synsets x                           = x
 
-        insertInList []                     lemma = [(lemma,1,1,1,0,0)]
-        insertInList ((lin,o,s,w,l,t):lins) lemma
-          | strMatch lemma lin = (lin,o,s,w,l,t):lins
-          | otherwise          = (lin,o,s,w,l,t):insertInList lins lemma
+        insertInList []                   lemma = [(lemma,1,1,1,0)]
+        insertInList ((lin,o,s,w,l):lins) lemma
+          | strMatch lemma lin = (lin,o,s,w,l):lins
+          | otherwise          = (lin,o,s,w,l):insertInList lins lemma
 
 addCoOccurrenceCount wordnet state = do
   return $! Map.mapWithKey update state
@@ -144,10 +144,10 @@ addCoOccurrenceCount wordnet state = do
       where
         counts cnc lins =
           let lins' = map count lins
-              force = sum [c | (lin,o,s,w,l,t,c) <- lins']
+              force = sum [c | (lin,o,s,w,l,c) <- lins']
           in force `seq` lins'
           where
-            count (lin,o,s,w,l,t) =
+            count (lin,o,s,w,l) =
               let synset_ids = fromMaybe [] (Map.lookup cnc rev_index >>= Map.lookup lin)
 
                   occ =
@@ -161,9 +161,9 @@ addCoOccurrenceCount wordnet state = do
 
                   !c = sum [fromMaybe 0 (Map.lookup (cnc',lin') occ)
                                | (cnc',lins') <- Map.toList cnc_lins
-                               , (lin',_,_,_,_,_) <- lins'
+                               , (lin',_,_,_,_) <- lins'
                                ]
-              in (lin,o,s,w,l,t,c)
+              in (lin,o,s,w,l,c)
 
 readWikipediaTitles img_fname titles_fname state = do
   imgs <- fmap (Map.fromListWith (++) . concatMap parseImageLine . lines)
@@ -198,10 +198,10 @@ readWikipediaTitles img_fname titles_fname state = do
               let lins = fromMaybe [] (Map.lookup cnc cnc_lins)
               in Map.insert cnc (insertInList title lins) cnc_lins
 
-            insertInList title []  = [(title,1,2,0,0,0,0)]
-            insertInList title ((lin,o,s,w,l,t,c):lins)
-              | strMatch title lin = (lin,o,s,0,l,t,c):lins
-              | otherwise          = (lin,o,s,w,l,t,c):insertInList title lins
+            insertInList title []  = [(title,1,2,0,0,0)]
+            insertInList title ((lin,o,s,w,l,c):lins)
+              | strMatch title lin = (lin,o,s,0,l,c):lins
+              | otherwise          = (lin,o,s,w,l,c):insertInList title lins
 
 readPanLexTranslations fpath state = do
   conn <- open fpath
@@ -213,7 +213,7 @@ readPanLexTranslations fpath state = do
       ids <- (fmap concat . sequence)
                  [getId lang_var lin | (cnc,lins) <- Map.toList cnc_lins
                                      , (_,_,cnc',lang_var) <- lang_list, cnc==cnc'
-                                     , (lin,_,0,_,_,_,_) <- lins]
+                                     , (lin,_,0,_,_,_) <- lins]
       new_lins <- fmap (Map.toList . rank . concat) (mapM retrive ids)
       let !cnc_lins' = foldl' (extend new_lins) cnc_lins lang_list
       return (mb_synset_id,cnc_lins')
@@ -232,26 +232,24 @@ readPanLexTranslations fpath state = do
 
         rank = Map.mapWithKey counts . Map.fromListWith (++)
           where
-            counts (_,expr) ids = (lengthNub ids,length ids)
-
-            lengthNub = Set.size . Set.fromList
+            counts _ ids = (Set.size . Set.fromList) ids
 
         extend new_lins cnc_lins (_,_,cnc,lang_var) =
           let lins    = fromMaybe [] (Map.lookup cnc cnc_lins)
-              transls = [(expr,l,t) | ((lang_var',expr),(l,t)) <- new_lins
-                                      , lang_var == lang_var'
-                                      ]
+              transls = [(expr,l) | ((lang_var',expr),l) <- new_lins
+                                  , lang_var == lang_var'
+                                  ]
               lins'   = foldl' insertInList lins transls
           in Map.insert cnc lins' cnc_lins
 
-        insertInList []                       (transl,l',t') = [(transl,1,2,1,l',t',0)]
-        insertInList ((lin,1,2,1,l,t,0):lins) (transl,l',t')
-          | l <  l'                                          = [(transl,1,2,1,l',t',0)]
-          | l == l'                                          = (transl,1,2,1,l',t',0):(lin,1,2,1,l,t,0):lins
-          | otherwise                                        = (lin   ,1,2,1,l ,t ,0):lins
-        insertInList ((lin,o,s,w,l,t,c):lins) (transl,l',t')
-          | strMatch transl lin = (lin,o,s,w,l',t',c):lins
-          | otherwise           = (lin,o,s,w,l, t ,c):insertInList lins (transl,l',t')
+        insertInList []                     (transl,l') = [(transl,1,2,1,l',0)]
+        insertInList ((lin,1,2,1,l,0):lins) (transl,l')
+          | l <  l'                                     = [(transl,1,2,1,l',0)]
+          | l == l'                                     = (transl,1,2,1,l',0):(lin,1,2,1,l,0):lins
+          | otherwise                                   = (lin   ,1,2,1,l ,0):lins
+        insertInList ((lin,o,s,w,l,c):lins) (transl,l')
+          | strMatch transl lin = (lin,o,s,w,l',c):lins
+          | otherwise           = (lin,o,s,w,l ,c):insertInList lins (transl,l')
 
 readTransliteration :: FilePath -> IO (String -> String)
 readTransliteration fpath = do
@@ -283,18 +281,18 @@ addLevenshteinDistance transl state = do
       where
         distances cnc lins =
           let lins' = map distance lins
-              force = sum [d | (lin,o,s,w,l,t,c,d) <- lins']
+              force = sum [d | (lin,o,s,w,l,c,d) <- lins']
           in force `seq` lins'
           where
-            distance (lin,o,s,w,l,t,c) =
+            distance (lin,o,s,w,l,c) =
               let !d = minimum
                          (maxBound:
                           [levenshtein cnc lin cnc2 lin2
                              | (cnc2,lins2) <- Map.toList cnc_lins
                              , cnc /= cnc2
-                             , (lin2,_,_,_,_,_,_) <- lins2
+                             , (lin2,_,_,_,_,_) <- lins2
                              ])
-              in (lin,o,s,w,l,t,c,d)
+              in (lin,o,s,w,l,c,d)
 
     levenshtein cnc1 lin1 cnc2 lin2
       |    elem cnc1 no_translit_langs
@@ -315,7 +313,7 @@ selectBest state = fmap update state
 
     select lins = take 1 (sortBy order lins)
 
-    order (_,_,s1,w1,l1,t1,c1,d1) (_,_,s2,w2,l2,t2,c2,d2) =
+    order (_,_,s1,w1,l1,c1,d1) (_,_,s2,w2,l2,c2,d2) =
       compare (s1,-c1,-l1,w1,d1) (s2,-c2,-l2,w2,d2)
 
 -- list of all languages with their iso 2 and iso 3 codes,

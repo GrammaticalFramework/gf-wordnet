@@ -215,7 +215,7 @@ readPanLexTranslations fpath state = do
                                      , (_,_,cnc',lang_var) <- lang_list, cnc==cnc'
                                      , (lin,_,0,_,_,_,_) <- lins]
       new_lins <- fmap (Map.toList . rank . concat) (mapM retrive ids)
-      let !cnc_lins' = Map.mapWithKey (extend new_lins) cnc_lins
+      let !cnc_lins' = foldl' (extend new_lins) cnc_lins lang_list
       return (mb_synset_id,cnc_lins')
       where
         getId langvar lin = do
@@ -236,13 +236,13 @@ readPanLexTranslations fpath state = do
 
             lengthNub = Set.size . Set.fromList
 
-        extend new_lins cnc lins =
-          let transls = [(expr,l,t) | ((lang_var,expr),(l,t)) <- new_lins
-                                    , (_,_,cnc',lang_var') <- lang_list
-                                    , cnc==cnc' && lang_var == lang_var'
-                                    ]
-              lins' = foldl' insertInList lins transls
-          in length lins' `seq` lins'
+        extend new_lins cnc_lins (_,_,cnc,lang_var) =
+          let lins    = fromMaybe [] (Map.lookup cnc cnc_lins)
+              transls = [(expr,l,t) | ((lang_var',expr),(l,t)) <- new_lins
+                                      , lang_var == lang_var'
+                                      ]
+              lins'   = foldl' insertInList lins transls
+          in Map.insert cnc lins' cnc_lins
 
         insertInList []                       (transl,l',t') = [(transl,1,2,1,l',t',0)]
         insertInList ((lin,1,2,1,l,t,0):lins) (transl,l',t')

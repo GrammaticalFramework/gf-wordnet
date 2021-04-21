@@ -31,8 +31,9 @@ readPredictions fname =
 readDraft fname lang = do
   exists <- doesFileExist fname
   if exists
-    then fmap lines
-              (readFile fname)
+    then do ls <- fmap lines
+                       (readFile fname)
+            length ls `seq` return ls
     else fmap (mkDraft . lines)
               (readFile "WordNet.gf")
   where

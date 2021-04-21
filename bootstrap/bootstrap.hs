@@ -278,7 +278,7 @@ addLevenshteinDistance transl state = do
   return $! (Map.mapWithKey update state)
   where
     update fn (mb_sense_id,cnc_lins) =
-      let cnc_lins' = Map.mapWithKey distances cnc_lins
+      let !cnc_lins' = Map.mapWithKey distances cnc_lins
       in (mb_sense_id,cnc_lins')
       where
         distances cnc lins =

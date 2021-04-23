@@ -1,4 +1,4 @@
-LANGS = ParseBul ParseCat ParseChi ParseDut ParseEng ParseEst ParseFin ParseGer ParseIta ParseKor ParseMlt ParsePor ParseSlv ParseSom ParseSpa ParseSwe ParseTha ParseTur ParseAPI
+LANGS = ParseBul ParseCat ParseChi ParseDut ParseEng ParseEst ParseFin ParseGer ParseIta ParseKor ParseMlt ParsePol ParsePor ParseSlv ParseSom ParseSpa ParseSwe ParseTha ParseTur ParseAPI
 
 WORDNETS = $(patsubst Parse%,WordNet%.gf,$(LANGS))
 

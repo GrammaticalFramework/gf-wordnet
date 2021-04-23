@@ -1,6 +1,6 @@
-concrete ParseExtendSwe of ParseExtend = 
-  ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, ProgrVPSlash,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSwe - [num], PunctuationX ** 
+concrete ParseExtendSwe of ParseExtend =
+  ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, ProgrVPSlash, N2VPSlash, A2VPSlash,
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSwe - [num], PunctuationX **
   open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, ExtendSwe, (M = MakeStructuralSwe), (P = ParadigmsSwe), (I = IrregSwe) in {
 
 lin gen_Quant = DefArt ;
@@ -25,7 +25,7 @@ lin BaseCNN num1 cn1 num2 cn2 = {
     } ;
 
     DetCNN quant conj cnn =
-      let md : Bool -> Bool = \b -> 
+      let md : Bool -> Bool = \b ->
             case quant.det of {
               DDef _ => orB b cnn.isDet ;
               DIndef => cnn.isDet
@@ -46,7 +46,7 @@ lin BaseCNN num1 cn1 num2 cn2 = {
     } ;
 
     PossCNN_RNP quant conj cnn rnp =
-      let md : Bool -> Bool = \b -> 
+      let md : Bool -> Bool = \b ->
             case quant.det of {
               DDef _ => orB b cnn.isDet ;
               DIndef => cnn.isDet
@@ -63,12 +63,12 @@ lin BaseCNN num1 cn1 num2 cn2 = {
 lin NumMore num = {s = \\g => num.s ! g ++ "mera" ;  isDet = num.isDet ; n = Pl} ;
     NumLess num = {s = \\g => num.s ! g ++ "färre" ; isDet = num.isDet ; n = Pl} ;
 
-lin UseACard card = 
+lin UseACard card =
       {s = \\_ => card.s;
        n = card.n
       };
 
-    UseAdAACard ada card = 
+    UseAdAACard ada card =
       {s = \\_ => ada.s ++ card.s;
        n = card.n
       };
@@ -121,8 +121,8 @@ lin TimeNP np = {s = np.s ! accusative} ;
 
 lin AdvAdv adv1 adv2 = {s=adv1.s ++ adv2.s} ;
 
-lin UseDAP dap = 
-      let 
+lin UseDAP dap =
+      let
         g = neutrum ; ----
         m = True ;  ---- is this needed for other than Art?
       in {
@@ -135,7 +135,7 @@ lin UseDAP dap =
       } ;
 
 lin UseDAPMasc, UseDAPFem = \dap ->
-      let 
+      let
         g = utrum ; ----
         m = True ;  ---- is this needed for other than Art?
       in {
@@ -155,7 +155,7 @@ lin EmbedVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a an
 
     ComplVV vv ant pol vp = insertObjPost (\\a => vv.c2.s ++ ant.s ++ pol.s ++ infVPPlus vp a ant.a pol.p) (predV vv) ;
 
-    SlashVV vv ant pol slash = 
+    SlashVV vv ant pol slash =
       insertObj (\\a => vv.c2.s ++ ant.s ++ pol.s ++ infVPPlus slash a ant.a pol.p) (predV vv) ** {n3 = slash.n3 ; c2 = slash.c2} ;
 
     SlashV2V v ant pol vp = predV v ** {
@@ -165,7 +165,7 @@ lin EmbedVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a an
 
     SlashV2VNP vv np ant pol vp =
       insertObj
-        (\\a => vv.c2.s ++ np.s ! accusative ++ vv.c3.s ++ ant.s ++ pol.s ++ infVPPlus vp a ant.a pol.p) (predV vv) 
+        (\\a => vv.c2.s ++ np.s ! accusative ++ vv.c3.s ++ ant.s ++ pol.s ++ infVPPlus vp a ant.a pol.p) (predV vv)
         ** {n3 = vp.n3 ; c2 = vv.c2} ;
 
     InOrderToVP ant pol p vp = {  -- infinitive: att dricka öl, att vara glad
@@ -185,7 +185,7 @@ lin RecipVPSlash slash = GrammarSwe.ComplSlash slash (regNP "varandra" "varandra
 lincat Sub1000000000 = {s : CardOrd => Str ; n : Number} ;
 
 lin pot3as4 n = n ;
-    pot4 n = 
+    pot4 n =
       numPl (\\g => n.s ! NCard Utr ++ cardOrd "miljon" "miljonde" ! g) ;
     pot4plus n m =
       {s = \\g => n.s ! NCard Utr ++ BIND ++ "miljon" ++ m.s ! g ; n = Pl} ;

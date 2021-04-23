@@ -8,6 +8,7 @@ concrete ParseSom of Parse =
   RelativeSom,
   PhraseSom - [UttAP, UttVP],
   IdiomSom,
+  TenseX - [CAdv,IAdv,AdV,Adv,SC],
   WordNetSom
   ** {
 

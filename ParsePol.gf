@@ -8,6 +8,7 @@ concrete ParsePol of Parse =
   RelativePol,
   PhrasePol - [UttAP, UttVP],
   IdiomPol,
+  TenseX - [CAdv,IAdv,AdV,SC],
   WordNetPol
   ** {
 

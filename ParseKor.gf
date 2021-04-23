@@ -8,6 +8,7 @@ concrete ParseKor of Parse =
   RelativeKor,
   PhraseKor - [UttAP, UttVP],
   IdiomKor,
+  TenseX - [CAdv,IAdv,AdV,SC],
   WordNetKor,
   ConstructionKor
   ** {

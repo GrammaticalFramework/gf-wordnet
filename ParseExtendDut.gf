@@ -1,5 +1,5 @@
-concrete ParseExtendDut of ParseExtend = 
-  ExtendDut - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+concrete ParseExtendDut of ParseExtend =
+  ExtendDut - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralDut - [num], PunctuationX ** open Prelude, ResDut in {
 
 lin UttAP  p ap  = {s = ap.s ! p.a ! APred} ;
@@ -17,4 +17,3 @@ lin BareN2 n = n ;
 
 
 }
-	

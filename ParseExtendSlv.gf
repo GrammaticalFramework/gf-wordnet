@@ -1,5 +1,5 @@
-concrete ParseExtendSlv of ParseExtend = 
-  ExtendSlv - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+concrete ParseExtendSlv of ParseExtend =
+  ExtendSlv - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSlv - [num], PunctuationX ** open Prelude, ResSlv in {
 
 lin
@@ -17,4 +17,3 @@ lin BareN2 n = n ;
 
 
 }
-	

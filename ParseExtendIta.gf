@@ -1,5 +1,5 @@
-concrete ParseExtendIta of ParseExtend = 
-  ExtendIta - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+concrete ParseExtendIta of ParseExtend =
+  ExtendIta - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralIta - [num], PunctuationX ** open Prelude, CommonRomance in {
 
 lin
@@ -18,4 +18,3 @@ lin BareN2 n = n ;
 
 
 }
-	

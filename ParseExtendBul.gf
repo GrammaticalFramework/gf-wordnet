@@ -1,5 +1,5 @@
-concrete ParseExtendBul of ParseExtend = 
-  ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+concrete ParseExtendBul of ParseExtend =
+  ExtendBul - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralBul - [num], PunctuationX ** open Predef, Prelude, ResBul, GrammarBul, ParadigmsBul in {
 
 lin gen_Quant = DefArt ;
@@ -15,7 +15,7 @@ lin FocusComp comp np =
 
 lincat CNN = {s : Species => Role => Ints 4 => Str ; n1,n : NNumber ; g1 : AGender; nonEmpty : Bool} ;
 
-lin BaseCNN num1 cn1 num2 cn2 = 
+lin BaseCNN num1 cn1 num2 cn2 =
       let mknf : NNumber -> Species -> Role -> AGender -> NForm =
             \nn,spec,role,g ->
                 case <nn,spec> of {
@@ -46,9 +46,9 @@ lin BaseCNN num1 cn1 num2 cn2 =
       } ;
 
     DetCNN quant conj cnn =
-      { s  = \\role => 
+      { s  = \\role =>
                  let spec = case cnn.nonEmpty of {True=>Indef; _=>quant.spec} ;
-                     s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++ 
+                     s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++
                             linCoord [] ! conj.sep ++ cnn.s ! spec ! role ! conj.sep ++ conj.s ++ cnn.s ! spec ! role ! 4
                  in case role of {
                       RObj c => linCase c quant.p ++ s;
@@ -57,17 +57,17 @@ lin BaseCNN num1 cn1 num2 cn2 =
         gn = gennum cnn.g1 (numnnum cnn.n);
         p  = NounP3 quant.p
       } ;
-      
+
     ReflPossCNN conj cnn = {
         s = \\role => reflPron ! aform (gennum cnn.g1 (numnnum cnn.n1)) Def (RObj Acc) ++
                       cnn.s ! Def ! role ! conj.sep ++ conj.s ++ cnn.s ! Def ! role ! 4 ;
         gn = gennum cnn.g1 (numnnum cnn.n)
       } ;
-      
+
     PossCNN_RNP quant conj cnn rnp =
       { s = \\role =>
                 let spec = case cnn.nonEmpty of {True=>Indef; _=>quant.spec} ;
-                    s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++ 
+                    s    = quant.s ! True ! aform (gennum cnn.g1 (numnnum cnn.n)) (case role of {RVoc=>Indef; _=>Def}) role ++
                            cnn.s ! spec ! role ! conj.sep ++ conj.s ++ cnn.s ! spec ! role ! 4 ++
                            "на" ++ rnp.s ! (RObj CPrep)
                 in case role of {
@@ -80,7 +80,7 @@ lin BaseCNN num1 cn1 num2 cn2 =
 lin NumMore num = {s = \\cf => "още" ++ num.s ! cf ;      nn = NNum Pl ; nonEmpty = True} ;
     NumLess num = {s = \\cf => num.s ! cf ++ "по-малко" ; nn = NNum Pl ; nonEmpty = True} ;
 
-lin UseACard card = 
+lin UseACard card =
       {s  = table { CFMasc spec _ => card.s ! spec;
                     CFMascDefNom _ => card.s ! Def;
                     CFFem spec => card.s ! spec;
@@ -89,11 +89,11 @@ lin UseACard card =
        nn = card.nn
       };
 
-    UseAdAACard ada card = 
+    UseAdAACard ada card =
       {s  = table { CFMasc spec _ => ada.s ++ card.s ! spec;
                     CFMascDefNom _ => ada.s ++ card.s ! Def;
                     CFFem spec => ada.s ++ card.s ! spec;
-                    CFNeut spec => ada.s ++ card.s ! spec 
+                    CFNeut spec => ada.s ++ card.s ! spec
                   };
        nn = card.nn
       };
@@ -115,7 +115,7 @@ lin ComparAdv pol cadv adv comp = {
     } ;
 
     CAdvAP pol cadv ap comp = {
-      s = \\a,p => pol.s ++ case pol.p of {Pos => []; Neg => "не"} ++ cadv.s ++ ap.s ! a ! p ++ cadv.p ++ comp.s ! agrP3 (GSg Neut) ; 
+      s = \\a,p => pol.s ++ case pol.p of {Pos => []; Neg => "не"} ++ cadv.s ++ ap.s ! a ! p ++ cadv.p ++ comp.s ! agrP3 (GSg Neut) ;
       isPre = False
       } ;
 
@@ -182,7 +182,7 @@ lin that_RP = IdRP ;
 lin EmbedVP ant pol p vp = {s = ant.s ++ pol.s ++ daComplex ant.a (orPol pol.p vp.p) vp ! Perf ! personAgr p.gn p.p} ;
 
     ComplVV vv ant pol vp =
-      insertObj (\\agr => ant.s ++ pol.s ++ 
+      insertObj (\\agr => ant.s ++ pol.s ++
                           case vv.typ of {
                             VVInf asp => daComplex ant.a pol.p vp ! asp ! agr;
                             VVGerund  => gerund vp ! Imperf ! agr
@@ -209,7 +209,7 @@ lin EmbedVP ant pol p vp = {s = ant.s ++ pol.s ++ daComplex ant.a (orPol pol.p v
       s = vv.s ;
       ad = {isEmpty=True; s=[]};
       clitics = [] ;
-      compl1 = \\agr => ant.s ++ pol.s ++ vv.c2.s ++ np.s ! RObj vv.c2.c ++ 
+      compl1 = \\agr => ant.s ++ pol.s ++ vv.c2.s ++ np.s ! RObj vv.c2.c ++
                         daComplex ant.a (orPol pol.p (personPol np.p)) {s=slash.s; ad=slash.ad; clitics=slash.clitics; compl=slash.compl1; vtype=slash.vtype; p=Pos; isSimple = slash.isSimple} ! Perf ! personAgr np.gn np.p ;
       compl2 = slash.compl2 ;
       vtype = vv.vtype ;
@@ -308,4 +308,3 @@ lin pot3as4 n = n ;
     num x = {s = \\c => x.s ! c ! Formal; n=x.n} ;
 
 }
-	

@@ -1,8 +1,8 @@
-abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP,
+abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                                  CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], Numeral - [num], Punctuation ** {
 
-fun gen_Quant : Quant ;       -- English often skips the article 
-                              -- when in Swedish and Bulgarian definite 
+fun gen_Quant : Quant ;       -- English often skips the article
+                              -- when in Swedish and Bulgarian definite
                               -- article is needed. This is usually
                               -- for things in general.
 
@@ -56,11 +56,11 @@ fun UseACard    : ACard -> Card ;
     UseAdAACard : AdA -> ACard -> Card ;
 
 fun -- Version of RelNP from the RGL but without comma
-    RelNP : NP -> RS -> NP ;   
-    
-    -- the same as the RGL's RelNP, just renamed 
+    RelNP : NP -> RS -> NP ;
+
+    -- the same as the RGL's RelNP, just renamed
     -- for consistency with ExtAdvNP for instance.
-    ExtRelNP : NP -> RS -> NP ; 
+    ExtRelNP : NP -> RS -> NP ;
 
     -- make it possible insert comma between adjective and adverb
 fun ExtAdvAP : AP -> Adv -> AP ;
@@ -78,7 +78,7 @@ fun ComparAdv : Pol -> CAdv -> Adv -> Comp -> Adv ;
     AdnCAdv : Pol -> CAdv -> AdN ;
 
     -- the word `enough` has a special syntax in English
-    -- when it is used with adjectives, 
+    -- when it is used with adjectives,
     -- i.e. `smart enough to find the solution`.
 fun EnoughAP  : AP -> Ant -> Pol -> VP -> AP ;
     EnoughAdv : Adv -> Adv ;
@@ -120,12 +120,12 @@ fun EmbedVP     : Ant -> Pol -> Pron -> VP  -> SC ;
     CompVP      : Ant -> Pol -> Pron -> VP  -> Comp ;
     UttVP       : Ant -> Pol -> Pron -> VP  -> Utt ;
 
-    -- reciprocal verbs i.e. 
+    -- reciprocal verbs i.e.
     -- `We love each other` or `We love one another`.
 fun RecipVPSlash   : VPSlash -> VP ;
     RecipVPSlashCN : VPSlash -> CN -> VP ;
 
-    -- A clause which uses copula but the complement 
+    -- A clause which uses copula but the complement
     -- is shifted to the front.
 fun FocusComp : Comp -> NP -> Cl ;
 

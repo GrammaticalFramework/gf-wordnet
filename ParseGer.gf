@@ -10,6 +10,7 @@ concrete ParseGer of Parse =
   IdiomGer,
   TenseGer,
   WordNetGer,
+  ParseExtendGer,
   ConstructionGer,
   DocumentationGer
   ** {

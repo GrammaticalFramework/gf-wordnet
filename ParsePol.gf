@@ -9,6 +9,7 @@ concrete ParsePol of Parse =
   PhrasePol - [UttAP, UttVP],
   IdiomPol,
   TenseX - [CAdv,IAdv,AdV,SC],
+  ParseExtendPol,
   WordNetPol
   ** {
 

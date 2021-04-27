@@ -180,6 +180,7 @@ gfwordnet.render_rows = function(result,selection,new_selection,lemmas) {
 				if (!lin.text.startsWith("["))
 					texts.push(lin.text);
 			}
+            texts = [... new Set(texts)];
 			this[selection.langs[lin.to].index].appendChild(text(texts.join(", ")));
 		}
 	}

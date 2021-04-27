@@ -121,32 +121,6 @@ lin TimeNP np = {s = np.s ! accusative} ;
 
 lin AdvAdv adv1 adv2 = {s=adv1.s ++ adv2.s} ;
 
-lin UseDAP dap =
-      let
-        g = neutrum ; ----
-        m = True ;  ---- is this needed for other than Art?
-      in {
-        s = table {
-               NPPoss _ _ => dap.sp ! m ! g ++ BIND ++ "s" ;
-               _          => dap.sp ! m ! g
-            } ;
-        a = agrP3 (ngen2gen g) dap.n ;
-        isPron = False
-      } ;
-
-lin UseDAPMasc, UseDAPFem = \dap ->
-      let
-        g = utrum ; ----
-        m = True ;  ---- is this needed for other than Art?
-      in {
-        s = table {
-               NPPoss _ _ => dap.sp ! m ! g ++ BIND ++ "s" ;
-               _          => dap.sp ! m ! g
-            } ;
-        a = agrP3 (ngen2gen g) dap.n ;
-        isPron = False
-      } ;
-
 lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
 
 lin that_RP = IdRP ;

@@ -143,18 +143,22 @@ concrete ParseExtendPor of ParseExtend =
         } ;
 
   lin
+    EmbedVP ant pol p vp = {
+        s = \\c => prepCase c ++ ant.s ++ pol.s ++ infVP vp pol.p p.a
+      } ;
     ComplVV vv ant pol vp = let
-      neg = (negation ! pol.p).p1 ;
       vf : Agr -> Str = \agr -> case ant.a of {
-        Simul => infVP vp agr ;
-        Anter => nominalVP (\_ -> VFin (VPres Indic) agr.n agr.p) vp agr
-        } ;
+        Simul => infVP vp pol.p agr ;
+        Anter => nominalVP (\_ -> VFin (VPres Indic) agr.n agr.p) vp pol.p agr
+        }
       in
-      insertComplement (\\a => ant.s ++ pol.s ++ neg ++ prepCase vv.c2.c ++ vf a) (predV vv) ;
-    UttVP ant pol p vp = let
-      neg = (negation ! pol.p).p1
-      in {
-        s = ant.s ++ pol.s ++ neg ++ infVP vp p.a
+      insertComplement (\\a => ant.s ++ pol.s ++ prepCase vv.c2.c ++ vf a) (predV vv) ;
+    CompVP ant pol p vp = {
+        s = \\agr => ant.s ++ pol.s ++ "de" ++ infVP vp pol.p p.a ;
+        cop = serCopula
+      } ;
+    UttVP ant pol p vp = {
+        s = ant.s ++ pol.s ++ infVP vp pol.p p.a
       } ;
 
   lin FocusComp comp np = mkClause (comp.s ! np.a) np.hasClit np.isPol np.a (insertComplement (\\_ => (np.s ! Nom).ton) (predV (selectCopula comp.cop))) ;

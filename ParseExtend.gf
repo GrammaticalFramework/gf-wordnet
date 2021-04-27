@@ -1,5 +1,6 @@
 abstract ParseExtend = Extend - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
-                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], Numeral - [num], Punctuation ** {
+                                 CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP],
+                       Numeral - [num], Punctuation ** {
 
 fun gen_Quant : Quant ;       -- English often skips the article
                               -- when in Swedish and Bulgarian definite
@@ -91,15 +92,6 @@ fun TimeNP : NP -> Adv ;
     -- Sometimes one adverb modifies another. I am not sure
     -- if this is a regular pattern or the function must be revised.
 fun AdvAdv : Adv -> Adv -> Adv ;
-
-    -- UseDAP replaces DetNP from the RGL which is more limited.
-    -- Instead of (DetNP d) use (UseDAP (DetDAP d)). The advantage
-    -- is that now we can also have an adjective inserted, i.e.
-    -- (UseDAP (AdjDAP (DetDAP d) a). There are also versions of
-    -- UseDAP for different genders.
-fun UseDAP     : DAP -> NP ;
-    UseDAPMasc : DAP -> NP ;
-    UseDAPFem  : DAP -> NP ;
 
     -- gender specific version of whatSg_IP.
 fun whatSgFem_IP : IP ;

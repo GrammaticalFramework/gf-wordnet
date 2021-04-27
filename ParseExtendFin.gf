@@ -23,22 +23,6 @@ lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND 
     SlashV2V v ant p vp =
       insertObj (\\_,b,a => infVP v.sc b a vp (vvtype2infform v.vi)) (predSV v) ** {c2 = v.c2} ; ----
 
-    UseDAP, UseDAPFem, UseDAPMasc = \dap ->
-      let
-        n : ParadigmsFin.Number = case dap.isNum of {
-          True => Sg ;
-          _ => dap.n
-          } ;
-      in {
-        s = \\c => let k = npform2case n c in
-                 dap.sp ! k ; -- det.s2 is possessive suffix
-        a = agrP3 (case dap.isDef of {
-            False => Sg ;  -- autoja menee; kolme autoa menee
-            _ => dap.n
-            }) ;
-        isPron = False ; isNeg = dap.isNeg
-      } ;
-
 lincat
   Sub1000000000 = {s : CardOrd => Str ; n : MorphoFin.Number} ;
 

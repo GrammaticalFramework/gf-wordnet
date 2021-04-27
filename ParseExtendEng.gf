@@ -91,21 +91,6 @@ lin TimeNP np = {s = np.s ! NPAcc} ;
 
 lin AdvAdv adv1 adv2 = {s=adv1.s ++ adv2.s} ;
 
-lin UseDAP dap = {
-      s = dap.sp ! Neutr ! False ;
-      a = agrP3 dap.n
-    } ;
-
-lin UseDAPMasc dap = {
-      s = dap.sp ! Masc ! False ;
-      a = agrgP3 dap.n Masc
-    } ;
-
-lin UseDAPFem dap = {
-      s = dap.sp ! Fem ! False ;
-      a = agrgP3 dap.n Fem
-    } ;
-
 lin whatSgFem_IP, whatSgNeut_IP = whatSg_IP ;
 
 lin that_RP = E.that_RP ;

@@ -144,36 +144,6 @@ lin TimeNP np = {s = np.s ! RObj CPrep} ;
 
 lin AdvAdv adv1 adv2 = {s=adv1.s ++ adv2.s} ;
 
-lin UseDAP dap = {
-      s  = \\role => let s = dap.s ! False ! ANeut ! role
-                     in case role of {
-                          RObj c => linCase c dap.p ++ s;
-                          _      => s
-                        } ;
-      gn = gennum ANeut (numnnum dap.nn);
-      p  = NounP3 dap.p
-      } ;
-
-    UseDAPMasc dap = {
-      s  = \\role => let s = dap.s ! False ! (AMasc Human) ! role
-                     in case role of {
-                          RObj c => linCase c dap.p ++ s;
-                          _      => s
-                        } ;
-      gn = gennum (AMasc Human) (numnnum dap.nn);
-      p  = NounP3 dap.p
-      } ;
-
-    UseDAPFem dap = {
-      s = \\role => let s = dap.s ! False ! AFem ! role
-                    in case role of {
-                         RObj c => linCase c dap.p ++ s;
-                         _      => s
-                       } ;
-      gn = gennum AFem (numnnum dap.nn);
-      p  = NounP3 dap.p
-      } ;
-
 lin whatSgFem_IP  = mkIP "каква" "каква" (GSg Fem) ;
     whatSgNeut_IP = mkIP "какво" "какво" (GSg Neut) ;
 

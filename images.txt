@@ -3427,7 +3427,7 @@ charlatan_N	325961;Charlatan;commons/6/63/Bemberg_Fondation_Toulouse_-_Le_Charla
 charles_7_PN	169132;Jacques_Charles;commons/9/98/Jacques_Alexandre_C%C3%A9sar_Charles.jpg
 charles_8_PN	5314;Charlemagne;commons/f/fb/Charlemagne_denier_Mayence_812_814.jpg
 charleston_1_PN	57861;Charleston,_West_Virginia;commons/2/2c/Spring_Hill_View_Apr_09.JPG
-charleston_2_PN	61024;Charleston,_South_Carolina;commons/a/ae/Charleston_SC_Collage-1.jpg
+charleston_2_PN	61024;Charleston,_South_Carolina;commons/1/12/Atlantic_and_E_Battery_in_Charleston%2C_SC.JPG
 charleston_3_N	59866;Charleston_(dance);commons/4/41/Baker_Charleston.jpg
 charlock_1_N	7929758;Sinapis_arvensis;commons/1/15/Brassicaceae_-_Sinapis_arvensis_%283%29.JPG
 charlotte_1_PN	57447;Charlotte,_North_Carolina;commons/7/77/Charlotte_NC_collage.png

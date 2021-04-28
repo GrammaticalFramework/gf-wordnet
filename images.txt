@@ -1706,7 +1706,7 @@ bentwood_N	1987878;Bentwood;commons/7/71/Michael_Thonet_14.jpg
 benzene_N	18582186;Benzene;commons/5/58/Benzene_geometrie.svg
 benzocaine_N	530862;Benzocaine;commons/b/bf/Benzokaina.svg
 benzodiazepine_N	4781;Benzodiazepine;commons/2/24/Lorazepam.svg
-benzofuran_N	1386576;Benzofuran;cmxmons/b/b7/Benzofuran_2D_numbered.svg
+benzofuran_N	1386576;Benzofuran;commons/b/b7/Benzofuran_2D_numbered.svg
 benzoin_1_N	1999630;Benzoin_(resin);commons/c/c8/Kemenyan_110112-11054_tdp.jpg
 benzoin_2_N	1969188;Benzoin_(organic_compound);commons/0/09/Benzoin.svg
 benzyl_N	1226979;Benzyl_group;commons/9/9c/Benzyl_group_V.9.svg

@@ -10054,7 +10054,7 @@ kiln_N	17361;Kiln;commons/b/b4/Charcoal_Kilns%2C_California.JPG
 kilogram_N	16619;Kilogram;commons/4/42/Poids_fonte_1_kg_01.jpg
 kilolitre_1_N	30125638;Cubic_metre;commons/0/02/Metre-cube-beton-p1040192.jpg
 kilsyth_PN	540573;Kilsyth;commons/a/a2/Bandstand_in_Kilsyth_-_geograph.org.uk_-_1310610.jpg
-kilt_N	17214;Kilt;commons/e/e2/Scottish_mercenaries_in_the_Thirty_Years_War.jpg	1369518;Fustanella;commons/1/13/Souliotis_in_Corfu.jpg
+kilt_N	17214;Kilt;commons/e/e2/Scottish_mercenaries_in_the_Thirty_Years_War.jpg
 kilwinning_PN	841006;Kilwinning;commons/7/7d/Kilwinning_Abbey_-_geograph.org.uk_-_1140309.jpg
 kimberley_PN	313628;Kimberley,_Northern_Cape;commons/e/ea/Downtown_Kimberley_seen_from_the_west_2015.JPG
 kimberlite_N	103068;Kimberlite;commons/7/76/Kimberlite_picture.jpg

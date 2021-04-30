@@ -9,6 +9,7 @@ concrete ParseSwa of Parse =
   PhraseSwa - [UttAP, UttVP],
   IdiomSwa,
   TenseX - [CAdv,IAdv,AdV,SC,Adv],
+  ParseExtendSwa,
   WordNetSwa
   ** {
 

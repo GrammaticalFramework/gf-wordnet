@@ -9,6 +9,7 @@ concrete ParseKor of Parse =
   PhraseKor - [UttAP, UttVP],
   IdiomKor,
   TenseX - [CAdv,IAdv,AdV,SC],
+  ParseExtendKor,
   WordNetKor,
   ConstructionKor
   ** {

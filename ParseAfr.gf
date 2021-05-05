@@ -9,6 +9,7 @@ concrete ParseAfr of Parse =
   PhraseAfr - [UttAP, UttVP],
   IdiomAfr,
   TenseX - [CAdv,IAdv,AdV,SC,Adv],
+  ParseExtendAfr,
   WordNetAfr
   ** {
 

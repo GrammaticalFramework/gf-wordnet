@@ -9,6 +9,7 @@ concrete ParseMlt of Parse =
   PhraseMlt - [UttAP, UttVP],
   IdiomMlt,
   TenseX - [CAdv,IAdv,AdV,SC,Adv],
+  ParseExtendMlt,
   WordNetMlt
   ** {
 

@@ -64001,6 +64001,7 @@ lin on_behalf_of_Prep = variants {} ;
 lin on_licence_N = variants {} ;
 lin on_occasion_Adv = variants {} ;
 lin on_the_air_Adv = variants {} ;
+lin on_the_whole_Adv = variants {} ;
 lin on_time_Adv = mkAdv "fil-hin" ; --guessed
 lin on_top_of_Prep = mkPrep "fuq" ; --guessed
 lin onager_1_N = variants {} ;

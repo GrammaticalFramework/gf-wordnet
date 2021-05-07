@@ -1,4 +1,4 @@
---# -path=.:../abstract:../common:../api:lib/src/finnish
+--# -path=.:../abstract:../common:../api
 concrete ParseSpa of Parse =
   NounSpa - [PPartNP, UseN2, RelNP, DetNP],
   VerbSpa - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],

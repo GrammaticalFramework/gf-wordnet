@@ -3698,7 +3698,7 @@ chuckwalla_N	606413;Chuckwalla;commons/2/23/Chuckwalla_%28Sauromalus_ater%29.jpg
 chunga_N	217542;Seriema;commons/6/68/Cariama_cristata.jpg	12434138;Black-legged_seriema;commons/4/40/Blacklegged.jpg
 chungking_PN	171752;Chongqing;commons/5/51/Chongqing_montage_newest_2013.png
 chunnel_PN	5702;Channel_Tunnel;commons/4/4f/Course_Channeltunnel_en.svg
-church_2_N	1508794;Iglesias,_Sardinia;commons/5/51/Cattedrale_Iglesias.jpg
+church_2_N	6325;Church_(building);commons/e/ed/Hallstatt_evangelische_Kirche_20180206.jpg
 church_3_N	70364;Worship;commons/6/67/Religion-Pearce-Highsmith-detail-1.jpeg
 churchyard_N	3239334;Churchyard;commons/2/28/Sventorius.jpg
 churn_N	37136068;Milk_churn;commons/1/1f/Locomotive_%288101317004%29.jpg	1490168;Butter_churn;commons/e/e4/Leeds_butter_churn.jpg

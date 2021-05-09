@@ -63,7 +63,7 @@ applyChanges morphoMap patches draft = [patch l | l <- draft]
         _            -> l
 
 readMorpho lang =
-  fmap toMorphoEntries $ readCreateProcess (shell ("cat lib/src/"++dir++"*/Dict???.gf lib/src/"++dir++"*/Irreg???.gf")) ""
+  fmap toMorphoEntries $ return "" -- readCreateProcess (shell ("cat lib/src/"++dir++"*/Dict???.gf lib/src/"++dir++"*/Irreg???.gf")) ""
   where
     dir = map toLower lang
 
@@ -115,7 +115,7 @@ functionMap = Map.fromList [
   ("PN"     , \morphoMap fun lemma -> look morphoMap fun lemma "PN"),
   ("Prep"   , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "Prep"),
   ("V"      , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "V"),
-  ("V2"     , \morphoMap fun lemma -> "mkV2 ("++look morphoMap fun (lo lemma) "V"++")"),
+  ("V2"     , \morphoMap fun lemma -> "dirV2 ("++look morphoMap fun (lo lemma) "V"++")"),
   ("V2A"    , \morphoMap fun lemma -> "mkV2A ("++look morphoMap fun (lo lemma) "V"++") noPrep noPrep"),
   ("V2S"    , \morphoMap fun lemma -> "mkV2S ("++look morphoMap fun (lo lemma) "V"++") noPrep"),
   ("V2V"    , \morphoMap fun lemma -> "mkV2V ("++look morphoMap fun (lo lemma) "V"++") noPrep noPrep"),

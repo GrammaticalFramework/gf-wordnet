@@ -20555,7 +20555,7 @@ waistband_N	7946819;Waistband;commons/9/98/Fold_Up.jpg
 waistcoat_N	305133;Waistcoat;commons/9/92/Waistcoat.jpg
 waiter_1_N	309917;Waiting_staff;commons/a/a6/Annie_O%27Black_1973.jpg
 waiting_room_N	250302;Waiting_room;commons/2/2a/UDT-Waiting_room.JPG
-wake_2_N	33189;Wake_Island;commons/4/44/Wake_Island_NASA_photo_map.jpg
+wake_PN	33189;Wake_Island;commons/4/44/Wake_Island_NASA_photo_map.jpg
 wake_3_N	223993;Wake;commons/5/5c/Fjordn_surface_wave_boat.jpg
 wake_4_N	1505399;Lying_in_state;commons/3/34/Philip_IV_of_France_lying_in_state.jpg	1418332;Wake_(ceremony);commons/3/3d/Viewing_%28museum_display%29.JPG
 wakefield_PN	152098;Wakefield;commons/2/2d/Wakefield-1.jpg

@@ -1368,7 +1368,7 @@ gfwordnet.onclick_close_container_button = function(event) {
     close_button.style.display = "none";
 	gfwordnet.init_canvas(tab,container,context_size_range);
 }
-gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket) {
+gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket,click_on_all_levels) {
 	if (select_bracket == null) {
 		select_bracket = gfwordnet.select_bracket;
 	}
@@ -1389,7 +1389,7 @@ gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket
 					count++;
 					element = element.nextElementSibling;
 				}
-				if (count > 1)
+				if (click_on_all_levels || count > 1)
 					selected = false;
 			}
 

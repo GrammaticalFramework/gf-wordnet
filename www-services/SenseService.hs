@@ -21,7 +21,7 @@ main = do
   bigram_total <- runDaison db ReadOnlyMode $ do
     query sumRows
           [c*c
-             | (ex_id,ex) <- from examples everything
+             | (ex_id,(ex,_)) <- from examples everything
              , let c = length (exprFunctions ex)]
 -- #ifndef mingw32_HOST_OS
 --                   runFastCGIConcurrent' forkIO 100 (cgiMain db)
@@ -86,7 +86,7 @@ cgiMain db bigram_total = do
         ctxt <- query (groupRowsWith (+) 0)
                       [(lex_id', 1/(lex_prob lex * lex_prob lex' * fromIntegral bigram_total))
                           | (_,lex) <- fromIndex lexemes_fun (at lex_id)
-                          , (ex_id,ex) <- fromIndex examples_fun (at lex_id)
+                          , (ex_id,(ex,_)) <- fromIndex examples_fun (at lex_id)
                           , lex_id' <- anyOf (exprFunctions ex)
                           , lex_id' /= lex_id
                           , (_,lex') <- fromIndex lexemes_fun (at lex_id')]
@@ -146,8 +146,8 @@ cgiMain db bigram_total = do
                                                                                   ]
                                                                             | domain_id <- anyOf domain_ids
                                                                             , d <- from domains (at domain_id)],
-                                                     examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)],
-                                                     sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)],
+                                                     examples  <- select [ex | ex_id <- anyOf ex_ids, ex <- from examples (at ex_id)],
+                                                     sexamples <- select [ex | (id,ex) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)],
                                                      ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id) <- anyOf ptrs0, lex <- from lexemes (at id)],
                                                      frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                             | frame_id <- anyOf fs
@@ -215,8 +215,8 @@ cgiMain db bigram_total = do
                                    ]
                                | domain_id <- anyOf domain_ids
                                , d <- from domains (at domain_id)]
-      examples  <- select [e | ex_id <- anyOf ex_ids, e <- from examples (at ex_id)]
-      sexamples <- select [e | (id,e) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
+      examples  <- select [ex | ex_id <- anyOf ex_ids, ex <- from examples (at ex_id)]
+      sexamples <- select [ex | (id,ex) <- fromIndex examples_fun (at lex_id), not (elem id ex_ids)]
 
       ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id) <- anyOf ptrs0, lex <- from lexemes (at id)]
 
@@ -271,11 +271,16 @@ cgiMain db bigram_total = do
                          ("match", showJSON True),
                          ("domains",  showJSON domains),
                          ("images",  showJSON images),
-                         ("examples", showJSON (map (showExpr []) examples)),
-                         ("secondary_examples", showJSON (map (showExpr []) sexamples)),
+                         ("examples", showJSON (map mkExObj examples)),
+                         ("secondary_examples", showJSON (map mkExObj sexamples)),
                          ("antonyms", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Antonym,id,status) <- ptrs]),
                          ("derived", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Derived,id,status) <- ptrs])
                          ])
+
+    mkExObj (e,finsts) =
+      makeObj [("expr", showJSON (showExpr [] e))
+              ,("frames", showJSON finsts)
+              ]
 
     mkStatusObj status =
       makeObj [(lang,showJSON (map toLower (show s))) | (lang,s) <- status]

@@ -148,21 +148,24 @@ parseCncSyn lang l =
 
 data Entry
   = ClassE String [(String,[String])]
-  | FrameE   Expr String [Fun]
-  | ExampleE Expr [Fun]
+  | FrameE   (Key Frame) Expr String [Fun]
+  | ExampleE Expr [Fun] [FrameInstance]
 
-parseExamples []                            = []
+parseExamples []                               = []
 parseExamples (l1:l2:l3:l4:l5:l6:ls)
   | take 4 l1 == "abs:" && take 4 l5 == "key:" =
-      let (w:ws) = words (drop 5 l5)
-          fns    = take (read w) ws
+      let (w:ws)      = words (drop 5 l5)
+          (fns,_:ws') = splitAt (read w) ws
+          finsts      = map parseFrameInstance ws'
       in case readExpr (drop 5 l1) of
-           Just e  -> ExampleE e fns : parseExamples ls
+           Just e  -> ExampleE e fns finsts : parseExamples ls
            Nothing -> trace ("FAILED: "++l1) (parseExamples ls)
 parseExamples (l1:l2:l3:ls)
   | take 4 l1 == "frm:" && take 4 l2 == "sem:" && take 4 l3 == "key:" =
       case readExpr (drop 5 l1) of
-        Just e  -> FrameE e (drop 5 l2) (words (drop 5 l3)) : parseExamples ls
+        Just e  -> let w:funs = words (drop 5 l3)
+                       id = read (tail (dropWhile (/='/') w))
+                   in FrameE id e (drop 5 l2) funs : parseExamples ls
         Nothing -> trace ("FAILED: "++l1) (parseExamples ls)
 parseExamples (l1:ls)
   | take 6 l1 == "class:"                      =
@@ -172,6 +175,17 @@ parseExamples (l1:ls)
     toVar l = let (v:cs) = words l in (v,cs)
 parseExamples (l:ls)                        = parseExamples ls
 
+parseFrameInstance s = (id, fs)
+  where
+    (_ ,'/':s1) = break (=='/') s
+    (s2,'@':'{':s3) = break (=='@') s1
+
+    id = read s2
+    fs = map parseRole (split ',' (init s3))
+
+parseRole s = (s1,read s2)
+  where
+    (s1 ,':':s2) = break (==':') s
 
 insertExamples ps []                    = do return []
 insertExamples ps (ClassE name vs : es) = case ps of
@@ -180,12 +194,14 @@ insertExamples ps (ClassE name vs : es) = case ps of
                                             ((name',id'):ps) | take (length name') name == name' -> do id <- insert_ classes (Class name vs (Just id'))
                                                                                                        insertExamples ((name,id) : (name',id') : ps) es
                                                              | otherwise                         -> do insertExamples ps (ClassE name vs : es)
-insertExamples ps (FrameE e sem fns : es)=do key <- case ps of
-                                                      (_,class_id):_ -> insert_ frames (Frame class_id (snd (last ps)) e sem)
+insertExamples ps (FrameE id e sem fns : es)
+                                        = do key <- case ps of
+                                                      (_,class_id):_ -> store frames (Just id) (Frame class_id (snd (last ps)) e sem)
                                                       _              -> fail "Frame without class"
                                              xs  <- insertExamples ps es
                                              return ([(fn,([],[key])) | fn <- fns] ++ xs)
-insertExamples ps (ExampleE e fns : es) = do key <- insert_ examples e
+insertExamples ps (ExampleE e fns finsts : es)
+                                        = do key <- insert_ examples (e, finsts)
                                              xs  <- insertExamples ps es
                                              return ([(fn,([key],[])) | fn <- fns] ++ xs)
 
@@ -272,7 +288,7 @@ insertDomains !ids parent (Node (name,is_dim) children:ts) = do
   insertDomains ids parent ts
 
 parseImages ls = 
-  Map.fromList [case tsv l of {(id:urls) -> (id,map (\s -> case cosv s of {[_,pg,im] -> (pg,im); _ -> error l}) urls)} | l <- ls]
+  Map.fromList [case split '\t' l of {(id:urls) -> (id,map (\s -> case split ';' s of {[_,pg,im] -> (pg,im); _ -> error l}) urls)} | l <- ls]
 
 accumCounts m (lang,status) = Map.alter (Just . add) lang m
   where
@@ -307,14 +323,8 @@ renderStatus cs =
                 "<text x=\""++show (x+3)++"\" y=\""++show (y+15)++"\">"++lang++"</text>"
           in (text++s,x+35,y)
 
-tsv :: String -> [String]
-tsv "" = []
-tsv cs =
-  let (x,cs1) = break (=='\t') cs
-  in x : if null cs1 then [] else tsv (tail cs1)
-
-cosv :: String -> [String]
-cosv "" = []
-cosv cs =
-  let (x,cs1) = break (==';') cs
-  in x : if null cs1 then [] else cosv (tail cs1)
+split :: Char -> String -> [String]
+split c "" = []
+split c cs =
+  let (x,cs1) = break (==c) cs
+  in x : if null cs1 then [] else split c (tail cs1)

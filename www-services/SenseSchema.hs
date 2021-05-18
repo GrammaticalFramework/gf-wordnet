@@ -92,6 +92,8 @@ data Frame
       }
    deriving (Data,Show)
 
+type FrameInstance = (Key Frame,[(String,FId)])
+
 synsets :: Table Synset
 synsets = table "synsets"
 
@@ -121,12 +123,12 @@ lexemes_domain = listIndex lexemes "domain" domain_ids
 lexemes_frame :: Index Lexeme (Key Frame)
 lexemes_frame = listIndex lexemes "frames" frame_ids
 
-examples :: Table Expr
+examples :: Table (Expr,[FrameInstance])
 examples = table "examples"
              `withIndex` examples_fun
 
-examples_fun :: Index Expr Fun
-examples_fun = listIndex examples "fun" (nub . exprFunctions)
+examples_fun :: Index (Expr,[FrameInstance]) Fun
+examples_fun = listIndex examples "fun" (nub . exprFunctions . fst)
 
 classes :: Table Class
 classes = table "classes"

@@ -216,7 +216,7 @@ cgiMain db = do
                                                                ["ParseBul","ParseSwe"])
                            runDaison db ReadWriteMode $ do
                              insert_ updates (UpdateExample user line_no def)
-                             ex_id <- insert_ examples e
+                             ex_id <- insert_ examples (e,[])
                              st <- fmap concat (mapM (updateLexeme ex_id lex_defs) fns)
                              c  <- query countRows (from updates_usr everything)
                              return (showJSON (c,st))

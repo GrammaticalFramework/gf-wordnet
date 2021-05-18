@@ -279,8 +279,10 @@ cgiMain db bigram_total = do
 
     mkExObj (e,finsts) =
       makeObj [("expr", showJSON (showExpr [] e))
-              ,("frames", showJSON finsts)
+              ,("frames", showJSON (map (\(frame_id,roles) -> (frame_id,mkRolesObj roles)) finsts))
               ]
+
+    mkRolesObj roles = makeObj (map (\(role,fid) -> (role,showJSON fid)) roles)
 
     mkStatusObj status =
       makeObj [(lang,showJSON (map toLower (show s))) | (lang,s) <- status]

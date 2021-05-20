@@ -1472,7 +1472,8 @@ gfwordnet.select_bracket = function (table,colspan,fid,lex_id,frames) {
 			if (glosses.length == 0) {
 				table.removeChild(table.lastElementChild);
 			} else {
-				gloss_element.appendChild(text(lex_id+": "+glosses[0]));
+				gloss_element.innerHTML = "";
+                gloss_element.appendChild(text(lex_id+": "+glosses[0]));
 
                 if (selected_frame) {
                     gloss_element.appendChild(node("br", {}, []));

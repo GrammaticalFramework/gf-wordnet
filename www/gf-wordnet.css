@@ -317,3 +317,46 @@ table.tooltiptext td {
 .frame-link:hover .tooltiptext {
   visibility: visible;
 }
+
+
+.role-label-ADJ { color: slategray; }
+.role-label-Adv { color: slategray; }
+.role-label-Agent { color: red; }
+.role-label-Asset { color: darkorange; }
+.role-label-Attribute { color: darkorange; }
+.role-label-Beneficiary { color: slategray; }
+.role-label-Cause { color: darkorange; }
+.role-label-CoAgent { color: darkorange; }
+.role-label-CoPatient { color: slategray; }
+.role-label-CoTheme { color: slategray; }
+.role-label-DestPrep { color: darkorange; }
+.role-label-Destination { color: green; }
+.role-label-Experiencer { color: green; }
+.role-label-Extent { color: slategray; }
+.role-label-FromPrep { color: slategray; }
+.role-label-Goal { color: slategray; }
+.role-label-InitialLocation { color: RosyBrown; }
+.role-label-Instrument { color: darkorange; }
+.role-label-Location { color: green; }
+.role-label-Manner { color: slategray; }
+.role-label-Material { color: green; }
+.role-label-PathPrep { color: slategray; }
+.role-label-Patient { color: blue; }
+.role-label-Pivot { color: slategray; }
+.role-label-Predicate { color: slategray; }
+.role-label-Prep { color: violet; }
+.role-label-Prep1 { color: slategray; }
+.role-label-Prep2 { color: green; }
+.role-label-Product { color: RosyBrown; }
+.role-label-Recipient { color: slategray; }
+.role-label-Reflexive { color: darkorange; }
+.role-label-Result { color: brown; }
+.role-label-Source { color: RosyBrown; }
+.role-label-SrcPrep { color: blue; }
+.role-label-Stimulus { color: RosyBrown; }
+.role-label-Theme { color: magenta; }
+.role-label-Time { color: slategray; }
+.role-label-ToPrep { color: darkorange; }
+.role-label-Topic { color: green; }
+.role-label-Trajectory { color: darkorange; }
+.role-label-Value { color: darkorange; }

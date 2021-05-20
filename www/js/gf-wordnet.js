@@ -635,8 +635,8 @@ gfwordnet.onclick_cell = function (cell) {
 		gfwordnet.init_wordcloud(container,context_size_range);
 	}
 	function extract_linearization(lins) {
-		const table = gfwordnet.build_alignment_table(lins);
-		this.parentNode.insertBefore(table, this.nextSibling);
+		const table = gfwordnet.build_alignment_table(lins,this.frames);
+		this.header.parentNode.insertBefore(table, this.header.nextSibling);
 	}
 	function extract_linearization_synonym(lins) {
 		for (var i in lins) {
@@ -866,14 +866,16 @@ gfwordnet.onclick_cell = function (cell) {
 			var header = node("h1",{},[text("Examples")]);
 			details.appendChild(header);
 			for (var i in lex_def.examples) {
-				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i]),bind(extract_linearization,header));
+				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i].expr),
+                                       bind(extract_linearization,{header: header, frames: lex_def.examples[i].frames}));
 			}
 		}
 		if (lex_def.secondary_examples.length > 0) {
 			var header = node("h1",{},[text("Secondary Examples")]);
 			details.appendChild(header);
 			for (var i in lex_def.secondary_examples) {
-				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i]),bind(extract_linearization,header));
+				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i].expr),
+                                       bind(extract_linearization,{header: header, frames: lex_def.secondary_examples[i].frames}));
 			}
 		}
 		
@@ -1368,7 +1370,7 @@ gfwordnet.onclick_close_container_button = function(event) {
     close_button.style.display = "none";
 	gfwordnet.init_canvas(tab,container,context_size_range);
 }
-gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket,click_on_all_levels) {
+gfwordnet.build_alignment_table = function(lins,frames,colspan,skip_lang,select_bracket,click_on_all_levels) {
 	if (select_bracket == null) {
 		select_bracket = gfwordnet.select_bracket;
 	}
@@ -1402,7 +1404,7 @@ gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket
 		let lex_id = null;
 		if (bracket == this)
 			lex_id = bracket.dataset.fun;
-		select_bracket(parent,colspan,(bracket == null) ? null : bracket.dataset.fid, lex_id);
+		select_bracket(parent,colspan,(bracket == null) ? null : bracket.dataset.fid, lex_id, frames);
 
 		event.stopPropagation();
 	}
@@ -1449,7 +1451,15 @@ gfwordnet.build_alignment_table = function(lins,colspan,skip_lang,select_bracket
 	}
 	return node("table",{class: "result"},rows);
 }
-gfwordnet.select_bracket = function (table,colspan,fid,lex_id) {
+gfwordnet.select_bracket = function (table,colspan,fid,lex_id,frames) {
+    let selected_frame = null;
+    for (let frame of frames) {
+        if (fid == frame[1]["Verb"]) {
+            selected_frame = frame;
+            break;
+        }
+    }
+
 	if (lex_id != null) {
 		gfwordnet.sense_call("gloss_id="+lex_id, function(glosses) {
 			let gloss_element = table.lastElementChild.firstElementChild;
@@ -1462,7 +1472,25 @@ gfwordnet.select_bracket = function (table,colspan,fid,lex_id) {
 			if (glosses.length == 0) {
 				table.removeChild(table.lastElementChild);
 			} else {
-				gloss_element.innerHTML = lex_id+": "+glosses[0];
+				gloss_element.appendChild(text(lex_id+": "+glosses[0]));
+
+                if (selected_frame) {
+                    gloss_element.appendChild(node("br", {}, []));
+                    gloss_element.appendChild(node("br", {}, []));
+
+                    let first = true;
+                    gloss_element.appendChild(node("b", {}, [text("roles: ")]));
+                    for (let role in selected_frame[1]) {
+                        if (role == "Verb" || role == "Prep")
+                            continue;
+
+                        if (first)
+                            first = false;
+                        else
+                            gloss_element.appendChild(text(", "));
+                        gloss_element.appendChild(node("span", {"class": "role-label-"+role}, [text(role)]))
+                    }
+                }
 			}
 		});
 	} else {
@@ -1471,19 +1499,55 @@ gfwordnet.select_bracket = function (table,colspan,fid,lex_id) {
 		}
 	}
 
-	function select(element,fid) {
+	function select(element) {
 		let child = element.firstElementChild;
 		while (child != null) {
 			if (fid != null && fid == child.dataset.fid)
 				child.classList.add("selected_bracket");
 			else
 				child.classList.remove("selected_bracket");
-			select(child,fid);
+
+            child.classList.remove("role-label-Actor");
+            child.classList.remove("role-label-Agent");
+            child.classList.remove("role-label-CoAgent");
+            child.classList.remove("role-label-Theme");
+            child.classList.remove("role-label-Location");
+            child.classList.remove("role-label-Destination");
+            child.classList.remove("role-label-Source");
+            child.classList.remove("role-label-Patient");
+            child.classList.remove("role-label-Experiencer");
+            child.classList.remove("role-label-Stimulus");
+            child.classList.remove("role-label-Asset");
+            child.classList.remove("role-label-Goal");
+            child.classList.remove("role-label-Cause");
+            child.classList.remove("role-label-Adv");
+            child.classList.remove("role-label-Attribute");
+            child.classList.remove("role-label-Beneficiary");
+            child.classList.remove("role-label-Extend");
+            child.classList.remove("role-label-Instrument");
+            child.classList.remove("role-label-Material");
+            child.classList.remove("role-label-Product");
+            child.classList.remove("role-label-Predicate");
+            child.classList.remove("role-label-Recipient");
+            child.classList.remove("role-label-Time");
+            child.classList.remove("role-label-Topic");
+
+            if (selected_frame) {
+                for (let role in selected_frame[1]) {
+                    if (role == "Verb" || role == "Prep")
+                        continue;
+
+                    if (child.dataset.fid == selected_frame[1][role])
+                        child.classList.add("role-label-"+role);
+                }
+            }
+
+			select(child);
 			child = child.nextElementSibling;
 		}
 	}
 
-	select(table,fid);
+	select(table);
 }
 gfwordnet.onmove_dialog = function(event) {
 	if (event.target.tagName != "TABLE")

@@ -124,7 +124,7 @@
 				gfwordnet.selection.lex_ids = {};
 
 				function extract_linearization(lins) {
-					const table = gfwordnet.build_alignment_table(lins,null,null,select_bracket);
+					const table = gfwordnet.build_alignment_table(lins,[],null,null,select_bracket);
 					clear(element("linearization"))
 					element("linearization").appendChild(table);
 				}

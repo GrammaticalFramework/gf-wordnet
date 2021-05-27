@@ -3891,6 +3891,7 @@ lin antagonize_1_V2 = variants {} ;
 lin antagonize_2_V2 = variants {} ;
 lin antapex_N = variants {} ;
 lin antarctic_A = variants {} ;
+lin antarctica_PN = variants {} ;
 lin antbird_1_N = variants {} ;
 lin ante_N = variants {} ;
 lin ante_meridiem_Adv = variants {} ;

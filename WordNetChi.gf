@@ -3891,6 +3891,7 @@ lin antagonize_1_V2 = mkV2 (mkV "使与自己为敌") ; --unchecked
 lin antagonize_2_V2 = mkV2 (mkV "反对") ; --unchecked
 lin antapex_N = mkN "背点" ; --unchecked
 lin antarctic_A = mkA "南极+的" ; --unchecked
+lin antarctica_PN = variants {} ;
 lin antbird_1_N = mkN "蚁鸟" ; --unchecked
 lin ante_N = mkN "赌注" ; --unchecked
 lin ante_meridiem_Adv = variants {} ;

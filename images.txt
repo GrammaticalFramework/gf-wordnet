@@ -21516,3 +21516,4 @@ grain_5_N	169946;Grain_(unit);commons/f/f4/Gold_grain_size_comparison.jpg
 grain_6_N	169946;Grain_(unit);commons/f/f4/Gold_grain_size_comparison.jpg
 quaestor_N	25225;Quaestor;commons/9/98/Roman_SPQR_banner.svg
 antarctica_PN	18959138;Antarctica;commons/f/f2/Antarctica_%28orthographic_projection%29.svg
+archangel_2_N	840306;Angelica_archangelica;commons/3/3b/Koehler1887-GardenAngelica.jpg

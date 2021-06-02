@@ -17880,7 +17880,7 @@ sphere_6_N	27859;Sphere;commons/7/7e/Sphere_wireframe_10deg_6r.svg
 sphericity_N	2628049;Sphericity;commons/c/c1/Rounding_%26_sphericity_EN.svg
 spheroid_N	82365;Spheroid;commons/e/e6/Spheroids.svg
 spherometer_N	2551406;Spherometer;commons/4/4e/Spherometer.jpg
-sphinx_2_N	83076;Sphinx;commons/f/f6/Great_Sphinx_of_Giza_-_20080716a.jpg
+sphinx_3_N	83076;Sphinx;commons/f/f6/Great_Sphinx_of_Giza_-_20080716a.jpg
 sphygmomanometer_N	412531;Sphygmomanometer;commons/3/3f/2017_Sfigmomanometr_elektroniczny.jpg
 spice_1_N	26897;Spice;commons/b/b6/Spices1.jpg
 spicebush_2_N	2267848;Calycanthus;commons/5/5b/Floridus1f.UME.jpg

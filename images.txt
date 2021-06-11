@@ -21519,3 +21519,4 @@ antarctica_PN	18959138;Antarctica;commons/f/f2/Antarctica_%28orthographic_projec
 archangel_2_N	840306;Angelica_archangelica;commons/3/3b/Koehler1887-GardenAngelica.jpg
 halcyon_2_N	7512631;Halcyon_(genus);commons/b/b2/Woodland_Kingfisher_%28Halcyon_senegalensis%29_South_Africa.jpg
 halcyon_PN	78454;Alcyone_and_Ceyx;commons/6/6b/Alcyone_and_Ceyx_transformed_into_Halycons_%28cropped%29.jpg
+sphincter_N	196850;Sphincter;commons/9/99/Ileocaecal_sphincter.png

@@ -105795,7 +105795,6 @@ lin whipsaw_1_V2 = mkV2 (mkV "使两头吃亏") ; --unchecked
 lin whipsaw_2_V2 = variants {} ;
 lin whipstitch_N = variants {} ;
 lin whiptail_N = variants {} ;
-lin whir_N = variants {} ;
 lin whirl_1_N = variants {} ;
 lin whirl_2_N = mkN "回旋" ; --unchecked
 lin whirl_3_N = mkN "尝试" ; --unchecked

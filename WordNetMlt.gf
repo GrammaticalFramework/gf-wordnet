@@ -105802,7 +105802,6 @@ lin whipsaw_1_V2 = variants {} ;
 lin whipsaw_2_V2 = variants {} ;
 lin whipstitch_N = variants {} ;
 lin whiptail_N = variants {} ;
-lin whir_N = mkN "għagħa" ; --guessed
 lin whirl_1_N = mkN "tidwir" ; --guessed
 lin whirl_2_N = mkN "tidwir" ; --guessed
 lin whirl_3_N = mkN "tidwir" ; --guessed

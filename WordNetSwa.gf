@@ -105795,7 +105795,6 @@ lin whipsaw_1_V2 = variants {} ;
 lin whipsaw_2_V2 = variants {} ;
 lin whipstitch_N = variants {} ;
 lin whiptail_N = variants {} ;
-lin whir_N = variants {} ;
 lin whirl_1_N = variants {} ;
 lin whirl_2_N = variants {} ;
 lin whirl_3_N = variants {} ;

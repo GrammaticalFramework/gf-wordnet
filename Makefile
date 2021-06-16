@@ -101,7 +101,7 @@ endif
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@
 
-build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
+build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/PatternMatching.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
 ifneq ($(SERVER), NO)
 	rm -f $(SERVER_PATH)/www/SenseService.fcgi

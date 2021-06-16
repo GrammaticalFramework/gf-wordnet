@@ -3,6 +3,7 @@ import PGF2
 import Database.Daison
 import SenseSchema
 import Interval
+import PatternMatching
 import qualified Data.Map as Map
 import qualified Data.Set as Set
 import qualified Data.Vector as Vector
@@ -42,6 +43,7 @@ cgiMain db bigram_total = do
   s9    <- fmap (\xs -> [value | ("domain",value) <- xs]) getInputs
   mb_s10<- getInput "list_top_classes"
   mb_s11<- getInput "class_id"
+  s12   <- fmap (\xs -> [value | ("pattern_match",value) <- xs]) getInputs
   case mb_s1 of
     Just s  -> do json <- liftIO (doQuery (words s))
                   outputJSONP json
@@ -66,7 +68,13 @@ cgiMain db bigram_total = do
                                                                                          Nothing -> case mb_s11 of
                                                                                                       Just id -> do json <- liftIO (doClassQuery (read id))
                                                                                                                     outputJSONP json
-                                                                                                      Nothing -> outputNothing
+                                                                                                      Nothing -> case s12 of
+                                                                                                                   _:_ -> do body <- getBody
+                                                                                                                             case decode body of
+                                                                                                                               Ok pattern -> do json <- liftIO (doPatternMatch s12 pattern)
+                                                                                                                                                outputJSONP json
+                                                                                                                               Error msg   -> do fail msg
+                                                                                                                   []  -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runDaison db ReadOnlyMode $
@@ -209,6 +217,19 @@ cgiMain db bigram_total = do
              | (id,frm) <- fromIndex frames_class (at class_id),
                lexemes <- select (fromIndex lexemes_frame (at id))]
 
+    doPatternMatch vars pattern = do
+      res <- runDaison db ReadOnlyMode $ do
+               select [makeObj [(var,mkSenseObj (binding2obj value))
+                                    | var <- vars
+                                    , Just value <- [Map.lookup var env]]
+                          | env <- matchPattern pattern]
+      return (showJSON res)
+      where
+        binding2obj (LexemeValue _ lexeme mb_synset) =
+          (fromMaybe 0 (synset lexeme),(maybe "" gloss mb_synset,[(lex_fun lexeme,status lexeme,[],Nothing)]))
+        binding2obj (SynsetValue key synset lexemes) =
+          (key,(gloss synset,[(lex_fun lexeme,status lexeme,[],Nothing) | (_,lexeme) <- lexemes]))
+
     getGloss senses (_,Lexeme lex_id _ status mb_sense_id domain_ids images ex_ids _ ptrs0) = do
       domains   <- select [makeObj [ ("id",showJSON domain_id)
                                    , ("name",showJSON (domain_name d))
@@ -264,28 +285,30 @@ cgiMain db bigram_total = do
 
     mkInfObj status frames info =
       makeObj (("status", mkStatusObj status) :
-               ("frames", showJSON [(cid,bcid,mkFrameObj frame) | (cid,bcid,frame) <- frames]) :
+               ("frames", showJSON [(cid::String,bcid::Key Frame,mkFrameObj frame) | (cid,bcid,frame) <- frames]) :
                case info of
                  Nothing -> []
                  Just (domains,images,examples,sexamples,ptrs) -> [
                          ("match", showJSON True),
-                         ("domains",  showJSON domains),
-                         ("images",  showJSON images),
+                         ("domains",  showJSON (domains :: [JSValue])),
+                         ("images",  showJSON (images :: [(String,String)])),
                          ("examples", showJSON (map mkExObj examples)),
                          ("secondary_examples", showJSON (map mkExObj sexamples)),
                          ("antonyms", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Antonym,id,status) <- ptrs]),
                          ("derived", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Derived,id,status) <- ptrs])
                          ])
 
+
+
     mkExObj (e,finsts) =
       makeObj [("expr", showJSON (showExpr [] e))
-              ,("frames", showJSON (map (\(frame_id,roles) -> (frame_id,mkRolesObj roles)) finsts))
+              ,("frames", showJSON (map (\(frame_id,roles) -> (frame_id::Key Frame,mkRolesObj roles)) finsts))
               ]
 
-    mkRolesObj roles = makeObj (map (\(role,fid) -> (role,showJSON fid)) roles)
+    mkRolesObj roles = makeObj (map (\(role,fid) -> (role,showJSON (fid :: FId))) roles)
 
     mkStatusObj status =
-      makeObj [(lang,showJSON (map toLower (show s))) | (lang,s) <- status]
+      makeObj [(lang,showJSON (map toLower (show (s :: Status)))) | (lang,s) <- status]
 
     mkClassObj cls frames subclasses =
       makeObj [("name",       showJSON (name cls))
@@ -295,9 +318,9 @@ cgiMain db bigram_total = do
               ]
 
     mkFrameObj (id,pattern,semantics,mb_funs) =
-      makeObj (("id",        showJSON id) :
+      makeObj (("id",        showJSON (id :: Key Frame)) :
                ("pattern",   showJSON (showExpr [] pattern)) :
-               ("semantics", showJSON semantics) :
+               ("semantics", showJSON (semantics :: String)) :
                case mb_funs of
                  Nothing -> []
                  Just funs -> [("fun", showJSON (funs :: [String]))]

@@ -40,6 +40,25 @@ data PointerSymbol
   | Participle
   deriving (Data,Eq,Show)
 
+inversePointer Antonym             = Just Antonym
+inversePointer Hypernym            = Just Hyponym
+inversePointer InstanceHypernym    = Just InstanceHyponym
+inversePointer Hyponym             = Just Hypernym
+inversePointer InstanceHyponym     = Just InstanceHypernym
+inversePointer MemberHolonym       = Just MemberMeronym
+inversePointer SubstanceHolonym    = Just SubstanceMeronym
+inversePointer PartHolonym         = Just PartMeronym
+inversePointer MemberMeronym       = Just MemberHolonym
+inversePointer SubstanceMeronym    = Just SubstanceHolonym
+inversePointer PartMeronym         = Just PartHolonym
+inversePointer Attribute           = Just Attribute
+inversePointer (DomainOfSynset dt) = Just (MemberOfDomain dt)
+inversePointer (MemberOfDomain dt) = Just (DomainOfSynset dt)
+inversePointer VerbGroup           = Just VerbGroup
+inversePointer SimilarTo           = Just SimilarTo
+inversePointer Derived             = Just Derived
+inversePointer _                   = Nothing
+
 data Synset
   = Synset
       { synsetOffset :: SynsetOffset

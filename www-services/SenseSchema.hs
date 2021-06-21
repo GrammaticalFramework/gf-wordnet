@@ -14,7 +14,13 @@ data DomainType
   = Topic
   | Region
   | Usage
-  deriving (Data,Eq,Show)
+  deriving (Data,Eq,Show,Read)
+
+data HolonymyType
+  = Member
+  | Substance
+  | Part
+  deriving (Data,Eq,Show,Read)
 
 data PointerSymbol
   = Antonym
@@ -22,12 +28,8 @@ data PointerSymbol
   | InstanceHypernym
   | Hyponym
   | InstanceHyponym
-  | MemberHolonym
-  | SubstanceHolonym
-  | PartHolonym
-  | MemberMeronym
-  | SubstanceMeronym
-  | PartMeronym
+  | Holonym HolonymyType
+  | Meronym HolonymyType
   | Attribute
   | DomainOfSynset DomainType
   | MemberOfDomain DomainType
@@ -38,19 +40,15 @@ data PointerSymbol
   | SimilarTo
   | Derived
   | Participle
-  deriving (Data,Eq,Show)
+  deriving (Data,Eq,Show,Read)
 
 inversePointer Antonym             = Just Antonym
 inversePointer Hypernym            = Just Hyponym
 inversePointer InstanceHypernym    = Just InstanceHyponym
 inversePointer Hyponym             = Just Hypernym
 inversePointer InstanceHyponym     = Just InstanceHypernym
-inversePointer MemberHolonym       = Just MemberMeronym
-inversePointer SubstanceHolonym    = Just SubstanceMeronym
-inversePointer PartHolonym         = Just PartMeronym
-inversePointer MemberMeronym       = Just MemberHolonym
-inversePointer SubstanceMeronym    = Just SubstanceHolonym
-inversePointer PartMeronym         = Just PartHolonym
+inversePointer (Holonym ht)        = Just (Meronym ht)
+inversePointer (Meronym ht)        = Just (Holonym ht)
 inversePointer Attribute           = Just Attribute
 inversePointer (DomainOfSynset dt) = Just (MemberOfDomain dt)
 inversePointer (MemberOfDomain dt) = Just (DomainOfSynset dt)

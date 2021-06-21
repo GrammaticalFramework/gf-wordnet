@@ -224,12 +224,12 @@ parseTaxonomy l
                 "@i" -> InstanceHypernym 
                 "~"  -> Hyponym 
                 "~i" -> InstanceHyponym 
-                "#m" -> MemberHolonym 
-                "#s" -> SubstanceHolonym 
-                "#p" -> PartHolonym 
-                "%m" -> MemberMeronym 
-                "%s" -> SubstanceMeronym 
-                "%p" -> PartMeronym 
+                "#m" -> Holonym Member
+                "#s" -> Holonym Substance
+                "#p" -> Holonym Part
+                "%m" -> Meronym Member
+                "%s" -> Meronym Substance
+                "%p" -> Meronym Part
                 "="  -> Attribute 
                 ";c" -> DomainOfSynset Topic 
                 "-c" -> MemberOfDomain Topic 

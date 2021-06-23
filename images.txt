@@ -17354,7 +17354,6 @@ singing_2_N	12616;Gossip;commons/7/76/Pieter_Brueghel_the_Younger_-_Proverbs_%28
 single_breasted_A	3296326;Single-breasted;commons/2/2e/Single-Double-Breasted.svg
 singlestick_N	874623;Singlestick;commons/1/10/Singlestick_practice_on_the_U.S.S._New_York.jpg
 singlet_N	2399951;Undershirt;commons/6/67/Vest.jpg	2377843;Sleeveless_shirt;commons/c/cb/Man_in_A_shirt_at_the_Brooklyn_Book_Festival.jpg
-singularity_2_N	54244;Gravitational_singularity;commons/0/03/Black_hole_lensing_web.gif
 sinhala_N	366377;Sinhala_language;commons/0/07/%E0%B7%83%E0%B7%92%E0%B6%82%E0%B7%84%E0%B6%BD_in_Noto_Serif_Sinhala_Black.svg
 sinhalese_2_N	366377;Sinhala_language;commons/0/07/%E0%B7%83%E0%B7%92%E0%B6%82%E0%B7%84%E0%B6%BD_in_Noto_Serif_Sinhala_Black.svg
 sinhalese_1_N	29359;Sinhalese_people;en/a/aa/Sinhalese_of_India%2C_Mumbai%2C_India%2C_1897.jpg

@@ -2026,7 +2026,6 @@ blurb_N	907227;Blurb;commons/9/9c/Blurbing.jpg
 blush_1_N	439380;Flushing_(physiology);commons/e/ec/The_Alcohol_Flushing_Response.png
 blush_1_V	240889;Blushing;commons/0/01/Blushing_girl_0001.jpg
 blush_2_V	240889;Blushing;commons/0/01/Blushing_girl_0001.jpg
-blushful_2_A	1157828;ROSAT;commons/7/70/Delta_6920-10_launch_with_ROSAT.jpg
 bo'ness_PN	358240;Bo%27ness;commons/5/56/Bo%27ness%2C_view_over_town_-_geograph.org.uk_-_448349.jpg
 boa_1_N	378941;Boa_(genus);commons/a/a7/Boa_constrictor_%282%29.jpg
 boa_2_N	378941;Boa_(genus);commons/a/a7/Boa_constrictor_%282%29.jpg

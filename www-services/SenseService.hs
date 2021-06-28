@@ -55,7 +55,7 @@ cgiMain db bigram_total = do
                                   Just lex_id -> do json <- liftIO (doGloss lex_id)
                                                     outputJSONP json
                                   Nothing     -> case mb_s4 of
-                                                   Just lex_id -> do json <- liftIO (doGloss lex_id)
+                                                   Just lex_id -> do json <- liftIO (doGlossSearch lex_id)
                                                                      outputJSONP json
                                                    Nothing     -> case mb_s7 of
                                                                     Just s  -> do json <- liftIO (doGeneralize (words s))

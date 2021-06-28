@@ -38,6 +38,7 @@ cgiMain db bigram_total = do
   mb_s1 <- getInput "lexical_ids"
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
+  mb_s4 <- getInput "depth"
   mb_s7 <- getInput "generalize_ids"
   mb_s8 <- getInput "list_domains"
   s9    <- fmap (\xs -> [value | ("domain",value) <- xs]) getInputs
@@ -48,7 +49,7 @@ cgiMain db bigram_total = do
     Just s  -> do json <- liftIO (doQuery (words s))
                   outputJSONP json
     Nothing -> case mb_s2 of
-                 Just lex_id -> do json <- liftIO (doContext lex_id)
+                 Just lex_id -> do json <- liftIO (doContext lex_id (fromMaybe 4 (fmap read mb_s4)))
                                    outputJSONP json
                  Nothing     -> case mb_s3 of
                                   Just lex_id -> do json <- liftIO (doGloss lex_id)
@@ -89,7 +90,7 @@ cgiMain db bigram_total = do
           lexemes <- select (fromIndex lexemes_fun (at lex_id))
           foldM getGloss senses lexemes
 
-    doContext lex_id = do
+    doContext lex_id depth = do
       runDaison db ReadOnlyMode $ do
         ctxt <- query (groupRowsWith (+) 0)
                       [(lex_id', 1/(lex_prob lex * lex_prob lex' * fromIntegral bigram_total))
@@ -102,7 +103,7 @@ cgiMain db bigram_total = do
         synsets <- select [synset_id
                              | (_,lex) <- fromIndex lexemes_fun (at lex_id)
                              , Just synset_id <- return (synset lex)]
-        graph <- foldM (crawlGraph 0 4) Map.empty synsets
+        graph <- foldM (crawlGraph 0 depth) Map.empty synsets
         return (makeObj [("context", showJSON (map mkFunProb (Map.toList ctxt)))
                         ,("synsets", showJSON synsets)
                         ,("graph",   makeObj [(show key,mkNode node) | (key,node) <- Map.toList graph])

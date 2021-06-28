@@ -38,6 +38,7 @@ cgiMain db bigram_total = do
   mb_s1 <- getInput "lexical_ids"
   mb_s2 <- getInput "context_id"
   mb_s3 <- getInput "gloss_id"
+  mb_s4 <- getInput "gloss_search"
   mb_s7 <- getInput "generalize_ids"
   mb_s8 <- getInput "list_domains"
   s9    <- fmap (\xs -> [value | ("domain",value) <- xs]) getInputs
@@ -53,28 +54,31 @@ cgiMain db bigram_total = do
                  Nothing     -> case mb_s3 of
                                   Just lex_id -> do json <- liftIO (doGloss lex_id)
                                                     outputJSONP json
-                                  Nothing     -> case mb_s7 of
-                                                   Just s  -> do json <- liftIO (doGeneralize (words s))
-                                                                 outputJSONP json
-                                                   Nothing -> case mb_s8 of
-                                                                Just _  -> do json <- liftIO doListDomains
-                                                                              outputJSONP json
-                                                                Nothing -> case map read s9 of
-                                                                             (d:ds) -> do json <- liftIO (doDomainQuery d ds)
-                                                                                          outputJSONP json
-                                                                             _      -> case mb_s10 of
-                                                                                         Just _  -> do json <- liftIO doListTopClasses
-                                                                                                       outputJSONP json
-                                                                                         Nothing -> case mb_s11 of
-                                                                                                      Just id -> do json <- liftIO (doClassQuery (read id))
-                                                                                                                    outputJSONP json
-                                                                                                      Nothing -> case s12 of
-                                                                                                                   _:_ -> do body <- getBody
-                                                                                                                             case decode body of
-                                                                                                                               Ok pattern -> do json <- liftIO (doPatternMatch s12 pattern)
-                                                                                                                                                outputJSONP json
-                                                                                                                               Error msg   -> do fail msg
-                                                                                                                   []  -> outputNothing
+                                  Nothing     -> case mb_s4 of
+                                                   Just lex_id -> do json <- liftIO (doGloss lex_id)
+                                                                     outputJSONP json
+                                                   Nothing     -> case mb_s7 of
+                                                                    Just s  -> do json <- liftIO (doGeneralize (words s))
+                                                                                  outputJSONP json
+                                                                    Nothing -> case mb_s8 of
+                                                                                 Just _  -> do json <- liftIO doListDomains
+                                                                                               outputJSONP json
+                                                                                 Nothing -> case map read s9 of
+                                                                                              (d:ds) -> do json <- liftIO (doDomainQuery d ds)
+                                                                                                           outputJSONP json
+                                                                                              _      -> case mb_s10 of
+                                                                                                          Just _  -> do json <- liftIO doListTopClasses
+                                                                                                                        outputJSONP json
+                                                                                                          Nothing -> case mb_s11 of
+                                                                                                                       Just id -> do json <- liftIO (doClassQuery (read id))
+                                                                                                                                     outputJSONP json
+                                                                                                                       Nothing -> case s12 of
+                                                                                                                                    _:_ -> do body <- getBody
+                                                                                                                                              case decode body of
+                                                                                                                                                Ok pattern -> do json <- liftIO (doPatternMatch s12 pattern)
+                                                                                                                                                                 outputJSONP json
+                                                                                                                                                Error msg   -> do fail msg
+                                                                                                                                    []  -> outputNothing
   where
     doQuery lex_ids = do
       senses <- runDaison db ReadOnlyMode $
@@ -125,6 +129,11 @@ cgiMain db bigram_total = do
                     select [gloss s | (_,lex@(Lexeme{synset=Just synset_id})) <- fromIndex lexemes_fun (at lex_id),
                                       s <- from synsets (at synset_id)]
       return (showJSON glosses)
+
+    doGlossSearch kwd = do
+      res <- runDaison db ReadOnlyMode $
+                    select [(synsetOffset s, gloss s) | (id,s) <- fromIndex synsets_gloss (at kwd)]
+      return (showJSON res)
 
     doGeneralize ids = do
       x <- runDaison db ReadOnlyMode $ fmap catMaybes $ do

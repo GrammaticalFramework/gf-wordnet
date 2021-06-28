@@ -108,6 +108,7 @@ cgiMain db bigram_total = do
                              , Just synset_id <- return (synset lex)]
         graph <- foldM (crawlGraph 0 4) Map.empty synsets
         return (makeObj [("context", showJSON (map mkFunProb (Map.toList ctxt)))
+                        ,("synsets", showJSON synsets)
                         ,("graph",   makeObj [(show key,mkNode node) | (key,node) <- Map.toList graph])
                         ])
       where

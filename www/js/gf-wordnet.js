@@ -1120,14 +1120,7 @@ gfwordnet.onclick_tab = function (tab) {
 	var container = tab.parentNode.parentNode.parentNode.nextSibling;
 	gfwordnet.init_canvas(tab,container,context_size_range);
 }
-gfwordnet.onclick_select = function (row) {
-	var tbody = row.parentNode;
-	var table = tbody.parentNode;
-	var tfoot = table.getElementsByTagName("tfoot")[0];
-
-	var prev = row.previousSibling;
-	var next = row.nextSibling;
-
+gfwordnet.append_row_to_selected = function(tfoot,row) {
 	if (tfoot.childElementCount == 0)
 		tfoot.appendChild(tr(node("td",{colspan: 3 + gfwordnet.selection.langs_list.length},
 		                        [node("span",{style: "font-size: 20px; font-weight: bold"},[text("Selected")])
@@ -1137,11 +1130,23 @@ gfwordnet.onclick_select = function (row) {
 		                        ,node("button",{id: "delete", style: "display: none; float: right", onclick: "gfwordnet.onclick_delete_selected_item(this.parentNode.parentNode.parentNode)"},[text("Delete")])
 		                        ,node("button",{id: "generalize", style: "display: none; float: right", onclick: "gfwordnet.onclick_generalize_selected_items(this.parentNode.parentNode.parentNode)"},[text("Generalize")])
 		                        ])));
+    row.lastElementChild.previousElementSibling.innerHTML = "";
+	row.lastElementChild.innerHTML = "";
+	row.lastElementChild.appendChild(node("input", {type: "checkbox", onclick: "gfwordnet.onclick_selected_item(this.parentNode.parentNode.parentNode)"}));
+	tfoot.appendChild(row);
+}
+gfwordnet.onclick_select = function (row) {
+	var tbody = row.parentNode;
+	var table = tbody.parentNode;
+	var tfoot = table.getElementsByTagName("tfoot")[0];
+
+	var prev = row.previousSibling;
+	var next = row.nextSibling;
 
 	if (prev != null && prev.firstElementChild.hasAttribute("colspan"))
 		tbody.removeChild(prev);
 	tbody.removeChild(row);
-	tfoot.appendChild(row);
+	gfwordnet.append_row_to_selected(tfoot,row);
 	if (next != null && next.firstElementChild.getAttribute("class")=="details") {
 		tbody.removeChild(next);
 		tfoot.appendChild(next);
@@ -1150,10 +1155,6 @@ gfwordnet.onclick_select = function (row) {
 	var lex_id = row.firstElementChild.firstElementChild.nextSibling.data;
 	this.selection.lex_ids[lex_id] = this.lex_ids[lex_id];
 	delete this.lex_ids[lex_id];
-
-	row.lastElementChild.previousElementSibling.innerHTML = "";
-	row.lastElementChild.innerHTML = "";
-	row.lastElementChild.appendChild(node("input", {type: "checkbox", onclick: "gfwordnet.onclick_selected_item(this.parentNode.parentNode.parentNode)"}));
 }
 gfwordnet.onclick_selected_item = function (tfoot) {
 	var count = 0;

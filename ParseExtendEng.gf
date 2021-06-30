@@ -8,7 +8,7 @@ lin gen_Quant = {
       sp = \\g,hasCard,n => case <n,hasCard> of {
         <Sg,False> => table { NCase Gen => table Gender ["its"; "his"; "her"] ! g; _ => table Gender ["it"; "he"; "she"] ! g } ;
         <Pl,False> => table { NCase Nom => "they"; NPAcc => "them"; _ => "theirs" } ;
-        _          => \\c => artDef
+        _          => \\c => ""
         } ;
       isDef = True
       } ;

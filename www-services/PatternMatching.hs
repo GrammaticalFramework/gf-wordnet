@@ -5,6 +5,7 @@ import Database.Daison
 import PGF2
 import SenseSchema
 import qualified Data.Map.Strict as Map
+import Data.Char
 import Data.Maybe (maybe)
 import Control.Monad
 import Text.JSON
@@ -50,18 +51,27 @@ matchPattern (Pattern ts values) = do
       env <- matchTriple x p y (maybe (fullScan x p y) (\p -> matchTriple y p x (fullScan x p y)) (inversePointer p)) env
       matchTriples ts env
 
-    matchTriple x p y cont env =
-      case Map.lookup x env of
-        Just (LexemeValue _ lexeme mb_syn)  -> followLexemePtr lexeme p y env
-                                               `mplus`
-                                               case mb_syn of
-                                                 Just synset -> followSynsetPtr synset p y env
-                                                 Nothing     -> mzero
-        Just (SynsetValue _ synset lexemes) -> followSynsetPtr synset p y env
-                                               `mplus`
-                                               do (id,lexeme) <- anyOf lexemes
-                                                  followLexemePtr lexeme p y env
-        Nothing                             -> cont env
+    matchTriple x p y cont env
+      | all isDigit x = do
+            let key = read x
+            synset <- from synsets (at key)
+            (followSynsetPtr synset p y env
+             `mplus`
+             do lexemes <- select (fromIndex lexemes_synset (at key))
+                (id,lexeme) <- anyOf lexemes
+                followLexemePtr lexeme p y env)
+      | otherwise     =
+           case Map.lookup x env of
+             Just (LexemeValue _ lexeme mb_syn)  -> followLexemePtr lexeme p y env
+                                                    `mplus`
+                                                    case mb_syn of
+                                                      Just synset -> followSynsetPtr synset p y env
+                                                      Nothing     -> mzero
+             Just (SynsetValue _ synset lexemes) -> followSynsetPtr synset p y env
+                                                    `mplus`
+                                                    do (id,lexeme) <- anyOf lexemes
+                                                       followLexemePtr lexeme p y env
+             Nothing                             -> cont env
 
     fullScan x p y env = do
       (key,lexeme) <- from lexemes everything

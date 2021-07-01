@@ -473,8 +473,10 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 
 	var new_selection = this.selection == null || !selection.isEqual(this.selection) ||
 	                    typeof input !== 'string';
-	this.selection = { langs_list: selection.langs_list
+	this.selection = { current:    selection.current
+                     , langs_list: selection.langs_list
 		             , langs:      selection.langs
+		             , isEqual:    selection.isEqual
 		             , lex_ids:    this.selection==null ? {} : this.selection.lex_ids
 		             };
 

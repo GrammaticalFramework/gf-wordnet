@@ -1276,6 +1276,9 @@ gfwordnet.onclick_delete_selected_item = function (tfoot) {
 					tfoot.removeChild(next);
 					next = nextnext;
 				}
+
+                var lex_id = row.firstElementChild.firstElementChild.nextSibling.data;
+                delete this.selection.lex_ids[lex_id];
 			} else {
 				count++;
 			}
@@ -1300,6 +1303,11 @@ gfwordnet.onclick_clear_search = function (tfoot) {
 }
 gfwordnet.onclick_clear_selection = function (tfoot) {
 	tfoot.innerHTML = "";
+    for (let lex_id in this.selection.lex_ids) {
+        if (this.selection.lex_ids.hasOwnProperty(lex_id)) {
+            delete this.selection.lex_ids[lex_id];
+        }
+    }
 }
 gfwordnet.onchange_context_size = function (context_size_range) {
 	var tab = null;

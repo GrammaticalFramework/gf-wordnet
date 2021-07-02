@@ -1220,13 +1220,13 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 			}
 		}
 		function extract_generalizations(senses) {
-			for (var i in senses) {
-				for (var lex_id in senses[i].lex_ids) {
+			for (var i in senses.result) {
+				for (var lex_id in senses.result[i].lex_ids) {
 					if (lex_id in gfwordnet.selection.lex_ids)
 						continue;
 
-					gfwordnet.selection.lex_ids[lex_id] = senses[i].lex_ids[lex_id];
-					gfwordnet.selection.lex_ids[lex_id].synonyms = senses[i].lex_ids;
+					gfwordnet.selection.lex_ids[lex_id] = senses.result[i].lex_ids[lex_id];
+					gfwordnet.selection.lex_ids[lex_id].synonyms = senses.result[i].lex_ids;
 
 					var row = [node("td",{onclick: "gfwordnet.onclick_cell(this)"},[text(lex_id)])];
 
@@ -1235,11 +1235,11 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 						var cell = node("td",{onclick: "gfwordnet.onclick_cell(this)"},[]);
 						if (gfwordnet.user != null)
 							cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
-						if (!(lang in senses[i].lex_ids[lex_id].status)) {
+						if (!(lang in senses.result[i].lex_ids[lex_id].status)) {
 							checked = false;
-						} else if (senses[i].lex_ids[lex_id].status[lang] != "checked") {
+						} else if (senses.result[i].lex_ids[lex_id].status[lang] != "checked") {
 							checked = false;
-							cell.classList.add(senses[i].lex_ids[lex_id].status[lang]);
+							cell.classList.add(senses.result[i].lex_ids[lex_id].status[lang]);
 						}
 						row.push(cell);
 					}

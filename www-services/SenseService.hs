@@ -165,7 +165,10 @@ cgiMain db bigram_total = do
                                                                             , cls <- from classes (at (base_class_id f))]
                                                    ]]
 
-      return (showJSON (map mkSenseObj fs))
+      return  (makeObj [("concepts",  showJSON ids)
+                       ,("result",    showJSON (map mkSenseObj fs))
+                       ])
+
 
     doListDomains =
       runDaison db ReadOnlyMode $ do

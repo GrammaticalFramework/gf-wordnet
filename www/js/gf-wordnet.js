@@ -1220,6 +1220,7 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 			}
 		}
 		function extract_generalizations(senses) {
+            gfwordnet.selection.concepts = senses.concepts;
 			for (var i in senses.result) {
 				for (var lex_id in senses.result[i].lex_ids) {
 					if (lex_id in gfwordnet.selection.lex_ids)

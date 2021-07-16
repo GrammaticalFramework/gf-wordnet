@@ -10,7 +10,8 @@ concrete ParseAfr of Parse =
   IdiomAfr,
   TenseX - [CAdv,IAdv,AdV,SC,Adv],
   ParseExtendAfr,
-  WordNetAfr
+  WordNetAfr,
+  DocumentationAfr
   ** {
 
 flags

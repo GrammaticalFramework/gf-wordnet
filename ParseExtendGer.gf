@@ -7,7 +7,7 @@ lin
     UttAP  p ap = {s = ap.c.p1 ++ ap.s ! APred ++ ap.c.p2 ++ ap.ext} ;
     UttVPS p vps= {s = vps.s ! Main ! p.a} ;
 
-    PhrUttMark pconj utt voc mark = {s = mark.s ++ SOFT_BIND ++ pconj.s ++ utt.s ++ voc.s} ;
+    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lincat Sub1000000000 = {s : CardOrd => Str ; n : Number} ;
 

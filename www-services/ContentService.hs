@@ -87,8 +87,10 @@ cgiMain db = do
                httpLbs req man
       case lookup "access_token" (formDecode (UTF8.toString (responseBody res))) of
         Just token -> do res <- liftIO $ do
-                                  req0 <- parseRequest ("https://api.github.com/user?access_token="++token)
-                                  let req = req0{requestHeaders=(hUserAgent,BSS.fromString "GF WordNet"):requestHeaders req0}
+                                  req0 <- parseRequest ("https://api.github.com/user")
+                                  let req = req0{requestHeaders=(hUserAgent,BSS.fromString "GF WordNet"):
+                                                                (hAuthorization, BSS.fromString ("token "++token)):
+                                                                requestHeaders req0}
                                   httpLbs req man
                          case (do res <- runGetJSON readJSObject (UTF8.toString (responseBody res))
                                   obj <- case res of

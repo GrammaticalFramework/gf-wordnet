@@ -2639,9 +2639,9 @@ butcher_1_N	495814;Butcher;commons/e/ed/Butcher.jpg
 butcherbird_1_N	3018860;Butcherbird;commons/8/8c/Cracticus_torquatus_-Brisbane_-garden_fence-8.jpg
 butcherbird_2_N	3018860;Butcherbird;commons/8/8c/Cracticus_torquatus_-Brisbane_-garden_fence-8.jpg
 buteonine_N	4193;Common_buzzard;commons/a/af/Steppe_buzzard_%28Buteo_buteo_vulpinus%29.jpg
-butler_2_PN	937519;Samuel_Butler_(novelist);commons/b/b8/Samuel_Butler_by_Charles_Gogin.jpg
 butler_1_N	858511;Butler;commons/0/0e/White_House_Butlers_Pantry.jpg
-butler_3_PN	858511;Butler;commons/0/0e/White_House_Butlers_Pantry.jpg	26792;Samuel_Butler_(poet);commons/c/c2/Samuel_Butler_by_Pieter_Borsseler.jpg
+butler_2_PN	937519;Samuel_Butler_(novelist);commons/b/b8/Samuel_Butler_by_Charles_Gogin.jpg
+butler_3_PN	26792;Samuel_Butler_(poet);commons/c/c2/Samuel_Butler_by_Pieter_Borsseler.jpg
 butte_2_PN	257453;Butte,_Montana;commons/c/c7/Butte%2C_Montana_collage.png
 butter_1_N	46183;Butter;commons/d/d3/%C5%A0v%C3%A9dsk%C3%BD_kol%C3%A1%C4%8D_naruby_904_%28cropped%29.JPG
 butterbur_N	655650;Petasites_hybridus;commons/9/9d/Katkujuur.jpg	579516;Petasites;commons/0/04/Butterbur.jpg

@@ -18670,7 +18670,7 @@ swimming_pool_N	19824126;Swimming_pool;commons/9/92/Backyardpool.jpg
 swimsuit_N	684999;One-piece_swimsuit;commons/d/d6/Franklin_2012.jpg	223338;Swimsuit;commons/7/73/BathingSuit1920s.jpg
 swindon_PN	59908;Swindon;commons/e/e5/Swindon_Radnor_Street_Cemetery.jpg
 swine_N	370022;Suidae;commons/2/29/Lightmatter_unidentified_pig-like_animal.jpg
-swineherd_N	3709628;The_Swineherd;commons/5/5f/Svinedreng.jpg	299858;Swineherd;commons/7/7a/Sebald_Beham_Der_verlorene_Sohn_h%C3%BCtet_seine_Schweine.jpg
+swineherd_N	299858;Swineherd;commons/7/7a/Sebald_Beham_Der_verlorene_Sohn_h%C3%BCtet_seine_Schweine.jpg
 swing_2_N	628085;Swing_(seat);commons/f/f7/Woman_swing_Louvre_F60.jpg
 swing_7_N	22330996;Golf_stroke_mechanics;commons/7/7c/Henry-Cotton_1931.jpg
 swing_8_N	3807;Hit_(baseball);commons/c/ca/Ichiro_Suzuki_on_June_18%2C_2015.jpg

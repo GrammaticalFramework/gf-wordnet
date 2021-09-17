@@ -21223,7 +21223,7 @@ yokohama_PN	80313;Yokohama;commons/6/69/Japan_Yokohama.png
 yolk_2_N	472293;Yolk;commons/3/35/Raw_egg.jpg
 york_PN	90444;House_of_York;commons/c/c6/Arms_of_Richard_of_York%2C_3rd_Duke_of_York.svg
 yorkley_PN	10449208;Yorkley;commons/a/a2/Yorkley_Post_Office_-_geograph.org.uk_-_895211.jpg
-yorkshire_PN	36637;Yorkshire;commons/9/90/FlagOfYorkshire.svg
+yorkshire_PN	36637;Yorkshire;commons/d/db/Flag_of_Yorkshire.svg
 youth_3_N	379472;Youth;commons/9/9c/1970sgirls.jpg
 youth_4_N	379472;Youth;commons/9/9c/1970sgirls.jpg
 youth_6_N	379472;Youth;commons/9/9c/1970sgirls.jpg

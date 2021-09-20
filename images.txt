@@ -21520,3 +21520,5 @@ halcyon_PN	78454;Alcyone_and_Ceyx;commons/6/6b/Alcyone_and_Ceyx_transformed_into
 sphincter_N	196850;Sphincter;commons/9/99/Ileocaecal_sphincter.png
 apple_PN	856;Apple_Inc.;commons/f/fa/Apple_logo_black.svg
 sweet_1_PN	703113;Henry_Sweet;commons/4/41/Sweet_Henry.jpg
+zealotMasc_1_N	722378;Zealots;commons/d/d7/Simon_the_Zealot_Helsinki_Cathedral.jpg
+zealotFem_1_N	722378;Zealots;commons/d/d7/Simon_the_Zealot_Helsinki_Cathedral.jpg

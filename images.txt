@@ -21523,3 +21523,4 @@ sweet_1_PN	703113;Henry_Sweet;commons/4/41/Sweet_Henry.jpg
 zealotMasc_1_N	722378;Zealots;commons/d/d7/Simon_the_Zealot_Helsinki_Cathedral.jpg
 zealotFem_1_N	722378;Zealots;commons/d/d7/Simon_the_Zealot_Helsinki_Cathedral.jpg
 creek_2_N	57190;Muscogee;commons/8/8b/BandolierBag-BMA.jpg
+dugout_3_N	992676;Dugout_(shelter);commons/8/87/Dugout_home2.jpg

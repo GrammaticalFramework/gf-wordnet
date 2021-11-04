@@ -14684,7 +14684,7 @@ poleMasc_N	275297;Poles;commons/b/b4/Matejko_Christianization_of_Poland.jpg
 pole_6_N	455696;Geographical_pole;commons/2/29/Geographical_and_Magnetic_Poles.png
 pole_star_1_N	624705;Pole_star;commons/3/3c/Sterneamwalberla2.jpg
 pole_vault_N	24082;Pole_vault;commons/9/9c/Pole_Vault_Sequence_3.jpg
-poleax_2_N	1039957;Pollaxe;commons/3/3f/Alytus_County_COA.png
+poleaxe_2_N	1039957;Poleaxe;commons/3/3f/Alytus_County_COA.png
 polecat_1_N	2773086;Polecat;commons/7/7e/Polecat_in_denmark.jpg
 polecat_2_N	291913;European_polecat;commons/1/17/Storm_the_polecat.jpg	2773086;Polecat;commons/7/7e/Polecat_in_denmark.jpg
 polemonium_N	2414343;Polemonium;commons/2/2d/Polemonium_carneum0.jpg

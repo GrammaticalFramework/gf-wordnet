@@ -10396,8 +10396,8 @@ laptop_N	198584;Laptop;commons/e/e4/Lenovo_G500s_laptop-2905.jpg
 lapua_PN	782538;Lapua;commons/4/4d/Lapuan_tuomiokirkko.jpg
 lapwing_N	264589;Lapwing;commons/4/42/Vanellus_armatus_%28taxobox%29.jpg
 larceny_N	161305;Larceny;commons/6/63/Paul-Charles_Chocarne-Moreau_The_Cunning_Thief.jpg
-larch_1_N	99384;Larch;commons/8/8c/SubalpineLarch_7735tl.jpg	1584580;Larix_decidua;commons/b/bd/L%27A_de_Bran%2C_%281798_m%29_Val_d%27Anniviers._Europese_larix_%28Larix_decidua%29_01.JPG
-larch_2_N	438963;Pinus_nigra;commons/8/80/Forest_in_Bulgaria_near_Dundukovo_dam.jpg	1584580;Larix_decidua;commons/b/bd/L%27A_de_Bran%2C_%281798_m%29_Val_d%27Anniviers._Europese_larix_%28Larix_decidua%29_01.JPG
+larch_1_N	99384;Larch;commons/8/8c/SubalpineLarch_7735tl.jpg
+larch_2_N	99384;Larch;commons/8/8c/SubalpineLarch_7735tl.jpg
 lard_1_V2	3686582;Lardo;commons/9/9a/Il_candido_Lardo_di_Colonnata.JPG
 lard_N	18621997;Lard;commons/a/af/Homelard.jpg
 larder_2_N	1565519;Larder;commons/e/e8/Pastry_Larder_at_The_Regency_Town_House_in_Hove.jpg

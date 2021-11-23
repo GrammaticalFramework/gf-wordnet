@@ -8007,7 +8007,7 @@ greenwich_PN	95840;Greenwich;commons/a/ac/312SFEC_LONDON-20070917.JPG
 gregory_1_PN	13172;Gregory_of_Nazianzus;commons/0/01/St_Gregorius_Nazianzenus.jpg
 gremlin_N	263158;Gremlin;commons/8/85/Gremlins_think_it%27s_fun_to_hurt_you._Use_care_always._Back_up_our_battleskies%5E_-_NARA_-_535381.jpg
 grenada_PN	17238662;Grenada;commons/b/bc/Flag_of_Grenada.svg
-grenade_N	337004;Shell_(projectile);commons/4/47/WWI_shells.JPG
+grenade_N	20353360;Grenade;commons/8/87/M67b.jpg
 grenadier_1_N	71349;Grenadier;commons/8/83/Grenadier-a-pied-de-la-Vieille-Garde.png
 grenadier_2_N	468452;Grenadiers_(fish);commons/6/6a/CoryphaenoidesLeptolepis.jpg
 grenadine_N	72387;Grenadine;commons/a/a5/Grenadine.jpg

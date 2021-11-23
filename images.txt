@@ -926,7 +926,7 @@ armourer_1_N	5409406;Bladesmith;commons/a/a6/Landauer_I_048_v.jpg
 armpit_N	767600;Axilla;commons/4/41/Arm_pit_%E2%80%93_Juno.jpg
 armrest_N	6235793;Armrest;commons/2/24/Adrien_karbowsky%2C_poltrona%2C_parigi_1912-13_ca.JPG
 arms_race_N	33623031;Arms_race;commons/9/9e/Military_Expenditures_2018_SIPRI.png
-army_3_N	32087;United_States_Army;commons/e/e0/Military_service_mark_of_the_United_States_Army.svg
+army_3_N	32087;United_States_Army;commons/2/24/Mark_of_the_United_States_Army.svg
 armyworm_1_N	293265;Noctuidae;commons/0/00/%282360%29_Ear_Moth_%28Amphipoea_oculea%29_%2820089467344%29.jpg
 armyworm_2_N	293265;Noctuidae;commons/0/00/%282360%29_Ear_Moth_%28Amphipoea_oculea%29_%2820089467344%29.jpg
 armyworm_3_N	293265;Noctuidae;commons/0/00/%282360%29_Ear_Moth_%28Amphipoea_oculea%29_%2820089467344%29.jpg

@@ -1221,7 +1221,7 @@ baas_N	166957;Ba%27ath_Party;commons/3/35/Flag_of_the_Ba%27ath_Party.svg
 baba_N	600082;Gugelhupf;commons/0/03/Kouglof.png
 babassu_N	8216157;Attalea_speciosa;commons/4/49/Orbignya_phalerata.jpg
 babbler_2_N	255377;Old_World_babbler;commons/9/9e/Macronus_gularis_chersonesophilus_-_Kaeng_Krachan.jpg
-babel_1_N	31235;Tower_of_Babel;commons/5/50/Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project.jpg
+babel_PN	31235;Tower_of_Babel;commons/5/50/Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project.jpg
 babel_2_N	2628040;Babels;commons/b/be/Babels_headsets.jpg
 babirusa_1_N	1991929;Babirusa;commons/c/cd/Hirscheber1a.jpg
 babka_N	1368703;Bundt_cake;commons/2/2c/Babka%2C_M%C3%BAnich%2C_Alemania%2C_2013-04-01%2C_DD_01.JPG

@@ -2228,7 +2228,7 @@ boxing_1_N	4243;Boxing;commons/2/2a/Boxing_Tournament_in_Aid_of_King_George%27s_
 boxing_glove_N	3907084;Boxing_glove;commons/2/20/Sports_Model_John_Quinlan_Autographed_Muay_Thai_Boxing_Gloves.jpg
 boxwood_1_N	334850;Buxus;commons/f/fd/Buxus_sempervirens.jpg
 boxwood_2_N	334850;Buxus;commons/f/fd/Buxus_sempervirens.jpg
-boy_2_N	194253;Boy;commons/2/2e/Ethtigregch2.jpg
+boy_1_N	194253;Boy;commons/2/2e/Ethtigregch2.jpg
 boyhood_N	3005333;Boyhood_(novel);commons/0/07/Otroshestvo.jpg
 boysenberry_1_N	176613;Boysenberry;commons/0/0c/Boysenberries.jpg
 boysenberry_2_N	176613;Boysenberry;commons/0/0c/Boysenberries.jpg
@@ -7689,10 +7689,7 @@ gipsywort_1_N	5822235;Lycopus;commons/f/ff/Illustration_Lycopus_europaeus0.jpg	2
 giraffe_N	12717;Giraffe;commons/9/9e/Giraffe_Mikumi_National_Park.jpg
 girder_N	2785586;Girder;commons/1/1f/Hinkle_Fieldhouse_roof.jpg
 girdle_1_V2	1822951;Girdling;commons/7/75/AnnelageAnn%C3%A9lationGirdling1LilleLamiot3.jpg
-girl_1_N	6991514;Les_Girls;commons/8/85/Les_Girls_%281957%29_still_1.JPG
-girl_2_N	6991514;Les_Girls;commons/8/85/Les_Girls_%281957%29_still_1.JPG
-girl_3_N	1723133;Girl;commons/c/c0/Young_girl_smiling_in_sunshine_%282%29.jpg
-girl_5_N	6991514;Les_Girls;commons/8/85/Les_Girls_%281957%29_still_1.JPG
+girl_1_N	1723133;Girl;commons/c/c0/Young_girl_smiling_in_sunshine_%282%29.jpg
 girth_2_N	2928730;Girth_(tack);commons/7/71/Chileansaddlealpha.jpg
 gitana_N	55313701;La_Zingarella_(Correggio);commons/5/59/Correggio%2C_zingarella.jpg
 gitano_N	26152;Romani_people;commons/1/10/Flag_of_the_Romani_people.svg

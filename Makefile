@@ -71,7 +71,7 @@ build/gfo/WordNet%.gfo: WordNet%.gf WordNet.gf
 	gf --batch --gfo-dir=build/gfo --no-pmcfg $<
 
 build/Parse%.pgf: Parse%.gf Parse.gf build/gfo/WordNet%.gfo build/gfo/WordNet.gfo
-	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
+	gf --make -name=$(basename $(@F)) --boot --gfo-dir=build/gfo --output-dir=build $<
 
 Parse.probs Parse.uncond.probs: train/statistics.hs examples.txt build/ParseAPI.pgf
 	runghc $^

@@ -77,7 +77,8 @@ lin ComparAdv pol cadv adv comp = {
     AdnCAdv pol cadv = {s = pol.s ++ cadv.s ! (case pol.p of {CPos => Pos; CNeg _ => Neg}) ++ cadv.p} ;
 
     EnoughAP a ant pol vp = {
-      s = \\agr => a.s ! agr ++ "enough" ++ ant.s ++ pol.s ++ infVP VVInf vp (variants {True; False}) ant.a pol.p agr ;
+      s = let ad_pos = variants {True; False}
+          in \\agr => a.s ! agr ++ "enough" ++ ant.s ++ pol.s ++ infVP VVInf vp ad_pos ant.a pol.p agr ;
       isPre = False
     } ;
 

@@ -8517,7 +8517,6 @@ heckler_N	630966;Heckler;commons/f/fd/Heckler2.jpg
 hectare_N	24919513;Hectare;commons/f/f2/Illustration_of_One_Hectare.png
 hectograph_N	486848;Hectograph;commons/4/4f/1876_Transfer-Tablet-Hektograph-Holcomb_1.jpg
 hedge_1_N	339558;Hedge;commons/a/a1/Rotbuchenhecke_in_der_Eifel.jpg
-hedgehog_1_N	7684952;Erinaceus;commons/1/15/Erinaceus_europeaus_%28DarkAn9el%29.jpg	46590;Hedgehog;commons/7/72/Igel.JPG	3108604;Crested_porcupine;commons/9/95/Hystrix_cristata_Hardwicke.jpg
 hedgehog_2_N	46590;Hedgehog;commons/7/72/Igel.JPG	973858;European_hedgehog;commons/c/cb/Erinaceus_europaeus_%28Linnaeus%2C_1758%29.jpg	7684952;Erinaceus;commons/1/15/Erinaceus_europeaus_%28DarkAn9el%29.jpg
 heel_2_N	118524;Heel;commons/f/fd/Girls_heel.jpg
 heel_4_N	1446854;Biscotti;commons/7/75/Cantuccini-Toscani.jpg

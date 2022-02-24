@@ -21521,3 +21521,4 @@ creek_2_N	57190;Muscogee;commons/8/8b/BandolierBag-BMA.jpg
 dugout_3_N	992676;Dugout_(shelter);commons/8/87/Dugout_home2.jpg
 mint_6_N	391329;Mint_(facility);commons/3/3b/Claudius_II_coin_%28colourised%29.png
 wort_2_N	8283154;Wort;commons/3/31/2008-09-20_Wort_first_run-off_2.jpg
+prime_minister_2_N	24109;Prime_minister;commons/2/2d/The_Prime_Ministers_of_the_Nordic_Council_in_October_2014_-_09.jpg

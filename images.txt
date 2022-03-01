@@ -223,6 +223,7 @@ affray_1_N	2665;Affray;commons/1/1e/Street_fight.jpg
 affray_2_N	2665;Affray;commons/1/1e/Street_fight.jpg
 affusion_N	4695306;Affusion;commons/2/2f/Child_baptism_with_water.jpg
 afghanFem_N	36973;Pashtuns;commons/b/b8/Tribal_and_religious_leaders_in_southern_Afghanistan.jpg
+afghan_1_N	3612839;Afghan_(blanket);commons/6/64/Afghan_blanket.jpg
 afghan_5_N	2835;Afghan_Hound;commons/6/69/Afghane.jpg
 afghanistan_PN	737;Afghanistan;commons/9/9a/Flag_of_Afghanistan.svg
 aflatoxin_N	177303;Aflatoxin;commons/e/ee/%28%E2%80%93%29-Aflatoxin_B1_Structural_Formulae_V.1.svg

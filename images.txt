@@ -13544,7 +13544,7 @@ paediatrics_N	23593;Pediatrics;commons/0/08/Newborn_Examination_1967.jpg
 paella_N	47630;Paella;commons/e/ed/01_Paella_Valenciana_original.jpg
 paganism_N	23340;Paganism;commons/c/cd/Die_Gartenlaube_%281887%29_b_016.jpg
 page_1_N	2727018;Page_(paper);commons/2/24/Blank_page_intentionally_end_of_book.jpg
-page_2_PN	638501;Frederick_Handley_Page;en/b/b3/Sir_Frederick_Handley-Page.jpg
+page_2_PN	638501;Frederick_Handley_Page;commons/0/02/Fhandleypage1936.jpg
 page_3_PN	835735;Thomas_Nelson_Page;commons/1/14/Portrait_of_Thomas_Nelson_Page.jpg
 pageboy_2_N	1327275;Pageboy;commons/8/8f/English_Country_Cottage_%282364756846%29_crop.jpg
 pagoda_N	287061;Pagoda;commons/e/ed/Horyu-ji09s3200.jpg

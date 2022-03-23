@@ -73649,6 +73649,7 @@ lin pteropogon_N = variants {} ;
 lin pterosaur_N = variants {} ;
 lin pterygium_N = variants {} ;
 lin pto_PN = variants {} ;
+lin ptolemy_PN = variants {} ;
 lin ptomaine_1_N = mkN "尸毒" ; --unchecked
 lin ptomaine_2_N = mkN "尸毒" ; --unchecked
 lin ptosis_N = mkN "下垂" ; --unchecked

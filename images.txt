@@ -21524,3 +21524,4 @@ mint_6_N	391329;Mint_(facility);commons/3/3b/Claudius_II_coin_%28colourised%29.p
 wort_2_N	8283154;Wort;commons/3/31/2008-09-20_Wort_first_run-off_2.jpg
 prime_minister_2_N	24109;Prime_minister;commons/2/2d/The_Prime_Ministers_of_the_Nordic_Council_in_October_2014_-_09.jpg
 coimbatore_PN	186096;Coimbatore;commons/b/b7/CSI_church_and_LIC_building%2C_Coimbatore.jpg
+ptolemy_PN	23979;Ptolemy;commons/1/16/Ptolemy_16century.jpg

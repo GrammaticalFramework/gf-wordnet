@@ -9329,7 +9329,8 @@ inclinometer_3_N	889183;Inclinometer;commons/3/32/Bl%C3%A9riot_Monoplane_Inclino
 incrustation_1_N	2862625;Fouling;commons/6/69/Fouling02.jpg
 incrustation_3_N	10942190;Inlay;commons/d/d7/Example_of_boulle_work.jpg
 incubation_2_N	71560;Incubation_period;commons/0/04/Concept_of_incubation_period.svg
-incubator_N	3359456;Incubator_(culture);commons/2/28/Bacteriological_incubator.jpg	24299938;Incubator_(egg);commons/5/53/Egg_incubator.jpg
+incubator_1_N	24299938;Incubator_(egg);commons/5/53/Egg_incubator.jpg
+incubator_2_N	1466758;Neonatal_intensive_care_unit#Incubator;commons/f/f8/Neonatal_Jacoplane.jpg
 incubus_1_N	439244;Incubus;commons/7/7e/Incubus.jpg	1738734;Mare_(folklore);commons/5/56/John_Henry_Fuseli_-_The_Nightmare.JPG
 incus_N	82948;Incus;commons/d/df/Gray917.png
 indapamide_N	725051;Indapamide;commons/c/c9/Indapamide.svg

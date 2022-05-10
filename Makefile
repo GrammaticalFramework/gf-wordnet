@@ -58,7 +58,7 @@ ifneq ($(SERVER), NO)
 endif
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
-	gf --make --probs=Parse.probs $(patsubst %, build/%.pgf, $(LANGS))
+	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
 ifneq ($(SERVER), NO)
 	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 	scp -p build/gfo/WordNet*.gfo www.grammaticalframework.org:/usr/local/www/gf-wordnet
@@ -71,7 +71,7 @@ build/gfo/WordNet%.gfo: WordNet%.gf WordNet.gf
 	gf --batch --gfo-dir=build/gfo --no-pmcfg $<
 
 build/Parse%.pgf: Parse%.gf Parse.gf build/gfo/WordNet%.gfo build/gfo/WordNet.gfo
-	gf --make -name=$(basename $(@F)) --boot --gfo-dir=build/gfo --output-dir=build $<
+	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
 
 Parse.probs Parse.uncond.probs: train/statistics.hs examples.txt build/ParseAPI.pgf
 	runghc $^

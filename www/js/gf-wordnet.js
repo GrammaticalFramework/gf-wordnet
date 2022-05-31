@@ -27,7 +27,7 @@ gfwordnet.errcont=function(text,code) {
 	alert(text);
 }
 
-gfwordnet.grammar_url = gfwordnet.script_url + "../../robust/Parse.pgf"
+gfwordnet.grammar_url = gfwordnet.script_url + "../../robust/Parse.ngf"
 
 gfwordnet.grammar_call=function(querystring,cont) {
     ajax_http_post_querystring_json(gfwordnet.grammar_url,querystring,cont,gfwordnet.errcont);

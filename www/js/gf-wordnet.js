@@ -27,7 +27,7 @@ gfwordnet.errcont=function(text,code) {
 	alert(text);
 }
 
-gfwordnet.grammar_url = "https://cloud.grammaticalframework.org/robust/Parse.pgf"
+gfwordnet.grammar_url = gfwordnet.script_url + "../../robust/Parse.pgf"
 
 gfwordnet.grammar_call=function(querystring,cont) {
     ajax_http_post_querystring_json(gfwordnet.grammar_url,querystring,cont,gfwordnet.errcont);
@@ -45,7 +45,7 @@ gfwordnet.content_call=function(querystring,cont) {
     http_get_json(gfwordnet.content_url+"?"+querystring,cont,gfwordnet.errcont)
 }
 
-gfwordnet.shell_url = "https://cloud.grammaticalframework.org/gfshell"
+gfwordnet.shell_url = gfwordnet.script_url + "../../gfshell"
 
 gfwordnet.shell_call=function(querystring,cont) {
 	ajax_http_get(gfwordnet.shell_url+"?"+querystring,cont,gfwordnet.errcont)

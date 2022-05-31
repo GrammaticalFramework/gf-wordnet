@@ -44,7 +44,7 @@ ifeq ($(USE_WIKIPEDIA),YES)
 	UD_FIN_TREEBANKS += $(wildcard data/Finnish/fi-wikipedia-00[01].conllu.xz)
 endif
 
-SERVER_PATH = /usr/local/www/gf-wordnet
+SERVER_PATH = /home/krasimir/GF/gf-wordnet
 
 ifndef GF_LIB_PATH
 INSTALL_PATH=$(shell cat ../gf-core/DATA_DIR)/lib

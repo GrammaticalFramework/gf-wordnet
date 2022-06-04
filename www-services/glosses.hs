@@ -282,7 +282,7 @@ insertDomains !ids parent (Node (name,is_dim) children:ts) = do
   insertDomains ids parent ts
 
 parseImages ls = 
-  Map.fromList [case split '\t' l of {(id:urls) -> (id,map (\s -> case split ';' s of {[_,pg,im] -> (pg,im); _ -> error l}) urls)} | l <- ls]
+  Map.fromList [case split '\t' l of {(id:_:urls) -> (id,map (\s -> case split ';' s of {[_,pg,im] -> (pg,im); _ -> error l}) urls); _ -> error l} | l <- ls]
 
 accumCounts m (lang,status) = Map.alter (Just . add) lang m
   where

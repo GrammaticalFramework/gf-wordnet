@@ -13254,6 +13254,7 @@ opulence_N	Q200535	192617;Wealth;commons/a/af/Gold_bullion_bars.jpg
 orach_1_N	Q157801	1636903;Atriplex;commons/c/c9/Atriplex_hortensis_cleaned_Sturm.png
 oracle_3_N	Q12004693	22589;Oracle;commons/f/fa/John_William_Waterhouse_-_Consulting_the_Oracle_-_Christie%27s.jpg
 orange_1_N	Q13191	4984440;Orange_(fruit);commons/7/7b/Orange-Whole-%26-Split.jpg
+orange_2_N	Q39338	71234;Orange_(colour);commons/4/47/Color_icon_orange.svg
 orange_3_N	Q3355098	15444805;Citrus_%C3%97_sinensis;commons/b/b0/OrangeBloss_wb.jpg
 orange_5_PN	Q181475	180209;Orange_River;commons/9/97/OrangeRiverUpington.jpg
 orange_A	Q39338	71234;Orange_(colour);commons/d/d8/Delicatearch.png

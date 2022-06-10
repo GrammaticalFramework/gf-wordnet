@@ -52,18 +52,10 @@ else
 INSTALL_PATH=$(GF_LIB_PATH)/lib
 endif
 
-all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService build/gfshell
-ifneq ($(SERVER), NO)
-	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
-endif
+all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
-ifneq ($(SERVER), NO)
-	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
-	scp -p build/gfo/WordNet*.gfo www.grammaticalframework.org:/usr/local/www/gf-wordnet
-	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
-endif
 
 build/gfo/WordNet.gfo:
 
@@ -93,20 +85,12 @@ build/train/Matching.hs: train/Matching.hsc train/em_core.h
 
 semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.uncond.probs images.txt
 	build/glosses
-ifneq ($(SERVER), NO)
-	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
-	scp build/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
-endif
 
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@
 
 build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/PatternMatching.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
-ifneq ($(SERVER), NO)
-	rm -f $(SERVER_PATH)/www/SenseService.fcgi
-	cp build/SenseService $(SERVER_PATH)/www/SenseService.fcgi
-endif
 
 build/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/ContentSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
@@ -115,16 +99,22 @@ ifneq ($(SERVER), NO)
 	cp build/ContentService $(SERVER_PATH)/www/ContentService
 endif
 
-build/gfshell: $(WORDNETS)
-ifneq ($(SERVER), NO)
+deploy: $(WORDNETS)
+	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
+	scp -p build/gfo/WordNet*.gfo www.grammaticalframework.org:/usr/local/www/gf-wordnet
+	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
+	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
+	scp build/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
+	rm -f $(SERVER_PATH)/www/SenseService.fcgi
+	cp build/SenseService $(SERVER_PATH)/www/SenseService.fcgi
 	ssh -t www.grammaticalframework.org \
 	    "$(foreach WORDNET,$(WORDNETS),sudo mkdir -p /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
 	                                   echo \"$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))\" | \
 	                                   sudo tee /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;\
 	                                   sudo chown gf-cloud /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET)) \
 	                                                       /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;)"
-	touch $@
-endif
+	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
+
 
 .SECONDARY:
 

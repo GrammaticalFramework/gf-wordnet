@@ -172,7 +172,6 @@ adenoma_N	Q272741	489794;Adenoma;commons/b/b2/Tubular_adenoma_2_intermed_mag.jpg
 adenosine_N	Q190012	89108;Adenosine;commons/e/e8/Adenosin.svg
 adenovirus_N	Q4691176	16320027;Agamid_adenovirus;commons/0/0d/Adenovirus_4.jpg
 adhesive_N	Q131790	2396;Adhesive;commons/5/5d/AdhesivesForHouseUse004.jpg
-adient_A	Q26832896	55496621;Adient;commons/0/02/Passenger_Experience_Week_2018%2C_Hamburg_%281X7A3686%29.jpg
 adit_N	Q58917	255771;Adit;commons/a/a2/Adit.jpeg
 adjutant_1_N	Q852661	534754;Adjutant;commons/9/9a/Mannerheim%2C_Lilius%2C_Kekoni%2C_Gallen-Kallela%2C_Rosenbr%C3%B6ijer.jpg
 adjutant_2_N	Q607893	548232;Lesser_adjutant;commons/c/ca/Lesser_Adjutant_%2CYala_National_Park_.jpg
@@ -339,7 +338,7 @@ albumen_2_N	Q796758	355802;Egg_white;commons/4/44/Chicken_egg01_monovular.jpg	14
 albumin_N	Q169219	4984761;Albumin;commons/9/94/PDB_1ao6_EBI.jpg
 alcazar_N	Q613611	345950;Alc%C3%A1zar;commons/9/91/Alcazar_de_Segovia.JPG	345950;Alc%C3%A1zar;commons/4/40/Panorámica_Otoño_Alcázar_de_Segovia.jpg
 alchemy_2_N	Q39689	573;Alchemy;commons/0/03/Alchemy_of_Happiness.png
-alcohol_2_N	Q1570179	1014;Alcohol;commons/0/02/Alcohol.png
+alcohol_2_N	Q156	1014;Alcohol_(chemistry);commons/0/02/Alcohol.png
 alcoholism_1_N	Q15326	2965;Alcoholism;commons/a/a3/King_Alcohol_and_his_Prime_Minister.jpg
 alcoholism_2_N	Q15326	2965;Alcoholism;commons/a/a3/King_Alcohol_and_his_Prime_Minister.jpg
 alcove_N	Q1067091	56143831;Alcove_(architecture);commons/7/72/Interior_of_the_Villa_Ephrussi_de_Rothschild_-_DSC04555.JPG
@@ -795,7 +794,7 @@ appendix_2_N	Q9656	99611;Appendix_(anatomy);commons/0/0c/Grant_1962_172a.png	996
 appetizer_1_N	Q1628963	9644797;Appetizer;commons/e/e0/Hors_d'oeuvre_by_Auriole_Potter.jpg
 applause_N	Q814696	437454;Applause;commons/e/e9/Arabic_arts_festival_applause.jpg
 apple_1_N	Q89	18978754;Apple;commons/f/f4/Honeycrisp.jpg
-apple_2_N	Q89	18978754;Apple;commons/b/b3/Apple_Blossom_%40_Manali.jpg
+apple_2_N	Q158657	18978754;Apple;commons/b/b0/Malus_pumila_pendula_blossom_02.JPG
 applesauce_1_N	Q618345	46484;Apple_sauce;commons/f/fa/Applesauce.jpg
 applewood_N	Q104819	289445;Malus;commons/2/2f/Purple_prince_crabapple_tree.JPG
 appliance_2_N	Q212920	185982;Home_appliance;commons/6/67/Breville.jpg
@@ -21249,7 +21248,7 @@ macedonia_2_PN	Q207497	42012;Macedonia_(ancient_kingdom);commons/3/33/Map_Macedo
 croatia_PN	Q224	5573;Croatia;commons/1/1b/Flag_of_Croatia.svg
 montenegro_PN	Q236	20760;Montenegro;commons/6/64/Flag_of_Montenegro.svg	20760;Montenegro;commons/7/70/R-1_regional_road_(Montenegro)_07.jpg
 bosnia_PN	Q188736	3114713;Bosnia_(region);commons/c/c7/Bosna_regija_update.jpg
-apsu_PN Q221574	33752774;Abzu;commons/f/fe/Apsu_%28Escultura%29.jpg
+apsu_PN	Q221574	33752774;Abzu;commons/f/fe/Apsu_%28Escultura%29.jpg
 dagan_PN	Q623065	106339;Dagon;commons/c/c3/Dagon1.jpg
 ea_PN	Q1276669
 ereshkigal_PN	Q654458	245163;Ereshkigal;commons/2/22/British_Museum_Queen_of_the_Night.jpg
@@ -24777,12 +24776,4 @@ zombie_3_N	Q17000743
 zombie_4_N	Q9406	9810476;Zombie;commons/a/ad/Zombie_haiti_ill_artlibre_jnl.png
 zombie_5_N	Q219141	174881;Zombie_(cocktail);commons/e/e7/Zombiecocktail.jpg
 zoologist_N	Q350979
-address_2_V2	L5417-S1
-address_3_V2	L5417-S2
-addressee_N	L43855-S1
-direct_12_V	L5417-S2
-direct_12_V2	L5417-S2
-locate_2_V2	L116-S1
-situate_1_V2	L116-S1
-speak_4_V2	L5417-S1
 actress_N	Q21169216	21504235;Actor;commons/8/81/Zoffany%2C_Johann_-_Portrait_of_Ann_Brown_in_the_Role_of_Miranda_-_c._1770.JPG

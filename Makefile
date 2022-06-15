@@ -52,7 +52,7 @@ else
 INSTALL_PATH=$(GF_LIB_PATH)/lib
 endif
 
-all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService
+all: build_dirs Parse.pgf semantics.db $(SERVER_PATH)/www/SenseService.fcgi $(SERVER_PATH)/www/ContentService
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
@@ -89,15 +89,11 @@ semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS))
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@
 
-build/SenseService: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/PatternMatching.hs www-services/Interval.hs
+$(SERVER_PATH)/www/SenseService.fcgi: www-services/SenseService.hs www-services/SenseSchema.hs www-services/URLEncoding.hs www-services/PatternMatching.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
 
-build/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/ContentSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
+$(SERVER_PATH)/www/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/ContentSchema.hs www-services/URLEncoding.hs www-services/Interval.hs
 	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
-ifneq ($(SERVER), NO)
-	rm -f $(SERVER_PATH)/www/ContentService
-	cp build/ContentService $(SERVER_PATH)/www/ContentService
-endif
 
 deploy: $(WORDNETS)
 	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
@@ -105,8 +101,6 @@ deploy: $(WORDNETS)
 	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
 	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
 	scp build/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
-	rm -f $(SERVER_PATH)/www/SenseService.fcgi
-	cp build/SenseService $(SERVER_PATH)/www/SenseService.fcgi
 	ssh -t www.grammaticalframework.org \
 	    "$(foreach WORDNET,$(WORDNETS),sudo mkdir -p /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
 	                                   echo \"$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))\" | \

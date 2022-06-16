@@ -21150,6 +21150,7 @@ fox_6_N	Q1440169	2314798;Meskwaki;commons/a/ae/Kee-shes-wa.jpg
 fox_7_N	Q1440172	3563275;Fox_language;commons/f/fb/Oklahoma_Indian_Languages.png
 constitution_PN	Q944436	32298;USS_Constitution;commons/e/ed/USS_Constitution_fires_a_17-gun_salute.jpg
 rabbit_1_N	Q9394	26573;Rabbit;commons/1/1f/Oryctolagus_cuniculus_Rcdo.jpg	26573;Rabbit;commons/3/34/Ikesbunny.jpg
+rabbit_2_N	Q1723770	2330705;Rabbit_hair;commons/5/55/Rabbit_fur_scarf.jpg
 rabbit_3_N	Q9394	26573;Rabbit;commons/2/2d/Kitchen_-_Hotel_Dieu%2C_Beaune.jpg
 cat_6_N	Q940913	125371;Continuous_track;commons/f/f5/Caterpillar_track_shingle.JPG
 capuchin_2_N	Q326260	1238652;Capuchin_monkey;commons/4/40/Capuchin_Costa_Rica.jpg

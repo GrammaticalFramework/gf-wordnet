@@ -12,6 +12,14 @@ import Data.Tree
 import System.Directory
 import Control.Monad
 import qualified Data.Map.Strict as Map
+import qualified Data.ByteString.Char8 as BS
+import qualified Data.ByteString.Lazy.UTF8 as BSL
+import Data.ByteString.UTF8(fromString,toString)
+import Numeric (showHex)
+import Network.HTTP.Client
+import Network.HTTP.Client.TLS
+import Network.HTTP.Types
+import Crypto.Hash.MD5(hash)
 import Debug.Trace
 
 main = do
@@ -44,8 +52,10 @@ main = do
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
 
+  images <- loadImages
+
   (taxonomy,lexrels0) <-
-     fmap (partitionEithers . map parseTaxonomy . lines) $
+     fmap (partitionEithers . map (parseTaxonomy images) . lines) $
        readFile "taxonomy.txt"
 
   probs <-
@@ -55,9 +65,6 @@ main = do
   let lexrels = (Map.toList . Map.fromListWith (++)) lexrels0
 
   domain_forest <- fmap (parseDomains [] . lines) $ readFile "domains.txt"
-
-  ls <- fmap lines $ readFile "images.txt"
-  let images = parseImages ls
 
   let db_name = "semantics.db"
   fileExists <- doesFileExist db_name
@@ -82,13 +89,12 @@ main = do
     forM_ absdefs $ \(mb_offset,fun,ds,gloss) -> do
        let (es,fs) = fromMaybe ([],[]) (Map.lookup fun ex_keys)
        mb_synsetid <- case mb_offset >>= flip Map.lookup synsetKeys of
-                        Nothing | not (null gloss) -> fmap Just (store synsets Nothing (Synset "" [] [] gloss))
+                        Nothing | not (null gloss) -> fmap Just (store synsets Nothing (Synset "" [] [] gloss []))
                         mb_id                      -> return mb_id
        insert_ lexemes (Lexeme fun (fromMaybe 0 (Map.lookup fun probs))
                                (Map.findWithDefault [] fun cncdefs)
                                mb_synsetid
                                (map (\d -> fromMaybe (error ("Unknown domain "++d)) (Map.lookup d ids)) ds)
-                               (fromMaybe [] (Map.lookup fun images))
                                es fs [])
        return ()
 
@@ -200,8 +206,8 @@ insertExamples ps (ExampleE e fns finsts : es)
                                              return ([(fn,([key],[])) | fn <- fns] ++ xs)
 
 
-parseTaxonomy l
-  | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs (\sym id -> (sym,read id)) ws2) (read children_s) gloss)
+parseTaxonomy images l
+  | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs (\sym id -> (sym,read id)) ws2) (read children_s) gloss (fromMaybe [] (Map.lookup id images)))
   | otherwise         = Right (id, readPtrs (,) ws0)
   where
     (id:ws0) = words l
@@ -281,9 +287,6 @@ insertDomains !ids parent (Node (name,is_dim) children:ts) = do
   ids <- insertDomains (Map.insert name id ids) id children
   insertDomains ids parent ts
 
-parseImages ls = 
-  Map.fromList [case split '\t' l of {(id:_:urls) -> (id,map (\s -> case split ';' s of {[_,pg,im] -> (pg,im); _ -> error l}) urls); _ -> error l} | l <- ls]
-
 accumCounts m (lang,status) = Map.alter (Just . add) lang m
   where
     add Nothing                = (0,0,0,0)
@@ -316,6 +319,54 @@ renderStatus cs =
           let text =
                 "<text x=\""++show (x+3)++"\" y=\""++show (y+15)++"\">"++lang++"</text>"
           in (text++s,x+35,y)
+
+loadImages = do
+  manager <- newManager tlsManagerSettings
+  request0 <- parseRequest ("https://query.wikidata.org/sparql?query="++Data.ByteString.UTF8.toString (urlEncode True (fromString query)))
+  let request = request0{requestHeaders=[(hUserAgent, fromString "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"),
+                                         (hAccept, fromString "text/tab-separated-values")]
+                        }
+  response <- httpLbs request manager
+  if statusCode (responseStatus response) == 200
+    then return ((Map.fromListWith (++) . map parseEntry . tail . BSL.lines) (responseBody response))
+    else fail (show (statusCode (responseStatus response))++" "++Data.ByteString.UTF8.toString (statusMessage (responseStatus response)))
+  where
+    query =
+      "SELECT ?sense ?sitelink ?image WHERE\n\
+      \{\n\
+      \  ?item wdt:P8814 ?sense.\n\
+      \  { ?item wdt:P18 ?image. BIND (1 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P6802 ?image. BIND (2 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P117 ?image. BIND (3 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P8224 ?image. BIND (4 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P242 ?image. BIND (5 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P41 ?image. BIND (6 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P94 ?image. BIND (7 as ?rank) }\n\
+      \  OPTIONAL {\n\
+      \    ?wikilink schema:about ?item;\n\
+      \    schema:isPartOf <https://en.wikipedia.org/>.\n\
+      \  }\n\
+      \  BIND(COALESCE(?wikilink, ?item) AS ?sitelink)\n\
+      \}\n\
+      \ORDER BY ?sense ?rank"
+      
+    parseEntry l =
+      case split '\t' (BSL.toString l) of
+        [f1,f2,f3] -> let sense = init (tail f1)
+                          uri   = init (tail f2)
+                          img   = init (drop 52 f3)
+                          name  = BS.map (\c -> if c == ' ' then '_' else c) (urlDecode True (fromString img))
+                          h     = pad (showHex (ord (BS.head (hash name))) "")
+                      in (sense,[(uri,"commons/"++take 1 h++"/"++h++"/"++toString name)])
+      where
+        pad cs@[c] = '0':cs
+        pad cs     = cs
 
 split :: Char -> String -> [String]
 split c "" = []

@@ -83,7 +83,7 @@ build/train/EM.hs: train/EM.hsc train/em_core.h
 build/train/Matching.hs: train/Matching.hsc train/em_core.h
 	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
-semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.uncond.probs images.txt
+semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.uncond.probs
 	build/glosses
 
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs

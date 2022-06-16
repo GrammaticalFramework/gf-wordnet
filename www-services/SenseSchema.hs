@@ -63,6 +63,7 @@ data Synset
       , pointers     :: [(PointerSymbol,Key Synset)]
       , children     :: Interval (Key Synset)
       , gloss        :: String
+      , images       :: [(String,String)]
       }
     deriving (Data,Show)
 
@@ -85,7 +86,6 @@ data Lexeme
       , status       :: [(String,Status)]
       , synset       :: Maybe (Key Synset)
       , domain_ids   :: [Key Domain]
-      , images       :: [(String,String)]
       , example_ids  :: [Key Expr]
       , frame_ids    :: [Key Frame]
       , lex_pointers :: [(PointerSymbol,Key Lexeme)]

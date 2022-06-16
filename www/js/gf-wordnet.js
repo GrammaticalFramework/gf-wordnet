@@ -687,7 +687,7 @@ gfwordnet.onclick_cell = function (cell) {
 			var path = lex_def.images[i][1].split("/");
 			var name = path[path.length-1];
 			path.splice(0,0,"https://upload.wikimedia.org/wikipedia");
-			var a = node("a", {href: "https://www.wikipedia.org/wiki/"+lex_def.images[i][0], target: "wiki_link"}, []);
+			var a = node("a", {href: lex_def.images[i][0], target: "wiki_link"}, []);
 			details.appendChild(a);
 			if (name.endsWith(".svg")) {
 				a.appendChild(

@@ -56,6 +56,7 @@ all: build_dirs Parse.pgf semantics.db $(SERVER_PATH)/www/SenseService.fcgi $(SE
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
+	mv Parse.ngf /home/krasimir/.cabal/share/x86_64-linux-ghc-8.6.5/gf-3.11.0/www/robust/
 
 build/gfo/WordNet.gfo:
 

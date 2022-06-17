@@ -175,7 +175,15 @@ parseExamples (l1:ls)
     toVar l = let (v:cs) = words l in (v,cs)
 parseExamples (l:ls)                        = parseExamples ls
 
-parseFrameInstance s = (0, [])
+parseFrameInstance s = (id, fs)
+  where
+    s1 = case break (=='/') s of
+           (_ ,'/':s1) -> s1
+           _           -> error s
+    (s2,'@':'{':s3) = break (=='@') s1
+
+    id = read s2
+    fs = map parseRole (split ',' (init s3))
 
 parseRole s = (s1,read s2)
   where

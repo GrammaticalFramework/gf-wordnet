@@ -49,7 +49,7 @@ SERVER_PATH = /usr/local/www/gf-wordnet
 ifndef GF_LIB_PATH
 INSTALL_PATH=$(shell cat ../gf-core/DATA_DIR)/lib
 else
-INSTALL_PATH=$(GF_LIB_PATH)/lib
+INSTALL_PATH=$(GF_LIB_PATH)
 endif
 
 all: build_dirs Parse.pgf semantics.db build/SenseService build/ContentService build/gfshell

@@ -45,6 +45,7 @@ ifeq ($(USE_WIKIPEDIA),YES)
 endif
 
 SERVER_PATH = /home/krasimir/GF/gf-wordnet
+DOC_PATH = /home/krasimir/.cabal/share/x86_64-linux-ghc-8.6.5/gf-3.11.0/www
 
 ifndef GF_LIB_PATH
 INSTALL_PATH=$(shell cat ../gf-core/DATA_DIR)/lib
@@ -56,7 +57,7 @@ all: build_dirs Parse.pgf semantics.db $(SERVER_PATH)/www/SenseService.fcgi $(SE
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
-	mv Parse.ngf /home/krasimir/.cabal/share/x86_64-linux-ghc-8.6.5/gf-3.11.0/www/robust/
+	mv Parse.ngf $(DOC_PATH)/robust/
 
 build/gfo/WordNet.gfo:
 
@@ -110,6 +111,10 @@ deploy: $(WORDNETS)
 	                                                       /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;)"
 	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
 
+morpho:
+	$(foreach WORDNET,$(WORDNETS),mkdir -p $(DOC_PATH)/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
+	                              echo "$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))" | \
+	                              tee $(DOC_PATH)/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;)
 
 .SECONDARY:
 

@@ -68,7 +68,7 @@ data Synset
     deriving (Data,Show)
 
 data Status
-  = Guessed | Unchecked | Changed | Checked
+  = Guessed | Unchecked | Checked
   deriving (Data,Show,Eq)
 
 data Domain

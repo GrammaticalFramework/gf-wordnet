@@ -297,12 +297,11 @@ insertDomains !ids parent (Node (name,is_dim) children:ts) = do
 
 accumCounts m (lang,status) = Map.alter (Just . add) lang m
   where
-    add Nothing                = (0,0,0,0)
-    add (Just (!g,!u,!ca,!ce)) = case status of
-                                   Guessed   -> (g+0.001,u,ca,ce)
-                                   Unchecked -> (g,u+0.001,ca,ce)
-                                   Changed   -> (g,u,ca+0.001,ce)
-                                   Checked   -> (g,u,ca,ce+0.001)
+    add Nothing           = (0,0,0)
+    add (Just (!g,!u,!c)) = case status of
+                              Guessed   -> (g+0.001,u,c)
+                              Unchecked -> (g,u+0.001,c)
+                              Checked   -> (g,u,c+0.001)
 
 renderStatus cs =
       let (s1,x,y) = Map.foldlWithKey renderBar  ("",5,0) cs
@@ -315,15 +314,14 @@ renderStatus cs =
          s2++
          "</svg>"
       where
-        renderBar (s,x,y) lang (g,u,ca,ce) =
+        renderBar (s,x,y) lang (g,u,c) =
           let bar =
                 "<rect x=\""++show x++"\" y=\""++show 0++"\" width=\"30\" height=\""++show g++"\" style=\"fill:red\"/>\n"++
                 "<rect x=\""++show x++"\" y=\""++show g++"\" width=\"30\" height=\""++show u++"\" style=\"fill:yellow\"/>\n"++
-                "<rect x=\""++show x++"\" y=\""++show (g+u)++"\" width=\"30\" height=\""++show ca++"\" style=\"fill:black\"/>\n"++
-                "<rect x=\""++show x++"\" y=\""++show (g+u+ca)++"\" width=\"30\" height=\""++show ce++"\" style=\"fill:green\"/>\n"
-          in (bar++s,x+35,max y (g+u+ca+ce))
+                "<rect x=\""++show x++"\" y=\""++show (g+u+c)++"\" width=\"30\" height=\""++show c++"\" style=\"fill:green\"/>\n"
+          in (bar++s,x+35,max y (g+u+c))
 
-        renderLang (s,x,y) lang (g,u,ca,ce) =
+        renderLang (s,x,y) lang (g,u,c) =
           let text =
                 "<text x=\""++show (x+3)++"\" y=\""++show (y+15)++"\">"++lang++"</text>"
           in (text++s,x+35,y)

@@ -136,8 +136,8 @@ gfwordnet.render_rows = function(result,selection,new_selection,lemmas) {
 		clear(result_thead);
 
 		var row = [th(text("Abstract"))];
-		for (var lang in selection.langs_list) {
-			row.push(th(text(selection.langs[selection.langs_list[lang]].name)));
+		for (const lang of selection.langs_list) {
+			row.push(th(text(selection.langs[lang].name)));
 		}
 		row.push(node("th",{style: "width: 10px; font-style: italic"},[text("f")]));
 		if (gfwordnet.can_select) {
@@ -638,19 +638,12 @@ gfwordnet.onclick_cell = function (cell) {
 
 		gfwordnet.init_wordcloud(container,context_size_range);
 	}
-	function extract_linearization(lins) {
-		const table = gfwordnet.build_alignment_table(lins,this.frames);
-		this.header.parentNode.insertBefore(table, this.header.nextSibling);
-	}
 	function extract_linearization_synonym(lins) {
 		for (var i in lins) {
 			var lin = lins[i];
 			if (!lin.text.startsWith("["))
 				this[gfwordnet.selection.langs[lin.to].index].appendChild(text(lin.text));
 		}
-	}
-	function extract_linearization_morpho(lins) {
-		this.innerHTML = lins[0].text;
 	}
 
 	var details = null;
@@ -678,9 +671,11 @@ gfwordnet.onclick_cell = function (cell) {
 	}
 	cell.classList.add("selected");
 
-	var lex_id = cell.parentNode.getAttribute("data-lex-id");
+	var lex_id = cell.parentNode.dataset.lexId;
 
 	if (index == 0) {
+        delete details.dataset.langId;
+
 		var lex_def = this.lex_ids[lex_id];
 
 		for (var i in lex_def.images) {
@@ -710,8 +705,8 @@ gfwordnet.onclick_cell = function (cell) {
 
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
-			for (var lang in gfwordnet.selection.langs_list) {
-				row.push(th(text(gfwordnet.selection.langs[gfwordnet.selection.langs_list[lang]].name)));
+			for (const lang of gfwordnet.selection.langs_list) {
+				row.push(th(text(gfwordnet.selection.langs[lang].name)));
 			}
 			result.appendChild(tr(row));
 
@@ -787,8 +782,8 @@ gfwordnet.onclick_cell = function (cell) {
 
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
-			for (var lang in gfwordnet.selection.langs_list) {
-				row.push(th(text(gfwordnet.selection.langs[gfwordnet.selection.langs_list[lang]].name)));
+			for (const lang of gfwordnet.selection.langs_list) {
+				row.push(th(text(gfwordnet.selection.langs[lang].name)));
 			}
 			result.appendChild(tr(row));
 
@@ -824,8 +819,8 @@ gfwordnet.onclick_cell = function (cell) {
 
 			var result = node("table",{class: "result"},[]);
 			var row = [th(text("Abstract"))]
-			for (var lang in gfwordnet.selection.langs_list) {
-				row.push(th(text(gfwordnet.selection.langs[gfwordnet.selection.langs_list[lang]].name)));
+			for (const lang of gfwordnet.selection.langs_list) {
+				row.push(th(text(gfwordnet.selection.langs[lang].name)));
 			}
 			result.appendChild(tr(row));
 
@@ -869,17 +864,23 @@ gfwordnet.onclick_cell = function (cell) {
 		if (lex_def.examples.length > 0) {
 			var header = node("h1",{},[text("Examples")]);
 			details.appendChild(header);
-			for (var i in lex_def.examples) {
-				gfwordnet.grammar_call("command=bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.examples[i].expr),
-                                       bind(extract_linearization,{header: header, frames: lex_def.examples[i].frames}));
+			for (const example of lex_def.examples) {
+				gfwordnet.grammar_call("command=bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(example.expr),
+                	(lins) => {
+                        const table = gfwordnet.build_alignment_table(lins,example);
+                        header.parentNode.insertBefore(table, header.nextSibling);
+                    });
 			}
 		}
 		if (lex_def.secondary_examples.length > 0) {
 			var header = node("h1",{},[text("Secondary Examples")]);
 			details.appendChild(header);
-			for (var i in lex_def.secondary_examples) {
-				gfwordnet.grammar_call("command=bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(lex_def.secondary_examples[i].expr),
-                                       bind(extract_linearization,{header: header, frames: lex_def.secondary_examples[i].frames}));
+			for (const example of lex_def.secondary_examples) {
+				gfwordnet.grammar_call("command=bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(example.expr),
+                	(lins) => {
+                        const table = gfwordnet.build_alignment_table(lins,example);
+                        header.parentNode.insertBefore(table, header.nextSibling);
+                    });
 			}
 		}
 		
@@ -891,10 +892,14 @@ gfwordnet.onclick_cell = function (cell) {
 		else
 			gfwordnet.sense_call("context_id="+encodeURIComponent(lex_id),bind(extract_context,{lex_id: lex_id, popup: popup}));	
 	} else {
-		var s   = lex_id.split("_");
-		var cat = s[s.length-1];
-		gfwordnet.grammar_call("command=linearize&to="+gfwordnet.selection.langs_list[index-1]+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),bind(extract_linearization_morpho,details));
-	}
+		const s   = lex_id.split("_");
+		const cat = s[s.length-1];
+		gfwordnet.grammar_call("command=linearize&to="+gfwordnet.selection.langs_list[index-1]+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),
+        	(lins) => {
+                details.innerHTML = lins[0].text;
+                details.dataset.langId = lins[0].to;
+            });
+    }
 }
 gfwordnet.onmouseover_cell = function(event) {
 	if (event.target.tagName != "TD")
@@ -932,7 +937,7 @@ gfwordnet.onclick_minus = function (event, icon) {
 	
 	icon.src = icon.src.substring(0,icon.src.length-9)+"plus.png";
 }
-gfwordnet.update_cells = function(lex_id,lang) {
+gfwordnet.update_cells_status = function(lex_id,lang) {
 	var index  = gfwordnet.selection.langs[lang].index;
 	var status = this.lex_ids[lex_id].status[lang];
 
@@ -965,30 +970,94 @@ gfwordnet.update_cells = function(lex_id,lang) {
 		}
 	}
 }
+gfwordnet.update_cells_lin = function(lex_id,lang) {
+    const index  = gfwordnet.selection.langs[lang].index;
+
+    // Part 1. Update the linearization of all lexical rows
+    const rows = document.querySelectorAll("tr[data-lex-id="+lex_id+"]");
+    if (rows.length != 0) {
+        const cmd  = (gfwordnet.user != null) ? "linearizeAll" : "linearize";
+        gfwordnet.grammar_call("command="+cmd+"&to="+lang+"&tree="+encodeURIComponent(lex_id), (lins) => {
+            for (const lin of lins) {
+                var texts = []
+                if (gfwordnet.user != null) {
+                    for (const text of lin.texts) {
+                        if (!text.startsWith("["))
+                            texts.push(text);
+                    }
+                } else {
+                    if (!lin.text.startsWith("["))
+                        texts.push(lin.text);
+                }
+                texts = [... new Set(texts)];
+                
+                for (const row of rows) {
+                    const cell = row.children[gfwordnet.selection.langs[lin.to].index];
+                    cell.innerHTML = "";
+                    cell.appendChild(text(texts.join(", ")));
+                }
+            }
+        });
+    }
+
+    // Part 2. Update the linearization of all examples
+    detailss = document.querySelectorAll("tr[data-lex-id="+lex_id+"] + tr > td.details > div[data-lang-id="+lang+"]");
+    if (detailss.length != 0) {
+        const s   = lex_id.split("_");
+		const cat = s[s.length-1];
+        gfwordnet.grammar_call("command=linearize&to="+lang+"&tree="+encodeURIComponent("MkDocument (NoDefinition \"\") (Inflection"+cat+" "+lex_id+") \"\""),
+            (lins) => {
+                for (const details of detailss) {
+                    details.innerHTML = lins[0].text;
+                }
+            });
+    }
+
+    // Part 3. Update the linearization of all examples
+    const spans = document.querySelectorAll("span[data-fun="+lex_id+"]");
+    for (const span of spans) {
+        let row = span;
+        while (row != null && row.tagName != "TR") {
+            row = row.parentElement;
+        }
+        const table = row.parentElement;
+        
+        if (table.children[index-1] == row) { // The right language
+            gfwordnet.grammar_call("command=bracketedLinearize&to="+lang+"&tree="+encodeURIComponent(table.dataset.expr), (lins) => {
+                for (const lin of lins) {
+                    const td = row.children[1];
+                    td.innerHTML = "";
+                    for (const span of gfwordnet.build_alignment_spans(lin,[])) {
+                        td.appendChild(span);
+                    }
+                }
+            });
+        }
+    }
+}
 gfwordnet.onclick_check = function (event) {
 	event.stopPropagation();
 
-	var cell = event.target.parentNode.parentNode;
+	const cell = event.target.parentNode.parentNode;
 
-	var index = -1;
-	var node  = cell;
+	let index = -1;
+	let node  = cell;
     while ((node = node.previousElementSibling)) {
         index++;
     }
 
-	var lex_id = cell.parentNode.getAttribute("data-lex-id");
-	var lang   = gfwordnet.selection.langs_list[index];
+	const lex_id = cell.parentNode.getAttribute("data-lex-id");
+	const lang   = gfwordnet.selection.langs_list[index];
 
-	function extract_confirm(st) {
-		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
-		gfwordnet.popup = null;
+	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),
+        (st) => {
+		    gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
+		    gfwordnet.popup = null;
 
-		gfwordnet.lex_ids[lex_id].status[lang] = st[1];
-		gfwordnet.update_cells(lex_id,lang);
-		gfwordnet.update_count(st[0]);
-	}
-
-	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),extract_confirm);
+		    gfwordnet.lex_ids[lex_id].status[lang] = st[1];
+		    gfwordnet.update_cells_status(lex_id,lang);
+		    gfwordnet.update_count(st[0]);
+	    });
 }
 gfwordnet.onclick_eval = function(event,editor) {
 	var editor = event.target.parentNode.parentNode.parentNode;
@@ -1016,41 +1085,56 @@ gfwordnet.onclick_eval = function(event,editor) {
 			event.target.nextElementSibling.style.display = "none";
 		}
 	}
-	function extract_import(html) {
-		if (html != "") {
-			extract_html(html);
-			return;
-		}
-		gfwordnet.shell_call("dir="+dir+"&command=cc%20-one%20"+encodeURIComponent("MkDocument (NoDefinition {s=\"\"}) (Inflection"+cat+" ("+def+")) {s=\"\"}"),extract_html);
-	}
-	gfwordnet.shell_call("dir="+dir+"&command=i+-retain+morpho.gf",extract_import);
+	gfwordnet.shell_call("dir="+dir+"&command=i%20/home/krasimir/.cabal/share/x86_64-linux-ghc-8.6.5/gf-3.11.0/www/robust/Parse.ngf", (html) => {
+            if (html != "") {
+                extract_html(html);
+                return;
+            }
+            gfwordnet.shell_call("dir="+dir+"&command=i%20-resource+morpho.gf", (html) => {
+                if (html != "") {
+                    extract_html(html);
+                    return;
+                }
+                gfwordnet.shell_call("dir="+dir+"&command=cc%20-one%20"+encodeURIComponent("MkDocument (NoDefinition {s=\"\"}) (Inflection"+cat+" ("+def+")) {s=\"\"}"),extract_html);
+            });
+        });
 }
 gfwordnet.onclick_save = function(event) {
 	event.stopPropagation();
 
-	var editor = event.target.parentNode.parentNode.parentNode;
+	const editor = event.target.parentNode.parentNode.parentNode;
 
-	var index = -1;
-	var node  = editor.cell;
+	let index = -1;
+	let node  = editor.cell;
     while ((node = node.previousElementSibling)) {
         index++;
     }
 
-	var lex_id = editor.cell.parentNode.getAttribute("data-lex-id");
-	var lang   = gfwordnet.selection.langs_list[index];
-	var def    = editor.firstElementChild.firstElementChild.firstElementChild.value;
+	const lex_id = editor.cell.parentNode.getAttribute("data-lex-id");
+	const lang   = gfwordnet.selection.langs_list[index];
+	const def    = editor.firstElementChild.firstElementChild.firstElementChild.value;
+    const dir    = "/tmp/morpho-"+lang.slice(5);
 
-	function extract_confirm(st) {
-		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
-		gfwordnet.popup = null;
+    gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
+    gfwordnet.popup = null;
 
-		gfwordnet.lex_ids[lex_id].status[lang] = st[1];
-		gfwordnet.update_cells(lex_id,lang);
+	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),
+    	(st) => {
+
+            gfwordnet.lex_ids[lex_id].status[lang] = st[1];
+            gfwordnet.update_cells_status(lex_id,lang);
 		
-		gfwordnet.update_count(st[0]);
-	}
+            gfwordnet.update_count(st[0]);
+        });
+	gfwordnet.shell_call("dir="+dir+"&command=create%20-lang="+lang+"%20lin%20"+lex_id+"%20=%20"+encodeURIComponent(def),
+        (html) => {
+            if (html != "") {
+                alert(html);
+                return;
+            }
+            gfwordnet.update_cells_lin(lex_id,lang);
+        });
 
-	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),extract_confirm);
 	document.body.removeChild(editor);
 }
 gfwordnet.onclick_delete = function(event) {
@@ -1388,7 +1472,7 @@ gfwordnet.onclick_close_container_button = function(event) {
     close_button.style.display = "none";
 	gfwordnet.init_canvas(tab,container,context_size_range);
 }
-gfwordnet.build_alignment_table = function(lins,frames,colspan,skip_lang,select_bracket,click_on_all_levels) {
+gfwordnet.build_alignment_spans = function(lin,frames,colspan,select_bracket,click_on_all_levels) {
 	if (select_bracket == null) {
 		select_bracket = gfwordnet.select_bracket;
 	}
@@ -1455,19 +1539,19 @@ gfwordnet.build_alignment_table = function(lins,frames,colspan,skip_lang,select_
 		return tags;
 	}
 
-	let rows = []
-	for (let i in lins) {
-		const lin = lins[i];
-
+	return taggedBrackets(lin.brackets);
+}
+gfwordnet.build_alignment_table = function(lins,example,colspan,skip_lang,select_bracket,click_on_all_levels) {
+	const rows = []
+	for (const lin of lins) {
 		if (lin.to != skip_lang) {
-			bind_state = true;
-			const cell = td(taggedBrackets(lin.brackets));
+			const cell = td(gfwordnet.build_alignment_spans(lin,example.frames,colspan,select_bracket,click_on_all_levels));
 			if (colspan != null)
 				cell.colSpan = colspan;
 			rows.push(tr([th(text(gfwordnet.selection.langs[lin.to].name)), cell]));
 		}
 	}
-	return node("table",{class: "result"},rows);
+	return node("table",{"data-expr":example.expr,class:"result"},rows);
 }
 gfwordnet.select_bracket = function (table,colspan,fid,lex_id,frames) {
     let selected_frame = null;

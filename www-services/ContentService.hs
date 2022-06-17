@@ -118,12 +118,12 @@ cgiMain db = do
         _       -> fmap (Map.lookup lex_id) (getDefinitions (Set.singleton lex_id) lang)
 
     doUpdate user lex_id lang mb_def = do
-      mb_def' <- doGet user lex_id lang
-      let (def,s) = case mb_def of
-                      Just def | mb_def /= mb_def' -> (def,                  Changed)
-                      _                            -> (fromMaybe "" mb_def', Checked)
+      def <- case mb_def of
+               Just def -> return def
+               Nothing  -> do mb_def <- doGet user lex_id lang
+                              return (fromMaybe "" mb_def)
       runDaison db ReadWriteMode $ do
-        res <- update lexemes [(id, lex{status=updateStatus lang s (status lex)}) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
+        res <- update lexemes [(id, lex{status=updateStatus lang Checked (status lex)}) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
         insert_ updates (UpdateLexeme user lex_id lang def)
         c <- query countRows (from updates_usr everything)
         return (c,head [map toLower (show st)

@@ -1085,7 +1085,7 @@ gfwordnet.onclick_eval = function(event,editor) {
 			event.target.nextElementSibling.style.display = "none";
 		}
 	}
-	gfwordnet.shell_call("dir="+dir+"&command=i%20/home/krasimir/.cabal/share/x86_64-linux-ghc-8.6.5/gf-3.11.0/www/robust/Parse.ngf", (html) => {
+	gfwordnet.shell_call("dir="+dir+"&command=i%20../../robust/Parse.ngf", (html) => {
             if (html != "") {
                 extract_html(html);
                 return;

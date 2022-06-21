@@ -20786,7 +20786,7 @@ woad_2_N	Q212547	251147;Isatis_tinctoria;commons/f/f8/Isatis_tinctoria_003.JPG
 woburn_PN	Q1881422	382038;Woburn,_Bedfordshire;commons/6/67/Woburn_ParishChurch1.JPG
 wok_N	Q208364	33693;Wok;commons/b/ba/Wok_cooking.jpg	33693;Wok;commons/5/54/Wok_cooking_and_the_heat_source_by_The_Pocket_in_Nanjing.jpg
 wokingham_PN	Q1000679	194885;Wokingham;commons/3/38/Wokingham-town-hall.jpg
-wold_N	Q75520	538005;Plateau;commons/2/2f/Himalaya_85.30820E_32.11063N.jpg
+wold_N	Q7775411	2424060;The_Wolds;commons/9/9e/Head_of_Swindale%2C_on_the_Wolds_Way_-_geograph.org.uk_-_120099.jpg
 wolf's_bane_N	Q158040	4997529;Aconitum_lycoctonum;commons/b/b7/Aconitum_lycoctonum_subsp._vulparia_MHNT.BOT.2004.0.787.jpg	4997529;Aconitum_lycoctonum;commons/7/72/Aconitum_lycoctonum_002.jpg
 wolf_2_PN	Q215747	147490;Hugo_Wolf;commons/7/7d/Hugo_Wolf.jpg	147490;Hugo_Wolf;commons/4/44/Postcard-1910_Hugo_Wolf.jpg
 wolf_3_PN	Q65337	162196;Friedrich_August_Wolf;commons/3/34/Friedrich_August_Wolf_-_Imagines_philologorum.jpg	162196;Friedrich_August_Wolf;commons/1/1d/Friedrich_August_Wolf.jpg

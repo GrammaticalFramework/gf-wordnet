@@ -214,7 +214,7 @@ gfwordnet.render_rows = function(result,selection,new_selection,lemmas) {
 	return rows;
 }
 gfwordnet.render_sense_rows = function(ctxt,result_container,domains_container,lex_ids) {
-    var domains_row = domains_container.lastElementChild;
+    var domains_row = domains_container ? domains_container.lastElementChild : null;
 
     for (var lex_id in lex_ids) {
         if (!(lex_id in gfwordnet.lex_ids && gfwordnet.lex_ids[lex_id].match)) {

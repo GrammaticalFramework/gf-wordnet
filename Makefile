@@ -58,7 +58,7 @@ ifneq ($(SERVER), NO)
 endif
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
-	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
+	gf --make --probs=Parse.probs -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
 ifneq ($(SERVER), NO)
 	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
 	scp -p build/gfo/WordNet*.gfo www.grammaticalframework.org:/usr/local/www/gf-wordnet

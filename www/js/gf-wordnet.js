@@ -451,9 +451,13 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 				}
 			}
 			var chunk = s.substring(cohorts[i].start,cohorts[i].end);
-			var link  = node("a",{contenteditable: false, href: "#", "data-index": i},[text(chunk)]);
-			link.addEventListener("click", onclick_word);
-			input.appendChild(link);
+            if (cohorts[i].morpho.length > 0) {
+                var link  = node("a",{contenteditable: false, href: "#", "data-index": i},[text(chunk)]);
+                link.addEventListener("click", onclick_word);
+                input.appendChild(link);
+            } else {
+                input.appendChild(text(chunk));
+            }
 			last = cohorts[i].end;
 		}
 	}

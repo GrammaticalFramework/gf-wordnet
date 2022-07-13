@@ -1414,7 +1414,7 @@ barilla_1_N	Q64506735	7958278;Barilla;commons/9/93/Salsola_soda_Rignanese.jpg
 barilla_2_N	Q64506735	7958278;Barilla;commons/9/93/Salsola_soda_Rignanese.jpg
 barium_N	Q1112	3757;Barium;commons/1/16/Barium_unter_Argon_Schutzgas_Atmosph%C3%A4re.jpg
 bark_1_N	Q184453	170396;Bark_(botany);commons/d/d8/Mango_Bark.jpg
-barley_2_N	Q518044	87494;Hordeum;commons/5/54/Hordeum_distichon0.jpg
+barley_2_N	Q11577	19541428;Barley;commons/8/81/Illustration_Hordeum_vulgare1.jpg
 barmbrack_N	Q2993311	4427548;Barmbrack;commons/f/f2/Barmbrack.jpg
 barn_1_N	Q1303167	118737;Barn;commons/c/c7/Zalmon_Read_Barn_back_view.jpg	118737;Barn;commons/e/ea/Barn_icon.png	118737;Barn;commons/3/37/Staszów_ul_Armii_Krajowej_stodoła.jpg
 barnacle_1_N	Q220457	159512;Barnacle;commons/7/72/Chthamalus_stellatus.jpg	159512;Barnacle;commons/0/0b/Haeckel_Cirripedia.jpg	159512;Barnacle;commons/b/be/Pouces-pieds_Quiberon.JPG

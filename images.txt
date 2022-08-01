@@ -1126,7 +1126,7 @@ aurora_2_N	Q40609	49658;Aurora;commons/2/26/Aurora_Borealis_and_Australis_Poster
 aurora_PN	Q178831	713060;Aurora_(mythology);commons/e/e5/Guercino_001.jpg	713060;Aurora_(mythology);commons/6/65/Aurora_—_Pantheum_mythicum,_ed._5ª_(BL).jpg	713060;Aurora_(mythology);commons/f/fb/William-Adolphe_Bouguereau_(1825-1905)_-_Dawn_(1881).jpg
 aurous_A	Q476078	476818;Aureus;commons/f/f7/Aureus_Septimius_Severus-193-leg_XIIII_GMV.jpg
 auscultation_N	Q779054	581091;Auscultation;commons/6/6d/Standardized-Patient-Program-examining-t_he-abdomen.jpg
-austenite_N	Q487286	233317;Austenite;commons/d/d6/FagerstaRA%C3%842.jpg
+austenite_N	Q113365319	233317;Austenite;commons/d/d6/FagerstaRA%C3%842.jpg
 australia_1_PN	Q408	4689264;Australia;commons/8/88/Flag_of_Australia_%28converted%29.svg	4689264;Australia;commons/e/ed/Australia_satellite_plane.jpg
 australia_2_PN	Q3960	20611325;Australia_(continent);commons/e/e8/Australia-New_Guinea_%28orthographic_projection%29.svg
 australian_N	Q205143	345155;Australian_Aboriginal_languages;en/f/f3/Pama-Nyungan_and_non-Pama-Nyungan.png

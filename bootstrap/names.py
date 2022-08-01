@@ -95,7 +95,72 @@ def cyr(s):
     s = s.replace("Ø", "Йо")
     s = s.replace("Õ", "Йо")
     s = s.replace("Ó", "О")
-    s = s.replace("Å", "О")
+    s = s.replace("Å", "А")
+    s = s.replace("A", "А")
+    s = s.replace("E", "Е")
+    s = s.replace("M", "М")
+    s = s.replace("O", "О")
+    s = s.replace("Q", "К")
+    s = s.replace("T", "Т")
+    s = s.replace("X", "Кс")
+    s = s.replace("À", "А")
+    s = s.replace("Á", "А")
+    s = s.replace("Â", "А")
+    s = s.replace("Ç", "Ч")
+    s = s.replace("È", "Е")
+    s = s.replace("Ê", "Е")
+    s = s.replace("Í", "И")
+    s = s.replace("Ñ", "Н")
+    s = s.replace("Ò", "О")
+    s = s.replace("Ô", "О")
+    s = s.replace("Ú", "У")
+    s = s.replace("Ü", "У")
+    s = s.replace("Ý", "Й")
+    s = s.replace("Þ", "Т")
+    s = s.replace("Ā", "А")
+    s = s.replace("Ą", "А")
+    s = s.replace("Ć", "Ц")
+    s = s.replace("Č", "Ц")
+    s = s.replace("Ď", "Д")
+    s = s.replace("Đ", "Д")
+    s = s.replace("Ē", "Е")
+    s = s.replace("Ė", "Е")
+    s = s.replace("Ě", "Е")
+    s = s.replace("Ĝ", "Г")
+    s = s.replace("Ğ", "Г")
+    s = s.replace("Ġ", "Г")
+    s = s.replace("Ģ", "Г")
+    s = s.replace("Ī", "И")
+    s = s.replace("İ", "И")
+    s = s.replace("Ķ", "К")
+    s = s.replace("Ļ", "Л")
+    s = s.replace("Ľ", "Л")
+    s = s.replace("Ł", "Л")
+    s = s.replace("Ņ", "Н")
+    s = s.replace("Ō", "О")
+    s = s.replace("Ř", "Р")
+    s = s.replace("Œ", "Е")
+    s = s.replace("Ś", "С")
+    s = s.replace("Ş", "С")
+    s = s.replace("Š", "С")
+    s = s.replace("Ţ", "Т")
+    s = s.replace("Ť", "Т")
+    s = s.replace("Ū", "У")
+    s = s.replace("Ź", "З")
+    s = s.replace("Ż", "З")
+    s = s.replace("Ž", "З")
+    s = s.replace("Ǎ", "А")
+    s = s.replace("Ș", "Ш")
+    s = s.replace("Ё", "Е")
+    s = s.replace("Є", "Е")
+    s = s.replace("Ј", "Й")
+    s = s.replace("Љ", "Л")
+    s = s.replace("Њ", "Н")
+    s = s.replace("Џ", "У")
+    s = s.replace("Э", "Е")
+    s = s.replace("Ḥ", "Х")
+    s = s.replace("Ṣ", "С")
+    s = s.replace("Ỷ", "Й")
     #LOWERCASE LETTERS
     s = s.replace("a", "а")
     s = s.replace("b", "б")
@@ -132,8 +197,123 @@ def cyr(s):
     s = s.replace("õ", "йо")
     s = s.replace("ó", "о")
     s = s.replace("å", "о")
-    
-    return s;
+    s = s.replace("ß", "с")
+    s = s.replace("à", "а")
+    s = s.replace("á", "а")
+    s = s.replace("â", "а")
+    s = s.replace("ã", "а")
+    s = s.replace("ç", "ч")
+    s = s.replace("è", "е")
+    s = s.replace("ê", "е")
+    s = s.replace("ë", "е")
+    s = s.replace("ì", "и")
+    s = s.replace("í", "и")
+    s = s.replace("ï", "и")
+    s = s.replace("ð", "о")
+    s = s.replace("ñ", "н")
+    s = s.replace("ò", "о")
+    s = s.replace("ô", "о")
+    s = s.replace("ù", "у")
+    s = s.replace("ú", "у")
+    s = s.replace("û", "у")
+    s = s.replace("ü", "у")
+    s = s.replace("ý", "й")
+    s = s.replace("þ", "т")
+    s = s.replace("ÿ", "й")
+    s = s.replace("ā", "а")
+    s = s.replace("ă", "а")
+    s = s.replace("ą", "а")
+    s = s.replace("ć", "ч")
+    s = s.replace("ċ", "ч")
+    s = s.replace("č", "ч")
+    s = s.replace("ď", "д")
+    s = s.replace("đ", "д")
+    s = s.replace("ē", "е")
+    s = s.replace("ė", "е")
+    s = s.replace("ę", "е")
+    s = s.replace("ě", "е")
+    s = s.replace("ğ", "г")
+    s = s.replace("ģ", "г")
+    s = s.replace("ī", "и")
+    s = s.replace("ĭ", "и")
+    s = s.replace("ı", "и")
+    s = s.replace("ķ", "к")
+    s = s.replace("ĺ", "л")
+    s = s.replace("ļ", "л")
+    s = s.replace("ľ", "л")
+    s = s.replace("ł", "л")
+    s = s.replace("ń", "н")
+    s = s.replace("ņ", "н")
+    s = s.replace("ň", "н")
+    s = s.replace("ō", "о")
+    s = s.replace("ő", "о")
+    s = s.replace("œ", "е")
+    s = s.replace("ŕ", "г")
+    s = s.replace("ř", "г")
+    s = s.replace("ś", "с")
+    s = s.replace("ş", "с")
+    s = s.replace("š", "с")
+    s = s.replace("ţ", "л")
+    s = s.replace("ť", "л")
+    s = s.replace("ũ", "у")
+    s = s.replace("ū", "у")
+    s = s.replace("ŭ", "у")
+    s = s.replace("ů", "у")
+    s = s.replace("ű", "у")
+    s = s.replace("ŷ", "й")
+    s = s.replace("ź", "з")
+    s = s.replace("ż", "з")
+    s = s.replace("ž", "з")
+    s = s.replace("ơ", "о")
+    s = s.replace("ư", "у")
+    s = s.replace("ǎ", "а")
+    s = s.replace("ǐ", "и")
+    s = s.replace("ǒ", "о")
+    s = s.replace("ǔ", "у")
+    s = s.replace("ș", "ш")
+    s = s.replace("ϊ", "и")
+    s = s.replace("э", "е")
+    s = s.replace("ё", "е")
+    s = s.replace("є", "е")
+    s = s.replace("і", "и")
+    s = s.replace("ј", "й")
+    s = s.replace("љ", "л")
+    s = s.replace("њ", "н")
+    s = s.replace("ў", "й")
+    s = s.replace("џ", "у")
+    s = s.replace("ḥ", "х")
+    s = s.replace("ṅ", "н")
+    s = s.replace("ṇ", "н")
+    s = s.replace("ṣ", "с")
+    s = s.replace("ạ", "а")
+    s = s.replace("ả", "а")
+    s = s.replace("ấ", "а")
+    s = s.replace("ầ", "а")
+    s = s.replace("ẫ", "а")
+    s = s.replace("ậ", "а")
+    s = s.replace("ắ", "а")
+    s = s.replace("ặ", "а")
+    s = s.replace("ế", "е")
+    s = s.replace("ề", "е")
+    s = s.replace("ễ", "е")
+    s = s.replace("ệ", "е")
+    s = s.replace("ọ", "о")
+    s = s.replace("ố", "о")
+    s = s.replace("ồ", "о")
+    s = s.replace("ổ", "о")
+    s = s.replace("ỗ", "о")
+    s = s.replace("ớ", "о")
+    s = s.replace("ợ", "о")
+    s = s.replace("ụ", "у")
+    s = s.replace("ứ", "у")
+    s = s.replace("ử", "у")
+    s = s.replace("ữ", "у")
+    s = s.replace("ỳ", "й")
+    s = s.replace("ỹ", "й")
+    s = s.replace("q", "к")
+    s = s.replace("x", "кс")
+
+    return s
 
 def generate():
     with open("names.txt", "r") as f:
@@ -146,6 +326,9 @@ def generate():
             name = record[2].get("en",next(record[2].items().__iter__())[0])
             name = name.split('/')[0].strip()
             name = name.lower()
+            paren = name.find("(")
+            if paren >= 0:
+                name = name[:paren].strip()
             if record[1] in ["Q12308941","Q11879590"]:
                 tag = "GN"
             else:
@@ -186,7 +369,7 @@ def generate():
             return q
 
         with open("Names.gf","w") as out:
-            out.write("abstract Names = {\n")
+            out.write("abstract Names = Cat ** {\n")
             out.write("\n")
             out.write("cat GN ; SN ;\n")
             out.write("\n")
@@ -232,24 +415,31 @@ def generate():
                     for lang_code in lang_codes:
                         s = labels.get(lang_code)
                         if s:
+                            paren = s.find("(")
+                            if paren >= 0:
+                                s = s[:paren]
                             if lang == "Bul" and lang_code != "bg":
                                 s  = cyr(s)
                             lin_list = s.split("/")
                             break
                     for lin in lin_list:
                         lin = lin.strip()
-                        if lang == "Eng":
+                        if lang in ["Afr","Chi","Dut","Est","Fin","Kor","Swe","Tha","Tur"]:
+                            lin = "mkPN \""+lin+"\""
+                        elif lang in ["Som"]:
                             if name_type in ["Q12308941","Q18972245"]:
-                                lin = "regGenPN \""+lin+"\" masculine"
+                                lin = "mkPN \""+lin+"\" sgMasc"
                             elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "regGenPN \""+lin+"\" feminine"
+                                lin = "mkPN \""+lin+"\" sgFem"
                             else:
                                 lin = "mkPN \""+lin+"\""
-                        elif lang == "Bul":
-                            if name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN \""+lin+"\" Fem"
+                        else:
+                            if name_type in ["Q12308941","Q18972245"]:
+                                lin = "mkPN \""+lin+"\" masculine"
+                            elif name_type in ["Q11879590","Q18972207"]:
+                                lin = "mkPN \""+lin+"\" feminine"
                             else:
-                                lin = "mkPN \""+lin+"\" Masc"
+                                lin = "mkPN \""+lin+"\""
                         lins.append(lin)
                     if len(lins) == 1:
                         out.write("lin "+quote(gf_id)+" = "+lins[0]+" ;\n")

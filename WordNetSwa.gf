@@ -19430,6 +19430,7 @@ lin compute_V2 = variants {} ;
 lin computer_1_N = mkN "tarakilishi" a_wa ;
 lin computer_2_N = variants {} ;
 lin computer_science_N = mkN "sayansi ya tarakilishi" a_wa ; --guessed
+lin computer_scientist_N = variants {} ;
 lin computerization_N = variants {} ;
 lin computerize_1_V2 = variants {} ;
 lin computerize_2_V2 = variants {} ;

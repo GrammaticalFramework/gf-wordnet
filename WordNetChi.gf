@@ -19430,6 +19430,7 @@ lin compute_V2 = variants {} ;
 lin computer_1_N = mkN "电子计算机" ; --unchecked
 lin computer_2_N = variants {} ;
 lin computer_science_N = mkN "计算机科学" ; --unchecked
+lin computer_scientist_N = mkN "電腦科學家" ; --unchecked
 lin computerization_N = variants {} ;
 lin computerize_1_V2 = mkV2 (mkV "使电脑化") ; --unchecked
 lin computerize_2_V2 = mkV2 (mkV "使电脑化") ; --unchecked

@@ -19430,6 +19430,7 @@ lin compute_V2 = mkV2 (mkV "tir") noPrep ; --guessed
 lin computer_1_N = mkN "kumbuyuutar" ;
 lin computer_2_N = mkN "kumbuyuutar" ; --guessed
 lin computer_science_N = variants {} ;
+lin computer_scientist_N = variants {} ;
 lin computerization_N = variants {} ;
 lin computerize_1_V2 = variants {} ;
 lin computerize_2_V2 = variants {} ;

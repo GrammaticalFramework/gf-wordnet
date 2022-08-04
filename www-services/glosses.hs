@@ -114,7 +114,7 @@ main = do
             [(drop 5 lang,status)
                        | (_,lex) <- from lexemes everything,
                          (lang,status) <- anyOf (status lex)]
-  writeFile "build/status.svg" (renderStatus cs)
+  writeFile "www/status.svg" (renderStatus cs)
 
   closeDB db
 

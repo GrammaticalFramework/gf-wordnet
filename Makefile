@@ -102,7 +102,7 @@ deploy: $(WORDNETS)
 	scp -p build/gfo/WordNet*.gfo www.grammaticalframework.org:/usr/local/www/gf-wordnet
 	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
 	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
-	scp build/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
+	scp www/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
 	ssh -t www.grammaticalframework.org \
 	    "$(foreach WORDNET,$(WORDNETS),sudo mkdir -p /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
 	                                   echo \"$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))\" | \

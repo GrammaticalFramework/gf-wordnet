@@ -38,15 +38,16 @@ main = do
   cncdefs13<- fmap (mapMaybe (parseCncSyn "ParseMlt") . lines) $ readFile "WordNetMlt.gf"
   cncdefs14<- fmap (mapMaybe (parseCncSyn "ParsePol") . lines) $ readFile "WordNetPol.gf"
   cncdefs15<- fmap (mapMaybe (parseCncSyn "ParsePor") . lines) $ readFile "WordNetPor.gf"
-  cncdefs16<- fmap (mapMaybe (parseCncSyn "ParseSlv") . lines) $ readFile "WordNetSlv.gf"
-  cncdefs17<- fmap (mapMaybe (parseCncSyn "ParseSom") . lines) $ readFile "WordNetSom.gf"
-  cncdefs18<- fmap (mapMaybe (parseCncSyn "ParseSpa") . lines) $ readFile "WordNetSpa.gf"
-  cncdefs19<- fmap (mapMaybe (parseCncSyn "ParseSwa") . lines) $ readFile "WordNetSwa.gf"
-  cncdefs20<- fmap (mapMaybe (parseCncSyn "ParseSwe") . lines) $ readFile "WordNetSwe.gf"
-  cncdefs21<- fmap (mapMaybe (parseCncSyn "ParseTha") . lines) $ readFile "WordNetTha.gf"
-  cncdefs22<- fmap (mapMaybe (parseCncSyn "ParseTur") . lines) $ readFile "WordNetTur.gf"
+  cncdefs16<- fmap (mapMaybe (parseCncSyn "ParseRon") . lines) $ readFile "WordNetRon.gf"
+  cncdefs17<- fmap (mapMaybe (parseCncSyn "ParseSlv") . lines) $ readFile "WordNetSlv.gf"
+  cncdefs18<- fmap (mapMaybe (parseCncSyn "ParseSom") . lines) $ readFile "WordNetSom.gf"
+  cncdefs19<- fmap (mapMaybe (parseCncSyn "ParseSpa") . lines) $ readFile "WordNetSpa.gf"
+  cncdefs20<- fmap (mapMaybe (parseCncSyn "ParseSwa") . lines) $ readFile "WordNetSwa.gf"
+  cncdefs21<- fmap (mapMaybe (parseCncSyn "ParseSwe") . lines) $ readFile "WordNetSwe.gf"
+  cncdefs22<- fmap (mapMaybe (parseCncSyn "ParseTha") . lines) $ readFile "WordNetTha.gf"
+  cncdefs23<- fmap (mapMaybe (parseCncSyn "ParseTur") . lines) $ readFile "WordNetTur.gf"
 
-  let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14++cncdefs15++cncdefs16++cncdefs17++cncdefs18++cncdefs19++cncdefs20++cncdefs21++cncdefs22)
+  let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14++cncdefs15++cncdefs16++cncdefs17++cncdefs18++cncdefs19++cncdefs20++cncdefs21++cncdefs22++cncdefs23)
 
   absdefs <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
 

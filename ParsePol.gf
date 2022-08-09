@@ -10,7 +10,8 @@ concrete ParsePol of Parse =
   IdiomPol,
   TenseX - [CAdv,IAdv,AdV,SC],
   ParseExtendPol,
-  WordNetPol
+  WordNetPol,
+  DocumentationPol
   ** {
 
 flags

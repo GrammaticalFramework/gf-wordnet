@@ -48,7 +48,7 @@ table.result td {
 	background: #bdf;
 	padding: 3px;
 }
-table.result td[colspan] {
+table.result > tbody > tr > td[colspan] {
 	border-width: 2px 2px 1px 2px ;
 	background: #cef;
 }
@@ -59,7 +59,7 @@ table.result td.selected {
 table.result td.unselected {
 	border-bottom-style: none;
 }
-table.result td.details {
+table.result  > tbody > tr > td.details {
 	background: white;
 	border-top-style: none;
 }

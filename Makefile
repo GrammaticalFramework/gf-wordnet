@@ -45,13 +45,9 @@ ifeq ($(USE_WIKIPEDIA),YES)
 endif
 
 SERVER_PATH = /home/krasimir/GF/gf-wordnet
-DOC_PATH = /home/krasimir/.cabal/share/x86_64-linux-ghc-8.6.5/gf-3.11.0/www
-
-ifndef GF_LIB_PATH
-INSTALL_PATH=$(shell cat ../gf-core/DATA_DIR)/lib
-else
-INSTALL_PATH=$(GF_LIB_PATH)
-endif
+SHARED_PATH = $(shell gf --version | tail -1 | cut -c 16-)
+DOC_PATH = $(SHARED_PATH)/www
+INSTALL_PATH = $(SHARED_PATH)/lib
 
 all: build_dirs Parse.pgf semantics.db $(SERVER_PATH)/www/SenseService.fcgi $(SERVER_PATH)/www/ContentService
 

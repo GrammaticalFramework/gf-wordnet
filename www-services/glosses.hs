@@ -9,16 +9,14 @@ import Data.Maybe
 import Data.Either
 import Data.Data
 import Data.Tree
+import System.Process
 import System.Directory
 import Control.Monad
 import qualified Data.Map.Strict as Map
-import qualified Data.ByteString.Char8 as BS
-import qualified Data.ByteString.Lazy.UTF8 as BSL
-import Data.ByteString.UTF8(fromString,toString)
+import qualified Data.ByteString.Char8 as BS(head)
+import qualified Data.ByteString.UTF8 as BS(fromString)
 import Numeric (showHex)
-import Network.HTTP.Client
-import Network.HTTP.Client.TLS
-import Network.HTTP.Types
+import Network.URI(escapeURIString,isUnreserved,unEscapeString)
 import Crypto.Hash.MD5(hash)
 import Debug.Trace
 
@@ -329,15 +327,13 @@ renderStatus cs =
           in (text++s,x+35,y)
 
 loadImages = do
-  manager <- newManager tlsManagerSettings
-  request0 <- parseRequest ("https://query.wikidata.org/sparql?query="++Data.ByteString.UTF8.toString (urlEncode True (fromString query)))
-  let request = request0{requestHeaders=[(hUserAgent, fromString "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"),
-                                         (hAccept, fromString "text/tab-separated-values")]
-                        }
-  response <- httpLbs request manager
-  if statusCode (responseStatus response) == 200
-    then return ((Map.fromListWith (++) . map parseEntry . tail . BSL.lines) (responseBody response))
-    else fail (show (statusCode (responseStatus response))++" "++Data.ByteString.UTF8.toString (statusMessage (responseStatus response)))
+  out <- readProcess "wget"
+                     ["-q",
+                      "https://query.wikidata.org/sparql?query="++escapeURIString isUnreserved query,
+                      "--header=User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36",
+                      "--header=Accept: text/tab-separated-values",
+                      "-O", "-"] ""
+  return ((Map.fromListWith (++) . map parseEntry . tail . lines) out)
   where
     query =
       "SELECT ?sense ?sitelink ?image WHERE\n\
@@ -365,13 +361,13 @@ loadImages = do
       \ORDER BY ?sense ?rank"
       
     parseEntry l =
-      case split '\t' (BSL.toString l) of
+      case split '\t' l of
         [f1,f2,f3] -> let sense = init (tail f1)
                           uri   = init (tail f2)
                           img   = init (drop 52 f3)
-                          name  = BS.map (\c -> if c == ' ' then '_' else c) (urlDecode True (fromString img))
-                          h     = pad (showHex (ord (BS.head (hash name))) "")
-                      in (sense,[(uri,"commons/"++take 1 h++"/"++h++"/"++toString name)])
+                          name  = map (\c -> if c == ' ' then '_' else c) (unEscapeString img)
+                          h     = (pad . flip showHex "" . ord . BS.head . hash . BS.fromString) name
+                      in (sense,[(uri,"commons/"++take 1 h++"/"++h++"/"++name)])
       where
         pad cs@[c] = '0':cs
         pad cs     = cs

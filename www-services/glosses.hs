@@ -9,7 +9,7 @@ import Data.Maybe
 import Data.Either
 import Data.Data
 import Data.Tree
-import System.Process
+import System.IO ( utf8 )
 import System.Directory
 import Control.Monad
 import qualified Data.Map.Strict as Map
@@ -17,7 +17,8 @@ import qualified Data.ByteString.Char8 as BS(head)
 import qualified Data.ByteString.UTF8 as BS(fromString)
 import Numeric (showHex)
 import Network.URI(escapeURIString,isUnreserved,unEscapeString)
-import Crypto.Hash.MD5(hash)
+import Network.HTTP
+import Network.HTTP.MD5
 import Debug.Trace
 
 main = do
@@ -48,7 +49,9 @@ main = do
 
   let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14++cncdefs15++cncdefs16++cncdefs17++cncdefs18++cncdefs19++cncdefs20++cncdefs21++cncdefs22++cncdefs23++cncdefs24)
 
-  absdefs <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
+  absdefs1 <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
+  absdefs2 <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "Names.gf"
+  let absdefs = absdefs1++absdefs2
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
 
@@ -256,7 +259,7 @@ parseTaxonomy images l
 
 parseProbs l = (id, p)
   where
-    [id,s] = words l
+    [id,s] = split '\t' l
     p = read s :: Float
 
 parseDomains levels []     = attach levels
@@ -327,13 +330,11 @@ renderStatus cs =
           in (text++s,x+35,y)
 
 loadImages = do
-  out <- readProcess "wget"
-                     ["-q",
-                      "https://query.wikidata.org/sparql?query="++escapeURIString isUnreserved query,
-                      "--header=User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36",
-                      "--header=Accept: text/tab-separated-values",
-                      "-O", "-"] ""
-  return ((Map.fromListWith (++) . map parseEntry . tail . lines) out)
+  let req  = insertHeader HdrAccept "text/tab-separated-values" $
+             insertHeader HdrUserAgent "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36" $
+             getRequest ("https://query.wikidata.org/sparql?query="++escapeURIString isUnreserved query)
+  rsp <- simpleHTTP req
+  return ((Map.fromListWith (++) . map parseEntry . tail . lines) (rspBody rsp))
   where
     query =
       "SELECT ?sense ?sitelink ?image WHERE\n\
@@ -366,11 +367,8 @@ loadImages = do
                           uri   = init (tail f2)
                           img   = init (drop 52 f3)
                           name  = map (\c -> if c == ' ' then '_' else c) (unEscapeString img)
-                          h     = (pad . flip showHex "" . ord . BS.head . hash . BS.fromString) name
-                      in (sense,[(uri,"commons/"++take 1 h++"/"++h++"/"++name)])
-      where
-        pad cs@[c] = '0':cs
-        pad cs     = cs
+                          h     = md5ss utf8 name
+                      in (sense,[(uri,"commons/"++take 1 h++"/"++take 2 h++"/"++name)])
 
 split :: Char -> String -> [String]
 split c "" = []

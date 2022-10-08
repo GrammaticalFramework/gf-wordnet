@@ -19,12 +19,20 @@ def mkPhr(*args):
   match __types__(args):
     case ["PConj","Utt","Voc"]:
       return w.PhrUtt(args[0],args[1],args[2])
+    case ["PConj","Utt","Voc","Mark"]:
+      return w.PhrUttMark(args[0],args[1],args[2],args[3])
     case ["Utt","Voc"]:
       return w.PhrUtt(w.NoPConj,args[0],args[1])
+    case ["Utt","Voc","Mark"]:
+      return w.PhrUttMark(w.NoPConj,args[0],args[1],args[2])
     case ["PConj","Utt"]:
       return w.PhrUtt(args[0],args[1],w.NoVoc)
+    case ["PConj","Utt","Mark"]:
+      return w.PhrUttMark(args[0],args[1],w.NoVoc,args[2])
     case ["Utt"]:
       return w.PhrUtt(w.NoPConj,args[0],w.NoVoc)
+    case ["Utt","Mark"]:
+      return w.PhrUttMark(w.NoPConj,args[0],w.NoVoc,args[1])
     case ["S"]:
       return w.PhrUtt(w.NoPConj,w.UttS(args[0]),w.NoVoc)
     case ["Cl"]:

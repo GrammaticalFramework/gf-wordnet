@@ -36,7 +36,7 @@ def mkPhr(*args):
     case ["S"]:
       return w.PhrUtt(w.NoPConj,w.UttS(args[0]),w.NoVoc)
     case ["Cl"]:
-      return w.PhrUtt(w.NoPConj,w.UttS(w.TUseCl(w.TPres,w.ASimul,w.PPos,args[0])),w.NoVoc)
+      return w.PhrUtt(w.NoPConj,w.UttS(w.UseCl(w.TTAnt(w.TPres,w.ASimul),w.PPos,args[0])),w.NoVoc)
     case ["QS"]:
       return w.PhrUtt(w.NoPConj,w.UttQS(args[0]),w.NoVoc)
     case ["Imp"]:
@@ -67,7 +67,7 @@ def mkUtt(*args):
     case ["S"]:
       return w.UttS(args[0])
     case ["Cl"]:
-      return w.UttS(w.TUseCl(w.TPres,w.ASimul,w.PPos,args[0]))
+      return w.UttS(w.UseCl(w.TTAnt(w.TPres,w.ASimul),w.PPos,args[0]))
     case ["QS"]:
       return w.UttQS(args[0])
     case ["QCl"]:
@@ -123,21 +123,21 @@ def mkTemp(*args):
 def mkS(*args):
   match __types__(args):
     case ["Cl"]:
-      return w.TUseCl(w.TPres,w.ASimul,w.PPos)
+      return w.UseCl(w.TTAnt(w.TPres,w.ASimul),w.PPos,args[0])
     case ["Tense","Cl"]:
-      return w.TUseCl(args[0],w.ASimul,w.PPos)
+      return w.UseCl(w.TTAnt(args[0],w.ASimul),w.PPos,args[1])
     case ["Ant","Cl"]:
-      return w.TUseCl(w.TPres,args[0],w.PPos)
+      return w.UseCl(w.TTAnt(w.TPres,args[0]),w.PPos,args[1])
     case ["Pol","Cl"]:
-      return w.TUseCl(w.TPres,w.ASimul,args[0])
+      return w.UseCl(w.TTAnt(w.TPres,w.ASimul),args[0],args[1])
     case ["Tense","Ant","Cl"]:
-      return w.TUseCl(args[0],args[1],w.PPos)
+      return w.UseCl(w.TTAnt(args[0],args[1]),w.PPos,args[2])
     case ["Tense","Pol","Cl"]:
-      return w.TUseCl(args[0],w.ASimul,args[1])
+      return w.UseCl(w.TTAnt(args[0],w.ASimul),args[1],args[2])
     case ["Ant","Pol","Cl"]:
-      return w.TUseCl(w.TPres,args[0],args[1])
+      return w.UseCl(w.TTAnt(w.TPres,args[0]),args[1],args[2])
     case ["Tense","Ant","Pol","Cl"]:
-      return w.TUseCl(args[0],args[1])
+      return w.UseCl(w.TTAnt(args[0],args[1]),args[2],args[3])
     case ["Temp","Pol","Cl"]:
       return w.UseCl(args[0],args[1],args[2])
     case ["Conj","S","S"]:
@@ -198,11 +198,17 @@ def mkCl(*args):
     case ["NP","VP"]:
       return w.PredVP(args[0],args[1])
     case ["N"]:
-      return w.ExistNP(w.DetArtSg(w.IndefArt,w.UseN(args[0])))
+      return w.ExistNP(w.DetCN(w.DetQuant(w.IndefArt, w.NumSg), w.UseN(args[0])))
     case ["CN"]:
-      return w.ExistNP(w.DetArtSg(w.IndefArt,args[0]))
+      return w.ExistNP(w.DetCN(w.DetQuant(w.IndefArt, w.NumSg), args[0]))
     case ["NP"]:
       return w.ExistNP(args[0])
+    case ["N","Adv"]:
+      return w.ExistNPAdv(w.DetCN(w.DetQuant(w.IndefArt, w.NumSg), w.UseN(args[0])),args[1])
+    case ["CN","Adv"]:
+      return w.ExistNPAdv(w.DetCN(w.DetQuant(w.IndefArt, w.NumSg), args[0]),args[1])
+    case ["NP","Adv"]:
+      return w.ExistNPAdv(args[0],args[1])
     case ["NP","RS"]:
       return w.CleftNP(args[0],args[1])
     case ["Adv","S"]:
@@ -228,7 +234,7 @@ def mkVP(*args):
     case ["V"]:
       return w.UseV(args[0])
     case ["V2","NP"]:
-      return w.ComplV2
+      return w.ComplSlash(w.SlashV2a(args[0]),args[1])
     case ["V3","NP","NP"]:
       return w.ComplV3
     case ["VV","VP"]:
@@ -351,21 +357,21 @@ def mkNP(*args):
     case ["Det","N"]:
       return w.DetCN(args[0],w.UseN(args[1]))
     case ["Numeral","CN"]:
-      return w.DetCN(w.DetArtCard(w.IndefArt,w.NumNumeral(args[0])),args[1])
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),args[1])
     case ["Numeral","N"]:
-      return w.DetCN(w.DetArtCard(w.IndefArt,w.NumNumeral(args[0])),w.UseN(args[1]))
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),w.UseN(args[1]))
     case ["Digits","CN"]:
-      return w.DetCN(w.DetArtCard(w.IndefArt,w.NumDigits(args[0])),args[1])
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),args[1])
     case ["Digits","N"]:
-      return w.DetCN(w.DetArtCard(w.IndefArt,w.NumDigits(args[0])),w.UseN(args[1]))
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),w.UseN(args[1]))
     case ["Digit","CN","NP"]:
-      return w.DetCN(w.DetArtCard(w.IndefArt,w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0]))))))),args[1])
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0])))))))),args[1])
     case ["Digit","N","NP"]:
-      return w.DetCN(w.DetArtCard(w.IndefArt,w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0]))))))),w.UseN(args[1]))
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0])))))))),w.UseN(args[1]))
     case ["Card","CN"]:
-      return w.DetCN(w.DetArtCard(w.IndefArt,args[0]),args[1])
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),args[1])
     case ["Card","N"]:
-      return w.DetCN(w.DetArtCard(w.IndefArt,args[0]),w.UseN(args[1]))
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),w.UseN(args[1]))
     case ["Pron","CN"]:
       return w.DetCN(w.DetQuant(w.PossPron(args[0]),w.NumSg),args[1])
     case ["Pron","N"]:
@@ -375,11 +381,11 @@ def mkNP(*args):
     case ["Pron"]:
       return w.UsePron(args[0])
     case ["Quant"]:
-      return w.DetNP(w.DetQuant(args[0],w.sgNum))
+      return w.UseDAP(w.DetDAP(w.DetQuant(args[0],w.sgNum)))
     case ["Quant","Num"]:
-      return w.DetNP(w.DetQuant(args[0],args[1]))
+      return w.UseDAP(w.DetDAP(w.DetQuant(args[0],args[1])))
     case ["Det"]:
-      return w.DetNP
+      return w.UseDAP(w.DetDAP(args[0]))
     case ["CN"]:
       return w.MassNP(args[0])
     case ["N"]:
@@ -440,11 +446,11 @@ def mkDet(*args):
     case ["Quant","Num"]:
       return w.DetQuant(args[0],args[1])
     case ["Card"]:
-      return w.DetArtCard(w.IndefArt)
+      return w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0])))
     case ["Digits"]:
-      return w.DetArtCard(w.IndefArt,w.NumDigits(args[0]))
+      return w.DetQuant(w.IndefArt,w.NumCard(w.NumDigits(args[0])))
     case ["Numeral"]:
-      return w.DetArtCard(w.IndefArt,w.NumNumeral(args[0]))
+      return w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0])))
     case ["Pron"]:
       return w.DetQuant(w.PossPron(args[0]),w.NumSg)
     case ["Pron","Num"]:

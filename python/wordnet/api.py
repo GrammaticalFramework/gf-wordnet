@@ -5,10 +5,7 @@ def __types__(args):
     types = []
     for arg in args:
         (fun,_) = arg.unpack()
-        if fun == "GenPN":
-            types.append("CN")
-        else:
-            types.append(w.__pgf__.functionType(fun).cat)
+        types.append(w.__pgf__.functionType(fun).cat)
     return types
 
 def __no_match__(name,args):

@@ -361,9 +361,9 @@ def mkNP(*args):
     case ["Numeral","N"]:
       return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),w.UseN(args[1]))
     case ["Digits","CN"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),args[1])
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDigits(args[0]))),args[1])
     case ["Digits","N"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),w.UseN(args[1]))
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDigits(args[0]))),w.UseN(args[1]))
     case ["Digit","CN","NP"]:
       return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0])))))))),args[1])
     case ["Digit","N","NP"]:
@@ -543,7 +543,51 @@ def mkAdN(*args):
     case types:
       __no_match__("mkAdN",types)
 
+def nd(n):
+    return pgf.ExprFun("n"+str(n))
+
+def sub10(n):
+    if n == 0:
+        return None
+    elif n == 1:
+        return w.pot01
+    else:
+        return w.pot0(nd(n))
+
+def sub100(n):
+    if n < 10:
+        return w.pot0as1(sub10(n))
+    elif n == 10:
+        return w.pot110
+    elif n == 11:
+        return w.pot111
+    elif n < 20:
+        return w.pot1to19(nd(n-10))
+    elif n % 10 == 0:
+        return w.pot1(nd(n//10))
+    else:
+        return w.pot1plus(nd(n//10),sub10(n%10))
+
+def sub1000(n):
+    if n < 100:
+        return w.pot1as2(sub100(n))
+    elif n % 100 == 0:
+        return w.pot2(sub10(n//100))
+    else:
+        return w.pot2plus(sub10(n//100),sub100(n%100))
+
+def sub1000000(n):
+    if n < 1000:
+        return w.pot3as4(w.pot2as3(sub1000(n)))
+    elif n % 1000 == 0:
+        return w.pot3as4(w.pot3(sub1000(n//1000)))
+    else:
+        return w.pot3as4(w.pot3plus(sub1000(n//1000),sub1000(n%1000)))
+
 def mkNumeral(*args):
+  if len(args) == 1 and type(args[0]) is int:
+    return w.num(sub1000000(args[0]))
+
   match __types__(args):
     case ["Sub10"]:
       return w.num(w.pot2as3(w.pot1as2(w.pot0as1(args[0]))))
@@ -591,9 +635,16 @@ def tenfoldSub100(*args):
       __no_match__("tenfoldSub100",types)
 
 def mkDigits(*args):
+  if len(args) == 1 and type(args[0]) is int:
+    n = args[0]
+    expr = pgf.Expr("IDig", [pgf.ExprFun("D_"+str(n % 10))])
+    n    = n // 10
+    while n != 0:
+        expr = pgf.Expr("IIDig", [pgf.ExprFun("D_"+str(n % 10)), expr])
+        n    = n // 10
+    return expr
+
   match __types__(args):
-    case ["Str"]:
-      return w.str2digits
     case ["Dig"]:
       return w.IDig(args[0])
     case ["Dig","Digits"]:

@@ -5,7 +5,10 @@ def __types__(args):
     types = []
     for arg in args:
         (fun,_) = arg.unpack()
-        types.append(w.__pgf__.functionType(fun).cat)
+        if fun == "GenPN":
+            types.append("CN")
+        else:
+            types.append(w.__pgf__.functionType(fun).cat)
     return types
 
 def __no_match__(name,args):
@@ -571,6 +574,8 @@ def sub100(n):
 def sub1000(n):
     if n < 100:
         return w.pot1as2(sub100(n))
+    elif n == 100:
+        return w.pot21
     elif n % 100 == 0:
         return w.pot2(sub10(n//100))
     else:
@@ -578,15 +583,27 @@ def sub1000(n):
 
 def sub1000000(n):
     if n < 1000:
-        return w.pot3as4(w.pot2as3(sub1000(n)))
+        return w.pot2as3(sub1000(n))
+    elif n == 1000:
+        return w.pot31
     elif n % 1000 == 0:
-        return w.pot3as4(w.pot3(sub1000(n//1000)))
+        return w.pot3(sub1000(n//1000))
     else:
-        return w.pot3as4(w.pot3plus(sub1000(n//1000),sub1000(n%1000)))
+        return w.pot3plus(sub1000(n//1000),sub1000(n%1000))
+
+def sub1000000000(n):
+    if n < 1000000:
+        return w.pot3as4(sub1000000(n))
+    elif n == 1000000:
+        return w.pot41
+    elif n % 1000000 == 0:
+        return w.pot4(sub1000(n//1000000))
+    else:
+        return w.pot4plus(sub1000(n//1000000),sub1000000(n%1000000))
 
 def mkNumeral(*args):
   if len(args) == 1 and type(args[0]) is int:
-    return w.num(sub1000000(args[0]))
+    return w.num(sub1000000000(args[0]))
 
   match __types__(args):
     case ["Sub10"]:

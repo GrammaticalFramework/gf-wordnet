@@ -400,7 +400,7 @@ def mkNP(*args):
       return w.RelNP(args[0],args[1])
     case ["Conj","NP","NP"]:
       return w.ConjNP(args[0],w.BaseNP(args[1],args[2]))
-    case ["Conj","ListNP","NP"]:
+    case ["Conj","ListNP"]:
       return w.ConjNP(args[0],args[1])
     case ["Quant","CN"]:
       return w.DetCN(w.DetQuant(args[0],w.NumSg),args[1])
@@ -1091,50 +1091,36 @@ def mkVPSlash(*args):
     case types:
       __no_match__("mkVPSlash",types)
 
-def mkListS(*args):
-  match __types__(args):
-    case ["S","S"]:
-      return w.BaseS(args[0],args[1])
-    case ["S","ListS"]:
-      return w.ConsS(args[0],args[1])
-    case types:
-      __no_match__("mkListS",types)
+def mkList(*args):
+  types = __types__(args)
+  if len(types) >= 2:
+    cat   = types[0]
+    count = types.count(types[0])
+    base  = pgf.ExprFun("Base"+cat)
+    cons  = pgf.ExprFun("Cons"+cat)
 
-def mkListAdv(*args):
-  match __types__(args):
-    case ["Adv","Adv"]:
-      return w.BaseAdv(args[0],args[1])
-    case ["Adv","ListAdv"]:
-      return w.ConsAdv(args[0],args[1])
-    case types:
-      __no_match__("mkListAdv",types)
+    if count == len(types):
+      expr = base(args[-2],args[-1])
+      i    = len(args)-3
+    elif count == len(types)-1 and types[-1] == "List"+cat:
+      expr = args[-1]
+      i    = len(args)-2
+    else:
+      __no_match__("mkList"+cat,types)
 
-def mkListAP(*args):
-  match __types__(args):
-    case ["AP","AP"]:
-      return w.BaseAP(args[0],args[1])
-    case ["AP","ListAP"]:
-      return w.ConsAP(args[0],args[1])
-    case types:
-      __no_match__("mkListAP",types)
+    while i >= 0:
+      expr = cons(args[i],expr)
+      i = i - 1
 
-def mkListNP(*args):
-  match __types__(args):
-    case ["NP","NP"]:
-      return w.BaseNP(args[0],args[1])
-    case ["NP","ListNP"]:
-      return w.ConsNP(args[0],args[1])
-    case types:
-      __no_match__("mkListNP",types)
+    return expr
+  else:
+    __no_match__("mkList"+cat,types)
 
-def mkListRS(*args):
-  match __types__(args):
-    case ["RS","RS"]:
-      return w.BaseRS(args[0],args[1])
-    case ["RS","ListRS"]:
-      return w.ConsRS(args[0],args[1])
-    case types:
-      __no_match__("mkListRS",types)
+mkListS   = mkList
+mkListAdv = mkList
+mkListAP  = mkList
+mkListNP  = mkList
+mkListRS  = mkList
 
 def mkUttImp(*args):
   match __types__(args):

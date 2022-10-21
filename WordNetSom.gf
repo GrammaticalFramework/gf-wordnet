@@ -96122,6 +96122,7 @@ lin thaw_VA = variants {} ;
 lin the_bahamas_PN = variants {} ;
 lin the_gambia_PN = variants {} ;
 lin the_hague_PN = mkPN "Den Haag" ;
+lin the_only_Quant = variants {} ;
 lin theanthropism_1_N = variants {} ;
 lin theanthropism_2_N = variants {} ;
 lin theatre_1_N = variants {} ;

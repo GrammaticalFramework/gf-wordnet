@@ -203,12 +203,6 @@ def mkCl(*args):
       return w.ExistNP(w.DetCN(w.DetQuant(w.IndefArt, w.NumSg), args[0]))
     case ["NP"]:
       return w.ExistNP(args[0])
-    case ["N","Adv"]:
-      return w.ExistNPAdv(w.DetCN(w.DetQuant(w.IndefArt, w.NumSg), w.UseN(args[0])),args[1])
-    case ["CN","Adv"]:
-      return w.ExistNPAdv(w.DetCN(w.DetQuant(w.IndefArt, w.NumSg), args[0]),args[1])
-    case ["NP","Adv"]:
-      return w.ExistNPAdv(args[0],args[1])
     case ["NP","RS"]:
       return w.CleftNP(args[0],args[1])
     case ["Adv","S"]:

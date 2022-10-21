@@ -96122,6 +96122,7 @@ lin the_bahamas_PN = variants {} ;
 lin the_gambia_PN = variants {} ;
 lin thaw_1_V2 = mkV2 (mkV "液化") ; --unchecked
 lin the_hague_PN = variants {} ;
+lin the_only_Quant = variants {} ;
 lin theanthropism_1_N = variants {} ;
 lin theanthropism_2_N = mkN "拟人" ; --unchecked
 lin theatre_1_N = variants {} ;

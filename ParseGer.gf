@@ -6,6 +6,7 @@ concrete ParseGer of Parse =
   SentenceGer - [EmbedVP],
   QuestionGer,
   RelativeGer,
+  ConjunctionGer,
   PhraseGer - [UttAP, UttVP],
   IdiomGer,
   TenseGer,

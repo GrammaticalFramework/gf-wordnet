@@ -222,59 +222,6 @@ lin RecipVPSlash slash = {
       isSimple = False
       } ;
 
-lincat Sub1000000000 = {s : CardOrd => NumF => Str; n : Number} ;
-
-lin pot3as4 n = n ;
-    pot4 n = {
-      s = \\o,f => case o of {
-                     NCard cf   => let cf : CardForm =
-                                         case cf of {
-                                           CFMasc spec _  => CFMasc spec NonHuman ;
-                                           CFMascDefNom _ => CFMascDefNom NonHuman ;
-                                           CFFem  spec    => CFMasc spec NonHuman ;
-                                           CFNeut spec    => CFMasc spec NonHuman
-                                         }
-                                   in n.s ! NCard cf ! f ++ case n.n of {Sg => "милион"; Pl => "милиона"} ;
-                     NOrd aform => let cf : CardForm =
-                                         case aform of {
-                                           ASg Masc spec => CFMasc spec NonHuman ;
-                                           ASgMascDefNom => CFMascDefNom NonHuman ;
-                                           ASg Fem  spec => CFFem  spec ;
-                                           ASg Neut spec => CFNeut spec ;
-                                           APl spec      => CFNeut spec
-                                         }
-                                   in n.s ! NCard cf ! f ++ (mkA079 "милионен").s ! aform
-                   } ;
-      n = Pl
-    } ;
-    pot4plus n1 n2 = {
-      s = \\o,f => (pot4 n1).s ! o ! f ++ "и" ++ n2.s ! o ! f;
-      n = Pl
-    } ;
-
-    pot21 = {
-      s = \\o,_ => mkCardOrd100 "сто" "стоте" "стотен" ! o ;
-      i = False ;
-      n = Pl
-    } ;
-    pot31 = {
-      s = \\o,_ => mkCardOrd100 "хиляда" "хилядата" "хиляден" ! o ;
-      n = Pl
-    } ;
-    pot41 = {
-      s = \\o,_ => case o of {
-                     NCard (CFMasc Indef _) => "милион" ;
-                     NCard (CFMasc Def _)   => "единия милион" ;
-                     NCard (CFMascDefNom _) => "единият милион" ;
-                     NCard (CFFem  Indef)   => "милион" ;
-                     NCard (CFFem  Def)     => "единия милион" ;
-                     NCard (CFNeut Indef)   => "милион" ;
-                     NCard (CFNeut Def)     => "единия милион" ;
-                     NOrd  aform            => (mkA079 "милионен").s ! aform
-                   };
-      n = Pl
-    } ;
-
-    num x = {s = \\c => x.s ! c ! Formal; n=x.n} ;
+lin num x = {s = \\c => x.s ! c ! Formal; n=x.n} ;
 
 }

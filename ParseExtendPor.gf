@@ -41,33 +41,6 @@ concrete ParseExtendPor of ParseExtend =
     NumMore n = {s = \\g => n.s ! g ++ "mais" ;
                  n = n.n ; isNum = n.isNum } ;
 
-  lincat Sub1000000000 = {s : CardOrd => Str ; n : Number} ;
-
-  lin
-    pot3as4 n = n ;
-
-    pot4 n = {s = table CardOrd {co => n.s ! NCard Masc ++ milhao ! co } ; n = Pl} ;
-
-    pot4plus n m = {s = \\co => n.s ! NCard Masc
-                      ++ milhao ! co
-                      ++ e_CardOrd co ++ m.s ! co ;
-                    n = Pl
-      } ;
-
-    pot21 = mkNum "cem" "centésimo" ;
-
-    pot31 = mkNum "mil" "milésimo" ;
-
-    -- cem, mil, but um milhão, um bilhão
-    pot41 = mkNum "um milhão" "milhonésimo" ;
-
-  oper
-    milhao : CardOrd => Str ;
-    milhao = mkNumStr "milhão" "milhonésimo" ;
-
-    mkNum : Str -> Str -> {s : CardOrd => Str ; n : Number} ;
-    mkNum cem centesimo = spl (mkNumStr cem centesimo) ;
-
   lin
     num x = x ;
 

@@ -34,22 +34,7 @@ fun BaseCNN : Num -> CN -> Num -> CN -> CNN ;
 fun NumLess : Num -> Num ;
     NumMore : Num -> Num ;
 
-    -- The RGL supports numerals up to 999 999. With the following
-    -- extensions it is possible to go up to 999 999 999. We need
-    -- one more level to go to 999 999 999 999. There are also
-    -- functions for numerals `a hundred`, `a thousand` and `a million`
-    -- which are also missing from the RGL.
-cat Sub1000000000 ;
-
-fun pot3as4 : Sub1000000 -> Sub1000000000 ;              -- coercion of 1..999999
-    pot4  : Sub1000 -> Sub1000000000 ;                   -- m * 1000000000
-    pot4plus : Sub1000 -> Sub1000000 -> Sub1000000000 ;  -- m * 1000000000 + n
-
-    pot21 : Sub1000 ;                                    -- a hundred
-    pot31 : Sub1000000 ;                                 -- a thousand
-    pot41 : Sub1000000000 ;                              -- a million
-
-    num : Sub1000000000 -> Numeral ;
+fun num : Sub1000000000000 -> Numeral ;
 
     -- Some cardinals like `many` permit modifications with AdA,
     -- i.e. `too many`, `very many`.

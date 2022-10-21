@@ -369,9 +369,9 @@ def mkNP(*args):
     case ["Digit","N","NP"]:
       return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0])))))))),w.UseN(args[1]))
     case ["Card","CN"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),args[1])
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(args[0])),args[1])
     case ["Card","N"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),w.UseN(args[1]))
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(args[0])),w.UseN(args[1]))
     case ["Pron","CN"]:
       return w.DetCN(w.DetQuant(w.PossPron(args[0]),w.NumSg),args[1])
     case ["Pron","N"]:

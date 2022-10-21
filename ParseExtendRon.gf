@@ -18,10 +18,6 @@ lin
             "sã"  ++ flattenSimpleClitics vp.nrClit vp.clAcc vp.clDat (vp.isRefl ! p.a) ++ conjVP vp p.a ++vp.comp ! p.a ++ vp.ext ! Pos
       } ;
 
-lincat Sub1000000000 = { s : CardOrd => NumF => Placement => Str; size : Size } ;
-
-lin pot3as4 n = n ;
-
 lin num = \d ->
  { s = \\cse => table { NCard g => \\f => d.s ! (NCard g) ! f ! indep  ;
                         NOrd g => \\f =>  let ss = d.s ! (NOrd g) ! f ! indep

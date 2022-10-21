@@ -17,14 +17,7 @@ lin
             vp.sufix ! pol.p ! MascPersSg
     };
 
-lincat Sub1000000000 =
-    { s:Case * Gender => Str; 
-      o:AForm => Str;
-      a:Accom; n:Number };
-
-lin pot3as4 n = n ;
-
-    num a = { s = \\x,y=>a.s!<x,y>; o=a.o; a=a.a; n=a.n };
+lin num a = { s = \\x,y=>a.s!<x,y>; o=a.o; a=a.a; n=a.n };
 
 lin BareN2 n = n ;
 

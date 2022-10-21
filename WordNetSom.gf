@@ -65264,6 +65264,7 @@ lin over_1_Prep = mkPrep "dʉl" ; --guessed
 lin over_2_Prep = mkPrep "dʉl" ; --guessed
 lin over_3_Prep = mkPrep "dʉl" ; --guessed
 lin over_4_Prep = mkPrep "dʉl" ; --guessed
+lin over_AdN = variants {} ;
 lin over_abundance_1_N = variants {} ;
 lin over_abundance_2_N = variants {} ;
 lin over_magazine_V2 = variants {} ;

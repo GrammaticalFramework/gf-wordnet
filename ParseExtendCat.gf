@@ -20,11 +20,7 @@ lin
         s = ant.s ++ pol.s ++ infVP vp pol.p p.a
       } ;
 
-lincat Sub1000000000 = {s : CardOrd => Str ; n : Number} ;
-
-lin pot3as4 n = n ;
-
-    num x = x ;
+lin num x = x ;
 
 lin BareN2 n = n ;
 

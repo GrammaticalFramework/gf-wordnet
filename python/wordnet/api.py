@@ -598,9 +598,19 @@ def sub1000000000(n):
     else:
         return w.pot4plus(sub1000(n//1000000),sub1000000(n%1000000))
 
+def sub1000000000000(n):
+    if n < 1000000000:
+        return w.pot4as5(sub1000000000(n))
+    elif n == 1000000000:
+        return w.pot51
+    elif n % 1000000000 == 0:
+        return w.pot5(sub1000(n//1000000000))
+    else:
+        return w.pot5plus(sub1000(n//1000000000),sub1000000000(n%1000000000))
+
 def mkNumeral(*args):
   if len(args) == 1 and type(args[0]) is int:
-    return w.num(sub1000000000(args[0]))
+    return w.num(sub1000000000000(args[0]))
 
   match __types__(args):
     case ["Sub10"]:

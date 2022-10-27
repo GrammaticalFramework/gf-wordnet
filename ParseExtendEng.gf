@@ -147,34 +147,6 @@ lin RecipVPSlash slash = GrammarEng.ComplSlash slash (variants {mkNP "each other
     RecipVPSlashCN slash cn = GrammarEng.ComplSlash slash (DetCN (variants {mkDeterminer Sg "each other's" ;
                                                                             mkDeterminer Sg "one another's"}) cn);
 
-lincat Sub1000000000 = {s : Bool => CardOrd => Case => Str ; n : Number} ;
-
-lin pot3as4 n = n ;
-    pot4 n = {
-      s = \\d,o,c => n.s ! d ! NCard ! Nom ++ pot41.s ! True ! o ! c ;
-      n = Pl
-    } ;
-    pot4plus n1 n2 = {
-      s = \\d,o,c => n1.s ! d ! NCard ! Nom ++ pot41.s ! True ! NCard ! Nom ++ "and" ++ n2.s ! True ! o ! c;
-      n = Pl
-    } ;
-
-    pot21 = {
-      s = \\d,o,c => case d of {True => []; False => "a"} ++
-                     (regCardOrd "hundred").s ! o ! c;
-      n = Pl
-    } ;
-    pot31 = {
-      s = \\d,o,c => case d of {True => []; False => "a"} ++
-                     (regCardOrd "thousand").s ! o ! c;
-      n = Pl
-    } ;
-    pot41 = {
-      s = \\d,o,c => case d of {True => []; False => "a"} ++
-                     (regCardOrd "million").s ! o ! c;
-      n = Pl
-    } ;
-
-    num x = x ;
+lin num x = x ;
 
 }

@@ -70729,7 +70729,6 @@ lin poll_2_N = variants {} ;
 lin poll_3_N = variants {} ;
 lin poll_4_N = variants {} ;
 lin poll_5_N = mkN "得票数" ; --unchecked
-lin poll_1_V = mkV "民意测验" ; --unchecked
 lin poll_2_V = mkV "民意测验" ; --unchecked
 lin poll_3_V = mkV "选举中获得" ; --unchecked
 lin poll_1_V2 = mkV2 (mkV "作民意调查") ; --unchecked

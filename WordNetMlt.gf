@@ -70736,7 +70736,6 @@ lin poll_2_N = mkN "jien" ; --guessed
 lin poll_3_N = mkN "ras" ; --guessed
 lin poll_4_N = mkN "pappagall" ; --guessed
 lin poll_5_N = mkN "votazzjoni" ; --guessed
-lin poll_1_V = mkV "votazzjoni" ; --guessed
 lin poll_2_V = mkV "votazzjoni" ; --guessed
 lin poll_3_V = mkV "votazzjoni" ; --guessed
 lin poll_1_V2 = dirV2 (mkV "votazzjoni") ; --guessed

@@ -70729,7 +70729,6 @@ lin poll_2_N = mkN "aniga" ; --guessed
 lin poll_3_N = mkN "madax" ; --guessed
 lin poll_4_N = variants {} ;
 lin poll_5_N = variants {} ;
-lin poll_1_V = variants {} ;
 lin poll_2_V = variants {} ;
 lin poll_3_V = variants {} ;
 lin poll_1_V2 = variants {} ;

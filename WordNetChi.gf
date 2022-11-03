@@ -47191,6 +47191,7 @@ lin incline_4_V = mkV "前倾" ; --unchecked
 lin incline_5_V = variants {} ;
 lin incline_2_V2 = mkV2 (mkV "侧耳倾听") ; --unchecked
 lin incline_3_V2 = mkV2 (mkV "躬身") ; --unchecked
+lin incline_6_V2 = variants {} ;
 lin incline_6_V2V = variants {} ;
 lin inclined_1_A = variants {} ;
 lin inclined_2_A = mkA "准备好了+的" ; --unchecked

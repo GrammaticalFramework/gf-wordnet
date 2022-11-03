@@ -2,8 +2,9 @@ import ijson
 import bz2
 
 def extract():
-    with bz2.open("wikidata-2022-07-31.json.bz2", "rb") as f:
-        with open("names.txt", "w") as out:
+    with bz2.open("data/wikidata-2022-07-31.json.bz2", "rb") as f:
+        
+        with open("names2.txt", "w") as out:
             for record in ijson.items(f, "item"):
                 name_type = None
                 gender = None
@@ -21,7 +22,41 @@ def extract():
                     names = {}
                     for lang,val in record["labels"].items():
                         names[lang] = val["value"]
-                    out.write(str((record["id"],name_type,names))+"\n")
+                    descr = record["descriptions"].get("en",{}).get("value","")
+                    out.write(str((record["id"],descr,name_type,names))+"\n")
+
+                given_names = []
+                for given_name_claim in record["claims"].get("P735",[]):
+                    if "datavalue" not in given_name_claim["mainsnak"]:
+                        continue
+                    given_names.append(given_name_claim["mainsnak"]["datavalue"]["value"]["id"])
+                family_names = []
+                for family_name_claim in record["claims"].get("P734",[]):
+                    if "datavalue" not in family_name_claim["mainsnak"]:
+                        continue                        
+                    family_names.append(family_name_claim["mainsnak"]["datavalue"]["value"]["id"])
+                geo_names = []
+                for geo_name_claim in record["claims"].get("P1566",[]):
+                    if "datavalue" not in geo_name_claim["mainsnak"]:
+                        continue
+                    geo_names.append(geo_name_claim["mainsnak"]["datavalue"]["value"])
+                synsets = []
+                for synset_claim in record["claims"].get("P8814",[]):
+                    if "datavalue" not in synset_claim["mainsnak"]:
+                        continue
+                    synsets.append(synset_claim["mainsnak"]["datavalue"]["value"])
+
+                if given_names or family_names:
+                    label = record["labels"].get("en",{}).get("value")
+                    out.write(str((record["id"],label,synsets,given_names,family_names))+"\n")
+
+                if geo_names:
+                    names = {}
+                    for lang,val in record["labels"].items():
+                        names[lang] = val["value"]
+                    descr = record["descriptions"].get("en",{}).get("value","")
+                    out.write(str((record["id"],synsets,descr,geo_names,names))+"\n")
+                        
 
 def cyr(s):
     #DOUBLE LETTERS UPPERCASE
@@ -319,31 +354,43 @@ def generate():
     with open("names.txt", "r") as f:
         gf_ids = {}
         q_ids  = {}
+        counts = {"GN": {}, "SN": {}}
         for line in f:
             record = eval(line)
-            if len(record[2]) == 0:
-                continue
-            name = record[2].get("en",next(record[2].items().__iter__())[0])
-            name = name.split('/')[0].strip()
-            name = name.lower()
-            paren = name.find("(")
-            if paren >= 0:
-                name = name[:paren].strip()
-            if record[1] in ["Q12308941","Q11879590"]:
-                tag = "GN"
+            if type(record[-1]) is not dict:
+                for qid in record[3]:
+                    cs = counts["GN"]
+                    cs[qid] = cs.get(qid,1) + 1
+                for qid in record[4]:
+                    cs = counts["SN"]
+                    cs[qid] = cs.get(qid,1) + 1
             else:
-                tag = "SN"
-            nt = (name,tag)
-            info = gf_ids.get(nt)
-            if not info:
-                gf_ids[nt] = [record[0]]
-                gf_id = name+"_"+tag
-            else:
-                if len(info) == 1:
-                    q_ids[info[0]] = (name+"_1_"+tag,tag,record[1],record[2])
-                info.append(record[0])
-                gf_id = name+"_"+str(len(info))+"_"+tag
-            q_ids[record[0]] = (gf_id,tag,record[1],record[2])
+                if len(record[-1]) == 0:
+                    continue
+                name = record[3].get("en",next(record[3].items().__iter__())[0])
+                name = name.split('/')[0].strip()
+                name = name.lower()
+                paren = name.find("(")
+                if paren >= 0:
+                    name = name[:paren].strip()
+                if record[2] in ["Q12308941","Q11879590"]:
+                    tag = "GN"
+                else:
+                    tag = "SN"
+                nt = (name,tag)
+                info = gf_ids.get(nt)
+                if not info:
+                    gf_ids[nt] = [record[0]]
+                    gf_id = name+"_"+tag
+                    counts[tag].setdefault(qid,1)
+                else:
+                    if len(info) == 1:
+                        q_ids[info[0]] = (name+"_1_"+tag,tag,record[1],record[2],record[3])
+                    info.append(record[0])
+                    gf_id = name+"_"+str(len(info))+"_"+tag
+                q_ids[record[0]] = (gf_id,tag,record[1],record[2],record[3])
+
+        totals = {tag : sum(cs.values()) for tag,cs in counts.items()}
 
         def quote(s):
             plain = True
@@ -367,15 +414,6 @@ def generate():
                 q = q + "'"
 
             return q
-
-        with open("Names.gf","w") as out:
-            out.write("abstract Names = Cat ** {\n")
-            out.write("\n")
-            out.write("cat GN ; SN ;\n")
-            out.write("\n")
-            for q_id,(gf_id,tag,name_type,labels) in sorted(q_ids.items(),key=lambda p: p[1]):
-                out.write(("fun "+quote(gf_id)+" : "+tag+" ;").ljust(40)+"-- "+q_id+"\n")
-            out.write("}\n")
 
         langs = [
           ("Afr",["af","nl","en"]),
@@ -403,13 +441,16 @@ def generate():
           ("Tur",["tr","en"]),
           ]
 
-        for lang,lang_codes  in langs:
-            with open("Names"+lang+".gf","w") as out:
-                out.write("concrete Names"+lang+" of Names = Cat"+lang+" ** open Paradigms"+lang+" in {\n")
-                out.write("\n")
-                out.write("lincat GN, SN = PN ;\n")
-                out.write("\n")
-                for q_id,(gf_id,tag,name_type,labels) in sorted(q_ids.items(),key=lambda p: p[1]):
+        with open("names.gfs","w") as out:
+            out.write("transaction start\n\n")
+
+            for q_id,(gf_id,tag,descr,name_type,labels) in sorted(q_ids.items(),key=lambda p: p[1]):
+                #quote(gf_id)+"\t"+q_id+"\t"+descr+"\n"
+                out.write("create -prob="+str(counts[tag].get(q_id,0)/totals[tag])+" fun "+quote(gf_id)+" : "+tag+"\n")
+
+            for lang,lang_codes  in langs:
+                out.write("\ni -resource alltenses/Paradigms"+lang+".gfo\n\n")
+                for q_id,(gf_id,tag,descr,name_type,labels) in sorted(q_ids.items(),key=lambda p: p[1]):
                     lins = []
                     lin_list = []
                     for lang_code in lang_codes:
@@ -442,9 +483,11 @@ def generate():
                                 lin = "mkPN \""+lin+"\""
                         lins.append(lin)
                     if len(lins) == 1:
-                        out.write("lin "+quote(gf_id)+" = "+lins[0]+" ;\n")
+                        out.write("create -lang="+lang+" lin "+quote(gf_id)+" = "+lins[0]+"\n")
                     else:
-                        out.write("lin "+quote(gf_id)+" = variants {"+"; ".join(lins)+"} ;\n")
-                out.write("}\n")
+                        out.write("create -lang="+lang+" lin "+quote(gf_id)+" = variants {"+"; ".join(lins)+"}\n")
 
-generate()
+            out.write("\ntransaction commit\n")
+
+extract()
+#generate()

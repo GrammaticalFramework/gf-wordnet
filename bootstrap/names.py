@@ -351,10 +351,10 @@ def cyr(s):
     return s
 
 def generate():
-    with open("names.txt", "r") as f:
+    with open("names2.txt", "r") as f:
         gf_ids = {}
         q_ids  = {}
-        counts = {"GN": {}, "SN": {}}
+        counts = {"GN": {}, "SN": {}, "PN": {}}
         for line in f:
             record = eval(line)
             if type(record[-1]) is not dict:
@@ -367,28 +367,32 @@ def generate():
             else:
                 if len(record[-1]) == 0:
                     continue
-                name = record[3].get("en",next(record[3].items().__iter__())[0])
+                name = record[-1].get("en",next(record[-1].items().__iter__())[0])
                 name = name.split('/')[0].strip()
                 name = name.lower()
                 paren = name.find("(")
                 if paren >= 0:
                     name = name[:paren].strip()
-                if record[2] in ["Q12308941","Q11879590"]:
-                    tag = "GN"
+                name = name.replace(" ","_")
+                if len(record) == 4:
+                    if record[2] in ["Q12308941","Q11879590"]:
+                        tag = "GN"
+                    else:
+                        tag = "SN"
                 else:
-                    tag = "SN"
+                    tag = "PN"
                 nt = (name,tag)
                 info = gf_ids.get(nt)
                 if not info:
                     gf_ids[nt] = [record[0]]
                     gf_id = name+"_"+tag
-                    counts[tag].setdefault(qid,1)
+                    counts[tag].setdefault(record[0],1)
                 else:
                     if len(info) == 1:
-                        q_ids[info[0]] = (name+"_1_"+tag,tag,record[1],record[2],record[3])
+                        q_ids[info[0]] = (name+"_1_"+tag,tag,q_ids[info[0]][2])
                     info.append(record[0])
                     gf_id = name+"_"+str(len(info))+"_"+tag
-                q_ids[record[0]] = (gf_id,tag,record[1],record[2],record[3])
+                q_ids[record[0]] = (gf_id,tag,record)
 
         totals = {tag : sum(cs.values()) for tag,cs in counts.items()}
 
@@ -409,10 +413,24 @@ def generate():
                 for c in s:
                     if c == "'":
                         q = q + "\\'"
+                    elif c == "\\":
+                        q = q + "\\\\"
                     else:
                         q = q + c
                 q = q + "'"
 
+            return q
+
+        def dquote(s):
+            q = "\""
+            for c in s:
+                if c == "\"":
+                    q = q + "\\\""
+                elif c == "\\":
+                    q = q + "\\\\"
+                else:
+                    q = q + c
+            q = q + "\""
             return q
 
         langs = [
@@ -425,16 +443,15 @@ def generate():
           ("Fin",["fi","en"]),
           ("Ger",["de","en"]),
           ("Kor",["ko"]),
-          ("Pol",["pl","en"]),
           ("Ron",["ro","en"]),
           ("Som",["so","en"]),
           ("Swa",["sw","en"]),
           ("Tha",["th"]),
-          ("Est",["fi","en"]),
           ("Fre",["fr","en"]),
           ("Ita",["it","en"]),
           ("Mlt",["mt","en"]),
           ("Por",["pt","en"]),
+          ("Rus",["ru","bg","sr","en"]),
           ("Slv",["sl","en"]),
           ("Spa",["es","en"]),
           ("Swe",["sv","en"]),
@@ -444,13 +461,21 @@ def generate():
         with open("names.gfs","w") as out:
             out.write("transaction start\n\n")
 
-            for q_id,(gf_id,tag,descr,name_type,labels) in sorted(q_ids.items(),key=lambda p: p[1]):
+            for q_id,(gf_id,tag,record) in sorted(q_ids.items(),key=lambda p: p[1]):
                 #quote(gf_id)+"\t"+q_id+"\t"+descr+"\n"
                 out.write("create -prob="+str(counts[tag].get(q_id,0)/totals[tag])+" fun "+quote(gf_id)+" : "+tag+"\n")
+                
+            out.write("transaction commit\n\n")
 
             for lang,lang_codes  in langs:
                 out.write("\ni -resource alltenses/Paradigms"+lang+".gfo\n\n")
-                for q_id,(gf_id,tag,descr,name_type,labels) in sorted(q_ids.items(),key=lambda p: p[1]):
+                out.write("transaction start\n\n")
+                for q_id,(gf_id,tag,record) in sorted(q_ids.items(),key=lambda p: p[1]):
+                    if len(record) == 4:
+                        name_type = record[2]
+                    else:
+                        name_type = None
+                    labels = record[-1]
                     lins = []
                     lin_list = []
                     for lang_code in lang_codes:
@@ -459,35 +484,58 @@ def generate():
                             paren = s.find("(")
                             if paren >= 0:
                                 s = s[:paren]
-                            if lang == "Bul" and lang_code != "bg":
+                            if lang in ["Bul","Rus"] and lang_code not in ["bg","ru"]:
                                 s  = cyr(s)
                             lin_list = s.split("/")
                             break
                     for lin in lin_list:
                         lin = lin.strip()
                         if lang in ["Afr","Chi","Dut","Est","Fin","Kor","Swe","Tha","Tur"]:
-                            lin = "mkPN \""+lin+"\""
+                            lin = "mkPN "+dquote(lin)
+                        elif lang in ["Slv"]:
+                            if name_type in ["Q11879590","Q18972207"]:
+                                lin = "mkPN "+dquote(lin)+" feminine singular"
+                            else:
+                                lin = "mkPN "+dquote(lin)+" masculine singular"
                         elif lang in ["Som"]:
                             if name_type in ["Q12308941","Q18972245"]:
-                                lin = "mkPN \""+lin+"\" sgMasc"
+                                lin = "mkPN "+dquote(lin)+" sgMasc"
                             elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN \""+lin+"\" sgFem"
+                                lin = "mkPN "+dquote(lin)+" sgFem"
                             else:
-                                lin = "mkPN \""+lin+"\""
+                                lin = "mkPN "+dquote(lin)
+                        elif lang in ["Swa"]:
+                            lin = "mkPN "+dquote(lin)+" a_wa"
+                        elif lang in ["Ron"]:
+                            if name_type in ["Q12308941","Q18972245"]:
+                                lin = "mkPN "+dquote(lin)+" Masculine"
+                            elif name_type in ["Q11879590","Q18972207"]:
+                                lin = "mkPN "+dquote(lin)+" Feminine"
+                            else:
+                                lin = "mkPN "+dquote(lin)
+                        elif lang in ["Rus"]:
+                            if name_type in ["Q12308941","Q18972245"]:
+                                lin = "mkPN "+dquote(lin)+" masculine animate"
+                            elif name_type in ["Q11879590","Q18972207"]:
+                                lin = "mkPN "+dquote(lin)+" feminine animate"
+                            else:
+                                lin = "mkPN "+dquote(lin)
                         else:
                             if name_type in ["Q12308941","Q18972245"]:
-                                lin = "mkPN \""+lin+"\" masculine"
+                                lin = "mkPN "+dquote(lin)+" masculine"
                             elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN \""+lin+"\" feminine"
+                                lin = "mkPN "+dquote(lin)+" feminine"
                             else:
-                                lin = "mkPN \""+lin+"\""
+                                lin = "mkPN "+dquote(lin)
                         lins.append(lin)
                     if len(lins) == 1:
-                        out.write("create -lang="+lang+" lin "+quote(gf_id)+" = "+lins[0]+"\n")
+                        lin = lins[0]
                     else:
-                        out.write("create -lang="+lang+" lin "+quote(gf_id)+" = variants {"+"; ".join(lins)+"}\n")
+                        lin = "variants {"+"; ".join(lins)+"}"
+                    if tag in ["GN","SN"]:
+                        lin = "lin "+tag+" ("+lin+")"
+                    out.write("create -lang=Parse"+lang+" lin "+quote(gf_id)+" = "+lin+"\n")
+                out.write("transaction commit\n\n")
 
-            out.write("\ntransaction commit\n")
-
-extract()
-#generate()
+#extract()
+generate()

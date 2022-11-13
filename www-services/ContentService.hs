@@ -3,14 +3,11 @@
 import Database.Daison
 import SenseSchema
 import ContentSchema
+import Network.HTTP
+import Network.HTTP.Cookie
+import Network.FastCGI
 import Text.JSON
 import Text.JSON.String
-import URLEncoding
-import Network.CGI
-import Network.FastCGI(runFastCGI,runFastCGIConcurrent')
-import Network.HTTP.Client
-import Network.HTTP.Client.TLS
-import Network.HTTP.Types.Header
 import System.IO hiding (ReadWriteMode)
 import System.Environment
 import System.Directory
@@ -22,7 +19,6 @@ import Control.Monad(liftM2,liftM3,liftM4,forM_,forM)
 import Control.Concurrent
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import qualified Data.ByteString.Lazy.UTF8 as UTF8 (toString,fromString)
-import qualified Data.ByteString.Lazy as BS
 import qualified Data.ByteString.UTF8 as BSS
 import qualified Data.Map as Map
 import qualified Data.Set as Set
@@ -32,83 +28,93 @@ import PGF2
 
 main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
--- #ifndef mingw32_HOST_OS
---    runFastCGIConcurrent' forkIO 100 (cgiMain db)
--- #else
-  runFastCGI (handleErrors $ cgiMain db)
--- #endif
+  simpleFastCGI (fcgiMain db)
 
 
-cgiMain :: Database -> CGI CGIResult
-cgiMain db = do
-  mb_s1 <- getInput "code"
-  mb_s2 <- getInput "user"
-  mb_s3 <- getInput "update_id"
-  mb_s4 <- getInput "get_id"
-  mb_s5 <- getInput "lang"
-  mb_s6 <- fmap (fmap (urlDecodeUnicode . UTF8.decodeString)) $ getInput "def"
-  mb_s7 <- getInput "commit"
-  mb_s8 <- getInput "push"
-  mb_s9 <- getInput "author"
-  mb_s10<- getInput "token"
-  mb_s11<- getInput "pick_example"
-  mb_s12<- getInput "update_example"
+fcgiMain :: Database -> Env -> Request -> IO Response
+fcgiMain db env rq = do
+  let query = rqQuery rq
+      mb_s1 = lookup "code" query
+      mb_s2 = lookup "user" query
+      mb_s3 = lookup "update_id" query
+      mb_s4 = lookup "get_id" query
+      mb_s5 = lookup "lang" query
+      mb_s6 = lookup "def" query
+      mb_s7 = lookup "commit" query
+      mb_s8 = lookup "push" query
+      mb_s9 = lookup "author" query
+      mb_s10 = lookup "token" query
+      mb_s11 = lookup "pick_example" query
+      mb_s12 = lookup "update_example" query
   case mb_s1 of
     Just code -> doLogin code
     Nothing   -> case liftM3 doGet mb_s2 mb_s4 mb_s5 of
-                   Just action -> do res <- liftIO action
+                   Just action -> do res <- action
                                      case res of
-                                       Just def -> outputJSONP (showJSON def)
-                                       Nothing  -> outputNothing
+                                       Just def -> outputJSONP query (showJSON def)
+                                       Nothing  -> httpError 404 "Not Found" ""
                    Nothing     -> case liftM3 doUpdate mb_s2 mb_s3 mb_s5 of
-                                    Just action -> do json <- liftIO (action mb_s6)
-                                                      outputJSONP json
+                                    Just action -> do json <- action mb_s6
+                                                      outputJSONP query json
                                     Nothing     -> case liftM4 doCommit mb_s2 mb_s9 mb_s10 mb_s7 of
-                                                     Just action -> do setHeader "Cache-Control" "no-cache"
-                                                                       setHeader "X-Content-Type-Options" "nosniff"
-                                                                       setHeader "Content-Type" "text/plain; charset=utf-8"
-                                                                       res <- liftIO action
-                                                                       outputFPS res
+                                                     Just action -> do res <- action
+                                                                       return (Response
+                                                                                 { rspCode = 200
+                                                                                 , rspReason = "OK"
+                                                                                 , rspHeaders = [Header HdrCacheControl "no-cache"
+                                                                                                ,Header (HdrCustom "X-Content-Type-Options") "nosniff"
+                                                                                                ,Header HdrContentType "text/plain; charset=UTF8"
+                                                                                                ]
+                                                                                 , rspBody = res
+                                                                                 })
                                                      Nothing     -> case fmap doPull mb_s8 of
-                                                                      Just action -> do setHeader "Content-Type" "text/plain; charset=utf-8"
-                                                                                        s <- liftIO action
-                                                                                        outputFPS s
+                                                                      Just action -> do s <- action
+                                                                                        outputText s
                                                                       Nothing     -> case fmap doPickExample mb_s11 of
-                                                                                        Just action -> liftIO action >>= outputJSONP
+                                                                                        Just action -> action >>= outputJSONP query
                                                                                         Nothing     -> case liftM3 doUpdateExample mb_s2 (fmap read mb_s12) mb_s6 of
-                                                                                                         Just action -> liftIO action >>= outputJSONP
-                                                                                                         Nothing     -> outputNothing
+                                                                                                         Just action -> action >>= outputJSONP query
+                                                                                                         Nothing     -> httpError 404 "Not Found" "Unknown command"
   where
     doLogin code = do
-      man <- liftIO $ newManager tlsManagerSettings
-      res <- liftIO $ do
-               client_secret <- getEnv "GF_WORDNET_CLIENT_SECRET"
-               req <- parseRequest ("https://github.com/login/oauth/access_token?client_id=1e94c97e812a9f502068&client_secret="++client_secret++"&code="++code)
-               httpLbs req man
-      case lookup "access_token" (formDecode (UTF8.toString (responseBody res))) of
-        Just token -> do res <- liftIO $ do
-                                  req0 <- parseRequest ("https://api.github.com/user")
-                                  let req = req0{requestHeaders=(hUserAgent,BSS.fromString "GF WordNet"):
-                                                                (hAuthorization, BSS.fromString ("token "++token)):
-                                                                requestHeaders req0}
-                                  httpLbs req man
-                         case (do res <- runGetJSON readJSObject (UTF8.toString (responseBody res))
-                                  obj <- case res of
-                                           JSObject obj -> return obj
-                                           _            -> fail "Didn't get an object from api.github.com"
-                                  user  <- resultToEither (valFromObj "login" obj)
-                                  name  <- resultToEither (valFromObj "name" obj)
-                                  email <- resultToEither (valFromObj "email" obj)
-                                  return (user, name++" <"++email++">")) of
-                           Right (user,author) -> do count <- liftIO (runDaison db ReadOnlyMode $
-                                                                        fmap length $ select (from updates_usr everything))
-                                                     setCookie ((newCookie "user" user){cookiePath=Just "/wordnet"})
-                                                     setCookie ((newCookie "author" author){cookiePath=Just "/wordnet"})
-                                                     setCookie ((newCookie "token" token){cookiePath=Just "/wordnet"})
-                                                     setCookie ((newCookie "count" (show count)){cookiePath=Just "/wordnet"})
-                                                     redirect "/wordnet"
-                           Left err     -> output err
-        Nothing    -> outputNothing
+      client_secret <- getEnv "GF_WORDNET_CLIENT_SECRET"
+      let rq = insertHeader HdrAccept "application/json" $
+               getRequest ("https://github.com/login/oauth/access_token?client_id=1e94c97e812a9f502068&client_secret="++client_secret++"&code="++code)
+      rsp <- simpleHTTP rq
+      case (do res <- runGetJSON readJSObject (rspBody rsp)
+               obj <- case res of
+                        JSObject obj -> Right obj
+                        _            -> Left "Didn't get an object from api.github.com"
+               resultToEither (valFromObj "access_token" obj)) of
+        Right token -> do let rq = insertHeader HdrUserAgent "GF WordNet" $
+                                   insertHeader HdrAuthorization ("token "++token) $
+                                   getRequest "https://api.github.com/user"
+                          rsp <- simpleHTTP rq
+                          case (do res <- runGetJSON readJSObject (rspBody rsp)
+                                   obj <- case res of
+                                            JSObject obj -> Right obj
+                                            _            -> Left "Didn't get an object from api.github.com"
+                                   user  <- resultToEither (valFromObj "login" obj)
+                                   name  <- resultToEither (valFromObj "name" obj)
+                                   email <- resultToEither (valFromObj "email" obj)
+                                   return (user, name++" <"++email++">")) of
+                            Right (user,author) -> do count <- runDaison db ReadOnlyMode $
+                                                                  fmap length $ select (from updates_usr everything)
+                                                      let path = "/wordnet"
+                                                      return (Response
+                                                                { rspCode = 302
+                                                                , rspReason = "Found"
+                                                                , rspHeaders = [Header HdrLocation path]
+                                                                , rspBody = ""
+                                                                }
+                                                              `setCookies`
+                                                              [(mkSimpleCookie "user" user){ckPath=Just path}
+                                                              ,(mkSimpleCookie "author" author){ckPath=Just path}
+                                                              ,(mkSimpleCookie "token" token){ckPath=Just path}
+                                                              ,(mkSimpleCookie "count" (show count)){ckPath=Just path}
+                                                              ])
+                            Left msg     -> httpError 400 "https://api.github.com/user" msg
+        Left msg -> httpError 400 "Invalid response from https://github.com/login/oauth/access_token" msg
 
     doGet user lex_id lang = do
       res <- runDaison db ReadWriteMode $ do
@@ -118,12 +124,12 @@ cgiMain db = do
         _       -> fmap (Map.lookup lex_id) (getDefinitions (Set.singleton lex_id) lang)
 
     doUpdate user lex_id lang mb_def = do
-      mb_def' <- doGet user lex_id lang
-      let (def,s) = case mb_def of
-                      Just def | mb_def /= mb_def' -> (def,                  Changed)
-                      _                            -> (fromMaybe "" mb_def', Checked)
+      def <- case mb_def of
+               Just def -> return def
+               Nothing  -> do mb_def <- doGet user lex_id lang
+                              return (fromMaybe "" mb_def)
       runDaison db ReadWriteMode $ do
-        res <- update lexemes [(id, lex{status=updateStatus lang s (status lex)}) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
+        res <- update lexemes [(id, lex{status=updateStatus lang Checked (status lex)}) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
         insert_ updates (UpdateLexeme user lex_id lang def)
         c <- query countRows (from updates_usr everything)
         return (c,head [map toLower (show st)
@@ -144,7 +150,7 @@ cgiMain db = do
               git inp [["commit","--author",author,"--message","progress","WordNet*.gf","examples.txt"]
                       ,["push", "https://"++user++":"++token++"@github.com/GrammaticalFramework/gf-wordnet"]
                       ])
-      BS.hGetContents out
+      hGetContents out
       where
         patchUp inp = do
           res <- runDaison db ReadWriteMode $ do
@@ -185,12 +191,11 @@ cgiMain db = do
                                    (def:_) -> "lin "++id++" = "++def++" ;"
                                    _       -> l
              _                -> l)  : annotate fname updates (line_no+1) ls
-             
 
     doPull _ = do
       (out,inp) <- createPipe
       git inp [["pull","--no-edit"]]
-      BS.hGetContents out
+      hGetContents out
 
     doPickExample _ = do
       g  <- newStdGen
@@ -310,24 +315,13 @@ getDefinitions lex_ids lang = do
       | d == c             = c:def i   cs
       | otherwise          = c:str i d cs
 
-outputJSONP :: JSON a => a -> CGI CGIResult
-outputJSONP = outputEncodedJSONP . encode
-
-outputEncodedJSONP :: String -> CGI CGIResult
-outputEncodedJSONP json = 
-    do mc <- getInput "jsonp"
-       let (ty,str) = case mc of
-                        Nothing -> ("json",json)
-                        Just c  -> ("javascript",c ++ "(" ++ json ++ ")")
-           ct = "application/"++ty++"; charset=utf-8"
-       outputText ct str
-
-outputText ct = outputStrict ct . UTF8.encodeString
-
-outputStrict :: String -> String -> CGI CGIResult
-outputStrict ct x = do setHeader "Content-Type" ct
-                       setHeader "Content-Length" (show (length x))
-                       setXO
-                       output x
-
-setXO = setHeader "Access-Control-Allow-Origin" "*"
+outputJSONP q r = do
+  let (ty,str) = case lookup "jsonp" q of
+                   Nothing -> ("json",encode r)
+                   Just c  -> ("javascript",c ++ "(" ++ encode r ++ ")")
+  return (Response
+            { rspCode = 200
+            , rspReason = "OK"
+            , rspHeaders = [Header HdrContentType ("application/"++ty++"; charset=utf-8")]
+            , rspBody = str
+            })

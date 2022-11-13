@@ -9,9 +9,16 @@ import Data.Maybe
 import Data.Either
 import Data.Data
 import Data.Tree
+import System.IO ( utf8 )
 import System.Directory
 import Control.Monad
 import qualified Data.Map.Strict as Map
+import qualified Data.ByteString.Char8 as BS(head)
+import qualified Data.ByteString.UTF8 as BS(fromString)
+import Numeric (showHex)
+import Network.URI(escapeURIString,isUnreserved,unEscapeString)
+import Network.HTTP
+import Network.HTTP.MD5
 import Debug.Trace
 
 main = do
@@ -30,22 +37,28 @@ main = do
   cncdefs13<- fmap (mapMaybe (parseCncSyn "ParseMlt") . lines) $ readFile "WordNetMlt.gf"
   cncdefs14<- fmap (mapMaybe (parseCncSyn "ParsePol") . lines) $ readFile "WordNetPol.gf"
   cncdefs15<- fmap (mapMaybe (parseCncSyn "ParsePor") . lines) $ readFile "WordNetPor.gf"
-  cncdefs16<- fmap (mapMaybe (parseCncSyn "ParseSlv") . lines) $ readFile "WordNetSlv.gf"
-  cncdefs17<- fmap (mapMaybe (parseCncSyn "ParseSom") . lines) $ readFile "WordNetSom.gf"
-  cncdefs18<- fmap (mapMaybe (parseCncSyn "ParseSpa") . lines) $ readFile "WordNetSpa.gf"
-  cncdefs19<- fmap (mapMaybe (parseCncSyn "ParseSwa") . lines) $ readFile "WordNetSwa.gf"
-  cncdefs20<- fmap (mapMaybe (parseCncSyn "ParseSwe") . lines) $ readFile "WordNetSwe.gf"
-  cncdefs21<- fmap (mapMaybe (parseCncSyn "ParseTha") . lines) $ readFile "WordNetTha.gf"
-  cncdefs22<- fmap (mapMaybe (parseCncSyn "ParseTur") . lines) $ readFile "WordNetTur.gf"
+  cncdefs16<- fmap (mapMaybe (parseCncSyn "ParseRon") . lines) $ readFile "WordNetRon.gf"
+  cncdefs17<- fmap (mapMaybe (parseCncSyn "ParseRus") . lines) $ readFile "WordNetRus.gf"
+  cncdefs18<- fmap (mapMaybe (parseCncSyn "ParseSlv") . lines) $ readFile "WordNetSlv.gf"
+  cncdefs19<- fmap (mapMaybe (parseCncSyn "ParseSom") . lines) $ readFile "WordNetSom.gf"
+  cncdefs20<- fmap (mapMaybe (parseCncSyn "ParseSpa") . lines) $ readFile "WordNetSpa.gf"
+  cncdefs21<- fmap (mapMaybe (parseCncSyn "ParseSwa") . lines) $ readFile "WordNetSwa.gf"
+  cncdefs22<- fmap (mapMaybe (parseCncSyn "ParseSwe") . lines) $ readFile "WordNetSwe.gf"
+  cncdefs23<- fmap (mapMaybe (parseCncSyn "ParseTha") . lines) $ readFile "WordNetTha.gf"
+  cncdefs24<- fmap (mapMaybe (parseCncSyn "ParseTur") . lines) $ readFile "WordNetTur.gf"
 
-  let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14++cncdefs15++cncdefs16++cncdefs17++cncdefs18++cncdefs19++cncdefs20++cncdefs21++cncdefs22)
+  let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14++cncdefs15++cncdefs16++cncdefs17++cncdefs18++cncdefs19++cncdefs20++cncdefs21++cncdefs22++cncdefs23++cncdefs24)
 
-  absdefs <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
+  absdefs1 <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
+  absdefs2 <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "Names.gf"
+  let absdefs = absdefs1++absdefs2
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
 
+  images <- loadImages
+
   (taxonomy,lexrels0) <-
-     fmap (partitionEithers . map parseTaxonomy . lines) $
+     fmap (partitionEithers . map (parseTaxonomy images) . lines) $
        readFile "taxonomy.txt"
 
   probs <-
@@ -55,9 +68,6 @@ main = do
   let lexrels = (Map.toList . Map.fromListWith (++)) lexrels0
 
   domain_forest <- fmap (parseDomains [] . lines) $ readFile "domains.txt"
-
-  ls <- fmap lines $ readFile "images.txt"
-  let images = parseImages ls
 
   let db_name = "semantics.db"
   fileExists <- doesFileExist db_name
@@ -82,13 +92,12 @@ main = do
     forM_ absdefs $ \(mb_offset,fun,ds,gloss) -> do
        let (es,fs) = fromMaybe ([],[]) (Map.lookup fun ex_keys)
        mb_synsetid <- case mb_offset >>= flip Map.lookup synsetKeys of
-                        Nothing | not (null gloss) -> fmap Just (store synsets Nothing (Synset "" [] [] gloss))
+                        Nothing | not (null gloss) -> fmap Just (store synsets Nothing (Synset "" [] [] gloss []))
                         mb_id                      -> return mb_id
        insert_ lexemes (Lexeme fun (fromMaybe 0 (Map.lookup fun probs))
                                (Map.findWithDefault [] fun cncdefs)
                                mb_synsetid
                                (map (\d -> fromMaybe (error ("Unknown domain "++d)) (Map.lookup d ids)) ds)
-                               (fromMaybe [] (Map.lookup fun images))
                                es fs [])
        return ()
 
@@ -107,7 +116,7 @@ main = do
             [(drop 5 lang,status)
                        | (_,lex) <- from lexemes everything,
                          (lang,status) <- anyOf (status lex)]
-  writeFile "build/status.svg" (renderStatus cs)
+  writeFile "www/status.svg" (renderStatus cs)
 
   closeDB db
 
@@ -208,8 +217,8 @@ insertExamples ps (ExampleE e fns finsts : es)
                                              return ([(fn,([key],[])) | fn <- fns] ++ xs)
 
 
-parseTaxonomy l
-  | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs (\sym id -> (sym,read id)) ws2) (read children_s) gloss)
+parseTaxonomy images l
+  | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs (\sym id -> (sym,read id)) ws2) (read children_s) gloss (fromMaybe [] (Map.lookup id images)))
   | otherwise         = Right (id, readPtrs (,) ws0)
   where
     (id:ws0) = words l
@@ -250,7 +259,7 @@ parseTaxonomy l
 
 parseProbs l = (id, p)
   where
-    [id,s] = words l
+    [id,s] = split '\t' l
     p = read s :: Float
 
 parseDomains levels []     = attach levels
@@ -289,17 +298,13 @@ insertDomains !ids parent (Node (name,is_dim) children:ts) = do
   ids <- insertDomains (Map.insert name id ids) id children
   insertDomains ids parent ts
 
-parseImages ls = 
-  Map.fromList [case split '\t' l of {(id:urls) -> (id,map (\s -> case split ';' s of {[_,pg,im] -> (pg,im); _ -> error l}) urls)} | l <- ls]
-
 accumCounts m (lang,status) = Map.alter (Just . add) lang m
   where
-    add Nothing                = (0,0,0,0)
-    add (Just (!g,!u,!ca,!ce)) = case status of
-                                   Guessed   -> (g+0.001,u,ca,ce)
-                                   Unchecked -> (g,u+0.001,ca,ce)
-                                   Changed   -> (g,u,ca+0.001,ce)
-                                   Checked   -> (g,u,ca,ce+0.001)
+    add Nothing           = (0,0,0)
+    add (Just (!g,!u,!c)) = case status of
+                              Guessed   -> (g+0.001,u,c)
+                              Unchecked -> (g,u+0.001,c)
+                              Checked   -> (g,u,c+0.001)
 
 renderStatus cs =
       let (s1,x,y) = Map.foldlWithKey renderBar  ("",5,0) cs
@@ -312,18 +317,58 @@ renderStatus cs =
          s2++
          "</svg>"
       where
-        renderBar (s,x,y) lang (g,u,ca,ce) =
+        renderBar (s,x,y) lang (g,u,c) =
           let bar =
                 "<rect x=\""++show x++"\" y=\""++show 0++"\" width=\"30\" height=\""++show g++"\" style=\"fill:red\"/>\n"++
                 "<rect x=\""++show x++"\" y=\""++show g++"\" width=\"30\" height=\""++show u++"\" style=\"fill:yellow\"/>\n"++
-                "<rect x=\""++show x++"\" y=\""++show (g+u)++"\" width=\"30\" height=\""++show ca++"\" style=\"fill:black\"/>\n"++
-                "<rect x=\""++show x++"\" y=\""++show (g+u+ca)++"\" width=\"30\" height=\""++show ce++"\" style=\"fill:green\"/>\n"
-          in (bar++s,x+35,max y (g+u+ca+ce))
+                "<rect x=\""++show x++"\" y=\""++show (g+u+c)++"\" width=\"30\" height=\""++show c++"\" style=\"fill:green\"/>\n"
+          in (bar++s,x+35,max y (g+u+c))
 
-        renderLang (s,x,y) lang (g,u,ca,ce) =
+        renderLang (s,x,y) lang (g,u,c) =
           let text =
                 "<text x=\""++show (x+3)++"\" y=\""++show (y+15)++"\">"++lang++"</text>"
           in (text++s,x+35,y)
+
+loadImages = do
+  let req  = insertHeader HdrAccept "text/tab-separated-values" $
+             insertHeader HdrUserAgent "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36" $
+             getRequest ("https://query.wikidata.org/sparql?query="++escapeURIString isUnreserved query)
+  rsp <- simpleHTTP req
+  return ((Map.fromListWith (++) . map parseEntry . tail . lines) (rspBody rsp))
+  where
+    query =
+      "SELECT ?sense ?sitelink ?image WHERE\n\
+      \{\n\
+      \  ?item wdt:P8814 ?sense.\n\
+      \  { ?item wdt:P18 ?image. BIND (1 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P6802 ?image. BIND (2 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P117 ?image. BIND (3 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P8224 ?image. BIND (4 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P242 ?image. BIND (5 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P41 ?image. BIND (6 as ?rank) }\n\
+      \  UNION\n\
+      \  { ?item wdt:P94 ?image. BIND (7 as ?rank) }\n\
+      \  OPTIONAL {\n\
+      \    ?wikilink schema:about ?item;\n\
+      \    schema:isPartOf <https://en.wikipedia.org/>.\n\
+      \  }\n\
+      \  BIND(COALESCE(?wikilink, ?item) AS ?sitelink)\n\
+      \}\n\
+      \ORDER BY ?sense ?rank"
+      
+    parseEntry l =
+      case split '\t' l of
+        [f1,f2,f3] -> let sense = init (tail f1)
+                          uri   = init (tail f2)
+                          img   = init (drop 52 f3)
+                          name  = map (\c -> if c == ' ' then '_' else c) (unEscapeString img)
+                          h     = md5ss utf8 name
+                      in (sense,[(uri,"commons/"++take 1 h++"/"++take 2 h++"/"++name)])
 
 split :: Char -> String -> [String]
 split c "" = []

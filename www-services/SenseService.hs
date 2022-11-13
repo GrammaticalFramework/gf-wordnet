@@ -9,9 +9,8 @@ import qualified Data.Set as Set
 import qualified Data.Vector as Vector
 import Control.Monad(foldM,msum,forM_)
 import Control.Concurrent(forkIO)
-import Network.CGI
-import Network.FastCGI(runFastCGI,runFastCGIConcurrent')
-import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
+import Network.HTTP
+import Network.FastCGI
 import Text.JSON
 import Data.Maybe(mapMaybe, fromMaybe, catMaybes, isNothing)
 import Data.List(sortOn,sortBy,delete,intercalate,nub)
@@ -24,58 +23,54 @@ main = do
           [c*c
              | (ex_id,(ex,_)) <- from examples everything
              , let c = length (exprFunctions ex)]
--- #ifndef mingw32_HOST_OS
---                   runFastCGIConcurrent' forkIO 100 (cgiMain db)
--- #else
-  runFastCGI (handleErrors $ cgiMain db bigram_total)
--- #endif
+  simpleFastCGI (fcgiMain db bigram_total)
   closeDB db
 
 maxResultLength = 500
 
-cgiMain :: Database -> Int -> CGI CGIResult
-cgiMain db bigram_total = do
-  mb_s1 <- getInput "lexical_ids"
-  mb_s2 <- getInput "context_id"
-  mb_s3 <- getInput "gloss_id"
-  mb_s4 <- getInput "depth"
-  mb_s7 <- getInput "generalize_ids"
-  mb_s8 <- getInput "list_domains"
-  s9    <- fmap (\xs -> [value | ("domain",value) <- xs]) getInputs
-  mb_s10<- getInput "list_top_classes"
-  mb_s11<- getInput "class_id"
-  s12   <- fmap (\xs -> [value | ("pattern_match",value) <- xs]) getInputs
+fcgiMain :: Database -> Int -> Env -> Request -> IO Response
+fcgiMain db bigram_total env rq = do
+  let query = rqQuery rq
+      mb_s1 = lookup "lexical_ids" query
+      mb_s2 = lookup "context_id" query
+      mb_s3 = lookup "gloss_id" query
+      mb_s4 = lookup "depth" query
+      mb_s7 = lookup "generalize_ids" query
+      mb_s8 = lookup "list_domains" query
+      s9    = [value | ("domain",value) <- query]
+      mb_s10 = lookup "list_top_classes" query
+      mb_s11 = lookup "class_id" query
+      s12   = [value | ("pattern_match",value) <- query]
   case mb_s1 of
-    Just s  -> do json <- liftIO (doQuery (words s))
-                  outputJSONP json
+    Just s  -> do json <- doQuery (words s)
+                  outputJSONP query json
     Nothing -> case mb_s2 of
-                 Just lex_id -> do json <- liftIO (doContext lex_id (fromMaybe 4 (fmap read mb_s4)))
-                                   outputJSONP json
+                 Just lex_id -> do json <- doContext lex_id (fromMaybe 4 (fmap read mb_s4))
+                                   outputJSONP query json
                  Nothing     -> case mb_s3 of
-                                  Just lex_id -> do json <- liftIO (doGloss lex_id)
-                                                    outputJSONP json
+                                  Just lex_id -> do json <- doGloss lex_id
+                                                    outputJSONP query json
                                   Nothing     -> case mb_s7 of
-                                                   Just s  -> do json <- liftIO (doGeneralize (words s))
-                                                                 outputJSONP json
+                                                   Just s  -> do json <- doGeneralize (words s)
+                                                                 outputJSONP query json
                                                    Nothing -> case mb_s8 of
-                                                                Just _  -> do json <- liftIO doListDomains
-                                                                              outputJSONP json
+                                                                Just _  -> do json <- doListDomains
+                                                                              outputJSONP query json
                                                                 Nothing -> case map read s9 of
-                                                                             (d:ds) -> do json <- liftIO (doDomainQuery d ds)
-                                                                                          outputJSONP json
+                                                                             (d:ds) -> do json <- doDomainQuery d ds
+                                                                                          outputJSONP query json
                                                                              _      -> case mb_s10 of
-                                                                                         Just _  -> do json <- liftIO doListTopClasses
-                                                                                                       outputJSONP json
+                                                                                         Just _  -> do json <- doListTopClasses
+                                                                                                       outputJSONP query json
                                                                                          Nothing -> case mb_s11 of
-                                                                                                      Just id -> do json <- liftIO (doClassQuery (read id))
-                                                                                                                    outputJSONP json
+                                                                                                      Just id -> do json <- doClassQuery (read id)
+                                                                                                                    outputJSONP query json
                                                                                                       Nothing -> case s12 of
-                                                                                                                   _:_ -> do body <- getBody
-                                                                                                                             case decode body of
-                                                                                                                               Ok pattern -> do json <- liftIO (doPatternMatch s12 pattern)
-                                                                                                                                                outputJSONP json
+                                                                                                                   _:_ -> do case decode (rqBody rq) of
+                                                                                                                               Ok pattern -> do json <- doPatternMatch s12 pattern
+                                                                                                                                                outputJSONP query json
                                                                                                                                Error msg   -> do fail msg
-                                                                                                                   []  -> outputNothing
+                                                                                                                   []  -> httpError 404 "Not Found" "Unknown command"
   where
     doQuery lex_ids = do
       senses <- runDaison db ReadOnlyMode $
@@ -148,9 +143,9 @@ cgiMain db bigram_total = do
                                                        s <- from synsets (at synset_id)],
                             size int < 2000,
                             (s,e) <- anyOf int,
-                            (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
+                            (synset_id,Synset offset _ _ gloss images) <- from synsets (asc ^>= s ^<= e),
                             lex_ids <- select [(lex_id,status,frame_inf,Just (domains,images,examples,sexamples,ptrs))
-                                                   | (_,Lexeme lex_id _ status _ domain_ids images ex_ids fs ptrs0) <- fromIndex lexemes_synset (at synset_id),
+                                                   | (_,Lexeme lex_id _ status _ domain_ids ex_ids fs ptrs0) <- fromIndex lexemes_synset (at synset_id),
                                                      domains   <- select [makeObj [ ("id",showJSON domain_id)
                                                                                   , ("name",showJSON (domain_name d))
                                                                                   ]
@@ -235,7 +230,7 @@ cgiMain db bigram_total = do
         binding2obj (SynsetValue key synset lexemes) =
           (key,(gloss synset,[(lex_fun lexeme,status lexeme,[],Nothing) | (_,lexeme) <- lexemes]))
 
-    getGloss senses (_,Lexeme lex_id _ status mb_sense_id domain_ids images ex_ids _ ptrs0) = do
+    getGloss senses (_,Lexeme lex_id _ status mb_sense_id domain_ids ex_ids _ ptrs0) = do
       domains   <- select [makeObj [ ("id",showJSON domain_id)
                                    , ("name",showJSON (domain_name d))
                                    ]
@@ -249,16 +244,17 @@ cgiMain db bigram_total = do
       case mb_sense_id of
         Just sense_id -> 
           case Map.lookup sense_id senses of
-            Just (gloss,lex_ids) -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
-            Nothing              -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
-                                       lex_ids <- select [(lex_id,status,frame_inf,Nothing)
-                                                              | (_,Lexeme lex_id _ status _ _ _ _ fs _) <- fromIndex lexemes_synset (at sense_id),
-                                                                frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
-                                                                                          | frame_id <- anyOf fs
-                                                                                          , f <- from frames (at frame_id)
-                                                                                          , cls <- from classes (at (base_class_id f))]]
-                                       return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
-        Nothing -> return (Map.insert (fromIntegral (5000000+Map.size senses)) ("",[(lex_id,status,[],Just (domains,images,examples,sexamples,ptrs))]) senses)
+            Just (gloss,images,lex_ids)
+                     -> return (Map.insert sense_id (gloss,images,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
+            Nothing  -> do [Synset _ _ _ gloss images] <- select (from synsets (at sense_id))
+                           lex_ids <- select [(lex_id,status,frame_inf,Nothing)
+                                                  | (_,Lexeme lex_id _ status _ _ _ fs _) <- fromIndex lexemes_synset (at sense_id),
+                                                    frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
+                                                                              | frame_id <- anyOf fs
+                                                                              , f <- from frames (at frame_id)
+                                                                              , cls <- from classes (at (base_class_id f))]]
+                           return (Map.insert sense_id (gloss,images,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
+        Nothing -> return (Map.insert (fromIntegral (5000000+Map.size senses)) ("",[],[(lex_id,status,[],Just (domains,[],examples,sexamples,ptrs))]) senses)
       where
         addInfo lex_id info lex_ids = 
           [(lex_id',status,frames,if lex_id == lex_id' then Just info else mb_info)
@@ -266,7 +262,7 @@ cgiMain db bigram_total = do
 
     sortSenses = map snd . sortOn fst . map addKey
       where
-        addKey (sense_id,(gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,map snd key_lex_ids)))
+        addKey (sense_id,(gloss,images,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,map snd key_lex_ids)))
           where
             key_lex_ids = sortOn fst [(toKey lex_id info,x) | x@(lex_id,_,_,info) <- lex_ids]
 
@@ -388,24 +384,14 @@ crawlGraph dist depth graph synset_id
     
     updateDepth graph = Map.adjust (\(gloss,funs,ptrs,_) -> (gloss,funs,ptrs,dist)) synset_id graph
 
-outputJSONP :: JSON a => a -> CGI CGIResult
-outputJSONP = outputEncodedJSONP . encode
 
-outputEncodedJSONP :: String -> CGI CGIResult
-outputEncodedJSONP json = 
-    do mc <- getInput "jsonp"
-       let (ty,str) = case mc of
-                        Nothing -> ("json",json)
-                        Just c  -> ("javascript",c ++ "(" ++ json ++ ")")
-           ct = "application/"++ty++"; charset=utf-8"
-       outputText ct str
-
-outputText ct = outputStrict ct . UTF8.encodeString
-
-outputStrict :: String -> String -> CGI CGIResult
-outputStrict ct x = do setHeader "Content-Type" ct
-                       setHeader "Content-Length" (show (length x))
-                       setXO
-                       output x
-
-setXO = setHeader "Access-Control-Allow-Origin" "*"
+outputJSONP q r = do
+  let (ty,str) = case lookup "jsonp" q of
+                   Nothing -> ("json",encode r)
+                   Just c  -> ("javascript",c ++ "(" ++ encode r ++ ")")
+  return (Response
+            { rspCode = 200
+            , rspReason = "OK"
+            , rspHeaders = [Header HdrContentType ("application/"++ty++"; charset=utf-8")]
+            , rspBody = str
+            })

@@ -4,7 +4,7 @@ concrete ParseAPI of Parse = CatAPI, WordNetAPI ** {
 
 lincat 
   ListAP, ListAdv, ListAdV, ListCN, ListIAdv, ListNP, ListRS, ListS, 
-  Digit, Dig, QVP, Sub10, Sub100, Sub1000, Sub1000000, Sub1000000000,
+  Digit, Dig, QVP, Sub10, Sub100, Sub1000, Sub1000000, Sub1000000000, Sub1000000000000,
   Mark, RNP, RNPList, CNN, VPI, VPS, VPI2, VPS2, ListComp, ListDAP, ListImp, ListVPI, ListVPI2, 
   ListVPS, ListVPS2, ListDAP, Language, Timeunit, Hour, Weekday, Month, Monthday, Year,
   Inflection, Definition, Document, Tag = Term ;

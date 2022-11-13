@@ -102,10 +102,6 @@ table[border="yes"] td,table[border="yes"] th {
 	text-decoration: underline dotted red;
 }
 
-.changed {
-	text-decoration: line-through solid black;
-}
-
 table.header-tabs {
 	width: 100%
 }

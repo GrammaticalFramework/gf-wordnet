@@ -866,7 +866,7 @@ gfwordnet.onclick_cell = function (cell) {
 			details.appendChild(node("table",{class: "selectors"},[tr(row)]));
 		}
 		if (lex_def.examples.length > 0) {
-			var header = node("h1",{},[text("Examples")]);
+			const header = node("h1",{},[text("Examples")]);
 			details.appendChild(header);
 			for (const example of lex_def.examples) {
 				gfwordnet.grammar_call("command=bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(example.expr),
@@ -877,7 +877,7 @@ gfwordnet.onclick_cell = function (cell) {
 			}
 		}
 		if (lex_def.secondary_examples.length > 0) {
-			var header = node("h1",{},[text("Secondary Examples")]);
+			const header = node("h1",{},[text("Secondary Examples")]);
 			details.appendChild(header);
 			for (const example of lex_def.secondary_examples) {
 				gfwordnet.grammar_call("command=bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(example.expr),

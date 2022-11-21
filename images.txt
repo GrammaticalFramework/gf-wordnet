@@ -17856,7 +17856,7 @@ squirrelfish_2_N	Q135717	37363394;Holocentrus;commons/9/94/Fish3120.jpg
 sri_lanka_PN	Q854	26750;Sri_Lanka;commons/1/11/Flag_of_Sri_Lanka.svg	26750;Sri_Lanka;commons/b/b6/Topography_Sri_Lanka.jpg
 ss_2_PN	Q44687	27040;Schutzstaffel;commons/1/13/Himmler_besichtigt_die_Gefangenenlager_in_Russland._Heinrich_Himmler_inspects_a_prisoner_of_war_camp_in_Russia%2C_circa..._-_NARA_-_540164.jpg
 ss_1_PN	Q503224	58221;United_States_Secret_Service;commons/b/b5/Logo_of_the_United_States_Secret_Service.svg
-st_petersburg_PN	Q656	24320051;Saint_Petersburg;commons/c/cf/SPB_Collage_2014-3.png
+st_petersburg_1_PN	Q656	24320051;Saint_Petersburg;commons/c/cf/SPB_Collage_2014-3.png
 stab_1_V2	Q464643	618009;Stabbing;commons/d/d7/Hieronymus_Bosch_075.jpg
 stab_2_V2	Q464643	618009;Stabbing;commons/d/d7/Hieronymus_Bosch_075.jpg
 stab_3_V2	Q464643	618009;Stabbing;commons/d/d7/Hieronymus_Bosch_075.jpg

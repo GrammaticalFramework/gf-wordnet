@@ -49,9 +49,7 @@ main = do
 
   let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14++cncdefs15++cncdefs16++cncdefs17++cncdefs18++cncdefs19++cncdefs20++cncdefs21++cncdefs22++cncdefs23++cncdefs24)
 
-  absdefs1 <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
-  absdefs2 <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "Names.gf"
-  let absdefs = absdefs1++absdefs2
+  absdefs <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
 

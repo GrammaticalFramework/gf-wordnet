@@ -292,7 +292,7 @@ fcgiMain db bigram_total env rq = do
                  Just (domains,images,examples,sexamples,ptrs) -> [
                          ("match", showJSON True),
                          ("domains",  showJSON (domains :: [JSValue])),
-                         ("images",  showJSON (images :: [(String,String)])),
+                         ("images",  showJSON ([(url,img) | (_,url,img) <- images, not (null img)] :: [(String,String)])),
                          ("examples", showJSON (map mkExObj examples)),
                          ("secondary_examples", showJSON (map mkExObj sexamples)),
                          ("antonyms", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Antonym,id,status) <- ptrs]),

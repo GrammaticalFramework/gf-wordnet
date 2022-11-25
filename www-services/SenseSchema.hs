@@ -63,7 +63,7 @@ data Synset
       , pointers     :: [(PointerSymbol,Key Synset)]
       , children     :: Interval (Key Synset)
       , gloss        :: String
-      , images       :: [(String,String)]
+      , images       :: [(String,String,String)]
       }
     deriving (Data,Show)
 

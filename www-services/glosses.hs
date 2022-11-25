@@ -50,6 +50,7 @@ main = do
   let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14++cncdefs15++cncdefs16++cncdefs17++cncdefs18++cncdefs19++cncdefs20++cncdefs21++cncdefs22++cncdefs23++cncdefs24)
 
   absdefs <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
+  absdefs <- mapM addImage absdefs
 
   fn_examples <- fmap (parseExamples . lines) $ readFile "examples.txt"
 
@@ -87,11 +88,11 @@ main = do
 
     createTable lexemes
     let synsetKeys = Map.fromList [(synsetOffset synset, key) | (key,synset) <- taxonomy]
-    forM_ absdefs $ \(mb_offset,fun,ds,gloss) -> do
+    forM_ absdefs $ \(mb_offset,fun,ds,gloss,imgs) -> do
        let (es,fs) = fromMaybe ([],[]) (Map.lookup fun ex_keys)
        mb_synsetid <- case mb_offset >>= flip Map.lookup synsetKeys of
-                        Nothing | not (null gloss) -> fmap Just (store synsets Nothing (Synset "" [] [] gloss []))
-                        mb_id                      -> return mb_id
+                        Nothing -> fmap Just (store synsets Nothing (Synset "" [] [] gloss imgs))
+                        mb_id   -> return mb_id
        insert_ lexemes (Lexeme fun (fromMaybe 0 (Map.lookup fun probs))
                                (Map.findWithDefault [] fun cncdefs)
                                mb_synsetid
@@ -122,7 +123,7 @@ parseAbsSyn l =
   case words l of
     ("fun":fn:_) -> case break (=='\t') l of
                       (l1,'\t':l2) -> let (ds,l3) = splitDomains l2
-                                      in Just (Just ((reverse . take 10 . reverse) l1), fn, ds, l3)
+                                      in Just (Just ((reverse . dropWhile isSpace . take 10 . reverse) l1), fn, ds, l3)
                       _            -> Just (Nothing, fn, [], "")
     _            -> Nothing
   where
@@ -327,30 +328,27 @@ renderStatus cs =
                 "<text x=\""++show (x+3)++"\" y=\""++show (y+15)++"\">"++lang++"</text>"
           in (text++s,x+35,y)
 
-loadImages = do
-  let req  = insertHeader HdrAccept "text/tab-separated-values" $
-             insertHeader HdrUserAgent "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36" $
-             getRequest ("https://query.wikidata.org/sparql?query="++escapeURIString isUnreserved query)
-  rsp <- simpleHTTP req
-  return ((Map.fromListWith (++) . map parseEntry . tail . lines) (rspBody rsp))
+loadImages = runImageQuery query
   where
     query =
-      "SELECT ?sense ?sitelink ?image WHERE\n\
+      "SELECT ?item ?sense ?sitelink ?image WHERE\n\
       \{\n\
       \  ?item wdt:P8814 ?sense.\n\
-      \  { ?item wdt:P18 ?image. BIND (1 as ?rank) }\n\
-      \  UNION\n\
-      \  { ?item wdt:P6802 ?image. BIND (2 as ?rank) }\n\
-      \  UNION\n\
-      \  { ?item wdt:P117 ?image. BIND (3 as ?rank) }\n\
-      \  UNION\n\
-      \  { ?item wdt:P8224 ?image. BIND (4 as ?rank) }\n\
-      \  UNION\n\
-      \  { ?item wdt:P242 ?image. BIND (5 as ?rank) }\n\
-      \  UNION\n\
-      \  { ?item wdt:P41 ?image. BIND (6 as ?rank) }\n\
-      \  UNION\n\
-      \  { ?item wdt:P94 ?image. BIND (7 as ?rank) }\n\
+      \  OPTIONAL {\n\
+      \    { ?item wdt:P18 ?image. BIND (1 as ?rank) }\n\
+      \    UNION\n\
+      \    { ?item wdt:P6802 ?image. BIND (2 as ?rank) }\n\
+      \    UNION\n\
+      \    { ?item wdt:P117 ?image. BIND (3 as ?rank) }\n\
+      \    UNION\n\
+      \    { ?item wdt:P8224 ?image. BIND (4 as ?rank) }\n\
+      \    UNION\n\
+      \    { ?item wdt:P242 ?image. BIND (5 as ?rank) }\n\
+      \    UNION\n\
+      \    { ?item wdt:P41 ?image. BIND (6 as ?rank) }\n\
+      \    UNION\n\
+      \    { ?item wdt:P94 ?image. BIND (7 as ?rank) }\n\
+      \  }\n\
       \  OPTIONAL {\n\
       \    ?wikilink schema:about ?item;\n\
       \    schema:isPartOf <https://en.wikipedia.org/>.\n\
@@ -358,15 +356,60 @@ loadImages = do
       \  BIND(COALESCE(?wikilink, ?item) AS ?sitelink)\n\
       \}\n\
       \ORDER BY ?sense ?rank"
-      
+
+addImage (mb_senseid, fn, ds, gloss) = do
+  imgs <- case mb_senseid of
+            Just qid@('Q':_) -> fmap (Map.findWithDefault [] ("http://www.wikidata.org/entity/"++qid)) (runImageQuery (query qid))
+            _                -> return []
+  return (mb_senseid, fn, ds, gloss, imgs)
+  where
+    query qid =
+      "SELECT ?item ?sense ?sitelink ?image WHERE\n\
+      \{\n\
+      \  BIND(wd:"++qid++" AS ?item)\n\
+      \  BIND(wd:"++qid++" AS ?sense)\n\
+      \  OPTIONAL {\n\
+      \    { wd:"++qid++" wdt:P18 ?image. BIND (1 as ?rank) }\n\
+      \    UNION\n\
+      \    { wd:"++qid++" wdt:P6802 ?image. BIND (2 as ?rank) }\n\
+      \    UNION\n\
+      \    { wd:"++qid++" wdt:P117 ?image. BIND (3 as ?rank) }\n\
+      \    UNION\n\
+      \    { wd:"++qid++" wdt:P8224 ?image. BIND (4 as ?rank) }\n\
+      \    UNION\n\
+      \    { wd:"++qid++" wdt:P242 ?image. BIND (5 as ?rank) }\n\
+      \    UNION\n\
+      \    { wd:"++qid++" wdt:P41 ?image. BIND (6 as ?rank) }\n\
+      \    UNION\n\
+      \    { wd:"++qid++" wdt:P94 ?image. BIND (7 as ?rank) }\n\
+      \  }\n\
+      \  OPTIONAL {\n\
+      \    ?wikilink schema:about wd:"++qid++";\n\
+      \    schema:isPartOf <https://en.wikipedia.org/>.\n\
+      \  }\n\
+      \  BIND(COALESCE(?wikilink, ?item) AS ?sitelink)\n\
+      \}\n\
+      \ORDER BY ?rank"
+
+runImageQuery query = do
+  let req  = insertHeader HdrAccept "text/tab-separated-values" $
+             insertHeader HdrUserAgent "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36" $
+             getRequest ("https://query.wikidata.org/sparql?query="++escapeURIString isUnreserved query)
+  rsp <- simpleHTTP req
+  return ((Map.fromListWith (++) . map parseEntry . tail . lines) (rspBody rsp))
+  where
     parseEntry l =
       case split '\t' l of
-        [f1,f2,f3] -> let sense = init (tail f1)
-                          uri   = init (tail f2)
-                          img   = init (drop 52 f3)
-                          name  = map (\c -> if c == ' ' then '_' else c) (unEscapeString img)
-                          h     = md5ss utf8 name
-                      in (sense,[(uri,"commons/"++take 1 h++"/"++take 2 h++"/"++name)])
+        (f1:f2:f3:fs) -> let qid   = init (tail f1)
+                             sense = init (tail f2)
+                             uri   = init (tail f3)
+                             img   = case fs of
+                                       []   -> ""
+                                       [f4] -> let fname = init (drop 52 f4)
+                                                   name  = map (\c -> if c == ' ' then '_' else c) (unEscapeString fname)
+                                                   h     = md5ss utf8 name
+                                               in "commons/"++take 1 h++"/"++take 2 h++"/"++name
+                         in (sense,[(drop 31 qid,uri,img)])
 
 split :: Char -> String -> [String]
 split c "" = []

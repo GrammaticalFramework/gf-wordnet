@@ -116,7 +116,7 @@ synsets = table "synsets"
              `withIndex` synsets_qid
 
 synsets_qid :: Index Synset String
-synsets_qid = listIndex synsets "qid" (\synset -> [qid | (qid,_,_) <- images synset])
+synsets_qid = listIndex synsets "qid" (\synset -> nub [qid | (qid,_,_) <- images synset])
 
 domains :: Table Domain
 domains = table "domains"

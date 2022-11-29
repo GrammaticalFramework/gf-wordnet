@@ -14,5 +14,6 @@ setup(
     keywords = "GF WordNet",
     url = "https://github.com/GrammaticalFramework/gf-wordnet",
     packages=['wordnet'],
+    install_requires=['pgf','daison'],
     long_description=read("README.md")
 )

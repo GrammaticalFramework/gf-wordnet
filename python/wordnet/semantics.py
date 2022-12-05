@@ -112,5 +112,15 @@ class Lexeme:
     lex_pointers: list[tuple[PointerSymbol,int]]
 
 lexemes = table("lexemes",Lexeme)
+
+lexemes_fun = index(lexemes,"fun",lambda lexeme: lexeme.lex_fun,str)
+lexemes.addIndex(lexemes_fun)
+
 lexemes_synset = maybeIndex(lexemes,"synset",lambda lexeme: lexeme.synset,int)
 lexemes.addIndex(lexemes_synset)
+
+lexemes_domain = listIndex(lexemes,"domain",lambda lexeme: lexeme.domain_ids,int)
+lexemes.addIndex(lexemes_domain)
+
+lexemes_frame = listIndex(lexemes,"frames",lambda lexeme: lexeme.frame_ids,int)
+lexemes.addIndex(lexemes_frame)

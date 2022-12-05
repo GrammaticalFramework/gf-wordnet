@@ -1,10 +1,19 @@
+import sys
 import ijson
 import bz2
+import math
+import pgf
+import daison
+from wordnet.wikidata import synsets_qid
+from wordnet.semantics import *
+import hashlib
+import subprocess
 
-def extract():
-    with bz2.open("data/wikidata-2022-07-31.json.bz2", "rb") as f:
+
+def extract(wiki_fpath):
+    with bz2.open(wiki_fpath, "rb") as f:
         
-        with open("names2.txt", "w") as out:
+        with open("names.txt", "w") as out:
             for record in ijson.items(f, "item"):
                 name_type = None
                 gender = None
@@ -23,7 +32,7 @@ def extract():
                     for lang,val in record["labels"].items():
                         names[lang] = val["value"]
                     descr = record["descriptions"].get("en",{}).get("value","")
-                    out.write(str((record["id"],descr,name_type,names))+"\n")
+                    out.write(str((record["id"],descr,[],name_type,names))+"\n")
 
                 given_names = []
                 for given_name_claim in record["claims"].get("P735",[]):
@@ -46,6 +55,24 @@ def extract():
                         continue
                     synsets.append(synset_claim["mainsnak"]["datavalue"]["value"])
 
+                title = None
+                if "sitelinks" in record:
+                    title = record["sitelinks"].get("enwiki",{"title":None}).get("title")
+                if title:
+                    url = "https://en.wikipedia.org/wiki/"+title.replace(' ','_')
+                else:
+                    url = "http://www.wikidata.org/entity/"+record["id"]
+                images = []
+                for prop in ["P18","P6802","P117","P8224","P242","P41","P94"]:
+                    for image_claim in record["claims"].get(prop,[]):
+                        if "datavalue" not in image_claim["mainsnak"]:
+                            continue
+                        img = image_claim["mainsnak"]["datavalue"]["value"]
+                        img = img.replace(' ','_')
+                        h = hashlib.md5(img.encode("utf-8")).hexdigest()
+                        img = "commons/"+h[0]+"/"+h[0:2]+"/"+img
+                        images.append((record["id"],url,img))
+
                 if given_names or family_names:
                     label = record["labels"].get("en",{}).get("value")
                     out.write(str((record["id"],label,synsets,given_names,family_names))+"\n")
@@ -55,8 +82,8 @@ def extract():
                     for lang,val in record["labels"].items():
                         names[lang] = val["value"]
                     descr = record["descriptions"].get("en",{}).get("value","")
-                    out.write(str((record["id"],synsets,descr,geo_names,names))+"\n")
-                        
+                    out.write(str((record["id"],descr,images,synsets,geo_names,names))+"\n")
+
 
 def cyr(s):
     #DOUBLE LETTERS UPPERCASE
@@ -350,23 +377,108 @@ def cyr(s):
 
     return s
 
-def generate():
-    with open("names2.txt", "r") as f:
-        gf_ids = {}
-        q_ids  = {}
-        counts = {"GN": {}, "SN": {}, "PN": {}}
-        for line in f:
-            record = eval(line)
-            if type(record[-1]) is not dict:
-                for qid in record[3]:
-                    cs = counts["GN"]
-                    cs[qid] = cs.get(qid,1) + 1
-                for qid in record[4]:
-                    cs = counts["SN"]
-                    cs[qid] = cs.get(qid,1) + 1
+langs = [
+  ("Afr",["af","nl","en"]),
+  ("Bul",["bg","sr","ru","en"]),
+  ("Cat",["ca","en"]),
+  ("Chi",["zh"]),
+  ("Dut",["nl","en"]),
+  ("Eng",["en"]),
+  ("Fin",["fi","en"]),
+  ("Ger",["de","en"]),
+  ("Kor",["ko"]),
+  ("Ron",["ro","en"]),
+  ("Som",["so","en"]),
+  ("Swa",["sw","en"]),
+  ("Tha",["th"]),
+  ("Fre",["fr","en"]),
+  ("Ita",["it","en"]),
+  ("Mlt",["mt","en"]),
+  ("Por",["pt","en"]),
+  ("Rus",["ru","bg","sr","en"]),
+  ("Slv",["sl","en"]),
+  ("Spa",["es","en"]),
+  ("Swe",["sv","en"]),
+  ("Tur",["tr","en"]),
+  ]
+
+def quote(s):
+    plain = True
+    if s[0].isdigit():
+        plain = False
+    else:
+        for c in s:
+            if c not in "abcdefghijklmnopqrstuvwxyz_SGN0123456789":
+                plain=False
+                break
+
+    if plain:
+        q = s
+    else:
+        q = "'"
+        for c in s:
+            if c == "'":
+                q = q + "\\'"
+            elif c == "\\":
+                q = q + "\\\\"
             else:
-                if len(record[-1]) == 0:
+                q = q + c
+        q = q + "'"
+
+    return q
+
+def dquote(s):
+    q = "\""
+    for c in s:
+        if c == "\"":
+            q = q + "\\\""
+        elif c == "\\":
+            q = q + "\\\\"
+        else:
+            q = q + c
+    q = q + "\""
+    return q
+
+def generate(names_fpath,semantics_fpath,grammar_fpath):
+    with daison.openDB(semantics_fpath) as db:
+        with db.run("r") as t:
+            existing_qids = set(qid for qid,keys in t.cursor(synsets_qid))
+
+        # first pass to compute probabilities
+        with open(names_fpath, "r") as f:
+            q_ids  = {}
+            counts = {"GN": {}, "SN": {}, "PN": {}}
+            for line in f:
+                record = eval(line)
+                if type(record[-1]) is not dict:
+                    for qid in record[3]:
+                        cs = counts["GN"]
+                        cs[qid] = cs.get(qid,1) + 1
+                    for qid in record[4]:
+                        cs = counts["SN"]
+                        cs[qid] = cs.get(qid,1) + 1
+                else:
+                    if len(record[-1]) == 0:
+                        continue
+                    if len(record) == 5:
+                        if record[3] in ["Q12308941","Q11879590"]:
+                            tag = "GN"
+                        else:
+                            tag = "SN"
+                    else:
+                        tag = "PN"
+                    counts[tag].setdefault(record[0],1)
+                    q_ids[record[0]] = (tag,record)
+
+            totals = {tag : sum(cs.values()) for tag,cs in counts.items()}
+
+        gr = pgf.readNGF(grammar_fpath)
+
+        with db.run("w") as s_t, gr.newTransaction() as g_t:
+            for q_id,(tag,record) in sorted(q_ids.items(),key=lambda p: p[1]):
+                if q_id in existing_qids:
                     continue
+
                 name = record[-1].get("en",next(record[-1].items().__iter__())[0])
                 name = name.split('/')[0].strip()
                 name = name.lower()
@@ -374,105 +486,47 @@ def generate():
                 if paren >= 0:
                     name = name[:paren].strip()
                 name = name.replace(" ","_")
-                if len(record) == 4:
-                    if record[2] in ["Q12308941","Q11879590"]:
-                        tag = "GN"
+
+                typ = pgf.readType(tag)
+
+                prob = counts[tag].get(q_id,0)/totals[tag]
+                if prob == 0:
+                    prob = float('inf')
+                else:
+                    prob = -math.log(prob)
+
+                gf_id = g_t.createFunction(name + "_%d_" + tag, typ, 0, prob)
+                q_ids[q_id] = (gf_id,tag,record)
+
+                descr = record[1]
+
+                status = []
+                for lang,lang_codes in langs:
+                    if lang_codes[0] in record[-1]:
+                        st = Status.Checked
                     else:
-                        tag = "SN"
-                else:
-                    tag = "PN"
-                nt = (name,tag)
-                info = gf_ids.get(nt)
-                if not info:
-                    gf_ids[nt] = [record[0]]
-                    gf_id = name+"_"+tag
-                    counts[tag].setdefault(record[0],1)
-                else:
-                    if len(info) == 1:
-                        q_ids[info[0]] = (name+"_1_"+tag,tag,q_ids[info[0]][2])
-                    info.append(record[0])
-                    gf_id = name+"_"+str(len(info))+"_"+tag
-                q_ids[record[0]] = (gf_id,tag,record)
+                        st = Status.Guessed
+                    status.append(("Parse"+lang,st))
 
-        totals = {tag : sum(cs.values()) for tag,cs in counts.items()}
+                images = record[2]
+                if not images:
+                    images.append((q_id,"http://www.wikidata.org/entity/"+q_id,""))
 
-        def quote(s):
-            plain = True
-            if s[0].isdigit():
-                plain = False
-            else:
-                for c in s:
-                    if c not in "abcdefghijklmnopqrstuvwxyz_SGN0123456789":
-                        plain=False
-                        break
+                id = s_t.store(synsets,None,Synset(q_id,[],[],descr,images))
+                s_t.store(lexemes,None,Lexeme(gf_id,prob,status,id,[],[],[],[]))
 
-            if plain:
-                q = s
-            else:
-                q = "'"
-                for c in s:
-                    if c == "'":
-                        q = q + "\\'"
-                    elif c == "\\":
-                        q = q + "\\\\"
-                    else:
-                        q = q + c
-                q = q + "'"
+        with subprocess.Popen(["gf","-run",grammar_fpath], stdin=subprocess.PIPE) as proc:
+            for lang,lang_codes in langs:
+                proc.stdin.write(bytes("\ni -resource alltenses/Paradigms"+lang+".gfo\n\n","utf-8"))
+                proc.stdin.write(b"transaction start\n\n")
+                for q_id,info in sorted(q_ids.items(),key=lambda p: p[1]):
+                    if q_id in existing_qids:
+                        continue
 
-            return q
+                    (gf_id,tag,record) = info
 
-        def dquote(s):
-            q = "\""
-            for c in s:
-                if c == "\"":
-                    q = q + "\\\""
-                elif c == "\\":
-                    q = q + "\\\\"
-                else:
-                    q = q + c
-            q = q + "\""
-            return q
-
-        langs = [
-          ("Afr",["af","nl","en"]),
-          ("Bul",["bg","sr","ru","en"]),
-          ("Cat",["ca","en"]),
-          ("Chi",["zh"]),
-          ("Dut",["nl","en"]),
-          ("Eng",["en"]),
-          ("Fin",["fi","en"]),
-          ("Ger",["de","en"]),
-          ("Kor",["ko"]),
-          ("Ron",["ro","en"]),
-          ("Som",["so","en"]),
-          ("Swa",["sw","en"]),
-          ("Tha",["th"]),
-          ("Fre",["fr","en"]),
-          ("Ita",["it","en"]),
-          ("Mlt",["mt","en"]),
-          ("Por",["pt","en"]),
-          ("Rus",["ru","bg","sr","en"]),
-          ("Slv",["sl","en"]),
-          ("Spa",["es","en"]),
-          ("Swe",["sv","en"]),
-          ("Tur",["tr","en"]),
-          ]
-
-        with open("names.gfs","w") as out:
-            out.write("transaction start\n\n")
-
-            for q_id,(gf_id,tag,record) in sorted(q_ids.items(),key=lambda p: p[1]):
-                #quote(gf_id)+"\t"+q_id+"\t"+descr+"\n"
-                out.write("create -prob="+str(counts[tag].get(q_id,0)/totals[tag])+" fun "+quote(gf_id)+" : "+tag+"\n")
-                
-            out.write("transaction commit\n\n")
-
-            for lang,lang_codes  in langs:
-                out.write("\ni -resource alltenses/Paradigms"+lang+".gfo\n\n")
-                out.write("transaction start\n\n")
-                for q_id,(gf_id,tag,record) in sorted(q_ids.items(),key=lambda p: p[1]):
-                    if len(record) == 4:
-                        name_type = record[2]
+                    if len(record) == 5:
+                        name_type = record[3]
                     else:
                         name_type = None
                     labels = record[-1]
@@ -534,8 +588,24 @@ def generate():
                         lin = "variants {"+"; ".join(lins)+"}"
                     if tag in ["GN","SN"]:
                         lin = "lin "+tag+" ("+lin+")"
-                    out.write("create -lang=Parse"+lang+" lin "+quote(gf_id)+" = "+lin+"\n")
-                out.write("transaction commit\n\n")
+                    proc.stdin.write(bytes("create -lang=Parse"+lang+" lin "+quote(gf_id)+" = "+lin+"\n","utf-8"))
+                proc.stdin.write(b"transaction commit\n\n")
 
-#extract()
-generate()
+def help():
+    print("Syntax: names.py extract <path to wikidata archive>")
+    print("        names.py generate <path to names.txt> <path to semantics.db> <path to Parse.ngf>")
+
+if len(sys.argv) < 2:
+    help()
+elif sys.argv[1] == "extract":
+    if len(sys.argv) < 3:
+        help()
+    else:
+        extract(sys.argv[2])
+elif sys.argv[1] == "generate":
+    if len(sys.argv) < 5:
+        help()
+    else:
+        generate(sys.argv[2],sys.argv[3],sys.argv[4])
+else:
+    help()

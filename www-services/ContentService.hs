@@ -25,10 +25,11 @@ import qualified Data.Set as Set
 import Data.Char
 import Data.Maybe
 import PGF2
+import OpenSSL
 
 main = do
   db <- openDB (SERVER_PATH++"/semantics.db")
-  simpleFastCGI (fcgiMain db)
+  withOpenSSL (simpleFastCGI (fcgiMain db))
 
 
 fcgiMain :: Database -> Env -> Request -> IO Response

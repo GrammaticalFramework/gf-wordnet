@@ -45,7 +45,7 @@ gfwordnet.content_call=function(querystring,cont) {
     http_get_json(gfwordnet.content_url+"?"+querystring,cont,gfwordnet.errcont)
 }
 
-gfwordnet.shell_url = gfwordnet.script_url + "../../gfshell"
+gfwordnet.shell_url = gfwordnet.script_url + "../../robust/gfshell"
 
 gfwordnet.shell_call=function(querystring,cont) {
 	ajax_http_get(gfwordnet.shell_url+"?"+querystring,cont,gfwordnet.errcont)
@@ -1089,7 +1089,7 @@ gfwordnet.onclick_eval = function(event,editor) {
 			event.target.nextElementSibling.style.display = "none";
 		}
 	}
-	gfwordnet.shell_call("dir="+dir+"&command=i%20../../robust/Parse.ngf", (html) => {
+	gfwordnet.shell_call("dir="+dir+"&command=i%20../../Parse.ngf", (html) => {
             if (html != "") {
                 extract_html(html);
                 return;

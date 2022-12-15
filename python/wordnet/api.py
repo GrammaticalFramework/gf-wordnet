@@ -4,12 +4,15 @@ import wordnet as w
 def __types__(args):
     types = []
     for arg in args:
-        (fun,_) = arg.unpack()
-        types.append(w.__pgf__.functionType(fun).cat)
+        if isinstance(arg,pgf.Expr):
+            (fun,_) = arg.unpack()
+            types.append(w.__pgf__.functionType(fun).cat)
+        else:
+            types.append(type(arg))
     return types
 
 def __no_match__(name,args):
-    raise TypeError("no overload for function "+name+" with argument types "+" ".join(args))
+    raise TypeError("no overload for function "+name+" with argument types "+" ".join(map(str,args)))
 
 fullStopPunct = w.FullStop
 questMarkPunct = w.QuestMark
@@ -144,6 +147,14 @@ def mkS(*args):
       return w.ConjS(args[0],w.BaseS(args[1],args[2]))
     case ["Conj","ListS"]:
       return w.ConjS(args[0],args[1])
+    case ["Conj",list]:
+      if args[1]:
+          if len(args[1]) > 1:
+              return w.ConjS(args[0],mkListS(*args[1]))
+          else:
+              return args[1][0]
+      else:
+          __no_match__("mkS",types)
     case ["Adv","S"]:
       return w.AdvS(args[0],args[1])
     case types:
@@ -396,6 +407,14 @@ def mkNP(*args):
       return w.ConjNP(args[0],w.BaseNP(args[1],args[2]))
     case ["Conj","ListNP"]:
       return w.ConjNP(args[0],args[1])
+    case ["Conj",list]:
+      if args[1]:
+          if len(args[1]) > 1:
+              return w.ConjNP(args[0],mkListNP(*args[1]))
+          else:
+              return args[1][0]
+      else:
+          __no_match__("mkNP",types)
     case ["Quant","CN"]:
       return w.DetCN(w.DetQuant(args[0],w.NumSg),args[1])
     case types:
@@ -736,6 +755,14 @@ def mkCN(*args):
       return w.ApposCN(args[0],args[1])
     case ["Conj","ListCN"]:
       return w.ConjCN(args[0],args[1])
+    case ["Conj",list]:
+      if args[1]:
+          if len(args[1]) > 1:
+              return w.ConjCN(args[0],mkListCN(*args[1]))
+          else:
+              return args[1][0]
+      else:
+          __no_match__("mkCN",types)
     case types:
       __no_match__("mkCN",types)
 
@@ -771,6 +798,14 @@ def mkAP(*args):
       return w.ConjAP(args[0],w.BaseAP(args[1],args[2]))
     case ["Conj","ListAP"]:
       return w.ConjAP(args[0],args[1])
+    case ["Conj",list]:
+      if args[1]:
+          if len(args[1]) > 1:
+              return w.ConjAP(args[0],mkListAP(*args[1]))
+          else:
+              return args[1][0]
+      else:
+          __no_match__("mkAP",types)
     case ["Ord"]:
       return w.AdjOrd(args[0])
     case ["CAdv","AP","NP"]:
@@ -810,6 +845,14 @@ def mkAdv(*args):
       return w.ConjAdv(args[0],w.BaseAdv(args[1],args[2]))
     case ["Conj","ListAdv"]:
       return w.ConjAdv(args[0],args[1])
+    case ["Conj",list]:
+      if args[1]:
+          if len(args[1]) > 1:
+              return w.ConjAdv(args[0],mkListAdv(*args[1]))
+          else:
+              return args[1][0]
+      else:
+          __no_match__("mkAdv",types)
     case types:
       __no_match__("mkAdv",types)
 
@@ -983,6 +1026,14 @@ def mkRS(*args):
       return w.ConjRS(args[0],w.BaseRS(args[1],args[2]))
     case ["Conj","ListRS"]:
       return w.ConjRS(args[0],args[1])
+    case ["Conj",list]:
+      if args[1]:
+          if len(args[1]) > 1:
+              return w.ConjRS(args[0],mkListRS(*args[1]))
+          else:
+              return args[1][0]
+      else:
+          __no_match__("mkRS",types)
     case types:
       __no_match__("mkRS",types)
 

@@ -734,6 +734,8 @@ def mkCN(*args):
       return w.ApposCN(w.UseN(args[0]),args[1])
     case ["CN","NP"]:
       return w.ApposCN(args[0],args[1])
+    case ["Conj","ListCN"]:
+      return w.ConjNP(args[0],args[1])
     case types:
       __no_match__("mkCN",types)
 
@@ -747,6 +749,14 @@ def mkAP(*args):
       return w.ComplA2(args[0],args[1])
     case ["A2"]:
       return w.UseA2(args[0])
+    case ["V2"]:
+      return w.PastPartAP(w.SlashV2a(args[0]))
+    case ["VPSlash"]:
+      return w.PastPartAP(args[0])
+    case ["V"]:
+      return w.PresPartAP(w.UseV(args[0]))
+    case ["VP"]:
+      return w.PastPartAP(w.args[0])
     case ["AP","S"]:
       return w.SentAP(args[0],w.EmbedS(args[1]))
     case ["AP","QS"]:
@@ -1114,6 +1124,7 @@ mkListS   = mkList
 mkListAdv = mkList
 mkListAP  = mkList
 mkListNP  = mkList
+mkListCN  = mkList
 mkListRS  = mkList
 
 def mkUttImp(*args):

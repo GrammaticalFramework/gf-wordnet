@@ -735,7 +735,7 @@ def mkCN(*args):
     case ["CN","NP"]:
       return w.ApposCN(args[0],args[1])
     case ["Conj","ListCN"]:
-      return w.ConjNP(args[0],args[1])
+      return w.ConjCN(args[0],args[1])
     case types:
       __no_match__("mkCN",types)
 

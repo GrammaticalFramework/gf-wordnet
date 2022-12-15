@@ -154,7 +154,7 @@ def mkS(*args):
           else:
               return args[1][0]
       else:
-          __no_match__("mkS",types)
+          return None
     case ["Adv","S"]:
       return w.AdvS(args[0],args[1])
     case types:
@@ -414,7 +414,7 @@ def mkNP(*args):
           else:
               return args[1][0]
       else:
-          __no_match__("mkNP",types)
+          return None
     case ["Quant","CN"]:
       return w.DetCN(w.DetQuant(args[0],w.NumSg),args[1])
     case types:
@@ -762,7 +762,7 @@ def mkCN(*args):
           else:
               return args[1][0]
       else:
-          __no_match__("mkCN",types)
+          return None
     case types:
       __no_match__("mkCN",types)
 
@@ -805,7 +805,7 @@ def mkAP(*args):
           else:
               return args[1][0]
       else:
-          __no_match__("mkAP",types)
+          return None
     case ["Ord"]:
       return w.AdjOrd(args[0])
     case ["CAdv","AP","NP"]:
@@ -852,7 +852,7 @@ def mkAdv(*args):
           else:
               return args[1][0]
       else:
-          __no_match__("mkAdv",types)
+          return None
     case types:
       __no_match__("mkAdv",types)
 
@@ -1033,7 +1033,7 @@ def mkRS(*args):
           else:
               return args[1][0]
       else:
-          __no_match__("mkRS",types)
+          return None
     case types:
       __no_match__("mkRS",types)
 

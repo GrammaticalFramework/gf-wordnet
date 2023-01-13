@@ -257,8 +257,9 @@ gfwordnet.render_sense_rows = function(ctxt,result_container,domains_container,l
             }
         }
 
-        icon = node("img", {src: gfwordnet.script_url+(checked ? "../checked_plus.png" : "../unchecked_plus.png"),
-                            onclick: "gfwordnet.onclick_minus(event,this)"});
+        icon = node("img", {src: gfwordnet.script_url+(checked ? "../checked_plus.png" : "../unchecked_plus.png")
+                           ,class: "text-icon"
+                           ,onclick: "gfwordnet.onclick_minus(event,this)"});
         row[0].insertBefore(icon, row[0].firstChild);
         result_container.appendChild(node("tr",{"data-lex-id": lex_id},row));
 
@@ -698,7 +699,7 @@ gfwordnet.onclick_cell = function (cell) {
 				path.push("300px-"+name);
 				a.appendChild(
 				  node("img",{"class": "thumbnail"
-							 ,src: path.join("/")}));
+				             ,src: path.join("/")}));
 			}
 		}
 
@@ -762,8 +763,9 @@ gfwordnet.onclick_cell = function (cell) {
 						}
 						row.push(cell);
 					}
-					row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(synonym)]));
-
+					row.splice(0,0,td([node("img", {src: gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")
+					                               ,class: "text-icon"}),
+					                   text(synonym)]));
 					gfwordnet.grammar_call("command=linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(synonym),bind(extract_linearization_synonym,row));
 
 					result.appendChild(node("tr",{"data-lex-id": synonym},row));
@@ -809,8 +811,9 @@ gfwordnet.onclick_cell = function (cell) {
 					}
 					row.push(cell);
 				}
-				row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(antonym)]));
-
+				row.splice(0,0,td([node("img", {src: gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")
+				                               ,class: "text-icon"}),
+				                   text(antonym)]));
 				gfwordnet.grammar_call("command=linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(antonym),bind(extract_linearization_synonym,row));
 
 				result.appendChild(node("tr",{"data-lex-id": antonym},row));
@@ -846,8 +849,9 @@ gfwordnet.onclick_cell = function (cell) {
 					}
 					row.push(cell);
 				}
-				row.splice(0,0,td([img(gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")), text(derived)]));
-
+				row.splice(0,0,td([node("img", {src: gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")
+				                               ,class: "text-icon"}),
+				                   text(derived)]));
 				gfwordnet.grammar_call("command=linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(derived),bind(extract_linearization_synonym,row));
 
 				result.appendChild(node("tr",{"data-lex-id": derived},row));
@@ -915,11 +919,13 @@ gfwordnet.onmouseover_cell = function(event) {
 	}
 	var row = [];
 	if (event.target.classList.contains("unchecked") || event.target.classList.contains("guessed")) {
-		var btn = img(gfwordnet.script_url+"../validate.png");
+		const btn = node("img", {src: gfwordnet.script_url+"../validate.png"
+		                        ,class: "text-icon"});
 		btn.addEventListener("click", gfwordnet.onclick_check, false);
 		row.push(btn);
 	}
-	var btn = img(gfwordnet.script_url+"../edit.png");
+	const btn = node("img", {src: gfwordnet.script_url+"../edit.png"
+	                        ,class: "text-icon"});
 	btn.addEventListener("click", gfwordnet.onclick_edit, false);
 	row.push(btn);
 	gfwordnet.popup = div_class("floating",row);
@@ -1333,7 +1339,9 @@ gfwordnet.onclick_generalize_selected_items = function (tfoot) {
 						row.push(cell);
 					}
 
-					var icon = node("img", {src: gfwordnet.script_url+(checked ? "../checked_plus.png" : "../unchecked_plus.png"), onclick: "gfwordnet.onclick_minus(event,this)"});
+					const icon = node("img", {src: gfwordnet.script_url+(checked ? "../checked_plus.png" : "../unchecked_plus.png")
+					                          ,class: "text-icon"
+					                          ,onclick: "gfwordnet.onclick_minus(event,this)"});
 					row[0].insertBefore(icon, row[0].firstChild);
 
 					row.push(node("td",{style: "white-space: nowrap"}));

@@ -6,6 +6,7 @@ concrete ParseSom of Parse =
   SentenceSom - [EmbedVP],
   QuestionSom,
   RelativeSom,
+  ConjunctionSom,
   PhraseSom - [UttAP, UttVP],
   IdiomSom,
   TenseX - [CAdv,IAdv,AdV,Adv,SC],

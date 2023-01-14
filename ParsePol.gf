@@ -6,6 +6,7 @@ concrete ParsePol of Parse =
   SentencePol - [EmbedVP],
   QuestionPol,
   RelativePol,
+  ConjunctionPol,
   PhrasePol - [UttAP, UttVP],
   IdiomPol,
   TenseX - [CAdv,IAdv,AdV,SC],

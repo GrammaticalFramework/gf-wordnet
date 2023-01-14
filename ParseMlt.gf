@@ -6,6 +6,7 @@ concrete ParseMlt of Parse =
   SentenceMlt - [EmbedVP],
   QuestionMlt,
   RelativeMlt,
+  ConjunctionMlt,
   PhraseMlt - [UttAP, UttVP],
   IdiomMlt,
   TenseX - [CAdv,IAdv,AdV,SC,Adv],

@@ -6,6 +6,7 @@ concrete ParseKor of Parse =
   SentenceKor - [EmbedVP],
   QuestionKor,
   RelativeKor,
+  ConjunctionKor,
   PhraseKor - [UttAP, UttVP],
   IdiomKor,
   TenseX - [CAdv,IAdv,AdV,SC],

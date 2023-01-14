@@ -52,14 +52,16 @@ gfwordnet.shell_call=function(querystring,cont) {
 }
 
 gfwordnet.set_user = function(user,author,token,count,result,commit_link) {
-	var thead = result.getElementsByTagName("THEAD")[0];
-	thead.innerHTML = "";
-	
-	var tbody = result.getElementsByTagName("TBODY")[0];
-	tbody.innerHTML = "";
+    if (result != null) {
+        var thead = result.getElementsByTagName("THEAD")[0];
+        thead.innerHTML = "";
 
-	var tfoot = result.getElementsByTagName("TFOOT")[0];
-	tfoot.innerHTML = "";
+        var tbody = result.getElementsByTagName("TBODY")[0];
+        tbody.innerHTML = "";
+
+        var tfoot = result.getElementsByTagName("TFOOT")[0];
+        tfoot.innerHTML = "";
+    }
 
 	this.lex_ids = {};
 	this.user        = user;

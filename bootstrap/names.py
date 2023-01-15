@@ -574,6 +574,15 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                                 lin = "mkPN "+dquote(lin)+" feminine animate"
                             else:
                                 lin = "mkPN "+dquote(lin)
+                        elif lang in ["Bul"]:
+                            if name_type in ["Q12308941","Q18972245"]:
+                                lin = "mk"+tag+" "+dquote(lin)+" masculine"
+                            elif name_type in ["Q11879590","Q18972207"]:
+                                lin = "mk"+tag+" "+dquote(lin)+" feminine"
+                            elif tag == "GN":
+                                lin = "mk"+tag+" "+dquote(lin)+" masculine"
+                            else:
+                                lin = "mk"+tag+" "+dquote(lin)
                         else:
                             if name_type in ["Q12308941","Q18972245"]:
                                 lin = "mkPN "+dquote(lin)+" masculine"
@@ -586,8 +595,8 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                         lin = lins[0]
                     else:
                         lin = "variants {"+"; ".join(lins)+"}"
-                    if tag in ["GN","SN"]:
-                        lin = "lin "+tag+" ("+lin+")"
+                    if tag in ["GN","SN"] and lang != "Bul":
+                        lin = "lin "+tag+" <"+lin+" : PN>"
                     proc.stdin.write(bytes("create -lang=Parse"+lang+" lin "+quote(gf_id)+" = "+lin+"\n","utf-8"))
                 proc.stdin.write(b"transaction commit\n\n")
 

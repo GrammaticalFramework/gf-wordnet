@@ -1,5 +1,6 @@
 concrete ParseExtendSom of ParseExtend =
-  CatSom, NumeralSom - [num], PunctuationX ** open Prelude, ResSom in {
+  CatSom, ExtendSom [GivenName, Surname, FullName],
+  NumeralSom - [num], PunctuationX ** open Prelude, ResSom in {
 
 lin UttAP  p ap  = { s = ap.s ! AF (getNum p.a) Abs } ;
 

@@ -1150,9 +1150,40 @@ gfwordnet.onclick_save = function(event) {
 	document.body.removeChild(editor);
 }
 gfwordnet.onclick_delete = function(event) {
-	var editor = event.target.parentNode.parentNode.parentNode;
-	editor.firstElementChild.firstElementChild.firstElementChild.value = "variants {}";
-	gfwordnet.onclick_save(event);
+	event.stopPropagation();
+
+	const editor = event.target.parentNode.parentNode.parentNode;
+
+	let index = -1;
+	let node  = editor.cell;
+    while ((node = node.previousElementSibling)) {
+        index++;
+    }
+
+	const lex_id = editor.cell.parentNode.getAttribute("data-lex-id");
+	const lang   = gfwordnet.selection.langs_list[index];
+    const dir    = "/tmp/morpho-"+lang.slice(5);
+
+    gfwordnet.popup.remove();
+    gfwordnet.popup = null;
+
+	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent("variants {}"),
+        (st) => {
+            gfwordnet.lex_ids[lex_id].status[lang] = st[1];
+            gfwordnet.update_cells_status(lex_id,lang);
+
+            gfwordnet.update_count(st[0]);
+        });
+	gfwordnet.shell_call("dir="+dir+"&command=drop%20-lang="+lang+"%20lin%20"+lex_id,
+        (html) => {
+            if (html != "") {
+                alert(html);
+                return;
+            }
+            gfwordnet.update_cells_lin(lex_id,lang);
+        });
+
+	document.body.removeChild(editor);
 }
 gfwordnet.onclick_edit = function (event) {
 	event.stopPropagation();

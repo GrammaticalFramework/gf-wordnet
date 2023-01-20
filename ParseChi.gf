@@ -12,6 +12,7 @@ concrete ParseChi of Parse =
   IdiomChi,
   TenseX - [Temp,Tense,Adv,Ant,TCond,TFut,TPast,TPres,TTAnt,AAnter,ASimul],
   TenseChi,
+  ParseExtendChi,
   WordNetChi,
   ConstructionChi - [Language, InLanguage, languageNP, languageCN,
                      afrikaans_Language, amharic_Language, arabic_Language,

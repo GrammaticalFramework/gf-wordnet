@@ -11,6 +11,7 @@ concrete ParseRus of Parse =
   PhraseRus - [UttAP, UttVP],
   IdiomRus,
   TenseX - [SC,CAdv],
+  ParseExtendRus,
   WordNetRus,
   DocumentationRus ** {
 

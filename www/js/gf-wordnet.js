@@ -917,7 +917,7 @@ gfwordnet.onmouseover_cell = function(event) {
 	if (gfwordnet.popup != null) {
 		if (gfwordnet.popup.parentNode == event.target)
 			return;
-		gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
+		gfwordnet.popup.remove();
 	}
 	var row = [];
 	if (event.target.classList.contains("unchecked") || event.target.classList.contains("guessed")) {
@@ -1063,7 +1063,7 @@ gfwordnet.onclick_check = function (event) {
 
 	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang),
         (st) => {
-		    gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
+		    gfwordnet.popup.remove();
 		    gfwordnet.popup = null;
 
 		    gfwordnet.lex_ids[lex_id].status[lang] = st[1];
@@ -1127,7 +1127,7 @@ gfwordnet.onclick_save = function(event) {
 	const def    = editor.firstElementChild.firstElementChild.firstElementChild.value;
     const dir    = "/tmp/morpho-"+lang.slice(5);
 
-    gfwordnet.popup.parentNode.removeChild(gfwordnet.popup);
+    gfwordnet.popup.remove();
     gfwordnet.popup = null;
 
 	gfwordnet.content_call("user="+gfwordnet.user+"&update_id="+encodeURIComponent(lex_id)+"&lang="+encodeURIComponent(lang)+"&def="+encodeURIComponent(def),

@@ -1174,14 +1174,20 @@ gfwordnet.onclick_delete = function(event) {
 
             gfwordnet.update_count(st[0]);
         });
-	gfwordnet.shell_call("dir="+dir+"&command=drop%20-lang="+lang+"%20lin%20"+lex_id,
-        (html) => {
-            if (html != "") {
-                alert(html);
-                return;
-            }
-            gfwordnet.update_cells_lin(lex_id,lang);
-        });
+	gfwordnet.shell_call("dir="+dir+"&command=i%20../../Parse.ngf", (html) => {
+        if (html != "") {
+            extract_html(html);
+            return;
+        }
+        gfwordnet.shell_call("dir="+dir+"&command=drop%20-lang="+lang+"%20lin%20"+lex_id,
+            (html) => {
+                if (html != "") {
+                    alert(html);
+                    return;
+                }
+                gfwordnet.update_cells_lin(lex_id,lang);
+            });
+    });
 
 	document.body.removeChild(editor);
 }

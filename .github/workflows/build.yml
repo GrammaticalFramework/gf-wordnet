@@ -9,7 +9,7 @@ on:
 jobs:
   upload_pypi:
     name: Upload to PyPI
-    needs: [build_sdist]
+    needs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
 

@@ -1,0 +1,35 @@
+name: Build & Publish Python Package
+
+# Trigger the workflow on push or pull request, but only for the master branch
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  upload_pypi:
+    name: Upload to PyPI
+    needs: [build_sdist]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install twine
+        run: pip install twine
+
+      - name: Build sdist
+        run: cd python && python setup.py sdist
+
+      - name: Publish
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.pypi_password }}
+        run: |
+          (cd python && curl -I --fail https://pypi.org/project/$(python setup.py --name)/$(python setup.py --version)/) || twine upload dist/*

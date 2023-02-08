@@ -4,7 +4,6 @@ import bz2
 import math
 import pgf
 import daison
-from wordnet.wikidata import synsets_qid
 from wordnet.semantics import *
 import hashlib
 import subprocess
@@ -546,11 +545,6 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                         lin = lin.strip()
                         if lang in ["Afr","Chi","Dut","Est","Fin","Kor","Swe","Tha","Tur"]:
                             lin = "mkPN "+dquote(lin)
-                        elif lang in ["Slv"]:
-                            if name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN "+dquote(lin)+" feminine singular"
-                            else:
-                                lin = "mkPN "+dquote(lin)+" masculine singular"
                         elif lang in ["Som"]:
                             if name_type in ["Q12308941","Q18972245"]:
                                 lin = "mkPN "+dquote(lin)+" sgMasc"
@@ -574,15 +568,21 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                                 lin = "mkPN "+dquote(lin)+" feminine animate"
                             else:
                                 lin = "mkPN "+dquote(lin)
-                        elif lang in ["Bul"]:
-                            if name_type in ["Q12308941","Q18972245"]:
-                                lin = "mk"+tag+" "+dquote(lin)+" masculine"
-                            elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "mk"+tag+" "+dquote(lin)+" feminine"
+                        elif lang in ["Bul","Ger","Slv"]:
+                            if name_type in ["Q12308941"]:
+                                lin = "mkGN "+dquote(lin)+" male"
+                            elif name_type in ["Q11879590"]:
+                                lin = "mkGN "+dquote(lin)+" female"
+                            elif name_type in ["Q18972245","Q18972207"]:
+                                lin = "mkSN "+dquote(lin)
                             elif tag == "GN":
-                                lin = "mk"+tag+" "+dquote(lin)+" masculine"
+                                lin = "mkGN "+dquote(lin)+" male"
+                            elif tag == "SN":
+                                lin = "mkSN "+dquote(lin)
+                            elif lang in ["Slv"]:
+                                lin = "mkPN "+dquote(lin)+" masculine singular"
                             else:
-                                lin = "mk"+tag+" "+dquote(lin)
+                                lin = "mkPN "+dquote(lin)
                         else:
                             if name_type in ["Q12308941","Q18972245"]:
                                 lin = "mkPN "+dquote(lin)+" masculine"
@@ -595,7 +595,7 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                         lin = lins[0]
                     else:
                         lin = "variants {"+"; ".join(lins)+"}"
-                    if tag in ["GN","SN"] and lang != "Bul":
+                    if tag in ["GN","SN"] and lang not in ["Bul","Ger","Slv"]:
                         lin = "lin "+tag+" <"+lin+" : PN>"
                     proc.stdin.write(bytes("create -lang=Parse"+lang+" lin "+quote(gf_id)+" = "+lin+"\n","utf-8"))
                 proc.stdin.write(b"transaction commit\n\n")

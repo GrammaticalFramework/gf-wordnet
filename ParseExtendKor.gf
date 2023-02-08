@@ -1,5 +1,5 @@
 concrete ParseExtendKor of ParseExtend =
-  CatKor, ExtendKor [GivenName, Surname, FullName],
+  CatKor, ExtendKor [GivenName, MaleSurname, FemaleSurname, PlSurname, FullName],
   NumeralKor - [num], PunctuationX ** open Prelude, ResKor in {
 
 lin UttAP  p ap  = {s = ap.compar ++ ap.s ! VF Plain Pos} ;

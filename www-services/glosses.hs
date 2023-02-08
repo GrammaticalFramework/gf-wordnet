@@ -217,7 +217,12 @@ insertExamples ps (ExampleE e fns finsts : es)
 
 
 parseTaxonomy images l
-  | isDigit (head id) = Left  (read key_s :: Key Synset, Synset id (readPtrs (\sym id -> (sym,read id)) ws2) (read children_s) gloss (fromMaybe [] (Map.lookup id images)))
+  | isDigit (head id) || head id == 'Q'
+                      = let uri  = "http://www.wikidata.org/entity/"++id
+                            imgs = case Map.lookup id images of
+                                     Just imgs -> imgs
+                                     Nothing   -> [(id,uri,"")]
+                        in Left (read key_s :: Key Synset, Synset id (readPtrs (\sym id -> (sym,read id)) ws2) (read children_s) gloss imgs)
   | otherwise         = Right (id, readPtrs (,) ws0)
   where
     (id:ws0) = words l
@@ -359,7 +364,11 @@ loadImages = runImageQuery query
 
 addImage (mb_senseid, fn, ds, gloss) = do
   imgs <- case mb_senseid of
-            Just qid@('Q':_) -> fmap (Map.findWithDefault [] ("http://www.wikidata.org/entity/"++qid)) (runImageQuery (query qid))
+            Just qid@('Q':_) -> do res <- runImageQuery (query qid)
+                                   let uri = "http://www.wikidata.org/entity/"++qid
+                                   case Map.lookup uri res of
+                                     Just imgs -> return imgs
+                                     Nothing   -> return [(qid,uri,"")]
             _                -> return []
   return (mb_senseid, fn, ds, gloss, imgs)
   where

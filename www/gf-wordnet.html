@@ -77,18 +77,6 @@
 		<script src="js/multiselect.js"></script>
 		<script src="js/cookies.js"></script>
 		<script>
-			domain_listener = function() {
-				gfwordnet.search(getMultiSelection(element('from')), null, element('domains'), element('result'), arguments.callee);
-			};
-			gfwordnet.populate_domains(element('domains'), domain_listener);
-
-			element("search").addEventListener("keyup", function(event) {
-				event.preventDefault();
-				if (event.keyCode === 13) {
-					element("search_button").click();
-				}
-			});
-
 			function logOut() {
 				gfwordnet.set_user(null,null,null,0,element('result'),null);
 				logIn.innerHTML = "Log In";
@@ -115,6 +103,23 @@
 				commit.style.display = "inline";
 				corpusTool.style.display = "inline";
 			}
+
+            let hash = window.location.hash.substr(1);
+            if (hash != "") {
+				gfwordnet.populate_sense(getMultiSelection(element('from')), hash, element('domains'), element('result'));
+            } else {
+                domain_listener = function() {
+                    gfwordnet.search(getMultiSelection(element('from')), null, element('domains'), element('result'), arguments.callee);
+                };
+                gfwordnet.populate_domains(element('domains'), domain_listener);
+            }
+
+			element("search").addEventListener("keyup", function(event) {
+				event.preventDefault();
+				if (event.keyCode === 13) {
+					element("search_button").click();
+				}
+			});
 
 			function expand(expand_button) {
 				var row = expand_button.parentNode.parentNode;

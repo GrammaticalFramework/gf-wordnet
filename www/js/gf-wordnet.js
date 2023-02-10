@@ -519,6 +519,17 @@ gfwordnet.search = function (selection, input, domains, result, domain_listener)
 		clear(tfoot);
 	}
 }
+
+gfwordnet.populate_sense = function (selection, lexical_id, domains, result) {
+	this.selection = selection;
+	var obj = {rows: gfwordnet.render_rows(result, selection, true, [{lemma: lexical_id, prob: 0}]), domains_map: {}};
+    var helper = function (senses) {
+        this.senses = senses; // save the result to be used for filtering
+        gfwordnet.render_senses(this,selection,result,domains,senses);
+    }
+    gfwordnet.sense_call("lexical_ids="+encodeURIComponent(lexical_id),bind(helper,obj));
+}
+
 gfwordnet.init_wordcloud = function(container, context_size_range) {
     container.innerHTML = "";
     var canvas = node("canvas", {width: 10, height: 10}, []);

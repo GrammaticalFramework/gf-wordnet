@@ -17,6 +17,7 @@ import System.Process
 import System.Exit
 import Control.Monad(liftM2,liftM3,liftM4,forM_,forM)
 import Control.Concurrent
+import Control.Applicative((<|>))
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 import qualified Data.ByteString.Lazy.UTF8 as UTF8 (toString,fromString)
 import qualified Data.ByteString.UTF8 as BSS
@@ -96,8 +97,8 @@ fcgiMain db env rq = do
                                             JSObject obj -> Right obj
                                             _            -> Left "Didn't get an object from api.github.com"
                                    user  <- resultToEither (valFromObj "login" obj)
-                                   name  <- resultToEither (valFromObj "name" obj)
-                                   email <- resultToEither (valFromObj "email" obj)
+                                   name  <- resultToEither (valFromObj "name" obj <|> return user)
+                                   email <- resultToEither (valFromObj "email" obj <|> return (user++"@github.com"))
                                    return (user, name++" <"++email++">")) of
                             Right (user,author) -> do count <- runDaison db ReadOnlyMode $
                                                                   fmap length $ select (from updates_usr everything)

@@ -12,7 +12,7 @@ import subprocess
 def extract(wiki_fpath):
     with bz2.open(wiki_fpath, "rb") as f:
         
-        with open("names.txt", "w") as out:
+        with open("data/names.txt", "w") as out:
             for record in ijson.items(f, "item"):
                 name_type = None
                 gender = None

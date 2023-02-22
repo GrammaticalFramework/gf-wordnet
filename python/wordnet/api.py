@@ -299,9 +299,9 @@ def reflexiveVP(*args):
 def passiveVP(*args):
   match __types__(args):
     case ["V2"]:
-      return w.PassV2
+      return w.PassVPSlash(w.SlashV2a(args[0]))
     case ["V2","NP"]:
-      return w.AdvVP(w.PassV2(args[0]),w.PrepNP(w.by8agent_Prep,args[1]))
+      return w.AdvVP(w.PassVPSlash(w.SlashV2a(args[0])),w.PrepNP(w.by8agent_Prep,args[1]))
     case types:
       __no_match__("passiveVP",types)
 

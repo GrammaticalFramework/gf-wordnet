@@ -1005,21 +1005,21 @@ which_IDet = whichSg_IDet
 def mkRS(*args):
   match __types__(args):
     case ["RCl"]:
-      return w.TUseRCl(w.TPres,w.ASimul,w.PPos)
+      return w.UseRCl(w.TTAnt(w.TPres,w.ASimul),w.PPos,args[0])
     case ["Tense","RCl"]:
-      return w.TUseRCl(args[0],w.ASimul,w.PPos)
+      return w.UseRCl(w.TTAnt(args[0],w.ASimul),w.PPos,args[1])
     case ["Ant","RCl"]:
-      return w.TUseRCl(w.TPres,args[0],w.PPos)
+      return w.UseRCl(w.TTAnt(w.TPres,args[0]),w.PPos,args[1])
     case ["Pol","RCl"]:
-      return w.TUseRCl(w.TPres,w.ASimul,args[0])
+      return w.UseRCl(w.TTAnt(w.TPres,w.ASimul),args[0],args[1])
     case ["Tense","Ant","RCl"]:
-      return w.TUseRCl(args[0],args[1],w.PPos)
+      return w.UseRCl(w.TTAnt(args[0],args[1]),w.PPos,args[2])
     case ["Tense","Pol","RCl"]:
-      return w.TUseRCl(args[0],w.ASimul,args[1])
+      return w.UseRCl(w.TTAnt(args[0],w.ASimul),args[1],args[2])
     case ["Ant","Pol","RCl"]:
-      return w.TUseRCl(w.TPres,args[0],args[1])
+      return w.UseRCl(w.TTAnt(w.TPres,args[0]),args[1],args[2])
     case ["Tense","Ant","Pol","RCl"]:
-      return w.TUseRCl
+      return w.UseRCl(w.TTAnt(args[0],args[1]),args[2],args[3])
     case ["Temp","Pol","RCl"]:
       return w.UseRCl(args[0],args[1],args[2])
     case ["Conj","RS","RS"]:

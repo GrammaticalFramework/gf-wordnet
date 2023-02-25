@@ -583,6 +583,13 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                                 lin = "mkPN "+dquote(lin)+" masculine singular"
                             else:
                                 lin = "mkPN "+dquote(lin)
+                        elif lang == "Eng":
+                            if name_type in ["Q12308941","Q18972245"]:
+                                lin = "mkPN "+dquote(lin)+" masculine"
+                            elif name_type in ["Q11879590","Q18972207"]:
+                                lin = "mkPN "+dquote(lin)+" feminine"
+                            else:
+                                lin = "mkPN "+dquote(lin)+" nonhuman"
                         else:
                             if name_type in ["Q12308941","Q18972245"]:
                                 lin = "mkPN "+dquote(lin)+" masculine"

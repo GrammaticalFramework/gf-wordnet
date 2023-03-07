@@ -1149,7 +1149,7 @@ gfwordnet.onclick_save = function(event) {
 		
             gfwordnet.update_count(st[0]);
         });
-	gfwordnet.shell_call("dir="+dir+"&command=create%20-lang="+lang+"%20lin%20"+lex_id+"%20=%20"+encodeURIComponent(def),
+	gfwordnet.shell_call("dir="+dir+"&command=alter%20-lang="+lang+"%20lin%20"+lex_id+"%20=%20"+encodeURIComponent(def),
         (html) => {
             if (html != "") {
                 alert(html);

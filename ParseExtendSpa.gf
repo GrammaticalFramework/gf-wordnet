@@ -13,6 +13,13 @@ lin
     EmbedVP ant pol p vp = {
         s = \\c => prepCase c ++ ant.s ++ pol.s ++ infVP vp pol.p p.a
       } ;
+    ComplVV vv ant pol vp = let
+      vf : Agr -> Str = \agr -> case ant.a of {
+        Simul => infVP vp pol.p agr ;
+        Anter => nominalVP (\_ -> VFin (VPres Indic) agr.n agr.p) vp pol.p agr
+        }
+      in
+      insertComplement (\\a => prepCase vv.c2.c ++ ant.s ++ pol.s ++ vf a) (predV vv) ;
     CompVP ant pol p vp = {
         s = \\agr => ant.s ++ pol.s ++ "de" ++ infVP vp pol.p p.a ;
         cop = serCopula

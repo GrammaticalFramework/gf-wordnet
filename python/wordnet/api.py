@@ -169,7 +169,7 @@ def mkCl(*args):
     case ["NP","V3","NP","NP"]:
       return w.PredVP(args[0],w.ComplV3(args[1],args[2],args[3]))
     case ["NP","VV","VP"]:
-      return w.PredVP(args[0],w.ComplVV(args[1],args[2]))
+      return w.PredVP(args[0],w.ComplVV(args[1],w.ASimul,w.PPos,args[2]))
     case ["NP","VS","S"]:
       return w.PredVP(args[0],w.ComplVS(args[1],args[2]))
     case ["NP","VQ","QS"]:
@@ -243,6 +243,8 @@ def mkVP(*args):
     case ["V3","NP","NP"]:
       return w.ComplV3
     case ["VV","VP"]:
+      return w.ComplVV(args[0],w.ASimul,w.PPos,args[3])
+    case ["VV","Ant","Pol","VP"]:
       return w.ComplVV(args[0],args[1],args[2],args[3])
     case ["VS","S"]:
       return w.ComplVS(args[0],args[1])
@@ -301,7 +303,11 @@ def passiveVP(*args):
     case ["V2"]:
       return w.PassVPSlash(w.SlashV2a(args[0]))
     case ["V2","NP"]:
-      return w.AdvVP(w.PassVPSlash(w.SlashV2a(args[0])),w.PrepNP(w.by8agent_Prep,args[1]))
+      return w.PassAgentVPSlash(w.SlashV2a(args[0]),args[1])
+    case ["VPSlash"]:
+      return w.PassVPSlash(args[0])
+    case ["VPSlash","NP"]:
+      return w.PassAgentVPSlash(args[0],args[1])
     case types:
       __no_match__("passiveVP",types)
 
@@ -894,7 +900,7 @@ def mkQCl(*args):
     case ["IP","V3","NP","NP"]:
       return w.QuestVP(args[0],w.ComplV3(args[1],args[2],args[3]))
     case ["IP","VV","VP"]:
-      return w.QuestVP(args[0],w.ComplVV(args[1],args[2]))
+      return w.QuestVP(args[0],w.ComplVV(args[1],w.ASimul,w.PPos,args[2]))
     case ["IP","VS","S"]:
       return w.QuestVP(args[0],w.ComplVS(args[1],args[2]))
     case ["IP","VQ","QS"]:
@@ -1048,7 +1054,7 @@ def mkRCl(*args):
     case ["RP","V3","NP","NP"]:
       return w.RelVP(args[0],w.ComplV3(args[1],args[2],args[3]))
     case ["RP","VV","VP"]:
-      return w.RelVP(args[0],w.ComplVV(args[1],args[2]))
+      return w.RelVP(args[0],w.ComplVV(args[1],w.ASimul,w.PPos,args[2]))
     case ["RP","VS","S"]:
       return w.RelVP(args[0],w.ComplVS(args[1],args[2]))
     case ["RP","VQ","QS"]:

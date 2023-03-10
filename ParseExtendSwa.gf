@@ -1,6 +1,6 @@
 concrete ParseExtendSwa of ParseExtend =
  CatSwa,
- NumeralSwa - [num], PunctuationX ** open Prelude, ResSwa in {
+ NumeralSwa - [num], PunctuationX ** open Prelude, ResSwa, GrammarSwa in {
 
 lin UttAP  p ap  = { s = ap.s ! getGender p.a ! getNumber p.a } ;
 
@@ -8,6 +8,9 @@ lin UttAP  p ap  = { s = ap.s ! getGender p.a ! getNumber p.a } ;
 
 lin num x = x ;
 
+lin RelNP = GrammarSwa.RelNP ;
+    ExtRelNP = GrammarSwa.RelNP ;
+    
 lin BareN2 n = n ;
 
 }

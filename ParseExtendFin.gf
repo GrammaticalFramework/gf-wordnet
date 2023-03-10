@@ -26,6 +26,9 @@ lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND 
 lin
   num x = x ;
 
+lin RelNP = G.RelNP ;
+    ExtRelNP = G.RelNP ;
+
 lin whatSgFem_IP, whatSgNeut_IP = G.whatSg_IP ;
 
 lin that_RP = G.IdRP ;

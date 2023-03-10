@@ -1,6 +1,6 @@
 concrete ParseExtendRon of ParseExtend =
   CatRon, NumeralRon - [num], PunctuationX **
- open Prelude, ResRon in {
+ open Prelude, ResRon, GrammarRon in {
 
 lin
     UttAP  p ap = {s = ap.s ! AF p.a.g p.a.n Indef ANomAcc} ;
@@ -37,6 +37,9 @@ lin num = \d ->
                        };
    size = d.size
  } ;
+
+lin RelNP = GrammarRon.RelNP ;
+    ExtRelNP = GrammarRon.RelNP ;
 
 lin BareN2 n = n ;
 

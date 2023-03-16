@@ -1,6 +1,6 @@
 concrete ParseExtendSwe of ParseExtend =
   ExtendSwe - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, ProgrVPSlash, N2VPSlash, A2VPSlash,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSwe - [num], PunctuationX **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSwe - [num], PunctuationX **
   open Prelude, ResSwe, MorphoSwe, CommonScand, GrammarSwe, Coordination, ExtendSwe, (M = MakeStructuralSwe), (P = ParadigmsSwe), (I = IrregSwe) in {
 
 lin gen_Quant = DefArt ;

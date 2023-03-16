@@ -1,6 +1,6 @@
 concrete ParseExtendAfr of ParseExtend =
   CatAfr, 
-  ExtendAfr [GN,SN,PN,GivenName, MaleSurname, FemaleSurname, PlSurname, FullName],
+  ExtendAfr [GN,SN,PN,GivenName, MaleSurname, FemaleSurname, PlSurname, FullName, PassVPSlash, PassAgentVPSlash],
   NumeralAfr - [num], PunctuationX ** open Prelude, ResAfr, GrammarAfr in {
 
 lin UttAP  p ap  = {s = ap.s ! APred} ;

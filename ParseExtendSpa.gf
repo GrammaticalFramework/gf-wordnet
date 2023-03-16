@@ -1,6 +1,6 @@
 concrete ParseExtendSpa of ParseExtend =
   ExtendSpa - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ProDrop, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSpa - [num], PunctuationSpa **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralSpa - [num], PunctuationSpa **
  open Prelude, CommonRomance, ResSpa, GrammarSpa in {
 
 lin

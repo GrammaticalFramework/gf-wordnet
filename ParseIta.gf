@@ -6,7 +6,7 @@ concrete ParseIta of Parse =
   AdverbIta - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceIta - [EmbedVP],
   QuestionIta,
-  RelativeIta - [IdRP],
+  RelativeIta,
   ConjunctionIta,
   PhraseIta - [UttAP, UttVP],
   IdiomIta,

@@ -6,7 +6,7 @@ concrete ParseRus of Parse =
   AdverbRus - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceRus - [EmbedVP],
   QuestionRus,
-  RelativeRus - [IdRP],
+  RelativeRus,
   ConjunctionRus,
   PhraseRus - [UttAP, UttVP],
   IdiomRus,

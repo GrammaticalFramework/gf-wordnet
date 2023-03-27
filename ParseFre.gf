@@ -6,7 +6,7 @@ concrete ParseFre of Parse =
   AdverbFre - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceFre - [EmbedVP],
   QuestionFre,
-  RelativeFre - [IdRP],
+  RelativeFre,
   ConjunctionFre,
   PhraseFre - [UttAP, UttVP],
   IdiomFre,

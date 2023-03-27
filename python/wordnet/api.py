@@ -798,6 +798,8 @@ def mkAP(*args):
       return w.SentAP(args[0],w.EmbedVP(args[1]))
     case ["AP","SC"]:
       return w.SentAP(args[0],args[1])
+    case ["AdA","A"]:
+      return w.AdAP(args[0],w.PositA(args[1]))
     case ["AdA","AP"]:
       return w.AdAP(args[0],args[1])
     case ["Conj","AP","AP"]:

@@ -6,7 +6,7 @@ concrete ParseSpa of Parse =
   AdverbSpa - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceSpa - [EmbedVP],
   QuestionSpa,
-  RelativeSpa - [IdRP],
+  RelativeSpa,
   ConjunctionSpa,
   PhraseSpa - [UttAP, UttVP],
   IdiomSpa,

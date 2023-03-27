@@ -6,7 +6,7 @@ concrete ParseFin of Parse =
   AdverbFin - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceFin - [EmbedVP],
   QuestionFin,
-  RelativeFin - [IdRP],
+  RelativeFin,
   ConjunctionFin,
   PhraseFin - [UttAP, UttVP],
   IdiomFin,

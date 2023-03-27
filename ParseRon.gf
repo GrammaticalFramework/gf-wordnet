@@ -6,7 +6,7 @@ concrete ParseRon of Parse =
   AdverbRon - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceRon - [EmbedVP],
   QuestionRon,
-  RelativeRon - [IdRP],
+  RelativeRon,
   ConjunctionRon,
   PhraseRon - [UttAP, UttVP],
   IdiomRon,

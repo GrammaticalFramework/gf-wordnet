@@ -37,6 +37,7 @@ lin BaseCNN num1 cn1 num2 cn2 = {
       in {
         s = \\c => quant.s ! cnn.n1 ! cnn.isMod ! md cnn.isMod ! cnn.g1 ++ conj.s1 ++ cnn.s1 ! dd ! caseNP c ++ conj.s2 ++ cnn.s2 ! dd ! caseNP c ;
         a = agrP3 (ngen2gen cnn.g1) (conjNumber conj.n cnn.n) ;
+        p = NonHuman ;
         isPron = False
       } ;
 
@@ -154,7 +155,7 @@ lin EmbedVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a an
     ReflA2 = ExtendSwe.ReflA2RNP ;
     ReflVPSlash = ExtendSwe.ReflRNP ;
 
-lin RecipVPSlash slash = GrammarSwe.ComplSlash slash (regNP "varandra" "varandra" Utr Sg);
+lin RecipVPSlash slash = GrammarSwe.ComplSlash slash (regNP "varandra" "varandra" Utr (Human Male) Sg);
     RecipVPSlashCN slash cn = GrammarSwe.ComplSlash slash (DetCN (M.mkDet "varandras" Pl) cn);
 
 lin num x = x ;

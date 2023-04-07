@@ -380,7 +380,7 @@ langs = [
   ("Afr",["af","nl","en"]),
   ("Bul",["bg","sr","ru","en"]),
   ("Cat",["ca","en"]),
-  ("Chi",["zh"]),
+  ("Chi",["zh","en"]),
   ("Dut",["nl","en"]),
   ("Eng",["en"]),
   ("Fin",["fi","en"]),

@@ -1151,6 +1151,8 @@ def mkVPSlash(*args):
       return w.SlashVV(args[0],args[1],args[2],args[3])
     case ["V2V","NP","VPSlash"]:
       return w.SlashV2VNP(args[0],args[1],args[2],args[3],args[4])
+    case ["VPSlash","Adv"]:
+      return w.AdvVPSlash(args[0],args[1])
     case types:
       __no_match__("mkVPSlash",types)
 

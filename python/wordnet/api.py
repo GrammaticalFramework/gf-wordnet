@@ -789,7 +789,7 @@ def mkAP(*args):
     case ["V"]:
       return w.PresPartAP(w.UseV(args[0]))
     case ["VP"]:
-      return w.PastPartAP(w.args[0])
+      return w.PastPartAP(args[0])
     case ["AP","S"]:
       return w.SentAP(args[0],w.EmbedS(args[1]))
     case ["AP","QS"]:

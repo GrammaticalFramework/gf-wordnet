@@ -473,7 +473,7 @@ def mkDet(*args):
     case ["Pron"]:
       return w.DetQuant(w.PossPron(args[0]),w.NumSg)
     case ["Pron","Num"]:
-      return w.DetQuant(w.PossPron(args[0]))
+      return w.DetQuant(w.PossPron(args[0]),args[1])
     case types:
       __no_match__("mkDet",types)
 

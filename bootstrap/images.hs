@@ -53,7 +53,11 @@ mapValuesWithKeyM f m = fmap Map.fromAscList (mapMaybeM (Map.toAscList m))
                                           return ((k,vs):xs)
 
 showImages (lemma,imgs) =
-  lemma++"\t"++intercalate "\t" [qid++";"++url++";"++img | (qid,url,img) <- imgs]
+  lemma++"\t"++intercalate "\t" [qid++";"++escape url++";"++escape img | (qid,url,img) <- imgs]
+  where
+    escape []       = []
+    escape (';':cs) = "%3B" ++ escape cs
+    escape (c  :cs) = c      : escape cs
 
 addImages eng wikidata synset lemmas = do
   mb_entities <- if take 1 synset == "Q"

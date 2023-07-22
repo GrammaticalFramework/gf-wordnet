@@ -63,7 +63,6 @@ data Synset
       , pointers     :: [(PointerSymbol,Key Synset)]
       , children     :: Interval (Key Synset)
       , gloss        :: String
-      , images       :: [(String,String,String)]
       }
     deriving (Data,Show)
 
@@ -89,6 +88,7 @@ data Lexeme
       , example_ids  :: [Key Expr]
       , frame_ids    :: [Key Frame]
       , lex_pointers :: [(PointerSymbol,Key Lexeme)]
+      , images       :: [(String,String,String)]
       }
     deriving (Data,Show)
 
@@ -113,10 +113,6 @@ type FrameInstance = (Key Frame,[(String,FId)])
 
 synsets :: Table Synset
 synsets = table "synsets"
-             `withIndex` synsets_qid
-
-synsets_qid :: Index Synset String
-synsets_qid = listIndex synsets "qid" (\synset -> nub [qid | (qid,_,_) <- images synset])
 
 domains :: Table Domain
 domains = table "domains"
@@ -131,6 +127,7 @@ lexemes = table "lexemes"
              `withIndex` lexemes_synset
              `withIndex` lexemes_domain
              `withIndex` lexemes_frame
+             `withIndex` lexemes_qid
 
 lexemes_fun :: Index Lexeme Fun
 lexemes_fun = index lexemes "fun" lex_fun
@@ -143,6 +140,9 @@ lexemes_domain = listIndex lexemes "domain" domain_ids
 
 lexemes_frame :: Index Lexeme (Key Frame)
 lexemes_frame = listIndex lexemes "frames" frame_ids
+
+lexemes_qid :: Index Lexeme String
+lexemes_qid = listIndex lexemes "qid" (\lexeme -> nub [qid | (qid,_,_) <- images lexeme])
 
 examples :: Table (Expr,[FrameInstance])
 examples = table "examples"

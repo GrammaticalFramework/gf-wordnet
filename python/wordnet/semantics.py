@@ -9,11 +9,8 @@ class Synset:
     pointers: list[tuple[int,int]]
     children: list[tuple[int,int]]
     gloss: str
-    images: list[tuple[str,str,str]]
 
 synsets = table("synsets",Synset)
-synsets_qid = listIndex(synsets,"qid",lambda synset: set([qid for (qid,_,_) in synset.images]),str)
-synsets.addIndex(synsets_qid)
 
 class Status(Enum):
     Guessed = 1
@@ -110,6 +107,7 @@ class Lexeme:
     example_ids: list[int]
     frame_ids: list[int]
     lex_pointers: list[tuple[PointerSymbol,int]]
+    images: list[tuple[str,str,str]]
 
 lexemes = table("lexemes",Lexeme)
 
@@ -124,3 +122,6 @@ lexemes.addIndex(lexemes_domain)
 
 lexemes_frame = listIndex(lexemes,"frames",lambda lexeme: lexeme.frame_ids,int)
 lexemes.addIndex(lexemes_frame)
+
+lexemes_qid = listIndex(lexemes,"qid",lambda lexeme: set([qid for (qid,_,_) in lexeme.images]),str)
+lexemes.addIndex(lexemes_qid)

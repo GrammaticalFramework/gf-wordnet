@@ -143,9 +143,9 @@ fcgiMain db bigram_total env rq = do
                                                        s <- from synsets (at synset_id)],
                             size int < 2000,
                             (s,e) <- anyOf int,
-                            (synset_id,Synset offset _ _ gloss images) <- from synsets (asc ^>= s ^<= e),
+                            (synset_id,Synset offset _ _ gloss) <- from synsets (asc ^>= s ^<= e),
                             lex_ids <- select [(lex_id,status,frame_inf,Just (domains,images,examples,sexamples,ptrs))
-                                                   | (_,Lexeme lex_id _ status _ domain_ids ex_ids fs ptrs0) <- fromIndex lexemes_synset (at synset_id),
+                                                   | (_,Lexeme lex_id _ status _ domain_ids ex_ids fs ptrs0 images) <- fromIndex lexemes_synset (at synset_id),
                                                      domains   <- select [makeObj [ ("id",showJSON domain_id)
                                                                                   , ("name",showJSON (domain_name d))
                                                                                   ]
@@ -230,7 +230,7 @@ fcgiMain db bigram_total env rq = do
         binding2obj (SynsetValue key synset lexemes) =
           (key,(gloss synset,[(lex_fun lexeme,status lexeme,[],Nothing) | (_,lexeme) <- lexemes]))
 
-    getGloss senses (_,Lexeme lex_id _ status mb_sense_id domain_ids ex_ids _ ptrs0) = do
+    getGloss senses (_,Lexeme lex_id _ status mb_sense_id domain_ids ex_ids _ ptrs0 images) = do
       domains   <- select [makeObj [ ("id",showJSON domain_id)
                                    , ("name",showJSON (domain_name d))
                                    ]
@@ -242,19 +242,19 @@ fcgiMain db bigram_total env rq = do
       ptrs <- select [(sym,lex_fun lex,SenseSchema.status lex) | (sym,id) <- anyOf ptrs0, lex <- from lexemes (at id)]
 
       case mb_sense_id of
-        Just sense_id -> 
+        Just sense_id ->
           case Map.lookup sense_id senses of
-            Just (gloss,images,lex_ids)
-                     -> return (Map.insert sense_id (gloss,images,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
-            Nothing  -> do [Synset _ _ _ gloss images] <- select (from synsets (at sense_id))
+            Just (gloss,lex_ids)
+                     -> return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
+            Nothing  -> do [Synset _ _ _ gloss] <- select (from synsets (at sense_id))
                            lex_ids <- select [(lex_id,status,frame_inf,Nothing)
-                                                  | (_,Lexeme lex_id _ status _ _ _ fs _) <- fromIndex lexemes_synset (at sense_id),
+                                                  | (_,Lexeme lex_id _ status _ _ _ fs _ images) <- fromIndex lexemes_synset (at sense_id),
                                                     frame_inf <- select [(name cls,base_class_id f,(frame_id,pattern f,semantics f,Nothing))
                                                                               | frame_id <- anyOf fs
                                                                               , f <- from frames (at frame_id)
                                                                               , cls <- from classes (at (base_class_id f))]]
-                           return (Map.insert sense_id (gloss,images,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
-        Nothing -> return (Map.insert (fromIntegral (5000000+Map.size senses)) ("",[],[(lex_id,status,[],Just (domains,[],examples,sexamples,ptrs))]) senses)
+                           return (Map.insert sense_id (gloss,addInfo lex_id (domains,images,examples,sexamples,ptrs) lex_ids) senses)
+        Nothing -> return (Map.insert (fromIntegral (5000000+Map.size senses)) ("",[(lex_id,status,[],Just (domains,[],examples,sexamples,ptrs))]) senses)
       where
         addInfo lex_id info lex_ids = 
           [(lex_id',status,frames,if lex_id == lex_id' then Just info else mb_info)
@@ -262,7 +262,7 @@ fcgiMain db bigram_total env rq = do
 
     sortSenses = map snd . sortOn fst . map addKey
       where
-        addKey (sense_id,(gloss,images,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,map snd key_lex_ids)))
+        addKey (sense_id,(gloss,lex_ids)) = (fst (head key_lex_ids), (sense_id,(gloss,map snd key_lex_ids)))
           where
             key_lex_ids = sortOn fst [(toKey lex_id info,x) | x@(lex_id,_,_,info) <- lex_ids]
 

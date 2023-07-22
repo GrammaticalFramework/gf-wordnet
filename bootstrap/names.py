@@ -441,7 +441,7 @@ def dquote(s):
 def generate(names_fpath,semantics_fpath,grammar_fpath):
     with daison.openDB(semantics_fpath) as db:
         with db.run("r") as t:
-            existing_qids = set(qid for qid,keys in t.cursor(synsets_qid))
+            existing_qids = set(qid for qid,keys in t.cursor(lexemes_qid))
 
         # first pass to compute probabilities
         with open(names_fpath, "r") as f:
@@ -511,8 +511,8 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                 if not images:
                     images.append((q_id,"http://www.wikidata.org/entity/"+q_id,""))
 
-                id = s_t.store(synsets,None,Synset(q_id,[],[],descr,images))
-                s_t.store(lexemes,None,Lexeme(gf_id,prob,status,id,[],[],[],[]))
+                id = s_t.store(synsets,None,Synset(q_id,[],[],descr))
+                s_t.store(lexemes,None,Lexeme(gf_id,prob,status,id,[],[],[],[],images))
 
         with subprocess.Popen(["gf","-run",grammar_fpath], stdin=subprocess.PIPE) as proc:
             for lang,lang_codes in langs:

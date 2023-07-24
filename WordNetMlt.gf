@@ -43632,6 +43632,7 @@ lin head_9_V2 = dirV2 (mkV "ras") ; --guessed
 lin head_for_V2 = variants {} ;
 lin head_hunter_1_N = variants {} ;
 lin head_hunter_2_N = variants {} ;
+lin head_of_state_N = variants {} ;
 lin head_off_V2 = variants {} ;
 lin head_on_A = variants {} ;
 lin head_on_1_Adv = variants {} ;

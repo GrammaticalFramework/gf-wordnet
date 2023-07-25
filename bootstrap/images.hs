@@ -1,7 +1,7 @@
 import PGF2
 import Data.Char
 import Data.Maybe
-import Data.List(sortOn,intercalate)
+import Data.List(sort,sortOn,intercalate)
 import System.IO ( utf8 )
 import Network.URI(escapeURIString,isUnreserved,unEscapeString)
 import Network.HTTP
@@ -53,7 +53,7 @@ mapValuesWithKeyM f m = fmap Map.fromAscList (mapMaybeM (Map.toAscList m))
                                           return ((k,vs):xs)
 
 showImages (lemma,imgs) =
-  lemma++"\t"++intercalate "\t" [qid++";"++escape url++";"++escape img | (qid,url,img) <- imgs]
+  lemma++"\t"++intercalate "\t" (sort [qid++";"++escape url++";"++escape img | (qid,url,img) <- imgs])
   where
     escape []       = []
     escape (';':cs) = "%3B" ++ escape cs

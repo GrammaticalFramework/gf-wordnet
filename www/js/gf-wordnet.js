@@ -1924,3 +1924,89 @@ gfwordnet.render_frame = function(all_vars,frame,style) {
 					 ])
 	return info;
 }
+
+gfwordnet.render_ide = function(result,selection,new_selection) {
+	const result_thead = result.getElementsByTagName("THEAD")[0];
+	const result_tbody = result.getElementsByTagName("TBODY")[0];
+
+    state = {
+        current: "ParseBul",
+        langs: {
+            Parse: {modules: []},
+            ParseBul: {current: "NounBul", modules: ["VerbBul", "NounBul", "AdjectiveBul", "SentenceBul"]},
+            ParseEng: {current: "IdiomEng", modules: ["IdiomEng", "DocumentationEng"]},
+            ParseSwe: {current: "NounSwe", modules: ["IdiomSwe", "NounSwe"]}
+        }
+    }
+
+	if (new_selection) {
+		clear(result_thead);
+
+        const module_row = tr([]);
+        function populate_modules(lang) {
+            function onClickModule(event) {
+                for (const tab of module_row.childNodes) {
+                    tab.classList.remove("selected");
+                }
+                state.langs[state.current].current = event.target.dataset.module;
+                event.target.classList.add("selected");
+            }
+
+            clear(module_row);
+            for (const module of state.langs[lang].modules) {
+                const props = {"data-module": module};
+                if (module == state.langs[state.current].current) {
+                    props["class"] = "selected";
+                }
+                tab = node("td", props, [text(module)]);
+                tab.addEventListener("click", onClickModule);
+                module_row.appendChild(tab);
+            }
+            tab = node("td", {style: "width: 100%"}, [])
+            module_row.appendChild(tab);
+        }
+
+        const lang_row = [];
+        function onClickLanguage(event) {
+            for (const tab of lang_row) {
+                tab.classList.remove("selected");
+            }
+            event.target.classList.add("selected");
+            state.current = event.target.dataset.lang;
+            populate_modules(state.current);
+        }
+
+		let tab = node("th",{"data-lang": "Parse"},[text("Abstract")]);
+        tab.addEventListener("click", onClickLanguage);
+        lang_row.push(tab);
+
+		for (const lang of selection.langs_list) {
+            const props = {"data-lang": lang};
+            if (lang == state.current) {
+                props["class"] = "selected";
+            }
+            tab = node("th",props,[text(selection.langs[lang].name)]);
+            tab.addEventListener("click", onClickLanguage);
+            lang_row.push(tab);
+		}
+		result_thead.appendChild(tr(lang_row));
+
+		clear(result_tbody);
+        const details = node("td",{class: "details", colspan: selection.langs_list.length+1});
+        const modules = node("table",{class: "modules"});
+
+        populate_modules(state.current);
+        modules.appendChild(module_row);
+        const editor = node("td", {colspan: 5}, []);
+        modules.appendChild(tr([editor]));
+        details.appendChild(modules);
+        result_tbody.appendChild(tr([details]));
+
+        function load_code(text,status) {
+            const codeMirror = CodeMirror(editor,{lineNumbers: true});
+            codeMirror.setValue(text);
+            codeMirror.setSize(null, 800);
+        }
+        ajax_http_get("https://cloud.grammaticalframework.org/wordnet/NounBul.gf",load_code,gfwordnet.errcont);
+	}
+}

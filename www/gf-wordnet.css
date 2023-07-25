@@ -56,6 +56,10 @@ table.result td.selected {
 	background: white;
 	border-bottom-style: none;
 }
+table.result th.selected {
+	background: white;
+	border-bottom-style: none;
+}
 table.result td.unselected {
 	border-bottom-style: none;
 }
@@ -356,3 +360,20 @@ table.tooltiptext td {
 .role-label-Topic { color: green; }
 .role-label-Trajectory { color: darkorange; }
 .role-label-Value { color: darkorange; }
+
+
+table.modules {
+    border-collapse: collapse;
+}
+table.modules td {
+    background: white;
+    border: 0;
+    border-bottom: 1px solid black;
+}
+table.modules td.selected {
+    background: white;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom-style: none;
+}

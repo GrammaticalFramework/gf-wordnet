@@ -541,7 +541,7 @@ pluralNum = w.NumPl
 
 def float2card(d,p=5):
   dig1 = int2digits(int(d))
-  f = d % 1
+  f = round(d % 1,p)
   while p > 0 and f % 1 > 0.00001:
     f = f * 10
     p = p - 1

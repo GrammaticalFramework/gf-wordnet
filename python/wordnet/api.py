@@ -509,9 +509,13 @@ the_Quant = w.DefArt
 a_Quant = w.IndefArt
 
 def mkNum(*args):
+  if len(args) == 1:
+    if type(args[0]) is int:
+      return w.NumCard(w.NumDigits(int2digits(args[0])))
+    if type(args[0]) is float:
+      return w.NumCard(float2card(args[0]))
+
   match __types__(args):
-    case ["Str"]:
-      return w.NumCard(w.str2card(args[0]))
     case ["Numeral"]:
       return w.NumCard(w.NumNumeral(args[0]))
     case ["Digits"]:
@@ -529,10 +533,23 @@ singularNum = w.NumSg
 
 pluralNum = w.NumPl
 
+def float2card(d,p=5):
+  dig1 = int2digits(int(d))
+  f = d % 1
+  while p > 0 and f % 1 > 0.00001:
+    f = f * 10
+    p = p - 1
+  dig2 = int2digits(int(f))
+  return w.NumFloat(dig1,dig2)
+
 def mkCard(*args):
+  if len(args) == 1:
+    if type(args[0]) is int:
+        return w.NumDigits(int2digits(args[0]))
+    if type(args[0]) is float:
+        return float2card(args[0])
+
   match __types__(args):
-    case ["Str"]:
-      return w.str2card
     case ["Numeral"]:
       return w.NumNumeral(args[0])
     case ["Digits"]:
@@ -677,15 +694,17 @@ def tenfoldSub100(*args):
     case types:
       __no_match__("tenfoldSub100",types)
 
-def mkDigits(*args):
-  if len(args) == 1 and type(args[0]) is int:
-    n = args[0]
+def int2digits(n):
     expr = pgf.Expr("IDig", [pgf.ExprFun("D_"+str(n % 10))])
     n    = n // 10
     while n != 0:
         expr = pgf.Expr("IIDig", [pgf.ExprFun("D_"+str(n % 10)), expr])
         n    = n // 10
     return expr
+
+def mkDigits(*args):
+  if len(args) == 1 and type(args[0]) is int:
+    return int2digits(args[0])
 
   match __types__(args):
     case ["Dig"]:

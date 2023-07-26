@@ -11,6 +11,7 @@ concrete ParseSwe of Parse =
   PhraseSwe - [UttAP, UttVP],
   IdiomSwe,
   TenseSwe,
+  NamesSwe,
   ParseExtendSwe,
   WordNetSwe,
   ConstructionSwe - [Language, InLanguage, languageNP, languageCN,

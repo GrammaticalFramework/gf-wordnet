@@ -11,6 +11,7 @@ concrete ParseBul of Parse =
   PhraseBul - [UttAP, UttVP],
   IdiomBul,
   TenseX - [CAdv,IAdv,AdV,SC],
+  NamesBul,
   ParseExtendBul,
   ConstructionBul - [Language, InLanguage, languageNP, languageCN,
                      afrikaans_Language, amharic_Language, arabic_Language,

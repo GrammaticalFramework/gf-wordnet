@@ -10,6 +10,7 @@ concrete ParseSom of Parse =
   PhraseSom - [UttAP, UttVP],
   IdiomSom,
   TenseX - [CAdv,IAdv,AdV,Adv,SC],
+  NamesSom,
   ParseExtendSom,
   WordNetSom
   ** {

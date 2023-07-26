@@ -11,6 +11,7 @@ concrete ParseDut of Parse =
   PhraseDut - [UttAP, UttVP],
   IdiomDut,
   TenseX,
+  NamesDut,
   ParseExtendDut,
   WordNetDut,
   ConstructionDut - [Language, InLanguage, languageNP, languageCN,

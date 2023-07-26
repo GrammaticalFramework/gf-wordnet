@@ -11,6 +11,7 @@ concrete ParseFin of Parse =
   PhraseFin - [UttAP, UttVP],
   IdiomFin,
   TenseX - [SC],
+  NamesFin,
   ParseExtendFin,
   WordNetFin,
   ConstructionFin - [Language, InLanguage, languageNP, languageCN,

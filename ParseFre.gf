@@ -12,6 +12,7 @@ concrete ParseFre of Parse =
   IdiomFre,
   TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   TenseFre,
+  NamesFre,
   ParseExtendFre,
   WordNetFre,
   ConstructionFre - [Language, InLanguage, languageNP, languageCN,

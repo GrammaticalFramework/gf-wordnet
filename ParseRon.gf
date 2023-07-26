@@ -12,6 +12,7 @@ concrete ParseRon of Parse =
   IdiomRon,
   TenseX - [CAdv,SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   TenseRon,
+  NamesRon,
   ParseExtendRon,
   WordNetRon
   ** {

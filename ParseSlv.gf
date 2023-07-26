@@ -10,6 +10,7 @@ concrete ParseSlv of Parse =
   PhraseSlv - [UttAP,UttVP],
   IdiomSlv,
   TenseX,
+  NamesSlv,
   ParseExtendSlv,
   WordNetSlv,
   DocumentationSlv

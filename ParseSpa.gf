@@ -12,6 +12,7 @@ concrete ParseSpa of Parse =
   IdiomSpa,
   TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
   TenseSpa,
+  NamesSpa,
   ParseExtendSpa,
   WordNetSpa,
   ConstructionSpa - [Language, InLanguage, languageNP, languageCN,

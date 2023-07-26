@@ -10,6 +10,7 @@ abstract Parse =
   Phrase - [UttAP, UttVP],
   Idiom,
   Tense,
+  Names,
   ParseExtend,
   Construction - [Language, InLanguage, languageNP, languageCN,
                   afrikaans_Language, amharic_Language, arabic_Language,

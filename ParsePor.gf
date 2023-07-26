@@ -12,6 +12,7 @@ concrete ParsePor of Parse =
   IdiomPor,
   TenseX - [Temp,Pol,SC,Tense,TCond,TFut,TPast,TPres,TTAnt,PNeg,PPos],
   TensePor,
+  NamesPor,
   ParseExtendPor,
   WordNetPor,
   ConstructionPor - [Language, InLanguage, languageNP, languageCN,

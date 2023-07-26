@@ -10,6 +10,7 @@ concrete ParseGer of Parse =
   PhraseGer - [UttAP, UttVP],
   IdiomGer,
   TenseGer,
+  NamesGer,
   WordNetGer,
   ParseExtendGer,
   ConstructionGer - [Language, InLanguage, languageNP, languageCN,

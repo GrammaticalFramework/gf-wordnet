@@ -11,6 +11,7 @@ concrete ParseEng of Parse =
   PhraseEng - [UttAP, UttVP],
   IdiomEng,
   TenseX - [Pol,PPos,PNeg,SC,CAdv],
+  NamesEng,
   ParseExtendEng,
   WordNetEng,
   ConstructionEng - [Language, InLanguage, languageNP, languageCN,

@@ -11,6 +11,7 @@ concrete ParseTha of Parse =
   PhraseTha - [UttAP, UttVP],
   IdiomTha,
   TenseX,
+  NamesTha,
   ParseExtendTha,
   WordNetTha,
   ConstructionTha - [Language, InLanguage, languageNP, languageCN,

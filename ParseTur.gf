@@ -11,6 +11,7 @@ concrete ParseTur of Parse =
   PhraseTur - [UttAP,UttVP],
   IdiomTur,
   TenseX - [CAdv,AdN],
+  NamesTur,
   ParseExtendTur,
   WordNetTur,
   DocumentationTur ** {

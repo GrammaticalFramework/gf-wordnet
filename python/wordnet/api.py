@@ -357,6 +357,12 @@ def mkNP(*args):
       return w.DetCN(w.DetQuant(args[0],w.NumSg),w.UseN(args[1]))
     case ["Quant","CN"]:
       return w.DetCN(w.DetQuant(args[0],w.NumSg),args[1])
+    case ["Num","CN"]:
+      return w.DetCN(w.DetQuant(w.IndefArt,args[0]),args[1])
+    case ["Num","Ord","CN"]:
+      return w.DetCN(w.DetQuantOrd(w.IndefArt,args[0],args[1]),args[2])
+    case ["Num","N"]:
+      return w.DetCN(w.DetQuant(w.IndefArt,args[0]),w.UseN(args[1]))
     case ["Quant","Num","CN"]:
       return w.DetCN(w.DetQuant(args[0],args[1]),args[2])
     case ["Quant","Num","Ord","CN"]:

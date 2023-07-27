@@ -429,6 +429,12 @@ def mkNP(*args):
           return None
     case ["Quant","CN"]:
       return w.DetCN(w.DetQuant(args[0],w.NumSg),args[1])
+    case [_,"MU"]:
+      if type(args[0]) is int:
+        return w.QuantityNP(mkDigits(args[0]),args[1])
+      else:
+        dig1,dig2 = float2digits(args[0])
+        return w.QuantityFloatNP(dig1,dig2,args[1])
     case types:
       __no_match__("mkNP",types)
 
@@ -539,13 +545,17 @@ singularNum = w.NumSg
 
 pluralNum = w.NumPl
 
-def float2card(d,p=5):
+def float2digits(d,p=5):
   dig1 = int2digits(int(d))
   f = round(d % 1,p)
   while p > 0 and f % 1 > 0.00001:
     f = f * 10
     p = p - 1
   dig2 = int2digits(int(f))
+  return (dig1,dig2)
+
+def float2card(d,p=5):
+  dig1,dig2 = float2digits(d,p)
   return w.NumFloat(dig1,dig2)
 
 def mkCard(*args):

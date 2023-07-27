@@ -986,9 +986,10 @@ gfwordnet.update_cells_status = function(lex_id,lang) {
 
 		if (checked) {
 			var icon = row.firstChild.firstChild;
-			icon.src = icon.src.endsWith("unchecked_plus.png")  ? "checked_plus.png"  :
-			           icon.src.endsWith("unchecked_minus.png") ? "checked_minus.png" :
-                       icon.src.endsWith("unchecked.png")       ? "checked.png"       :
+			icon.src = gfwordnet.script_url+
+                       icon.src.endsWith("unchecked_plus.png")  ? "../checked_plus.png"  :
+			           icon.src.endsWith("unchecked_minus.png") ? "../checked_minus.png" :
+                       icon.src.endsWith("unchecked.png")       ? "../checked.png"       :
 			                                                      icon.src ;
 		}
 	}

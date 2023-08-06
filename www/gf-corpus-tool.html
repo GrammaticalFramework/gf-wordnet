@@ -130,7 +130,7 @@
 					clear(element("linearization"))
 					element("linearization").appendChild(table);
 				}
-				gfwordnet.grammar_call("command=c-bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(exmpl),extract_linearization);
+				gfwordnet.grammar_call("command=bracketedLinearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree="+encodeURIComponent(exmpl),extract_linearization);
 			}
 
 			function on_next() {

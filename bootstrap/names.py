@@ -446,7 +446,7 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
         # first pass to compute probabilities
         with open(names_fpath, "r") as f:
             q_ids  = {}
-            counts = {"GN": {}, "SN": {}, "PN": {}}
+            counts = {"GN": {}, "SN": {}, "LN": {}}
             for line in f:
                 record = eval(line)
                 if type(record[-1]) is not dict:
@@ -465,7 +465,7 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                         else:
                             tag = "SN"
                     else:
-                        tag = "PN"
+                        tag = "LN"
                     counts[tag].setdefault(record[0],1)
                     q_ids[record[0]] = (tag,record)
 
@@ -543,8 +543,13 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                             break
                     for lin in lin_list:
                         lin = lin.strip()
-                        if lang in ["Afr","Chi","Dut","Est","Fin","Kor","Swe","Tha","Tur"]:
+                        if lang in ["Afr","Chi","Dut","Est","Fin","Kor","Tha","Tur"]:
                             lin = "mkPN "+dquote(lin)
+                        elif lang in ["Swe"]:
+                            if tag == "LN":
+                                lin = "mkLN "+dquote(lin)
+                            else:
+                                lin = "mkPN "+dquote(lin)
                         elif lang in ["Som"]:
                             if name_type in ["Q12308941","Q18972245"]:
                                 lin = "mkPN "+dquote(lin)+" sgMasc"
@@ -581,20 +586,28 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                                 lin = "mkSN "+dquote(lin)
                             elif lang in ["Slv"]:
                                 lin = "mkPN "+dquote(lin)+" masculine singular"
-                            else:
+                            elif lang in ["Ger"]:
                                 lin = "mkPN "+dquote(lin)
+                            else:
+                                lin = "mkLN "+dquote(lin)
                         elif lang == "Eng":
                             if name_type in ["Q12308941","Q18972245"]:
                                 lin = "mkPN "+dquote(lin)+" masculine"
                             elif name_type in ["Q11879590","Q18972207"]:
                                 lin = "mkPN "+dquote(lin)+" feminine"
+                            elif tag == "LN":
+                                lin = "mkLN "+dquote(lin)
                             else:
-                                lin = "mkPN "+dquote(lin)+" nonhuman"
+                                lin = "mkPN "+dquote(lin)
                         else:
                             if name_type in ["Q12308941","Q18972245"]:
                                 lin = "mkPN "+dquote(lin)+" masculine"
                             elif name_type in ["Q11879590","Q18972207"]:
                                 lin = "mkPN "+dquote(lin)+" feminine"
+                            elif tag == "LN" and lang in ["Spa","Fre"]:
+                                lin = "mkLN "+dquote(lin)+" masculine"
+                            elif tag == "LN" and lang in ["Cat","Ita","Por"]:
+                                lin = "mkLN "+dquote(lin)
                             else:
                                 lin = "mkPN "+dquote(lin)
                         lins.append(lin)
@@ -603,6 +616,8 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                     else:
                         lin = "variants {"+"; ".join(lins)+"}"
                     if tag in ["GN","SN"] and lang not in ["Bul","Ger","Slv"]:
+                        lin = "lin "+tag+" <"+lin+" : PN>"
+                    elif tag in ["LN"] and lang not in ["Bul","Cat","Eng","Fre","Ita","Por","Spa","Swe"]:
                         lin = "lin "+tag+" <"+lin+" : PN>"
                     proc.stdin.write(bytes("create -lang=Parse"+lang+" lin "+quote(gf_id)+" = "+lin+"\n","utf-8"))
                 proc.stdin.write(b"transaction commit\n\n")

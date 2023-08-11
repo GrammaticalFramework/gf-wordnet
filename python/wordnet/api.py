@@ -395,6 +395,8 @@ def mkNP(*args):
       return w.DetCN(w.DetQuant(w.PossPron(args[0]),w.NumSg),w.UseN(args[1]))
     case ["PN"]:
       return w.UsePN(args[0])
+    case ["LN"]:
+      return w.UseLN(args[0])
     case ["Pron"]:
       return w.UsePron(args[0])
     case ["Quant"]:
@@ -896,6 +898,8 @@ def mkAdv(*args):
               return args[1][0]
       else:
           return None
+    case ["LN"]:
+        return w.InLN(args[0])
     case types:
       __no_match__("mkAdv",types)
 

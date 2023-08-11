@@ -15891,7 +15891,7 @@ esker_N	Q332784;Esker;commons/2/27/Esker_(PSF).png
 estuary_N	Q47053;Estuary;commons/b/b2/Estuary-mouth.jpg
 euphrates_LN	Q34589;Euphrates;commons/9/98/Ferat_(Dîlok_-_Riha).jpg
 eurasia_LN	Q5401;Eurasia;commons/3/30/Eurasia_(orthographic_projection).svg	Q5401;Eurasia;commons/4/43/Two-point-equidistant-asia.jpg
-europe_1_PN	Q46;Europe;commons/4/44/Europe_orthographic_Caucasus_Urals_boundary_(with_borders).svg	Q46;Europe;commons/4/44/Europe_orthographic_Caucasus_Urals_boundary_(with_borders).svg
+europe_1_LN	Q46;Europe;commons/4/44/Europe_orthographic_Caucasus_Urals_boundary_(with_borders).svg	Q46;Europe;commons/4/44/Europe_orthographic_Caucasus_Urals_boundary_(with_borders).svg
 mount_everest_LN	Q513;Mount_Everest;commons/c/cc/Karte_Mount_Everest.png	Q513;Mount_Everest;commons/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg
 eyre_peninsula_LN	Q1385889;Eyre_Peninsula;commons/0/0c/Coffin_Bay_National_Park_coastal_heath.jpg
 fallow_N	Q2216979;Barren_vegetation;commons/9/91/Lake_johnston_gnangarra.jpg
@@ -25078,7 +25078,7 @@ otaniemi_LN	Q2743766;Otaniemi;commons/1/19/Otaniemi-Otnäs.sijainti-läge.svg	Q2
 augsburg_LN	Q2749;Augsburg;commons/2/28/Bavaria_A_(town).svg	Q2749;Augsburg;commons/4/42/Flag_of_Augsburg.svg	Q2749;Augsburg;commons/5/50/DEU_Augsburg_COA.svg	Q2749;Augsburg;commons/a/ab/Plaza_del_Ayuntamiento,_Augsburgo,_Alemania,_2021-06-04,_DD_32-34_HDR.jpg
 fawley_LN	Q2749703;Fawley,_Hampshire;commons/b/b2/Calshot_Road,_Fawley._-_geograph.org.uk_-_1541901.jpg
 monchengladbach_LN	Q2758;M%C3%B6nchengladbach;commons/1/15/Lage_der_kreisfreien_Stadt_Mönchengladbach_in_Deutschland.png	Q2758;M%C3%B6nchengladbach;commons/4/4e/DEU_Moenchengladbach_COA.svg	Q2758;M%C3%B6nchengladbach;commons/5/58/North_rhine_w_MG.svg	Q2758;M%C3%B6nchengladbach;commons/8/87/Flagge_der_kreisfreien_Stadt_Mönchengladbach.svg	Q2758;M%C3%B6nchengladbach;commons/f/f1/Mönchengladbach_münster.jpg	Q2758;M%C3%B6nchengladbach;commons/f/f8/Banner_der_kreisfreien_Stadt_Mönchengladbach.svg
-eurovision_LN	Q276;Eurovision_Song_Contest;commons/c/cf/ESC_2021_Rotterdam_-_Greenfloor_and_podium.jpg
+eurovision_PN	Q276;Eurovision_Song_Contest;commons/c/cf/ESC_2021_Rotterdam_-_Greenfloor_and_podium.jpg
 wolverton_LN	Q276274;Wolverton;commons/e/e5/St_George,_Wolverton,_Bucks_-_geograph.org.uk_-_333049.jpg
 maudie_GN	Q27642812;/Q27642812;
 gelsenkirchen_LN	Q2765;Gelsenkirchen;commons/0/05/Flagge_der_kreisfreien_Stadt_Gelsenkirchen.svg	Q2765;Gelsenkirchen;commons/3/34/North_rhine_w_GE.svg	Q2765;Gelsenkirchen;commons/8/8b/DEU_Gelsenkirchen_COA.svg	Q2765;Gelsenkirchen;commons/a/a4/Gelsenkirchen_aug2004_002.jpg

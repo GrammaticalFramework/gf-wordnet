@@ -7,7 +7,7 @@ import daison
 from wordnet.semantics import *
 import hashlib
 import subprocess
-
+from datetime import datetime
 
 def extract(wiki_fpath):
     with bz2.open(wiki_fpath, "rb") as f:
@@ -378,19 +378,19 @@ def cyr(s):
 
 langs = [
   ("Afr",["af","nl","en"]),
-  ("Bul",["bg","sr","ru","en"]),
-  ("Cat",["ca","en"]),
+  ("Bul",["bg","mk","sr","ru","en"]),
+  ("Cat",["ca","sp","fr","en"]),
   ("Chi",["zh","en"]),
   ("Dut",["nl","en"]),
   ("Eng",["en"]),
-  ("Fin",["fi","en"]),
+  ("Fin",["fi","et","en"]),
   ("Ger",["de","en"]),
   ("Kor",["ko"]),
   ("Ron",["ro","en"]),
   ("Som",["so","en"]),
   ("Swa",["sw","en"]),
   ("Tha",["th"]),
-  ("Fre",["fr","en"]),
+  ("Fre",["fr","ca","en"]),
   ("Ita",["it","en"]),
   ("Mlt",["mt","en"]),
   ("Por",["pt","en"]),
@@ -407,7 +407,7 @@ def quote(s):
         plain = False
     else:
         for c in s:
-            if c not in "abcdefghijklmnopqrstuvwxyz_SGN0123456789":
+            if c not in "abcdefghijklmnopqrstuvwxyz_LSGN0123456789":
                 plain=False
                 break
 
@@ -516,6 +516,7 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
 
         with subprocess.Popen(["gf","-run",grammar_fpath], stdin=subprocess.PIPE) as proc:
             for lang,lang_codes in langs:
+                print(lang, datetime.now().strftime("%H:%M:%S"))
                 proc.stdin.write(bytes("\ni -resource alltenses/Paradigms"+lang+".gfo\n\n","utf-8"))
                 proc.stdin.write(b"transaction start\n\n")
                 for q_id,info in sorted(q_ids.items(),key=lambda p: p[1]):
@@ -543,37 +544,25 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                             break
                     for lin in lin_list:
                         lin = lin.strip()
-                        if lang in ["Afr","Chi","Dut","Est","Fin","Kor","Tha","Tur"]:
-                            lin = "mkPN "+dquote(lin)
-                        elif lang in ["Swe"]:
-                            if tag == "LN":
-                                lin = "mkLN "+dquote(lin)
-                            else:
-                                lin = "mkPN "+dquote(lin)
+                        if lang in ["Chi","Kor","Mlt","Pol","Tha","Tur"]:
+                            lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                         elif lang in ["Som"]:
                             if name_type in ["Q12308941","Q18972245"]:
-                                lin = "mkPN "+dquote(lin)+" sgMasc"
+                                lin = "lin "+tag+" <mkPN "+dquote(lin)+" sgMasc : PN>"
                             elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN "+dquote(lin)+" sgFem"
+                                lin = "lin "+tag+" <mkPN "+dquote(lin)+" sgFem : PN>"
                             else:
-                                lin = "mkPN "+dquote(lin)
+                                lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                         elif lang in ["Swa"]:
-                            lin = "mkPN "+dquote(lin)+" a_wa"
+                            lin = "lin "+tag+" <mkPN "+dquote(lin)+" a_wa : PN>"
                         elif lang in ["Ron"]:
                             if name_type in ["Q12308941","Q18972245"]:
-                                lin = "mkPN "+dquote(lin)+" Masculine"
+                                lin = "lin "+tag+" <mkPN "+dquote(lin)+" Masculine : PN>"
                             elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN "+dquote(lin)+" Feminine"
+                                lin = "lin "+tag+" <mkPN "+dquote(lin)+" Feminine : PN>"
                             else:
-                                lin = "mkPN "+dquote(lin)
-                        elif lang in ["Rus"]:
-                            if name_type in ["Q12308941","Q18972245"]:
-                                lin = "mkPN "+dquote(lin)+" masculine animate"
-                            elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN "+dquote(lin)+" feminine animate"
-                            else:
-                                lin = "mkPN "+dquote(lin)
-                        elif lang in ["Bul","Ger","Slv"]:
+                                lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
+                        else:
                             if name_type in ["Q12308941"]:
                                 lin = "mkGN "+dquote(lin)+" male"
                             elif name_type in ["Q11879590"]:
@@ -581,46 +570,19 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                             elif name_type in ["Q18972245","Q18972207"]:
                                 lin = "mkSN "+dquote(lin)
                             elif tag == "GN":
-                                lin = "mkGN "+dquote(lin)+" male"
+                                lin = "mkGN "+dquote(lin)
                             elif tag == "SN":
                                 lin = "mkSN "+dquote(lin)
-                            elif lang in ["Slv"]:
-                                lin = "mkPN "+dquote(lin)+" masculine singular"
-                            elif lang in ["Ger"]:
-                                lin = "mkPN "+dquote(lin)
                             else:
                                 lin = "mkLN "+dquote(lin)
-                        elif lang == "Eng":
-                            if name_type in ["Q12308941","Q18972245"]:
-                                lin = "mkPN "+dquote(lin)+" masculine"
-                            elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN "+dquote(lin)+" feminine"
-                            elif tag == "LN":
-                                lin = "mkLN "+dquote(lin)
-                            else:
-                                lin = "mkPN "+dquote(lin)
-                        else:
-                            if name_type in ["Q12308941","Q18972245"]:
-                                lin = "mkPN "+dquote(lin)+" masculine"
-                            elif name_type in ["Q11879590","Q18972207"]:
-                                lin = "mkPN "+dquote(lin)+" feminine"
-                            elif tag == "LN" and lang in ["Spa","Fre"]:
-                                lin = "mkLN "+dquote(lin)+" masculine"
-                            elif tag == "LN" and lang in ["Cat","Ita","Por"]:
-                                lin = "mkLN "+dquote(lin)
-                            else:
-                                lin = "mkPN "+dquote(lin)
                         lins.append(lin)
                     if len(lins) == 1:
                         lin = lins[0]
                     else:
                         lin = "variants {"+"; ".join(lins)+"}"
-                    if tag in ["GN","SN"] and lang not in ["Bul","Ger","Slv"]:
-                        lin = "lin "+tag+" <"+lin+" : PN>"
-                    elif tag in ["LN"] and lang not in ["Bul","Cat","Eng","Fre","Ita","Por","Spa","Swe"]:
-                        lin = "lin "+tag+" <"+lin+" : PN>"
                     proc.stdin.write(bytes("create -lang=Parse"+lang+" lin "+quote(gf_id)+" = "+lin+"\n","utf-8"))
                 proc.stdin.write(b"transaction commit\n\n")
+            print("   ", datetime.now().strftime("%H:%M:%S"))
 
 def help():
     print("Syntax: names.py extract <path to wikidata archive>")

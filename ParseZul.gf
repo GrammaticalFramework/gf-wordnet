@@ -1,6 +1,6 @@
 --# -path=.:../abstract:../common:../api
 concrete ParseZul of Parse =
-  NounZul - [PPartNP, UseN2, RelNP, DetNP],
+  NounZul - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbZul - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
   AdjectiveZul - [ReflA2,CAdvAP],
   AdverbZul - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],

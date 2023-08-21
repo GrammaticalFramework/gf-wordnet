@@ -1,5 +1,5 @@
 concrete ParseMlt of Parse =
-  NounMlt - [PPartNP, UseN2, RelNP, DetNP],
+  NounMlt - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbMlt - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP, UseCopula],
   AdjectiveMlt - [ReflA2, CAdvAP],
   AdverbMlt - [ComparAdvAdj, ComparAdvAdjS, AdnCAdv],

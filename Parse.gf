@@ -1,5 +1,5 @@
 abstract Parse = 
-  Noun - [PPartNP, UseN2, RelNP, DetNP],
+  Noun - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   Verb - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP], 
   Adjective - [ReflA2, CAdvAP],
   Adverb - [AdnCAdv, ComparAdvAdj, ComparAdvAdjS],

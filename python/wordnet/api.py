@@ -378,9 +378,9 @@ def mkNP(*args):
     case ["Numeral","N"]:
       return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),w.UseN(args[1]))
     case ["Digits","CN"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDigits(args[0]))),args[1])
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDecimal(w.PosDecimal(args[0])))),args[1])
     case ["Digits","N"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDigits(args[0]))),w.UseN(args[1]))
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDecimal(w.PosDecimal(args[0])))),w.UseN(args[1]))
     case ["Digit","CN","NP"]:
       return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0])))))))),args[1])
     case ["Digit","N","NP"]:
@@ -432,11 +432,7 @@ def mkNP(*args):
     case ["Quant","CN"]:
       return w.DetCN(w.DetQuant(args[0],w.NumSg),args[1])
     case [_,"MU"]:
-      if type(args[0]) is int:
-        return w.QuantityNP(mkDigits(args[0]),args[1])
-      else:
-        dig1,dig2 = float2digits(args[0])
-        return w.QuantityFloatNP(dig1,dig2,args[1])
+      return w.QuantityNP(mkDecimal(args[0]),args[1])
     case types:
       __no_match__("mkNP",types)
 
@@ -481,7 +477,7 @@ def mkDet(*args):
     case ["Card"]:
       return w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0])))
     case ["Digits"]:
-      return w.DetQuant(w.IndefArt,w.NumCard(w.NumDigits(args[0])))
+      return w.DetQuant(w.IndefArt,w.NumCard(w.NumDecimal(w.PosDecimal(args[0]))))
     case ["Numeral"]:
       return w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0])))
     case ["Pron"]:
@@ -523,17 +519,15 @@ the_Quant = w.DefArt
 a_Quant = w.IndefArt
 
 def mkNum(*args):
-  if len(args) == 1:
-    if type(args[0]) is int:
-      return w.NumCard(w.NumDigits(int2digits(args[0])))
-    if type(args[0]) is float:
-      return w.NumCard(float2card(args[0]))
-
   match __types__(args):
+    case [int]:
+      return w.NumCard(w.NumDecimal(int2decimal(args[0])))
+    case [float]:
+      return w.NumCard(float2card(args[0]))
     case ["Numeral"]:
       return w.NumCard(w.NumNumeral(args[0]))
     case ["Digits"]:
-      return w.NumCard(w.NumDigits(args[0]))
+      return w.NumCard(w.NumDecimal(w.PosDecimal(args[0])))
     case ["Digit"]:
       return w.NumCard(w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0])))))))
     case ["Card"]:
@@ -547,23 +541,22 @@ singularNum = w.NumSg
 
 pluralNum = w.NumPl
 
-def float2digits(d,p=5):
-  dig1 = int2digits(int(d))
-  f = round(d % 1,p)
+def float2decimal(d,p=5):
+  dec = int2decimal(int(d))
+  f = round(abs(d) % 1,p)
   while p > 0 and f % 1 > 0.00001:
-    f = f * 10
+    dec = w.IFrac(dec,pgf.ExprFun("D_"+str(int(f*10))))
+    f = round((f * 10) % 1,p)
     p = p - 1
-  dig2 = int2digits(int(f))
-  return (dig1,dig2)
+  return dec
 
 def float2card(d,p=5):
-  dig1,dig2 = float2digits(d,p)
-  return w.NumFloat(dig1,dig2)
+  return w.NumDecimal(float2decimal(d,p))
 
 def mkCard(*args):
   if len(args) == 1:
     if type(args[0]) is int:
-        return w.NumDigits(int2digits(args[0]))
+        return w.NumDecimal(int2decimal(args[0]))
     if type(args[0]) is float:
         return float2card(args[0])
 
@@ -571,7 +564,7 @@ def mkCard(*args):
     case ["Numeral"]:
       return w.NumNumeral(args[0])
     case ["Digits"]:
-      return w.NumDigits(args[0])
+      return w.NumDecimal(w.PosDecimal(args[0]))
     case ["AdN","Card"]:
       return w.AdNum(args[0],args[1])
     case types:
@@ -712,25 +705,32 @@ def tenfoldSub100(*args):
     case types:
       __no_match__("tenfoldSub100",types)
 
-def int2digits(n):
+def int2decimal(n):
+    if n >= 0:
+        sign = "PosDecimal"
+    else:
+        sign = "NegDecimal"
+        n = -n
+
     expr = pgf.Expr("IDig", [pgf.ExprFun("D_"+str(n % 10))])
     n    = n // 10
     while n != 0:
         expr = pgf.Expr("IIDig", [pgf.ExprFun("D_"+str(n % 10)), expr])
         n    = n // 10
-    return expr
+    return pgf.Expr(sign,[expr])
 
-def mkDigits(*args):
-  if len(args) == 1 and type(args[0]) is int:
-    return int2digits(args[0])
-
+def mkDecimal(*args):
   match __types__(args):
+    case [float]:
+      return float2decimal(args[0])
+    case [int]:
+      return int2decimal(args[0])
     case ["Dig"]:
       return w.IDig(args[0])
     case ["Dig","Digits"]:
       return w.IIDig(args[0],args[1])
     case types:
-      __no_match__("mkDigits",types)
+      __no_match__("mkDecimal",types)
 
 n0_Dig = w.D_0
 

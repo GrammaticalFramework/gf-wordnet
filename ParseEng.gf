@@ -1,6 +1,6 @@
 --# -path=.:../abstract:../common:../api
 concrete ParseEng of Parse =
-  NounEng - [PPartNP, UseN2, RelNP, DetNP],
+  NounEng - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbEng - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
   AdjectiveEng - [ReflA2,CAdvAP],
   AdverbEng - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],

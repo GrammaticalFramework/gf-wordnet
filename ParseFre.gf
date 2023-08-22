@@ -1,6 +1,6 @@
 --# -path=.:../abstract:../common:../api
 concrete ParseFre of Parse =
-  NounFre - [PPartNP, UseN2, RelNP, DetNP],
+  NounFre - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbFre - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
   AdjectiveFre - [ReflA2,CAdvAP],
   AdverbFre - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],

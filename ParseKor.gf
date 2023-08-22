@@ -1,5 +1,5 @@
 concrete ParseKor of Parse =
-  NounKor - [PPartNP, UseN2, RelNP, DetNP],
+  NounKor - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbKor - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP, UseCopula],
   AdjectiveKor - [ReflA2, CAdvAP],
   AdverbKor - [ComparAdvAdj, ComparAdvAdjS, AdnCAdv],

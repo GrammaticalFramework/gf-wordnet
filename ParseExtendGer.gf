@@ -1,6 +1,7 @@
 concrete ParseExtendGer of ParseExtend =
   ExtendGer - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
-               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP], NumeralGer - [num], PunctuationX **
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
+               PiedPipingQuestSlash, PiedPipingRelSlash], NumeralGer - [num], PunctuationX **
  open Prelude, ResGer, GrammarGer in {
 
 lin

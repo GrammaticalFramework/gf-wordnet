@@ -516,10 +516,10 @@ a_Quant = w.IndefArt
 
 def mkNum(*args):
   match __types__(args):
-    case [int]:
-      return w.NumCard(w.NumDecimal(int2decimal(args[0])))
     case [float]:
       return w.NumCard(float2card(args[0]))
+    case [int]:
+      return w.NumCard(w.NumDecimal(int2decimal(args[0])))
     case ["Numeral"]:
       return w.NumCard(w.NumNumeral(args[0]))
     case ["Digits"]:

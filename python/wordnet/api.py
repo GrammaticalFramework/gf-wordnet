@@ -377,14 +377,10 @@ def mkNP(*args):
       return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),args[1])
     case ["Numeral","N"]:
       return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(args[0]))),w.UseN(args[1]))
-    case ["Digits","CN"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDecimal(w.PosDecimal(args[0])))),args[1])
-    case ["Digits","N"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDecimal(w.PosDecimal(args[0])))),w.UseN(args[1]))
-    case ["Digit","CN","NP"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0])))))))),args[1])
-    case ["Digit","N","NP"]:
-      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumNumeral(w.num(w.pot2as3(w.pot1as2(w.pot0as1(w.pot0(args[0])))))))),w.UseN(args[1]))
+    case ["Decimal","CN"]:
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDecimal(args[0]))),args[1])
+    case ["Decimal","N"]:
+      return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(w.NumDecimal(args[0]))),w.UseN(args[1]))
     case ["Card","CN"]:
       return w.DetCN(w.DetQuant(w.IndefArt,w.NumCard(args[0])),args[1])
     case ["Card","N"]:

@@ -1,4 +1,4 @@
-concrete WordNetZul of WordNet = CatZul ** open ParadigmsZul, ResZul in {
+concrete WordNetZul of WordNet = CatZul ** open ParadigmsZul, ResZul, (S=StructuralZul) in {
 
 lin a_bomb_N = variants {} ;
 lin a_couple_Card = variants {} ; --guessed

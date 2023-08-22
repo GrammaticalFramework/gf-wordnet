@@ -12,7 +12,7 @@ concrete ParseZul of Parse =
   IdiomZul,
   TenseX - [Pol,PPos,PNeg,SC,Adv,IAdv,Temp,TTAnt,CAdv],
   -- NamesZul,
-  -- ParseExtendZul,
+  ParseExtendZul,
   WordNetZul {- ,
   ConstructionZul - [Language, InLanguage, languageNP, languageCN,
                      afrikaans_Language, amharic_Language, arabic_Language,

@@ -13,8 +13,8 @@ concrete ParseZul of Parse =
   TenseX - [SC,Adv,IAdv,Temp,CAdv],
   -- NamesZul,
   ParseExtendZul,
-  WordNetZul {- ,
-  ConstructionZul - [Language, InLanguage, languageNP, languageCN,
+  WordNetZul,
+   {- ConstructionZul - [Language, InLanguage, languageNP, languageCN,
                      afrikaans_Language, amharic_Language, arabic_Language,
                      bulgarian_Language, catalan_Language, chinese_Language,
                      danish_Language, dutch_Language, english_Language,
@@ -26,8 +26,8 @@ concrete ParseZul of Parse =
                      polish_Language, punjabi_Language, romanian_Language,
                      russian_Language, sindhi_Language, spanish_Language,
                      swahili_Language, swedish_Language, thai_Language,
-                     turkish_Language, urdu_Language],
-  DocumentationZul -} ** open ResZul, Prelude in {
+                     turkish_Language, urdu_Language], -}
+  DocumentationZul ** open ResZul, Prelude in {
 
 flags
   case_sensitive = off;

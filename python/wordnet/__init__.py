@@ -777,7 +777,7 @@ def mkNP(*args):
           return None
     case ["Quant","CN"]:
       return w.DetCN(w.DetQuant(args[0],w.NumSg),args[1])
-    case ["Decimal","MU"]:
+    case [float,"MU"]:
       return w.QuantityNP(mkDecimal(args[0]),args[1])
     case types:
       raise __no_match__("mkNP",types)

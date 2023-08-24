@@ -20,16 +20,13 @@ import traceback
 import threading
 
 grammar = w.__pgf__
-languages = {}
-for lang,concr in w.__pgf__.languages.items():
-    languages[lang[5:].lower()] = concr
 
 def linearize(lang : str,e : pgf.Expr) -> str:
     """
     Given a language code (bul,eng,swe,..)
     produces the linearization
     """
-    return languages[lang].linearize(e)
+    return grammar.languages["Parse"+lang.title()].linearize(e)
 
 def __types__(args):
     types = []

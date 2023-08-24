@@ -1,4 +1,16 @@
-""" aaaa """
+"""
+To use this library you need to place the WordNet grammar, Parse.ngf,
+in a place where Python would look for modules.
+The API is mostly the same as for the GF Resource Library. 
+
+- The abstract syntax of the WordNet lexicon can be used by using
+the variable "w", e.g. w.apple_1_N.
+
+- The PGF object can be accessed through the "grammar" variable.
+
+- For convenience, there is also the function "linearize" which
+is a wrapper around the standard PGF API.
+"""
 
 import pgf
 import Parse as w

@@ -919,7 +919,7 @@ def mkNum(*args):
   """
   match __types__(args):
     case [float]:
-      return w.NumCard(float2card(args[0]))
+      return w.NumCard(w.NumDecimal(float2decimal(args[0])))
     case [int]:
       return w.NumCard(w.NumDecimal(int2decimal(args[0])))
     case ["Numeral"]:

@@ -238,7 +238,7 @@ def mkS(*args):
                               # she wouldn't have slept
     mkS(conjunction: Conj, sentence1: S, sentence2: S) -> S
                               # she sleeps and I run
-    mkS(conjunction: Conj, list: List[S]) -> S
+    mkS(conjunction: Conj, list: list[S]) -> S
                               # she sleeps, I run and you walk
     mkS(adverb:	Adv, sentence: S) -> S
                               # today she sleeps
@@ -690,7 +690,7 @@ def mkNP(*args):
                               # John, that walks ...
     mkNP(conjunct: Conj, np1: NP, np2: NP) -> NP
                               # this woman or John
-    mkNP(conjunct: Conj, list: List[NP]) -> NP
+    mkNP(conjunct: Conj, list: list[NP]) -> NP
                               # this woman, John or I
     mkNP(d: Decimal, unit: MU) -> NP
                               # this woman, John or I
@@ -1315,7 +1315,7 @@ def mkAP(*args):
                               # very very old
     mkAP(conj: Conj, adjectival_phrase1: AP, adjectival_phrase2: AP) -> AP
                               # old or young
-    mkAP(conj: Conj, list: List[AP]) -> AP
+    mkAP(conj: Conj, list: list[AP]) -> AP
                               # old, big and warm
     mkAP(ordinal: Ord) -> AP
                               # oldest
@@ -1405,7 +1405,7 @@ def mkAdv(*args):
                               # very warmly
     mkAdv(conj: Conj, adverb1: Adv, adverb2: Adv) -> Adv
                               # here and now
-    mkAdv(conj: Conj, list: List[Adv]) -> Adv
+    mkAdv(conj: Conj, list: list[Adv]) -> Adv
                               # with her, here and now
   """
   match __types__(args):
@@ -1709,7 +1709,7 @@ def mkRS(*args):
                               # that wouldn't have slept
     mkRS(conjunction: Conj, relative1: RS, relative2: RS) -> RS	
                               # woman that sleeps or that we love
-    mkRS(conjunction: Conj, list: List[RS]) -> RS
+    mkRS(conjunction: Conj, list: list[RS]) -> RS
                               # who sleeps, whom I see and who sleeps
   """
   match __types__(args):

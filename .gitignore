@@ -1,8 +1,14 @@
 *.gfo
 *.pgf
+*.ngf
 *.o
 *.hi
 *.db
+*.probs
+build/
+python/build
+python/dist/
+python/gf_wordnet.egg-info/
 .gitconfig
 www/ContentService
 www/ContentService.fcgi

@@ -1,4 +1,4 @@
-LANGS = ParseAfr ParseBul ParseCat ParseChi ParseDut ParseEng ParseEst ParseFin ParseFre ParseGer ParseIta ParseKor ParseMlt ParsePol ParsePor ParseRon ParseRus ParseSlv ParseSom ParseSpa ParseSwa ParseSwe ParseTha ParseTur ParseZul ParseAPI
+LANGS = ParseIta ParseAPI
 
 WORDNETS = $(patsubst Parse%,WordNet%.gf,$(LANGS))
 
@@ -44,16 +44,14 @@ ifeq ($(USE_WIKIPEDIA),YES)
 	UD_FIN_TREEBANKS += $(wildcard data/Finnish/fi-wikipedia-00[01].conllu.xz)
 endif
 
-SERVER_PATH = /home/krasimir/GF/gf-wordnet
 SHARED_PATH = $(shell gf --version | tail -1 | cut -c 16-)
 DOC_PATH = $(SHARED_PATH)/www
 INSTALL_PATH = $(SHARED_PATH)/lib
 
-all: build_dirs Parse.pgf semantics.db $(SERVER_PATH)/www/SenseService.fcgi $(SERVER_PATH)/www/ContentService
+all: build_dirs Parse.pgf semantics.db 
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
-	mv Parse.ngf $(DOC_PATH)/robust/
 
 build/gfo/WordNet.gfo:
 
@@ -64,54 +62,17 @@ build/Parse%.pgf: Parse%.gf Parse.gf build/gfo/WordNet%.gfo build/gfo/WordNet.gf
 	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
 
 Parse.probs Parse.uncond.probs: train/statistics.hs examples.txt build/ParseAPI.pgf
-	runghc $^
+	stack exec .stack-work/install/x86_64-linux-tinfo6/47a1b31dee0b505c8511f68a8cd436e58546b2f29f552654729a634ebe8d86a5/8.10.7/bin/gf-wn-statistics $^
 
-build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o build/train/em_data_stream.o
-	ghc --make -odir build/train -hidir build/train -O2 $^ -o $@ -lpgf -lgu -lm -llzma -lpthread
-
-build/train/em_core.o: train/em_core.c train/em_core.h train/em_data_stream.h
-	gcc -O2 -std=c99 -Itrain -c $< -o $@
-
-build/train/em_data_stream.o: train/em_data_stream.c train/em_data_stream.h
-	gcc -O2 -std=c99 -Itrain -c $< -o $@
-
-build/train/EM.hs: train/EM.hsc train/em_core.h
-	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
-
-build/train/Matching.hs: train/Matching.hsc train/em_core.h
-	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
+#build/udsenser: train/udsenser.hs train/GF2UED.hs build/train/EM.hs build/train/Matching.hs build/train/em_core.o build/train/em_data_stream.o
+#	ghc --make -odir build/train -hidir build/train -O2 $^ -o $@ -lpgf -lgu -lm -llzma -lpthread
 
 semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.uncond.probs
-	build/glosses
+	stak exec .stack-work/install/x86_64-linux-tinfo6/47a1b31dee0b505c8511f68a8cd436e58546b2f29f552654729a634ebe8d86a5/8.10.7/bin/gf-wn-glosses 
 
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
-	ghc --make -threaded -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@
-
-$(SERVER_PATH)/www/SenseService.fcgi: www-services/SenseService.hs www-services/SenseSchema.hs www-services/PatternMatching.hs www-services/Interval.hs
-	ghc --make -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
-
-$(SERVER_PATH)/www/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/ContentSchema.hs www-services/Interval.hs
-	ghc --make -threaded -odir build/www-services -hidir build/www-services -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
-
-deploy: $(WORDNETS)
-	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
-	scp -p build/gfo/WordNet*.gfo www.grammaticalframework.org:/usr/local/www/gf-wordnet
-	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
-	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
-	scp www/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
-	ssh -t www.grammaticalframework.org \
-	    "$(foreach WORDNET,$(WORDNETS),sudo mkdir -p /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
-	                                   echo \"$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))\" | \
-	                                   sudo tee /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;\
-	                                   sudo chown gf-cloud /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET)) \
-	                                                       /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;)"
-	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
-
-morpho:
-	$(foreach WORDNET,$(WORDNETS),mkdir -p $(DOC_PATH)/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
-	                              echo "$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))" | \
-	                              tee $(DOC_PATH)/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;)
-
+	stack build 
+	
 .SECONDARY:
 
 .PHONY: build_dirs
@@ -121,8 +82,3 @@ build_dirs:
 	mkdir -p build/gfo
 	mkdir -p build/train
 	mkdir -p build/www-services
-
-
-install: $(patsubst %.gf,build/gfo/%.gfo,$(WORDNETS))
-	mkdir -p $(INSTALL_PATH)
-	install build/gfo/WordNet*.gfo     $(INSTALL_PATH)

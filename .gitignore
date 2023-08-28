@@ -14,5 +14,3 @@ www/ContentService
 www/ContentService.fcgi
 www/SenseService.fcgi
 www/status.svg
-.stack-work
-stack.yaml.lock

@@ -4,6 +4,7 @@ import bz2
 import math
 import pgf
 import daison
+from wordnet import grammar, w
 from wordnet.semantics import *
 import hashlib
 import subprocess
@@ -438,7 +439,7 @@ def dquote(s):
     q = q + "\""
     return q
 
-def generate(names_fpath,semantics_fpath,grammar_fpath):
+def generate(names_fpath,semantics_fpath):
     with daison.openDB(semantics_fpath) as db:
         with db.run("r") as t:
             existing_qids = set(qid for qid,keys in t.cursor(lexemes_qid))
@@ -471,9 +472,7 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
 
             totals = {tag : sum(cs.values()) for tag,cs in counts.items()}
 
-        gr = pgf.readNGF(grammar_fpath)
-
-        with db.run("w") as s_t, gr.newTransaction() as g_t:
+        with db.run("w") as s_t, grammar.newTransaction() as g_t:
             for q_id,(tag,record) in sorted(q_ids.items(),key=lambda p: p[1]):
                 if q_id in existing_qids:
                     continue
@@ -514,7 +513,7 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
                 id = s_t.store(synsets,None,Synset(q_id,[],[],descr))
                 s_t.store(lexemes,None,Lexeme(gf_id,prob,status,id,[],[],[],[],images))
 
-        with subprocess.Popen(["gf","-run",grammar_fpath], stdin=subprocess.PIPE) as proc:
+        with subprocess.Popen(["gf","-run",w.__file__], stdin=subprocess.PIPE) as proc:
             for lang,lang_codes in langs:
                 print(lang, datetime.now().strftime("%H:%M:%S"))
                 proc.stdin.write(bytes("\ni -resource alltenses/Paradigms"+lang+".gfo\n\n","utf-8"))
@@ -586,7 +585,7 @@ def generate(names_fpath,semantics_fpath,grammar_fpath):
 
 def help():
     print("Syntax: names.py extract <path to wikidata archive>")
-    print("        names.py generate <path to names.txt> <path to semantics.db> <path to Parse.ngf>")
+    print("        names.py generate <path to names.txt> <path to semantics.db>")
 
 if len(sys.argv) < 2:
     help()
@@ -596,9 +595,9 @@ elif sys.argv[1] == "extract":
     else:
         extract(sys.argv[2])
 elif sys.argv[1] == "generate":
-    if len(sys.argv) < 5:
+    if len(sys.argv) < 4:
         help()
     else:
-        generate(sys.argv[2],sys.argv[3],sys.argv[4])
+        generate(sys.argv[2],sys.argv[3])
 else:
     help()

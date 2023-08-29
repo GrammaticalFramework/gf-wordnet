@@ -25377,6 +25377,7 @@ lin degree_4_N = variants {} ;
 lin degree_5_N = variants {} ;
 lin degree_6_N = variants {} ;
 lin degree_7_N = variants {} ;
+lin degree_MU = mkMU (SOFT_BIND++"°") ;
 lin degressive_A = variants {} ;
 lin dehiscence_N = variants {} ;
 lin dehiscent_A = variants {} ;

@@ -25383,6 +25383,7 @@ lin degree_4_N = mkN "grad" ; --guessed
 lin degree_5_N = mkN "grad" ; --guessed
 lin degree_6_N = mkN "grad" ; --guessed
 lin degree_7_N = mkN "grad" ; --guessed
+lin degree_MU = mkMU (SOFT_BIND++"°") ;
 lin degressive_A = variants {} ;
 lin dehiscence_N = variants {} ;
 lin dehiscent_A = variants {} ;

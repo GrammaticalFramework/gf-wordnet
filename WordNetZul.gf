@@ -25377,6 +25377,7 @@ lin degree_4_N = mkN "°" C1_2 ; --guessed
 lin degree_5_N = variants {} ;
 lin degree_6_N = mkN "°" C1_2 ; --guessed
 lin degree_7_N = mkN "isitifiketi seziqu" C1_2 ; --guessed
+lin degree_MU = variants {} ;
 lin degressive_A = variants {} ;
 lin dehiscence_N = variants {} ;
 lin dehiscent_A = variants {} ;

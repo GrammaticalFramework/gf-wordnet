@@ -22886,7 +22886,6 @@ dextrin_N	Q191978;Dextrin;
 diamond_2_N	Q5283;Diamond;commons/1/1d/Diamond-1128734.jpg
 dimer_N	Q531306;Dimerization_(chemistry);
 dimethylglyoxime_N	Q424895;Dimethylglyoxime;commons/4/47/Dimethylglyoxime.png
-dimple_1_N	Q521200;Dimple;commons/0/09/Andrew_Scheer_in_Delta_-_2019_(48898645342)_(cropped).jpg
 dioxin_N	Q2522;Dioxins_and_dioxin-like_compounds;
 disaccharidase_N	Q3544712;Disaccharidase;
 disaccharide_N	Q173600;Disaccharide;

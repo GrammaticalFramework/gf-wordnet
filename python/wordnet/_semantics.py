@@ -1,21 +1,15 @@
+import os
+import pgf
+from Parse import __pgf__ as grammar, __file__ as pgf_path
 from daison import *
 from typing import Optional, Union
 from enum import Enum
 from dataclasses import dataclass
 
-@dataclass
-class Synset:
-    synsetOffset: str
-    pointers: list[tuple[int,int]]
-    children: list[tuple[int,int]]
-    gloss: str
+db = openDB(os.path.dirname(pgf_path)+"/semantics.db")
 
-synsets = table("synsets",Synset)
-
-class Status(Enum):
-    Guessed = 1
-    Unchecked = 2
-    Checked = 3
+def get_concr(lang):
+    return grammar.languages["Parse"+lang.title()]
 
 @dataclass
 class Antonym:
@@ -98,16 +92,135 @@ class Participle:
 PointerSymbol = Union[Antonym,Hypernym,InstanceHypernym,Hyponym,InstanceHyponym,Holonym,Meronym,Attribute,DomainOfSynset,MemberOfDomain,Entailment,Cause,AlsoSee,VerbGroup,SimilarTo,Derived,Participle]
 
 @dataclass
+class Synset:
+    synsetOffset: str
+    pointers: list[tuple[PointerSymbol,int]]
+    children: list[tuple[int,int]]
+    gloss: str
+
+    def __repr__(self):
+        return "Synset("+repr(self.synsetOffset)+")"
+
+    def definition(self) -> str:
+        return self.gloss
+
+    def lexemes(self):
+        result = []
+        with db.run("r") as t:
+            for lexeme_id, lexeme in t.indexCursor(lexemes_synset, self.id):
+                lexeme.id = lexeme_id
+                result.append(lexeme)
+        return result
+
+    def linearizations(self, lang: str) -> list[str]:
+        concr = get_concr(lang)
+        result = set()
+        with db.run("r") as t:
+            for lexeme_id, lexeme in t.indexCursor(lexemes_synset, self.id):
+                if concr.hasLinearization(lexeme.lex_fun):
+                    result.add(concr.linearize(pgf.ExprFun(lexeme.lex_fun)))
+        return list(result)
+
+    def examples(self) -> list[pgf.Expr]:
+        result = []
+        with db.run("r") as t:
+            for lexeme_id, lexeme in t.indexCursor(lexemes_synset, self.id):
+                for _, (example,_) in t.indexCursor(examples_fun, lexeme.lex_fun):
+                    result.append(example)
+        return result
+
+    def __pointers__(self, tp) -> list:
+        result = []
+        with db.run("r") as t:
+            for ptr,id in self.pointers:
+                if isinstance(ptr, tp):
+                    for synset in t.cursor(synsets, id):
+                        result.append(synset)
+        return result
+
+    def __pointers2__(self, tp, tp2) -> list:
+        result = []
+        with db.run("r") as t:
+            for ptr,id in self.pointers:
+                if isinstance(ptr, tp) and ptr.type == tp2:
+                    for synset in t.cursor(synsets, id):
+                        result.append(synset)
+        return result
+
+    def hyponyms(self) -> list:
+        return self.__pointers__(Hyponym)
+
+    def instance_hyponyms(self) -> list:
+        return self.__pointers__(InstanceHyponym)
+
+    def hypernyms(self) -> list:
+        return self.__pointers__(Hypernym)
+
+    def instance_hypernyms(self) -> list:
+        return self.__pointers__(InstanceHypernym)
+
+    def member_holonym(self) -> list:
+        return self.__pointers2__(Holonym,Member)
+
+    def substance_holonym(self) -> list:
+        return self.__pointers2__(Holonym,Substance)
+
+    def part_meronym(self) -> list:
+        return self.__pointers2__(Holonym,Part)
+
+    def member_meronym(self) -> list:
+        return self.__pointers2__(Meronym,Member)
+
+    def substance_holonym(self) -> list:
+        return self.__pointers2__(Meronym,Substance)
+
+    def part_holonym(self) -> list:
+        return self.__pointers2__(Meronym,Part)
+
+synsets = table("synsets",Synset)
+
+class Status(Enum):
+    Guessed = 1
+    Unchecked = 2
+    Checked = 3
+
+@dataclass
 class Lexeme:
     lex_fun: str
     lex_prob: float
     status: list[tuple[str,Status]]
-    synset: Optional[int]
+    synset_id: Optional[int]
     domain_ids: list[int]
     example_ids: list[int]
     frame_ids: list[int]
     lex_pointers: list[tuple[PointerSymbol,int]]
     images: list[tuple[str,str,str]]
+
+    def __repr__(self):
+        return "Lexeme("+repr(self.lex_fun)+")"
+
+    def linearization(self,lang: str) -> str:
+        concr = get_concr(lang)
+        if concr.hasLinearization(self.lex_fun):
+            return concr.linearize(pgf.ExprFun(self.lex_fun))
+        else:
+            return None
+
+    def synset(self) -> Optional[Synset]:
+        if not self.synset_id:
+            return None
+        with db.run("r") as t:
+            for synset in t.cursor(synsets, self.synset_id):
+                synset.id = self.synset_id
+                return synset
+
+    def examples(self) -> list[pgf.Expr]:
+        result = []
+        with db.run("r") as t:
+            for _, (example,_) in t.indexCursor(examples_fun, self.lex_fun):
+                result.append(example)
+        return result
+
 
 lexemes = table("lexemes",Lexeme)
 
@@ -125,3 +238,36 @@ lexemes.addIndex(lexemes_frame)
 
 lexemes_qid = listIndex(lexemes,"qid",lambda lexeme: set([qid for (qid,_,_) in lexeme.images]),str)
 lexemes.addIndex(lexemes_qid)
+
+FrameInstance = tuple[int,list[tuple[str,int]]]
+
+examples = table("examples",tuple[pgf.Expr,list[FrameInstance]])
+
+examples_fun = listIndex(examples,"fun",lambda e: set(exprFunctions(e[0])),str)
+examples.addIndex(lexemes_fun)
+
+def get_synsets(lang : str, word : str) -> list[Synset]:
+    result = []
+    lexeme_ids = set()
+    with db.run("r") as t:
+        for fun,_,_ in get_concr(lang).lookupMorpho(word):
+            for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):
+                if lexeme_id not in lexeme_ids:
+                    lexeme_ids.add(lexeme_id)
+                    if lexeme.synset_id:
+                        for synset in t.cursor(synsets, lexeme.synset_id):
+                            synset.id = lexeme.synset_id
+                            result.append(synset)
+    return result
+
+def get_lexemes(lang : str, word : str) -> list[Lexeme]:
+    result = []
+    lexeme_ids = set()
+    with db.run("r") as t:
+        for fun,_,_ in get_concr(lang).lookupMorpho(word):
+            for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):
+                if lexeme_id not in lexeme_ids:
+                    lexeme_ids.add(lexeme_id)
+                    lexeme.id = lexeme_id
+                    result.append(lexeme)
+    return result

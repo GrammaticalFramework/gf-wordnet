@@ -66,3 +66,4 @@ except ModuleNotFoundError as e:
           "without an argument it will download all languages.")
 else:
     from wordnet._api import *
+    from wordnet._semantics import Synset, Lexeme, get_lexemes as lexemes, get_synsets as synsets

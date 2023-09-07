@@ -16,5 +16,6 @@ setup(
     packages=['wordnet'],
     install_requires=['pgf','daison'],
     long_description=read("README.md"),
-    long_description_content_type="text/markdown"
+    long_description_content_type="text/markdown",
+    zip_safe=False
 )

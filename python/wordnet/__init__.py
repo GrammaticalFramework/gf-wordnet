@@ -68,6 +68,43 @@ except ModuleNotFoundError as e:
     print("Either use wordnet.download(['ISO 639‑2 code1', ...]) to download the grammar,\n"
           "or add the path to an existing grammar in sys.path. If download() is called\n"
           "without an argument it will download all languages.")
+
+    __all__ = ["download"]
 else:
     from wordnet._api import *
     from wordnet._semantics import Synset, Lexeme, get_lexemes as lexemes, get_synsets as synsets
+
+    __all__ = ['Lexeme', 'Synset', 'aPl_Det', 'aSg_Det', 'a_Det',
+               'a_Quant', 'anteriorAnt', 'comparAP', 'conditionalTense',
+               'download', 'exclMarkPunct', 'fullStopPunct',
+               'futureTense', 'genericCl', 'grammar', 'he_NP', 'i_NP',
+               'it_NP', 'lets_Utt', 'lexemes', 'linearize', 'mkAP',
+               'mkAdN', 'mkAdv', 'mkCN', 'mkCard', 'mkCl', 'mkClSlash',
+               'mkComp', 'mkDecimal', 'mkDet', 'mkDigits', 'mkIAdv',
+               'mkIComp', 'mkIDet', 'mkIP', 'mkImp', 'mkList', 'mkNP',
+               'mkNum', 'mkNumeral', 'mkOrd', 'mkPConj', 'mkPhr',
+               'mkQCl', 'mkQS', 'mkQuant', 'mkRCl', 'mkRP', 'mkRS',
+               'mkS', 'mkSC', 'mkSSlash', 'mkSub100', 'mkSub1000',
+               'mkTemp', 'mkUtt', 'mkUttImpPl', 'mkUttImpPol',
+               'mkUttImpSg', 'mkVP', 'mkVPSlash', 'mkVoc', 'n0_Dig',
+               'n1000_Digits', 'n1000_Numeral', 'n100_Digits',
+               'n100_Numeral', 'n10_Digits', 'n10_Numeral', 'n1_Dig',
+               'n1_Digits', 'n1_Numeral', 'n20_Digits', 'n20_Numeral',
+               'n2_Dig', 'n2_Digits', 'n2_Numeral', 'n3_Dig',
+               'n3_Digits', 'n3_Numeral', 'n4_Dig', 'n4_Digits',
+               'n4_Numeral', 'n5_Dig', 'n5_Digits', 'n5_Numeral',
+               'n6_Dig', 'n6_Digits', 'n6_Numeral', 'n7_Dig',
+               'n7_Digits', 'n7_Numeral', 'n8_Dig', 'n8_Digits',
+               'n8_Numeral', 'n9_Dig', 'n9_Digits', 'n9_Numeral',
+               'negativePol', 'noPConj', 'noVoc', 'passiveVP',
+               'pastTense', 'pluralNum', 'positivePol', 'presentTense',
+               'progressiveVP', 'questMarkPunct', 'reflAP',
+               'reflexiveVP', 'she_NP', 'simultaneousAnt',
+               'singularNum', 'synsets', 'tenfoldSub100', 'that_Det',
+               'that_NP', 'thePl_Det', 'theSg_Det', 'the_Det',
+               'the_Quant', 'these_Det', 'these_NP', 'they_NP',
+               'this_Det', 'this_NP', 'those_Det', 'those_NP',
+               'thousandfoldNumeral', 'w', 'we_NP', 'what_IP',
+               'whichPl_IDet', 'whichSg_IDet', 'which_IDet',
+               'which_RP', 'who_IP', 'youPl_NP', 'youPol_NP',
+               'you_NP']

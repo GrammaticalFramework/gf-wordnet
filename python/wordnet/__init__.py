@@ -14,12 +14,15 @@ is a wrapper around the standard PGF API.
 
 import pgf
 
-def download(langs=None):
+def download(langs=None, path=None):
     """
     Downloads the precompiled wordnet grammar from the GF server.
     If langs is None, then all languages will be downloaded.
     Alternatively, langs must contain the list of language codes
     for which the grammar should be fetched.
+
+    If path is not given the grammar will be downloaded in the package's
+    installation folder.
     """
 
     import urllib.request
@@ -33,7 +36,8 @@ def download(langs=None):
     else:
         langs = ""
 
-    path = os.path.dirname(__file__) + "/../"
+    if not path:
+        path = os.path.dirname(__file__) + "/../"
 
     with contextlib.closing(urllib.request.urlopen("https://www.grammaticalframework.org/robust/Parse.ngf?command=download"+langs)) as fp:
         size = 0

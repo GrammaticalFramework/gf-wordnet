@@ -83,6 +83,7 @@ build/train/Matching.hs: train/Matching.hsc train/em_core.h
 
 semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.uncond.probs
 	build/glosses
+	mv semantics.db $(DOC_PATH)/robust/
 
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
 	ghc --make -threaded -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@

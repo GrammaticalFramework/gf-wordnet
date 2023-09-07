@@ -59,7 +59,7 @@ def download(langs=None):
     importlib.reload(sys.modules[__name__])
 
 try:
-    import Parse
+    import Parse as w
 except ModuleNotFoundError as e:
     print("Either use wordnet.download(['ISO 639‑2 code1', ...]) to download the grammar,\n"
           "or add the path to an existing grammar in sys.path. If download() is called\n"

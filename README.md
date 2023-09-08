@@ -198,3 +198,348 @@ Via the interface it is also possible to log in with your GitHub
 account and edit the data. Both the lexicon and the corpus are editable.
 Once you finish a batch of changes you can also commit directly
 to the repository.
+
+
+
+## The Python Interface
+
+You can use the WordNet as a regular GF grammar or you can also use it
+as a standalone Python library similar in style to `nltk.corpus.wordnet`.
+The added benefit is that in GF WordNet you also have the RGL
+abstract syntax trees which lets you to compose sentences in serveral
+languages. You can import the library like this:
+'''Python
+>>> import wordnet
+'''
+For more compact code, we recommend:
+'''Python
+>>> from wordnet import *
+'''
+
+### Words
+
+Look up a word using synsets(); this function has an optional pos 
+argument which lets you constrain the category of the word:
+'''Python
+>>> synsets('eng','dog')
+[Synset('02086723-n'), Synset('10133978-n'), Synset('10042764-n'),
+Synset('09905672-n'), Synset('07692347-n'), Synset('03907626-n'),
+Synset('02712903-n'), Synset('02005890-v')]
+>>> synsets('dog', cat="V2")
+[Synset('02005890-v')]
+'''
+You can use any category defined in the RGL. A synset is most often
+identified with its offset in Princeton WordNet 3.1. For words that
+are there we use the Qid in WikiData.
+
+TODO: Expand on Morphology
+
+'''Python
+>>> wn.synset('dog.n.01')
+Synset('dog.n.01')
+>>> print(wn.synset('dog.n.01').definition())
+a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistoric times; occurs in many breeds
+>>> len(wn.synset('dog.n.01').examples())
+1
+>>> print(wn.synset('dog.n.01').examples()[0])
+the dog barked all night
+>>> wn.synset('dog.n.01').lemmas()
+[Lemma('dog.n.01.dog'), Lemma('dog.n.01.domestic_dog'), Lemma('dog.n.01.Canis_familiaris')]
+>>> [str(lemma.name()) for lemma in wn.synset('dog.n.01').lemmas()]
+['dog', 'domestic_dog', 'Canis_familiaris']
+>>> wn.lemma('dog.n.01.dog').synset()
+Synset('dog.n.01')
+'''
+
+'''Python
+>>> wn.langs()
+['eng']
+>>> wn.synsets(b'\xe7\x8a\xac'.decode('utf-8'), lang='jpn')
+[Synset('dog.n.01'), Synset('spy.n.01')]
+>>> wn.synset('spy.n.01').lemma_names('jpn')
+['いぬ', 'まわし者', 'スパイ', '回し者', '回者', '密偵',
+'工作員', '廻し者', '廻者', '探', '探り', '犬', '秘密捜査員',
+'諜報員', '諜者', '間者', '間諜', '隠密']
+>>> sorted(wn.langs())
+['als', 'arb', 'bul', 'cat', 'cmn', 'dan', 'ell', 'eng', 'eus',
+'fin', 'fra', 'glg', 'heb', 'hrv', 'ind', 'isl', 'ita', 'ita_iwn',
+'jpn', 'lit', 'nld', 'nno', 'nob', 'pol', 'por', 'ron', 'slk',
+'slv', 'spa', 'swe', 'tha', 'zsm']
+>>> wn.synset('dog.n.01').lemma_names('ita')
+['Canis_familiaris', 'cane']
+>>> wn.lemmas('cane', lang='ita')
+[Lemma('dog.n.01.cane'), Lemma('cramp.n.02.cane'), Lemma('hammer.n.01.cane'), Lemma('bad_person.n.01.cane'),
+Lemma('incompetent.n.01.cane')]
+>>> sorted(wn.synset('dog.n.01').lemmas('dan'))
+[Lemma('dog.n.01.hund'), Lemma('dog.n.01.k\xf8ter'),
+Lemma('dog.n.01.vovhund'), Lemma('dog.n.01.vovse')]
+>>> sorted(wn.synset('dog.n.01').lemmas('por'))
+[Lemma('dog.n.01.cachorra'), Lemma('dog.n.01.cachorro'), Lemma('dog.n.01.cadela'), Lemma('dog.n.01.c\xe3o')]
+>>> dog_lemma = wn.lemma(b'dog.n.01.c\xc3\xa3o'.decode('utf-8'), lang='por')
+>>> dog_lemma
+Lemma('dog.n.01.c\xe3o')
+>>> dog_lemma.lang()
+'por'
+>>> len(list(wordnet.all_lemma_names(pos='n', lang='jpn')))
+66031
+'''
+The synonyms of a word are returned as a nested list of synonyms of the different senses of the input word in the given language, since these different senses are not mutual synonyms:
+
+'''Python
+>>> wn.synonyms('car')
+[['auto', 'automobile', 'machine', 'motorcar'], ['railcar', 'railroad_car', 'railway_car'], ['gondola'], ['elevator_car'], ['cable_car']]
+>>> wn.synonyms('coche', lang='spa')
+[['auto', 'automóvil', 'carro', 'máquina', 'turismo', 'vehículo'], ['automotor', 'vagón'], ['vagón', 'vagón_de_pasajeros']]
+'''
+
+### Synsets
+Synset: a set of synonyms that share a common meaning.
+
+'''Python
+>>> dog = wn.synset('dog.n.01')
+>>> dog.hypernyms()
+[Synset('canine.n.02'), Synset('domestic_animal.n.01')]
+>>> dog.hyponyms()
+[Synset('basenji.n.01'), Synset('corgi.n.01'), Synset('cur.n.01'), Synset('dalmatian.n.02'), ...]
+>>> dog.member_holonyms()
+[Synset('canis.n.01'), Synset('pack.n.06')]
+>>> dog.root_hypernyms()
+[Synset('entity.n.01')]
+>>> wn.synset('dog.n.01').lowest_common_hypernyms(wn.synset('cat.n.01'))
+[Synset('carnivore.n.01')]
+'''
+Each synset contains one or more lemmas, which represent a specific sense of a specific word.
+
+Note that some relations are defined by WordNet only over Lemmas:
+
+'''Python
+>>> good = wn.synset('good.a.01')
+>>> good.antonyms()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Synset' object has no attribute 'antonyms'
+>>> good.lemmas()[0].antonyms()
+[Lexeme('bad.a.01.bad')]
+'''
+The relations that are currently defined in this way are antonyms, derivationally_related_forms and pertainyms.
+
+If you know the byte offset used to identify a synset in the original Princeton WordNet data file, you can use that to instantiate the synset in NLTK:
+
+'''Python
+>>> wn.synset_from_pos_and_offset('n', 4543158)
+Synset('wagon.n.01')
+Likewise, instantiate a synset from a known sense key:
+>>> wn.synset_from_sense_key("driving%1:04:03::")
+Synset('drive.n.06')
+'''
+
+### Lemmas
+
+'''Python
+>>> eat = lexeme('eat_3_V2')
+>>> eat
+Lemma('feed.v.06.eat')
+>>> print(eat.key())
+eat%2:34:02::
+>>> eat.count()
+4
+>>> wn.lemma_from_key(eat.key())
+Lemma('feed.v.06.eat')
+>>> wn.lemma_from_key(eat.key()).synset()
+Synset('feed.v.06')
+>>> wn.lemma_from_key('feebleminded%5:00:00:retarded:00')
+Lemma('backward.s.03.feebleminded')
+>>> for lemma in wn.synset('eat.v.03').lemmas():
+...     print(lemma, lemma.count())
+...
+Lemma('feed.v.06.feed') 3
+Lemma('feed.v.06.eat') 4
+>>> for lemma in wn.lemmas('eat', 'v'):
+...     print(lemma, lemma.count())
+...
+Lemma('eat.v.01.eat') 61
+Lemma('eat.v.02.eat') 13
+Lemma('feed.v.06.eat') 4
+Lemma('eat.v.04.eat') 0
+Lemma('consume.v.05.eat') 0
+Lemma('corrode.v.01.eat') 0
+>>> wn.lemma('jump.v.11.jump')
+Lemma('jump.v.11.jump')
+'''
+Lemmas can also have relations between them:
+'''Python
+>>> vocal = wn.lemma('vocal.a.01.vocal')
+>>> vocal.derivationally_related_forms()
+[Lemma('vocalize.v.02.vocalize')]
+>>> vocal.pertainyms()
+[Lemma('voice.n.02.voice')]
+>>> vocal.antonyms()
+[Lemma('instrumental.a.01.instrumental')]
+'''
+The three relations above exist only on lemmas, not on synsets.
+
+### Verb Frames
+
+'''Python
+>>> wn.synset('think.v.01').frame_ids()
+[5, 9]
+>>> for lemma in wn.synset('think.v.01').lemmas():
+...     print(lemma, lemma.frame_ids())
+...     print(" | ".join(lemma.frame_strings()))
+...
+Lemma('think.v.01.think') [5, 9]
+Something think something Adjective/Noun | Somebody think somebody
+Lemma('think.v.01.believe') [5, 9]
+Something believe something Adjective/Noun | Somebody believe somebody
+Lemma('think.v.01.consider') [5, 9]
+Something consider something Adjective/Noun | Somebody consider somebody
+Lemma('think.v.01.conceive') [5, 9]
+Something conceive something Adjective/Noun | Somebody conceive somebody
+>>> wn.synset('stretch.v.02').frame_ids()
+[8]
+>>> for lemma in wn.synset('stretch.v.02').lemmas():
+...     print(lemma, lemma.frame_ids())
+...     print(" | ".join(lemma.frame_strings()))
+...
+Lemma('stretch.v.02.stretch') [8, 2]
+Somebody stretch something | Somebody stretch
+Lemma('stretch.v.02.extend') [8]
+Somebody extend something
+'''
+
+### Similarity
+'''Python
+>>> dog = wn.synset('dog.n.01')
+>>> cat = wn.synset('cat.n.01')
+>>> hit = wn.synset('hit.v.01')
+>>> slap = wn.synset('slap.v.01')
+'''
+'synset1.path_similarity(synset2)': Return a score denoting how similar
+two word senses are, based on the shortest path that connects the senses
+in the is-a (hypernym/hypnoym) taxonomy. The score is in 
+the range 0 to 1. By default, there is now a fake root node added
+to verbs so for cases where previously a path could not be found—and
+None was returned—it should return a value. The old behavior
+can be achieved by setting simulate_root to be False. A score of 1
+represents identity i.e. comparing a sense with itself will return 1.
+
+'''Python
+>>> dog.path_similarity(cat)
+0.2...
+>>> hit.path_similarity(slap)
+0.142...
+>>> wn.path_similarity(hit, slap)
+0.142...
+>>> print(hit.path_similarity(slap, simulate_root=False))
+None
+>>> print(wn.path_similarity(hit, slap, simulate_root=False))
+None
+'''
+'synset1.lch_similarity(synset2)': Leacock-Chodorow Similarity:
+Return a score denoting how similar two word senses are, based on
+the shortest path that connects the senses (as above) and
+the maximum depth of the taxonomy in which the senses occur.
+The relationship is given as -log(p/2d) where p is
+the shortest path length and d the taxonomy depth.
+
+'''Python
+>>> dog.lch_similarity(cat)
+2.028...
+>>> hit.lch_similarity(slap)
+1.312...
+>>> wn.lch_similarity(hit, slap)
+1.312...
+>>> print(hit.lch_similarity(slap, simulate_root=False))
+None
+>>> print(wn.lch_similarity(hit, slap, simulate_root=False))
+None
+'''
+'synset1.wup_similarity(synset2)': Wu-Palmer Similarity:
+Return a score denoting how similar two word senses are, based on
+the depth of the two senses in the taxonomy and that of
+their Least Common Subsumer (most specific ancestor node). Note that at
+this time the scores given do not always agree with those given by
+Pedersen’s Perl implementation of Wordnet Similarity.
+
+The LCS does not necessarily feature in the shortest path connecting
+the two senses, as it is by definition the common ancestor deepest in
+the taxonomy, not closest to the two senses. Typically, however, 
+it will so feature. Where multiple candidates for the LCS exist,
+that whose shortest path to the root node is the longest
+will be selected. Where the LCS has multiple paths to the root,
+the longer path is used for the purposes of the calculation.
+
+'''Python
+>>> dog.wup_similarity(cat)
+0.857...
+>>> hit.wup_similarity(slap)
+0.25
+>>> wn.wup_similarity(hit, slap)
+0.25
+>>> print(hit.wup_similarity(slap, simulate_root=False))
+None
+>>> print(wn.wup_similarity(hit, slap, simulate_root=False))
+None
+'''
+
+### Access to all Synsets
+Iterate over all the noun synsets:
+
+'''Python
+>>> for synset in list(wn.all_synsets('n'))[:10]:
+...     print(synset)
+...
+Synset('entity.n.01')
+Synset('physical_entity.n.01')
+Synset('abstraction.n.06')
+Synset('thing.n.12')
+Synset('object.n.01')
+Synset('whole.n.02')
+Synset('congener.n.03')
+Synset('living_thing.n.01')
+Synset('organism.n.01')
+Synset('benthos.n.02')
+'''
+Get all synsets for this word, possibly restricted by POS:
+'''Python
+>>> wn.synsets('dog')
+[Synset('dog.n.01'), Synset('frump.n.01'), Synset('dog.n.03'), Synset('cad.n.01'), ...]
+>>> wn.synsets('dog', pos='v')
+[Synset('chase.v.01')]
+'''
+Walk through the noun synsets looking at their hypernyms:
+'''Python
+>>> from itertools import islice
+>>> for synset in islice(wn.all_synsets('n'), 5):
+...     print(synset, synset.hypernyms())
+...
+Synset('entity.n.01') []
+Synset('physical_entity.n.01') [Synset('entity.n.01')]
+Synset('abstraction.n.06') [Synset('entity.n.01')]
+Synset('thing.n.12') [Synset('physical_entity.n.01')]
+Synset('object.n.01') [Synset('physical_entity.n.01')]
+'''
+
+### Synset Closures
+Compute transitive closures of synsets
+'''Python
+>>> dog = wn.synset('dog.n.01')
+>>> hypo = lambda s: s.hyponyms()
+>>> hyper = lambda s: s.hypernyms()
+>>> list(dog.closure(hypo, depth=1)) == dog.hyponyms()
+True
+>>> list(dog.closure(hyper, depth=1)) == dog.hypernyms()
+True
+>>> list(dog.closure(hypo))
+[Synset('basenji.n.01'), Synset('corgi.n.01'), Synset('cur.n.01'),
+ Synset('dalmatian.n.02'), Synset('great_pyrenees.n.01'),
+ Synset('griffon.n.02'), Synset('hunting_dog.n.01'), Synset('lapdog.n.01'),
+ Synset('leonberg.n.01'), Synset('mexican_hairless.n.01'),
+ Synset('newfoundland.n.01'), Synset('pooch.n.01'), Synset('poodle.n.01'), ...]
+>>> list(dog.closure(hyper))
+[Synset('canine.n.02'), Synset('domestic_animal.n.01'), Synset('carnivore.n.01'), Synset('animal.n.01'),
+Synset('placental.n.01'), Synset('organism.n.01'), Synset('mammal.n.01'), Synset('living_thing.n.01'),
+Synset('vertebrate.n.01'), Synset('whole.n.02'), Synset('chordate.n.01'), Synset('object.n.01'),
+Synset('physical_entity.n.01'), Synset('entity.n.01')]
+'''
+

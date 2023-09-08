@@ -227,7 +227,7 @@ lexemes = table("lexemes",Lexeme)
 lexemes_fun = index(lexemes,"fun",lambda lexeme: lexeme.lex_fun,str)
 lexemes.addIndex(lexemes_fun)
 
-lexemes_synset = maybeIndex(lexemes,"synset",lambda lexeme: lexeme.synset,int)
+lexemes_synset = maybeIndex(lexemes,"synset",lambda lexeme: lexeme.synset_id,int)
 lexemes.addIndex(lexemes_synset)
 
 lexemes_domain = listIndex(lexemes,"domain",lambda lexeme: lexeme.domain_ids,int)

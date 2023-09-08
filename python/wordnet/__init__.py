@@ -39,7 +39,7 @@ def download(langs=None, path=None):
     if not path:
         path = os.path.dirname(__file__) + "/../"
 
-    with contextlib.closing(urllib.request.urlopen("https://www.grammaticalframework.org/robust/Parse.ngf?command=download"+langs)) as fp:
+    with contextlib.closing(urllib.request.urlopen("https://cloud.grammaticalframework.org/robust/Parse.ngf?command=download"+langs)) as fp:
         size = 0
         def readinto(buf):
             nonlocal size
@@ -55,7 +55,7 @@ def download(langs=None, path=None):
     def reporthook(blocks, bs, size):
         print("\rDownload the semantics database "+str((blocks*bs)//(1024*1024))+"MB",end=" ...")
         sys.stdout.flush()
-    urllib.request.urlretrieve("https://www.grammaticalframework.org/robust/semantics.db", path+"semantics.db", reporthook)
+    urllib.request.urlretrieve("https://cloud.grammaticalframework.org/robust/robust/semantics.db", path+"semantics.db", reporthook)
     os.chmod(path+"semantics.db", 0o666)
     print("\b\b\bdone")
 

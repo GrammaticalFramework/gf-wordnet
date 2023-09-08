@@ -284,12 +284,13 @@ def get_lexeme(fun : str) -> Lexeme:
             return lexeme
     return None
 
-def get_wikilexeme(qid : str) -> Lexeme:
+def get_wikilexemes(qid : str) -> Lexeme:
+    result = []
     with db.run("r") as t:
         for lexeme_id, lexeme in t.indexCursor(lexemes_qid, qid):
             lexeme.id = lexeme_id
-            return lexeme
-    return None
+            result.append(lexeme)
+    return result
 
 def get_lexemes(lang : str, word : str, cat=None) -> list[Lexeme]:
     result = []

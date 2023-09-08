@@ -29,7 +29,7 @@ import PGF2
 import OpenSSL
 
 main = do
-  db <- openDB (DOC_PATH++"/robust/semantics.db")
+  db <- openDB (DOC_PATH++"/semantics.db")
   withOpenSSL (simpleFastCGI (fcgiMain db))
 
 

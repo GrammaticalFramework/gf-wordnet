@@ -218,41 +218,42 @@ For more compact code, we recommend:
 
 ### Words
 
-Look up a word using synsets(); this function has an optional pos 
+Look up a word using synsets(); this function has an optional cat
 argument which lets you constrain the category of the word:
 ```Python
 >>> synsets('eng','dog')
 [Synset('02086723-n'), Synset('10133978-n'), Synset('10042764-n'),
 Synset('09905672-n'), Synset('07692347-n'), Synset('03907626-n'),
 Synset('02712903-n'), Synset('02005890-v')]
->>> synsets('dog', cat="V2")
+>>> synsets('dog', cat='V2')
 [Synset('02005890-v')]
 ```
 You can use any category defined in the RGL. A synset is most often
 identified with its offset in Princeton WordNet 3.1. For words that
-are there we use the Qid in WikiData.
+are not there we use the Qid in WikiData if possible.
 
 TODO: Expand on Morphology
+TODO: there are more examples per lemma
 
 ```Python
->>> wn.synset('dog.n.01')
-Synset('dog.n.01')
->>> print(wn.synset('dog.n.01').definition())
+>>> synset('02086723-n')
+Synset('02086723-n')
+>>> print(synset('02086723-n').definition())
 a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistoric times; occurs in many breeds
->>> len(wn.synset('dog.n.01').examples())
-1
->>> print(wn.synset('dog.n.01').examples()[0])
-the dog barked all night
->>> wn.synset('dog.n.01').lemmas()
-[Lemma('dog.n.01.dog'), Lemma('dog.n.01.domestic_dog'), Lemma('dog.n.01.Canis_familiaris')]
->>> [str(lemma.name()) for lemma in wn.synset('dog.n.01').lemmas()]
-['dog', 'domestic_dog', 'Canis_familiaris']
->>> wn.lemma('dog.n.01.dog').synset()
-Synset('dog.n.01')
+>>> len(synset('02086723-n').examples())
+21
+>>> print(synset('02086723-n').examples()[0])
+PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA absurd_2_A) (UseN excuse_1_N))) (SubjS that_Subj (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dog_1_N)) (ComplSlash (SlashV2a eat_3_V2) (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN homework_N)))))))) NoVoc
+>>> synset('02086723-n').lexemes()
+[Lexeme('dog_1_N')]
+>>> [lexeme.linearization("eng") for lexeme in wn.synset('02086723-n').lexemes()]
+['dog']
+>>> lexeme('dog_1_N').synset()
+Synset('02086723-n')
 ```
 
 ```Python
->>> wn.langs()
+>>> langs()
 ['eng']
 >>> wn.synsets(b'\xe7\x8a\xac'.decode('utf-8'), lang='jpn')
 [Synset('dog.n.01'), Synset('spy.n.01')]

@@ -262,6 +262,20 @@ def get_synsets(lang : str, word : str, cat=None) -> list[Synset]:
                         result.append(synset)
     return result
 
+def get_lexeme(fun : str) -> Lexeme:
+    with db.run("r") as t:
+        for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):
+            lexeme.id = lexeme_id
+            return lexeme
+    return None
+
+def get_wikilexeme(qid : str) -> Lexeme:
+    with db.run("r") as t:
+        for lexeme_id, lexeme in t.indexCursor(lexemes_qid, qid):
+            lexeme.id = lexeme_id
+            return lexeme
+    return None
+
 def get_lexemes(lang : str, word : str, cat=None) -> list[Lexeme]:
     result = []
     lexeme_ids = set()

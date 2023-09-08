@@ -17192,7 +17192,6 @@ paladin_N	Q470845;Paladin;
 champion_1_N	Q852061;Champion;
 prime_ministerFem_N	Q14212;Prime_minister;commons/2/27/CommonwealthPrimeMinisters1944.jpg
 prime_ministerMasc_N	Q14212;Prime_minister;commons/2/27/CommonwealthPrimeMinisters1944.jpg
-prime_minister_1_N	Q14212;Prime_minister;commons/2/27/CommonwealthPrimeMinisters1944.jpg
 chancellor_1_N	Q531471;Chancellor_of_the_Exchequer;
 changeling_2_N	Q1127246;Changeling;commons/0/0f/Füssli_-_Der_Wechselbalg_-_1780.jpeg
 chaplain_N	Q208762;Chaplain;commons/e/ed/Military_chaplains_anointing_of_the_Sick.png

@@ -17,7 +17,7 @@ import Data.List(sortOn,sortBy,delete,intercalate,nub)
 import Data.Char
 
 main = do
-  db <- openDB (SERVER_PATH++"/semantics.db")
+  db <- openDB (DOC_PATH++"/robust/semantics.db")
   bigram_total <- runDaison db ReadOnlyMode $ do
     query sumRows
           [c*c

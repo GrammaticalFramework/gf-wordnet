@@ -246,25 +246,30 @@ examples = table("examples",tuple[pgf.Expr,list[FrameInstance]])
 examples_fun = listIndex(examples,"fun",lambda e: set(exprFunctions(e[0])),str)
 examples.addIndex(lexemes_fun)
 
-def get_synsets(lang : str, word : str) -> list[Synset]:
+def get_synsets(lang : str, word : str, cat=None) -> list[Synset]:
     result = []
-    lexeme_ids = set()
+    synset_ids = set()
     with db.run("r") as t:
         for fun,_,_ in get_concr(lang).lookupMorpho(word):
+            if cat != None and cat != grammar.functionType(fun).cat:
+                continue
+
             for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):
-                if lexeme_id not in lexeme_ids:
-                    lexeme_ids.add(lexeme_id)
-                    if lexeme.synset_id:
-                        for synset in t.cursor(synsets, lexeme.synset_id):
-                            synset.id = lexeme.synset_id
-                            result.append(synset)
+                if lexeme.synset_id and lexeme.synset_id not in synset_ids:
+                    synset_ids.add(lexeme.synset_id)
+                    for synset in t.cursor(synsets, lexeme.synset_id):
+                        synset.id = lexeme.synset_id
+                        result.append(synset)
     return result
 
-def get_lexemes(lang : str, word : str) -> list[Lexeme]:
+def get_lexemes(lang : str, word : str, cat=None) -> list[Lexeme]:
     result = []
     lexeme_ids = set()
     with db.run("r") as t:
         for fun,_,_ in get_concr(lang).lookupMorpho(word):
+            if cat != None and cat != grammar.functionType(fun).cat:
+                continue
+
             for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):
                 if lexeme_id not in lexeme_ids:
                     lexeme_ids.add(lexeme_id)

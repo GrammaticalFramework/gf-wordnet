@@ -221,6 +221,21 @@ class Lexeme:
                 result.append(example)
         return result
 
+    def __pointers__(self, tp) -> list:
+        result = []
+        with db.run("r") as t:
+            for ptr,id in self.lex_pointers:
+                if isinstance(ptr, tp):
+                    for lexeme in t.cursor(lexemes, id):
+                        result.append(lexeme)
+        return result
+
+    def derived(self) -> list:
+        return self.__pointers__(Derived)
+
+    def antonyms(self) -> list:
+        return self.__pointers__(Antonym)
+
 
 lexemes = table("lexemes",Lexeme)
 

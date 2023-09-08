@@ -55,7 +55,7 @@ def download(langs=None, path=None):
     def reporthook(blocks, bs, size):
         print("\rDownload the semantics database "+str((blocks*bs)//(1024*1024))+"MB",end=" ...")
         sys.stdout.flush()
-    urllib.request.urlretrieve("https://cloud.grammaticalframework.org/robust/robust/semantics.db", path+"semantics.db", reporthook)
+    urllib.request.urlretrieve("https://cloud.grammaticalframework.org/robust/semantics.db", path+"semantics.db", reporthook)
     os.chmod(path+"semantics.db", 0o666)
     print("\b\b\bdone")
 

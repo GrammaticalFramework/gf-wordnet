@@ -10,6 +10,9 @@ def linearize(lang : str,e : pgf.Expr) -> str:
     """
     return grammar.languages["Parse"+lang.title()].linearize(e)
 
+def langs():
+    return [cnc_name[5:].lower() for cnc_name in grammar.languages if cnc_name != "ParseAPI"]
+
 def __types__(args):
     types = []
     for arg in args:

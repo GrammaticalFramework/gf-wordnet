@@ -230,11 +230,17 @@ class Lexeme:
                         result.append(lexeme)
         return result
 
-    def derived(self) -> list:
-        return self.__pointers__(Derived)
-
     def antonyms(self) -> list:
         return self.__pointers__(Antonym)
+
+    def participle(self) -> list:
+        return self.__pointers__(Participle)
+
+    def alsosee(self) -> list:
+        return self.__pointers__(AlsoSee)
+
+    def derived(self) -> list:
+        return self.__pointers__(Derived)
 
 
 lexemes = table("lexemes",Lexeme)

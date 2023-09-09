@@ -16839,7 +16839,7 @@ scotsman_N	Q181634;Scottish_people;commons/d/d1/Massed_bands.jpg
 spaniard_N	Q160894;Spaniards;
 sinhalese_1_N	Q932244;Sinhalese_people;
 swazi_1_N	Q939691;Swazi_people;commons/c/ce/Men_prepare_to_enter_royal_kraal.jpg
-swiss_N	Q39;Switzerland;commons/4/4a/LocationSwitzerland.svg	Q39;Switzerland;commons/6/61/Europe-Switzerland.svg	Q39;Switzerland;commons/9/95/Coat_of_arms_of_Switzerland.svg	Q39;Switzerland;commons/b/ba/Switzerland_on_the_globe_(Europe_centered).svg	Q39;Switzerland;commons/f/f3/Flag_of_Switzerland.svg
+swiss_N	Q124216;Swiss_people;commons/e/e8/People_from_Switzerland.png
 khmer_2_N	Q201028;Khmer_people;
 tahitian_1_N	Q1282763;Tahitians;
 turk_N	Q84072;Turkish_people;

@@ -177,6 +177,10 @@ class Synset:
     def part_holonym(self) -> list:
         return self.__pointers2__(Meronym,Part)
 
+    def store(self):
+        with db.run("w") as t:
+            self.id = t.store(synsets, self.id, self)
+
 synsets = table("synsets",Synset)
 
 synsets_offset = index(synsets,"offset",lambda synset: synset.synsetOffset,str)
@@ -244,6 +248,10 @@ class Lexeme:
 
     def derived(self) -> list:
         return self.__pointers__(Derived)
+
+    def store(self):
+        with db.run("w") as t:
+            self.id = t.store(lexemes, self.id, self)
 
 
 lexemes = table("lexemes",Lexeme)

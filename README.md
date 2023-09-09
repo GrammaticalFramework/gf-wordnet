@@ -225,7 +225,7 @@ argument which lets you constrain the category of the word:
 [Synset('02086723-n'), Synset('10133978-n'), Synset('10042764-n'),
 Synset('09905672-n'), Synset('07692347-n'), Synset('03907626-n'),
 Synset('02712903-n'), Synset('02005890-v')]
->>> synsets('dog', cat='V2')
+>>> synsets('eng','dog', cat='V2')
 [Synset('02005890-v')]
 ```
 You can use any category defined in the RGL. A synset is most often
@@ -254,23 +254,15 @@ Synset('02086723-n')
 
 ```Python
 >>> langs()
-['eng']
->>> wn.synsets(b'\xe7\x8a\xac'.decode('utf-8'), lang='jpn')
-[Synset('dog.n.01'), Synset('spy.n.01')]
->>> wn.synset('spy.n.01').lemma_names('jpn')
-['いぬ', 'まわし者', 'スパイ', '回し者', '回者', '密偵',
-'工作員', '廻し者', '廻者', '探', '探り', '犬', '秘密捜査員',
-'諜報員', '諜者', '間者', '間諜', '隠密']
->>> sorted(wn.langs())
-['als', 'arb', 'bul', 'cat', 'cmn', 'dan', 'ell', 'eng', 'eus',
-'fin', 'fra', 'glg', 'heb', 'hrv', 'ind', 'isl', 'ita', 'ita_iwn',
-'jpn', 'lit', 'nld', 'nno', 'nob', 'pol', 'por', 'ron', 'slk',
-'slv', 'spa', 'swe', 'tha', 'zsm']
->>> wn.synset('dog.n.01').lemma_names('ita')
-['Canis_familiaris', 'cane']
->>> wn.lemmas('cane', lang='ita')
-[Lemma('dog.n.01.cane'), Lemma('cramp.n.02.cane'), Lemma('hammer.n.01.cane'), Lemma('bad_person.n.01.cane'),
-Lemma('incompetent.n.01.cane')]
+['afr', 'bul', 'cat', 'chi', 'dut', 'eng', 'est', 'fin', 'fre', 'ger', 'ita', 'kor', 'mlt', 'pol', 'por', 'ron', 'rus', 'slv', 'som', 'spa', 'swa', 'swe', 'tha', 'tur', 'zul']
+>>> synsets('swe','hund')
+[Synset('02086723-n'), Synset('10042764-n'), Synset('09905672-n'), Synset('02087384-n'), Synset('Q31385072'), Synset('Q37575615')]
+>>> Synset('02086723-n').linearizations('swe')
+['hund']
+>>> Synset('02086723-n').linearizations('bul')
+['куче']
+>>> lexemes('bul','куче')
+[Lexeme('canine_2_N'), Lexeme('dog_1_N'), Lexeme('dog_3_N'), Lexeme('dog_4_N'), Lexeme('pooch_N'), Lexeme('tike_1_N'), Lexeme('tyke_2_N'), Lexeme('cuche_7_SN'), Lexeme('kuče_3_LN'), Lexeme('küche_3_LN'), Lexeme('küche_4_SN')]
 >>> sorted(wn.synset('dog.n.01').lemmas('dan'))
 [Lemma('dog.n.01.hund'), Lemma('dog.n.01.k\xf8ter'),
 Lemma('dog.n.01.vovhund'), Lemma('dog.n.01.vovse')]

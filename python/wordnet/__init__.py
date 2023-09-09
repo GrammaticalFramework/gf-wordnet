@@ -72,7 +72,7 @@ except ModuleNotFoundError as e:
     __all__ = ["download"]
 else:
     from wordnet._api import *
-    from wordnet._semantics import Synset, Lexeme, get_lexeme as lexeme, get_wikilexemes as wikilexemes, get_lexemes as lexemes, get_synsets as synsets
+    from wordnet._semantics import Synset, Lexeme, get_lexeme as lexeme, get_wikilexemes as wikilexemes, get_lexemes as lexemes, get_synset as synset, get_synsets as synsets
 
     __all__ = ['Lexeme', 'Synset', 'aPl_Det', 'aSg_Det', 'a_Det',
                'a_Quant', 'anteriorAnt', 'comparAP', 'conditionalTense',
@@ -101,8 +101,8 @@ else:
                'pastTense', 'pluralNum', 'positivePol', 'presentTense',
                'progressiveVP', 'questMarkPunct', 'reflAP',
                'reflexiveVP', 'she_NP', 'simultaneousAnt',
-               'singularNum', 'synsets', 'tenfoldSub100', 'that_Det',
-               'that_NP', 'thePl_Det', 'theSg_Det', 'the_Det',
+               'singularNum', 'synset', 'synsets', 'tenfoldSub100',
+               'that_Det', 'that_NP', 'thePl_Det', 'theSg_Det', 'the_Det',
                'the_Quant', 'these_Det', 'these_NP', 'they_NP',
                'this_Det', 'this_NP', 'those_Det', 'those_NP',
                'thousandfoldNumeral', 'w', 'we_NP', 'what_IP',

@@ -179,6 +179,9 @@ class Synset:
 
 synsets = table("synsets",Synset)
 
+synsets_offset = index(synsets,"offset",lambda synset: synset.synsetOffset,str)
+synsets.addIndex(synsets_offset)
+
 class Status(Enum):
     Guessed = 1
     Unchecked = 2
@@ -267,6 +270,19 @@ examples = table("examples",tuple[pgf.Expr,list[FrameInstance]])
 examples_fun = listIndex(examples,"fun",lambda e: set(exprFunctions(e[0])),str)
 examples.addIndex(lexemes_fun)
 
+def get_synset(id : str) -> Optional[Synset]:
+    with db.run("r") as t:
+        if id[:1] == "Q":
+            for lexeme_id, lexeme in t.indexCursor(lexemes_qid, id):
+                for synset in t.cursor(synsets, lexeme.synset_id):
+                    synset.id = lexeme.synset_id
+                    return synset
+        else:
+            for synset_id, synset in t.indexCursor(synsets_offset, id):
+                synset.id = synset_id
+                return synset
+    return None
+
 def get_synsets(lang : str, word : str, cat=None) -> list[Synset]:
     result = []
     synset_ids = set()
@@ -283,7 +299,7 @@ def get_synsets(lang : str, word : str, cat=None) -> list[Synset]:
                         result.append(synset)
     return result
 
-def get_lexeme(fun : str) -> Lexeme:
+def get_lexeme(fun : str) -> Optional[Lexeme]:
     with db.run("r") as t:
         for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):
             lexeme.id = lexeme_id

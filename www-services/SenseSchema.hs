@@ -113,6 +113,10 @@ type FrameInstance = (Key Frame,[(String,FId)])
 
 synsets :: Table Synset
 synsets = table "synsets"
+             `withIndex` synsets_offset
+
+synsets_offset :: Index Synset SynsetOffset
+synsets_offset = index synsets "offset" synsetOffset
 
 domains :: Table Domain
 domains = table "domains"

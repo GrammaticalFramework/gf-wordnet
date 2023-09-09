@@ -72,14 +72,14 @@ except ModuleNotFoundError as e:
     __all__ = ["download"]
 else:
     from wordnet._api import *
-    from wordnet._semantics import Synset, Lexeme, get_lexeme as lexeme, get_wikilexemes as wikilexemes, get_lexemes as lexemes, get_synset as synset, get_synsets as synsets
+    from wordnet._semantics import Synset, Lexeme, get_lexeme as lexeme, get_wikilexemes as wikilexemes, get_lexemes as lexemes, get_synset as synset, get_synsets as synsets, synonyms
 
     __all__ = ['Lexeme', 'Synset', 'aPl_Det', 'aSg_Det', 'a_Det',
                'a_Quant', 'anteriorAnt', 'comparAP', 'conditionalTense',
                'download', 'exclMarkPunct', 'fullStopPunct',
                'futureTense', 'genericCl', 'grammar', 'he_NP', 'i_NP',
                'it_NP', 'lets_Utt', 'lexeme', 'wikilexemes', 'lexemes',
-               'linearize', 'mkAP',
+               'synonyms', 'linearize', 'mkAP',
                'mkAdN', 'mkAdv', 'mkCN', 'mkCard', 'mkCl', 'mkClSlash',
                'mkComp', 'mkDecimal', 'mkDet', 'mkDigits', 'mkIAdv',
                'mkIComp', 'mkIDet', 'mkIP', 'mkImp', 'mkList', 'mkNP',

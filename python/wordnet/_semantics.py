@@ -328,3 +328,24 @@ def get_lexemes(lang : str, word : str, cat=None) -> list[Lexeme]:
                     lexeme.id = lexeme_id
                     result.append(lexeme)
     return result
+
+def synonyms(lang : str, word : str, cat=None) -> list[list[str]]:
+    result = []
+    synset_ids = set()
+    concr = get_concr(lang)
+    with db.run("r") as t:
+        for fun,_,_ in concr.lookupMorpho(word):
+            if cat != None and cat != grammar.functionType(fun).cat:
+                continue
+
+            for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):
+                if lexeme.synset_id and lexeme.synset_id not in synset_ids:
+                    synonyms = set()
+                    for synonym_id, synonym in t.indexCursor(lexemes_synset, lexeme.synset_id):
+                        if synonym.lex_fun != fun and concr.hasLinearization(synonym.lex_fun):
+                            lin = concr.linearize(pgf.ExprFun(synonym.lex_fun))
+                            synonyms.add(synonym.lex_fun)
+                    if synonyms:
+                        result.append(synonyms)
+                    synset_ids.add(lexeme.synset_id)
+    return result

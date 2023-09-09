@@ -276,13 +276,13 @@ Lemma('dog.n.01.c\xe3o')
 >>> len(list(wordnet.all_lemma_names(pos='n', lang='jpn')))
 66031
 ```
-The synonyms of a word are returned as a nested list of synonyms of the different senses of the input word in the given language, since these different senses are not mutual synonyms:
 
+The synonyms of a word are returned as a list of sets for the different senses of the input word in the given language, since these different senses are not mutual synonyms:
 ```Python
->>> wn.synonyms('car')
-[['auto', 'automobile', 'machine', 'motorcar'], ['railcar', 'railroad_car', 'railway_car'], ['gondola'], ['elevator_car'], ['cable_car']]
->>> wn.synonyms('coche', lang='spa')
-[['auto', 'automóvil', 'carro', 'máquina', 'turismo', 'vehículo'], ['automotor', 'vagón'], ['vagón', 'vagón_de_pasajeros']]
+>>> synonyms('eng','car')
+[{'machine', 'auto', 'automobile', 'motorcar'}, {'railcar'}, {'gondola'}, {'cable-car'}]
+>>> synonyms('spa', 'coche')
+[{'vagón'}, {'vagón'}, {'coche'}, {'auto', 'carro', 'máquina', 'automóvil'}, {'coche'}, {'carmelita', 'vagón'}]
 ```
 
 ### Synsets

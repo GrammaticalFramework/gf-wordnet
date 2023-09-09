@@ -1,5 +1,20 @@
 # A WordNet in GF
 
+1. [The Lexicon](#the-lexicon)
+2. [WordNet Domains](#wordnet-domains)
+3. [Treebank](#treebank)
+4. [VerbNet](#verbnet)
+5. [Wikipedia Images](#wikipedia-images)
+6. [Browsing and Editing](#browsing-and-editing)
+7. [The Python Interface](#the-python-interface)
+     - [Words](#words)
+     - [Synsets](#synsets)
+     - [Lexemes](#lexemes)
+     - [Verb Frames](#verb-frames)
+     - [Verb Frames](#verb-frames)
+     - [Similarity](#similarity)
+     - [Synset Closures](#synset-closures)
+
 This is an attempt to port the [Princeton WordNet](https://wordnet.princeton.edu/) to GF. In parallel
 with the pure English WordNet we also build a version for Swedish
 and Bulgarian. WordNets for all other languages are bootstrapped
@@ -326,7 +341,7 @@ Likewise, instantiate a synset from a known sense key:
 Synset('drive.n.06')
 ```
 
-### Lemmas
+### Lexemes
 
 ```Python
 >>> eat = lexeme('eat_3_V2')
@@ -473,44 +488,6 @@ the longer path is used for the purposes of the calculation.
 None
 >>> print(wn.wup_similarity(hit, slap, simulate_root=False))
 None
-```
-
-### Access to all Synsets
-Iterate over all the noun synsets:
-
-```Python
->>> for synset in list(wn.all_synsets('n'))[:10]:
-...     print(synset)
-...
-Synset('entity.n.01')
-Synset('physical_entity.n.01')
-Synset('abstraction.n.06')
-Synset('thing.n.12')
-Synset('object.n.01')
-Synset('whole.n.02')
-Synset('congener.n.03')
-Synset('living_thing.n.01')
-Synset('organism.n.01')
-Synset('benthos.n.02')
-```
-Get all synsets for this word, possibly restricted by POS:
-```Python
->>> wn.synsets('dog')
-[Synset('dog.n.01'), Synset('frump.n.01'), Synset('dog.n.03'), Synset('cad.n.01'), ...]
->>> wn.synsets('dog', pos='v')
-[Synset('chase.v.01')]
-```
-Walk through the noun synsets looking at their hypernyms:
-```Python
->>> from itertools import islice
->>> for synset in islice(wn.all_synsets('n'), 5):
-...     print(synset, synset.hypernyms())
-...
-Synset('entity.n.01') []
-Synset('physical_entity.n.01') [Synset('entity.n.01')]
-Synset('abstraction.n.06') [Synset('entity.n.01')]
-Synset('thing.n.12') [Synset('physical_entity.n.01')]
-Synset('object.n.01') [Synset('physical_entity.n.01')]
 ```
 
 ### Synset Closures

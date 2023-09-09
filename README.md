@@ -1,4 +1,4 @@
-# A WordNet in GF
+# GF WordNet
 
 1. [The Lexicon](#the-lexicon)
 2. [WordNet Domains](#wordnet-domains)
@@ -15,19 +15,19 @@
      - [Similarity](#similarity)
      - [Synset Closures](#synset-closures)
 
-This is an attempt to port the [Princeton WordNet](https://wordnet.princeton.edu/) to GF. In parallel
-with the pure English WordNet we also build a version for Swedish
-and Bulgarian. WordNets for all other languages are bootstrapped
-from existing resources and aligned by using statistical methods.
-For details check:
+The GF WordNet is a lexicon based on the [Princeton WordNet](https://wordnet.princeton.edu/) and [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
+but adapted to integrate with the [GF Resource Grammars Library](https://github.com/GrammaticalFramework/gf-rgl). Following the GF model, the lexicon consists
+of an abstract syntax with one abstract identifier for each word sense. The concrete syntaxes define the corresponding linearizations in each language.
+A synset, then, consists of a set of abstract identifiers instead words.
+
+The initial development was mostly focused on English, Swedish and Bulgarian. WordNets for all other languages were bootstrapped
+from existing resources and aligned by using statistical methods. They are only partly checked by either matching with Wikipedia or by human feedback.
+Many of the translations may be correct but inconsistancies can be expected as well. For details check:
 
 * [Krasimir Angelov. A Parallel WordNet for English, Swedish and Bulgarian. LREC 2020](http://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.368.pdf)
 * [Krasimir Angelov, Gleb Lobanov. Predicting Translation Equivalents in Linked WordNets. COLING 2016.](https://www.aclweb.org/anthology/W16-4504.pdf)
 
-Unlike the original WordNet we focus on grammatical,
-morphological as well as semantic features. In addition, 
-the WordNets for different languages are aligned on the lexeme level,
-rather than on the synset level. All this is necessary to make the lexicon
+Unlike the original WordNet we focus on grammatical, morphological as well as semantic features. All this is just necessary to make the lexicon
 compatible with the Resource Grammars Library (RGL).
 
 ## The Lexicon
@@ -304,87 +304,67 @@ The synonyms of a word are returned as a list of sets for the different senses o
 Synset: a set of synonyms that share a common meaning.
 
 ```Python
->>> dog = wn.synset('dog.n.01')
+>>> dog = synset('02086723-n')
 >>> dog.hypernyms()
-[Synset('canine.n.02'), Synset('domestic_animal.n.01')]
+[Synset('02085998-n'), Synset('01320032-n')]
 >>> dog.hyponyms()
-[Synset('basenji.n.01'), Synset('corgi.n.01'), Synset('cur.n.01'), Synset('dalmatian.n.02'), ...]
+[Synset('01325095-n'), Synset('02087384-n'), Synset('02087513-n'), Synset('02087924-n'), ...]
+
 >>> dog.member_holonyms()
-[Synset('canis.n.01'), Synset('pack.n.06')]
+[Synset('02086515-n'), Synset('08011383-n')]
 >>> dog.root_hypernyms()
 [Synset('entity.n.01')]
 >>> wn.synset('dog.n.01').lowest_common_hypernyms(wn.synset('cat.n.01'))
 [Synset('carnivore.n.01')]
 ```
-Each synset contains one or more lemmas, which represent a specific sense of a specific word.
+Each synset contains one or more abstract identifiers, which represent a specific sense of a specific word.
 
 Note that some relations are defined by WordNet only over Lemmas:
-
 ```Python
->>> good = wn.synset('good.a.01')
+>>> good = synset('01126910-a')
 >>> good.antonyms()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-AttributeError: 'Synset' object has no attribute 'antonyms'
+AttributeError: 'Synset' object has no attribute 'antonyms'. Did you mean: 'hyponyms'?
 >>> good.lemmas()[0].antonyms()
-[Lexeme('bad.a.01.bad')]
+[Lexeme('bad_1_A')]
 ```
-The relations that are currently defined in this way are antonyms, derivationally_related_forms and pertainyms.
-
-If you know the byte offset used to identify a synset in the original Princeton WordNet data file, you can use that to instantiate the synset in NLTK:
-
-```Python
->>> wn.synset_from_pos_and_offset('n', 4543158)
-Synset('wagon.n.01')
-Likewise, instantiate a synset from a known sense key:
->>> wn.synset_from_sense_key("driving%1:04:03::")
-Synset('drive.n.06')
-```
+The relations that are currently defined in this way are antonyms, participle, alsosee, and derived.
 
 ### Lexemes
 
 ```Python
->>> eat = lexeme('eat_3_V2')
->>> eat
-Lemma('feed.v.06.eat')
->>> print(eat.key())
-eat%2:34:02::
->>> eat.count()
-4
->>> wn.lemma_from_key(eat.key())
-Lemma('feed.v.06.eat')
->>> wn.lemma_from_key(eat.key()).synset()
-Synset('feed.v.06')
->>> wn.lemma_from_key('feebleminded%5:00:00:retarded:00')
-Lemma('backward.s.03.feebleminded')
->>> for lemma in wn.synset('eat.v.03').lemmas():
-...     print(lemma, lemma.count())
+>>> for lexeme in synset('01182162-v').lexemes():
+...     print(lexeme, lexeme.prob())
 ...
-Lemma('feed.v.06.feed') 3
-Lemma('feed.v.06.eat') 4
->>> for lemma in wn.lemmas('eat', 'v'):
-...     print(lemma, lemma.count())
+Lexeme('eat_3_V2') 8.415824890136719
+Lexeme('feed_6_V') 8.981807708740234
+>>> for lexeme in lexemes('eng', 'eat', 'V2'):
+...     print(lexeme, lexeme.prob())
 ...
-Lemma('eat.v.01.eat') 61
-Lemma('eat.v.02.eat') 13
-Lemma('feed.v.06.eat') 4
-Lemma('eat.v.04.eat') 0
-Lemma('consume.v.05.eat') 0
-Lemma('corrode.v.01.eat') 0
->>> wn.lemma('jump.v.11.jump')
-Lemma('jump.v.11.jump')
+Lexeme('eat_1_V2') 7.722677707672119
+Lexeme('eat_3_V2') 8.415824890136719
+Lexeme('eat_4_V2') 9.802119255065918
+Lexeme('eat_5_V2') 9.802119255065918
+Lexeme('eat_6_V2') 9.802119255065918
+Lexeme('eat_away_1_V2') 9.802119255065918
+Lexeme('eat_away_2_V2') 9.802119255065918
+Lexeme('eat_into_V2') 9.802119255065918
+Lexeme('eat_up_1_V2') 9.802119255065918
+Lexeme('eat_up_2_V2') 9.802119255065918
+Lexeme('eat_up_3_V2') 9.802119255065918
+>>> lexeme('jump_11_V2')
+Lexeme('jump_11_V2')
 ```
-Lemmas can also have relations between them:
+Lexemes can also have relations between them:
 ```Python
->>> vocal = wn.lemma('vocal.a.01.vocal')
->>> vocal.derivationally_related_forms()
-[Lemma('vocalize.v.02.vocalize')]
->>> vocal.pertainyms()
-[Lemma('voice.n.02.voice')]
+>>> vocal = lexeme('vocal_1_A')
+>>> vocal.derived()
+[Lexeme('voice_2_N'), Lexeme('vocalize_2_V2')]
 >>> vocal.antonyms()
-[Lemma('instrumental.a.01.instrumental')]
+[Lexeme('instrumental_1_A')]
 ```
-The three relations above exist only on lemmas, not on synsets.
+The relations above exist only on lemmas, not on synsets.
 
 ### Verb Frames
 
@@ -417,10 +397,10 @@ Somebody extend something
 
 ### Similarity
 ```Python
->>> dog = wn.synset('dog.n.01')
->>> cat = wn.synset('cat.n.01')
->>> hit = wn.synset('hit.v.01')
->>> slap = wn.synset('slap.v.01')
+>>> dog = synset('02086723-n')
+>>> cat = synset('02124272-n')
+>>> hit = synset('01407698-v')
+>>> slap = synset('01419525-v')
 ```
 'synset1.path_similarity(synset2)': Return a score denoting how similar
 two word senses are, based on the shortest path that connects the senses

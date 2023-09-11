@@ -428,9 +428,6 @@ Some lexemes are linked to a Wikidata Qid and Wikipedia pages:
 >>> sweden = lexeme('sweden_LN')
 >>> sweden.qid()
 'Q34'
->>> sweden = lexeme('sweden_LN')
->>> sweden.qid()
-'Q34'
 >>> sweden.links()
 [('Q34', 'Sweden', 'commons/0/06/EU-Sweden.svg'), ('Q34', 'Sweden', 'commons/2/28/Sweden_on_the_globe_(Europe_centered).svg'), ('Q34', 'Sweden', 'commons/3/30/Sweden_(orthographic_projection).svg'), ('Q34', 'Sweden', 'commons/4/4c/Flag_of_Sweden.svg'), ('Q34', 'Sweden', 'commons/7/7a/LocationSweden.svg'), ('Q34', 'Sweden', 'commons/a/a1/Shield_of_arms_of_Sweden.svg'), ('Q34', 'Sweden', 'commons/e/e5/Great_coat_of_arms_of_Sweden.svg')]
 ```

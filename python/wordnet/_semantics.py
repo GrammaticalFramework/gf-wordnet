@@ -159,24 +159,39 @@ class Synset:
     def instance_hypernyms(self) -> list:
         return self.__pointers__(InstanceHypernym)
 
-    def member_holonym(self) -> list:
-        return self.__pointers2__(Holonym,Member)
+    def member_holonyms(self) -> list:
+        return self.__pointers2__(Holonym,HolonymyType.Member)
 
-    def substance_holonym(self) -> list:
-        return self.__pointers2__(Holonym,Substance)
+    def substance_holonyms(self) -> list:
+        return self.__pointers2__(Holonym,HolonymyType.Substance)
 
-    def part_meronym(self) -> list:
-        return self.__pointers2__(Holonym,Part)
+    def part_holonyms(self) -> list:
+        return self.__pointers2__(Holonym,HolonymyType.Part)
 
-    def member_meronym(self) -> list:
-        return self.__pointers2__(Meronym,Member)
+    def member_meronyms(self) -> list:
+        return self.__pointers2__(Meronym,HolonymyType.Member)
 
-    def substance_holonym(self) -> list:
-        return self.__pointers2__(Meronym,Substance)
+    def substance_meronyms(self) -> list:
+        return self.__pointers2__(Meronym,HolonymyType.Substance)
 
-    def part_holonym(self) -> list:
-        return self.__pointers2__(Meronym,Part)
+    def part_meronyms(self) -> list:
+        return self.__pointers2__(Holonym,HolonymyType.Part)
 
+    def lcs(self,synset1,synset2):
+        with db.run("r") as t:
+            levels = {}
+            def collect(synset,level):
+                nonlocal levels, t
+                levels[synset.id] = (synset,level)
+                for ptr,id in synset.pointers:
+                    if isinstance(ptr, Hypernym) and id not in levels:
+                        for synset in t.cursor(synsets, id):
+                            synset.id = id
+                            collect(synset,level+1)
+            collect(synset1,0)
+            collect(synset2,0)
+
+        
     def store(self):
         with db.run("w") as t:
             self.id = t.store(synsets, self.id, self)
@@ -213,6 +228,12 @@ class Lexeme:
         else:
             return None
 
+    def function(self):
+        return self.lex_fun;
+
+    def expression(self):
+        return pgf.ExprFun(self.lex_fun);
+
     def synset(self) -> Optional[Synset]:
         if not self.synset_id:
             return None
@@ -248,6 +269,9 @@ class Lexeme:
 
     def derived(self) -> list:
         return self.__pointers__(Derived)
+
+    def prob(self) -> float:
+        return grammar.functionProbability(self.lex_fun)
 
     def store(self):
         with db.run("w") as t:

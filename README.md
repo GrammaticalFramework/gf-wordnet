@@ -16,7 +16,7 @@
      - [Synset Closures](#synset-closures)
 
 The GF WordNet is a lexicon based on the [Princeton WordNet](https://wordnet.princeton.edu/) and [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
-but adapted to integrate with the [GF Resource Grammars Library](https://github.com/GrammaticalFramework/gf-rgl). Following the GF model, the lexicon consists
+but adapted to integrate with the [GF Resource Grammars Library](https://github.com/GrammaticalFramework/gf-rgl) (RGL). Following the GF model, the lexicon consists
 of an abstract syntax with one abstract identifier for each word sense. The concrete syntaxes define the corresponding linearizations in each language.
 A synset, then, consists of a set of abstract identifiers instead words. 
 
@@ -288,8 +288,9 @@ For more compact code, we recommend:
 
 ### Words
 
-Look up a word using synsets(); this function has an optional cat
-argument which lets you constrain the category of the word:
+Look up the senses of a word form by using `synsets()`; this function
+has an optional `cat` argument which lets you constrain the category of
+the word:
 ```Python
 >>> synsets('eng','dog')
 [Synset('02086723-n'), Synset('10133978-n'), Synset('10042764-n'),
@@ -297,14 +298,18 @@ Synset('09905672-n'), Synset('07692347-n'), Synset('03907626-n'),
 Synset('02712903-n'), Synset('02005890-v')]
 >>> synsets('eng','dog', cat='V2')
 [Synset('02005890-v')]
+>>> synsets('eng','dogged')
+[Synset('02005890-v')]
 ```
-You can use any category defined in the RGL. A synset is most often
-identified with its offset in Princeton WordNet 3.1. For words that
-are not there we use the Qid in WikiData if possible.
 
-TODO: Expand on Morphology
-TODO: there are more examples per lemma
+Since in GF WordNet we have inflection tables and not just lemmas,
+the look up works on any inflection form and not only on the lemma.
+On the other hand, some languages (Finnish, Zulu) store in the inflection tables
+stems rather than full forms. In that case the lookup will work on the stems instead.
 
+A synset is most often identified with its offset in Princeton WordNet 3.1,
+other senses are identified by their Qid in WikiData. Some senses have
+both WordNet offset and a Qid:
 ```Python
 >>> synset('02086723-n')
 Synset('02086723-n')
@@ -314,40 +319,40 @@ a member of the genus Canis (probably descended from the common wolf) that has b
 21
 >>> print(synset('02086723-n').examples()[0])
 PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA absurd_2_A) (UseN excuse_1_N))) (SubjS that_Subj (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dog_1_N)) (ComplSlash (SlashV2a eat_3_V2) (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN homework_N)))))))) NoVoc
+>>> linearize('eng',synset('02086723-n').examples()[0])
+the absurd excuse that the dog ate his homework
 >>> synset('02086723-n').lexemes()
 [Lexeme('dog_1_N')]
 >>> [lexeme.linearization("eng") for lexeme in wn.synset('02086723-n').lexemes()]
 ['dog']
 >>> lexeme('dog_1_N').synset()
 Synset('02086723-n')
+>>> synset('Q1075128').lexemes()
+[Lexeme('izvornik_8_LN')]
+>>> synset('Q1075128').definition()
+'village of Bulgaria'
 ```
+Note that Princeton WordNet contains only one example for the sense dog_1_N. In GF WordNet, on the other hand,
+the corpus is parsed and sense disambiguated. Thanks to that we have identified 22 examples, so far.
 
+All functions and methods which work on a specific language take the language code as their first
+argument. You can find the list of languages with the function `lang`. After that you can lookup a word,
+in any of the languages:
 ```Python
 >>> langs()
 ['afr', 'bul', 'cat', 'chi', 'dut', 'eng', 'est', 'fin', 'fre', 'ger', 'ita', 'kor', 'mlt', 'pol', 'por', 'ron', 'rus', 'slv', 'som', 'spa', 'swa', 'swe', 'tha', 'tur', 'zul']
 >>> synsets('swe','hund')
 [Synset('02086723-n'), Synset('10042764-n'), Synset('09905672-n'), Synset('02087384-n'), Synset('Q31385072'), Synset('Q37575615')]
->>> Synset('02086723-n').linearizations('swe')
+>>> synset('02086723-n').linearizations('swe')
 ['hund']
->>> Synset('02086723-n').linearizations('bul')
+>>> synset('02086723-n').linearizations('bul')
 ['куче']
 >>> lexemes('bul','куче')
 [Lexeme('canine_2_N'), Lexeme('dog_1_N'), Lexeme('dog_3_N'), Lexeme('dog_4_N'), Lexeme('pooch_N'), Lexeme('tike_1_N'), Lexeme('tyke_2_N'), Lexeme('cuche_7_SN'), Lexeme('kuče_3_LN'), Lexeme('küche_3_LN'), Lexeme('küche_4_SN')]
->>> sorted(wn.synset('dog.n.01').lemmas('dan'))
-[Lemma('dog.n.01.hund'), Lemma('dog.n.01.k\xf8ter'),
-Lemma('dog.n.01.vovhund'), Lemma('dog.n.01.vovse')]
->>> sorted(wn.synset('dog.n.01').lemmas('por'))
-[Lemma('dog.n.01.cachorra'), Lemma('dog.n.01.cachorro'), Lemma('dog.n.01.cadela'), Lemma('dog.n.01.c\xe3o')]
->>> dog_lemma = wn.lemma(b'dog.n.01.c\xc3\xa3o'.decode('utf-8'), lang='por')
->>> dog_lemma
-Lemma('dog.n.01.c\xe3o')
->>> dog_lemma.lang()
-'por'
->>> len(list(wordnet.all_lemma_names(pos='n', lang='jpn')))
-66031
 ```
 
-The synonyms of a word are returned as a list of sets for the different senses of the input word in the given language, since these different senses are not mutual synonyms:
+You can also search for synonyms which are returned as a list of sets for the different senses of the input word
+in the given language, since these different senses are not mutual synonyms:
 ```Python
 >>> synonyms('eng','car')
 [{'machine', 'auto', 'automobile', 'motorcar'}, {'railcar'}, {'gondola'}, {'cable-car'}]
@@ -367,14 +372,14 @@ Synset: a set of synonyms that share a common meaning.
 
 >>> dog.member_holonyms()
 [Synset('02086515-n'), Synset('08011383-n')]
->>> dog.root_hypernyms()
-[Synset('entity.n.01')]
->>> wn.synset('dog.n.01').lowest_common_hypernyms(wn.synset('cat.n.01'))
-[Synset('carnivore.n.01')]
+>>> cat = synset('02124272-n')
+>>> lowest_common_hypernyms(dog, cat)
+[Synset('02077948-n')]
+>>> synset('02077948-n').definition()
+a terrestrial or aquatic flesh-eating mammal
 ```
-Each synset contains one or more abstract identifiers, which represent a specific sense of a specific word.
 
-Note that some relations are defined by WordNet only over Lemmas:
+Note that some relations are defined in WordNet only over Lemmas:
 ```Python
 >>> good = synset('01126910-a')
 >>> good.antonyms()
@@ -421,134 +426,33 @@ Lexemes can also have relations between them:
 ```
 The relations above exist only on lemmas, not on synsets.
 
-### Verb Frames
-
+Some lexemes are linked to a Wikidata Qid and Wikipedia pages:
 ```Python
->>> wn.synset('think.v.01').frame_ids()
-[5, 9]
->>> for lemma in wn.synset('think.v.01').lemmas():
-...     print(lemma, lemma.frame_ids())
-...     print(" | ".join(lemma.frame_strings()))
-...
-Lemma('think.v.01.think') [5, 9]
-Something think something Adjective/Noun | Somebody think somebody
-Lemma('think.v.01.believe') [5, 9]
-Something believe something Adjective/Noun | Somebody believe somebody
-Lemma('think.v.01.consider') [5, 9]
-Something consider something Adjective/Noun | Somebody consider somebody
-Lemma('think.v.01.conceive') [5, 9]
-Something conceive something Adjective/Noun | Somebody conceive somebody
->>> wn.synset('stretch.v.02').frame_ids()
-[8]
->>> for lemma in wn.synset('stretch.v.02').lemmas():
-...     print(lemma, lemma.frame_ids())
-...     print(" | ".join(lemma.frame_strings()))
-...
-Lemma('stretch.v.02.stretch') [8, 2]
-Somebody stretch something | Somebody stretch
-Lemma('stretch.v.02.extend') [8]
-Somebody extend something
+>>> sweden = lexeme('sweden_LN')
+>>> sweden.qid()
+'Q34'
+>>> sweden = lexeme('sweden_LN')
+>>> sweden.qid()
+'Q34'
+>>> sweden.links()
+[('Q34', 'Sweden', 'commons/0/06/EU-Sweden.svg'), ('Q34', 'Sweden', 'commons/2/28/Sweden_on_the_globe_(Europe_centered).svg'), ('Q34', 'Sweden', 'commons/3/30/Sweden_(orthographic_projection).svg'), ('Q34', 'Sweden', 'commons/4/4c/Flag_of_Sweden.svg'), ('Q34', 'Sweden', 'commons/7/7a/LocationSweden.svg'), ('Q34', 'Sweden', 'commons/a/a1/Shield_of_arms_of_Sweden.svg'), ('Q34', 'Sweden', 'commons/e/e5/Great_coat_of_arms_of_Sweden.svg')]
 ```
 
 ### Syntax
 
-TODO: Using the RGL API
-
-### Similarity
+You can use the lexicon to compose phrases:
 ```Python
->>> dog = synset('02086723-n')
->>> cat = synset('02124272-n')
->>> hit = synset('01407698-v')
->>> slap = synset('01419525-v')
+>>> expr = mkCN(lexeme('red_1_A').expression(), lexeme('apple_1_N').expression())
+>>> linearize('eng', expr)
+'red apple'
+>>> linearize('swe', expr)
+''rött äpple''
 ```
-'synset1.path_similarity(synset2)': Return a score denoting how similar
-two word senses are, based on the shortest path that connects the senses
-in the is-a (hypernym/hypnoym) taxonomy. The score is in 
-the range 0 to 1. By default, there is now a fake root node added
-to verbs so for cases where previously a path could not be found—and
-None was returned—it should return a value. The old behavior
-can be achieved by setting simulate_root to be False. A score of 1
-represents identity i.e. comparing a sense with itself will return 1.
-
+Since looking up a lexeme and composing an expression with it is very common, there is also a simpler way:
 ```Python
->>> dog.path_similarity(cat)
-0.2...
->>> hit.path_similarity(slap)
-0.142...
->>> wn.path_similarity(hit, slap)
-0.142...
->>> print(hit.path_similarity(slap, simulate_root=False))
-None
->>> print(wn.path_similarity(hit, slap, simulate_root=False))
-None
+>>> expr = mkCN(w.red_1_A, w.apple_1_N)
+>>> linearize('eng', expr)
+'red apple'
+>>> linearize('swe', expr)
+''rött äpple''
 ```
-'synset1.lch_similarity(synset2)': Leacock-Chodorow Similarity:
-Return a score denoting how similar two word senses are, based on
-the shortest path that connects the senses (as above) and
-the maximum depth of the taxonomy in which the senses occur.
-The relationship is given as -log(p/2d) where p is
-the shortest path length and d the taxonomy depth.
-
-```Python
->>> dog.lch_similarity(cat)
-2.028...
->>> hit.lch_similarity(slap)
-1.312...
->>> wn.lch_similarity(hit, slap)
-1.312...
->>> print(hit.lch_similarity(slap, simulate_root=False))
-None
->>> print(wn.lch_similarity(hit, slap, simulate_root=False))
-None
-```
-'synset1.wup_similarity(synset2)': Wu-Palmer Similarity:
-Return a score denoting how similar two word senses are, based on
-the depth of the two senses in the taxonomy and that of
-their Least Common Subsumer (most specific ancestor node). Note that at
-this time the scores given do not always agree with those given by
-Pedersen’s Perl implementation of Wordnet Similarity.
-
-The LCS does not necessarily feature in the shortest path connecting
-the two senses, as it is by definition the common ancestor deepest in
-the taxonomy, not closest to the two senses. Typically, however, 
-it will so feature. Where multiple candidates for the LCS exist,
-that whose shortest path to the root node is the longest
-will be selected. Where the LCS has multiple paths to the root,
-the longer path is used for the purposes of the calculation.
-
-```Python
->>> dog.wup_similarity(cat)
-0.857...
->>> hit.wup_similarity(slap)
-0.25
->>> wn.wup_similarity(hit, slap)
-0.25
->>> print(hit.wup_similarity(slap, simulate_root=False))
-None
->>> print(wn.wup_similarity(hit, slap, simulate_root=False))
-None
-```
-
-### Synset Closures
-Compute transitive closures of synsets
-```Python
->>> dog = wn.synset('dog.n.01')
->>> hypo = lambda s: s.hyponyms()
->>> hyper = lambda s: s.hypernyms()
->>> list(dog.closure(hypo, depth=1)) == dog.hyponyms()
-True
->>> list(dog.closure(hyper, depth=1)) == dog.hypernyms()
-True
->>> list(dog.closure(hypo))
-[Synset('basenji.n.01'), Synset('corgi.n.01'), Synset('cur.n.01'),
- Synset('dalmatian.n.02'), Synset('great_pyrenees.n.01'),
- Synset('griffon.n.02'), Synset('hunting_dog.n.01'), Synset('lapdog.n.01'),
- Synset('leonberg.n.01'), Synset('mexican_hairless.n.01'),
- Synset('newfoundland.n.01'), Synset('pooch.n.01'), Synset('poodle.n.01'), ...]
->>> list(dog.closure(hyper))
-[Synset('canine.n.02'), Synset('domestic_animal.n.01'), Synset('carnivore.n.01'), Synset('animal.n.01'),
-Synset('placental.n.01'), Synset('organism.n.01'), Synset('mammal.n.01'), Synset('living_thing.n.01'),
-Synset('vertebrate.n.01'), Synset('whole.n.02'), Synset('chordate.n.01'), Synset('object.n.01'),
-Synset('physical_entity.n.01'), Synset('entity.n.01')]
-```
-

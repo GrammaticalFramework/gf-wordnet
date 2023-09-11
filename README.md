@@ -18,7 +18,16 @@
 The GF WordNet is a lexicon based on the [Princeton WordNet](https://wordnet.princeton.edu/) and [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
 but adapted to integrate with the [GF Resource Grammars Library](https://github.com/GrammaticalFramework/gf-rgl). Following the GF model, the lexicon consists
 of an abstract syntax with one abstract identifier for each word sense. The concrete syntaxes define the corresponding linearizations in each language.
-A synset, then, consists of a set of abstract identifiers instead words.
+A synset, then, consists of a set of abstract identifiers instead words. 
+
+The lexicon includes nouns, verb, adjectives and adverbs from WordNet as well as people and place names from Wikidata. Some structural words such as prepositions
+and conjunctions are also included. The overal size is summarized in the table bellow:
+| WordNet  | adjectives, nouns, verbs, etc. | 100 thousand |
+|----------|--------------------------------|--------------|
+| Wikidata | Given names                    | 64 thousand  |
+|          | Family names                   | 531 thousand |
+|          | Place names                    | 3.7 million  |
+|          | total                          | 4.3 million  |
 
 The initial development was mostly focused on English, Swedish and Bulgarian. WordNets for all other languages were bootstrapped
 from existing resources and aligned by using statistical methods. They are only partly checked by either matching with Wikipedia or by human feedback.
@@ -232,7 +241,42 @@ You can use the WordNet as a regular GF grammar or you can also use it
 as a standalone Python library similar in style to `nltk.corpus.wordnet`.
 The added benefit is that in GF WordNet you also have the RGL
 abstract syntax trees which lets you to compose sentences in serveral
-languages. You can import the library like this:
+languages.
+
+The easiest way to get the library is via pip:
+```console
+$ pip3 install gf-wordnet
+```
+This will install the library with its dependencies but it will not install the WordNet grammar.
+You can download the latest precompiled version of the grammar as follows:
+```Python
+>>> import wordnet
+Either use wordnet.download(['ISO 639‑2 code1', ...]) to download the grammar,
+or add the path to an existing grammar in sys.path. If download() is called
+without an argument it will download all languages.
+>>> wordnet.download(['eng'])
+Download and boot the grammar 355MB (Expanded to 2637MB)
+Download the semantics database 2733MB done
+Reload wordnet
+```
+When there is no grammar installed, the library prints a warning and then the `download` function
+is the only one that you can use. If you want more languages, add them in the list. If you call
+`download` with no arguments, all languages will be downloaded. Expect the grammar to be
+around 50GB in that case.
+
+The wordnet library searches for a file called `Parse.pgf` or `Parse.ngf` in the path for Python modules and
+uses it as a grammar. You can change the path by either manipulating `sys.path` from Python or by
+setting the `PYTHONPATH` environment variable. This is useful if you already have the grammar
+stored somewhere else and you need to tell Python where to find it.
+
+**Note:** When you use the `download` function, the grammar will be downloaded in the folder where the Python
+library is installed. This means that if you have installed the library globally, then it will try to
+store the grammar under `/usr/local/lib/python3.X`. For that to work you need to run the python shell
+as root during the download. After that you can use the library and the grammar from all users.
+On the other hand, by default `pip` installs libraries under `/home/krasimir/.local/lib/python3.X`,
+so you don't need to do anything special.
+
+After the download is finished, you can import the library like this:
 ```Python
 >>> import wordnet
 ```

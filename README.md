@@ -22,12 +22,13 @@ A synset, then, consists of a set of abstract identifiers instead words.
 
 The lexicon includes nouns, verb, adjectives and adverbs from WordNet as well as people and place names from Wikidata. Some structural words such as prepositions
 and conjunctions are also included. The overal size is summarized in the table bellow:
-| WordNet  | adjectives, nouns, verbs, etc. | 100 thousand |
-|----------|--------------------------------|--------------|
-| Wikidata | Given names                    | 64 thousand  |
-|          | Family names                   | 531 thousand |
-|          | Place names                    | 3.7 million  |
-|          | total                          | 4.3 million  |
+<table>
+     <tr><th>WordNet</th><td>adjectives, nouns, verbs, etc.</td><td>100 thousand</td></tr>
+     <tr><th rowspan=3>Wikidata</th><td>Given names</td><td>64 thousand</td></tr>
+     <tr>                           <td>Family names</td><td>531 thousand</td></tr>
+     <tr>                           <td>Place names</td><td>3.7 million</td></tr>
+     <tr><th colspan=2>total                       </th><td>4.3 million</td></tr>
+</table>
 
 The initial development was mostly focused on English, Swedish and Bulgarian. WordNets for all other languages were bootstrapped
 from existing resources and aligned by using statistical methods. They are only partly checked by either matching with Wikipedia or by human feedback.

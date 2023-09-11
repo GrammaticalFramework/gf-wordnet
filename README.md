@@ -10,10 +10,7 @@
      - [Words](#words)
      - [Synsets](#synsets)
      - [Lexemes](#lexemes)
-     - [Verb Frames](#verb-frames)
-     - [Verb Frames](#verb-frames)
-     - [Similarity](#similarity)
-     - [Synset Closures](#synset-closures)
+     - [Syntax](#syntax)
 
 The GF WordNet is a lexicon based on the [Princeton WordNet](https://wordnet.princeton.edu/) and [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
 but adapted to integrate with the [GF Resource Grammars Library](https://github.com/GrammaticalFramework/gf-rgl) (RGL). Following the GF model, the lexicon consists

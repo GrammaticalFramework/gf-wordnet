@@ -27,14 +27,14 @@ Many of the translations may be correct but inconsistancies can be expected as w
 * [Krasimir Angelov. A Parallel WordNet for English, Swedish and Bulgarian. LREC 2020](http://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.368.pdf)
 * [Krasimir Angelov, Gleb Lobanov. Predicting Translation Equivalents in Linked WordNets. COLING 2016.](https://www.aclweb.org/anthology/W16-4504.pdf)
 
-Unlike the original WordNet we focus on grammatical, morphological as well as semantic features. All this is just necessary to make the lexicon
+Unlike the original WordNet we focus on grammatical, morphological as well as semantic features. All this is simply necessary to make the lexicon
 compatible with the Resource Grammars Library (RGL).
 
 ## The Lexicon
 
 Each entry in the lexicon represents the full morphology, precise syntactic
-category as well as one particular sense of a word. If three words
-in three different languages share the same meaning then 
+category as well as one particular sense of a word. When words
+across different languages share the same meaning then 
 they are represented as a single cross lingual id. For example
 in [WordNetEng.gf](WordNetEng.gf) we have all those definitions of blue in English:
 
@@ -86,16 +86,16 @@ also see the comment `--unchecked`, which means that the chosen translation
 comes from an existing WordNet but still further checking is needed to guarantee
 that this is the most idiomatic translation.
 
-The English lexicon contains also information for the gender.
+The English lexicon contains also information about the gender.
 All senses that refer to a human being are tagged with either 
 ´masculine´, ´feminine´ or ´human´ gender. In some cases where the word
 is either masculine or feminine then it is further split into two senses.
-In those cases there is usually a different translation in Bulgarian.
+In those cases there is usually a different translation in many languages.
 The information about which words refer to humans is based on
 the WordNet hierarchy. In the English RGL the gender information
 is relevant, for instance when choosing between who/which and herself/himself/itself.
 
-In the abstract syntax [WordNet.gf](WordNet.gf) are defined all abstract ids in 
+The abstract syntax [WordNet.gf](WordNet.gf) defines all abstract ids in 
 the lexicon. Almost all definitions are also followed by a comment
 which consists of, first the corresponding WordNet 3.1 synset offset,
 followed by dash and then the wordnet tag. After that there is a tab
@@ -143,13 +143,13 @@ The format of a treebank entry is as follows:
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN storm_1_N)) (UseV abate_2_V)))) NoVoc
 eng: The storm abated
 swe: stormen avtog
-bul: бурята отслабва
+bul: бурята отслабна
 key: 1 abate_2_V 00245945-v
 ```
 
 If the first line starts with "abs*" instead of "abs:" then
 the entry is not checked yet. If the line starts with "abs^" then
-the entry is checked by some more work is needed. 
+the entry is checked but some more work is needed. 
 
 The last line in the entry contains
 the abstract ids for which this example is intended. The number 1
@@ -166,7 +166,7 @@ that the verb valencies are as consistent as possible. The VerbNet also
 gives us the semantics of the verbs as a first-order logical formula.
 
 The VerbNet classes and frames are stored in [examples.txt](examples.txt).
-For example the following record encodes class `begin-55.1`.
+For instance the following record encodes class `begin-55.1`.
 ```
 class: begin-55.1
 role:  Agent +animate +organization
@@ -184,7 +184,7 @@ expressed in the abstract syntax. After that `sem:` contains
 the first-order formula. Finally `key:` lists all abstract
 syntax entries belonging to that frame.
 
-After a frame, there might be one or more examples which illustrates
+After a frame, there might be one or more examples which illustrate
 how the frame is applied to different members of the frame.
 
 ## Wikipedia Images

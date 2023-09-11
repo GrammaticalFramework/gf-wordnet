@@ -443,7 +443,7 @@ You can use the lexicon to compose phrases:
 >>> linearize('eng', expr)
 'red apple'
 >>> linearize('swe', expr)
-''rött äpple''
+'rött äpple'
 ```
 Since looking up a lexeme and composing an expression with it is very common, there is also a simpler way:
 ```Python

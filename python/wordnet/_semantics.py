@@ -228,11 +228,20 @@ class Lexeme:
         else:
             return None
 
-    def function(self):
+    def function(self) -> str:
         return self.lex_fun;
 
-    def expression(self):
+    def expression(self) -> pgf.Expr:
         return pgf.ExprFun(self.lex_fun);
+
+    def links(self) -> list[tuple[str,str,str]]:
+        """ Returns a list of triples with qid, wikipage, image """
+        return self.images
+
+    def qid(self) -> str:
+        for qid,_,_ in self.images:
+            return qid
+        return None
 
     def synset(self) -> Optional[Synset]:
         if not self.synset_id:

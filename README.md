@@ -189,18 +189,30 @@ how the frame is applied to different members of the frame.
 
 ## Wikipedia Images
 
-About 1/5 of the lexical entries in the lexicon are linked to 
-the corresponding Wikipedia articles. Together with the link to the
-article we also store the path to the thumbnail image in the page.
-The links are stored in [images.txt](images.txt).
-The format is as follows:
+Quite often the glosses are not clear enough to understand the meaning of
+a synset. In the initial project development, about 1/5 of the lexical entries
+in the lexicon were linked to the corresponding Wikipedia articles. This has
+several benefits: the articles are way more informative than the glosses;
+they are also translated which helps in the bootstrapping of other languages.
+Finally we can now also show images associated with several of the
+lexemes which, as we know, is worth more than thousands words.
+
+Later the links created in this project were merged with the links that Wikidata
+provides via property [P8814](https://www.wikidata.org/wiki/Property:P8814). This
+resulted in a large set of links which is also of a supperior quality than what
+GF WordNet and Wikidata had in advance.
+
+In order to speed up compilation the set on links is cached in the file
+[images.txt](images.txt) which can be regenerated at any time by running the script
+[bootstrap/images.hs](bootstrap/images.hs). The file looks as follows:
 ```
-gothenburg_1_PN	11861;Gothenburg;commons/0/02/Gothenburg_new_montage_2015-2.png
+gothenburg_1_LN	Q25287;Gothenburg;commons/3/30/Flag_of_Gothenburg.svg	Q25287;Gothenburg;commons/a/a8/Gothenburg_new_montage_2012.png
 ```
 This is a space separated record. The value in the first field is the abstract lexical id,
 which is followed by one field per image. The image field consists of three parts separated
-by semicolumns. The first part is the page id in the Wikipedia database, the second is 
-the relative page location, and the last one is the relative path to the thumbnail image.
+by semicolumns. The first part is the Wikidata Qid, the second is 
+the relative page location in the English Wikipedia, and the last one is the relative path to
+the thumbnail image.
 
 
 ## Browsing and Editing
@@ -209,11 +221,9 @@ An online search interface for the lexicon is available here:
 
 https://cloud.grammaticalframework.org/wordnet/
 
-Via the interface it is also possible to log in with your GitHub
-account and edit the data. Both the lexicon and the corpus are editable.
-Once you finish a batch of changes you can also commit directly
-to the repository.
-
+If you have editing rights to the [GF WordNet repository](https://github.com/GrammaticalFramework/gf-wordnet), then
+it is also possible to log in and edit the data via the Web interface.
+Both the lexicon and the corpus are editable. Once you finish a batch of changes you can also commit directly.
 
 
 ## The Python Interface
@@ -394,6 +404,10 @@ Somebody stretch something | Somebody stretch
 Lemma('stretch.v.02.extend') [8]
 Somebody extend something
 ```
+
+### Syntax
+
+TODO: Using the RGL API
 
 ### Similarity
 ```Python

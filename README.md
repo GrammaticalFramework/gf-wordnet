@@ -453,3 +453,5 @@ Since looking up a lexeme and composing an expression with it is very common, th
 >>> linearize('swe', expr)
 ''rött äpple''
 ```
+
+The API for building phrases is mostly the same as the [RGL API](https://www.grammaticalframework.org/lib/doc/synopsis/index.html).

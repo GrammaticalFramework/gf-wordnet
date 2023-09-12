@@ -153,6 +153,16 @@ class Synset:
     def instance_hyponyms(self) -> list:
         return self.__pointers__(InstanceHyponym)
 
+    def full_hyponyms(self) -> list:
+        result = []
+        with db.run("r") as t:
+            for start, end in self.children:
+                for id in range(start, end+1):
+                    for synset in t.cursor(synsets, id):
+                        synset.id = id
+                        result.append(synset)
+        return result
+
     def hypernyms(self) -> list:
         return self.__pointers__(Hypernym)
 
@@ -176,20 +186,6 @@ class Synset:
 
     def part_meronyms(self) -> list:
         return self.__pointers2__(Holonym,HolonymyType.Part)
-
-    def lcs(self,synset1,synset2):
-        with db.run("r") as t:
-            levels = {}
-            def collect(synset,level):
-                nonlocal levels, t
-                levels[synset.id] = (synset,level)
-                for ptr,id in synset.pointers:
-                    if isinstance(ptr, Hypernym) and id not in levels:
-                        for synset in t.cursor(synsets, id):
-                            synset.id = id
-                            collect(synset,level+1)
-            collect(synset1,0)
-            collect(synset2,0)
 
     def _collect_hypernyms(self,stats,level,i,n,t):
         for ptr,id in self.pointers:

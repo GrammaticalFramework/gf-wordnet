@@ -435,6 +435,7 @@ Some lexemes are linked to a Wikidata Qid and Wikipedia pages:
 
 ### Similarity
 
+Synsets can be compared for similarity:
 ```Python
 >>> dog   = synset('02086723-n')
 >>> cat   = synset('02124272-n')
@@ -447,6 +448,24 @@ Some lexemes are linked to a Wikidata Qid and Wikipedia pages:
 6
 >>> path_similarity(dog,human)
 0.14285714285714285
+```
+
+You can also search for similar lexemes by first finding the lowest common
+hypernum:
+```Python
+>>> dog = synset('02086723-n')
+>>> cat = synset('02124272-n')
+>>> [carnivore] = lowest_common_hypernyms(dog, cat)
+>>> carnivore.definition()
+'a terrestrial or aquatic flesh-eating mammal'
+>>> similar = carnivore.full_hyponyms()
+>>> len(similar)
+370
+>>> [synset.lexemes() for synset in similar]
+[[Lexeme('dog_1_N')], [Lexeme('puppy_1_N')], 
+ [Lexeme('bow_wow_2_N'), Lexeme('doggie_N'), Lexeme('doggy_N'), Lexeme('pooch_N'), ...]
+ ...
+]
 ```
 
 ### Syntax

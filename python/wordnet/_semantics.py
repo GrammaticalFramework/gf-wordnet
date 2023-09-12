@@ -192,8 +192,10 @@ class Synset:
             if isinstance(ptr, Hypernym) or isinstance(ptr, InstanceHypernym):
                 stat = stats.get(id)
                 if stat:
-                    levels = stat[1]
-                    levels[i] = min(level,levels[i] or 10000000)
+                    hypernym, levels = stat
+                    if levels[i] == None or levels[i] > level:
+                        levels[i] = level
+                        hypernym._collect_hypernyms(stats,level+1,i,n,t)
                 else:
                     for hypernym in t.cursor(synsets, id):
                         hypernym.id = id

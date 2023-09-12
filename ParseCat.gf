@@ -10,7 +10,7 @@ concrete ParseCat of Parse =
   ConjunctionCat,
   PhraseCat - [UttAP, UttVP],
   IdiomCat,
-  TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
+  TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg,MU],
   TenseCat,
   NamesCat,
   ParseExtendCat,

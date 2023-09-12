@@ -10,7 +10,7 @@ concrete ParsePor of Parse =
   ConjunctionPor,
   PhrasePor - [UttAP,UttVP],
   IdiomPor,
-  TenseX - [Temp,Pol,SC,Tense,TCond,TFut,TPast,TPres,TTAnt,PNeg,PPos],
+  TenseX - [Temp,Pol,SC,Tense,TCond,TFut,TPast,TPres,TTAnt,PNeg,PPos,MU],
   TensePor,
   NamesPor,
   ParseExtendPor,

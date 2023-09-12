@@ -10,7 +10,7 @@ concrete ParseSpa of Parse =
   ConjunctionSpa,
   PhraseSpa - [UttAP, UttVP],
   IdiomSpa,
-  TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
+  TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg,MU],
   TenseSpa,
   NamesSpa,
   ParseExtendSpa,

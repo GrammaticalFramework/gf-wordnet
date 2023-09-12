@@ -72,7 +72,16 @@ except ModuleNotFoundError as e:
     __all__ = ["download"]
 else:
     from wordnet._api import *
-    from wordnet._semantics import Synset, Lexeme, Status, get_lexeme as lexeme, get_wikilexemes as wikilexemes, get_lexemes as lexemes, get_synset as synset, get_synsets as synsets, synonyms
+    from wordnet._semantics import (Synset, Lexeme, Status, 
+                                    get_lexeme as lexeme,
+                                    get_wikilexemes as wikilexemes,
+                                    get_lexemes as lexemes,
+                                    get_synset as synset,
+                                    get_synsets as synsets,
+                                    synonyms,
+                                    lowest_common_hypernyms,
+                                    shortest_path_distance,
+                                    path_similarity)
 
     __all__ = ['Lexeme', 'Synset', 'Status', 'aPl_Det', 'aSg_Det', 'a_Det',
                'a_Quant', 'anteriorAnt', 'comparAP', 'conditionalTense',
@@ -108,4 +117,5 @@ else:
                'thousandfoldNumeral', 'w', 'we_NP', 'what_IP',
                'whichPl_IDet', 'whichSg_IDet', 'which_IDet',
                'which_RP', 'who_IP', 'youPl_NP', 'youPol_NP',
-               'you_NP']
+               'you_NP', 'lowest_common_hypernyms',
+               'shortest_path_distance', 'path_similarity']

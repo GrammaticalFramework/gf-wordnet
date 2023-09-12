@@ -10,6 +10,7 @@
      - [Words](#words)
      - [Synsets](#synsets)
      - [Lexemes](#lexemes)
+     - [Similarity](#similarity)
      - [Syntax](#syntax)
 
 The GF WordNet is a lexicon based on the [Princeton WordNet](https://wordnet.princeton.edu/) and [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
@@ -433,6 +434,22 @@ Some lexemes are linked to a Wikidata Qid and Wikipedia pages:
 'Q34'
 >>> sweden.links()
 [('Q34', 'Sweden', 'commons/0/06/EU-Sweden.svg'), ('Q34', 'Sweden', 'commons/2/28/Sweden_on_the_globe_(Europe_centered).svg'), ('Q34', 'Sweden', 'commons/3/30/Sweden_(orthographic_projection).svg'), ('Q34', 'Sweden', 'commons/4/4c/Flag_of_Sweden.svg'), ('Q34', 'Sweden', 'commons/7/7a/LocationSweden.svg'), ('Q34', 'Sweden', 'commons/a/a1/Shield_of_arms_of_Sweden.svg'), ('Q34', 'Sweden', 'commons/e/e5/Great_coat_of_arms_of_Sweden.svg')]
+```
+
+### Similarity
+
+```Python
+>>> dog   = synset('02086723-n')
+>>> cat   = synset('02124272-n')
+>>> human = synset('02474924-n')
+>>> shortest_path_distance(dog,cat)
+4
+>>> path_similarity(dog,cat)
+0.2
+>>> shortest_path_distance(dog,human)
+6
+>>> path_similarity(dog,human)
+0.14285714285714285
 ```
 
 ### Syntax

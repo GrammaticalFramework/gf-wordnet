@@ -191,7 +191,21 @@ class Synset:
             collect(synset1,0)
             collect(synset2,0)
 
-        
+    def _collect_hypernyms(self,stats,level,i,n,t):
+        for ptr,id in self.pointers:
+            if isinstance(ptr, Hypernym) or isinstance(ptr, InstanceHypernym):
+                stat = stats.get(id)
+                if stat:
+                    levels = stat[1]
+                    levels[i] = min(level,levels[i] or 10000000)
+                else:
+                    for hypernym in t.cursor(synsets, id):
+                        hypernym.id = id
+                        levels = [None]*n
+                        levels[i] = level
+                        stats[id] = (hypernym,levels)
+                        hypernym._collect_hypernyms(stats,level+1,i,n,t)
+
     def store(self):
         with db.run("w") as t:
             self.id = t.store(synsets, self.id, self)
@@ -285,7 +299,6 @@ class Lexeme:
     def store(self):
         with db.run("w") as t:
             self.id = t.store(lexemes, self.id, self)
-
 
 lexemes = table("lexemes",Lexeme)
 
@@ -390,3 +403,34 @@ def synonyms(lang : str, word : str, cat=None) -> list[list[str]]:
                         result.append(synonyms)
                     synset_ids.add(lexeme.synset_id)
     return result
+
+def lowest_common_hypernyms(*synsets):
+    stats = {}
+    with db.run("r") as t:
+        for i,synset in enumerate(synsets):
+            stat = stats.get(synset.id)
+            if stat:
+                levels = stat[1]
+                levels[i] = 0
+            else:
+                levels = [None]*len(synsets)
+                levels[i] = 0
+                stats[synset.id] = (synset,levels)
+                synset._collect_hypernyms(stats,1,i,len(synsets),t)
+
+    common = [(synset,sum(levels)) for synset,levels in stats.values() if all(level != None for level in levels)]
+    min_dist = min(dist for _,dist in common)
+    return [synset for synset,dist in common if dist==min_dist]
+
+def shortest_path_distance(synset1, synset2):
+    if synset1.id == synset2.id:
+        return 0
+    stats = {synset1.id: (synset1, [0,None]),
+             synset2.id: (synset2, [None,0])}
+    with db.run("r") as t:
+        synset1._collect_hypernyms(stats,1,0,2,t)
+        synset2._collect_hypernyms(stats,1,1,2,t)
+    return min(sum(levels) for synset,levels in stats.values() if all(level != None for level in levels))
+
+def path_similarity(synset1, synset2):
+    return 1/(shortest_path_distance(synset1, synset2)+1);

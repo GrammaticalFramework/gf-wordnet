@@ -321,7 +321,7 @@ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA absur
 the absurd excuse that the dog ate his homework
 >>> synset('02086723-n').lexemes()
 [Lexeme('dog_1_N')]
->>> [lexeme.linearization("eng") for lexeme in wn.synset('02086723-n').lexemes()]
+>>> [lexeme.linearization("eng") for lexeme in synset('02086723-n').lexemes()]
 ['dog']
 >>> lexeme('dog_1_N').synset()
 Synset('02086723-n')
@@ -426,9 +426,6 @@ The relations above exist only on lemmas, not on synsets.
 
 Some lexemes are linked to a Wikidata Qid and Wikipedia pages:
 ```Python
->>> sweden = lexeme('sweden_LN')
->>> sweden.qid()
-'Q34'
 >>> sweden = lexeme('sweden_LN')
 >>> sweden.qid()
 'Q34'

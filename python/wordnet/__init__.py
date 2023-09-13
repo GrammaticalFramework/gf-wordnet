@@ -47,6 +47,10 @@ def download(langs=None, path=None):
             size += n
             print("\rDownload and boot the grammar "+str(size//(1024*1024))+"MB",end=" ...")
             return n
+        try:
+            os.remove(path+"Parse.ngf")
+        except:
+            pass
         pgf.bootNGF(readinto, path+"Parse.ngf")
         os.chmod(path+"Parse.ngf", 0o666)
         size = os.path.getsize(path+"Parse.ngf")

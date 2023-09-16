@@ -10,7 +10,7 @@ concrete ParseFre of Parse =
   ConjunctionFre,
   PhraseFre - [UttAP, UttVP],
   IdiomFre,
-  TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
+  TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg,MU],
   TenseFre,
   NamesFre,
   ParseExtendFre,

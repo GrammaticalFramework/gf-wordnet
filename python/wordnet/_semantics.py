@@ -153,29 +153,56 @@ class Synset:
     def instance_hyponyms(self) -> list:
         return self.__pointers__(InstanceHyponym)
 
+    def full_hyponyms(self) -> list:
+        result = []
+        with db.run("r") as t:
+            for start, end in self.children:
+                for id in range(start, end+1):
+                    for synset in t.cursor(synsets, id):
+                        synset.id = id
+                        result.append(synset)
+        return result
+
     def hypernyms(self) -> list:
         return self.__pointers__(Hypernym)
 
     def instance_hypernyms(self) -> list:
         return self.__pointers__(InstanceHypernym)
 
-    def member_holonym(self) -> list:
-        return self.__pointers2__(Holonym,Member)
+    def member_holonyms(self) -> list:
+        return self.__pointers2__(Holonym,HolonymyType.Member)
 
-    def substance_holonym(self) -> list:
-        return self.__pointers2__(Holonym,Substance)
+    def substance_holonyms(self) -> list:
+        return self.__pointers2__(Holonym,HolonymyType.Substance)
 
-    def part_meronym(self) -> list:
-        return self.__pointers2__(Holonym,Part)
+    def part_holonyms(self) -> list:
+        return self.__pointers2__(Holonym,HolonymyType.Part)
 
-    def member_meronym(self) -> list:
-        return self.__pointers2__(Meronym,Member)
+    def member_meronyms(self) -> list:
+        return self.__pointers2__(Meronym,HolonymyType.Member)
 
-    def substance_holonym(self) -> list:
-        return self.__pointers2__(Meronym,Substance)
+    def substance_meronyms(self) -> list:
+        return self.__pointers2__(Meronym,HolonymyType.Substance)
 
-    def part_holonym(self) -> list:
-        return self.__pointers2__(Meronym,Part)
+    def part_meronyms(self) -> list:
+        return self.__pointers2__(Holonym,HolonymyType.Part)
+
+    def _collect_hypernyms(self,stats,level,i,n,t):
+        for ptr,id in self.pointers:
+            if isinstance(ptr, Hypernym) or isinstance(ptr, InstanceHypernym):
+                stat = stats.get(id)
+                if stat:
+                    hypernym, levels = stat
+                    if levels[i] == None or levels[i] > level:
+                        levels[i] = level
+                        hypernym._collect_hypernyms(stats,level+1,i,n,t)
+                else:
+                    for hypernym in t.cursor(synsets, id):
+                        hypernym.id = id
+                        levels = [None]*n
+                        levels[i] = level
+                        stats[id] = (hypernym,levels)
+                        hypernym._collect_hypernyms(stats,level+1,i,n,t)
 
     def store(self):
         with db.run("w") as t:
@@ -213,6 +240,21 @@ class Lexeme:
         else:
             return None
 
+    def function(self) -> str:
+        return self.lex_fun;
+
+    def expression(self) -> pgf.Expr:
+        return pgf.ExprFun(self.lex_fun);
+
+    def links(self) -> list[tuple[str,str,str]]:
+        """ Returns a list of triples with qid, wikipage, image """
+        return self.images
+
+    def qid(self) -> str:
+        for qid,_,_ in self.images:
+            return qid
+        return None
+
     def synset(self) -> Optional[Synset]:
         if not self.synset_id:
             return None
@@ -249,10 +291,12 @@ class Lexeme:
     def derived(self) -> list:
         return self.__pointers__(Derived)
 
+    def prob(self) -> float:
+        return grammar.functionProbability(self.lex_fun)
+
     def store(self):
         with db.run("w") as t:
             self.id = t.store(lexemes, self.id, self)
-
 
 lexemes = table("lexemes",Lexeme)
 
@@ -357,3 +401,34 @@ def synonyms(lang : str, word : str, cat=None) -> list[list[str]]:
                         result.append(synonyms)
                     synset_ids.add(lexeme.synset_id)
     return result
+
+def lowest_common_hypernyms(*synsets):
+    stats = {}
+    with db.run("r") as t:
+        for i,synset in enumerate(synsets):
+            stat = stats.get(synset.id)
+            if stat:
+                levels = stat[1]
+                levels[i] = 0
+            else:
+                levels = [None]*len(synsets)
+                levels[i] = 0
+                stats[synset.id] = (synset,levels)
+                synset._collect_hypernyms(stats,1,i,len(synsets),t)
+
+    common = [(synset,sum(levels)) for synset,levels in stats.values() if all(level != None for level in levels)]
+    min_dist = min(dist for _,dist in common)
+    return [synset for synset,dist in common if dist==min_dist]
+
+def shortest_path_distance(synset1, synset2):
+    if synset1.id == synset2.id:
+        return 0
+    stats = {synset1.id: (synset1, [0,None]),
+             synset2.id: (synset2, [None,0])}
+    with db.run("r") as t:
+        synset1._collect_hypernyms(stats,1,0,2,t)
+        synset2._collect_hypernyms(stats,1,1,2,t)
+    return min(sum(levels) for synset,levels in stats.values() if all(level != None for level in levels))
+
+def path_similarity(synset1, synset2):
+    return 1/(shortest_path_distance(synset1, synset2)+1);

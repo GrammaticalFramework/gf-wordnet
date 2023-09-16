@@ -10,6 +10,7 @@
      - [Words](#words)
      - [Synsets](#synsets)
      - [Lexemes](#lexemes)
+     - [Similarity](#similarity)
      - [Syntax](#syntax)
 
 The GF WordNet is a lexicon based on the [Princeton WordNet](https://wordnet.princeton.edu/) and [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
@@ -320,7 +321,7 @@ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA absur
 the absurd excuse that the dog ate his homework
 >>> synset('02086723-n').lexemes()
 [Lexeme('dog_1_N')]
->>> [lexeme.linearization("eng") for lexeme in wn.synset('02086723-n').lexemes()]
+>>> [lexeme.linearization("eng") for lexeme in synset('02086723-n').lexemes()]
 ['dog']
 >>> lexeme('dog_1_N').synset()
 Synset('02086723-n')
@@ -428,11 +429,43 @@ Some lexemes are linked to a Wikidata Qid and Wikipedia pages:
 >>> sweden = lexeme('sweden_LN')
 >>> sweden.qid()
 'Q34'
->>> sweden = lexeme('sweden_LN')
->>> sweden.qid()
-'Q34'
 >>> sweden.links()
 [('Q34', 'Sweden', 'commons/0/06/EU-Sweden.svg'), ('Q34', 'Sweden', 'commons/2/28/Sweden_on_the_globe_(Europe_centered).svg'), ('Q34', 'Sweden', 'commons/3/30/Sweden_(orthographic_projection).svg'), ('Q34', 'Sweden', 'commons/4/4c/Flag_of_Sweden.svg'), ('Q34', 'Sweden', 'commons/7/7a/LocationSweden.svg'), ('Q34', 'Sweden', 'commons/a/a1/Shield_of_arms_of_Sweden.svg'), ('Q34', 'Sweden', 'commons/e/e5/Great_coat_of_arms_of_Sweden.svg')]
+```
+
+### Similarity
+
+Synsets can be compared for similarity:
+```Python
+>>> dog   = synset('02086723-n')
+>>> cat   = synset('02124272-n')
+>>> human = synset('02474924-n')
+>>> shortest_path_distance(dog,cat)
+4
+>>> path_similarity(dog,cat)
+0.2
+>>> shortest_path_distance(dog,human)
+6
+>>> path_similarity(dog,human)
+0.14285714285714285
+```
+
+You can also search for similar lexemes by first finding the lowest common
+hypernum:
+```Python
+>>> dog = synset('02086723-n')
+>>> cat = synset('02124272-n')
+>>> [carnivore] = lowest_common_hypernyms(dog, cat)
+>>> carnivore.definition()
+'a terrestrial or aquatic flesh-eating mammal'
+>>> similar = carnivore.full_hyponyms()
+>>> len(similar)
+370
+>>> [synset.lexemes() for synset in similar]
+[[Lexeme('dog_1_N')], [Lexeme('puppy_1_N')], 
+ [Lexeme('bow_wow_2_N'), Lexeme('doggie_N'), Lexeme('doggy_N'), Lexeme('pooch_N'), ...]
+ ...
+]
 ```
 
 ### Syntax
@@ -443,7 +476,7 @@ You can use the lexicon to compose phrases:
 >>> linearize('eng', expr)
 'red apple'
 >>> linearize('swe', expr)
-''rött äpple''
+'rött äpple'
 ```
 Since looking up a lexeme and composing an expression with it is very common, there is also a simpler way:
 ```Python
@@ -451,5 +484,7 @@ Since looking up a lexeme and composing an expression with it is very common, th
 >>> linearize('eng', expr)
 'red apple'
 >>> linearize('swe', expr)
-''rött äpple''
+'rött äpple'
 ```
+
+The API for building phrases is mostly the same as the [RGL API](https://www.grammaticalframework.org/lib/doc/synopsis/index.html).

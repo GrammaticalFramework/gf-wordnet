@@ -47,6 +47,10 @@ def download(langs=None, path=None):
             size += n
             print("\rDownload and boot the grammar "+str(size//(1024*1024))+"MB",end=" ...")
             return n
+        try:
+            os.remove(path+"Parse.ngf")
+        except:
+            pass
         pgf.bootNGF(readinto, path+"Parse.ngf")
         os.chmod(path+"Parse.ngf", 0o666)
         size = os.path.getsize(path+"Parse.ngf")
@@ -72,7 +76,16 @@ except ModuleNotFoundError as e:
     __all__ = ["download"]
 else:
     from wordnet._api import *
-    from wordnet._semantics import Synset, Lexeme, Status, get_lexeme as lexeme, get_wikilexemes as wikilexemes, get_lexemes as lexemes, get_synset as synset, get_synsets as synsets, synonyms
+    from wordnet._semantics import (Synset, Lexeme, Status, 
+                                    get_lexeme as lexeme,
+                                    get_wikilexemes as wikilexemes,
+                                    get_lexemes as lexemes,
+                                    get_synset as synset,
+                                    get_synsets as synsets,
+                                    synonyms,
+                                    lowest_common_hypernyms,
+                                    shortest_path_distance,
+                                    path_similarity)
 
     __all__ = ['Lexeme', 'Synset', 'Status', 'aPl_Det', 'aSg_Det', 'a_Det',
                'a_Quant', 'anteriorAnt', 'comparAP', 'conditionalTense',
@@ -108,4 +121,5 @@ else:
                'thousandfoldNumeral', 'w', 'we_NP', 'what_IP',
                'whichPl_IDet', 'whichSg_IDet', 'which_IDet',
                'which_RP', 'who_IP', 'youPl_NP', 'youPol_NP',
-               'you_NP']
+               'you_NP', 'lowest_common_hypernyms',
+               'shortest_path_distance', 'path_similarity']

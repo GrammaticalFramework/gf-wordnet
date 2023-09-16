@@ -10,7 +10,7 @@ concrete ParseIta of Parse =
   ConjunctionIta,
   PhraseIta - [UttAP, UttVP],
   IdiomIta,
-  TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg],
+  TenseX - [SC,Temp,TTAnt,Tense,TPres,TPast,TFut,TCond,Pol,PPos,PNeg,MU],
   TenseIta,
   NamesIta,
   ParseExtendIta,

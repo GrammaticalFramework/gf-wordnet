@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "gf-wordnet",
-    version = "0.0.8",
+    version = "0.0.9",
     author = "Krasimir Angelov",
     author_email = "kr.angelov@gmail.com",
     description = ("An API to the GF WordNet."),
@@ -15,7 +15,7 @@ setup(
     url = "https://github.com/GrammaticalFramework/gf-wordnet",
     packages=['wordnet'],
     install_requires=['pgf','daison'],
-    long_description=read("../README.md"),
+    long_description=read("README.md"),
     long_description_content_type="text/markdown",
     zip_safe=False
 )

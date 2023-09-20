@@ -18601,6 +18601,7 @@ lin coffee_2_N = mkN "bun" ; --guessed
 lin coffee_3_N = mkN "bun" ; --guessed
 lin coffee_4_N = mkN "bun" ; --guessed
 lin coffee_house_N = mkN "qahwe" ; --guessed
+lin coffee_maker_N = variants {} ;
 lin coffee_mill_N = variants {} ;
 lin coffee_stall_N = variants {} ;
 lin coffeeberry_N = variants {} ;

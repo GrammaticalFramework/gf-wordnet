@@ -18601,6 +18601,7 @@ lin coffee_2_N = mkN "mbuni" u_i ; --guessed
 lin coffee_3_N = variants {} ;
 lin coffee_4_N = variants {} ;
 lin coffee_house_N = variants {} ;
+lin coffee_maker_N = variants {} ;
 lin coffee_mill_N = variants {} ;
 lin coffee_stall_N = variants {} ;
 lin coffeeberry_N = variants {} ;

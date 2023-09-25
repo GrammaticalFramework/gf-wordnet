@@ -32,7 +32,7 @@ def download(langs=None, path=None):
     import importlib
 
     if langs != None:
-        langs = "&lang="+" ".join(map(lambda lang: "Parse"+lang.title(), langs))
+        langs = "&lang="+"+".join(map(lambda lang: "Parse"+lang.title(), langs))
     else:
         langs = ""
 

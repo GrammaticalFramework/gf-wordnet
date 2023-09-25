@@ -91632,6 +91632,7 @@ lin stand_12_V2 = mkV2 (mkV "kaʕ") noPrep ; --guessed
 lin stand_about_V = variants {} ;
 lin stand_around_V = variants {} ;
 lin stand_aside_V = variants {} ;
+lin stand_at_V2 = variants {} ;
 lin stand_back_1_V = variants {} ;
 lin stand_back_2_V = variants {} ;
 lin stand_by_1_V = variants {} ;

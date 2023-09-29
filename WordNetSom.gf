@@ -2578,6 +2578,7 @@ lin all_A = mkA "kʉli" ; --guessed
 lin all_1_Predet = variants {} ; --guessed
 lin all_2_Predet = variants {} ; --guessed
 lin all_mains_A = variants {} ;
+lin all_powerful_A = variants {} ;
 lin all_round_A = variants {} ;
 lin all_rounder_N = variants {} ;
 lin allah_PN = mkPN "Allaah" ; --guessed

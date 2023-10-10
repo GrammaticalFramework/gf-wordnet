@@ -10,7 +10,7 @@ concrete ParseBul of Parse =
   ConjunctionBul,
   PhraseBul - [UttAP, UttVP],
   IdiomBul,
-  TenseX - [CAdv,IAdv,AdV,SC],
+  TenseBul,
   NamesBul,
   ParseExtendBul,
   ConstructionBul - [Language, InLanguage, languageNP, languageCN,

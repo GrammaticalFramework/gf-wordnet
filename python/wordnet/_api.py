@@ -188,6 +188,7 @@ anteriorAnt = w.AAnter
 
 presentTense = w.TPres
 pastTense = w.TPast
+pastSimpleTense = w.TPastSimple
 futureTense = w.TFut
 conditionalTense = w.TCond
 

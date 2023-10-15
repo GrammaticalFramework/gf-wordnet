@@ -38123,6 +38123,7 @@ lin freeborn_A = variants {} ;
 lin freedman_N = variants {} ;
 lin freedom_1_N = mkN "inkululeko" C1_2 ; --guessed
 lin freedom_2_N = mkN "inkululeko" C1_2 ; --guessed
+lin freedom_in_the_world_PN = variants {} ;
 lin freehand_A = variants {} ;
 lin freehold_1_N = variants {} ;
 lin freehold_2_N = variants {} ;

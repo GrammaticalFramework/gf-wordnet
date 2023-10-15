@@ -28531,6 +28531,7 @@ lin doctor_1_V2 = dirV2 (mkV "tabib") ; --guessed
 lin doctor_2_V2 = dirV2 (mkV "dottor") ; --guessed
 lin doctor_3_V2 = dirV2 (mkV "dottor") ; --guessed
 lin doctoral_1_A = variants {} ;
+lin doctoral_adviser_N = variants {} ;
 lin doctorate_N = variants {} ;
 lin doctorfish_1_N = variants {} ;
 lin doctorspeak_N = variants {} ;

@@ -28525,6 +28525,7 @@ lin doctor_1_V2 = variants {} ;
 lin doctor_2_V2 = variants {} ;
 lin doctor_3_V2 = variants {} ;
 lin doctoral_1_A = variants {} ;
+lin doctoral_adviser_N = variants {} ;
 lin doctorate_N = variants {} ;
 lin doctorfish_1_N = variants {} ;
 lin doctorspeak_N = variants {} ;

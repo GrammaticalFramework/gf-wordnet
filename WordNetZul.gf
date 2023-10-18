@@ -28525,6 +28525,7 @@ lin doctor_1_V2 = mkV2 "udokotela" ; --guessed
 lin doctor_2_V2 = mkV2 "udokotela" ; --guessed
 lin doctor_3_V2 = mkV2 "udokotela" ; --guessed
 lin doctoral_1_A = mkA "udokotela" ; --guessed
+lin doctoral_adviser_N = variants {} ;
 lin doctorate_N = mkN "ugedla" C1_2 ; --guessed
 lin doctorfish_1_N = variants {} ;
 lin doctorspeak_N = variants {} ;

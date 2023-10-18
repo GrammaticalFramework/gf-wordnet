@@ -10,6 +10,7 @@ concrete ParseExtendPor of ParseExtend =
       s = \\b,n,g,c => "" ;
       s2 = "" ;
       sp = \\n,g,c => artDef False g n c ;
+      spn = \\c => artDef False Masc Sg c ;
       isNeg = False
       } ;
 

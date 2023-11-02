@@ -108515,6 +108515,7 @@ lin world_5_N = mkN "dinja" ; --guessed
 lin world_6_N = mkN "dinja" ;
 lin world_7_N = mkN "dinja" ; --guessed
 lin world_8_N = mkN "dinja" ; --guessed
+lin world_bank_4_LN = variants {} ;
 lin world_weary_A = variants {} ;
 lin worldliness_1_N = variants {} ;
 lin worldliness_2_N = variants {} ;

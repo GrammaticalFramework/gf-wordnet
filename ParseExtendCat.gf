@@ -2,7 +2,7 @@ concrete ParseExtendCat of ParseExtend =
   ExtendCat - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
                PiedPipingQuestSlash, PiedPipingRelSlash], NumeralCat - [num], PunctuationX **
-  open Prelude, CommonRomance, ResCat, GrammarCat in {
+  open Prelude, CommonRomance, ResCat, GrammarCat, ExtendCat in {
 
 lin UttAP  p ap = {s = ap.s ! (genNum2Aform p.a.g p.a.n)} ;
     UttVPS p vps= {s = vps.s ! Indic ! p.a ! True} ;
@@ -20,6 +20,8 @@ lin
     UttVP ant pol p vp = {
         s = ant.s ++ pol.s ++ infVP vp pol.p p.a
       } ;
+
+    ReflVPSlash = ExtendCat.ReflRNP ;
 
 lin num x = x ;
 

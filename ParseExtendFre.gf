@@ -2,7 +2,7 @@ concrete ParseExtendFre of ParseExtend =
   ExtendFre - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
                PiedPipingQuestSlash, PiedPipingRelSlash], NumeralFre - [num], PunctuationX **
- open Prelude, CommonRomance, ResFre, GrammarFre in {
+ open Prelude, CommonRomance, ResFre, GrammarFre, ExtendFre in {
 
 lin
     UttAP  p ap = {s = ap.s ! (genNum2Aform p.a.g p.a.n)} ;
@@ -27,6 +27,8 @@ lin
     UttVP ant pol p vp = {
         s = ant.s ++ pol.s ++ infVP vp pol.p p.a
       } ;
+
+    ReflVPSlash = ExtendFre.ReflRNP ;
 
 lin num x = x ;
 

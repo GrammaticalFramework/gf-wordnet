@@ -1347,8 +1347,6 @@ def mkAP(*args):
               return args[1][0]
       else:
           return None
-    case ["Ord"]:
-      return w.AdjOrd(args[0])
     case ["CAdv","AP","NP"]:
       return w.CAdvAP(args[0],args[1],args[2],args[3])
     case types:

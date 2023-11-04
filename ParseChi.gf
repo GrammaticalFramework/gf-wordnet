@@ -2,7 +2,7 @@
 concrete ParseChi of Parse =
   NounChi - [PPartNP, UseN2, RelNP, DetNP, NumDigits], --*
   VerbChi - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula], --*
-  AdjectiveChi - [ReflA2,CAdvAP],
+  AdjectiveChi - [ReflA2,CAdvAP,AdjOrd],
   AdverbChi - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceChi - [EmbedVP],
   QuestionChi,

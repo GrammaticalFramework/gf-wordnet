@@ -2,7 +2,7 @@
 concrete ParseTha of Parse =
   NounTha - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbTha - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
-  AdjectiveTha - [ReflA2,CAdvAP],
+  AdjectiveTha - [ReflA2,CAdvAP,AdjOrd],
   AdverbTha - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceTha - [EmbedVP],
   QuestionTha,

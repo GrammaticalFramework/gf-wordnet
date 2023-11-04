@@ -2,7 +2,7 @@
 concrete ParseCat of Parse =
   NounCat - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbCat - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
-  AdjectiveCat - [ReflA2,CAdvAP],
+  AdjectiveCat - [ReflA2,CAdvAP, AdjOrd],
   AdverbCat - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceCat - [EmbedVP],
   QuestionCat,

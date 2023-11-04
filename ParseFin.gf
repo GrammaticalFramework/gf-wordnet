@@ -2,7 +2,7 @@
 concrete ParseFin of Parse =
   NounFin - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbFin - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
-  AdjectiveFin - [ReflA2,CAdvAP],
+  AdjectiveFin - [ReflA2,CAdvAP,AdjOrd],
   AdverbFin - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceFin - [EmbedVP],
   QuestionFin,

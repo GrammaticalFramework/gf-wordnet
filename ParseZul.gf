@@ -2,7 +2,7 @@
 concrete ParseZul of Parse =
   NounZul - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbZul - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
-  AdjectiveZul - [ReflA2,CAdvAP],
+  AdjectiveZul - [ReflA2,CAdvAP,AdjOrd],
   AdverbZul - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceZul - [EmbedVP],
   QuestionZul,

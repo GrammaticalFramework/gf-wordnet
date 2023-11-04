@@ -2,7 +2,7 @@
 concrete ParsePor of Parse =
   NounPor - [PPartNP, UseN2, RelNP, DetNP, NumDigits], --*
   VerbPor - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula], --*
-  AdjectivePor - [ReflA2,CAdvAP],
+  AdjectivePor - [ReflA2,CAdvAP, AdjOrd],
   AdverbPor - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentencePor - [EmbedVP],
   QuestionPor,

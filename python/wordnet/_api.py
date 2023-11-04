@@ -518,7 +518,7 @@ def reflexiveVP(*args):
     case ["V2"]:
       return w.ReflVPSlash(w.SlashV2a(args[0]),w.ReflPron)
     case ["VPSlash"]:
-      return return w.ReflVPSlash(args[0],w.ReflPron)
+      return w.ReflVPSlash(args[0],w.ReflPron)
     case types:
       raise __no_match__("reflexiveVP",types)
 

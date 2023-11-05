@@ -112,7 +112,7 @@ else:
                'n8_Numeral', 'n9_Dig', 'n9_Digits', 'n9_Numeral',
                'negativePol', 'noPConj', 'noVoc', 'passiveVP',
                'pastTense', 'pluralNum', 'positivePol', 'presentTense',
-               'progressiveVP', 'questMarkPunct', 'reflAP',
+               'pastSimpleTense', 'progressiveVP', 'questMarkPunct', 'reflAP',
                'reflexiveVP', 'she_NP', 'simultaneousAnt',
                'singularNum', 'synset', 'synsets', 'tenfoldSub100',
                'that_Det', 'that_NP', 'thePl_Det', 'theSg_Det', 'the_Det',

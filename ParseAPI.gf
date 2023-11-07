@@ -18,7 +18,6 @@ lin AdVVP adv_1 vp_2 = mkTerm "mkVP" adv_1 vp_2 ;
 lin AdVVPSlash adv_1 vpslash_2 = mkTerm "mkVPSlash" adv_1 vpslash_2 ;
 lin AddAdvQVP qvp_1 iadv_2 = mkTerm "mkQVP" qvp_1 iadv_2 ;
 lin AdjCN ap_1 cn_2 = mkTerm "mkCN" ap_1 cn_2 ;
-lin AdjOrd ord_1 = mkTerm "mkAP" ord_1 ;
 lin AdnCAdv cadv_1 = mkTerm "mkAdN" cadv_1 ;
 lin AdvAP ap_1 adv_2 = mkTerm "mkAP" ap_1 adv_2 ;
 lin AdvCN cn_1 adv_2 = mkTerm "mkCN" cn_1 adv_2 ;

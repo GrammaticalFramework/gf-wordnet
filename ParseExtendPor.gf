@@ -2,7 +2,7 @@ concrete ParseExtendPor of ParseExtend =
   ExtendPor - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
                PiedPipingQuestSlash, PiedPipingRelSlash], NumeralPor - [num], PunctuationX **
-  open Prelude, ResPor, MorphoPor, GrammarPor, (E = ExtraPor), Coordination in {
+  open Prelude, ResPor, MorphoPor, GrammarPor, (E = ExtraPor), Coordination, ExtendPor in {
 
   lin
     --^
@@ -135,6 +135,8 @@ concrete ParseExtendPor of ParseExtend =
     UttVP ant pol p vp = {
         s = ant.s ++ pol.s ++ infVP vp pol.p p.a
       } ;
+
+    ReflVPSlash = ExtendPor.ReflRNP ;
 
   lin FocusComp comp np = mkClause (comp.s ! np.a) np.hasClit np.isPol np.a (insertComplement (\\_ => (np.s ! Nom).ton) (predV (selectCopula comp.cop))) ;
 

@@ -2,7 +2,7 @@
 concrete ParseEst of Parse =
   NounEst - [PPartNP, UseN2, RelNP, DetNP, NumDigits], --*
   VerbEst - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula], --*
-  AdjectiveEst - [ReflA2,CAdvAP],
+  AdjectiveEst - [ReflA2,CAdvAP,AdjOrd],
   AdverbEst - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceEst - [EmbedVP],
   QuestionEst,

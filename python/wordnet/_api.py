@@ -502,7 +502,7 @@ def mkVP(*args):
     case ["VPSlash","NP"]:
       return w.ComplSlash(args[0],args[1])
     case ["VPSlash"]:
-      return w.ReflVP
+      return w.ReflVPSlash(args[0],w.ReflPron)
     case ["Comp"]:
       return w.UseComp(args[0])
     case types:
@@ -516,9 +516,9 @@ def reflexiveVP(*args):
   """
   match __types__(args):
     case ["V2"]:
-      return w.ReflVP(w.SlashV2a(args[0]))
+      return w.ReflVPSlash(w.SlashV2a(args[0]),w.ReflPron)
     case ["VPSlash"]:
-      return w.ReflVP
+      return w.ReflVPSlash(args[0],w.ReflPron)
     case types:
       raise __no_match__("reflexiveVP",types)
 
@@ -1347,8 +1347,6 @@ def mkAP(*args):
               return args[1][0]
       else:
           return None
-    case ["Ord"]:
-      return w.AdjOrd(args[0])
     case ["CAdv","AP","NP"]:
       return w.CAdvAP(args[0],args[1],args[2],args[3])
     case types:

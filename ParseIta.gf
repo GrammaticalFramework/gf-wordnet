@@ -2,7 +2,7 @@
 concrete ParseIta of Parse =
   NounIta - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbIta - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
-  AdjectiveIta - [ReflA2,CAdvAP],
+  AdjectiveIta - [ReflA2,CAdvAP,AdjOrd],
   AdverbIta - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceIta - [EmbedVP],
   QuestionIta,

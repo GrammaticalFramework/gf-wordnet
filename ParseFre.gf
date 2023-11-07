@@ -2,7 +2,7 @@
 concrete ParseFre of Parse =
   NounFre - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbFre - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
-  AdjectiveFre - [ReflA2,CAdvAP],
+  AdjectiveFre - [ReflA2,CAdvAP,AdjOrd],
   AdverbFre - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceFre - [EmbedVP],
   QuestionFre,

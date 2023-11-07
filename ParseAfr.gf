@@ -1,7 +1,7 @@
 concrete ParseAfr of Parse =
   NounAfr - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbAfr - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP, UseCopula],
-  AdjectiveAfr - [ReflA2, CAdvAP],
+  AdjectiveAfr - [ReflA2, CAdvAP, AdjOrd],
   AdverbAfr - [ComparAdvAdj, ComparAdvAdjS, AdnCAdv],
   SentenceAfr - [EmbedVP],
   QuestionAfr,

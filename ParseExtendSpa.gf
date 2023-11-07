@@ -2,7 +2,7 @@ concrete ParseExtendSpa of ParseExtend =
   ExtendSpa - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
                PiedPipingQuestSlash, PiedPipingRelSlash], NumeralSpa - [num], PunctuationSpa **
- open Prelude, CommonRomance, ResSpa, GrammarSpa in {
+ open Prelude, CommonRomance, ResSpa, GrammarSpa, ExtendSpa in {
 
 lin
     UttAP  p ap = {s = ap.s ! (genNum2Aform p.a.g p.a.n)} ;
@@ -28,6 +28,8 @@ lin
     UttVP ant pol p vp = {
         s = ant.s ++ pol.s ++ infVP vp pol.p p.a
       } ;
+
+    ReflVPSlash = ExtendSpa.ReflRNP ;
 
 lin num x = x ;
 

@@ -2,7 +2,7 @@
 concrete ParseSlv of Parse =
   NounSlv - [PPartNP, UseN2, RelNP, DetNP, NumDigits], --*
   VerbSlv - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula], --*
-  AdjectiveSlv - [ReflA2,CAdvAP],
+  AdjectiveSlv - [ReflA2,CAdvAP,AdjOrd],
   AdverbSlv - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceSlv - [EmbedVP],
   QuestionSlv,

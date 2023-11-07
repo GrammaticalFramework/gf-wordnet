@@ -2,7 +2,7 @@
 concrete ParseRon of Parse =
   NounRon - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbRon - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
-  AdjectiveRon - [ReflA2,CAdvAP],
+  AdjectiveRon - [ReflA2,CAdvAP,AdjOrd],
   AdverbRon - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceRon - [EmbedVP],
   QuestionRon,

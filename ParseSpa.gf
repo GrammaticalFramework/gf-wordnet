@@ -2,7 +2,7 @@
 concrete ParseSpa of Parse =
   NounSpa - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbSpa - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
-  AdjectiveSpa - [ReflA2,CAdvAP],
+  AdjectiveSpa - [ReflA2,CAdvAP,AdjOrd],
   AdverbSpa - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceSpa - [EmbedVP],
   QuestionSpa,

@@ -62,7 +62,8 @@ lin BaseCNN num1 cn1 num2 cn2 =
     ReflPossCNN conj cnn = {
         s = \\role => reflPron ! aform (gennum cnn.g1 (numnnum cnn.n1)) Def (RObj Acc) ++
                       cnn.s ! Def ! role ! conj.sep ++ conj.s ++ cnn.s ! Def ! role ! 4 ;
-        gn = gennum cnn.g1 (numnnum cnn.n)
+        gn = gennum cnn.g1 (numnnum cnn.n) ;
+        isPron = False
       } ;
 
     PossCNN_RNP quant conj cnn rnp =
@@ -75,7 +76,8 @@ lin BaseCNN num1 cn1 num2 cn2 =
                      RObj c => linCase c quant.p ++ s;
                      _      => s
                    } ;
-        gn = gennum cnn.g1 (numnnum cnn.n)
+        gn = gennum cnn.g1 (numnnum cnn.n) ;
+        isPron = False
       } ;
 
 lin NumMore num = {s = \\cf => "още" ++ num.s ! cf ;      nn = NNum Pl ; nonEmpty = True} ;

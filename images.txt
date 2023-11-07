@@ -24418,6 +24418,7 @@ changsha_LN	Q174091;Changsha;commons/2/2c/Location_map_of_Changsha,_Hunan.png	Q1
 kirkham_LN	Q1743513;Kirkham,_Lancashire;commons/9/94/Kirkham_006.jpg
 kiukainen_LN	Q1743976;Kiukainen;commons/6/65/Kiukainen.vaakuna.svg
 nelly_GN	Q1749410;Nelly_(given_name);
+upu_PN	Q17495;Universal_Postal_Union;commons/7/76/Flag_of_UPU.svg	Q17495;Universal_Postal_Union;commons/e/e0/Universal_Postal_Union_member_states.svg
 vuokatti_LN	Q1749889;Vuokatti;commons/4/47/Vuokatti_2006_060.jpg
 steven_GN	Q17501985;/Q17501985;
 tervakoski_LN	Q17524288;Tervakoski;commons/f/f0/Tervakosken_paperitehdas.jpg
@@ -24742,6 +24743,7 @@ mamie_GN	Q20899040;Mamie;
 betty_GN	Q2090092;Betty;
 wexford_LN	Q209126;Wexford;commons/7/74/IRL_COA_Wexford_Town_3D.svg	Q209126;Wexford;commons/8/82/Main_Street_Wexford_-_geograph.org.uk_-_316261.jpg
 ely_LN	Q209176;Ely,_Cambridgeshire;commons/d/d3/Ely-071.jpg
+druzism_N	Q20945640;/Q20945640;
 thame_LN	Q2094727;Thame;commons/9/9c/Thame_Town_Hall.jpg
 newbiggin_LN	Q2097392;Newbiggin-by-the-Sea;commons/6/60/Newbiggin_Bay_-_geograph.org.uk_-_1777779.jpg
 court_SN	Q20996018;Court_(surname);
@@ -25140,7 +25142,7 @@ balboa_SN	Q29539119;/Q29539119;
 charles_GN	Q2958359;Charles;
 wk_N	Q29715950;/Q29715950;
 hedge_end_LN	Q2972103;Hedge_End;commons/d/da/Hedge_End.jpg
-darmstadt_LN	Q2973;Darmstadt;commons/2/28/Wappen_Darmstadt.svg	Q2973;Darmstadt;commons/8/8f/Hissflagge_der_Stadt_Darmstadt.svg	Q2973;Darmstadt;commons/a/a0/Hesse_DA(city).svg	Q2973;Darmstadt;commons/a/ae/Residenzschloss_Darmstadt_539-Gdh.JPG
+darmstadt_LN	Q2973;Darmstadt;commons/2/28/Wappen_Darmstadt.svg	Q2973;Darmstadt;commons/3/3e/Banner_der_Stadt_Darmstadt.svg	Q2973;Darmstadt;commons/8/8f/Hissflagge_der_Stadt_Darmstadt.svg	Q2973;Darmstadt;commons/a/a0/Hesse_DA(city).svg	Q2973;Darmstadt;commons/a/ae/Residenzschloss_Darmstadt_539-Gdh.JPG
 regensburg_LN	Q2978;Regensburg;commons/0/03/Flagge_Regensburg.svg	Q2978;Regensburg;commons/0/0f/Bavaria_R_(town).svg	Q2978;Regensburg;commons/2/29/Regensburg_08_2006_2.jpg	Q2978;Regensburg;commons/3/35/Wappen_Regensburg.svg
 flinders_SN	Q29824606;/Q29824606;
 chengtu_LN	Q30002;Chengdu;commons/0/09/Chengdu.png	Q30002;Chengdu;commons/7/7e/雪山下的成都市天际线_Chengdu_skyline_with_snow_capped_mountains_(cropped).jpg	Q30002;Chengdu;commons/a/aa/Chengdu_dot.png	Q30002;Chengdu;commons/c/cd/Location_of_Chengdu_Prefecture_within_Sichuan_(China).png

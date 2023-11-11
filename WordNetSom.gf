@@ -87456,6 +87456,7 @@ lin single_handed_Adv = variants {} ;
 lin single_minded_A = variants {} ;
 lin single_out_1_V2 = variants {} ;
 lin single_out_2_V2 = variants {} ;
+lin single_party_system_N = variants {} ;
 lin single_spacing_N = variants {} ;
 lin singleness_1_N = variants {} ;
 lin singleness_2_N = variants {} ;

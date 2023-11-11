@@ -1043,6 +1043,8 @@ gfwordnet.update_cells_lin = function(lex_id,lang) {
         while (row != null && row.tagName != "TR") {
             row = row.parentElement;
         }
+        if (row == null)
+            continue;
         const table = row.parentElement;
         
         if (table.children[index-1] == row) { // The right language

@@ -2162,7 +2162,7 @@ myna_1_N	Q3295314;Myna;commons/9/97/Baliespreeuw.jpg
 grackle_1_N	Q337416;Common_hill_myna;commons/c/ca/Common_Hill_Myna,_Satchari_NP,_Bangladesh_1.jpg
 preternatural_2_A	Q7242130;Preternatural;
 crow_1_N	Q388450;Crow;commons/7/71/Krähe_65(loz).JPG
-ladle_1_V2	Q193358;Ladle_(spoon);commons/b/be/Ladel_aluminium_18j07.JPG
+ladle_1_V2	Q193358;Ladle_(spoon);commons/6/6a/Ladle_(PSF).png	Q193358;Ladle_(spoon);commons/b/be/Ladel_aluminium_18j07.JPG
 raven_N	Q25357;Common_raven;commons/3/36/Common_Raven_(Corvus_corax)_(11793963694).jpg	Q25357;Common_raven;commons/5/50/Corvus_corax_ad_berlin_090516.jpg	Q25357;Common_raven;commons/7/75/Common_Raven_(Corvus_corax)_(39638261481).jpg
 rook_2_N	Q25386;Rook_(bird);commons/5/51/Corvus_frugilegus_pastinator,_Gunsan,_South_Korea_1.jpg	Q25386;Rook_(bird);commons/6/6a/Corvus_frugilegus_-Dartmoor,_Devon,_England-8.jpg
 jackdaw_N	Q1234846;Jackdaw;commons/8/80/Corvus_monedula_01.JPG
@@ -2485,9 +2485,9 @@ amazon_4_N	Q456513;Amazon_parrot;commons/f/fb/Amazona_amazonica_2c.jpg
 macaw_N	Q213984;Ara_(bird);commons/1/12/Ara_macao_-Puntarenas_Province,_Costa_Rica-8.jpg
 nestor_N	Q508474;Nestor_(genus);commons/c/ca/Nestor_meridionalis.jpg
 kea_N	Q193337;Kea;commons/5/5f/Kea.jpg
-cockatoo_N	Q31448;Cockatoo;commons/f/f5/Eolophus_roseicapilla_-Wamboin,_NSW,_Australia_-adult-8-2cp.jpg
+cockatoo_N	Q31448;Cockatoo;commons/9/97/GSC2.jpg
 cockateel_1_N	Q514809;Cockatiel;commons/1/10/Wild_cockatiel_-_panoramio.jpg	Q514809;Cockatiel;commons/a/ac/Cockateil.jpg	Q514809;Cockatiel;commons/f/fc/Cockateil_2_(20125670450).jpg
-lovebird_2_N	Q515217;Lovebird;commons/4/4e/Fischer's_Lovebird_(Agapornis_fischeri)_(24041406070)_(cropped).jpg	Q515217;Lovebird;commons/b/bf/Rosy-faced_lovebird_(Agapornis_roseicollis_roseicollis)_2.jpg
+lovebird_2_N	Q515217;Lovebird;commons/3/37/Rosy-faced_lovebirds_(Agapornis_roseicollis_roseicollis)_composite_1_of_3.jpg	Q515217;Lovebird;commons/4/4e/Fischer's_Lovebird_(Agapornis_fischeri)_(24041406070)_(cropped).jpg
 paroquet_1_N	Q8329;Parakeet;commons/d/d9/Wellensittich02.jpg
 budgerigar_1_N	Q121221;Budgerigar;commons/4/4a/Budgerigar-male-strzelecki-qld.jpg	Q121221;Budgerigar;commons/e/ec/Budgerigar-strzelecki-qld.jpg
 cuckoo_2_N	Q18845;Common_cuckoo;commons/1/14/Cuculus_canorus_vogelartinfo_chris_romeiks_CHR0791_cropped.jpg	Q18845;Common_cuckoo;commons/e/e8/Cuculus_canorus2.jpg
@@ -3538,7 +3538,7 @@ indri_N	Q203868;Indri;commons/8/83/Indri_indri_001.jpg
 tarsier_N	Q1114471;Tarsier;commons/5/59/Tarsier-GG.jpg	Q1114471;Tarsier;commons/e/ec/Tarsier_Hugs_Mossy_Branch.jpg
 downtown_A	Q1050303;Downtown;commons/3/39/Financial_District,_Toronto.jpg
 proboscidean_1_N	Q26308;Proboscidea;commons/5/5d/AfricanElephant.jpg
-elephant_1_N	Q7378;Elephant;commons/3/37/African_Bush_Elephant.jpg	Q7378;Elephant;commons/b/b6/L'éléphant_de_forêt_d'Afrique_(Loxodonta_cyclotis).jpg
+elephant_1_N	Q7378;Elephant;commons/3/37/African_Bush_Elephant.jpg
 mammoth_N	Q36715;Mammoth;commons/1/1f/Mammuthus_primigenius_St_Petersbu_2.JPG	Q36715;Mammoth;commons/6/62/Columbian_mammoth.JPG	Q36715;Mammoth;commons/7/79/Mammuthus_trogontherii122DB.jpg
 mastodon_1_N	Q13424536;Mammutidae;commons/f/f4/Mammut_skeleton_Museum_of_the_Earth.jpg
 gomphothere_N	Q387585;Gomphothere;commons/6/63/Gomphotherium_productum.jpg
@@ -4615,7 +4615,6 @@ sacramental_A	Q456627;Sacramental;
 cauldron_N	Q1317634;Cauldron;commons/5/5c/Gulyas080.jpg
 caledonian_canal_LN	Q909073;Caledonian_Canal;commons/2/21/Neptune's_Staircase_2017_left.jpg
 calender_N	Q1365679;Calender;commons/9/9e/Calander_-_Pressing_Machine.JPG
-calico_N	Q1132695;Calico;commons/7/7f/Calico_sample_Crum_&_Co..jpg
 caliper_1_N	Q12408;Calipers;commons/5/5c/2020_Suwmiarka_cyfrowa.jpg
 calliope_2_N	Q1158854;Calliope_(music);commons/6/6f/Calliope_-_The_Wonderful_Operonicon_(1874).jpg
 calorimeter_N	Q189783;Calorimeter;
@@ -6360,7 +6359,7 @@ lace_2_N	Q231250;Lace;commons/0/01/1911_Britannica_-_Lace_3.jpg
 lacquer_2_N	Q11236878;Lacquer;commons/5/5c/Lacquer_(8237571740).jpg
 lacquerware_N	Q368972;Lacquerware;commons/9/98/Covered_box_from_Japan,_Momoyama_period,_1573-1615,_Honolulu_Museum_of_Art_4842.1.jpg	Q368972;Lacquerware;commons/c/cc/Qajar_Laquerbox.tif	Q368972;Lacquerware;commons/d/da/1963-04_1963年_福州漆器.jpg
 ladder_1_N	Q168639;Ladder;commons/d/dd/Leiter_ladder.jpg
-ladle_N	Q193358;Ladle_(spoon);commons/b/be/Ladel_aluminium_18j07.JPG
+ladle_N	Q193358;Ladle_(spoon);commons/6/6a/Ladle_(PSF).png	Q193358;Ladle_(spoon);commons/b/be/Ladel_aluminium_18j07.JPG
 lady_chapel_N	Q1800075;Lady_chapel;commons/8/87/The_beautiful_Lady_Chapel_within_the_cathedral_dedicated_to_the_Holy_Spirit_at_Guildford_-_geograph.org.uk_-_1152425.jpg
 pile_dwelling_N	Q33565;Stilt_house;commons/b/bf/Poor_coastal_housing_at_Hanuabada_in_Port_Moresby1.jpg
 lake_mead_LN	Q654515;Lake_Mead;commons/0/02/Lake_Mead_in_July_2022_by_Landsat.jpg	Q654515;Lake_Mead;commons/0/0a/Lake_Mead_&_Boulder_City.jpg
@@ -10359,6 +10358,7 @@ polytheism_N	Q9163;Polytheism;commons/9/9b/Jacopo_Zucchi_-_The_Assembly_of_the_G
 paganism_N	Q29536;Paganism;commons/c/c6/Walpurgisnacht.jpg
 druidism_N	Q1541838;Druidry_(modern);
 christianity_1_N	Q5043;Christianity;commons/1/16/Jerusalem_Holy-Sepulchre_Jesus-Detail-01.png
+catholicism_N	Q1841;Catholicism;commons/0/0e/Saint_Peter's_Basilica_facade,_Rome,_Italy.jpg
 protestantism_N	Q23540;Protestantism;commons/0/03/Lutherbibel.jpg
 calvinism_N	Q2632580;Perseverance_of_the_saints;commons/d/da/Portrait_of_John_Calvin,_French_School.jpg
 lutheranism_N	Q75809;Lutheranism;commons/5/5e/Konfirmaatio_Aholansaari_2009.JPG
@@ -12276,7 +12276,7 @@ porkchop_N	Q860985;Pork_chop;
 prosciutto_N	Q1065033;Prosciutto;commons/3/39/San_Daniele_Schinken.JPG
 bacon_1_N	Q11106;Bacon;commons/3/31/Made20bacon.png
 rind_N	Q171187;Peel_(fruit);
-fatback_N	Q5437342;Fatback;
+fatback_N	Q5437342;Fatback;commons/b/b2/Schwein-Speck.png
 spareribs_2_N	Q1526944;Pork_ribs;commons/0/05/Smoked_country_style_pork_ribs.jpg	Q1526944;Pork_ribs;commons/0/08/Prok_ribs.jpg	Q1526944;Pork_ribs;commons/0/0d/Raw_pork_spareribs.jpg	Q1526944;Pork_ribs;commons/2/20/Balinese_Roasted_Pork_Ribs_-_Iga_Babi_Panggang_Bali.JPG	Q1526944;Pork_ribs;commons/2/2c/Pork_Ribs_(32852871933).jpg	Q1526944;Pork_ribs;commons/3/3b/BBQ_RIBS_pork_side_ribs.jpg	Q1526944;Pork_ribs;commons/6/6f/Pork_ribs_at_Casanova.jpg	Q1526944;Pork_ribs;commons/7/70/Pork_Rib_dinner.jpg	Q1526944;Pork_ribs;commons/7/78/Baby_back_ribs_-_hickory_smoked.jpg	Q1526944;Pork_ribs;commons/a/a7/Pork_ribs.jpg	Q1526944;Pork_ribs;commons/e/eb/Ribs_on_the_grill.JPG	Q1526944;Pork_ribs;commons/e/ee/Baby_back_ribs_with_fries.jpg
 chitterlings_N	Q155460;Chitterlings;
 cracklings_N	Q17064469;%C4%8Cvarci;
@@ -15583,7 +15583,7 @@ lusaka_LN	Q3881;Lusaka;commons/1/15/Downtown_Lusaka.JPG	Q3881;Lusaka;commons/d/d
 lusitania_LN	Q188650;Lusitania;commons/a/a8/Roman_Empire_-_Lusitania_(125_AD).svg
 silesia_1_LN	Q81720;Silesia;commons/0/01/Silesia-map.svg	Q81720;Silesia;commons/d/d1/DEU_Niederschlesien_1919-1941_COA.svg	Q81720;Silesia;commons/f/f8/Rynek_Starego_Miasta_We_Wroclawiu_(152991773).jpeg
 big_sur_LN	Q859413;Big_Sur;commons/5/52/Big_Sur_and_Los_Padres_National_Forest.png	Q859413;Big_Sur;commons/6/6b/Big_Sur_June_2008.jpg
-silicon_valley_LN	Q163820;Silicon_Valley;commons/7/7c/Ile_de_Nantes.JPG	Q163820;Silicon_Valley;commons/f/ff/California_Bay_Area_county_map.svg
+silicon_valley_LN	Q163820;Silicon_Valley;commons/3/35/Aerial_view_of_Apple_Park.jpg	Q163820;Silicon_Valley;commons/f/ff/California_Bay_Area_county_map.svg
 zimbabwe_LN	Q954;Zimbabwe;commons/0/01/Coat_of_arms_of_Zimbabwe.svg	Q954;Zimbabwe;commons/5/50/Zimbabwe_(orthographic_projection).svg	Q954;Zimbabwe;commons/6/6a/Flag_of_Zimbabwe.svg	Q954;Zimbabwe;commons/b/bc/LocationZimbabwe.svg	Q954;Zimbabwe;commons/d/de/Zimbabwe_on_the_globe_(Africa_centered).svg
 harare_LN	Q3921;Harare;commons/8/8c/Harare_skyline.jpg	Q3921;Harare;commons/9/96/Coat_of_arms_of_Harare.svg	Q3921;Harare;commons/9/97/Harare_in_Zimbabwe.svg	Q3921;Harare;commons/e/e7/Flag_of_Harare.svg
 bulawayo_LN	Q193250;Bulawayo;commons/3/35/Flag_of_Bulawayo.svg	Q193250;Bulawayo;commons/4/45/Bulawayo_Zimbabwe_COA.svg	Q193250;Bulawayo;commons/6/61/Bulawayo_CBD.jpg	Q193250;Bulawayo;commons/a/a7/Bulawayo_district.png
@@ -17879,7 +17879,7 @@ nobleMasc_N	Q16744001;;
 loser_3_N	Q20861252;;
 underboss_N	Q7883466;Underboss;
 underdog_N	Q2975393;Underdog;
-lot_PN	Q40574;Lot_(biblical_person);commons/5/58/Genesis19-17.jpg
+lot_PN	Q40574;Lot_(biblical_person);
 loyalist_N	Q2555173;Loyalism;
 luddite_2_N	Q1159675;Luddite;commons/6/6e/FrameBreaking-1812.jpg
 luddite_1_N	Q1159675;Luddite;commons/6/6e/FrameBreaking-1812.jpg
@@ -20122,7 +20122,7 @@ mandarin_1_N	Q125337;Mandarin_orange;commons/4/49/Mandarin_Oranges_(Citrus_Retic
 satsuma_1_N	Q875262;Citrus_unshiu;commons/1/1d/Citrus_unshiu_20101118_a.jpg	Q875262;Citrus_unshiu;commons/3/31/Citrus_unshiu_20101127_c.jpg
 tangelo_1_N	Q148866;Tangelo;commons/a/a4/Minneola_fruit_3.jpg
 rangpur_N	Q1304478;Rangpur_(fruit);commons/a/ab/Rangpur_limette.jpg
-lemon_3_N	Q500;Lemon;commons/8/8f/Citrus_x_limon_-_Köhler–s_Medizinal-Pflanzen-041.jpg	Q500;Lemon;commons/e/e4/P1030323.JPG
+lemon_3_N	Q500;Lemon;commons/8/8f/Citrus_x_limon_-_Köhler–s_Medizinal-Pflanzen-041.jpg
 lime_tree_1_N	Q45417383;;
 citrange_1_N	Q2744815;;commons/9/9f/Pomological_Watercolor_POM00006386.jpg
 kumquat_1_N	Q5122903;Kumquat;commons/f/f4/Citrus_japonica.jpg

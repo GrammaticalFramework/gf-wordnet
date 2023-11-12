@@ -20086,6 +20086,7 @@ lin condolent_A = variants {} ;
 lin condom_N = mkN "ikhondomu" C1_2 ; --guessed
 lin condominium_1_N = variants {} ;
 lin condominium_2_N = variants {} ;
+lin condominium_3_N = variants {} ;
 lin condonation_N = variants {} ;
 lin condone_V2 = mkV2 "-xolela" ; --guessed
 lin condor_N = variants {} ;

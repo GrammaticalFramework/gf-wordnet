@@ -20092,6 +20092,7 @@ lin condolent_A = variants {} ;
 lin condom_N = mkN "kondo" ; --guessed
 lin condominium_1_N = variants {} ;
 lin condominium_2_N = variants {} ;
+lin condominium_3_N = variants {} ;
 lin condonation_N = variants {} ;
 lin condone_V2 = dirV2 (mkV "hafer") ; --guessed
 lin condor_N = mkN "avultun" ; --guessed

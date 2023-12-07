@@ -20,6 +20,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install setuptools
+        run: pip install setuptools
+
       - name: Install twine
         run: pip install twine
 

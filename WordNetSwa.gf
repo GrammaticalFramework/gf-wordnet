@@ -74995,6 +74995,7 @@ lin puerility_2_N = variants {} ;
 lin puerpera_N = variants {} ;
 lin puerperal_A = variants {} ;
 lin puerperium_N = variants {} ;
+lin puerto_rico_LN = variants {} ;
 lin puff_A = variants {} ;
 lin puff_1_N = variants {} ;
 lin puff_2_N = variants {} ;

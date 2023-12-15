@@ -335,7 +335,7 @@ def mkCl(*args):
     case ["NP","V2","NP"]:
       return w.PredVP(args[0],w.ComplV2(args[1],args[2]))
     case ["NP","V3","NP","NP"]:
-      return w.PredVP(args[0],w.ComplV3(args[1],args[2],args[3]))
+      return w.PredVP(args[0],w.ComplSlash(w.Slash3V3(args[1],args[3]),args[2]))
     case ["NP","VV","VP"]:
       return w.PredVP(args[0],w.ComplVV(args[1],w.ASimul,w.PPos,args[2]))
     case ["NP","VS","S"]:
@@ -460,7 +460,7 @@ def mkVP(*args):
     case ["V2","NP"]:
       return w.ComplSlash(w.SlashV2a(args[0]),args[1])
     case ["V3","NP","NP"]:
-      return w.ComplV3
+      return w.ComplSlash(w.Slash3V3(args[0],args[2]),args[1])
     case ["VV","VP"]:
       return w.ComplVV(args[0],w.ASimul,w.PPos,args[3])
     case ["VV","Ant","Pol","VP"]:
@@ -1523,7 +1523,7 @@ def mkQCl(*args):
     case ["IP","V2","NP"]:
       return w.QuestVP(args[0],w.ComplV2(args[1],args[2]))
     case ["IP","V3","NP","NP"]:
-      return w.QuestVP(args[0],w.ComplV3(args[1],args[2],args[3]))
+      return w.QuestVP(args[0],w.ComplSlash(w.Slash3V3(args[1],args[3]),args[2]))
     case ["IP","VV","VP"]:
       return w.QuestVP(args[0],w.ComplVV(args[1],w.ASimul,w.PPos,args[2]))
     case ["IP","VS","S"]:
@@ -1789,7 +1789,7 @@ def mkRCl(*args):
     case ["RP","V2","NP"]:
       return w.RelVP(args[0],w.ComplV2(args[1],args[2]))
     case ["RP","V3","NP","NP"]:
-      return w.RelVP(args[0],w.ComplV3(args[1],args[2],args[3]))
+      return w.RelVP(args[0],w.ComplSlash(w.Slash3V3(args[1],args[3]),args[2]))
     case ["RP","VV","VP"]:
       return w.RelVP(args[0],w.ComplVV(args[1],w.ASimul,w.PPos,args[2]))
     case ["RP","VS","S"]:

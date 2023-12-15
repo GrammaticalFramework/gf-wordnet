@@ -163,6 +163,8 @@ def mkUtt(*args):
     case ["CN"]:
       return w.UttCN(args[0])
     case ["AP"]:
+      return w.UttAP(w.it_Pron,args[0])
+    case ["Pron","AP"]:
       return w.UttAP(args[0],args[1])
     case ["Card"]:
       return w.UttCard(args[0])

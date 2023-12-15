@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "gf-wordnet",
-    version = "0.0.12",
+    version = "0.0.13",
     author = "Krasimir Angelov",
     author_email = "kr.angelov@gmail.com",
     description = ("An API to the GF WordNet."),

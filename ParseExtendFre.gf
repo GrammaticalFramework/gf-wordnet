@@ -32,6 +32,8 @@ lin
 
 lin num x = x ;
 
+lin that_RP = IdRP ;
+
 lin RelNP = GrammarFre.RelNP ;
     ExtRelNP = GrammarFre.RelNP ;
 

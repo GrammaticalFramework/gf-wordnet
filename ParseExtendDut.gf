@@ -11,6 +11,8 @@ lin UttAP  p ap  = {s = ap.s ! p.a ! APred} ;
 
 lin num x = x ;
 
+lin that_RP = IdRP ;
+
 lin RelNP = GrammarDut.RelNP ;
     ExtRelNP = GrammarDut.RelNP ;
 

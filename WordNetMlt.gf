@@ -15520,7 +15520,7 @@ lin cellulose_N = variants {} ;
 lin cellulosic_N = variants {} ;
 lin cellulosid_A = variants {} ;
 lin celom_1_N = variants {} ;
-lin celsius_MU = mkMU (BIND++"°C") ;
+lin celsius_MU = mkMU (SOFT_BIND++"°C") ;
 lin celt_N = variants {} ;
 lin celtic_A = mkA "Keltiku" ; --guessed
 lin celtic_N = mkN "keltiku" ; --guessed
@@ -28662,7 +28662,7 @@ lin doll_1_N = mkN "pupa" ; --guessed
 lin doll_2_N = mkN "tfajla" ; --guessed
 lin doll_V = mkV "pupa" ; --guessed
 lin doll_V2 = dirV2 (mkV "pupa") ; --guessed
-lin dollar_MU = mkMU ("$"++BIND) ** {isPre = True} ;
+lin dollar_MU = mkMU ("$"++SOFT_BIND) ** {isPre = True} ;
 lin dollar_1_N = mkN "dollaru" ;
 lin dollar_2_N = mkN "dollaru" ; --guessed
 lin dollar_3_N = mkN "dollaru" ; --guessed
@@ -32931,7 +32931,7 @@ lin eurasian_A = variants {} ;
 lin eurasian_N = variants {} ;
 lin eureka_LN = mkPN "Eureka" ;
 lin eurhythmics_N = variants {} ;
-lin euro_MU = mkMU (BIND++"€") ;
+lin euro_MU = mkMU (SOFT_BIND++"€") ;
 lin euro_N = mkN "ewro" ;
 lin eurodollar_N = variants {} ;
 lin europe_1_LN = mkPN "Ewropa" masculine singular ;
@@ -34294,7 +34294,7 @@ lin fag_end_2_N = mkN "tmiem" ; --guessed
 lin faggot_1_N = mkN "pufta" ; --guessed
 lin faggot_2_N = mkN "linfa" ; --guessed
 lin fagoting_1_N = variants {} ;
-lin fahrenheit_MU = mkMU (BIND++"°F") ;
+lin fahrenheit_MU = mkMU (SOFT_BIND++"°F") ;
 lin faience_N = variants {} ;
 lin fail_2_V = mkV "falla" ; --guessed
 lin fail_4_V = mkV "falla" ; --guessed
@@ -68999,7 +68999,7 @@ lin perceive_2_V2 = dirV2 (mkV "fehem") ; --guessed
 lin perceived_1_A = variants {} ;
 lin perceived_2_A = variants {} ;
 lin perceiver_N = variants {} ;
-lin percent_MU = mkMU (BIND++"%") ;
+lin percent_MU = mkMU (SOFT_BIND++"%") ;
 lin percent_N = mkN "fil-mija" ; --guessed
 lin percentage_1_N = mkN "percentwali" ; --guessed
 lin percentage_2_N = mkN "percentwali" ; --guessed
@@ -72655,7 +72655,7 @@ lin poultry_2_N = mkN "tajra" ; --guessed
 lin poultryman_N = variants {} ;
 lin pounce_N = mkN "vapur" ; --guessed
 lin pounce_V = variants {} ;
-lin pound_MU = mkMU ("£"++BIND) ** {isPre = True} ;
+lin pound_MU = mkMU ("£"++SOFT_BIND) ** {isPre = True} ;
 lin pound_1_N = mkN "libra" ; --guessed
 lin pound_2_N = mkN "lira" ; --guessed
 lin pound_3_N = mkN "libra" ; --guessed
@@ -109011,7 +109011,7 @@ lin yelp_V = variants {} ;
 lin yemen_LN = mkPN "Jemen" masculine singular ;
 lin yemeni_A = variants {} ;
 lin yemeni_N = variants {} ;
-lin yen_MU = mkMU ("¥"++BIND) ** {isPre = True} ;
+lin yen_MU = mkMU ("¥"++SOFT_BIND) ** {isPre = True} ;
 lin yen_1_N = variants {} ;
 lin yen_2_N = variants {} ;
 lin yen_V = mkV "ried" ; --guessed

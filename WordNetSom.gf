@@ -15514,7 +15514,7 @@ lin cellulose_N = variants {} ;
 lin cellulosic_N = variants {} ;
 lin cellulosid_A = variants {} ;
 lin celom_1_N = variants {} ;
-lin celsius_MU = mkMU (BIND++"°C") ;
+lin celsius_MU = mkMU (SOFT_BIND++"°C") ;
 lin celt_N = variants {} ;
 lin celtic_A = variants {} ;
 lin celtic_N = variants {} ;
@@ -28656,7 +28656,7 @@ lin doll_1_N = variants {} ;
 lin doll_2_N = variants {} ;
 lin doll_V = variants {} ;
 lin doll_V2 = variants {} ;
-lin dollar_MU = mkMU ("$"++BIND) ** {isPre = True} ;
+lin dollar_MU = mkMU ("$"++SOFT_BIND) ** {isPre = True} ;
 lin dollar_1_N = mkN "dollar" ;
 lin dollar_2_N = variants {} ;
 lin dollar_3_N = variants {} ;
@@ -32925,7 +32925,7 @@ lin eurasian_A = variants {} ;
 lin eurasian_N = variants {} ;
 lin eureka_LN = mkPN "Eureka" ;
 lin eurhythmics_N = variants {} ;
-lin euro_MU = mkMU (BIND++"€") ;
+lin euro_MU = mkMU (SOFT_BIND++"€") ;
 lin euro_N = mkN "yuuroo" ;
 lin eurodollar_N = variants {} ;
 lin europe_1_LN = mkPN "Yurub" ;
@@ -34288,7 +34288,7 @@ lin fag_end_2_N = variants {} ;
 lin faggot_1_N = variants {} ;
 lin faggot_2_N = variants {} ;
 lin fagoting_1_N = variants {} ;
-lin fahrenheit_MU = mkMU (BIND++"°F") ;
+lin fahrenheit_MU = mkMU (SOFT_BIND++"°F") ;
 lin faience_N = variants {} ;
 lin fail_2_V = mkV "wəjo" ; --guessed
 lin fail_4_V = mkV "wəjo" ; --guessed
@@ -68993,7 +68993,7 @@ lin perceive_2_V2 = variants {} ;
 lin perceived_1_A = variants {} ;
 lin perceived_2_A = variants {} ;
 lin perceiver_N = variants {} ;
-lin percent_MU = mkMU (BIND++"%") ;
+lin percent_MU = mkMU (SOFT_BIND++"%") ;
 lin percent_N = variants {} ;
 lin percentage_1_N = variants {} ;
 lin percentage_2_N = mkN "boqolleey" ; --guessed
@@ -72649,7 +72649,7 @@ lin poultry_2_N = mkN "shimbir" ; --guessed
 lin poultryman_N = variants {} ;
 lin pounce_N = mkN "doon" ; --guessed
 lin pounce_V = variants {} ;
-lin pound_MU = mkMU ("£"++BIND) ** {isPre = True} ;
+lin pound_MU = mkMU ("£"++SOFT_BIND) ** {isPre = True} ;
 lin pound_1_N = mkN "ulayn" ; --guessed
 lin pound_2_N = variants {} ;
 lin pound_3_N = mkN "ulayn" ; --guessed
@@ -109005,7 +109005,7 @@ lin yelp_V = variants {} ;
 lin yemen_LN = mkPN "Yemen" ;
 lin yemeni_A = variants {} ;
 lin yemeni_N = variants {} ;
-lin yen_MU = mkMU ("¥"++BIND) ** {isPre = True} ;
+lin yen_MU = mkMU ("¥"++SOFT_BIND) ** {isPre = True} ;
 lin yen_1_N = variants {} ;
 lin yen_2_N = mkN "yen" ;
 lin yen_V = variants {} ;

@@ -1,7 +1,7 @@
 concrete ParseExtendGer of ParseExtend =
   ExtendGer - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
-               PiedPipingQuestSlash, PiedPipingRelSlash], NumeralGer - [num], PunctuationX **
+               PiedPipingQuestSlash, PiedPipingRelSlash, ReflA2RNP], NumeralGer - [num], PunctuationX **
  open Prelude, ResGer, (G=GrammarGer) in {
 
 lin
@@ -13,7 +13,7 @@ lin
 lin SlashV2VNP v np ant pol vp =   -- bitte ihn, zu kaufen | lasse ihn kaufen   HL 3/22
       let prep = v.c2 ;
           obj = appPrep prep (np.s!False) ; -- simplify: no glueing of prep+DefArt, HL 8/22
-          b : Bool = case prep.isPrep of {isPrep | isPrepDefArt => True ; _ => False} ;
+          b : Bool = case prep.t of {isPrep | isPrepDefArt => True ; _ => False} ;
           c = prep.c ;
           w = np.w ;
           vps = (ComplVV v ant pol vp ** {c2 = vp.c2 ; objCtrl = vp.objCtrl})

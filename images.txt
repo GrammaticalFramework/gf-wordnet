@@ -13474,6 +13474,7 @@ rear_1_N	Q2203498;Rear_(military);
 bengali_2_N	Q402913;Bengalis;commons/a/a9/Bengali_people.jpg
 maori_1_N	Q6122670;M%C4%81ori_people;commons/2/22/Maori_welkom.JPG	Q6122670;M%C4%81ori_people;commons/6/6e/00_3451_Maori,_indigenous_people_of_New_Zealand.jpg	Q6122670;M%C4%81ori_people;commons/9/93/Tino_Rangatiratanga_Maori_Flag.svg
 kgb_PN	Q80919;KGB;commons/f/fa/RIAN_archive_142949_Lubyanka_Square_in_Moscow.jpg
+wto_PN	Q7825;World_Trade_Organization;commons/8/82/Fourth_Global_Review_of_Aid_for_Trade_1691_(9237986689).jpg
 bilocation_N	Q863333;Bilocation;
 box_number_2_N	Q1162282;Post_office_box;commons/0/02/USPS_Post_office_boxes_1.jpg	Q1162282;Post_office_box;commons/3/30/USPS_Post_office_boxes_2.jpg
 box_number_1_N	Q1162282;Post_office_box;commons/0/02/USPS_Post_office_boxes_1.jpg	Q1162282;Post_office_box;commons/3/30/USPS_Post_office_boxes_2.jpg
@@ -24201,7 +24202,7 @@ lawrence_SN	Q1544163;Lawrence_(surname);
 badalona_LN	Q15468;Badalona;commons/0/07/Badalona_-_La_Rambla.jpg	Q15468;Badalona;commons/0/0c/Bandera_Badalona.svg	Q15468;Badalona;commons/2/2c/Escut_de_badalona.PNG	Q15468;Badalona;commons/9/97/Badalona_OSM_01.png
 thurrock_LN	Q1549155;Thurrock;commons/a/ab/Lakeside_Shopping_Centre_eastern_entrance.JPG	Q1549155;Thurrock;commons/b/b4/Thurrock_UK_locator_map.svg
 hall_SN	Q1551523;Hall_(surname);
-brig_LN	Q15582;/Q15582;commons/0/0b/Brig_Bahnhof.JPG	Q15582;/Q15582;commons/9/98/Karte_Gemeinde_Brig_1850.png	Q15582;/Q15582;commons/c/c7/Brig_1.jpg	Q15582;/Q15582;commons/d/db/CHE_Brig_COA.svg
+brig_LN	Q15582;Brigue_(Switzerland);commons/0/0b/Brig_Bahnhof.JPG	Q15582;Brigue_(Switzerland);commons/9/98/Karte_Gemeinde_Brig_1850.png	Q15582;Brigue_(Switzerland);commons/c/c7/Brig_1.jpg	Q15582;Brigue_(Switzerland);commons/d/db/CHE_Brig_COA.svg
 kuybyshev_LN	Q155955;Kuybyshev,_Novosibirsk_Oblast;commons/3/30/Flag_of_Kuibyshev_(Novosibirsk_oblast).png	Q155955;Kuybyshev,_Novosibirsk_Oblast;commons/6/66/Kuybyshev_23_06_09.JPG	Q155955;Kuybyshev,_Novosibirsk_Oblast;commons/c/c2/RUS_Куйбышев_COA.gif
 kathy_GN	Q1561114;Kathy_(name);
 michelle_GN	Q15621047;/Q15621047;
@@ -24702,7 +24703,7 @@ liskeard_LN	Q2019908;Liskeard;commons/6/6b/The_Guildhall,_Market_Street,_Liskear
 rhyl_LN	Q2020203;Rhyl;commons/8/8f/Rhyl_Seafront_-_geograph.org.uk_-_388762.jpg
 warwick_GN	Q20203672;Warwick_(given_name);
 lambeth_LN	Q202059;London_Borough_of_Lambeth;commons/3/3c/Brixton_Town_Hall,_London_-_geograph.org.uk_-_18294.jpg	Q202059;London_Borough_of_Lambeth;commons/3/3d/Lambeth_in_Greater_London.svg	Q202059;London_Borough_of_Lambeth;commons/f/ff/Coat_of_Arms_of_the_London_Borough_of_Lambeth.svg
-hämeenlinna_LN	Q202158;H%C3%A4meenlinna;commons/c/c1/Lento_13.12.2007_070.jpg	Q202158;H%C3%A4meenlinna;commons/d/da/Hämeenlinna.vaakuna.svg
+hämeenlinna_LN	Q202158;H%C3%A4meenlinna;commons/4/49/Hameenlinna_Market_Square_3.JPG	Q202158;H%C3%A4meenlinna;commons/d/da/Hämeenlinna.vaakuna.svg
 hounslow_LN	Q2022317;Hounslow;commons/d/d1/Hounslow_High_Street.1.JPG
 ashington_LN	Q202348;Ashington;commons/b/b7/Milburn_Statue_-_geograph.org.uk_-_69539.jpg
 hoylake_LN	Q2024069;Hoylake;commons/4/40/Hoylake_Lighthouse_(1).jpg

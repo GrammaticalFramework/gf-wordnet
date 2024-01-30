@@ -1,6 +1,6 @@
 --1 Constructors: the Resource Syntax API
 
-resource RGL = open Parse in {
+resource WordNet = open Parse in {
 
 -- For developers: this document is tagged to support GF-Doc and synopsis    --%
 -- generation:    --%

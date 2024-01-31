@@ -55,19 +55,19 @@ function changeItem(e) {
 }
 
 function initMultiSelection(table) {
-    selected = ["ParseBul", "ParseEng", "ParseSwe"]
-    if (typeof(Storage) !== "undefined" && localStorage.lang_selection) {
-        selected = JSON.parse(localStorage.lang_selection);
-    }
+	selected = ["ParseBul", "ParseEng", "ParseSwe"]
+	if (typeof(Storage) !== "undefined" && localStorage.lang_selection) {
+		selected = JSON.parse(localStorage.lang_selection);
+	}
 
-    var tr = table.lastElementChild.firstElementChild;
-    while (tr != null) {
-        const nameElem  = tr.firstElementChild;
-        const checkElem = tr.lastElementChild.firstElementChild;
-        if (selected.includes(checkElem.name))
-            checkElem.checked = true;
-            tr = tr.nextElementSibling;
-    }
+	var tr = table.lastElementChild.firstElementChild;
+	while (tr != null) {
+		const nameElem  = tr.firstElementChild;
+		const checkElem = tr.lastElementChild.firstElementChild;
+		if (selected.includes(checkElem.name))
+			checkElem.checked = true;
+		tr = tr.nextElementSibling;
+	}
 }
 
 function getMultiSelection(table) {

@@ -97,7 +97,7 @@ function getMultiSelection(table) {
 	if (typeof(Storage) !== "undefined") {
 		localStorage.lang_selection = JSON.stringify(selection.langs_list);
 	}
-	
+
 	selection.isEqual = function(other) {
 		if (other.langs_list.length != this.langs_list.length)
 			return false;

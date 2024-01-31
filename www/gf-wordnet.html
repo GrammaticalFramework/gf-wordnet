@@ -15,11 +15,11 @@
 					<tbody>
 						<tr><td onclick="changeItem(event,this)">Afrikaans</td><td><input type="checkbox" name="ParseAfr"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Arabic</td><td><input type="checkbox" name="ParseAra"/></td></tr>
-						<tr><td onclick="changeItem(event,this)">Bulgarian</td><td><input type="checkbox" name="ParseBul" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Bulgarian</td><td><input type="checkbox" name="ParseBul"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Catalan</td><td><input type="checkbox" name="ParseCat"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Chinese</td><td><input type="checkbox" name="ParseChi"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Dutch</td><td><input type="checkbox" name="ParseDut"/></td></tr>
-						<tr><td onclick="changeItem(event,this)">English</td><td><input type="checkbox" name="ParseEng" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">English</td><td><input type="checkbox" name="ParseEng"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Estonian</td><td><input type="checkbox" name="ParseEst"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Finnish</td><td><input type="checkbox" name="ParseFin"/></td></tr>
                         <tr><td onclick="changeItem(event,this)">French</td><td><input type="checkbox" name="ParseFre"/></td></tr>
@@ -35,7 +35,7 @@
 						<tr><td onclick="changeItem(event,this)">Somali</td><td><input type="checkbox" name="ParseSom"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Spanish</td><td><input type="checkbox" name="ParseSpa"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Swahili</td><td><input type="checkbox" name="ParseSwa"/></td></tr>
-						<tr><td onclick="changeItem(event,this)">Swedish</td><td><input type="checkbox" name="ParseSwe" checked="true"/></td></tr>
+						<tr><td onclick="changeItem(event,this)">Swedish</td><td><input type="checkbox" name="ParseSwe"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Thai</td><td><input type="checkbox" name="ParseTha"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Turkish</td><td><input type="checkbox" name="ParseTur"/></td></tr>
 						<tr><td onclick="changeItem(event,this)">Zulu</td><td><input type="checkbox" name="ParseZul"/></td></tr>
@@ -155,6 +155,8 @@
 					return element('text');
 				}
 			}
+
+			initMultiSelection(element('from'));
 		</script>
 	</body>
 </html>

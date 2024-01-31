@@ -54,6 +54,22 @@ function changeItem(e) {
 	e.stopPropagation();
 }
 
+function initMultiSelection(table) {
+	selected = ["ParseBul", "ParseEng", "ParseSwe"]
+	if (typeof(Storage) !== "undefined" && localStorage.lang_selection) {
+		selected = JSON.parse(localStorage.lang_selection);
+	}
+
+	var tr = table.lastElementChild.firstElementChild;
+	while (tr != null) {
+		const nameElem  = tr.firstElementChild;
+		const checkElem = tr.lastElementChild.firstElementChild;
+		if (selected.includes(checkElem.name))
+			checkElem.checked = true;
+		tr = tr.nextElementSibling;
+	}
+}
+
 function getMultiSelection(table) {
 	var current   = table.firstElementChild.firstElementChild.firstElementChild.innerHTML;
 	var selection = {current: null, langs: {}, langs_list: []};
@@ -76,6 +92,10 @@ function getMultiSelection(table) {
 			selection.langs_list.push(checkElem.name);
 		}
 		tr = tr.nextElementSibling;
+	}
+
+	if (typeof(Storage) !== "undefined") {
+		localStorage.lang_selection = JSON.stringify(selection.langs_list);
 	}
 	
 	selection.isEqual = function(other) {

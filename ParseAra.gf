@@ -12,7 +12,8 @@ concrete ParseAra of Parse =
   TenseX - [Utt, CAdv,IAdv,AdV,SC,Adv],
   NamesAra,
   ParseExtendAra,
-  WordNetAra
+  WordNetAra,
+  DocumentationAra
   ** {
 
 flags

@@ -1,7 +1,4 @@
---# -path=.:./gf-wordnet
-concrete WordNetAra of WordNet = CatAra **
-  open --- MorphoDictAra, MoreAra, --- moved to the end of this file, temporarily
-      ParadigmsAra, SyntaxAra in {
+concrete WordNetAra of WordNet = CatAra ** open ParadigmsAra, SyntaxAra in {
 
 lin of_1_Prep = possess_Prep ;
 lin in_1_Prep = in_Prep ;

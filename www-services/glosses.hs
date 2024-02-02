@@ -325,8 +325,8 @@ renderStatus cs =
         renderBar (s,x,y) lang (g,u,c) =
           let bar =
                 "<rect x=\""++show x++"\" y=\""++show 0++"\" width=\"30\" height=\""++show g++"\" style=\"fill:red\"/>\n"++
-                "<rect x=\""++show x++"\" y=\""++show g++"\" width=\"30\" height=\""++show (g+u)++"\" style=\"fill:yellow\"/>\n"++
-                "<rect x=\""++show x++"\" y=\""++show (g+u)++"\" width=\"30\" height=\""++show (g+u+c)++"\" style=\"fill:green\"/>\n"
+                "<rect x=\""++show x++"\" y=\""++show g++"\" width=\"30\" height=\""++show u++"\" style=\"fill:yellow\"/>\n"++
+                "<rect x=\""++show x++"\" y=\""++show (g+u)++"\" width=\"30\" height=\""++show c++"\" style=\"fill:green\"/>\n"
           in (bar++s,x+35,max y (g+u+c))
 
         renderLang (s,x,y) lang (g,u,c) =

@@ -121,5 +121,5 @@ else:
                'thousandfoldNumeral', 'w', 'we_NP', 'what_IP',
                'whichPl_IDet', 'whichSg_IDet', 'which_IDet',
                'which_RP', 'who_IP', 'youPl_NP', 'youPol_NP',
-               'you_NP', 'lowest_common_hypernyms',
+               'you_NP', 'lowest_common_hypernyms', 'langs',
                'shortest_path_distance', 'path_similarity']

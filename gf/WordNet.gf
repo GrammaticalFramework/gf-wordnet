@@ -1,6 +1,6 @@
 --1 Constructors: the Resource Syntax API
 
-resource WordNet = open Parse in {
+resource WordNet = Predef ** open Parse in {
 
 -- For developers: this document is tagged to support GF-Doc and synopsis    --%
 -- generation:    --%

@@ -133,7 +133,7 @@ fcgiMain db env rq = do
       runDaison db ReadWriteMode $ do
         res <- update lexemes [(id, lex{status=updateStatus lang Checked (status lex)}) | (id,lex) <- fromIndex lexemes_fun (at lex_id)]
         insert_ updates (UpdateLexeme user lex_id lang def)
-        c <- query countRows (from updates_usr everything)
+        c <- query countRows (from updates_usr (at user))
         return (c,head [map toLower (show st)
                               | (_,lexeme) <- res,
                                 (lang',st) <- status lexeme,

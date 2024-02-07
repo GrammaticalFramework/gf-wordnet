@@ -5,8 +5,10 @@ from daison import *
 from typing import Optional, Union
 from enum import Enum
 from dataclasses import dataclass
+import atexit
 
 db = openDB(os.path.dirname(pgf_path)+"/semantics.db")
+atexit.register(lambda: db.close())
 
 def get_concr(lang):
     return grammar.languages["Parse"+lang.title()]

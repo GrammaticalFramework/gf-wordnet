@@ -73,6 +73,7 @@ main = do
   fileExists <- doesFileExist db_name
   when fileExists (removeFile db_name)
   db <- openDB db_name
+  setJournalMode db JournalWAL
   runDaison db ReadWriteMode $ do
     createTable examples
     createTable classes

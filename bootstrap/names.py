@@ -21,7 +21,7 @@ def extract(wiki_fpath):
                     if "datavalue" not in claim["mainsnak"]:
                         continue
                     typ = claim["mainsnak"]["datavalue"]["value"]["id"]
-                    if typ in ["Q12308941","Q11879590","Q101352"]:
+                    if typ in ["Q12308941","Q11879590","Q101352","Q3918","Q618779"]:
                         name_type = typ
                     if typ in ["Q18972245","Q18972207"]:
                         gender = typ
@@ -446,7 +446,7 @@ def generate(names_fpath):
     # first pass to compute probabilities
     with open(names_fpath, "r") as f:
         q_ids  = {}
-        counts = {"GN": {}, "SN": {}, "LN": {}}
+        counts = {"GN": {}, "SN": {}, "LN": {}, "PN": {}}
         for line in f:
             record = eval(line)
             if type(record[-1]) is not dict:
@@ -460,7 +460,9 @@ def generate(names_fpath):
                 if len(record[-1]) == 0:
                     continue
                 if len(record) == 5:
-                    if record[3] in ["Q12308941","Q11879590"]:
+                    if record[3] in ["Q3918","Q618779"]:
+                        tag = "PN"
+                    elif record[3] in ["Q12308941","Q11879590"]:
                         tag = "GN"
                     else:
                         tag = "SN"
@@ -571,8 +573,13 @@ def generate(names_fpath):
                             lin = "mkGN "+dquote(lin)
                         elif tag == "SN":
                             lin = "mkSN "+dquote(lin)
-                        else:
+                        elif tag == "LN":
                             lin = "mkLN "+dquote(lin)
+                        else:
+                            if lang in ["Slv"]:
+                                lin = "mkPN "+dquote(lin)+" masculine singular"
+                            else:
+                                lin = "mkPN "+dquote(lin)
                     lins.append(lin)
                 if len(lins) == 1:
                     lin = lins[0]

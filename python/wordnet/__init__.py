@@ -33,6 +33,8 @@ def download(langs=None):
     import importlib
 
     if langs != None:
+        if isinstance(langs, str):
+            langs = [langs]
         langs = "&lang="+"+".join(map(lambda lang: "Parse"+lang.title(), langs))
     else:
         langs = ""

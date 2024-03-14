@@ -48,18 +48,34 @@ def download(langs=None):
     os.makedirs(path)
     os.chmod(path, 0o777)
 
-    with contextlib.closing(urllib.request.urlopen("https://cloud.grammaticalframework.org/robust/Parse.ngf?command=download"+langs)) as fp:
-        size = 0
-        def readinto(buf):
-            nonlocal size
-            n = fp.readinto(buf)
-            size += n
-            print("\rDownload and boot the grammar "+str(size//(1024*1024))+"MB",end=" ...")
-            return n
-        pgf.bootNGF(readinto, path+"/Parse.ngf")
-        os.chmod(path+"/Parse.ngf", 0o666)
-        size = os.path.getsize(path+"/Parse.ngf")
-        print("\b\b\b(Expanded to "+str(size//(1024*1024))+"MB)")
+    if os.name == 'nt':
+        def reporthook(blocks, bs, size):
+            print("\rDownload Parse.pgf "+str((blocks*bs)//(1024*1024))+"MB",end=" ...")
+            sys.stdout.flush()
+
+        urllib.request.urlretrieve("https://cloud.grammaticalframework.org/robust/Parse.ngf?command=download"+langs, path+"/Parse.pgf", reporthook)
+
+        size = os.path.getsize(path+"/Parse.pgf")
+        print("\rBooting Parse.ngf ("+str(size//(1024*1024))+"MB)",end=" ...")
+        sys.stdout.flush()
+        pgf.bootNGF(path+"/Parse.pgf", path+"/Parse.ngf")
+        try:
+            os.remove(path+"/Parse.pgf")
+        except:
+            pass
+    else:
+        with contextlib.closing(urllib.request.urlopen("https://cloud.grammaticalframework.org/robust/Parse.ngf?command=download"+langs)) as fp:
+            size = 0
+            def readinto(buf):
+                nonlocal size
+                n = fp.readinto(buf)
+                size += n
+                print("\rDownload and boot the grammar "+str(size//(1024*1024))+"MB",end=" ...")
+                return n
+            pgf.bootNGF(readinto, path+"/Parse.ngf")
+    os.chmod(path+"/Parse.ngf", 0o666)
+    size = os.path.getsize(path+"/Parse.ngf")
+    print("\b\b\b(Expanded to "+str(size//(1024*1024))+"MB)")
 
     def reporthook(blocks, bs, size):
         print("\rDownload the semantics database "+str((blocks*bs)//(1024*1024))+"MB",end=" ...")

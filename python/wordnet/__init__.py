@@ -14,7 +14,7 @@ is a wrapper around the standard PGF API.
 
 import pgf
 
-def download(langs=None, path=None):
+def download(langs=None):
     """
     Downloads the precompiled wordnet grammar from the GF server.
     If langs is None, then all languages will be downloaded.
@@ -29,6 +29,7 @@ def download(langs=None, path=None):
     import contextlib
     import os
     import sys
+    import shutil
     import importlib
 
     if langs != None:
@@ -36,8 +37,16 @@ def download(langs=None, path=None):
     else:
         langs = ""
 
-    if not path:
-        path = os.path.dirname(__file__) + "/../"
+    path = os.path.dirname(__file__) + "/data"
+
+    if os.path.exists(path):
+        if os.path.islink(path):
+            os.remove(path)
+        else:
+            shutil.rmtree(path)
+
+    os.makedirs(path)
+    os.chmod(path, 0o777)
 
     with contextlib.closing(urllib.request.urlopen("https://cloud.grammaticalframework.org/robust/Parse.ngf?command=download"+langs)) as fp:
         size = 0
@@ -47,31 +56,46 @@ def download(langs=None, path=None):
             size += n
             print("\rDownload and boot the grammar "+str(size//(1024*1024))+"MB",end=" ...")
             return n
-        try:
-            os.remove(path+"Parse.ngf")
-        except:
-            pass
-        pgf.bootNGF(readinto, path+"Parse.ngf")
-        os.chmod(path+"Parse.ngf", 0o666)
-        size = os.path.getsize(path+"Parse.ngf")
+        pgf.bootNGF(readinto, path+"/Parse.ngf")
+        os.chmod(path+"/Parse.ngf", 0o666)
+        size = os.path.getsize(path+"/Parse.ngf")
         print("\b\b\b(Expanded to "+str(size//(1024*1024))+"MB)")
 
     def reporthook(blocks, bs, size):
         print("\rDownload the semantics database "+str((blocks*bs)//(1024*1024))+"MB",end=" ...")
         sys.stdout.flush()
-    urllib.request.urlretrieve("https://cloud.grammaticalframework.org/robust/semantics.db", path+"semantics.db", reporthook)
-    os.chmod(path+"semantics.db", 0o666)
+    urllib.request.urlretrieve("https://cloud.grammaticalframework.org/robust/semantics.db", path+"/semantics.db", reporthook)
+    os.chmod(path+"/semantics.db", 0o666)
     print("\b\b\bdone")
 
     print("Reload wordnet")
     importlib.reload(sys.modules[__name__])
 
+def symlink(source_path):
+    import os
+    import sys
+    import importlib
+
+    path = os.path.dirname(__file__) + "/data"
+
+    if os.path.exists(path):
+        if os.path.islink(path):
+            os.remove(path)
+        else:
+            shutil.rmtree(path)
+
+    print("Symlink "+source_path+" to "+path)
+    os.symlink(source_path, path)
+
+    print("Reload wordnet")
+    importlib.reload(sys.modules[__name__])
+
 try:
-    import Parse as w
+    import wordnet.data.Parse as w
 except ModuleNotFoundError as e:
     print("Either use wordnet.download(['ISO 639‑2 code1', ...]) to download the grammar,\n"
-          "or add the path to an existing grammar in sys.path. If download() is called\n"
-          "without an argument it will download all languages.")
+          "or use wordnet.symlink('path to a folder') to link the library to an existing grammar\n"
+          "If download() is called without an argument it will download all languages.")
 
     __all__ = ["download"]
 else:

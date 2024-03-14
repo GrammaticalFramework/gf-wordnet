@@ -7,7 +7,7 @@ from enum import Enum
 from dataclasses import dataclass
 import atexit
 
-db = openDB(os.path.dirname(pgf_path)+"/semantics.db")
+db = openDB(os.path.realpath(os.path.dirname(pgf_path)+"/semantics.db"))
 atexit.register(lambda: db.close())
 
 def get_concr(lang):

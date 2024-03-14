@@ -17,8 +17,8 @@ You can download the latest precompiled version of the grammar as follows:
 ```Python
 >>> import wordnet
 Either use wordnet.download(['ISO 639‑2 code1', ...]) to download the grammar,
-or add the path to an existing grammar in sys.path. If download() is called
-without an argument it will download all languages.
+or use wordnet.symlink('path to a folder') to link the library to an existing grammar.
+If download() is called without an argument it will download all languages.
 >>> wordnet.download(['eng'])
 Download and boot the grammar 355MB (Expanded to 2637MB)
 Download the semantics database 2733MB done

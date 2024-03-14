@@ -119,7 +119,7 @@ try:
     import wordnet.data.Parse as w
 except ModuleNotFoundError as e:
     print("Either use wordnet.download(['ISO 639‑2 code1', ...]) to download the grammar,\n"
-          "or use wordnet.symlink('path to a folder') to link the library to an existing grammar\n"
+          "or use wordnet.symlink('path to a folder') to link the library to an existing grammar.\n"
           "If download() is called without an argument it will download all languages.")
 
     __all__ = ["download"]

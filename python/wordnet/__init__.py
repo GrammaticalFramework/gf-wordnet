@@ -64,7 +64,16 @@ def download(langs=None):
     def reporthook(blocks, bs, size):
         print("\rDownload the semantics database "+str((blocks*bs)//(1024*1024))+"MB",end=" ...")
         sys.stdout.flush()
-    urllib.request.urlretrieve("https://cloud.grammaticalframework.org/robust/semantics.db", path+"/semantics.db", reporthook)
+
+    try:
+        urllib.request.urlretrieve("https://cloud.grammaticalframework.org/robust/semantics.db", path+"/semantics.db", reporthook)
+    except KeyboardInterrupt as e:
+        try:
+            shutil.rmtree(path)
+        except:
+            pass
+        raise e
+
     os.chmod(path+"/semantics.db", 0o666)
     print("\b\b\bdone")
 

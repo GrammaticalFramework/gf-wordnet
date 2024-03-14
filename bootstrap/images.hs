@@ -131,7 +131,7 @@ runImageQuery query = do
                          let qid   = init (tail f1)
                              label = (reverse . drop 4 . reverse) (tail f2)
                              sense = init (tail f3)
-                             uri   = if null f4 then "" else init (tail f4)
+                             uri   = if null f4 then "https://www.wikidata.org/wiki/"++qid else init (tail f4)
                              img   = case fs of
                                        []   -> ""
                                        [""] -> ""

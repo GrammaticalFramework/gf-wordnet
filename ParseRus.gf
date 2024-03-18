@@ -10,7 +10,7 @@ concrete ParseRus of Parse =
   ConjunctionRus,
   PhraseRus - [UttAP, UttVP],
   IdiomRus,
-  TenseX - [SC,CAdv],
+  TenseRus - [SC,CAdv],
   NamesRus,
   ParseExtendRus,
   WordNetRus,

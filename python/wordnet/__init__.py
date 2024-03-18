@@ -102,6 +102,7 @@ def symlink(source_path):
     import os
     import sys
     import importlib
+    import shutil
 
     path = os.path.dirname(__file__) + "/data"
 

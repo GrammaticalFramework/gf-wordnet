@@ -126,6 +126,7 @@ class GFRecord(GFType):
     def __repr__(self):
         s = ""
         for lbl,ty in self.fields:
+            lbl = "".join([(c if c != '-' else '_') for c in str(lbl)])
             if s:
                 s = s + "; "
             s = s + lbl+": "+ty.__repr__()
@@ -135,6 +136,7 @@ class GFRecord(GFType):
         s  = '{ '
         ind = 0
         for lbl,ty in self.fields:
+            lbl = "".join([(c if c != '-' else '_') for c in str(lbl)])
             if ind > 0:
                 s += ' ;\n'
             s += ' '*ind + lbl + ' = ' + ty.renderOper(indent+len(lbl)+5,vars)
@@ -182,12 +184,14 @@ def get_order(tag):
         return 10000000
 
 lin_types = {}
+# the file should come from https://kaikki.org/dictionary/rawdata.html
 with gzip.open('data/raw-wiktextract-data.json.gz','r') as f:
     for line in f:
         record = json.loads(line)
         if record.get("lang_code")==sys.argv[1]:
             table = {}
-            words  = []
+            word  = record["word"]
+            forms = []
             for form in record.get("forms",[]):
                 w    = form["form"]
                 tags = form.get("tags",[])
@@ -199,43 +203,47 @@ with gzip.open('data/raw-wiktextract-data.json.gz','r') as f:
 
                 t = table
                 for tag in tags[:-1]:
-                    if type(t) is str:
-                        t = {None: t}
-                    t = t.setdefault(tag,{})
+                    t1 = t.setdefault(tag,{})
+                    if type(t1) is str:
+                        t1 = {None: t1}
+                        t[tag] = t1
+                    t = t1
 
-                if type(t) is str:
-                    t = {None: t}
                 t[tags[-1]] = w
-                words.append(w)
+                forms.append(w)
             if table:
                 typ = getTypeOf(table)
-                lin_types.setdefault(record.get("pos"),{}).setdefault(typ,[]).append(words)
+                lin_types.setdefault(record.get("pos"),{}).setdefault(typ,[]).append((word,forms))
 
 iso3 = {
-    "mk": "Mkd"
+    "mk": "Mkd",
+    "sq": "Alb"
 }
 
 pdefs = set()
 lang_code = iso3.get(sys.argv[1],sys.argv[1])
 with open('Res'+lang_code+'.gf','w') as fr, \
      open('Cat'+lang_code+'.gf','w') as fc, \
-     open('Dict'+lang_code+'.gf','w') as fd:
+     open('Dict'+lang_code+'.gf','w') as fd, \
+     open('Dict'+lang_code+'Abs.gf','w') as fa:
     fr.write('resource Res'+lang_code+' = {\n')
     fr.write('\n')
     fc.write('concrete Cat'+lang_code+' of Cat = open Res'+lang_code+' in {\n')
     fc.write('\n')
-    fd.write('concrete WordNet'+lang_code+' of WordNet = Cat'+lang_code+' ** {\n')
+    fd.write('concrete Dict'+lang_code+' of Dict'+lang_code+'Abs = Cat'+lang_code+' ** open Res'+lang_code+' {\n')
     fd.write('\n')
+    fa.write('abstract Dict'+lang_code+'Abs = Cat ** {\n')
+    fa.write('\n')
     for tag, types in lin_types.items():
         cat_name = tag2cat.get(tag)
         if not cat_name:
             continue
 
-        fc.write('lin '+cat_name+' = '+tag.title()+' ;\n')
+        fc.write('lin '+cat_name+tag2cat[tag]+' = '+tag.title()+' ;\n')
 
         for i,(typ,lexemes) in enumerate(sorted(types.items(),key=lambda x: -len(x[1]))):
             type_name = tag.title()+str(i+1)
-            n_forms = len(lexemes[0])
+            n_forms = len(lexemes[0][1])
             
             typ.printParamDefs(fr,pdefs)
 
@@ -255,10 +263,13 @@ with open('Res'+lang_code+'.gf','w') as fr, \
             fr.write('          '+typ.renderOper(10,vars)+" ;\n")
             fr.write('\n')
 
-            for lexeme in lexemes:
-                fd.write('lin mk'+type_name+' '+' '.join(('"'+form+'"' if form != '-' else 'nonExist') for form in lexeme)+' ;\n')
+            for lexeme,forms in lexemes:
+                fa.write('fun \''+lexeme+'_'+cat_name+'\' : '+cat_name+' ;\n')
+                fd.write('lin \''+lexeme+'_'+cat_name+'\' = mk'+type_name+' '+' '.join(('"'+form+'"' if form != '-' else 'nonExist') for form in forms)+' ;\n')
 
         fr.write('\n')
+    fa.write('\n')
+    fa.write('}\n')
     fd.write('\n')
     fd.write('}\n')
     fc.write('\n')

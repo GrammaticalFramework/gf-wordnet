@@ -28,6 +28,7 @@ def __types__(args):
             types.append(w.__pgf__.functionType(fun).cat)
         else:
             types.append(type(arg))
+    print(types)
     return types
 
 def __no_match__(name,args):
@@ -887,8 +888,9 @@ a_Quant = w.IndefArt
 def mkNum(*args):
   """
   Constructs a number determining element
-    mkNum(n: int) -> Num      # thirty-five
-    mkNum(n: Numeral) -> Num
+    mkNum(n: float) -> Num    # 3.14
+    mkNum(n: int) -> Num      # 21
+    mkNum(n: Numeral) -> Num  # thirty-five
     mkNum(digits: Digits) -> Num
                               # 21
     mkNum(decimal: Decimal) -> Num
@@ -903,10 +905,6 @@ def mkNum(*args):
     singularNum, pluralNum : Num
   """
   match __types__(args):
-    case [float]:
-      return w.NumCard(w.NumDecimal(float2decimal(args[0])))
-    case [int]:
-      return w.NumCard(w.NumDecimal(int2decimal(args[0])))
     case ["Numeral"]:
       return w.NumCard(w.NumNumeral(args[0]))
     case ["Digits"]:
@@ -919,6 +917,10 @@ def mkNum(*args):
       return w.NumCard(args[0])
     case ["AdN","Card"]:
       return w.NumCard(w.AdNum(args[0],args[1]))
+    case [float]:
+      return w.NumCard(w.NumDecimal(float2decimal(args[0])))
+    case [int]:
+      return w.NumCard(w.NumDecimal(int2decimal(args[0])))
     case types:
       raise __no_match__("mkNum",types)
 
@@ -949,6 +951,12 @@ def mkCard(*args):
                               # almost fifty
   """
   match __types__(args):
+    case ["Numeral"]:
+      return w.NumNumeral(args[0])
+    case ["Digits"]:
+      return w.NumDecimal(w.PosDecimal(args[0]))
+    case ["AdN","Card"]:
+      return w.AdNum(args[0],args[1])
     case [float]:
       return w.NumDecimal(float2decimal(args[0]))
     case [int]:
@@ -957,12 +965,6 @@ def mkCard(*args):
         return w.NumNumeral(w.num(sub1000000000000(n)))
       else:
         return w.NumDecimal(int2decimal(n))
-    case ["Numeral"]:
-      return w.NumNumeral(args[0])
-    case ["Digits"]:
-      return w.NumDecimal(w.PosDecimal(args[0]))
-    case ["AdN","Card"]:
-      return w.AdNum(args[0],args[1])
     case types:
       raise __no_match__("mkCard",types)
 

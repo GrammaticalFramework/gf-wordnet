@@ -21,7 +21,7 @@ def extract(wiki_fpath):
                     if "datavalue" not in claim["mainsnak"]:
                         continue
                     typ = claim["mainsnak"]["datavalue"]["value"]["id"]
-                    if typ in ["Q12308941","Q11879590","Q101352","Q3918","Q618779"]:
+                    if typ in ["Q202444","Q12308941","Q11879590","Q101352","Q3918","Q618779"]:
                         name_type = typ
                     if typ in ["Q18972245","Q18972207"]:
                         gender = typ
@@ -463,7 +463,7 @@ def generate(names_fpath):
                 if len(record) == 5:
                     if record[3] in ["Q3918","Q618779"]:
                         tag = "PN"
-                    elif record[3] in ["Q12308941","Q11879590"]:
+                    elif record[3] in ["Q202444","Q12308941","Q11879590"]:
                         tag = "GN"
                     else:
                         tag = "SN"
@@ -548,7 +548,7 @@ def generate(names_fpath):
                     if lang in ["Chi","Kor","Mlt","Pol","Tha","Tur"]:
                         lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                     elif lang in ["Som"]:
-                        if name_type in ["Q12308941","Q18972245"]:
+                        if name_type in ["Q202444","Q12308941","Q18972245"]:
                             lin = "lin "+tag+" <mkPN "+dquote(lin)+" sgMasc : PN>"
                         elif name_type in ["Q11879590","Q18972207"]:
                             lin = "lin "+tag+" <mkPN "+dquote(lin)+" sgFem : PN>"
@@ -557,14 +557,14 @@ def generate(names_fpath):
                     elif lang in ["Swa"]:
                         lin = "lin "+tag+" <mkPN "+dquote(lin)+" a_wa : PN>"
                     elif lang in ["Ron"]:
-                        if name_type in ["Q12308941","Q18972245"]:
+                        if name_type in ["Q202444","Q12308941","Q18972245"]:
                             lin = "lin "+tag+" <mkPN "+dquote(lin)+" Masculine : PN>"
                         elif name_type in ["Q11879590","Q18972207"]:
                             lin = "lin "+tag+" <mkPN "+dquote(lin)+" Feminine : PN>"
                         else:
                             lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                     elif lang in ["Ara"]:
-                        if name_type in ["Q12308941"]:
+                        if name_type in ["Q202444","Q12308941"]:
                             lin = "variants {}"
                         elif name_type in ["Q11879590"]:
                             lin = "variants {}"
@@ -582,7 +582,7 @@ def generate(names_fpath):
                             else:
                                 lin = "mkPN "+dquote(lin)
                     else:
-                        if name_type in ["Q12308941"]:
+                        if name_type in ["Q202444","Q12308941"]:
                             lin = "mkGN "+dquote(lin)+" male"
                         elif name_type in ["Q11879590"]:
                             lin = "mkGN "+dquote(lin)+" female"

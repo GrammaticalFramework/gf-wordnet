@@ -379,6 +379,7 @@ def cyr(s):
 
 langs = [
   ("Afr",["af","nl","en"]),
+  ("Ara",["ar"]),
   ("Bul",["bg","mk","sr","ru","en"]),
   ("Cat",["ca","sp","fr","en"]),
   ("Chi",["zh","en"]),
@@ -562,6 +563,24 @@ def generate(names_fpath):
                             lin = "lin "+tag+" <mkPN "+dquote(lin)+" Feminine : PN>"
                         else:
                             lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
+                    elif lang in ["Ara"]:
+                        if name_type in ["Q12308941"]:
+                            lin = "variants {}"
+                        elif name_type in ["Q11879590"]:
+                            lin = "variants {}"
+                        elif name_type in ["Q18972245","Q18972207"]:
+                            lin = "variants {}"
+                        elif tag == "GN":
+                            lin = "variants {}"
+                        elif tag == "SN":
+                            lin = "variants {}"
+                        elif tag == "LN":
+                            lin = "mkLN "+dquote(lin)
+                        else:
+                            if lang in ["Slv"]:
+                                lin = "mkPN "+dquote(lin)+" masculine singular"
+                            else:
+                                lin = "mkPN "+dquote(lin)
                     else:
                         if name_type in ["Q12308941"]:
                             lin = "mkGN "+dquote(lin)+" male"

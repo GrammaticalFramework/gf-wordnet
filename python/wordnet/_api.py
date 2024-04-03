@@ -28,7 +28,6 @@ def __types__(args):
             types.append(w.__pgf__.functionType(fun).cat)
         else:
             types.append(type(arg))
-    print(types)
     return types
 
 def __no_match__(name,args):

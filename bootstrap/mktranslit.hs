@@ -9,6 +9,7 @@ main = do
                  concatMap append ls ++
                  [""
                  ,"function transliterate(s) {"
+                 ,"   s = s.normalize(\"NFD\");"
                  ,"   var s2 = \"\";"
                  ,"   for (const c of s) {"
                  ,"       s2 += (translit.get(c) || c);"

@@ -698,23 +698,28 @@ gfwordnet.onclick_cell = function (cell) {
 		var lex_def = this.lex_ids[lex_id];
 
 		for (var i in lex_def.images) {
-			var path = lex_def.images[i][1].split("/");
-			var name = path[path.length-1];
-			path.splice(0,0,"https://upload.wikimedia.org/wikipedia");
-			var a = node("a", {href: lex_def.images[i][0], target: "wiki_link"}, []);
-			details.appendChild(a);
-			if (name.endsWith(".svg")) {
-				a.appendChild(
-				  node("img",{"class": "thumbnail"
-					         ,style: "width: 300px"
-							 ,src: path.join("/")}));
-			} else {
-				path.splice(2,0,"thumb");
-				path.push("300px-"+name);
-				a.appendChild(
-				  node("img",{"class": "thumbnail"
-				             ,src: path.join("/")}));
-			}
+            const a = node("a", {href: lex_def.images[i][0], target: "wiki_link"}, []);
+            if (lex_def.images[i][1] != "") {
+                const path = lex_def.images[i][1].split("/");
+                const name = path[path.length-1];
+                path.splice(0,0,"https://upload.wikimedia.org/wikipedia");
+
+                if (name.endsWith(".svg")) {
+                    a.appendChild(
+                      node("img",{"class": "thumbnail"
+                                 ,style: "width: 300px"
+                                 ,src: path.join("/")}));
+                } else {
+                    path.splice(2,0,"thumb");
+                    path.push("300px-"+name);
+                    a.appendChild(
+                      node("img",{"class": "thumbnail"
+                                 ,src: path.join("/")}));
+                }
+            } else {
+                a.appendChild(node("p",{},[text("Wikipedia")]));
+            }
+            details.appendChild(a);
 		}
 
 		var frames        = lex_def.frames;

@@ -56,7 +56,7 @@
 				<thead></thead>
 				<tbody></tbody>
 			</table>
-			<table class="result" id="result">
+			<table class="result" id="result" onmouseup="gfwordnet.transliterateSelection(event)">
 				<thead></thead>
 				<tbody></tbody>
 				<tfoot></tfoot>
@@ -78,6 +78,7 @@
 		<script src="js/wordcloud2.js"></script>
 		<script src="js/multiselect.js"></script>
 		<script src="js/cookies.js"></script>
+		<script src="js/translit.js" charset="UTF-8"></script>
 		<script>
 			function logOut() {
 				gfwordnet.set_user(null,null,null,0,element('result'),null);

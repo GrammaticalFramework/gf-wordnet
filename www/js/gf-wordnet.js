@@ -16,6 +16,7 @@ gfwordnet.languages = ["ParseBul", "ParseCat", "ParseChi"
 	gfwordnet.can_select  = url.searchParams.get("can_select") != null;
 	gfwordnet.selection   = null;
 	gfwordnet.popup       = null;
+	gfwordnet.tooltip     = null;
 	gfwordnet.commit_link = null;
 
 	var scripts= document.getElementsByTagName('script');
@@ -2010,5 +2011,29 @@ gfwordnet.render_ide = function(result,selection,new_selection) {
             codeMirror.setSize(null, 800);
         }
         ajax_http_get("https://cloud.grammaticalframework.org/wordnet/NounBul.gf",load_code,gfwordnet.errcont);
+	}
+}
+
+gfwordnet.transliterateSelection = function (event) {
+	if (gfwordnet.tooltip != null) {
+		gfwordnet.tooltip.remove();
+		gfwordnet.tooltip = null;
+	}
+
+	let txt = "";
+	if (window.getSelection) {
+		txt = window.getSelection().toString();
+	} else if (document.getSelection) {
+		txt = document.getSelection().toString();
+	} else if (document.selection) {
+		txt = document.selection.createRange().text;
+	}
+
+	if (txt != "") {
+		const txt2 = transliterate(txt);
+		if (txt != txt2) {
+			gfwordnet.tooltip = div_class("tooltip",[text(txt2)]);
+			event.target.appendChild(gfwordnet.tooltip);
+		}
 	}
 }

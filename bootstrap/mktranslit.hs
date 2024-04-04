@@ -9,11 +9,13 @@ main = do
                  concatMap append ls ++
                  [""
                  ,"function transliterate(s) {"
-                 ,"   s = s.normalize(\"NFD\");"
+                 ,"   s1 = s.normalize(\"NFD\");"
                  ,"   var s2 = \"\";"
-                 ,"   for (const c of s) {"
+                 ,"   for (const c of s1) {"
                  ,"       s2 += (translit.get(c) || c);"
                  ,"   }"
+                 ,"   if (s1 == s2)"
+                 ,"      s2 = s;   // return the original non-normalized text"
                  ,"   return s2;"
                  ,"}"]))
 

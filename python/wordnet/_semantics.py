@@ -137,6 +137,7 @@ class Synset:
             for ptr,id in self.pointers:
                 if isinstance(ptr, tp):
                     for synset in t.cursor(synsets, id):
+                        synset.id = id
                         result.append(synset)
         return result
 

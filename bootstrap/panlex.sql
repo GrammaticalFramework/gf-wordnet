@@ -7,6 +7,10 @@ create table langvar(id integer primary key not null,lang_code char(3),var_code 
 create table expr(id integer primary key not null,langvar integer not null,txt text not null,txt_degr text not null);
 create table meaning(id integer primary key not null,source integer not null);
 create table denotation(id integer primary key not null,meaning integer not null,expr integer not null);
+create table denotation_class(id integer primary key not null,denotation integer not null,expr1 integer,expr2 integer not null);
+
+meaning integer not null,expr integer not null);
+
 
 .separator ","
 .headers on
@@ -49,5 +53,11 @@ begin transaction;
 end transaction;
 
 create index denontation_expr on denotation(expr);
+
+.print "import denotation_class"
+
+begin transaction;
+.import "data/panlex-csv/denotation_class.csv" denotation_class
+end transaction;
 
 .quit

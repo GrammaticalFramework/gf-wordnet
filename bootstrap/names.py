@@ -21,13 +21,12 @@ def extract(wiki_fpath):
                     if "datavalue" not in claim["mainsnak"]:
                         continue
                     typ = claim["mainsnak"]["datavalue"]["value"]["id"]
-                    if typ in ["Q202444","Q12308941","Q11879590","Q101352","Q3918","Q618779"]:
+                    if typ in ["Q202444","Q101352","Q3918","Q618779"]:
                         name_type = typ
-                    if typ in ["Q18972245","Q18972207"]:
+                    if typ in ["Q12308941","Q11879590","Q18972245","Q18972207"]:
                         gender = typ
+                name_type = gender or name_type
                 if name_type:
-                    if gender:
-                        name_type = gender
                     names = {}
                     for lang,val in record["labels"].items():
                         names[lang] = val["value"]

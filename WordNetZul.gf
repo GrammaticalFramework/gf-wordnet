@@ -57694,6 +57694,7 @@ lin marrow_3_N = variants {} ;
 lin marrow_4_N = variants {} ;
 lin marrow_5_N = mkN "inkaba" C1_2 ; --guessed
 lin marrowbone_N = mkN "ithambo" C1_2 ; --guessed
+lin marry_1_V = variants {} ;
 lin marry_1_V2 = variants {} ;
 lin marry_2_V2 = variants {} ;
 lin marry_in_V = variants {} ;

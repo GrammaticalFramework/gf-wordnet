@@ -57694,6 +57694,7 @@ lin marrow_3_N = variants {} ;
 lin marrow_4_N = variants {} ;
 lin marrow_5_N = variants {} ;
 lin marrowbone_N = mkN "laf" ; --guessed
+lin marry_1_V = variants {} ;
 lin marry_1_V2 = mkV2 (mkV "gur") noPrep ; --guessed
 lin marry_2_V2 = mkV2 (mkV "gur") noPrep ; --guessed
 lin marry_in_V = variants {} ;

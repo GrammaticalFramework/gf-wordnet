@@ -57700,6 +57700,7 @@ lin marrow_3_N = mkN "mudullun" ; --guessed
 lin marrow_4_N = mkN "ħjara" ; --guessed
 lin marrow_5_N = mkN "qalba" ; --guessed
 lin marrowbone_N = mkN "għadma" ; --guessed
+lin marry_1_V = variants {} ;
 lin marry_1_V2 = dirV2 (mkV "iżżewweġ") ; --guessed
 lin marry_2_V2 = dirV2 (mkV "iżżewweġ") ; --guessed
 lin marry_in_V = mkV "iżżewweġ" ; --guessed

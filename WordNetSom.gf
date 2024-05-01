@@ -28431,6 +28431,7 @@ lin divisional_3_A = variants {} ;
 lin divisor_1_N = variants {} ;
 lin divisor_2_N = variants {} ;
 lin divorce_N = mkN "fur" ; --guessed
+lin divorce_1_V = variants {} ;
 lin divorce_1_V2 = mkV2 (mkV "fur") noPrep ; --guessed
 lin divorce_2_V2 = mkV2 (mkV "fur") noPrep ; --guessed
 lin divorceeFem_N = variants {} ;

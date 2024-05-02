@@ -8238,6 +8238,7 @@ lin beano_1_N = variants {} ;
 lin beanstalk_N = variants {} ;
 lin bear_1_N = mkN "bekezelela" C1_2 ; --guessed
 lin bear_2_N = mkN "bekezelela" C1_2 ; --guessed
+lin bear_1_V = variants {} ;
 lin bear_8_V = mkV "phimisa" ; --guessed
 lin bear_10_V = variants {} ;
 lin bear_1_V2 = mkV2 "ukuhlupheka" ; --guessed

@@ -8244,6 +8244,7 @@ lin beano_1_N = variants {} ;
 lin beanstalk_N = variants {} ;
 lin bear_1_N = mkN "ors" ; --guessed
 lin bear_2_N = mkN "ors" ; --guessed
+lin bear_1_V = variants {} ;
 lin bear_8_V = mkV "ors" ; --guessed
 lin bear_10_V = variants {} ;
 lin bear_1_V2 = dirV2 (mkV "ors") ; --guessed

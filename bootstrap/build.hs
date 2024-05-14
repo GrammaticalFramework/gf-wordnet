@@ -14,18 +14,20 @@ main = do
   [fname] <- getArgs
   let lang = drop 7 (takeBaseName fname)
       cnc  = "Parse" ++ lang
-  state <- readPredictions "data/predictions.tsv"
+  state <- readPredictions cnc "data/predictions.tsv"
   draft <- readDraft fname lang
   morphoMap <- readMorpho lang
-  writeFile fname (unlines (applyChanges morphoMap (fromMaybe Map.empty (Map.lookup cnc state)) draft))
+  writeFile fname (unlines (applyChanges morphoMap state draft))
 
-readPredictions fname =
-  fmap (Map.fromListWith (Map.unionWith (++)) . map parseLine . lines)
+readPredictions cnc fname =
+  fmap (foldr parseLine Map.empty . lines)
        (readFile fname)
   where
-    parseLine line = (cnc,Map.singleton fn [(lin,o,s,w,l,c,d)])
+    parseLine line state
+      | cnc == cnc' = Map.insertWith (++) fn [(lin,o,s,w,l,c,d)] state
+      | otherwise   = state
       where
-        [fn,cnc,lin,str] = tsv line
+        [fn,cnc',lin,str] = tsv line
         (o,s,w,l,c,d)  = read str :: (Int,Int,Int,Int,Int,Int)
 
 readDraft fname lang = do
@@ -63,7 +65,7 @@ applyChanges morphoMap patches draft = [patch l | l <- draft]
         _            -> l
 
 readMorpho lang =
-  fmap toMorphoEntries $ return "" -- readCreateProcess (shell ("cat lib/src/"++dir++"*/Dict???.gf lib/src/"++dir++"*/Irreg???.gf")) ""
+  fmap toMorphoEntries $ readFile "../rgl-learner/DictMkd.gf"
   where
     dir = map toLower lang
 

@@ -59833,7 +59833,6 @@ lin manifold_1_V2 = variants {} ;
 lin manifold_2_V2 = variants {} ;
 lin manikinMasc_1_N = variants {} ;
 lin manikinFem_1_N = variants {} ;
-lin manikin_3_N = variants {} ;
 lin manila_LN = mkPN "Manila" a_wa ; --guessed
 lin manilla_N = variants {} ;
 lin manipulability_N = variants {} ;

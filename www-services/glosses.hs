@@ -259,6 +259,7 @@ parseTaxonomy l
                 "+"  -> Derived
                 "\\" -> Derived
                 "<"  -> Participle
+    readPtrs f xs = error (show xs)
 
 parseProbs l = (id, p)
   where

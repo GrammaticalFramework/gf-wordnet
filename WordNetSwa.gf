@@ -65081,6 +65081,7 @@ lin nativeFem_1_N = variants {} ;
 lin nativeMasc_2_N = variants {} ;
 lin nativeFem_2_N = variants {} ;
 lin native_3_N = variants {} ;
+lin native_language_N = variants {} ;
 lin nativeness_N = variants {} ;
 lin nativism_1_N = variants {} ;
 lin nativism_2_N = variants {} ;

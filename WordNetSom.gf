@@ -63770,6 +63770,7 @@ lin mother_1_V2 = mkV2 (mkV "hoyo") noPrep ; --guessed
 lin mother_2_V2 = mkV2 (mkV "hoyo") noPrep ; --guessed
 lin mother_in_law_N = variants {} ;
 lin mother_of_pearl_N = variants {} ;
+lin mother_tongue_N = variants {} ;
 lin motherhood_N = variants {} ;
 lin motherland_N = variants {} ;
 lin motherless_A = variants {} ;

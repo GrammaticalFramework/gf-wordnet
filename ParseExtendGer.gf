@@ -6,7 +6,7 @@ concrete ParseExtendGer of ParseExtend =
 
 lin
     UttAP  p ap = {s = ap.c.p1 ++ ap.s ! APred ++ ap.c.p2 ++ ap.ext} ;
-    UttVPS p vps= {s = vps.s ! Main ! p.a} ;
+    UttVPS p vps= let vpss = vps.s ! Main ! p.a in {s = vpss.verb ++ vpss.compl} ; --- is the order as intended?
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 

@@ -10,6 +10,8 @@ lin
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
+lin TimeNP np = {s = np.s ! Nom} ;
+
 lin num x = x ;
 
 lin BareN2 n = n ;

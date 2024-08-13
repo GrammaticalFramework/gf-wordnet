@@ -1,169 +1,263 @@
 abstract MorphoDictAraAbs = Cat ** {
-fun 'صِينِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'دارِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'تَطْوِير_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'إِيطالِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'كَرون_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'لاتفية_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'وَصِي_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'اِحْتِياطَي_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'إِسْبانِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'إِرْهابِي_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'عَاصِمَة_N' : N ; -- source: wikitionary, idx: 4097, senses: ['capital city']
-fun 'رِعايَة_N' : N ; -- source: wikitionary, idx: 124114, senses: ['care, support, custody']
-fun 'طِفْل_N' : N ; -- source: wikitionary, idx: 4717, senses: ['child (a minor) / children (a minor)']
-fun 'طِفْل_N' : N ; -- source: wikitionary, idx: 4717, senses: ['child (a minor) / children (a minor)']
-fun 'مَدِينَة_N' : N ; -- source: wikitionary, idx: 783, senses: ['town, city / jurisdiction']
-fun 'دَوْلَة_N' : N ; -- source: wikitionary, idx: 4589, senses: ['state (sovereign polity) / alternation, change']
-fun 'دَوْلَة_N' : N ; -- source: wikitionary, idx: 4589, senses: ['state (sovereign polity) / alternation, change']
-fun 'ثَقَافَة_N' : N ; -- source: wikitionary, idx: 280, senses: ['verbal noun of ثَقُفَ (ṯaqufa) (form I) / sagacity, intelligence, wit, refinement, culture / culture (civilization) / education, literacy']
-fun 'اِنْخِفَاض_N' : N ; -- source: wikitionary, idx: 117299, senses: ['verbal noun of اِنْخَفَضَ (inḵafaḍa) (form VII)']
-fun 'تَوْزِيع_N' : N ; -- source: wikitionary, idx: 124144, senses: ['verbal noun of وَزَّعَ (wazzaʕa) (form II)']
-fun 'اِقْتِصَاد_N' : N ; -- source: wikitionary, idx: 1590, senses: ['verbal noun of اِقْتَصَدَ (iqtaṣada) (form VIII) / economy (“frugal use of resources”) / economy (“system of production and distribution”) / economics']
-fun 'تَعْلِيم_N' : N ; -- source: wikitionary, idx: 4810, senses: ['verbal noun of عَلَّمَ (ʕallama) (form II) / teaching, education']
-fun 'خُصُوبَة_N' : N ; -- source: wikitionary, idx: 124020, senses: ['fertility']
-fun 'طَعَام_N' : N ; -- source: wikitionary, idx: 21466, senses: ['food / food, prepared meal / feeding / wheat / grain, cereal']
-fun 'حُرِّيَّة_N' : N ; -- source: wikitionary, idx: 10170, senses: ['verbal noun of حَرَّ (ḥarra) (form I) / freedom, liberty']
-fun 'حُكُومَة_N' : N ; -- source: wikitionary, idx: 767, senses: ['verbal noun of حَكَمَ (ḥakama) (form I) / government / authority, dominion / empire, state / jurisdiction / sentence, judgment']
-fun 'نُمُو_N' : N ; -- source: wikitionary, idx: 8394, senses: ['growth / progress']
-fun 'صِحِّيَّة_N' : N ; -- source: wikitionary, idx: 26328, senses: ['feminine singular of صِحِّيّ (ṣiḥḥiyy)']
-fun 'إِنْسَان_N' : N ; -- source: wikitionary, idx: 5558, senses: ['human']
-fun 'كِيلُومِتْر_N' : N ; -- source: wikitionary, idx: 23116, senses: ['kilometre']
-fun 'لُغَة_N' : N ; -- source: wikitionary, idx: 153, senses: ['language / dialect, vernacular / jargon / a variant / Classical Arabic / lexicography, lexicographic literature, lexicographers']
-fun 'قَائِد_N' : N ; -- source: wikitionary, idx: 844, senses: ['leader / director, manager / head, chief / commander, commandant']
-fun 'عُضْو_N' : N ; -- source: wikitionary, idx: 10011, senses: ['organ / member / limb / branch, piece, section']
-fun 'وَزِير_N' : N ; -- source: wikitionary, idx: 818, senses: ['minister, cabinet minister / vizier / helper, assistant / queen']
-fun 'جَرِيدَة_N' : N ; -- source: wikitionary, idx: 765, senses: ['singulative of جَرِيد (jarīd, “defoliated palm”) / detachment of horsemen / newspaper']
-fun 'مَكْتَب_N' : N ; -- source: wikitionary, idx: 9993, senses: ['maktab, elementary school / desk / office / bureau / study']
-fun 'سِيَاسَة_N' : N ; -- source: wikitionary, idx: 763, senses: ['verbal noun of سَاسَ (sāsa) (form I) / administration, management / policy / politics / political government (as opposed to رِئَاسَة (riʔāsa, “ecclesiastical government”))']
-fun 'جُنَيْه_N' : N ; -- source: wikitionary, idx: 4551, senses: ['pound (unit of currency)']
-fun 'تَأْجِير_N' : N ; -- source: wikitionary, idx: 12398, senses: ['verbal noun of أَجَّرَ (ʔajjara) (form II)']
-fun 'رِيَاضَة_N' : N ; -- source: wikitionary, idx: 4590, senses: ['sport (physical activity) / mathematics']
-fun 'نِظَام_N' : N ; -- source: wikitionary, idx: 661, senses: ['system / regularity / order / method / rule / regime: perhaps short for نِظَام الْحُكْم (niẓām al-ḥukm, “system of rule”)']
-fun 'ضَرِيبَة_N' : N ; -- source: wikitionary, idx: 117242, senses: ['tribute, tax, public levy']
-fun 'وَحْدَة_N' : N ; -- source: wikitionary, idx: 27309, senses: ['unit (a standard measure of a quantity) / unit (a group within an organization that has been assigned a specific duty or function) / unit; module (part of a book or educational course) / union, unity; oneness (the state of being united as one) / loneliness (a feeling of depression resulting from being alone)']
-fun 'قِيمَة_N' : N ; -- source: wikitionary, idx: 20995, senses: ['value, worth / amount, quantity / price']
-fun 'اِمْرَأَة_N' : N ; -- source: wikitionary, idx: 3098, senses: ['woman / (imraʔat-) wife']
-fun 'أَفْغَانِي_N' : N ; -- source: wikitionary, idx: 8230, senses: ['Afghan']
-fun 'آشُورِي_N' : N ; -- source: wikitionary, idx: 115331, senses: ['Assyrian, Ashurite']
-fun 'مَنْع_N' : N ; -- source: wikitionary, idx: 6264, senses: ['verbal noun of مَنَعَ (manaʕa) (form I) / prevention']
-fun 'بِيلَارُوسِي_N' : N ; -- source: wikitionary, idx: 123391, senses: ['Belarusian (person)']
-fun 'حُدُود_N' : N ; -- source: wikitionary, idx: 7380, senses: ['plural of حَدّ (ḥadd)']
-fun 'بُلْغَارِيَّة_N' : N ; -- source: wikitionary, idx: 127880, senses: ['female equivalent of بُلْغَارِيّ (bulḡāriyy, “Bulgarian”): a Bulgarian woman / the Bulgarian language']
-fun 'رَئِيس_N' : N ; -- source: wikitionary, idx: 827, senses: ['boss, chief, leader / director / headmaster, principal / chairman / governor / president / manager, superintendent / conductor / captain']
-fun 'نَصْرَانِيَّة_N' : N ; -- source: wikitionary, idx: 26591, senses: ['Christianity']
-fun 'هُولَنْدِي_N' : N ; -- source: wikitionary, idx: 115123, senses: ['Netherlander, Dutchman']
-fun 'مُسَاوَاة_N' : N ; -- source: wikitionary, idx: 13023, senses: ['verbal noun of سَاوَى (sāwā) (form III) / equality, equivalence / equal rights / settlement (of a bill)']
-fun 'عَيْب_N' : N ; -- source: wikitionary, idx: 114856, senses: ['verbal noun of عَابَ (ʕāba) (form I) / fault, defect, deficiency, failing / flaw, shortcoming, blemish / vice, weakness / shame, disgrace']
-fun 'دَقِيق_N' : N ; -- source: wikitionary, idx: 794, senses: ['flour, meal']
-fun 'فَرَنْسِيَّة_N' : N ; -- source: wikitionary, idx: 290, senses: ['female equivalent of فَرَنْسِيّ (faransiyy, “a Frenchman”): a Frenchwoman / the French language, French']
-fun 'فُنْدُق_N' : N ; -- source: wikitionary, idx: 450, senses: ['inn / hotel']
-fun 'فِهْرِس_N' : N ; -- source: wikitionary, idx: 8094, senses: ['index / catalogue']
-fun 'تَضَخُّم_N' : N ; -- source: wikitionary, idx: 4618, senses: ['verbal noun of تَضَخَّمَ (taḍaḵḵama) (form V) / inflation (“increase in prices”)']
-fun 'مَوْضِع_N' : N ; -- source: wikitionary, idx: 2092, senses: ['verbal noun of وَضَعَ (waḍaʕa) (form I) / position / place']
-fun 'رَئِيس_N' : N ; -- source: wikitionary, idx: 827, senses: ['boss, chief, leader / director / headmaster, principal / chairman / governor / president / manager, superintendent / conductor / captain']
-fun 'رَئِيس_N' : N ; -- source: wikitionary, idx: 827, senses: ['boss, chief, leader / director / headmaster, principal / chairman / governor / president / manager, superintendent / conductor / captain']
-fun 'مُنْتَج_N' : N ; -- source: wikitionary, idx: 115671, senses: ['product']
-fun 'مَلِكَة_N' : N ; -- source: wikitionary, idx: 203, senses: ['queen']
-fun 'مُعَدَّل_N' : N ; -- source: wikitionary, idx: 23964, senses: ['rate / average']
-fun 'مُعَدَّل_N' : N ; -- source: wikitionary, idx: 23964, senses: ['rate / average']
-fun 'مَاء_N' : N ; -- source: wikitionary, idx: 842, senses: ['water / liquid, fluid, the liquefied or molten form of a metal (usually gold, silver, or copper) / liquid, fluid, conceptive fluid; ejaculation']
-fun 'عَالَم_N' : N ; -- source: wikitionary, idx: 1072, senses: ['world / universe, cosmos, existence / world, hereunder, worldly life / things, creation, that which exists before you / nation, people, group, type, or kind']
-fun 'عَالَم_N' : N ; -- source: wikitionary, idx: 1072, senses: ['world / universe, cosmos, existence / world, hereunder, worldly life / things, creation, that which exists before you / nation, people, group, type, or kind']
-fun 'مَنْطِقَة_N' : N ; -- source: wikitionary, idx: 504, senses: ['zone / vicinity, range, district, area, territory, sphere / military sector / area, an administrative subdivision of Kuwait / province']
-fun 'كِتَاب_N' : N ; -- source: wikitionary, idx: 274, senses: ["verbal noun of كَتَبَ (kataba) (form I) / verbal noun of كَاتَبَ (kātaba) (form III) / letter, note, paper, piece of writing, message / book / the Scripture, the Qur'an or the Bible / record, document, deed, contract / a marriage contract."]
-fun 'عُمْلَة_N' : N ; -- source: wikitionary, idx: 115590, senses: ['currency, standardized money']
-fun 'دِيمُقْرَاطِيَّة_N' : N ; -- source: wikitionary, idx: 5000, senses: ['democracy']
-fun 'شَرْق_N' : N ; -- source: wikitionary, idx: 3888, senses: ['east; Orient']
-fun 'رَأْس_N' : N ; -- source: wikitionary, idx: 384, senses: ['head / head (enumerator for cattle) / leader, chief, chieftain / tip, top, summit, peak, upper part / vertex, apex / extremity, end / promontory, headland, cape / main part / beginning']
-fun 'سُكّان_N' : N ; -- source: wikitionary, idx: 4827, senses: ['plural of سَاكِن (sākin)']
-fun 'مَلَكِيَّة_N' : N ; -- source: wikitionary, idx: 127093, senses: ['monarchy']
-fun 'سُكّان_N' : N ; -- source: wikitionary, idx: 4827, senses: ['plural of سَاكِن (sākin)']
-fun 'جُمْهُورِيَّة_N' : N ; -- source: wikitionary, idx: 5003, senses: ['republicanism / republic']
-fun 'رُوسِيَّة_N' : N ; -- source: wikitionary, idx: 246, senses: ['female equivalent of رُوسِيّ (rūsiyy, “a Russian”): a female Russian / the Russian language, Russian']
-fun 'جَنُوب_N' : N ; -- source: wikitionary, idx: 2177, senses: ['south']
-fun 'تَايْلَانْدِيَّة_N' : N ; -- source: wikitionary, idx: 26871, senses: ['Thai language']
-fun 'تُرْكِيَّة_N' : N ; -- source: wikitionary, idx: 305, senses: ['Turkish language']
-fun 'سَنَة_N' : N ; -- source: wikitionary, idx: 371, senses: ['year']
-fun 'دَخْل_N' : N ; -- source: wikitionary, idx: 875, senses: ['income / revenues, receipts, returns / interference, intervention / doubt, misgiving']
-fun 'شَمَال_N' : N ; -- source: wikitionary, idx: 825, senses: ['north']
-fun 'عَلَم_N' : N ; -- source: wikitionary, idx: 1086, senses: ['sign, token, mark, badge / harelip / road sign, guidepost / flag, banner / authority, luminary, star, personage, distinguished man / a mountain / proper noun']
-fun 'دِين_N' : N ; -- source: wikitionary, idx: 877, senses: ['verbal noun of دَانَ (dāna, “to be religious”) (form I) / religion, creed, credo, faith, conviction, belief, tenet, rite / conformism, conformance, conformity, compliance, fealty, obedience; God-fearingness, godliness, religiosity, devoutness / law, obligations, duty / custom, habit / judgement, decision, ruling, requital, compensation, indemnification / judgement, decision, ruling, credit, obligation, account, falling due of a debt']
-fun 'أُم_N' : N ; -- source: wikitionary, idx: 3220, senses: ['mother / origin / source']
-fun 'نَشَاء_N' : N ; -- source: wikitionary, idx: 3927, senses: ['starch, cornstarch, farina']
-fun 'عُمْر_N' : N ; -- source: wikitionary, idx: 2554, senses: ['life as a period of time, length of life, lifespan, lifetime / age']
-fun 'غَرْب_N' : N ; -- source: wikitionary, idx: 5764, senses: ['verbal noun of غَرَبَ (ḡaraba) (form I) / west, occident / vehemence, violence, tempestuousness']
-fun 'مَلِك_N' : N ; -- source: wikitionary, idx: 695, senses: ['king, sovereign, monarch']
-fun 'بِير_N' : N ; -- source: wikitionary, idx: 8500, senses: ['']
-fun 'مُضاف_A' : A ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'اِسْتِبْدادِي_A' : A ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'الوَسِيط_A' : A ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'الشَّمال_A' : A ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'مَحَلِّي_A' : A ; -- source: wikitionary, idx: 4973, senses: ['local, national']
-fun 'تَالِي_A' : A ; -- source: wikitionary, idx: 117599, senses: ['']
-fun 'مُمْتَلِئ_A' : A ; -- source: wikitionary, idx: 10802, senses: ['full, filled, filled up, replete']
-fun 'إِجْمَالِي_A' : A ; -- source: wikitionary, idx: 124714, senses: ['comprehensive, general, total']
-fun 'فَرْدِي_A' : A ; -- source: wikitionary, idx: 124077, senses: ['single / individual, personal / odd, uneven']
-fun 'مُعْتَدِل_A' : A ; -- source: wikitionary, idx: 115192, senses: ['straight, even, proportionate / temperate, mild, moderate']
-fun 'مُطْلَق_A' : A ; -- source: wikitionary, idx: 5922, senses: ['absolute, utter, very, unlimited, unrestricted / downright / sovereign / liberated, free / implicit']
-fun 'حَاكِم_A' : A ; -- source: wikitionary, idx: 3016, senses: ['ruling, governing / decisive']
-fun 'شُيُوعِي_A' : A ; -- source: wikitionary, idx: 25071, senses: ['communist / Communist / communal']
-fun 'دُسْتُورِي_A' : A ; -- source: wikitionary, idx: 8330, senses: ['constitutional']
-fun 'دِيمُقْرَاطِي_A' : A ; -- source: wikitionary, idx: 25151, senses: ['democratic']
-fun 'سَابِق_A' : A ; -- source: wikitionary, idx: 10031, senses: ['preceding, previous / former / active participle of سَبَقَ (sabaqa).']
-fun 'عَالِي_A' : A ; -- source: wikitionary, idx: 5211, senses: ['']
-fun 'كَبِير_A' : A ; -- source: wikitionary, idx: 4262, senses: ['big, large / great, great importance / old (for a person)']
-fun 'قَلِيل_A' : A ; -- source: wikitionary, idx: 10173, senses: ['few, little / scarce / short, thin, paltry, insignificant-looking']
-fun 'عَسْكَرِي_A' : A ; -- source: wikitionary, idx: 4970, senses: ['military']
-fun 'وَاجِب_A' : A ; -- source: wikitionary, idx: 788, senses: ['necessary, indispensable, unavoidable, essential, inevitable, inescapable, requisite / binding, obligatory, incumbent, imperative / proper, adequate, fair']
-fun 'بَرْلَمَانِي_A' : A ; -- source: wikitionary, idx: 127672, senses: ['parliamentary']
-fun 'مَجْمُوع_A' : A ; -- source: wikitionary, idx: 23237, senses: ['united / reconciled']
-fun 'عَرَبِي_A' : A ; -- source: wikitionary, idx: 64, senses: ['Arab / Arabic / Arabian']
-fun 'حُر_A' : A ; -- source: wikitionary, idx: 4339, senses: ['free / unimpeded / set free, freedman / born free and noble / virtuous, genuine, true, pure, good / unmixed']
-fun 'هَجِين_A' : A ; -- source: wikitionary, idx: 120131, senses: ['hybrid, half-breed, mongrel']
-fun 'رَسْمِي_A' : A ; -- source: wikitionary, idx: 22237, senses: ['official, legitimate / formal / normal / conventional, according to rule / ceremonial']
-fun 'رَسْمِي_A' : A ; -- source: wikitionary, idx: 22237, senses: ['official, legitimate / formal / normal / conventional, according to rule / ceremonial']
-fun 'أُرْثُوذُكْسِيَّة_A' : A ; -- source: wikitionary, idx: 128098, senses: ['feminine singular of أُرْثُوذُكْسِيّ (ʔurṯūḏuksiyy)']
-fun 'مُرَبَّع_A' : A ; -- source: wikitionary, idx: 2788, senses: ['square, quadratic / fourfold, quadruple / tetragonal, quadrangular']
-fun 'مُسْلِم_A' : A ; -- source: wikitionary, idx: 76, senses: ['Muslim / submitting, accepting, believing.']
-fun 'حَاضِر_A' : A ; -- source: wikitionary, idx: 21952, senses: ['present, before the eyes, ready (also applied to money) / second person']
-fun 'مُمَثِّل_A' : A ; -- source: wikitionary, idx: 4180, senses: ['actor / representative (in government)']
-fun 'اِعْتَبَر_V' : V ; -- source: wikitionary, idx: 116328, senses: ['to take example, to take warning, to learn a lesson (بِـ (bi-): from) / to acknowledge, value, respect / to consider, to regard as / to examine, to investigate, to put to test']
-fun 'نَجَح_V' : V ; -- source: wikitionary, idx: 20863, senses: ['to succeed, to be successful']
-fun 'صَنَّف_V' : V ; -- source: wikitionary, idx: 8070, senses: ['to sort, classify, or categorize something / to compile or compose']
-fun 'عَيَّن_V' : V ; -- source: wikitionary, idx: 148, senses: ['to appoint, to assign, to name, to nominate / to define / to determine, to fix, to identify, to specify / to allocate, to allot, to apportion, to earmark, to itemize, to set aside']
-fun 'وَصَل_V' : V ; -- source: wikitionary, idx: 4743, senses: ['(transitive, with إِلَى (ʔilā)) to arrive (“to reach some place”), to arrive (“to reach some place”)']
-fun 'تَكَلَّم_V' : V ; -- source: wikitionary, idx: 6248, senses: ['to talk, to have a discussion or conversation']
-fun 'مَلَك_V' : V ; -- source: wikitionary, idx: 698, senses: ['to take in possession, to take over, to acquire, to seize / to possess, to lay hold, to own, to have, to be the owner / to dominate, to control / to be the master / to be capable, to be able, to be in a position to / to rule, to reign, to exercise authority, to hold sway, to lord over']
-fun 'عَرَض_V' : V ; -- source: wikitionary, idx: 8035, senses: ['to appear / to happen, to occur / to show, to display, to present / to expose']
-fun 'ألجونكوين_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'بلاكفوت_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'كايوجا_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'صِينِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: Chinese+fem.sg
-fun 'تشيبويان_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'إِنْجلِيزِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: the+English_(language)+fem.sg
-fun 'فِلِبِّينِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: the+Philippine / Filipino+fem.sg
-fun 'فِنْلَنْدِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: the+Finnish+fem.sg
-fun 'هيدا_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'مَوَّهُوك_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'أونيدا_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'أونونداجا_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'سُوِيدِيَّة_N' : N ; -- source: wikitionary, idx: -1, senses: the+Swedish+fem.sg
-fun 'تلينغيت_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'تسيمشيان_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'يديشية_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'كري_N' : N ; -- source: wikitionary, idx: 24287, senses: ['spherical']
-fun 'دُولَار_N' : N ; -- source: wikitionary, idx: 41, senses: ['dollar']
-fun 'كِتَابَة_N' : N ; -- source: wikitionary, idx: 5386, senses: ['verbal noun of كَتَبَ (kataba) (form I) / writing / handwriting / script']
-fun 'مَعْرِفَة_N' : N ; -- source: wikitionary, idx: 6133, senses: ['verbal noun of عَرَفَ (ʕarafa) (form I) / knowledge / definite']
-fun 'قِرَاءَة_N' : N ; -- source: wikitionary, idx: 8344, senses: ['verbal noun of قَرَأَ (qaraʔa) (form I) / reading / one of the variants in the recitation of the Quran']
-fun 'نُقْطَة_N' : N ; -- source: wikitionary, idx: 5390, senses: ['dot, point / period (punctuation mark) / spot (stain, tarnish) / drop']
-fun 'نِظَام_N' : N ; -- source: wikitionary, idx: 661, senses: ['system / regularity / order / method / rule / regime: perhaps short for نِظَام الْحُكْم (niẓām al-ḥukm, “system of rule”)']
-fun 'نِظَام_N' : N ; -- source: wikitionary, idx: 661, senses: ['system / regularity / order / method / rule / regime: perhaps short for نِظَام الْحُكْم (niẓām al-ḥukm, “system of rule”)']
-fun 'بِطَالَة_N' : N ; -- source: wikitionary, idx: 117666, senses: ['idleness / unemployment']
-fun 'قِبْطِي_N' : N ; -- source: wikitionary, idx: 2406, senses: ['Copt']
-fun 'يِن_N' : N ; -- source: wikitionary, idx: -1, senses: ['']
-fun 'عَرَبِي_N' : N ; -- source: wikitionary, idx: 65, senses: ['Arab / Arabic (language)']
-fun 'مُتَوَسِّط_A' : A ; -- source: wikitionary, idx: 7862, senses: ['being in the middle, mediating / middle, central / medium / average, middling, indifferent']
-fun 'حَاكِم_A' : A ; -- source: wikitionary, idx: 3016, senses: ['ruling, governing / decisive']
+fun 'صِينِيَّة_N' : N ;
+fun 'دارِيَّة_N' : N ;
+fun 'تَطْوِير_N' : N ;
+fun 'إِيطالِيَّة_N' : N ;
+fun 'كَرون_N' : N ;
+fun 'لاتفية_N' : N ;
+fun 'وَصِي_N' : N ;
+fun 'اِحْتِياطَي_N' : N ;
+fun 'إِسْبانِيَّة_N' : N ;
+fun 'إِرْهابِي_N' : N ;
+fun 'عَاصِمَة_N' : N ;
+fun 'رِعايَة_N' : N ;
+fun 'طِفْل_N' : N ;
+fun 'مَدِينَة_N' : N ;
+fun 'دَوْلَة_N' : N ;
+fun 'ثَقَافَة_N' : N ;
+fun 'اِنْخِفَاض_N' : N ;
+fun 'تَوْزِيع_N' : N ;
+fun 'اِقْتِصَاد_N' : N ;
+fun 'تَعْلِيم_N' : N ;
+fun 'خُصُوبَة_N' : N ;
+fun 'طَعَام_N' : N ;
+fun 'حُرِّيَّة_N' : N ;
+fun 'حُكُومَة_N' : N ;
+fun 'نُمُو_N' : N ;
+fun 'صِحِّيّ_A' : A ;
+fun 'إِنْسَان_N' : N ;
+fun 'كِيلُومِتْر_N' : N ;
+fun 'لُغَة_N' : N ;
+fun 'قَائِد_N' : N ;
+fun 'عُضْو_N' : N ;
+fun 'وَزِير_N' : N ;
+fun 'وَزارة_N' : N ;
+fun 'جَرِيدَة_N' : N ;
+fun 'مَكْتَب_N' : N ;
+fun 'سِيَاسَة_N' : N ;
+fun 'جُنَيْه_N' : N ;
+fun 'تَأْجِير_N' : N ;
+fun 'رِيَاضَة_N' : N ;
+fun 'نِظَام_N' : N ;
+fun 'ضَرِيبَة_N' : N ;
+fun 'وَحْدَة_N' : N ;
+fun 'قِيمَة_N' : N ;
+fun 'اِمْرَأَة_N' : N ;
+fun 'أَفْغَانِي_N' : N ;
+fun 'آشُورِي_N' : N ;
+fun 'مَنْع_N' : N ;
+fun 'بِيلَارُوسِي_N' : N ;
+fun 'حَد_N' : N ;
+fun 'بُلْغَارِيَّة_N' : N ;
+fun 'رَئِيس_N' : N ;
+fun 'نَصْرَانِيَّة_N' : N ;
+fun 'هُولَنْدِي_N' : N ;
+fun 'مُسَاوَاة_N' : N ;
+fun 'عَيْب_N' : N ;
+fun 'دَقِيق_N' : N ;
+fun 'فَرَنْسِيَّة_N' : N ;
+fun 'فُنْدُق_N' : N ;
+fun 'فِهْرِس_N' : N ;
+fun 'تَضَخُّم_N' : N ;
+fun 'مَوْضِع_N' : N ;
+fun 'مُنْتَج_N' : N ;
+fun 'مَلِكَة_N' : N ;
+fun 'مُعَدَّل_N' : N ;
+fun 'مَاء_N' : N ;
+fun 'عَالَم_N' : N ;
+fun 'مَنْطِقَة_N' : N ;
+fun 'كِتَاب_N' : N ;
+fun 'عُمْلَة_N' : N ;
+fun 'دِيمُقْرَاطِيَّة_N' : N ;
+fun 'نُورْدِيَّة_N' : N ;
+fun 'شَرْق_N' : N ;
+fun 'رَأْس_N' : N ;
+fun 'مُقَدِّمَة_N' : N ;
+fun 'مَنْبَع_N' : N ;
+fun 'سَاكِن_N' : N ;
+fun 'سِنّ_N' : N ;
+fun 'رُشْد_N' : N ;
+fun 'مَلَكِيَّة_N' : N ;
+fun 'جُمْهُورِيَّة_N' : N ;
+fun 'رُوسِيَّة_N' : N ;
+fun 'جَنُوب_N' : N ;
+fun 'تَايْلَانْدِيَّة_N' : N ;
+fun 'تُرْكِيَّة_N' : N ;
+fun 'سَنَة_N' : N ;
+fun 'دَخْل_N' : N ;
+fun 'شَمَال_N' : N ;
+fun 'عَلَم_N' : N ;
+fun 'دِين_N' : N ;
+fun 'أُم_N' : N ;
+fun 'نَشَاء_N' : N ;
+fun 'عُمْر_N' : N ;
+fun 'غَرْب_N' : N ;
+fun 'مَلِك_N' : N ;
+fun 'بِير_N' : N ;
+fun 'مُمْتَلِئ_A' : A ;
+fun 'إِجْمَالِي_A' : A ;
+fun 'فَرْدِي_A' : A ;
+fun 'مُعْتَدِل_A' : A ;
+fun 'مُطْلَق_A' : A ;
+fun 'حَاكِم_A' : A ;
+fun 'شُيُوعِي_A' : A ;
+fun 'دُسْتُورِي_A' : A ;
+fun 'دِيمُقْرَاطِي_A' : A ;
+fun 'سَابِق_A' : A ;
+fun 'عَالِي_A' : A ;
+fun 'كَبِير_A' : A ;
+fun 'قَلِيل_A' : A ;
+fun 'عَسْكَرِي_A' : A ;
+fun 'وَاجِب_A' : A ;
+fun 'بَرْلَمَانِي_A' : A ;
+fun 'مَجْمُوع_A' : A ;
+fun 'عَرَبِي_A' : A ;
+fun 'حُر_A' : A ;
+fun 'هَجِين_A' : A ;
+fun 'رَسْمِي_A' : A ;
+fun 'أُرْثُوذُكْسِيَّة_A' : A ;
+fun 'مُرَبَّع_A' : A ;
+fun 'مُسْلِم_A' : A ;
+fun 'شَمَالي_A' : A ;
+fun 'نُورْدِي_A' : A ;
+fun 'حَاضِر_A' : A ;
+fun 'مُمَثِّل_A' : A ;
+fun 'اِعْتَبَر_V' : V ;
+fun 'نَجَح_V' : V ;
+fun 'صَنَّف_V' : V ;
+fun 'عَيَّن_V' : V ;
+fun 'وَصَل_V' : V ;
+fun 'تَكَلَّم_V' : V ;
+fun 'مَلَك_V' : V ;
+fun 'عَرَض_V' : V ;
+fun 'نَشَّأ_V' : V ;
+fun 'أَسَّس_V' : V ;
+fun 'حدَّد_V' : V ;
+fun 'أَثْبَت_V' : V ;
+fun 'تَوَلَّى_V' : V ;
+fun 'ألجونكوين_N' : N ;
+fun 'بلاكفوت_N' : N ;
+fun 'كايوجا_N' : N ;
+fun 'تشيبويان_N' : N ;
+fun 'إِنْجلِيزِيَّة_N' : N ;
+fun 'فِلِبِّينِيَّة_N' : N ;
+fun 'فِنْلَنْدِيَّة_N' : N ;
+fun 'هيدا_N' : N ;
+fun 'مَوَّهُوك_N' : N ;
+fun 'أونيدا_N' : N ;
+fun 'أونونداجا_N' : N ;
+fun 'سُوِيدِيَّة_N' : N ;
+fun 'تلينغيت_N' : N ;
+fun 'تسيمشيان_N' : N ;
+fun 'يديشية_N' : N ;
+fun 'كري_N' : N ;
+fun 'دُولَار_N' : N ;
+fun 'كِتَابَة_N' : N ;
+fun 'نِسْبَة_N' : N ;
+fun 'مَعْرِفَة_N' : N ;
+fun 'مُنَظَمَة_N' : N ;
+fun 'قِرَاءَة_N' : N ;
+fun 'نِظَام_N' : N ;
+fun 'ألجونكوين_N' : N ;
+fun 'بلاكفوت_N' : N ;
+fun 'كايوجا_N' : N ;
+fun 'تشيبويان_N' : N ;
+fun 'إِنْجلِيزِيَّة_N' : N ;
+fun 'فِلِبِّينِيَّة_N' : N ;
+fun 'فِنْلَنْدِيَّة_N' : N ;
+fun 'هيدا_N' : N ;
+fun 'مَوَّهُوك_N' : N ;
+fun 'أونيدا_N' : N ;
+fun 'أونونداجا_N' : N ;
+fun 'سُوِيدِيَّة_N' : N ;
+fun 'تلينغيت_N' : N ;
+fun 'تسيمشيان_N' : N ;
+fun 'يديشية_N' : N ;
+fun 'كري_N' : N ;
+fun 'دُولَار_N' : N ;
+fun 'اِتِّحَاد_N' : N ;
+fun 'نِسْبَة_N' : N ;
+fun 'نُقْطَة_N' : N ;
+fun 'بِطَالَة_N' : N ;
+fun 'قِبْطِي_N' : N ;
+fun 'أُورُوبِّي_N' : N ;
+fun 'يِن_N' : N ;
+fun 'عَرَبِي_N' : N ;
+fun 'مُضاف_A' : A ;
+fun 'اِسْتِبْدادِي_A' : A ;
+fun 'وَسِيط_A' : A ;
+fun 'مَحَلِّي_A' : A ;
+fun 'تَالِي_A' : A ;
+fun 'مُتَوَسِّط_A' : A ;
+fun 'مُتَوَقَّع_A' : A ;
+fun 'سُكَّانِي_A' : A ;
+fun 'تَرْكيبَة_N' : N ;
+fun 'شِعَار_N' : N ;
+fun 'تَأْمين_N' : N ;
+fun 'مُنَظِم_A' : A ;
+fun 'سُرْعَة_N' : N ;
+fun 'مُنَظِم_N' : N ;
+fun 'حَاكِم_N' : N ;
+fun 'الرَّنْك_N' : N ;
+fun 'بَلَغ_V' : V ;
+fun 'فَرْد_N' : N ;
+fun 'سُوَيْدِي_A' : A ;
+fun 'أُورُوبِّي_A' : A ;
+fun 'وَزارة_N' : N ;
+fun 'نَسَمَة_MU' : MU ;
+fun 'قُنْبُلة_N' : N ;
+fun 'تَطَوُر_N' : N ;
+fun 'تَنْمِيَة_N' : N ;
+fun 'بَشَرِي_A' : A ;
+fun 'مُؤَشِّر_N' : N ;
+fun 'أُس_N' : N ;
+fun 'مَنْصِب_N' : N ;
+fun 'ناتِج_N' : N ;
+fun 'إِجْمَالِي_N' : N ;
+fun 'مِهْنَة_N' : N ;
+fun 'تِجارَة_N' : N ;
+fun 'عَالَمِي_A' : A ;
+fun 'تَمْثيلِي_A' : A ;
+fun 'بَريدِي_A' : A ;
+fun 'شَعْب_N' : N ;
+fun 'أُمَّة_N' : N ;
+fun 'مُتَّحِد_A' : A ;
+fun 'مُرْتَبِط_A' : A ;
+fun 'حَظْر_N' : N ;
+fun 'سِلاح_N' : N ;
+fun 'كِيمْيائي_A' : A ;
+fun 'مُؤَسَّسَة_N' : N ;
+fun 'تَمْويل_N' : N ;
+
+--changed type
+fun life_expectancy_CN : CN ;
+fun healthcare_2_CN : CN ;
+fun healthcare_1_CN : CN ;
+fun vat_1_NP : NP ;
+fun demographic_CN : CN ;
+fun coat_of_arms_NP : NP ;
+fun regime_1_NP : NP ;
+fun head_of_state_NP: NP ;
+fun head_of_government_NP : NP ;
+fun education_system_NP : NP ;
+fun literacy_NP : NP ;
+fun percent_Adv : Adv ;
+fun inhabitant_1_MU : MU ;
+fun human_development_CN : CN ;
+fun prime_ministerFem_CN : CN ;
+fun prime_ministerMasc_CN : CN ;
+fun prime_minister_1_CN : CN ;
+fun age_of_majority_NP : NP ;
+fun democracy_index_NP : NP ;
+fun gross_domestic_product_NP : NP ;
+fun weaponry_NP : NP ;
+--fun freedom_in_the_world_1_N : NP ;
+fun freedom_in_the_world_NP : NP ; --No PN from NP
+fun hdi_NP : NP ; --No PN from NP
+fun wto_NP : NP ;
+fun upu_NP : NP ;
+fun un_NP : NP ;
+fun take_office_VP : VP ;
+fun opcw_NP : NP ;
+fun ifc_NP : NP ;
 }

@@ -3054,6 +3054,7 @@ lin 'ماكيلزفيلد_N' = mkN nohum (wmkN {g = fem ; sg = "ماكيلزفي
 lin 'مالابو_N' = mkN nohum (wmkN {g = fem ; sg = "مالابو" ; pl = "مالابو" }) ;
 lin 'مالاكس_N' = mkN nohum (wmkN {g = fem ; sg = "مالاكس" ; pl = "مالاكس" }) ;
 lin 'مالتبي_N' = mkN nohum (wmkN {g = fem ; sg = "مالتبي" ; pl = "مالتبي" }) ;
+lin 'مالجوفيك_N' = mkN nohum (wmkN {g = fem ; sg = "مالجوفيك" ; pl = "مالجوفيك" }) ;
 lin 'مالطا_N' = mkN nohum (wmkN {g = fem ; sg = "مالطا" ; pl = "مالطا" }) ;
 lin 'مالطة_N' = mkN nohum (wmkN {g = fem ; sg = "مالطة" ; pl = "مالطة" }) ;
 lin 'مالفرن_N' = mkN nohum (wmkN {g = fem ; sg = "مالفرن" ; pl = "مالفرن" }) ;
@@ -6914,6 +6915,7 @@ lin 'ماكيلزفيلد_LN' = mkLN 'ماكيلزفيلد_N' ;
 lin 'مالابو_LN' = mkLN 'مالابو_N' ;
 lin 'مالاكس_LN' = mkLN 'مالاكس_N' ;
 lin 'مالتبي_LN' = mkLN 'مالتبي_N' ;
+lin 'مالجوفيك_LN' = mKLN 'مالجوفيك_N' ;
 lin 'مالطا_LN' = mkLN 'مالطا_N' ;
 lin 'مالطة_LN' = mkLN 'مالطة_N' ;
 lin 'مالفرن_LN' = mkLN 'مالفرن_N' ;

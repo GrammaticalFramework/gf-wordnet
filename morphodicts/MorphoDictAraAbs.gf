@@ -238,6 +238,7 @@ fun demographic_CN : CN ;
 fun coat_of_arms_NP : NP ;
 fun regime_1_NP : NP ;
 fun head_of_state_NP: NP ;
+fun head_of_stateMasc_NP: NP ;
 fun head_of_government_NP : NP ;
 fun education_system_NP : NP ;
 fun literacy_NP : NP ;

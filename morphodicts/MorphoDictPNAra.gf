@@ -2,6 +2,7 @@ concrete MorphoDictPNAra of MorphoDictPNAraAbs =CatAra ** open ParadigmsAra in {
 lin 'آرثر_sn_N' = mkN hum (wmkN {sg = "آرثر" ; pl = "آرثر"}) ;
 lin 'ألين_sn_N' = mkN hum (wmkN {sg = "ألين" ; pl = "ألين" }) ;
 lin 'أنتوني_sn_N' = mkN hum (wmkN {sg = "أنتوني" ; pl = "أنتوني" }) ;
+lin 'أندرسون_sn_N' = mkN hum (wmkN {sg = "أندرسون" ; pl = "أندرسون" }) ;
 lin 'أوزوالد_sn_N' = mkN hum (wmkN {sg = "أوزوالد" ; pl = "أوزوالد" }) ;
 lin 'أوفنباخ_sn_N' = mkN hum (wmkN {sg = "أوفنباخ" ; pl = "أوفنباخ" }) ;
 lin 'أولدنبورغ_sn_N' = mkN hum (wmkN {sg = "أولدنبورغ" ; pl = "أولدنبورغ" }) ;
@@ -146,6 +147,7 @@ lin 'كامينغز_sn_N' = mkN hum (wmkN {sg = "كامينغز" ; pl = "كام�
 lin 'كاوورد_sn_N' = mkN hum (wmkN {sg = "كاوورد" ; pl = "كاوورد" }) ;
 lin 'كروسبي_sn_N' = mkN hum (wmkN {sg = "كروسبي" ; pl = "كروسبي" }) ;
 lin 'كريس_sn_N' = mkN hum (wmkN {sg = "كريس" ; pl = "كريس" }) ;
+lin 'كريسترسون_sn_N' = mkN hum (wmkN {sg = "كريسترسون" ; pl = "كريسترسون" }) ;
 lin 'كريك_sn_N' = mkN hum (wmkN {sg = "كريك" ; pl = "كريك" }) ;
 lin 'كلايف_sn_N' = mkN hum (wmkN {sg = "كلايف" ; pl = "كلايف" }) ;
 lin 'كلفن_sn_N' = mkN hum (wmkN {sg = "كلفن" ; pl = "كلفن" }) ;
@@ -405,6 +407,7 @@ lin 'ليزي_gnf_PN' = mkPN "ليزي" fem hum;
 lin 'لين_gnf_PN' = mkPN "لين" fem hum;
 lin 'ليندا_gnf_PN' = mkPN "ليندا" fem hum;
 lin 'مابل_gnf_PN' = mkPN "مابل" fem hum;
+lin 'ماجدالينا_gnf_PN' = mkPN "ماجدالينا" fem hum;
 lin 'ماجي_gnf_PN' = mkPN "ماجي" fem hum;
 lin 'مادج_gnf_PN' = mkPN "مادج" fem hum;
 lin 'مادلين_gnf_PN' = mkPN "مادلين" fem hum;
@@ -667,6 +670,7 @@ lin 'يوغي_gnm_PN' = mkPN "يوغي" masc hum;
 lin 'آرثر_sn_PN' = mkPN 'آرثر_sn_N' ;  -- arthur_2_PN
 lin 'ألين_sn_PN' = mkPN 'ألين_sn_N' ;
 lin 'أنتوني_sn_PN' = mkPN 'أنتوني_sn_N' ;
+lin 'أندرسون_sn_PN' = mkPN 'أندرسون_sn_N' ;
 lin 'أوزوالد_sn_PN' = mkPN 'أوزوالد_sn_N' ;
 lin 'أوفنباخ_sn_PN' = mkPN 'أوفنباخ_sn_N' ;
 lin 'أولدنبورغ_sn_PN' = mkPN 'أولدنبورغ_sn_N' ;

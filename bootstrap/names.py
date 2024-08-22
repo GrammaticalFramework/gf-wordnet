@@ -564,15 +564,15 @@ def generate(names_fpath):
                             lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                     elif lang in ["Ara"]:
                         if name_type in ["Q202444","Q12308941"]:
-                            lin = "variants {}"
+                            lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                         elif name_type in ["Q11879590"]:
-                            lin = "variants {}"
+                            lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                         elif name_type in ["Q18972245","Q18972207"]:
-                            lin = "variants {}"
+                            lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                         elif tag == "GN":
-                            lin = "variants {}"
+                            lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                         elif tag == "SN":
-                            lin = "variants {}"
+                            lin = "lin "+tag+" <mkPN "+dquote(lin)+" : PN>"
                         elif tag == "LN":
                             lin = "mkLN "+dquote(lin)
                         else:

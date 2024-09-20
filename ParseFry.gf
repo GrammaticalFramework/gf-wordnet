@@ -1,0 +1,1 @@
+concrete ParseFry of Parse = WordNetFry ** {}

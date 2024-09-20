@@ -1,0 +1,1 @@
+concrete ParseIna of Parse = WordNetIna ** {}

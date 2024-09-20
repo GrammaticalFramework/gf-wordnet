@@ -1,0 +1,1 @@
+concrete ParseDzo of Parse = WordNetDzo ** {}

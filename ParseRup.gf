@@ -1,0 +1,1 @@
+concrete ParseRup of Parse = WordNetRup ** {}

@@ -1,0 +1,1 @@
+concrete ParseVec of Parse = WordNetVec ** {}

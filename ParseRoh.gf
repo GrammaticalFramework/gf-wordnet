@@ -1,0 +1,1 @@
+concrete ParseRoh of Parse = WordNetRoh ** {}

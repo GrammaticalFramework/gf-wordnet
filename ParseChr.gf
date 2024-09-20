@@ -1,0 +1,1 @@
+concrete ParseChr of Parse = WordNetChr ** {}

@@ -1,0 +1,1 @@
+concrete ParseOri of Parse = WordNetOri ** {}

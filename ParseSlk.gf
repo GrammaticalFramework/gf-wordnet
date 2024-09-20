@@ -1,0 +1,1 @@
+concrete ParseSlk of Parse = WordNetSlk ** {}

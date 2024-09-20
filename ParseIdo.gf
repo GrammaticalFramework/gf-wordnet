@@ -1,0 +1,1 @@
+concrete ParseIdo of Parse = WordNetIdo ** {}

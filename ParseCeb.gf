@@ -1,0 +1,1 @@
+concrete ParseCeb of Parse = WordNetCeb ** {}

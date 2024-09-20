@@ -1,0 +1,1 @@
+concrete ParseGag of Parse = WordNetGag ** {}

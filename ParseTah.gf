@@ -1,0 +1,1 @@
+concrete ParseTah of Parse = WordNetTah ** {}

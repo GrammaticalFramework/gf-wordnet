@@ -1,0 +1,1 @@
+concrete ParseGla of Parse = WordNetGla ** {}

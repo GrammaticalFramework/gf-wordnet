@@ -1,0 +1,1 @@
+concrete ParsePli of Parse = WordNetPli ** {}

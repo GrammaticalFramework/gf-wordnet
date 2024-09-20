@@ -1,0 +1,1 @@
+concrete ParseWuu of Parse = WordNetWuu ** {}

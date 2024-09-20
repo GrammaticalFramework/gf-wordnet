@@ -1,0 +1,1 @@
+concrete ParseBod of Parse = WordNetBod ** {}

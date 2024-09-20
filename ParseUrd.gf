@@ -1,0 +1,1 @@
+concrete ParseUrd of Parse = WordNetUrd ** {}

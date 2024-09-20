@@ -1,0 +1,1 @@
+concrete ParseSmo of Parse = WordNetSmo ** {}

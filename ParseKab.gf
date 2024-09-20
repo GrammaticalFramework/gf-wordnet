@@ -1,0 +1,1 @@
+concrete ParseKab of Parse = WordNetKab ** {}

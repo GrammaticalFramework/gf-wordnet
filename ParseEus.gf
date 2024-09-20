@@ -1,0 +1,1 @@
+concrete ParseEus of Parse = WordNetEus ** {}

@@ -1,0 +1,1 @@
+concrete ParsePus of Parse = WordNetPus ** {}

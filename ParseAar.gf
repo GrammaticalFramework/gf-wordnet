@@ -1,0 +1,1 @@
+concrete ParseAar of Parse = WordNetAar ** {}

@@ -1,0 +1,1 @@
+concrete ParseLat of Parse = WordNetLat ** {}

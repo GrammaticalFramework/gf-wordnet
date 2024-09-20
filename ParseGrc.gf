@@ -1,0 +1,1 @@
+concrete ParseGrc of Parse = WordNetGrc ** {}

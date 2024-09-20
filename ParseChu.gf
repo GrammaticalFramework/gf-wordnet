@@ -1,0 +1,1 @@
+concrete ParseChu of Parse = WordNetChu ** {}

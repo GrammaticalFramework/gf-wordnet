@@ -1,0 +1,1 @@
+concrete ParseGsw of Parse = WordNetGsw ** {}

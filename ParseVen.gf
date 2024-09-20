@@ -1,0 +1,1 @@
+concrete ParseVen of Parse = WordNetVen ** {}

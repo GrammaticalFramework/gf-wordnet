@@ -1,0 +1,1 @@
+concrete ParseYid of Parse = WordNetYid ** {}

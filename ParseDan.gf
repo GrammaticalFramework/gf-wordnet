@@ -1,0 +1,1 @@
+concrete ParseDan of Parse = WordNetDan ** {}

@@ -1,0 +1,1 @@
+concrete ParseCho of Parse = WordNetCho ** {}

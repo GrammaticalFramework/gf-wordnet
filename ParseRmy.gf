@@ -1,0 +1,1 @@
+concrete ParseRmy of Parse = WordNetRmy ** {}

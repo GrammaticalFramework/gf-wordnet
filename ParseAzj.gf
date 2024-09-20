@@ -1,0 +1,1 @@
+concrete ParseAzj of Parse = WordNetAzj ** {}

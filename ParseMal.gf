@@ -1,0 +1,1 @@
+concrete ParseMal of Parse = WordNetMal ** {}

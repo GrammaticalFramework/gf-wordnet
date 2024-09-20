@@ -1,0 +1,1 @@
+concrete ParseMyv of Parse = WordNetMyv ** {}

@@ -1,0 +1,1 @@
+concrete ParseTpi of Parse = WordNetTpi ** {}

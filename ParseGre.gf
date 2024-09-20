@@ -1,0 +1,1 @@
+concrete ParseGre of Parse = WordNetGre ** {}

@@ -1,0 +1,1 @@
+concrete ParseLug of Parse = WordNetLug ** {}

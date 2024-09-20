@@ -1,0 +1,1 @@
+concrete ParseMar of Parse = WordNetMar ** {}

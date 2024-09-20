@@ -1,0 +1,1 @@
+concrete ParseAry of Parse = WordNetAry ** {}

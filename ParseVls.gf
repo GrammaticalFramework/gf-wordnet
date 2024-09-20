@@ -1,0 +1,1 @@
+concrete ParseVls of Parse = WordNetVls ** {}

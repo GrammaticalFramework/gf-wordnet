@@ -1,0 +1,1 @@
+concrete ParseTam of Parse = WordNetTam ** {}

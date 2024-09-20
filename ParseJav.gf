@@ -1,0 +1,1 @@
+concrete ParseJav of Parse = WordNetJav ** {}

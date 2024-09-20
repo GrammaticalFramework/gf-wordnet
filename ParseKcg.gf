@@ -1,0 +1,1 @@
+concrete ParseKcg of Parse = WordNetKcg ** {}

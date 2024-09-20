@@ -1,0 +1,1 @@
+concrete ParseKhm of Parse = WordNetKhm ** {}

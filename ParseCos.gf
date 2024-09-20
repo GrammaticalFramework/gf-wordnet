@@ -1,0 +1,1 @@
+concrete ParseCos of Parse = WordNetCos ** {}

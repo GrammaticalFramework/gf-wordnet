@@ -1,0 +1,1 @@
+concrete ParseNor of Parse = WordNetNor ** {}

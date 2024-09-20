@@ -1,0 +1,1 @@
+concrete ParseTgk of Parse = WordNetTgk ** {}

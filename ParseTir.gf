@@ -1,0 +1,1 @@
+concrete ParseTir of Parse = WordNetTir ** {}

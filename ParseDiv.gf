@@ -1,0 +1,1 @@
+concrete ParseDiv of Parse = WordNetDiv ** {}

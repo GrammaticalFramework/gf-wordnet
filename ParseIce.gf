@@ -1,0 +1,1 @@
+concrete ParseIce of Parse = WordNetIce ** {}

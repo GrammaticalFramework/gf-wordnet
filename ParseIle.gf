@@ -1,0 +1,1 @@
+concrete ParseIle of Parse = WordNetIle ** {}

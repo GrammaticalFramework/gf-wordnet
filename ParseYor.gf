@@ -1,0 +1,1 @@
+concrete ParseYor of Parse = WordNetYor ** {}

@@ -1,0 +1,1 @@
+concrete ParseXho of Parse = WordNetXho ** {}

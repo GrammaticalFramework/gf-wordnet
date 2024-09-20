@@ -1,0 +1,1 @@
+concrete ParseCha of Parse = WordNetCha ** {}

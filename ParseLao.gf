@@ -1,0 +1,1 @@
+concrete ParseLao of Parse = WordNetLao ** {}

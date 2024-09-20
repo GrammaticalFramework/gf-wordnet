@@ -1,0 +1,1 @@
+concrete ParseSme of Parse = WordNetSme ** {}

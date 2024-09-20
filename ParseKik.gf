@@ -1,0 +1,1 @@
+concrete ParseKik of Parse = WordNetKik ** {}

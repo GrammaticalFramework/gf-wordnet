@@ -1,0 +1,1 @@
+concrete ParseKau of Parse = WordNetKau ** {}

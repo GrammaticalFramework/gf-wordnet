@@ -1,0 +1,1 @@
+concrete ParsePnb of Parse = WordNetPnb ** {}

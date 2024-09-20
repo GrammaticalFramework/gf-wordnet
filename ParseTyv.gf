@@ -1,0 +1,1 @@
+concrete ParseTyv of Parse = WordNetTyv ** {}

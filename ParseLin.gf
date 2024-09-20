@@ -1,0 +1,1 @@
+concrete ParseLin of Parse = WordNetLin ** {}

@@ -1,0 +1,1 @@
+concrete ParseIbo of Parse = WordNetIbo ** {}

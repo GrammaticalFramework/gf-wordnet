@@ -1,0 +1,1 @@
+concrete ParseRue of Parse = WordNetRue ** {}

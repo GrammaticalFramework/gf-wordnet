@@ -1,0 +1,1 @@
+concrete ParseUdm of Parse = WordNetUdm ** {}

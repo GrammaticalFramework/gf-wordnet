@@ -1,0 +1,1 @@
+concrete ParseScn of Parse = WordNetScn ** {}

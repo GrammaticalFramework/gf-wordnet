@@ -1,0 +1,1 @@
+concrete ParseUkr of Parse = WordNetUkr ** {}

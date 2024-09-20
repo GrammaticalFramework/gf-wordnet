@@ -1,0 +1,1 @@
+concrete ParseFao of Parse = WordNetFao ** {}

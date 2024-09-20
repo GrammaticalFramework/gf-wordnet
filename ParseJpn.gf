@@ -1,0 +1,1 @@
+concrete ParseJpn of Parse = WordNetJpn ** {}

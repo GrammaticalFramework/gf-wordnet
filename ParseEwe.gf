@@ -1,0 +1,1 @@
+concrete ParseEwe of Parse = WordNetEwe ** {}

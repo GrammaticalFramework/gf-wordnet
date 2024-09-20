@@ -1,0 +1,1 @@
+concrete ParseLij of Parse = WordNetLij ** {}

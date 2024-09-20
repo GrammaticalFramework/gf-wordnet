@@ -1,0 +1,1 @@
+concrete ParseSun of Parse = WordNetSun ** {}

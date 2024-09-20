@@ -1,0 +1,1 @@
+concrete ParseGan of Parse = WordNetGan ** {}

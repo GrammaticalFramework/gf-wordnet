@@ -1,0 +1,1 @@
+concrete ParseOss of Parse = WordNetOss ** {}

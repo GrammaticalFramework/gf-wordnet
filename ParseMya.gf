@@ -1,0 +1,1 @@
+concrete ParseMya of Parse = WordNetMya ** {}

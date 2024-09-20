@@ -1,0 +1,1 @@
+concrete ParseMkd of Parse = WordNetMkd ** {}

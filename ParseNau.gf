@@ -1,0 +1,1 @@
+concrete ParseNau of Parse = WordNetNau ** {}

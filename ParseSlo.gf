@@ -1,0 +1,1 @@
+concrete ParseSlo of Parse = WordNetSlo ** {}

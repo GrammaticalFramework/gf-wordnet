@@ -1,0 +1,1 @@
+concrete ParseTuk of Parse = WordNetTuk ** {}

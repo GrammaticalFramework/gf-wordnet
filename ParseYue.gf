@@ -1,0 +1,1 @@
+concrete ParseYue of Parse = WordNetYue ** {}

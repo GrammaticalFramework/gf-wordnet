@@ -1,0 +1,1 @@
+concrete ParseCze of Parse = WordNetCze ** {}

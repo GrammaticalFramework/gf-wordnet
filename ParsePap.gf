@@ -1,0 +1,1 @@
+concrete ParsePap of Parse = WordNetPap ** {}

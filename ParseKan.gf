@@ -1,0 +1,1 @@
+concrete ParseKan of Parse = WordNetKan ** {}

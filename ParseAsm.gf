@@ -1,0 +1,1 @@
+concrete ParseAsm of Parse = WordNetAsm ** {}

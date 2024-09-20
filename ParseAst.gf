@@ -1,0 +1,1 @@
+concrete ParseAst of Parse = WordNetAst ** {}

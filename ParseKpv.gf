@@ -1,0 +1,1 @@
+concrete ParseKpv of Parse = WordNetKpv ** {}

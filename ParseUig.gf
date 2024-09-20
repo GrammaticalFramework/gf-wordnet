@@ -1,0 +1,1 @@
+concrete ParseUig of Parse = WordNetUig ** {}

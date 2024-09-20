@@ -1,0 +1,1 @@
+concrete ParseVie of Parse = WordNetVie ** {}

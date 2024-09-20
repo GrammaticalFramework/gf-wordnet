@@ -1,0 +1,1 @@
+concrete ParseChv of Parse = WordNetChv ** {}

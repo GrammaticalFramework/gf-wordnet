@@ -1,0 +1,1 @@
+concrete ParseEpo of Parse = WordNetEpo ** {}

@@ -1,0 +1,1 @@
+concrete ParseLit of Parse = WordNetLit ** {}

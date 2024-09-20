@@ -1,0 +1,1 @@
+concrete ParseGuj of Parse = WordNetGuj ** {}

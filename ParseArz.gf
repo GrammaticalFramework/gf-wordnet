@@ -1,0 +1,1 @@
+concrete ParseArz of Parse = WordNetArz ** {}

@@ -1,0 +1,1 @@
+concrete ParseAdy of Parse = WordNetAdy ** {}

@@ -1,0 +1,1 @@
+concrete ParseMah of Parse = WordNetMah ** {}

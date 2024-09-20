@@ -1,0 +1,1 @@
+concrete ParseKsh of Parse = WordNetKsh ** {}

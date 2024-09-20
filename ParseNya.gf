@@ -1,0 +1,1 @@
+concrete ParseNya of Parse = WordNetNya ** {}

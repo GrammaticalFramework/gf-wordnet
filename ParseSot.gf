@@ -1,0 +1,1 @@
+concrete ParseSot of Parse = WordNetSot ** {}

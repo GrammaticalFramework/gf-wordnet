@@ -1,0 +1,1 @@
+concrete ParseHye of Parse = WordNetHye ** {}

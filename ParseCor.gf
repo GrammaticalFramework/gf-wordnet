@@ -1,0 +1,1 @@
+concrete ParseCor of Parse = WordNetCor ** {}

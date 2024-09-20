@@ -1,0 +1,1 @@
+concrete ParseSan of Parse = WordNetSan ** {}

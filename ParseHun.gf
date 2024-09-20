@@ -1,0 +1,1 @@
+concrete ParseHun of Parse = WordNetHun ** {}

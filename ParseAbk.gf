@@ -1,0 +1,1 @@
+concrete ParseAbk of Parse = WordNetAbk ** {}

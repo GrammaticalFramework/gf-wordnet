@@ -1,0 +1,1 @@
+concrete ParseKal of Parse = WordNetKal ** {}

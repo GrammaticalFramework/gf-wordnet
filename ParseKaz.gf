@@ -1,0 +1,1 @@
+concrete ParseKaz of Parse = WordNetKaz ** {}

@@ -1,0 +1,1 @@
+concrete ParseChy of Parse = WordNetChy ** {}

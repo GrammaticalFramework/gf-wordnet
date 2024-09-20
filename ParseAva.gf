@@ -1,0 +1,1 @@
+concrete ParseAva of Parse = WordNetAva ** {}

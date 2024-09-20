@@ -1,0 +1,1 @@
+concrete ParseMhr of Parse = WordNetMhr ** {}

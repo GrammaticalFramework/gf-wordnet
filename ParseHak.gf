@@ -1,0 +1,1 @@
+concrete ParseHak of Parse = WordNetHak ** {}

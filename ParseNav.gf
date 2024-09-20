@@ -1,0 +1,1 @@
+concrete ParseNav of Parse = WordNetNav ** {}

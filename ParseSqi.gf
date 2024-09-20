@@ -1,0 +1,1 @@
+concrete ParseSqi of Parse = WordNetSqi ** {}

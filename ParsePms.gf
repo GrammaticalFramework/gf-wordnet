@@ -1,0 +1,1 @@
+concrete ParsePms of Parse = WordNetPms ** {}

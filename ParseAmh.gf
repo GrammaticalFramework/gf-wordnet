@@ -1,0 +1,1 @@
+concrete ParseAmh of Parse = WordNetAmh ** {}

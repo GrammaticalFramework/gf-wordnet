@@ -1,0 +1,1 @@
+concrete ParseBar of Parse = WordNetBar ** {}

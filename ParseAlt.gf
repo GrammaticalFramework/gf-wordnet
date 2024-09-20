@@ -1,0 +1,1 @@
+concrete ParseAlt of Parse = WordNetAlt ** {}

@@ -1,0 +1,1 @@
+concrete ParseAng of Parse = WordNetAng ** {}

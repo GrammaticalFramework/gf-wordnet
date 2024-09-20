@@ -1,0 +1,1 @@
+concrete ParseArc of Parse = WordNetArc ** {}

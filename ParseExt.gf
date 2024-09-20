@@ -1,0 +1,1 @@
+concrete ParseExt of Parse = WordNetExt ** {}

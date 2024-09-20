@@ -1,0 +1,1 @@
+concrete ParseHaw of Parse = WordNetHaw ** {}

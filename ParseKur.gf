@@ -1,0 +1,1 @@
+concrete ParseKur of Parse = WordNetKur ** {}

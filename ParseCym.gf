@@ -1,0 +1,1 @@
+concrete ParseCym of Parse = WordNetCym ** {}

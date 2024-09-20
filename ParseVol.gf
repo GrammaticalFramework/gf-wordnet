@@ -1,0 +1,1 @@
+concrete ParseVol of Parse = WordNetVol ** {}

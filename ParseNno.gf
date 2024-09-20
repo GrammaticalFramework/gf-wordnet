@@ -1,0 +1,1 @@
+concrete ParseNno of Parse = WordNetNno ** {}

@@ -1,0 +1,1 @@
+concrete ParseChe of Parse = WordNetChe ** {}

@@ -1,0 +1,1 @@
+concrete ParseNan of Parse = WordNetNan ** {}

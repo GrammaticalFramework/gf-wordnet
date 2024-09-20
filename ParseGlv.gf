@@ -1,0 +1,1 @@
+concrete ParseGlv of Parse = WordNetGlv ** {}

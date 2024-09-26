@@ -15,13 +15,25 @@ function closeCheckboxes(e) {
 }
 
 function showCheckboxes(table) {
-  var checkboxes = table.getElementsByTagName("TBODY")[0];
-  if (checkboxes.style.display == "block") {
-	checkboxes.style.display = "none";
+  const body = table.getElementsByTagName("TBODY")[0];
+  if (body.style.display == "block") {
+	body.style.display = "none";
 	window.removeEventListener("mousedown", closeCheckboxes);
   } else {
-	checkboxes.style.display = "block";
+    body.style.display = "block";
 	window.addEventListener("mousedown", closeCheckboxes);
+  }
+
+  let tr = table.lastElementChild.firstElementChild;
+  tr.firstElementChild.firstElementChild.value = "";
+
+  tr = tr.nextElementSibling;
+  while (tr != null) {
+    const checkElem = tr.lastElementChild.firstElementChild;
+    if (!checkElem.checked) {
+        tr.style.display = "none";
+    }
+    tr = tr.nextElementSibling;
   }
 }
 
@@ -60,12 +72,15 @@ function initMultiSelection(table) {
 		selected = JSON.parse(localStorage.lang_selection);
 	}
 
-	var tr = table.lastElementChild.firstElementChild;
+	let tr = table.lastElementChild.firstElementChild.nextElementSibling;
 	while (tr != null) {
 		const nameElem  = tr.firstElementChild;
 		const checkElem = tr.lastElementChild.firstElementChild;
-		if (selected.includes(checkElem.name))
+		if (selected.includes(checkElem.name)) {
 			checkElem.checked = true;
+        } else {
+            tr.style.display = "none";
+        }
 		tr = tr.nextElementSibling;
 	}
 }
@@ -74,7 +89,7 @@ function getMultiSelection(table) {
 	var current   = table.firstElementChild.firstElementChild.firstElementChild.innerHTML;
 	var selection = {current: null, langs: {}, langs_list: []};
 
-	var tr = table.lastElementChild.firstElementChild;
+	var tr = table.lastElementChild.firstElementChild.nextElementSibling;
 	while (tr != null) {
 		var nameElem  = tr.firstElementChild;
 		var checkElem = tr.lastElementChild.firstElementChild;
@@ -109,4 +124,36 @@ function getMultiSelection(table) {
 	}
 
 	return selection;
+}
+
+function filterLanguages(input) {
+    const filter = input.value.toLowerCase();
+    const others = [];
+    let match = false;
+	let tr = input.parentElement.parentElement.nextElementSibling;
+	while (tr != null) {
+		const nameElem  = tr.firstElementChild;
+		const checkElem = tr.lastElementChild.firstElementChild;
+		if (!checkElem.checked) {
+            if (filter != "" && nameElem.innerText.toLowerCase().startsWith(filter)) {
+                match = true;
+                tr.style.display = "";
+            } else {
+                tr.style.display = "none";
+                for (let alt of (nameElem.dataset.alt || "").split("|")) {
+                    if (alt.toLowerCase().startsWith(filter)) {
+                        others.push(tr);
+                        break;
+                    }
+                }
+            }
+        }
+		tr = tr.nextElementSibling;
+	}
+    
+    if (!match) {
+        for (let tr of others) {
+            tr.style.display = "";
+        }
+    }
 }

@@ -140,10 +140,12 @@ function filterLanguages(input) {
                 tr.style.display = "";
             } else {
                 tr.style.display = "none";
-                for (let alt of (nameElem.dataset.alt || "").split("|")) {
-                    if (alt.toLowerCase().startsWith(filter)) {
-                        others.push(tr);
-                        break;
+                if (filter != "") {
+                    for (let alt of (nameElem.dataset.alt || "").split("|")) {
+                        if (alt.toLowerCase().startsWith(filter)) {
+                            others.push(tr);
+                            break;
+                        }
                     }
                 }
             }

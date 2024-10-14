@@ -1,4 +1,43 @@
-LANGS = ParseAfr ParseAra ParseBul ParseCat ParseChi ParseDut ParseEng ParseEst ParseFin ParseFre ParseGer ParseIta ParseKor ParseMlt ParsePol ParsePor ParseRon ParseRus ParseSlv ParseSom ParseSpa ParseSwa ParseSwe ParseTha ParseTur ParseZul ParseAPI
+LANGS = ParseAar ParseAbk ParseAce ParseAdy ParseAfr ParseAls ParseAlt \
+		ParseAmh ParseAng ParseAPI ParseAra ParseArc ParseArg ParseAry \
+		ParseArz ParseAsm ParseAst ParseAva ParseAym ParseAzb ParseAzj \
+		ParseBak ParseBam ParseBan ParseBar ParseBcl ParseBel ParseBen \
+		ParseBis ParseBjn ParseBod ParseBos ParseBre ParseBul ParseBxr \
+		ParseCat ParseCeb ParseCha ParseChe ParseChi ParseCho ParseChr \
+		ParseChu ParseChv ParseChy ParseCkb ParseCor ParseCos ParseCrh \
+		ParseCsb ParseCym ParseCze ParseDan ParseDiq ParseDiv ParseDsb \
+		ParseDut ParseDzo ParseEng ParseEpo ParseEst ParseEus ParseEwe \
+		ParseExt ParseFao ParseFas ParseFij ParseFin ParseFrc ParseFre \
+		ParseFrp ParseFrr ParseFry ParseFur ParseGag ParseGan ParseGcr \
+		ParseGer ParseGla ParseGle ParseGlg ParseGlv ParseGot ParseGrc \
+		ParseGre ParseGsw ParseGuj ParseHak ParseHat ParseHau ParseHaw \
+		ParseHeb ParseHin ParseHrv ParseHsb ParseHun ParseHye ParseIbo \
+		ParseIce ParseIdo ParseIii ParseIku ParseIle ParseIlo ParseIna \
+		ParseInd ParseInh ParseIta ParseJam ParseJav ParseJbo ParseJpn \
+		ParseKaa ParseKab ParseKal ParseKan ParseKat ParseKau ParseKaz \
+		ParseKbd ParseKcg ParseKhm ParseKik ParseKin ParseKir ParseKoi \
+		ParseKor ParseKpv ParseKrc ParseKsh ParseKur ParseLad ParseLao \
+		ParseLat ParseLav ParseLbe ParseLez ParseLfn ParseLij ParseLim \
+		ParseLin ParseLit ParseLld ParseLmo ParseLtg ParseLtz ParseLug \
+		ParseLzz ParseMah ParseMal ParseMar ParseMcn ParseMdf ParseMhr \
+		ParseMin ParseMkd ParseMlg ParseMlt ParseMnw ParseMon ParseMrj \
+		ParseMwl ParseMya ParseMyv ParseMzn ParseNan ParseNap ParseNau \
+		ParseNav ParseNds ParseNep ParseNno ParseNor ParseNov ParseNya \
+		ParseOci ParseOri ParseOss ParsePag ParsePam ParsePap ParsePcd \
+		ParsePes ParsePli ParsePms ParsePnb ParsePol ParsePor ParsePrg \
+		ParsePus ParseQue ParseRmy ParseRoh ParseRon ParseRue ParseRun \
+		ParseRup ParseRus ParseSag ParseSah ParseSan ParseScn ParseSco \
+		ParseSgs ParseShi ParseShn ParseSin ParseSlk ParseSlo ParseSlv \
+		ParseSma ParseSme ParseSmn ParseSmo ParseSms ParseSna ParseSnd \
+		ParseSom ParseSot ParseSpa ParseSqi ParseSrd ParseSrn ParseSrp \
+		ParseStq ParseSun ParseSwa ParseSwe ParseSzl ParseTah ParseTam \
+		ParseTat ParseTel ParseTet ParseTgk ParseTgl ParseTha ParseTir \
+		ParseTon ParseTpi ParseTsn ParseTuk ParseTur ParseTyv ParseUdm \
+		ParseUig ParseUkr ParseUrd ParseUzb ParseVec ParseVen ParseVep \
+		ParseVie ParseVls ParseVol ParseVro ParseWar ParseWln ParseWol \
+		ParseWuu ParseXal ParseXho ParseXmf ParseYid ParseYor ParseYue \
+		ParseZsm ParseZul
+
 
 WORDNETS = $(patsubst Parse%,WordNet%.gf,$(LANGS))
 
@@ -82,7 +121,7 @@ build/train/Matching.hs: train/Matching.hsc train/em_core.h
 	hsc2hs --cflag="-std=c99" -Itrain $< -o $@
 
 semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.uncond.probs
-	build/glosses
+	build/glosses $(LANGS)
 	mv semantics.db $(DOC_PATH)/robust/
 
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs

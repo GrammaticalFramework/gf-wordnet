@@ -11,6 +11,7 @@ import Data.Data
 import Data.Tree
 import System.IO ( utf8 )
 import System.Directory
+import System.Environment
 import Control.Monad
 import qualified Data.Map.Strict as Map
 import qualified Data.ByteString.Char8 as BS(head)
@@ -22,34 +23,9 @@ import Network.HTTP.MD5
 import Debug.Trace
 
 main = do
-  cncdefs1 <- fmap (mapMaybe (parseCncSyn "ParseAfr") . lines) $ readFile "WordNetAfr.gf"
-  cncdefs2 <- fmap (mapMaybe (parseCncSyn "ParseAra") . lines) $ readFile "WordNetAra.gf"
-  cncdefs3 <- fmap (mapMaybe (parseCncSyn "ParseBul") . lines) $ readFile "WordNetBul.gf"
-  cncdefs4 <- fmap (mapMaybe (parseCncSyn "ParseCat") . lines) $ readFile "WordNetCat.gf"
-  cncdefs5 <- fmap (mapMaybe (parseCncSyn "ParseChi") . lines) $ readFile "WordNetChi.gf"
-  cncdefs6 <- fmap (mapMaybe (parseCncSyn "ParseDut") . lines) $ readFile "WordNetDut.gf"
-  cncdefs7 <- fmap (mapMaybe (parseCncSyn "ParseEng") . lines) $ readFile "WordNetEng.gf"
-  cncdefs8 <- fmap (mapMaybe (parseCncSyn "ParseEst") . lines) $ readFile "WordNetEst.gf"
-  cncdefs9 <- fmap (mapMaybe (parseCncSyn "ParseFin") . lines) $ readFile "WordNetFin.gf"
-  cncdefs10 <- fmap (mapMaybe (parseCncSyn "ParseFre") . lines) $ readFile "WordNetFre.gf"
-  cncdefs11<- fmap (mapMaybe (parseCncSyn "ParseGer") . lines) $ readFile "WordNetGer.gf"
-  cncdefs12<- fmap (mapMaybe (parseCncSyn "ParseIta") . lines) $ readFile "WordNetIta.gf"
-  cncdefs13<- fmap (mapMaybe (parseCncSyn "ParseKor") . lines) $ readFile "WordNetKor.gf"
-  cncdefs14<- fmap (mapMaybe (parseCncSyn "ParseMlt") . lines) $ readFile "WordNetMlt.gf"
-  cncdefs15<- fmap (mapMaybe (parseCncSyn "ParsePol") . lines) $ readFile "WordNetPol.gf"
-  cncdefs16<- fmap (mapMaybe (parseCncSyn "ParsePor") . lines) $ readFile "WordNetPor.gf"
-  cncdefs17<- fmap (mapMaybe (parseCncSyn "ParseRon") . lines) $ readFile "WordNetRon.gf"
-  cncdefs18<- fmap (mapMaybe (parseCncSyn "ParseRus") . lines) $ readFile "WordNetRus.gf"
-  cncdefs19<- fmap (mapMaybe (parseCncSyn "ParseSlv") . lines) $ readFile "WordNetSlv.gf"
-  cncdefs20<- fmap (mapMaybe (parseCncSyn "ParseSom") . lines) $ readFile "WordNetSom.gf"
-  cncdefs21<- fmap (mapMaybe (parseCncSyn "ParseSpa") . lines) $ readFile "WordNetSpa.gf"
-  cncdefs22<- fmap (mapMaybe (parseCncSyn "ParseSwa") . lines) $ readFile "WordNetSwa.gf"
-  cncdefs23<- fmap (mapMaybe (parseCncSyn "ParseSwe") . lines) $ readFile "WordNetSwe.gf"
-  cncdefs24<- fmap (mapMaybe (parseCncSyn "ParseTha") . lines) $ readFile "WordNetTha.gf"
-  cncdefs25<- fmap (mapMaybe (parseCncSyn "ParseTur") . lines) $ readFile "WordNetTur.gf"
-  cncdefs26<- fmap (mapMaybe (parseCncSyn "ParseZul") . lines) $ readFile "WordNetZul.gf"
-
-  let cncdefs = Map.fromListWith (++) (cncdefs1++cncdefs2++cncdefs3++cncdefs4++cncdefs5++cncdefs6++cncdefs7++cncdefs8++cncdefs9++cncdefs10++cncdefs11++cncdefs12++cncdefs13++cncdefs14++cncdefs15++cncdefs16++cncdefs17++cncdefs18++cncdefs19++cncdefs20++cncdefs21++cncdefs22++cncdefs23++cncdefs24++cncdefs25++cncdefs26)
+  langs <- getArgs
+  cncdefs <- fmap (Map.fromListWith (++) . concat) $ forM langs $ \lang ->
+     fmap (mapMaybe (parseCncSyn lang) . lines) $ readFile ("WordNet"++drop 5 lang++".g")
 
   absdefs <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
 

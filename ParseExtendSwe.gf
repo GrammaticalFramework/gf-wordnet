@@ -7,7 +7,7 @@ concrete ParseExtendSwe of ParseExtend =
 lin gen_Quant = DefArt ;
 
     UttAP  p ap  = {s = ap.s ! Strong (gennum p.a.g p.a.n)} ;
-    UttVPS p vps = {s = vps.s ! Main ! p.a} ;
+    UttVPS p vps = {s = let x = vps.s ! Main ! p.a in x.verb ++ x.compl} ;
 
     PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 

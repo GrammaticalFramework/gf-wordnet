@@ -25,7 +25,7 @@ import Debug.Trace
 main = do
   langs <- getArgs
   cncdefs <- fmap (Map.fromListWith (++) . concat) $ forM langs $ \lang ->
-     fmap (mapMaybe (parseCncSyn lang) . lines) $ readFile ("WordNet"++drop 5 lang++".g")
+     fmap (mapMaybe (parseCncSyn lang) . lines) $ readFile ("WordNet"++drop 5 lang++".gf")
 
   absdefs <- fmap (mapMaybe parseAbsSyn . lines) $ readFile "WordNet.gf"
 

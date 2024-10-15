@@ -1,1 +1,0 @@
-concrete ParseFas of Parse = WordNetFas ** {}

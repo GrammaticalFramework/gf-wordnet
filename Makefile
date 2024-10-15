@@ -7,7 +7,7 @@ LANGS = ParseAar ParseAbk ParseAce ParseAdy ParseAfr ParseAls ParseAlt \
 		ParseChu ParseChv ParseChy ParseCkb ParseCor ParseCos ParseCrh \
 		ParseCsb ParseCym ParseCze ParseDan ParseDiq ParseDiv ParseDsb \
 		ParseDut ParseDzo ParseEng ParseEpo ParseEst ParseEus ParseEwe \
-		ParseExt ParseFao ParseFas ParseFij ParseFin ParseFrc ParseFre \
+		ParseExt ParseFao ParseFij ParseFin ParseFrc ParseFre \
 		ParseFrp ParseFrr ParseFry ParseFur ParseGag ParseGan ParseGcr \
 		ParseGer ParseGla ParseGle ParseGlg ParseGlv ParseGot ParseGrc \
 		ParseGre ParseGsw ParseGuj ParseHak ParseHat ParseHau ParseHaw \
@@ -27,7 +27,7 @@ LANGS = ParseAar ParseAbk ParseAce ParseAdy ParseAfr ParseAls ParseAlt \
 		ParsePes ParsePli ParsePms ParsePnb ParsePol ParsePor ParsePrg \
 		ParsePus ParseQue ParseRmy ParseRoh ParseRon ParseRue ParseRun \
 		ParseRup ParseRus ParseSag ParseSah ParseSan ParseScn ParseSco \
-		ParseSgs ParseShi ParseShn ParseSin ParseSlk ParseSlo ParseSlv \
+		ParseSgs ParseShi ParseShn ParseSin ParseSlo ParseSlv \
 		ParseSma ParseSme ParseSmn ParseSmo ParseSms ParseSna ParseSnd \
 		ParseSom ParseSot ParseSpa ParseSqi ParseSrd ParseSrn ParseSrp \
 		ParseStq ParseSun ParseSwa ParseSwe ParseSzl ParseTah ParseTam \

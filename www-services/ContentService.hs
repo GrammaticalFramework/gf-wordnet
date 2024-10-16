@@ -1,4 +1,5 @@
-{-# LANGUAGE CPP, MonadComprehensions, BangPatterns #-}
+{-# LANGUAGE MonadComprehensions, BangPatterns #-}
+module ContentService where
 
 import Database.Daison
 import SenseSchema
@@ -9,7 +10,6 @@ import Network.FastCGI
 import Text.JSON
 import Text.JSON.String
 import System.IO hiding (ReadWriteMode)
-import System.Environment
 import System.Directory
 import System.Posix.Files
 import System.Random
@@ -28,13 +28,8 @@ import Data.Maybe
 import PGF2
 import OpenSSL
 
-main = do
-  db <- openDB (DOC_PATH++"/semantics.db")
-  withOpenSSL (simpleFastCGI (fcgiMain db))
-
-
-fcgiMain :: Database -> Env -> Request -> IO Response
-fcgiMain db env rq = do
+contentService :: Database -> String -> Request -> IO Response
+contentService db client_secret rq = do
   let query = rqQuery rq
       mb_s1 = lookup "code" query
       mb_s2 = lookup "user" query
@@ -79,7 +74,6 @@ fcgiMain db env rq = do
                                                                                                          Nothing     -> httpError 404 "Not Found" "Unknown command"
   where
     doLogin code = do
-      client_secret <- getEnv "GF_WORDNET_CLIENT_SECRET"
       let rq = insertHeader HdrAccept "application/json" $
                getRequest ("https://github.com/login/oauth/access_token?client_id=1e94c97e812a9f502068&client_secret="++client_secret++"&code="++code)
       rsp <- simpleHTTP rq
@@ -102,7 +96,7 @@ fcgiMain db env rq = do
                                    return (user, name++" <"++email++">")) of
                             Right (user,author) -> do count <- runDaison db ReadOnlyMode $
                                                                   fmap length $ select (from updates_usr everything)
-                                                      let path = "/wordnet"
+                                                      let path = "/wordnet/"
                                                       return (Response
                                                                 { rspCode = 302
                                                                 , rspReason = "Found"
@@ -165,7 +159,7 @@ fcgiMain db env rq = do
               else do hPutStrLn inp ("Patch up "++fname)
                       hFlush inp
                       ls <- fmap lines $ readUtf8File fname
-                      (tmp_fname,hTmp) <- openTempFile SERVER_PATH fname
+                      (tmp_fname,hTmp) <- openTempFile "." fname
                       hSetEncoding hTmp utf8
                       mapM_ (hPutStrLn hTmp) (annotate fname us 1 ls)
                       hClose hTmp
@@ -174,7 +168,7 @@ fcgiMain db env rq = do
                                              groupReadMode `unionFileModes`
                                              groupWriteMode `unionFileModes`
                                              otherReadMode)
-                      renameFile tmp_fname (SERVER_PATH++"/"++fname)
+                      renameFile tmp_fname fname
 
         fileName (UpdateLexeme _ lex_id lang def) = "WordNet"++drop 5 lang++".gf"
         fileName (UpdateExample _ _ _)            = "examples.txt"
@@ -260,7 +254,6 @@ git inp (command:commands) = do
   (_,_,_,ph) <- createProcess_ "git"
                                (proc "git" command){std_out=UseHandle inp
                                                    ,std_err=UseHandle inp
-                                                   ,cwd=Just SERVER_PATH
                                                    }
   code <- waitForProcess ph
   case code of
@@ -272,7 +265,7 @@ git inp (command:commands) = do
     censor s = s
 
 readUtf8File fname = do
-  hInp <- openFile (SERVER_PATH++"/"++fname) ReadMode
+  hInp <- openFile fname ReadMode
   hSetEncoding hInp utf8
   hGetContents hInp
 

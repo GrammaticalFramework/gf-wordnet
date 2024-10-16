@@ -83,12 +83,11 @@ ifeq ($(USE_WIKIPEDIA),YES)
 	UD_FIN_TREEBANKS += $(wildcard data/Finnish/fi-wikipedia-00[01].conllu.xz)
 endif
 
-SERVER_PATH = /home/krasimir/GF/gf-wordnet
 SHARED_PATH = $(shell gf --version | tail -1 | cut -c 16-)
 DOC_PATH = $(SHARED_PATH)/www
 INSTALL_PATH = $(SHARED_PATH)/lib
 
-all: build_dirs Parse.pgf semantics.db $(SERVER_PATH)/www/SenseService.fcgi $(SERVER_PATH)/www/ContentService
+all: build_dirs Parse.pgf semantics.db Server
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
@@ -127,29 +126,12 @@ semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS))
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
 	ghc --make -threaded -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@
 
-$(SERVER_PATH)/www/SenseService.fcgi: www-services/SenseService.hs www-services/SenseSchema.hs www-services/PatternMatching.hs www-services/Interval.hs
-	ghc --make -odir build/www-services -hidir build/www-services -DDOC_PATH="\"$(DOC_PATH)\"" -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
-
-$(SERVER_PATH)/www/ContentService: www-services/ContentService.hs www-services/SenseSchema.hs www-services/ContentSchema.hs www-services/Interval.hs
-	ghc --make -threaded -odir build/www-services -hidir build/www-services -DDOC_PATH="\"$(DOC_PATH)\"" -DSERVER_PATH="\"$(SERVER_PATH)\"" -O2 -optl-pthread $^ -o $@
-
-deploy: $(WORDNETS)
-	scp Parse.pgf www.grammaticalframework.org:/usr/local/www/GF-demos/www/robust/Parse.pgf
-	scp -p build/gfo/WordNet*.gfo www.grammaticalframework.org:/usr/local/www/gf-wordnet
-	ssh -t www.grammaticalframework.org sudo mv /usr/local/www/gf-wordnet/WordNet*.gfo /usr/share/x86_64-linux-ghc-7.10.3/gf-3.10.4/lib
-	scp semantics.db www.grammaticalframework.org:$(SERVER_PATH)
-	scp www/status.svg www.grammaticalframework.org:$(SERVER_PATH)/www
-	ssh -t www.grammaticalframework.org \
-	    "$(foreach WORDNET,$(WORDNETS),sudo mkdir -p /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
-	                                   echo \"$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))\" | \
-	                                   sudo tee /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;\
-	                                   sudo chown gf-cloud /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET)) \
-	                                                       /usr/local/www/GF-overlay/src/www/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;)"
-	ssh -t www.grammaticalframework.org "sudo pkill -e SenseService.*; sudo pkill -e ContentService.*"
+build/www-services/WordNetServer: www-services/Server.hs www-services/SenseService.hs www-services/SenseSchema.hs www-services/ContentService.hs www-services/ContentSchema.hs www-services/PatternMatching.hs www-services/Interval.hs
+	ghc --make -threaded -hidir build/www-services -O2 -optl-pthread $^ -o $@
 
 morpho:
 	$(foreach WORDNET,$(WORDNETS),mkdir -p $(DOC_PATH)/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\
-	                              echo "$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat... \*\* open\(.*\){/resource morpho = open Documentation\1,\2{}/;1q' <$(WORDNET))" | \
+	                              echo "$(shell sed '1s/concrete WordNet\(...\) of WordNet = Cat\(...\|Zero\) \*\* open\(.*\){/resource morpho = open Documentation\1,\3{}/;1q' <$(WORDNET))" | \
 	                              tee $(DOC_PATH)/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET))/morpho.gf;)
 
 .SECONDARY:

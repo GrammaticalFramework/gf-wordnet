@@ -1,4 +1,6 @@
 {-# LANGUAGE CPP, BangPatterns, MonadComprehensions #-}
+module SenseService(senseService) where
+
 import PGF2
 import Database.Daison
 import SenseSchema
@@ -16,20 +18,10 @@ import Data.Maybe(mapMaybe, fromMaybe, catMaybes, isNothing)
 import Data.List(sortOn,sortBy,delete,intercalate,nub)
 import Data.Char
 
-main = do
-  db <- openDB (DOC_PATH++"/semantics.db")
-  bigram_total <- runDaison db ReadOnlyMode $ do
-    query sumRows
-          [c*c
-             | (ex_id,(ex,_)) <- from examples everything
-             , let c = length (exprFunctions ex)]
-  simpleFastCGI (fcgiMain db bigram_total)
-  closeDB db
-
 maxResultLength = 500
 
-fcgiMain :: Database -> Int -> Env -> Request -> IO Response
-fcgiMain db bigram_total env rq = do
+senseService :: Database -> Int -> Request -> IO Response
+senseService db bigram_total rq = do
   let query = rqQuery rq
       mb_s1 = lookup "lexical_ids" query
       mb_s2 = lookup "context_id" query

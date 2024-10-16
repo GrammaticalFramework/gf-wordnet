@@ -87,11 +87,11 @@ SHARED_PATH = $(shell gf --version | tail -1 | cut -c 16-)
 DOC_PATH = $(SHARED_PATH)/www
 INSTALL_PATH = $(SHARED_PATH)/lib
 
-all: build_dirs Parse.pgf semantics.db Server
+all: build_dirs Parse.pgf semantics.db build/www-services/WordNetServer
 
 Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
-	mv Parse.ngf $(DOC_PATH)/robust/
+	mv Parse.ngf $(DOC_PATH)
 
 build/gfo/WordNet.gfo:
 
@@ -121,7 +121,7 @@ build/train/Matching.hs: train/Matching.hsc train/em_core.h
 
 semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS)) examples.txt Parse.uncond.probs
 	build/glosses $(LANGS)
-	mv semantics.db $(DOC_PATH)/robust/
+	mv semantics.db $(DOC_PATH)
 
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
 	ghc --make -threaded -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@

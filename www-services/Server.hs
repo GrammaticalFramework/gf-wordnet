@@ -13,24 +13,29 @@ import Data.Time.Format(defaultTimeLocale,rfc822DateFormat)
 import qualified Data.Map as Map
 import Database.Daison
 import PGF2
+import GF.Compile
+import GF.Infra.Option
 import SenseService
 import ContentService
+import WikifunctionService
 import SenseSchema
 
 
 main = do
   [doc_dir,client_secret] <- getArgs
+  gr <- readNGF (doc_dir</>"Parse.ngf")
   db <- openDB (doc_dir</>"semantics.db")
   bigram_total <- runDaison db ReadOnlyMode $ do
     query sumRows
           [c*c
              | (ex_id,(ex,_)) <- from examples everything
              , let c = length (exprFunctions ex)]
-  server (Just 8080) Nothing (httpMain db bigram_total client_secret)
+  (_,(mn,sgr)) <- batchCompile noOptions (Just gr) ["gf/WordNet.gf"]
+  server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr client_secret)
   closeDB db
 
 
-httpMain  db bigram_total client_secret conn = do
+httpMain db gr bigram_total mn sgr client_secret conn = do
   rq <- receiveHTTP conn
   let path  = uriPath (rqURI rq)
       query = rqQuery rq
@@ -50,6 +55,9 @@ httpMain  db bigram_total client_secret conn = do
       | path == "/ContentService.fcgi"
                    -> do rsp <- contentService db client_secret rq
                          respondHTTP conn rsp
+      | path == "/FunctionsService.fcgi"
+                   -> do rsp <- functionsService db gr mn sgr rq
+                         respondHTTP conn rsp
       | otherwise  -> respondHTTP conn (Response
                                           { rspCode = 400
                                           , rspReason = "Unsupported file type"
@@ -64,6 +72,7 @@ httpMain  db bigram_total client_secret conn = do
       ,(".css",  "text/css; charset=UTF8")
       ,(".js",   "text/javascript; charset=UTF8")
       ,(".png",  "image/png; charset=UTF8")
+      ,(".svg",  "image/svg+xml; charset=UTF8")
       ,(".ico",  "image/vnd.microsoft.icon; charset=UTF8")
       ]
 

@@ -541,8 +541,10 @@ oper
 
 -- Proper names and pronouns can be used as noun phrases.
 
-      mkNP : PN -> NP             -- she  --:
+      mkNP : PN -> NP
       = UsePN    ; --%
+    mkNP : LN -> NP               -- Sweden  --:
+      = UseLN    ; --%
       mkNP : Pron -> NP           -- he  --:
       = UsePron  ; --%
 
@@ -693,8 +695,10 @@ oper
 -- and from symbolic integers.
 
     mkNum = overload { --%
-      mkNum : Str -> Num   -- thirty-five (given by "35"; range 1-999)
-        = \s -> NumCard (str2card s) ; --%
+      mkNum : Int -> Num   -- thirty-five (given by "35"; range 1-999)
+        = \n -> NumCard (int2card n) ; --%
+      mkNum : Float -> Num   -- thirty-five (given by "35"; range 1-999)
+        = \f -> NumCard (NumDecimal (float2decimal f)) ; --%
       mkNum : Numeral -> Num  -- twenty
         = \d -> NumCard (NumNumeral d) ; --%
       mkNum : Decimal -> Num   -- 21
@@ -719,8 +723,8 @@ oper
 -- Cardinals are the non-dummy numerals.
 
     mkCard = overload {  --%
-      mkCard : Str -> Card   -- thirty-five (given as "35"; range 1-999)
-        = str2card ; --%
+      mkCard : Int -> Card   -- thirty-five (given as "35"; range 1-999)
+        = int2card ; --%
       mkCard : Numeral -> Card   -- twenty  --:
         = NumNumeral ; --%
       mkCard : Decimal -> Card      -- 51, 3.14  --:
@@ -739,8 +743,8 @@ oper
       = OrdNumeral ; --%
       mkOrd : Digits -> Ord         -- 51st --:
       = OrdDigits      ; --%
-      mkOrd : Digit -> Ord       -- fifth
-      = \d -> OrdNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 d))))))) ; --%
+      mkOrd : Int -> Ord       -- fifth
+      = int2ord ; --%
 
 -- Also adjectives in the superlative form can appear on ordinal positions.
 
@@ -758,118 +762,18 @@ oper
 
 --3 Numeral, number words
 
--- Numerals are divided to classes Sub1000000 (= Numeral), Sub1000, Sub100, Sub10.
-
-    mkNumeral = overload {  --%
-
--- Number words up to 999,999 can be built as follows.
-
-      mkNumeral : Unit -> Numeral -- eight (coerce 1..9) --:
-      = \n -> num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 n.n))))) ; --%
-      mkNumeral : Sub100 -> Numeral -- twenty-five (coerce 1..99) --:
-      = \n -> num (pot4as5 (pot3as4 (pot2as3 (pot1as2 n)))) ; --%
-      mkNumeral : Sub1000 -> Numeral -- six hundred (coerce 1..999) --:
-      = \n -> num (pot4as5 (pot3as4 (pot2as3 n))) ; --%
-      mkNumeral : Sub1000 -> Sub1000 -> Numeral -- 1000m + n --:
-      = \m,n -> num (pot4as5 (pot3as4 (pot3plus m n))) ; --%
-
--- Some numerals can also be extracted from strings at compile time.
-
-      mkNumeral : Str -> Numeral   -- thirty-five (given by "35"; range 1-999)
-      = str2numeral ; --%
-      } ; --%
-
-    thousandfoldNumeral : Sub1000 -> Numeral -- 1000n  --:
-      = \n -> num (pot4as5 (pot3as4 (pot3 n))) ;  --%
-
-    mkSub1000 = overload {  --%
-      mkSub1000 : Sub100 -> Sub1000 -- coerce 1..99  --:
-      = pot1as2 ; --%
-      mkSub1000 : Unit -> Sub1000 -- 100n  --:
-      = \n -> pot2 n.n ; --%
-      mkSub1000 : Unit -> Sub100 -> Sub1000 -- 100m + n  --:
-      = \m,n -> pot2plus m.n n ; --%
-      } ; --%
-
-    mkSub100 = overload {  --%
-      mkSub100 : Unit -> Sub100            -- coerce 1..9  --:
-      = \n -> pot0as1 n.n ; --%
-      mkSub100 : Unit -> Unit -> Sub100    -- 10m + n  --:
-      = \m,n -> case m.isOne of {
-         Predef.PFalse => pot1plus m.d n.n ; --%
-         _ => case n.isOne of {
-            Predef.PFalse => pot1to19 n.d ; --%
-            _ => pot111
-            }
-         }
-      } ; --%
-
-    tenfoldSub100 : Unit -> Sub100 -- 10n  --:
-      = \n -> case n.isOne of {  --%
-        Predef.PTrue => pot110 ; --%
-        _ => pot1 n.d  --%
-        } ; --%
-
--- We introduce the internal type $Unit$ for 1..9
-
-    Unit : Type --%
-      = {n : Sub10 ; d : Digit ; isOne : Predef.PBool} ; --%
-
-    n1_Unit : Unit -- one --:
-      = {n = pot01 ; d = n2 ; isOne = Predef.PTrue} ; --%
-    n2_Unit : Unit -- two --:
-      = {n = pot0 n2 ; d = n2 ; isOne = Predef.PFalse} ; --%
-    n3_Unit : Unit -- three --:
-      = {n = pot0 n3 ; d = n3 ; isOne = Predef.PFalse} ; --%
-    n4_Unit : Unit -- four --:
-      = {n = pot0 n4 ; d = n4 ; isOne = Predef.PFalse} ; --%
-    n5_Unit : Unit -- five --:
-      = {n = pot0 n5 ; d = n5 ; isOne = Predef.PFalse} ; --%
-    n6_Unit : Unit -- six --:
-      = {n = pot0 n6 ; d = n6 ; isOne = Predef.PFalse} ; --%
-    n7_Unit : Unit -- seven --:
-      = {n = pot0 n7 ; d = n7 ; isOne = Predef.PFalse} ; --%
-    n8_Unit : Unit -- eight --:
-      = {n = pot0 n8 ; d = n8 ; isOne = Predef.PFalse} ; --%
-    n9_Unit : Unit -- nine --:
-      = {n = pot0 n9 ; d = n9 ; isOne = Predef.PFalse} ; --%
-
--- Use the category $Digits$ for numbers above one million.
-
+    mkNumeral : Int -> Numeral = int2numeral ;
 
 --3 Digits, numerals as sequences of digits
 
-   mkDigits = overload { --%
-      mkDigits : Str -> Digits -- 35 (from string "35"; ; range 1-9999999)
-      = str2digits ; --%
-      mkDigits : Dig -> Digits -- 4  --:
-      = IDig ; --%
-      mkDigits : Dig -> Digits -> Digits -- 1,233,432  --:
-      = IIDig ; --%
-      } ; --%
+    mkDigits : Int -> Digits = int2digits ;
 
---3 Dig, single digits
+--3 numerals with a fractional part
 
-      n0_Dig : Dig   -- 0 --:
-      = D_0 ; --%
-      n1_Dig : Dig   -- 1 --:
-      = D_1 ; --%
-      n2_Dig : Dig   -- 2 --:
-      = D_2 ; --%
-      n3_Dig : Dig   -- 3 --:
-      = D_3 ; --%
-      n4_Dig : Dig   -- 4 --:
-      = D_4 ; --%
-      n5_Dig : Dig   -- 5 --:
-      = D_5 ; --%
-      n6_Dig : Dig   -- 6 --:
-      = D_6 ; --%
-      n7_Dig : Dig   -- 7 --:
-      = D_7 ; --%
-      n8_Dig : Dig   -- 8 --:
-      = D_8 ; --%
-      n9_Dig : Dig   -- 9 --:
-      = D_9 ; --%
+  mkDecimal = overload {  --%
+    mkDecimal : Int -> Decimal = int2decimal ;
+    mkDecimal : Float -> Decimal = float2decimal
+  } ;
 
 --2 Nouns
 
@@ -1016,6 +920,9 @@ oper
 
       mkAdv : Subj -> S -> Adv   -- when she sleeps  --:
       = SubjS ; --%
+      
+      mkAdv : Time -> Adv
+      = time2adv ;
 
 -- Adverbs can be modified by adadjectives.
 
@@ -1495,102 +1402,14 @@ oper
 -- numerals from strings
 
 oper
-  str2ord : Str -> Ord = \s -> case Predef.lessInt (Predef.length s) 7 of {
-    Predef.PTrue  => OrdNumeral (str2numeral s) ;
-    Predef.PFalse => OrdDigits (str2digits s)
+  int2ord : Int -> Ord = \n -> case lessInt n 1000000 of {
+    True  => OrdNumeral (int2numeral n) ;
+    False => OrdDigits (int2digits n)
     } ;
 
-  str2card : Str -> Card = \s -> case Predef.lessInt (Predef.length s) 7 of {
-    Predef.PTrue  => NumNumeral (str2numeral s) ;
-    Predef.PFalse => NumDecimal (PosDecimal (str2digits s))
+  int2card : Int -> Card = \n -> case lessInt n 1000000 of {
+    True  => NumNumeral (int2numeral n) ;
+    False => NumDecimal (int2decimal n)
     } ;
-
-  str2numeral : Str -> Numeral =
-(\s -> case s of {
-    ? => num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (s2s10 s)))))) ;
-    ? + ? => num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (s2s100 s))))) ;
-    ? + ? + ? => num (pot4as5 (pot3as4 (pot2as3 (s2s1000 s)))) ;
-
---    m@(? + _) + "000"            => num (pot3 (s2s1000 m)) ;
---    m@(? + _) + "00" + n@?       => num (pot3plus (s2s1000 m) (s2s1000 n)) ;
---    m@(? + _) + "0"  + n@(? + ?) => num (pot3plus (s2s1000 m) (s2s1000 n)) ;
---    m@(? + _) + n@(? + ? + ?)    => num (pot3plus (s2s1000 m) (s2s1000 n)) ;
---    _ => num (pot4as5 (pot3as4 (pot2as3 (s2s1000 s))))
-    _ => Predef.error ("no numeral for string" ++ s)
-    })
-  where {
-
-  s2d : Str -> Digit = \s -> case s of {
-    "2" => n2 ;
-    "3" => n3 ;
-    "4" => n4 ;
-    "5" => n5 ;
-    "6" => n6 ;
-    "7" => n7 ;
-    "8" => n8 ;
-    "9" => n9 ;
-    _   => Predef.error ("str2numeral: not a valid Digit" ++ s)
-    } ;
-
-  s2s10 : Str -> Sub10 = \s -> case s of {
-    "1" => pot01 ;
-    #idigit => pot0 (s2d s) ;
-    _   => Predef.error ("str2numeral: not a valid Sub10" ++ s)
-    } ;
-
-  s2s100 : Str -> Sub100 = \s -> case s of {
-    "10"       => pot110 ;
-    "11"       => pot111 ;
-    "1" + d@#digit  => pot1to19 (s2d d) ;
-    d@#idigit + "0" => pot1 (s2d d) ;
-    d@#idigit + n@? => pot1plus (s2d d) (s2s10 n) ;
-    _               => pot0as1 (s2s10 s)
-    } ;
-
-  s2s1000 : Str -> Sub1000 = \s -> case s of {
-    d@? + "00"      => pot2 (s2s10 d) ;
-    d@? + "0" + n@? => pot2plus (s2s10 d) (s2s100 n) ;
-    d@? + n@(? + ?) => pot2plus (s2s10 d) (s2s100 n) ;
-    _ => pot1as2 (s2s100 s)
-    } ;
-
-  } ;
-  idigit : pattern Str = #("1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9") ;
-  digit : pattern Str = #("0" | #idigit) ;
-
-  --- it would be nice to have foldr on strings...
-  str2digits : Str -> Digits = (\s -> case s of {
-    d0@? => IDig (s2d d0) ;
-    d1@? + d0@? => IIDig (s2d d1) (IDig (s2d d0)) ;
-    d2@? + d1@? + d0@? => IIDig (s2d d2) (IIDig (s2d d1) (IDig (s2d d0))) ;
-    d3@? + d2@? + d1@? + d0@? =>
-      IIDig (s2d d3) (IIDig (s2d d2) (IIDig (s2d d1) (IDig (s2d d0)))) ;
-    d4@? + d3@? + d2@? + d1@? + d0@? =>
-      IIDig (s2d d4) (IIDig (s2d d3) (IIDig (s2d d2) (IIDig (s2d d1) (IDig (s2d d0))))) ;
-    d5@? + d4@? + d3@? + d2@? + d1@? + d0@? =>
-      IIDig (s2d d5) (IIDig (s2d d4) (IIDig (s2d d3) (IIDig (s2d d2)
-        (IIDig (s2d d1) (IDig (s2d d0)))))) ;
-    d6@? + d5@? + d4@? + d3@? + d2@? + d1@? + d0@? =>
-      IIDig (s2d d6) (IIDig (s2d d5) (IIDig (s2d d4) (IIDig (s2d d3)
-        (IIDig (s2d d2) (IIDig (s2d d1) (IDig (s2d d0))))))) ;
-    d7@? + d6@? + d5@? + d4@? + d3@? + d2@? + d1@? + d0@? =>
-      IIDig (s2d d7) (IIDig (s2d d6) (IIDig (s2d d5) (IIDig (s2d d4) (IIDig (s2d d3)
-        (IIDig (s2d d2) (IIDig (s2d d1) (IDig (s2d d0)))))))) ;
-    _ => Predef.error ("cannot deal with so many digits:" ++ s)
-    }) where {
-  s2d : Str -> Dig = \s -> case s of {
-    "0" => D_0 ;
-    "1" => D_1 ;
-    "2" => D_2 ;
-    "3" => D_3 ;
-    "4" => D_4 ;
-    "5" => D_5 ;
-    "6" => D_6 ;
-    "7" => D_7 ;
-    "8" => D_8 ;
-    "9" => D_9 ;
-    _   => Predef.error ("s2d: not a valid digit" ++ s)
-    } ;
-  } ;
 
 }

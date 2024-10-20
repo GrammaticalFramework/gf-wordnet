@@ -385,3 +385,35 @@ table.modules td.selected {
     border-right: 1px solid black;
     border-bottom-style: none;
 }
+
+.search-box {
+    float: right;
+    border: solid 1px black;
+    background-color: field;
+}
+.search-box-input {
+    width: 20vw;
+    border: none;
+    outline: none;
+    height: 17.5px;
+    vertical-align: middle;
+}
+.search-box-button {
+    height: 17.5px;
+    vertical-align: middle;
+}
+.search-box-results {
+    width: 21vw;
+    border-spacing: 5px;
+    display: none;
+}
+.search-box-results > tr > div {
+    overflow-wrap: break-word; 
+}
+.search-box-results > tr > div:first-child {
+    font-weight: bold;
+}
+.search-box-results > tr.current {
+    background-color: #2a4b8d;
+    color: #fff;
+}

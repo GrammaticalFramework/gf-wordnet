@@ -11,6 +11,7 @@ concrete ParseDan of Parse =
   IdiomDan,
   TenseDan,
   NamesDan,
+  ParseExtendDan,
   WordNetDan,
   DocumentationDan ** {
 

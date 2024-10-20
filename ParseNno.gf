@@ -11,6 +11,7 @@ concrete ParseNno of Parse =
   IdiomNno,
   TenseNno,
   NamesNno,
+  ParseExtendNno,
   WordNetNno,
   DocumentationNno ** {
 

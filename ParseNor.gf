@@ -11,6 +11,7 @@ concrete ParseNor of Parse =
   IdiomNor,
   TenseNor,
   NamesNor,
+  ParseExtendNor,
   WordNetNor,
   DocumentationNor ** {
 

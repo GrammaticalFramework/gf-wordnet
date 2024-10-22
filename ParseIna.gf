@@ -11,6 +11,7 @@ concrete ParseIna of Parse =
   PhraseIna - [UttAP, UttVP],
   IdiomIna,
   TenseX,
+  ParseExtendIna,
   WordNetIna,
   DocumentationIna
   ** {

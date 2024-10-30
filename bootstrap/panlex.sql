@@ -9,7 +9,6 @@ create table meaning(id integer primary key not null,source integer not null);
 create table denotation(id integer primary key not null,meaning integer not null,expr integer not null);
 create table denotation_class(id integer primary key not null,denotation integer not null,expr1 integer,expr2 integer not null);
 
-meaning integer not null,expr integer not null);
 
 
 .separator ","
@@ -45,6 +44,7 @@ create index expr_langvar on expr(langvar);
 create index meaning_source on meaning(source);
 create index denotation_meaning on denotation(meaning);
 create index denotation_expr_meaning on denotation(expr,meaning);
+create index denontation_class_denotation_prop on denotation_class(denotation,expr1);
  
 .print "import denotation"
 

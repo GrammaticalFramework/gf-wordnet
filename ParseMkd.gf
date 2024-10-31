@@ -1,1 +1,8 @@
-concrete ParseMkd of Parse = WordNetMkd ** {}
+concrete ParseMkd of Parse = 
+  WordNetMkd,
+  DocumentationNor ** {
+
+flags
+  case_sensitive = off;
+
+}

@@ -1,6 +1,6 @@
 concrete ParseMkd of Parse = 
   WordNetMkd,
-  DocumentationNor ** {
+  DocumentationMkd ** {
 
 flags
   case_sensitive = off;

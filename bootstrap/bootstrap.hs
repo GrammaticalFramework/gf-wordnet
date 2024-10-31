@@ -4,23 +4,25 @@ import PGF2
 import Control.Monad
 import qualified Data.Set as Set
 import qualified Data.Map.Strict as Map
-import Data.List(foldl',sortBy,intercalate)
+import Data.List(foldl',sortBy,intercalate,nub)
 import Data.Maybe(fromMaybe,fromJust,mapMaybe)
 import Data.Char(toLower,isSpace)
 import System.IO
 import System.Directory
 import Database.SQLite.Simple  -- pkg sqlite-simple
+import Text.JSON
 import Text.EditDistance       -- pkg edit-distance
 import Network.HTTP hiding (close)
 
 main = do
-  gr      <- status "Loading grammar" $ readPGF "Parse.pgf"
+  gr      <- status "Loading grammar" $ readNGF "Parse.ngf"
   state   <- status "Loading synsets" $ readWordNetAbstract "WordNet.gf"
   state   <- foldM (readWordNetConcrete gr) state
                      (Map.delete "ParseAPI" (languages gr))
   wn30v31 <- status "Loading WordNet 3.0 to 3.1 map" $ readWN30V31Mapping "bootstrap/wn30map31.txt"
   state   <- readOpenMultiWordNet wn30v31 state
   state   <- status "Loading Wikidata labels" $ readWikidataLabels state
+  state   <- status "Loading Wiktionary labels" $ readWiktionaryLabels state
   state   <- status "Loading PanLex translations" $ readPanLexTranslations "data/panlex.db" state
   transl  <- status "Loading transliteration table" $ readTransliteration "bootstrap/translit.txt"
   state   <- status "Computing Levenshtein distances" $ addLevenshteinDistance transl state
@@ -196,7 +198,7 @@ readWikidataLabels state = do
       where
         match ('"':'@':lang) s = (reverse (trim s), lang)
         match (c:cs)         s = match cs (c:s)
-        
+
         trim s =
           case break (\c -> elem c ("(,/\\"::String)) s of
             (_,c:cs) -> reverse (dropWhile isSpace cs)
@@ -235,6 +237,40 @@ readWikidataLabels state = do
       | strMatch lin0 lin = (lin,o,s,0,l,c):lins
       | otherwise         = (lin,o,s,w,l,c):insertInList lin0 lins
 
+readWiktionaryLabels state = do
+  lins <- fmap (map (parse . tsv) . lines) $ readFile "data/wiktionary.tsv"
+  return (foldl addLins state lins)
+  where
+    parse [id,_,_,_,lbls] =
+      case extract of
+        Ok lins   -> (id,lins)
+        Error msg -> (id,[])
+      where
+        extract = do
+          lbls <- decode lbls
+          res <- forM lbls $ \lbl -> do
+             code <- valFromObj "code" lbl
+             case [cnc | (code',_,cnc,_) <- lang_list, code==code'] of
+               [cnc] -> do word <- valFromObj "word" lbl
+                           return [(cnc,word)]
+                        `mplus`
+                        do return []
+               _     -> do return []
+          return (concat (res :: [[(String,String)]]))
+
+    addLins state (id,new_lins) =
+      case Map.lookup id state of
+        Just (mb_synset_id,cnc_lins) ->
+           Map.insert id (mb_synset_id,foldl' extend cnc_lins new_lins) state
+        Nothing                      -> state
+
+    extend cnc_lins (cnc,lin) =
+      Map.alter (\mb_lins -> Just $ insertInList lin (fromMaybe [] mb_lins)) cnc cnc_lins
+
+    insertInList lin0 []  = [(lin0,1,0,0,0,0)]
+    insertInList lin0 ((lin,o,s,w,l,c):lins)
+      | strMatch lin0 lin = (lin,o,0,0,l,c):lins
+      | otherwise         = (lin,o,s,w,l,c):insertInList lin0 lins
 
 readPanLexTranslations fpath state = do
   conn <- open fpath
@@ -255,13 +291,35 @@ readPanLexTranslations fpath state = do
           res <- query conn "select id from expr where langvar=? and txt=?" (langvar,lin) :: IO [Only Int]
           return [id | Only id <- res]
 
+        pos_exprs =
+          case fmap (reverse . take 2 . reverse) mb_synset_id of
+            Just "-n" -> [22080029 {-Noun-}
+                         ,22080127 {-CommonNoun-}
+                         ,22267559 {-inalienableNoun-}
+                         ,22080028 {-ProperNoun-}
+                         ,22274783 {-placeName-}
+                         ]
+            Just "-v" -> [22080033 {-Verbal-}
+                         ,22080516 {-TransitiveVerb-}
+                         ,22080276 {-IntransitiveVerb-}
+                         ,22080174 {-DitransitiveVerb-}
+                         ]
+            Just "-a" -> [22080021 {-Adjectival-}
+                         ]
+            Just "-r" -> [22080022 {-Adverbial-}
+                         ]
+            _         -> [0]
+
         retrive id = do
-          xs <- query conn "select e.langvar,e.txt \
+          xs <- query conn "select e.langvar,e.txt,c.id \
                            \from denotation d1 \
                            \join denotation d2 on d1.expr=? and d1.meaning=d2.meaning \
+                           \left outer join denotation_class c on c.denotation=d1.id and c.expr1=22080019 and c.expr2 in (?)\
                            \join meaning m on m.id=d1.meaning and m.source not in (364,469,609,975,1884,2594,2840,2841,3324,3326,3335,3340,3397,3419,3497,3933,4620,5608,5609,6524,6743,7048,3991)\
-                           \join expr as e on e.id=d2.expr" (Only id) :: IO [(Int,String)]
-          return [(x,[id]) | x <- xs]
+                           \join expr as e on e.id=d2.expr" (id,intercalate "," (map show pos_exprs)) :: IO [(Int,String,Maybe Int)]
+          let xs1 = nub [(langvar,txt) | (langvar,txt,Just _ ) <- xs]
+              xs2 = nub [(langvar,txt) | (langvar,txt,Nothing) <- xs]
+          return [(x,[id]) | x <- if null xs1 then xs2 else xs1]
 
         rank = Map.mapWithKey counts . Map.fromListWith (++)
           where

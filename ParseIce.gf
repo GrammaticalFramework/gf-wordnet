@@ -11,6 +11,7 @@ concrete ParseIce of Parse =
   PhraseIce - [UttAP, UttVP],
   IdiomIce,
   TenseX,
+  ParseExtendIce,
   WordNetIce
   ** {
 

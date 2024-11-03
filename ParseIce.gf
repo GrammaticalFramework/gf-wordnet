@@ -12,7 +12,8 @@ concrete ParseIce of Parse =
   IdiomIce,
   TenseX,
   ParseExtendIce,
-  WordNetIce
+  WordNetIce,
+  DocumentationIce
   ** {
 
 flags

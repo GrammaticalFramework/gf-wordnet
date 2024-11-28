@@ -478,7 +478,7 @@ def generate(names_fpath):
             if q_id in existing_qids:
                 continue
 
-            name = record[-1].get("en",next(record[-1].items().__iter__())[0])
+            name = record[-1].get("en") or record[-1].get("mul") or next(record[-1].items().__iter__())[0]
             name = name.split('/')[0].strip()
             name = name.lower()
             paren = name.find("(")

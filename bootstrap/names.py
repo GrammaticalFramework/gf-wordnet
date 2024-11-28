@@ -509,7 +509,7 @@ def generate(names_fpath):
 
             images = record[2]
             if not images:
-                images.append((q_id,"http://www.wikidata.org/entity/"+q_id,""))
+                images.append((q_id,"",""))
 
             id = s_t.store(synsets,None,Synset(q_id,[],[],descr))
             s_t.store(lexemes,None,Lexeme(gf_id,prob,status,id,[],[],[],[],images))

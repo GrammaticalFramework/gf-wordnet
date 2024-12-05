@@ -1,1 +1,10 @@
-concrete ParseSqi of Parse = WordNetSqi ** {}
+concrete ParseSqi of Parse = 
+  ParseExtendSqi,
+  WordNetSqi,
+  DocumentationSqi ** {
+
+flags
+  case_sensitive = off;
+
+}
+

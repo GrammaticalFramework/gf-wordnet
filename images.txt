@@ -324,7 +324,7 @@ fixation_4_N	Q1422013;Fixation_(histology);
 wetting_1_N	Q817136;Wetting;
 barefoot_Adv	Q808132;Barefoot;commons/f/fb/Healthy_feet.JPG
 mastication_N	Q827742;Chewing;
-lucent_A	Q429571;Brilliant_(diamond_cut);
+lucent_A	Q429571;Brilliant_(diamond_cut);commons/2/20/Round_Brilliant_Cut_Diamond.jpg
 bruxism_N	Q994942;Bruxism;commons/0/00/Deviated_midline_2.JPG
 locomotion_2_N	Q925958;Animal_locomotion;commons/6/6f/Turritopsis_rubra_swimming.gif
 stain_4_V2	Q2332446;Staining;
@@ -1071,7 +1071,7 @@ bluff_3_N	Q5475672;Four_flush;
 envy_2_N	Q188739;Envy;commons/b/bc/005.Cain_Slays_Abel.jpg
 greed_2_N	Q12819497;Greed;commons/b/bc/The_worship_of_Mammon.jpg
 sloth_3_N	Q7541428;Sloth_(deadly_sin);commons/0/01/Jheronimus_Bosch_Table_of_the_Mortal_Sins_(Accidia).jpg
-anger_3_N	Q79871;Anger;commons/0/0e/Anger_Controlls_Him.jpg	Q79871;Anger;commons/2/2f/A_frontal_outline_and_a_profile_of_faces_expressing_anger._E_Wellcome_V0009398.jpg
+anger_3_N	Q79871;Anger;commons/2/2f/A_frontal_outline_and_a_profile_of_faces_expressing_anger._E_Wellcome_V0009398.jpg
 gluttony_2_N	Q181022;Gluttony;
 lust_2_N	Q6498477;Lust;commons/e/e9/La_Luxure_dans_l'art_roman.JPG
 terrorism_N	Q7283;Terrorism;commons/e/e5/North_face_south_tower_after_plane_strike_9-11.jpg
@@ -1142,7 +1142,7 @@ smoking_1_N	Q662860;Smoking;commons/9/9b/Che_Guevara.jpg
 insufflation_2_N	Q3153701;Insufflation_(medicine);commons/e/ee/Live,_Intranasal_Influenza_Vaccine_DVIDS213849.jpg
 snore_2_N	Q35831;Sleep;commons/1/1a/Lion_and_lioness_sleeping.JPG
 inhalation_1_N	Q840343;Inhalation;
-yawn_N	Q182180;Yawn;commons/f/fe/Macaca_fuscata_juvenile_yawning.jpg
+yawn_N	Q182180;Yawn;commons/8/88/Yawning_woman.jpg	Q182180;Yawn;commons/f/fe/Macaca_fuscata_juvenile_yawning.jpg
 eating_N	Q213449;Eating;
 coprophagy_1_N	Q320011;Coprophagia;commons/8/86/Ch.megacephala_wiki.jpg
 geophagy_1_N	Q1349107;Geophagia;commons/2/21/GeophagicRocks.jpg
@@ -1967,7 +1967,7 @@ blastomere_N	Q882097;Blastomere;commons/6/6b/Embryo,_8_cells.jpg
 egg_1_N	Q17147;Egg;commons/0/0c/ꠄꠘ꠆ꠒꠣ.jpg
 ovipositor_N	Q868460;Ovipositor;commons/4/4b/GrassHopperOviPositor.jpg	Q868460;Ovipositor;commons/e/e2/Dolichomitus_imperator_Oviposition_R_Bartz.jpg
 nit_2_N	Q27358;Head_louse;commons/4/45/Male_human_head_louse.jpg	Q27358;Head_louse;commons/a/af/Female_human_head_louse.jpg
-spawn_N	Q935672;Spawning;
+spawn_N	Q935672;Spawn_(biology);
 compound_5_V2	Q1303150;Compounding;
 blastula_N	Q420811;;commons/c/c6/Blastulation.png
 blastocyst_N	Q227717;Blastocyst;commons/0/07/Inbound2890638149762117997.jpg	Q227717;Blastocyst;commons/f/f4/Blastocyst.JPG
@@ -2252,7 +2252,7 @@ used_3_A	Q2068804;Used_good;
 crapaud_N	Q5182286;Crapaud;
 natterjack_N	Q622886;Natterjack_toad;commons/1/10/BufoCalamitaByNight.jpg	Q622886;Natterjack_toad;commons/c/c0/BufoCalamita_Sand.jpg
 octogenarian_A	Q332154;Ageing;commons/7/79/Pompeo_Girolamo_Batoni_-_Time_orders_Old_Age_to_destroy_Beauty.jpg
-unopen_A	Q54669;Serrata,_Calabria;commons/2/27/Serrata_-_Chiesa.jpg	Q54669;Serrata,_Calabria;commons/7/77/Map_of_Serrata_(Metropolitan_City_of_Reggio_Calabria,_region_Calabria,_Italy_2024).svg
+unopen_A	Q54669;Serrata,_Calabria;commons/7/77/Map_of_Serrata_(Metropolitan_City_of_Reggio_Calabria,_region_Calabria,_Italy_2024).svg	Q54669;Serrata,_Calabria;commons/8/8c/San_Pantaleone_Martire,_chiesa_di_Serrata._Calabria.jpg
 caecilian_N	Q4758;Caecilian;commons/a/a4/Syphonops_annulatus.jpg	Q4758;Caecilian;commons/d/d4/Dermophis_mexicanus.jpg
 compound_4_V2	Q1303150;Compounding;
 clathrate_2_A	Q781204;Clathrate_compound;
@@ -2816,7 +2816,7 @@ jacksnipe_1_N	Q26711;Jack_snipe;commons/d/d9/Lymnocryptes_minimus.jpg
 dowitcher_N	Q838747;Dowitcher;commons/6/66/Short-billed_dowitcher_in_JBWR_(40844).jpg
 greyback_2_N	Q371633;Short-billed_dowitcher;commons/6/66/Short-billed_dowitcher_in_JBWR_(40844).jpg	Q371633;Short-billed_dowitcher;commons/c/cb/Short-billed_Dowitcher_breeding_RWD.jpg
 curlew_N	Q18854;Eurasian_curlew;commons/2/2c/Eurasian_Curlew.jpg
-godwit_N	Q18841;Black-tailed_godwit;commons/5/52/Limosa_limosa_(alerted).jpg	Q18841;Black-tailed_godwit;commons/8/87/.00_2789_Uferschnepfe_(Limosa_limosa).jpg	Q18841;Black-tailed_godwit;commons/a/ae/Black-tailed_Godwit_cropped.jpg	Q18841;Black-tailed_godwit;commons/b/b3/.00_2861_Uferschnepfe_(Limosa_limosa).jpg
+godwit_N	Q18841;Black-tailed_godwit;commons/0/08/Black-tailed_Godwit_(Limosa_limosa).jpg	Q18841;Black-tailed_godwit;commons/5/52/Limosa_limosa_(alerted).jpg	Q18841;Black-tailed_godwit;commons/8/87/.00_2789_Uferschnepfe_(Limosa_limosa).jpg	Q18841;Black-tailed_godwit;commons/a/ae/Black-tailed_Godwit_cropped.jpg	Q18841;Black-tailed_godwit;commons/b/b3/.00_2861_Uferschnepfe_(Limosa_limosa).jpg
 stilt_4_N	Q316342;Stilt;commons/2/2e/Himantopus_leucocephalus_-_Hexham.jpg	Q316342;Stilt;commons/d/d7/Black_winged_Stilt_I_MG_9747.jpg
 stilt_3_N	Q316342;Stilt;commons/2/2e/Himantopus_leucocephalus_-_Hexham.jpg	Q316342;Stilt;commons/d/d7/Black_winged_Stilt_I_MG_9747.jpg
 avocet_N	Q26147;Pied_avocet;commons/d/d0/Avocette_élégante_Thyna019.jpg
@@ -2981,7 +2981,7 @@ angora_4_N	Q42720;Turkish_Angora;commons/4/4b/Angora_turc.jpg
 siamese_4_N	Q1177408;Siamese;
 manx_2_N	Q42675;Manx_cat;commons/9/9b/Manx_cat_by_Karen_Weaver.jpg
 wildcat_3_N	Q42623;Jungle_cat;commons/a/a1/Jungle_Cat_Felis_chaus_by_Dr._Raju_Kasambe_DSCN7957_(3).jpg
-cougar_N	Q35255;Cougar;commons/2/26/Puma_concolor_stanleyana_-_Texas_Park_-_Lanzarote_-PC08_(cropped).jpg
+painter_4_N	Q35255;Cougar;commons/2/26/Puma_concolor_stanleyana_-_Texas_Park_-_Lanzarote_-PC08_(cropped).jpg
 panther_3_N	Q207963;Black_panther;commons/6/68/Black_puma.jpg
 puma_N	Q270748;Puma_(genus);commons/2/2e/CMM_MountainLion.jpg
 ocelot_N	Q33261;Ocelot;commons/5/58/Ocelot_01.jpg	Q33261;Ocelot;commons/f/f8/Ocelot_(Jaguatirica)_Zoo_Itatiba.jpg
@@ -3422,7 +3422,7 @@ camel_N	Q7375;Camel;commons/b/b1/Chameau_de_bactriane.JPG
 dromedary_N	Q71516;Dromedary;commons/c/c1/202406_One_humped_camel.svg
 llama_N	Q42569;Llama;commons/2/2e/Lama_glama_Laguna_Colorada_2.jpg	Q42569;Llama;commons/3/38/18-08-25-Åland_RRK6596a.jpg
 guanaco_N	Q172886;Guanaco;commons/5/55/Guanaco_Patagonico.jpg	Q172886;Guanaco;commons/c/c7/Guanaco_at_SF_Zoo.jpg
-alpaca_3_N	Q81564;Alpaca;commons/2/26/Dülmen,_Börnste,_Alpakas_--_2020_--_5462.jpg
+alpaca_3_N	Q81564;Vicugna_pacos;commons/2/26/Dülmen,_Börnste,_Alpakas_--_2020_--_5462.jpg
 giraffe_N	Q862089;Giraffe;commons/6/68/Giraffen.jpg
 okapi_N	Q82037;Okapi;commons/3/3a/Saint-Aignan_(Loir-et-Cher)._Okapi.jpg	Q82037;Okapi;commons/b/b4/Okapi_and_son.jpg	Q82037;Okapi;commons/b/b6/Okapia_johnstoni_-Marwell_Wildlife,_Hampshire,_England-8a.jpg
 trotter_1_N	Q2253971;Shank_(meat);commons/a/a0/Brasserie_Chanteclair_(Lyon)_-_souris_d'agneau_(avril_2022).jpg
@@ -4254,7 +4254,7 @@ bedding_1_N	Q1762457;Bedding;commons/3/3d/Bettwaesche.jpg
 madhouse_N	Q8341785;The_Madhouse;commons/7/71/Francisco_de_Goya_-_La_casa_de_locos_-_Google_Art_Project.jpg
 bedpan_N	Q1940345;Bedpan;commons/e/e6/Bedpan_of_stone_England.jpg
 bedroll_N	Q21010047;Cowboy_bedroll;
-bedroom_N	Q193837;Bedroom;commons/2/2d/Simbavati4.jpg
+bedroom_N	Q193837;Bedroom;commons/f/fb/Berlin_Villa_Borsig_Tegel_asv2019-08_img09.jpg
 bedsit_N	Q4591598;Bedsit;commons/e/ef/SouthwellWorkhouse11.jpg
 bedspring_N	Q1807059;Bed_base;commons/f/fc/Steel_bed_heteka.JPG
 bedstead_N	Q2358125;Bed_frame;commons/8/81/2_Linak_hospital_bed_frames.JPG
@@ -4721,6 +4721,7 @@ magazine_6_N	Q148958;Magazine_(firearms);commons/0/0a/Caroline-chargeur-plein-p1
 carvedilol_N	Q412534;Carvedilol;commons/2/26/Carvedilol.svg
 peruvian_A	Q206561;Perun;commons/4/46/Perun_Gromoverzhecz_by_Andrey_Shishkin.jpg	Q206561;Perun;commons/d/da/Перун.1998г.смеш.,тех.,бум.40,5х27,5.jpg
 case_20_N	Q3561331;Display_case;commons/1/1c/Altena_-_Burg_in_09_ies.jpg
+case_18_N	Q1644327;Type_case;commons/a/a2/Casse_de_typographe,_Grandjean_-_musée_Champollion.JPG
 casein_2_N	Q265559;Casein_paint;
 casern_N	Q3515299;Casern;
 register_7_N	Q235041;Cash_register;commons/6/61/Caja_autoservicio_en_un_supermercado_Simply_de_Madrid.JPG
@@ -4900,7 +4901,7 @@ girth_2_N	Q2588253;Girth_(tack);commons/9/98/Girth_(PSF).png
 moroccan_A	Q11935636;Marroquina;commons/e/e2/Marroquina._143._Barrios_de_Madrid.svg	Q11935636;Marroquina;commons/f/fc/Otra_toma_del_parque_y_José_Bergamín_(4547107795).jpg
 cinder_track_N	Q722354;Cinder_track;
 movies_N	Q41253;Movie_theater;commons/f/f0/Berlin_Filmtheater_am_Friedrichshain_asv2024-06_img6.jpg
-cinquefoil_2_N	Q1277215;Rosette_(design);commons/3/37/Multnomah_County_Courthouse,_Portland_(2012)_-_06.JPG
+cinquefoil_2_N	Q60199741;;
 ciprofloxacin_N	Q256602;Ciprofloxacin;commons/7/7d/Ciprofloxacin.svg
 circuit_1_N	Q11651;Electric_current;commons/8/8f/Magnetic_field_of_a_steady_current.svg
 card_11_N	Q216158;Expansion_card;commons/2/27/POST_card_ISA_IMGP6655_wp.jpg	Q216158;Expansion_card;commons/8/89/Computer-USB2-card.jpg	Q216158;Expansion_card;commons/9/94/SSD_M.2_ADATA-IM2S3138E-128GM-B.jpg
@@ -5113,7 +5114,7 @@ corkscrew_N	Q12337;Corkscrew;commons/d/d5/Cork_driver-lab.jpg
 cornell_university_LN	Q49115;Cornell_University;commons/1/15/Cornell_University_Sign_20240525.jpg	Q49115;Cornell_University;commons/4/47/Cornell_University_seal.svg
 cornerstone_2_N	Q1133673;Cornerstone;commons/e/e0/2018_Kościół_św._Antoniego_w_Lasówce_1.jpg
 cornet_N	Q202027;Cornet;commons/b/b6/Cornet-Bb-large.jpg
-horn_5_N	Q1126540;Horn_(instrument);
+trumpet_N	Q1126540;Horn_(instrument);
 corn_exchange_N	Q5171053;Corn_exchange;commons/f/f3/Microcosm_of_London_Plate_033_-_Corn_Exchange_(tone).jpg
 prussian_A	Q38872;Prussia;commons/7/70/Map-DR-Prussia.svg	Q38872;Prussia;commons/a/af/Coat_of_Arms_of_the_Kingdom_of_Prussia_1873-1918.svg	Q38872;Prussia;commons/c/c1/Flag_of_the_Kingdom_of_Prussia_(1803-1892).svg
 cornice_3_N	Q328092;Cornice;commons/6/6e/Praha_Josefov_Maiselova_19_detail.jpg
@@ -5365,7 +5366,7 @@ diner_3_N	Q1226318;Diner;commons/8/8f/Summit_diner_1024x658.jpg
 dinghy_N	Q239617;Dinghy;commons/9/9e/Motorized_Dinghy.JPG	Q239617;Dinghy;commons/d/dc/Portland_Pudgy_safety_dinghy,_rowing.JPG
 dory_1_N	Q1250855;Dory_(boat);commons/6/64/Doris_Rance_river.JPG	Q1250855;Dory_(boat);commons/e/ed/Fishing_Dory.jpg
 dining_car_N	Q917028;Dining_car;commons/9/9b/Cologne_-_ICE_BordRestaurant.jpg	Q917028;Dining_car;commons/c/cc/Restaurant_car_in_Austria.jpg
-dining_room_N	Q661199;Dining_room;commons/3/38/Heiligengrabe,_Kloster_Stift_zum_Heiligengrabe,_Abtei,_Speiseraum_--_2017_--_7082-8.jpg
+dining_room_N	Q661199;Dining_room;commons/3/38/Heiligengrabe,_Kloster_Stift_zum_Heiligengrabe,_Abtei,_Speiseraum_--_2017_--_7082-8.jpg	Q661199;Dining_room;commons/a/ae/Rotes_Haus_Esszimmer.jpg
 board_6_N	Q14748;Table_(furniture);commons/6/68/Parsons_Table.jpg
 tuxedo_N	Q4668625;Black_tie;commons/6/61/Smoking_suit.tif	Q4668625;Black_tie;commons/e/ea/EsmoquinSombra.jpg
 diode_2_N	Q11656;Diode;commons/d/d5/Diode-closeup.jpg
@@ -5447,6 +5448,7 @@ drapery_2_N	Q3039121;Drapery;commons/2/25/Leonardo_da_vinci,_Garment_study_for_a
 drawbridge_N	Q911663;Bascule_bridge;commons/0/03/France_NA_17_La_Rochelle_01.jpg
 drawers_1_N	Q895612;Boxer_shorts;commons/4/4b/BoxerShorts-20070901.jpg
 drawing_2_N	Q93184;Drawing;commons/0/0a/Saint_Luke_drawing_the_Virgin_RvdW_Detail.jpg
+loss_leader_N	Q695086;Loss_leader;
 drawing_room_1_N	Q11166097;Drawing_room;commons/5/50/Cliffe_Castle_Small_Drawing_Room_(185060597).jpeg
 drawknife_N	Q228464;Drawknife;commons/8/8d/ZiehmesserTop.jpeg
 drawstring_N	Q5306071;Drawstring;commons/9/99/Drawstring_bag_MET_1973.189.1.jpg
@@ -6002,7 +6004,7 @@ handwear_1_N	Q28932195;;commons/2/20/Saamske_rukavice.jpg
 hanger_2_N	Q815240;Clothes_hanger;commons/0/0a/Grucce.jpg
 hank_N	Q112586;Hank_(unit_of_measure);commons/a/ad/Yarn_hank_uncoiled.png
 hansom_N	Q1583962;Hansom_cab;commons/c/c9/HansomCab.jpg
-hardback_N	Q193955;Hardcover;commons/6/6e/Latin_dictionary.jpg
+hardcover_N	Q193955;Hardcover;commons/6/6e/Latin_dictionary.jpg
 hardtop_N	Q1336161;Hardtop;commons/1/1b/Porsche_356_A_Speedster_mit_Hardtop_(2011-08-13_Sp).JPG	Q1336161;Hardtop;commons/3/31/Hardtop.jpg
 hardware_3_N	Q3966;Computer_hardware;commons/a/ac/Computer_from_inside_018.jpg
 ironware_N	Q2823342;Finery_forge;
@@ -6412,6 +6414,7 @@ lavalava_N	Q1756839;Lavalava;commons/2/28/USMC-100414-M-4787A-004.jpg
 lavaliere_1_N	Q4246425;Lavalier;commons/6/6c/Guy_Rose_-_The_Lavalier.jpg
 court_8_N	Q41487;Court;commons/1/17/Microcosm_of_London_Plate_058_-_Old_Bailey_edited.jpg
 lawn_mower_N	Q260521;Lawn_mower;commons/d/d2/Tondeuse.png
+leading_rein_N	Q2196000;Rein;commons/7/7a/SplitReins.jpg
 leaning_tower_of_pisa_LN	Q39054;Leaning_Tower_of_Pisa;commons/b/b2/Campanile_Dôme_-_Pise_(IT52)_-_2022-08-31_-_20.jpg
 lean_to_N	Q1797440;Lean-to;commons/0/0d/Adirondack_Lean-to.jpg	Q1797440;Lean-to;commons/a/aa/Camp_Fires_At_Night_(NBY_203).jpg
 leash_1_N	Q384873;Leash;commons/d/d8/Beagle_on_a_leash.jpg
@@ -6621,7 +6624,7 @@ medication_1_N	Q12140;Medication;commons/5/55/VariousPills.jpg	Q1643563;Prescrip
 medicine_ball_N	Q1304461;Medicine_ball;commons/8/86/Medicine_Ball_2_2017-01-13.jpg
 medicine_chest_N	Q4869069;Bathroom_cabinet;
 meerschaum_2_N	Q2739455;;commons/a/af/Sepiolite-469730.jpg
-mefloquine_N	Q736270;Mefloquine;
+mefloquine_N	Q736270;Mefloquine;commons/7/78/Lariam.JPG
 megalith_N	Q164240;Megalith;commons/d/da/Stonehenge_back_wide.jpg
 megaphone_N	Q216217;Megaphone;commons/4/4b/Noto_Emoji_Oreo_1f4e2.svg	Q216217;Megaphone;commons/f/f6/Seikaku_ER-56_20190217.jpg
 melphalan_N	Q2298283;Melphalan;commons/b/be/Melphalan.svg
@@ -6790,7 +6793,7 @@ music_box_N	Q1365218;Music_box;commons/0/04/Boite-a-musique-p1030518.jpg
 music_hall_1_N	Q940462;Music_hall;
 music_stand_N	Q930133;Music_stand;commons/5/5b/Sheet_music_on_stand_-_Regent_St_Festival_2010_(photo_by_Garry_Knight).jpg
 music_stool_N	Q3212175;Piano_stool;commons/0/00/Tabourets_de_piano.jpg
-musket_N	Q178243;Musket;commons/a/ae/Grand_Turk(36).jpg
+musket_N	Q178243;Musket;commons/5/5a/Flintlåsstudsare,_Flintlåsstudsarfragment_-_Livrustkammaren_-_86495.tif
 muslin_N	Q725457;Muslin;commons/9/9a/Moslin_8.jpg	Q725457;Muslin;commons/a/a1/Woman's_muslin_dress_c._1855.jpg
 mute_2_N	Q941882;Mute_(music);commons/a/af/Daempfer_auf_violine.jpg	Q941882;Mute_(music);commons/b/b7/Sordina.jpg
 muzzle_3_N	Q1369301;Muzzle_(mouth_guard);commons/e/ec/Headshot_of_a_Border_Collie_named_Morango_wearing_a_yellow_muzzle.jpg
@@ -7162,7 +7165,7 @@ pinstripe_3_N	Q3247883;Pinstripes;commons/b/bc/Pinstripe.jpg
 pinstripe_2_N	Q3247883;Pinstripes;commons/b/bc/Pinstripe.jpg
 pintle_N	Q7196531;Pintle;commons/3/31/Pintle_(PSF).png
 pinwheel_3_N	Q1197726;Pinwheel_(toy);commons/b/b3/Einfaches_Windrad_aus_Papier_retusche.jpg
-pinwheel_2_N	Q3087892;Rota_Fortunae;
+pinwheel_2_N	Q3087892;Wheel_of_Fortune_(medieval);
 pipe_1_N	Q104526;Tobacco_pipe;commons/7/7f/Alvano-Sabina-pipe.jpg
 pipe_4_N	Q178374;Kaval;commons/7/7c/Kaval.gif
 pipefitting_1_N	Q2162372;Pipe_fitting;
@@ -7530,7 +7533,7 @@ rope_1_N	Q31029;Rope;commons/2/2a/Rope.jpg
 rosary_N	Q132539;Rosary;commons/6/60/2023_Różaniec.jpg
 rose_bed_N	Q291177;Rose_garden;commons/9/95/2019_06_18_rožynas.JPG
 rosemaling_N	Q1046725;Rose-painting;commons/5/5e/Rosemaling.jpg
-rosette_1_N	Q1277215;Rosette_(design);commons/3/37/Multnomah_County_Courthouse,_Portland_(2012)_-_06.JPG
+rosette_1_N	Q7322255;Rosette_(award);commons/8/8e/126-t-Vieno-Kaneli-02.jpg
 rose_water_N	Q900450;Rose_water;commons/0/0f/Gülsuyu.jpg
 rosette_4_N	Q174520;Rose_window;commons/1/11/Gothic-Rayonnant_Rose-6.jpg
 shaft_11_N	Q309383;Shaft_(mechanical_engineering);
@@ -7957,7 +7960,7 @@ sputnik_N	Q28007197;;commons/3/3c/Sputnik_stereo_camera.jpg
 square_8_N	Q569316;Try_square;commons/c/ce/Trysquare.jpg
 squeegee_N	Q1143580;Squeegee;commons/b/b4/Rakel_(fcm).jpg
 squeezer_N	Q14902;Lemon_squeezer;commons/9/92/LemonSqueezer.jpg
-squelch_2_N	Q185585;Squelch;
+squelch_2_N	Q185585;Squelch;commons/d/d1/Squelch_4.png
 squib_N	Q988463;Slow_match;
 saquinavir_N	Q422654;Saquinavir;commons/b/b1/Saquinavir_structure.svg
 squinch_N	Q1431515;Squinch;
@@ -9358,7 +9361,7 @@ endolymph_N	Q1340752;Endolymph;
 perilymph_N	Q2070958;Perilymph;
 utricle_N	Q974231;Utricle_(ear);
 saccule_1_N	Q3494094;Saccule;
-earlobe_1_N	Q1778517;Earlobe;
+earlobe_1_N	Q1778517;Earlobe;commons/8/8f/TattooedAttachedEarlobe.png
 auricle_2_N	Q379858;Auricle_(anatomy);commons/c/ca/Gray904.png
 ear_3_N	Q7362;Ear;commons/9/9a/Closeup_of_a_human_ear.jpg
 mediastinum_N	Q337247;Mediastinum;commons/0/08/Mediastinum_anatomy.jpg	Q337247;Mediastinum;commons/a/ab/Mediastinum.png
@@ -9786,7 +9789,7 @@ aptitude_N	Q1347367;Aptitude;
 instinct_N	Q18237;Instinct;commons/7/75/Tigre_d'Asie_à_robe_blanche.jpg
 creativity_N	Q170658;Creativity;
 imagination_1_N	Q34516;Imagination;commons/2/28/Imagination-Warner-Highsmith.jpeg
-el_dorado_PN	Q192550;El_Dorado;commons/4/44/1599_Guyana_Hondius.jpg	Q192550;El_Dorado;commons/5/5d/Guaiana_ofte_de_Provincien_tusschen_Rio_de_las_Amazonas_ende_Rio_de_Yuiapari_ofte_Orinoque.jpg	Q192550;El_Dorado;commons/b/b6/Trinidad-stamp-lake-asphalt-discovery.jpg	Q192550;El_Dorado;commons/d/d1/Musterung-Welser-Armada.png
+el_dorado_LN	Q192550;El_Dorado;commons/4/44/1599_Guyana_Hondius.jpg	Q192550;El_Dorado;commons/5/5d/Guaiana_ofte_de_Provincien_tusschen_Rio_de_las_Amazonas_ende_Rio_de_Yuiapari_ofte_Orinoque.jpg	Q192550;El_Dorado;commons/b/b6/Trinidad-stamp-lake-asphalt-discovery.jpg	Q192550;El_Dorado;commons/d/d1/Musterung-Welser-Armada.png
 fairyland_2_N	Q16798524;Fantasy_world;commons/9/9c/Theodor_Kittelsen_-_Nøkken_som_hvit_hest.jpg
 heaven_2_N	Q4489450;Heaven;commons/2/23/The_Body_of_Christ_Carried_by_Angels_towards_Heaven_MET_DP826533.jpg	Q4489450;Heaven;commons/d/d2/Paradiso_Canto_31.jpg
 elysium_2_PN	Q157128;Elysium;commons/6/6f/Elisium_by_Leon_Bakst.jpg
@@ -10475,6 +10478,7 @@ ultima_N	Q3704485;Ultima_(linguistics);
 classifier_2_N	Q63153;Classifier_(linguistics);
 subject_5_N	Q164573;Subject_(grammar);
 object_3_N	Q175026;Object_(grammar);commons/e/e2/Grammatical_objects.svg
+case_11_N	Q128234;Grammatical_case;commons/c/cf/Number_of_grammatical_cases_hic01.png
 nominative_N	Q131105;Nominative_case;
 accusative_N	Q146078;Accusative_case;
 dative_N	Q145599;Dative_case;
@@ -10621,7 +10625,7 @@ reference_4_N	Q13136;Reference_work;
 songbook_N	Q1650727;Song_book;
 hymnal_1_N	Q1516252;Hymnal;commons/7/78/Cantional-Walenty-z-Brzozowa-1554.png
 prayer_wheel_N	Q80876;Prayer_wheel;commons/7/7b/Dag_Shang_Kagyü,_ruedas_de_plegaria_03.jpg
-dictionary_N	Q23622;Dictionary;commons/6/6e/Latin_dictionary.jpg
+dictionary_N	Q23622;Dictionary;commons/0/0e/Wörterbuch_Uruk.JPG	Q23622;Dictionary;commons/4/49/Dict_German-AGreek_small.jpg	Q23622;Dictionary;commons/5/5a/Dictionary.jpg	Q23622;Dictionary;commons/5/5f/Auerbach_open.jpg	Q23622;Dictionary;commons/6/6e/Latin_dictionary.jpg	Q23622;Dictionary;commons/b/ba/Diccionario-basico-escolar_2010.jpg	Q23622;Dictionary;commons/c/ca/An-naym-550x550h.jpg	Q23622;Dictionary;commons/e/e3/Hrvatski_enciklopedijski_rjecnik.jpg
 gazetteer_2_N	Q1006160;Gazetteer;commons/9/9d/The_Imperial_Gazetteer_of_India,_1908-1931,_Book_cover.jpg
 handbook_N	Q1338914;Handbook;
 hornbook_N	Q16523070;Hornbook;commons/5/54/ImagineRITCaryGraphicArtsCollectionHornbook.jpg
@@ -10673,7 +10677,7 @@ mantra_2_N	Q131510;Mantra;commons/8/8b/353,_Taiwan,_苗栗縣南庄鄉獅山村_
 curriculum_vitae_N	Q186649;Curriculum_vitae;
 capitulation_1_N	Q3769366;Surrender_(military);commons/3/31/La_Rendición_de_Granada_-_Pradilla.jpg	Q3769366;Surrender_(military);commons/a/ac/White_flag_of_surrender.svg
 charter_1_N	Q727002;Charter;
-form_8_N	Q1335296;Form_(document);commons/d/d9/Aruncuta,Cluj-DSCF3805.JPG
+form_8_N	Q1335296;;commons/d/d9/Aruncuta,Cluj-DSCF3805.JPG
 questionnaire_N	Q747810;Questionnaire;commons/8/8e/1951_m._tremtinio_anketa.jpg
 card_2_N	Q4907731;Bilhete_de_Identidade_(Portugal);commons/1/1e/BIPT.jpg
 diploma_N	Q217577;Diploma;commons/b/b7/SheepskinDiploma.jpg
@@ -10740,7 +10744,7 @@ cachet_2_N	Q5015986;Cachet;
 return_1_N	Q2861384;Tax_return;
 patent_2_N	Q1511010;Letters_patent;commons/2/20/Carta-patente_nomeando_Francisco_José_de_Sousa_ao_posto_de_capitão-mor_de_ordenanças_da_Vila_de_Sorocaba,_Arquivo_Público_do_Estado_de_São_Paulo.pdf
 demurrer_2_N	Q5256431;Demurrer;
-statute_N	Q820655;Statute;
+statute_N	Q820655;Statute;commons/7/71/Expéditions_d'Égypte_Musée_Art_&_Histoire_cinquantenaire_Bruxelles.jpg
 software_N	Q7397;Software;commons/3/3e/Kmail.png
 cad_2_N	Q184793;Computer-aided_design;commons/d/dc/Cad_crank.jpg
 freeware_N	Q341;Free_software;commons/0/0d/Categories_of_free_and_nonfree_software.svg
@@ -11466,7 +11470,7 @@ curtain_raiser_2_N	Q5195600;Curtain_raiser;
 revue_N	Q918727;Revue;commons/1/11/Teatro_de_revista.JPG
 variety_4_N	Q1508130;The_Band_Wagon;commons/b/bc/Band_Wagon_still.JPG
 music_hall_2_N	Q940462;Music_hall;
-vaudeville_N	Q186286;Vaudeville;
+vaudeville_N	Q186286;Vaudeville;commons/0/01/Threekeatons.jpg
 dance_1_N	Q11639;Dance;commons/f/f2/Dance-At-Bougival.jpg
 choreography_2_N	Q180856;Choreography;commons/d/d0/Swanlake010.jpg
 pizzicato_N	Q213460;Pizzicato;commons/9/9c/Music-pizzicato2.jpg
@@ -12065,7 +12069,7 @@ potluck_N	Q1306889;Potluck;commons/f/f3/Eat_Alberta_Potluck_(7072671637).jpg
 breakfast_N	Q80973;Breakfast;commons/f/f4/Breakfast_in_german_hotel.jpg
 brunch_N	Q734263;Brunch;commons/7/77/Brunch_Kalaset.jpg
 luncheon_N	Q1195832;School_meal;commons/a/a1/A_school_tray_showing_a_reimbursable_school_breakfast_for_grades_Kindergarten_through_12_-_MyPlate_20210805-FNS-UNC-0023.jpg
-tea_2_N	Q245009;Tea_(meal);commons/3/3c/Tea_at_the_Rittenhouse_Hotel.jpg
+tea_time_N	Q245009;Tea_(meal);commons/3/3c/Tea_at_the_Rittenhouse_Hotel.jpg
 dinner_1_N	Q657221;Dinner;commons/4/46/Kaczka_na_obiad_w_Daszewicach_-_maj_2019.jpg
 supper_1_N	Q568285;Supper;commons/0/08/Leonardo_da_Vinci_(1452-1519)_-_The_Last_Supper_(1495-1498).jpg
 buffet_2_N	Q847462;Buffet;commons/c/c0/Chinese_buffet2.jpg
@@ -12398,7 +12402,7 @@ saltine_N	Q15060428;Saltine_cracker;commons/9/9f/Saltine-Crackers.JPG
 soda_cracker_N	Q15060428;Saltine_cracker;commons/9/9f/Saltine-Crackers.JPG
 water_biscuit_N	Q7973452;Water_biscuit;commons/7/79/Crackers_with_herring_and_garlic_sauce.jpg
 pretzel_N	Q160525;Pretzel;commons/0/06/Brezel_l_Bäckerei-Raisch.jpg
-sandwich_N	Q28803;Sandwich;commons/1/12/Sandwich.jpg
+sandwich_N	Q28803;Sandwich;commons/1/12/Sandwich.jpg	Q28803;Sandwich;commons/2/24/Bologna_sandwich.jpg	Q28803;Sandwich;commons/f/f8/Sandwich_on_a_cutting_board.jpg
 three_decker_1_N	Q1093380;Club_sandwich;commons/b/bd/Club-sandwich.jpg
 hamburger_1_N	Q16983167;Hamburg_steak;commons/e/e0/Hamburg-Steak.jpg	Q6663;Hamburger;commons/6/62/NCI_Visuals_Food_Hamburger.jpg
 cheeseburger_N	Q667478;Cheeseburger;commons/4/4d/Cheeseburger.jpg
@@ -13253,7 +13257,7 @@ corps_de_ballet_N	Q1206595;Corps_de_ballet;
 enemy_1_N	Q289891;Enemy;
 task_force_1_N	Q115365853;;commons/c/c6/Fleet_5_nations.jpg
 navy_1_N	Q4508;Navy;commons/3/37/Indian_Navy_flotilla_of_Western_Fleet_escort_INS_Vikramaditya_(R33)_and_INS_Viraat_(R22)_in_the_Arabian_Sea.jpg
-navy_3_N	Q11220;United_States_Navy;commons/1/13/Flag_of_the_United_States_Navy_(fringe).svg	Q11220;United_States_Navy;commons/8/84/USS_Constitution_1997.jpg
+navy_3_N	Q11220;United_States_Navy;commons/1/13/Flag_of_the_United_States_Navy_(fringe).svg	Q11220;United_States_Navy;commons/b/b1/Emblem_of_the_United_States_Navy.svg
 coastguard_N	Q1353040;Coast_guard;
 united_states_naval_academy_LN	Q559549;United_States_Naval_Academy;commons/1/16/121011-N-OA833-002_(24401310884).jpg
 raf_1_PN	Q165862;Royal_Air_Force;commons/c/cc/Air_Force_Ensign_of_the_United_Kingdom.svg	Q165862;Royal_Air_Force;commons/d/d2/C17_Transport_Aircraft_Taking_Off_from_RAF_Brize_Norton_MOD_45156519.jpg	Q165862;Royal_Air_Force;commons/f/f9/RAF-Badge.svg
@@ -13569,7 +13573,7 @@ metropolis_1_N	Q200250;Metropolis;commons/3/3d/2006megacities.svg	Q200250;Metrop
 megalopolis_N	Q823721;Megalopolis,_Greece;commons/0/0e/Megalopoli.jpg
 precinct_N	Q3301455;Electoral_precinct;
 downtown_N	Q738570;Central_business_district;commons/0/02/Vista_aérea_Centro_do_Rio_de_Janeiro_RJ.jpg	Q738570;Central_business_district;commons/1/17/Canary-wharf-one.jpg	Q738570;Central_business_district;commons/6/6e/Ayuntamiento,_vistas_panorámicas_desde_Toompea,_Tallin,_Estonia,_2012-08-05,_DD_21.JPG
-tin_pan_alley_PN	Q1121111;Tin_Pan_Alley;
+tin_pan_alley_LN	Q1121111;Tin_Pan_Alley;
 sprawl_1_N	Q192042;Urban_sprawl;
 burgh_N	Q254978;Burgh;commons/4/44/Burgh_Seal_of_Crail,_Fife_(reverse).JPG
 clearing_1_N	Q10658984;Cleaning_(forestry);
@@ -13853,8 +13857,8 @@ montserrat_LN	Q13353;Montserrat;commons/0/03/Montserrat_in_its_region.svg	Q13353
 argentina_1_LN	Q414;Argentina;commons/1/1a/Flag_of_Argentina.svg	Q414;Argentina;commons/2/2d/ARG_orthographic.svg	Q414;Argentina;commons/a/aa/Fitz_Roy_1b.jpg	Q414;Argentina;commons/f/ff/Coat_of_arms_of_Argentina.svg
 buenos_aires_LN	Q1486;Buenos_Aires;commons/4/4d/Escudo_de_la_Ciudad_de_Buenos_Aires.svg	Q1486;Buenos_Aires;commons/a/a1/Ciudad_Autónoma_de_Buenos_Aires_-_localización_en_Argentina_2.svg	Q1486;Buenos_Aires;commons/d/d5/Buenos_Aires_-_Puerto_Madero.jpg	Q1486;Buenos_Aires;commons/f/f5/Bandera_de_la_Ciudad_de_Buenos_Aires.svg
 cordoba_4_LN	Q44210;C%C3%B3rdoba,_Argentina;commons/9/91/Montaje_CBA_9.jpg	Q44210;C%C3%B3rdoba,_Argentina;commons/a/aa/Bandera_de_la_Ciudad_de_Córdoba.svg	Q44210;C%C3%B3rdoba,_Argentina;commons/c/c2/Escudo_ciudad_de_cordoba_argentina.svg	Q44210;C%C3%B3rdoba,_Argentina;commons/e/e8/Departamento_Capital_(Córdoba_-_Argentina).png
-moron_2_PN	Q2620524;Moron_(psychology);
-rosario_PN	Q52535;Rosario;commons/b/be/Bandera_de_la_Ciudad_de_Rosario.svg	Q52535;Rosario;commons/c/cc/Escudo_de_armas_de_Rosario.svg	Q52535;Rosario;commons/e/ea/Montaje_Rosario_01.jpg
+moron_2_LN	Q2620524;Moron_(psychology);
+rosario_LN	Q52535;Rosario;commons/b/be/Bandera_de_la_Ciudad_de_Rosario.svg	Q52535;Rosario;commons/c/cc/Escudo_de_armas_de_Rosario.svg	Q52535;Rosario;commons/e/ea/Montaje_Rosario_01.jpg
 pampas_N	Q184382;Pampas;commons/6/6c/Map_for_the_Pampas_region.svg	Q184382;Pampas;commons/a/ab/Autódromo_Eusebio_Marcilla.jpg
 balkans_2_LN	Q23522;Balkans;commons/0/07/Balkans-political1.png	Q23522;Balkans;commons/4/4f/Balkan-range-satellite.jpg	Q23522;Balkans;commons/b/b6/Balkan_topo_en.jpg
 bulgaria_LN	Q219;Bulgaria;commons/2/24/Coat_of_arms_of_Bulgaria.svg	Q219;Bulgaria;commons/2/2b/Bulgaria_on_the_globe_(Europe_centered).svg	Q219;Bulgaria;commons/4/46/Rila_Monastery,_August_2013.jpg	Q219;Bulgaria;commons/9/9a/Flag_of_Bulgaria.svg
@@ -13973,7 +13977,7 @@ mexico_city_LN	Q1489;Mexico_City;commons/2/21/Coat_of_arms_of_Mexico_City,_Mexic
 monterrey_LN	Q81033;Monterrey;commons/1/1b/Escudo_de_Monterrey,_Nuevo_León,_México.svg	Q81033;Monterrey;commons/2/20/Cerro_de_la_Silla.jpg	Q81033;Monterrey;commons/c/ce/Bandera_de_Monterrey,_Nuevo_León,_México.svg
 orizaba_LN	Q993904;Orizaba;commons/0/0c/Escudo_de_Orizaba,_Veracruz.jpg	Q993904;Orizaba;commons/7/78/Panoramic_view_of_Orizaba,_Veracruz_03.jpg	Q993904;Orizaba;commons/b/b5/Location_Orizaba.png
 quintana_roo_LN	Q80245;Quintana_Roo;commons/1/1a/Quintana_Roo.jpg	Q80245;Quintana_Roo;commons/7/77/Coat_of_arms_of_Quintana_Roo.svg	Q80245;Quintana_Roo;commons/8/87/Quintana_Roo_in_Mexico_(location_map_scheme).svg	Q80245;Quintana_Roo;commons/a/a0/Flag_of_Quintana_Roo.svg
-tabasco_1_PN	Q80914;Tabasco;commons/7/74/Coat_of_arms_of_Tabasco.svg	Q80914;Tabasco;commons/b/b1/Tabasco_in_Mexico_(location_map_scheme).svg	Q80914;Tabasco;commons/b/b3/Flag_of_Tabasco.svg	Q80914;Tabasco;commons/f/f1/Villahermosa.Palacio_de_Gobierno_01.JPG
+tabasco_1_LN	Q80914;Tabasco;commons/7/74/Coat_of_arms_of_Tabasco.svg	Q80914;Tabasco;commons/b/b1/Tabasco_in_Mexico_(location_map_scheme).svg	Q80914;Tabasco;commons/b/b3/Flag_of_Tabasco.svg	Q80914;Tabasco;commons/f/f1/Villahermosa.Palacio_de_Gobierno_01.JPG
 tepic_nayarit_LN	Q207972;Tepic;commons/4/47/Tepic_en_Nayarit.svg	Q207972;Tepic;commons/8/83/Tepic.png	Q207972;Tepic;commons/e/e7/Escudo_Tepic.svg
 tampico_LN	Q273014;Tampico;commons/0/0d/Tampico,_Centro_Historico_(12059306706).jpg	Q273014;Tampico;commons/5/5e/Tampico,_TM-map.svg	Q273014;Tampico;commons/e/ee/EscudoTampico.gif
 tijuana_LN	Q124739;Tijuana;commons/7/7a/2006.03.25.mx.bc.Tijuana(52).jpg	Q124739;Tijuana;commons/9/9e/Zona_Rio_Tijuana.jpg	Q124739;Tijuana;commons/f/f7/Escudo_de_Tijuana,_Baja_California.svg
@@ -14071,12 +14075,12 @@ west_germany_LN	Q713750;West_Germany;commons/9/9b/West_Germany_1956-1990.svg	Q71
 saxony_LN	Q1202;Saxony;commons/0/01/Locator_map_Saxony_in_Germany.svg	Q1202;Saxony;commons/5/5f/Coat_of_arms_of_Saxony.svg	Q1202;Saxony;commons/f/fd/Flag_of_Saxony.svg	Q1202;Saxony;commons/f/ff/Dresden-Semperoper.04.JPG
 lower_saxony_LN	Q1197;Lower_Saxony;commons/0/0b/Coat_of_arms_of_Lower_Saxony.svg	Q1197;Lower_Saxony;commons/8/81/Flag_of_Lower_Saxony.svg	Q1197;Lower_Saxony;commons/a/ad/NASA_World_Wind_-_Ostfriesland.png	Q1197;Lower_Saxony;commons/f/f7/Locator_map_Lower-Saxony_in_Germany.svg
 aachen_LN	Q1017;Aachen;commons/3/39/Blick_AC_Dom_von_St_Jakob.JPG	Q1017;Aachen;commons/5/57/Karte_Aachen_Stadtbezirke.png	Q1017;Aachen;commons/7/7d/DEU_Aachen_COA.svg	Q1017;Aachen;commons/b/be/Aachen_in_AC_(2009).svg	Q1017;Aachen;commons/e/ea/Flagge_Aachen.svg
-berlin_1_LN	Q64;Berlin;commons/8/8c/DEU_Berlin_COA.svg	Q64;Berlin;commons/9/9a/Berlin_Panorama_von_der_Siegessäule_Richtung_Mitte,_Berlin,_Deutschland.jpg	Q64;Berlin;commons/c/c3/Locator_map_Berlin_in_Germany.svg	Q64;Berlin;commons/e/ec/Flag_of_Berlin.svg
+berlin_1_LN	Q64;Berlin;commons/8/83/Cityscape_Berlin.jpg	Q64;Berlin;commons/8/8c/DEU_Berlin_COA.svg	Q64;Berlin;commons/c/c3/Locator_map_Berlin_in_Germany.svg	Q64;Berlin;commons/e/ec/Flag_of_Berlin.svg
 west_berlin_LN	Q56036;West_Berlin;commons/2/20/Bundesarchiv_Bild_173-1282,_Berlin,_Brandenburger_Tor,_Wasserwerfer.jpg	Q56036;West_Berlin;commons/5/56/Occupied_Berlin.svg	Q56036;West_Berlin;commons/8/8c/DEU_Berlin_COA.svg	Q56036;West_Berlin;commons/e/ec/Flag_of_Berlin.svg
 bremen_LN	Q24879;Bremen;commons/0/0e/Flag_of_Bremen.svg	Q24879;Bremen;commons/1/1b/Bremen-rathaus-dom-buergerschaft.jpg	Q24879;Bremen;commons/6/64/Bremen_Wappen(Mittel).svg	Q24879;Bremen;commons/d/df/Bremen_in_HB.svg
 bremerhaven_LN	Q2706;Bremerhaven;commons/0/03/Wappen_Bremerhaven.svg	Q2706;Bremerhaven;commons/5/5f/Flagge_Bremerhaven.svg	Q2706;Bremerhaven;commons/6/65/Bremerhaven_in_HB.svg	Q2706;Bremerhaven;commons/a/a5/Havenwelten_Überblick_Bremerhaven_2013.jpg
 chemnitz_LN	Q2795;Chemnitz;commons/0/07/Coat_of_arms_of_Chemnitz.svg	Q2795;Chemnitz;commons/5/54/Schloßkirche_am_Schloßteich.jpg	Q2795;Chemnitz;commons/5/5f/Flag_of_Chemnitz.svg	Q2795;Chemnitz;commons/9/9b/Saxony_C.svg
-dortmund_PN	Q1295;Dortmund;commons/0/05/North_rhine_w_DO.svg	Q1295;Dortmund;commons/f/f3/Flag_of_Dortmund.svg	Q1295;Dortmund;commons/f/f7/Dortmund_Panorama.jpg	Q1295;Dortmund;commons/f/f9/DEU_Dortmund_COA.svg
+dortmund_LN	Q1295;Dortmund;commons/0/05/North_rhine_w_DO.svg	Q1295;Dortmund;commons/f/f3/Flag_of_Dortmund.svg	Q1295;Dortmund;commons/f/f7/Dortmund_Panorama.jpg	Q1295;Dortmund;commons/f/f9/DEU_Dortmund_COA.svg
 dresden_LN	Q1731;Dresden;commons/4/43/Flag_of_Dresden.svg	Q1731;Dresden;commons/7/76/Saxony_DD.svg	Q1731;Dresden;commons/c/c5/DD-canaletto-blick.jpg	Q1731;Dresden;commons/d/dc/Dresden_Stadtwappen.svg
 leipzig_LN	Q2079;Leipzig;commons/1/1c/Innenstadt_Leipzig_mit_Thomaskirche_von_Panorama_Tower_2013.jpg	Q2079;Leipzig;commons/4/47/Coat_of_arms_of_Leipzig.svg	Q2079;Leipzig;commons/d/d3/Saxony_L_(City).svg	Q2079;Leipzig;commons/f/f4/Flag_of_Leipzig.svg
 solingen_LN	Q2942;Solingen;commons/4/46/DEU_Solingen_COA.svg	Q2942;Solingen;commons/4/4b/Flagge_Solingen.svg	Q2942;Solingen;commons/8/8d/North_rhine_w_SG.svg	Q2942;Solingen;commons/d/de/Solingen_Innenstadt_002.JPG
@@ -14131,7 +14135,7 @@ cyclades_LN	Q171132;Cyclades;commons/9/9e/City_of_Naxos.jpg	Q171132;Cyclades;com
 dodecanese_LN	Q131555;Dodecanese;commons/8/86/Nomos_Dodekanisou.png	Q131555;Dodecanese;commons/c/c0/Rhodes_harbour.jpg
 doris_2_PN	Q130987;Doris_(Greece);
 lesbos_LN	Q128087;Lesbos;commons/4/42/Lesvos.jpg	Q128087;Lesbos;commons/a/a2/2011_Dimos_Lesvou.png
-rhodes_LN	Q43048;Rhodes;commons/2/28/Rhodes_(Greece).svg	Q43048;Rhodes;commons/a/af/RhodosStadtzentrum5.JPG	Q43048;Rhodes;commons/f/f3/Flag_of_Rhodes_Island.svg
+rhodes_LN	Q43048;Rhodes;commons/5/59/Rhodes_location_(Greece).svg	Q43048;Rhodes;commons/a/af/RhodosStadtzentrum5.JPG	Q43048;Rhodes;commons/f/f3/Flag_of_Rhodes_Island.svg
 crete_LN	Q34374;Crete;commons/b/b9/Crete_Nasa.jpg	Q34374;Crete;commons/f/f1/Prefecture_map_of_Crete_(Greece).svg
 knossos_LN	Q173527;Knossos;commons/e/ea/Knossos_-_North_Portico_02.jpg
 ithaca_1_LN	Q187471;Ithaca_(island);commons/1/12/Kefallonia_IthakiWW.jpg	Q187471;Ithaca_(island);commons/3/3f/2011_Dimos_Ithakis.png
@@ -14143,7 +14147,7 @@ corinth_LN	Q103011;Corinth;commons/c/c8/Dimos_Korinthion.png	Q103011;Corinth;com
 argos_LN	Q189901;Argos,_Peloponnese;commons/1/17/The_city_of_Argos_from_the_Castle_of_Larissa_on_September_5,_2020.jpg
 mycenae_LN	Q132564;Mycenae;commons/2/25/Lions-Gate-Mycenae.jpg
 sparta_LN	Q5690;Sparta;commons/3/38/Sparta.jpg	Q5690;Sparta;commons/6/6b/Sparta_Territory.svg	Q5690;Sparta;commons/6/6c/Sparta_territory.jpg	Q5690;Sparta;commons/e/e9/TerritorioEspartano.svg
-laconia_prefecture_LN	Q190216;Laconia;commons/9/92/Nomos_Lakonias.png
+laconia_prefecture_LN	Q190216;Laconia_Prefecture;commons/9/92/Nomos_Lakonias.png
 lydia_LN	Q620765;Lydia;commons/3/36/Map_of_the_Kingdom_of_Lydia.png
 nemea_LN	Q748108;Nemea;commons/0/09/Nemea_Stadion_2008-09-12.jpg
 ephesus_LN	Q47611;Ephesus;commons/8/84/Ephesus_Celsus_Library_Façade.jpg
@@ -14165,8 +14169,8 @@ gaza_strip_LN	Q39760;Gaza_Strip;commons/0/00/Flag_of_Palestine.svg	Q39760;Gaza_S
 jerusalem_LN	Q1218;Jerusalem;commons/3/33/Flag_of_Jerusalem.svg	Q1218;Jerusalem;commons/7/7f/Emblem_of_Jerusalem.svg	Q1218;Jerusalem;commons/c/c2/Jerusalem_Dome_of_the_rock_BW_14.JPG
 bethlehem_1_LN	Q5776;Bethlehem;commons/3/39/Bethlehem_collage.jpg
 caesarea_LN	Q1615560;Caesarea_(modern_town);commons/e/e2/PiCesare064.jpg
-sodom_2_PN	Q180141;Sodom_and_Gomorrah;commons/3/31/Daniel_van_Heil_(attr)_Brennende_Stadt.jpg
-gomorrah_PN	Q180141;Sodom_and_Gomorrah;commons/3/31/Daniel_van_Heil_(attr)_Brennende_Stadt.jpg
+sodom_2_LN	Q180141;Sodom_and_Gomorrah;commons/3/31/Daniel_van_Heil_(attr)_Brennende_Stadt.jpg
+gomorrah_LN	Q180141;Sodom_and_Gomorrah;commons/3/31/Daniel_van_Heil_(attr)_Brennende_Stadt.jpg
 calvary_1_LN	Q170516;Calvary;commons/8/85/Golgotha_photo.JPG
 zion_1_N	Q205318;Zion;
 cotswolds_LN	Q301833;Cotswolds;commons/e/e7/Castle_combe_cotswolds.jpg
@@ -14190,7 +14194,7 @@ bolzano_LN	Q6526;Bolzano;commons/5/5f/Map_of_comune_of_Bolzano_(autonomous_provi
 brescia_LN	Q6221;Brescia;commons/5/58/Coat_of_arms_of_Brescia.svg	Q6221;Brescia;commons/6/64/Map_of_Brescia_(Province_of_Brescia,_region_Lombardy,_Italy_2024).svg	Q6221;Brescia;commons/7/70/Flag_of_Brescia.svg	Q6221;Brescia;commons/7/7b/Brescia_city_skyline_from_the_city_castle.jpg
 calabria_LN	Q1458;Calabria;commons/4/4b/Calabria.jpg	Q1458;Calabria;commons/8/8b/Flag_of_Calabria.svg	Q1458;Calabria;commons/9/91/Calabria_in_Italy.svg	Q1458;Calabria;commons/b/bf/Coat_of_arms_of_Calabria.svg
 campania_LN	Q1438;Campania;commons/a/a8/Regione-Campania-Stemma.svg	Q1438;Campania;commons/c/c5/Flag_of_Campania.svg	Q1438;Campania;commons/e/e1/SalernoViewFromMontestella.jpg	Q1438;Campania;commons/e/e8/Campania_in_Italy.svg
-ferrara_PN	Q13362;Ferrara;commons/0/0a/Ferrara-Stemma.svg	Q13362;Ferrara;commons/8/83/Map_of_comune_of_Ferrara_(province_of_Ferrara,_region_Emilia-Romagna,_Italy).svg	Q13362;Ferrara;commons/b/b7/Flag_of_Ferrara.svg	Q13362;Ferrara;commons/e/ea/Castello_esterno.jpg
+ferrara_LN	Q13362;Ferrara;commons/0/0a/Ferrara-Stemma.svg	Q13362;Ferrara;commons/8/83/Map_of_comune_of_Ferrara_(province_of_Ferrara,_region_Emilia-Romagna,_Italy).svg	Q13362;Ferrara;commons/b/b7/Flag_of_Ferrara.svg	Q13362;Ferrara;commons/e/ea/Castello_esterno.jpg
 naples_LN	Q2634;Naples;commons/6/6f/Naples_from_the_Castello_Sant_Elmo_with_Abbazia_San_Martino_the_port_and_the_Vesuv.jpg	Q2634;Naples;commons/a/a6/Napoli-Stemma_(without_ornaments).svg	Q2634;Naples;commons/a/aa/Map_of_comune_of_Naples_(Metropolitan_city_of_Naples,_region_Campania,_Italy).svg	Q2634;Naples;commons/c/ca/Flag_of_Naples.svg
 messina_LN	Q13666;Messina;commons/1/1c/Flag_of_Messina.svg	Q13666;Messina;commons/5/58/Messina_harbour_-_aerial_view.jpg	Q13666;Messina;commons/c/c2/Messina-Stemma.svg	Q13666;Messina;commons/f/f5/Map_of_comune_of_Messina_(metropolitan_city_of_Messina,_region_Sicily,_Italy).svg
 capri_LN	Q173292;Capri;commons/c/cb/Capri_-_veduta_1.JPG
@@ -14235,7 +14239,7 @@ bucarest_LN	Q19660;Bucharest;commons/b/b3/Municipiul_Bucuresti_in_Romania.svg	Q1
 transylvania_LN	Q39473;Transylvania;commons/3/3d/Coa_Transylvania_Country_History_v3.svg	Q39473;Transylvania;commons/a/aa/Bran_castle_(47626731362).jpg	Q39473;Transylvania;commons/c/c9/Transylvania.svg
 rwanda_LN	Q1037;Rwanda;commons/0/06/Rwanda_on_the_globe_(Africa_centered).svg	Q1037;Rwanda;commons/1/17/Coat_of_arms_of_Rwanda.svg	Q1037;Rwanda;commons/1/17/Flag_of_Rwanda.svg	Q1037;Rwanda;commons/4/43/An_aerial_of_Kigali_Convention_Center_on_June_19,_2019._Photo_by_Emmanuel_Kwizera.jpg	Q1037;Rwanda;commons/f/f6/LocationRwanda.svg
 kigali_LN	Q3859;Kigali;commons/1/1a/Green_Kigali.jpg	Q3859;Kigali;commons/2/2a/Kigali_in_Rwanda.svg	Q3859;Kigali;commons/3/31/Kigali_Convention_Center_(_Rwanda_).jpg	Q3859;Kigali;commons/7/7a/Kigali_night_life.jpg	Q3859;Kigali;commons/8/83/Kigali2018Cropped.jpg
-yugoslavia_2_PN	Q36704;Yugoslavia;commons/3/33/Emblem_of_Yugoslavia_(1963–1992).svg	Q36704;Yugoslavia;commons/4/4d/Emblem_of_Yugoslavia_(1943–1963).svg	Q36704;Yugoslavia;commons/5/58/Coat_of_arms_of_the_Kingdom_of_Yugoslavia.svg	Q36704;Yugoslavia;commons/6/61/Flag_of_Yugoslavia_(1946-1992).svg	Q36704;Yugoslavia;commons/6/6c/Yugoslavia_location_map.svg	Q36704;Yugoslavia;commons/8/8f/Flag_of_Yugoslavia_(1943–1946).svg	Q36704;Yugoslavia;commons/e/e5/Flag_of_Yugoslavia_(1918–1941).svg
+yugoslavia_2_LN	Q36704;Yugoslavia;commons/3/33/Emblem_of_Yugoslavia_(1963–1992).svg	Q36704;Yugoslavia;commons/4/4d/Emblem_of_Yugoslavia_(1943–1963).svg	Q36704;Yugoslavia;commons/5/58/Coat_of_arms_of_the_Kingdom_of_Yugoslavia.svg	Q36704;Yugoslavia;commons/6/61/Flag_of_Yugoslavia_(1946-1992).svg	Q36704;Yugoslavia;commons/6/6c/Yugoslavia_location_map.svg	Q36704;Yugoslavia;commons/8/8f/Flag_of_Yugoslavia_(1943–1946).svg	Q36704;Yugoslavia;commons/e/e5/Flag_of_Yugoslavia_(1918–1941).svg
 croatia_LN	Q224;Croatia;commons/1/1b/Flag_of_Croatia.svg	Q224;Croatia;commons/c/c9/Coat_of_arms_of_Croatia.svg	Q224;Croatia;commons/d/d2/Dubrovnik_june_2011..JPG	Q224;Croatia;commons/f/fb/EU-Croatia_(orthographic_projection).png
 yugoslavia_1_LN	Q37024;Serbia_and_Montenegro;commons/3/31/Coat_of_arms_of_Serbia_and_Montenegro.svg	Q37024;Serbia_and_Montenegro;commons/3/3e/Flag_of_Serbia_and_Montenegro_(1992–2006).svg	Q37024;Serbia_and_Montenegro;commons/b/bb/Serbia_and_Montenegro.svg
 kosovo_LN	Q1246;Kosovo;commons/1/18/Europe-Republic_of_Kosovo.svg	Q1246;Kosovo;commons/1/1f/Flag_of_Kosovo.svg	Q1246;Kosovo;commons/2/24/Gebäude_der_UNMIK_NEW_BORN_SIGN_PRISTINA_KOSOVO_Giv_Owned_Image_23_August_2008.jpg	Q1246;Kosovo;commons/d/d7/Emblem_of_the_Republic_of_Kosovo.svg
@@ -14328,7 +14332,7 @@ saipan_LN	Q51679;Saipan,_Northern_Mariana_Islands;commons/3/3b/Saipan.jpg
 guam_LN	Q16635;Guam;commons/0/07/Flag_of_Guam.svg	Q16635;Guam;commons/0/08/Woods_at_Guam_No.1.JPG	Q16635;Guam;commons/2/2b/Seal_of_Guam.svg	Q16635;Guam;commons/9/94/Guam_on_the_globe_(small_islands_magnified)_(Polynesia_centered).svg
 wake_LN	Q43296;Wake_Island;commons/4/47/Flag_of_Wake_Island.svg	Q43296;Wake_Island;commons/5/5c/Great_Seal_of_the_United_States_(obverse).svg	Q43296;Wake_Island;commons/6/69/Wake_Island_in_Oceania_(small_islands_magnified).svg	Q43296;Wake_Island;commons/8/85/Aerial_view_of_Wake_Island_in_July_2014.JPG
 marshall_islands_LN	Q709;Marshall_Islands;commons/1/18/Marshall_Islands_on_the_globe_(small_islands_magnified)_(Polynesia_centered).svg	Q709;Marshall_Islands;commons/2/2e/Flag_of_the_Marshall_Islands.svg	Q709;Marshall_Islands;commons/8/86/Seal_of_the_Marshall_Islands.svg
-bikini_1_PN	Q152225;Bikini_Atoll;commons/8/89/Flag_of_Bikini_Atoll.svg	Q152225;Bikini_Atoll;commons/9/94/Bikini_Atoll_2001-01-14,_Landsat_7_ETM+,_bands_3-2-1-8.png	Q152225;Bikini_Atoll;commons/9/96/MH_-map_A.png
+bikini_1_LN	Q152225;Bikini_Atoll;commons/8/89/Flag_of_Bikini_Atoll.svg	Q152225;Bikini_Atoll;commons/9/94/Bikini_Atoll_2001-01-14,_Landsat_7_ETM+,_bands_3-2-1-8.png	Q152225;Bikini_Atoll;commons/9/96/MH_-map_A.png
 kwajalein_LN	Q309172;Kwajalein_Atoll;commons/c/c2/Kwajalein_Atoll_2003-02-07_-_Landsat_7_-_30m.png	Q309172;Kwajalein_Atoll;commons/e/ec/Marshall-wki.png
 gilbert_islands_LN	Q271876;Gilbert_Islands;commons/e/ef/GilbertIslands.jpg
 tuvalu_LN	Q672;Tuvalu;commons/3/38/Flag_of_Tuvalu.svg	Q672;Tuvalu;commons/8/87/Tuvalu_in_its_region.svg	Q672;Tuvalu;commons/b/b4/Nui_atoll.jpg	Q672;Tuvalu;commons/b/bc/Tuvalu_on_the_globe_(small_islands_magnified)_(Polynesia_centered).svg	Q672;Tuvalu;commons/c/c9/Coat_of_arms_of_Tuvalu.svg
@@ -14351,7 +14355,7 @@ new_guinea_LN	Q40285;New_Guinea;commons/1/11/LocationNewGuinea_(+Yos-Sudarso).sv
 papua_new_guinea_LN	Q691;Papua_New_Guinea;commons/4/42/Papua_New_Guinea_map.png	Q691;Papua_New_Guinea;commons/7/79/Papua_New_Guinea_(orthographic_projection).svg	Q691;Papua_New_Guinea;commons/b/b4/National_emblem_of_Papua_New_Guinea.svg	Q691;Papua_New_Guinea;commons/e/e3/Flag_of_Papua_New_Guinea.svg
 papua_LN	Q3845;Western_New_Guinea;commons/2/20/LocationWestPapua.svg
 port_moresby_LN	Q36526;Port_Moresby;commons/6/6a/Port_Moresby_Town2_Mschlauch.jpg	Q36526;Port_Moresby;commons/a/a3/Flag_of_NCD.svg
-new_ireland_LN	Q215089;New_Ireland_(island);commons/4/4d/NewIrelandOMC.png	Q215089;New_Ireland_(island);commons/d/df/Papua_new_guinea_new_ireland_province.png
+new_ireland_LN	Q215089;New_Ireland_(island);commons/4/4d/NewIrelandOMC.png	Q215089;New_Ireland_(island);commons/4/4d/NewIrelandOMC.png	Q215089;New_Ireland_(island);commons/9/98/New_Ireland_Province_Papua_Niugini_locator.png	Q215089;New_Ireland_(island);commons/d/df/Papua_new_guinea_new_ireland_province.png
 austria_LN	Q40;Austria;commons/4/41/Flag_of_Austria.svg	Q40;Austria;commons/4/4a/Coat_of_arms_of_Austria.svg	Q40;Austria;commons/9/9d/EU-Austria.svg
 tyrol_LN	Q42880;Tyrol_(state);commons/2/25/Flag_of_Tirol_(state).svg	Q42880;Tyrol_(state);commons/8/82/Alps_wilder_kaiser_austria_d_schmidt_08_2005.jpg	Q42880;Tyrol_(state);commons/c/c3/AUT_Tirol_COA.svg	Q42880;Tyrol_(state);commons/f/fe/Tirol_in_Austria.svg
 vienna_LN	Q1741;Vienna;commons/7/7c/Collage_von_Wien.jpg	Q1741;Vienna;commons/7/7d/Wien_in_Austria.svg	Q1741;Vienna;commons/b/b4/Wien_Wappen.svg	Q1741;Vienna;commons/b/bf/Flag_of_Salzburg,_Vienna,_Vorarlberg.svg
@@ -14377,7 +14381,7 @@ bruges_LN	Q12994;Bruges;commons/c/c9/BEL_COA_Bruges.svg	Q12994;Bruges;commons/c/
 charleroi_LN	Q81046;Charleroi;commons/0/0a/Charleroi_-_Hôtel_de_ville_vu_de_la_place_Charles_II_-_2019-06-01.jpg	Q81046;Charleroi;commons/1/18/Charleroi_Hainaut_Belgium_Map.svg	Q81046;Charleroi;commons/2/24/Héraldique_Ville_BE_Charleroi.svg	Q81046;Charleroi;commons/6/6c/Drapeau_ville_be_Charleroi.svg
 ghent_LN	Q1296;Ghent;commons/1/1d/Gent_East-Flanders_Belgium_Map.svg	Q1296;Ghent;commons/1/1e/Wapen_van_Gent.svg	Q1296;Ghent;commons/b/bf/Ghent_-_centre.jpg	Q1296;Ghent;commons/d/d3/Vlag_van_Gent.svg
 liege_LN	Q3992;Li%C3%A8ge;commons/1/18/Blason_liege.svg	Q3992;Li%C3%A8ge;commons/1/1c/LuikVlag.svg	Q3992;Li%C3%A8ge;commons/3/31/Liège_Liège_Belgium_Map.svg	Q3992;Li%C3%A8ge;commons/7/71/Liege_View_01.jpg
-waterloo_1_PN	Q179034;Waterloo,_Belgium;commons/0/02/Waterloo_wapen.svg	Q179034;Waterloo,_Belgium;commons/4/4f/Waterloo_Brabant-Wallon_Belgium_Map.svg	Q179034;Waterloo,_Belgium;commons/a/a3/Belgique_Butte_du_Lion_dit_de_Waterloo.jpg	Q179034;Waterloo,_Belgium;commons/c/cb/Flag_of_Waterloo.svg
+waterloo_1_LN	Q179034;Waterloo,_Belgium;commons/0/02/Waterloo_wapen.svg	Q179034;Waterloo,_Belgium;commons/4/4f/Waterloo_Brabant-Wallon_Belgium_Map.svg	Q179034;Waterloo,_Belgium;commons/a/a3/Belgique_Butte_du_Lion_dit_de_Waterloo.jpg	Q179034;Waterloo,_Belgium;commons/c/cb/Flag_of_Waterloo.svg
 bhutan_LN	Q917;Bhutan;commons/9/91/Flag_of_Bhutan.svg	Q917;Bhutan;commons/c/ce/Bhutan_(orthographic_projection).svg	Q917;Bhutan;commons/e/eb/Emblem_of_Bhutan.svg
 botswana_LN	Q963;Botswana;commons/4/4b/LocationBotswana.svg	Q963;Botswana;commons/7/78/Okavango_Delta,_Botswana_(2674364913).jpg	Q963;Botswana;commons/9/95/Botswana_(orthographic_projection).svg	Q963;Botswana;commons/d/de/Coat_of_arms_of_Botswana.svg	Q963;Botswana;commons/f/fa/Flag_of_Botswana.svg
 gaborone_LN	Q3919;Gaborone;commons/5/54/Gaborone_skyline.JPG	Q3919;Gaborone;commons/8/8c/Flag_of_Gaborone.svg	Q3919;Gaborone;commons/b/bf/BW-Gaborone.png
@@ -14385,7 +14389,7 @@ bolivia_1_LN	Q750;Bolivia;commons/4/48/Flag_of_Bolivia.svg	Q750;Bolivia;commons/
 la_paz_LN	Q1491;La_Paz;commons/1/12/Bandera_de_La_Paz.svg	Q1491;La_Paz;commons/8/86/La_Paz-center.jpg	Q1491;La_Paz;commons/e/e0/Escudo_de_La_Paz.svg
 sucre_LN	Q2907;Sucre;commons/0/05/Escudo_de_sucre.JPG	Q2907;Sucre;commons/b/b9/Sucre_capital_de_Bolivia.jpg	Q2907;Sucre;commons/c/ce/Bandera_de_Chuquisaca_y_Sucre.svg
 brazil_1_LN	Q155;Brazil;commons/0/05/Flag_of_Brazil.svg	Q155;Brazil;commons/9/98/Cidade_Maravilhosa.jpg	Q155;Brazil;commons/b/bc/BRA_orthographic.svg	Q155;Brazil;commons/b/bf/Coat_of_arms_of_Brazil.svg
-acre_2_PN	Q40780;Acre_(state);commons/4/4c/Bandeira_do_Acre.svg	Q40780;Acre_(state);commons/4/4f/Vista_parcial_Rio_Branco_AC1.jpg	Q40780;Acre_(state);commons/5/52/Brasão_do_Acre.svg	Q40780;Acre_(state);commons/8/84/Acre_in_Brazil.svg
+acre_2_LN	Q40780;Acre_(state);commons/4/4c/Bandeira_do_Acre.svg	Q40780;Acre_(state);commons/4/4f/Vista_parcial_Rio_Branco_AC1.jpg	Q40780;Acre_(state);commons/5/52/Brasão_do_Acre.svg	Q40780;Acre_(state);commons/8/84/Acre_in_Brazil.svg
 belem_LN	Q12829733;Bel%C3%A9m;commons/0/0b/Brasão_de_Belém.svg	Q12829733;Bel%C3%A9m;commons/0/0d/Bandeira_de_Belém.svg	Q12829733;Bel%C3%A9m;commons/7/75/Montagem_Belém.jpg	Q12829733;Bel%C3%A9m;commons/e/ea/Para_Municip_Belem.svg
 para_5_LN	Q39517;Par%C3%A1;commons/0/02/Bandeira_do_Pará.svg	Q39517;Par%C3%A1;commons/7/7f/Flona_Tapajós,_Pará,_Brasil_by_Marizilda_Cruppe_-_Rede_Amazônia_Sustantável_(6)_-_50404922503.jpg	Q39517;Par%C3%A1;commons/b/bc/Brasão_do_Pará.svg	Q39517;Par%C3%A1;commons/c/c0/Para_in_Brazil.svg
 belo_horizonte_LN	Q42800;Belo_Horizonte;commons/3/37/Belo_Horizonte,_Brasil_horizon_view.jpg	Q42800;Belo_Horizonte;commons/3/3d/Brasão_de_Belo_Horizonte.svg	Q42800;Belo_Horizonte;commons/7/75/MinasGerais_Municip_BeloHorizonte.svg	Q42800;Belo_Horizonte;commons/c/c0/Bandeira_de_Belo_Horizonte.svg
@@ -14399,11 +14403,11 @@ rio_de_janeiro_LN	Q8678;Rio_de_Janeiro;commons/2/29/Brasão_da_cidade_do_Rio_de_
 recife_LN	Q48344;Recife;commons/2/24/Brazil_Pernambuco_Recife_location_map.svg	Q48344;Recife;commons/5/53/Bandeira_de_Recife.svg	Q48344;Recife;commons/5/5d/Coat_of_arms_of_Recife.svg	Q48344;Recife;commons/b/b9/Recife_-_Início_da_Avenida_Boa_Viagem.jpg	Q48344;Recife;commons/d/db/Where_is_Recife_Brasil.PNG
 santos_LN	Q81882;Santos,_S%C3%A3o_Paulo;commons/1/10/Brasao_Santos_SaoPaulo_Brasil.svg	Q81882;Santos,_S%C3%A3o_Paulo;commons/7/7e/SaoPaulo_Municip_Santos.svg	Q81882;Santos,_S%C3%A3o_Paulo;commons/a/ac/Panoramica_Santos.jpg	Q81882;Santos,_S%C3%A3o_Paulo;commons/c/c7/Bandeira_de_Santos_(São_Paulo).svg
 british_isles_LN	Q38272;British_Isles;commons/6/63/British_Irish_isles.png	Q38272;British_Isles;commons/e/e4/Cloud-free_Europe_ESA17486464_(British_Isles).jpeg
-great_britain_2_PN	Q23666;Great_Britain;commons/0/02/Britain_(island)_in_Europe.png	Q23666;Great_Britain;commons/6/6d/Satellite_image_of_Great_Britain_and_Northern_Ireland_in_April_2002.jpg
+great_britain_2_LN	Q23666;Great_Britain;commons/0/02/Britain_(island)_in_Europe.png	Q23666;Great_Britain;commons/6/6d/Satellite_image_of_Great_Britain_and_Northern_Ireland_in_April_2002.jpg
 ireland_2_LN	Q22890;Ireland;commons/3/35/Map_of_Ireland_in_Europe.svg	Q22890;Ireland;commons/7/74/Ireland_(MODIS).jpg
 erin_PN	Q770100;Erin;
 united_kingdom_LN	Q145;United_Kingdom;commons/5/5b/Coat_of_arms_of_the_United_Kingdom_(2022,_variant_2).svg	Q145;United_Kingdom;commons/5/5b/Europe-UK.svg	Q145;United_Kingdom;commons/8/83/Flag_of_the_United_Kingdom_(3-5).svg	Q145;United_Kingdom;commons/8/87/Palace_of_Westminster_from_the_dome_on_Methodist_Central_Hall.jpg
-england_PN	Q21;England;commons/2/28/England_COA.svg	Q21;England;commons/b/b1/England_satellite_image.png	Q21;England;commons/b/b3/England_in_the_UK_and_Europe.svg	Q21;England;commons/b/be/Flag_of_England.svg
+england_LN	Q21;England;commons/2/28/England_COA.svg	Q21;England;commons/b/b1/England_satellite_image.png	Q21;England;commons/b/b3/England_in_the_UK_and_Europe.svg	Q21;England;commons/b/be/Flag_of_England.svg
 lancaster_1_LN	Q205905;Lancaster,_Lancashire;commons/5/56/Coat_of_arms_of_Lancaster_City_Council.png	Q205905;Lancaster,_Lancashire;commons/d/d8/Lancaster_and_the_Lune_from_the_Greyhound_Bridge.jpg
 lake_district_LN	Q211778;Lake_District;commons/a/a1/Cumbria_UK_relief_location_map.jpg	Q211778;Lake_District;commons/a/ab/Keswick_Panorama_-_Oct_2009.jpg
 london_1_LN	Q84;London;commons/3/37/London_Tower_Bridge_22.jpg	Q84;London;commons/f/f9/London_(European_Parliament_constituency).svg
@@ -14428,7 +14432,7 @@ bath_LN	Q22889;Bath,_Somerset;commons/2/23/Bath_Somerset_2023_-City-_by-RaBoe_05
 blackpool_LN	Q170377;Blackpool;commons/1/1e/Blackpool_tower_from_central_pier_ferris_wheel.jpg	Q170377;Blackpool;commons/5/53/Coat_of_arms_of_Blackpool_Borough_Council.png
 brighton_LN	Q131491;Brighton;commons/7/77/Brighton.UK.JPG
 bristol_LN	Q23154;Bristol;commons/5/5a/Bristol_UK_locator_map_2010.svg	Q23154;Bristol;commons/f/f3/Arms_of_Bristol_City_Council.svg	Q23154;Bristol;commons/f/f7/Bristol_landmarks_collage.png
-cheddar_1_PN	Q1019479;Cheddar,_Somerset;commons/4/40/Cheddar_09-06_9.jpg
+cheddar_1_LN	Q1019479;Cheddar,_Somerset;commons/4/40/Cheddar_09-06_9.jpg
 leeds_LN	Q39121;Leeds;commons/0/05/Coat_of_Arms_of_Leeds_City_Council.svg	Q39121;Leeds;commons/7/71/Leeds_Montage.jpg	Q39121;Leeds;commons/d/da/Leeds_in_England_(zoom).svg
 leicester_2_LN	Q83065;Leicester;commons/7/7c/Leicester_landmarks_montage.jpg	Q83065;Leicester;commons/e/eb/Coat_of_Arms_of_Leicester_City_Council.svg
 newcastle_upon_tyne_LN	Q1425428;Newcastle_upon_Tyne;commons/0/03/Tyne_Bridge_-_Newcastle_Upon_Tyne_-_England_-_2004-08-14.jpg	Q1425428;Newcastle_upon_Tyne;commons/4/4a/Arms_of_Newcastle_upon_Tyne_City_Council.svg
@@ -14438,7 +14442,7 @@ gloucester_2_LN	Q170497;Gloucester;commons/2/2e/Gloucester_and_its_cathedral_-_g
 reading_LN	Q161491;Reading,_Berkshire;commons/2/29/St_Laurence's_Church,_Reading_1.jpg
 sheffield_LN	Q42448;Sheffield;commons/3/31/Sheffield_City.jpg	Q42448;Sheffield;commons/d/d4/Coat_of_arms_of_Sheffield_City_Council.svg
 stratford_on_avon_LN	Q189288;Stratford-upon-Avon;commons/9/92/Shakespeare's_Birthplace,_Stratford-upon-Avon_-_Sept_2012.jpg
-sunderland_PN	Q188304;Sunderland;commons/b/b5/Wearmouth_bridge.jpg
+sunderland_LN	Q188304;Sunderland;commons/b/b5/Wearmouth_bridge.jpg
 winchester_1_LN	Q172157;Winchester;commons/9/9c/Coats_of_arms_of_Winchester.svg	Q172157;Winchester;commons/b/b5/View_of_Winchester,_Hampshire,_England.jpg
 worcester_3_LN	Q1646181;Worcester,_England;commons/a/ac/Coat_of_Arms_of_Worcester_City_Council.svg	Q1646181;Worcester,_England;commons/d/d9/Worcester_from_Fort_Royal_Hill.jpg
 avon_3_LN	Q929902;Avon_(county);commons/2/23/Arms_of_Avon_County_Council.svg	Q929902;Avon_(county);commons/b/b7/EnglandAvon.svg
@@ -14474,7 +14478,7 @@ northampton_LN	Q192240;Northampton;commons/2/2f/Cole-roper_northampton_1810.jpg
 naseby_LN	Q2259753;Naseby;commons/0/03/Naseby_village_-_geograph.org.uk_-_175023.jpg
 sussex_LN	Q23346;Sussex;commons/2/21/Sussex_Brit_Isles_Sect_5.svg	Q23346;Sussex;commons/8/8e/Bexhill_aerial_001.jpg	Q23346;Sussex;commons/9/9d/Flag_of_Sussex.svg	Q23346;Sussex;commons/c/c7/Arms_of_Sussex.svg
 hadrian's_wall_LN	Q57357;Hadrian%27s_Wall;commons/3/3a/Section_of_Hadrian's_Wall_1.jpg	Q57357;Hadrian%27s_Wall;commons/c/ce/Hadrians_Wall_map.svg
-jersey_2_PN	Q15706498;Jersey_(island);
+jersey_2_LN	Q15706498;Jersey_(island);
 isles_of_scilly_LN	Q180209;Isles_of_Scilly;commons/2/21/ScillonianCross.svg	Q180209;Isles_of_Scilly;commons/7/74/Isles_of_Scilly_NASA.jpg	Q180209;Isles_of_Scilly;commons/d/da/Isles_of_Scilly_UK_location_map.svg
 man_9_LN	Q9676;Isle_of_Man;commons/8/8a/Coat_of_arms_of_the_Isle_of_Man.svg	Q9676;Isle_of_Man;commons/b/bc/Flag_of_the_Isle_of_Man.svg	Q9676;Isle_of_Man;commons/c/cc/Isle_of_Man_by_Sentinel-2.jpg	Q9676;Isle_of_Man;commons/f/fd/Europe-Isle_of_Man.svg
 northern_ireland_LN	Q26;Northern_Ireland;commons/4/44/Northern_Ireland_-_panoramio.jpg	Q26;Northern_Ireland;commons/f/fb/Northern_Ireland_in_the_UK_and_Europe.svg
@@ -14487,7 +14491,7 @@ cork_3_LN	Q36647;Cork_(city);commons/0/02/Corkcity.png	Q36647;Cork_(city);common
 galway_LN	Q129610;Galway;commons/0/0a/Galwaycitycollage.jpg	Q129610;Galway;commons/d/d0/Galway_CoA.svg
 limerick_LN	Q133315;Limerick;commons/2/27/Flag_of_the_counties_of_Fermanagh_and_Limerick.svg	Q133315;Limerick;commons/d/d7/IRL_COA_Limerick.svg	Q133315;Limerick;commons/f/fe/King_John's_Castle_Limerick_(13th_century).JPG
 waterford_LN	Q183551;Waterford;commons/2/27/Flag_of_County_Waterford.svg	Q183551;Waterford;commons/6/6b/Waterford_coa.png	Q183551;Waterford;commons/c/ca/Waterford_by_night.jpg
-scotland_PN	Q22;Scotland;commons/1/10/Flag_of_Scotland.svg	Q22;Scotland;commons/8/82/Scotland_in_the_UK_and_Europe.svg	Q22;Scotland;commons/b/bd/Royal_Arms_of_the_Kingdom_of_Scotland.svg	Q22;Scotland;commons/f/f8/Scotland_from_satellite.jpg
+scotland_LN	Q22;Scotland;commons/1/10/Flag_of_Scotland.svg	Q22;Scotland;commons/8/82/Scotland_in_the_UK_and_Europe.svg	Q22;Scotland;commons/b/bd/Royal_Arms_of_the_Kingdom_of_Scotland.svg	Q22;Scotland;commons/f/f8/Scotland_from_satellite.jpg
 galloway_LN	Q2342092;Galloway;commons/0/09/Galloway.svg	Q2342092;Galloway;commons/f/fd/Mull_of_Galloway.JPG
 aberdeen_4_LN	Q36405;Aberdeen;commons/0/02/City_Flag_of_Aberdeen.svg	Q36405;Aberdeen;commons/0/06/3rd_Aug_2012-_Abdn_Harbour_2.JPG	Q36405;Aberdeen;commons/2/2d/Coat_of_arms_of_Aberdeen.svg	Q36405;Aberdeen;commons/8/87/Aberdeen_City_in_Scotland.svg
 ayr_LN	Q654216;Ayr;commons/1/18/Ayr_Coat_of_Arms.svg	Q654216;Ayr;commons/6/60/Ayr_High_Street_-_geograph.org.uk_-_935367.jpg
@@ -14497,10 +14501,10 @@ glasgow_LN	Q4093;Glasgow;commons/4/42/Wfm_foster_armadillo.jpg	Q4093;Glasgow;com
 hebrides_LN	Q123377;Hebrides;commons/5/5a/South_over_the_Quiraing,_Isle_of_Skye_-_2.jpg	Q123377;Hebrides;commons/b/b5/Hebridesmap.png
 inner_hebrides_LN	Q81052;Inner_Hebrides;commons/4/42/Inner_Hebrides.png	Q81052;Inner_Hebrides;commons/7/70/Waterfall_on_Allt_Bun_an_Eas,_West_coast_of_Jura_-_geograph.org.uk_-_41305.jpg
 islay_LN	Q273;Islay;commons/a/a8/Location_of_Islay.png	Q273;Islay;commons/a/a9/Wfm_islay_landsat.jpg
-mull_2_PN	Q111444;Isle_of_Mull;commons/1/1e/Ben_More_(Mull).jpg	Q111444;Isle_of_Mull;commons/8/8a/UK_Mull.PNG
+mull_2_LN	Q111444;Isle_of_Mull;commons/1/1e/Ben_More_(Mull).jpg	Q111444;Isle_of_Mull;commons/8/8a/UK_Mull.PNG
 staffa_LN	Q250117;Staffa;commons/6/6c/Fingals_Cave,_Staffa_-_geograph.org.uk_-_30215.jpg
 outer_hebrides_LN	Q80967;Outer_Hebrides;commons/0/03/Western_Isles_Council_Flag.svg	Q80967;Outer_Hebrides;commons/8/8c/Coat_of_Arms_of_the_Na_h-Eileanan_Siar_(Outer_Hebrides).svg	Q80967;Outer_Hebrides;commons/9/9d/View_south_from_Heaval.jpg	Q80967;Outer_Hebrides;commons/f/f2/ScotlandWesternIsles.png
-wales_PN	Q25;Wales;commons/2/25/Wales_in_the_UK_and_Europe.svg	Q25;Wales;commons/2/2c/Royal_Badge_of_Wales.svg	Q25;Wales;commons/b/b8/Arthog_-_Barmouth_Bridge_-_20070915150033.jpg	Q25;Wales;commons/d/dc/Flag_of_Wales.svg
+wales_LN	Q25;Wales;commons/2/25/Wales_in_the_UK_and_Europe.svg	Q25;Wales;commons/2/2c/Royal_Badge_of_Wales.svg	Q25;Wales;commons/b/b8/Arthog_-_Barmouth_Bridge_-_20070915150033.jpg	Q25;Wales;commons/d/dc/Flag_of_Wales.svg
 aberdare_LN	Q319369;Aberdare;commons/e/e4/Aberdare-View_from_road_to_Ferndale.jpg
 bangor_2_LN	Q234178;Bangor,_Gwynedd;commons/1/18/Bangor_from_Bangor-mountain.jpg	Q234178;Bangor,_Gwynedd;commons/7/7e/Wales_Gwynedd_Community_Bangor_map.svg
 cardiff_LN	Q10690;Cardiff;commons/1/1c/Cardiff_in_Wales.svg	Q10690;Cardiff;commons/2/25/Flag_of_Cardiff.svg	Q10690;Cardiff;commons/4/46/Cardiffmontage3.jpg	Q10690;Cardiff;commons/f/f8/Coat_of_Arms_of_Cardiff.svg
@@ -14564,8 +14568,8 @@ jakarta_LN	Q3630;Jakarta;commons/3/3e/Jakarta_Special_Capital_Region_in_Indonesi
 bandung_LN	Q10389;Bandung;commons/4/4d/Municipal_Flag_of_Bandung,_Indonesia.svg	Q10389;Bandung;commons/6/6a/Map_of_West_Java_highlighting_Bandung_City.svg	Q10389;Bandung;commons/7/7a/Montage_of_Bandung.jpg	Q10389;Bandung;commons/e/e8/Lambang_Kota_Bandung.svg
 medan_LN	Q5972;Medan;commons/7/77/Lokasi_Sumatra_Utara_Kota_Medan.svg	Q5972;Medan;commons/7/7f/Logo_Kota_Medan_(Seal_of_Medan).svg	Q5972;Medan;commons/f/fc/Medan_Montage.jpg
 semarang_LN	Q11025;Semarang;commons/0/0f/Seal_of_the_City_of_Semarang.svg	Q11025;Semarang;commons/2/2f/Becak_Tugu_Muda_Semarang_Central_Java.jpg	Q11025;Semarang;commons/8/81/Flag_of_Semarang_City.png	Q11025;Semarang;commons/e/e6/Locator_kota_semarang.png
-iran_LN	Q794;Iran;commons/3/3e/Azadi_Tower,_Tehran.jpg	Q794;Iran;commons/4/4e/Emblem_of_Iran.svg	Q794;Iran;commons/a/a8/Iran_(orthographic_projection).svg	Q794;Iran;commons/c/ca/Flag_of_Iran.svg
-persia_2_LN	Q389688;Achaemenid_Empire;commons/1/11/Achaemenid_Falcon.svg	Q389688;Achaemenid_Empire;commons/2/2f/Achaemenid_Empire_500_BC.png	Q389688;Achaemenid_Empire;commons/8/87/Standard_of_Cyrus_the_Great.svg
+iran_LN	Q794;Iran;commons/4/4e/Emblem_of_Iran.svg	Q794;Iran;commons/a/a8/Iran_(orthographic_projection).svg	Q794;Iran;commons/c/ca/Flag_of_Iran.svg
+persia_2_LN	Q389688;Achaemenid_Empire;commons/2/2f/Achaemenid_Empire_500_BC.png
 teheran_LN	Q3616;Tehran;commons/0/04/Tehran.png	Q3616;Tehran;commons/3/33/Flag_of_Tehran.svg	Q3616;Tehran;commons/6/6a/North_of_tehran.jpg
 abadan_LN	Q63049;Abadan,_Iran;commons/0/09/Abadan_the_city_of_Oil.jpg
 bam_LN	Q106636;Bam,_Iran;commons/1/1f/بم_-_panoramio_(1).jpg
@@ -14590,8 +14594,8 @@ edirne_LN	Q43387;Edirne;commons/2/28/Edirne_at_sunrise_21_52_30_274000.jpeg	Q433
 mesopotamia_LN	Q11767;Mesopotamia;commons/0/01/Statue_Gudea_Met_59.2.jpg	Q11767;Mesopotamia;commons/0/03/Spread_of_Oecumene_Mesopotamia.jpg
 babylon_LN	Q5684;Babylon;commons/9/9e/DSC_0658-Recovered.jpg
 babylonia_LN	Q47690;Babylonia;commons/1/12/Hammurabi's_Babylonia_1.svg	Q47690;Babylonia;commons/6/65/Kassite_Babylonia_EN.svg	Q47690;Babylonia;commons/7/76/Babylone_1-es.svg
-chaldaea_2_PN	Q200969;Chaldea;commons/0/0f/D547-_Anciennes_villes_de_la_Chaldée._-L2-Ch_3.png
-chaldaea_1_PN	Q200969;Chaldea;commons/0/0f/D547-_Anciennes_villes_de_la_Chaldée._-L2-Ch_3.png
+chaldaea_2_LN	Q200969;Chaldea;commons/0/0f/D547-_Anciennes_villes_de_la_Chaldée._-L2-Ch_3.png
+chaldaea_1_LN	Q200969;Chaldea;commons/0/0f/D547-_Anciennes_villes_de_la_Chaldée._-L2-Ch_3.png
 sumer_LN	Q35355;Sumer;commons/c/c8/Orientmitja2300aC.png	Q35355;Sumer;commons/d/da/Basse_Mesopotamie_DA.PNG
 ur_LN	Q5699;Ur;commons/f/f7/Ur-Nassiriyah.jpg
 assyria_LN	Q40169;Assyria_(Roman_province);commons/a/ad/Assyria_(Romia_Imperio).svg	Q40169;Assyria_(Roman_province);commons/c/ce/Roman_Empire_-_Assyria_(117_AD).svg
@@ -14611,7 +14615,7 @@ nagoya_LN	Q11751;Nagoya;commons/7/7d/Flag_of_Nagoya,_Aichi.svg	Q11751;Nagoya;com
 osaka_LN	Q35765;Osaka;commons/2/2e/Emblem_of_Osaka,_Osaka.svg	Q35765;Osaka;commons/4/4b/Osaka_montage.jpg	Q35765;Osaka;commons/6/65/Flag_of_Osaka,_Osaka.svg	Q35765;Osaka;commons/9/92/Osaka-osaka-city.svg
 yokohama_LN	Q38283;Yokohama;commons/2/26/Emblem_of_Yokohama,_Kanagawa.svg	Q38283;Yokohama;commons/9/93/Yokohama-CityMap.png	Q38283;Yokohama;commons/b/b7/みなとみらい_-_panoramio_(1).jpg	Q38283;Yokohama;commons/d/d7/Flag_of_Yokohama,_Kanagawa.svg
 ryukyu_islands_LN	Q10905515;;commons/c/c6/Location_of_the_Ryukyu_Islands.JPG	Q10905515;;commons/f/f8/Location_Okinawa_Prefecture.PNG
-kobe_PN	Q48320;Kobe;commons/6/6a/Kobe_Mosaic06s4s3200.jpg	Q48320;Kobe;commons/b/b4/Emblem_of_Kobe,_Hyogo.svg	Q48320;Kobe;commons/e/ea/Flag_of_Kobe.svg	Q48320;Kobe;commons/f/f5/Kobe_in_Hyogo_Prefecture.png
+kobe_LN	Q48320;Kobe;commons/6/6a/Kobe_Mosaic06s4s3200.jpg	Q48320;Kobe;commons/b/b4/Emblem_of_Kobe,_Hyogo.svg	Q48320;Kobe;commons/e/ea/Flag_of_Kobe.svg	Q48320;Kobe;commons/f/f5/Kobe_in_Hyogo_Prefecture.png
 kyoto_LN	Q34600;Kyoto;commons/3/3c/Kyoto-Kyoto.svg	Q34600;Kyoto;commons/8/83/Emblem_of_Kyoto,_Kyoto.svg	Q34600;Kyoto;commons/8/86/Pedestrian_road_with_pavements,_paper_umbrellas_and_people_in_yukata,_Higashiyama-ku,_Kyoto,_Japan.jpg	Q34600;Kyoto;commons/d/df/Flag_of_Kyoto_City.svg
 hiroshima_LN	Q34664;Hiroshima;commons/2/23/Flag_of_Hiroshima,_Hiroshima.svg	Q34664;Hiroshima;commons/7/7a/Emblem_of_Hiroshima,_Hiroshima.svg	Q34664;Hiroshima;commons/d/d8/Hiroshima_montage2.jpg	Q34664;Hiroshima;commons/e/e4/Hiroshima,_Hiroshima.svg
 sapporo_LN	Q37951;Sapporo;commons/1/11/Emblem_of_Sapporo,_Hokkaido.svg	Q37951;Sapporo;commons/3/3a/The_Location_Sapporo.png	Q37951;Sapporo;commons/5/54/SapporoCity_Skylines2020.jpg	Q37951;Sapporo;commons/a/ae/Flag_of_Sapporo,_Hokkaido.svg
@@ -14639,8 +14643,8 @@ paris_1_LN	Q90;Paris;commons/0/0d/Grandes_Armes_de_Paris.svg	Q90;Paris;commons/6
 montmartre_LN	Q186115;Montmartre;commons/1/10/View_from_Notre-Dame_de_Paris,_24_June_2014_004.jpg
 clichy_LN	Q201982;Clichy,_Hauts-de-Seine;commons/3/34/Égliseclichyjpg.jpg	Q201982;Clichy,_Hauts-de-Seine;commons/6/63/Blason_Clichy_92.svg	Q201982;Clichy,_Hauts-de-Seine;commons/6/6c/Clichy_map.svg
 orly_LN	Q236058;Orly;commons/0/0f/Orly_-_Église_Saint-Germain-de-Paris.jpg	Q236058;Orly;commons/5/59/Orly_map.svg	Q236058;Orly;commons/9/95/Blason_Orly_94.svg
-quai_d'orsay_1_PN	Q1146988;Quai_d%27Orsay;commons/e/e2/Ministry_of_Foreign_and_European_Affairs,_Paris_August_2008.jpg	Q1146988;Quai_d%27Orsay;commons/f/fe/P1020440_Paris_VII_Quai_d'Orsay_rwk.JPG
-avignon_PN	Q6397;Avignon;commons/a/a1/Localisation_d’Avignon_(84).svg	Q6397;Avignon;commons/a/a3/Avignon,_Palais_des_Papes_depuis_Tour_Philippe_le_Bel_by_JM_Rosier.jpg	Q6397;Avignon;commons/f/f4/Avignon_ville_logo.jpg	Q6397;Avignon;commons/f/f5/Blason_ville_fr_Avignon_(Vaucluse).svg
+quai_d'orsay_1_LN	Q1146988;Quai_d%27Orsay;commons/e/e2/Ministry_of_Foreign_and_European_Affairs,_Paris_August_2008.jpg	Q1146988;Quai_d%27Orsay;commons/f/fe/P1020440_Paris_VII_Quai_d'Orsay_rwk.JPG
+avignon_LN	Q6397;Avignon;commons/a/a1/Localisation_d’Avignon_(84).svg	Q6397;Avignon;commons/a/a3/Avignon,_Palais_des_Papes_depuis_Tour_Philippe_le_Bel_by_JM_Rosier.jpg	Q6397;Avignon;commons/f/f4/Avignon_ville_logo.jpg	Q6397;Avignon;commons/f/f5/Blason_ville_fr_Avignon_(Vaucluse).svg
 bordeaux_LN	Q1479;Bordeaux;commons/1/18/138_-_Place_de_la_Bourse_et_le_miroir_d'eau_-_Bordeaux.jpg	Q1479;Bordeaux;commons/6/62/Blason_ville_fr_Bordeaux_(Gironde).svg	Q1479;Bordeaux;commons/9/90/Coat_of_Arms_of_Bordeaux_(Chief_of_France_Moderne).svg	Q1479;Bordeaux;commons/e/e6/Bordeaux_dot2.png
 brest_LN	Q12193;Brest,_France;commons/4/4b/Blason_ville_fr_Brest_(Finistere).svg	Q12193;Brest,_France;commons/6/65/Brest_-_Le_Château_-_PA00089847_-_011.JPG	Q12193;Brest,_France;commons/7/76/Map_Brest.jpg	Q12193;Brest,_France;commons/9/95/Brest_flag.svg	Q12193;Brest,_France;commons/c/c3/Map_commune_FR_insee_code_29019.png
 calais_LN	Q6454;Calais;commons/5/53/Blason_ville_fr_Calais_(Pas-de-Calais).svg	Q6454;Calais;commons/5/55/Burghers_of_calais.jpeg	Q6454;Calais;commons/7/77/Flag_of_Calais.svg	Q6454;Calais;commons/c/c1/Calais_OSM_01.png	Q6454;Calais;commons/e/e1/Coat_of_Arms_of_Calais.svg
@@ -14648,7 +14652,7 @@ cannes_LN	Q39984;Cannes;commons/0/03/Flag_of_the_Commune_of_Cannes_(Blue_Variant
 chablis_LN	Q331232;Chablis;commons/2/2a/Map_commune_FR_insee_code_89068.png	Q331232;Chablis;commons/3/3e/Chablis_sign.jpg	Q331232;Chablis;commons/d/d6/Blason_Chablis_89.svg
 chartres_LN	Q130272;Chartres;commons/2/27/Blason_Chartres.svg	Q130272;Chartres;commons/9/92/France_Eure_et_Loir_Chartres_Cathedrale_nuit_02.jpg	Q130272;Chartres;commons/c/c3/Chartres_OSM_03.png
 dijon_LN	Q7003;Dijon;commons/0/0f/Vue_panoramique_de_Dijon_05.jpg	Q7003;Dijon;commons/6/64/Dijon_dot.png	Q7003;Dijon;commons/7/72/Blason_ville_fr_Dijon_(Côte-d'Or).svg	Q7003;Dijon;commons/f/f9/Flag_of_Dijon.svg
-dunkirk_2_PN	Q45797;Dunkirk;commons/2/2f/Flag_of_Dunkirk.svg	Q45797;Dunkirk;commons/5/56/Greater_Coat_of_Arms_of_Dunkerque.svg	Q45797;Dunkirk;commons/9/9e/Dunkerquepaysage2.png	Q45797;Dunkirk;commons/d/dd/Dunkerque_OSM_01.png
+dunkirk_2_LN	Q45797;Dunkirk;commons/2/2f/Flag_of_Dunkirk.svg	Q45797;Dunkirk;commons/5/56/Greater_Coat_of_Arms_of_Dunkerque.svg	Q45797;Dunkirk;commons/9/9e/Dunkerquepaysage2.png	Q45797;Dunkirk;commons/d/dd/Dunkerque_OSM_01.png
 grenoble_LN	Q1289;Grenoble;commons/3/35/Blason_ville_fr_Grenoble_(Isere).svg	Q1289;Grenoble;commons/4/4e/Map_commune_FR_insee_code_38185.png	Q1289;Grenoble;commons/d/d0/Grenoble_01.JPG	Q1289;Grenoble;commons/d/dd/Flag_of_Grenoble.svg
 le_havre_LN	Q42810;Le_Havre;commons/3/39/Le_Havre_OSM_01.png	Q42810;Le_Havre;commons/5/5b/Le_Havre.jpg	Q42810;Le_Havre;commons/8/87/Flag_of_Le_Havre,_France.gif	Q42810;Le_Havre;commons/c/ce/Blason_ville_fr_Le_Havre_(Seine-Maritime).svg
 lille_LN	Q648;Lille;commons/2/23/Flag_of_Lille,_France.svg	Q648;Lille;commons/8/80/Lille_OSM_03.png	Q648;Lille;commons/c/cd/Blason_ville_fr_Lille_(Nord).svg	Q648;Lille;commons/f/f8/Lille_vue_gd_place.JPG
@@ -14660,10 +14664,10 @@ nice_LN	Q33959;Nice;commons/1/16/Drapèu_de_la_Contèa_de_Niça.svg	Q33959;Nice;
 orleans_1_LN	Q6548;Orl%C3%A9ans;commons/2/28/Flag_of_Orléans,_France.svg	Q6548;Orl%C3%A9ans;commons/3/32/Blason_Orléans.svg	Q6548;Orl%C3%A9ans;commons/5/54/Orléans_OSM_01.png	Q6548;Orl%C3%A9ans;commons/c/c9/Orléans,_l'automne_est_là_!.jpg
 rheims_LN	Q41876;Reims;commons/4/4c/Collage_Reims.jpg	Q41876;Reims;commons/9/91/Flag_of_Rheims.svg	Q41876;Reims;commons/b/b6/Map_commune_FR_insee_code_51454.png	Q41876;Reims;commons/d/de/Blason_Reims_51.svg
 strasbourg_LN	Q6602;Strasbourg;commons/4/4c/Flag_of_Strasbourg.svg	Q6602;Strasbourg;commons/8/8a/Strasbourg_OSM_01.png	Q6602;Strasbourg;commons/a/a3/Strasburg.jpg	Q6602;Strasbourg;commons/d/dd/Greater_coat_of_arms_of_Strasbourg.svg
-toulon_PN	Q44160;Toulon;commons/1/14/Blason_ville_fr_Toulon_(Var).svg	Q44160;Toulon;commons/9/99/Flag_of_Toulon.svg	Q44160;Toulon;commons/a/ab/PlaceLiberteToulon.jpg	Q44160;Toulon;commons/f/fc/Toulon_OSM_01.png
+toulon_LN	Q44160;Toulon;commons/1/14/Blason_ville_fr_Toulon_(Var).svg	Q44160;Toulon;commons/9/99/Flag_of_Toulon.svg	Q44160;Toulon;commons/a/ab/PlaceLiberteToulon.jpg	Q44160;Toulon;commons/f/fc/Toulon_OSM_01.png
 toulouse_LN	Q7880;Toulouse;commons/0/0f/Toulouse_map.png	Q7880;Toulouse;commons/1/14/Blason_ville_fr_Toulouse_(Haute-Garonne).svg	Q7880;Toulouse;commons/7/7f/Flag_of_Midi-Pyrénées.svg	Q7880;Toulouse;commons/7/7f/Toulouse_-_View_on_Saint_Sernin.jpg
-tours_PN	Q288;Tours;commons/4/44/Morning_in_September_in_Tours_18.jpg	Q288;Tours;commons/a/aa/Loiretal.png	Q288;Tours;commons/a/ab/Blason_tours_37.svg	Q288;Tours;commons/b/b3/Flag_of_Tours.gif	Q288;Tours;commons/e/e9/Tours_OSM_01.png
-valenciennes_PN	Q163795;Valenciennes;commons/2/26/Blason_valenciennes.svg	Q163795;Valenciennes;commons/7/7b/Valenciennes_hotel_de_ville_cote.jpg	Q163795;Valenciennes;commons/8/8c/Valenciennes_OSM_01.png
+tours_LN	Q288;Tours;commons/4/44/Morning_in_September_in_Tours_18.jpg	Q288;Tours;commons/a/aa/Loiretal.png	Q288;Tours;commons/a/ab/Blason_tours_37.svg	Q288;Tours;commons/b/b3/Flag_of_Tours.gif	Q288;Tours;commons/e/e9/Tours_OSM_01.png
+valenciennes_LN	Q163795;Valenciennes;commons/2/26/Blason_valenciennes.svg	Q163795;Valenciennes;commons/7/7b/Valenciennes_hotel_de_ville_cote.jpg	Q163795;Valenciennes;commons/8/8c/Valenciennes_OSM_01.png
 versailles_LN	Q621;Versailles,_Yvelines;commons/2/2b/Blason_ville_fr_Versailles_(Yvelines).svg	Q621;Versailles,_Yvelines;commons/5/54/Vue_aérienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_073.jpg	Q621;Versailles,_Yvelines;commons/b/b5/Versailles_OSM_01.png
 vichy_LN	Q93351;Vichy;commons/6/64/Zone_urbaine_(VICHY,FR03).jpg	Q93351;Vichy;commons/9/92/Blason_fr_Vichy.svg	Q93351;Vichy;commons/b/b3/Vichy_OSM_01.png
 vienne_LN	Q26849;Vienne,_Is%C3%A8re;commons/0/04/Blason_de_Vienne_(Isère)_-_1887.svg	Q26849;Vienne,_Is%C3%A8re;commons/4/46/Vienne_(Isère)_OSM_01.png	Q26849;Vienne,_Is%C3%A8re;commons/6/66/Vienne_panorama_2016-06.jpg
@@ -14689,7 +14693,7 @@ pays_de_la_loire_LN	Q16994;Pays_de_la_Loire;commons/4/41/Château_de_Montsoreau,
 picardy_LN	Q13950;;commons/3/36/Amiens_pl_du_dom.jpg	Q13950;;commons/3/36/BlasonPicardie.svg	Q13950;;commons/4/4e/Picardie_in_France.svg	Q13950;;commons/c/cb/Flag_of_Picardie.svg
 poitou_charentes_LN	Q17009;Poitou-Charentes;commons/3/39/Poitou-Charentes_flag.svg	Q17009;Poitou-Charentes;commons/4/42/Poitou-Charentes_region_locator_map.svg	Q17009;Poitou-Charentes;commons/6/68/Poitou-Charentes_blason.svg	Q17009;Poitou-Charentes;commons/b/b0/Angoulême_16_Obézine&beffroi_2013.jpg
 provence_LN	Q101081;Provence;commons/0/03/Lavender_field_and_Mont_Ventoux.jpg	Q101081;Provence;commons/1/15/Provence-Alpes-Côte_d’Azur_region_locator_map.svg	Q101081;Provence;commons/6/60/Blason_d'Aragon.svg	Q101081;Provence;commons/6/6f/Flag_of_Provence.svg	Q101081;Provence;commons/b/b2/Provence-Alpes-Cote_d'azur_Provence.svg
-savoy_1_PN	Q14118;Savoy;commons/0/04/Drapeau_de_la_Savoie.svg	Q14118;Savoy;commons/4/42/Blason_duché_fr_Savoie.svg	Q14118;Savoy;commons/9/94/SavoieEurope.png
+savoy_1_LN	Q14118;Savoy;commons/0/04/Drapeau_de_la_Savoie.svg	Q14118;Savoy;commons/4/42/Blason_duché_fr_Savoie.svg	Q14118;Savoy;commons/9/94/SavoieEurope.png
 gabon_LN	Q1000;Gabon;commons/0/04/Flag_of_Gabon.svg	Q1000;Gabon;commons/1/13/LocationGabon.svg	Q1000;Gabon;commons/7/77/Coat_of_arms_of_Gabon.svg	Q1000;Gabon;commons/a/af/Topographic_map_of_Gabon-fr.svg	Q1000;Gabon;commons/b/bf/Gabon_(orthographic_projection).svg
 libreville_LN	Q3825;Libreville;commons/4/40/Libreville_Coat_of_Arms.svg	Q3825;Libreville;commons/5/54/Libreville1.jpg	Q3825;Libreville;commons/6/65/GA-Libreville.png
 the_gambia_LN	Q1005;The_Gambia;commons/0/07/Map_drawing_of_the_Republic_of_The_Gambia.jpg	Q1005;The_Gambia;commons/1/16/Gambia_(orthographic_projection_with_inset).svg	Q1005;The_Gambia;commons/7/77/Flag_of_The_Gambia.svg	Q1005;The_Gambia;commons/a/a9/LocationGambia.svg	Q1005;The_Gambia;commons/d/d4/Coat_of_arms_of_The_Gambia.svg
@@ -14697,7 +14701,7 @@ banjul_LN	Q3726;Banjul;commons/0/08/Flag_of_Banjul,_The_Gambia.svg	Q3726;Banjul;
 ghana_LN	Q117;Ghana;commons/1/19/Flag_of_Ghana.svg	Q117;Ghana;commons/2/2b/LocationGhana.svg	Q117;Ghana;commons/3/30/Ghana_(orthographic_projection).svg	Q117;Ghana;commons/5/59/Coat_of_arms_of_Ghana.svg	Q117;Ghana;commons/a/aa/Beach_with_palms_Ghana.jpg
 accra_LN	Q3761;Accra;commons/7/7b/Central_accra-2.jpg	Q3761;Accra;commons/b/b9/Greater_Accra_Metro_Area_2010.jpg	Q3761;Accra;commons/c/cd/Flag_of_Accra.svg
 kumasi_LN	Q182059;Kumasi;commons/0/02/Kronum_Kumasi_2018-11-08_(130246).jpg
-tamale_1_PN	Q217040;Tamale,_Ghana;commons/f/f1/Road,_Tamale.jpg
+tamale_1_LN	Q217040;Tamale,_Ghana;commons/f/f1/Road,_Tamale.jpg
 grenada_LN	Q769;Grenada;commons/0/03/Coat_of_arms_of_Grenada.svg	Q769;Grenada;commons/5/53/Grenada_in_its_region.svg	Q769;Grenada;commons/6/6e/Grenada_on_the_globe_(Americas_centered).svg	Q769;Grenada;commons/b/bc/Flag_of_Grenada.svg	Q769;Grenada;commons/f/fa/StGeorgesGrenada2000.jpg
 st_george's_LN	Q41547;St._George%27s,_Grenada;commons/9/91/Gj-map_en.png	Q41547;St._George%27s,_Grenada;commons/f/f4/Grenada_-_St._George.jpg
 guinea_LN	Q1006;Guinea;commons/6/63/LocationGuinea.svg	Q1006;Guinea;commons/6/63/LocationGuinea.svg	Q1006;Guinea;commons/c/c2/Coat_of_arms_of_Guinea.svg	Q1006;Guinea;commons/e/e4/Guinea_(orthographic_projection).svg	Q1006;Guinea;commons/e/ed/Flag_of_Guinea.svg
@@ -14706,8 +14710,8 @@ guinea_bissau_LN	Q1007;Guinea-Bissau;commons/0/01/Flag_of_Guinea-Bissau.svg	Q100
 bissau_LN	Q3739;Bissau;commons/3/35/Guinea-Bissau_-_Bissau.svg	Q3739;Bissau;commons/4/49/Bandeira_Bissau.PNG	Q3739;Bissau;commons/6/65/20130610_-_Monumento_aos_Heróis_da_Independência.jpg	Q3739;Bissau;commons/c/cf/Blason_gw_Bissau.svg
 guyana_LN	Q734;Guyana;commons/2/21/GUY_orthographic.svg	Q734;Guyana;commons/2/23/Coat_of_arms_of_Guyana.svg	Q734;Guyana;commons/9/91/LocationGuyana.svg	Q734;Guyana;commons/9/99/Flag_of_Guyana.svg
 georgetown_2_LN	Q10717;Georgetown,_Guyana;commons/c/cb/Georgetown_-_Guyana.png
-demerara_3_LN	Q1185346;Demerara;commons/1/1e/Map_of_Demerara,_1759.jpg	Q1185346;Demerara;commons/3/39/Monogram_WIC.jpg	Q1185346;Demerara;commons/4/41/Flag_of_the_Dutch_West_India_Company.svg
-holland_LN	Q102911;Holland;commons/1/1c/Wapen_graafschap_Holland.svg	Q102911;Holland;commons/6/69/Holland_position.svg
+demerara_3_LN	Q1185346;Demerara;commons/1/1e/Map_of_Demerara,_1759.jpg	Q1185346;Demerara;commons/4/41/Flag_of_the_Dutch_West_India_Company.svg	Q1185346;Demerara;commons/a/a3/Monogram_WIC.svg	Q1185346;Demerara;commons/a/a5/Flag_of_the_United_Kingdom_(1-2).svg
+holland_LN	Q102911;Holland;commons/1/1c/Wapen_graafschap_Holland.svg	Q102911;Holland;commons/6/69/Holland_position.svg	Q102911;Holland;commons/6/69/RotterdamMaasNederland.jpg
 kingdom_of_the_netherlands_LN	Q29999;Kingdom_of_the_Netherlands;commons/0/00/Kingdom_of_the_Netherlands_in_its_region_(special_marker).svg	Q29999;Kingdom_of_the_Netherlands;commons/2/20/Flag_of_the_Netherlands.svg	Q29999;Kingdom_of_the_Netherlands;commons/8/8f/State_coat_of_arms_of_the_Netherlands.svg	Q29999;Kingdom_of_the_Netherlands;commons/e/ea/Royal_coat_of_arms_of_the_Netherlands.svg
 netherlands_LN	Q55;Netherlands;commons/1/1b/Netherlands_on_the_globe_(Europe_centered).svg	Q55;Netherlands;commons/2/20/Flag_of_the_Netherlands.svg	Q55;Netherlands;commons/c/c8/Karakteristieke_boerderij,_Aldlansdyk_in_Cornjum_02.jpg	Q55;Netherlands;commons/e/ea/Royal_coat_of_arms_of_the_Netherlands.svg
 amsterdam_LN	Q727;Amsterdam;commons/6/6d/Flag_of_Amsterdam.svg	Q727;Amsterdam;commons/7/7d/Wapen_van_Amsterdam.svg	Q727;Amsterdam;commons/a/af/Amsterdam_airphoto.jpg	Q727;Amsterdam;commons/f/fe/Amsterdam_location_map.svg
@@ -14727,9 +14731,9 @@ faroe_islands_LN	Q4628;Faroe_Islands;commons/3/3c/Flag_of_the_Faroe_Islands.svg	
 iceland_2_LN	Q3740828;Iceland_(island);commons/0/08/Iceland_satellite.jpg
 iceland_1_LN	Q189;Iceland;commons/0/08/Iceland_satellite.jpg	Q189;Iceland;commons/6/66/Europe-Iceland.svg	Q189;Iceland;commons/7/7a/Iceland_(orthographic_projection).svg	Q189;Iceland;commons/8/81/Iceland_on_the_globe_(Europe_centered).svg	Q189;Iceland;commons/9/90/Coat_of_arms_of_Iceland.svg	Q189;Iceland;commons/c/ce/Flag_of_Iceland.svg
 reykjavik_LN	Q1764;Reykjav%C3%ADk;commons/2/28/Reykjavik_Coat_of_Arms.svg	Q1764;Reykjav%C3%ADk;commons/3/3d/Austurvöllur_2023.jpg	Q1764;Reykjav%C3%ADk;commons/8/80/Iceland_Reykjavík_position.png	Q1764;Reykjav%C3%ADk;commons/e/e1/Flag_of_Reykjavik,_Iceland.svg
-orkney_PN	Q100166;Orkney;commons/1/17/Orkney_Brit_Isles_Sect_1.svg	Q100166;Orkney;commons/4/42/2007_Flag_of_Orkney.svg	Q100166;Orkney;commons/5/53/Orkney_Islands_UK_relief_location_map.jpg	Q100166;Orkney;commons/7/78/Orkney_Islands_by_Sentinel-2.jpg	Q100166;Orkney;commons/8/86/Orkney_Islands_in_Scotland.svg
+orkney_LN	Q100166;Orkney;commons/1/17/Orkney_Brit_Isles_Sect_1.svg	Q100166;Orkney;commons/4/42/2007_Flag_of_Orkney.svg	Q100166;Orkney;commons/5/53/Orkney_Islands_UK_relief_location_map.jpg	Q100166;Orkney;commons/7/78/Orkney_Islands_by_Sentinel-2.jpg	Q100166;Orkney;commons/8/86/Orkney_Islands_in_Scotland.svg
 shetland_1_LN	Q47134;Shetland;commons/0/0a/Flag_of_Shetland.svg	Q47134;Shetland;commons/8/82/Aerial_view_of_North_Haven,_Fair_Isle_-_geograph.org.uk_-_17893.jpg	Q47134;Shetland;commons/c/ce/Shetland_Brit_Isles_Sect_1.svg	Q47134;Shetland;commons/f/fe/Shetland_UK_relief_location_map.jpg
-korea_PN	Q483134;Korean_Peninsula;commons/7/79/Korean_Peninsula_topographic_map.png	Q483134;Korean_Peninsula;commons/9/9d/Korea_2003-05-01_NASA_MODIS_Terra_250m.jpg
+korea_LN	Q483134;Korean_Peninsula;commons/7/79/Korean_Peninsula_topographic_map.png	Q483134;Korean_Peninsula;commons/9/9d/Korea_2003-05-01_NASA_MODIS_Terra_250m.jpg
 north_korea_LN	Q423;North_Korea;commons/2/20/LocationNorthKorea.svg	Q423;North_Korea;commons/3/3c/Emblem_of_North_Korea.svg	Q423;North_Korea;commons/5/51/Flag_of_North_Korea.svg	Q423;North_Korea;commons/7/7b/North_Korea_(orthographic_projection).svg	Q423;North_Korea;commons/d/d6/Jinrichengsquare.JPG
 pyongyang_LN	Q18808;Pyongyang;commons/5/5f/Panoramic_view_from_Juche_Tower.jpg	Q18808;Pyongyang;commons/b/b2/Pyongyang-chikhalsi_in_North_Korea.svg
 south_korea_LN	Q884;South_Korea;commons/0/09/Flag_of_South_Korea.svg	Q884;South_Korea;commons/8/81/Seoul_(175734251).jpeg	Q884;South_Korea;commons/9/95/South_Korea_(orthographic_projection).svg	Q884;South_Korea;commons/9/96/Emblem_of_South_Korea.svg
@@ -14770,9 +14774,9 @@ malaysia_LN	Q833;Malaysia;commons/2/23/Malaysia_(orthographic_projection).svg	Q8
 kuala_lumpur_LN	Q1865;Kuala_Lumpur;commons/6/64/Flag_of_Kuala_Lumpur,_Malaysia.svg	Q1865;Kuala_Lumpur;commons/d/d7/Seal_of_Kuala_Lumpur_(1992-2019).svg	Q1865;Kuala_Lumpur;commons/d/d9/Kuala_Lumpur_in_Malaysia_(zoom).svg	Q1865;Kuala_Lumpur;commons/f/ff/Kuala_Lumpur_with_Petronas_Towers.jpg
 putrajaya_LN	Q182378;Putrajaya;commons/9/9f/Flag_of_Putrajaya.svg	Q182378;Putrajaya;commons/a/ac/Putrajaya_Collage.jpg	Q182378;Putrajaya;commons/d/d1/Putrajaya_in_Malaysia_(zoom).svg	Q182378;Putrajaya;commons/d/df/Coat_of_arms_of_Putrajaya.svg
 malaya_LN	Q1973345;Peninsular_Malaysia;commons/8/8e/LocationBritishMalaya.png	Q1973345;Peninsular_Malaysia;commons/a/a1/LANDSAT_semenanjung_malaysia_-_2.jpg
-malacca_2_PN	Q185221;Malacca;commons/0/07/Malacca_in_Malaysia.svg	Q185221;Malacca;commons/0/09/Flag_of_Malacca.svg	Q185221;Malacca;commons/8/86/Coat_of_arms_of_Malacca_New.svg	Q185221;Malacca;commons/c/cf/Malacca_River_Walk_2012.JPG
-sabah_PN	Q179029;Sabah;commons/0/01/Kota_Kinabalu_City_Mosque_0019.jpg	Q179029;Sabah;commons/6/68/Coat_of_arms_of_Sabah.svg	Q179029;Sabah;commons/b/b5/Flag_of_Sabah.svg	Q179029;Sabah;commons/c/cc/Sabah_in_Malaysia.svg
-sarawak_PN	Q170462;Sarawak;commons/0/01/Longhouse,_Sarawak_(7246599192).jpg	Q170462;Sarawak;commons/4/4d/Sarawak_in_Malaysia.svg	Q170462;Sarawak;commons/7/79/Coat_of_arms_of_Sarawak.svg	Q170462;Sarawak;commons/7/7e/Flag_of_Sarawak.svg
+malacca_2_LN	Q185221;Malacca;commons/0/07/Malacca_in_Malaysia.svg	Q185221;Malacca;commons/0/09/Flag_of_Malacca.svg	Q185221;Malacca;commons/8/86/Coat_of_arms_of_Malacca_New.svg	Q185221;Malacca;commons/c/cf/Malacca_River_Walk_2012.JPG
+sabah_LN	Q179029;Sabah;commons/0/01/Kota_Kinabalu_City_Mosque_0019.jpg	Q179029;Sabah;commons/6/68/Coat_of_arms_of_Sabah.svg	Q179029;Sabah;commons/b/b5/Flag_of_Sabah.svg	Q179029;Sabah;commons/c/cc/Sabah_in_Malaysia.svg
+sarawak_LN	Q170462;Sarawak;commons/0/01/Longhouse,_Sarawak_(7246599192).jpg	Q170462;Sarawak;commons/4/4d/Sarawak_in_Malaysia.svg	Q170462;Sarawak;commons/7/79/Coat_of_arms_of_Sarawak.svg	Q170462;Sarawak;commons/7/7e/Flag_of_Sarawak.svg
 maldive_islands_LN	Q12552654;Maldive_Islands;commons/1/1d/Maldives.A2004005.0545.1km.jpg
 maldives_LN	Q826;Maldives;commons/0/0f/Flag_of_Maldives.svg	Q826;Maldives;commons/2/29/Emblem_of_Maldives.svg	Q826;Maldives;commons/4/4b/Maldives_(orthographic_projection).svg
 malé_LN	Q9347;Mal%C3%A9;commons/7/73/Malé_Atoll_in_Maldives.svg	Q9347;Mal%C3%A9;commons/b/b4/Male-total.jpg
@@ -14812,7 +14816,7 @@ niamey_LN	Q3674;Niamey;commons/2/26/Niamey_from_grand_mosque_theatre_2006.jpg	Q3
 nigeria_LN	Q1033;Nigeria;commons/0/0a/LocationNigeria.svg	Q1033;Nigeria;commons/4/4e/Nigeria_(orthographic_projection).svg	Q1033;Nigeria;commons/7/79/Flag_of_Nigeria.svg	Q1033;Nigeria;commons/b/b8/The_City_Gate_of_Abuja.jpg	Q1033;Nigeria;commons/b/bc/Coat_of_arms_of_Nigeria.svg
 abuja_LN	Q3787;Abuja;commons/c/c1/Flag_of_Abuja.svg	Q3787;Abuja;commons/e/e4/The_National_Assembly_Globe.jpg
 ibadan_LN	Q183298;Ibadan;commons/8/8a/Locator_Map_Ibadan-Nigeria.png	Q183298;Ibadan;commons/b/b1/Aerial_view_of_Ibadan_from_the_top_of_Mapo_Hall_1.jpg
-katsina_LN	Q937487;Katsina;commons/8/82/The_view_from_peak_of_Gobarau_Minaret.jpg	Q937487;Katsina;commons/d/d3/Locator_Map_Katsina-Nigeria.png
+katsina_LN	Q937487;Katsina_(city);commons/8/82/The_view_from_peak_of_Gobarau_Minaret.jpg	Q937487;Katsina_(city);commons/d/d3/Locator_Map_Katsina-Nigeria.png
 lagos_LN	Q8673;Lagos;commons/0/04/5th_Avenue_Road,_Egbeda,_Lagos.jpg	Q8673;Lagos;commons/0/07/Location_of_Lagos.png	Q8673;Lagos;commons/1/19/Lagos_State_Flag_(1967-1970).svg	Q8673;Lagos;commons/4/45/Lagos_Seal.png
 maiduguri_LN	Q221436;Maiduguri;commons/a/ae/Locator_Map_Maiduguri-Nigeria.png	Q221436;Maiduguri;commons/f/f3/Abdl_maleeq16.jpg
 zaria_LN	Q147975;Zaria;commons/8/88/Zaria_130085554_1ac87fb1d9.jpg	Q147975;Zaria;commons/f/f9/Flag_of_the_Zaria_Emirate.svg
@@ -14850,14 +14854,14 @@ warsaw_LN	Q270;Warsaw;commons/1/14/Flag_of_Warsaw.svg	Q270;Warsaw;commons/3/3b/P
 bydgoszcz_LN	Q41252;Bydgoszcz;commons/6/69/Stary_Rynek_w_Bydgoszczy_edit.jpg	Q41252;Bydgoszcz;commons/b/bc/Bydgoszcz_schemat_osiedli.PNG	Q41252;Bydgoszcz;commons/c/c4/POL_Bydgoszcz_flag.svg	Q41252;Bydgoszcz;commons/e/e4/POL_Bydgoszcz_COA.svg
 krakow_LN	Q31487;Krak%C3%B3w;commons/4/41/POL_Kraków_COA.svg	Q31487;Krak%C3%B3w;commons/4/4d/Flag_of_Kraków.svg	Q31487;Krak%C3%B3w;commons/8/89/Zamek_Królewski_na_Wawelu_(1).jpg	Q31487;Krak%C3%B3w;commons/c/c9/POL_Kraków_map.svg
 gdansk_LN	Q1792;Gda%C5%84sk;commons/2/29/Gdansk_DK.svg	Q1792;Gda%C5%84sk;commons/9/91/POL_Gdańsk_COA.svg	Q1792;Gda%C5%84sk;commons/d/d6/Calle_Dlugie_Pobrzeze,_Gdansk,_Polonia,_2013-05-20,_DD_05.jpg	Q1792;Gda%C5%84sk;commons/f/fe/POL_Gdańsk_flag.svg
-katowice_PN	Q588;Katowice;commons/0/0a/Katowice_Rynek.jpg	Q588;Katowice;commons/b/bb/Katowice_Flaga.svg	Q588;Katowice;commons/c/cc/Katowice_Herb.svg	Q588;Katowice;commons/f/fd/POL_Katowice_map.svg
+katowice_LN	Q588;Katowice;commons/0/0a/Katowice_Rynek.jpg	Q588;Katowice;commons/b/bb/Katowice_Flaga.svg	Q588;Katowice;commons/c/cc/Katowice_Herb.svg	Q588;Katowice;commons/f/fd/POL_Katowice_map.svg
 lodz_LN	Q580;%C5%81%C3%B3d%C5%BA;commons/5/5a/POL_Łódź_map.svg	Q580;%C5%81%C3%B3d%C5%BA;commons/c/c5/POL_Łódź_COA.svg	Q580;%C5%81%C3%B3d%C5%BA;commons/d/d2/Flag_of_Łódź.svg	Q580;%C5%81%C3%B3d%C5%BA;commons/f/f5/Sebastian_Glapinski_2017_(Unsplash).jpg
 lublin_LN	Q37333;Lublin;commons/2/23/POL_Lublin_flag_(of_the_city_office).svg	Q37333;Lublin;commons/6/6a/Lublin_PanoramaStaregoMiasta.JPG	Q37333;Lublin;commons/e/e4/POL_Lublin_COA_1.svg
 wroclaw_LN	Q1799;Wroc%C5%82aw;commons/0/07/Herb_wroclaw.svg	Q1799;Wroc%C5%82aw;commons/1/1b/POL_Wrocław_flag.svg	Q1799;Wroc%C5%82aw;commons/3/33/WroclawDrogi.svg	Q1799;Wroc%C5%82aw;commons/f/f8/Rynek_Starego_Miasta_We_Wroclawiu_(152991773).jpeg
 zabrze_LN	Q103892;Zabrze;commons/6/61/POL_Zabrze_flag.svg	Q103892;Zabrze;commons/8/84/POL_Zabrze_COA.svg	Q103892;Zabrze;commons/c/c7/POL_Zabrze_map.svg	Q103892;Zabrze;commons/c/cf/Zabrze_-_Poczta_Główna_01.jpg
 portugal_LN	Q45;Portugal;commons/1/15/Coat_of_arms_of_Portugal.svg	Q45;Portugal;commons/5/5c/Flag_of_Portugal.svg	Q45;Portugal;commons/a/a3/Portugal_on_the_globe_(Europe_centered).svg
 azores_LN	Q25263;Azores;commons/3/3a/Locator_map_of_Azores_in_EU.svg	Q25263;Azores;commons/6/6c/Flag_of_the_Azores.svg	Q25263;Azores;commons/7/78/Coat_of_arms_of_the_Azores.svg	Q25263;Azores;commons/8/83/Açores_2010-07-19_(5047589237).jpg
-madeira_2_PN	Q26253;Madeira;commons/3/3e/EU-Portugal_with_Madeira_circled.svg	Q26253;Madeira;commons/9/95/Coat_of_arms_of_Madeira.svg	Q26253;Madeira;commons/a/a4/Flag_of_Madeira.svg	Q26253;Madeira;commons/e/e2/Madeira_71.jpg
+madeira_2_LN	Q26253;Madeira;commons/3/3e/EU-Portugal_with_Madeira_circled.svg	Q26253;Madeira;commons/9/95/Coat_of_arms_of_Madeira.svg	Q26253;Madeira;commons/a/a4/Flag_of_Madeira.svg	Q26253;Madeira;commons/e/e2/Madeira_71.jpg
 braga_LN	Q83247;Braga;commons/2/25/BRG.png	Q83247;Braga;commons/4/40/Pt-brg1.png	Q83247;Braga;commons/7/7e/Braga_Montage.png	Q83247;Braga;commons/9/9f/Arco_da_porta_nova_Braga.jpg	Q83247;Braga;commons/b/b3/LocalBraga.svg
 lisbon_LN	Q597;Lisbon;commons/1/16/Bandeira_municipal_de_Lisboa.png	Q597;Lisbon;commons/9/9e/Crest_of_Lisboa.png	Q597;Lisbon;commons/d/d2/Montagem_de_Lisboa.png
 porto_LN	Q36433;Porto;commons/2/24/LocalPorto.svg	Q36433;Porto;commons/4/41/Porto_COA.svg	Q36433;Porto;commons/5/55/O_Porto_(visto_da_Ponte_Dom_Luis_I).jpg	Q36433;Porto;commons/f/f3/Pt-prt1.png
@@ -14977,7 +14981,7 @@ armenia_LN	Q399;Armenia;commons/0/0f/Coat_of_arms_of_Armenia.svg	Q399;Armenia;co
 yerevan_LN	Q1953;Yerevan;commons/4/43/Flag_of_Yerevan.svg	Q1953;Yerevan;commons/5/58/Mount_Ararat_and_the_Yerevan_skyline_(March_2024).png	Q1953;Yerevan;commons/c/c3/Coat_of_аrms_of_Yerevan.svg	Q1953;Yerevan;commons/d/d5/Yerevan_in_Armenia.svg
 azerbaijan_LN	Q227;Azerbaijan;commons/6/6b/Emblem_of_Azerbaijan.svg	Q227;Azerbaijan;commons/7/75/Azerbaijan_orthographic_projection.svg	Q227;Azerbaijan;commons/d/dd/Flag_of_Azerbaijan.svg
 baku_LN	Q9248;Baku;commons/2/22/Baku_City_in_Azerbaijan.svg	Q9248;Baku;commons/2/28/Montage_of_Baku_2019.jpg	Q9248;Baku;commons/4/48/Flag_of_Baku,_Azerbaijan.svg	Q9248;Baku;commons/b/bd/Coat_of_arms_of_Baku.svg
-georgia_3_LN	Q230;Georgia_(country);commons/0/0f/Flag_of_Georgia.svg	Q230;Georgia_(country);commons/6/67/Georgia_(orthographic_projection_with_inset).svg	Q230;Georgia_(country);commons/9/94/Greater_coat_of_arms_of_Georgia.svg
+georgia_3_LN	Q230;Georgia_(country);commons/0/0f/Flag_of_Georgia.svg	Q230;Georgia_(country);commons/6/67/Georgia_(orthographic_projection_with_inset).svg	Q230;Georgia_(country);commons/9/93/Abudelauri_valley_under_clouds,_early_summer,_Georgia.jpg	Q230;Georgia_(country);commons/9/94/Greater_coat_of_arms_of_Georgia.svg
 tbilisi_LN	Q994;Tbilisi;commons/3/31/Flag_of_Tbilisi.svg	Q994;Tbilisi;commons/4/4f/Seal_of_Tbilisi,_Georgia.svg	Q994;Tbilisi;commons/8/8b/Vista_de_Tiflis,_Georgia,_2016-09-29,_DD_67-71_PAN.jpg	Q994;Tbilisi;commons/d/d9/Τιφλίδος_Πίναξ.png
 abkhazia_LN	Q23334;Abkhazia_(region);commons/3/38/Abkhaziaorthographicprojection.svg	Q23334;Abkhazia_(region);commons/4/4a/Location_of_the_region_of_Abkhazia_in_Eastern_Europe.svg	Q23334;Abkhazia_(region);commons/a/a7/რიწის_ტბა.jpg
 kazakhstan_LN	Q232;Kazakhstan;commons/3/3e/Kazakhstan_(orthographic_projection).svg	Q232;Kazakhstan;commons/d/d3/Flag_of_Kazakhstan.svg	Q232;Kazakhstan;commons/e/ee/Emblem_of_Kazakhstan_latin.svg
@@ -15093,7 +15097,7 @@ mobile_2_LN	Q79875;Mobile,_Alabama;commons/4/43/Mobile_County_Alabama_Incorporat
 selma_LN	Q79941;Selma,_Alabama;commons/1/1a/Dallas_County_Alabama_Incorporated_and_Unincorporated_areas_Selma_Highlighted.svg	Q79941;Selma,_Alabama;commons/4/4f/The_St._James_Hotel,_the_only_surviving_hotel_in_the_downtown_historic_district,_Selma,_Alabama_LCCN2010639082.tif
 tuscaloosa_LN	Q79580;Tuscaloosa,_Alabama;commons/6/62/Tuscaloosa_Greensboro_Avenue.jpg	Q79580;Tuscaloosa,_Alabama;commons/9/98/Tuscaloosa_County_Alabama_Incorporated_and_Unincorporated_areas_Tuscaloosa_Highlighted.svg
 tuskegee_LN	Q79718;Tuskegee,_Alabama;commons/7/7b/Tuskegee3.JPG	Q79718;Tuskegee,_Alabama;commons/b/b3/Macon_County_Alabama_Incorporated_and_Unincorporated_areas_Tuskegee_Highlighted.svg
-alaska_PN	Q797;Alaska;commons/8/81/Alaska_tmo_2013168_lrg(1).jpg	Q797;Alaska;commons/8/84/Alaska_in_United_States_(US50).svg	Q797;Alaska;commons/c/c1/Seal_of_the_State_of_Alaska.svg	Q797;Alaska;commons/e/e6/Flag_of_Alaska.svg
+alaska_LN	Q797;Alaska;commons/8/81/Alaska_tmo_2013168_lrg(1).jpg	Q797;Alaska;commons/8/84/Alaska_in_United_States_(US50).svg	Q797;Alaska;commons/c/c1/Seal_of_the_State_of_Alaska.svg	Q797;Alaska;commons/e/e6/Flag_of_Alaska.svg
 juneau_LN	Q29445;Juneau,_Alaska;commons/2/2a/Downtown_Juneau_and_Douglas_Island.jpg	Q29445;Juneau,_Alaska;commons/4/49/Map_of_Alaska_highlighting_Juneau_City_and_Borough.png	Q29445;Juneau,_Alaska;commons/7/77/Flag_of_Juneau,_Alaska.svg
 anchorage_3_LN	Q39450;Anchorage,_Alaska;commons/3/32/Flag_of_Anchorage,_Alaska.svg	Q39450;Anchorage,_Alaska;commons/4/4a/Anchorage_on_an_April_evening.jpg	Q39450;Anchorage,_Alaska;commons/5/54/Seal_of_Anchorage,_Alaska.png	Q39450;Anchorage,_Alaska;commons/5/5d/Map_of_Alaska_highlighting_Anchorage_Municipality.svg
 nome_LN	Q79996;Nome,_Alaska;commons/0/06/Seal_of_Nome,_Alaska.svg	Q79996;Nome,_Alaska;commons/3/33/Nome_Alaska_(1).jpg
@@ -15102,7 +15106,7 @@ skagway_LN	Q615975;Skagway,_Alaska;commons/7/74/Skagway_aerial_view.jpg	Q615975;
 valdez_LN	Q80037;Valdez,_Alaska;commons/6/61/Valdez_Alaska_1.jpg	Q80037;Valdez,_Alaska;commons/d/d6/AKMap-doton-Valdez.PNG
 alexander_archipelago_LN	Q140510;Alexander_Archipelago;commons/6/6f/Alexander_archipelago.jpg
 admiralty_island_LN	Q359266;Admiralty_Island;commons/2/29/AKMap-doton-Angoon.png	Q359266;Admiralty_Island;commons/f/f0/Adis_windfall_harbor.jpg
-arizona_1_PN	Q816;Arizona;commons/0/0a/Colorado_River_from_Desert_View-1000px.jpeg	Q816;Arizona;commons/9/9d/Flag_of_Arizona.svg	Q816;Arizona;commons/d/d8/Arizona_in_United_States.svg
+arizona_1_LN	Q816;Arizona;commons/0/0a/Colorado_River_from_Desert_View-1000px.jpeg	Q816;Arizona;commons/9/9d/Flag_of_Arizona.svg	Q816;Arizona;commons/d/d8/Arizona_in_United_States.svg
 flagstaff_LN	Q79842;Flagstaff,_Arizona;commons/0/08/Flagstaff_downtown_SFmtn.jpg	Q79842;Flagstaff,_Arizona;commons/3/38/Flag_of_Flagstaff,_Arizona.svg	Q79842;Flagstaff,_Arizona;commons/a/a4/Coconino_County_incorporated_areas_Flagstaff_highlighted.svg
 mesa_2_LN	Q49261;Mesa,_Arizona;commons/0/0c/Downtown_Mesa_Arizona.jpg	Q49261;Mesa,_Arizona;commons/1/11/Maricopa_County_Arizona_Incorporated_and_Unincorporated_areas_Mesa_Highlighted_0446000.svg	Q49261;Mesa,_Arizona;commons/4/40/Flag_of_Mesa,_Arizona.svg
 nogales_LN	Q79783;Nogales,_Arizona;commons/1/1c/Santa_Cruz_County_Incorporated_and_Unincorporated_areas_Nogales_highlighted.svg	Q79783;Nogales,_Arizona;commons/4/42/Nogales.jpg
@@ -15120,7 +15124,7 @@ jonesboro_LN	Q61455;Jonesboro,_Arkansas;commons/e/ed/Jonesboro_collage.png	Q6145
 little_rock_LN	Q33405;Little_Rock,_Arkansas;commons/6/64/Littlerock.jpg	Q33405;Little_Rock,_Arkansas;commons/7/73/Flag_of_Little_Rock,_Arkansas.svg	Q33405;Little_Rock,_Arkansas;commons/b/b0/Pulaski_County_Arkansas_Incorporated_and_Unincorporated_areas_Little_Rock_Highlighted.svg
 pine_bluff_LN	Q80012;Pine_Bluff,_Arkansas;commons/5/59/Pine_Bluff_AR_-_main_street_and_courthouse.jpg	Q80012;Pine_Bluff,_Arkansas;commons/8/81/Jefferson_County_Arkansas_Incorporated_and_Unincorporated_areas_Pine_Bluff_Highlighted.svg
 texarkana_2_LN	Q79438;Texarkana,_Arkansas;commons/1/18/Miller_County_Arkansas_Incorporated_and_Unincorporated_areas_Texarkana_Highlighted.svg	Q79438;Texarkana,_Arkansas;commons/3/37/U.S._Courthouse_in_Texarkana_IMG_6360.jpg
-california_PN	Q99;California;commons/0/01/Flag_of_California.svg	Q99;California;commons/9/94/California_in_United_States.svg	Q99;California;commons/d/d4/ISS-59_California,_Nevada_and_northern_Mexico.jpg
+california_LN	Q99;California;commons/0/01/Flag_of_California.svg	Q99;California;commons/9/94/California_in_United_States.svg	Q99;California;commons/d/d4/ISS-59_California,_Nevada_and_northern_Mexico.jpg
 anaheim_LN	Q49247;Anaheim,_California;commons/1/17/Flag_of_Anaheim,_California_(1967–2018,_2019–present).svg	Q49247;Anaheim,_California;commons/2/29/Anaheimcityhall.jpg	Q49247;Anaheim,_California;commons/e/e5/Orange_County_California_Incorporated_and_Unincorporated_areas_Anaheim_Highlighted.svg
 disneyland_LN	Q181185;Disneyland;commons/b/bc/Sleepingbeautycastle50.jpg	Q181185;Disneyland;commons/f/f6/Cinderella_Castle_October_2021.jpg
 bakersfield_LN	Q49256;Bakersfield,_California;commons/6/60/BakersfieldSkyline.jpg	Q49256;Bakersfield,_California;commons/9/9c/Seal_of_Bakersfield,_California.png	Q49256;Bakersfield,_California;commons/b/be/Flag_of_Bakersfield,_California.png	Q49256;Bakersfield,_California;commons/c/c3/Kern_County_California_Incorporated_and_Unincorporated_areas_Bakersfield_Highlighted.svg
@@ -15132,7 +15136,7 @@ eureka_LN	Q488702;Eureka,_California;commons/4/4c/Flag_of_Eureka,_California.web
 fresno_LN	Q43301;Fresno,_California;commons/4/4d/Downtown_Fresno_Night.png	Q43301;Fresno,_California;commons/8/89/Flag_of_Fresno,_California.svg	Q43301;Fresno,_California;commons/e/e3/Fresno_County_California_Incorporated_and_Unincorporated_areas_Fresno_Highlighted.svg
 long_beach_LN	Q16739;Long_Beach,_California;commons/3/35/Flag_of_Long_Beach,_California.png	Q16739;Long_Beach,_California;commons/5/51/LA_County_Incorporated_Areas_Long_Beach_highlighted.svg	Q16739;Long_Beach,_California;commons/e/ea/Long_Beach_06.jpg
 los_angeles_LN	Q65;Los_Angeles;commons/6/69/Los_Angeles_with_Mount_Baldy.jpg	Q65;Los_Angeles;commons/8/85/Flag_of_Los_Angeles,_California.svg	Q65;Los_Angeles;commons/9/92/LA_County_Incorporated_Areas_Los_Angeles_highlighted.svg	Q65;Los_Angeles;commons/c/c3/Coat_of_arms_of_Los_Angeles.svg
-hollywood_3_PN	Q34006;Hollywood,_Los_Angeles;commons/3/33/Map_of_Hollywood_district,_Los_Angeles,_California.png	Q34006;Hollywood,_Los_Angeles;commons/7/7b/Hollywood_sign_hill_view.jpg
+hollywood_3_LN	Q34006;Hollywood,_Los_Angeles;commons/3/33/Map_of_Hollywood_district,_Los_Angeles,_California.png	Q34006;Hollywood,_Los_Angeles;commons/7/7b/Hollywood_sign_hill_view.jpg
 monterey_LN	Q487315;Monterey,_California;commons/8/88/MontereyWharf&Harbor.jpg	Q487315;Monterey,_California;commons/b/b5/Flag_of_Monterey,_California.svg	Q487315;Monterey,_California;commons/c/ce/Monterey_County_California_Incorporated_and_Unincorporated_areas_Monterey_Highlighted.svg
 oakland_LN	Q17042;Oakland,_California;commons/7/7c/Alameda_County_California_Incorporated_and_Unincorporated_areas_Oakland_Highlighted.svg	Q17042;Oakland,_California;commons/a/ad/Flag_of_Oakland,_California.svg	Q17042;Oakland,_California;commons/d/d5/OAKLAND,_CA,_USA_-_Skyline_and_Bridge.JPG
 palo_alto_LN	Q47265;Palo_Alto,_California;commons/4/42/Seal_of_Palo_Alto,_California.svg	Q47265;Palo_Alto,_California;commons/9/99/Palo_Alto,_California_(City_Hall)_2004.jpg	Q47265;Palo_Alto,_California;commons/a/a1/Flag_of_Palo_Alto,_California.svg	Q47265;Palo_Alto,_California;commons/d/d3/Santa_Clara_County_California_Incorporated_and_Unincorporated_areas_Palo_Alto_Highlighted.svg
@@ -15140,7 +15144,7 @@ pasadena_LN	Q485176;Pasadena,_California;commons/0/0a/LA_County_Incorporated_Are
 redding_LN	Q495361;Redding,_California;commons/4/41/Flag_of_Redding,_California.svg	Q495361;Redding,_California;commons/4/4f/Seal_of_Redding,_California.png	Q495361;Redding,_California;commons/d/db/Shasta_County_California_Incorporated_and_Unincorporated_areas_Redding_Highlighted.svg	Q495361;Redding,_California;commons/e/e8/Sundialbridge2.jpg
 riverside_LN	Q49243;Riverside,_California;commons/5/53/Riversidehomes.JPG	Q49243;Riverside,_California;commons/5/57/Flag_of_Riverside,_California_(1967–2020).svg	Q49243;Riverside,_California;commons/9/9b/CAMap-doton-Riverside.PNG	Q49243;Riverside,_California;commons/9/9d/Flag_of_Riverside,_California_(2020).svg
 sacramento_LN	Q18013;Sacramento,_California;commons/b/b6/Flag_of_Sacramento,_California.svg	Q18013;Sacramento,_California;commons/d/d2/Sacramento_County_California_Incorporated_and_Unincorporated_areas_Sacramento_Highlighted.svg	Q18013;Sacramento,_California;commons/f/fe/Sacramento_Riverfront.jpg
-san_bernardino_PN	Q486168;San_Bernardino,_California;commons/4/4c/San_Bernardino_County_California_Incorporated_and_Unincorporated_areas_San_Bernardino_Highlighted.svg	Q486168;San_Bernardino,_California;commons/6/6c/Downtown_San_Bernardino.jpg	Q486168;San_Bernardino,_California;commons/8/85/Flag_of_San_Bernardino,_California.png
+san_bernardino_LN	Q486168;San_Bernardino,_California;commons/4/4c/San_Bernardino_County_California_Incorporated_and_Unincorporated_areas_San_Bernardino_Highlighted.svg	Q486168;San_Bernardino,_California;commons/6/6c/Downtown_San_Bernardino.jpg	Q486168;San_Bernardino,_California;commons/8/85/Flag_of_San_Bernardino,_California.png
 san_diego_LN	Q16552;San_Diego;commons/1/19/Flag_of_San_Diego,_California.svg	Q16552;San_Diego;commons/5/5d/Seal_of_San_Diego,_California.png	Q16552;San_Diego;commons/8/8d/San_Diego_County_California_Incorporated_and_Unincorporated_areas_San_Diego_Highlighted.svg	Q16552;San_Diego;commons/f/ff/SD_Montage.jpg
 san_francisco_LN	Q62;San_Francisco;commons/1/1e/San_Francisco_from_the_Marin_Headlands_in_March_2019.jpg	Q62;San_Francisco;commons/5/55/Flag_of_San_Francisco,_California.svg	Q62;San_Francisco;commons/a/a1/California_county_map_(San_Francisco_County_enlarged).svg
 nob_hill_LN	Q7466;Nob_Hill,_San_Francisco;commons/e/e1/San_Francisco_Nob_Hill_3.jpg
@@ -15151,7 +15155,7 @@ santa_ana_LN	Q49244;Santa_Ana,_California;commons/0/06/Orange_County_California_
 santa_barbara_LN	Q159288;Santa_Barbara,_California;commons/0/07/Aerial-SantaBarbaraCA10-28-08.jpg	Q159288;Santa_Barbara,_California;commons/4/4e/Flag_of_Santa_Barbara,_California.svg	Q159288;Santa_Barbara,_California;commons/7/76/Santa_Barbara_County_California_Incorporated_and_Unincorporated_areas_Santa_Barbara_Highlighted.svg
 santa_clara_LN	Q159260;Santa_Clara,_California;commons/9/9d/Santaclarasit.gif	Q159260;Santa_Clara,_California;commons/a/a2/Flag_of_Santa_Clara,_California.png	Q159260;Santa_Clara,_California;commons/a/a6/Santaclaraconventioncenter.jpg	Q159260;Santa_Clara,_California;commons/e/eb/SantaClaraCitySeal.png
 santa_cruz_LN	Q159232;Santa_Cruz,_California;commons/0/05/Santa_Cruz_County_California_Incorporated_and_Unincorporated_areas_Santa_Cruz_Highlighted.svg	Q159232;Santa_Cruz,_California;commons/4/49/Santa_Cruz,_California_-_Boardwalk.jpg	Q159232;Santa_Cruz,_California;commons/8/88/Seal_of_the_City_of_Santa_Cruz.jpg
-colorado_1_PN	Q1261;Colorado;commons/0/00/Seal_of_Colorado.svg	Q1261;Colorado;commons/4/46/Flag_of_Colorado.svg	Q1261;Colorado;commons/6/60/Colorado_in_United_States.svg
+colorado_1_LN	Q1261;Colorado;commons/0/00/Seal_of_Colorado.svg	Q1261;Colorado;commons/4/46/Flag_of_Colorado.svg	Q1261;Colorado;commons/6/60/Colorado_in_United_States.svg
 boulder_2_LN	Q192517;Boulder,_Colorado;commons/0/05/Boulder_County_Colorado_Incorporated_and_Unincorporated_areas_Boulder_Highlighted.svg	Q192517;Boulder,_Colorado;commons/7/7e/BoulderBearPeak.jpg
 colorado_springs_LN	Q49258;Colorado_Springs,_Colorado;commons/4/45/CC_COSPRINGS.jpg	Q49258;Colorado_Springs,_Colorado;commons/4/48/El_Paso_County_Colorado_Incorporated_and_Unincorporated_areas_Colorado_Springs_Highlighted.svg	Q49258;Colorado_Springs,_Colorado;commons/6/65/Flag_of_Colorado_Springs,_Colorado.svg
 denver_LN	Q16554;Denver;commons/5/50/Seal_of_Denver,_Colorado.svg	Q16554;Denver;commons/6/61/Flag_of_Denver,_Colorado.svg	Q16554;Denver;commons/a/a9/2006-03-26_Denver_Skyline_I-25_Speer.jpg	Q16554;Denver;commons/d/d0/Denver_County_Colorado_Incorporated_and_Unincorporated_areas_Denver_Highlighted_0820000.svg
@@ -15206,7 +15210,7 @@ vidalia_LN	Q2695904;Vidalia,_Georgia;commons/b/b7/Vidalia-GA.jpg	Q2695904;Vidali
 hawaii_1_LN	Q782;Hawaii;commons/4/44/Coat_of_arms_of_Hawaii.svg	Q782;Hawaii;commons/6/6b/Hawaje-NoRedLine.jpg	Q782;Hawaii;commons/8/8f/Hawaii_in_United_States_(US50).svg	Q782;Hawaii;commons/e/ef/Flag_of_Hawaii.svg
 hilo_LN	Q216258;Hilo,_Hawaii;commons/0/0d/HIMap-doton-Hilo.PNG	Q216258;Hilo,_Hawaii;commons/2/2e/Hilo_Montage.png
 honolulu_LN	Q18094;Honolulu;commons/2/21/Waikiki_view_from_Diamond_Head.JPG	Q18094;Honolulu;commons/2/28/Honolulu_County_Hawaii_Incorporated_and_Unincorporated_areas_Honolulu_Highlighted.svg	Q18094;Honolulu;commons/b/b9/Flag_of_Honolulu,_Hawaii.svg
-waikiki_LN	Q254861;Waikiki;commons/2/28/Waikiki_Beach_(2024)-L1004709.jpg
+waikiki_LN	Q254861;Waik%C4%ABk%C4%AB;commons/2/28/Waikiki_Beach_(2024)-L1004709.jpg
 hawaiian_islands_LN	Q192626;Hawaiian_Islands;commons/6/6b/Hawaje-NoRedLine.jpg
 hawaii_2_LN	Q68740;Hawaii_(island);commons/3/3c/Island_of_Hawai'i_-_Landsat_mosaic.jpg	Q68740;Hawaii_(island);commons/6/65/Map_of_Hawaii_highlighting_Hawaii_(island).svg
 kahoolawe_LN	Q224086;Kaho%CA%BBolawe;commons/c/c8/Map_of_Hawaii_highlighting_Kahoolawe.svg	Q224086;Kaho%CA%BBolawe;commons/d/d1/KahoolaweLandsat.jpg
@@ -15215,8 +15219,8 @@ lanai_1_LN	Q187063;Lanai;commons/0/00/Map_of_Hawaii_highlighting_Lanai.svg	Q1870
 maui_LN	Q188705;Maui;commons/8/8c/Maui_panorama.jpg	Q188705;Maui;commons/b/b3/Map_of_Hawaii_highlighting_Maui.svg
 molokai_LN	Q193253;Molokai;commons/8/85/Molokai.jpg	Q193253;Molokai;commons/9/91/Map_of_Hawaii_highlighting_Molokai.svg
 oahu_LN	Q131347;Oahu;commons/8/83/Map_of_Hawaii_highlighting_Oahu.svg	Q131347;Oahu;commons/b/bb/Oahu.jpg
-pearl_harbor_PN	Q127091;Pearl_Harbor;commons/c/c8/Aerial_view_of_Pearl_Harbor_on_1_June_1986_(6422248).jpg
-idaho_PN	Q1221;Idaho;commons/5/52/Snake02.jpg	Q1221;Idaho;commons/a/a0/Idaho_in_United_States.svg	Q1221;Idaho;commons/a/a4/Flag_of_Idaho.svg
+pearl_harbor_LN	Q127091;Pearl_Harbor;commons/c/c8/Aerial_view_of_Pearl_Harbor_on_1_June_1986_(6422248).jpg
+idaho_LN	Q1221;Idaho;commons/5/52/Snake02.jpg	Q1221;Idaho;commons/a/a0/Idaho_in_United_States.svg	Q1221;Idaho;commons/a/a4/Flag_of_Idaho.svg
 boise_LN	Q35775;Boise,_Idaho;commons/9/9a/Boise1-vert.jpg	Q35775;Boise,_Idaho;commons/d/dd/Ada_County_Idaho_Incorporated_and_Unincorporated_areas_Boise_City_Highlighted.svg	Q35775;Boise,_Idaho;commons/f/fa/Flag_of_Boise,_Idaho_(1972–2001).gif
 coeur_d'alene_LN	Q499681;Coeur_d%27Alene,_Idaho;commons/0/09/2008-1018-021-CoeurdAleneResort.JPG	Q499681;Coeur_d%27Alene,_Idaho;commons/5/5d/Kootenai_County_Idaho_Incorporated_and_Unincorporated_areas_Coeur_d'Alene_Highlighted.svg
 idaho_falls_LN	Q496360;Idaho_Falls,_Idaho;commons/0/0e/TFTemplePark.jpg	Q496360;Idaho_Falls,_Idaho;commons/2/2e/Bonneville_County_Idaho_Incorporated_and_Unincorporated_areas_Idaho_Falls_Highlighted.svg
@@ -15264,7 +15268,7 @@ lawrence_7_LN	Q493840;Lawrence,_Kansas;commons/4/43/Shunganunga_Boulder_with_Cit
 salina_LN	Q1650620;Salina,_Kansas;commons/2/2c/Salina_water_tower.jpg	Q1650620;Salina,_Kansas;commons/4/45/Saline_County_Kansas_Incorporated_and_Unincorporated_areas_Salina_Highlighted.svg
 topeka_LN	Q41057;Topeka,_Kansas;commons/6/6c/Flag_of_Topeka,_Kansas.svg	Q41057;Topeka,_Kansas;commons/e/e1/Topeka,_Kansas.JPG	Q41057;Topeka,_Kansas;commons/f/f3/Shawnee_County_Kansas_Incorporated_and_Unincorporated_areas_Topeka_Highlighted.svg
 wichita_LN	Q49266;Wichita,_Kansas;commons/6/69/Sedgwick_County_Kansas_Incorporated_and_Unincorporated_areas_Wichita_Highlighted.svg	Q49266;Wichita,_Kansas;commons/b/b7/Wichita_Aerial_Facing_North_II_(50902494607).jpg	Q49266;Wichita,_Kansas;commons/f/f0/Flag_of_Wichita,_Kansas.svg
-kentucky_PN	Q1603;Kentucky;commons/8/8d/Flag_of_Kentucky.svg	Q1603;Kentucky;commons/e/e2/Kentucky_in_United_States.svg
+kentucky_LN	Q1603;Kentucky;commons/8/8d/Flag_of_Kentucky.svg	Q1603;Kentucky;commons/e/e2/Kentucky_in_United_States.svg
 bowling_green_1_LN	Q694545;Bowling_Green,_Kentucky;commons/5/52/Shops_along_Fountain_Square_in_Bowling_Green,_Kentucky_2008.JPG	Q694545;Bowling_Green,_Kentucky;commons/f/fd/Warren_County_Kentucky_Incorporated_and_Unincorporated_areas_Bowling_Green_Highlighted_2108902.svg
 frankfort_LN	Q28603;Frankfort,_Kentucky;commons/2/22/Flag_of_Frankfort,_Kentucky.svg	Q28603;Frankfort,_Kentucky;commons/a/a6/KY_State_Capitol.jpg	Q28603;Frankfort,_Kentucky;commons/c/c2/KYMap-doton-Frankfort.PNG
 lexington_2_LN	Q49241;Lexington,_Kentucky;commons/0/0b/LexingtonDowntown.JPG	Q49241;Lexington,_Kentucky;commons/7/72/Map_of_Kentucky_highlighting_Fayette_County.svg
@@ -15327,7 +15331,7 @@ grand_rapids_LN	Q184587;Grand_Rapids,_Michigan;commons/a/a0/Kent_County_Michigan
 houghton_2_LN	Q12429;Houghton,_Michigan;commons/7/79/Houghton_County_Michigan_Incorporated_and_Unincorporated_areas_Houghton_Highlighted.svg	Q12429;Houghton,_Michigan;commons/f/f9/Downtown_Hougton_MI.JPG
 jackson_1_LN	Q984374;Jackson,_Michigan;commons/2/23/Jackson_County_Michigan_Incorporated_and_Unincorporated_areas_Jackson_Highlighted.svg	Q984374;Jackson,_Michigan;commons/7/79/Downtown_Jackson,_Michigan.jpg
 kalamazoo_LN	Q167155;Kalamazoo,_Michigan;commons/2/21/Kalamazoo_County_Michigan_Incorporated_and_Unincorporated_areas_Kalamazoo_Highlighted.svg	Q167155;Kalamazoo,_Michigan;commons/7/7c/Kalamazoo.jpg
-lancing_PN	Q28237;Lansing,_Michigan;commons/5/5d/Ingham_County_Michigan_Incorporated_and_Unincorporated_areas_Lansing_Highlighted.svg	Q28237;Lansing,_Michigan;commons/e/e8/1_Lansing_Pan_cropped.jpg
+lancing_LN	Q28237;Lansing,_Michigan;commons/5/5d/Ingham_County_Michigan_Incorporated_and_Unincorporated_areas_Lansing_Highlighted.svg	Q28237;Lansing,_Michigan;commons/e/e8/1_Lansing_Pan_cropped.jpg
 marquette_LN	Q12443;Marquette,_Michigan;commons/5/57/Marquette_County_Michigan_Incorporated_and_Unincorporated_areas_Marquette_Highlighted.svg	Q12443;Marquette,_Michigan;commons/8/88/Downtown_Marquette,_Michigan_in_Autumn_(43657514144).jpg
 monroe_2_LN	Q995533;Monroe,_Michigan;commons/b/ba/Monroe_County_Michigan_Incorporated_and_Unincorporated_areas_Monroe_highlighted.svg	Q995533;Monroe,_Michigan;commons/c/ca/MonroeDowntown.jpg
 saginaw_LN	Q719;Saginaw,_Michigan;commons/4/47/Saginaw,_MI_skyline_as_seen_from_the_Bearinger_Building.jpg
@@ -15363,7 +15367,7 @@ poplar_bluff_LN	Q955462;Poplar_Bluff,_Missouri;commons/2/26/MOMap-doton-Poplar_B
 st_louis_LN	Q38022;St._Louis;commons/0/03/Gateway_Arch_-_St._Louis_-_Missouri_(17275578342).jpg	Q38022;St._Louis;commons/a/ae/Map_of_Missouri_highlighting_Saint_Louis_City.svg	Q38022;St._Louis;commons/b/b8/Flag_of_St._Louis,_Missouri.svg
 sedalia_LN	Q966486;Sedalia,_Missouri;commons/9/98/20160711_63_Sedalia,_Missouri.jpg	Q966486;Sedalia,_Missouri;commons/e/e0/Pettis_County_Missouri_Incorporated_and_Unincorporated_areas_Sedalia_Highlighted.svg
 springfield_2_LN	Q135615;Springfield,_Missouri;commons/8/8d/Greene_County_Missouri_Incorporated_and_Unincorporated_areas_Springfield_Highlighted.svg	Q135615;Springfield,_Missouri;commons/a/a9/ParkCentralSquarefountainbyCVBCS.jpg	Q135615;Springfield,_Missouri;commons/f/f1/Flag_of_Springfield,_Missouri.svg
-montana_PN	Q1212;Montana;commons/0/08/ISS028-E-12597_-_View_of_Montana.jpg	Q1212;Montana;commons/6/67/Montana_in_United_States.svg	Q1212;Montana;commons/a/af/Great_Seal_of_Montana.svg	Q1212;Montana;commons/c/cb/Flag_of_Montana.svg
+montana_LN	Q1212;Montana;commons/0/08/ISS028-E-12597_-_View_of_Montana.jpg	Q1212;Montana;commons/6/67/Montana_in_United_States.svg	Q1212;Montana;commons/a/af/Great_Seal_of_Montana.svg	Q1212;Montana;commons/c/cb/Flag_of_Montana.svg
 bozeman_LN	Q569678;Bozeman,_Montana;commons/9/90/Bozeman_Flag.png	Q569678;Bozeman,_Montana;commons/a/a3/Gallatin_County_Montana_Incorporated_and_Unincorporated_areas_Bozeman_Highlighted.svg	Q569678;Bozeman,_Montana;commons/f/fe/Bozeman_MT_aerial.jpg
 billings_LN	Q166304;Billings,_Montana;commons/6/61/Billings_MT_Downtown.jpg	Q166304;Billings,_Montana;commons/9/9e/Flag_of_Billings,_Montana.png	Q166304;Billings,_Montana;commons/a/a8/Yellowstone_County_Montana_Incorporated_and_Unincorporated_areas_Billings_Highlighted.svg
 butte_2_LN	Q467664;Butte,_Montana;commons/0/00/Silver_Bow_County_Montana_Incorporated_and_Unincorporated_areas_Butte_Highlighted.svg	Q467664;Butte,_Montana;commons/9/94/Butte-Panorama_01.jpg
@@ -15375,7 +15379,7 @@ grand_island_LN	Q461826;Grand_Island,_Nebraska;commons/0/02/Hall_County_Courthou
 lincoln_2_LN	Q28260;Lincoln,_Nebraska;commons/6/6c/Skyline_of_Downtown_Lincoln,_Nebraska,_USA_(2023).jpg	Q28260;Lincoln,_Nebraska;commons/7/78/Lancaster_County_Nebraska_Incorporated_and_Unincorporated_areas_Lincoln_Highlighted.svg	Q28260;Lincoln,_Nebraska;commons/7/7b/Flag_of_Lincoln,_Nebraska_(2022).svg
 north_platte_LN	Q989960;North_Platte,_Nebraska;commons/2/29/Golden_Spike_Tower,_North_Platte.JPG	Q989960;North_Platte,_Nebraska;commons/f/f5/Lincoln_County_Nebraska_Incorporated_and_Unincorporated_areas_North_Platte_Highlighted.svg
 omaha_LN	Q43199;Omaha,_Nebraska;commons/4/4e/Heartland_of_America_Park,_Omaha,_Nebraska.jpg	Q43199;Omaha,_Nebraska;commons/6/63/Flag_of_Omaha,_Nebraska.svg	Q43199;Omaha,_Nebraska;commons/a/ac/Douglas_County_Nebraska_Incorporated_and_Unincorporated_areas_Omaha_Highlighted.svg
-nevada_PN	Q1227;Nevada;commons/7/74/State_Seal_of_Nevada.svg	Q1227;Nevada;commons/b/ba/Nevada_in_United_States.svg	Q1227;Nevada;commons/f/f1/Flag_of_Nevada.svg
+nevada_LN	Q1227;Nevada;commons/7/74/State_Seal_of_Nevada.svg	Q1227;Nevada;commons/b/ba/Nevada_in_United_States.svg	Q1227;Nevada;commons/f/f1/Flag_of_Nevada.svg
 carson_city_LN	Q40881;Carson_City,_Nevada;commons/b/b5/Nevada_State_Museum.jpg	Q40881;Carson_City,_Nevada;commons/c/ce/Map_of_Nevada_highlighting_Carson_City.svg
 las_vegas_LN	Q23768;Las_Vegas;commons/3/37/Clark_County_Nevada_Incorporated_Areas_Las_Vegas_highlighted.svg	Q23768;Las_Vegas;commons/d/d8/Downtown_Las_Vegas_from_Stratosphere_3.jpg	Q23768;Las_Vegas;commons/e/ed/Flag_of_Las_Vegas,_Nevada.svg
 reno_LN	Q49225;Reno,_Nevada;commons/0/09/Reno,_Nevada_photo_D_Ramey_Logan.jpg	Q49225;Reno,_Nevada;commons/1/14/Flag_of_Reno,_Nevada.svg	Q49225;Reno,_Nevada;commons/f/f6/Washoe_County_Nevada_Incorporated_and_Unincorporated_areas_Reno_Highlighted.svg
@@ -15384,7 +15388,7 @@ concord_1_LN	Q28249;Concord,_New_Hampshire;commons/1/1e/Downtown_Concord,_NH.JPG
 manchester_1_LN	Q48370;Manchester,_New_Hampshire;commons/3/3a/Hillsborough-Manchester-NH.png	Q48370;Manchester,_New_Hampshire;commons/a/a4/Manch-DownTown.jpg
 portsmouth_2_LN	Q49191;Portsmouth,_New_Hampshire;commons/5/5a/Portsmouth,_NH_-_Market_Square.JPG	Q49191;Portsmouth,_New_Hampshire;commons/9/97/Rockingham-Portsmouth-NH.png
 new_jersey_1_LN	Q1408;New_Jersey;commons/8/84/New_Jersey_in_United_States_(zoom).svg	Q1408;New_Jersey;commons/9/92/Flag_of_New_Jersey.svg	Q1408;New_Jersey;commons/f/fd/Coat_of_Arms_of_New_Jersey.svg
-new_jersey_2_PN	Q1408;New_Jersey;commons/8/84/New_Jersey_in_United_States_(zoom).svg	Q1408;New_Jersey;commons/9/92/Flag_of_New_Jersey.svg	Q1408;New_Jersey;commons/f/fd/Coat_of_Arms_of_New_Jersey.svg
+new_jersey_2_LN	Q1408;New_Jersey;commons/8/84/New_Jersey_in_United_States_(zoom).svg	Q1408;New_Jersey;commons/9/92/Flag_of_New_Jersey.svg	Q1408;New_Jersey;commons/f/fd/Coat_of_Arms_of_New_Jersey.svg
 atlantic_city_LN	Q139564;Atlantic_City,_New_Jersey;commons/b/b2/Flag_of_Atlantic_City,_New_Jersey.gif	Q139564;Atlantic_City,_New_Jersey;commons/b/b3/Atlantic_city_nj_001.png	Q139564;Atlantic_City,_New_Jersey;commons/e/e2/Logo_of_Atlantic_City,_New_Jersey.svg	Q139564;Atlantic_City,_New_Jersey;commons/f/f5/Atlantic_City_skyline_from_47th_floor_of_Revel.jpg
 trenton_LN	Q25330;Trenton,_New_Jersey;commons/9/93/2009-08-17_View_of_downtown_Trenton_in_New_Jersey_and_the_mouth_of_the_Assunpink_Creek_from_across_the_Delaware_River_in_Morrisville,_Pennsylvania.jpg	Q25330;Trenton,_New_Jersey;commons/c/c2/Mercer_County_New_Jersey_incorporated_and_unincorporated_areas_Trenton_highlighted.svg	Q25330;Trenton,_New_Jersey;commons/c/c6/Flag_of_Trenton,_New_Jersey.svg
 bayonne_LN	Q812589;Bayonne,_New_Jersey;commons/0/06/Bayonne_Bridge_Collins_Pk_jeh.JPG	Q812589;Bayonne,_New_Jersey;commons/0/06/Flag_of_Bayonne,_New_Jersey.png	Q812589;Bayonne,_New_Jersey;commons/4/45/Title-bar4_01.gif	Q812589;Bayonne,_New_Jersey;commons/a/a2/Hudson_County_New_Jersey_Incorporated_and_Unincorporated_areas_Bayonne_Highlighted.svg
@@ -15468,9 +15472,9 @@ cincinnati_LN	Q43196;Cincinnati;commons/0/01/Cincinnati_Skyline_from_Devou_Park.
 columbus_1_LN	Q16567;Columbus,_Ohio;commons/6/60/Montage_Columbus_1.jpg	Q16567;Columbus,_Ohio;commons/c/c5/Flag_of_Columbus,_Ohio.svg	Q16567;Columbus,_Ohio;commons/e/ea/OHMap-doton-Columbus.svg
 dayton_LN	Q34739;Dayton,_Ohio;commons/2/28/Flag_of_Dayton,_Ohio.svg	Q34739;Dayton,_Ohio;commons/d/db/Montage_dayton_1.jpg	Q34739;Dayton,_Ohio;commons/d/df/Seal_of_Dayton,_Ohio.png	Q34739;Dayton,_Ohio;commons/f/fb/Montgomery_County_Ohio_incorporated_and_unincorporated_areas_Dayton_highlighted.svg
 mansfield_2_LN	Q983698;Mansfield,_Ohio;commons/3/3a/OHMap-doton-Mansfield.png	Q983698;Mansfield,_Ohio;commons/8/84/Mansfield_skyline.jpg
-toledo_2_LN	Q49239;Toledo,_Ohio;commons/0/0b/Flag_of_Toledo,_Ohio_(1994–2025).svg	Q49239;Toledo,_Ohio;commons/3/36/Fifth_Third_Field_in_Toledo.jpeg	Q49239;Toledo,_Ohio;commons/f/f8/Lucas_County_Ohio_incorporated_and_unincorporated_areas_Toledo_highlighted.svg
+toledo_2_LN	Q49239;Toledo,_Ohio;commons/3/36/Fifth_Third_Field_in_Toledo.jpeg	Q49239;Toledo,_Ohio;commons/c/c8/Flag_of_Toledo,_Ohio_(2025–).svg	Q49239;Toledo,_Ohio;commons/f/f8/Lucas_County_Ohio_incorporated_and_unincorporated_areas_Toledo_highlighted.svg
 youngstown_LN	Q216820;Youngstown,_Ohio;commons/0/05/OHMap-doton-Youngstown.png	Q216820;Youngstown,_Ohio;commons/4/48/YoungstownOhio1910s.jpg	Q216820;Youngstown,_Ohio;commons/7/7d/Youngstown_skyline_Wean_Park.jpg	Q216820;Youngstown,_Ohio;commons/b/b9/Historical_Collections_of_Ohio-_An_Encyclopedia_of_the_State%3B_History_Both_General_and_Local,_Geography_with_Descriptions_of_Its_Counties,_Cities_and_Villages,_Its_Agricultural,_Manufacturing,_Mining_(14586430520).jpg	Q216820;Youngstown,_Ohio;commons/d/d1/Seal_of_Youngstown,_Ohio.svg
-oklahoma_PN	Q1649;Oklahoma;commons/6/6e/Flag_of_Oklahoma.svg	Q1649;Oklahoma;commons/9/99/Oklahoma_in_United_States.svg
+oklahoma_LN	Q1649;Oklahoma;commons/6/6e/Flag_of_Oklahoma.svg	Q1649;Oklahoma;commons/9/99/Oklahoma_in_United_States.svg
 bartlesville_LN	Q809450;Bartlesville,_Oklahoma;commons/1/11/OKMap-doton-Bartlesville.PNG	Q809450;Bartlesville,_Oklahoma;commons/a/ae/Downtown_Bartlesville,_OK.jpg
 enid_LN	Q984361;Enid,_Oklahoma;commons/2/29/Garfield_County_Oklahoma_incorporated_and_unincorporated_areas_Enid_highlighted.svg	Q984361;Enid,_Oklahoma;commons/7/76/East_on_Broadway.JPG
 lawton_LN	Q503336;Lawton,_Oklahoma;commons/7/79/Comanche_County_Oklahoma_Incorporated_areas_highlighting_Lawton.svg	Q503336;Lawton,_Oklahoma;commons/d/d4/Old_Lawton_High_School.jpg
@@ -15478,7 +15482,7 @@ mcalester_LN	Q1994656;McAlester,_Oklahoma;commons/6/61/McAlesterLibraryOK.jpg	Q1
 muskogee_LN	Q524233;Muskogee,_Oklahoma;commons/9/91/Muskogee_County_Courthouse.JPG
 oklahoma_city_LN	Q34863;Oklahoma_City;commons/2/2e/Oklahoma_City_montage.png	Q34863;Oklahoma_City;commons/a/a5/Oklahoma_County_Oklahoma_Incorporated_and_Unincorporated_areas_Oklahoma_City_highlighted.svg	Q34863;Oklahoma_City;commons/e/ef/Flag_of_Oklahoma_City,_Oklahoma.png
 tulsa_LN	Q44989;Tulsa,_Oklahoma;commons/1/13/Flag_of_Tulsa,_Oklahoma_(2018).svg	Q44989;Tulsa,_Oklahoma;commons/4/4a/Tulsa_County_Oklahoma_incorporated_and_unincorporated_areas_Tulsa_highlighted.svg	Q44989;Tulsa,_Oklahoma;commons/a/ae/Seal_of_Tulsa,_Oklahoma.svg	Q44989;Tulsa,_Oklahoma;commons/f/fa/Tulsa_Skyline.jpg
-oregon_PN	Q824;Oregon;commons/5/59/Oregon_in_United_States.svg	Q824;Oregon;commons/b/b5/Columbia_river_gorge_from_crown_point.jpg	Q824;Oregon;commons/b/b9/Flag_of_Oregon.svg
+oregon_LN	Q824;Oregon;commons/5/59/Oregon_in_United_States.svg	Q824;Oregon;commons/b/b5/Columbia_river_gorge_from_crown_point.jpg	Q824;Oregon;commons/b/b9/Flag_of_Oregon.svg
 bend_5_LN	Q671288;Bend,_Oregon;commons/1/1a/BendORPanoramic.jpg	Q671288;Bend,_Oregon;commons/7/79/Deschutes_County_Oregon_Incorporated_and_Unincorporated_areas_Bend_Highlighted.svg
 eugene_2_LN	Q171224;Eugene,_Oregon;commons/3/36/Lane_County_Oregon_Incorporated_and_Unincorporated_areas_Eugene_Highlighted.svg	Q171224;Eugene,_Oregon;commons/4/40/Eugene_panorama.jpg
 klamath_falls_LN	Q846146;Klamath_Falls,_Oregon;commons/0/03/Klamath_Falls_downtown.JPG	Q846146;Klamath_Falls,_Oregon;commons/a/ae/Klamath_County_Oregon_Incorporated_and_Unincorporated_areas_Klamath_Falls_Highlighted.svg
@@ -15551,7 +15555,7 @@ tyler_LN	Q499169;Tyler,_Texas;commons/3/3f/Tyler_TX_Montage.jpg	Q499169;Tyler,_T
 victoria_4_LN	Q784496;Victoria,_Texas;commons/1/1c/TX_Victoria_County_Victoria.svg	Q784496;Victoria,_Texas;commons/5/5a/Nao_Victoria_in_Malaga_Port_2021_01.jpg
 waco_LN	Q128244;Waco,_Texas;commons/0/0b/Coat_of_arms_of_Waco,_Texas.png	Q128244;Waco,_Texas;commons/1/1a/McLennan_County_Waco.svg	Q128244;Waco,_Texas;commons/1/1b/Flag_of_Waco,_Texas.svg	Q128244;Waco,_Texas;commons/e/e1/WacoCity.jpg
 wichita_falls_LN	Q128349;Wichita_Falls,_Texas;commons/c/c8/Wichita_County_WichitaFalls.svg	Q128349;Wichita_Falls,_Texas;commons/f/f3/Revised_photo_of_"The_Falls"_at_Wichita_Falls,_TX_IMG_6918.JPG
-utah_PN	Q829;Utah;commons/8/82/Utah_in_United_States.svg	Q829;Utah;commons/b/be/Coat_of_arms_of_Utah.svg	Q829;Utah;commons/f/f6/Flag_of_Utah.svg
+utah_LN	Q829;Utah;commons/8/82/Utah_in_United_States.svg	Q829;Utah;commons/b/be/Coat_of_arms_of_Utah.svg	Q829;Utah;commons/f/f6/Flag_of_Utah.svg
 ogden_LN	Q52471;Ogden,_Utah;commons/4/49/Downtown_ogden.jpg	Q52471;Ogden,_Utah;commons/b/b1/Weber_County_Utah_incorporated_and_unincorporated_areas_Ogden_highlighted.svg	Q52471;Ogden,_Utah;commons/d/d1/Flag_of_Ogden,_Utah.svg
 provo_LN	Q23443;Provo,_Utah;commons/9/93/Flag_of_Provo,_Utah_(2015–).svg	Q23443;Provo,_Utah;commons/c/c8/Utah_County_Utah_incorporated_and_unincorporated_areas_Provo_highlighted.svg	Q23443;Provo,_Utah;commons/d/de/Downtown_Provo.jpg
 salt_lake_city_LN	Q23337;Salt_Lake_City;commons/0/03/Salt_Lake_County_Utah_incorporated_and_unincorporated_areas_Salt_Lake_City_highlighted.svg	Q23337;Salt_Lake_City;commons/3/31/Flag_of_Salt_Lake_City_(2020).svg	Q23337;Salt_Lake_City;commons/b/ba/Salt_Lake_City_pan_1.jpg
@@ -15577,7 +15581,7 @@ chancellorsville_LN	Q3477875;Chancellorsville,_Virginia;
 fredericksburg_LN	Q492342;Fredericksburg,_Virginia;commons/5/5d/VAMap-doton-Fredericksburg.PNG	Q492342;Fredericksburg,_Virginia;commons/9/96/HistoricDowntownFredericksburgVA.jpg	Q492342;Fredericksburg,_Virginia;commons/b/bf/Flag_of_Fredericksburg,_Virginia.svg
 yorktown_LN	Q938699;Yorktown,_Virginia;commons/7/73/VAMap-doton-Yorktown.PNG	Q938699;Yorktown,_Virginia;commons/d/d9/Yorktown_customhouse.jpg
 mount_vernon_LN	Q731635;Mount_Vernon;commons/b/b5/Map_-_Pioneer_Farm_-_Mount_Vernon_(cropped).jpg	Q731635;Mount_Vernon;commons/b/b7/MTVernonseenfromtheriver.jpg
-washington_2_PN	Q1223;Washington_(state);commons/3/30/Washington_in_United_States.svg	Q1223;Washington_(state);commons/5/54/Flag_of_Washington.svg	Q1223;Washington_(state);commons/5/5d/Mount_Rainier_from_Clear_Lake,_Washington.jpg
+washington_2_LN	Q1223;Washington_(state);commons/3/30/Washington_in_United_States.svg	Q1223;Washington_(state);commons/5/54/Flag_of_Washington.svg	Q1223;Washington_(state);commons/5/5d/Mount_Rainier_from_Clear_Lake,_Washington.jpg
 aberdeen_1_LN	Q233808;Aberdeen,_Washington;commons/1/1a/Grays_Harbor_County_Washington_Incorporated_and_Unincorporated_areas_Aberdeen_Highlighted.svg	Q233808;Aberdeen,_Washington;commons/c/c3/Flag_of_Aberdeen,_Washington.svg	Q233808;Aberdeen,_Washington;commons/f/fd/US_12_Aberdeen_downtown.jpg
 bellingham_LN	Q430267;Bellingham,_Washington;commons/6/64/Aerial_View_of_Bellingham,_Washington.jpg	Q430267;Bellingham,_Washington;commons/9/9b/Whatcom_County_Washington_Incorporated_and_Unincorporated_areas_Bellingham_Highlighted.svg	Q430267;Bellingham,_Washington;commons/b/b3/Flag_of_Bellingham,_Washington.svg
 kennewick_LN	Q844033;Kennewick,_Washington;commons/8/86/Benton_County_Washington_Incorporated_and_Unincorporated_areas_Kennewick_Highlighted.svg	Q844033;Kennewick,_Washington;commons/c/ce/Group_of_men_gathered_outside_hotel_in_Kennewick,_September_1908_(WASTATE_1470).jpeg
@@ -15609,7 +15613,7 @@ racine_LN	Q40340;Racine,_Wisconsin;commons/4/47/Racine_070611.jpg	Q40340;Racine,
 superior_5_LN	Q984577;Superior,_Wisconsin;commons/c/c8/Tower_Avenue.jpg	Q984577;Superior,_Wisconsin;commons/d/d0/Douglas_County_Wisconsin_Incorporated_and_Unincorporated_areas_Superior_Highlighted_5578650.svg
 watertown_LN	Q1207479;Watertown,_Wisconsin;commons/3/37/Dodge_County_Wisconsin_Incorporated_and_Unincorporated_areas_Watertown_Highlighted.svg	Q1207479;Watertown,_Wisconsin;commons/4/44/Watertown_Wisconsin_Downtown_Clock.jpg
 wausau_LN	Q998675;Wausau,_Wisconsin;commons/6/62/WIMap-doton-Wausau.png	Q998675;Wausau,_Wisconsin;commons/a/aa/2009-0620-WI017-Wausau-400block.jpg
-wyoming_PN	Q1214;Wyoming;commons/5/5b/Wyoming_in_United_States.svg	Q1214;Wyoming;commons/6/6d/From_Chittenden_Road,_Mt._Washburn,_Yellowstone_NP_-_panoramio_-_Aaron_Zhu.jpg	Q1214;Wyoming;commons/b/bc/Flag_of_Wyoming.svg
+wyoming_LN	Q1214;Wyoming;commons/5/5b/Wyoming_in_United_States.svg	Q1214;Wyoming;commons/6/6d/From_Chittenden_Road,_Mt._Washburn,_Yellowstone_NP_-_panoramio_-_Aaron_Zhu.jpg	Q1214;Wyoming;commons/b/bc/Flag_of_Wyoming.svg
 casper_LN	Q223177;Casper,_Wyoming;commons/5/52/Natrona_County_Wyoming_Incorporated_and_Unincorporated_areas_Casper_Highlighted_5613150.svg	Q223177;Casper,_Wyoming;commons/8/8b/Casperskyline.jpg
 cheyenne_LN	Q39042;Cheyenne,_Wyoming;commons/0/05/Flag_of_Cheyenne,_Wyoming.svg	Q39042;Cheyenne,_Wyoming;commons/7/74/Laramie_County_Wyoming_incorporated_and_unincorporated_areas_Cheyenne_highlighted.svg	Q39042;Cheyenne,_Wyoming;commons/8/8b/Seal_of_Cheyenne,_Wyoming.png	Q39042;Cheyenne,_Wyoming;commons/9/9a/CheyenneWY_downtown.jpg
 jackson_4_LN	Q871285;Jackson,_Wyoming;commons/a/ac/Teton_County_Wyoming_Incorporated_and_Unincorporated_areas_Jackson_Highlighted_5640120.svg	Q871285;Jackson,_Wyoming;commons/c/c8/Jackson_from_snowking.jpg
@@ -15886,7 +15890,7 @@ coma_3_N	Q159557;Coma;
 comet_N	Q3559;Comet;commons/3/32/C2022_E3_(ZTF)-_Alessandro_Bianconi.jpg
 congo_2_LN	Q3503;Congo_River;commons/4/49/Sunrise_near_Mossaka_(Congo).JPG
 connecticut_2_LN	Q379648;Connecticut_River;commons/c/c0/Pioneer_Valley_South_From_Mt._Sugarloaf.jpg
-constance_1_PN	Q4127;Lake_Constance;commons/0/0d/Karte_Bodensee_V2.png	Q4127;Lake_Constance;commons/6/64/Karte_Bodensee.png	Q4127;Lake_Constance;commons/7/7b/Vorfrühling_am_Bodensee.jpg
+constance_1_LN	Q4127;Lake_Constance;commons/0/0d/Karte_Bodensee_V2.png	Q4127;Lake_Constance;commons/6/64/Karte_Bodensee.png	Q4127;Lake_Constance;commons/7/7b/Vorfrühling_am_Bodensee.jpg
 constellation_2_N	Q8928;Constellation;commons/5/5d/Pp3_pl_scorpius.jpg
 continent_1_N	Q5107;Continent;commons/6/6d/Continentes_Wikipedia.svg
 contrail_N	Q207546;Contrail;commons/4/43/Condensspoor_boven_Alphen_aan_den_Rijn.jpg	Q207546;Contrail;commons/4/47/Contrail.fourengined.arp.jpg	Q207546;Contrail;commons/c/c2/C-141_Starlifter_contrail_crop1.png	Q207546;Contrail;commons/d/d5/Fighter_plane_contrails_in_the_sky.jpg
@@ -15992,7 +15996,7 @@ globule_N	Q213936;Bok_globule;commons/f/f9/Bok_globules_in_IC2944.jpg
 gluon_N	Q3299;Gluon;commons/3/37/Gluon.svg
 golden_gate_LN	Q220032;Golden_Gate;commons/2/25/Aerial_view_of_the_Golden_Gate_and_San_Pablo_Bay_(102_0445).jpg
 gorge_1_N	Q3699460;Defile_(geography);commons/1/10/Tran_Gorge_110.jpg
-grand_canyon_PN	Q118841;Grand_Canyon;commons/a/af/Grand_Canyon_view_from_Pima_Point_2010.jpg
+grand_canyon_LN	Q118841;Grand_Canyon;commons/a/af/Grand_Canyon_view_from_Pima_Point_2010.jpg
 grand_teton_LN	Q2078034;Grand_Teton;commons/2/24/Grand_Teton_in_Winter-NPS.jpg
 granule_N	Q506139;Caryopsis;commons/7/71/Assorted_grains.jpg
 graviton_N	Q103585;Graviton;
@@ -16022,7 +16026,7 @@ gulf_of_corinth_LN	Q209682;Gulf_of_Corinth;commons/0/03/Gulf_of_Corinth.JPG
 gulf_of_finland_LN	Q14686;Gulf_of_Finland;commons/3/36/Finska_viken.png	Q14686;Gulf_of_Finland;commons/e/ef/Gulf_of_Finland_NLT_Landsat7.png
 gulf_of_guinea_LN	Q41430;Gulf_of_Guinea;commons/5/53/Gulf_of_Guinea_5.24136E_2.58756N.jpg
 gulf_of_martaban_LN	Q138708;Gulf_of_Martaban;commons/f/f5/Gulf_of_Martaban,_Myanmar_ESA23385933.jpeg
-gulf_of_mexico_PN	Q12630;Gulf_of_Mexico;commons/2/29/Golf_von_Mexiko_NASA_World_Wind_Globe.jpg	Q12630;Gulf_of_Mexico;commons/d/d0/Gulf_of_Mexico_in_its_region.svg
+gulf_of_mexico_LN	Q12630;Gulf_of_Mexico;commons/2/29/Golf_von_Mexiko_NASA_World_Wind_Globe.jpg	Q12630;Gulf_of_Mexico;commons/d/d0/Gulf_of_Mexico_in_its_region.svg
 gulf_of_ob_LN	Q745945;Gulf_of_Ob;commons/0/09/Gulf_of_Ob_map.png	Q745945;Gulf_of_Ob;commons/a/ae/GydaTajmyrJamal.JPG
 gulf_of_oman_LN	Q79948;Gulf_of_Oman;commons/4/4b/Gulf_of_Oman_(SeaWiFS).jpg	Q79948;Gulf_of_Oman;commons/e/ef/Locatie_Golf_van_Oman.PNG
 gulf_of_riga_LN	Q174731;Gulf_of_Riga;commons/6/68/Rigabukten.png	Q174731;Gulf_of_Riga;commons/a/a9/Gulf_of_Riga_near_the_mouth_of_the_Daugava_river.jpg
@@ -16570,7 +16574,7 @@ death_6_N	Q161936;Personifications_of_death;commons/a/ac/SépultureCathelineau.J
 reaper_2_N	Q161936;Personifications_of_death;commons/a/ac/SépultureCathelineau.JPG
 giant_6_N	Q3707571;Giant;commons/6/65/The_Giant_by_Goya.jpg
 mermaid_N	Q182559;Mermaid;commons/5/55/John_William_Waterhouse_A_Mermaid.jpg
-merman_2_N	Q4995044;Merman;
+merman_2_N	Q4995044;Merman;commons/0/0d/Curious_Myths_p_495_Oannes.jpg
 martian_N	Q913850;Martian;commons/6/67/Woking_tripod.JPG
 argus_PN	Q189821;Argus_Panoptes;commons/8/8c/Io_Argos_Staatliche_Antikensammlungen_585.jpg	Q189821;Argus_Panoptes;commons/c/cf/Hermes_Io_Argos_Staatliche_Antikensammlungen_585.jpg
 calypso_PN	Q48961;Calypso_(mythology);commons/f/fa/Hitchcock,_George_-_Calypso_-_Google_Art_Project.jpg
@@ -16607,10 +16611,10 @@ python_3_N	Q15721;Python_(mythology);commons/2/20/Virgil_Solis_-_Apollo_Python.j
 roc_N	Q822321;Roc_(mythology);commons/e/ea/Roc8954.jpg
 salamander_2_N	Q1140626;Cultural_depictions_of_salamanders;commons/3/39/Salamander_(Wiener_Dioskurides).jpg
 troll_1_N	Q12581;Troll;commons/a/a1/Troll_becoming_a_mountain_ill_jnl.png	Q12581;Troll;commons/c/c7/John_Bauer_1915.jpg
-werewolf_N	Q9410;Werewolf;commons/2/29/WeirdTalesv36n2pg038_The_Werewolf_Howls.png	Q9410;Werewolf;commons/6/62/Lobishome_-_IA_Midjourney_versión_1.png
+werewolf_N	Q9410;Werewolf;commons/2/29/WeirdTalesv36n2pg038_The_Werewolf_Howls.png
 wyvern_1_N	Q862809;Wyvern;commons/8/8c/Wrest_Park_Wyvern.jpg
 nature_2_N	Q7860;Nature;commons/9/94/Desert_Electric.jpg
-deity_N	Q178885;Deity;commons/5/59/Ssangbongsa_11-05266.JPG
+deity_N	Q178885;Deity;commons/e/e7/Maler_der_Grabkammer_der_Nefertari_001.jpg
 divinity_1_N	Q1379405;Divinity;
 demigod_2_N	Q466470;Demigod;commons/6/60/Cuslayshound.jpg	Q466470;Demigod;commons/c/c0/Antonio_del_Pollaiolo_-_Ercole_e_l'Idra_e_Ercole_e_Anteo_-_Google_Art_Project.jpg
 fury_4_N	Q180262;Erinyes;commons/1/14/Orestes_Delphi_BM_GR1917.12-10.1.jpg
@@ -17859,8 +17863,8 @@ customerFem_N	Q247797;Customs_officer;
 customerMasc_N	Q247797;Customs_officer;
 cutlerFem_N	Q5793597;;
 cutlerMasc_N	Q5793597;;
-cyborgFem_N	Q235799;Cyborg;commons/d/d5/Unknown_engraver_-_Humani_Victus_Instrumenta_-_Ars_Coquinaria_-_WGA23954.jpg
-cyborgMasc_N	Q235799;Cyborg;commons/d/d5/Unknown_engraver_-_Humani_Victus_Instrumenta_-_Ars_Coquinaria_-_WGA23954.jpg
+cyborgFem_N	Q235799;Cyborg;commons/3/35/Cyborg_AI.png
+cyborgMasc_N	Q235799;Cyborg;commons/3/35/Cyborg_AI.png
 cyclistFem_1_N	Q2125610;;commons/1/11/AlamoGirlRide.jpg
 cyclistMasc_1_N	Q2125610;;commons/1/11/AlamoGirlRide.jpg
 cytologistFem_N	Q15839136;;
@@ -17915,7 +17919,7 @@ dependantFem_N	Q4198163;Dependant;
 dependantMasc_N	Q4198163;Dependant;
 dermatologistFem_N	Q2447386;Dermatologist;commons/2/27/Skin.png
 dermatologistMasc_N	Q2447386;Dermatologist;commons/2/27/Skin.png
-dervish_N	Q487865;Dervish;commons/0/0e/Dr_Tabandeh.jpg	Q487865;Dervish;commons/2/20/Indischer_Maler_um_1650_(II)_001.jpg	Q487865;Dervish;commons/2/2b/کسری_نوری.jpg	Q487865;Dervish;commons/4/4d/Noor_Ali_Tabandeh_96.jpg	Q487865;Dervish;commons/6/69/رحمت‌الله_جوادی_چرمهینی.jpg	Q487865;Dervish;commons/b/bb/RahmatollahJavadiChermahini1.jpg	Q487865;Dervish;commons/e/e2/A_Pakistani_Punjabi_Dervish.jpg
+dervish_N	Q487865;Dervish;commons/2/20/Indischer_Maler_um_1650_(II)_001.jpg
 descendantFem_1_N	Q183905;;
 descendantMasc_1_N	Q183905;;
 deserterFem_1_N	Q22808152;;
@@ -18784,8 +18788,8 @@ majorMasc_3_N	Q983927;Major_(rank);
 major_domo_N	Q2918995;Majordomo;
 major_generalFem_N	Q287709;Major_general_(United_Kingdom);commons/e/e2/British_Army_OF-7.svg
 major_generalMasc_N	Q287709;Major_general_(United_Kingdom);commons/e/e2/British_Army_OF-7.svg
-malacologistFem_N	Q16271261;;
-malacologistMasc_N	Q16271261;;
+malacologistFem_N	Q16271261;;commons/8/87/Photo_of_Ruth_Turner_dissecting_clams_from_the_deep_sea_(cropped).jpg
+malacologistMasc_N	Q16271261;;commons/8/87/Photo_of_Ruth_Turner_dissecting_clams_from_the_deep_sea_(cropped).jpg
 boy_1_N	Q3010;Boy;commons/3/3b/Giulio_del_Torre_Zwei_Kartenspieler.jpg
 malik_N	Q849545;Malik;
 maltsterFem_N	Q28091587;;
@@ -19501,8 +19505,8 @@ reformerFem_1_N	Q763779;Protestant_Reformers;
 reformerMasc_1_N	Q763779;Protestant_Reformers;
 refugeeFem_N	Q131572;Refugee;commons/e/ea/A_Dutch_school_teacher_leads_a_group_of_refugee_children_just_disembarked_from_a_ship_at_Tilbury_Docks_in_Essex_during_1945._D24064.jpg
 refugeeMasc_N	Q131572;Refugee;commons/e/ea/A_Dutch_school_teacher_leads_a_group_of_refugee_children_just_disembarked_from_a_ship_at_Tilbury_Docks_in_Essex_during_1945._D24064.jpg
-regentFem_2_N	Q29572226;Reichsverweser;
-regentMasc_2_N	Q29572226;Reichsverweser;
+regentFem_2_N	Q29572226;Reichsverweser;	Q477406;Regent;commons/b/bf/Sture_Sten_Svantesson_d.y._1492-1520,_och_Kristina_Gyllenstierna,_1494-1559_-_Nationalmuseum_-_15066.tif
+regentMasc_2_N	Q29572226;Reichsverweser;	Q477406;Regent;commons/b/bf/Sture_Sten_Svantesson_d.y._1492-1520,_och_Kristina_Gyllenstierna,_1494-1559_-_Nationalmuseum_-_15066.tif
 regentFem_1_N	Q2699184;Regenten;commons/b/b0/Frans_Hals_-_Regents_of_the_Old_Men's_Almshouse_-_WGA11182.jpg
 regentMasc_1_N	Q2699184;Regenten;commons/b/b0/Frans_Hals_-_Regents_of_the_Old_Men's_Almshouse_-_WGA11182.jpg
 rn_2_N	Q13608061;Registered_nurse;
@@ -22063,7 +22067,7 @@ realty_N	Q684740;Real_estate;commons/5/57/Back_to_Back_House.jpg
 land_7_N	Q1416696;Finca;
 glebe_N	Q5567423;Glebe;
 sublease_N	Q11305025;Sublease;
-farmstead_1_N	Q72030539;Farmstead;
+farmstead_1_N	Q72030539;Farmstead;commons/b/b6/Убогий_та_багатий_і_дівка-чорнявка_(1920)_-_сторінка_03_-_Ю.Магалевський.jpg
 homestead_1_N	Q585956;Masia;commons/9/96/Mas_fabregas_del_bosc-ametlladelvalles.jpg
 fief_N	Q188063;Fief;commons/d/dd/Breviarium_Grimani_-_Juni_detail.jpg
 land_1_N	Q1416696;Finca;
@@ -22681,7 +22685,7 @@ trey_1_N	Q16648939;Threes;commons/e/e3/Threes_video_game_trailer_(thumb).gif
 lux_2_N	Q79998;60_(number);
 fourscore_N	Q712467;80_(number);commons/9/98/Radlická_80,_tabulka.jpg
 milliard_N	Q16021;1,000,000,000;commons/1/12/Trier_Quant_1_Milliarde.jpg
-ullage_N	Q139819;Ullage_(wine);
+ullage_N	Q139819;Ullage_(wine);commons/a/a3/Margaux_bottles.JPG
 basket_2_N	Q201097;Basket;commons/6/69/Knitted_basket1.jpg	Q201097;Basket;commons/7/75/Basket_from_upper_west.jpg
 bucket_2_N	Q47107;Bucket;commons/2/24/Purple_plastic_bucket.jpg	Q47107;Bucket;commons/3/31/Balde.PNG
 carton_1_N	Q3444710;Carton;commons/6/62/Several_Cartons.jpg
@@ -24506,7 +24510,7 @@ glycerite_1_N	Q5572540;Glycerite;
 nitroglycerine_N	Q162867;Nitroglycerin;commons/2/2d/Nitroglycerin_Structural_Formulae.svg	Q162867;Nitroglycerin;commons/6/64/Nitro.JPG	Q162867;Nitroglycerin;commons/a/a7/Nitroglycerin.svg
 glycoside_N	Q192639;Glycoside;
 amygdalin_N	Q410215;Amygdalin;commons/0/02/Amygdalin_structure.svg
-saponin_N	Q207653;Saponin;commons/5/58/Solanine_chemical_structure.png
+saponin_N	Q207653;Saponin;
 glycoprotein_N	Q187126;Glycoprotein;commons/e/ed/Glicoprotein.svg
 lectin_N	Q408693;Lectin;
 gneiss_N	Q166409;Gneiss;commons/6/60/Gneiss.jpg
@@ -24550,7 +24554,7 @@ alkyd_N	Q1456571;Alkyd;
 epoxy_N	Q143983;Epoxy;commons/5/5e/FiveMinEpoxy.jpg
 copolymer_N	Q421281;Copolymer;
 polyurethane_1_N	Q146322;Polyurethane;commons/1/1a/Síntesi_general_poliuretà.png	Q146322;Polyurethane;commons/2/2a/PMR_63x5.8_125_file2.jpg	Q146322;Polyurethane;commons/8/8f/Urethane_sponge1.jpg
-gutta_percha_N	Q423261;Gutta-percha;commons/f/fa/Palaquium_gutta_-_Köhler–s_Medizinal-Pflanzen-099.jpg
+gutta_percha_N	Q423261;Gutta-percha;commons/4/4d/Gutta-percha.svg	Q423261;Gutta-percha;commons/f/fa/Palaquium_gutta_-_Köhler–s_Medizinal-Pflanzen-099.jpg
 gummite_N	Q2793442;Gummite;commons/c/c5/Gummit.jpg
 halogen_N	Q19605;Halogen;commons/c/c6/Halogens.jpg	Q19605;Halogen;commons/f/f5/Halogene.jpg
 hematite_N	Q103223;Hematite;commons/a/ae/Hematite.jpg
@@ -24595,7 +24599,7 @@ jasper_N	Q201175;Jasper;commons/1/14/Unpolished_jasper.jpg
 jet_3_N	Q543694;Jet_(gemstone);commons/2/28/Gagat-Holzmaden.JPG
 jute_1_N	Q3190566;Corchorus_capsularis;commons/9/93/Beklädnadsväxter,_Corchorus_capsularis,_Nordisk_familjebok.png
 kapok_1_N	Q138617;Ceiba_pentandra;commons/2/28/Ceiba_pentandra_in_Cuba.jpg
-paraffin_3_N	Q76904;Kerosene;commons/2/27/Kerosene_bottle.jpg
+paraffin_3_N	Q76904;Kerosene;commons/2/27/Kerosene_bottle.jpg	Q76904;Kerosene;commons/c/c8/4_litre_Kristallfotogen_kerosene_can_by_Aktiebolaget_Lyse_Sweden_early_20th_century.jpg
 ketone_N	Q170744;Ketone;commons/c/cb/Ketone_Structural_Formulae_V.1.png
 ketohexose_N	Q1616877;Ketohexose;
 ketose_N	Q409108;Ketose;
@@ -25183,7 +25187,6 @@ shift_3_N	Q99737532;;
 depression_5_N	Q8698;Great_Depression;commons/5/54/Lange-MigrantMother02.jpg
 prohibition_3_N	Q46388;Prohibition;commons/6/68/Raid_at_elk_lake.jpg
 novitiate_1_N	Q837999;Novitiate;commons/f/f7/Zusters_in_Sevilla.JPG
-regency_2_N	Q477406;Regent;commons/b/bf/Sture_Sten_Svantesson_d.y._1492-1520,_och_Kristina_Gyllenstierna,_1494-1559_-_Nationalmuseum_-_15066.tif
 epoch_2_N	Q2703;Epoch_(astronomy);
 overhead_2_N	Q2006368;Overhead_(computing);
 regency_1_N	Q173843;List_of_regents;commons/9/9f/George_IV_bust1.jpg

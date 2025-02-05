@@ -10,6 +10,7 @@ concrete ParseLav of Parse =
   ConjunctionLav,
   PhraseLav - [UttAP, UttVP],
   IdiomLav,
+  TenseX - [Adv,CAdv],
   ParseExtendLav,
   WordNetLav,
   DocumentationLav ** open ResLav in {

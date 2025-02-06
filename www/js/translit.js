@@ -319,6 +319,7 @@ translit.set("स","sa");
 translit.set("ह","ha");
 translit.set("ि","i");
 translit.set("ा","aa");
+translit.set("ी","ii");
 translit.set("़","");
 translit.set("ू","ū");
 translit.set("ء","ʼ");

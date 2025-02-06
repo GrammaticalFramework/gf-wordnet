@@ -317,6 +317,8 @@ translit.set("श","śa");
 translit.set("ष","ṣa");
 translit.set("स","sa");
 translit.set("ह","ha");
+translit.set("ि","i");
+translit.set("ा","aa");
 translit.set("ू","ū");
 translit.set("ء","ʼ");
 translit.set("ا","ā");

@@ -449,10 +449,12 @@ translit.set("ᆰ","rg");
 translit.set("ᆪ","gs");
 
 function transliterate(s) {
-   s1 = s.normalize("NFD");
-   var s2 = "";
+   let s1 = s.normalize("NFD");
+   let s2 = "";
    for (const c of s1) {
-       s2 += (translit.get(c) || c);
+       let c2 = translit.get(c)
+       if (c2 == null) c2 = c;
+       s2 += c2;
    }
    if (s1 == s2)
       s2 = s;   // return the original non-normalized text

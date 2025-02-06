@@ -325,6 +325,7 @@ translit.set("ँ","̃");
 translit.set("ं","̃");
 translit.set("़","");
 translit.set("ू","ū");
+translit.set("ै","ai");
 translit.set("ो","o");
 translit.set("ء","ʼ");
 translit.set("ا","ā");

@@ -375,6 +375,7 @@ translit.set("ی","ye");
 translit.set("پ","pe");
 translit.set("ھ","pe");
 translit.set("گ","g");
+translit.set("ٹ","t");
 translit.set("א","a");
 translit.set("ב","v");
 translit.set("ג","g");

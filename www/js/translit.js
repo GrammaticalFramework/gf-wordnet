@@ -371,6 +371,7 @@ translit.set("ً","an");
 translit.set("ٍ","in");
 translit.set("ٌ","un");
 translit.set("ک","k");
+translit.set("ں","o");
 translit.set("ْ","");
 translit.set("ی","ye");
 translit.set("پ","pe");

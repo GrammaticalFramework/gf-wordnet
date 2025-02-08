@@ -121,6 +121,8 @@ translit.set("ѥ","je");
 translit.set("Ѥ","Je");
 translit.set("ꙗ","ja");
 translit.set("Ꙗ","Ja");
+translit.set("ү","u");
+translit.set("Ү","U");
 translit.set("α","a");
 translit.set("Α","A");
 translit.set("ι","i");

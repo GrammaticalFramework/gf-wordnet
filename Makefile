@@ -93,12 +93,7 @@ Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	gf --make --probs=Parse.probs --boot -name=Parse $(patsubst %, build/%.pgf, $(LANGS))
 	mv Parse.ngf $(DOC_PATH)
 
-build/gfo/WordNet.gfo:
-
-build/gfo/WordNet%.gfo: WordNet%.gf WordNet.gf
-	gf --batch --gfo-dir=build/gfo --no-pmcfg $<
-
-build/Parse%.pgf: Parse%.gf Parse.gf build/gfo/WordNet%.gfo build/gfo/WordNet.gfo
+build/Parse%.pgf: Parse%.gf Parse.gf WordNet%.gf WordNet.gf
 	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
 
 Parse.probs Parse.uncond.probs: train/statistics.hs examples.txt build/ParseAPI.pgf

@@ -1,11 +1,11 @@
 {-# LANGUAGE CPP                 #-}
-{-# LANGUAGE MonadComprehensions #-}
-module WikifunctionService where
+{-# LANGUAGE LambdaCase, MonadComprehensions #-}
+module FunctionsService where
 
 import Control.Applicative     (liftA2, (<|>))
-import Control.Monad  (foldM, filterM, liftM2, mzero, msum, mplus)
-import Control.Monad.ST.Unsafe
+import Control.Monad (MonadPlus(mplus), foldM, forM, msum, (>=>))
 import GF.Compile
+import GF.Compile.Compute.Concrete
 import qualified GF.Data.ErrM            as E
 import GF.Grammar              hiding (VApp, VRecType)
 import GF.Grammar.Lookup
@@ -34,12 +34,27 @@ import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Encoding as E
 import qualified Data.ByteString.Lazy as BL
 import Data.Char ( isDigit, ord )
+import Data.Foldable ( find )
 import Data.Maybe
 import Debug.Trace
 
+import System.Environment ( getArgs )
+
+main = do -- Testing driver: evaluates an expression given as an argument
+  let doc_dir = ".."
+  gr <- readNGF (doc_dir</>"Parse.ngf")
+  db <- openDB (doc_dir</>"semantics.db")
+  (_,(mn,sgr)) <- batchCompile noOptions (Just gr) [doc_dir</>"gf/WordNet.gf"]
+  let qid  = "Q34"
+      lang = "ParseEng"
+      code = "expr qid"
+  code <- fromMaybe "expr qid" . listToMaybe <$> getArgs
+  res <- executeCode db gr sgr mn "." qid lang code
+  putStrLn $ rspBody res
+
 functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IO Response
 functionsService db gr mn sgr rq =
-  case decode (rqBody rq) >>= parseQuery of
+  case (decode (rqBody rq) >>= parseQuery) <|> getFromQuery (rqQuery rq) of
     Ok f      -> f
     Error msg -> return (Response
                            { rspCode = 400
@@ -56,6 +71,14 @@ functionsService db gr mn sgr rq =
       code <- valFromObj "code" query
       return (executeCode db gr sgr mn "" qid lang code)
 
+    orFail :: String -> Maybe a -> Result a
+    orFail s = maybe (fail s) pure
+
+    getFromQuery query = do
+      qid <- orFail "No QID" $ lookup "qid" query
+      lang <- orFail "No lang" $ lookup "lang" query
+      code <- orFail "No code" $ lookup "code" query
+      return $ executeCode db gr sgr mn "" qid lang code
 
 executeCode :: Database -> PGF -> SourceGrammar -> ModuleName -> String -> String -> String -> String -> IO Response
 executeCode db gr sgr mn cwd qid lang code =
@@ -90,6 +113,11 @@ executeCode db gr sgr mn cwd qid lang code =
 
     Just cnc = Map.lookup lang (languages gr)
 
+    instantiate t (Prod Implicit x ty1 ty2) = do
+      (i,_) <- newResiduation []
+      instantiate (App t (ImplArg (Meta i))) ty2
+    instantiate t ty = return (t, ty)
+
     checkComputeProg jments = do
       let nlg_mn = moduleNameS (msrc nlg_mi)
           nlg_mi = ModInfo {
@@ -105,7 +133,7 @@ executeCode db gr sgr mn cwd qid lang code =
                      jments  = jments
                    }
       nlg_m <- renameModule cwd sgr (nlg_mn, nlg_mi)
-
+      
       infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
       let sgr'    = prependModule sgr nlg_m
           globals = Gl sgr (wikiPredef db gr)
@@ -114,15 +142,21 @@ executeCode db gr sgr mn cwd qid lang code =
       let sgr' = prependModule sgr nlg_m
           globals' = Gl sgr' (wikiPredef db gr)
           qident = (nlg_mn,identS "main")
-
+      
       term' <- lookupResDef  sgr' qident
-
+      
+      (_,res_ty') <- inferLType globals' (Q qident)
       (term,res_ty) <- inferLType globals' (App (App (Q qident) (K qid)) (K lang))
 
       checkWarn (ppTerm Unqualified 0 term')
       checkWarn (ppTerm Unqualified 0 term)
 
-      ts <- normalFlatForm globals' term
+      ts <- runEvalM globals' $ do
+        (term,res_ty) <- instantiate term res_ty
+        res <- eval [] term []
+        value2term False [] res
+      -- TODO: probably want to return types post-unification?
+      --       but in that case, what do you do if there are multiple variants?
       return (toHeaders res_ty, [toRecord res_ty t | t <- ts])
 
     toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,ty) <- lbls]
@@ -224,24 +258,24 @@ executeCode db gr sgr mn cwd qid lang code =
 
          update (mn,mi) c info = return (mn,mi{jments=Map.insert c info (jments mi)})
 
-wikiPredef :: Database -> PGF -> Map.Map Ident ([Value s] -> EvalM s (ConstValue (Value s)))
+wikiPredef :: Database -> PGF -> PredefTable s
 wikiPredef db pgf = Map.fromList
-  [ (identS "entity", \[typ,VStr qid] -> fetch typ qid >>= \v -> return (Const v))
-  , (identS "int2digits", \[VInt n] -> int2digits abstr n >>= \v -> return (Const v))
-  , (identS "int2decimal", \[VInt n] -> int2decimal abstr n >>= \v -> return (Const v))
-  , (identS "float2decimal", \[VFlt f] -> float2decimal abstr f >>= \v -> return (Const v))
-  , (identS "int2numeral", \[VInt n] -> int2numeral abstr n >>= \v -> return (Const v))
-  , (identS "expr", \[typ,x] ->
+  [ (identS "entity", pdStandard 2 $\ \[typ,VStr qid] -> fetch typ qid >>= \v -> return (Const v))
+  , (identS "int2digits", pdStandard 1 $\ \[VInt n] -> int2digits abstr n >>= \v -> return (Const v))
+  , (identS "int2decimal", pdStandard 1 $\ \[VInt n] -> int2decimal abstr n >>= \v -> return (Const v))
+  , (identS "float2decimal", pdStandard 1 $\ \[VFlt f] -> float2decimal abstr f >>= \v -> return (Const v))
+  , (identS "int2numeral", pdStandard 1 $\ \[VInt n] -> int2numeral abstr n >>= \v -> return (Const v))
+  , (identS "expr", pdStandard 2 $\ \[typ,x] ->
         case x of
-          VStr qid -> get_expr qid
+          VStr qid -> get_expr qid >>= check typ
           _ -> error (showValue x)
     )
-  , (identS "time2adv", \[x] ->
+  , (identS "time2adv", pdStandard 1 $\ \[x] ->
         case x of
           VStr time -> fmap Const (time2adv abstr time)
           _ -> error (showValue x)
     )
-  , (cLessInt,\[v1,v2] -> return (fmap toBool (liftA2 (<) (value2int v1) (value2int v2))))
+  , (cLessInt, pdStandard 2 $\ \[v1,v2] -> return (fmap toBool (liftA2 (<) (value2int v1) (value2int v2))))
   ]
   where
     abstr = moduleNameS (abstractName pgf)
@@ -265,12 +299,27 @@ wikiPredef db pgf = Map.fromList
                runDaison db ReadOnlyMode $
                  select [return (Const (VApp (abstr,identS (lex_fun lex)) [])) | (_,lex) <- fromIndex lexemes_qid (at qid)]
       msum res
+    
+    check ty t@(Const value) = do
+      ty    <- value2term False [] ty
+      value <- value2term False [] value
+      EvalM $ \globals k mt b r msgs -> do
+        let k' _ _ _ r' msgs' = return $ Success r' msgs'
+        (case checkLType' value ty of EvalM f -> f globals k' mt b r msgs) >>= \case
+          Success r' msgs' -> k t mt b r' msgs'
+          Fail _ _ -> return $ Success r msgs
+    check _ _ = return RunTime
 
 filterJsonFromType :: JSObject [JSObject JSValue] -> Value s -> EvalM s (Value s)
 filterJsonFromType obj typ =
   case typ of
    VRecType fields -> do fields <- mapM (getSpecificProperty obj) fields
                          return (VR fields)
+   VMeta _ _       -> do fields <- getAllProperties obj
+                         ty <- value2term False [] typ
+                         t <- value2term False [] (VR fields)
+                         (t,_) <- checkLType' t ty
+                         eval [] t []
    _               -> evalError (pp "Wikidata entities are always records")
 
 isProperty ('P':cs) = all isDigit cs
@@ -292,107 +341,117 @@ getSpecificProperty obj (LIdent field, typ)
     transformJsonToTerm :: Value s -> JSObject JSValue -> EvalM s Term
     transformJsonToTerm typ obj =
       case fromJSObjectToTerm obj typ of
-        Ok ass    -> return (R ass)
+        Ok ass    -> do typ <- value2term False [] typ
+                        (t,_) <- checkLType' (R ass) typ
+                        return t
         Error msg -> evalError (pp msg)
 getSpecificProperty obj (LVar n, typ) =
   evalError (pp "Wikidata entities can only have named properties")
 
+getAllProperties :: JSObject [JSObject JSValue] -> EvalM s [(Label, Thunk s)]
+getAllProperties obj = fmap catMaybes $ forM (fromJSObject obj) $ \(label, objs) ->
+  case mapM parseVariant objs of
+    Ok ts     -> do tnk <- newThunk [] (FV ts)
+                    return $ Just (LIdent (rawIdentS label), tnk)
+    Error msg -> do evalWarn (pp msg)
+                    return Nothing
+  where
+    parseVariant obj = do
+      (qs, dv, dt) <- parseWikiDataProp obj
+      wdt <- getWikiDataType dt
+      fs <- forM (wdtFields wdt) $ \f ->
+        assign (LIdent (rawIdentS (fieldName f))) <$> extractField f Nothing dv
+      return $ R fs
+
 fromJSObjectToTerm :: JSObject JSValue -> Value s -> Result [Assign]
 fromJSObjectToTerm obj typ = do
+  (qs, dv, dt) <- parseWikiDataProp obj
+  matchTypeFromJSON qs dv dt typ
+
+parseWikiDataProp :: JSObject JSValue -> Result ([(String, [JSObject JSValue])], JSObject JSValue, String)
+parseWikiDataProp obj = do
   mainsnak <- valFromObj "mainsnak" obj
   datavalue <- valFromObj "datavalue" mainsnak
   datatype  <- valFromObj "datatype"  mainsnak
   qualifiers <- fmap fromJSObject (valFromObj "qualifiers" obj) `mplus` return []
   references <- fmap fromJSObject (valFromObj "references" obj) `mplus` return []
-  matchTypeFromJSON (qualifiers++references) datavalue datatype typ
+  return (qualifiers ++ references, datavalue, datatype)
 
-matchTypeFromJSON qs dv dt@"commonsMedia"     (VRecType labels) = traverse (getFieldFromCommonsMedia qs dv dt) labels
-matchTypeFromJSON qs dv dt@"quantity"         (VRecType labels) = traverse (getFieldFromQuantity qs dv dt) labels
-matchTypeFromJSON qs dv dt@"wikibase-item"    (VRecType labels) = traverse (getFieldFromWikibaseEntityId qs dv dt) labels
-matchTypeFromJSON qs dv dt@"globe-coordinate" (VRecType labels) = traverse (getFieldFromGlobecoordinate qs dv dt) labels
-matchTypeFromJSON qs dv dt@"time"             (VRecType labels) = traverse (getFieldFromTime qs dv dt) labels
-matchTypeFromJSON qs dv dt@"monolingualtext"  (VRecType labels) = traverse (getFieldFromText qs dv dt) labels
-matchTypeFromJSON qs dv dt                    typ               = Error $ "Error" ++ showValue typ ++ dt
+data WikiDataFieldType = MkField
+  { fieldName    :: String
+  , fieldType    :: GF.Grammar.Type
+  , extractField :: forall s. Maybe (Value s) -> JSObject JSValue -> Result Term
+  }
+newtype WikiDataType = WikiDataType { wdtFields :: [WikiDataFieldType] }
 
-getFieldFromCommonsMedia qs dv dt (field@(LIdent l), t) =
-  assign field
-    <$> ( case (showRawIdent l, t) of 
-            ("s", VSort id ) -> if id == cStr then valFromObj "value" dv >>= \s -> return (K (constructImgUrl s)) else fail "Not a String"
-            ("s", VMeta _ _) -> valFromObj "value" dv >>= \s -> return (K (constructImgUrl s))
-            (_, _)           -> getQualifierOrReference qs dt l t
-        )
+valField :: JSON a => String -> GF.Grammar.Type -> (forall s. Maybe (Value s) -> a -> Result Term) -> WikiDataFieldType
+valField n ty f = MkField n ty $ \ty -> valFromObj "value" >=> valFromObj n >=> f ty
+
+valField' :: JSON a => String -> GF.Grammar.Type -> (a -> Term) -> WikiDataFieldType
+valField' n ty f = valField n ty (const (pure . f))
+
+matchTypeFromJSON qs dv dt (VRecType labels) = do
+  wdt <- getWikiDataType dt
+  traverse (getField wdt) labels
+  where
+    getField wdt (k@(LIdent l),ty) = assign k <$> let n = showRawIdent l in
+      case find (\f -> fieldName f == n) (wdtFields wdt) of
+        Just f  -> extractField f (Just ty) dv
+        Nothing -> getQualifierOrReference qs dt l ty
+    getField _ _ = fail "Wikidata entities can only have named properties"
+
+getWikiDataType "commonsMedia"     = return commonsMediaWdt
+getWikiDataType "quantity"         = return quantityWdt
+getWikiDataType "wikibase-item"    = return wikibaseItemWdt
+getWikiDataType "globe-coordinate" = return globeCoordinateWdt
+getWikiDataType "time"             = return timeWdt
+getWikiDataType "monolingualtext"  = return monolingualTextWdt
+getWikiDataType dt                 = Error $ "Unknown WikiData type: " ++ dt
+
+commonsMediaWdt = WikiDataType
+  [ MkField "s" typeString $ \_ -> valFromObj "value" >=> \s -> return (K (constructImgUrl s))
+  ]
   where
     constructImgUrl :: String -> String
     constructImgUrl img =
       let name = map (\c -> if c == ' ' then '_' else c) (unEscapeString img)
           h    = md5ss utf8 name    
       in "https://upload.wikimedia.org/wikipedia/commons/"++take 1 h++"/"++take 2 h++"/"++name
-getFieldFromCommonsMedia qs dv dt (LVar n, typ) =
-  fail "Wikidata entities can only have named properties"
 
-getFieldFromWikibaseEntityId qs dv dt (field@(LIdent l), t) = do
-  value <- valFromObj "value" dv
-  assign field
-    <$> ( case (showRawIdent l, t) of
-            (l@"id",  VSort id)  -> if id == cStr then valFromObj l value >>= (Ok . K) else fail "Not a String"
-            (l@"id",  VMeta _ _) -> valFromObj l value >>= (Ok . K)
-            (_, _)               -> getQualifierOrReference qs dt l t
-        )
-getFieldFromWikibaseEntityId qs dv dt (LVar n, typ) =
-  fail "Wikidata entities can only have named properties"
+wikibaseItemWdt = WikiDataType
+  [ valField' "id" typeString K
+  ]
 
-getFieldFromGlobecoordinate qs dv dt (field@(LIdent l), t) = do
-  value <- valFromObj "value" dv
-  assign field
-    <$> ( case (showRawIdent l, t) of
-            (l@"latitude",  VApp f []) -> if f == (cPredef,cFloat) then valFromObj l value >>= (Ok . EFloat) else fail "Not a Float"
-            (l@"longitude", VApp f []) -> if f == (cPredef,cFloat) then valFromObj l value >>= (Ok . EFloat) else fail "Not a Float"
-            (l@"precision", VApp f []) -> if f == (cPredef,cFloat) then valFromObj l value >>= (Ok . EFloat) else fail "Not a Float"
-            (l@"altitude",  VApp f []) -> if f == (cPredef,cFloat) then valFromObj l value >>= (Ok . EFloat) else fail "Not a Float"
-            (l@"globe",     VSort id)  -> if id == cStr            then valFromObj l value >>= (Ok . K)      else fail "Not a String"
-            (_, _)                     -> getQualifierOrReference qs dt l t
-        )
-getFieldFromGlobecoordinate qs dv dt (LVar n, typ) =
-  fail "Wikidata entities can only have named properties"
+globeCoordinateWdt = WikiDataType
+  [ valField' "latitude"  typeFloat EFloat
+  , valField' "longitude" typeFloat EFloat
+  , valField' "precision" typeFloat EFloat
+  , valField' "altitude"  typeFloat EFloat
+  , valField' "globe"     typeStr   K
+  ]
 
-getFieldFromQuantity qs dv dt (field@(LIdent l), t) = do
-  value <- valFromObj "value" dv -- quantity
-  assign field
-    <$> ( case (showRawIdent l, t) of
-            (l@"amount", VApp f [])
-              | f == (cPredef,cInt)   -> valFromObj l value >>= decimal EInt
-              | f == (cPredef,cFloat) -> valFromObj l value >>= decimal EFloat
-              | otherwise             -> fail "Not an Int or Float"
-            (l@"unit", VSort id)      -> if id == cStr then K . dropURL <$> valFromObj l value    else fail "Not a String"
-            (_, _)                    -> getQualifierOrReference qs dt l t
-        )
-getFieldFromQuantity qs dv dt (LVar n, typ) =
-  fail "Wikidata entities can only have named properties"
-
-getFieldFromTime qs dv dt (field@(LIdent l), t) = do
-  value <- valFromObj "value" dv -- time
-  assign field
-    <$> ( case (showRawIdent l, t) of
-            (l@"time",          VApp id [])-> if id == (cPredef, cTime) then fmap K (valFromObj l value) else fail "Not a String"
-            (l@"precision",     VApp f []) -> if f == (cPredef, cInt) then EInt <$> valFromObj l value else fail "Not an Int"
-            (l@"calendarmodel", VSort id)  -> if id == cStr then K . dropURL <$> valFromObj l value else fail "Not a String"
-            (_, _)                         -> getQualifierOrReference qs dt l t
-        )
-getFieldFromTime qs dv dt (LVar n, typ) =
-  fail "Wikidata entities can only have named properties"
+quantityWdt = WikiDataType
+  [ valField "amount" typeInt $ \case
+      Just (VApp f [])
+        | f == (cPredef,cInt)   -> valFromObj "value" >=> decimal EFloat
+        | f == (cPredef,cFloat) -> valFromObj "value" >=> decimal EInt
+        | otherwise             -> \_ -> fail "Not an Int or Float"
+      _                         -> valFromObj "value" >=> decimal EInt
+  , valField' "unit" typeString (K . dropURL)
+  ]
 
 cTime = identS "Time"
 
-getFieldFromText qs dv dt (field@(LIdent l), t) = do
-  value <- valFromObj "value" dv -- monolingualtext
-  assign field
-    <$> ( case (showRawIdent l, t) of
-            (l@"text",     VSort id) -> if id == cStr then valFromObj l value >>= (Ok . K) else fail "Not a String"
-            (l@"language", VSort id) -> if id == cStr then valFromObj l value >>= (Ok . K) else fail "Not a String"
-            (_, _)                   -> getQualifierOrReference qs dt l t
-        )
-getFieldFromText qs dv dt (LVar n, typ) =
-  fail "Wikidata entities can only have named properties"
+timeWdt = WikiDataType
+  [ valField' "time"          (cnPredef cTime) K
+  , valField' "precision"     typeInt          EInt
+  , valField' "calendarmodel" typeString       (K . dropURL)
+  ]
+
+monolingualTextWdt = WikiDataType
+  [ valField' "text"     typeString K
+  , valField' "language" typeString K
+  ]
 
 getQualifierOrReference qs dt l t
   | isProperty label =

@@ -17,7 +17,7 @@ import GF.Compile
 import GF.Infra.Option
 import SenseService
 import ContentService
-import WikifunctionService
+import FunctionsService hiding (main)
 import SenseSchema
 
 
@@ -30,7 +30,7 @@ main = do
           [c*c
              | (ex_id,(ex,_)) <- from examples everything
              , let c = length (exprFunctions ex)]
-  (_,(mn,sgr)) <- batchCompile noOptions (Just gr) ["gf/WordNet.gf"]
+  (_,(mn,sgr)) <- batchCompile noOptions (Just gr) [doc_dir</>"gf/WordNet.gf"]
   server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr client_secret)
   closeDB db
 
@@ -52,9 +52,9 @@ httpMain db gr bigram_total mn sgr client_secret conn = do
       | path == "/SenseService.fcgi"
                    -> do rsp <- senseService db bigram_total rq
                          respondHTTP conn rsp
-      | path == "/ContentService.fcgi"
-                   -> do rsp <- contentService db client_secret rq
-                         respondHTTP conn rsp
+      -- | path == "/ContentService.fcgi"
+      --              -> do rsp <- contentService db client_secret rq
+      --                    respondHTTP conn rsp
       | path == "/FunctionsService.fcgi"
                    -> do rsp <- functionsService db gr mn sgr rq
                          respondHTTP conn rsp

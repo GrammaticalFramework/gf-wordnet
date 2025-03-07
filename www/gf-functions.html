@@ -351,32 +351,34 @@
                 if (response.status == 200) {
                     const result = await response.json();
                     output.appendChild(node("pre",{},[text(result.msg)]));
-                    const res_tbl = node("table",{"class": "dataset"},[]);
-                    const row = []
-                    for (var header of result.headers) {
-                        row.push(th([text(header.label)]));
-                    }
-                    res_tbl.appendChild(tr(row))
-                    for (var record of result.dataset) {
+                    for (var group of result.groups) {
+                        const res_tbl = node("table",{"class": "dataset"},[]);
                         const row = []
-                        for (let i in record) {
-                            const value  = record[i];
-                            const header = result.headers[i];
-                            if (header.type == "markup") {
-                                const e = td([]);
-                                e.innerHTML = value;
-                                row.push(e);
-                            } else if (header.type == "number") {
-                                row.push(node("td",{style: "text-align: right"},[text(value)]));
-                            } else if (header.type == "string") {
-                                row.push(td([text(value)]));
-                            } else if (header.type == "text") {
-                                row.push(td(node("pre",{},[text(value)])));
-                            }
+                        for (var header of group.headers) {
+                            row.push(th([text(header.label)]));
                         }
                         res_tbl.appendChild(tr(row))
+                        for (var record of group.dataset) {
+                            const row = []
+                            for (let i in record) {
+                                const value  = record[i];
+                                const header = group.headers[i];
+                                if (header.type == "markup") {
+                                    const e = td([]);
+                                    e.innerHTML = value;
+                                    row.push(e);
+                                } else if (header.type == "number") {
+                                    row.push(node("td",{style: "text-align: right"},[text(value)]));
+                                } else if (header.type == "string") {
+                                    row.push(td([text(value)]));
+                                } else if (header.type == "text") {
+                                    row.push(td(node("pre",{},[text(value)])));
+                                }
+                            }
+                            res_tbl.appendChild(tr(row))
+                        }
+                        output.appendChild(res_tbl);
                     }
-                    output.appendChild(res_tbl);
                 } else {
                     const message = await response.text();
                     output.appendChild(node("pre",{},[text(message)]));

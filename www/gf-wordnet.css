@@ -417,3 +417,29 @@ table.modules td.selected {
     background-color: #2a4b8d;
     color: #fff;
 }
+
+.gp-head {
+    margin-left: 11em;
+}
+.gp-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10em;
+}
+.gp-logo {
+    width: 10em;
+}
+.gp-body {
+    background-color: #ffffff;
+    margin-left: 11em;
+    margin-top: -1px;
+    min-height: 100%;
+    padding: 1.25em 1.5em 1.5em 1.5em;
+    border: 1px solid #a7d7f9;
+    border-right-width: 0;
+}
+.gp-panel-section {
+    padding-top: 2em;
+    padding-left: 1em;
+}

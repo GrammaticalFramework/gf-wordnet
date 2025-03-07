@@ -52,9 +52,9 @@ httpMain db gr bigram_total mn sgr client_secret conn = do
       | path == "/SenseService.fcgi"
                    -> do rsp <- senseService db bigram_total rq
                          respondHTTP conn rsp
-      -- | path == "/ContentService.fcgi"
-      --              -> do rsp <- contentService db client_secret rq
-      --                    respondHTTP conn rsp
+      | path == "/ContentService.fcgi"
+                    -> do rsp <- contentService db client_secret rq
+                          respondHTTP conn rsp
       | path == "/FunctionsService.fcgi"
                    -> do rsp <- functionsService db gr mn sgr rq
                          respondHTTP conn rsp

@@ -130,7 +130,7 @@ executeCode db gr sgr mn cwd mb_qid lang code =
       
       infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
       let sgr'     = prependModule sgr nlg_m
-          globals0 = Gl sgr' (wikiPredef db gr lang)
+          globals0 = Gl sgr (wikiPredef db gr lang)
       nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd globals0)) nlg_m infoss
       checkWarn (ppModule Unqualified nlg_m)
 
@@ -257,7 +257,7 @@ executeCode db gr sgr mn cwd mb_qid lang code =
 
 wikiPredef :: Database -> PGF -> String -> PredefTable
 wikiPredef db pgf lang = Map.fromList
-  [ (identS "entity", pdArity 2 $ \g c [typ,VStr qid] -> Const (fetch typ qid))
+  [ (identS "entity", pdArity 2 $ \g c [typ,VStr qid] -> Const (fetch c typ qid))
   , (identS "int2digits", pdArity 1 $ \g c [VInt n] -> Const (int2digits abstr n))
   , (identS "int2decimal", pdArity 1 $ \g c [VInt n] -> Const (int2decimal abstr n))
   , (identS "float2decimal", pdArity 1 $ \g c [VFlt f] -> Const (float2decimal abstr f))
@@ -278,10 +278,10 @@ wikiPredef db pgf lang = Map.fromList
   where
     abstr = moduleNameS (abstractName pgf)
 
-    fetch typ qid =
+    fetch c typ qid =
       let rsp = unsafePerformIO (simpleHTTP (getRequest ("https://www.wikidata.org/wiki/Special:EntityData/"++qid++".json")))
       in case decode (rspBody rsp) >>= valFromObj "entities" >>= valFromObj qid >>= valFromObj "claims" of
-           Ok obj    -> undefined (obj :: JSValue) -- filterJsonFromType obj typ
+           Ok obj    -> filterJsonFromType c obj typ
            Error msg -> VError (pp msg)
 
     get_expr c ty qid = Const (VFV c res)
@@ -299,58 +299,57 @@ wikiPredef db pgf lang = Map.fromList
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
 
-{-
-filterJsonFromType :: JSObject [JSObject JSValue] -> Value -> EvalM Value
-filterJsonFromType obj typ =
+
+filterJsonFromType :: Choice -> JSObject [JSObject JSValue] -> Value -> Value
+filterJsonFromType c obj typ =
   case typ of
-   VRecType fields -> do fields <- mapM (getSpecificProperty obj) fields
-                         return (VR fields)
-   VMeta _ _       -> do fields <- getAllProperties obj
-                         t <- value2term False [] (VR fields)
-                         t <- checkLType' t typ
-                         eval [] t []
-   _               -> evalError (pp "Wikidata entities are always records")
--}
+   VRecType fields -> VR (mapC (\c -> getSpecificProperty c obj) c fields)
+   VMeta _ _       -> VR (getAllProperties c obj)
+   _               -> VError (pp "Wikidata entities are always records")
+
 isProperty ('P':cs) = all isDigit cs
 isProperty _        = False
-{-
-getSpecificProperty :: JSObject [JSObject JSValue] -> (Label, Value) -> EvalM (Label, Value)
-getSpecificProperty obj (LIdent field, typ)
+
+getSpecificProperty :: Choice -> JSObject [JSObject JSValue] -> (Label, Value) -> (Label, Value)
+getSpecificProperty c obj (LIdent field, typ)
   | isProperty label =
       case Text.JSON.Types.get_field obj label of
-        Nothing   -> do return (LIdent field, FV [])
-        Just objs -> do terms <- mapM (transformJsonToTerm typ) objs
-                        return (LIdent field, FV terms)
-  | otherwise = evalError (pp field <+> "is an invalid Wikidata property")
+        Nothing   -> (LIdent field, VFV c [])
+        Just objs -> (LIdent field, VFV c (mapC (transformJsonToValue typ) c objs))
+  | otherwise = (LIdent field, VError (pp field <+> "is an invalid Wikidata property"))
   where
     label = showRawIdent field
 
-    transformJsonToTerm :: Value -> JSObject JSValue -> EvalM Term
-    transformJsonToTerm typ obj =
-      case fromJSObjectToTerm obj typ of
-        Ok ass    -> checkLType' (R ass) typ
-        Error msg -> evalError (pp msg)
-getSpecificProperty obj (LVar n, typ) =
-  evalError (pp "Wikidata entities can only have named properties")
+    transformJsonToValue :: Value -> Choice -> JSObject JSValue -> Value
+    transformJsonToValue typ c obj =
+      case fromJSObjectToValue c obj typ of
+        Ok ass    -> VR ass
+        Error msg -> VError (pp msg)
+getSpecificProperty c obj (LVar n, typ) =
+  (LVar n, VError (pp "Wikidata entities can only have named properties"))
 
-getAllProperties :: JSObject [JSObject JSValue] -> Choice -> [(Label, Value)]
+getAllProperties :: Choice -> JSObject [JSObject JSValue] -> [(Label, Value)]
 getAllProperties c obj =
-  flip mapMaybe (fromJSObject obj) $ \(label, objs) ->
-    case mapM parseVariant objs of
-      Ok ts     -> Just (LIdent (rawIdentS label), VFV c ts)
-      Error msg -> Nothing
+  catMaybes $
+     mapC (\c (label, objs) ->
+                 let (c1,c2) = split c
+                 in case mapCM parseVariant c1 objs of
+                      Ok [v]    -> Just (LIdent (rawIdentS label), v)
+                      Ok vs     -> Just (LIdent (rawIdentS label), VFV c2 vs)
+                      Error msg -> Nothing)
+          c (fromJSObject obj)
   where
-    parseVariant obj = do
+    parseVariant c obj = do
       (qs, dv, dt) <- parseWikiDataProp obj
       wdt <- getWikiDataType dt
       fs <- forM (wdtFields wdt) $ \f ->
-        assign (LIdent (rawIdentS (fieldName f))) <$> extractField f Nothing dv
-      return $ R fs
+        (,) (LIdent (rawIdentS (fieldName f))) <$> extractField f c Nothing dv
+      return $ VR fs
 
-fromJSObjectToTerm :: JSObject JSValue -> Value -> Result [Assign]
-fromJSObjectToTerm obj typ = do
+fromJSObjectToValue :: Choice -> JSObject JSValue -> Value -> Result [(Label, Value)]
+fromJSObjectToValue c obj typ = do
   (qs, dv, dt) <- parseWikiDataProp obj
-  matchTypeFromJSON qs dv dt typ
+  matchTypeFromJSON c qs dv dt typ
 
 parseWikiDataProp :: JSObject JSValue -> Result ([(String, [JSObject JSValue])], JSObject JSValue, String)
 parseWikiDataProp obj = do
@@ -364,25 +363,27 @@ parseWikiDataProp obj = do
 data WikiDataFieldType = MkField
   { fieldName    :: String
   , fieldType    :: GF.Grammar.Type
-  , extractField :: Maybe Value -> JSObject JSValue -> Choice -> Result Value
+  , extractField :: Choice -> Maybe Value -> JSObject JSValue -> Result Value
   }
 newtype WikiDataType = WikiDataType { wdtFields :: [WikiDataFieldType] }
 
-valField :: JSON a => String -> GF.Grammar.Type -> (Maybe Value -> a -> Result Term) -> WikiDataFieldType
-valField n ty f = MkField n ty $ \ty -> valFromObj "value" >=> valFromObj n >=> f ty
+valField :: JSON a => String -> GF.Grammar.Type -> (Choice -> Maybe Value -> a -> Result Value) -> WikiDataFieldType
+valField n ty f = MkField n ty $ \c ty -> valFromObj "value" >=> valFromObj n >=> f c ty
 
-valField' :: JSON a => String -> GF.Grammar.Type -> (a -> Term) -> WikiDataFieldType
-valField' n ty f = valField n ty (const (pure . f))
+valField' :: JSON a => String -> GF.Grammar.Type -> (a -> Value) -> WikiDataFieldType
+valField' n ty f = valField n ty (\c ty -> pure . f)
 
-matchTypeFromJSON qs dv dt (VRecType labels) = do
+matchTypeFromJSON c qs dv dt (VRecType labels) = do
   wdt <- getWikiDataType dt
-  traverse (getField wdt) labels
+  mapCM (getField wdt) c labels
   where
-    getField wdt (k@(LIdent l),ty) = assign k <$> let n = showRawIdent l in
-      case find (\f -> fieldName f == n) (wdtFields wdt) of
-        Just f  -> extractField f (Just ty) dv
-        Nothing -> getQualifierOrReference qs dt l ty
-    getField _ _ = fail "Wikidata entities can only have named properties"
+    getField wdt c (k@(LIdent l),ty) = do
+      let n = showRawIdent l
+      val <-  case find (\f -> fieldName f == n) (wdtFields wdt) of
+               Just f  -> extractField f c (Just ty) dv
+               Nothing -> getQualifierOrReference c qs dt l ty
+      return (k,val)
+    getField _ _ _ = fail "Wikidata entities can only have named properties"
 
 getWikiDataType "commonsMedia"     = return commonsMediaWdt
 getWikiDataType "quantity"         = return quantityWdt
@@ -393,7 +394,7 @@ getWikiDataType "monolingualtext"  = return monolingualTextWdt
 getWikiDataType dt                 = Error $ "Unknown WikiData type: " ++ dt
 
 commonsMediaWdt = WikiDataType
-  [ MkField "s" typeString $ \_ -> valFromObj "value" >=> \s -> return (VStr (constructImgUrl s))
+  [ MkField "s" typeString $ \_ _ -> valFromObj "value" >=> \s -> return (VStr (constructImgUrl s))
   ]
   where
     constructImgUrl :: String -> String
@@ -403,55 +404,56 @@ commonsMediaWdt = WikiDataType
       in "https://upload.wikimedia.org/wikipedia/commons/"++take 1 h++"/"++take 2 h++"/"++name
 
 wikibaseItemWdt = WikiDataType
-  [ valField' "id" typeString K
+  [ valField' "id" typeString VStr
   ]
 
 globeCoordinateWdt = WikiDataType
-  [ valField' "latitude"  typeFloat EFloat
-  , valField' "longitude" typeFloat EFloat
-  , valField' "precision" typeFloat EFloat
-  , valField' "altitude"  typeFloat EFloat
-  , valField' "globe"     typeStr   K
+  [ valField' "latitude"  typeFloat VFlt
+  , valField' "longitude" typeFloat VFlt
+  , valField' "precision" typeFloat VFlt
+  , valField' "altitude"  typeFloat VFlt
+  , valField' "globe"     typeStr   VStr
   ]
 
 quantityWdt = WikiDataType
-  [ valField "amount" typeInt $ \case
+  [ valField "amount" typeInt $ \c -> \case
       Just (VApp f [])
-        | f == (cPredef,cInt)   -> valFromObj "value" >=> decimal EFloat
-        | f == (cPredef,cFloat) -> valFromObj "value" >=> decimal EInt
+        | f == (cPredef,cInt)   -> valFromObj "value" >=> decimal VFlt
+        | f == (cPredef,cFloat) -> valFromObj "value" >=> decimal VInt
         | otherwise             -> \_ -> fail "Not an Int or Float"
-      _                         -> valFromObj "value" >=> decimal EInt
-  , valField' "unit" typeString (K . dropURL)
+      _                         -> valFromObj "value" >=> decimal VInt
+  , valField' "unit" typeString (VStr . dropURL)
   ]
 
 cTime = identS "Time"
 
 timeWdt = WikiDataType
-  [ valField' "time"          (cnPredef cTime) K
-  , valField' "precision"     typeInt          EInt
-  , valField' "calendarmodel" typeString       (K . dropURL)
+  [ valField' "time"          (cnPredef cTime) VStr
+  , valField' "precision"     typeInt          VInt
+  , valField' "calendarmodel" typeString       (VStr . dropURL)
   ]
 
 monolingualTextWdt = WikiDataType
-  [ valField' "text"     typeString K
-  , valField' "language" typeString K
+  [ valField' "text"     typeString VStr
+  , valField' "language" typeString VStr
   ]
 
-getQualifierOrReference qs dt l t c
+getQualifierOrReference c qs dt l t
   | isProperty label =
         case lookup label qs of
-          Just snaks -> return (VFV c [value | snak <- snaks, Ok value <- [get_value snak]])
+          Just snaks -> let (c1,c2) = split c
+                        in return (VFV c1 [value | Ok value <- mapC get_value c2 snaks])
           Nothing    -> return (VFV c [])
   | otherwise = fail "An invalid Wikidata qualifier or reference"
   where
     label = showRawIdent l
 
-    get_value snak = do
+    get_value c snak = do
       datavalue <- valFromObj "datavalue" snak
       datatype  <- valFromObj "datatype"  snak
-      ass <- matchTypeFromJSON [] datavalue datatype t
-      return (R ass)
--}
+      ass <- matchTypeFromJSON c [] datavalue datatype t
+      return (VR ass)
+
 dropURL s = match "http://www.wikidata.org/entity/" s
   where
     match [] ys = ys

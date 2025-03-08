@@ -339,10 +339,11 @@
                 const selection = getMultiSelection(element('from'));
                 const content   = document.getElementById("content");
                 const data = {
-                    qid: content.dataset.qid,
                     lang: selection.current,
                     code: editor.getValue()
                 };
+                if (content.dataset.qid != null)
+                    data.qid = content.dataset.qid;
                 const response = await fetch("FunctionsService.fcgi",
                     {method: "POST",
                      body: JSON.stringify(data),

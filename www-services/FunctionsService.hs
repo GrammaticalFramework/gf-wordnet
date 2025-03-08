@@ -34,7 +34,7 @@ import qualified Data.Map                as Map
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Encoding as E
 import qualified Data.ByteString.Lazy as BL
-import Data.Char ( isDigit, ord )
+import Data.Char ( isDigit, ord, toLower )
 import Data.Foldable ( find )
 import Data.Maybe
 
@@ -52,25 +52,25 @@ functionsService db gr mn sgr rq =
     path = uriPath (rqURI rq)
 
     parseQuery query = do
-      qid  <- valFromObj "qid"  query
+      mb_qid <- maybe (pure Nothing) (fmap Just . readJSON)
+                      (lookup "qid" (fromJSObject query))
       lang <- valFromObj "lang" query
       code <- valFromObj "code" query
-      return (executeCode db gr sgr mn "" qid lang code)
+      return (executeCode db gr sgr mn "" mb_qid lang code)
 
     orFail :: String -> Maybe a -> Result a
     orFail s = maybe (fail s) pure
 
     getFromQuery query = do
-      qid <- orFail "No QID" $ lookup "qid" query
       lang <- orFail "No lang" $ lookup "lang" query
       code <- orFail "No code" $ lookup "code" query
-      return $ executeCode db gr sgr mn "" qid lang code
+      return $ executeCode db gr sgr mn "" (lookup "qid" query) lang code
 
-executeCode :: Database -> PGF -> SourceGrammar -> ModuleName -> String -> String -> String -> String -> IO Response
-executeCode db gr sgr mn cwd qid lang code =
+executeCode :: Database -> PGF -> SourceGrammar -> ModuleName -> String -> Maybe String -> String -> String -> IO Response
+executeCode db gr sgr mn cwd mb_qid lang code =
   case runLangP NLG pNLG (BS.pack code) of
     Right prog ->
-      case runCheck (checkComputeProg prog) of
+      case runCheck (checkComputeProg (maybe prog (add_qid prog) mb_qid)) of
         E.Ok (res,msg)
                    -> return (Response
                                 { rspCode = 200
@@ -98,6 +98,9 @@ executeCode db gr sgr mn cwd qid lang code =
                                 })
   where
     abs_mn = moduleNameS (abstractName gr)
+
+    add_qid prog qid =
+      Map.insert (identS "qid") (ResOper (Just (noLoc (Sort cStr))) (Just (noLoc (K qid)))) prog
 
     Just cnc = Map.lookup lang (languages gr)
 
@@ -127,12 +130,12 @@ executeCode db gr sgr mn cwd qid lang code =
       
       infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
       let sgr'     = prependModule sgr nlg_m
-          globals0 = Gl sgr (wikiPredef db gr qid lang)
+          globals0 = Gl sgr' (wikiPredef db gr lang)
       nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd globals0)) nlg_m infoss
       checkWarn (ppModule Unqualified nlg_m)
 
       let sgr' = prependModule sgr nlg_m
-          globals1 = Gl sgr' (wikiPredef db gr qid lang)
+          globals1 = Gl sgr' (wikiPredef db gr lang)
           qident = (nlg_mn,identS "main")
 
       res <- runEvalM globals1 $ do
@@ -252,8 +255,8 @@ executeCode db gr sgr mn cwd qid lang code =
          mkInfo locd loct [(de',ty')] = (ResOper (Just (L locd ty')) (Just (L locd de')))
          mkInfo locd loct defs        = (ResOverload [] [(L locd ty',L locd de') | (de',ty') <- defs])
 
-wikiPredef :: Database -> PGF -> String -> String -> PredefTable
-wikiPredef db pgf qid lang = Map.fromList
+wikiPredef :: Database -> PGF -> String -> PredefTable
+wikiPredef db pgf lang = Map.fromList
   [ (identS "entity", pdArity 2 $ \g c [typ,VStr qid] -> Const (fetch typ qid))
   , (identS "int2digits", pdArity 1 $ \g c [VInt n] -> Const (int2digits abstr n))
   , (identS "int2decimal", pdArity 1 $ \g c [VInt n] -> Const (int2decimal abstr n))
@@ -269,8 +272,7 @@ wikiPredef db pgf qid lang = Map.fromList
           VStr time -> Const (time2adv abstr time)
           _         -> Const (VError (ppValue Unqualified 0 x))
     )
-  , (identS "qid",  pdArity 0 $ \g c [] -> Const (VStr qid))
-  , (identS "lang", pdArity 0 $ \g c [] -> Const (VStr lang))
+  , (identS "lang", pdArity 0 $ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
   , (cLessInt, pdArity 2 $ \g c [v1,v2] -> fmap toBool (liftA2 (<) (value2int v1) (value2int v2)))
   ]
   where

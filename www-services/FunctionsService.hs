@@ -122,15 +122,15 @@ executeCode db gr sgr mn cwd mb_qid lang code =
                      mwith   = Nothing,
                      mopens  = [OSimple mn, OSimple abs_mn],
                      mexdeps = [],
-                     msrc    = "<NLG module>",
+                     msrc    = "Main",
                      mseqs   = Nothing,
                      jments  = jments
                    }
       nlg_m <- renameModule cwd sgr (nlg_mn, nlg_mi)
-      
+
       infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
       let sgr'     = prependModule sgr nlg_m
-          globals0 = Gl sgr (wikiPredef db gr lang)
+          globals0 = Gl sgr' (wikiPredef db gr lang)
       nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd globals0)) nlg_m infoss
       checkWarn (ppModule Unqualified nlg_m)
 

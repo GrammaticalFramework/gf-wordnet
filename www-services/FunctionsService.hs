@@ -387,6 +387,13 @@ matchTypeFromJSON c qs dv dt (VRecType labels) = do
                Nothing -> getQualifierOrReference c qs dt l ty
       return (k,val)
     getField _ _ _ = fail "Wikidata entities can only have named properties"
+matchTypeFromJSON c qs dv dt (VMeta _ _) = do
+  wdt <- getWikiDataType dt
+  mapCM getField c (wdtFields wdt)
+  where
+    getField c f = do
+      val <-  extractField f c Nothing dv
+      return (LIdent (rawIdentS (fieldName f)),val)
 
 getWikiDataType "commonsMedia"     = return commonsMediaWdt
 getWikiDataType "quantity"         = return quantityWdt

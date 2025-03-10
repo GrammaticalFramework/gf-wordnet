@@ -143,7 +143,7 @@ executeCode db gr sgr mn cwd mb_qid lang code =
         let (c1,c2) = split unit
         (term,res_ty) <- inferLType' (Q qident)
         (flag,term,res_ty) <- instantiate False term res_ty
-        res <- value2termM True [] (eval g [] c2 term [])
+        res <- value2termM False [] (eval g [] c2 term [])
         (res,res_ty) <- if flag
                           then inferLType' res
                           else return (res,res_ty)

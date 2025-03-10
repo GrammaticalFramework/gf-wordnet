@@ -143,13 +143,16 @@ executeCode db gr sgr mn cwd mb_qid lang code =
         let (c1,c2) = split unit
         (term,res_ty) <- inferLType' (Q qident)
         (flag,term,res_ty) <- instantiate False term res_ty
-        res <- value2termM False [] (eval g [] c2 term [])
+        res <- value2termM False [] (bubble (eval g [] c2 term []))
+        res <- case res of
+                 FV ts -> msum (map return ts)
+                 res   -> return res
         (res,res_ty) <- if flag
                           then inferLType' res
                           else return (res,res_ty)
-        res_ty <- value2termM False [] res_ty
+        res_ty <- value2termM True [] res_ty
         return (toHeaders res_ty,[toRecord res_ty res])
-      return ((Map.toList . Map.fromListWith (++)) res)
+      return ((Map.toList . fmap reverse . Map.fromListWith (++)) res)
 
     toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,ty) <- lbls]
     toHeaders ty             = [toHeader empty ty]

@@ -283,16 +283,12 @@ executeCode db gr sgr mn cwd mb_qid lang code =
 
 wikiPredef :: Database -> PGF -> String -> PredefTable
 wikiPredef db pgf lang = Map.fromList
-  [ (identS "entity", pdArity 2 $ \g c [typ,VStr qid] -> Const (fetch c typ qid))
+  [ (identS "entity", pdArity 2 $ \g c [typ,qid] -> Const (fetch c typ qid))
   , (identS "int2digits", pdArity 1 $ \g c [VInt n] -> Const (int2digits abstr n))
   , (identS "int2decimal", pdArity 1 $ \g c [VInt n] -> Const (int2decimal abstr n))
   , (identS "float2decimal", pdArity 1 $ \g c [VFlt f] -> Const (float2decimal abstr f))
   , (identS "int2numeral", pdArity 1 $ \g c [VInt n] -> Const (int2numeral abstr n))
-  , (identS "expr", pdArity 2 $ \g c [ty,x] ->
-        case x of
-          VStr qid -> get_expr c ty qid
-          _        -> Const (VError ("2" <+> ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x))
-    )
+  , (identS "expr", pdArity 2 $ \g c [ty,qid] -> Const (get_expr c ty qid))
   , (identS "time2adv", pdArity 1 $ \g c [x] ->
         case x of
           VStr time -> Const (time2adv abstr time)
@@ -304,13 +300,14 @@ wikiPredef db pgf lang = Map.fromList
   where
     abstr = moduleNameS (abstractName pgf)
 
-    fetch c typ qid =
+    fetch c typ (VStr qid) =
       let rsp = unsafePerformIO (simpleHTTP (getRequest ("https://www.wikidata.org/wiki/Special:EntityData/"++qid++".json")))
       in case decode (rspBody rsp) >>= valFromObj "entities" >>= valFromObj qid >>= valFromObj "claims" of
            Ok obj    -> filterJsonFromType c obj typ
            Error msg -> VError (pp msg)
+    fetch c ty (VFV c1 vs) = VFV c1 (mapC (\c -> fetch c ty) c vs)
 
-    get_expr c ty qid = Const (VFV c res)
+    get_expr c ty (VStr qid) = VFV c res
       where
         res = unsafePerformIO $
                 runDaison db ReadOnlyMode $
@@ -324,6 +321,8 @@ wikiPredef db pgf lang = Map.fromList
           mod == abstr && showIdent cat1 == cat2
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
+    get_expr c ty (VFV c1 vs) = VFV c1 (mapC (\c -> get_expr c ty) c vs)
+    get_expr c ty x           = VError (ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x)
 
 
 filterJsonFromType :: Choice -> JSObject [JSObject JSValue] -> Value -> Value

@@ -284,16 +284,12 @@ executeCode db gr sgr mn cwd mb_qid lang code =
 wikiPredef :: Database -> PGF -> String -> PredefTable
 wikiPredef db pgf lang = Map.fromList
   [ (identS "entity", pdArity 2 $ \g c [typ,qid] -> Const (fetch c typ qid))
-  , (identS "int2digits", pdArity 1 $ \g c [VInt n] -> Const (int2digits abstr n))
-  , (identS "int2decimal", pdArity 1 $ \g c [VInt n] -> Const (int2decimal abstr n))
-  , (identS "float2decimal", pdArity 1 $ \g c [VFlt f] -> Const (float2decimal abstr f))
-  , (identS "int2numeral", pdArity 1 $ \g c [VInt n] -> Const (int2numeral abstr n))
+  , (identS "int2digits", pdArity 1 $ \g c [n] -> Const (int2digits abstr n))
+  , (identS "int2decimal", pdArity 1 $ \g c [n] -> Const (int2decimal abstr n))
+  , (identS "float2decimal", pdArity 1 $ \g c [f] -> Const (float2decimal abstr f))
+  , (identS "int2numeral", pdArity 1 $ \g c [n] -> Const (int2numeral abstr n))
   , (identS "expr", pdArity 2 $ \g c [ty,qid] -> Const (get_expr c ty qid))
-  , (identS "time2adv", pdArity 1 $ \g c [x] ->
-        case x of
-          VStr time -> Const (time2adv abstr time)
-          _         -> Const (VError (ppValue Unqualified 0 x))
-    )
+  , (identS "time2adv", pdArity 1 $ \g c [time] -> Const (time2adv abstr time))
   , (identS "lang", pdArity 0 $ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
   , (cLessInt, pdArity 2 $ \g c [v1,v2] -> fmap toBool (liftA2 (<) (value2int v1) (value2int v2)))
   ]
@@ -499,7 +495,7 @@ decimal c s =
     [(v, "")] -> return (c v)
     _         -> fail "Not a decimal"
 
-int2digits abstr n
+int2digits abstr (VInt n)
   | n >= 0    = digits n
   | otherwise = VError (pp "Can't convert" <+> pp n)
   where
@@ -516,9 +512,10 @@ int2digits abstr n
     rest n t =
       let (n2,n1) = divMod n 10
       in rest n2 (VApp iidig [digit n1, t])
+int2digits abstr (VFV c vs) = VFV c (map (int2digits abstr) vs)
 
-int2decimal :: ModuleName -> Integer -> Value
-int2decimal abstr n = sign n (int2digits abstr (abs n))
+int2decimal :: ModuleName -> Value -> Value
+int2decimal abstr (VInt n) = sign n (int2digits abstr (VInt (abs n)))
   where
     neg_dec = (abstr,identS "NegDecimal")
     pos_dec = (abstr,identS "PosDecimal")
@@ -526,11 +523,12 @@ int2decimal abstr n = sign n (int2digits abstr (abs n))
     sign n t
       | n < 0     = VApp neg_dec [t]
       | otherwise = VApp pos_dec [t]
+int2decimal abstr (VFV c vs) = VFV c (map (int2decimal abstr) vs)
 
-float2decimal :: ModuleName -> Double -> Value
-float2decimal abstr f =
+float2decimal :: ModuleName -> Value -> Value
+float2decimal abstr (VFlt f) =
   let n = truncate f
-  in fractions (f-fromIntegral n) (int2decimal abstr n)
+  in fractions (f-fromIntegral n) (int2decimal abstr (VInt n))
   where
     ifrac = (abstr,identS "IFrac")
 
@@ -542,8 +540,9 @@ float2decimal abstr f =
           let f10 = f * 10
               n2  = truncate f10
           in fractions (f10-fromIntegral n2) (VApp ifrac [t, (digit n2)])
+float2decimal abstr (VFV c vs) = VFV c (map (float2decimal abstr) vs)
 
-int2numeral abstr n
+int2numeral abstr (VInt n)
   | n < 1000000000000 = app1 "num" (n2s1000000000000 n)
   | otherwise         = range_error n
   where
@@ -597,8 +596,9 @@ int2numeral abstr n
     app0 fn = VApp (abstr,identS fn) []
     app1 fn v1 = VApp (abstr,identS fn) [v1]
     app2 fn v1 v2 = VApp (abstr,identS fn) [v1,v2]
+int2numeral abstr (VFV c vs) = VFV c (map (int2numeral abstr) vs)
 
-time2adv abs_mn s =
+time2adv abs_mn (VStr s) =
   case matchISO8601 s of
     Just (year,month,day) ->
           let y = VApp (abs_mn,identS "intYear") [VInt year]
@@ -644,7 +644,7 @@ time2adv abs_mn s =
         digit r c
           | isDigit c = fmap (\x -> (x*10+(fromIntegral (ord c - ord '0')))) r
           | otherwise = Nothing
-
+time2adv abs_mn (VFV c vs) = VFV c (map (time2adv abs_mn) vs)
 
 value2int (VInt n) = Const n
 value2int _        = RunTime

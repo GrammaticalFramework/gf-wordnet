@@ -2,7 +2,7 @@
 {-# LANGUAGE LambdaCase, MonadComprehensions #-}
 module FunctionsService where
 
-import Control.Applicative     (liftA2, (<|>))
+import Control.Applicative     (liftA, liftA2, (<|>))
 import Control.Monad (MonadPlus(mplus), foldM, forM, msum, (>=>))
 import GF.Compile
 import GF.Compile.Compute.Concrete2
@@ -36,6 +36,7 @@ import qualified Data.Text.Lazy.Encoding as E
 import qualified Data.ByteString.Lazy as BL
 import Data.Char ( isDigit, ord, toLower )
 import Data.Foldable ( find )
+import Data.List ( singleton )
 import Data.Maybe
 
 functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IO Response
@@ -151,7 +152,8 @@ executeCode db gr sgr mn cwd mb_qid lang code =
                           then inferLType' res
                           else return (res,res_ty)
         res_ty <- value2termM True [] res_ty
-        return (toHeaders res_ty,[toRecord res_ty res])
+        res <- toRecord res_ty res
+        return (toHeaders res_ty,[res])
       return ((Map.toList . fmap reverse . Map.fromListWith (++)) res)
 
     toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,ty) <- lbls]
@@ -172,40 +174,59 @@ executeCode db gr sgr mn cwd mb_qid lang code =
     toHeaderType ty                  = "text"
 
     toRecord (RecType lbls) (R as)  = toCells lbls as
-    toRecord ty             t       = [toCell ty t]
+    toRecord ty             t       = fmap singleton (toCell ty t)
 
-    toCells []            as = []
+    toCells []            as = return []
     toCells ((l,ty):lbls) as =
       case lookup l as of
-        Just (_,t) -> toCell ty t : toCells lbls as
-        Nothing    -> "?"         : toCells lbls as
+        Just (_,t) -> do c  <- toCell ty t
+                         cs <- toCells lbls as
+                         return (c:cs)
+        Nothing    -> do cs <- toCells lbls as
+                         return ("?":cs)
 
     toCell (Sort s)  t
       | s == cStr =
           case toStr t of
-            Just s  -> s
-            Nothing -> render (ppTerm Unqualified 0 t)
-    toCell (QC (m,c)) t
-      | m == abs_mn = linearize cnc (toExpr t)
+            Just s  -> return s
+            Nothing -> return (render (ppTerm Unqualified 0 t))
     toCell (Q (m,c)) t
       | m == cPredef && c == identS "Markup"
-                       = foldr showsXML "" (toXML t)
+                       = do ts <- toXML t
+                            return (foldr showsXML "" ts)
       | m == cPredef && c == identS "Time"
                        = case toStr t of
-                           Just s  -> s
-                           Nothing -> render (ppTerm Unqualified 0 t)
-    toCell ty        t = render (ppTerm Unqualified 0 t)
+                           Just s  -> return s
+                           Nothing -> return (render (ppTerm Unqualified 0 t))
+    toCell (QC (m,c)) t
+      | m == abs_mn = fmap (linearize cnc) (toExpr [] t)
+    toCell ty        t
+      | isPGFType ty = do e <- toExpr [] t
+                          return (showExpr [] e)
+      | otherwise    = return (render (ppTerm Unqualified 0 t))
 
-    toExpr (App t1 t2) = EApp (toExpr t1) (toExpr t2)
-    toExpr (Q (_,c))   = EFun (showIdent c)
-    toExpr (QC (_,c))  = EFun (showIdent c)
-    toExpr (EInt n)    = ELit (LInt n)
-    toExpr (EFloat d)  = ELit (LFlt d)
-    toExpr (ImplArg t) = EImplArg (toExpr t)
-    toExpr (Meta i)    = EMeta i
-    toExpr t           = case toStr t of
-                           Just s  -> ELit (LStr s)
-                           Nothing -> EMeta 0
+    isPGFType (QC (m,c))
+      | m == abs_mn = True
+    isPGFType (Prod bt x t1 t2) = isPGFType t1 && isPGFType t2
+    isPGFType _ = False
+
+    toExpr xs (Abs bt x t) = liftA (EAbs bt (showIdent x)) (toExpr (x:xs) t)
+    toExpr xs (Vr x)       = return (EVar (deBruijn 0 x xs))
+                             where
+                               deBruijn i x (x':xs)
+                                 | x == x'   = i
+                                 | otherwise = deBruijn (i+1) x xs
+    toExpr xs (App t1 t2)  = liftA2 EApp (toExpr xs t1) (toExpr xs t2)
+    toExpr xs (Q (_,c))    = return (EFun (showIdent c))
+    toExpr xs (QC (_,c))   = return (EFun (showIdent c))
+    toExpr xs (EInt n)     = return (ELit (LInt n))
+    toExpr xs (EFloat d)   = return (ELit (LFlt d))
+    toExpr xs (ImplArg t)  = liftA EImplArg (toExpr xs t)
+    toExpr xs (Meta i)     = return (EMeta i)
+    toExpr xs (FV ts)      = msum (map return ts) >>= toExpr xs
+    toExpr xs t            = case toStr t of
+                               Just s  -> return (ELit (LStr s))
+                               Nothing -> return (EMeta 0)
 
     toStr (K s)        = Just s
     toStr (C t1 t2)    = do s1 <- toStr t1
@@ -217,11 +238,13 @@ executeCode db gr sgr mn cwd mb_qid lang code =
     toStr _            = Nothing
 
     toXML (Markup tag as ts)
-      | tag == identW = concatMap toXML ts
-      | otherwise     = [Tag (showIdent tag) (map toAttr as) (concatMap toXML ts)]
-    toXML t                  = case toStr t of
-                                 Just s  -> [Data s]
-                                 Nothing -> [Data (linearize cnc (toExpr t))]
+      | tag == identW = fmap concat (mapM toXML ts)
+      | otherwise     = do ts <- fmap concat (mapM toXML ts)
+                           return [Tag (showIdent tag) (map toAttr as) ts]
+    toXML t           = case toStr t of
+                          Just s  -> return [Data s]
+                          Nothing -> do e <- toExpr [] t
+                                        return [Data (linearize cnc e)]
 
     toAttr (id,t) =
       case toStr t of

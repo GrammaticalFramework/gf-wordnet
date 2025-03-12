@@ -1,6 +1,6 @@
 {-# LANGUAGE CPP                 #-}
 {-# LANGUAGE LambdaCase, MonadComprehensions #-}
-module FunctionsService where
+module FunctionsService(functionsService, pageService) where
 
 import Control.Applicative     (liftA, liftA2, (<|>))
 import Control.Monad (MonadPlus(mplus), foldM, forM, msum, (>=>))
@@ -50,14 +50,12 @@ functionsService db gr mn sgr rq =
                            , rspBody = msg
                            })
   where
-    path = uriPath (rqURI rq)
-
     parseQuery query = do
       mb_qid <- maybe (pure Nothing) (fmap Just . readJSON)
                       (lookup "qid" (fromJSObject query))
       lang <- valFromObj "lang" query
       code <- valFromObj "code" query
-      return (executeCode db gr sgr mn "" mb_qid lang code)
+      return (executeCode db gr sgr mn True mb_qid lang code)
 
     orFail :: String -> Maybe a -> Result a
     orFail s = maybe (fail s) pure
@@ -65,14 +63,53 @@ functionsService db gr mn sgr rq =
     getFromQuery query = do
       lang <- orFail "No lang" $ lookup "lang" query
       code <- orFail "No code" $ lookup "code" query
-      return $ executeCode db gr sgr mn "" (lookup "qid" query) lang code
+      return $ executeCode db gr sgr mn True (lookup "qid" query) lang code
 
-executeCode :: Database -> PGF -> SourceGrammar -> ModuleName -> String -> Maybe String -> String -> String -> IO Response
-executeCode db gr sgr mn cwd mb_qid lang code =
+pageService :: Database -> PGF -> ModuleName -> SourceGrammar -> FilePath -> Request -> IO Response
+pageService db gr mn sgr path rq = do
+  (html_file,config) <- fmap read (readFile path)
+  html <- readFile (dir </> html_file)
+  let query = rqQuery rq
+      lang  = fromMaybe "ParseEng" (lookup "lang" query)
+  case lookup "qid" query of
+    Just qid -> do rsp <- wikidataEntity qid
+                   case rsp >>= get_classes of
+                     Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
+                                     (prog:_) -> do code <- readFile (dir </> prog)
+                                                    rsp <- executeCode db gr sgr mn False (Just qid) lang code
+                                                    if rspCode rsp == 200
+                                                      then return rsp{rspBody=injectTemplate html (rspBody rsp)}
+                                                      else return rsp
+                     Error msg  -> return (Response
+                                             { rspCode = 400
+                                             , rspReason = "FAIL"
+                                             , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
+                                             , rspBody = msg
+                                             })
+    Nothing -> return (Response
+                         { rspCode = 200
+                         , rspReason = "OK"
+                         , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
+                         , rspBody = html
+                         })
+    where
+      dir = dropFileName path
+
+      get_classes json = do
+        vals <- valFromObj "P31" json
+        mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
+
+      injectTemplate []     code = []
+      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs) code = code ++ injectTemplate cs code
+      injectTemplate (c:cs) code = c:injectTemplate cs code
+
+executeCode :: Database -> PGF -> SourceGrammar -> ModuleName -> Bool -> Maybe String -> String -> String -> IO Response
+executeCode db gr sgr mn as_table mb_qid lang code =
   case runLangP NLG pNLG (BS.pack code) of
     Right prog ->
       case runCheck (checkComputeProg (maybe prog (add_qid prog) mb_qid)) of
         E.Ok (res,msg)
+          | as_table
                    -> return (Response
                                 { rspCode = 200
                                 , rspReason = "OK"
@@ -83,6 +120,13 @@ executeCode db gr sgr mn cwd mb_qid lang code =
                                                                                      ("dataset",showJSON dataset)]
                                                                               | (headers,dataset) <- res])
                                                       ]
+                                })
+          | otherwise
+                   -> return (Response
+                                { rspCode = 200
+                                , rspReason = "OK"
+                                , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
+                                , rspBody = concat [concat html | (headers,(html:_)) <- res]
                                 })
         E.Bad msg  -> return (Response
                                 { rspCode = 400
@@ -127,6 +171,7 @@ executeCode db gr sgr mn cwd mb_qid lang code =
                      mseqs   = Nothing,
                      jments  = jments
                    }
+      let cwd = ""
       nlg_m <- renameModule cwd sgr (nlg_mn, nlg_mi)
 
       infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
@@ -237,19 +282,24 @@ executeCode db gr sgr mn cwd mb_qid lang code =
                             return (s1 ++ s2)
     toStr _            = Nothing
 
+    toXML (FV ts)      = msum (map return ts) >>= toXML
     toXML (Markup tag as ts)
       | tag == identW = fmap concat (mapM toXML ts)
-      | otherwise     = do ts <- fmap concat (mapM toXML ts)
-                           return [Tag (showIdent tag) (map toAttr as) ts]
+      | otherwise     = do as <- mapM toAttr as
+                           ts <- fmap concat (mapM toXML ts)
+                           return [Tag (showIdent tag) as ts]
     toXML t           = case toStr t of
                           Just s  -> return [Data s]
                           Nothing -> do e <- toExpr [] t
                                         return [Data (linearize cnc e)]
 
+    toAttr (id,FV ts) = do
+      t <- msum (map return ts)
+      toAttr (id,t)
     toAttr (id,t) =
       case toStr t of
-        Just s  -> (showIdent id, s)
-        Nothing -> (showIdent id, render (ppTerm Unqualified 0 t))
+        Just s  -> return (showIdent id, s)
+        Nothing -> return (showIdent id, render (ppTerm Unqualified 0 t))
 
     checkInfo :: Options -> FilePath -> Globals -> SourceModule -> (Ident,Info) -> Check SourceModule
     checkInfo opts cwd globals sm (c,info) = checkInModule cwd (snd sm) NoLoc empty $ do
@@ -297,13 +347,15 @@ wikiPredef db pgf lang = Map.fromList
     abstr = moduleNameS (abstractName pgf)
 
     fetch c typ (VStr qid) =
-      let rsp = unsafePerformIO (simpleHTTP (getRequest ("https://www.wikidata.org/wiki/Special:EntityData/"++qid++".json")))
-      in case decode (rspBody rsp) >>= valFromObj "entities" >>= valFromObj qid >>= valFromObj "claims" of
-           Ok obj    -> filterJsonFromType c obj typ
-           Error msg -> VError (pp msg)
+      case unsafePerformIO (wikidataEntity qid) of
+        Ok obj    -> filterJsonFromType c obj typ
+        Error msg -> VError (pp msg)
     fetch c ty (VFV c1 vs) = VFV c1 (mapC (\c -> fetch c ty) c vs)
 
-    get_expr c ty (VStr qid) = VFV c res
+    get_expr c ty (VStr qid) =
+      case res of
+        [v] -> v
+        vs  -> VFV c vs
       where
         res = unsafePerformIO $
                 runDaison db ReadOnlyMode $
@@ -320,6 +372,9 @@ wikiPredef db pgf lang = Map.fromList
     get_expr c ty (VFV c1 vs) = VFV c1 (mapC (\c -> get_expr c ty) c vs)
     get_expr c ty x           = VError (ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x)
 
+wikidataEntity qid = do
+  rsp <- simpleHTTP (getRequest ("https://www.wikidata.org/wiki/Special:EntityData/"++qid++".json"))
+  return (decode (rspBody rsp) >>= valFromObj "entities" >>= valFromObj qid >>= valFromObj "claims")
 
 filterJsonFromType :: Choice -> JSObject [JSObject JSValue] -> Value -> Value
 filterJsonFromType c obj typ =
@@ -335,8 +390,9 @@ getSpecificProperty :: Choice -> JSObject [JSObject JSValue] -> (Label, Value) -
 getSpecificProperty c obj (LIdent field, typ)
   | isProperty label =
       case Text.JSON.Types.get_field obj label of
-        Nothing   -> (LIdent field, VFV c [])
-        Just objs -> (LIdent field, VFV c (mapC (transformJsonToValue typ) c objs))
+        Nothing    -> (LIdent field, VFV c [])
+        Just [obj] -> (LIdent field, transformJsonToValue typ c obj)
+        Just objs  -> (LIdent field, VFV c (mapC (transformJsonToValue typ) c objs))
   | otherwise = (LIdent field, VError (pp field <+> "is an invalid Wikidata property"))
   where
     label = showRawIdent field
@@ -470,7 +526,9 @@ getQualifierOrReference c qs dt l t
   | isProperty label =
         case lookup label qs of
           Just snaks -> let (c1,c2) = split c
-                        in return (VFV c1 [value | Ok value <- mapC get_value c2 snaks])
+                        in case [value | Ok value <- mapC get_value c2 snaks] of
+                             [v] -> return v
+                             vs  -> return (VFV c vs)
           Nothing    -> return (VFV c [])
   | otherwise = fail "An invalid Wikidata qualifier or reference"
   where

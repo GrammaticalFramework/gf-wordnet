@@ -31,17 +31,17 @@ main = do
              | (ex_id,(ex,_)) <- from examples everything
              , let c = length (exprFunctions ex)]
   (_,(mn,sgr)) <- batchCompile noOptions (Just gr) [doc_dir</>"gf/WordNet.gf"]
-  server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr client_secret)
+  server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr doc_dir client_secret)
   closeDB db
 
 
-httpMain db gr bigram_total mn sgr client_secret conn = do
+httpMain db gr bigram_total mn sgr doc_dir client_secret conn = do
   rq <- receiveHTTP conn
   let path  = uriPath (rqURI rq)
       query = rqQuery rq
   putStrLn $ show (rqMethod rq) ++" "++path++" "++show (map cutSnd query)
   case Map.lookup (takeExtension path) mimeTypes of
-    Just mine_type -> serveStaticFile mine_type ("www"</>tail path)
+    Just mine_type -> serveStaticFile mine_type (doc_dir</>tail path)
     Nothing
       | path == "/"-> do respondHTTP conn (Response
                                              { rspCode = 308
@@ -57,6 +57,12 @@ httpMain db gr bigram_total mn sgr client_secret conn = do
                           respondHTTP conn rsp
       | path == "/FunctionsService.fcgi"
                    -> do rsp <- functionsService db gr mn sgr rq
+                         respondHTTP conn rsp
+      | path == "/index.wsgi"
+                   -> do rsp <- pageService db gr mn sgr (doc_dir</>"gf-wikidata.wiki") rq
+                         respondHTTP conn rsp
+      | takeExtension path == ".wiki"
+                   -> do rsp <- pageService db gr mn sgr (doc_dir</>tail path) rq
                          respondHTTP conn rsp
       | otherwise  -> respondHTTP conn (Response
                                           { rspCode = 400

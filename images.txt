@@ -440,7 +440,6 @@ extenuation_2_N	Q899546;Water_softening;
 level_6_V	Q961466;Levelling;
 decompression_2_N	Q1183684;Decompression_(diving);commons/b/b5/Tech_diving_decompression_stop.jpg
 extrusion_2_N	Q139143;Extrusion;
-shortening_2_N	Q1194601;Shortening;
 pruning_2_N	Q500094;Pruning;commons/5/56/Pruner_on_ladder_in_Japan.jpeg
 shearing_N	Q1797057;Shearing_(manufacturing);
 drown_3_V	Q506616;Drowning;commons/a/a5/Wassilij_Grigorjewitsch_Perow_002.jpg
@@ -4606,7 +4605,7 @@ cagoule_N	Q2933073;Cagoule;commons/0/02/Peter_Storm_vintage_cagoule_front.jpg
 caisson_4_N	Q846451;Caisson_(engineering);commons/8/8c/Procédé_Triger.png
 coffer_dam_N	Q205077;Cofferdam;commons/2/27/Cofferdam_Olmsted_Locks_Ohio_River.jpg
 calash_1_N	Q29491395;;commons/4/47/Calash_hood.tif	Q29491395;;commons/7/73/Calash_MET_67.110.276_view1_CP3.jpg
-calculator_2_N	Q31087;Calculator;
+calculator_2_N	Q31087;Calculator;commons/d/d5/Calculadora_científica_Famaprem_CPC-400.jpg
 sacramental_A	Q456627;Sacramental;
 cauldron_N	Q1317634;Cauldron;commons/5/5c/Gulyas080.jpg
 caledonian_canal_LN	Q909073;Caledonian_Canal;commons/2/21/Neptune's_Staircase_2017_left.jpg
@@ -12338,6 +12337,7 @@ chitterlings_N	Q155460;Chitterlings;
 cracklings_N	Q17064469;%C4%8Cvarci;
 haslet_N	Q5679304;Haslet;
 lard_N	Q72827;Lard;commons/a/af/Homelard.jpg
+shortening_1_N	Q1194601;Shortening;
 suet_N	Q420683;Suet;commons/c/c6/Beef_suet-01.jpg
 margarine_N	Q4287;Margarine;commons/7/7d/Margaryn_022.jpg
 oil_4_N	Q4739805;Vegetable_oil;commons/d/d5/Many_types_of_Oils.jpg
@@ -14086,7 +14086,7 @@ solingen_LN	Q2942;Solingen;commons/4/46/DEU_Solingen_COA.svg	Q2942;Solingen;comm
 weimar_LN	Q3955;Weimar;commons/1/14/DEU_Weimar_COA.svg	Q3955;Weimar;commons/1/19/Stadtansicht_Weimar_mit_Schloss_und_Herderkirche.jpg	Q3955;Weimar;commons/d/d7/Thuringia_WE.svg
 bavaria_LN	Q980;Bavaria;commons/0/05/Locator_map_Bavaria_in_Germany.svg	Q980;Bavaria;commons/1/16/Flag_of_Bavaria_(striped).svg	Q980;Bavaria;commons/2/20/Flag_of_Bavaria_(lozengy).svg	Q980;Bavaria;commons/d/d5/Coat_of_arms_of_Bavaria.svg
 hamelin_LN	Q4062;Hamelin;commons/1/1b/Hameln_vor_Anker.jpg	Q4062;Hamelin;commons/3/3c/DEU_Hamelin_COA.svg	Q4062;Hamelin;commons/a/a7/Hameln_in_HM.svg	Q4062;Hamelin;commons/f/fd/DEU_Hamelin_Flag.svg
-hohenlinden_LN	Q524334;Hohenlinden;commons/b/b8/Hohenlinden_in_EBE.svg	Q524334;Hohenlinden;commons/d/d7/Wappen_von_Hohenlinden.svg	Q524334;Hohenlinden;commons/e/e9/Hohenlindener_Rathaus.jpg
+hohenlinden_LN	Q524334;Hohenlinden;commons/4/4f/DEU_Hohenlinden_COA.svg	Q524334;Hohenlinden;commons/b/b8/Hohenlinden_in_EBE.svg	Q524334;Hohenlinden;commons/e/e9/Hohenlindener_Rathaus.jpg
 bonn_LN	Q586;Bonn;commons/3/39/Altes_Rathaus_Bonn.jpg	Q586;Bonn;commons/6/65/DEU_Bonn_COA.svg	Q586;Bonn;commons/c/c0/Flagge_der_kreisfreien_Stadt_Bonn.svg	Q586;Bonn;commons/e/eb/North_rhine_w_BN.svg
 cologne_1_LN	Q365;Cologne;commons/b/b5/Locator_map_K_in_Germany.svg	Q365;Cologne;commons/b/be/Stadtbild_Köln_(50MP).jpg	Q365;Cologne;commons/d/d5/Flagge_Köln.svg	Q365;Cologne;commons/f/f1/DEU_Koeln_COA.svg
 brunswick_3_LN	Q2773;Braunschweig;commons/0/02/Braunschweig_Kohlmarkt.jpg	Q2773;Braunschweig;commons/4/41/Lower_Saxony_BS.svg	Q2773;Braunschweig;commons/5/5c/DEU_Braunschweig_Flag.svg	Q2773;Braunschweig;commons/d/d3/DEU_Braunschweig_COA.svg
@@ -23015,7 +23015,7 @@ pycnosis_1_N	Q1734749;Pyknosis;
 hyperparathyroidism_N	Q1344835;Hyperparathyroidism;commons/a/a3/Illu_thyroid_parathyroid.jpg
 hyperpituitarism_N	Q3801524;Hyperpituitarism;
 vacuolization_1_N	Q7908033;Vacuolization;
-malaria_N	Q12156;Malaria;commons/3/37/Histopathology_of_malaria_exoerythrocytic_forms_in_liver_07G0024_lores.jpg
+malaria_N	Q12156;Malaria;commons/c/c2/Malaria_distribution_2020.jpg	Q12156;Malaria;commons/c/c2/Malaria_distribution_2020.jpg
 myasthenia_1_N	Q8285;Myasthenia_gravis;commons/c/ca/Synapse_diag3.png
 onycholysis_N	Q430438;Onycholysis;
 rheumatism_1_N	Q684924;Rheumatism;

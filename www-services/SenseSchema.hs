@@ -109,6 +109,13 @@ data Frame
       }
    deriving (Data,Show)
 
+data Construction = Construction
+      { entity      :: String
+      , expr        :: Expr
+      , langs       :: [String]
+      }
+    deriving (Data,Show)
+
 type FrameInstance = (Key Frame,[(String,FId)])
 
 synsets :: Table Synset
@@ -151,6 +158,13 @@ lexemes_qid = listIndex lexemes "qid" (\lexeme -> nub [qid | (qid,_,_) <- images
 examples :: Table (Expr,[FrameInstance])
 examples = table "examples"
              `withIndex` examples_fun
+
+lang :: Index Construction (String, String)
+lang = listIndex constructions "langs" (\ent -> [(entity ent, l) | l <- (langs ent:"")])
+
+constructions :: Table Construction
+constructions = table "constructions"
+             `withIndex` lang
 
 examples_fun :: Index (Expr,[FrameInstance]) Fun
 examples_fun = listIndex examples "fun" (nub . exprFunctions . fst)

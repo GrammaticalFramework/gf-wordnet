@@ -1,3 +1,5 @@
+--# -path=.:morphodicts
+
 concrete ParseAra of Parse =
   NounAra - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbAra - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP, UseCopula],

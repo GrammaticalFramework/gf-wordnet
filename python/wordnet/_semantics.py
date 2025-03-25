@@ -354,6 +354,14 @@ def get_synsets(lang : str, word : str, cat=None) -> list[Synset]:
                         result.append(synset)
     return result
 
+def get_all_synsets() -> list[Synset]:
+    result = []
+    with db.run("r") as t:
+        for synset_id, synset in t.cursor(synsets):
+            synset.id = synset_id
+            result.append(synset)
+    return result
+
 def get_lexeme(fun : str) -> Optional[Lexeme]:
     with db.run("r") as t:
         for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):

@@ -14,7 +14,8 @@ concrete ParseRon of Parse =
   TenseRon,
   NamesRon,
   ParseExtendRon,
-  WordNetRon
+  WordNetRon,
+  DocumentationRon
   ** {
 
 flags

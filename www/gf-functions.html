@@ -352,6 +352,8 @@
                 if (response.status == 200) {
                     const result = await response.json();
                     output.appendChild(node("pre",{},[text(result.msg)]));
+                    if (result.groups.length == 0)
+                        output.appendChild(node("b",{},[text("No results")]));
                     for (var group of result.groups) {
                         const res_tbl = node("table",{"class": "dataset"},[]);
                         const row = []

@@ -77,9 +77,12 @@ httpMain db gr bigram_total mn sgr doc_dir client_secret conn = do
       [(".html", "text/html; charset=UTF8")
       ,(".css",  "text/css; charset=UTF8")
       ,(".js",   "text/javascript; charset=UTF8")
-      ,(".png",  "image/png; charset=UTF8")
+      ,(".png",  "image/png")
       ,(".svg",  "image/svg+xml; charset=UTF8")
-      ,(".ico",  "image/vnd.microsoft.icon; charset=UTF8")
+      ,(".ico",  "image/vnd.microsoft.icon")
+      ,(".tsv",  "text/tab-separated-values; charset=UTF8")
+      ,(".tab",  "text/tab-separated-values; charset=UTF8")
+      ,(".json",  "application/json; charset=UTF8")
       ]
 
     serveStaticFile mime_type path =

@@ -90,7 +90,7 @@ pageService db gr mn sgr path rq = do
                          { rspCode = 200
                          , rspReason = "OK"
                          , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                         , rspBody = html
+                         , rspBody = injectTemplate html ""
                          })
     where
       dir = dropFileName path

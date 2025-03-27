@@ -1,10 +1,35 @@
 gfwordnet = {}
 
-gfwordnet.languages = ["ParseBul", "ParseCat", "ParseChi"
-                      ,"ParseDut", "ParseEng", "ParseEst"
-                      ,"ParseFin", "ParseIta", "ParsePor"
-                      ,"ParseSlv", "ParseSpa", "ParseSwe"
-                      ,"ParseTha", "ParseTur"];
+gfwordnet.languages =
+   [["Afrikaans",  "ParseAfr", "af"],
+   ,["Bulgarian",  "ParseBul", "bg"],
+   ,["Catalan",    "ParseCat", "ca"],
+   ,["Chinese",    "ParseChi", "zh"],
+   ,["Dutch",      "ParseDut", "nl"],
+   ,["English",    "ParseEng", "en"],
+   ,["Estonian",   "ParseEst", "ee"],
+   ,["Finish",     "ParseFin", "fi"],
+   ,["French",     "ParseFre", "fr"],
+   ,["German",     "ParseGer", "de"],
+   ,["Hindi",      "ParseHin", "hi"],
+   ,["Interlingua","ParseIna", "ia"],
+   ,["Italian",    "ParseIta", "it"],
+   ,["Korean",     "ParseKor", "ko"],
+   ,["Latvian",    "ParseLav", "lv"],
+   ,["Maltese",    "ParseMlt", "mt"],
+   ,["Polish",     "ParsePol", "pl"],
+   ,["Portuguese", "ParsePor", "pt"],
+   ,["Romanian",   "ParseRon", "ro"],
+   ,["Russian",    "ParseRus", "ru"],
+   ,["Slovenian",  "ParseSlv", "sl"],
+   ,["Somali",     "ParseSom", "so"],
+   ,["Spanish",    "ParseSpa", "es"],
+   ,["Swahili",    "ParseSwa", "sw"],
+   ,["Swedish",    "ParseSwe", "sv"],
+   ,["Thai",       "ParseTha", "th"],
+   ,["Turkish",    "ParseTur", "tr"],
+   ,["Urdu",       "ParseUrd", "ur"]
+   ];
 
 (function(){
 	var url = new URL(window.location.href);

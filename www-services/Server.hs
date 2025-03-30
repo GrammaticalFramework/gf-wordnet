@@ -41,7 +41,9 @@ httpMain db gr bigram_total mn sgr doc_dir client_secret conn = do
       query = rqQuery rq
   putStrLn $ show (rqMethod rq) ++" "++path++" "++show (map cutSnd query)
   case Map.lookup (takeExtension path) mimeTypes of
-    Just mine_type -> serveStaticFile mine_type (doc_dir</>tail path)
+    Just mine_type
+      | rqMethod rq == PUT -> updateStaticFile mine_type (doc_dir</>tail path) (rqBody rq)
+      | otherwise          -> serveStaticFile  mine_type (doc_dir</>tail path)
     Nothing
       | path == "/"-> do respondHTTP conn (Response
                                              { rspCode = 308
@@ -82,7 +84,8 @@ httpMain db gr bigram_total mn sgr doc_dir client_secret conn = do
       ,(".ico",  "image/vnd.microsoft.icon")
       ,(".tsv",  "text/tab-separated-values; charset=UTF8")
       ,(".tab",  "text/tab-separated-values; charset=UTF8")
-      ,(".json",  "application/json; charset=UTF8")
+      ,(".json", "application/json; charset=UTF8")
+      ,(".gf",   "text/x-gf; charset=UTF8")
       ]
 
     serveStaticFile mime_type path =
@@ -119,3 +122,31 @@ httpMain db gr bigram_total mn sgr doc_dir client_secret conn = do
           n <- hGetBuf h buf buf_size
           writeBytes conn buf n
           transmit h conn (size-fromIntegral n) buf
+
+    updateStaticFile mime_type path content
+      | takeWhile (/=';') mime_type == "text/x-gf" =
+          (do writeFile path content
+              respondHTTP conn (Response
+                                  { rspCode = 200
+                                  , rspReason = "OK"
+                                  , rspHeaders = []
+                                  , rspBody = ""
+                                  }))
+          `catch`
+          (\(e :: IOError) ->
+               if isDoesNotExistError e
+                 then do cwd <- getCurrentDirectory
+                         respondHTTP conn (Response
+                                             { rspCode = 400
+                                             , rspReason = "Not found: "++cwd</>path
+                                             , rspHeaders = []
+                                             , rspBody = ""
+                                             })
+               else throw e)
+      | otherwise =
+          respondHTTP conn (Response
+                              { rspCode = 400
+                              , rspReason = "Unsupported file type"
+                              , rspHeaders = []
+                              , rspBody = ""
+                              })

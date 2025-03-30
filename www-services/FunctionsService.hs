@@ -82,7 +82,7 @@ pageService db gr mn sgr path rq = do
                                                             Just _  -> showXMLDoc (Data code)
                                                             Nothing -> ""
                                                     if rspCode rsp == 200
-                                                      then return rsp{rspBody=injectTemplate html code_doc (rspBody rsp)}
+                                                      then return rsp{rspBody=injectTemplate html prog code_doc (rspBody rsp)}
                                                       else return rsp
                      Error msg  -> return (Response
                                              { rspCode = 400
@@ -94,7 +94,7 @@ pageService db gr mn sgr path rq = do
                          { rspCode = 200
                          , rspReason = "OK"
                          , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                         , rspBody = injectTemplate html "" ""
+                         , rspBody = injectTemplate html "" "" ""
                          })
     where
       dir = dropFileName path
@@ -103,10 +103,11 @@ pageService db gr mn sgr path rq = do
         vals <- valFromObj "P31" json
         mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
 
-      injectTemplate []                                           code output = []
-      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         code output = code   ++ injectTemplate cs code output
-      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) code output = output ++ injectTemplate cs code output
-      injectTemplate (c:cs)                                       code output = c :       injectTemplate cs code output
+      injectTemplate []                                           prog code output = []
+      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         prog code output = prog   ++ injectTemplate cs prog code output
+      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         prog code output = code   ++ injectTemplate cs prog code output
+      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) prog code output = output ++ injectTemplate cs prog code output
+      injectTemplate (c:cs)                                       prog code output = c :       injectTemplate cs prog code output
 
 executeCode :: Database -> PGF -> SourceGrammar -> ModuleName -> Bool -> Maybe String -> String -> String -> IO Response
 executeCode db gr sgr mn as_table mb_qid lang code =

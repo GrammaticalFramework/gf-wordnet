@@ -18925,7 +18925,6 @@ model_6_N	Q1136974;Role_model;
 hero_1_N	Q162244;Hero;commons/2/2e/James_Bond_at_Madame_Tussauds,_London.jpg	Q162244;Hero;commons/c/c4/George_Frederick_Watts,_1860-62,_Sir_Galahad,_oil_on_canvas,_191.8_x_107_cm,_Harvard_Art_Museums,_Fogg_Museum.jpg
 moderatorFem_3_N	Q140686;Chair_(officer);commons/9/99/Leena_Al-Hadid,_chairperson,_IAEA,_2018.jpg
 moderatorMasc_3_N	Q140686;Chair_(officer);commons/9/99/Leena_Al-Hadid,_chairperson,_IAEA,_2018.jpg
-mogul_2_N	Q33296;Mughal_Empire;commons/4/43/MughalEmpire1700.svg	Q33296;Mughal_Empire;commons/6/66/Moghul_india.png	Q33296;Mughal_Empire;commons/d/da/Alam_of_the_Mughal_Empire.svg
 monFem_2_N	Q637909;Mon_people;commons/3/32/Mon_people_girls_in_traditional_dress.jpg	Q637909;Mon_people;commons/b/b7/Flag_of_the_Mon_people.png
 monMasc_2_N	Q637909;Mon_people;commons/3/32/Mon_people_girls_in_traditional_dress.jpg	Q637909;Mon_people;commons/b/b7/Flag_of_the_Mon_people.png
 monegasqueFem_N	Q56422;Mon%C3%A9gasque_dialect;commons/a/ab/Street_sign_in_Monégasc-French_in_MonacoVille.jpg

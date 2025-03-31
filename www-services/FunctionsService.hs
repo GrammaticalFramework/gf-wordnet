@@ -84,6 +84,12 @@ pageService db gr mn sgr path rq = do
                                                     if rspCode rsp == 200
                                                       then return rsp{rspBody=injectTemplate html prog code_doc (rspBody rsp)}
                                                       else return rsp
+                                     []       -> return (Response
+                                                           { rspCode = 200
+                                                           , rspReason = "OK"
+                                                           , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
+                                                           , rspBody = injectTemplate html "" "" ("There is no renderer defined for classes "++unwords classes)
+                                                           })
                      Error msg  -> return (Response
                                              { rspCode = 400
                                              , rspReason = "FAIL"

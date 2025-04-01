@@ -4,7 +4,7 @@
 
 ```bash
 cd gf-core/src/compiler/           
-runghc Setup.hs configure -f servef
+runghc Setup.hs configure -f server
 runghc Setup.hs build
 sudo runghc Setup.hs install
 ```

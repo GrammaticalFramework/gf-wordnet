@@ -12,7 +12,7 @@ Mul: an island state
 key: Q112099
 
 abs: AdvVP (ComplSlash (SlashV2a (obtain_1_V2)) (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN degree_3_N))) (PrepNP from_Prep (MassNP (UseN university_1_N)))
-Fre: obtenir son diplôme de de l'université
+Fre: obtenir son diplôme de l'université
 key: P69
 
 abs: AdvVP (UseV graduate_V) (PrepNP at_1_Prep (MassNP (UseN university_1_N)))

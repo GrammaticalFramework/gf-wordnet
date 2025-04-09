@@ -40,7 +40,7 @@ readDraft fname lang = do
               (readFile "WordNet.gf")
   where
     mkDraft ls =
-      ["concrete "++takeBaseName fname++" of WordNet = Cat"++lang++" ** open Paradigms"++lang++", Grammar"++lang++", (S=Structural"++lang++") in {"
+      ["concrete "++takeBaseName fname++" of WordNet = Cat"++lang++" ** open Paradigms"++lang++", (S=Structural"++lang++") in {"
       ,""
       ] ++
       [l | l <- ls, l <- convert l] ++
@@ -65,7 +65,7 @@ applyChanges morphoMap patches draft = [patch l | l <- draft]
         _            -> l
 
 readMorpho lang =
-  fmap toMorphoEntries $ readFile "../rgl-learner/DictMkd.gf"
+  return Map.empty -- fmap toMorphoEntries $ readFile ("Dict"++lang++".gf")
   where
     dir = map toLower lang
 
@@ -105,28 +105,32 @@ functionMap :: Map.Map Cat (Map.Map Fun String -> Fun -> String -> String)
 functionMap = Map.fromList [
   -- missing Card and Predet because too complicated
   ("A"      , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "A"),
-  ("A2"     , \morphoMap fun lemma -> "mkA2 ("++look morphoMap fun (lo lemma) "A"++") noPrep"),
+  ("A2"     , \morphoMap fun lemma -> "mkA2 ("++look morphoMap fun (lo lemma) "A"++")"),
   ("AdA"    , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "AdA"),
   ("AdN"    , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "AdN"),
   ("AdV"    , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "AdV"),
   ("Adv"    , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "Adv"),
-  ("CN"     , \morphoMap fun lemma -> "UseN ("++look morphoMap fun (lo lemma) "N"++")"),
-  ("Interj" , \morphoMap fun lemma -> "ss \""++(lo lemma)++"\""),
+  ("CN"     , \morphoMap fun lemma -> "variants {}"),
+  ("Interj" , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "Interj"),
   ("N"      , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "N"),
-  ("N2"     , \morphoMap fun lemma -> "mkN2 ("++look morphoMap fun (lo lemma) "N"++") noPrep"),
+  ("N2"     , \morphoMap fun lemma -> "mkN2 ("++look morphoMap fun (lo lemma) "N"++")"),
   ("PN"     , \morphoMap fun lemma -> look morphoMap fun lemma "PN"),
+  ("LN"     , \morphoMap fun lemma -> look morphoMap fun lemma "LN"),
+  ("GN"     , \morphoMap fun lemma -> look morphoMap fun lemma "GN"),
+  ("SN"     , \morphoMap fun lemma -> look morphoMap fun lemma "SN"),
   ("Prep"   , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "Prep"),
   ("V"      , \morphoMap fun lemma -> look morphoMap fun (lo lemma) "V"),
-  ("V2"     , \morphoMap fun lemma -> "dirV2 ("++look morphoMap fun (lo lemma) "V"++")"),
-  ("V2A"    , \morphoMap fun lemma -> "mkV2A ("++look morphoMap fun (lo lemma) "V"++") noPrep noPrep"),
-  ("V2S"    , \morphoMap fun lemma -> "mkV2S ("++look morphoMap fun (lo lemma) "V"++") noPrep"),
-  ("V2V"    , \morphoMap fun lemma -> "mkV2V ("++look morphoMap fun (lo lemma) "V"++") noPrep noPrep"),
-  ("V3"     , \morphoMap fun lemma -> "mkV3 ("++look morphoMap fun (lo lemma) "V"++") noPrep noPrep"),
+  ("V2"     , \morphoMap fun lemma -> "mkV2 ("++look morphoMap fun (lo lemma) "V"++")"),
+  ("V2A"    , \morphoMap fun lemma -> "mkV2 ("++look morphoMap fun (lo lemma) "V"++")"),
+  ("V2S"    , \morphoMap fun lemma -> "mkV2S ("++look morphoMap fun (lo lemma) "V"++")"),
+  ("V2Q"    , \morphoMap fun lemma -> "mkV2Q ("++look morphoMap fun (lo lemma) "V"++")"),
+  ("V2V"    , \morphoMap fun lemma -> "mkV2V ("++look morphoMap fun (lo lemma) "V"++")"),
+  ("V3"     , \morphoMap fun lemma -> "mkV3 ("++look morphoMap fun (lo lemma) "V"++")"),
   ("VA"     , \morphoMap fun lemma -> "mkVA ("++look morphoMap fun (lo lemma) "V"++")"),
   ("VQ"     , \morphoMap fun lemma -> "mkVQ ("++look morphoMap fun (lo lemma) "V"++")"),
   ("VS"     , \morphoMap fun lemma -> "mkVS ("++look morphoMap fun (lo lemma) "V"++")"),
   ("VV"     , \morphoMap fun lemma -> "mkVV ("++look morphoMap fun (lo lemma) "V"++")"),
-  ("Voc"    , \morphoMap fun lemma -> "ss \""++(lo lemma)++"\"")
+  ("Voc"    , \morphoMap fun lemma -> "{s=\""++lo lemma++"\"}")
   ]
   where
     lo = map toLower

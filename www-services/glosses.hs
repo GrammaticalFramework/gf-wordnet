@@ -21,6 +21,8 @@ import Network.URI(escapeURIString,isUnreserved,unEscapeString)
 import Network.HTTP
 import Network.HTTP.MD5
 import Debug.Trace
+import GHC.Utils.Misc(capitalise)
+import Data.List.Split(splitOn)
 
 main = do
   langs <- getArgs
@@ -44,6 +46,8 @@ main = do
   domain_forest <- fmap (parseDomains [] . lines) $ readFile "domains.txt"
 
   images <- fmap (parseImages . lines) $ readFile "images.txt"
+
+  constr <- fmap (parseConstructions . splitOn "\n\n") $ readFile "constructions.txt"
   
   let db_name = "semantics.db"
   fileExists <- doesFileExist db_name
@@ -56,6 +60,9 @@ main = do
     createTable frames
     ex_keys <- let combine (xs1,ys1) (xs2,ys2) = (xs2++xs1,ys2++ys1)
                in fmap (Map.fromListWith combine) $ insertExamples [] fn_examples
+
+    createTable constructions
+    mapM_ (insert_ constructions) constr
 
     createTable synsets
     forM taxonomy $ \(key,synset) -> do
@@ -161,6 +168,16 @@ parseExamples (l1:ls)
   where
     toVar l = let (v:cs) = words l in (v,cs)
 parseExamples (l:ls)                        = parseExamples ls
+
+parseConstructions :: [String] -> [Construction]
+parseConstructions []        = []
+parseConstructions (blk:blks) = case readExpr (drop 5 absLine) of
+          Just x  -> ((Construction (drop 5 keyLine) x ) (genLanName langs) : parseConstructions blks)
+          Nothing -> trace ("FAILED: "++absLine) (parseConstructions blks)
+  where (absLine:langLines) = lines blk
+        (keyLine:langs)     = reverse langLines
+        genLanName ls | ls == []  = ("ParseMul":[])
+                      | otherwise = map (("Parse" ++) . capitalise . take 3) ls
 
 parseFrameInstance s = (id, fs)
   where

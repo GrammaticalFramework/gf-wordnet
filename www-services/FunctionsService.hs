@@ -188,12 +188,12 @@ executeCode db gr sgr mn as_table mb_qid lang code =
 
       infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
       let sgr'     = prependModule sgr nlg_m
-          globals0 = Gl sgr' (wikiPredef db gr lang)
+          globals0 = Gl sgr' (wikiPredef db gr lang sgr')
       nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd globals0)) nlg_m infoss
       checkWarn (ppModule Unqualified nlg_m)
 
       let sgr' = prependModule sgr nlg_m
-          globals1 = Gl sgr' (wikiPredef db gr lang)
+          globals1 = Gl sgr' (wikiPredef db gr lang sgr')
           qident = (nlg_mn,identS "main")
 
       res <- runEvalM globals1 $ do
@@ -343,14 +343,14 @@ executeCode db gr sgr mn as_table mb_qid lang code =
          mkInfo locd loct [(de',ty')] = (ResOper (Just (L locd ty')) (Just (L locd de')))
          mkInfo locd loct defs        = (ResOverload [] [(L locd ty',L locd de') | (de',ty') <- defs])
 
-wikiPredef :: Database -> PGF -> String -> PredefTable
-wikiPredef db pgf lang = Map.fromList
+wikiPredef :: Database -> PGF -> String -> Grammar -> PredefTable
+wikiPredef db pgf lang gr = Map.fromList
   [ (identS "entity", pdArity 2 $ \g c [typ,qid] -> Const (fetch c typ qid))
   , (identS "int2digits", pdArity 1 $ \g c [n] -> Const (int2digits abstr n))
   , (identS "int2decimal", pdArity 1 $ \g c [n] -> Const (int2decimal abstr n))
   , (identS "float2decimal", pdArity 1 $ \g c [f] -> Const (float2decimal abstr f))
   , (identS "int2numeral", pdArity 1 $ \g c [n] -> Const (int2numeral abstr n))
-  , (identS "expr", pdArity 2 $ \g c [ty,qid] -> Const (get_expr c ty qid))
+  , (identS "expr", pdArity 2 $ \g c [ty,qid] -> Const (get_expr lang c ty qid))
   , (identS "time2adv", pdArity 1 $ \g c [time] -> Const (time2adv abstr time))
   , (identS "lang", pdArity 0 $ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
   , (cLessInt, pdArity 2 $ \g c [v1,v2] -> fmap toBool (liftA2 (<) (value2int v1) (value2int v2)))
@@ -364,25 +364,47 @@ wikiPredef db pgf lang = Map.fromList
         Error msg -> VError (pp msg)
     fetch c ty (VFV c1 vs) = VFV c1 (mapC (\c -> fetch c ty) c vs)
 
-    get_expr c ty (VStr qid) =
+    -- add lang -> synsets, give both options for lex and syn
+    get_expr l c ty (VStr qid) =
       case res of
         [v] -> v
         vs  -> VFV c vs
       where
-        res = unsafePerformIO $
-                runDaison db ReadOnlyMode $
-                  select [VApp (abstr,identS id) [] | (_,lex) <- fromIndex lexemes_qid (at qid)
+        res = unsafePerformIO $ 
+                runDaison db ReadOnlyMode $ do
+                  spec <- select [expr s | (i, s) <-  fromIndex qid2lang (at (qid, l))]
+                  mul <- select [expr s | (i, s) <-  fromIndex qid2lang (at (qid, "ParseMul"))]
+                  lexeme <- select [VApp (abstr,identS id) [] | (_,lex) <- fromIndex lexemes_qid (at qid)
                                                     , let id = lex_fun lex
                                                     , fmap (matchType ty) (functionType pgf id) == Just True]
-
+                  case spec of 
+                        [] -> return $ lexeme ++ [eval globals0 [] c (toTerm [] (MN (i2i2 "Parse")) r) [] | r <- mul]
+                        _  -> return $ lexeme ++ [eval globals0 [] c (toTerm [] (MN (i2i2 "Parse")) r) [] | r <- spec]
+  
+                                                    
         matchType (VProd bt1 _ ty11 ty2) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
           bt1 == bt2 && matchType ty11 ty12 && matchType ty2 (DTyp hypos cat2 [])
         matchType (VApp (mod,cat1) []) (DTyp [] cat2 []) =
           mod == abstr && showIdent cat1 == cat2
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
-    get_expr c ty (VFV c1 vs) = VFV c1 (mapC (\c -> get_expr c ty) c vs)
-    get_expr c ty x           = VError (ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x)
+    get_expr l c ty (VFV c1 vs) = VFV c1 (mapC (\c -> get_expr l c ty) c vs)
+    get_expr l c ty x           = VError (ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x)
+
+    globals0 = Gl gr Map.empty
+
+    toTerm :: [Ident] -> ModuleName -> Expr -> Term
+    toTerm scope l t = case t of 
+      ELit (LInt i) -> EInt i
+      ELit (LFlt f) -> EFloat f
+      ELit (LStr s) -> K s
+      EFun f -> Q (l, i2i2 f)
+      EVar i -> Vr (scope !! i)
+      EAbs b v e -> Abs b  (i2i2 v) (toTerm scope l e)
+      EApp e1 e2 -> App (toTerm scope l e1) (toTerm scope l e2)
+      EMeta i -> Meta i
+
+i2i2 = identS
 
 wikidataEntity qid = do
   rsp <- simpleHTTP (getRequest ("https://www.wikidata.org/wiki/Special:EntityData/"++qid++".json"))

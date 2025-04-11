@@ -1,43 +1,43 @@
 abs: AdjCN (PositA insular_1_A) (UseN country_2_N)
-Spa: país insular
+spa: país insular
 key: Q112099
 
 abs: AdjCN (PositA insular_1_A) (UseN state_4_N)
-Fre: état insulaire
-Rus: островное государство
+fre: état insulaire
+rus: островное государство
 key: Q112099
 
 abs: UseN(CompoundN island_1_N state_4_N)
-Mul: an island state
+mul: an island state
 key: Q112099
 
 abs: AdvVP (ComplSlash (SlashV2a (obtain_1_V2)) (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN degree_3_N))) (PrepNP from_Prep (MassNP (UseN university_1_N)))
-Fre: obtenir son diplôme de l'université
+fre: obtenir son diplôme de l'université
 key: P69
 
 abs: AdvVP (UseV graduate_V) (PrepNP at_1_Prep (MassNP (UseN university_1_N)))
-Dut: afstuderen
+dut: afstuderen
 key: P69
 
 abs: ComplSlash (SlashV2a (graduate_2_V2)) (MassNP (UseN university_1_N))
-Rus: окончить университет
+rus: окончить университет
 key: P69
 
 abs: AdvVP (UseV graduate_V) (PrepNP from_Prep (MassNP (UseN university_1_N)))
 key: P69
 
 abs: AdvVP (PassVPSlash (SlashV2a nominate_1_V2)) (PrepNP to_1_Prep (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA following_2_A) (UseN award_3_N))))
-Spa: estar nominado a los premios siguientes
+spa: estar nominado a los premios siguientes
 key: P1411
 
 abs: AdvVP (PassVPSlash (SlashV2a nominate_1_V2)) (PrepNP for_Prep (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA following_2_A) (UseN award_3_N))))
 key: P1411
 
 abs: UseN(CompoundN square_1_N kilometre_1_N)
-Fre: kilomètre de carré
-Spa: kilómetro de cuadrado
-Fin: neliökilometri
+fre: kilomètre de carré
+spa: kilómetro de cuadrado
+fin: neliökilometri
 key: Q712226
 
 abs: AdjCN (PositA square_1_A) (UseN kilometre_1_N)
-key: Q712226
+key: Q712226x

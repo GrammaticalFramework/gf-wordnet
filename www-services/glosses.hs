@@ -21,7 +21,6 @@ import Network.URI(escapeURIString,isUnreserved,unEscapeString)
 import Network.HTTP
 import Network.HTTP.MD5
 import Debug.Trace
-import GHC.Utils.Misc(capitalise)
 import Data.List.Split(splitOn)
 
 main = do
@@ -178,6 +177,7 @@ parseConstructions (blk:blks) = case readExpr (drop 5 absLine) of
         (keyLine:langs)     = reverse langLines
         genLanName ls | ls == []  = ("ParseMul":[])
                       | otherwise = map (("Parse" ++) . capitalise . take 3) ls
+        capitalise (c:cs) = toUpper c : cs
 
 parseFrameInstance s = (id, fs)
   where

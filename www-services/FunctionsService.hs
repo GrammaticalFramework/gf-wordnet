@@ -400,7 +400,7 @@ wikiPredef db pgf lang gr = Map.fromList
       ELit (LStr s) -> K s
       EFun f -> Q (l, i2i2 f)
       EVar i -> Vr (scope !! i)
-      EAbs b v e -> Abs b  (i2i2 v) (toTerm scope l e)
+      EAbs b v e -> Abs b  (i2i2 v) (toTerm (identS v:scope) l e)
       EApp e1 e2 -> App (toTerm scope l e1) (toTerm scope l e2)
       EMeta i -> Meta i
 

@@ -325,6 +325,18 @@ examples = table("examples",tuple[pgf.Expr,list[FrameInstance]])
 examples_fun = listIndex(examples,"fun",lambda e: set(exprFunctions(e[0])),str)
 examples.addIndex(lexemes_fun)
 
+@dataclass
+class Construction:
+    qid : str
+    expr : pgf.Expr
+    langs : list[str]
+
+constructions = table("constructions",Construction)
+
+constructions_qid2lang = listIndex(constructions,"langs",lambda con: [(con.qid,lang) for lang in con.langs],tuple[str,str])
+constructions.addIndex(constructions_qid2lang)
+
+
 def get_synset(id : str) -> Optional[Synset]:
     with db.run("r") as t:
         if id[:1] == "Q":

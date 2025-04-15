@@ -4,11 +4,11 @@ import bz2
 import math
 import pgf
 import daison
-from wordnet import grammar, w
+from wordnet import grammar, w, wikilexemes
 from wordnet._semantics import *
 import hashlib
 import subprocess
-from datetime import datetime
+from tqdm import tqdm
 
 def extract(wiki_fpath):
     with bz2.open(wiki_fpath, "rb") as f:
@@ -21,7 +21,7 @@ def extract(wiki_fpath):
                     if "datavalue" not in claim["mainsnak"]:
                         continue
                     typ = claim["mainsnak"]["datavalue"]["value"]["id"]
-                    if typ in ["Q202444","Q101352","Q3918","Q618779"]:
+                    if typ in ["Q202444","Q101352","Q3918"]:
                         name_type = typ
                     if typ in ["Q12308941","Q11879590","Q18972245","Q18972207"]:
                         gender = typ
@@ -447,7 +447,8 @@ def generate(names_fpath):
     with open(names_fpath, "r") as f:
         q_ids  = {}
         counts = {"GN": {}, "SN": {}, "LN": {}, "PN": {}}
-        for line in f:
+        people = {}
+        for line in tqdm(f, "Reading names"):
             record = eval(line)
             if type(record[-1]) is not dict:
                 for qid in record[3]:
@@ -456,11 +457,12 @@ def generate(names_fpath):
                 for qid in record[4]:
                     cs = counts["SN"]
                     cs[qid] = cs.get(qid,1) + 1
+                people[record[0]] = record
             else:
                 if len(record[-1]) == 0:
                     continue
                 if len(record) == 5:
-                    if record[3] in ["Q3918","Q618779"]:
+                    if record[3] in ["Q3918"]:
                         tag = "PN"
                     elif record[3] in ["Q202444","Q12308941","Q11879590"]:
                         tag = "GN"
@@ -474,7 +476,7 @@ def generate(names_fpath):
         totals = {tag : sum(cs.values()) for tag,cs in counts.items()}
 
     with db.run("w") as s_t, grammar.newTransaction() as g_t:
-        for q_id,(tag,record) in sorted(q_ids.items(),key=lambda p: p[1]):
+        for q_id,(tag,record) in tqdm(sorted(q_ids.items(),key=lambda p: p[1]), "Creating Abstract Syntax"):
             if q_id in existing_qids:
                 continue
 
@@ -514,12 +516,27 @@ def generate(names_fpath):
             id = s_t.store(synsets,None,Synset(q_id,[],[],descr))
             s_t.store(lexemes,None,Lexeme(gf_id,prob,status,id,[],[],[],[],images))
 
+        for qid,record in tqdm(people.items(),"Adding People Names"):
+            if record[3] and record[4]:
+                for _, gn in s_t.indexCursor(lexemes_qid, record[3][0]):
+                    for _, sn in s_t.indexCursor(lexemes_qid, record[4][0]):
+                        s_t.store(constructions,None,Construction(qid,w.FullName(pgf.ExprFun(gn.lex_fun),pgf.ExprFun(sn.lex_fun)),["ParseMul"]))
+                        break
+                    else:
+                        continue
+                    break
+            elif record[3]:
+                for _, gn in s_t.indexCursor(lexemes_qid, record[3][0]):
+                    s_t.store(constructions,None,Construction(qid,w.GivenName(pgf.ExprFun(gn.lex_fun)),["ParseMul"]))
+            elif record[4]:
+                for _, sn in s_t.indexCursor(lexemes_qid, record[4][0]):
+                    s_t.store(constructions,None,Construction(qid,w.MaleSurname(pgf.ExprFun(sn.lex_fun)),["ParseMul"]))
+
     with subprocess.Popen(["gf","-run",w.__file__], stdin=subprocess.PIPE) as proc:
         for lang,lang_codes in langs:
-            print(lang, datetime.now().strftime("%H:%M:%S"))
             proc.stdin.write(bytes("\ni -resource alltenses/Paradigms"+lang+".gfo\n\n","utf-8"))
             proc.stdin.write(b"transaction start\n\n")
-            for q_id,info in sorted(q_ids.items(),key=lambda p: p[1]):
+            for q_id,info in tqdm(sorted(q_ids.items(),key=lambda p: p[1]),lang):
                 if q_id in existing_qids:
                     continue
 
@@ -605,7 +622,6 @@ def generate(names_fpath):
                     lin = "variants {"+"; ".join(lins)+"}"
                 proc.stdin.write(bytes("create -lang=Parse"+lang+" lin "+quote(gf_id)+" = "+lin+"\n","utf-8"))
             proc.stdin.write(b"transaction commit\n\n")
-        print("   ", datetime.now().strftime("%H:%M:%S"))
 
 def help():
     print("Syntax: names.py extract <path to wikidata archive>")

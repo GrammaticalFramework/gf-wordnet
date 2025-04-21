@@ -26,6 +26,33 @@
             #editor {
                 border: 1px solid silver;
             }
+
+            #options {
+                position: fixed;
+                top: 25vh;
+                right: 0;
+                padding: 24px 5vw 24px 32px;
+                background-color: #ddd;
+            }
+
+            #options:empty {
+                display: none;
+            }
+
+            .option-container {
+                display: flex;
+                flex-flow: column;
+                gap: 8px;
+            }
+
+            .option-value {
+                margin-left: 0.5em;
+                cursor: pointer;
+            }
+
+            .option-value:hover, .option-value.selected {
+                background-color: #cce;
+            }
         </style>
     </head>
     <body>
@@ -324,6 +351,8 @@
         <tr><td colspan=2><div id='output' style="width: 500px; height: 300px"></div></td></tr>
         </table>
 
+        <div id="options"></div>
+
         <script>
             const evalBtn = document.getElementById("eval");
             evalBtn.addEventListener("click", test);
@@ -331,57 +360,12 @@
             const editor = CodeMirror(document.getElementById('editor'),{lineNumbers: true, mode: "haskell", matchBrackets: true});
             editor.setSize(null,  300);
 
+            const state = new WordNetPageState(document.getElementById("output"), document.getElementById("options"));
+
             async function test() {
                 const selection = getMultiSelection(element('from'));
                 const content   = document.getElementById("content");
-                const data = {
-                    lang: selection.current,
-                    code: editor.getValue()
-                };
-                if (content.dataset.qid != null)
-                    data.qid = content.dataset.qid;
-                const response = await fetch("FunctionsService.fcgi",
-                    {method: "POST",
-                     body: JSON.stringify(data),
-                    });
-                output.innerHTML = "";
-                if (response.status == 200) {
-                    const result = await response.json();
-                    output.appendChild(node("pre",{},[text(result.msg)]));
-                    if (result.groups.length == 0)
-                        output.appendChild(node("b",{},[text("No results")]));
-                    for (var group of result.groups) {
-                        const res_tbl = node("table",{"class": "dataset"},[]);
-                        const row = []
-                        for (var header of group.headers) {
-                            row.push(th([text(header.label)]));
-                        }
-                        res_tbl.appendChild(tr(row))
-                        for (var record of group.dataset) {
-                            const row = []
-                            for (let i in record) {
-                                const value  = record[i];
-                                const header = group.headers[i];
-                                if (header.type == "markup") {
-                                    const e = td([]);
-                                    e.innerHTML = value;
-                                    row.push(e);
-                                } else if (header.type == "number") {
-                                    row.push(node("td",{style: "text-align: right"},[text(value)]));
-                                } else if (header.type == "string") {
-                                    row.push(td([text(value)]));
-                                } else if (header.type == "text") {
-                                    row.push(td(node("pre",{},[text(value)])));
-                                }
-                            }
-                            res_tbl.appendChild(tr(row))
-                        }
-                        output.appendChild(res_tbl);
-                    }
-                } else {
-                    const message = await response.text();
-                    output.appendChild(node("pre",{},[text(message)]));
-                }
+                state.setProgram(content.dataset.qid, selection.current, editor.getValue());
             }
 
             initMultiSelection(element("from"));

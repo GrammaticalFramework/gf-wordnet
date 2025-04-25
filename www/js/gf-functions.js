@@ -186,74 +186,79 @@ class WordNetPageState {
                 method: "POST",
                 body: JSON.stringify(request),
             });
-            if (response.status !== 200) throw new Error(await response.text());
-
-            const newOpts = {...opts};
-            let newChoices = null;
-            const result = await response.json();
-            this.elemOut.innerHTML = "";
-            this.elemOut.appendChild(node("pre",{},[text(result.msg)]));
-            if (result.groups.length == 0)
-                this.elemOut.appendChild(node("b",{},[text("No results")]));
-            let addedOpts = false;
-            for (const group of result.groups) {
-                const res_tbl = node("table",{"class": "dataset"},[]);
-                const row = []
-                for (const header of group.headers) {
-                    row.push(th([text(header.label)]));
-                }
-                res_tbl.appendChild(tr(row))
-                for (const record of group.dataset) {
-                    const row = []
-                    for (let i in record.fields) {
-                        const value  = record.fields[i];
-                        const header = group.headers[i];
-                        if (header.type == "markup") {
-                            const e = td([]);
-                            e.innerHTML = value;
-                            row.push(e);
-                        } else if (header.type == "number") {
-                            row.push(node("td",{style: "text-align: right"},[text(value)]));
-                        } else if (header.type == "string") {
-                            row.push(td([text(value)]));
-                        } else if (header.type == "text") {
-                            row.push(td(node("pre",{},[text(value)])));
-                        }
-                    }
-                    res_tbl.appendChild(tr(row))
-
-                    if (!addedOpts && record.options && record.options.length) {
-                        const optElems = [];
-                        const validOptChoices = new Set();
-                        for (const opt of record.options) {
-                            validOptChoices.add(opt.choice.toString());
-                            const optBody = [node("div", { "class": "option-header" }, [node("b", {}, [text(opt.label)])])];
-                            const selected = opts[opt.choice] || 0;
-                            newOpts[opt.choice] = selected;
-                            for (let i = 0; i < opt.options.length; i++) {
-                                const valueElem = node("div", { "class": "option-value" }, [text(opt.options[i])]);
-                                if (i === selected) valueElem.classList.add("selected");
-                                valueElem.onclick = () => this.setOption(opt.choice, i);
-                                optBody.push(valueElem)
-                            }
-                            optElems.push(node("div", { "class": "option" }, optBody));
-                        }
-                        for (const c of Object.keys(opts)) {
-                            if (!validOptChoices.has(c)) {
-                                delete newOpts[c];
-                            }
-                        }
-                        newChoices = record.choices;
-                        this.elemOpts.appendChild(node("div", { "class": "option-container" }, optElems));
-                        addedOpts = true;
-                    }
-                }
-                this.elemOut.appendChild(res_tbl);
+            if (response.status === 200) {
+                this.loadResult(await response.json(), qid, lang, code, opts);
+            } else {
+                throw new Error(await response.text());
             }
-            this.state = { state: "valid", qid, lang, code, choices: newChoices, opts: newOpts };
         })().catch(error => {
             this.state = { state: "invalid", qid, lang, code, choices, opts };
             this.elemOut.innerHTML = `<pre class="status">${error}</pre>`;
         });
+    }
+
+    loadResult(result, qid, lang, code, opts) {
+        const newOpts = {...opts};
+        let newChoices = null;
+        this.elemOut.innerHTML = "";
+        this.elemOut.appendChild(node("pre",{},[text(result.msg)]));
+        if (result.groups.length == 0)
+            this.elemOut.appendChild(node("b",{},[text("No results")]));
+        let addedOpts = false;
+        for (const group of result.groups) {
+            const res_tbl = node("table",{"class": "dataset"},[]);
+            const row = []
+            for (const header of group.headers) {
+                row.push(th([text(header.label)]));
+            }
+            res_tbl.appendChild(tr(row))
+            for (const record of group.dataset) {
+                const row = []
+                for (let i in record.fields) {
+                    const value  = record.fields[i];
+                    const header = group.headers[i];
+                    if (header.type == "markup") {
+                        const e = td([]);
+                        e.innerHTML = value;
+                        row.push(e);
+                    } else if (header.type == "number") {
+                        row.push(node("td",{style: "text-align: right"},[text(value)]));
+                    } else if (header.type == "string") {
+                        row.push(td([text(value)]));
+                    } else if (header.type == "text") {
+                        row.push(td(node("pre",{},[text(value)])));
+                    }
+                }
+                res_tbl.appendChild(tr(row))
+
+                if (!addedOpts && record.options && record.options.length) {
+                    const optElems = [];
+                    const validOptChoices = new Set();
+                    for (const opt of record.options) {
+                        validOptChoices.add(opt.choice.toString());
+                        const optBody = [node("div", { "class": "option-header" }, [node("b", {}, [text(opt.label)])])];
+                        const selected = opts[opt.choice] || 0;
+                        newOpts[opt.choice] = selected;
+                        for (let i = 0; i < opt.options.length; i++) {
+                            const valueElem = node("div", { "class": "option-value" }, [text(opt.options[i])]);
+                            if (i === selected) valueElem.classList.add("selected");
+                            valueElem.onclick = () => this.setOption(opt.choice, i);
+                            optBody.push(valueElem)
+                        }
+                        optElems.push(node("div", { "class": "option" }, optBody));
+                    }
+                    for (const c of Object.keys(opts)) {
+                        if (!validOptChoices.has(c)) {
+                            delete newOpts[c];
+                        }
+                    }
+                    newChoices = record.choices;
+                    this.elemOpts.appendChild(node("div", { "class": "option-container" }, optElems));
+                    addedOpts = true;
+                }
+            }
+            this.elemOut.appendChild(res_tbl);
+        }
+        this.state = { state: "valid", qid, lang, code, choices: newChoices, opts: newOpts };
     }
 }

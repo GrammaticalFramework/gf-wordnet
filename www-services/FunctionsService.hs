@@ -41,16 +41,20 @@ import Data.List ( singleton )
 import Data.Maybe
 import GHC.Float
 
+mkResponse :: ResponseCode -- ^ HTTP response code
+           -> String       -- ^ HTTP response code message
+           -> String       -- ^ Content-Type mimetype
+           -> String       -- ^ Response body
+           -> Response
+mkResponse code reason ct =
+  Response code reason [Header HdrContentType (ct ++ "; charset=UTF8")]
+
 functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IO Response
-functionsService db gr mn sgr rq =
+functionsService db gr mn sgr rq = pure $
   case (decode (rqBody rq) >>= parseQuery) <|> getFromQuery (rqQuery rq) of
-    Ok f      -> f
-    Error msg -> return (Response
-                           { rspCode = 400
-                           , rspReason = "Invalid input"
-                           , rspHeaders = [Header HdrContentType "text/plain; charset=UTF8"]
-                           , rspBody = msg
-                           })
+    Ok (Left (err, msg)) -> mkResponse 400 err "text/plain" msg
+    Ok (Right res)       -> mkResponse 200 "OK" "application/json" (encode res)
+    Error msg            -> mkResponse 400 "Invalid input" "text/plain" msg
   where
     parseQuery query = do
       mb_qid <- maybe (pure Nothing) (fmap Just . readJSON)
@@ -60,7 +64,7 @@ functionsService db gr mn sgr rq =
       cs <- case valFromObj "choices" query of
         Ok json -> orFailErr $ deserializeChoices json
         Error _ -> return Map.empty
-      return (executeCode db gr sgr mn OutJSON mb_qid lang cs code)
+      return $ executeCode db gr sgr mn mb_qid lang cs code
 
     getFromQuery query = do
       lang <- orFail "No lang" $ lookup "lang" query
@@ -69,7 +73,7 @@ functionsService db gr mn sgr rq =
         Just s  -> do json <- orFailE $ runGetJSON readJSArray s
                       orFailErr $ deserializeChoices json
         Nothing -> return Map.empty
-      return $ executeCode db gr sgr mn OutJSON (lookup "qid" query) lang cs code
+      return $ executeCode db gr sgr mn (lookup "qid" query) lang cs code
 
 pageService :: Database -> PGF -> ModuleName -> SourceGrammar -> FilePath -> Request -> IO Response
 pageService db gr mn sgr path rq = do
@@ -78,36 +82,20 @@ pageService db gr mn sgr path rq = do
   let query = rqQuery rq
       lang  = fromMaybe "ParseEng" (lookup "lang" query)
   case lookup "qid" query of
-    Just qid -> do rsp <- wikidataEntity qid
-                   case rsp >>= get_classes of
-                     Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
-                                     (prog:_) -> do code <- readFile (dir </> prog)
-                                                    rsp <- executeCode db gr sgr mn OutTable (Just qid) lang Map.empty code
-                                                    let code_doc =
-                                                          case lookup "edit" query of
-                                                            Just _  -> showXMLDoc (Data code)
-                                                            Nothing -> ""
-                                                    if rspCode rsp == 200
-                                                      then return rsp{rspBody=injectTemplate html qid prog code_doc (rspBody rsp)}
-                                                      else return rsp
-                                     []       -> return (Response
-                                                           { rspCode = 200
-                                                           , rspReason = "OK"
-                                                           , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                                                           , rspBody = injectTemplate html "" "" "" ("There is no renderer defined for classes "++unwords classes)
-                                                           })
-                     Error msg  -> return (Response
-                                             { rspCode = 400
-                                             , rspReason = "FAIL"
-                                             , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                                             , rspBody = msg
-                                             })
-    Nothing -> return (Response
-                         { rspCode = 200
-                         , rspReason = "OK"
-                         , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                         , rspBody = injectTemplate html "" "" "" ""
-                         })
+    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" JSNull)
+    Just qid -> do
+      rsp <- wikidataEntity qid
+      case rsp >>= get_classes of
+        Error msg  -> return $ mkResponse 400 "FAIL" "text/plain" msg
+        Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
+          []       -> let err = mkError ("There is no renderer defined for classes " ++ unwords classes)
+                      in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err)
+          (prog:_) -> do
+            code <- readFile (dir </> prog)
+            case executeCode db gr sgr mn (Just qid) lang Map.empty code of
+              Left (err,msg) -> return $ mkResponse 400 err "text/plain" msg
+              Right res      -> do
+                return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid prog code res)
     where
       dir = dropFileName path
 
@@ -116,63 +104,47 @@ pageService db gr mn sgr path rq = do
         mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
 
       injectTemplate []                                           qid prog code output = []
-      injectTemplate ('<':'%':'q':'i':'d':'%':'>':cs)             qid prog code output = qid    ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         qid prog code output = prog   ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         qid prog code output = code   ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) qid prog code output = output ++ injectTemplate cs qid prog code output
-      injectTemplate (c:cs)                                       qid prog code output = c :       injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'q':'i':'d':'%':'>':cs)             qid prog code output = qid                    ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         qid prog code output = prog                   ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         qid prog code output = code                   ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) qid prog code output = encode output          ++ injectTemplate cs qid prog code output
+      injectTemplate ('_':'_':'p':'r':'o':'g':cs)                 qid prog code output = encode (showJSON prog) ++ injectTemplate cs qid prog code output
+      injectTemplate ('_':'_':'c':'o':'d':'e':cs)                 qid prog code output = encode (showJSON code) ++ injectTemplate cs qid prog code output
+      injectTemplate ('_':'_':'o':'u':'t':'p':'u':'t':cs)         qid prog code output = encode output          ++ injectTemplate cs qid prog code output
+      injectTemplate (c:cs)                                       qid prog code output = c : injectTemplate cs qid prog code output
 
-data ExecOutFormat = OutJSON | OutTable
+      mkError err = makeObj [("error", showJSON err)]
 
 executeCode :: Database      -- ^ Database for wiki data
             -> PGF           -- ^ Ambient core grammar
             -> SourceGrammar -- ^ Ambient grammar
             -> ModuleName    -- ^ Name of the predef module to open
-            -> ExecOutFormat -- ^ Output format
             -> Maybe String  -- ^ Ambient QID
             -> String        -- ^ Ambient language
             -> ChoiceMap     -- ^ Initial choices (i.e. a program trace)
             -> String        -- ^ Code snippet to execute
-            -> IO Response
-executeCode db gr sgr mn fmt mb_qid lang csInit code =
+            -> Either (String, String) JSValue
+executeCode db gr sgr mn mb_qid lang csInit code =
   case runLangP NLG pNLG (BS.pack code) of
-    Right prog ->
+    Left (Pn row col,msg) -> Left ("Parse Error", show row ++ ":" ++ show col ++ ":" ++ msg)
+    Right prog            ->
       case runCheck (checkComputeProg (maybe prog (add_qid prog) mb_qid)) of
-        E.Ok (res,msg) -> case fmt of
-          OutJSON  -> return (Response
-                                { rspCode = 200
-                                , rspReason = "OK"
-                                , rspHeaders = [Header HdrContentType "application/json; charset=UTF8"]
-                                , rspBody = encode $
-                                              makeObj [("msg",showJSON msg)
-                                                      ,("groups", showJSON [makeObj [("headers",showJSON headers),
-                                                                                     ("dataset",JSArray [makeObj [ ("fields",showJSON fs)
-                                                                                                                 , ("choices",serializeChoices cs)
-                                                                                                                 , ("options",ois)
-                                                                                                                 ]
-                                                                                                           | (fs,cs,ois) <- dataset])]
-                                                                              | (headers,dataset) <- res])
-                                                      ]
-                                })
-          OutTable -> return (Response
-                                { rspCode = 200
-                                , rspReason = "OK"
-                                , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                                , rspBody = concat [concat html | (headers,((html,_,_):_)) <- res] -- TODO options
-                                })
-        E.Bad msg  -> return (Response
-                                { rspCode = 400
-                                , rspReason = "Invalid Expression"
-                                , rspHeaders = [Header HdrContentType "text/plain; charset=UTF8"]
-                                , rspBody = msg
-                                })
-    Left (Pn row col,msg)
-                   -> return (Response
-                                { rspCode = 400
-                                , rspReason = "Parse Error"
-                                , rspHeaders = [Header HdrContentType "text/plain; charset=UTF8"]
-                                , rspBody = (show row ++ ":" ++ show col ++ ":" ++ msg)
-                                })
+        E.Bad msg      -> Left ("Invalid Expression", msg)
+        E.Ok (res,msg) -> Right $ makeObj
+          [ ("msg"   , showJSON msg)
+          , ("groups", showJSON
+              [ makeObj
+                [ ("headers", showJSON headers)
+                , ("dataset", JSArray
+                    [ makeObj
+                      [ ("fields" , showJSON fs)
+                      , ("choices", serializeChoices cs)
+                      , ("options", ois)
+                      ]
+                    | (fs,cs,ois) <- dataset])
+                ]
+              | (headers,dataset) <- res])
+          ]
   where
     abs_mn = moduleNameS (abstractName gr)
 

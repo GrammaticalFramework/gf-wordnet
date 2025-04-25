@@ -119,15 +119,15 @@ function loadEntity(qid, name) {
     content.innerText = qid+": "+name;
 }
 
-function serializeOptions(opts, choices) {
-    const arr = choices ? [...choices] : [];
-    for (const [c, i] of Object.entries(opts)) {
+function serializeChoices(obj) {
+    const arr = [];
+    for (const [c, i] of Object.entries(obj)) {
         arr.push(parseInt(c, 10), i);
     }
     return arr;
 }
 
-function deserializeOptions(arr) {
+function deserializeChoices(arr) {
     if (arr.length % 2 !== 0) throw new Error(`Choice array must be of even length, but got ${arr.length}!`);
     const opts = {};
     for (let i = 0; i < arr.length; i += 2) {
@@ -136,129 +136,111 @@ function deserializeOptions(arr) {
     return opts;
 }
 
-class WordNetPageState {
-    constructor(elemOut, elemOpts) {
-        this.elemOut = elemOut;
-        this.elemOpts = elemOpts;
+class WNStateChangeEvent extends Event {
+    constructor(newState) {
+        super("state");
+        this.newState = newState;
+    }
+}
+
+class WNResultEvent extends Event {
+    constructor(result) {
+        super("result");
+        this.result = result;
+    }
+}
+
+class WNClient extends EventTarget {
+    constructor() {
+        super();
         this.state = { state: "initial" };
+    }
+
+    setState(state) {
+        this.state = state;
+        this.dispatchEvent(new WNStateChangeEvent(state));
     }
 
     setProgram(qid, lang, code) {
         switch (this.state.state) {
             case "initial":
-                this.revalidate(qid, lang, code, [], {});
+                this.revalidate(qid, lang, code, {}, {});
                 break;
             case "valid":
+            case "interactive":
                 if (qid === this.state.qid && lang === this.state.lang && code === this.state.code) break;
-                this.revalidate(qid, lang, code, [], {});
+                this.revalidate(qid, lang, code, {}, {});
                 break;
             case "invalid":
                 if (qid === this.state.qid && lang === this.state.lang && code === this.state.code) {
                     this.revalidate(qid, lang, code, this.state.choices, this.state.opts);
                 } else {
-                    this.revalidate(qid, lang, code, [], {});
+                    this.revalidate(qid, lang, code, {}, {});
                 }
                 break;
+            default:
+                throw new Error(`Bad state: ${this.state.state}`);
+        }
+    }
+
+    setInteractionPoint(headers, record) {
+        switch (this.state.state) {
+            case "valid":
+            case "interactive":
+                const choices = deserializeChoices(record.choices);
+                const opts = {};
+                for (const oi of record.options) {
+                    opts[oi.choice] = choices[oi.choice] ?? 0;
+                    delete choices[oi.choice];
+                }
+                this.setState({
+                    state: "interactive", headers, record,
+                    qid: this.state.qid, lang: this.state.lang, code: this.state.code,
+                    choices, opts
+                });
+                break;
+            default:
+                throw new Error(`Bad state: ${this.state.state}`);
         }
     }
 
     setOption(choice, value) {
         switch (this.state.state) {
-            case "valid":
-                if (Object.hasOwn(this.state.opts, choice) && this.state.opts[choice] === value) break;
+            case "interactive":
+                if (!Object.hasOwn(this.state.opts, choice) || this.state.opts[choice] === value) break;
                 // falls through
             case "invalid":
                 const newOpts = {...this.state.opts};
                 newOpts[choice] = value;
+                // TODO delete dependent options
                 this.revalidate(this.state.qid, this.state.lang, this.state.code, this.state.choices, newOpts);
                 break;
+            default:
+                throw new Error(`Bad state: ${this.state.state}`);
         }
     }
 
     revalidate(qid, lang, code, choices, opts) {
-        this.state = { state: "waiting", qid, lang, code, choices, opts };
-        this.elemOut.innerHTML = "<pre class=\"status\">Evaluating...</pre>";
-        this.elemOpts.innerHTML = "";
+        this.setState({ state: "waiting", qid, lang, code, choices, opts });
         (async () => {
-            const request = { lang, code, choices: serializeOptions(opts, choices) };
+            const request = { lang, code, choices: serializeChoices({ ...choices, ...opts }) };
             if (qid) request.qid = qid;
             const response = await fetch("FunctionsService.fcgi", {
                 method: "POST",
                 body: JSON.stringify(request),
             });
             if (response.status === 200) {
-                this.loadResult(await response.json(), qid, lang, code, opts);
+                this.loadResult(await response.json(), qid, lang, code);
             } else {
                 throw new Error(await response.text());
             }
         })().catch(error => {
-            this.state = { state: "invalid", qid, lang, code, choices, opts };
-            this.elemOut.innerHTML = `<pre class="status">${error}</pre>`;
+            this.setState({ state: "invalid", error, qid, lang, code, choices, opts });
         });
     }
 
-    loadResult(result, qid, lang, code, opts) {
-        const newOpts = {...opts};
-        let newChoices = null;
-        this.elemOut.innerHTML = "";
-        this.elemOut.appendChild(node("pre",{},[text(result.msg)]));
-        if (result.groups.length == 0)
-            this.elemOut.appendChild(node("b",{},[text("No results")]));
-        let addedOpts = false;
-        for (const group of result.groups) {
-            const res_tbl = node("table",{"class": "dataset"},[]);
-            const row = []
-            for (const header of group.headers) {
-                row.push(th([text(header.label)]));
-            }
-            res_tbl.appendChild(tr(row))
-            for (const record of group.dataset) {
-                const row = []
-                for (let i in record.fields) {
-                    const value  = record.fields[i];
-                    const header = group.headers[i];
-                    if (header.type == "markup") {
-                        const e = td([]);
-                        e.innerHTML = value;
-                        row.push(e);
-                    } else if (header.type == "number") {
-                        row.push(node("td",{style: "text-align: right"},[text(value)]));
-                    } else if (header.type == "string") {
-                        row.push(td([text(value)]));
-                    } else if (header.type == "text") {
-                        row.push(td(node("pre",{},[text(value)])));
-                    }
-                }
-                res_tbl.appendChild(tr(row))
-
-                if (!addedOpts && record.options && record.options.length) {
-                    const optElems = [];
-                    const validOptChoices = new Set();
-                    for (const opt of record.options) {
-                        validOptChoices.add(opt.choice.toString());
-                        const optBody = [node("div", { "class": "option-header" }, [node("b", {}, [text(opt.label)])])];
-                        const selected = opts[opt.choice] || 0;
-                        newOpts[opt.choice] = selected;
-                        for (let i = 0; i < opt.options.length; i++) {
-                            const valueElem = node("div", { "class": "option-value" }, [text(opt.options[i])]);
-                            if (i === selected) valueElem.classList.add("selected");
-                            valueElem.onclick = () => this.setOption(opt.choice, i);
-                            optBody.push(valueElem)
-                        }
-                        optElems.push(node("div", { "class": "option" }, optBody));
-                    }
-                    for (const c of Object.keys(opts)) {
-                        if (!validOptChoices.has(c)) {
-                            delete newOpts[c];
-                        }
-                    }
-                    newChoices = record.choices;
-                    this.elemOpts.appendChild(node("div", { "class": "option-container" }, optElems));
-                    addedOpts = true;
-                }
-            }
-            this.elemOut.appendChild(res_tbl);
-        }
-        this.state = { state: "valid", qid, lang, code, choices: newChoices, opts: newOpts };
+    loadResult(result, qid, lang, code) {
+        this.dispatchEvent(new WNResultEvent(result));
+        this.setState({ state: "valid", groups: result.groups, qid, lang, code });
     }
 }

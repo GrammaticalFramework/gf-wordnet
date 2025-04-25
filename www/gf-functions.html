@@ -348,6 +348,7 @@
         </tr>
 
         <tr><td id='editor' colspan=2></td></tr>
+        <tr><td colspan=2><div id='msgs' style="width: 500px"></div></td></tr>
         <tr><td colspan=2><div id='output' style="width: 500px; height: 300px"></div></td></tr>
         </table>
 
@@ -360,12 +361,100 @@
             const editor = CodeMirror(document.getElementById('editor'),{lineNumbers: true, mode: "haskell", matchBrackets: true});
             editor.setSize(null,  300);
 
-            const state = new WordNetPageState(document.getElementById("output"), document.getElementById("options"));
+            const elemMsgs = document.getElementById("msgs");
+            const elemOut = document.getElementById("output");
+            const elemOpts = document.getElementById("options");
+
+            function renderGroup(group) {
+                const res_tbl = node("table",{"class": "dataset"},[]);
+                const row = []
+                for (const header of group.headers) {
+                    row.push(th([text(header.label)]));
+                }
+                res_tbl.appendChild(tr(row))
+                for (const record of group.dataset) {
+                    const row = []
+                    for (let i in record.fields) {
+                        const value  = record.fields[i];
+                        const header = group.headers[i];
+                        if (header.type == "markup") {
+                            const e = td([]);
+                            e.innerHTML = value;
+                            row.push(e);
+                        } else if (header.type == "number") {
+                            row.push(node("td",{style: "text-align: right"},[text(value)]));
+                        } else if (header.type == "string") {
+                            row.push(td([text(value)]));
+                        } else if (header.type == "text") {
+                            row.push(td(node("pre",{},[text(value)])));
+                        }
+                    }
+                    const rec = tr(row);
+                    rec.onclick = () => client.setInteractionPoint(group.headers, record);
+                    res_tbl.appendChild(rec);
+                }
+                elemOut.appendChild(res_tbl);
+            }
+
+            const client = new WNClient();
+            client.addEventListener("state", event => {
+                const state = event.newState;
+                switch (state.state) {
+                    case "invalid":
+                        elemOut.innerHTML = `<pre class="status">${state.error}</pre>`;
+                        break;
+                    case "valid":
+                        switch (state.groups.length) {
+                            case 0:
+                                elemOut.innerHTML = "<b>No results</b>";
+                                elemOpts.innerHTML = "";
+                                break;
+                            case 1:
+                                const group = state.groups[0];
+                                if (group.dataset.length === 1) {
+                                    client.setInteractionPoint(group.headers, group.dataset[0]);
+                                    break;
+                                }
+                                // falls through
+                            default:
+                                elemOut.innerHTML = "";
+                                elemOpts.innerHTML = "";
+                                for (const group of state.groups) {
+                                    renderGroup(group);
+                                }
+                                break;
+                        }
+                        break;
+                    case "interactive":
+                        elemOut.innerHTML = "";
+                        elemOpts.innerHTML = "";
+                        renderGroup({ headers: state.headers, dataset: [state.record] });
+                        const optElems = [];
+                        const validOptChoices = new Set();
+                        for (const opt of state.record.options) {
+                            const optBody = [node("div", { "class": "option-header" }, [node("b", {}, [text(opt.label)])])];
+                            const selected = state.opts[opt.choice] || 0;
+                            for (let i = 0; i < opt.options.length; i++) {
+                                const valueElem = node("div", { "class": "option-value" }, [text(opt.options[i])]);
+                                if (i === selected) valueElem.classList.add("selected");
+                                valueElem.onclick = () => client.setOption(opt.choice, i);
+                                optBody.push(valueElem)
+                            }
+                            optElems.push(node("div", { "class": "option" }, optBody));
+                        }
+                        elemOpts.appendChild(node("div", { "class": "option-container" }, optElems));
+                        break;
+                }
+            });
+            client.addEventListener("result", event => {
+                elemMsgs.innerHTML = "";
+                elemMsgs.appendChild(node("pre",{},[text(event.result.msg)]));
+            });
 
             async function test() {
                 const selection = getMultiSelection(element('from'));
                 const content   = document.getElementById("content");
-                state.setProgram(content.dataset.qid, selection.current, editor.getValue());
+                client.setProgram(content.dataset.qid, selection.current, editor.getValue());
             }
 
             initMultiSelection(element("from"));

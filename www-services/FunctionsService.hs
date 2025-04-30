@@ -25,7 +25,8 @@ import System.IO.Unsafe ( unsafePerformIO )
 import System.FilePath
 import System.Directory ( doesFileExist )
 import Text.JSON
-import Text.JSON.Types (get_field, JSObject(..))
+import Text.JSON.String (runGetJSON)
+import Text.JSON.Types (get_field, JSObject(..), JSValue(..))
 import Database.Daison
 import SenseSchema
 
@@ -36,34 +37,43 @@ import qualified Data.Text.Lazy.Encoding as E
 import qualified Data.ByteString.Lazy as BL
 import Data.Char ( isDigit, ord, toLower )
 import Data.Foldable ( find )
+import Data.Functor ( (<&>) )
 import Data.List ( singleton )
 import Data.Maybe
 
+mkResponse :: ResponseCode -- ^ HTTP response code
+           -> String       -- ^ HTTP response code message
+           -> String       -- ^ Content-Type mimetype
+           -> String       -- ^ Response body
+           -> Response
+mkResponse code reason ct =
+  Response code reason [Header HdrContentType (ct ++ "; charset=UTF8")]
+
 functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IO Response
-functionsService db gr mn sgr rq =
+functionsService db gr mn sgr rq = pure $
   case (decode (rqBody rq) >>= parseQuery) <|> getFromQuery (rqQuery rq) of
-    Ok f      -> f
-    Error msg -> return (Response
-                           { rspCode = 400
-                           , rspReason = "Invalid input"
-                           , rspHeaders = [Header HdrContentType "text/plain; charset=UTF8"]
-                           , rspBody = msg
-                           })
+    Ok (Left (err, msg)) -> mkResponse 400 err "text/plain" msg
+    Ok (Right res)       -> mkResponse 200 "OK" "application/json" (encode res)
+    Error msg            -> mkResponse 400 "Invalid input" "text/plain" msg
   where
     parseQuery query = do
       mb_qid <- maybe (pure Nothing) (fmap Just . readJSON)
                       (lookup "qid" (fromJSObject query))
       lang <- valFromObj "lang" query
       code <- valFromObj "code" query
-      return (executeCode db gr sgr mn True mb_qid lang code)
-
-    orFail :: String -> Maybe a -> Result a
-    orFail s = maybe (fail s) pure
+      cs <- case valFromObj "choices" query of
+        Ok json -> orFailErr $ deserializeChoices json
+        Error _ -> return Map.empty
+      return $ executeCode db gr sgr mn mb_qid lang cs code
 
     getFromQuery query = do
       lang <- orFail "No lang" $ lookup "lang" query
       code <- orFail "No code" $ lookup "code" query
-      return $ executeCode db gr sgr mn True (lookup "qid" query) lang code
+      cs <- case lookup "choices" query of
+        Just s  -> do json <- orFailE $ runGetJSON readJSArray s
+                      orFailErr $ deserializeChoices json
+        Nothing -> return Map.empty
+      return $ executeCode db gr sgr mn (lookup "qid" query) lang cs code
 
 pageService :: Database -> PGF -> ModuleName -> SourceGrammar -> FilePath -> Request -> IO Response
 pageService db gr mn sgr path rq = do
@@ -72,36 +82,20 @@ pageService db gr mn sgr path rq = do
   let query = rqQuery rq
       lang  = fromMaybe "ParseEng" (lookup "lang" query)
   case lookup "qid" query of
-    Just qid -> do rsp <- wikidataEntity qid
-                   case rsp >>= get_classes of
-                     Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
-                                     (prog:_) -> do code <- readFile (dir </> prog)
-                                                    rsp <- executeCode db gr sgr mn False (Just qid) lang code
-                                                    let code_doc =
-                                                          case lookup "edit" query of
-                                                            Just _  -> showXMLDoc (Data code)
-                                                            Nothing -> ""
-                                                    if rspCode rsp == 200
-                                                      then return rsp{rspBody=injectTemplate html prog code_doc (rspBody rsp)}
-                                                      else return rsp
-                                     []       -> return (Response
-                                                           { rspCode = 200
-                                                           , rspReason = "OK"
-                                                           , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                                                           , rspBody = injectTemplate html "" "" ("There is no renderer defined for classes "++unwords classes)
-                                                           })
-                     Error msg  -> return (Response
-                                             { rspCode = 400
-                                             , rspReason = "FAIL"
-                                             , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                                             , rspBody = msg
-                                             })
-    Nothing -> return (Response
-                         { rspCode = 200
-                         , rspReason = "OK"
-                         , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                         , rspBody = injectTemplate html "" "" ""
-                         })
+    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" JSNull)
+    Just qid -> do
+      rsp <- wikidataEntity qid
+      case rsp >>= get_classes of
+        Error msg  -> return $ mkResponse 400 "FAIL" "text/plain" msg
+        Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
+          []       -> let err = mkError ("There is no renderer defined for classes " ++ unwords classes)
+                      in return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" err)
+          (prog:_) -> do
+            code <- readFile (dir </> prog)
+            case executeCode db gr sgr mn (Just qid) lang Map.empty code of
+              Left (err,msg) -> return $ mkResponse 400 err "text/plain" msg
+              Right res      -> do
+                return $ mkResponse 200 "OK" "text/html" (injectTemplate html prog code res)
     where
       dir = dropFileName path
 
@@ -109,50 +103,44 @@ pageService db gr mn sgr path rq = do
         vals <- valFromObj "P31" json
         mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
 
-      injectTemplate []                                           prog code output = []
-      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         prog code output = prog   ++ injectTemplate cs prog code output
-      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         prog code output = code   ++ injectTemplate cs prog code output
-      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) prog code output = output ++ injectTemplate cs prog code output
-      injectTemplate (c:cs)                                       prog code output = c :       injectTemplate cs prog code output
+      injectTemplate []                                   prog code output = []
+      injectTemplate ('_':'_':'p':'r':'o':'g':cs)         prog code output = encode (showJSON prog) ++ injectTemplate cs prog code output
+      injectTemplate ('_':'_':'c':'o':'d':'e':cs)         prog code output = encode (showJSON code) ++ injectTemplate cs prog code output
+      injectTemplate ('_':'_':'o':'u':'t':'p':'u':'t':cs) prog code output = encode output          ++ injectTemplate cs prog code output
+      injectTemplate (c:cs)                               prog code output = c : injectTemplate cs prog code output
 
-executeCode :: Database -> PGF -> SourceGrammar -> ModuleName -> Bool -> Maybe String -> String -> String -> IO Response
-executeCode db gr sgr mn as_table mb_qid lang code =
+      mkError err = makeObj [("error", showJSON err)]
+
+executeCode :: Database      -- ^ Database for wiki data
+            -> PGF           -- ^ Ambient core grammar
+            -> SourceGrammar -- ^ Ambient grammar
+            -> ModuleName    -- ^ Name of the predef module to open
+            -> Maybe String  -- ^ Ambient QID
+            -> String        -- ^ Ambient language
+            -> ChoiceMap     -- ^ Initial choices (i.e. a program trace)
+            -> String        -- ^ Code snippet to execute
+            -> Either (String, String) JSValue
+executeCode db gr sgr mn mb_qid lang csInit code =
   case runLangP NLG pNLG (BS.pack code) of
-    Right prog ->
+    Left (Pn row col,msg) -> Left ("Parse Error", show row ++ ":" ++ show col ++ ":" ++ msg)
+    Right prog            ->
       case runCheck (checkComputeProg (maybe prog (add_qid prog) mb_qid)) of
-        E.Ok (res,msg)
-          | as_table
-                   -> return (Response
-                                { rspCode = 200
-                                , rspReason = "OK"
-                                , rspHeaders = [Header HdrContentType "application/json; charset=UTF8"]
-                                , rspBody = encode $
-                                              makeObj [("msg",showJSON msg)
-                                                      ,("groups", showJSON [makeObj [("headers",showJSON headers),
-                                                                                     ("dataset",showJSON dataset)]
-                                                                              | (headers,dataset) <- res])
-                                                      ]
-                                })
-          | otherwise
-                   -> return (Response
-                                { rspCode = 200
-                                , rspReason = "OK"
-                                , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                                , rspBody = concat [concat html | (headers,(html:_)) <- res]
-                                })
-        E.Bad msg  -> return (Response
-                                { rspCode = 400
-                                , rspReason = "Invalid Expression"
-                                , rspHeaders = [Header HdrContentType "text/plain; charset=UTF8"]
-                                , rspBody = msg
-                                })
-    Left (Pn row col,msg)
-                   -> return (Response
-                                { rspCode = 400
-                                , rspReason = "Parse Error"
-                                , rspHeaders = [Header HdrContentType "text/plain; charset=UTF8"]
-                                , rspBody = (show row ++ ":" ++ show col ++ ":" ++ msg)
-                                })
+        E.Bad msg      -> Left ("Invalid Expression", msg)
+        E.Ok (res,msg) -> Right $ makeObj
+          [ ("msg"   , showJSON msg)
+          , ("groups", showJSON
+              [ makeObj
+                [ ("headers", showJSON headers)
+                , ("dataset", JSArray
+                    [ makeObj
+                      [ ("fields" , showJSON fs)
+                      , ("choices", serializeChoices cs)
+                      , ("options", ois)
+                      ]
+                    | (fs,cs,ois) <- dataset])
+                ]
+              | (headers,dataset) <- res])
+          ]
   where
     abs_mn = moduleNameS (abstractName gr)
 
@@ -196,12 +184,12 @@ executeCode db gr sgr mn as_table mb_qid lang code =
           globals1 = Gl sgr' (wikiPredef db gr lang sgr')
           qident = (nlg_mn,identS "main")
 
-      res <- runEvalM globals1 $ do
+      res <- runEvalMWithOpts globals1 csInit $ do
         g <- globals
         let (c1,c2) = split unit
         (term,res_ty) <- inferLType' (Q qident)
         (flag,term,res_ty) <- instantiate False term res_ty
-        res <- value2termM False [] (bubble (eval g [] c2 term []))
+        res <- value2termM True [] (eval g [] c2 term [])
         res <- case res of
                  FV ts -> msum (map return ts)
                  res   -> return res
@@ -210,8 +198,12 @@ executeCode db gr sgr mn as_table mb_qid lang code =
                           else return (res,res_ty)
         res_ty <- value2termM True [] res_ty
         res <- toRecord res_ty res
-        return (toHeaders res_ty,[res])
-      return ((Map.toList . fmap reverse . Map.fromListWith (++)) res)
+        return (toHeaders res_ty,res)
+      res <- forM res $ \((hs,r),cs,ois) -> do
+        ois <- orFailM "No result while serializing option info" $
+          listToMaybe <$> runEvalM globals1 (serializeOptionInfo ois)
+        return (hs,[(r,cs,ois)])
+      return $ Map.toList (fmap reverse (Map.fromListWith (++) res))
 
     toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,ty) <- lbls]
     toHeaders ty             = [toHeader empty ty]
@@ -261,6 +253,21 @@ executeCode db gr sgr mn as_table mb_qid lang code =
       | isPGFType ty = do e <- toExpr [] t
                           return (showExpr [] e)
       | otherwise    = return (render (ppTerm Unqualified 0 t))
+
+    serializeOptionInfo ois = do
+      rs <- forM ois $ \(OptionInfo c lty l os) -> do
+        lty   <- value2termM True [] lty
+        l     <- value2termM True [] l
+        label <- toCell lty l
+        os <- forM os $ \(oty,o) -> do
+          oty <- value2termM True [] oty
+          o   <- value2termM True [] o
+          toCell oty o
+        return $ makeObj [ ("label"  , showJSON label)
+                         , ("choice" , showJSON (unchoice c))
+                         , ("options", showJSON os)
+                         ]
+      return $ JSArray rs
 
     isPGFType (QC (m,c))
       | m == abs_mn = True
@@ -343,17 +350,40 @@ executeCode db gr sgr mn as_table mb_qid lang code =
          mkInfo locd loct [(de',ty')] = (ResOper (Just (L locd ty')) (Just (L locd de')))
          mkInfo locd loct defs        = (ResOverload [] [(L locd ty',L locd de') | (de',ty') <- defs])
 
+orFail s = maybe (fail s) pure
+
+orFailM s = (orFail s =<<)
+    
+orFailE = either fail pure
+
+orFailErr (E.Ok a)    = return a
+orFailErr (E.Bad err) = fail err
+
+serializeChoices :: ChoiceMap -> JSValue
+serializeChoices cs = JSArray (Map.toList cs >>= \(c,i) -> [showJSON (unchoice c), showJSON i])
+
+deserializeChoices :: JSValue -> E.Err ChoiceMap
+deserializeChoices json = case readJSON json of
+  Error err -> E.Bad err
+  Ok cs     -> Map.fromList <$> parse cs
+  where
+    parse []       = E.Ok []
+    parse [x]      = E.Bad "Choice array must have even length!"
+    parse (c:i:cs) = do
+      rs <- parse cs
+      return $ (Choice c, fromInteger i) : rs
+
 wikiPredef :: Database -> PGF -> String -> Grammar -> PredefTable
 wikiPredef db pgf lang gr = Map.fromList
-  [ (identS "entity", pdArity 2 $ \g c [typ,qid] -> Const (fetch c typ qid))
-  , (identS "int2digits", pdArity 1 $ \g c [n] -> Const (int2digits abstr n))
-  , (identS "int2decimal", pdArity 1 $ \g c [n] -> Const (int2decimal abstr n))
-  , (identS "float2decimal", pdArity 1 $ \g c [f] -> Const (float2decimal abstr f))
-  , (identS "int2numeral", pdArity 1 $ \g c [n] -> Const (int2numeral abstr n))
-  , (identS "expr", pdArity 2 $ \g c [ty,qid] -> Const (get_expr lang c ty qid))
-  , (identS "time2adv", pdArity 1 $ \g c [time] -> Const (time2adv abstr time))
-  , (identS "lang", pdArity 0 $ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
-  , (cLessInt, pdArity 2 $ \g c [v1,v2] -> fmap toBool (liftA2 (<) (value2int v1) (value2int v2)))
+  [ (identS "entity", pdArity 2 $\ \g c [typ,qid] -> Const (fetch c typ qid))
+  , (identS "int2digits", pdArity 1 $\ \g c [n] -> Const (int2digits abstr n))
+  , (identS "int2decimal", pdArity 1 $\ \g c [n] -> Const (int2decimal abstr n))
+  , (identS "float2decimal", pdArity 1 $\ \g c [f] -> Const (float2decimal abstr f))
+  , (identS "int2numeral", pdArity 1 $\ \g c [n] -> Const (int2numeral abstr n))
+  , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
+  , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr time))
+  , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
+  , (cLessInt, pdArity 2 $\ \g c [v1,v2] -> fmap toBool (liftA2 (<) (value2int v1) (value2int v2)))
   ]
   where
     abstr = moduleNameS (abstractName pgf)
@@ -362,21 +392,21 @@ wikiPredef db pgf lang gr = Map.fromList
       case unsafePerformIO (wikidataEntity qid) of
         Ok obj    -> filterJsonFromType c obj typ
         Error msg -> VError (pp msg)
-    fetch c ty (VFV c1 vs) = VFV c1 (mapC (\c -> fetch c ty) c vs)
+    fetch c ty (VFV c1 vs) = VFV c1 (mapVariantsC (\c -> fetch c ty) c vs)
 
     -- add lang -> synsets, give both options for lex and syn
     get_expr l c ty (VStr qid) =
       case res of
         [v] -> v
-        vs  -> VFV c vs
+        vs  -> VFV c (VarFree vs)
       where
         res = unsafePerformIO $ 
                 runDaison db ReadOnlyMode $ do
                   spec <- select [expr s | (i, s) <-  fromIndex qid2lang (at (qid, l))]
                   mul <- select [expr s | (i, s) <-  fromIndex qid2lang (at (qid, "ParseMul"))]
-                  lexeme <- select [VApp (abstr,identS id) [] | (_,lex) <- fromIndex lexemes_qid (at qid)
-                                                    , let id = lex_fun lex
-                                                    , fmap (matchType ty) (functionType pgf id) == Just True]
+                  lexeme <- select [vapp abstr id [] | (_,lex) <- fromIndex lexemes_qid (at qid)
+                                           , let id = lex_fun lex
+                                           , fmap (matchType ty) (functionType pgf id) == Just True]
                   case spec of 
                         [] -> return $ lexeme ++ [eval globals0 [] c (toTerm [] (MN (i2i2 "Parse")) r) [] | r <- mul]
                         _  -> return $ lexeme ++ [eval globals0 [] c (toTerm [] (MN (i2i2 "Parse")) r) [] | r <- spec]
@@ -384,11 +414,11 @@ wikiPredef db pgf lang gr = Map.fromList
                                                     
         matchType (VProd bt1 _ ty11 ty2) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
           bt1 == bt2 && matchType ty11 ty12 && matchType ty2 (DTyp hypos cat2 [])
-        matchType (VApp (mod,cat1) []) (DTyp [] cat2 []) =
+        matchType (VApp _ (mod,cat1) []) (DTyp [] cat2 []) =
           mod == abstr && showIdent cat1 == cat2
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
-    get_expr l c ty (VFV c1 vs) = VFV c1 (mapC (\c -> get_expr l c ty) c vs)
+    get_expr l c ty (VFV c1 vs) = VFV c1 (mapVariantsC (\c -> get_expr l c ty) c vs)
     get_expr l c ty x           = VError (ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x)
 
     globals0 = Gl gr Map.empty
@@ -424,9 +454,9 @@ getSpecificProperty :: Choice -> JSObject [JSObject JSValue] -> (Label, Value) -
 getSpecificProperty c obj (LIdent field, typ)
   | isProperty label =
       case Text.JSON.Types.get_field obj label of
-        Nothing    -> (LIdent field, VFV c [])
+        Nothing    -> (LIdent field, VFV c (VarFree []))
         Just [obj] -> (LIdent field, transformJsonToValue typ c obj)
-        Just objs  -> (LIdent field, VFV c (mapC (transformJsonToValue typ) c objs))
+        Just objs  -> (LIdent field, VFV c (VarFree (mapC (transformJsonToValue typ) c objs)))
   | otherwise = (LIdent field, VError (pp field <+> "is an invalid Wikidata property"))
   where
     label = showRawIdent field
@@ -446,7 +476,7 @@ getAllProperties c obj =
                  let (c1,c2) = split c
                  in case mapCM parseVariant c1 objs of
                       Ok [v]    -> Just (LIdent (rawIdentS label), v)
-                      Ok vs     -> Just (LIdent (rawIdentS label), VFV c2 vs)
+                      Ok vs     -> Just (LIdent (rawIdentS label), VFV c2 (VarFree vs))
                       Error msg -> Nothing)
           c (fromJSObject obj)
   where
@@ -535,7 +565,7 @@ globeCoordinateWdt = WikiDataType
 
 quantityWdt = WikiDataType
   [ valField "amount" typeInt $ \c -> \case
-      Just (VApp f [])
+      Just (VApp _ f [])
         | f == (cPredef,cInt)   -> valFromObj "value" >=> decimal VFlt
         | f == (cPredef,cFloat) -> valFromObj "value" >=> decimal VInt
         | otherwise             -> \_ -> fail "Not an Int or Float"
@@ -562,8 +592,8 @@ getQualifierOrReference c qs dt l t
           Just snaks -> let (c1,c2) = split c
                         in case [value | Ok value <- mapC get_value c2 snaks] of
                              [v] -> return v
-                             vs  -> return (VFV c vs)
-          Nothing    -> return (VFV c [])
+                             vs  -> return (VFV c (VarFree vs))
+          Nothing    -> return (VFV c (VarFree []))
   | otherwise = fail "An invalid Wikidata qualifier or reference"
   where
     label = showRawIdent l
@@ -591,48 +621,40 @@ int2digits abstr (VInt n)
   | n >= 0    = digits n
   | otherwise = VError (pp "Can't convert" <+> pp n)
   where
-    idig    = (abstr,identS "IDig")
-    iidig   = (abstr,identS "IIDig")
-
-    digit n = VApp (abstr,identS ('D':'_':show n)) []
+    digit n = vapp abstr ('D':'_':show n) []
 
     digits n =
       let (n2,n1) = divMod n 10
-      in rest n2 (VApp idig [digit n1])
+      in rest n2 (vapp abstr "IDig" [digit n1])
 
     rest 0 t = t
     rest n t =
       let (n2,n1) = divMod n 10
-      in rest n2 (VApp iidig [digit n1, t])
-int2digits abstr (VFV c vs) = VFV c (map (int2digits abstr) vs)
+      in rest n2 (vapp abstr "IIDig" [digit n1, t])
+int2digits abstr (VFV c vs) = VFV c (mapVariants (int2digits abstr) vs)
 
 int2decimal :: ModuleName -> Value -> Value
 int2decimal abstr (VInt n) = sign n (int2digits abstr (VInt (abs n)))
   where
-    neg_dec = (abstr,identS "NegDecimal")
-    pos_dec = (abstr,identS "PosDecimal")
-
     sign n t
-      | n < 0     = VApp neg_dec [t]
-      | otherwise = VApp pos_dec [t]
-int2decimal abstr (VFV c vs) = VFV c (map (int2decimal abstr) vs)
+      | n < 0     = vapp abstr "NegDecimal" [t]
+      | otherwise = vapp abstr "PosDecimal" [t]
+int2decimal abstr (VFV c vs) = VFV c (mapVariants (int2decimal abstr) vs)
 
 float2decimal :: ModuleName -> Value -> Value
 float2decimal abstr (VFlt f) =
   let n = truncate f
   in fractions (f-fromIntegral n) (int2decimal abstr (VInt n))
   where
-    ifrac = (abstr,identS "IFrac")
-
-    digit n = (VApp (abstr,identS ('D':'_':show n)) [])
+    digit n = vapp abstr ('D':'_':show n) []
 
     fractions f t
       | f < 1e-8  = t
       | otherwise =
           let f10 = f * 10
               n2  = truncate f10
-          in fractions (f10-fromIntegral n2) (VApp ifrac [t, (digit n2)])
-float2decimal abstr (VFV c vs) = VFV c (map (float2decimal abstr) vs)
+          in fractions (f10-fromIntegral n2) (vapp abstr "IFrac" [t, digit n2])
+float2decimal abstr (VFV c vs) = VFV c (mapVariants (float2decimal abstr) vs)
 
 int2numeral abstr (VInt n)
   | n < 1000000000000 = app1 "num" (n2s1000000000000 n)
@@ -685,37 +707,37 @@ int2numeral abstr (VInt n)
 
     range_error n = VError (pp n <+> pp "cannot be represented as a numeral")
 
-    app0 fn = VApp (abstr,identS fn) []
-    app1 fn v1 = VApp (abstr,identS fn) [v1]
-    app2 fn v1 v2 = VApp (abstr,identS fn) [v1,v2]
-int2numeral abstr (VFV c vs) = VFV c (map (int2numeral abstr) vs)
+    app0 fn = vapp abstr fn []
+    app1 fn v1 = vapp abstr fn [v1]
+    app2 fn v1 v2 = vapp abstr fn [v1,v2]
+int2numeral abstr (VFV c vs) = VFV c (mapVariants (int2numeral abstr) vs)
 
 time2adv abs_mn (VStr s) =
   case matchISO8601 s of
     Just (year,month,day) ->
-          let y = VApp (abs_mn,identS "intYear") [VInt year]
+          let y = vapp abs_mn "intYear" [VInt year]
               m = case month of
                     0  -> Nothing
-                    1  -> Just (VApp (abs_mn,identS "january_Month") [])
-                    2  -> Just (VApp (abs_mn,identS "february_Month") [])
-                    3  -> Just (VApp (abs_mn,identS "march_Month") [])
-                    4  -> Just (VApp (abs_mn,identS "april_Month") [])
-                    5  -> Just (VApp (abs_mn,identS "may_Month") [])
-                    6  -> Just (VApp (abs_mn,identS "june_Month") [])
-                    7  -> Just (VApp (abs_mn,identS "july_Month") [])
-                    8  -> Just (VApp (abs_mn,identS "august_Month") [])
-                    9  -> Just (VApp (abs_mn,identS "september_Month") [])
-                    10 -> Just (VApp (abs_mn,identS "october_Month") [])
-                    11 -> Just (VApp (abs_mn,identS "november_Month") [])
-                    12 -> Just (VApp (abs_mn,identS "december_Month") [])
+                    1  -> Just (vapp abs_mn "january_Month" [])
+                    2  -> Just (vapp abs_mn "february_Month" [])
+                    3  -> Just (vapp abs_mn "march_Month" [])
+                    4  -> Just (vapp abs_mn "april_Month" [])
+                    5  -> Just (vapp abs_mn "may_Month" [])
+                    6  -> Just (vapp abs_mn "june_Month" [])
+                    7  -> Just (vapp abs_mn "july_Month" [])
+                    8  -> Just (vapp abs_mn "august_Month" [])
+                    9  -> Just (vapp abs_mn "september_Month" [])
+                    10 -> Just (vapp abs_mn "october_Month" [])
+                    11 -> Just (vapp abs_mn "november_Month" [])
+                    12 -> Just (vapp abs_mn "december_Month" [])
                     _  -> Just matchError
               d = case day of
                     0  -> Nothing
-                    _  -> Just (VApp (abs_mn,identS "intMonthday") [VInt day])
+                    _  -> Just (vapp abs_mn "intMonthday" [VInt day])
           in case (m,d) of
-               (Just m,Just d)  -> VApp (abs_mn,identS "dayMonthYearAdv") [d, m, y]
-               (Just m,Nothing) -> VApp (abs_mn,identS "monthYearAdv") [m, y]
-               (Nothing,_)      -> VApp (abs_mn,identS "yearAdv") [y]
+               (Just m,Just d)  -> vapp abs_mn "dayMonthYearAdv" [d, m, y]
+               (Just m,Nothing) -> vapp abs_mn "monthYearAdv" [m, y]
+               (Nothing,_)      -> vapp abs_mn "yearAdv" [y]
     Nothing -> matchError
   where
     matchError = VError (pp s <+> "is not a valid timestamp")
@@ -736,13 +758,15 @@ time2adv abs_mn (VStr s) =
         digit r c
           | isDigit c = fmap (\x -> (x*10+(fromIntegral (ord c - ord '0')))) r
           | otherwise = Nothing
-time2adv abs_mn (VFV c vs) = VFV c (map (time2adv abs_mn) vs)
+time2adv abs_mn (VFV c vs) = VFV c (mapVariants (time2adv abs_mn) vs)
 
 value2int (VInt n) = Const n
 value2int _        = RunTime
 
-toBool True  = VApp (cPredef,identS "True")  []
-toBool False = VApp (cPredef,identS "False") []
+vapp m n vs = VApp poison (m, identS n) vs
+
+toBool True  = vapp cPredef "True" []
+toBool False = vapp cPredef "False" []
 
 langs = [
   ("af", "ParseAfr"),

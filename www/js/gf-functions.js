@@ -204,14 +204,14 @@ class WNClient extends EventTarget {
         }
     }
 
-    setOption(choice, value) {
+    setOption(choice, index) {
         switch (this.state.state) {
             case "interactive":
-                if (!Object.hasOwn(this.state.opts, choice) || this.state.opts[choice] === value) break;
+                if (!Object.hasOwn(this.state.opts, choice) || this.state.opts[choice] === index) break;
                 // falls through
             case "invalid":
                 const newOpts = {...this.state.opts};
-                newOpts[choice] = value;
+                newOpts[choice] = index;
                 // TODO delete dependent options
                 this.revalidate(this.state.qid, this.state.lang, this.state.code, this.state.choices, newOpts);
                 break;

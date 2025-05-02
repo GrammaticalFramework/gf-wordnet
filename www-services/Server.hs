@@ -30,7 +30,7 @@ main = do
           [c*c
              | (ex_id,(ex,_)) <- from examples everything
              , let c = length (exprFunctions ex)]
-  (_,(mn,sgr)) <- batchCompile noOptions (Just gr) [doc_dir</>"gf/WordNet.gf"]
+  (mn,sgr) <- batchCompile noOptions (Just gr) [doc_dir</>"gf/WordNet.gf"]
   server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr doc_dir client_secret)
   closeDB db
 

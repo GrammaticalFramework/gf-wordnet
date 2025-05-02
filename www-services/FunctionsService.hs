@@ -345,15 +345,15 @@ executeCode db gr sgr mn as_table mb_qid lang code =
 
 wikiPredef :: Database -> PGF -> String -> Grammar -> PredefTable
 wikiPredef db pgf lang gr = Map.fromList
-  [ (identS "entity", pdArity 2 $ \g c [typ,qid] -> Const (fetch c typ qid))
-  , (identS "int2digits", pdArity 1 $ \g c [n] -> Const (int2digits abstr n))
-  , (identS "int2decimal", pdArity 1 $ \g c [n] -> Const (int2decimal abstr n))
-  , (identS "float2decimal", pdArity 1 $ \g c [f] -> Const (float2decimal abstr f))
-  , (identS "int2numeral", pdArity 1 $ \g c [n] -> Const (int2numeral abstr n))
-  , (identS "expr", pdArity 2 $ \g c [ty,qid] -> Const (get_expr lang c ty qid))
-  , (identS "time2adv", pdArity 1 $ \g c [time] -> Const (time2adv abstr time))
-  , (identS "lang", pdArity 0 $ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
-  , (cLessInt, pdArity 2 $ \g c [v1,v2] -> fmap toBool (liftA2 (<) (value2int v1) (value2int v2)))
+  [ (identS "entity", pdArity 2 $\ \g c [typ,qid] -> Const (fetch c typ qid))
+  , (identS "int2digits", pdArity 1 $\ \g c [n] -> Const (int2digits abstr c n))
+  , (identS "int2decimal", pdArity 1 $\ \g c [n] -> Const (int2decimal abstr c n))
+  , (identS "float2decimal", pdArity 1 $\ \g c [f] -> Const (float2decimal abstr c f))
+  , (identS "int2numeral", pdArity 1 $\ \g c [n] -> Const (int2numeral abstr c n))
+  , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
+  , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
+  , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
+  , (cLessInt, pdArity 2 $\ \g c [v1,v2] -> fmap (toBool c) (liftA2 (<) (value2int v1) (value2int v2)))
   ]
   where
     abstr = moduleNameS (abstractName pgf)
@@ -362,34 +362,40 @@ wikiPredef db pgf lang gr = Map.fromList
       case unsafePerformIO (wikidataEntity qid) of
         Ok obj    -> filterJsonFromType c obj typ
         Error msg -> VError (pp msg)
-    fetch c ty (VFV c1 vs) = VFV c1 (mapC (\c -> fetch c ty) c vs)
+    fetch c ty (VFV c1 (VarFree vs)) = VFV c1 (VarFree (mapC (\c -> fetch c ty) c vs))
 
     -- add lang -> synsets, give both options for lex and syn
     get_expr l c ty (VStr qid) =
       case res of
         [v] -> v
-        vs  -> VFV c vs
+        vs  -> VFV c (VarFree vs)
       where
-        res = unsafePerformIO $ 
+        res = unsafePerformIO $
                 runDaison db ReadOnlyMode $ do
-                  spec <- select [expr s | (i, s) <-  fromIndex qid2lang (at (qid, l))]
-                  mul <- select [expr s | (i, s) <-  fromIndex qid2lang (at (qid, "ParseMul"))]
-                  lexeme <- select [VApp (abstr,identS id) [] | (_,lex) <- fromIndex lexemes_qid (at qid)
-                                                    , let id = lex_fun lex
-                                                    , fmap (matchType ty) (functionType pgf id) == Just True]
+                  lexeme <- select [VApp c (abstr,identS id) []
+                                             | (_,lex) <- fromIndex lexemes_qid (at qid)
+                                             , let id = lex_fun lex
+                                             , fmap (matchType ty) (functionType pgf id) == Just True]
+                  spec <- select [eval globals0 [] c (toTerm [] abstr e) []
+                                             | (i, s) <- fromIndex qid2lang (at (qid, l))
+                                             , Right (e,ety) <- pure (inferExpr pgf (expr s))
+                                             , matchType ty ety]
                   case spec of 
-                        [] -> return $ lexeme ++ [eval globals0 [] c (toTerm [] (MN (i2i2 "Parse")) r) [] | r <- mul]
-                        _  -> return $ lexeme ++ [eval globals0 [] c (toTerm [] (MN (i2i2 "Parse")) r) [] | r <- spec]
-  
-                                                    
-        matchType (VProd bt1 _ ty11 ty2) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
-          bt1 == bt2 && matchType ty11 ty12 && matchType ty2 (DTyp hypos cat2 [])
-        matchType (VApp (mod,cat1) []) (DTyp [] cat2 []) =
+                    [] -> do mul <- select [eval globals0 [] c (toTerm [] abstr e) []
+                                            | (i, s) <- fromIndex qid2lang (at (qid, "ParseMul"))
+                                            , Right (e,ety) <- pure (inferExpr pgf (expr s))
+                                            , matchType ty ety]
+                             return $ lexeme ++ mul
+                    _  -> return $ lexeme ++ spec
+
+        matchType (VProd bt1 _ ty11 (VClosure env c ty2)) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
+          bt1 == bt2 && matchType ty11 ty12 && matchType (eval globals0 env c ty2 []) (DTyp hypos cat2 [])
+        matchType (VApp _ (mod,cat1) []) (DTyp [] cat2 []) =
           mod == abstr && showIdent cat1 == cat2
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
-    get_expr l c ty (VFV c1 vs) = VFV c1 (mapC (\c -> get_expr l c ty) c vs)
-    get_expr l c ty x           = VError (ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x)
+    get_expr l c ty (VFV c1 (VarFree vs)) = VFV c1 (VarFree (mapC (\c -> get_expr l c ty) c vs))
+    get_expr l c ty x                     = VError (ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x)
 
     globals0 = Gl gr Map.empty
 
@@ -424,9 +430,9 @@ getSpecificProperty :: Choice -> JSObject [JSObject JSValue] -> (Label, Value) -
 getSpecificProperty c obj (LIdent field, typ)
   | isProperty label =
       case Text.JSON.Types.get_field obj label of
-        Nothing    -> (LIdent field, VFV c [])
+        Nothing    -> (LIdent field, VFV c (VarFree []))
         Just [obj] -> (LIdent field, transformJsonToValue typ c obj)
-        Just objs  -> (LIdent field, VFV c (mapC (transformJsonToValue typ) c objs))
+        Just objs  -> (LIdent field, VFV c (VarFree (mapC (transformJsonToValue typ) c objs)))
   | otherwise = (LIdent field, VError (pp field <+> "is an invalid Wikidata property"))
   where
     label = showRawIdent field
@@ -446,7 +452,7 @@ getAllProperties c obj =
                  let (c1,c2) = split c
                  in case mapCM parseVariant c1 objs of
                       Ok [v]    -> Just (LIdent (rawIdentS label), v)
-                      Ok vs     -> Just (LIdent (rawIdentS label), VFV c2 vs)
+                      Ok vs     -> Just (LIdent (rawIdentS label), VFV c2 (VarFree vs))
                       Error msg -> Nothing)
           c (fromJSObject obj)
   where
@@ -535,7 +541,7 @@ globeCoordinateWdt = WikiDataType
 
 quantityWdt = WikiDataType
   [ valField "amount" typeInt $ \c -> \case
-      Just (VApp f [])
+      Just (VApp _ f [])
         | f == (cPredef,cInt)   -> valFromObj "value" >=> decimal VFlt
         | f == (cPredef,cFloat) -> valFromObj "value" >=> decimal VInt
         | otherwise             -> \_ -> fail "Not an Int or Float"
@@ -562,8 +568,8 @@ getQualifierOrReference c qs dt l t
           Just snaks -> let (c1,c2) = split c
                         in case [value | Ok value <- mapC get_value c2 snaks] of
                              [v] -> return v
-                             vs  -> return (VFV c vs)
-          Nothing    -> return (VFV c [])
+                             vs  -> return (VFV c (VarFree vs))
+          Nothing    -> return (VFV c (VarFree []))
   | otherwise = fail "An invalid Wikidata qualifier or reference"
   where
     label = showRawIdent l
@@ -587,54 +593,54 @@ decimal c s =
     [(v, "")] -> return (c v)
     _         -> fail "Not a decimal"
 
-int2digits abstr (VInt n)
+int2digits abstr c (VInt n)
   | n >= 0    = digits n
   | otherwise = VError (pp "Can't convert" <+> pp n)
   where
     idig    = (abstr,identS "IDig")
     iidig   = (abstr,identS "IIDig")
 
-    digit n = VApp (abstr,identS ('D':'_':show n)) []
+    digit n = VApp c (abstr,identS ('D':'_':show n)) []
 
     digits n =
       let (n2,n1) = divMod n 10
-      in rest n2 (VApp idig [digit n1])
+      in rest n2 (VApp c idig [digit n1])
 
     rest 0 t = t
     rest n t =
       let (n2,n1) = divMod n 10
-      in rest n2 (VApp iidig [digit n1, t])
-int2digits abstr (VFV c vs) = VFV c (map (int2digits abstr) vs)
+      in rest n2 (VApp c iidig [digit n1, t])
+int2digits abstr c (VFV c1 (VarFree vs)) = VFV c1 (VarFree (map (int2digits abstr c) vs))
 
-int2decimal :: ModuleName -> Value -> Value
-int2decimal abstr (VInt n) = sign n (int2digits abstr (VInt (abs n)))
+int2decimal :: ModuleName -> Choice -> Value -> Value
+int2decimal abstr c (VInt n) = sign n (int2digits abstr c (VInt (abs n)))
   where
     neg_dec = (abstr,identS "NegDecimal")
     pos_dec = (abstr,identS "PosDecimal")
 
     sign n t
-      | n < 0     = VApp neg_dec [t]
-      | otherwise = VApp pos_dec [t]
-int2decimal abstr (VFV c vs) = VFV c (map (int2decimal abstr) vs)
+      | n < 0     = VApp c neg_dec [t]
+      | otherwise = VApp c pos_dec [t]
+int2decimal abstr c (VFV c1 (VarFree vs)) = VFV c1 (VarFree (map (int2decimal abstr c) vs))
 
-float2decimal :: ModuleName -> Value -> Value
-float2decimal abstr (VFlt f) =
+float2decimal :: ModuleName -> Choice -> Value -> Value
+float2decimal abstr c (VFlt f) =
   let n = truncate f
-  in fractions (f-fromIntegral n) (int2decimal abstr (VInt n))
+  in fractions (f-fromIntegral n) (int2decimal abstr c (VInt n))
   where
     ifrac = (abstr,identS "IFrac")
 
-    digit n = (VApp (abstr,identS ('D':'_':show n)) [])
+    digit n = (VApp c (abstr,identS ('D':'_':show n)) [])
 
     fractions f t
       | f < 1e-8  = t
       | otherwise =
           let f10 = f * 10
               n2  = truncate f10
-          in fractions (f10-fromIntegral n2) (VApp ifrac [t, (digit n2)])
-float2decimal abstr (VFV c vs) = VFV c (map (float2decimal abstr) vs)
+          in fractions (f10-fromIntegral n2) (VApp c ifrac [t, (digit n2)])
+float2decimal abstr c (VFV c1 (VarFree vs)) = VFV c1 (VarFree (map (float2decimal abstr c) vs))
 
-int2numeral abstr (VInt n)
+int2numeral abstr c (VInt n)
   | n < 1000000000000 = app1 "num" (n2s1000000000000 n)
   | otherwise         = range_error n
   where
@@ -685,37 +691,37 @@ int2numeral abstr (VInt n)
 
     range_error n = VError (pp n <+> pp "cannot be represented as a numeral")
 
-    app0 fn = VApp (abstr,identS fn) []
-    app1 fn v1 = VApp (abstr,identS fn) [v1]
-    app2 fn v1 v2 = VApp (abstr,identS fn) [v1,v2]
-int2numeral abstr (VFV c vs) = VFV c (map (int2numeral abstr) vs)
+    app0 fn = VApp c (abstr,identS fn) []
+    app1 fn v1 = VApp c (abstr,identS fn) [v1]
+    app2 fn v1 v2 = VApp c (abstr,identS fn) [v1,v2]
+int2numeral abstr c (VFV c1 (VarFree vs)) = VFV c1 (VarFree (map (int2numeral abstr c) vs))
 
-time2adv abs_mn (VStr s) =
+time2adv abs_mn c (VStr s) =
   case matchISO8601 s of
     Just (year,month,day) ->
-          let y = VApp (abs_mn,identS "intYear") [VInt year]
+          let y = VApp c (abs_mn,identS "intYear") [VInt year]
               m = case month of
                     0  -> Nothing
-                    1  -> Just (VApp (abs_mn,identS "january_Month") [])
-                    2  -> Just (VApp (abs_mn,identS "february_Month") [])
-                    3  -> Just (VApp (abs_mn,identS "march_Month") [])
-                    4  -> Just (VApp (abs_mn,identS "april_Month") [])
-                    5  -> Just (VApp (abs_mn,identS "may_Month") [])
-                    6  -> Just (VApp (abs_mn,identS "june_Month") [])
-                    7  -> Just (VApp (abs_mn,identS "july_Month") [])
-                    8  -> Just (VApp (abs_mn,identS "august_Month") [])
-                    9  -> Just (VApp (abs_mn,identS "september_Month") [])
-                    10 -> Just (VApp (abs_mn,identS "october_Month") [])
-                    11 -> Just (VApp (abs_mn,identS "november_Month") [])
-                    12 -> Just (VApp (abs_mn,identS "december_Month") [])
+                    1  -> Just (VApp c (abs_mn,identS "january_Month") [])
+                    2  -> Just (VApp c (abs_mn,identS "february_Month") [])
+                    3  -> Just (VApp c (abs_mn,identS "march_Month") [])
+                    4  -> Just (VApp c (abs_mn,identS "april_Month") [])
+                    5  -> Just (VApp c (abs_mn,identS "may_Month") [])
+                    6  -> Just (VApp c (abs_mn,identS "june_Month") [])
+                    7  -> Just (VApp c (abs_mn,identS "july_Month") [])
+                    8  -> Just (VApp c (abs_mn,identS "august_Month") [])
+                    9  -> Just (VApp c (abs_mn,identS "september_Month") [])
+                    10 -> Just (VApp c (abs_mn,identS "october_Month") [])
+                    11 -> Just (VApp c (abs_mn,identS "november_Month") [])
+                    12 -> Just (VApp c (abs_mn,identS "december_Month") [])
                     _  -> Just matchError
               d = case day of
                     0  -> Nothing
-                    _  -> Just (VApp (abs_mn,identS "intMonthday") [VInt day])
+                    _  -> Just (VApp c (abs_mn,identS "intMonthday") [VInt day])
           in case (m,d) of
-               (Just m,Just d)  -> VApp (abs_mn,identS "dayMonthYearAdv") [d, m, y]
-               (Just m,Nothing) -> VApp (abs_mn,identS "monthYearAdv") [m, y]
-               (Nothing,_)      -> VApp (abs_mn,identS "yearAdv") [y]
+               (Just m,Just d)  -> VApp c (abs_mn,identS "dayMonthYearAdv") [d, m, y]
+               (Just m,Nothing) -> VApp c (abs_mn,identS "monthYearAdv") [m, y]
+               (Nothing,_)      -> VApp c (abs_mn,identS "yearAdv") [y]
     Nothing -> matchError
   where
     matchError = VError (pp s <+> "is not a valid timestamp")
@@ -736,13 +742,13 @@ time2adv abs_mn (VStr s) =
         digit r c
           | isDigit c = fmap (\x -> (x*10+(fromIntegral (ord c - ord '0')))) r
           | otherwise = Nothing
-time2adv abs_mn (VFV c vs) = VFV c (map (time2adv abs_mn) vs)
+time2adv abs_mn c (VFV c1 (VarFree vs)) = VFV c1 (VarFree (map (time2adv abs_mn c) vs))
 
 value2int (VInt n) = Const n
 value2int _        = RunTime
 
-toBool True  = VApp (cPredef,identS "True")  []
-toBool False = VApp (cPredef,identS "False") []
+toBool c True  = VApp c (cPredef,identS "True")  []
+toBool c False = VApp c (cPredef,identS "False") []
 
 langs = [
   ("af", "ParseAfr"),
@@ -772,3 +778,4 @@ langs = [
   ("tr", "ParseTur"),
   ("zu", "ParseZul")
   ]
+

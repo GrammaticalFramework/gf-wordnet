@@ -385,6 +385,14 @@ def get_all_synsets() -> list[Synset]:
             result.append(synset)
     return result
 
+def get_all_domains() -> list[Domain]:
+    result = []
+    with db.run("r") as t:
+        for domain_id, domain in t.cursor(domains):
+            domain.id = domain_id
+            result.append(domain)
+    return result
+
 def get_lexeme(fun : str) -> Optional[Lexeme]:
     with db.run("r") as t:
         for lexeme_id, lexeme in t.indexCursor(lexemes_fun, fun):

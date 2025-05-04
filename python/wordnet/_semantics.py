@@ -222,6 +222,12 @@ class Status(Enum):
     Checked = 3
 
 @dataclass
+class Domain:
+    name: str
+    is_dim: bool
+    parent: int
+
+@dataclass
 class Lexeme:
     lex_fun: str
     lex_prob: float
@@ -300,6 +306,11 @@ class Lexeme:
     def store(self):
         with db.run("w") as t:
             self.id = t.store(lexemes, self.id, self)
+
+domains = table("domains",Domain)
+
+domains_parent = index(domains,"parent",lambda domain: domain.parent,int)
+domains.addIndex(domains_parent)
 
 lexemes = table("lexemes",Lexeme)
 

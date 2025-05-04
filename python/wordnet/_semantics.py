@@ -227,6 +227,24 @@ class Domain:
     is_dim: bool
     parent: int
 
+    def _collect_domains(self,stats,level,i,n,t):
+        if self.parent == 0:
+            return
+
+        stat = stats.get(self.parent)
+        if stat:
+            domain, levels = stat
+            if levels[i] == None or levels[i] > level:
+                levels[i] = level
+                domain._collect_domains(stats,level+1,i,n,t)
+        else:
+            for domain in t.cursor(domains, self.parent):
+                domain.id = self.parent
+                levels = [None]*n
+                levels[i] = level
+                stats[self.parent] = (domain,levels)
+                domain._collect_domains(stats,level+1,i,n,t)
+
 @dataclass
 class Lexeme:
     lex_fun: str
@@ -306,6 +324,22 @@ class Lexeme:
     def store(self):
         with db.run("w") as t:
             self.id = t.store(lexemes, self.id, self)
+
+    def _collect_domains(self,stats,level,i,n,t):
+        for id in self.domain_ids:
+            stat = stats.get(id)
+            if stat:
+                domain, levels = stat
+                if levels[i] == None or levels[i] > level:
+                    levels[i] = level
+                    domain._collect_domains(stats,level+1,i,n,t)
+            else:
+                for domain in t.cursor(domains, id):
+                    domain.id = id
+                    levels = [None]*n
+                    levels[i] = level
+                    stats[id] = (domain,levels)
+                    domain._collect_domains(stats,level+1,i,n,t)
 
 domains = table("domains",Domain)
 
@@ -474,6 +508,18 @@ def shortest_path_distance(synset1, synset2):
 
 def path_similarity(synset1, synset2):
     d = shortest_path_distance(synset1, synset2)
+    if d == None:
+        return 0;
+    return 1/(d+1);
+
+def domain_similarity(lexeme1, lexeme2):
+    if lexeme1.id == lexeme2.id:
+        return 1
+    stats = {}
+    with db.run("r") as t:
+        lexeme1._collect_domains(stats,1,0,2,t)
+        lexeme2._collect_domains(stats,1,1,2,t)
+    d = min((sum(levels) for domain,levels in stats.values() if all(level != None for level in levels)),default=None)
     if d == None:
         return 0;
     return 1/(d+1);

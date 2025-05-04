@@ -139,7 +139,8 @@ else:
                                     synonyms,
                                     lowest_common_hypernyms,
                                     shortest_path_distance,
-                                    path_similarity)
+                                    path_similarity,
+                                    domain_similarity)
 
     __all__ = ['Lexeme', 'Synset', 'Status', 'aPl_Det', 'aSg_Det', 'a_Det',
                'a_Quant', 'anteriorAnt', 'comparAP', 'conditionalTense',
@@ -176,4 +177,4 @@ else:
                'whichPl_IDet', 'whichSg_IDet', 'which_IDet',
                'which_RP', 'who_IP', 'youPl_NP', 'youPol_NP',
                'you_NP', 'lowest_common_hypernyms', 'langs',
-               'shortest_path_distance', 'path_similarity']
+               'shortest_path_distance', 'path_similarity', 'domain_similarity']

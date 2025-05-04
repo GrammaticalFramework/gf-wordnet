@@ -470,7 +470,10 @@ def shortest_path_distance(synset1, synset2):
     with db.run("r") as t:
         synset1._collect_hypernyms(stats,1,0,2,t)
         synset2._collect_hypernyms(stats,1,1,2,t)
-    return min(sum(levels) for synset,levels in stats.values() if all(level != None for level in levels))
+    return min((sum(levels) for synset,levels in stats.values() if all(level != None for level in levels)),default=None)
 
 def path_similarity(synset1, synset2):
-    return 1/(shortest_path_distance(synset1, synset2)+1);
+    d = shortest_path_distance(synset1, synset2)
+    if d == None:
+        return 0;
+    return 1/(d+1);

@@ -582,6 +582,8 @@ oper
       mkNP : Conj -> ListNP -> NP --:
       = \c,xy -> ConjNP c xy ; --%
 
+      mkNP : NP -> NP = \np -> np ;   -- mkNP (expr "Qid") will also return NPs
+
       } ; --%
 
 -- Pronouns can be used as noun phrases.
@@ -840,6 +842,9 @@ oper
       = \x,y -> ApposCN (UseN x) y ; --%
       mkCN : CN -> NP  -> CN     -- old king John
       = ApposCN ; --%
+
+      mkCN : CN -> CN = \cn -> cn ;   -- mkCN (expr "Qid") will also return CNs
+
       } ; --%
 
 

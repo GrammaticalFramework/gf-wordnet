@@ -380,7 +380,7 @@ wikiPredef db pgf lang gr = Map.fromList
                                              | (i, s) <- fromIndex qid2lang (at (qid, l))
                                              , Right (e,ety) <- pure (inferExpr pgf (expr s))
                                              , matchType ty ety]
-                  case spec of 
+                  case spec of
                     [] -> do mul <- select [eval globals0 [] c (toTerm [] abstr e) []
                                             | (i, s) <- fromIndex qid2lang (at (qid, "ParseMul"))
                                             , Right (e,ety) <- pure (inferExpr pgf (expr s))
@@ -542,10 +542,10 @@ globeCoordinateWdt = WikiDataType
 quantityWdt = WikiDataType
   [ valField "amount" typeInt $ \c -> \case
       Just (VApp _ f [])
-        | f == (cPredef,cInt)   -> valFromObj "value" >=> decimal VFlt
-        | f == (cPredef,cFloat) -> valFromObj "value" >=> decimal VInt
+        | f == (cPredef,cInt)   -> decimal VFlt
+        | f == (cPredef,cFloat) -> decimal VInt
         | otherwise             -> \_ -> fail "Not an Int or Float"
-      _                         -> valFromObj "value" >=> decimal VInt
+      _                         -> decimal VInt
   , valField' "unit" typeString (VStr . dropURL)
   ]
 

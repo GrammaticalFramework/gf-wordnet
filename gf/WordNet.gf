@@ -96,6 +96,16 @@ oper
          =  \s -> PhrUtt NoPConj (UttImpSg PPos s) NoVoc --%
       } ; --%
 
+    mkPhrMark = overload { --%
+      mkPhrMark : S -> Phr   -- she won't sleep
+         = \s -> PhrUttMark NoPConj (UttS s) NoVoc FullStop ; --%
+      mkPhrMark : Cl -> Phr   -- she sleeps
+         = \s -> PhrUttMark NoPConj (UttS (TUseCl TPres ASimul PPos s)) NoVoc FullStop ; --%
+      mkPhrMark : QS -> Phr   -- would she sleep
+         =    \s -> PhrUttMark NoPConj (UttQS s) NoVoc QuestMark ;  --%
+      mkPhrMark : Imp -> Phr  -- sleep
+         =  \s -> PhrUttMark NoPConj (UttImpSg PPos s) NoVoc ExclMark --%
+      } ; --%
 
 --3 PConj, phrasal conjunctions
 

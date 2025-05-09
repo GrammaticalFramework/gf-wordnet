@@ -70,14 +70,18 @@ oper
 -- and a vocative, both of which are by default empty.
 
     mkPhr = overload { --%
-      mkPhr : (PConj) -> Utt -> (Voc) -> Phr   -- but sleep, my friend  --:
+      mkPhr : PConj -> Utt -> Voc -> Phr   -- but sleep, my friend  --:
       = PhrUtt ; --%
+      mkPhr : PConj -> Utt -> Voc -> Mark -> Phr   -- but sleep, my friend  --:
+      = PhrUttMark ; --%
       mkPhr : Utt -> Voc -> Phr -- come here John --%
       = \u,v -> PhrUtt NoPConj u v ; --%
       mkPhr : PConj -> Utt -> Phr -- but come here --%
       = \u,v -> PhrUtt u v NoVoc ; --%
       mkPhr : Utt -> Phr   -- come here --%
       = \u -> PhrUtt NoPConj u NoVoc   ;  --%
+      mkPhr : Utt -> Mark -> Phr   -- come here --%
+      = \u -> PhrUttMark NoPConj u NoVoc   ;  --%
 
 -- A phrase can also be directly built by a sentence, a present-tense
 -- clause, a question, or a positive singular imperative.

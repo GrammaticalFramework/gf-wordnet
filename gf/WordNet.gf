@@ -89,7 +89,7 @@ oper
       mkPhr : S -> Phr   -- she won't sleep
          = \s -> PhrUtt NoPConj (UttS s) NoVoc ; --%
       mkPhr : Cl -> Phr   -- she sleeps
-         = \s -> PhrUtt NoPConj (UttS (TUseCl TPres ASimul PPos s)) NoVoc ; --%
+         = \s -> PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos s)) NoVoc ; --%
       mkPhr : QS -> Phr   -- would she sleep
          =    \s -> PhrUtt NoPConj (UttQS s) NoVoc ;  --%
       mkPhr : Imp -> Phr  -- sleep
@@ -100,7 +100,7 @@ oper
       mkPhrMark : S -> Phr   -- she won't sleep
          = \s -> PhrUttMark NoPConj (UttS s) NoVoc FullStop ; --%
       mkPhrMark : Cl -> Phr   -- she sleeps
-         = \s -> PhrUttMark NoPConj (UttS (TUseCl TPres ASimul PPos s)) NoVoc FullStop ; --%
+         = \s -> PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos s)) NoVoc FullStop ; --%
       mkPhrMark : QS -> Phr   -- would she sleep
          =    \s -> PhrUttMark NoPConj (UttQS s) NoVoc QuestMark ;  --%
       mkPhrMark : Imp -> Phr  -- sleep
@@ -137,11 +137,11 @@ oper
       mkUtt : S -> Utt                     -- she slept   --:
       = UttS ; --%
       mkUtt : Cl -> Utt                    -- she sleeps
-      = \c -> UttS (TUseCl TPres ASimul PPos c) ; --%
+      = \c -> UttS (UseCl (TTAnt TPres ASimul) PPos c) ; --%
       mkUtt : QS -> Utt                    -- who didn't sleep   --:
       = UttQS   ; --%
       mkUtt : QCl -> Utt                   -- who sleeps
-      = \c -> UttQS (TUseQCl TPres ASimul PPos c) ; --%
+      = \c -> UttQS (UseQCl (TTAnt TPres ASimul) PPos c) ; --%
       mkUtt : (ImpForm) -> (Pol) -> Imp -> Utt  -- don't be men   --:
       = mkUttImp  ; --%
       mkUtt : ImpForm -> Imp -> Utt -- be men --%
@@ -258,21 +258,21 @@ oper
 
     mkS = overload {  --%
       mkS : Cl  -> S  --%
-      = TUseCl TPres ASimul PPos ;   --%
+      = UseCl (TTAnt TPres ASimul) PPos ;   --%
       mkS : Tense -> Cl -> S    --%
-      = \t -> TUseCl t ASimul PPos ;   --%
+      = \t -> UseCl (TTAnt t ASimul) PPos ;   --%
       mkS : Ant -> Cl -> S   --%
-      = \a -> TUseCl TPres a PPos ;   --%
+      = \a -> UseCl (TTAnt TPres a) PPos ;   --%
       mkS : Pol -> Cl -> S    --%
-      = \p -> TUseCl TPres ASimul p ;   --%
+      = \p -> UseCl (TTAnt TPres ASimul) p ;   --%
       mkS : Tense -> Ant -> Cl -> S   --%
-      = \t,a -> TUseCl t a PPos ;   --%
+      = \t,a -> UseCl (TTAnt t a) PPos ;   --%
       mkS : Tense -> Pol -> Cl -> S   --%
-      = \t,p -> TUseCl t ASimul p ;   --%
+      = \t,p -> UseCl (TTAnt t ASimul) p ;   --%
       mkS : Ant -> Pol -> Cl -> S   --%
-      = \a,p -> TUseCl TPres a p ;   --%
-      mkS : (Tense) -> (Ant) -> (Pol) -> Cl  -> S -- she wouldn't have slept
-      = \t,a -> TUseCl t a ;   --%
+      = \a,p -> UseCl (TTAnt TPres a) p ;   --%
+      mkS : Tense -> Ant -> Pol -> Cl  -> S -- she wouldn't have slept
+      = \t,a -> UseCl (TTAnt t a) ;   --%
       mkS : Temp -> Pol -> Cl -> S -- she wouldn't have slept  --:
       = UseCl ; --%
 
@@ -352,9 +352,9 @@ oper
 -- Existentials are a special form of clauses.
 
       mkCl : N -> Cl           -- there is a house
-      = \y -> ExistNP (DetArtSg IndefArt (UseN y)) ; --%
+      = \y -> ExistNP (DetCN (DetQuant IndefArt NumSg) (UseN y)) ; --%
       mkCl : CN -> Cl          -- there is an old house
-      = \y -> ExistNP (DetArtSg IndefArt y) ; --%
+      = \y -> ExistNP (DetCN (DetQuant IndefArt NumSg) y) ; --%
       mkCl : NP -> Cl          -- there are many houses   --:
       = ExistNP ; --%
 
@@ -537,17 +537,17 @@ oper
       mkNP : Det -> N -> NP       -- the first man
           =  \d,n -> DetCN d (UseN n)   ; --%
       mkNP : Numeral -> CN -> NP      -- fifty old men
-	  = \d,n -> DetCN (DetArtCard IndefArt (NumNumeral d)) n ; --%
+	  = \d,n -> DetCN (DetQuant IndefArt (NumCard (NumNumeral d))) n ; --%
       mkNP : Numeral -> N -> NP       -- fifty men
-	  = \d,n -> DetCN (DetArtCard IndefArt (NumNumeral d)) (UseN n) ; --%
+	  = \d,n -> DetCN (DetQuant IndefArt (NumCard (NumNumeral d))) (UseN n) ; --%
       mkNP : Decimal -> CN -> NP      -- 51 old men
-	  = \d,n -> DetCN (DetArtCard IndefArt (NumDecimal d)) n ; --%
+	  = \d,n -> DetCN (DetQuant IndefArt (NumCard (NumDecimal d))) n ; --%
       mkNP : Decimal -> N -> NP       -- 51 men
-	  = \d,n -> DetCN (DetArtCard IndefArt (NumDecimal d)) (UseN n) ; --%
+	  = \d,n -> DetCN (DetQuant IndefArt (NumCard (NumDecimal d))) (UseN n) ; --%
       mkNP : Card -> CN -> NP     -- forty-five old men
-	  =  \d,n -> DetCN (DetArtCard IndefArt d) n ; --%
+	  =  \d,n -> DetCN (DetQuant IndefArt (NumCard d)) n ; --%
       mkNP : Card -> N -> NP       -- forty-five men
-	  =  \d,n -> DetCN (DetArtCard IndefArt d) (UseN n) ; --%
+	  =  \d,n -> DetCN (DetQuant IndefArt (NumCard d)) (UseN n) ; --%
       mkNP : Pron -> CN -> NP   -- my old man
           = \p,n -> DetCN (DetQuant (PossPron p) NumSg) n ; --%
       mkNP : Pron -> N  -> NP   -- my man
@@ -644,7 +644,7 @@ oper
         = \q -> DetQuant q NumSg  ; --%
       mkDet : Quant -> Card -> Det   -- these five
         = \d,nu -> (DetQuant d (NumCard nu)) ; --%
-      mkDet : Quant ->  Ord -> Det     -- the best
+      mkDet : Quant -> Ord -> Det     -- the best
         = \q,o -> DetQuantOrd q NumSg o  ; --%
       mkDet : Quant -> Num -> Ord -> Det  -- these five best --:
         = DetQuantOrd  ; --%
@@ -655,11 +655,11 @@ oper
 -- used as determiners.
 
       mkDet : Card ->  Det     -- forty
-	= DetArtCard IndefArt ; --%
+	= \c -> DetQuant IndefArt (NumCard c)  ; --%
       mkDet : Decimal -> Det    -- 51, 3.14
-	= \d -> DetArtCard IndefArt (NumDecimal d) ; --%
+	= \d -> DetQuant IndefArt (NumCard (NumDecimal d)) ; --%
       mkDet : Numeral -> Det  -- five
-	= \d -> DetArtCard IndefArt (NumNumeral d) ; --%
+	= \d -> DetQuant IndefArt (NumCard (NumNumeral d)) ; --%
       mkDet : Pron -> Det     -- my
         = \p -> DetQuant (PossPron p) NumSg ; --%
       mkDet : Pron -> Num -> Det -- my five
@@ -970,21 +970,21 @@ oper
 -- default (present, simultaneous, and positive, respectively).
 
       mkQS : QCl  -> QS  --%
-      = TUseQCl TPres ASimul PPos ; --%
+      = UseQCl (TTAnt TPres ASimul) PPos ; --%
       mkQS : Tense -> QCl -> QS  --%
-      =  \t -> TUseQCl t ASimul PPos ; --%
+      =  \t -> UseQCl (TTAnt t ASimul) PPos ; --%
       mkQS : Ant -> QCl -> QS  --%
-      = \a -> TUseQCl TPres a PPos ; --%
+      = \a -> UseQCl (TTAnt TPres a) PPos ; --%
       mkQS : Pol -> QCl -> QS  --%
-      = \p -> TUseQCl TPres ASimul p ; --%
+      = \p -> UseQCl (TTAnt TPres ASimul) p ; --%
       mkQS : Tense -> Ant -> QCl -> QS --%
-      = \t,a -> TUseQCl t a PPos ; --%
+      = \t,a -> UseQCl (TTAnt t a) PPos ; --%
       mkQS : Tense -> Pol -> QCl -> QS --%
-      = \t,p -> TUseQCl t ASimul p ; --%
+      = \t,p -> UseQCl (TTAnt t ASimul) p ; --%
       mkQS : Ant -> Pol -> QCl -> QS --%
-      = \a,p -> TUseQCl TPres a p ; --%
-      mkQS : (Tense) -> (Ant) -> (Pol) -> QCl -> QS -- who wouldn't have slept
-      = TUseQCl ; --%
+      = \a,p -> UseQCl (TTAnt TPres a) p ; --%
+      mkQS : Tense -> Ant -> Pol -> QCl -> QS -- who wouldn't have slept
+      = \t,a -> UseQCl (TTAnt t a) ; --%
       mkQS : Temp -> Pol -> QCl -> QS -- who wouldn't have slept  --%
       = UseQCl ; --%
 
@@ -994,7 +994,7 @@ oper
 -- present, simultaneous, and positive.
 
       mkQS : Cl -> QS
-      = \x -> TUseQCl TPres ASimul PPos (QuestCl x) ; --%
+      = \x -> UseQCl (TTAnt TPres ASimul) PPos (QuestCl x) ; --%
       } ; --%
 
 
@@ -1176,22 +1176,22 @@ oper
     mkRS = overload { --%
 
       mkRS : RCl  -> RS --%
-      = TUseRCl TPres ASimul PPos ; --%
+      = UseRCl (TTAnt TPres ASimul) PPos ; --%
       mkRS : Tense -> RCl -> RS --%
-      = \t -> TUseRCl t ASimul PPos ; --%
+      = \t -> UseRCl (TTAnt t ASimul) PPos ; --%
       mkRS : Ant -> RCl -> RS --%
-      = \a -> TUseRCl TPres a PPos ; --%
+      = \a -> UseRCl (TTAnt TPres a) PPos ; --%
       mkRS : Pol -> RCl -> RS --%
-      = \p -> TUseRCl TPres ASimul p ; --%
+      = \p -> UseRCl (TTAnt TPres ASimul) p ; --%
       mkRS : Tense -> Ant -> RCl -> RS --%
-      = \t,a -> TUseRCl t a PPos ; --%
+      = \t,a -> UseRCl (TTAnt t a) PPos ; --%
       mkRS : Tense -> Pol -> RCl -> RS --%
-      = \t,p -> TUseRCl t ASimul p ; --%
+      = \t,p -> UseRCl (TTAnt t ASimul) p ; --%
       mkRS : Ant -> Pol -> RCl -> RS --%
-      = \a,p -> TUseRCl TPres a p ; --%
-      mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS -- that wouldn't have slept
-      = TUseRCl ; --%
-      mkRS : Temp -> (Pol) -> RCl -> RS -- that wouldn't have slept
+      = \a,p -> UseRCl (TTAnt TPres a) p ; --%
+      mkRS : Tense -> Ant -> Pol -> RCl -> RS -- that wouldn't have slept
+      = \t,a -> UseRCl (TTAnt t a) ; --%
+      mkRS : Temp -> Pol -> RCl -> RS -- that wouldn't have slept
       = UseRCl ; --%
       mkRS : Conj -> RS -> RS -> RS -- who sleeps and whose mother runsx
       = \c,x,y -> ConjRS c (BaseRS x y) ; --%
@@ -1400,23 +1400,6 @@ oper
    mkListRS : RS -> ListRS -> ListRS  -- list of more --:
    = ConsRS  ; --%
    } ; --%
-
--- new things
-
-    Art : Type = Quant ;
-      the_Art : Art = DefArt ;   -- the
-      a_Art : Art  = IndefArt ;   -- a
-
-
-    DetArtSg : Art -> CN -> NP = \a -> DetCN (DetQuant a NumSg) ;
-    DetArtPl : Art -> CN -> NP = \a -> DetCN (DetQuant a NumPl) ;
-
-    DetArtOrd : Quant -> Num -> Ord -> Det = DetQuantOrd ;
-    DetArtCard : Art -> Card -> Det = \a,c -> DetQuant a (NumCard c) ;
-
-    TUseCl  : Tense -> Ant -> Pol ->  Cl ->  S = \t,a -> UseCl  (TTAnt t a) ;
-    TUseQCl : Tense -> Ant -> Pol -> QCl -> QS = \t,a -> UseQCl (TTAnt t a) ;
-    TUseRCl : Tense -> Ant -> Pol -> RCl -> RS = \t,a -> UseRCl (TTAnt t a) ;
 
 -- numerals from strings
 

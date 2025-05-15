@@ -14,6 +14,13 @@ key: Q112099
 abs: \cls -> UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (UseN cls)))
 key: P31
 
+abs: \n -> mkCl (mkNP n) (mkNP the_Det capital_3_N)
+key: P36
+
+abs: \n -> mkCl (mkNP the_Det capital_3_N) (mkNP n)
+rus: столица - [n]
+key: P36
+
 abs: \cls -> UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (ComplN2 kind_of_N2 (MassNP (UseN x)))))
 key: P279
 

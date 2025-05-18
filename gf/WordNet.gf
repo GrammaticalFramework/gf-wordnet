@@ -435,9 +435,9 @@ oper
 -- A verb phrase can be modified with a postverbal or a preverbal adverb.
 
       mkVP : VP -> Adv -> VP          -- sleep here   --:
-      = AdvVP     ; --%
+      = \vp,adv -> [default: vp | AdvVP vp adv]     ; --%
       mkVP : AdV -> VP -> VP          -- always sleep   --:
-      = AdVVP ; --%
+      = \adv,vp -> [default: vp | AdVVP adv vp] ; --%
 
 -- Objectless verb phrases can be taken to verb phrases in two ways.
 
@@ -582,11 +582,11 @@ oper
 -- suffixed by a past participle or an adverb.
 
       mkNP : Predet -> NP -> NP  -- only the man --:
-      = PredetNP  ; --%
+      = \pd,np -> [default: np | PredetNP pd np] ; --%
       mkNP : NP -> Adv -> NP     -- Paris today --:
-      = AdvNP ; --%
+      = \np,adv -> [default: np | AdvNP np adv] ; --%
       mkNP : NP -> RS -> NP      -- John, who walks --:
-      = RelNP ; --%
+      = \np,rs -> [default: np | RelNP np rs] ; --%
 
 -- A conjunction can be formed both from two noun phrases and a longer
 -- list of them.
@@ -816,39 +816,35 @@ oper
       mkCN :  A ->  N  -> CN     -- big house
       = \x,y -> AdjCN (PositA x) (UseN y) ; --%
       mkCN :  A -> CN  -> CN     -- big blue house
-      = \x,y -> AdjCN (PositA x) y ; --%
+      = \x,y -> [default: y | AdjCN (PositA x) y] ; --%
       mkCN : AP ->  N  -> CN     -- very big house
       = \x,y -> AdjCN x (UseN y) ; --%
       mkCN : AP -> CN  -> CN     -- very big blue house
-      = AdjCN    ; --%
-      mkCN : CN -> AP  -> CN     -- very big blue house --: --%
-      = \x,y -> AdjCN y x    ; --%
-      mkCN :  N -> AP  -> CN     -- very big house --%
-      = \x,y -> AdjCN y (UseN x)    ; --%
+      = \x,y -> [default: y | AdjCN x y]  ; --%
 
 -- A common noun phrase can be modified by a relative clause or an adverb.
 
       mkCN :  N -> RS  -> CN     -- house that she owns
       = \x,y -> RelCN (UseN x) y   ; --%
       mkCN : CN -> RS  -> CN     -- big house that she loves --:
-      = RelCN    ; --%
+      = \x,y -> [default: x | RelCN x y] ; --%
       mkCN :  N -> Adv -> CN     -- house on the hill
       = \x,y -> AdvCN (UseN x) y  ; --%
       mkCN : CN -> Adv -> CN     -- big house on the hill
-      = AdvCN    ; --%
+      = \x,y -> [default: x | AdvCN x y]  ; --%
 
 -- For some nouns it makes sense to modify them by sentences,
 -- questions, or infinitives. But syntactically this is possible for
 -- all nouns.
 
       mkCN : CN -> S   -> CN     -- rule that she sleeps
-      = \cn,s -> SentCN cn (EmbedS s) ; --%
+      = \cn,s -> [default: cn | SentCN cn (EmbedS s)] ; --%
       mkCN : CN -> QS  -> CN     -- question if she sleeps
-      = \cn,s -> SentCN cn (EmbedQS s) ; --%
+      = \cn,s -> [default: cn | SentCN cn (EmbedQS s)] ; --%
       mkCN : CN -> VP  -> CN     -- reason to sleep
-      = \cn,s -> SentCN cn (EmbedVP ASimul PPos it_Pron s) ; --%
+      = \cn,s -> [default: cn | SentCN cn (EmbedVP ASimul PPos it_Pron s)] ; --%
       mkCN : CN -> SC  -> CN     -- reason to sleep --:
-      = \cn,s -> SentCN cn s ; --%
+      = \cn,s -> [default: cn | SentCN cn s] ; --%
 
 -- A noun can be used in apposition to a noun phrase, especially a proper name.
 
@@ -901,7 +897,7 @@ oper
       mkAP : AdA -> A -> AP   -- very old
       =\x,y -> AdAP x (PositA y) ; --%
       mkAP : AdA -> AP -> AP   -- very very old  --:
-      = AdAP ; --%
+      = \ada,ap -> [default: ap | AdAP ada ap] ; --%
 
 -- Conjunction can be formed from two or more adjectival phrases.
 

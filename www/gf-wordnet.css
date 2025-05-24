@@ -443,3 +443,14 @@ table.modules td.selected {
     padding-top: 2em;
     padding-left: 1em;
 }
+
+table.dataset td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+table.dataset th {
+  border: 1px solid black;
+  background: silver;
+  padding: 5px;
+}

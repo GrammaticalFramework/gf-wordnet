@@ -43,8 +43,9 @@ contentService db client_secret rq = do
       mb_s10 = lookup "token" query
       mb_s11 = lookup "pick_example" query
       mb_s12 = lookup "update_example" query
+      mb_s13 = lookup "path" query
   case mb_s1 of
-    Just code -> doLogin code
+    Just code -> doLogin code mb_s13
     Nothing   -> case liftM3 doGet mb_s2 mb_s4 mb_s5 of
                    Just action -> do res <- action
                                      case res of
@@ -73,7 +74,7 @@ contentService db client_secret rq = do
                                                                                                          Just action -> action >>= outputJSONP query
                                                                                                          Nothing     -> httpError 404 "Not Found" "Unknown command"
   where
-    doLogin code = do
+    doLogin code mb_path = do
       let rq = insertHeader HdrAccept "application/json" $
                getRequest ("https://github.com/login/oauth/access_token?client_id=1e94c97e812a9f502068&client_secret="++client_secret++"&code="++code)
       rsp <- simpleHTTP rq
@@ -96,7 +97,8 @@ contentService db client_secret rq = do
                                    return (user, name++" <"++email++">")) of
                             Right (user,author) -> do count <- runDaison db ReadOnlyMode $
                                                                   fmap length $ select (from updates_usr everything)
-                                                      let path = "/wordnet/"
+                                                      let path = "/wordnet/" ++ fromMaybe "" mb_path
+                                                      print path
                                                       return (Response
                                                                 { rspCode = 302
                                                                 , rspReason = "Found"

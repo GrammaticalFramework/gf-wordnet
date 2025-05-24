@@ -321,12 +321,9 @@ executeCode db gr sgr mn as_table mb_qid lang code =
             info <- case (pty,pde) of
                 (Just (L loct ty), Just (L locd de)) -> do
                      chIn locd "operation" $ do
-                        fmap (mkInfo locd loct) $ runEvalM globals $ do
-                           let (c1,c2,c3,c4) = split4 unit
-                           (ty',_ ) <- checkLType' c1 ty (VSort cType)
-                           let vty = eval globals [] c2 ty' []
-                           (de,ty') <- checkLType' c3 de vty
-                           ty <- value2termM False [] vty
+                        fmap (mkInfo locd loct) $ do
+                           (ty,_ ) <- checkLType globals ty typeType
+                           (de,ty) <- checkLType globals de ty
                            return (de,ty)
                 (Nothing         , Just (L locd de)) -> do
                      chIn locd "operation" $
@@ -340,9 +337,8 @@ executeCode db gr sgr mn as_table mb_qid lang code =
          chIn loc cat = checkInModule cwd (snd sm) loc ("Happened in" <+> cat <+> c)
 
          update (mn,mi) c info = return (mn,mi{jments=Map.insert c info (jments mi)})
-         
-         mkInfo locd loct [(de',ty')] = (ResOper (Just (L locd ty')) (Just (L locd de')))
-         mkInfo locd loct defs        = (ResOverload [] [(L locd ty',L locd de') | (de',ty') <- defs])
+
+         mkInfo locd loct (de',ty') = (ResOper (Just (L locd ty')) (Just (L locd de')))
 
 wikiPredef :: Database -> PGF -> String -> Grammar -> PredefTable
 wikiPredef db pgf lang gr = Map.fromList
@@ -543,8 +539,8 @@ globeCoordinateWdt = WikiDataType
 quantityWdt = WikiDataType
   [ valField "amount" typeInt $ \c -> \case
       Just (VApp _ f [])
-        | f == (cPredef,cInt)   -> decimal VFlt
-        | f == (cPredef,cFloat) -> decimal VInt
+        | f == (cPredef,cInt)   -> decimal VInt
+        | f == (cPredef,cFloat) -> decimal VFlt
         | otherwise             -> \_ -> fail "Not an Int or Float"
       _                         -> decimal VInt
   , valField' "unit" typeString (VStr . dropURL)

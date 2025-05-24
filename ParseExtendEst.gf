@@ -6,7 +6,7 @@ concrete ParseExtendEst of ParseExtend =
 
 lin UttAP  p ap  = {s = ap.s ! False ! NCase (complNumAgr p.a) Nom} ;
 
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin num x = x ;
 

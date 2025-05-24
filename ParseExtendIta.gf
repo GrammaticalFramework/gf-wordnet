@@ -8,7 +8,7 @@ lin
     UttAP  p ap = {s = ap.s ! (genNum2Aform p.a.g p.a.n)} ;
     UttVPS p vps= {s = vps.s ! Indic ! p.a ! True} ;
 
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin
     EmbedVP ant pol p vp = {

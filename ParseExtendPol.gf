@@ -8,7 +8,7 @@ lin
     UttAP  p ap = {s = ap.s ! AF p.gn Nom} ;
 --    UttVPS p vps= {s = vps.s ! Indic ! p.a ! True} ;
 
-    PhrUttMark pconj utt voc mark = {s = SOFT_BIND ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin
     UttVP ant pol p vp = {

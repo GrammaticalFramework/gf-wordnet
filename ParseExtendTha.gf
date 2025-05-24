@@ -2,7 +2,7 @@ concrete ParseExtendTha of ParseExtend =
   NumeralTha - [num], PunctuationX **
   open Prelude, GrammarTha in {
 
-lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin num x = x ;
 

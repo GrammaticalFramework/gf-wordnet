@@ -8,7 +8,7 @@ lin
     UttAP p ap = {s = ap.s ! p.a.n ! Nom} ;
     UttVP ant pol p vp = {s = ant.s ++ pol.s ++ vp.s ! Perf ! VInf pol.p} ;
 
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin TimeNP np = {s = np.s ! Nom} ;
 

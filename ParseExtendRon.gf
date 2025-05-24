@@ -8,7 +8,7 @@ concrete ParseExtendRon of ParseExtend =
 lin
     UttAP  p ap = {s = ap.s ! AF p.a.g p.a.n Indef ANomAcc} ;
 
-    PhrUttMark pconj utt voc mark = {s = SOFT_BIND ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin
     EmbedVP ant pol p vp = {

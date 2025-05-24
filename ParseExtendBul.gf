@@ -8,7 +8,7 @@ lin gen_Quant = DefArt ;
     UttAP  p ap  = {s = ap.s ! aform p.gn Indef RSubj ! P3} ;
     UttVPS p vps = {s = vps.s ! personAgr p.gn p.p} ;
 
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin FocusComp comp np =
       mkClause (comp.s ! personAgr np.gn np.p) np.gn (NounP3 comp.p)

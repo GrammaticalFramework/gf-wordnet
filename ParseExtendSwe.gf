@@ -9,7 +9,7 @@ lin gen_Quant = DefArt ;
     UttAP  p ap  = {s = ap.s ! Strong (gennum p.a.g p.a.n)} ;
     UttVPS p vps = {s = let x = vps.s ! Main ! p.a in x.verb ++ x.compl} ;
 
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin FocusComp comp np = mkClause (comp.s ! np.a) np.a (insertObj (\\_ => np.s ! MorphoSwe.nominative) (predV verbBe)) ;
 

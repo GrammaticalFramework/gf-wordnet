@@ -4,7 +4,7 @@ concrete ParseExtendLav of ParseExtend =
                PiedPipingQuestSlash, PiedPipingRelSlash], NumeralLav - [num], PunctuationX **
   open Prelude, ResLav in {
 
-lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin num x = x ;
 

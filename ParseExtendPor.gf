@@ -18,7 +18,7 @@ concrete ParseExtendPor of ParseExtend =
     UttVPS p vps= {s = vps.s ! Indic ! p.a ! True} ;
 
   lin
-    PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+    PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
   --^ RNP is not implemented yet in ExtendPor
   --lin AdvRNP np prep rnp = rnp ;

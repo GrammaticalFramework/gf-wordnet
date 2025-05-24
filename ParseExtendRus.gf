@@ -18,7 +18,7 @@ lin UttAP p ap = {s = case p.a of {
         vp.adv ! p.a ++ (verbInf vp.verb) ++ vp.dep ++ vp.compl ! Pos ! p.a
       } ;
 
-lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin num x = x ;
 

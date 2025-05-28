@@ -624,7 +624,7 @@ int2decimal abstr c _ = VFV c (VarFree [])
 
 float2decimal :: ModuleName -> Choice -> Value -> Value
 float2decimal abstr c (VFlt f) =
-  fractions (sign (digits (take n (ds++repeat 0)))) (drop n ds)
+  fractions (sign (digits (take n (ds++repeat 0)))) (replicate (-n) 0 ++ drop n ds)
   where
     idig  = (abstr,identS "IDig")
     iidig = (abstr,identS "IIDig")
@@ -634,6 +634,7 @@ float2decimal abstr c (VFlt f) =
 
     (ds,n) = floatToDigits 10 (abs f)
 
+    digits []     = VApp c idig [digit 0]
     digits [d]    = VApp c idig [digit d]
     digits (d:ds) = VApp c iidig [digit d, digits ds]
 

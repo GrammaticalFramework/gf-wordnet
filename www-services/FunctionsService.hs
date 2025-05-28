@@ -38,6 +38,7 @@ import Data.Char ( isDigit, ord, toLower )
 import Data.Foldable ( find )
 import Data.List ( singleton )
 import Data.Maybe
+import GHC.Float
 
 functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IO Response
 functionsService db gr mn sgr rq =
@@ -542,7 +543,7 @@ quantityWdt = WikiDataType
         | f == (cPredef,cInt)   -> decimal VInt
         | f == (cPredef,cFloat) -> decimal VFlt
         | otherwise             -> \_ -> fail "Not an Int or Float"
-      _                         -> decimal VInt
+      _                         -> decimal VFlt
   , valField' "unit" typeString (VStr . dropURL)
   ]
 
@@ -619,23 +620,33 @@ int2decimal abstr c (VInt n) = sign n (int2digits abstr c (VInt (abs n)))
       | n < 0     = VApp c neg_dec [t]
       | otherwise = VApp c pos_dec [t]
 int2decimal abstr c (VFV c1 (VarFree vs)) = VFV c1 (VarFree (map (int2decimal abstr c) vs))
+int2decimal abstr c _ = VFV c (VarFree [])
 
 float2decimal :: ModuleName -> Choice -> Value -> Value
 float2decimal abstr c (VFlt f) =
-  let n = truncate f
-  in fractions (f-fromIntegral n) (int2decimal abstr c (VInt n))
+  fractions (sign (digits (take n (ds++repeat 0)))) (drop n ds)
   where
+    idig  = (abstr,identS "IDig")
+    iidig = (abstr,identS "IIDig")
+    neg_dec = (abstr,identS "NegDecimal")
+    pos_dec = (abstr,identS "PosDecimal")
     ifrac = (abstr,identS "IFrac")
 
-    digit n = (VApp c (abstr,identS ('D':'_':show n)) [])
+    (ds,n) = floatToDigits 10 (abs f)
 
-    fractions f t
-      | f < 1e-8  = t
-      | otherwise =
-          let f10 = f * 10
-              n2  = truncate f10
-          in fractions (f10-fromIntegral n2) (VApp c ifrac [t, (digit n2)])
+    digits [d]    = VApp c idig [digit d]
+    digits (d:ds) = VApp c iidig [digit d, digits ds]
+
+    sign v
+      | f < 0 || isNegativeZero f = VApp c neg_dec [v]
+      | otherwise                 = VApp c pos_dec [v]
+
+    fractions v []     = v
+    fractions v (d:ds) = fractions (VApp c ifrac [v, digit d]) ds
+
+    digit d = (VApp c (abstr,identS ('D':'_':show d)) [])
 float2decimal abstr c (VFV c1 (VarFree vs)) = VFV c1 (VarFree (map (float2decimal abstr c) vs))
+float2decimal abstr c _ = VFV c (VarFree [])
 
 int2numeral abstr c (VInt n)
   | n < 1000000000000 = app1 "num" (n2s1000000000000 n)

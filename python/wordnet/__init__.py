@@ -136,6 +136,8 @@ else:
                                     get_synsets as synsets,
                                     get_all_synsets as all_synsets,
                                     get_all_domains as all_domains,
+                                    get_verb_frames as verb_frames,
+                                    get_verb_classes as verb_classes,
                                     synonyms,
                                     lowest_common_hypernyms,
                                     shortest_path_distance,
@@ -177,4 +179,5 @@ else:
                'whichPl_IDet', 'whichSg_IDet', 'which_IDet',
                'which_RP', 'who_IP', 'youPl_NP', 'youPol_NP',
                'you_NP', 'lowest_common_hypernyms', 'langs',
-               'shortest_path_distance', 'path_similarity', 'domain_similarity']
+               'shortest_path_distance', 'path_similarity', 'domain_similarity',
+               'verb_frames', 'verb_classes']

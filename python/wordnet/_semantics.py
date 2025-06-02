@@ -371,6 +371,23 @@ examples_fun = listIndex(examples,"fun",lambda e: set(exprFunctions(e[0])),str)
 examples.addIndex(lexemes_fun)
 
 @dataclass
+class Class:
+  name : str
+  vars : list[tuple[str,list[str]]]
+  super_id : Optional[int]
+
+classes = table("classes",Class)
+
+@dataclass
+class Frame:
+  class_id : int
+  base_class_id : int
+  pattern : pgf.Expr
+  semantics : str
+
+frames = table("frames", Frame)
+
+@dataclass
 class Construction:
     qid : str
     expr : pgf.Expr
@@ -523,3 +540,11 @@ def domain_similarity(lexeme1, lexeme2):
     if d == None:
         return 0;
     return 1/(d+1);
+
+def get_verb_frames():
+    with db.run("r") as t:
+        return [frame for frame in t.cursor(frames)]
+
+def get_verb_classes():
+    with db.run("r") as t:
+        return [c for c in t.cursor(classes)]

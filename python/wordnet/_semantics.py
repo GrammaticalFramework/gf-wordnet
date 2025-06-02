@@ -542,9 +542,17 @@ def domain_similarity(lexeme1, lexeme2):
     return 1/(d+1);
 
 def get_verb_frames():
+    result = []
     with db.run("r") as t:
-        return [frame for frame in t.cursor(frames)]
+        for frame_id, frame in t.cursor(frames):
+            frame.id = frame_id
+            result.append(frame)
+    return result
 
 def get_verb_classes():
+    result = []
     with db.run("r") as t:
-        return [c for c in t.cursor(classes)]
+        for cls_id, cls in t.cursor(classes):
+            cls.id = cls_id
+            result.append(cls)
+    return result

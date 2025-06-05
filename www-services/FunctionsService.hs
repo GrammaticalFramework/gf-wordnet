@@ -25,7 +25,7 @@ import System.IO.Unsafe ( unsafePerformIO )
 import System.FilePath
 import System.Directory ( doesFileExist )
 import Text.JSON
-import Text.JSON.Types (get_field, JSObject(..))
+import Text.JSON.Types (JSObject(..))
 import Database.Daison
 import SenseSchema
 
@@ -107,7 +107,7 @@ pageService db gr mn sgr path rq = do
       dir = dropFileName path
 
       get_classes json = do
-        vals <- valFromObj "P31" json
+        vals <- (valFromObj "claims" >=> valFromObj "P31") json
         mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
 
       injectTemplate []                                           qid prog code output = []
@@ -358,7 +358,7 @@ wikiPredef db pgf lang gr = Map.fromList
 
     fetch c typ (VStr qid) =
       case unsafePerformIO (wikidataEntity qid) of
-        Ok obj    -> filterJsonFromType c obj typ
+        Ok obj    -> filterJsonFromType c obj typ lang
         Error msg -> VError (pp msg)
     fetch c ty (VFV c1 (VarFree vs)) = VFV c1 (VarFree (mapC (\c -> fetch c ty) c vs))
 
@@ -412,43 +412,60 @@ i2i2 = identS
 
 wikidataEntity qid = do
   rsp <- simpleHTTP (getRequest ("https://www.wikidata.org/wiki/Special:EntityData/"++qid++".json"))
-  return (decode (rspBody rsp) >>= valFromObj "entities" >>= valFromObj qid >>= valFromObj "claims")
+  return (decode (rspBody rsp) >>= valFromObj "entities" >>= valFromObj qid)
 
-filterJsonFromType :: Choice -> JSObject [JSObject JSValue] -> Value -> Value
-filterJsonFromType c obj typ =
+filterJsonFromType :: Choice -> JSObject JSValue -> Value -> String -> Value
+filterJsonFromType c obj typ lang =
   case typ of
-   VRecType fields -> VR (mapC (\c -> getSpecificProperty c obj) c fields)
+   VRecType fields -> VR (mapC (\c -> getSpecificProperty c obj lang) c fields)
    VMeta _ _       -> VR (getAllProperties c obj)
    _               -> VError (pp "Wikidata entities are always records")
 
 isProperty ('P':cs) = all isDigit cs
 isProperty _        = False
 
-getSpecificProperty :: Choice -> JSObject [JSObject JSValue] -> (Label, Value) -> (Label, Value)
-getSpecificProperty c obj (LIdent field, typ)
+getSpecificProperty :: Choice -> JSObject JSValue -> String -> (Label, Value) -> (Label, Value)
+getSpecificProperty c obj lang (LIdent field, typ)
   | isProperty label =
-      case Text.JSON.Types.get_field obj label of
-        Nothing    -> (LIdent field, VFV c (VarFree []))
-        Just [obj] -> (LIdent field, transformJsonToValue typ c obj)
-        Just objs  -> (LIdent field, VFV c (VarFree (mapC (transformJsonToValue typ) c objs)))
+      case valFromObj "claims" obj >>= valFromObj label of
+        Error _  -> (LIdent field, VFV c (VarFree []))
+        Ok [obj] -> (LIdent field, transformJsonToValue typ c obj)
+        Ok objs  -> (LIdent field, VFV c (VarFree (mapC (transformJsonToValue typ) c objs)))
+  | label == "label" && typeIsStr typ =
+      case (valFromObj "labels" >=> lookupLabel lang >=> valFromObj "value") obj of
+        Error _ -> (LIdent field, VFV c (VarFree []))
+        Ok lbl  -> (LIdent field, VStr lbl)
   | otherwise = (LIdent field, VError (pp field <+> "is an invalid Wikidata property"))
   where
     label = showRawIdent field
+
+    lookupLabel lang obj =
+      case lookup lang langCodes of
+        Just code -> valFromObj code obj `mplus` valFromObj "en" obj
+        Nothing   -> valFromObj "en" obj
 
     transformJsonToValue :: Value -> Choice -> JSObject JSValue -> Value
     transformJsonToValue typ c obj =
       case fromJSObjectToValue c obj typ of
         Ok ass    -> VR ass
         Error msg -> VError (pp msg)
-getSpecificProperty c obj (LVar n, typ) =
+
+    typeIsStr typ =
+      case typ of
+        VSort s | s == cStr -> True
+        VMeta _ _           -> True
+        _                   -> False
+
+getSpecificProperty c obj lang (LVar n, typ) =
   (LVar n, VError (pp "Wikidata entities can only have named properties"))
 
-getAllProperties :: Choice -> JSObject [JSObject JSValue] -> [(Label, Value)]
+
+getAllProperties :: Choice -> JSObject JSValue -> [(Label, Value)]
 getAllProperties c obj =
   catMaybes $
-     mapC (\c (label, objs) ->
+     mapC (\c (label, json) ->
                  let (c1,c2) = split c
-                 in case mapCM parseVariant c1 objs of
+                 in case (readJSONs >=> mapCM parseVariant c1) json of
                       Ok [v]    -> Just (LIdent (rawIdentS label), v)
                       Ok vs     -> Just (LIdent (rawIdentS label), VFV c2 (VarFree vs))
                       Error msg -> Nothing)
@@ -759,31 +776,38 @@ value2int _        = RunTime
 toBool c True  = VApp c (cPredef,identS "True")  []
 toBool c False = VApp c (cPredef,identS "False") []
 
-langs = [
-  ("af", "ParseAfr"),
-  ("ar", "ParseAra"),
-  ("bg", "ParseBul"),
-  ("ca", "ParseCat"),
-  ("zh", "ParseChi"),
-  ("nl", "ParseDut"),
-  ("en", "ParseEng"),
-  ("et", "ParseEst"),
-  ("fi", "ParseFin"),
-  ("fr", "ParseFre"),
-  ("de", "ParseGer"),
-  ("it", "ParseIta"),
-  ("ko", "ParseKor"),
-  ("mt", "ParseMlt"),
-  ("pl", "ParsePol"),
-  ("pt", "ParsePor"),
-  ("ro", "ParseRon"),
-  ("ru", "ParseRus"),
-  ("sl", "ParseSlv"),
-  ("so", "ParseSom"),
-  ("es", "ParseSpa"),
-  ("sw", "ParseSwa"),
-  ("sv", "ParseSwe"),
-  ("th", "ParseTha"),
-  ("tr", "ParseTur"),
-  ("zu", "ParseZul")
+langCodes = [
+  ("ParseAfr", "af"),
+  ("ParseAra", "ar"),
+  ("ParseBul", "bg"),
+  ("ParseCat", "ca"),
+  ("ParseChi", "zh"),
+  ("ParseDut", "nl"),
+  ("ParseEng", "en"),
+  ("ParseEst", "et"),
+  ("ParseFin", "fi"),
+  ("ParseFre", "fr"),
+  ("ParseGer", "de"),
+  ("ParseIna", "ia"),
+  ("ParseIta", "it"),
+  ("ParseKaz", "kk"),
+  ("ParseKor", "ko"),
+  ("ParseLav", "lv"),
+  ("ParseMkd", "mk"),
+  ("ParseMlt", "mt"),
+  ("ParseNor", "no"),
+  ("ParseNno", "no"),
+  ("ParsePol", "pl"),
+  ("ParsePor", "pt"),
+  ("ParseRon", "ro"),
+  ("ParseRus", "ru"),
+  ("ParseSlv", "sl"),
+  ("ParseSom", "so"),
+  ("ParseSpa", "es"),
+  ("ParseSqi", "sq"),
+  ("ParseSwa", "sw"),
+  ("ParseSwe", "sv"),
+  ("ParseTha", "th"),
+  ("ParseTur", "tr"),
+  ("ParseZul", "zu")
   ]

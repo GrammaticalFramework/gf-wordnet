@@ -20,7 +20,16 @@ oper time2adv : Time -> Adv = variants {} ;
 oper lang : Str = variants {} ;
 
 oper compareInt : Int -> Int -> Ordering = variants {} ;
+oper plusInt : Int -> Int -> Int = variants {} ;
+oper minusInt : Int -> Int -> Int = variants {} ;
+oper mulInt : Int -> Int -> Int = variants {} ;
+oper divInt : Int -> Int -> Int = variants {} ;
+oper modInt : Int -> Int -> Int = variants {} ;
 oper compareFloat : Float -> Float -> Ordering = variants {} ;
+oper plusFloat : Int -> Int -> Int = variants {} ;
+oper minusFloat : Int -> Int -> Int = variants {} ;
+oper mulFloat : Int -> Int -> Int = variants {} ;
+oper divFloat : Int -> Int -> Int = variants {} ;
 oper round : Float -> Int -> Float = variants {} ;
 
 }

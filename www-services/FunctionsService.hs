@@ -352,7 +352,16 @@ wikiPredef db pgf lang gr = Map.fromList
   , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
   , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
   , (identS "compareInt", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2int g v1) (value2int g v2)))
+  , (identS "plusInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (+) (value2int g v1) (value2int g v2)))
+  , (identS "minusInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (-) (value2int g v1) (value2int g v2)))
+  , (identS "mulInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (*) (value2int g v1) (value2int g v2)))
+  , (identS "divInt", pdArity 2 $\ \g c [v1,v2] -> liftA2 div' (value2int g v1) (value2int g v2))
+  , (identS "modInt", pdArity 2 $\ \g c [v1,v2] -> liftA2 mod' (value2int g v1) (value2int g v2))
   , (identS "compareFloat", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2float g v1) (value2float g v2)))
+  , (identS "plusFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (+) (value2float g v1) (value2float g v2)))
+  , (identS "minusFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (-) (value2float g v1) (value2float g v2)))
+  , (identS "mulFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (*) (value2float g v1) (value2float g v2)))
+  , (identS "divFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (/) (value2float g v1) (value2float g v2)))
   , (identS "round", pdArity 2 $\ \g c [v1,v2] -> liftA2 round' (value2float g v1) (value2int g v2))
   ]
   where
@@ -415,6 +424,16 @@ wikiPredef db pgf lang gr = Map.fromList
       | n >= 0    = VFlt ((fromIntegral (round (x * t))) / t)
       | otherwise = VError (pp "Negative exponent")
       where t = 10^n
+
+    div' :: Integer -> Integer -> Value
+    div' m n
+      | n /= 0    = VInt (m `div` n)
+      | otherwise = VError (pp "Division by zero")
+
+    mod' :: Integer -> Integer -> Value
+    mod' m n
+      | n /= 0    = VInt (m `mod` n)
+      | otherwise = VError (pp "Division by zero")
 
 i2i2 = identS
 

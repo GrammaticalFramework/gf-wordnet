@@ -351,7 +351,9 @@ wikiPredef db pgf lang gr = Map.fromList
   , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
   , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
   , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
-  , (cLessInt, pdArity 2 $\ \g c [v1,v2] -> fmap (toBool c) (liftA2 (<) (value2int v1) (value2int v2)))
+  , (identS "compareInt", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2int g v1) (value2int g v2)))
+  , (identS "compareFloat", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2float g v1) (value2float g v2)))
+  , (identS "round", pdArity 2 $\ \g c [v1,v2] -> liftA2 round' (value2float g v1) (value2int g v2))
   ]
   where
     abstr = moduleNameS (abstractName pgf)
@@ -407,6 +409,12 @@ wikiPredef db pgf lang gr = Map.fromList
       EAbs b v e -> Abs b  (i2i2 v) (toTerm (identS v:scope) l e)
       EApp e1 e2 -> App (toTerm scope l e1) (toTerm scope l e2)
       EMeta i -> Meta i
+
+    round' :: Double -> Integer -> Value
+    round' x n
+      | n >= 0    = VFlt ((fromIntegral (round (x * t))) / t)
+      | otherwise = VError (pp "Negative exponent")
+      where t = 10^n
 
 i2i2 = identS
 
@@ -770,11 +778,12 @@ time2adv abs_mn c (VStr s) =
           | otherwise = Nothing
 time2adv abs_mn c (VFV c1 (VarFree vs)) = VFV c1 (VarFree (map (time2adv abs_mn c) vs))
 
-value2int (VInt n) = Const n
-value2int _        = RunTime
-
 toBool c True  = VApp c (cPredef,identS "True")  []
 toBool c False = VApp c (cPredef,identS "False") []
+
+toOrdering c LT = VApp c (cPredef,identS "LT") []
+toOrdering c EQ = VApp c (cPredef,identS "EQ") []
+toOrdering c GT = VApp c (cPredef,identS "GT") []
 
 langCodes = [
   ("ParseAfr", "af"),

@@ -1400,14 +1400,14 @@ oper
 -- numerals from strings
 
 oper
-  int2ord : Int -> Ord = \n -> case lessInt n 1000000 of {
-    True  => OrdNumeral (int2numeral n) ;
-    False => OrdDigits (int2digits n)
+  int2ord : Int -> Ord = \n -> case compareInt n 1000000 of {
+    LT => OrdNumeral (int2numeral n) ;
+    _  => OrdDigits (int2digits n)
     } ;
 
-  int2card : Int -> Card = \n -> case lessInt n 1000000 of {
-    True  => NumNumeral (int2numeral n) ;
-    False => NumDecimal (int2decimal n)
+  int2card : Int -> Card = \n -> case compareInt n 1000000 of {
+    LT => NumNumeral (int2numeral n) ;
+    _  => NumDecimal (int2decimal n)
     } ;
 
 }

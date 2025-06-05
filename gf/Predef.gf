@@ -1,6 +1,7 @@
 resource Predef = open Parse in {
 
 param Bool = True | False ;
+param Ordering = LT | EQ | GT ;
 
 oper Int    : Type = variants {} ;          -- the type of integers
 oper Float  : Type = variants {} ;          -- the type of floats
@@ -18,6 +19,8 @@ oper time2adv : Time -> Adv = variants {} ;
 
 oper lang : Str = variants {} ;
 
-oper lessInt : Int -> Int -> Bool = variants {} ;
+oper compareInt : Int -> Int -> Ordering = variants {} ;
+oper compareFloat : Float -> Float -> Ordering = variants {} ;
+oper round : Float -> Int -> Float = variants {} ;
 
 }

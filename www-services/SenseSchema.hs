@@ -40,6 +40,8 @@ data PointerSymbol
   | SimilarTo
   | Derived
   | Participle
+  | Male
+  | Female
   deriving (Data,Eq,Show,Read)
 
 inversePointer Antonym             = Just Antonym

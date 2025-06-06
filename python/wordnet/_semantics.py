@@ -91,7 +91,15 @@ class Derived:
 class Participle:
     pass
 
-PointerSymbol = Union[Antonym,Hypernym,InstanceHypernym,Hyponym,InstanceHyponym,Holonym,Meronym,Attribute,DomainOfSynset,MemberOfDomain,Entailment,Cause,AlsoSee,VerbGroup,SimilarTo,Derived,Participle]
+@dataclass
+class Male:
+    pass
+
+@dataclass
+class Female:
+    pass
+
+PointerSymbol = Union[Antonym,Hypernym,InstanceHypernym,Hyponym,InstanceHyponym,Holonym,Meronym,Attribute,DomainOfSynset,MemberOfDomain,Entailment,Cause,AlsoSee,VerbGroup,SimilarTo,Derived,Participle,Male,Female]
 
 @dataclass
 class Synset:

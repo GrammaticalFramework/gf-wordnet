@@ -252,6 +252,8 @@ parseTaxonomy l
                 "+"  -> Derived
                 "\\" -> Derived
                 "<"  -> Participle
+                "m"  -> Male
+                "f"  -> Female
     readPtrs f xs = error (show xs)
 
 parseProbs l = (id, p)

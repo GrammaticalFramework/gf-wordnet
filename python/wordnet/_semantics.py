@@ -326,6 +326,12 @@ class Lexeme:
     def derived(self) -> list:
         return self.__pointers__(Derived)
 
+    def male(self) -> list:
+        return self.__pointers__(Male)
+
+    def female(self) -> list:
+        return self.__pointers__(Female)
+
     def prob(self) -> float:
         return grammar.functionProbability(self.lex_fun)
 

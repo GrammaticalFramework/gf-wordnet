@@ -288,7 +288,9 @@ senseService db bigram_total rq = do
                          ("examples", showJSON (map mkExObj examples)),
                          ("secondary_examples", showJSON (map mkExObj sexamples)),
                          ("antonyms", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Antonym,id,status) <- ptrs]),
-                         ("derived", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Derived,id,status) <- ptrs])
+                         ("derived", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Derived,id,status) <- ptrs]),
+                         ("male", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Male,id,status) <- ptrs]),
+                         ("female", makeObj [(id,makeObj [("status", mkStatusObj status)]) | (Female,id,status) <- ptrs])
                          ])
       where
         fullUrl qid ""  = "https://www.wikidata.org/wiki/"++qid

@@ -253,21 +253,14 @@ gfwordnet.render_sense_rows = function(ctxt,result_container,domains_container,l
         if (!lex_ids[lex_id].match)
             continue;
 
-        for (var ant_id in lex_ids[lex_id].antonyms) {
-            if (ant_id in gfwordnet.lex_ids) {
-                lex_ids[lex_id].antonyms[ant_id] = gfwordnet.lex_ids[ant_id];
-            } else {
-                gfwordnet.lex_ids[ant_id] = lex_ids[lex_id].antonyms[ant_id];
-                gfwordnet.lex_ids[ant_id].match = false;
-            }
-        }
-
-        for (var der_id in lex_ids[lex_id].derived) {
-            if (der_id in gfwordnet.lex_ids) {
-                lex_ids[lex_id].derived[der_id] = gfwordnet.lex_ids[der_id];
-            } else {
-                gfwordnet.lex_ids[der_id] = lex_ids[lex_id].derived[der_id];
-                gfwordnet.lex_ids[der_id].match = false;
+        for (let rel_name of ["antonyms", "derived", "male", "female"]) {
+            for (var rel_id in lex_ids[lex_id][rel_name]) {
+                if (rel_id in gfwordnet.lex_ids) {
+                    lex_ids[lex_id][rel_name][rel_id] = gfwordnet.lex_ids[rel_id];
+                } else {
+                    gfwordnet.lex_ids[rel_id] = lex_ids[lex_id][rel_name][rel_id];
+                    gfwordnet.lex_ids[rel_id].match = false;
+                }
             }
         }
 
@@ -827,82 +820,46 @@ gfwordnet.onclick_cell = function (cell) {
 
 			details.appendChild(result);
 		}
-		if (Object.keys(lex_def.antonyms).length > 0) {
-			details.appendChild(node("h1",{},[text("Antonyms")]));
+        for (let rel_name of ["antonyms","derived","male","female"]) {
+            if (Object.keys(lex_def[rel_name]).length > 0) {
+                details.appendChild(node("h1",{},[text(rel_name.charAt(0).toUpperCase()+rel_name.slice(1))]));
 
-			var result = node("table",{class: "result"},[]);
-			var row = [th(text("Abstract"))]
-			for (const lang of gfwordnet.selection.langs_list) {
-				row.push(th(text(gfwordnet.selection.langs[lang].name)));
-			}
-			result.appendChild(tr(row));
+                const result = node("table",{class: "result"},[]);
+                var row = [th(text("Abstract"))]
+                for (const lang of gfwordnet.selection.langs_list) {
+                    row.push(th(text(gfwordnet.selection.langs[lang].name)));
+                }
+                result.appendChild(tr(row));
 
-			for (var antonym in lex_def.antonyms) {
-				var row = []
-				var checked = true;
-				for (var i in gfwordnet.selection.langs_list) {
-					var lang = gfwordnet.selection.langs_list[i];
-					var cell = td([]);
-					if (gfwordnet.user != null)
-						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
-					if (lang in lex_def.antonyms[antonym].status) {
-						if (lex_def.antonyms[antonym].status[lang] != "checked") {
-							cell.classList.add(lex_def.antonyms[antonym].status[lang]);
-							checked = false;
-						}
-					} else {
-						checked = false;
-					}
-					row.push(cell);
-				}
-				row.splice(0,0,td([node("img", {src: gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")
-				                               ,class: "text-icon"}),
-				                   text(antonym)]));
-				gfwordnet.grammar_call("command=linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree='"+encodeURIComponent(antonym)+"'",bind(extract_linearization_synonym,row));
+                for (const rel in lex_def[rel_name]) {
+                    var row = []
+                    var checked = true;
+                    for (let i in gfwordnet.selection.langs_list) {
+                        const lang = gfwordnet.selection.langs_list[i];
+                        const cell = td([]);
+                        if (gfwordnet.user != null)
+                            cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
+                        if (lang in lex_def[rel_name][rel].status) {
+                            if (lex_def[rel_name][rel].status[lang] != "checked") {
+                                cell.classList.add(lex_def[rel_name][rel].status[lang]);
+                                checked = false;
+                            }
+                        } else {
+                            checked = false;
+                        }
+                        row.push(cell);
+                    }
+                    row.splice(0,0,td([node("img", {src: gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")
+                                                   ,class: "text-icon"}),
+                                       text(rel)]));
+                    gfwordnet.grammar_call("command=linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree='"+encodeURIComponent(rel)+"'",bind(extract_linearization_synonym,row));
 
-				result.appendChild(node("tr",{"data-lex-id": antonym},row));
-			}
+                    result.appendChild(node("tr",{"data-lex-id": rel},row));
+                }
 
-			details.appendChild(result);
-		}
-		if (Object.keys(lex_def.derived).length > 0) {
-			details.appendChild(node("h1",{},[text("Derived")]));
-
-			var result = node("table",{class: "result"},[]);
-			var row = [th(text("Abstract"))]
-			for (const lang of gfwordnet.selection.langs_list) {
-				row.push(th(text(gfwordnet.selection.langs[lang].name)));
-			}
-			result.appendChild(tr(row));
-
-			for (var derived in lex_def.derived) {
-				var row = []
-				var checked = true;
-				for (var i in gfwordnet.selection.langs_list) {
-					var lang = gfwordnet.selection.langs_list[i];
-					var cell = td([]);
-					if (gfwordnet.user != null)
-						cell.addEventListener("mouseover", gfwordnet.onmouseover_cell, false);
-					if (lang in lex_def.derived[derived].status) {
-						if (lex_def.derived[derived].status[lang] != "checked") {
-							cell.classList.add(lex_def.derived[derived].status[lang]);
-							checked = false;
-						}
-					} else {
-						checked = false;
-					}
-					row.push(cell);
-				}
-				row.splice(0,0,td([node("img", {src: gfwordnet.script_url+(checked ? "../checked.png" : "../unchecked.png")
-				                               ,class: "text-icon"}),
-				                   text(derived)]));
-				gfwordnet.grammar_call("command=linearize&to="+gfwordnet.selection.langs_list.join("%20")+"&tree='"+encodeURIComponent(derived)+"'",bind(extract_linearization_synonym,row));
-
-				result.appendChild(node("tr",{"data-lex-id": derived},row));
-			}
-
-			details.appendChild(result);
-		}
+                details.appendChild(result);
+            }
+        }
 		if (lex_def.domains.length > 0) {
 			var header = node("h1",{},[text("Domains")]);
 			details.appendChild(header);

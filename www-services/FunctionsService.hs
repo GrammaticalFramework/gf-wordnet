@@ -349,6 +349,7 @@ wikiPredef db pgf lang gr = Map.fromList
   , (identS "float2decimal", pdArity 1 $\ \g c [f] -> Const (float2decimal abstr c f))
   , (identS "int2numeral", pdArity 1 $\ \g c [n] -> Const (int2numeral abstr c n))
   , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
+  , (identS "gendered_expr", pdArity 3 $\ \g c [ty,qid,gender] -> Const (get_gendered_expr lang c ty qid gender))
   , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
   , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
   , (identS "compareInt", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2int g v1) (value2int g v2)))
@@ -404,7 +405,34 @@ wikiPredef db pgf lang gr = Map.fromList
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
     get_expr l c ty (VFV c1 (VarFree vs)) = VFV c1 (VarFree (mapC (\c -> get_expr l c ty) c vs))
-    get_expr l c ty x                     = VError (ppValue Unqualified 0 ty <+> ppValue Unqualified 0 x)
+    get_expr l c ty qid                   = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "expr") [ty, qid]))
+
+    get_gendered_expr l c ty (VStr qid) (VStr gender) =
+      case res of
+        [v] -> v
+        vs  -> VFV c (VarFree vs)
+      where
+        res = unsafePerformIO $
+                runDaison db ReadOnlyMode $ do
+                  select [VApp c (abstr,identS id) []
+                                   | (_,lex) <- fromIndex lexemes_qid (at qid)
+                                   , let id = lex_fun lex
+                                   , matchGender gender (lex_pointers lex)
+                                   , fmap (matchType ty) (functionType pgf id) == Just True]
+
+        matchGender "Q6581097" ptrs = null [id | (Male,  id) <- ptrs]
+        matchGender "Q6581072" ptrs = null [id | (Female,id) <- ptrs]
+        matchGender _          ptrs = False
+
+        matchType (VProd bt1 _ ty11 (VClosure env c ty2)) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
+          bt1 == bt2 && matchType ty11 ty12 && matchType (eval globals0 env c ty2 []) (DTyp hypos cat2 [])
+        matchType (VApp _ (mod,cat1) []) (DTyp [] cat2 []) =
+          mod == abstr && showIdent cat1 == cat2
+        matchType (VMeta _ _) _ = True
+        matchType _ _ = False
+    get_gendered_expr l c ty (VFV c1 (VarFree vs)) gender = VFV c1 (VarFree (mapC (\c qid -> get_gendered_expr l c ty qid gender) c vs))
+    get_gendered_expr l c ty qid (VFV c1 (VarFree vs))    = VFV c1 (VarFree (mapC (\c gender -> get_gendered_expr l c ty qid gender) c vs))
+    get_gendered_expr l c ty qid gender                   = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "gendered_expr") [ty, qid, gender]))
 
     globals0 = Gl gr Map.empty
 

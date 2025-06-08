@@ -10,6 +10,7 @@ oper Markup : Type = variants {} ;          -- the type of Wikidata time
 
 oper entity : ({a} : Type) -> Str -> a = variants {} ;
 oper expr   : ({a} : Type) -> Str -> a = variants {} ;
+oper gendered_expr : ({a} : Type) -> Str -> Str -> a = variants {} ;
 
 oper int2digits  : Int -> Digits = variants {} ;
 oper int2decimal : Int -> Decimal = variants {} ;

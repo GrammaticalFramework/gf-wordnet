@@ -465,8 +465,12 @@ oper
     passiveVP = overload { --%
       passiveVP : V2 ->       VP   -- be loved
       = \v -> PassVPSlash (SlashV2a v) ; --%
+      passiveVP : VPSlash ->  VP   -- be loved
+      = \vps -> PassVPSlash vps ; --%
       passiveVP : V2 -> NP -> VP   -- be loved by her
       = \v,np -> PassAgentVPSlash (SlashV2a v) np ; --%
+      passiveVP : VPSlash -> NP -> VP   -- be loved by her
+      = \vps,np -> PassAgentVPSlash vps np ; --%
       } ; --%
 
 -- A verb phrase can be turned into the progressive form.

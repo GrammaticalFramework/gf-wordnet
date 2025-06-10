@@ -454,3 +454,8 @@ table.dataset th {
   background: silver;
   padding: 5px;
 }
+
+div.CodeMirror span.CodeMirror-matchingbracket {
+    color: blue;
+    font-weight: bold;
+}

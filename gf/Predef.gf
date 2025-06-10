@@ -16,6 +16,7 @@ oper int2digits  : Int -> Digits = variants {} ;
 oper int2decimal : Int -> Decimal = variants {} ;
 oper float2decimal : Float -> Decimal = variants {} ;
 oper int2numeral : Int -> Numeral = variants {} ;
+oper int2float : Int -> Float = variants {} ;
 oper time2adv : Time -> Adv = variants {} ;
 
 oper lang : Str = variants {} ;

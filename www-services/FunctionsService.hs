@@ -348,6 +348,7 @@ wikiPredef db pgf lang gr = Map.fromList
   , (identS "int2decimal", pdArity 1 $\ \g c [n] -> Const (int2decimal abstr c n))
   , (identS "float2decimal", pdArity 1 $\ \g c [f] -> Const (float2decimal abstr c f))
   , (identS "int2numeral", pdArity 1 $\ \g c [n] -> Const (int2numeral abstr c n))
+  , (identS "int2float", pdArity 1 $\ \g c [v] -> fmap (VFlt . fromIntegral) (value2int g v))
   , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
   , (identS "gendered_expr", pdArity 3 $\ \g c [ty,qid,gender] -> Const (get_gendered_expr lang c ty qid gender))
   , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))

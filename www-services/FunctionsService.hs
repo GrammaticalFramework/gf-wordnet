@@ -1,9 +1,9 @@
 {-# LANGUAGE CPP                 #-}
 {-# LANGUAGE LambdaCase, MonadComprehensions #-}
-module FunctionsService(functionsService, pageService) where
+module FunctionsService(WNCache, emptyCache, functionsService, pageService) where
 
 import Control.Applicative     (liftA, liftA2, (<|>))
-import Control.Monad (MonadPlus(mplus), foldM, forM, msum, (>=>))
+import Control.Monad (MonadPlus(mplus), foldM, forM, msum, (>=>), when)
 import GF.Compile
 import GF.Compile.Compute.Concrete2
 import GF.Compile.TypeCheck.Concrete
@@ -32,14 +32,53 @@ import SenseSchema
 
 import qualified Data.ByteString.Char8   as BS
 import qualified Data.Map                as Map
+import qualified Data.IntMap             as IMap
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Encoding as E
 import qualified Data.ByteString.Lazy as BL
 import Data.Char ( isDigit, ord, toLower )
 import Data.Foldable ( find )
+import Data.IORef ( IORef, readIORef, writeIORef )
 import Data.List ( singleton )
 import Data.Maybe
 import GHC.Float
+
+data WNCache = WNCache
+  { cacheMap   :: Map.Map String (Int, Result JSValue) -- ^ Maps QIDs to (t,x), where t is the last usage time and
+                                                       --   x is the cached Wikidata response
+  , cacheUsage :: IMap.IntMap String                   -- ^ Maps a usage time to the cache entry used at that time
+  , cacheClock :: Int                                  -- ^ Cache logical clock
+  }
+maxCacheSize = 4096 -- ^ Max cache size before LRU eviction should start happening
+
+emptyCache :: WNCache
+emptyCache = WNCache Map.empty IMap.empty 0
+
+useCache :: IORef WNCache       -- ^ State cell containing the cache
+         -> String              -- ^ QID to query
+         -> IO (Result JSValue) -- ^ Retrieval operation for cache misses
+         -> IO (Result JSValue)
+useCache cref qid op = do
+  WNCache m u c <- readIORef cref
+  case Map.lookup qid m of
+    Just (t,r) -> do
+      writeIORef cref (WNCache (Map.insert qid (c,r) m) (IMap.insert c qid (IMap.delete t u)) (c + 1))
+      return r
+    Nothing -> do
+      r <- op
+      writeIORef cref (WNCache (Map.insert qid (c,r) m) (IMap.insert c qid u) (c + 1))
+      return r
+
+cleanUpCache :: IORef WNCache -> IO ()
+cleanUpCache cref = do
+  WNCache m u c <- readIORef cref
+  let size = Map.size m
+  when (size > maxCacheSize) $ do
+    let cull n m u
+          | n > 0     = let ((t,qid),u') = IMap.deleteFindMin u
+                        in cull (n - 1) (Map.delete qid m) u'
+          | otherwise = WNCache m u c
+    writeIORef cref (cull (size - maxCacheSize) m u)
 
 mkResponse :: ResponseCode -- ^ HTTP response code
            -> String       -- ^ HTTP response code message
@@ -49,12 +88,15 @@ mkResponse :: ResponseCode -- ^ HTTP response code
 mkResponse code reason ct =
   Response code reason [Header HdrContentType (ct ++ "; charset=UTF8")]
 
-functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IO Response
-functionsService db gr mn sgr rq = pure $
+functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IORef WNCache -> IO Response
+functionsService db gr mn sgr rq cref =
   case (decode (rqBody rq) >>= parseQuery) <|> getFromQuery (rqQuery rq) of
-    Ok (Left (err, msg)) -> mkResponse 400 err "text/plain" msg
-    Ok (Right res)       -> mkResponse 200 "OK" "application/json" (encode res)
-    Error msg            -> mkResponse 400 "Invalid input" "text/plain" msg
+    Error msg                   -> return $ mkResponse 400 "Invalid input" "text/plain" msg
+    Ok (mb_qid, lang, cs, code) -> do
+      cleanUpCache cref
+      return $ case executeCode cref db gr sgr mn mb_qid lang cs code of
+        Left (err, msg) -> mkResponse 400 err "text/plain" msg
+        Right body      -> mkResponse 200 "OK" "application/json" (encode body)
   where
     parseQuery query = do
       mb_qid <- maybe (pure Nothing) (fmap Just . readJSON)
@@ -64,7 +106,7 @@ functionsService db gr mn sgr rq = pure $
       cs <- case valFromObj "choices" query of
         Ok json -> orFailErr $ deserializeChoices json
         Error _ -> return Map.empty
-      return $ executeCode db gr sgr mn mb_qid lang cs code
+      return (mb_qid, lang, cs, code)
 
     getFromQuery query = do
       lang <- orFail "No lang" $ lookup "lang" query
@@ -73,10 +115,10 @@ functionsService db gr mn sgr rq = pure $
         Just s  -> do json <- orFailE $ runGetJSON readJSArray s
                       orFailErr $ deserializeChoices json
         Nothing -> return Map.empty
-      return $ executeCode db gr sgr mn (lookup "qid" query) lang cs code
+      return (lookup "qid" query, lang, cs, code)
 
-pageService :: Database -> PGF -> ModuleName -> SourceGrammar -> FilePath -> Request -> IO Response
-pageService db gr mn sgr path rq = do
+pageService :: Database -> PGF -> ModuleName -> SourceGrammar -> FilePath -> Request -> IORef WNCache -> IO Response
+pageService db gr mn sgr path rq cref = do
   (html_file,config) <- fmap read (readFile path)
   html <- readFile (dir </> html_file)
   let query = rqQuery rq
@@ -84,7 +126,7 @@ pageService db gr mn sgr path rq = do
   case lookup "qid" query of
     Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" JSNull)
     Just qid -> do
-      rsp <- wikidataEntity qid
+      rsp <- wikidataEntity cref qid
       case rsp >>= get_classes of
         Error msg  -> return $ mkResponse 400 "FAIL" "text/plain" msg
         Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
@@ -92,10 +134,10 @@ pageService db gr mn sgr path rq = do
                       in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err)
           (prog:_) -> do
             code <- readFile (dir </> prog)
-            case executeCode db gr sgr mn (Just qid) lang Map.empty code of
-              Left (err,msg) -> return $ mkResponse 400 err "text/plain" msg
-              Right res      -> do
-                return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid prog code res)
+            cleanUpCache cref
+            return $ case executeCode cref db gr sgr mn (Just qid) lang Map.empty code of
+              Left (err,msg) -> mkResponse 400 err "text/plain" msg
+              Right res      -> mkResponse 200 "OK" "text/html" (injectTemplate html qid prog code res)
     where
       dir = dropFileName path
 
@@ -115,7 +157,8 @@ pageService db gr mn sgr path rq = do
 
       mkError err = makeObj [("error", showJSON err)]
 
-executeCode :: Database      -- ^ Database for wiki data
+executeCode :: IORef WNCache -- ^ Wikidata cache
+            -> Database      -- ^ Database for wiki data
             -> PGF           -- ^ Ambient core grammar
             -> SourceGrammar -- ^ Ambient grammar
             -> ModuleName    -- ^ Name of the predef module to open
@@ -124,10 +167,10 @@ executeCode :: Database      -- ^ Database for wiki data
             -> ChoiceMap     -- ^ Initial choices (i.e. a program trace)
             -> String        -- ^ Code snippet to execute
             -> Either (String, String) JSValue
-executeCode db gr sgr mn mb_qid lang csInit code =
+executeCode cref db gr sgr mn mb_qid lang csInit code =
   case runLangP NLG pNLG (BS.pack code) of
     Left (Pn row col,msg) -> Left ("Parse Error", show row ++ ":" ++ show col ++ ":" ++ msg)
-    Right prog            ->
+    Right prog            -> do
       case runCheck (checkComputeProg (maybe prog (add_qid prog) mb_qid)) of
         E.Bad msg      -> Left ("Invalid Expression", msg)
         E.Ok (res,msg) -> Right $ makeObj
@@ -180,12 +223,12 @@ executeCode db gr sgr mn mb_qid lang csInit code =
 
       infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
       let sgr'     = prependModule sgr nlg_m
-          globals0 = Gl sgr' (wikiPredef db gr lang sgr')
+          globals0 = Gl sgr' (wikiPredef cref db gr lang sgr')
       nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd globals0)) nlg_m infoss
       checkWarn (ppModule Unqualified nlg_m)
 
       let sgr' = prependModule sgr nlg_m
-          globals1 = Gl sgr' (wikiPredef db gr lang sgr')
+          globals1 = Gl sgr' (wikiPredef cref db gr lang sgr')
           qident = (nlg_mn,identS "main")
 
       res <- runEvalMWithOpts globals1 csInit $ do
@@ -371,8 +414,8 @@ deserializeChoices json = case readJSON json of
       rs <- parse cs
       return $ (Choice c, fromInteger i) : rs
 
-wikiPredef :: Database -> PGF -> String -> Grammar -> PredefTable
-wikiPredef db pgf lang gr = Map.fromList
+wikiPredef :: IORef WNCache -> Database -> PGF -> String -> Grammar -> PredefTable
+wikiPredef cref db pgf lang gr = Map.fromList
   [ (identS "entity", pdArity 2 $\ \g c [typ,qid] -> Const (fetch c typ qid))
   , (identS "int2digits", pdArity 1 $\ \g c [n] -> Const (int2digits abstr c n))
   , (identS "int2decimal", pdArity 1 $\ \g c [n] -> Const (int2decimal abstr c n))
@@ -400,7 +443,7 @@ wikiPredef db pgf lang gr = Map.fromList
     abstr = moduleNameS (abstractName pgf)
 
     fetch c typ (VStr qid) =
-      case unsafePerformIO (wikidataEntity qid) of
+      case unsafePerformIO (wikidataEntity cref qid) of
         Ok obj    -> filterJsonFromType c obj typ lang
         Error msg -> VError (pp msg)
     fetch c ty (VFV c1 vs) = VFV c1 (mapVariantsC (\c -> fetch c ty) c vs)
@@ -496,9 +539,11 @@ wikiPredef db pgf lang gr = Map.fromList
 
 i2i2 = identS
 
-wikidataEntity qid = do
-  rsp <- simpleHTTP (getRequest ("https://www.wikidata.org/wiki/Special:EntityData/"++qid++".json"))
-  return (decode (rspBody rsp) >>= valFromObj "entities" >>= valFromObj qid)
+wikidataEntity cref qid = do
+  res <- useCache cref qid $ do
+    rsp <- simpleHTTP (getRequest ("https://www.wikidata.org/wiki/Special:EntityData/"++qid++".json"))
+    return $ decode (rspBody rsp) >>= valFromObj "entities" >>= valFromObj qid
+  return $ res >>= readJSON
 
 filterJsonFromType :: Choice -> JSObject JSValue -> Value -> String -> Value
 filterJsonFromType c obj typ lang =

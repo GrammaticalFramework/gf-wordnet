@@ -97,7 +97,7 @@ concrete ParseExtendPor of ParseExtend =
     EnoughAP ap ant pol vp = {
       s = \\af => let g : Gender = aform2gender af ;
                       n : Number = aform2number af
-        in ap.s ! af ++ "o suficiente" ++ ant.s ++ pol.s ++ infVP (Ag g n P3)
+        in ap.s ! af ++ "o suficiente" ++ ant.s ++ pol.s ++ infVP vp pol.p (Ag g n P3)
       } ** ap ;
 
     -- not sure about this, but in the one example seems to work

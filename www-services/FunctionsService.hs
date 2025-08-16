@@ -6,7 +6,7 @@ import Control.Applicative     (liftA, liftA2, (<|>))
 import Control.Monad (MonadPlus(mplus), foldM, forM, msum, (>=>))
 import GF.Compile
 import GF.Compile.Compute.Concrete2
-import GF.Compile.TypeCheck.ConcreteNew
+import GF.Compile.TypeCheck.Concrete
 import qualified GF.Data.ErrM            as E
 import GF.Grammar              hiding (VApp, VRecType, ppValue)
 import GF.Grammar.Lookup
@@ -473,15 +473,15 @@ wikidataEntity qid = do
 filterJsonFromType :: Choice -> JSObject JSValue -> Value -> String -> Value
 filterJsonFromType c obj typ lang =
   case typ of
-   VRecType fields -> VR (mapC (\c -> getSpecificProperty c obj lang) c fields)
-   VMeta _ _       -> VR (getAllProperties c obj)
-   _               -> VError (pp "Wikidata entities are always records")
+   VRecType fields _ -> VR (mapC (\c -> getSpecificProperty c obj lang) c fields)
+   VMeta _ _         -> VR (getAllProperties c obj)
+   _                 -> VError (pp "Wikidata entities are always records")
 
 isProperty ('P':cs) = all isDigit cs
 isProperty _        = False
 
-getSpecificProperty :: Choice -> JSObject JSValue -> String -> (Label, Value) -> (Label, Value)
-getSpecificProperty c obj lang (LIdent field, typ)
+getSpecificProperty :: Choice -> JSObject JSValue -> String -> (Label, Bool, Value) -> (Label, Value)
+getSpecificProperty c obj lang (LIdent field, _, typ)
   | isProperty label =
       case valFromObj "claims" obj >>= valFromObj label of
         Error _  -> (LIdent field, VFV c (VarFree []))
@@ -512,7 +512,7 @@ getSpecificProperty c obj lang (LIdent field, typ)
         VMeta _ _           -> True
         _                   -> False
 
-getSpecificProperty c obj lang (LVar n, typ) =
+getSpecificProperty c obj lang (LVar n, _, typ) =
   (LVar n, VError (pp "Wikidata entities can only have named properties"))
 
 
@@ -561,11 +561,11 @@ valField n ty f = MkField n ty $ \c ty -> valFromObj "value" >=> valFromObj n >=
 valField' :: JSON a => String -> GF.Grammar.Type -> (a -> Value) -> WikiDataFieldType
 valField' n ty f = valField n ty (\c ty -> pure . f)
 
-matchTypeFromJSON c qs dv dt (VRecType labels) = do
+matchTypeFromJSON c qs dv dt (VRecType labels _) = do
   wdt <- getWikiDataType dt
   mapCM (getField wdt) c labels
   where
-    getField wdt c (k@(LIdent l),ty) = do
+    getField wdt c (k@(LIdent l),_,ty) = do
       let n = showRawIdent l
       val <-  case find (\f -> fieldName f == n) (wdtFields wdt) of
                Just f  -> extractField f c (Just ty) dv

@@ -118,3 +118,129 @@ function loadEntity(qid, name) {
     content.dataset.qid = qid;
     content.innerText = qid+": "+name;
 }
+
+function serializeChoices(obj) {
+    const arr = [];
+    for (const [c, i] of Object.entries(obj)) {
+        arr.push(parseInt(c, 10), i);
+    }
+    return arr;
+}
+
+function deserializeChoices(arr) {
+    if (arr.length % 2 !== 0) throw new Error(`Choice array must be of even length, but got ${arr.length}!`);
+    const opts = {};
+    for (let i = 0; i < arr.length; i += 2) {
+        opts[arr[i]] = arr[i + 1];
+    }
+    return opts;
+}
+
+class WNStateChangeEvent extends Event {
+    constructor(newState) {
+        super("state");
+        this.newState = newState;
+    }
+}
+
+class WNResultEvent extends Event {
+    constructor(result) {
+        super("result");
+        this.result = result;
+    }
+}
+
+class WNClient extends EventTarget {
+    constructor() {
+        super();
+        this.state = { state: "initial" };
+    }
+
+    setState(state) {
+        this.state = state;
+        this.dispatchEvent(new WNStateChangeEvent(state));
+    }
+
+    setProgram(qid, lang, code) {
+        switch (this.state.state) {
+            case "initial":
+                this.revalidate(qid, lang, code, {}, {});
+                break;
+            case "valid":
+            case "interactive":
+                if (qid === this.state.qid && lang === this.state.lang && code === this.state.code) break;
+                this.revalidate(qid, lang, code, {}, {});
+                break;
+            case "invalid":
+                if (qid === this.state.qid && lang === this.state.lang && code === this.state.code) {
+                    this.revalidate(qid, lang, code, this.state.choices, this.state.opts);
+                } else {
+                    this.revalidate(qid, lang, code, {}, {});
+                }
+                break;
+            default:
+                throw new Error(`Bad state: ${this.state.state}`);
+        }
+    }
+
+    setInteractionPoint(headers, record) {
+        switch (this.state.state) {
+            case "valid":
+            case "interactive":
+                const choices = deserializeChoices(record.choices);
+                const opts = {};
+                for (const oi of record.options) {
+                    opts[oi.choice] = choices[oi.choice] ?? 0;
+                    delete choices[oi.choice];
+                }
+                this.setState({
+                    state: "interactive", headers, record,
+                    qid: this.state.qid, lang: this.state.lang, code: this.state.code,
+                    choices, opts
+                });
+                break;
+            default:
+                throw new Error(`Bad state: ${this.state.state}`);
+        }
+    }
+
+    setOption(choice, index) {
+        switch (this.state.state) {
+            case "interactive":
+                if (!Object.hasOwn(this.state.opts, choice) || this.state.opts[choice] === index) break;
+                // falls through
+            case "invalid":
+                const newOpts = {...this.state.opts};
+                newOpts[choice] = index;
+                // TODO delete dependent options
+                this.revalidate(this.state.qid, this.state.lang, this.state.code, this.state.choices, newOpts);
+                break;
+            default:
+                throw new Error(`Bad state: ${this.state.state}`);
+        }
+    }
+
+    revalidate(qid, lang, code, choices, opts) {
+        this.setState({ state: "waiting", qid, lang, code, choices, opts });
+        (async () => {
+            const request = { lang, code, choices: serializeChoices({ ...choices, ...opts }) };
+            if (qid) request.qid = qid;
+            const response = await fetch("FunctionsService.fcgi", {
+                method: "POST",
+                body: JSON.stringify(request),
+            });
+            if (response.status === 200) {
+                this.loadResult(await response.json(), qid, lang, code);
+            } else {
+                throw new Error(await response.text());
+            }
+        })().catch(error => {
+            this.setState({ state: "invalid", error, qid, lang, code, choices, opts });
+        });
+    }
+
+    loadResult(result, qid, lang, code) {
+        this.dispatchEvent(new WNResultEvent(result));
+        this.setState({ state: "valid", groups: result.groups, qid, lang, code });
+    }
+}

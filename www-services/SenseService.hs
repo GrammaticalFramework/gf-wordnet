@@ -8,7 +8,6 @@ import Interval
 import PatternMatching
 import qualified Data.Map as Map
 import qualified Data.Set as Set
-import qualified Data.Vector as Vector
 import Control.Monad(foldM,msum,forM_)
 import Control.Concurrent(forkIO)
 import Network.HTTP
@@ -96,10 +95,6 @@ senseService db bigram_total rq = do
                         ,("graph",   makeObj [(show key,mkNode node) | (key,node) <- Map.toList graph])
                         ])
       where
-        dist v1 v2 = sqrt (Vector.sum (Vector.zipWith diff v1 v2))
-          where
-            diff x y = (x-y)^2
-
         mkFunProb (fun,prob) = makeObj [("mod", showJSON fun),("prob", showJSON (log prob))]
 
         mkNode (gloss,funs,ptrs,dist) =

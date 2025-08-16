@@ -259,15 +259,13 @@ executeCode db gr sgr mn mb_qid lang csInit code =
       | otherwise    = return (render (ppTerm Unqualified 0 t))
 
     serializeOptionInfo ois = do
-      rs <- forM ois $ \(OptionInfo c lty l os) -> do
-        lty   <- value2termM True [] lty
-        l     <- value2termM True [] l
-        label <- toCell lty l
-        os <- forM os $ \(oty,o) -> do
-          oty <- value2termM True [] oty
+      rs <- forM ois $ \(OptionInfo c l os) -> do
+        l <- value2termM True [] l
+        l <- fmap (linearize cnc) (toExpr [] l)
+        os <- forM os $ \o -> do
           o   <- value2termM True [] o
-          toCell oty o
-        return $ makeObj [ ("label"  , showJSON label)
+          fmap (linearize cnc) (toExpr [] o)
+        return $ makeObj [ ("label"  , showJSON l)
                          , ("choice" , showJSON (unchoice c))
                          , ("options", showJSON os)
                          ]

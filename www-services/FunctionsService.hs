@@ -104,13 +104,10 @@ pageService db gr mn sgr path rq = do
         mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
 
       injectTemplate []                                           qid prog code output = []
-      injectTemplate ('<':'%':'q':'i':'d':'%':'>':cs)             qid prog code output = qid                    ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         qid prog code output = prog                   ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         qid prog code output = code                   ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) qid prog code output = encode output          ++ injectTemplate cs qid prog code output
-      injectTemplate ('_':'_':'p':'r':'o':'g':cs)                 qid prog code output = encode (showJSON prog) ++ injectTemplate cs qid prog code output
-      injectTemplate ('_':'_':'c':'o':'d':'e':cs)                 qid prog code output = encode (showJSON code) ++ injectTemplate cs qid prog code output
-      injectTemplate ('_':'_':'o':'u':'t':'p':'u':'t':cs)         qid prog code output = encode output          ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'q':'i':'d':'%':'>':cs)             qid prog code output = qid           ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         qid prog code output = prog          ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         qid prog code output = code          ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) qid prog code output = encode output ++ injectTemplate cs qid prog code output
       injectTemplate (c:cs)                                       qid prog code output = c : injectTemplate cs qid prog code output
 
       mkError err = makeObj [("error", showJSON err)]

@@ -93650,7 +93650,6 @@ lin soloistMasc_N = variants {} ;
 lin soloistFem_N = variants {} ;
 lin solomon_islands_LN = mkLN "سلیمون جزیره" ; --guessed
 lin solomon_PN = mkPN "سلیمون" ;
-lin solomon_islands_LN = mkLN "سلیمون جزیره" ; --guessed
 lin solon_PN = variants {} ;
 lin solstice_N = variants {} ;
 lin solubility_1_N = variants {} ;

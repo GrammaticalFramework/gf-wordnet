@@ -8,6 +8,7 @@ import System.IO.Error(isAlreadyExistsError,isDoesNotExistError)
 import System.Directory(getModificationTime,getCurrentDirectory)
 import System.Environment(getArgs)
 import Foreign(allocaBytes)
+import Data.IORef (newIORef)
 import Data.Time (getCurrentTime,formatTime)
 import Data.Time.Format(defaultTimeLocale,rfc822DateFormat)
 import qualified Data.Map as Map
@@ -20,7 +21,6 @@ import ContentService
 import FunctionsService hiding (main)
 import SenseSchema
 
-
 main = do
   [doc_dir,client_secret] <- getArgs
   gr <- readNGF (doc_dir</>"Parse.ngf")
@@ -31,11 +31,12 @@ main = do
              | (ex_id,(ex,_)) <- from examples everything
              , let c = length (exprFunctions ex)]
   (mn,sgr) <- batchCompile noOptions (Just gr) [doc_dir</>"gf/WordNet.gf"]
-  server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr doc_dir client_secret)
+  stref <- newIORef emptyCache
+  server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr doc_dir client_secret stref)
   closeDB db
 
 
-httpMain db gr bigram_total mn sgr doc_dir client_secret conn = do
+httpMain db gr bigram_total mn sgr doc_dir client_secret stref conn = do
   rq <- receiveHTTP conn
   let path  = uriPath (rqURI rq)
       query = rqQuery rq
@@ -58,13 +59,13 @@ httpMain db gr bigram_total mn sgr doc_dir client_secret conn = do
                     -> do rsp <- contentService db client_secret rq
                           respondHTTP conn rsp
       | path == "/FunctionsService.fcgi"
-                   -> do rsp <- functionsService db gr mn sgr rq
+                   -> do rsp <- functionsService db gr mn sgr rq stref
                          respondHTTP conn rsp
       | path == "/index.wsgi"
-                   -> do rsp <- pageService db gr mn sgr (doc_dir</>"gf-wikidata.wiki") rq
+                   -> do rsp <- pageService db gr mn sgr (doc_dir</>"gf-wikidata.wiki") rq stref
                          respondHTTP conn rsp
       | takeExtension path == ".wiki"
-                   -> do rsp <- pageService db gr mn sgr (doc_dir</>tail path) rq
+                   -> do rsp <- pageService db gr mn sgr (doc_dir</>tail path) rq stref
                          respondHTTP conn rsp
       | otherwise  -> respondHTTP conn (Response
                                           { rspCode = 400

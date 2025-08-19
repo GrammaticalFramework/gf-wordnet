@@ -89,14 +89,12 @@ mkResponse code reason ct =
   Response code reason [Header HdrContentType (ct ++ "; charset=UTF8")]
 
 functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IORef WNCache -> IO Response
-functionsService db gr mn sgr rq cref =
+functionsService db gr mn sgr rq cref = do
+  cleanUpCache cref
   case (decode (rqBody rq) >>= parseQuery) <|> getFromQuery (rqQuery rq) of
-    Error msg                   -> return $ mkResponse 400 "Invalid input" "text/plain" msg
-    Ok (mb_qid, lang, cs, code) -> do
-      cleanUpCache cref
-      return $ case executeCode cref db gr sgr mn mb_qid lang cs code of
-        Left (err, msg) -> mkResponse 400 err "text/plain" msg
-        Right body      -> mkResponse 200 "OK" "application/json" (encode body)
+    Error msg            -> return $ mkResponse 400 "Invalid input" "text/plain" msg
+    Ok (Left (err, msg)) -> return $ mkResponse 400 err "text/plain" msg
+    Ok (Right res)       -> return $ mkResponse 200 "OK" "application/json" (encode res)
   where
     parseQuery query = do
       mb_qid <- maybe (pure Nothing) (fmap Just . readJSON)
@@ -107,7 +105,7 @@ functionsService db gr mn sgr rq cref =
         Ok json -> orFailErr $ deserializeChoices json
         Error _ -> return Map.empty
       return $ do
-        (res,msg) <- executeCode db gr sgr mn mb_qid lang cs code
+        (res,msg) <- executeCode cref db gr sgr mn mb_qid lang cs code
         return $ makeObj
                  [ ("msg"   , showJSON msg)
                  , ("groups", showJSON
@@ -132,7 +130,7 @@ functionsService db gr mn sgr rq cref =
                       orFailErr $ deserializeChoices json
         Nothing -> return Map.empty
       return $ do
-        (res,msg) <- executeCode db gr sgr mn (lookup "qid" query) lang cs code
+        (res,msg) <- executeCode cref db gr sgr mn (lookup "qid" query) lang cs code
         return $ makeObj
                  [ ("msg"   , showJSON msg)
                  , ("groups", showJSON

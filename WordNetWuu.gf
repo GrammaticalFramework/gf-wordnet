@@ -93650,7 +93650,6 @@ lin soloistMasc_N = variants {} ;
 lin soloistFem_N = variants {} ;
 lin solomon_islands_LN = mkLN "所羅門群島" ;
 lin solomon_PN = mkPN "所罗门" ;
-lin solomon_islands_LN = mkLN "所羅門群島" ;
 lin solon_PN = mkPN "梭伦" ;
 lin solstice_N = variants {} ;
 lin solubility_1_N = variants {} ;

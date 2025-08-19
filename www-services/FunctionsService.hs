@@ -106,7 +106,23 @@ functionsService db gr mn sgr rq cref =
       cs <- case valFromObj "choices" query of
         Ok json -> orFailErr $ deserializeChoices json
         Error _ -> return Map.empty
-      return (mb_qid, lang, cs, code)
+      return $ do
+        (res,msg) <- executeCode db gr sgr mn mb_qid lang cs code
+        return $ makeObj
+                 [ ("msg"   , showJSON msg)
+                 , ("groups", showJSON
+                     [ makeObj
+                       [ ("headers", showJSON headers)
+                       , ("dataset", JSArray
+                           [ makeObj
+                             [ ("fields" , showJSON fs)
+                             , ("choices", serializeChoices cs)
+                             , ("options", ois)
+                             ]
+                           | (fs,cs,ois) <- dataset])
+                       ]
+                     | (headers,dataset) <- res])
+                 ]
 
     getFromQuery query = do
       lang <- orFail "No lang" $ lookup "lang" query
@@ -115,7 +131,23 @@ functionsService db gr mn sgr rq cref =
         Just s  -> do json <- orFailE $ runGetJSON readJSArray s
                       orFailErr $ deserializeChoices json
         Nothing -> return Map.empty
-      return (lookup "qid" query, lang, cs, code)
+      return $ do
+        (res,msg) <- executeCode db gr sgr mn (lookup "qid" query) lang cs code
+        return $ makeObj
+                 [ ("msg"   , showJSON msg)
+                 , ("groups", showJSON
+                     [ makeObj
+                       [ ("headers", showJSON headers)
+                       , ("dataset", JSArray
+                           [ makeObj
+                             [ ("fields" , showJSON fs)
+                             , ("choices", serializeChoices cs)
+                             , ("options", ois)
+                             ]
+                           | (fs,cs,ois) <- dataset])
+                       ]
+                     | (headers,dataset) <- res])
+                 ]
 
 pageService :: Database -> PGF -> ModuleName -> SourceGrammar -> FilePath -> Request -> IORef WNCache -> IO Response
 pageService db gr mn sgr path rq cref = do
@@ -124,20 +156,31 @@ pageService db gr mn sgr path rq cref = do
   let query = rqQuery rq
       lang  = fromMaybe "ParseEng" (lookup "lang" query)
   case lookup "qid" query of
-    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" JSNull)
+    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "")
     Just qid -> do
       rsp <- wikidataEntity cref qid
       case rsp >>= get_classes of
         Error msg  -> return $ mkResponse 400 "FAIL" "text/plain" msg
         Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
-          []       -> let err = mkError ("There is no renderer defined for classes " ++ unwords classes)
+          []       -> let err = "There is no renderer defined for classes " ++ unwords classes
                       in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err)
           (prog:_) -> do
             code <- readFile (dir </> prog)
             cleanUpCache cref
-            return $ case executeCode cref db gr sgr mn (Just qid) lang Map.empty code of
-              Left (err,msg) -> mkResponse 400 err "text/plain" msg
-              Right res      -> mkResponse 200 "OK" "text/html" (injectTemplate html qid prog code res)
+            case executeCode cref db gr sgr mn (Just qid) lang Map.empty code of
+              Left (err,msg)  -> return $ mkResponse 400 err "text/plain" msg
+              Right (res,msg) -> do html <- readFile (dir </> html_file)
+                                    let code_doc =
+                                          case lookup "edit" query of
+                                            Just _  -> showXMLDoc (Data code)
+                                            Nothing -> ""
+                                        output = concat [concat html | (headers,((html,_,_):_)) <- res]
+                                    return (Response
+                                              { rspCode = 200
+                                              , rspReason = "OK"
+                                              , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
+                                              , rspBody = injectTemplate html qid prog code_doc output
+                                              })
     where
       dir = dropFileName path
 
@@ -146,16 +189,11 @@ pageService db gr mn sgr path rq cref = do
         mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
 
       injectTemplate []                                           qid prog code output = []
-      injectTemplate ('<':'%':'q':'i':'d':'%':'>':cs)             qid prog code output = qid                    ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         qid prog code output = prog                   ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         qid prog code output = code                   ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) qid prog code output = encode output          ++ injectTemplate cs qid prog code output
-      injectTemplate ('_':'_':'p':'r':'o':'g':cs)                 qid prog code output = encode (showJSON prog) ++ injectTemplate cs qid prog code output
-      injectTemplate ('_':'_':'c':'o':'d':'e':cs)                 qid prog code output = encode (showJSON code) ++ injectTemplate cs qid prog code output
-      injectTemplate ('_':'_':'o':'u':'t':'p':'u':'t':cs)         qid prog code output = encode output          ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'q':'i':'d':'%':'>':cs)             qid prog code output = qid    ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         qid prog code output = prog   ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         qid prog code output = code   ++ injectTemplate cs qid prog code output
+      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) qid prog code output = output ++ injectTemplate cs qid prog code output
       injectTemplate (c:cs)                                       qid prog code output = c : injectTemplate cs qid prog code output
-
-      mkError err = makeObj [("error", showJSON err)]
 
 executeCode :: IORef WNCache -- ^ Wikidata cache
             -> Database      -- ^ Database for wiki data
@@ -166,28 +204,14 @@ executeCode :: IORef WNCache -- ^ Wikidata cache
             -> String        -- ^ Ambient language
             -> ChoiceMap     -- ^ Initial choices (i.e. a program trace)
             -> String        -- ^ Code snippet to execute
-            -> Either (String, String) JSValue
+            -> Either (String, String) ([([JSObject JSValue],[([String],ChoiceMap,JSValue)])],String)
 executeCode cref db gr sgr mn mb_qid lang csInit code =
   case runLangP NLG pNLG (BS.pack code) of
     Left (Pn row col,msg) -> Left ("Parse Error", show row ++ ":" ++ show col ++ ":" ++ msg)
     Right prog            -> do
       case runCheck (checkComputeProg (maybe prog (add_qid prog) mb_qid)) of
         E.Bad msg      -> Left ("Invalid Expression", msg)
-        E.Ok (res,msg) -> Right $ makeObj
-          [ ("msg"   , showJSON msg)
-          , ("groups", showJSON
-              [ makeObj
-                [ ("headers", showJSON headers)
-                , ("dataset", JSArray
-                    [ makeObj
-                      [ ("fields" , showJSON fs)
-                      , ("choices", serializeChoices cs)
-                      , ("options", ois)
-                      ]
-                    | (fs,cs,ois) <- dataset])
-                ]
-              | (headers,dataset) <- res])
-          ]
+        E.Ok (res,msg) -> Right (res,msg)
   where
     abs_mn = moduleNameS (abstractName gr)
 

@@ -47,8 +47,8 @@ key: P1411
 abs: \award -> AdvVP (PassVPSlash (SlashV2a nominate_1_V2)) (PrepNP for_Prep award)
 key: P1411
 
-abs: UseN(CompoundN square_1_N kilometre_1_N)
-fre: kilomètre de carré
+abs: UseN (CompoundN square_1_N kilometre_1_N)
+fre: kilomètre carré
 spa: kilómetro de cuadrado
 swe: kvadratkilometer
 fin: neliökilometri

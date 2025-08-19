@@ -93650,7 +93650,6 @@ lin soloistMasc_N = mkN "mabvuyi" ; --guessed
 lin soloistFem_N = mkN "mabvuyi" ; --guessed
 lin solomon_islands_LN = mkLN "Zvitsuwa zvaSolomon" ; --guessed
 lin solomon_PN = mkPN "Soromoni" ;
-lin solomon_islands_LN = mkLN "Zvitsuwa zvaSolomon" ; --guessed
 lin solon_PN = variants {} ;
 lin solstice_N = mkN "zuvaragodza" ; --guessed
 lin solubility_1_N = variants {} ;

@@ -4,6 +4,9 @@ concrete ParseExtendNor of ParseExtend =
                PiedPipingQuestSlash, PiedPipingRelSlash], NumeralNor - [num], PunctuationX **
   open Prelude, ResNor, MorphoNor, CommonScand, GrammarNor, Coordination, ExtendNor, (P = ParadigmsNor), (I = IrregNor) in {
 
+
+lin num = num ;
+
 lin gen_Quant = DefArt ;
 
     UttAP  p ap  = {s = ap.s ! Strong (gennum p.a.g p.a.n)} ;

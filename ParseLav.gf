@@ -11,6 +11,7 @@ concrete ParseLav of Parse =
   PhraseLav - [UttAP, UttVP],
   IdiomLav,
   TenseX - [Adv,CAdv],
+  NamesLav,
   ParseExtendLav,
   WordNetLav,
   DocumentationLav ** open ResLav in {

@@ -6,6 +6,8 @@ concrete ParseExtendLav of ParseExtend =
 
 lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
+lin UttAP p ap = { s = let a = fromAgr p.agr in ap.s ! Indef ! a.gend ! a.num ! Nom } ;
+
 lin ComplVV vv ant pol vp = {
       v        = vv ;
       compl    = \\agr => ant.s ++ pol.s ++ buildVP vp pol.p VInf agr ;

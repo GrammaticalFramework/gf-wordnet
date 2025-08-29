@@ -1,4 +1,5 @@
 concrete ParseExtendLat of ParseExtend =
+  ExtendLat [TPastSimple,PassVPSlash],
   NumeralLat - [num], PunctuationX **
   open Prelude, ResLat in {
 

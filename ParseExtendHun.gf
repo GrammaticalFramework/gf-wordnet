@@ -1,4 +1,5 @@
 concrete ParseExtendHun of ParseExtend =
+  ExtendHun [TPastSimple],
   NumeralHun - [num], PunctuationX **
   open Prelude, ResHun in {
 

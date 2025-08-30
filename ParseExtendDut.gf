@@ -18,5 +18,6 @@ lin RelNP = GrammarDut.RelNP ;
 
 lin BareN2 n = n ;
 
+lin EmbedVP ant pol p vp = {s = ant.s ++ pol.s ++ useInfVP False vp ! p.a } ;
 
 }

@@ -46,4 +46,12 @@ lin that_RP = IdRP ;
 lin RelNP = GrammarRus.RelNP ;
     ExtRelNP = GrammarRus.RelNP ;
 
+lin EmbedVP ant pol p vp = {
+      s=ant.s ++ pol.s
+        ++ vp.adv ! p.a
+        ++ (verbInf vp.verb)
+        ++ vp.dep
+        ++ vp.compl ! Pos ! p.a    -- ???
+    } ;
+
 }

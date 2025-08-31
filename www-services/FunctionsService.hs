@@ -244,9 +244,7 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
       nlg_m <- renameModule cwd sgr (nlg_mn, nlg_mi)
 
       infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
-      let sgr'     = prependModule sgr nlg_m
-          globals0 = Gl sgr' (wikiPredef cref db gr lang sgr')
-      nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd globals0)) nlg_m infoss
+      nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd sgr)) nlg_m infoss
       checkWarn (ppModule Unqualified nlg_m)
 
       let sgr' = prependModule sgr nlg_m
@@ -387,8 +385,8 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
         Just s  -> return (showIdent id, s)
         Nothing -> return (showIdent id, render (ppTerm Unqualified 0 t))
 
-    checkInfo :: Options -> FilePath -> Globals -> SourceModule -> (Ident,Info) -> Check SourceModule
-    checkInfo opts cwd globals sm (c,info) = checkInModule cwd (snd sm) NoLoc empty $ do
+    checkInfo :: Options -> FilePath -> SourceGrammar -> SourceModule -> (Ident,Info) -> Check SourceModule
+    checkInfo opts cwd sgr sm (c,info) = checkInModule cwd (snd sm) NoLoc empty $ do
        case info of
          ResOper pty pde -> do
             info <- case (pty,pde) of
@@ -406,7 +404,9 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
                         checkError (pp "No definition given to the operation")
             update sm c info
        where
-         gr = prependModule sgr sm
+         sgr' = prependModule sgr sm
+         globals = Gl sgr' (wikiPredef cref db gr lang sgr')
+
          chIn loc cat = checkInModule cwd (snd sm) loc ("Happened in" <+> cat <+> c)
 
          update (mn,mi) c info = return (mn,mi{jments=Map.insert c info (jments mi)})

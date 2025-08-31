@@ -28,9 +28,6 @@
             }
 
             #options {
-                position: fixed;
-                top: 25vh;
-                right: 0;
                 padding: 24px 5vw 24px 32px;
                 background-color: #ddd;
             }
@@ -44,32 +41,12 @@
                 flex-flow: column;
                 gap: 8px;
             }
-
-            .option-value {
-                margin-left: 0.5em;
-                cursor: pointer;
-            }
-
-            .option-value:hover, .option-value.selected {
-                background-color: #cce;
-            }
         </style>
     </head>
     <body>
-        <form class="search-box">
-            <input class="search-box-input" type="search" name="search"
-                   placeholder="Search Entity" aria-label="Search Entity"
-                   autocapitalize="sentences" title="Search Entity" id="searchInput"
-                   autocomplete="off"
-                   oninput="showSearches(this)"
-                   onkeypress="searchInputOnKeyPress(event)"
-                   onkeydown="searchInputOnKeyDown(event)">
-            <img class="search-box-button" src="search.svg">
-            <table class="search-box-results" id="searchResults"></table>
-            <div id="content"></div>
-        </form>
 
-        <table><tr>
+        <table style="width: 100%"><tr>
+            
         <td><table id="from" class="multiselect">
             <thead>
                 <tr onclick="showCheckboxes(this.parentNode.parentNode)"><th>English</th><th><img src="triangle.png"></th></tr>
@@ -345,14 +322,31 @@
         </table></td>
 
         <td><button id="eval" style="float: right">Eval</button></td>
+        
+        <td><form class="search-box">
+            <input class="search-box-input" type="search" name="search"
+                   placeholder="Search Entity" aria-label="Search Entity"
+                   autocapitalize="sentences" title="Search Entity" id="searchInput"
+                   autocomplete="off"
+                   oninput="showSearches(this)"
+                   onkeypress="searchInputOnKeyPress(event)"
+                   onkeydown="searchInputOnKeyDown(event)">
+            <img class="search-box-button" src="search.svg">
+            <table class="search-box-results" id="searchResults"></table>
+            <div id="content"></div>
+        </form></td>
+
         </tr>
 
         <tr><td id='editor' colspan=2></td></tr>
-        <tr><td colspan=2><div id='output' style="width: 500px; height: 300px"></div></td></tr>
-        <tr><td colspan=2><div id='msgs' style="width: 500px"></div></td></tr>
+        <tr>
+            <td colspan=2><div id='output' style="width: 500px; height: 300px"></div></td>
+            <td colspan=2 style="vertical-align: top"><div id="options"></div></td>
+        </tr>
+        <tr><td colspan=><div id='msgs' style="width: 500px"></div></td></tr>
         </table>
 
-        <div id="options"></div>
+        
 
         <script>
             const evalBtn = document.getElementById("eval");
@@ -435,12 +429,16 @@
                             const optBody = [node("div", { "class": "option-header" }, [node("b", {}, [text(opt.label)])])];
                             const selected = state.opts[opt.choice] || 0;
                             for (let i = 0; i < opt.options.length; i++) {
-                                const valueElem = node("div", { "class": "option-value" }, [text(opt.options[i])]);
-                                if (i === selected) valueElem.classList.add("selected");
-                                valueElem.onclick = () => client.setOption(opt.choice, i);
+                                const attrs = {"value": i};
+                                if (i === selected) attrs["selected"] = "selected";
+                                const valueElem = node("option", attrs, [text(opt.options[i])]);
                                 optBody.push(valueElem)
                             }
-                            optElems.push(node("div", { "class": "option" }, optBody));
+                            const select = node("select", {value: selected}, optBody);
+                            select.addEventListener("change", function() {
+                                client.setOption(opt.choice, Number(select.value));
+                            });
+                            optElems.push(select);
                         }
                         elemOpts.appendChild(node("div", { "class": "option-container" }, optElems));
                         break;

@@ -426,7 +426,10 @@
                         const optElems = [];
                         const validOptChoices = new Set();
                         for (const opt of state.record.options) {
-                            const optBody = [node("div", { "class": "option-header" }, [node("b", {}, [text(opt.label)])])];
+                            const optLbl = node("div", { "class": "option-header" }, [node("b", {}, [text(opt.label)])]);
+                            optElems.push(optLbl);
+
+                            const optBody = [];
                             const selected = state.opts[opt.choice] || 0;
                             for (let i = 0; i < opt.options.length; i++) {
                                 const attrs = {"value": i};

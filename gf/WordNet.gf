@@ -170,6 +170,8 @@ oper
       =    UttAP it_Pron ; --%
       mkUtt : Card -> Utt     -- five   --:
       =    UttCard ; --%
+      mkUtt : Interj -> Utt     -- five   --:
+      =    UttInterj ; --%
     } ; --%
 
 -- The plural first-person imperative is a special construction.

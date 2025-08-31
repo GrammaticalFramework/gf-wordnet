@@ -154,14 +154,14 @@ pageService db gr mn sgr path rq cref = do
   let query = rqQuery rq
       lang  = fromMaybe "ParseEng" (lookup "lang" query)
   case lookup "qid" query of
-    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "")
+    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "" Map.empty JSNull)
     Just qid -> do
       rsp <- wikidataEntity cref qid
       case rsp >>= get_classes of
         Error msg  -> return $ mkResponse 400 "FAIL" "text/plain" msg
         Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
           []       -> let err = "There is no renderer defined for classes " ++ unwords classes
-                      in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err)
+                      in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err Map.empty JSNull)
           (prog:_) -> do
             code <- readFile (dir </> prog)
             cleanUpCache cref
@@ -172,13 +172,13 @@ pageService db gr mn sgr path rq cref = do
                                           case lookup "edit" query of
                                             Just _  -> showXMLDoc (Data code)
                                             Nothing -> ""
-                                        output = concat [concat html | (headers,((html,_,_):_)) <- res]
-                                    return (Response
-                                              { rspCode = 200
-                                              , rspReason = "OK"
-                                              , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                                              , rspBody = injectTemplate html qid prog code_doc output
-                                              })
+                                    return (Response { rspCode = 200
+                                                     , rspReason = "OK"
+                                                     , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
+                                                     , rspBody = case [row | (headers,(row:_)) <- res] of
+                                                                   (fs,cs,ois):_ -> injectTemplate html qid prog code_doc (concat fs) cs ois
+                                                                   []            -> injectTemplate html qid "" "" "No results" Map.empty JSNull
+                                                     })
     where
       dir = dropFileName path
 
@@ -186,12 +186,14 @@ pageService db gr mn sgr path rq cref = do
         vals <- (valFromObj "claims" >=> valFromObj "P31") json
         mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
 
-      injectTemplate []                                           qid prog code output = []
-      injectTemplate ('<':'%':'q':'i':'d':'%':'>':cs)             qid prog code output = qid    ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':cs)         qid prog code output = prog   ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':cs)         qid prog code output = code   ++ injectTemplate cs qid prog code output
-      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':cs) qid prog code output = output ++ injectTemplate cs qid prog code output
-      injectTemplate (c:cs)                                       qid prog code output = c : injectTemplate cs qid prog code output
+      injectTemplate []                                               qid prog code output cs ois = []
+      injectTemplate ('<':'%':'c':'h':'o':'i':'c':'e':'s':'%':'>':xs) qid prog code output cs ois = encode (serializeChoices cs) ++ injectTemplate xs qid prog code output cs ois
+      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':xs)             qid prog code output cs ois = code   ++ injectTemplate xs qid prog code output cs ois
+      injectTemplate ('<':'%':'o':'p':'t':'i':'o':'n':'s':'%':'>':xs) qid prog code output cs ois = encode ois ++ injectTemplate xs qid prog code output cs ois
+      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':xs)     qid prog code output cs ois = output ++ injectTemplate xs qid prog code output cs ois
+      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':xs)             qid prog code output cs ois = prog   ++ injectTemplate xs qid prog code output cs ois
+      injectTemplate ('<':'%':'q':'i':'d':'%':'>':xs)                 qid prog code output cs ois = qid    ++ injectTemplate xs qid prog code output cs ois
+      injectTemplate (x:xs)                                           qid prog code output cs ois = x : injectTemplate xs qid prog code output cs ois
 
 executeCode :: IORef WNCache -- ^ Wikidata cache
             -> Database      -- ^ Database for wiki data

@@ -395,7 +395,9 @@
                 const state = event.newState;
                 switch (state.state) {
                     case "invalid":
+                        elemMsgs.innerHTML = "";
                         elemOut.innerHTML = `<pre class="status">${state.error}</pre>`;
+                        elemOpts.innerHTML = "";
                         break;
                     case "valid":
                         switch (state.groups.length) {

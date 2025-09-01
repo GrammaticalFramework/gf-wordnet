@@ -36,7 +36,7 @@ import qualified Data.IntMap             as IMap
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Encoding as E
 import qualified Data.ByteString.Lazy as BL
-import Data.Char ( isDigit, ord, toLower )
+import Data.Char ( isDigit, ord, toLower, toUpper )
 import Data.Foldable ( find )
 import Data.IORef ( IORef, readIORef, writeIORef )
 import Data.List ( singleton )
@@ -448,6 +448,7 @@ wikiPredef cref db pgf lang gr = Map.fromList
   , (identS "int2float", pdArity 1 $\ \g c [v] -> fmap (VFlt . fromIntegral) (value2int g v))
   , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
   , (identS "gendered_expr", pdArity 3 $\ \g c [ty,qid,gender] -> Const (get_gendered_expr lang c ty qid gender))
+  , (identS "linearize", pdArity 3 $\ \g c [_,lang,t] -> liftA2 linearizeExpr (value2string g lang) (value2expr g [] t))
   , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
   , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
   , (identS "compareInt", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2int g v1) (value2int g v2)))
@@ -531,6 +532,13 @@ wikiPredef cref db pgf lang gr = Map.fromList
     get_gendered_expr l c ty (VFV c1 (VarFree vs)) gender = VFV c1 (VarFree (mapC (\c qid -> get_gendered_expr l c ty qid gender) c vs))
     get_gendered_expr l c ty qid (VFV c1 (VarFree vs))    = VFV c1 (VarFree (mapC (\c gender -> get_gendered_expr l c ty qid gender) c vs))
     get_gendered_expr l c ty qid gender                   = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "gendered_expr") [ty, qid, gender]))
+
+    linearizeExpr lang e =
+      case language pgf cnc_name of
+        Just cnc -> string2value (linearize cnc e)
+        Nothing  -> VError (pp ("Language "++cnc_name++" is not available"))
+      where
+        cnc_name = "Parse"++map toUpper (take 1 lang)++drop 1 lang
 
     globals0 = Gl gr Map.empty
 

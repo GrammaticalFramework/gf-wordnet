@@ -101,9 +101,9 @@ functionsService db gr mn sgr rq cref = do
                       (lookup "qid" (fromJSObject query))
       lang <- valFromObj "lang" query
       code <- valFromObj "code" query
-      cs <- case valFromObj "choices" query of
-        Ok json -> orFailErr $ deserializeChoices json
-        Error _ -> return Map.empty
+      cs <- case valFromObj "input" query of
+        Ok json -> orFailErr $ deserializeInput json
+        Error _ -> return []
       return $ do
         (res,msg) <- executeCode cref db gr sgr mn mb_qid lang cs code
         return $ makeObj
@@ -114,10 +114,9 @@ functionsService db gr mn sgr rq cref = do
                        , ("dataset", JSArray
                            [ makeObj
                              [ ("fields" , showJSON fs)
-                             , ("choices", serializeChoices cs)
                              , ("options", ois)
                              ]
-                           | (fs,cs,ois) <- dataset])
+                           | (fs,ois) <- dataset])
                        ]
                      | (headers,dataset) <- res])
                  ]
@@ -127,8 +126,8 @@ functionsService db gr mn sgr rq cref = do
       code <- orFail "No code" $ lookup "code" query
       cs <- case lookup "choices" query of
         Just s  -> do json <- orFailE $ runGetJSON readJSArray s
-                      orFailErr $ deserializeChoices json
-        Nothing -> return Map.empty
+                      orFailErr $ deserializeInput json
+        Nothing -> return []
       return $ do
         (res,msg) <- executeCode cref db gr sgr mn (lookup "qid" query) lang cs code
         return $ makeObj
@@ -139,10 +138,9 @@ functionsService db gr mn sgr rq cref = do
                        , ("dataset", JSArray
                            [ makeObj
                              [ ("fields" , showJSON fs)
-                             , ("choices", serializeChoices cs)
                              , ("options", ois)
                              ]
-                           | (fs,cs,ois) <- dataset])
+                           | (fs,ois) <- dataset])
                        ]
                      | (headers,dataset) <- res])
                  ]
@@ -154,18 +152,18 @@ pageService db gr mn sgr path rq cref = do
   let query = rqQuery rq
       lang  = fromMaybe "ParseEng" (lookup "lang" query)
   case lookup "qid" query of
-    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "" Map.empty JSNull)
+    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "" JSNull)
     Just qid -> do
       rsp <- wikidataEntity cref qid
       case rsp >>= get_classes of
         Error msg  -> return $ mkResponse 400 "FAIL" "text/plain" msg
         Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
           []       -> let err = "There is no renderer defined for classes " ++ unwords classes
-                      in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err Map.empty JSNull)
+                      in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err JSNull)
           (prog:_) -> do
             code <- readFile (dir </> prog)
             cleanUpCache cref
-            case executeCode cref db gr sgr mn (Just qid) lang Map.empty code of
+            case executeCode cref db gr sgr mn (Just qid) lang [] code of
               Left (err,msg)  -> return $ mkResponse 400 err "text/plain" msg
               Right (res,msg) -> do html <- readFile (dir </> html_file)
                                     let code_doc =
@@ -176,8 +174,8 @@ pageService db gr mn sgr path rq cref = do
                                                      , rspReason = "OK"
                                                      , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
                                                      , rspBody = case [row | (headers,(row:_)) <- res] of
-                                                                   (fs,cs,ois):_ -> injectTemplate html qid prog code_doc (concat fs) cs ois
-                                                                   []            -> injectTemplate html qid "" "" "No results" Map.empty JSNull
+                                                                   (fs,ois):_ -> injectTemplate html qid prog code_doc (concat fs) ois
+                                                                   []         -> injectTemplate html qid "" "" "No results" JSNull
                                                      })
     where
       dir = dropFileName path
@@ -186,14 +184,13 @@ pageService db gr mn sgr path rq cref = do
         vals <- (valFromObj "claims" >=> valFromObj "P31") json
         mapM (valFromObj "mainsnak" >=> valFromObj "datavalue" >=> valFromObj "value" >=> valFromObj "id") vals
 
-      injectTemplate []                                               qid prog code output cs ois = []
-      injectTemplate ('<':'%':'c':'h':'o':'i':'c':'e':'s':'%':'>':xs) qid prog code output cs ois = encode (serializeChoices cs) ++ injectTemplate xs qid prog code output cs ois
-      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':xs)             qid prog code output cs ois = code   ++ injectTemplate xs qid prog code output cs ois
-      injectTemplate ('<':'%':'o':'p':'t':'i':'o':'n':'s':'%':'>':xs) qid prog code output cs ois = encode ois ++ injectTemplate xs qid prog code output cs ois
-      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':xs)     qid prog code output cs ois = output ++ injectTemplate xs qid prog code output cs ois
-      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':xs)             qid prog code output cs ois = prog   ++ injectTemplate xs qid prog code output cs ois
-      injectTemplate ('<':'%':'q':'i':'d':'%':'>':xs)                 qid prog code output cs ois = qid    ++ injectTemplate xs qid prog code output cs ois
-      injectTemplate (x:xs)                                           qid prog code output cs ois = x : injectTemplate xs qid prog code output cs ois
+      injectTemplate []                                               qid prog code output ois = []
+      injectTemplate ('<':'%':'c':'o':'d':'e':'%':'>':xs)             qid prog code output ois = code   ++ injectTemplate xs qid prog code output ois
+      injectTemplate ('<':'%':'o':'p':'t':'i':'o':'n':'s':'%':'>':xs) qid prog code output ois = encode ois ++ injectTemplate xs qid prog code output ois
+      injectTemplate ('<':'%':'o':'u':'t':'p':'u':'t':'%':'>':xs)     qid prog code output ois = output ++ injectTemplate xs qid prog code output ois
+      injectTemplate ('<':'%':'p':'r':'o':'g':'%':'>':xs)             qid prog code output ois = prog   ++ injectTemplate xs qid prog code output ois
+      injectTemplate ('<':'%':'q':'i':'d':'%':'>':xs)                 qid prog code output ois = qid    ++ injectTemplate xs qid prog code output ois
+      injectTemplate (x:xs)                                           qid prog code output ois = x : injectTemplate xs qid prog code output ois
 
 executeCode :: IORef WNCache -- ^ Wikidata cache
             -> Database      -- ^ Database for wiki data
@@ -202,9 +199,9 @@ executeCode :: IORef WNCache -- ^ Wikidata cache
             -> ModuleName    -- ^ Name of the predef module to open
             -> Maybe String  -- ^ Ambient QID
             -> String        -- ^ Ambient language
-            -> ChoiceMap     -- ^ Initial choices (i.e. a program trace)
+            -> [(Choice,Int)]-- ^ Initial choices (i.e. a program trace)
             -> String        -- ^ Code snippet to execute
-            -> Either (String, String) ([([JSObject JSValue],[([String],ChoiceMap,JSValue)])],String)
+            -> Either (String, String) ([([JSObject JSValue],[([String],JSValue)])],String)
 executeCode cref db gr sgr mn mb_qid lang csInit code =
   case runLangP NLG pNLG (BS.pack code) of
     Left (Pn row col,msg) -> Left ("Parse Error", show row ++ ":" ++ show col ++ ":" ++ msg)
@@ -253,7 +250,7 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
           globals1 = Gl sgr' (wikiPredef cref db gr lang sgr')
           qident = (nlg_mn,identS "main")
 
-      res <- runEvalMWithOpts globals1 csInit $ do
+      res <- runEvalMWithInput globals1 csInit $ do
         g <- globals
         let (c1,c2) = split unit
         (term,res_ty) <- inferLType' (Q qident)
@@ -268,10 +265,10 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
         res_ty <- value2termM True [] res_ty
         res <- toRecord res_ty res
         return (toHeaders res_ty,res)
-      res <- forM res $ \((hs,r),cs,ois) -> do
+      res <- forM res $ \((hs,r),ois) -> do
         ois <- orFailM "No result while serializing option info" $
           listToMaybe <$> runEvalM globals1 (serializeOptionInfo ois)
-        return (hs,[(r,cs,ois)])
+        return (hs,[(r,ois)])
       return $ Map.toList (fmap reverse (Map.fromListWith (++) res))
 
     toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,ty) <- lbls]
@@ -324,14 +321,15 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
       | otherwise    = return (render (ppTerm Unqualified 0 t))
 
     serializeOptionInfo ois = do
-      rs <- forM ois $ \(OptionInfo c l os) -> do
+      rs <- forM ois $ \(OptionInfo c j l os) -> do
         l <- value2termM True [] l
         l <- fmap (linearize cnc) (toExpr [] l)
         os <- forM os $ \o -> do
           o   <- value2termM True [] o
           fmap (linearize cnc) (toExpr [] o)
-        return $ makeObj [ ("label"  , showJSON l)
-                         , ("choice" , showJSON (unchoice c))
+        return $ makeObj [ ("choice" , showJSON (unchoice c))
+                         , ("value"  , showJSON j)
+                         , ("label"  , showJSON l)
                          , ("options", showJSON os)
                          ]
       return $ JSArray rs
@@ -424,13 +422,10 @@ orFailE = either fail pure
 orFailErr (E.Ok a)    = return a
 orFailErr (E.Bad err) = fail err
 
-serializeChoices :: ChoiceMap -> JSValue
-serializeChoices cs = JSArray (Map.toList cs >>= \(c,i) -> [showJSON (unchoice c), showJSON i])
-
-deserializeChoices :: JSValue -> E.Err ChoiceMap
-deserializeChoices json = case readJSON json of
+deserializeInput :: JSValue -> E.Err [(Choice,Int)]
+deserializeInput json = case readJSON json of
   Error err -> E.Bad err
-  Ok cs     -> Map.fromList <$> parse cs
+  Ok cs     -> parse cs
   where
     parse []       = E.Ok []
     parse [x]      = E.Bad "Choice array must have even length!"

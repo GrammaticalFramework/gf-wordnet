@@ -119,21 +119,12 @@ function loadEntity(qid, name) {
     content.innerText = qid+": "+name;
 }
 
-function serializeChoices(obj) {
+function serializeInput(opts) {
     const arr = [];
-    for (const [c, i] of Object.entries(obj)) {
-        arr.push(parseInt(c, 10), i);
+    for (const oi of opts) {
+        arr.push(oi.choice, oi.value);
     }
     return arr;
-}
-
-function deserializeChoices(arr) {
-    if (arr.length % 2 !== 0) throw new Error(`Choice array must be of even length, but got ${arr.length}!`);
-    const opts = {};
-    for (let i = 0; i < arr.length; i += 2) {
-        opts[arr[i]] = arr[i + 1];
-    }
-    return opts;
 }
 
 class WNStateChangeEvent extends Event {
@@ -164,18 +155,18 @@ class WNClient extends EventTarget {
     setProgram(qid, lang, code) {
         switch (this.state.state) {
             case "initial":
-                this.revalidate(qid, lang, code, {}, {});
+                this.revalidate(qid, lang, code, []);
                 break;
             case "valid":
             case "interactive":
                 if (qid === this.state.qid && lang === this.state.lang && code === this.state.code) break;
-                this.revalidate(qid, lang, code, {}, {});
+                this.revalidate(qid, lang, code, []);
                 break;
             case "invalid":
                 if (qid === this.state.qid && lang === this.state.lang && code === this.state.code) {
-                    this.revalidate(qid, lang, code, this.state.choices, this.state.opts);
+                    this.revalidate(qid, lang, code, serializeInput(this.state.opts));
                 } else {
-                    this.revalidate(qid, lang, code, {}, {});
+                    this.revalidate(qid, lang, code, []);
                 }
                 break;
             default:
@@ -187,16 +178,10 @@ class WNClient extends EventTarget {
         switch (this.state.state) {
             case "valid":
             case "interactive":
-                const choices = deserializeChoices(record.choices);
-                const opts = {};
-                for (const oi of record.options) {
-                    opts[oi.choice] = choices[oi.choice] ?? 0;
-                    delete choices[oi.choice];
-                }
                 this.setState({
                     state: "interactive", headers, record,
                     qid: this.state.qid, lang: this.state.lang, code: this.state.code,
-                    choices, opts
+                    opts: record.options
                 });
                 break;
             default:
@@ -204,26 +189,36 @@ class WNClient extends EventTarget {
         }
     }
 
-    setOption(choice, index) {
+    setOption(choice, value) {
+        let index = -1;
+        for (let i in this.state.opts) {
+            if (this.state.opts[i].choice == choice) {
+                index = i;
+                break;
+            }
+        }
+        if (index < 0)
+            return;
+
         switch (this.state.state) {
             case "interactive":
-                if (!Object.hasOwn(this.state.opts, choice) || this.state.opts[choice] === index) break;
+                if (this.state.opts[index].value == value)
+                    break;
                 // falls through
             case "invalid":
-                const newOpts = {...this.state.opts};
-                newOpts[choice] = index;
-                // TODO delete dependent options
-                this.revalidate(this.state.qid, this.state.lang, this.state.code, this.state.choices, newOpts);
+                const input = serializeInput(this.state.opts);
+                input[2*index+1] = value;
+                this.revalidate(this.state.qid, this.state.lang, this.state.code, input);
                 break;
             default:
                 throw new Error(`Bad state: ${this.state.state}`);
         }
     }
 
-    revalidate(qid, lang, code, choices, opts) {
-        this.setState({ state: "waiting", qid, lang, code, choices, opts });
+    revalidate(qid, lang, code, input) {
+        this.setState({ state: "waiting", qid, lang, code, opts: [] });
         (async () => {
-            const request = { lang, code, choices: serializeChoices({ ...choices, ...opts }) };
+            const request = { lang, code, input: input };
             if (qid) request.qid = qid;
             const response = await fetch("FunctionsService.fcgi", {
                 method: "POST",
@@ -235,7 +230,7 @@ class WNClient extends EventTarget {
                 throw new Error(await response.text());
             }
         })().catch(error => {
-            this.setState({ state: "invalid", error, qid, lang, code, choices, opts });
+            this.setState({ state: "invalid", error, qid, lang, code, opts: [] });
         });
     }
 

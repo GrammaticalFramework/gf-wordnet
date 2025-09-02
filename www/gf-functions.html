@@ -432,14 +432,13 @@
                             optElems.push(optLbl);
 
                             const optBody = [];
-                            const selected = state.opts[opt.choice] || 0;
                             for (let i = 0; i < opt.options.length; i++) {
                                 const attrs = {"value": i};
-                                if (i === selected) attrs["selected"] = "selected";
+                                if (i === opt.value) attrs["selected"] = "selected";
                                 const valueElem = node("option", attrs, [text(opt.options[i])]);
                                 optBody.push(valueElem)
                             }
-                            const select = node("select", {value: selected}, optBody);
+                            const select = node("select", {}, optBody);
                             select.addEventListener("change", function() {
                                 client.setOption(opt.choice, Number(select.value));
                             });

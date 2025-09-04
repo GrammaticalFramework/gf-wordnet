@@ -175,7 +175,7 @@ pageService db gr mn sgr path rq cref = do
                                                      , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
                                                      , rspBody = case [row | (headers,(row:_)) <- res] of
                                                                    (fs,ois):_ -> injectTemplate html qid prog code_doc (concat fs) ois
-                                                                   []         -> injectTemplate html qid "" "" "No results" JSNull
+                                                                   []         -> injectTemplate html qid prog code_doc "No results" JSNull
                                                      })
     where
       dir = dropFileName path

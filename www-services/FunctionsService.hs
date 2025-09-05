@@ -166,16 +166,13 @@ pageService db gr mn sgr path rq cref = do
             case executeCode cref db gr sgr mn (Just qid) lang [] code of
               Left (err,msg)  -> return $ mkResponse 400 err "text/plain" msg
               Right (res,msg) -> do html <- readFile (dir </> html_file)
-                                    let code_doc =
-                                          case lookup "edit" query of
-                                            Just _  -> showXMLDoc (Data code)
-                                            Nothing -> ""
+                                    let code_doc = showXMLDoc (Data code)
                                     return (Response { rspCode = 200
                                                      , rspReason = "OK"
                                                      , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
                                                      , rspBody = case [row | (headers,(row:_)) <- res] of
                                                                    (fs,ois):_ -> injectTemplate html qid prog code_doc (concat fs) ois
-                                                                   []         -> injectTemplate html qid "" "" "No results" JSNull
+                                                                   []         -> injectTemplate html qid prog code_doc "No results" JSNull
                                                      })
     where
       dir = dropFileName path
@@ -364,6 +361,7 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
     toStr (Glue t1 t2) = do s1 <- toStr t1
                             s2 <- toStr t2
                             return (s1 ++ s2)
+    toStr GF.Grammar.Empty = return ""
     toStr _            = Nothing
 
     toXML (FV ts)      = msum (map return ts) >>= toXML
@@ -444,6 +442,7 @@ wikiPredef cref db pgf lang gr = Map.fromList
   , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
   , (identS "gendered_expr", pdArity 3 $\ \g c [ty,qid,gender] -> Const (get_gendered_expr lang c ty qid gender))
   , (identS "linearize", pdArity 3 $\ \g c [_,lang,t] -> liftA2 linearizeExpr (value2string g lang) (value2expr g [] t))
+  , (identS "inflect", pdArity 3 $\ \g c [ty,lang,t] -> liftA2 (inflectExpr ty) (value2string g lang) (value2expr g [] t))
   , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
   , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
   , (identS "compareInt", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2int g v1) (value2int g v2)))
@@ -535,7 +534,29 @@ wikiPredef cref db pgf lang gr = Map.fromList
       where
         cnc_name = "Parse"++map toUpper (take 1 lang)++drop 1 lang
 
+    inflectExpr ty@(VApp _ (MN m,cat) []) lang e =
+      case language pgf cnc_name of
+        Just cnc
+          | showIdent m == abstractName pgf &&
+            hasLinearization cnc fn ->
+                    case concat [map xml2value (parseXML s) | ("s2",s) <- tabularLinearize cnc (EApp (EFun fn) e)] of
+                      []  -> VEmpty
+                      [v] -> v
+                      vs  -> VMarkup identW [] vs
+          | otherwise -> VError ("No linearization table available for type" <+> ppValue Unqualified 0 ty)
+        Nothing  -> VError (pp ("Language "++cnc_name++" is not available"))
+      where
+        fn = "Inflection" ++ showIdent cat
+        cnc_name = "Parse"++map toUpper (take 1 lang)++drop 1 lang
+    inflectExpr ty lang e =
+      VError ("No linearization table available for type" <+> ppValue Unqualified 0 ty)
+
     globals0 = Gl gr Map.empty
+
+    xml2value (Data s) = string2value s
+    xml2value (Tag n as children) = VMarkup (identS n) [] (map xml2value children)
+    xml2value (ETag n as) = VMarkup (identS n) [] []
+    xml2value GF.Data.XML.Empty = VEmpty
 
     toTerm :: [Ident] -> ModuleName -> Expr -> Term
     toTerm scope l t = case t of 

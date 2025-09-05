@@ -13,6 +13,7 @@ oper expr   : ({a} : Type) -> Str -> a = variants {} ;
 oper gendered_expr : ({a} : Type) -> Str -> Str -> a = variants {} ;
 
 oper linearize : ({a} : Type) -> Str -> a -> Str = variants {} ;
+oper inflect : ({a} : Type) -> Str -> a -> Markup = variants {} ;
 
 oper int2digits  : Int -> Digits = variants {} ;
 oper int2decimal : Int -> Decimal = variants {} ;

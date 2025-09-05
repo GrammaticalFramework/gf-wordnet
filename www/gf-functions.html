@@ -45,9 +45,9 @@
     </head>
     <body>
 
-        <table style="width: 100%"><tr>
+        <table><tr>
             
-        <td><table id="from" class="multiselect">
+        <td><table id="from" class="multiselect" style="float: left">
             <thead>
                 <tr onclick="showCheckboxes(this.parentNode.parentNode)"><th>English</th><th><img src="triangle.png"></th></tr>
             </thead>
@@ -319,11 +319,12 @@
                 <tr><td onclick="changeItem(event,this)" data-alt="Standard Malay">Standard Malay</td><td><input type="checkbox" name="ParseZsm"/></td></tr>
                 <tr><td onclick="changeItem(event,this)" data-alt="Bantu">Zulu</td><td><input type="checkbox" name="ParseZul"/></td></tr>
             </tbody>
-        </table></td>
+        </table>
 
-        <td><button id="eval" style="float: right">Eval</button></td>
+        <button id="eval" style="float: right">Eval</button>
         
-        <td><form class="search-box">
+        <td>&nbsp;&nbsp;
+        <form class="search-box" style="position: absolute; top: 10px">
             <input class="search-box-input" type="search" name="search"
                    placeholder="Search Entity" aria-label="Search Entity"
                    autocapitalize="sentences" title="Search Entity" id="searchInput"
@@ -338,14 +339,14 @@
 
         </tr>
 
-        <tr><td id='editor' colspan=2></td></tr>
+        <tr><td><div id="editor" style="width: 800pt; max-width: 800pt"></div></td></tr>
         <tr>
-            <td colspan=2><div id='output' style="width: 500px; height: 300px"></div></td>
-            <td colspan=2 style="vertical-align: top"><div id="options"></div></td>
+            <td><div id='output' style="height: 300px"></div></td>
+            <td style="vertical-align: top"><div id="options"></div></td>
         </tr>
-        <tr><td colspan=><div id='msgs' style="width: 500px"></div></td></tr>
         </table>
 
+        <div id='msgs'></div>
         
 
         <script>
@@ -426,7 +427,6 @@
                         elemOpts.innerHTML = "";
                         renderGroup({ headers: state.headers, dataset: [state.record] });
                         const optElems = [];
-                        const validOptChoices = new Set();
                         for (const opt of state.record.options) {
                             const optLbl = node("div", { "class": "option-header" }, [node("b", {}, [text(opt.label)])]);
                             optElems.push(optLbl);

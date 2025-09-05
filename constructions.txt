@@ -56,3 +56,13 @@ key: Q712226
 
 abs: AdjCN (PositA square_1_A) (UseN kilometre_1_N)
 key: Q712226
+
+abs: UseN (CompoundN square_1_N mile_1_N)
+fre: mille carré
+spa: milla de cuadrado
+swe: kvadratmil
+fin: neliömaili
+key: Q232291
+
+abs: AdjCN (PositA square_1_A) (UseN mile_1_N)
+key: Q232291

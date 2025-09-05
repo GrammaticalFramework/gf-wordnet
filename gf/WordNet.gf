@@ -437,9 +437,9 @@ oper
 -- A verb phrase can be modified with a postverbal or a preverbal adverb.
 
       mkVP : VP -> Adv -> VP          -- sleep here   --:
-      = \vp,adv -> [default: vp | AdvVP vp adv]     ; --%
+      = \vp,adv -> AdvVP vp adv ; --%
       mkVP : AdV -> VP -> VP          -- always sleep   --:
-      = \adv,vp -> [default: vp | AdVVP adv vp] ; --%
+      = \adv,vp -> AdVVP adv vp ; --%
 
 -- Objectless verb phrases can be taken to verb phrases in two ways.
 
@@ -452,6 +452,14 @@ oper
         = UseComp ; --%
 
       } ; --%
+
+    mkVP' = overload {
+-- A verb phrase can be modified with a postverbal or a preverbal adverb.
+      mkVP' : VP -> Adv -> VP          -- sleep here   --:
+      = \vp,adv -> [default: vp | AdvVP vp adv]     ; --%
+      mkVP' : AdV -> VP -> VP          -- always sleep   --:
+      = \adv,vp -> [default: vp | AdVVP adv vp] ; --%
+    } ; --%
 
 -- Two-place verbs can be used reflexively, and VPSlash more generally.
     reflexiveVP = overload { --%
@@ -588,11 +596,11 @@ oper
 -- suffixed by a past participle or an adverb.
 
       mkNP : Predet -> NP -> NP  -- only the man --:
-      = \pd,np -> [default: np | PredetNP pd np] ; --%
+      = \pd,np -> PredetNP pd np ; --%
       mkNP : NP -> Adv -> NP     -- Paris today --:
-      = \np,adv -> [default: np | AdvNP np adv] ; --%
+      = \np,adv -> AdvNP np adv ; --%
       mkNP : NP -> RS -> NP      -- John, who walks --:
-      = \np,rs -> [default: np | RelNP np rs] ; --%
+      = \np,rs -> RelNP np rs ; --%
 
 -- A conjunction can be formed both from two noun phrases and a longer
 -- list of them.
@@ -606,35 +614,48 @@ oper
 
       } ; --%
 
+    mkNP' = overload {
+-- A noun phrase once formed can be prefixed by a predeterminer and
+-- suffixed by a past participle or an adverb.
+
+      mkNP' : Predet -> NP -> NP  -- only the man --:
+      = \pd,np -> [default: np | PredetNP pd np] ; --%
+      mkNP' : NP -> Adv -> NP     -- Paris today --:
+      = \np,adv -> [default: np | AdvNP np adv] ; --%
+      mkNP' : NP -> RS -> NP      -- John, who walks --:
+      = \np,rs -> [default: np | RelNP np rs] ; --%
+
+    } ; --%
+
 -- Pronouns can be used as noun phrases.
 
-      i_NP : NP          -- I
+    i_NP : NP          -- I
       = mkNP i_Pron ;
-      you_NP : NP        -- you (singular)
+    you_NP : NP        -- you (singular)
       = mkNP youSg_Pron ;
-      youPol_NP : NP     -- you (polite singular)
+    youPol_NP : NP     -- you (polite singular)
       = mkNP youPol_Pron ;
-      he_NP : NP         -- he
+    he_NP : NP         -- he
       = mkNP he_Pron ;
-      she_NP : NP        -- she
+    she_NP : NP        -- she
       = mkNP she_Pron ;
-      it_NP : NP         -- it
+    it_NP : NP         -- it
       = mkNP it_Pron ;
-      we_NP : NP         -- we
+    we_NP : NP         -- we
       = mkNP we_Pron ;
-      youPl_NP : NP      -- you (plural)
+    youPl_NP : NP      -- you (plural)
       = mkNP youPl_Pron ;
-      they_NP : NP       -- they
+    they_NP : NP       -- they
       = mkNP they_Pron ;
 
     this_NP : NP -- this
-    = UseDAP (DetDAP (DetQuant this_Quant NumSg)) ;  --%
+      = UseDAP (DetDAP (DetQuant this_Quant NumSg)) ;  --%
     that_NP : NP -- that
-    = UseDAP (DetDAP (DetQuant that_Quant NumSg)) ;  --%
+      = UseDAP (DetDAP (DetQuant that_Quant NumSg)) ;  --%
     these_NP : NP
-    = UseDAP (DetDAP (DetQuant this_Quant NumPl)) ;  --%
+      = UseDAP (DetDAP (DetQuant this_Quant NumPl)) ;  --%
     those_NP : NP
-    = UseDAP (DetDAP (DetQuant that_Quant NumPl)) ;  --%
+      = UseDAP (DetDAP (DetQuant that_Quant NumPl)) ;  --%
 
 
 --3 Det, determiners
@@ -822,35 +843,35 @@ oper
       mkCN :  A ->  N  -> CN     -- big house
       = \x,y -> AdjCN (PositA x) (UseN y) ; --%
       mkCN :  A -> CN  -> CN     -- big blue house
-      = \x,y -> [default: y | AdjCN (PositA x) y] ; --%
+      = \x,y -> AdjCN (PositA x) y ; --%
       mkCN : AP ->  N  -> CN     -- very big house
       = \x,y -> AdjCN x (UseN y) ; --%
       mkCN : AP -> CN  -> CN     -- very big blue house
-      = \x,y -> [default: y | AdjCN x y]  ; --%
+      = \x,y -> AdjCN x y  ; --%
 
 -- A common noun phrase can be modified by a relative clause or an adverb.
 
       mkCN :  N -> RS  -> CN     -- house that she owns
       = \x,y -> RelCN (UseN x) y   ; --%
       mkCN : CN -> RS  -> CN     -- big house that she loves --:
-      = \x,y -> [default: x | RelCN x y] ; --%
+      = \x,y -> RelCN x y ; --%
       mkCN :  N -> Adv -> CN     -- house on the hill
       = \x,y -> AdvCN (UseN x) y  ; --%
       mkCN : CN -> Adv -> CN     -- big house on the hill
-      = \x,y -> [default: x | AdvCN x y]  ; --%
+      = \x,y -> AdvCN x y ; --%
 
 -- For some nouns it makes sense to modify them by sentences,
 -- questions, or infinitives. But syntactically this is possible for
 -- all nouns.
 
       mkCN : CN -> S   -> CN     -- rule that she sleeps
-      = \cn,s -> [default: cn | SentCN cn (EmbedS s)] ; --%
+      = \cn,s -> SentCN cn (EmbedS s) ; --%
       mkCN : CN -> QS  -> CN     -- question if she sleeps
-      = \cn,s -> [default: cn | SentCN cn (EmbedQS s)] ; --%
+      = \cn,s -> SentCN cn (EmbedQS s) ; --%
       mkCN : CN -> VP  -> CN     -- reason to sleep
-      = \cn,s -> [default: cn | SentCN cn (EmbedVP ASimul PPos it_Pron s)] ; --%
+      = \cn,s -> SentCN cn (EmbedVP ASimul PPos it_Pron s) ; --%
       mkCN : CN -> SC  -> CN     -- reason to sleep --:
-      = \cn,s -> [default: cn | SentCN cn s] ; --%
+      = \cn,s -> SentCN cn s ; --%
 
 -- A noun can be used in apposition to a noun phrase, especially a proper name.
 
@@ -863,6 +884,42 @@ oper
 
       } ; --%
 
+    mkCN' = overload { --%
+-- A common noun phrase can be modified by an adjectival phrase. We give special
+-- cases of this, where one or both of the arguments are atomic.
+
+      mkCN' :  A -> CN  -> CN     -- big blue house
+      = \x,y -> [default: y | AdjCN (PositA x) y] ; --%
+      mkCN' : AP ->  N  -> CN     -- very big house
+      = \x,y -> [default: (UseN y) | AdjCN x (UseN y)] ; --%
+      mkCN' : AP -> CN  -> CN     -- very big blue house
+      = \x,y -> [default: y | AdjCN x y]  ; --%
+
+-- A common noun phrase can be modified by a relative clause or an adverb.
+
+      mkCN' :  N -> RS  -> CN     -- house that she owns
+      = \x,y -> [default: (UseN x) | RelCN (UseN x) y] ; --%
+      mkCN' : CN -> RS  -> CN     -- big house that she loves --:
+      = \x,y -> [default: x | RelCN x y] ; --%
+      mkCN' :  N -> Adv -> CN     -- house on the hill
+      = \x,y -> [default: (UseN x) | AdvCN (UseN x) y]  ; --%
+      mkCN' : CN -> Adv -> CN     -- big house on the hill
+      = \x,y -> [default: x | AdvCN x y]  ; --%
+
+-- For some nouns it makes sense to modify them by sentences,
+-- questions, or infinitives. But syntactically this is possible for
+-- all nouns.
+
+      mkCN' : CN -> S   -> CN     -- rule that she sleeps
+      = \cn,s -> [default: cn | SentCN cn (EmbedS s)] ; --%
+      mkCN' : CN -> QS  -> CN     -- question if she sleeps
+      = \cn,s -> [default: cn | SentCN cn (EmbedQS s)] ; --%
+      mkCN' : CN -> VP  -> CN     -- reason to sleep
+      = \cn,s -> [default: cn | SentCN cn (EmbedVP ASimul PPos it_Pron s)] ; --%
+      mkCN' : CN -> SC  -> CN     -- reason to sleep --:
+      = \cn,s -> [default: cn | SentCN cn s] ; --%
+
+      } ; --%
 
 --2 Adjectives and adverbs
 
@@ -903,7 +960,7 @@ oper
       mkAP : AdA -> A -> AP   -- very old
       =\x,y -> AdAP x (PositA y) ; --%
       mkAP : AdA -> AP -> AP   -- very very old  --:
-      = \ada,ap -> [default: ap | AdAP ada ap] ; --%
+      = \ada,ap -> AdAP ada ap ; --%
 
 -- Conjunction can be formed from two or more adjectival phrases.
 
@@ -918,9 +975,33 @@ oper
       = \adv,ap,np -> CAdvAP PPos adv ap (CompNP np) ; --%
       } ; --%
 
-      reflAP   : A2 -> AP             -- married to himself --:
+    mkAP' = overload { --%
+
+-- Some adjectival phrases can take as complements sentences,
+-- questions, or infinitives. Syntactically this is possible for
+-- all adjectives.
+
+      mkAP' : AP -> S -> AP    -- probable that she sleeps
+      =  \ap,s -> [default: ap | SentAP ap (EmbedS s)] ; --%
+      mkAP' : AP -> QS -> AP    -- uncertain if she sleeps
+      =  \ap,s -> [default: ap | SentAP ap (EmbedQS s)] ; --%
+      mkAP' : AP -> VP -> AP    -- ready to go
+      =  \ap,s -> [default: ap | SentAP ap (EmbedVP ASimul PPos it_Pron s)] ; --%
+      mkAP' : AP -> SC -> AP    -- ready to go --:
+      =  \ap,s -> [default: ap | SentAP ap s] ; --%
+
+-- An adjectival phrase can be modified by an adadjective.
+
+      mkAP' : AdA -> A -> AP   -- very old
+      =\x,y -> [default: (PositA y) | AdAP x (PositA y)] ; --%
+      mkAP' : AdA -> AP -> AP   -- very very old  --:
+      = \ada,ap -> [default: ap | AdAP ada ap] ; --%
+
+    } ; --%
+
+    reflAP   : A2 -> AP             -- married to himself --:
       = \a -> ReflA2 a ReflPron ; --%
-      comparAP : A -> AP              -- warmer
+    comparAP : A -> AP              -- warmer
       = UseComparA ; --%
 
 --3 Adv, adverbial phrases

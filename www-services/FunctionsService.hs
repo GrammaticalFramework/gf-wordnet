@@ -166,10 +166,7 @@ pageService db gr mn sgr path rq cref = do
             case executeCode cref db gr sgr mn (Just qid) lang [] code of
               Left (err,msg)  -> return $ mkResponse 400 err "text/plain" msg
               Right (res,msg) -> do html <- readFile (dir </> html_file)
-                                    let code_doc =
-                                          case lookup "edit" query of
-                                            Just _  -> showXMLDoc (Data code)
-                                            Nothing -> ""
+                                    let code_doc = showXMLDoc (Data code)
                                     return (Response { rspCode = 200
                                                      , rspReason = "OK"
                                                      , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]

@@ -3,6 +3,7 @@ concrete ParseSqi of Parse =
   AdjectiveSqi - [ReflA2,CAdvAP,AdjOrd],
   PhraseSqi,
   ParseExtendSqi,
+  TenseX,
   WordNetSqi,
   DocumentationSqi ** {
 

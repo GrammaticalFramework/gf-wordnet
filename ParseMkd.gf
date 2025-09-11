@@ -1,4 +1,6 @@
 concrete ParseMkd of Parse = 
+  PhraseMkd,
+  TenseX,
   WordNetMkd,
   DocumentationMkd ** {
 

@@ -1,4 +1,6 @@
 concrete ParseKaz of Parse = 
+  PhraseKaz,
+  TenseX,
   WordNetKaz,
   DocumentationKaz ** {
 

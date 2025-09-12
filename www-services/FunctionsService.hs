@@ -166,7 +166,7 @@ pageService db gr mn sgr path rq cref = do
       
       get_script_name config mb_main_prog qid = do
         let entity_path = "entities/"++qid++".gf"
-        yes <- doesFileExist entity_path
+        yes <- doesFileExist (dir </> entity_path)
         if yes
           then return (Just entity_path)
           else do rsp <- wikidataEntity cref qid

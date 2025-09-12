@@ -147,12 +147,14 @@ functionsService db gr mn sgr rq cref = do
 
 pageService :: Database -> PGF -> ModuleName -> SourceGrammar -> FilePath -> Request -> IORef WNCache -> IO Response
 pageService db gr mn sgr path rq cref = do
-  (html_file,config) <- fmap read (readFile path)
+  (html_file,config,mb_main_prog) <- fmap read (readFile path)
   html <- readFile (dir </> html_file)
   let query = rqQuery rq
       lang  = fromMaybe "ParseEng" (lookup "lang" query)
   case lookup "qid" query of
-    Nothing  -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "" JSNull)
+    Nothing  -> case mb_main_prog of
+                  Nothing   -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "" JSNull)
+                  Just prog -> executeProg html_file lang Nothing prog
     Just qid -> do
       rsp <- wikidataEntity cref qid
       case rsp >>= get_classes of
@@ -160,22 +162,24 @@ pageService db gr mn sgr path rq cref = do
         Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
           []       -> let err = "There is no renderer defined for classes " ++ unwords classes
                       in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err JSNull)
-          (prog:_) -> do
-            code <- readFile (dir </> prog)
-            cleanUpCache cref
-            case executeCode cref db gr sgr mn (Just qid) lang [] code of
-              Left (err,msg)  -> return $ mkResponse 400 err "text/plain" msg
-              Right (res,msg) -> do html <- readFile (dir </> html_file)
-                                    let code_doc = showXMLDoc (Data code)
-                                    return (Response { rspCode = 200
-                                                     , rspReason = "OK"
-                                                     , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
-                                                     , rspBody = case [row | (headers,(row:_)) <- res] of
-                                                                   (fs,ois):_ -> injectTemplate html qid prog code_doc (concat fs) ois
-                                                                   []         -> injectTemplate html qid prog code_doc "No results" JSNull
-                                                     })
+          (prog:_) -> executeProg html_file lang (Just qid) prog
     where
       dir = dropFileName path
+
+      executeProg html_file lang mb_qid prog = do
+        code <- readFile (dir </> prog)
+        cleanUpCache cref
+        case executeCode cref db gr sgr mn mb_qid lang [] code of
+          Left (err,msg)  -> return $ mkResponse 400 err "text/plain" msg
+          Right (res,msg) -> do html <- readFile (dir </> html_file)
+                                let code_doc = showXMLDoc (Data code)
+                                return (Response { rspCode = 200
+                                                 , rspReason = "OK"
+                                                 , rspHeaders = [Header HdrContentType "text/html; charset=UTF8"]
+                                                 , rspBody = case [row | (headers,(row:_)) <- res] of
+                                                               (fs,ois):_ -> injectTemplate html (fromMaybe "" mb_qid) prog code_doc (concat fs) ois
+                                                               []         -> injectTemplate html (fromMaybe "" mb_qid) prog code_doc "No results" JSNull
+                                                 })
 
       get_classes json = do
         vals <- (valFromObj "claims" >=> valFromObj "P31") json

@@ -14,6 +14,7 @@ import Data.Time.Format(defaultTimeLocale,rfc822DateFormat)
 import qualified Data.Map as Map
 import Database.Daison
 import PGF2
+import PGF2.Transactions
 import GF.Compile
 import GF.Infra.Option
 import SenseService
@@ -59,13 +60,16 @@ httpMain db gr bigram_total mn sgr doc_dir client_secret stref conn = do
                     -> do rsp <- contentService db client_secret rq
                           respondHTTP conn rsp
       | path == "/FunctionsService.fcgi"
-                   -> do rsp <- functionsService db gr mn sgr rq stref
+                   -> do gr <- checkoutPGF gr
+                         rsp <- functionsService db gr mn sgr rq stref
                          respondHTTP conn rsp
       | path == "/index.wsgi"
-                   -> do rsp <- pageService db gr mn sgr (doc_dir</>"gf-wikidata.wiki") rq stref
+                   -> do gr <- checkoutPGF gr
+                         rsp <- pageService db gr mn sgr (doc_dir</>"gf-wikidata.wiki") rq stref
                          respondHTTP conn rsp
       | takeExtension path == ".wiki"
-                   -> do rsp <- pageService db gr mn sgr (doc_dir</>tail path) rq stref
+                   -> do gr <- checkoutPGF gr
+                         rsp <- pageService db gr mn sgr (doc_dir</>tail path) rq stref
                          respondHTTP conn rsp
       | otherwise  -> respondHTTP conn (Response
                                           { rspCode = 400

@@ -66,3 +66,9 @@ key: Q232291
 
 abs: AdjCN (PositA square_1_A) (UseN mile_1_N)
 key: Q232291
+
+abs: AdjCN (PositA open_11_A) (UseN set_2_N)
+key: Q213363
+
+abs: AdjCN (PositA closed_2_A) (UseN set_2_N)
+key: Q320357

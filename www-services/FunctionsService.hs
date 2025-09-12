@@ -445,13 +445,12 @@ wikiPredef cref db pgf lang gr = Map.fromList
   , (identS "inflect", pdArity 3 $\ \g c [ty,lang,t] -> liftA2 (inflectExpr ty) (value2string g lang) (value2expr g [] t))
   , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
   , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
-  , (identS "compareInt", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2int g v1) (value2int g v2)))
+  , (identS "compare", pdArity 3 $\ \g c [_,v1,v2] -> fmap (toOrdering c) (compareValue g v1 v2))
   , (identS "plusInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (+) (value2int g v1) (value2int g v2)))
   , (identS "minusInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (-) (value2int g v1) (value2int g v2)))
   , (identS "mulInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (*) (value2int g v1) (value2int g v2)))
   , (identS "divInt", pdArity 2 $\ \g c [v1,v2] -> liftA2 div' (value2int g v1) (value2int g v2))
   , (identS "modInt", pdArity 2 $\ \g c [v1,v2] -> liftA2 mod' (value2int g v1) (value2int g v2))
-  , (identS "compareFloat", pdArity 2 $\ \g c [v1,v2] -> fmap (toOrdering c) (liftA2 compare (value2float g v1) (value2float g v2)))
   , (identS "plusFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (+) (value2float g v1) (value2float g v2)))
   , (identS "minusFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (-) (value2float g v1) (value2float g v2)))
   , (identS "mulFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (*) (value2float g v1) (value2float g v2)))
@@ -584,6 +583,17 @@ wikiPredef cref db pgf lang gr = Map.fromList
     mod' m n
       | n /= 0    = VInt (m `mod` n)
       | otherwise = VError (pp "Division by zero")
+
+    compareValue g (VMeta i vs)     v2 = CSusp i (\v -> compareValue g (apply g v vs) v2)
+    compareValue g (VSusp i k vs)   v2 = CSusp i (\v -> compareValue g (apply g (k v) vs) v2)
+    compareValue g (VFV s vs)       v2 = CFV s (mapVariants (\v1 -> compareValue g v1 v2) vs)
+    compareValue g v1     (VMeta i vs) = CSusp i (\v -> compareValue g v1 (apply g v vs))
+    compareValue g v1   (VSusp i k vs) = CSusp i (\v -> compareValue g v1 (apply g (k v) vs))
+    compareValue g v1       (VFV s vs) = CFV s (mapVariants (\v2 -> compareValue g v1 v2) vs)
+    compareValue g (VInt n1) (VInt n2) = Const (compare n1 n2)
+    compareValue g (VFlt d1) (VFlt d2) = Const (compare d1 d2)
+    compareValue g (VStr s1) (VStr s2) = Const (compare s1 s2)
+    compareValue g _                 _ = RunTime
 
 i2i2 = identS
 

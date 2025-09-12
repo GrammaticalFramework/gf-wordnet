@@ -1487,12 +1487,12 @@ oper
 -- numerals from strings
 
 oper
-  int2ord : Int -> Ord = \n -> case compareInt n 1000000 of {
+  int2ord : Int -> Ord = \n -> case compare n 1000000 of {
     LT => OrdNumeral (int2numeral n) ;
     _  => OrdDigits (int2digits n)
     } ;
 
-  int2card : Int -> Card = \n -> case compareInt n 1000000 of {
+  int2card : Int -> Card = \n -> case compare n 1000000 of {
     LT => NumNumeral (int2numeral n) ;
     _  => NumDecimal (int2decimal n)
     } ;

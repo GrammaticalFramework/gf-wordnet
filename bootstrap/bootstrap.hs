@@ -15,10 +15,10 @@ import Text.EditDistance       -- pkg edit-distance
 import Network.HTTP hiding (close)
 
 main = do
-  gr      <- status "Loading grammar" $ readNGF "Parse.ngf"
+  gr      <- status "Loading grammar" $ readNGF "/usr/local/share/x86_64-linux-ghc-9.4.7/gf-4.0.0/www/Parse.ngf"
   state   <- status "Loading synsets" $ readWordNetAbstract "WordNet.gf"
   state   <- foldM (readWordNetConcrete gr) state
-                     (Map.delete "ParseAPI" (languages gr))
+                     [lang | cnc <- words "ParseAfr ParseBul ParseCat ParseChi ParseDan ParseDut ParseEng ParseEst ParseFin ParseFre ParseGer ParseIce ParseIta ParseKaz ParseKor ParseLav ParseMkd ParseMlt ParseNor ParseNno ParsePol ParsePor ParseRon ParseRus ParseSlv ParseSom ParseSpa ParseSqi ParseSwa ParseSwe ParseTha ParseTur", Just lang <- [language gr cnc]]
   wn30v31 <- status "Loading WordNet 3.0 to 3.1 map" $ readWN30V31Mapping "bootstrap/wn30map31.txt"
   state   <- readOpenMultiWordNet wn30v31 state
   state   <- status "Loading Wikidata labels" $ readWikidataLabels state
@@ -29,13 +29,15 @@ main = do
   let predictions_fname = "data/predictions.tsv"
   status "Making predictions" $ do    
     let state2 = selectBest state
-    writeFile predictions_fname
-              (unlines
+    h <- openFile predictions_fname WriteMode
+    mkTextEncoding "UTF-8//IGNORE" >>= hSetEncoding h
+    hPutStr h (unlines
                  [intercalate "\t" [fn,cnc,lin,show (o,s,w,l,c,d)]
                     | (fn,(_,cnc_lins)) <- Map.toList state2
                     , (cnc,lins) <- Map.toList cnc_lins
                     , (lin,o,s,w,l,c,d) <- lins
                  ])
+    hClose h
   hPutStrLn stderr ("Predictions stored in "++predictions_fname)
 
 readWordNetAbstract fname = do
@@ -169,14 +171,14 @@ addCoOccurrenceCount wordnet state = do
               in (lin,o,s,w,l,c)
   
 readWikidataLabels state = do
-  let rq = insertHeader HdrAccept "text/tab-separated-values" $
-           insertHeader HdrUserAgent "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36" $
-           getRequest "https://query.wikidata.org/sparql?query=SELECT%20%3Fsynset%20%3Flabel%20WHERE%20%7B%20%3Fitem%20wdt%3AP8814%20%3Fsynset.%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20%7D"
-  res1 <- fmap (drop 1 . lines . rspBody) $ simpleHTTP rq
-  let rq = insertHeader HdrAccept "text/tab-separated-values" $
-           insertHeader HdrUserAgent "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36" $
-           getRequest "https://query.wikidata.org/sparql?query=SELECT%20%3Fsynset%20%3Flabel%20WHERE%20%7B%20%3Fitem%20wdt%3AP8814%20%3Fsynset.%20%3Fitem%20skos%3AaltLabel%20%3Flabel.%20%7D"
-  res2 <- fmap (drop 1 . lines . rspBody) $ simpleHTTP rq
+--  let rq = insertHeader HdrAccept "text/tab-separated-values" $
+--           insertHeader HdrUserAgent "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36" $
+--           getRequest "https://query.wikidata.org/sparql?query=SELECT%20%3Fsynset%20%3Flabel%20WHERE%20%7B%20%3Fitem%20wdt%3AP8814%20%3Fsynset.%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20%7D"
+  res1 <- fmap (drop 1 . lines) $ readFile "sparql (10)"
+--  let rq = insertHeader HdrAccept "text/tab-separated-values" $
+--           insertHeader HdrUserAgent "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36" $
+--           getRequest "https://query.wikidata.org/sparql?query=SELECT%20%3Fsynset%20%3Flabel%20WHERE%20%7B%20%3Fitem%20wdt%3AP8814%20%3Fsynset.%20%3Fitem%20skos%3AaltLabel%20%3Flabel.%20%7D"
+  res2 <- fmap (drop 1 . lines) $ readFile "sparql (11)"
   let labels = parseLabels (res1++res2)
   state' <- mapM (addLabels labels) state
   return state'
@@ -198,6 +200,7 @@ readWikidataLabels state = do
       where
         match ('"':'@':lang) s = (reverse (trim s), lang)
         match (c:cs)         s = match cs (c:s)
+        match []             s = error l
 
         trim s =
           case break (\c -> elem c ("(,/\\"::String)) s of

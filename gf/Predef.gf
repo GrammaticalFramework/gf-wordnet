@@ -24,13 +24,12 @@ oper time2adv : Time -> Adv = variants {} ;
 
 oper lang : Str = variants {} ;
 
-oper compareInt : Int -> Int -> Ordering = variants {} ;
+oper compare : ({A} : Type) -> A -> A -> Ordering = variants {} ;
 oper plusInt : Int -> Int -> Int = variants {} ;
 oper minusInt : Int -> Int -> Int = variants {} ;
 oper mulInt : Int -> Int -> Int = variants {} ;
 oper divInt : Int -> Int -> Int = variants {} ;
 oper modInt : Int -> Int -> Int = variants {} ;
-oper compareFloat : Float -> Float -> Ordering = variants {} ;
 oper plusFloat : Float -> Float -> Float = variants {} ;
 oper minusFloat : Float -> Float -> Float = variants {} ;
 oper mulFloat : Float -> Float -> Float = variants {} ;

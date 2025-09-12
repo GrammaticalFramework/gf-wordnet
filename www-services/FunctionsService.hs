@@ -156,15 +156,25 @@ pageService db gr mn sgr path rq cref = do
                   Nothing   -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "" JSNull)
                   Just prog -> executeProg html_file lang Nothing prog
     Just qid -> do
-      rsp <- wikidataEntity cref qid
-      case rsp >>= get_classes of
-        Error msg  -> return $ mkResponse 400 "FAIL" "text/plain" msg
-        Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
-          []       -> let err = "There is no renderer defined for classes " ++ unwords classes
-                      in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err JSNull)
-          (prog:_) -> executeProg html_file lang (Just qid) prog
+      mb_prog <- get_script_name config mb_main_prog qid
+      case mb_prog of
+        Just prog -> executeProg html_file lang (Just qid) prog
+        Nothing   -> let err = "There is no renderer defined for " ++ qid
+                     in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err JSNull) 
     where
       dir = dropFileName path
+      
+      get_script_name config mb_main_prog qid = do
+        let entity_path = "entities/"++qid++".gf"
+        yes <- doesFileExist entity_path
+        if yes
+          then return (Just entity_path)
+          else do rsp <- wikidataEntity cref qid
+                  case rsp >>= get_classes of
+                    Error msg  -> return mb_main_prog
+                    Ok classes -> case [prog | cls <- classes, (cls',prog) <- config :: [(String,String)], cls==cls'] of
+                                    []       ->return mb_main_prog
+                                    (prog:_) -> return (Just prog)
 
       executeProg html_file lang mb_qid prog = do
         code <- readFile (dir </> prog)

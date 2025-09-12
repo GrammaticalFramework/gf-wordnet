@@ -973,6 +973,9 @@ oper
 
       mkAP : CAdv -> AP -> NP -> AP   -- as old as she
       = \adv,ap,np -> CAdvAP PPos adv ap (CompNP np) ; --%
+
+      mkAP : AP -> Adv -> AP   -- near to it
+      = AdvAP ; --%
       } ; --%
 
     mkAP' = overload { --%

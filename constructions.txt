@@ -72,3 +72,6 @@ key: Q213363
 
 abs: AdjCN (PositA closed_2_A) (UseN set_2_N)
 key: Q320357
+
+abs: AdjCN (PositA mathematical_1_A) (UseN theory_1_N)
+key: Q20026918

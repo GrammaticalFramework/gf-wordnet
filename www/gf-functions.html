@@ -355,6 +355,8 @@
             
             const editor = CodeMirror(document.getElementById('editor'),{lineNumbers: true, mode: "haskell", matchBrackets: true});
             editor.setSize(null,  300);
+            editor.addKeyMap({"Ctrl-Space": wordnet_search});
+            editor.addKeyMap({"Ctrl-S": test});
 
             const elemMsgs = document.getElementById("msgs");
             const elemOut = document.getElementById("output");
@@ -459,7 +461,56 @@
                 client.setProgram(content.dataset.qid, selection.current, editor.getValue());
             }
 
+            function wordnet_search(cm)
+            {
+                const selection = getMultiSelection(element('from'));
+                var lemma = cm.getSelection();
+
+                var search_popup = element("search_popup");
+                var viewport = element("editor").getBoundingClientRect();
+                search_popup.style.top     = viewport.top+"px";
+                search_popup.style.left    = viewport.left+"px";
+                search_popup.style.display = "block";
+
+                function close_popup() {
+                    search_popup.innerHtml = "";
+                    search_popup.style.display = "none";
+                    delete(window.onkeyup);
+                    delete(window.onclick);
+                }
+                window.onkeyup = function (event) {
+                    if (event.keyCode == 27) {
+                        close_popup();
+                    }
+                }
+                window.onclick = close_popup
+                search_popup.onclick = function (event) {
+                    event.stopPropagation();
+                }
+
+                gfwordnet.can_select=true;
+                gfwordnet.onclick_select = function(row) {
+                    var lex_id = row.getAttribute("data-lex-id");
+                    cm.replaceSelection(lex_id);
+                    cm.focus();
+                    close_popup();
+                }
+                gfwordnet.search(selection, lemma, element("domains"), element("result"), null);
+            }
+
             initMultiSelection(element("from"));
         </script>
+
+        <div id="search_popup" class="search_popup">
+        <table id="domains" class="selector">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+        <table id="result" class="result">
+            <thead></thead>
+            <tbody></tbody>
+            <tfoot></tfoot>
+        </table>
+        </div>
     </body>
 </html>

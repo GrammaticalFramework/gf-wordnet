@@ -244,6 +244,7 @@ table.multiselect > tbody > tr > td:last-child {
 	z-index: 100;
 	display: none;
 	max-height: 500px;
+	max-width: 90vw;
 }
 
 .editor button {

@@ -40,4 +40,12 @@ lin RelNP = GrammarFre.RelNP ;
 
 lin BareN2 n = n ;
 
+lin gen_Quant = {
+      s = \\b,n,g,c => if_then_Str b (prepCase c) "" ;
+      sp = \\n,g,c => artIndef True g n c ;
+      spn= \\c => artIndef True Masc Sg c ;
+      s2 = [] ;
+      isNeg = False
+      } ;
+
 }

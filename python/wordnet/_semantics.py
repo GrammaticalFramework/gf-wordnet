@@ -197,7 +197,7 @@ class Synset:
         return self.__pointers2__(Meronym,HolonymyType.Substance)
 
     def part_meronyms(self) -> list:
-        return self.__pointers2__(Holonym,HolonymyType.Part)
+        return self.__pointers2__(Meronym,HolonymyType.Part)
 
     def _collect_hypernyms(self,stats,level,i,n,t):
         for ptr,id in self.pointers:

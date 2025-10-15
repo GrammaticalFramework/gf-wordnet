@@ -75,3 +75,6 @@ key: Q320357
 
 abs: AdjCN (PositA mathematical_1_A) (UseN theory_1_N)
 key: Q20026918
+
+abs: AdjCN (PositA sovereign_1_A) (UseN state_4_N)
+key: Q3624078

@@ -520,11 +520,22 @@ wikiPredef cref db pgf lang gr = Map.fromList
       where
         res = unsafePerformIO $
                 runDaison db ReadOnlyMode $ do
-                  select [VApp c (abstr,identS id) []
-                                   | (_,lex) <- fromIndex lexemes_qid (at qid)
-                                   , let id = lex_fun lex
-                                   , matchGender gender (lex_pointers lex)
-                                   , fmap (matchType ty) (functionType pgf id) == Just True]
+                  lexeme <- select [VApp c (abstr,identS id) []
+                                             | (_,lex) <- fromIndex lexemes_qid (at qid)
+                                             , let id = lex_fun lex
+                                             , matchGender gender (lex_pointers lex)
+                                             , fmap (matchType ty) (functionType pgf id) == Just True]
+                  spec <- select [eval globals0 [] c (toTerm [] abstr e) []
+                                         | (i, s) <- fromIndex qid2lang (at (qid, l))
+                                         , Right (e,ety) <- pure (inferExpr pgf (expr s))
+                                         , matchType ty ety]
+                  case spec of
+                    [] -> do mul <- select [eval globals0 [] c (toTerm [] abstr e) []
+                                            | (i, s) <- fromIndex qid2lang (at (qid, "ParseMul"))
+                                            , Right (e,ety) <- pure (inferExpr pgf (expr s))
+                                            , matchType ty ety]
+                             return $ lexeme ++ mul
+                    _  -> return $ lexeme ++ spec
 
         matchGender "Q6581097" ptrs = null [id | (Male,  id) <- ptrs]
         matchGender "Q6581072" ptrs = null [id | (Female,id) <- ptrs]

@@ -78,3 +78,9 @@ key: Q20026918
 
 abs: AdjCN (PositA sovereign_1_A) (UseN state_4_N)
 key: Q3624078
+
+abs: AdjCN (PositA landlocked_A) (UseN country_1_N)
+key: Q123480
+
+abs: AdjCN (PositA computational_A) (UseN linguistMasc_1_N)
+key: Q15976270

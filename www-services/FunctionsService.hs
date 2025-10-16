@@ -455,6 +455,7 @@ wikiPredef cref db pgf lang gr = Map.fromList
   , (identS "int2float", pdArity 1 $\ \g c [v] -> fmap (VFlt . fromIntegral) (value2int g v))
   , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
   , (identS "gendered_expr", pdArity 3 $\ \g c [ty,qid,gender] -> Const (get_gendered_expr lang c ty qid gender))
+  , (identS "demonym", pdArity 1 $\ \g c [qid] -> Const (get_demonym c qid))
   , (identS "linearize", pdArity 3 $\ \g c [_,lang,t] -> liftA2 linearizeExpr (value2string g lang) (value2expr g [] t))
   , (identS "inflect", pdArity 3 $\ \g c [ty,lang,t] -> liftA2 (inflectExpr ty) (value2string g lang) (value2expr g [] t))
   , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
@@ -550,6 +551,23 @@ wikiPredef cref db pgf lang gr = Map.fromList
     get_gendered_expr l c ty (VFV c1 (VarFree vs)) gender = VFV c1 (VarFree (mapC (\c qid -> get_gendered_expr l c ty qid gender) c vs))
     get_gendered_expr l c ty qid (VFV c1 (VarFree vs))    = VFV c1 (VarFree (mapC (\c gender -> get_gendered_expr l c ty qid gender) c vs))
     get_gendered_expr l c ty qid gender                   = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "gendered_expr") [ty, qid, gender]))
+
+    get_demonym c (VStr qid) =
+      case res of
+        [v] -> v
+        vs  -> VFV c (VarFree vs)
+      where
+        res = unsafePerformIO $
+                runDaison db ReadOnlyMode $ do
+                  select [VApp c (abstr,identS fun) []
+                                   | (_,lex_ln) <- fromIndex lexemes_qid (at qid)
+                                   , functionType pgf (lex_fun lex_ln) == Just (DTyp [] "LN" [])
+                                   , (Derived,id) <- anyOf (lex_pointers lex_ln)
+                                   , lex_a <- from lexemes (at id)
+                                   , let fun = lex_fun lex_a
+                                   , functionType pgf fun == Just (DTyp [] "A" [])]
+    get_demonym c (VFV c1 vs) = VFV c1 (mapVariantsC get_demonym c vs)
+    get_demonym c qid         = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "demonym") [qid]))
 
     linearizeExpr lang e =
       case language pgf cnc_name of

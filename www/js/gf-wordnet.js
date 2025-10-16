@@ -8,7 +8,7 @@ gfwordnet.languages =
    ,["Dutch",      "ParseDut", "nl"],
    ,["English",    "ParseEng", "en"],
    ,["Estonian",   "ParseEst", "ee"],
-   ,["Finish",     "ParseFin", "fi"],
+   ,["Finnish",    "ParseFin", "fi"],
    ,["French",     "ParseFre", "fr"],
    ,["German",     "ParseGer", "de"],
    ,["Hindi",      "ParseHin", "hi"],

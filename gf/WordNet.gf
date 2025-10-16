@@ -1438,6 +1438,11 @@ oper
         = AdvVPSlash ; --%
       } ; --%
 
+    mkVPSlash' = overload { --%
+      mkVPSlash' : VPSlash -> Adv -> VPSlash -- established in 1992
+        = \vps,adv -> [default: vp | AdvVPSlash vps adv] ; --%
+      } ; --%
+
 
 --2 Lists for coordination
 

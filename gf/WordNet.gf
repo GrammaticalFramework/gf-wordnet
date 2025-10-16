@@ -1040,6 +1040,10 @@ oper
       = \c,x,y -> ConjAdv c (BaseAdv x y) ; --%
       mkAdv : Conj -> ListAdv -> Adv   -- with John, here and now --:
       = \c,xy -> ConjAdv c xy ; --%
+
+-- Adverbs from location names
+      mkAdv : LN -> Adv = InLN ;
+
       } ; --%
 
 

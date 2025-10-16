@@ -814,7 +814,7 @@ getQualifierOrReference c qs dt l t
     get_value c snak = do
       datavalue <- valFromObj "datavalue" snak
       datatype  <- valFromObj "datatype"  snak
-      ass <- matchTypeFromJSON c [] datavalue datatype t
+      ass <- matchTypeFromJSON c [] (Just datavalue) datatype t
       return (VR ass)
 
 dropURL s = match "http://www.wikidata.org/entity/" s

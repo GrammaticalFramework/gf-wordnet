@@ -955,6 +955,12 @@ oper
       mkAP : AP -> SC -> AP    -- ready to go --:
       =  \ap,s -> SentAP ap s ; --%
 
+-- Past participles as adjectives
+      mkAP : VPSlash -> AP     -- established
+      = PastPartAP ;
+      mkAP : VPSlash -> NP -> AP     -- established by
+      = PastPartAgentAP ;
+
 -- An adjectival phrase can be modified by an adadjective.
 
       mkAP : AdA -> A -> AP   -- very old
@@ -992,6 +998,9 @@ oper
       =  \ap,s -> [default: ap | SentAP ap (EmbedVP ASimul PPos it_Pron s)] ; --%
       mkAP' : AP -> SC -> AP    -- ready to go --:
       =  \ap,s -> [default: ap | SentAP ap s] ; --%
+
+      mkAP' : VPSlash -> NP -> AP     -- established by
+      = \vps,np -> [default: (PastPartAP vps) | PastPartAgentAP vps np] ;
 
 -- An adjectival phrase can be modified by an adadjective.
 

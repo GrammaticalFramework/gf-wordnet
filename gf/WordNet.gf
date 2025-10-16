@@ -1440,7 +1440,7 @@ oper
 
     mkVPSlash' = overload { --%
       mkVPSlash' : VPSlash -> Adv -> VPSlash -- established in 1992
-        = \vps,adv -> [default: vp | AdvVPSlash vps adv] ; --%
+        = \vps,adv -> [default: vps | AdvVPSlash vps adv] ; --%
       } ; --%
 
 

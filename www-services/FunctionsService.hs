@@ -520,11 +520,22 @@ wikiPredef cref db pgf lang gr = Map.fromList
       where
         res = unsafePerformIO $
                 runDaison db ReadOnlyMode $ do
-                  select [VApp c (abstr,identS id) []
-                                   | (_,lex) <- fromIndex lexemes_qid (at qid)
-                                   , let id = lex_fun lex
-                                   , matchGender gender (lex_pointers lex)
-                                   , fmap (matchType ty) (functionType pgf id) == Just True]
+                  lexeme <- select [VApp c (abstr,identS id) []
+                                             | (_,lex) <- fromIndex lexemes_qid (at qid)
+                                             , let id = lex_fun lex
+                                             , matchGender gender (lex_pointers lex)
+                                             , fmap (matchType ty) (functionType pgf id) == Just True]
+                  spec <- select [eval globals0 [] c (toTerm [] abstr e) []
+                                         | (i, s) <- fromIndex qid2lang (at (qid, l))
+                                         , Right (e,ety) <- pure (inferExpr pgf (expr s))
+                                         , matchType ty ety]
+                  case spec of
+                    [] -> do mul <- select [eval globals0 [] c (toTerm [] abstr e) []
+                                            | (i, s) <- fromIndex qid2lang (at (qid, "ParseMul"))
+                                            , Right (e,ety) <- pure (inferExpr pgf (expr s))
+                                            , matchType ty ety]
+                             return $ lexeme ++ mul
+                    _  -> return $ lexeme ++ spec
 
         matchGender "Q6581097" ptrs = null [id | (Male,  id) <- ptrs]
         matchGender "Q6581072" ptrs = null [id | (Female,id) <- ptrs]
@@ -675,47 +686,52 @@ getAllProperties c obj =
           c (fromJSObject obj)
   where
     parseVariant c obj = do
-      (qs, dv, dt) <- parseWikiDataProp obj
+      (qs, mb_dv, dt) <- parseWikiDataProp obj
       wdt <- getWikiDataType dt
       fs <- forM (wdtFields wdt) $ \f ->
-        (,) (LIdent (rawIdentS (fieldName f))) <$> extractField f c Nothing dv
+        (,) (LIdent (rawIdentS (fieldName f))) <$> extractField f c Nothing mb_dv
       return $ VR fs
 
 fromJSObjectToValue :: Choice -> JSObject JSValue -> Value -> Result [(Label, Value)]
 fromJSObjectToValue c obj typ = do
-  (qs, dv, dt) <- parseWikiDataProp obj
-  matchTypeFromJSON c qs dv dt typ
+  (qs, mb_dv, dt) <- parseWikiDataProp obj
+  matchTypeFromJSON c qs mb_dv dt typ
 
-parseWikiDataProp :: JSObject JSValue -> Result ([(String, [JSObject JSValue])], JSObject JSValue, String)
+parseWikiDataProp :: JSObject JSValue -> Result ([(String, [JSObject JSValue])], Maybe (JSObject JSValue), String)
 parseWikiDataProp obj = do
   mainsnak <- valFromObj "mainsnak" obj
-  datavalue <- valFromObj "datavalue" mainsnak
+  snaktype <- valFromObj "snaktype" mainsnak
+  mb_datavalue <- if snaktype == "novalue"
+                    then return Nothing
+                    else fmap Just (valFromObj "datavalue" mainsnak)
   datatype  <- valFromObj "datatype"  mainsnak
   qualifiers <- fmap fromJSObject (valFromObj "qualifiers" obj) `mplus` return []
   references <- fmap fromJSObject (valFromObj "references" obj) `mplus` return []
-  return (qualifiers ++ references, datavalue, datatype)
+  return (qualifiers ++ references, mb_datavalue, datatype)
 
 data WikiDataFieldType = MkField
   { fieldName    :: String
   , fieldType    :: GF.Grammar.Type
-  , extractField :: Choice -> Maybe Value -> JSObject JSValue -> Result Value
+  , extractField :: Choice -> Maybe Value -> Maybe (JSObject JSValue) -> Result Value
   }
 newtype WikiDataType = WikiDataType { wdtFields :: [WikiDataFieldType] }
 
 valField :: JSON a => String -> GF.Grammar.Type -> (Choice -> Maybe Value -> a -> Result Value) -> WikiDataFieldType
-valField n ty f = MkField n ty $ \c ty -> valFromObj "value" >=> valFromObj n >=> f c ty
+valField n ty f = MkField n ty $ \c ty mb_dv -> case mb_dv of
+                                                  Just dv -> (valFromObj "value" >=> valFromObj n >=> f c ty) dv
+                                                  Nothing -> return (VFV c (VarFree []))
 
 valField' :: JSON a => String -> GF.Grammar.Type -> (a -> Value) -> WikiDataFieldType
 valField' n ty f = valField n ty (\c ty -> pure . f)
 
-matchTypeFromJSON c qs dv dt (VRecType labels _) = do
+matchTypeFromJSON c qs mb_dv dt (VRecType labels _) = do
   wdt <- getWikiDataType dt
   mapCM (getField wdt) c labels
   where
     getField wdt c (k@(LIdent l),_,ty) = do
       let n = showRawIdent l
       val <-  case find (\f -> fieldName f == n) (wdtFields wdt) of
-               Just f  -> extractField f c (Just ty) dv
+               Just f  -> extractField f c (Just ty) mb_dv
                Nothing -> getQualifierOrReference c qs dt l ty
       return (k,val)
     getField _ _ _ = fail "Wikidata entities can only have named properties"
@@ -736,7 +752,10 @@ getWikiDataType "monolingualtext"  = return monolingualTextWdt
 getWikiDataType dt                 = Error $ "Unknown WikiData type: " ++ dt
 
 commonsMediaWdt = WikiDataType
-  [ MkField "s" typeString $ \_ _ -> valFromObj "value" >=> \s -> return (VStr (constructImgUrl s))
+  [ MkField "s" typeString $ \c _ mb_dv ->
+                    case mb_dv of
+                      Just dv -> (valFromObj "value" >=> \s -> return (VStr (constructImgUrl s))) dv
+                      Nothing -> return (VFV c (VarFree []))
   ]
   where
     constructImgUrl :: String -> String

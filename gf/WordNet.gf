@@ -1434,6 +1434,8 @@ oper
         = \v -> SlashVV v ASimul PPos ; --%
       mkVPSlash : V2V -> NP -> VPSlash -> VPSlash -- beg me always to buy --:
         = \v,np -> SlashV2VNP v np ASimul PPos ; --%
+      mkVPSlash : VPSlash -> Adv -> VPSlash -- established in 1992
+        = AdvVPSlash ; --%
       } ; --%
 
 

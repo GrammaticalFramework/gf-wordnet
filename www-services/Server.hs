@@ -5,7 +5,7 @@ import System.FilePath
 import Control.Exception(bracket,bracket_,catch,throw)
 import System.IO (openFile,IOMode(ReadMode),hGetBuf,hFileSize,hClose)
 import System.IO.Error(isAlreadyExistsError,isDoesNotExistError)
-import System.Directory(getModificationTime,getCurrentDirectory)
+import System.Directory(getModificationTime,getCurrentDirectory,doesFileExist)
 import System.Environment(getArgs)
 import Foreign(allocaBytes)
 import Data.IORef (newIORef)
@@ -39,9 +39,13 @@ main = do
 
 httpMain db gr bigram_total mn sgr doc_dir client_secret stref conn = do
   rq <- receiveHTTP conn
-  let path  = uriPath (rqURI rq)
+  let path0 = uriPath (rqURI rq)
+      path1 = path0</>"index.wiki"
       query = rqQuery rq
-  putStrLn $ show (rqMethod rq) ++" "++path++" "++show (map cutSnd query)
+  putStrLn $ show (rqMethod rq) ++" "++path0++" "++show (map cutSnd query)
+  is_index <- doesFileExist (doc_dir</>tail path1)
+  let path | is_index  = path1
+           | otherwise = path0
   case Map.lookup (takeExtension path) mimeTypes of
     Just mine_type
       | rqMethod rq == PUT -> updateStaticFile mine_type (doc_dir</>tail path) (rqBody rq)
@@ -64,9 +68,12 @@ httpMain db gr bigram_total mn sgr doc_dir client_secret stref conn = do
                          rsp <- functionsService db gr mn sgr rq stref
                          respondHTTP conn rsp
       | path == "/index.wsgi"
-                   -> do gr <- checkoutPGF gr
-                         rsp <- pageService db gr mn sgr (doc_dir</>"gf-wikidata.wiki") rq stref
-                         respondHTTP conn rsp
+                   -> respondHTTP conn (Response
+                                          { rspCode = 301
+                                          , rspReason = "Moved Permanently"
+                                          , rspHeaders = [mkHeader HdrLocation "/wordnet/app/wikidata/index.wiki"]
+                                          , rspBody = ""
+                                          })
       | takeExtension path == ".wiki"
                    -> do gr <- checkoutPGF gr
                          rsp <- pageService db gr mn sgr (doc_dir</>tail path) rq stref

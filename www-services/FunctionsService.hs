@@ -611,10 +611,10 @@ wikiPredef cref db pgf lang gr = Map.fromList
 
     compareValue g (VMeta i vs)     v2 = CSusp i (\v -> compareValue g (apply g v vs) v2)
     compareValue g (VSusp i k vs)   v2 = CSusp i (\v -> compareValue g (apply g (k v) vs) v2)
-    compareValue g (VFV s vs)       v2 = CFV s (mapVariants (\v1 -> compareValue g v1 v2) vs)
+    compareValue g (VFV s vs)       v2 = CFV s (fmap (\v1 -> compareValue g v1 v2) vs)
     compareValue g v1     (VMeta i vs) = CSusp i (\v -> compareValue g v1 (apply g v vs))
     compareValue g v1   (VSusp i k vs) = CSusp i (\v -> compareValue g v1 (apply g (k v) vs))
-    compareValue g v1       (VFV s vs) = CFV s (mapVariants (\v2 -> compareValue g v1 v2) vs)
+    compareValue g v1       (VFV s vs) = CFV s (fmap (\v2 -> compareValue g v1 v2) vs)
     compareValue g (VInt n1) (VInt n2) = Const (compare n1 n2)
     compareValue g (VFlt d1) (VFlt d2) = Const (compare d1 d2)
     compareValue g (VStr s1) (VStr s2) = Const (compare s1 s2)
@@ -847,7 +847,7 @@ int2digits abstr c (VInt n)
     rest n t =
       let (n2,n1) = divMod n 10
       in rest n2 (VApp c iidig [digit n1, t])
-int2digits abstr c (VFV c1 vs) = VFV c1 (mapVariants (int2digits abstr c) vs)
+int2digits abstr c (VFV c1 vs) = VFV c1 (fmap (int2digits abstr c) vs)
 
 int2decimal :: ModuleName -> Choice -> Value -> Value
 int2decimal abstr c (VInt n) = sign n (int2digits abstr c (VInt (abs n)))
@@ -858,7 +858,7 @@ int2decimal abstr c (VInt n) = sign n (int2digits abstr c (VInt (abs n)))
     sign n t
       | n < 0     = VApp c neg_dec [t]
       | otherwise = VApp c pos_dec [t]
-int2decimal abstr c (VFV c1 vs) = VFV c1 (mapVariants (int2decimal abstr c) vs)
+int2decimal abstr c (VFV c1 vs) = VFV c1 (fmap (int2decimal abstr c) vs)
 int2decimal abstr c _ = VFV c (VarFree [])
 
 float2decimal :: ModuleName -> Choice -> Value -> Value
@@ -885,7 +885,7 @@ float2decimal abstr c (VFlt f) =
     fractions v (d:ds) = fractions (VApp c ifrac [v, digit d]) ds
 
     digit d = (VApp c (abstr,identS ('D':'_':show d)) [])
-float2decimal abstr c (VFV c1 vs) = VFV c1 (mapVariants (float2decimal abstr c) vs)
+float2decimal abstr c (VFV c1 vs) = VFV c1 (fmap (float2decimal abstr c) vs)
 float2decimal abstr c _ = VFV c (VarFree [])
 
 int2numeral abstr c (VInt n)
@@ -942,7 +942,7 @@ int2numeral abstr c (VInt n)
     app0 fn = VApp c (abstr,identS fn) []
     app1 fn v1 = VApp c (abstr,identS fn) [v1]
     app2 fn v1 v2 = VApp c (abstr,identS fn) [v1,v2]
-int2numeral abstr c (VFV c1 vs) = VFV c1 (mapVariants (int2numeral abstr c) vs)
+int2numeral abstr c (VFV c1 vs) = VFV c1 (fmap (int2numeral abstr c) vs)
 
 time2adv abs_mn c (VStr s) =
   case matchISO8601 s of
@@ -990,7 +990,7 @@ time2adv abs_mn c (VStr s) =
         digit r c
           | isDigit c = fmap (\x -> (x*10+(fromIntegral (ord c - ord '0')))) r
           | otherwise = Nothing
-time2adv abs_mn c (VFV c1 vs) = VFV c1 (mapVariants (time2adv abs_mn c) vs)
+time2adv abs_mn c (VFV c1 vs) = VFV c1 (fmap (time2adv abs_mn c) vs)
 
 toBool c True  = VApp c (cPredef,identS "True")  []
 toBool c False = VApp c (cPredef,identS "False") []

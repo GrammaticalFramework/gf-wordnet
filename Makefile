@@ -9,7 +9,7 @@ LANGS = ParseAar ParseAbk ParseAdy ParseAfr ParseAlt ParseAmh ParseAng \
 		ParseGot ParseGrc ParseGre ParseGsw ParseGuj ParseHat ParseHau \
 		ParseHaw ParseHeb ParseHin ParseHrv ParseHsb ParseHun ParseHye \
 		ParseIce ParseIdo ParseIlo ParseIna ParseInd ParseIta ParseJav \
-		ParseJbo ParseJpn ParseKal ParseKan ParseKat ParseKaz ParseKbd \
+		ParseJpn ParseKal ParseKan ParseKat ParseKaz ParseKbd \
 		ParseKhm ParseKik ParseKir ParseKor ParseKpv ParseKur ParseLad \
 		ParseLao ParseLat ParseLav ParseLij ParseLim ParseLit ParseLld \
 		ParseLmo ParseLtz ParseLzz ParseMah ParseMal ParseMar ParseMdf \

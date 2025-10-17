@@ -29,7 +29,6 @@ import Text.JSON.String (runGetJSON)
 import Text.JSON.Types (get_field, JSObject(..), JSValue(..))
 import Database.Daison
 import SenseSchema
-
 import qualified Data.ByteString.Char8   as BS
 import qualified Data.Map                as Map
 import qualified Data.IntMap             as IMap
@@ -38,7 +37,7 @@ import qualified Data.Text.Lazy.Encoding as E
 import qualified Data.ByteString.Lazy as BL
 import Data.Char ( isDigit, ord, toLower, toUpper )
 import Data.Foldable ( find )
-import Data.IORef ( IORef, readIORef, writeIORef )
+import Data.IORef ( IORef, newIORef, readIORef, writeIORef )
 import Data.List ( singleton )
 import Data.Maybe
 import GHC.Float
@@ -80,6 +79,9 @@ cleanUpCache cref = do
           | otherwise = WNCache m u c
     writeIORef cref (cull (size - maxCacheSize) m u)
 
+
+type Links = Map.Map String [(Value,PGF2.Type,[(PointerSymbol,Key Lexeme)])]
+
 mkResponse :: ResponseCode -- ^ HTTP response code
            -> String       -- ^ HTTP response code message
            -> String       -- ^ Content-Type mimetype
@@ -90,13 +92,14 @@ mkResponse code reason ct =
 
 functionsService :: Database -> PGF -> ModuleName -> SourceGrammar -> Request -> IORef WNCache -> IO Response
 functionsService db gr mn sgr rq cref = do
+  lref <- newIORef Map.empty
   cleanUpCache cref
-  case (decode (rqBody rq) >>= parseQuery) <|> getFromQuery (rqQuery rq) of
+  case (decode (rqBody rq) >>= parseQuery lref) <|> getFromQuery lref (rqQuery rq) of
     Error msg            -> return $ mkResponse 400 "Invalid input" "text/plain" msg
     Ok (Left (err, msg)) -> return $ mkResponse 400 err "text/plain" msg
     Ok (Right res)       -> return $ mkResponse 200 "OK" "application/json" (encode res)
   where
-    parseQuery query = do
+    parseQuery lref query = do
       mb_qid <- maybe (pure Nothing) (fmap Just . readJSON)
                       (lookup "qid" (fromJSObject query))
       lang <- valFromObj "lang" query
@@ -105,7 +108,7 @@ functionsService db gr mn sgr rq cref = do
         Ok json -> orFailErr $ deserializeInput json
         Error _ -> return []
       return $ do
-        (res,msg) <- executeCode cref db gr sgr mn mb_qid lang cs code
+        (res,msg) <- executeCode lref cref Plain db gr sgr mn mb_qid lang cs code
         return $ makeObj
                  [ ("msg"   , showJSON msg)
                  , ("groups", showJSON
@@ -121,7 +124,7 @@ functionsService db gr mn sgr rq cref = do
                      | (headers,dataset) <- res])
                  ]
 
-    getFromQuery query = do
+    getFromQuery lref query = do
       lang <- orFail "No lang" $ lookup "lang" query
       code <- orFail "No code" $ lookup "code" query
       cs <- case lookup "choices" query of
@@ -129,7 +132,7 @@ functionsService db gr mn sgr rq cref = do
                       orFailErr $ deserializeInput json
         Nothing -> return []
       return $ do
-        (res,msg) <- executeCode cref db gr sgr mn (lookup "qid" query) lang cs code
+        (res,msg) <- executeCode lref cref Plain db gr sgr mn (lookup "qid" query) lang cs code
         return $ makeObj
                  [ ("msg"   , showJSON msg)
                  , ("groups", showJSON
@@ -149,16 +152,18 @@ pageService :: Database -> PGF -> ModuleName -> SourceGrammar -> FilePath -> Req
 pageService db gr mn sgr path rq cref = do
   (html_file,config,mb_main_prog) <- fmap read (readFile path)
   html <- readFile (dir </> html_file)
+  lref <- newIORef Map.empty
   let query = rqQuery rq
       lang  = fromMaybe "ParseEng" (lookup "lang" query)
+      mode  = maybe Hyperlinked (const Editor) (lookup "edit" query)
   case lookup "qid" query of
     Nothing  -> case mb_main_prog of
                   Nothing   -> return $ mkResponse 200 "OK" "text/html" (injectTemplate html "" "" "" "" JSNull)
-                  Just prog -> executeProg html_file lang Nothing prog
+                  Just prog -> executeProg lref mode html_file lang Nothing prog
     Just qid -> do
       mb_prog <- get_script_name config mb_main_prog qid
       case mb_prog of
-        Just prog -> executeProg html_file lang (Just qid) prog
+        Just prog -> executeProg lref mode html_file lang (Just qid) prog
         Nothing   -> let err = "There is no renderer defined for " ++ qid
                      in return $ mkResponse 200 "OK" "text/html" (injectTemplate html qid "" "" err JSNull) 
     where
@@ -176,10 +181,10 @@ pageService db gr mn sgr path rq cref = do
                                     []       ->return mb_main_prog
                                     (prog:_) -> return (Just prog)
 
-      executeProg html_file lang mb_qid prog = do
+      executeProg lref mode html_file lang mb_qid prog = do
         code <- readFile (dir </> prog)
         cleanUpCache cref
-        case executeCode cref db gr sgr mn mb_qid lang [] code of
+        case executeCode lref cref mode db gr sgr mn mb_qid lang [] code of
           Left (err,msg)  -> return $ mkResponse 400 err "text/plain" msg
           Right (res,msg) -> do html <- readFile (dir </> html_file)
                                 let code_doc = showXMLDoc (Data code)
@@ -203,7 +208,14 @@ pageService db gr mn sgr path rq cref = do
       injectTemplate ('<':'%':'q':'i':'d':'%':'>':xs)                 qid prog code output ois = qid    ++ injectTemplate xs qid prog code output ois
       injectTemplate (x:xs)                                           qid prog code output ois = x : injectTemplate xs qid prog code output ois
 
-executeCode :: IORef WNCache -- ^ Wikidata cache
+data MarkupMode
+  = Plain
+  | Hyperlinked
+  | Editor
+
+executeCode :: IORef Links   -- ^ Hyperlinks in the page
+            -> IORef WNCache -- ^ Wikidata cache
+            -> MarkupMode    -- ^ how to render markup
             -> Database      -- ^ Database for wiki data
             -> PGF           -- ^ Ambient core grammar
             -> SourceGrammar -- ^ Ambient grammar
@@ -213,7 +225,7 @@ executeCode :: IORef WNCache -- ^ Wikidata cache
             -> [(Choice,Int)]-- ^ Initial choices (i.e. a program trace)
             -> String        -- ^ Code snippet to execute
             -> Either (String, String) ([([JSObject JSValue],[([String],JSValue)])],String)
-executeCode cref db gr sgr mn mb_qid lang csInit code =
+executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
   case runLangP NLG pNLG (BS.pack code) of
     Left (Pn row col,msg) -> Left ("Parse Error", show row ++ ":" ++ show col ++ ":" ++ msg)
     Right prog            -> do
@@ -258,7 +270,7 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
       checkWarn (ppModule Unqualified nlg_m)
 
       let sgr' = prependModule sgr nlg_m
-          globals1 = Gl sgr' (wikiPredef cref db gr lang sgr')
+          globals1 = Gl sgr' (wikiPredef lref cref db gr lang sgr')
           qident = (nlg_mn,identS "main")
 
       res <- runEvalMWithInput globals1 csInit $ do
@@ -274,7 +286,8 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
                           then inferLType' res
                           else return (res,res_ty)
         res_ty <- value2termM True [] res_ty
-        res <- toRecord res_ty res
+        let links = unsafePerformIO (fmap (reverseLinks . maybe id Map.delete mb_qid) (readIORef lref))
+        res <- toRecord links res_ty res
         return (toHeaders res_ty,res)
       res <- forM res $ \((hs,r),ois) -> do
         ois <- orFailM "No result while serializing option info" $
@@ -299,34 +312,34 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
       | m == cPredef && c == cInts   = "number"
     toHeaderType ty                  = "text"
 
-    toRecord (RecType lbls) (R as)  = toCells lbls as
-    toRecord ty             t       = fmap singleton (toCell ty t)
+    toRecord links (RecType lbls) (R as)  = toCells links lbls as
+    toRecord links ty             t       = fmap singleton (toCell links ty t)
 
-    toCells []            as = return []
-    toCells ((l,ty):lbls) as =
+    toCells links []            as = return []
+    toCells links ((l,ty):lbls) as =
       case lookup l as of
-        Just (_,t) -> do c  <- toCell ty t
-                         cs <- toCells lbls as
+        Just (_,t) -> do c  <- toCell links ty t
+                         cs <- toCells links lbls as
                          return (c:cs)
-        Nothing    -> do cs <- toCells lbls as
+        Nothing    -> do cs <- toCells links lbls as
                          return ("?":cs)
 
-    toCell (Sort s)  t
+    toCell links (Sort s)  t
       | s == cStr =
           case toStr t of
             Just s  -> return s
             Nothing -> return (render (ppTerm Unqualified 0 t))
-    toCell (Q (m,c)) t
+    toCell links (Q (m,c)) t
       | m == cPredef && c == identS "Markup"
-                       = do ts <- toXML t
-                            return (foldr showsXML "" ts)
+                       = do ts <- toXML links t
+                            return (foldr showsNospaceXML "" ts)
       | m == cPredef && c == identS "Time"
                        = case toStr t of
                            Just s  -> return s
                            Nothing -> return (render (ppTerm Unqualified 0 t))
-    toCell (QC (m,c)) t
+    toCell links (QC (m,c)) t
       | m == abs_mn = fmap (linearize cnc) (toExpr [] t)
-    toCell ty        t
+    toCell links ty        t
       | isPGFType ty = do e <- toExpr [] t
                           return (showExpr [] e)
       | otherwise    = return (render (ppTerm Unqualified 0 t))
@@ -378,16 +391,55 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
     toStr GF.Grammar.Empty = return ""
     toStr _            = Nothing
 
-    toXML (FV ts)      = msum (map return ts) >>= toXML
-    toXML (Markup tag as ts)
-      | tag == identW = fmap concat (mapM toXML ts)
+    toXML links (FV ts)      = msum (map return ts) >>= toXML links
+    toXML links (Markup tag as ts)
+      | tag == identW = fmap concat (mapM (toXML links) ts)
       | otherwise     = do as <- mapM toAttr as
-                           ts <- fmap concat (mapM toXML ts)
+                           ts <- fmap concat (mapM (toXML links) ts)
                            return [Tag (showIdent tag) as ts]
-    toXML t           = case toStr t of
+    toXML links t     = case toStr t of
                           Just s  -> return [Data s]
                           Nothing -> do e <- toExpr [] t
-                                        return [Data (linearize cnc e)]
+                                        case mode of
+                                          Plain       -> return [Data (linearize cnc e)]
+                                          Hyperlinked -> return (fst (hyperLinks links False (bracketedLinearize cnc e)))
+                                          Editor      -> return (fst (editLinks False (bracketedLinearize cnc e)))
+
+    hyperLinks links bind  []          = ([],False)
+    hyperLinks links bind (Leaf s:bs) =
+      let (ss,bind') = hyperLinks links False bs
+          ss' = case bind of
+                  True  -> Data s       : ss
+                  False -> Data (' ':s) : ss
+      in (ss',bind')
+    hyperLinks links _    (BIND  :bs) =
+      hyperLinks links True bs
+    hyperLinks links bind (Bracket _ _ _ fun bs':bs) =
+      case Map.lookup fun links of
+        Just url -> let (ss1,bind1) = hyperLinks links True  bs'
+                        (ss2,bind2) = hyperLinks links bind1 bs
+                    in (if bind then [] else [Data " "] ++ Tag "a" [("href",url)] ss1 : ss2, bind2)
+        Nothing  -> let (ss1,bind1) = hyperLinks links bind  bs'
+                        (ss2,bind2) = hyperLinks links bind1 bs
+                    in (ss1 ++ ss2, bind2)
+
+    editLinks bind []          = ([],False)
+    editLinks bind (Leaf s:bs) =
+      let (ss,bind') = editLinks False bs
+          ss' = case bind of
+                  True  -> Data s       : ss
+                  False -> Data (' ':s) : ss
+      in (ss',bind')
+    editLinks _    (BIND  :bs) =
+      editLinks True bs
+    editLinks bind (Bracket _ _ _ fun bs':bs) =
+      case [b | b <- bs', case b of {Leaf _ -> False; _ -> True}] of
+        [] -> let (ss1,bind1) = editLinks True  bs'
+                  (ss2,bind2) = editLinks bind1 bs
+              in (if bind then [] else [Data " "] ++ Tag "span" [("onclick","edit_word('"++fun++"')")] ss1 : ss2, bind2)
+        _  -> let (ss1,bind1) = editLinks bind  bs'
+                  (ss2,bind2) = editLinks bind1 bs
+              in (ss1 ++ ss2, bind2)
 
     toAttr (id,FV ts) = do
       t <- msum (map return ts)
@@ -396,6 +448,10 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
       case toStr t of
         Just s  -> return (showIdent id, s)
         Nothing -> return (showIdent id, render (ppTerm Unqualified 0 t))
+
+    reverseLinks links = 
+      Map.fromList [(showIdent fun,"index.wiki?qid="++qid++"&lang="++lang) | (qid,res) <- Map.toList links
+                                        , (VApp _ (_,fun) [],_,_) <- res]
 
     checkInfo :: Options -> FilePath -> SourceGrammar -> SourceModule -> (Ident,Info) -> Check SourceModule
     checkInfo opts cwd sgr sm (c,info) = checkInModule cwd (snd sm) NoLoc empty $ do
@@ -417,7 +473,7 @@ executeCode cref db gr sgr mn mb_qid lang csInit code =
             update sm c info
        where
          sgr' = prependModule sgr sm
-         globals = Gl sgr' (wikiPredef cref db gr lang sgr')
+         globals = Gl sgr' (wikiPredef lref cref db gr lang sgr')
 
          chIn loc cat = checkInModule cwd (snd sm) loc ("Happened in" <+> cat <+> c)
 
@@ -445,8 +501,8 @@ deserializeInput json = case readJSON json of
       rs <- parse cs
       return $ (Choice c, fromInteger i) : rs
 
-wikiPredef :: IORef WNCache -> Database -> PGF -> String -> Grammar -> PredefTable
-wikiPredef cref db pgf lang gr = Map.fromList
+wikiPredef :: IORef Links -> IORef WNCache -> Database -> PGF -> String -> Grammar -> PredefTable
+wikiPredef lref cref db pgf lang gr = Map.fromList
   [ (identS "entity", pdArity 2 $\ \g c [typ,qid] -> Const (fetch c typ qid))
   , (identS "int2digits", pdArity 1 $\ \g c [n] -> Const (int2digits abstr c n))
   , (identS "int2decimal", pdArity 1 $\ \g c [n] -> Const (int2decimal abstr c n))
@@ -482,28 +538,19 @@ wikiPredef cref db pgf lang gr = Map.fromList
     fetch c ty (VFV c1 vs) = VFV c1 (mapVariantsC (\c -> fetch c ty) c vs)
 
     -- add lang -> synsets, give both options for lex and syn
-    get_expr l c ty (VStr qid) =
+    get_expr l c vty (VStr qid) =
       case res of
         [v] -> v
         vs  -> VFV c (VarFree vs)
       where
-        res = unsafePerformIO $
-                runDaison db ReadOnlyMode $ do
-                  lexeme <- select [VApp c (abstr,identS id) []
-                                             | (_,lex) <- fromIndex lexemes_qid (at qid)
-                                             , let id = lex_fun lex
-                                             , fmap (matchType ty) (functionType pgf id) == Just True]
-                  spec <- select [eval globals0 [] c (toTerm [] abstr e) []
-                                             | (i, s) <- fromIndex qid2lang (at (qid, l))
-                                             , Right (e,ety) <- pure (inferExpr pgf (expr s))
-                                             , matchType ty ety]
-                  case spec of
-                    [] -> do mul <- select [eval globals0 [] c (toTerm [] abstr e) []
-                                            | (i, s) <- fromIndex qid2lang (at (qid, "ParseMul"))
-                                            , Right (e,ety) <- pure (inferExpr pgf (expr s))
-                                            , matchType ty ety]
-                             return $ lexeme ++ mul
-                    _  -> return $ lexeme ++ spec
+        res = unsafePerformIO $ do
+                links <- readIORef lref
+                case Map.lookup qid links of
+                  Just res -> return [v | (v,ty,ptrs) <- res, matchType vty ty]
+                  Nothing  -> do res <- runDaison db ReadOnlyMode $ do
+                                          query_expr l c qid
+                                 writeIORef lref (Map.insert qid res links)
+                                 return [v | (v,ty,ptrs) <- res, matchType vty ty]
 
         matchType (VProd bt1 _ ty11 (VClosure env c ty2)) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
           bt1 == bt2 && matchType ty11 ty12 && matchType (eval globals0 env c ty2 []) (DTyp hypos cat2 [])
@@ -514,33 +561,19 @@ wikiPredef cref db pgf lang gr = Map.fromList
     get_expr l c ty (VFV c1 vs) = VFV c1 (mapVariantsC (\c -> get_expr l c ty) c vs)
     get_expr l c ty qid         = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "expr") [ty, qid]))
 
-    get_gendered_expr l c ty (VStr qid) (VStr gender) =
+    get_gendered_expr l c vty (VStr qid) (VStr gender) =
       case res of
         [v] -> v
         vs  -> VFV c (VarFree vs)
       where
-        res = unsafePerformIO $
-                runDaison db ReadOnlyMode $ do
-                  lexeme <- select [VApp c (abstr,identS id) []
-                                             | (_,lex) <- fromIndex lexemes_qid (at qid)
-                                             , let id = lex_fun lex
-                                             , matchGender gender (lex_pointers lex)
-                                             , fmap (matchType ty) (functionType pgf id) == Just True]
-                  spec <- select [eval globals0 [] c (toTerm [] abstr e) []
-                                         | (i, s) <- fromIndex qid2lang (at (qid, l))
-                                         , Right (e,ety) <- pure (inferExpr pgf (expr s))
-                                         , matchType ty ety]
-                  case spec of
-                    [] -> do mul <- select [eval globals0 [] c (toTerm [] abstr e) []
-                                            | (i, s) <- fromIndex qid2lang (at (qid, "ParseMul"))
-                                            , Right (e,ety) <- pure (inferExpr pgf (expr s))
-                                            , matchType ty ety]
-                             return $ lexeme ++ mul
-                    _  -> return $ lexeme ++ spec
-
-        matchGender "Q6581097" ptrs = null [id | (Male,  id) <- ptrs]
-        matchGender "Q6581072" ptrs = null [id | (Female,id) <- ptrs]
-        matchGender _          ptrs = False
+        res = unsafePerformIO $ do
+                links <- readIORef lref
+                case Map.lookup qid links of
+                  Just res -> return [v | (v,ty,ptrs) <- res, matchType vty ty, matchGender gender ptrs]
+                  Nothing  -> do res <- runDaison db ReadOnlyMode $ do
+                                          query_expr l c qid
+                                 writeIORef lref (Map.insert qid res links)
+                                 return [v | (v,ty,ptrs) <- res, matchType vty ty, matchGender gender ptrs]
 
         matchType (VProd bt1 _ ty11 (VClosure env c ty2)) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
           bt1 == bt2 && matchType ty11 ty12 && matchType (eval globals0 env c ty2 []) (DTyp hypos cat2 [])
@@ -548,9 +581,28 @@ wikiPredef cref db pgf lang gr = Map.fromList
           mod == abstr && showIdent cat1 == cat2
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
+
+        matchGender "Q6581097" ptrs = null [id | (Male,  id) <- ptrs]
+        matchGender "Q6581072" ptrs = null [id | (Female,id) <- ptrs]
+        matchGender _          ptrs = False
     get_gendered_expr l c ty (VFV c1 (VarFree vs)) gender = VFV c1 (VarFree (mapC (\c qid -> get_gendered_expr l c ty qid gender) c vs))
     get_gendered_expr l c ty qid (VFV c1 (VarFree vs))    = VFV c1 (VarFree (mapC (\c gender -> get_gendered_expr l c ty qid gender) c vs))
     get_gendered_expr l c ty qid gender                   = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "gendered_expr") [ty, qid, gender]))
+
+    query_expr l c qid = do
+       lexeme <- select [(VApp c (abstr,identS id) [],ety,lex_pointers lex)
+                                      | (_,lex) <- fromIndex lexemes_qid (at qid)
+                                      , let id = lex_fun lex
+                                      , Just ety <- pure (functionType pgf id)]
+       spec <- select [(eval globals0 [] c (toTerm [] abstr e) [],ety,[])
+                           | (i, s) <- fromIndex qid2lang (at (qid, l))
+                           , Right (e,ety) <- pure (inferExpr pgf (expr s))]
+       case spec of
+         [] -> do mul <- select [(eval globals0 [] c (toTerm [] abstr e) [],ety,[])
+                                     | (i, s) <- fromIndex qid2lang (at (qid, "ParseMul"))
+                                     , Right (e,ety) <- pure (inferExpr pgf (expr s))]
+                  return $ lexeme ++ mul
+         _  -> return $ lexeme ++ spec
 
     get_demonym c (VStr qid) =
       case res of

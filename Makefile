@@ -1,42 +1,34 @@
-LANGS = ParseAar ParseAbk ParseAce ParseAdy ParseAfr ParseAls ParseAlt \
-		ParseAmh ParseAng ParseAPI ParseAra ParseArc ParseArg ParseAry \
-		ParseArz ParseAsm ParseAst ParseAva ParseAym ParseAzb ParseAzj \
-		ParseBak ParseBam ParseBan ParseBar ParseBcl ParseBel ParseBen \
-		ParseBis ParseBjn ParseBod ParseBos ParseBre ParseBul ParseBxr \
-		ParseCat ParseCeb ParseCha ParseChe ParseChi ParseCho ParseChr \
-		ParseChu ParseChv ParseChy ParseCkb ParseCor ParseCos ParseCrh \
-		ParseCsb ParseCym ParseCze ParseDan ParseDiq ParseDiv ParseDsb \
-		ParseDut ParseDzo ParseEng ParseEpo ParseEst ParseEus ParseEwe \
-		ParseExt ParseFao ParseFij ParseFrc ParseFre ParseFin \
-		ParseFrp ParseFrr ParseFry ParseFur ParseGag ParseGan ParseGcr \
-		ParseGer ParseGla ParseGle ParseGlg ParseGlv ParseGot ParseGrc \
-		ParseGre ParseGsw ParseGuj ParseHak ParseHat ParseHau ParseHaw \
-		ParseHeb ParseHin ParseHrv ParseHsb ParseHun ParseHye ParseIbo \
-		ParseIce ParseIdo ParseIii ParseIku ParseIle ParseIlo ParseIna \
-		ParseInd ParseInh ParseIta ParseJam ParseJav ParseJbo ParseJpn \
-		ParseKaa ParseKab ParseKal ParseKan ParseKat ParseKau ParseKaz \
-		ParseKbd ParseKcg ParseKhm ParseKik ParseKin ParseKir ParseKoi \
-		ParseKor ParseKpv ParseKrc ParseKsh ParseKur ParseLad ParseLao \
-		ParseLat ParseLav ParseLbe ParseLez ParseLfn ParseLij ParseLim \
-		ParseLin ParseLit ParseLld ParseLmo ParseLtg ParseLtz ParseLug \
-		ParseLzz ParseMah ParseMal ParseMar ParseMcn ParseMdf ParseMhr \
-		ParseMin ParseMkd ParseMlg ParseMlt ParseMnw ParseMon ParseMrj \
-		ParseMwl ParseMya ParseMyv ParseMzn ParseNan ParseNap ParseNau \
-		ParseNav ParseNds ParseNep ParseNno ParseNor ParseNov ParseNya \
-		ParseOci ParseOri ParseOss ParsePag ParsePam ParsePap ParsePcd \
-		ParsePes ParsePli ParsePms ParsePnb ParsePol ParsePor ParsePrg \
-		ParsePus ParseQue ParseRmy ParseRoh ParseRon ParseRue ParseRun \
-		ParseRup ParseRus ParseSag ParseSah ParseSan ParseScn ParseSco \
-		ParseSgs ParseShi ParseShn ParseSin ParseSlo ParseSlv \
-		ParseSma ParseSme ParseSmn ParseSmo ParseSms ParseSna ParseSnd \
-		ParseSom ParseSot ParseSpa ParseSqi ParseSrd ParseSrn ParseSrp \
-		ParseStq ParseSun ParseSwa ParseSwe ParseSzl ParseTah ParseTam \
+LANGS = ParseAar ParseAbk ParseAce ParseAdy ParseAfr ParseAlt ParseAmh \
+		ParseAng ParseAPI ParseAra ParseArc ParseArg ParseAry ParseArz \
+		ParseAsm ParseAst ParseAva ParseBak ParseBam ParseBan ParseBar \
+		ParseBcl ParseBel ParseBen ParseBod ParseBos ParseBre ParseBul \
+		ParseCat ParseCeb ParseChe ParseChi ParseCho ParseChr ParseChu \
+		ParseChv ParseCkb ParseCor ParseCos ParseCrh ParseCsb ParseCym \
+		ParseCze ParseDan ParseDiv ParseDsb ParseDut ParseEng ParseEpo \
+		ParseEst ParseEus ParseEwe ParseFao ParseFij ParseFre ParseFin \
+		ParseFrp ParseFrr ParseFry ParseFur ParseGer ParseGla ParseGle \
+		ParseGlg ParseGlv ParseGot ParseGrc ParseGre ParseGsw ParseGuj \
+		ParseHat ParseHau ParseHaw ParseHeb ParseHin ParseHrv ParseHsb \
+		ParseHun ParseHye ParseIce ParseIdo ParseIii ParseIku ParseIlo \
+		ParseIna ParseInd ParseInh ParseIta ParseJam ParseJav ParseJbo \
+		ParseJpn ParseKal ParseKan ParseKat ParseKaz ParseKbd ParseKhm \
+		ParseKik ParseKin ParseKir ParseKor ParseKpv ParseKur ParseLad \
+		ParseLao ParseLat ParseLav ParseLij ParseLim ParseLin ParseLit \
+		ParseLld ParseLmo ParseLtg ParseLtz ParseLzz ParseMah ParseMal \
+		ParseMar ParseMdf ParseMhr ParseMkd ParseMlg ParseMlt ParseMnw \
+		ParseMon ParseMwl ParseMya ParseMyv ParseNap ParseNav ParseNds \
+		ParseNep ParseNno ParseNor ParseNya ParseOci ParseOri ParseOss \
+		ParsePam ParsePap ParsePes ParsePli ParsePms ParsePnb ParsePol \
+		ParsePor ParsePus ParseQue ParseRoh ParseRon ParseRup ParseRus \
+		ParseSah ParseSan ParseScn ParseSco ParseShn ParseSin ParseSlo \
+		ParseSlv ParseSma ParseSme ParseSmn ParseSmo ParseSms ParseSna \
+		ParseSnd ParseSom ParseSot ParseSpa ParseSqi ParseSrd ParseSrn \
+		ParseSrp ParseStq ParseSun ParseSwa ParseSwe ParseSzl ParseTam \
 		ParseTat ParseTel ParseTet ParseTgk ParseTgl ParseTha ParseTir \
-		ParseTon ParseTpi ParseTsn ParseTuk ParseTur ParseTyv ParseUdm \
-		ParseUig ParseUkr ParseUrd ParseUzb ParseVec ParseVen ParseVep \
-		ParseVie ParseVls ParseVol ParseVro ParseWar ParseWln ParseWol \
-		ParseWuu ParseXal ParseXho ParseXmf ParseYid ParseYor ParseYue \
-		ParseZsm ParseZul
+		ParseTpi ParseTuk ParseTur ParseTyv ParseUdm ParseUig ParseUkr \
+		ParseUrd ParseUzb ParseVec ParseVep ParseVie ParseVol ParseVro \
+		ParseWar ParseWln ParseWol ParseXal ParseXho ParseXmf ParseYid \
+		ParseYor ParseYue ParseZsm ParseZul
 
 
 WORDNETS = $(patsubst Parse%,WordNet%.gf,$(LANGS))

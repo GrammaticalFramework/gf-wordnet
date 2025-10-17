@@ -84,3 +84,6 @@ key: Q123480
 
 abs: AdjCN (PositA computational_A) (UseN linguistMasc_1_N)
 key: Q15976270
+
+abs: AdjCN (PositA big_1_A) (UseN city_1_N)
+key: Q1549591

@@ -11,6 +11,7 @@ oper Markup : Type = variants {} ;          -- the type of Wikidata time
 oper entity : ({a} : Type) -> Str -> a = variants {} ;
 oper expr   : ({a} : Type) -> Str -> a = variants {} ;
 oper gendered_expr : ({a} : Type) -> Str -> Str -> a = variants {} ;
+oper demonym : Str -> A = variants {} ;
 
 oper linearize : ({a} : Type) -> Str -> a -> Str = variants {} ;
 oper inflect : ({a} : Type) -> Str -> a -> Markup = variants {} ;

@@ -80,7 +80,7 @@ cleanUpCache cref = do
     writeIORef cref (cull (size - maxCacheSize) m u)
 
 
-type Links = Map.Map String [(Value,PGF2.Type,[(PointerSymbol,Key Lexeme)])]
+type Links = Map.Map String [(PGF2.Expr,PGF2.Type,[(PointerSymbol,Key Lexeme)])]
 
 mkResponse :: ResponseCode -- ^ HTTP response code
            -> String       -- ^ HTTP response code message
@@ -402,26 +402,39 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
                           Nothing -> do e <- toExpr [] t
                                         case mode of
                                           Plain       -> return [Data (linearize cnc e)]
-                                          Hyperlinked -> return (fst (hyperLinks links False (bracketedLinearize cnc e)))
+                                          Hyperlinked -> return (fst (hyperLinks e links False (bracketedLinearize cnc e)))
                                           Editor      -> return (fst (editLinks False (bracketedLinearize cnc e)))
 
-    hyperLinks links bind  []          = ([],False)
-    hyperLinks links bind (Leaf s:bs) =
-      let (ss,bind') = hyperLinks links False bs
+    hyperLinks e links bind  []          = ([],False)
+    hyperLinks e links bind (Leaf s:bs) =
+      let (ss,bind') = hyperLinks e links False bs
           ss' = case bind of
                   True  -> Data s       : ss
                   False -> Data (' ':s) : ss
       in (ss',bind')
-    hyperLinks links _    (BIND  :bs) =
-      hyperLinks links True bs
-    hyperLinks links bind (Bracket _ _ _ fun bs':bs) =
-      case Map.lookup fun links of
-        Just url -> let (ss1,bind1) = hyperLinks links True  bs'
-                        (ss2,bind2) = hyperLinks links bind1 bs
+    hyperLinks e links _    (BIND  :bs) =
+      hyperLinks e links True bs
+    hyperLinks e links bind (Bracket _ fid _ _ bs':bs) =
+      case subexpr fid e >>= \e -> Map.lookup e links of
+        Just url -> let (ss1,bind1) = hyperLinks e links True  bs'
+                        (ss2,bind2) = hyperLinks e links bind1 bs
                     in (if bind then [] else [Data " "] ++ Tag "a" [("href",url)] ss1 : ss2, bind2)
-        Nothing  -> let (ss1,bind1) = hyperLinks links bind  bs'
-                        (ss2,bind2) = hyperLinks links bind1 bs
+        Nothing  -> let (ss1,bind1) = hyperLinks e links bind  bs'
+                        (ss2,bind2) = hyperLinks e links bind1 bs
                     in (ss1 ++ ss2, bind2)
+
+    subexpr fid e =
+      case subexpr 1 e of
+        Right e -> Just e
+        Left _  -> Nothing
+      where
+        subexpr i e
+          | i == fid = Right e
+        subexpr i (EApp e1 e2) =
+          case subexpr i e1 of
+            Right e -> Right e
+            Left i  -> subexpr i e2
+        subexpr i _  = Left (i+1)
 
     editLinks bind []          = ([],False)
     editLinks bind (Leaf s:bs) =
@@ -450,8 +463,9 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
         Nothing -> return (showIdent id, render (ppTerm Unqualified 0 t))
 
     reverseLinks links = 
-      Map.fromList [(showIdent fun,"index.wiki?qid="++qid++"&lang="++lang) | (qid,res) <- Map.toList links
-                                        , (VApp _ (_,fun) [],_,_) <- res]
+      Map.fromList [(e,"index.wiki?qid="++qid++"&lang="++lang)
+                                  | (qid,res) <- Map.toList links
+                                  , (e,_,_) <- res]
 
     checkInfo :: Options -> FilePath -> SourceGrammar -> SourceModule -> (Ident,Info) -> Check SourceModule
     checkInfo opts cwd sgr sm (c,info) = checkInModule cwd (snd sm) NoLoc empty $ do
@@ -546,11 +560,11 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
         res = unsafePerformIO $ do
                 links <- readIORef lref
                 case Map.lookup qid links of
-                  Just res -> return [v | (v,ty,ptrs) <- res, matchType vty ty]
+                  Just res -> return [eval globals0 [] c (toTerm [] abstr e) [] | (e,ty,ptrs) <- res, matchType vty ty]
                   Nothing  -> do res <- runDaison db ReadOnlyMode $ do
-                                          query_expr l c qid
+                                          query_expr l qid
                                  writeIORef lref (Map.insert qid res links)
-                                 return [v | (v,ty,ptrs) <- res, matchType vty ty]
+                                 return [eval globals0 [] c (toTerm [] abstr e) [] | (e,ty,ptrs) <- res, matchType vty ty]
 
         matchType (VProd bt1 _ ty11 (VClosure env c ty2)) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
           bt1 == bt2 && matchType ty11 ty12 && matchType (eval globals0 env c ty2 []) (DTyp hypos cat2 [])
@@ -569,11 +583,11 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
         res = unsafePerformIO $ do
                 links <- readIORef lref
                 case Map.lookup qid links of
-                  Just res -> return [v | (v,ty,ptrs) <- res, matchType vty ty, matchGender gender ptrs]
+                  Just res -> return [eval globals0 [] c (toTerm [] abstr e) [] | (e,ty,ptrs) <- res, matchType vty ty, matchGender gender ptrs]
                   Nothing  -> do res <- runDaison db ReadOnlyMode $ do
-                                          query_expr l c qid
+                                          query_expr l qid
                                  writeIORef lref (Map.insert qid res links)
-                                 return [v | (v,ty,ptrs) <- res, matchType vty ty, matchGender gender ptrs]
+                                 return [eval globals0 [] c (toTerm [] abstr e) [] | (e,ty,ptrs) <- res, matchType vty ty, matchGender gender ptrs]
 
         matchType (VProd bt1 _ ty11 (VClosure env c ty2)) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
           bt1 == bt2 && matchType ty11 ty12 && matchType (eval globals0 env c ty2 []) (DTyp hypos cat2 [])
@@ -589,16 +603,16 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
     get_gendered_expr l c ty qid (VFV c1 (VarFree vs))    = VFV c1 (VarFree (mapC (\c gender -> get_gendered_expr l c ty qid gender) c vs))
     get_gendered_expr l c ty qid gender                   = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "gendered_expr") [ty, qid, gender]))
 
-    query_expr l c qid = do
-       lexeme <- select [(VApp c (abstr,identS id) [],ety,lex_pointers lex)
+    query_expr l qid = do
+       lexeme <- select [(EFun id,ety,lex_pointers lex)
                                       | (_,lex) <- fromIndex lexemes_qid (at qid)
                                       , let id = lex_fun lex
                                       , Just ety <- pure (functionType pgf id)]
-       spec <- select [(eval globals0 [] c (toTerm [] abstr e) [],ety,[])
+       spec <- select [(e,ety,[])
                            | (i, s) <- fromIndex qid2lang (at (qid, l))
                            , Right (e,ety) <- pure (inferExpr pgf (expr s))]
        case spec of
-         [] -> do mul <- select [(eval globals0 [] c (toTerm [] abstr e) [],ety,[])
+         [] -> do mul <- select [(e,ety,[])
                                      | (i, s) <- fromIndex qid2lang (at (qid, "ParseMul"))
                                      , Right (e,ety) <- pure (inferExpr pgf (expr s))]
                   return $ lexeme ++ mul

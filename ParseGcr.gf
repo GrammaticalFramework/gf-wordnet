@@ -1,1 +1,0 @@
-concrete ParseGcr of Parse = WordNetGcr ** {}

@@ -1,1 +1,0 @@
-concrete ParseDiq of Parse = WordNetDiq ** {}

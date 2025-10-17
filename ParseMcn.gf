@@ -1,1 +1,0 @@
-concrete ParseMcn of Parse = WordNetMcn ** {}

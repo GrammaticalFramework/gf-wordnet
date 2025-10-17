@@ -1,1 +1,0 @@
-concrete ParseAls of Parse = WordNetAls ** {}

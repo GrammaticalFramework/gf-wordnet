@@ -1,1 +1,0 @@
-concrete ParseIku of Parse = WordNetIku ** {}

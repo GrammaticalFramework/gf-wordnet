@@ -1,1 +1,0 @@
-concrete ParseNov of Parse = WordNetNov ** {}

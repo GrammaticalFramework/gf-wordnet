@@ -1,1 +1,0 @@
-concrete ParseFij of Parse = WordNetFij ** {}

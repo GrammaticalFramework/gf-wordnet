@@ -1,1 +1,0 @@
-concrete ParseMin of Parse = WordNetMin ** {}

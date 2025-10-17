@@ -1,1 +1,0 @@
-concrete ParsePcd of Parse = WordNetPcd ** {}

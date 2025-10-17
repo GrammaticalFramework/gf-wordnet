@@ -1,1 +1,0 @@
-concrete ParseAzb of Parse = WordNetAzb ** {}

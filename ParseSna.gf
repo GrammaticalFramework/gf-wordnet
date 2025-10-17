@@ -1,1 +1,0 @@
-concrete ParseSna of Parse = WordNetSna ** {}

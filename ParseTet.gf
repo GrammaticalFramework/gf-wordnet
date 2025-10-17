@@ -1,1 +1,0 @@
-concrete ParseTet of Parse = WordNetTet ** {}

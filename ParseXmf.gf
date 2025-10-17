@@ -1,1 +1,0 @@
-concrete ParseXmf of Parse = WordNetXmf ** {}

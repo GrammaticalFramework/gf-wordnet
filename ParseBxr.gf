@@ -1,1 +1,0 @@
-concrete ParseBxr of Parse = WordNetBxr ** {}

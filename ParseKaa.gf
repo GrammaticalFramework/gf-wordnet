@@ -1,1 +1,0 @@
-concrete ParseKaa of Parse = WordNetKaa ** {}

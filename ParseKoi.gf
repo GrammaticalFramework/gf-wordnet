@@ -1,1 +1,0 @@
-concrete ParseKoi of Parse = WordNetKoi ** {}

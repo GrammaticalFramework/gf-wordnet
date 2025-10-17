@@ -1,1 +1,0 @@
-concrete ParseLbe of Parse = WordNetLbe ** {}

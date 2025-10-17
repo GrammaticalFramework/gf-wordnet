@@ -1,1 +1,0 @@
-concrete ParseSag of Parse = WordNetSag ** {}

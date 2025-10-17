@@ -1,1 +1,0 @@
-concrete ParseVro of Parse = WordNetVro ** {}

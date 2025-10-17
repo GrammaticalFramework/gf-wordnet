@@ -1,1 +1,0 @@
-concrete ParseAce of Parse = WordNetAce ** {}

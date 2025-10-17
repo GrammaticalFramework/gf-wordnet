@@ -1,1 +1,0 @@
-concrete ParseBam of Parse = WordNetBam ** {}

@@ -1,1 +1,0 @@
-concrete ParseBis of Parse = WordNetBis ** {}

@@ -1,1 +1,0 @@
-concrete ParseRun of Parse = WordNetRun ** {}

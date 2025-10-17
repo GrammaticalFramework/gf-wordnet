@@ -1,1 +1,0 @@
-concrete ParseJbo of Parse = WordNetJbo ** {}

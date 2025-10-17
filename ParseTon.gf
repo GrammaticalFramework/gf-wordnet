@@ -1,1 +1,0 @@
-concrete ParseTon of Parse = WordNetTon ** {}

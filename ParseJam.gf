@@ -1,1 +1,0 @@
-concrete ParseJam of Parse = WordNetJam ** {}

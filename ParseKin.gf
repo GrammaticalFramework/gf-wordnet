@@ -1,1 +1,0 @@
-concrete ParseKin of Parse = WordNetKin ** {}

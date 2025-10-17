@@ -1,1 +1,0 @@
-concrete ParseXal of Parse = WordNetXal ** {}

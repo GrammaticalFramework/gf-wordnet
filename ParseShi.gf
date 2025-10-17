@@ -1,1 +1,0 @@
-concrete ParseShi of Parse = WordNetShi ** {}

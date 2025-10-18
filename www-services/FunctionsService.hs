@@ -449,7 +449,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
       case [b | b <- bs', case b of {Leaf _ -> False; _ -> True}] of
         [] -> let (ss1,bind1) = editLinks True  bs'
                   (ss2,bind2) = editLinks bind1 bs
-              in (if bind then [] else [Data " "] ++ Tag "span" [("onclick","edit_word('"++fun++"')")] ss1 : ss2, bind2)
+              in (if bind then [] else [Data " "] ++ Tag "span" [("data-fun",fun),("onclick","edit_lex(this)")] ss1 : ss2, bind2)
         _  -> let (ss1,bind1) = editLinks bind  bs'
                   (ss2,bind2) = editLinks bind1 bs
               in (ss1 ++ ss2, bind2)

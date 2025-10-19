@@ -392,11 +392,17 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
     toStr _            = Nothing
 
     toXML links (FV ts)      = msum (map return ts) >>= toXML links
-    toXML links (Markup tag as ts)
-      | tag == identW = fmap concat (mapM (toXML links) ts)
-      | otherwise     = do as <- mapM toAttr as
-                           ts <- fmap concat (mapM (toXML links) ts)
-                           return [Tag (showIdent tag) as ts]
+    toXML links (Markup tag as ts) = do
+       ts <- case mode of
+               Editor -> let locAttrs (Local l1 l2) [Tag tag attrs xml] = Tag tag (("data-loc",show l1++"-"++show l2):attrs) xml
+                             locAttrs (Local l1 l2) xml                 = Tag "span" [("data-loc",show l1++"-"++show l2)] xml
+                             locAttrs _             xml                 = Tag "span" [] xml
+                         in mapM (\(L loc t) -> fmap (locAttrs loc) (toXML links t)) ts
+               _      -> fmap concat (mapM (toXML links . unLoc) ts)
+       if tag == identW
+         then do return ts
+         else do as <- mapM toAttr as
+                 return [Tag (showIdent tag) as ts]
     toXML links t     = case toStr t of
                           Just s  -> return [Data s]
                           Nothing -> do e <- toExpr [] t
@@ -449,7 +455,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
       case [b | b <- bs', case b of {Leaf _ -> False; _ -> True}] of
         [] -> let (ss1,bind1) = editLinks True  bs'
                   (ss2,bind2) = editLinks bind1 bs
-              in (if bind then [] else [Data " "] ++ Tag "span" [("data-fun",fun),("onclick","edit_lex(this)")] ss1 : ss2, bind2)
+              in ((if bind then [] else [Data " "]) ++ Tag "span" [("data-fun",fun),("onclick","edit_lex(this)")] ss1 : ss2, bind2)
         _  -> let (ss1,bind1) = editLinks bind  bs'
                   (ss2,bind2) = editLinks bind1 bs
               in (ss1 ++ ss2, bind2)
@@ -650,7 +656,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
                     case concat [map xml2value (parseXML s) | ("s2",s) <- tabularLinearize cnc (EApp (EFun fn) e)] of
                       []  -> VEmpty
                       [v] -> v
-                      vs  -> VMarkup identW [] vs
+                      vs  -> VMarkup identW [] (map noLoc vs)
           | otherwise -> VError ("No linearization table available for type" <+> ppValue Unqualified 0 ty)
         Nothing  -> VError (pp ("Language "++cnc_name++" is not available"))
       where
@@ -662,7 +668,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
     globals0 = Gl gr Map.empty
 
     xml2value (Data s) = string2value s
-    xml2value (Tag n as children) = VMarkup (identS n) [] (map xml2value children)
+    xml2value (Tag n as children) = VMarkup (identS n) [] (map (noLoc . xml2value) children)
     xml2value (ETag n as) = VMarkup (identS n) [] []
     xml2value GF.Data.XML.Empty = VEmpty
 

@@ -82,6 +82,17 @@ key: Q3624078
 abs: AdjCN (PositA landlocked_A) (UseN country_1_N)
 key: Q123480
 
+abs: UseN (CompoundN computer_1_N linguistMasc_1_N)
+bul: компютърен лингвист
+dan: computerlingvist
+ger: Computerlinguist
+rus: компьютерный лингвист
+key: Q15976270
+
+abs: UseN (CompoundN data_N linguistMasc_1_N)
+swe: datalingvist
+key: Q15976270
+
 abs: AdjCN (PositA computational_A) (UseN linguistMasc_1_N)
 key: Q15976270
 

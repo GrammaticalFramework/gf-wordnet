@@ -11,7 +11,8 @@ concrete ParseEus of Parse =
   PhraseEus - [UttAP, UttVP],
   IdiomEus,
   TenseX - [Adv,CAdv],
-  WordNetEus ** open ResLav in {
+  WordNetEus,
+  ParseExtendEus ** {
 
 flags
   case_sensitive = off;

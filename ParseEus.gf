@@ -12,6 +12,7 @@ concrete ParseEus of Parse =
   IdiomEus,
   TenseX - [Adv,CAdv],
   WordNetEus,
+  DocumentationEus,
   ParseExtendEus ** {
 
 flags

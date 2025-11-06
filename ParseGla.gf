@@ -7,11 +7,11 @@ concrete ParseGla of Parse =
   AdverbGla - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceGla - [UseCl, EmbedVP],
   QuestionGla,
-  RelativeGla - [IdRP],
+  RelativeGla,
   ConjunctionGla,
   PhraseGla - [UttAP, UttVP],
   IdiomGla,
-  TenseX - [Pol,PPos,PNeg,SC,CAdv],
+  TenseX,
   NamesGla,
   WordNetGla,
   DocumentationGla ** {

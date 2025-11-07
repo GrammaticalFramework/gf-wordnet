@@ -10,6 +10,7 @@ concrete ParseJpn of Parse =
   ConjunctionJpn,
   PhraseJpn - [UttAP, UttVP],
   IdiomJpn,
+  TenseX,
   ParseExtendJpn,
   WordNetJpn,
   DocumentationJpn ** {

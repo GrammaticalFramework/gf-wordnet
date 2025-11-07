@@ -13,4 +13,6 @@ lin BareN2 n = n ;
 lin RelNP = GrammarSom.RelNP ;
     ExtRelNP = GrammarSom.RelNP ;
 
+lin that_RP = IdRP ;
+
 }

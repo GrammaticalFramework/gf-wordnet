@@ -30,5 +30,6 @@ lin RelNP = GrammarCat.RelNP ;
 
 lin BareN2 n = n ;
 
+lin that_RP = IdRP ;
 
 }

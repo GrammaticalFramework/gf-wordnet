@@ -9,4 +9,6 @@ lin num x = x ;
 lin RelNP = GrammarTha.RelNP ;
     ExtRelNP = GrammarTha.RelNP ;
 
+lin that_RP = IdRP ;
+
 }

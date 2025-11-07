@@ -15,5 +15,6 @@ lin RelNP = GrammarEst.RelNP ;
 
 lin BareN2 n = n ;
 
+lin that_RP = IdRP ;
 
 }

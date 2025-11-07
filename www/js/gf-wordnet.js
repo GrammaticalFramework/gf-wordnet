@@ -1578,7 +1578,6 @@ gfwordnet.build_alignment_spans = function(lin,frames,colspan,select_bracket,cli
 
 					tags.push(text(brackets[i].token));
 					bind_state = false;
-					bind_list  = tags;
 				} else {
 					const span = node("span", {},
 								      taggedBrackets(tags,brackets[i].children));
@@ -1587,6 +1586,7 @@ gfwordnet.build_alignment_spans = function(lin,frames,colspan,select_bracket,cli
 					span.addEventListener("click", onclick_bracket);
 					tags.push(span);
 				}
+                bind_list = tags;
 			}
 		}
 		return tags;

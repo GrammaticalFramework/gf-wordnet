@@ -1564,23 +1564,24 @@ gfwordnet.build_alignment_spans = function(lin,frames,colspan,select_bracket,cli
 	}
 
 	let bind_state = true;
-	function taggedBrackets(brackets) {
+	function taggedBrackets(bind_list,brackets) {
 		let tags = [];
 		for (let i in brackets) {
 			if ("bind" in brackets[i])
 				bind_state = brackets[i].bind;
 			else {
-				if (!bind_state) {
-					tags.push(text(" "));
-					bind_state = true;
-				}
-
 				if ("token" in brackets[i]) {
+					if (!bind_state) {
+						bind_list.push(text(" "));
+						bind_state = true;
+					}
+
 					tags.push(text(brackets[i].token));
 					bind_state = false;
+					bind_list  = tags;
 				} else {
 					const span = node("span", {},
-								      taggedBrackets(brackets[i].children));
+								      taggedBrackets(tags,brackets[i].children));
 					span.dataset.fid = brackets[i].fid;
 					span.dataset.fun = brackets[i].fun;
 					span.addEventListener("click", onclick_bracket);
@@ -1591,8 +1592,9 @@ gfwordnet.build_alignment_spans = function(lin,frames,colspan,select_bracket,cli
 		return tags;
 	}
 
-	return taggedBrackets(lin.brackets);
+	return taggedBrackets([],lin.brackets);
 }
+
 gfwordnet.build_alignment_table = function(lins,example,colspan,skip_lang,select_bracket,click_on_all_levels) {
 	const rows = []
 	for (const lin of lins) {

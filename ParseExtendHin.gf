@@ -3,10 +3,10 @@ concrete ParseExtendHin of ParseExtend =
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
                PiedPipingQuestSlash, PiedPipingRelSlash],
   NumeralHin - [num], PunctuationX **
-  open Prelude, ResHin in {
+  open Prelude, ResHin, (G=GrammarHin) in {
 
 lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
-lin that_RP = IdRP ;
+lin that_RP = G.IdRP ;
 
 }

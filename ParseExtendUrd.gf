@@ -3,10 +3,10 @@ concrete ParseExtendUrd of ParseExtend =
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
                PiedPipingQuestSlash, PiedPipingRelSlash],
   NumeralUrd - [num], PunctuationX **
-  open Prelude, ResUrd in {
+  open Prelude, ResUrd, (G=GrammarUrd) in {
 
 lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
-lin that_RP = IdRP ;
+lin that_RP = G.IdRP ;
 
 }

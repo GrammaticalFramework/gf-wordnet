@@ -1,9 +1,7 @@
 concrete ParseExtendJpn of ParseExtend =
   NumeralJpn - [num], PunctuationX **
-  open Prelude, ResHin in {
+  open Prelude, ResJpn in {
 
 lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
-
-lin that_RP = IdRP ;
 
 }

@@ -2,7 +2,7 @@ concrete ParseExtendLav of ParseExtend =
   ExtendLav - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
                PiedPipingQuestSlash, PiedPipingRelSlash], NumeralLav - [num], PunctuationX **
-  open Prelude, ResLav in {
+  open Prelude, ResLav, (G=GrammarLav) in {
 
 lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
@@ -33,6 +33,6 @@ lin EmbedVP ant pol p vp = { s = ant.s ++ pol.s ++ buildVP vp pol.p VInf p.agr }
 
 lin num x = x ;
 
-lin that_RP = IdRP ;
+lin that_RP = G.IdRP ;
 
 }

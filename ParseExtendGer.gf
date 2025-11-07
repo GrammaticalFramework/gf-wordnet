@@ -34,6 +34,6 @@ lin RelNP = G.RelNP ;
 
 lin BareN2 n = n ;
 
-lin that_RP = IdRP ;
+lin that_RP = G.IdRP ;
 
 }

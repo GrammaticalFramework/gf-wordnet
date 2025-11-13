@@ -571,8 +571,12 @@ oper
 
       mkNP : PN -> NP
       = UsePN    ; --%
-    mkNP : LN -> NP               -- Sweden  --:
+      mkNP : LN -> NP             -- Sweden  --:
       = UseLN    ; --%
+      mkNP : GN -> NP             -- Krasimir  --:
+      = GivenName    ; --%
+      mkNP : GN -> SN -> NP       -- Krasimir Angelov  --:
+      = FullName    ; --%
       mkNP : Pron -> NP           -- he  --:
       = UsePron  ; --%
 

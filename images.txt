@@ -27025,3 +27025,5 @@ buckie_LN	Q999708;Buckie;commons/b/b1/Buckie_-_geograph.org.uk_-_711749.jpg
 korpilahti_LN	Q999821;Korpilahti;commons/7/7a/Landscape_of_Korpilahti.jpg	Q999821;Korpilahti;commons/c/cc/Korpilahti.vaakuna.svg
 luumäki_LN	Q999855;Luum%C3%A4ki;commons/2/26/Luumäki.vaakuna.svg	Q999855;Luum%C3%A4ki;commons/4/4f/Luumäki_sijainti_Suomi.svg	Q999855;Luum%C3%A4ki;commons/8/8a/Luumäki_Church_1.JPG
 eura_LN	Q999868;Eura;commons/2/21/Euran_kirkko_2011_cropped.jpg	Q999868;Eura;commons/b/b4/Eura_sijainti_Suomi.svg	Q999868;Eura;commons/d/df/Eura.vaakuna.svg
+cousinFem_N	Q23009870;Cousin;commons/7/79/Victoria_and_her_cousin%2C_1852.jpg
+cousinMasc_1_N	Q23009870;Cousin;commons/7/79/Victoria_and_her_cousin%2C_1852.jpg

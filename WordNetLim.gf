@@ -25731,7 +25731,6 @@ lin de_rigeur_A = variants {} ;
 lin de_trop_A = variants {} ;
 lin deacon_1_N = mkN "diake" ;
 lin deacon_2_N = mkN "diake" ;
-lin deacon_2_N = mkN "diake" ;
 lin deaconess_N = mkN "diake" ; --guessed
 lin deactivate_1_V2 = variants {} ;
 lin deactivate_2_V2 = variants {} ;

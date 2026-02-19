@@ -11,7 +11,8 @@ concrete ParseSwa of Parse =
   TenseX - [CAdv,IAdv,AdV,SC,Adv],
   NamesSwa,
   ParseExtendSwa,
-  WordNetSwa
+  WordNetSwa,
+  DocumentationSwa
   ** {
 
 flags

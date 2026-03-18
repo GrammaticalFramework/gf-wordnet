@@ -725,11 +725,11 @@ gfwordnet.onclick_cell = function (cell) {
                 if (name.endsWith(".svg")) {
                     a.appendChild(
                       node("img",{"class": "thumbnail"
-                                 ,style: "width: 300px"
+                                 ,style: "width: 330px"
                                  ,src: path.join("/")}));
                 } else {
                     path.splice(2,0,"thumb");
-                    path.push("300px-"+name);
+                    path.push("330px-"+name);
                     a.appendChild(
                       node("img",{"class": "thumbnail"
                                  ,src: path.join("/")}));

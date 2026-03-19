@@ -2,6 +2,7 @@ concrete ParseMkd of Parse =
   NounMkd,
   VerbMkd,
   AdjectiveMkd,
+  AdverbMkd,
   SentenceMkd,
   PhraseMkd,
   ParseExtendMkd,

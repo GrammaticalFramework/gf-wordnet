@@ -6,6 +6,7 @@ concrete ParseMkd of Parse =
   SentenceMkd - [EmbedVP],
   QuestionMkd,
   RelativeMkd,
+  ConjunctionMkd,
   PhraseMkd - [UttAP,UttVP],
   IdiomMkd,
   ParseExtendMkd,

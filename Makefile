@@ -13,7 +13,7 @@ LANGS = ParseAar ParseAbk ParseAdy ParseAfr ParseAlt ParseAmh ParseAng \
 		ParseKhm ParseKik ParseKir ParseKor ParseKpv ParseKur ParseLad \
 		ParseLao ParseLat ParseLav ParseLij ParseLim ParseLit ParseLld \
 		ParseLmo ParseLtz ParseLzz ParseMah ParseMal ParseMar ParseMdf \
-		ParseMhr ParseMkd ParseMlg ParseMlt ParseMnw ParseMon ParseMya \
+		ParseMhr ParseMkd ParseMlg ParseMlt ParseMnw ParseMya \
 		ParseNap ParseNav ParseNds ParseNep ParseNno ParseNor ParseOci \
 		ParseOri ParseOss ParsePam ParsePes ParsePli ParsePms ParsePnb \
 		ParsePol ParsePor ParsePus ParseQue ParseRoh ParseRon ParseRup \
@@ -82,7 +82,7 @@ Parse.pgf: $(patsubst %, build/%.pgf, $(LANGS)) Parse.probs
 	# mv Parse.ngf $(DOC_PATH)
 
 build/Parse%.pgf: Parse%.gf Parse.gf WordNet%.gf WordNet.gf
-	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build $<
+	gf --make -name=$(basename $(@F)) --gfo-dir=build/gfo --output-dir=build -no-pmcfg $<
 
 Parse.probs Parse.uncond.probs: train/statistics.hs examples.txt build/ParseAPI.pgf
 	runghc $^

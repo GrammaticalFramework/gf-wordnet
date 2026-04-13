@@ -1,12 +1,12 @@
 concrete ParseMkd of Parse = 
   NounMkd - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbMkd - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP, UseCopula],
-  AdjectiveMkd - [ReflA2],
+  AdjectiveMkd - [ReflA2, CAdvAP, AdjOrd],
   AdverbMkd - [ComparAdvAdj, ComparAdvAdjS, AdnCAdv],
   SentenceMkd - [EmbedVP],
   PhraseMkd - [UttAP,UttVP],
   ParseExtendMkd,
-  TenseX,
+  TenseMkd,
   WordNetMkd,
   DocumentationMkd ** {
 

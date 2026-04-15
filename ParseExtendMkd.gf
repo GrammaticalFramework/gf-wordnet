@@ -4,6 +4,7 @@ concrete ParseExtendMkd of ParseExtend =
                PiedPipingQuestSlash, PiedPipingRelSlash],  NumeralMkd - [num], PunctuationX ** open Predef, Prelude, ResMkd, GrammarMkd in {
 
 lin gen_Quant = DefArt ;
+lin that_RP = IdRP ;
 lin UttAP  p ap  = {s = ap.s ! Indef ! p.a.g} ;
 lin UttVP ant pol p vp = {
       s = ant.s ++ pol.s ++ "да" ++

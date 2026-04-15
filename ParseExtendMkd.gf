@@ -23,6 +23,15 @@ lin EmbedVP ant pol p vp = {
           vp.present ! Perfective ! genNum2num p.a.g ! p.a.p ++
           vp.compl ! p.a
       } ;
+lin CompVP ant pol p vp = {
+      s = \\agr => ant.s ++ pol.s ++ "да" ++
+                   case pol.p of {
+                     Pos => [] ;
+                     Neg => "не"
+                   } ++
+                   vp.present ! Perfective ! genNum2num p.a.g ! p.a.p ++
+                   vp.compl ! p.a
+    } ;
 lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 lin num x = x ;
 
@@ -37,5 +46,7 @@ lin ComplVV vv ant pol vp = vv ** {
                          Anter => auxBe.present ! genNum2num agr.g ! agr.p ++ vp.participle.imperfect ! Perfective ! agr.g
                        } ;
     } ;
+
+lin TimeNP np = {s = np.s ! RSubj} ;
 
 }

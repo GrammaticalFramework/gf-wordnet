@@ -1,6 +1,9 @@
 concrete ParseHye of Parse =
   NounHye,
+  VerbHye,
   AdjectiveHye,
+  AdverbHye,
+  SentenceHye,
   PhraseHye,
   TenseX,
   WordNetHye,

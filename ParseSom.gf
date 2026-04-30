@@ -11,6 +11,7 @@ concrete ParseSom of Parse =
   IdiomSom,
   TenseX - [CAdv,IAdv,AdV,Adv,SC],
   NamesSom,
+  DocumentationSom,
   ParseExtendSom,
   WordNetSom
   ** {

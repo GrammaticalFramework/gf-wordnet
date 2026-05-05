@@ -1,7 +1,10 @@
 concrete ParseFao of Parse = 
   NounFao,
+  VerbFao,
   AdjectiveFao,
-  PhraseFao,
+  SentenceFao,
+  RelativeFao,
+  PhraseFao - [UttAP, UttVP],
   TenseX,
   WordNetFao,
   DocumentationFao ** {

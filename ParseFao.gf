@@ -7,7 +7,8 @@ concrete ParseFao of Parse =
   PhraseFao - [UttAP, UttVP],
   TenseX,
   WordNetFao,
-  DocumentationFao ** {
+  DocumentationFao,
+  ParseExtendFao ** {
 
 flags
   case_sensitive = off;

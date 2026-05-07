@@ -1,6 +1,6 @@
 --# -path=.:../abstract:../common:../api
 concrete ParseHun of Parse =
-  NounHun - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
+  NounHun - [PPartNP, UseN2, DetNP, NumDigits],
   VerbHun - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
   AdjectiveHun - [ReflA2,CAdvAP,AdjOrd],
   AdverbHun - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],

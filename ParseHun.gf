@@ -1,4 +1,3 @@
---# -path=.:../gf-rgl/src/hungarian:../gf-rgl/src/abstract:../gf-rgl/src/common:../gf-rgl/src/api:../gf-rgl/src/prelude
 concrete ParseHun of Parse =
 	  NounHun - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbHun - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
@@ -13,6 +12,7 @@ concrete ParseHun of Parse =
   TenseX - [Adv, AdN, SC],
   NamesHun,
   ParseExtendHun,
+  WordNetHun,
   ConstructionHun - [Language, InLanguage, languageNP, languageCN,
                   afrikaans_Language, amharic_Language, arabic_Language,
                   bulgarian_Language, catalan_Language, chinese_Language,
@@ -26,7 +26,7 @@ concrete ParseHun of Parse =
                   russian_Language, sindhi_Language, spanish_Language,
                   swahili_Language, swedish_Language, thai_Language,
                   turkish_Language, urdu_Language],
-  WordNetHun ** {
+  DocumentationHun ** {
 
 flags
   case_sensitive = off;

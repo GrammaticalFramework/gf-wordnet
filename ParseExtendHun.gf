@@ -1,16 +1,19 @@
 concrete ParseExtendHun of ParseExtend =
-  CatHun,
-	  ExtendHun - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
-	               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
-	               PiedPipingQuestSlash, PiedPipingRelSlash],
-	  NumeralHun - [num], PunctuationX **
-	  open Prelude, ResHun, NounHun, VerbHun, AdjectiveHun in {
+  ExtendHun - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
+               CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
+               PiedPipingQuestSlash, PiedPipingRelSlash],
+  NumeralHun - [num], PunctuationX **
+  open Prelude, ResHun, NounHun, VerbHun, AdjectiveHun in {
 
 lincat
   CNN = {s : Str ; n : Number ; agr : Person*Number ; g : Gender} ;
 
 lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 lin num x = x ;
+lin NumMore num = num ** {s = \\p => "további" ++ num.s ! p} ;
+lin NumLess num = num ** {s = \\p => num.s ! p ++ "kevesebb"} ;
+lin UseACard card = card ;
+lin UseAdAACard ada card = {s = \\p => ada.s ++ card.s ! p} ;
 lin ExtRelNP = NounHun.RelNP ;
 lin gen_Quant = DefArt ;
 lin UttAP p ap =
@@ -107,6 +110,7 @@ lin InOrderToVP ant pol p vp = {
       } ;
 lin CompVP ant pol p vp =
       useV (copula ** {s = \\vf => pol.s ++ if_then_Pol pol.p [] "nem" ++ infVP vp ++ copula.s ! vf}) ;
+lin FocusComp comp np = predVP np comp ;
 lin UttVP ant pol p vp = {
       s = pol.s ++ if_then_Pol pol.p [] "nem" ++ infVP vp
       } ;

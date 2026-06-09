@@ -1,4 +1,3 @@
---# -path=.:../gf-rgl/src/belarusian:../gf-rgl/src/abstract:../gf-rgl/src/common:prelude
 concrete ParseBel of Parse = 
   NounBel - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbBel - [PassV2, ReflVP, ComplVV, SlashVV, SlashV2V, SlashV2VNP],

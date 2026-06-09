@@ -14,7 +14,7 @@ lin
 
   UttAP p ap = {s = ap.s ! Nom ! genNum p.a.g p.a.n} ;
   UttVPS p vps = {s = vps.s ! p.a} ;
-  PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ mark.s} ;
+  PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
   ReflA2 a rnp = {s = \\c,gn => a.s ! c ! gn ++ a.c2.s ++ rnp.s ! a.c2.c} ;
   ReflVPSlash vp rnp = {

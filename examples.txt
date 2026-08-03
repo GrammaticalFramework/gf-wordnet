@@ -230242,6 +230242,18 @@ swe: Zürich är centrum för den tysktalande delen av Schweiz
 bul: Цюрих е центърът на немскоезичната част на Швейцария
 key: 1 zurich_PN 09055592-n
 
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA green_1_A) (AdjCN (PositA colourless_2_A) (UseN idea_1_N)))) (AdvVP (UseV sleep_1_V) (PositAdvAdj furious_1_A))))) NoVoc
+eng: green colourless ideas sleep furiously
+swe: gröna färglösa idéer sover våldsamt
+bul: зелени безцветни идеи спят яростно
+key: 0
+
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN time_5_N)) (AdvVP (UseV fly_2_V) (PrepNP like_Prep (DetCN (DetQuant IndefArt NumSg) (UseN arrow_2_N))))))) NoVoc
+eng: time flies like an arrow
+swe: tiden flyger likt en pil
+bul: времето лети като стрела
+key: 0
+
 class: begin-55.1
 role:  Agent +animate +organization
 role:  Theme

@@ -213,6 +213,8 @@ oper
         = TPres ; --%
       pastTense        : Tense  -- she slept           --# notpresent  --:
         = TPast ; --# notpresent --%
+      pastSimpleTense  : Tense  -- she slept           --# notpresent  --:
+        = TPastSimple ; --# notpresent --%
       futureTense      : Tense  -- she will sleep        --# notpresent  --:
         = TFut ; --# notpresent --%
       conditionalTense : Tense  -- she would sleep       --# notpresent   --:

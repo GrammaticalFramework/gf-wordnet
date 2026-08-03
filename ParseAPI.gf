@@ -160,6 +160,7 @@ lin SubjS subj_1 s_2 = mkTerm "mkAdv" subj_1 s_2 ;
 lin TCond = mkTerm "conditionalTense" ;
 lin TFut = mkTerm "futureTense" ;
 lin TPast = mkTerm "pastTense" ;
+lin TPastSimple = mkTerm "pastSimpleTense" ;
 lin TPres = mkTerm (hideOpt "presentTense") ;
 lin TTAnt tense_1 ant_2 = mkTerm "mkTense" tense_1 ant_2 ;
 lin Use2N3 n3_1 = mkTerm "mkN2" n3_1 ;

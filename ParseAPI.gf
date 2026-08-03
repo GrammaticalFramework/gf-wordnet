@@ -128,6 +128,7 @@ lin PConjConj conj_1 = mkTerm "mkPConj" conj_1 ;
 lin PNeg = mkTerm "negativePol" ;
 lin PPos = mkTerm (hideOpt "positivePol") ;
 lin PhrUtt pconj_1 utt_2 voc_3 = mkFlat (mkTerm "mkPhr" pconj_1 utt_2 voc_3) ;
+lin PlainLN ln = mkTerm "PlainLN" ln ;
 lin PositA a_1 = mkFlat (mkTerm "mkAP" a_1) ;
 lin PositAdAAdj a_1 = mkTerm "mkAdA" a_1 ;
 lin PositAdvAdj a_1 = mkTerm "mkAdv" a_1 ;

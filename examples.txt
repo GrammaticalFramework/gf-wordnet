@@ -29638,10 +29638,10 @@ swe: en katastrofisk jordbävning
 bul: едно катаклично земетресение
 key: 1 cataclysmic_A 00589886-a
 
-abs* PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA catalan_1_A) (UseN (CompoundN independence_1_N movement_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA catalan_1_A) (UseN (CompoundN independence_1_N movement_4_N))))) NoVoc
 eng: Catalan independence movement
-swe: Katalanska självständighetsrörelsen
-bul: Движението за независимост на Катала
+swe: den katalanska självständighetsrörelsen
+bul: каталонското движение за независимост
 key: 1 catalan_1_A 03065425-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA catalan_2_A) (UseN poetry_1_N)))) NoVoc
@@ -50176,11 +50176,11 @@ swe: hans oskuldsdeklaration
 bul: неговата декларация за невинност
 key: 1 declaration_2_N 06748966-n
 
-abs* PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN declaration_5_N) (MassNP (UseN independence_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (UseN declaration_5_N) (PrepNP of_3_Prep (MassNP (UseN independence_1_N)))))) NoVoc
 eng: a declaration of independence
-swe: en självständighetsförklaring
+swe: en deklaration för självständighet
 bul: декларация за независимост
-key: 1 declaration_5_N 06738907-n изявление utropande utlysning utfärdande tillkännagivande promulgation offentliggörande kungörelse eklatering bebådelse avkunnande anmälan
+key: 1 declaration_5_N 06738907-n
 
 abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplVS declare_1_VS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (AdvVPSlash (SlashV2a need_2_V2) more_1_Adv) (MassNP (SentCN (UseN money_1_N) (EmbedVP ASimul PPos ? (ComplSlash (SlashV2a carry_out_1_V2) (DetCN (DetQuant DefArt NumSg) (RelCN (UseN task_1_N) (UseRCl (TTAnt TPastSimple ASimul) PPos (EmptyRelSlash (SlashPrep (PredVP (UsePron he_Pron) (PassVPSlash (SlashV2a charge_6_V2))) with_Prep)))))))))))))))) NoVoc
 eng: He declared that he needed more money to carry out the task he was charged with
@@ -182278,10 +182278,10 @@ swe: Kandidaten slog av sina tidigare kampanjarbetare
 bul: кандидатът се отказа от бившите си кампании
 key: 1 slough_off_1_V2 02227628-v
 
-abs* PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA slovenian_A) (UseN independence_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA slovenian_A) (UseN independence_1_N)))) NoVoc
 eng: Slovenian independence
-swe: Slovenska självständigheten
-bul: Словенска независимост
+swe: den slovenska självständigheten
+bul: словенската независимост
 key: 1 slovenian_A 02975836-a
 
 abs* PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA slovenly_A) (UseN appearance_1_N)))) NoVoc

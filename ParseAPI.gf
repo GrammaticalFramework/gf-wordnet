@@ -1,13 +1,15 @@
 --# -path=.:alltenses
 
-concrete ParseAPI of Parse = CatAPI, WordNetAPI ** {
+concrete ParseAPI of Parse = CatAPI, WordNetAPI ** open Prelude in {
 
 lincat 
   ListAP, ListAdv, ListAdV, ListCN, ListIAdv, ListNP, ListRS, ListS, 
-  Digit, Dig, QVP, Sub10, Sub100, Sub1000, Sub1000000, Sub1000000000, Sub1000000000000,
+  Digit, QVP, Sub10, Sub100, Sub1000, Sub1000000, Sub1000000000, Sub1000000000000,
   Mark, RNP, RNPList, CNN, VPI, VPS, VPI2, VPS2, ListComp, ListDAP, ListImp, ListVPI, ListVPI2, 
   ListVPS, ListVPS2, ListDAP, Timeunit, Hour, Weekday, Month, Monthday, Year,
   Inflection, Definition, Document, Tag = Term ;
+
+  Dig = {s1,s2 : Str} ;
 
 lin AAnter = mkTerm "anteriorAnt" ;
 lin ASimul = mkTerm (hideOpt "simultaneousAnt") ;
@@ -69,16 +71,16 @@ lin ConsIAdv iadv_1 listiadv_2 = mkTerm "mkListIAdv" iadv_1 listiadv_2 ;
 lin ConsNP np_1 listnp_2 = mkTerm "mkListNP" np_1 listnp_2 ;
 lin ConsRS rs_1 listrs_2 = mkTerm "mkListRS" rs_1 listrs_2 ;
 lin ConsS s_1 lists_2 = mkTerm "mkListS" s_1 lists_2 ;
-lin D_0 = mkTerm "n0_Dig" ;
-lin D_1 = mkTerm "n1_Dig" ;
-lin D_2 = mkTerm "n2_Dig" ;
-lin D_3 = mkTerm "n3_Dig" ;
-lin D_4 = mkTerm "n4_Dig" ;
-lin D_5 = mkTerm "n5_Dig" ;
-lin D_6 = mkTerm "n6_Dig" ;
-lin D_7 = mkTerm "n7_Dig" ;
-lin D_8 = mkTerm "n8_Dig" ;
-lin D_9 = mkTerm "n9_Dig" ;
+lin D_0 = {s1="n0_Dig"; s2="0"} ;
+lin D_1 = {s1="n1_Dig"; s2="1"} ;
+lin D_2 = {s1="n2_Dig"; s2="2"} ;
+lin D_3 = {s1="n3_Dig"; s2="3"} ;
+lin D_4 = {s1="n4_Dig"; s2="4"} ;
+lin D_5 = {s1="n5_Dig"; s2="5"} ;
+lin D_6 = {s1="n6_Dig"; s2="6"} ;
+lin D_7 = {s1="n7_Dig"; s2="7"} ;
+lin D_8 = {s1="n8_Dig"; s2="8"} ;
+lin D_9 = {s1="n9_Dig"; s2="9"} ;
 lin DefArt = mkTerm "the_Quant" ;
 lin DetCN det_1 cn_2 = mkTerm "mkNP" (flatIfTerm det_1) (flatIfTerm cn_2) ;
 lin DetQuant quant_1 num_2 = mkFlat (mkTerm "mkDet" quant_1 num_2) ;
@@ -91,8 +93,16 @@ lin ExistNP np_1 = mkTerm "mkCl" np_1 ;
 lin ExtAdvS adv_1 s_2 = mkTerm "mkS" adv_1 s_2 ;
 lin FunRP prep_1 np_2 rp_3 = mkTerm "mkRP" prep_1 np_2 rp_3 ;
 lin GenericCl vp_1 = mkTerm "genericCl" vp_1 ;
-lin IDig dig_1 = mkTerm "mkDigits" (mkTerm "\"999999\"") ; -- mkTerm "mkDigits" dig_1 ;
-lin IIDig dig_1 digits_2 = mkTerm "mkDigits" (mkTerm "\"999\"") ; -- mkTerm "mkDigits" dig_1 digits_2 ;
+lin IDig dig_1 = mkTerm "mkDigits" (mkTerm dig_1.s2) ;
+lin IIDig dig_1 digits_2 = mkTerm "mkDigits" (mkTerm (dig_1.s2++BIND++digits_2.x)) ;
+lin IFrac dec dig = mkTerm "mkDecimal" (mkTerm (dec.x++
+                                                BIND++
+                                                case dec.hasDot of {
+                                                  True => "" ;
+                                                  False => "."++BIND
+                                                }++
+                                                dig.s2))
+                    ** {hasDot = True} ;
 lin IdRP = mkTerm "which_RP" ;
 lin IdetCN idet_1 cn_2 = mkTerm "mkIP" idet_1 cn_2 ;
 lin IdetIP idet_1 = mkTerm "mkIP" idet_1 ;
@@ -122,6 +132,7 @@ lin PositA a_1 = mkFlat (mkTerm "mkAP" a_1) ;
 lin PositAdAAdj a_1 = mkTerm "mkAdA" a_1 ;
 lin PositAdvAdj a_1 = mkTerm "mkAdv" a_1 ;
 lin PossPron pron_1 = mkTerm "mkQuant" pron_1 ;
+lin PosDecimal d = mkTerm "mkDecimal" (mkTerm d.x) ** {hasDot = False} ;
 lin PredSCVP sc_1 vp_2 = mkTerm "mkCl" sc_1 vp_2 ;
 lin PredVP np_1 vp_2 = mkTerm "mkCl" np_1 (flatIfTerm vp_2) ;
 lin PredetNP predet_1 np_2 = mkTerm "mkNP" predet_1 np_2 ;
@@ -316,6 +327,7 @@ lin MkVPI vp = mkTerm "MkVPI" vp;
 lin MkVPI2 vpslash = mkTerm "MkVPI2" vpslash;
 lin MkVPS temp pol vp = mkTerm "MkVPS" temp pol vp;
 lin MkVPS2 temp pol vpslash = mkTerm "MkVPS2" temp pol vpslash;
+lin NegDecimal d = mkTerm "mkDecimal" (mkTerm ("-"++BIND++d.x)) ** {hasDot = False} ;
 lin NoDefinition s = mkTerm "NoDefinition" (mkTerm s);
 lin NumLess num = mkTerm "NumLess" num;
 lin NumMore num = mkTerm "NumMore" num;

@@ -78598,11 +78598,11 @@ swe: flyga in i en raseri
 bul: летят в ярост
 key: 1 fly_into_V2 00546372-v
 
-abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN time_1_N)) (AdvVP (UseV fly_8_V) (PrepNP like_Prep (DetCN (DetQuant IndefArt NumSg) (UseN arrow_1_N))))))) NoVoc
-eng: Time flies like an arrow
-swe: Tiden flyger som en pil
-bul: Времето лети като стрелка
-key: 1 fly_8_V 02076993-v
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN time_5_N)) (AdvVP (UseV fly_8_V) (PrepNP like_Prep (DetCN (DetQuant IndefArt NumSg) (UseN arrow_2_N))))))) NoVoc
+eng: time flies like an arrow
+swe: tiden flyger likt en pil
+bul: времето лети като стрела
+key: 2 fly_8_V 02076993-v time_5_N 00028468-n
 
 abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (AdvVP (ProgrVP (UseV fly_9_V)) (PrepNP to_1_Prep (UseLN cincinnati_LN))) tonight_Adv)))) NoVoc
 eng: she is flying to Cincinnati tonight
@@ -203920,12 +203920,6 @@ swe: Det tog lite tid innan han fick ett svar
 bul: отне известно време, преди да получи отговор
 key: 1 time_5_N 00028468-n tid
 
-abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN time_1_N)) (AdvVP (UseV fly_1_V) (PrepNP like_Prep (DetCN (DetQuant IndefArt NumSg) (UseN arrow_1_N))))))) NoVoc
-eng: time flies like an arrow
-swe: tiden flyger som en pil
-bul: времето лети като стрела
-key: 1 time_5_N 00028468-n tid
-
 abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (ApposCN (UseN time_5_N) (UsePron he_Pron))) (UseV succeed_V)))) NoVoc
 eng: this time he succeeded
 swe: den här gången lyckades han
@@ -230246,12 +230240,6 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: green colourless ideas sleep furiously
 swe: gröna färglösa idéer sover våldsamt
 bul: зелени безцветни идеи спят яростно
-key: 0
-
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN time_5_N)) (AdvVP (UseV fly_2_V) (PrepNP like_Prep (DetCN (DetQuant IndefArt NumSg) (UseN arrow_2_N))))))) NoVoc
-eng: time flies like an arrow
-swe: tiden flyger likt en pil
-bul: времето лети като стрела
 key: 0
 
 class: begin-55.1

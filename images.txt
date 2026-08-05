@@ -27027,3 +27027,4 @@ luumäki_LN	Q999855;Luum%C3%A4ki;commons/2/26/Luumäki.vaakuna.svg	Q999855;Luum%
 eura_LN	Q999868;Eura;commons/2/21/Euran_kirkko_2011_cropped.jpg	Q999868;Eura;commons/b/b4/Eura_sijainti_Suomi.svg	Q999868;Eura;commons/d/df/Eura.vaakuna.svg
 cousinFem_N	Q23009870;Cousin;commons/7/79/Victoria_and_her_cousin%2C_1852.jpg
 cousinMasc_1_N	Q23009870;Cousin;commons/7/79/Victoria_and_her_cousin%2C_1852.jpg
+ebola_N	Q10538943;Zaire_ebolavirus;commons/3/3f/Ebola_virus_em.png

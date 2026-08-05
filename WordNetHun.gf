@@ -268,7 +268,7 @@ lin abortus_N = mkN "abortum" ; --guessed
 lin abound_1_V = I.bovelkedik_V ;
 lin abound_2_V = I.bovelkedik_V ;
 lin about_AdN = mkAdN "körülbelül" ;
-lin about_Predet = {s = "körülbelül"} ;
+lin about_Predet = {s = "körülbelül"; forceSg=False} ;
 lin about_2_Adv = mkAdv "körös-körül" ; --guessed
 lin about_3_Adv = mkAdv "körül" ;
 lin about_4_Adv = mkAdv "körül" ;
@@ -2678,8 +2678,8 @@ lin alkylbenzene_N = mkN "alkil-benzol" ; --guessed
 lin alkylbenzenesulfonate_N = mkN "alkil-benzol-szulfonát" ; --guessed
 lin alkylic_A = mkA "alkil-" ; --guessed
 lin all_A = variants {mkA "csupa"; mkA "teljesen"} ; --guessed
-lin all_1_Predet = {s = "mind a"} ;
-lin all_2_Predet = {s = "mind"} ;
+lin all_1_Predet = {s = "mind a"; forceSg=False} ;
+lin all_2_Predet = {s = "mind"; forceSg=False} ;
 lin all_mains_A = mkA "összáramú" ; --guessed
 lin all_powerful_A = mkA "mindenható" ;
 lin all_round_A = mkA "univerzális" ;
@@ -2876,7 +2876,7 @@ lin almonerFem_N = humanN (mkN "kórházi szociális munkás") ; --guessed
 lin almost_AdA = mkAdA "majdnem" ;
 lin almost_AdN = mkAdN "majdnem" ;
 lin almost_AdV = mkAdV "majdnem" ;
-lin almost_Predet = {s = "majdnem"} ;
+lin almost_Predet = {s = "majdnem"; forceSg=False} ;
 lin alms_N = mkN "alamizsna" ;
 lin alms_box_N = mkN "persely" ; --guessed
 lin alms_giving_1_N = mkN "alamizsnálkodás" ; --guessed
@@ -4911,7 +4911,7 @@ lin approximate_1_V2 = mkV2 (mkV "megközelít") ; --guessed
 lin approximate_2_V2 = variants {mkV2 (mkV "megbecsül"); mkV2 (mkV "felbecsül")} ; --guessed
 lin approximately_AdA = mkAdA "körülbelül" ;
 lin approximately_AdN = mkAdN "körülbelül" ;
-lin approximately_Predet = {s = "körülbelül"} ;
+lin approximately_Predet = {s = "körülbelül"; forceSg=False} ;
 lin approximation_1_N = mkN "közelítés" ;
 lin approximation_2_N = mkN "megközelítés" ; --guessed
 lin approximation_3_N = mkN "közelítés" ;
@@ -13765,7 +13765,7 @@ lin busybodyMasc_N = humanN (mkN "kotnyeles") ;
 lin busybodyFem_N = humanN (mkN "kotnyeles") ;
 lin busyness_N = mkN "elfoglaltság" ; --guessed
 lin busywork_N = mkN "látszattevékenység" ; --guessed
-lin but_Predet = {s = "csupán"} ;
+lin but_Predet = {s = "csupán"; forceSg=False} ;
 lin but_1_Conj = mkConj "de" Sg ;
 lin but_2_Conj = mkConj "de" Sg ;
 lin but_PConj = ss "de" ; --guessed
@@ -44679,7 +44679,7 @@ lin half_3_A = mkA "fél" ;
 lin half_Adv = mkAdv "félig" ;
 lin half_1_N = mkN "fél" ;
 lin half_2_N = mkN "fél" ;
-lin half_Predet = {s = "fél"} ;
+lin half_Predet = {s = "fél"; forceSg=False} ;
 lin half_baked_1_A = mkA "elhamarkodott" ; --guessed
 lin half_baked_2_A = mkA "félig sült" ; --guessed
 lin half_bloodMasc_N = humanN (mkN "féltestvér") ; --guessed
@@ -53634,8 +53634,8 @@ lin just_5_Adv = mkAdv "éppen" ;
 lin just_6_Adv = mkAdv "csak" ;
 lin just_7_Adv = mkAdv "éppen" ;
 lin just_8_Adv = mkAdv "éppenhogy" ; --guessed
-lin just_1_Predet = {s = "éppen"} ;
-lin just_2_Predet = {s = "éppen"} ;
+lin just_1_Predet = {s = "éppen"; forceSg=False} ;
+lin just_2_Predet = {s = "éppen"; forceSg=False} ;
 lin just_because_Subj = ss "csak azért" ; --guessed
 lin justice_1_N = mkN "igazságosság" ;
 lin justice_2_N = mkN "igazság" ;
@@ -63579,7 +63579,7 @@ lin more_2_Adv = mkAdv "jobban" ;
 lin more_SN = mkSN "More" ; --guessed
 lin more_often_than_not_Adv = mkAdv "többnyire" ; --guessed
 lin more_CAdv = {s = "több" ; p = "mint"} ;
-lin more_than_Predet = ss "több mint" ; --guessed
+lin more_than_Predet = {s="több mint"; forceSg=False} ; --guessed
 lin morecambe_LN = mkLN "Morecambe" ; --guessed
 lin moreen_N = mkN "morén" ; --guessed
 lin morel_N = mkN "kucsmagomba" ;
@@ -68158,7 +68158,7 @@ lin only_4_AdV = mkAdV "csak" ;
 lin only_5_Adv = mkAdv "csakhogy" ; --guessed
 lin only_6_Adv = mkAdv "csak" ;
 lin only_7_Adv = mkAdv "csak" ;
-lin only_Predet = {s = "csak"} ;
+lin only_Predet = {s = "csak"; forceSg=False} ;
 lin onomancerMasc_N = humanN (mkN "névjós") ; --guessed
 lin onomancerFem_N = humanN (mkN "onomanta") ; --guessed
 lin onomancy_N = mkN "onomancia" ; --guessed
@@ -79769,8 +79769,8 @@ lin quitclaim_1_N = mkN "lemondó nyilatkozat" ; --guessed
 lin quitclaim_2_N = mkN "joglemondás" ; --guessed
 lin quite_AdA = mkAdA "eléggé" ; --guessed
 lin quite_2_Adv = mkAdv "teljesen" ;
-lin quite_3_Predet = {s = "egészen"} ;
-lin quite_4_Predet = ss "egészen" ; --guessed
+lin quite_3_Predet = {s = "egészen"; forceSg=False} ;
+lin quite_4_Predet = {s = "egészen"; forceSg=False} ; --guessed
 lin quito_LN = mkLN "Quito" ;
 lin quits_A = variants {mkA "kvitt"; mkA "egál"} ; --guessed
 lin quittance_1_N = mkN "nyugta" ; --guessed
@@ -98472,8 +98472,8 @@ lin succulent_N = mkN "pozsgás" ;
 lin succumb_1_V = mkV "meghal" ;
 lin succumb_2_V = variants {mkV "belehal"; mkV "megadja magát"} ; --guessed
 lin succussion_N = mkN "succussio" ; --guessed
-lin such_1_Predet = {s = "ilyen"} ;
-lin such_2_Predet = {s = "olyan"} ;
+lin such_1_Predet = {s = "ilyen"; forceSg=False} ;
+lin such_2_Predet = {s = "olyan"; forceSg=False} ;
 lin such_as_Prep = mkPrep "mint például" ; --guessed
 lin suchlike_A = variants {mkA "hasonló"; mkA "ilyesmi"} ; --guessed
 lin suchow_LN = mkLN "Suchów" ; --guessed

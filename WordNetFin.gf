@@ -31921,7 +31921,7 @@ lin ebb_3_V = mkV {s = c72A "heiketä"};
 lin ebbtide_N = variants {mkN {s = d48A "luode"}; mkN "pakovesi"};
 lin ebbw_vale_LN = variants {};
 lin eblis_N = mkN "eblis";
-lin ebola_N = mkN "Ebolavirus" ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "pikimusta";
 lin ebonite_N = mkN {s = d05A "eboniitti"};
 lin ebony_A = mkA "sysimusta";
@@ -31937,10 +31937,10 @@ lin ec_PN = variants {};
 lin ecarte_N = mkN "ecarte";
 lin eccentric_1_A = variants {mkA "eriskummallinen"; mkA "omalaatuinen"; mkA {s = d38 "eksentrinen"}};
 lin eccentric_2_A = mkA "epäkeskinen";
-lin eccentricMasc_1_N = variants {mkN "eksentrinen henkilö"; mkN "eksentrikko"}; --unchecked
-lin eccentricFem_1_N = variants {mkN "eksentrinen henkilö"; mkN "eksentrikko"}; --unchecked
-lin eccentricMasc_2_N = variants {mkN "outo tyyppi"; mkN "eksentrikko"}; --unchecked
-lin eccentricFem_2_N = variants {mkN "outo tyyppi"; mkN "eksentrikko"}; --unchecked
+lin eccentricMasc_1_N = mkN "eksentrikko";
+lin eccentricFem_1_N = mkN "eksentrikko";
+lin eccentricMasc_2_N = mkN "eksentrikko";
+lin eccentricFem_2_N = mkN "eksentrikko";
 lin eccentricity_1_N = mkN {s = d40 "omituisuus"};
 lin eccentricity_2_N = mkN {s = d40 "epäkeskisyys"};
 lin eccentricity_3_N = mkN {s = d40 "epäkeskisyys"};

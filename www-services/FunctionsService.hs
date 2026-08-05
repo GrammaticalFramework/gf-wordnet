@@ -264,12 +264,12 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
       let cwd = ""
       nlg_m <- renameModule cwd sgr (nlg_mn, nlg_mi)
 
-      infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
-      nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd sgr)) nlg_m infoss
+      infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments nlg_m
+      nlg_m <- foldM (checkInfo (mflags nlg_mi) cwd sgr) nlg_m infoss
       checkWarn (ppModule Unqualified nlg_m)
 
       let sgr' = prependModule sgr nlg_m
-          globals1 = Gl sgr' (wikiPredef lref cref db gr lang sgr')
+          globals1 = Gl sgr' (wikiPredef lref cref db gr lang sgr') True
           qident = (nlg_mn,identS "main")
 
       res <- runEvalMWithInput globals1 csInit $ do
@@ -294,7 +294,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
         return (hs,[(r,ois)])
       return $ Map.toList (fmap reverse (Map.fromListWith (++) res))
 
-    toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,ty) <- lbls]
+    toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,_,ty) <- lbls]
     toHeaders ty             = [toHeader empty ty]
 
     toHeader d ty = JSONObject [("label",showJSON (render (d <+> ppTerm Unqualified 0 ty)))
@@ -314,8 +314,8 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
     toRecord links (RecType lbls) (R as)  = toCells links lbls as
     toRecord links ty             t       = fmap singleton (toCell links ty t)
 
-    toCells links []            as = return []
-    toCells links ((l,ty):lbls) as =
+    toCells links []              as = return []
+    toCells links ((l,_,ty):lbls) as =
       case lookup l as of
         Just (_,t) -> do c  <- toCell links ty t
                          cs <- toCells links lbls as
@@ -492,7 +492,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
             update sm c info
        where
          sgr' = prependModule sgr sm
-         globals = Gl sgr' (wikiPredef lref cref db gr lang sgr')
+         globals = Gl sgr' (wikiPredef lref cref db gr lang sgr') True
 
          chIn loc cat = checkInModule cwd (snd sm) loc ("Happened in" <+> cat <+> c)
 

@@ -380,45 +380,63 @@
             function wordnet_search(cm)
             {
                 const selection = getMultiSelection(element('from'));
-                var lemma = cm.getSelection();
-                if (lemma == "") {
+                var input = cm.getSelection();
+                if (input == "") {
                     const find = cm.findWordAt(cm.getCursor())
                     cm.setSelection(find.anchor, find.head);
-                    lemma = cm.getSelection();
-                    if (lemma == "")
+                    input = cm.getSelection();
+                    if (input == "")
                         return
                 }
 
-                var search_popup = element("search_popup");
-                var viewport = element("editor").getBoundingClientRect();
-                search_popup.style.top     = viewport.top+"px";
-                search_popup.style.left    = viewport.left+"px";
-                search_popup.style.display = "block";
+                if (/\s/.test(input)) {
+                    // do parsing
+                    function show_api_code(res) {
+                        for (const {text} of res) {
+                            cm.replaceSelection(text);
+                            break;
+                        }
+                    }
+                    function get_parse_trees(res) {
+                        for (const {tree,prob} of res[0].trees) {
+                            gfwordnet.grammar_call("command=linearize&to=ParseAPI&tree="+encodeURIComponent(tree),show_api_code);
+                            break;
+                        }
+                    }
+                    gfwordnet.grammar_call("command=parse&from="+selection.current+"&cat=Phr&limit=1&input="+encodeURIComponent(input),get_parse_trees);
+                } else {
+                    // do morpho lookup
+                    var search_popup = element("search_popup");
+                    var viewport = element("editor").getBoundingClientRect();
+                    search_popup.style.top     = viewport.top+"px";
+                    search_popup.style.left    = viewport.left+"px";
+                    search_popup.style.display = "block";
 
-                function close_popup() {
-                    search_popup.innerHtml = "";
-                    search_popup.style.display = "none";
-                    delete(window.onkeyup);
-                    delete(window.onclick);
-                }
-                window.onkeyup = function (event) {
-                    if (event.keyCode == 27) {
+                    function close_popup() {
+                        search_popup.innerHtml = "";
+                        search_popup.style.display = "none";
+                        delete(window.onkeyup);
+                        delete(window.onclick);
+                    }
+                    window.onkeyup = function (event) {
+                        if (event.keyCode == 27) {
+                            close_popup();
+                        }
+                    }
+                    window.onclick = close_popup
+                    search_popup.onclick = function (event) {
+                        event.stopPropagation();
+                    }
+
+                    gfwordnet.can_select=true;
+                    gfwordnet.onclick_select = function(row) {
+                        var lex_id = row.getAttribute("data-lex-id");
+                        cm.replaceSelection(lex_id);
+                        cm.focus();
                         close_popup();
                     }
+                    gfwordnet.search(selection, input, element("domains"), element("result"), null);
                 }
-                window.onclick = close_popup
-                search_popup.onclick = function (event) {
-                    event.stopPropagation();
-                }
-
-                gfwordnet.can_select=true;
-                gfwordnet.onclick_select = function(row) {
-                    var lex_id = row.getAttribute("data-lex-id");
-                    cm.replaceSelection(lex_id);
-                    cm.focus();
-                    close_popup();
-                }
-                gfwordnet.search(selection, lemma, element("domains"), element("result"), null);
             }
 
             initMultiSelection(element("from"));

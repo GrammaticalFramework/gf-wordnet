@@ -30529,6 +30529,7 @@ lin ebb_3_V = variants {} ;
 lin ebbtide_N = mkN "جزْر" ; --guessed
 lin ebbw_vale_LN = 'إيبو فالي_LN' ; --google-translated
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "فيروس إيبولا" ;
 lin ebon_A = mkA "أبنوس" ; --guessed
 lin ebonite_N = mkN "إِبُونِيت" ; --guessed
 lin ebony_1_N = mkN "أبنوس" ;

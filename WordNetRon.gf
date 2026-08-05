@@ -31905,6 +31905,7 @@ lin ebb_3_V = mkV "scădea" ; --unchecked
 lin ebbtide_N = mkN "reflux" ;
 lin ebbw_vale_LN = mkPN "Ebbw Vale" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "negru-abanos" ; --guessed
 lin ebonite_N = mkN "ebonită" ;
 lin ebony_A = mkA "eben" ; --guessed

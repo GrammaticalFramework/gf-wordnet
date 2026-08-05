@@ -31932,6 +31932,7 @@ lin ebb_3_V = mkV "ebb" "ebbs" "ebbed" "ebbed" "ebbing";
 lin ebbtide_N = mkN "ebbtide" "ebbtides";
 lin ebbw_vale_LN = mkLN "Ebbw Vale" ;
 lin eblis_N = mkN "eblis" ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "ebon" ;
 lin ebonite_N = mkN "ebonite" ;
 lin ebony_A = compoundA (mkA "ebony");

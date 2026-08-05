@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "kristi" ; --guessed
 lin ebbtide_N = mkN "atóslūgis" ; --guessed
 lin ebbw_vale_LN = mkLN "Ebu Veilis" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "ebenaceae" ; --guessed
 lin ebonite_N = mkN "ebonitas" ; --guessed
 lin ebony_A = mkA "juodas" ; --guessed

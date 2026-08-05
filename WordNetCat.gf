@@ -31910,6 +31910,7 @@ lin ebb_3_V = mkV (reduir_94 "disminuir" (True|False)) ; --guessed
 lin ebbtide_N = mkN "nord-oest" masculine ; --guessed
 lin ebbw_vale_LN = mkLN "Ebbw Vale" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "èban" ; --guessed
 lin ebonite_N = mkN "vulcanita" ; --unchecked
 lin ebony_A = mkA "èban" ; --guessed

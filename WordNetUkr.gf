@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "слабшати" ; --guessed
 lin ebbtide_N = mkN "відплив" ; --guessed
 lin ebbw_vale_LN = mkLN "Еббу-Вейл" ;
 lin eblis_N = mkN "ібліс" ; --guessed
+lin ebola_N = mkN "Ебола" ;
 lin ebon_A = mkA "ебеновий" ; --guessed
 lin ebonite_N = mkN003 "ебоніт" ;
 lin ebony_A = mkA "ебеновий" ; --guessed

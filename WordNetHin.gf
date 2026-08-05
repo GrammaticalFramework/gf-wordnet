@@ -31911,6 +31911,7 @@ lin ebb_3_V = mkV "उतार" ; --guessed
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "इबोला वायरस" ;
 lin ebon_A = mkA "आबनूस" ; --guessed
 lin ebonite_N = mkN "एबोनाइट" ;
 lin ebony_A = mkA "आबनूस" ; --guessed

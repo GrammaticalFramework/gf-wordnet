@@ -31906,6 +31906,7 @@ lin ebb_3_V = mkV "pasti" ;
 lin ebbtide_N = mkN "oseka" feminine ;
 lin ebbw_vale_LN = mkLN "Ebbw Vale" masculine singular ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "ebola" ;
 lin ebon_A = mkA "ebenovinast" ;
 lin ebonite_N = mkN "ebonit" masculine ;
 lin ebony_A = mkA "črn" ;

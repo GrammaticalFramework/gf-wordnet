@@ -31913,6 +31913,7 @@ lin ebb_3_V = mkV "하락하다" ; --guessed
 lin ebbtide_N = mkN "북서" ; --guessed
 lin ebbw_vale_LN = mkPN "에부베일" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "에볼라바이러스" ;
 lin ebon_A = mkA "흑단으로 만든" ; --guessed
 lin ebonite_N = mkN "에보나이트" ;
 lin ebony_A = mkA "흑단재" ; --guessed

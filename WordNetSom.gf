@@ -31904,6 +31904,7 @@ lin ebb_3_V = variants {mkV "yaraan"; mkV "dhimo"} ; --guessed
 lin ebbtide_N = mkN "biya-dhaca" ; --guessed
 lin ebbw_vale_LN = mkPN "Ebbw Vale" ;
 lin eblis_N = mkN "ibliis" ; --guessed
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "madow xad-dhaaf ah" ; --guessed
 lin ebonite_N = mkN "ebonayt" ; --guessed
 lin ebony_A = mkA "madow sida munar" ; --guessed

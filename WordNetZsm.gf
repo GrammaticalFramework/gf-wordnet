@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "surut" ; --guessed
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "hitam" ; --unchecked
 lin ebonite_N = mkN "ebonit" ;
 lin ebony_A = mkA "hitam" ;

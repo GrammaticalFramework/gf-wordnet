@@ -31908,6 +31908,7 @@ lin ebb_3_V = mkV "減少" ; --guessed
 lin ebbtide_N = mkN "返し" ; --unchecked
 lin ebbw_vale_LN = mkLN "エブー・ヴェイル" ; --guessed
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "エボラウイルス" ;
 lin ebon_A = mkA "漆黒" ;
 lin ebonite_N = mkN "エボナイト" ;
 lin ebony_A = mkA "黒檀" ; --guessed

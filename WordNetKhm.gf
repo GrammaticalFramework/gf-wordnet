@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "រលំ" ; --guessed
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "វីរុសអ៊ីបូឡា" ;
 lin ebon_A = variants {} ;
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "ព្រួយ" ; --guessed

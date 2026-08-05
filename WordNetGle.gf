@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "trá" ; --guessed
 lin ebbtide_N = mkN "lag trá" ; --guessed
 lin ebbw_vale_LN = mkLN "Glynebwy" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "éabann" ; --guessed
 lin ebonite_N = mkN "éabainnít" ;
 lin ebony_A = mkA "dubh" ; --guessed

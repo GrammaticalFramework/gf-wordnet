@@ -31904,6 +31904,7 @@ lin ebb_3_V = variants {} ;
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = mkPN "Ebbw Vale" a_wa ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = variants {} ;
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "-a rangi ya abunusi" ;

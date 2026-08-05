@@ -31904,6 +31904,7 @@ lin ebb_3_V = variants {} ;
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "xurmodoshlar" ; --guessed
 lin ebonite_N = mkN "ebonit" ; --guessed
 lin ebony_A = mkA "qora" ; --guessed

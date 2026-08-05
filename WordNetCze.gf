@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "ubývat" ; --guessed
 lin ebbtide_N = mkN "odliv" ; --guessed
 lin ebbw_vale_LN = mkLN "Ebbw Vale" ; --guessed
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "eben" ; --guessed
 lin ebonite_N = mkN "ebonit" ;
 lin ebony_A = mkA "eben" ; --guessed

@@ -31905,6 +31905,7 @@ lin ebb_3_V = I.disminuir_V ;
 lin ebbtide_N = mkN "noroeste" ; --guessed
 lin ebbw_vale_LN = mkLN "Ebbw Vale" masculine ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ébola" ;
 lin ebon_A = mkA "ébano" ;
 lin ebonite_N = mkN "ebonita" ;
 lin ebony_A = mkA "ébano" ; --guessed

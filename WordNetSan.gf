@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "पतति" ; --guessed
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = variants {} ;
 lin ebon_A = mkA "आलु" ; --guessed
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "आलु" ; --guessed

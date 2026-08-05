@@ -31904,6 +31904,7 @@ fun ebb_3_V : V ;                  -- 00571984-v	fall away or decline; "The pati
 fun ebbtide_N : N ;                -- 07416993-n	[geography] the tide while water is flowing out
 fun ebbw_vale_LN : LN ;            -- Q2297559  	[geography] town in south Wales, United Kingdom
 fun eblis_N : N ;                  -- 09568005-n	[Islam] the principal evil jinni in Islamic mythology
+fun ebola_N : N ;                  -- 01334650-n	[biology, medicine] a filovirus that causes Ebola hemorrhagic fever; carried by animals; can be used as a bioweapon
 fun ebon_A : A ;                   -- 00390292-a	of a very dark black
 fun ebonite_N : N ;                -- 15032101-n	[animals, industry] a hard nonresilient rubber formed by vulcanizing natural rubber
 fun ebony_A : A ;                  -- 00390292-a	of a very dark black

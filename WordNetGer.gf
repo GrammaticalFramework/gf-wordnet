@@ -31913,6 +31913,7 @@ lin ebb_3_V = variants {mkV "abebben"; mkV "nachlassen"} ; --guessed
 lin ebbtide_N = mkN "Ebbe" "Ebben" feminine ;
 lin ebbw_vale_LN = mkLN "Ebbw Vale" ;
 lin eblis_N = mkN "Iblis" ; --guessed
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "ebenholzschwarz" ; --guessed
 lin ebonite_N = mkN "Ebonit" ;
 lin ebony_A = mkA "ebenholzschwarz" ; --guessed

@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "gyengül" ;
 lin ebbtide_N = mkN "apály" ;
 lin ebbw_vale_LN = mkLN "Ebbw Vale" ; --guessed
 lin eblis_N = mkN "iblísz" ; --guessed
+lin ebola_N = mkN "ebola" ;
 lin ebon_A = mkA "ébenfekete" ; --guessed
 lin ebonite_N = mkN "ebonit" ;
 lin ebony_A = mkA "ébenfekete" ; --guessed

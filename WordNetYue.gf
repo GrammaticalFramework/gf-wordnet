@@ -31904,6 +31904,7 @@ lin ebb_3_V = variants {} ;
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "伊波拉病毒" ;
 lin ebon_A = mkA "柿樹科" ; --guessed
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "黟" ; --guessed

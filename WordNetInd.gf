@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "jatuh" ; --guessed
 lin ebbtide_N = mkN "barat laut" ; --guessed
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = mkN "iblis" ; --unchecked
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "hitam" ; --unchecked
 lin ebonite_N = mkN "ebonit" ;
 lin ebony_A = mkA "hitam" ; --unchecked

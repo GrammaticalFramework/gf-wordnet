@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "refluxo" ; --guessed
 lin ebbtide_N = mkN "refluxo" ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "ebenaceae" ; --guessed
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "ebeno" ; --guessed

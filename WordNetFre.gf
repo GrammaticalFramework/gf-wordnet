@@ -31905,6 +31905,7 @@ lin ebb_3_V = mkV "refluer" ;
 lin ebbtide_N = mkN "reflux" "reflux" masculine ; --guessed
 lin ebbw_vale_LN = mkLN "Ebbw Vale" masculine ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "ébène" ;
 lin ebonite_N = mkN "ébonite" "ébonites" feminine ;
 lin ebony_A = mkA "ébène" ;

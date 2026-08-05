@@ -31907,6 +31907,7 @@ lin ebb_3_V = mkV "ebbar" ;
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = mkLN "Ebbw vale" ;
 lin eblis_N = mkN "iblis" ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = variants {} ;
 lin ebonite_N = mkN "ebonit" ;
 lin ebony_A = mkA "ebenholtssvart" ;

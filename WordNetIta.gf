@@ -31908,6 +31908,7 @@ lin ebb_3_V = mkV "diminuire" ; --guessed
 lin ebbtide_N = mkN "riflusso" ;
 lin ebbw_vale_LN = mkLN "Ebbw Vale" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "ebola" ;
 lin ebon_A = mkA "ebano" ;
 lin ebonite_N = mkN "ebanite" ;
 lin ebony_A = mkA "ebano" ;

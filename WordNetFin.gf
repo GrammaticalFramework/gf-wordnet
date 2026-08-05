@@ -31921,6 +31921,7 @@ lin ebb_3_V = mkV {s = c72A "heiketä"};
 lin ebbtide_N = variants {mkN {s = d48A "luode"}; mkN "pakovesi"};
 lin ebbw_vale_LN = variants {};
 lin eblis_N = mkN "eblis";
+lin ebola_N = mkN "Ebolavirus" ;
 lin ebon_A = mkA "pikimusta";
 lin ebonite_N = mkN {s = d05A "eboniitti"};
 lin ebony_A = mkA "sysimusta";

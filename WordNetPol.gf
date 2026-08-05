@@ -31917,6 +31917,7 @@ lin ebb_3_V = mkMonoVerb "spadać" conj98 Imperfective ; --guessed
 lin ebbtide_N = mkN (mkNTable0096 "odpływ") (Masc Inanimate) ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA (model4 "hebanowy" "hebanowi") ;
 lin ebonite_N = mkN (mkNTable0231 "ebonit") (Masc Inanimate) ;
 lin ebony_A = mkA (model4 "hebanowy" "hebanowi") ;

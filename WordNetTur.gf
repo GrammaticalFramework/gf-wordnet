@@ -31905,6 +31905,7 @@ lin ebb_3_V = mkV "düşmek" ; --guessed
 lin ebbtide_N = mkN "cezir" "cezr" ;
 lin ebbw_vale_LN = mkPN "Ebbw Vale" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "abanoz" ; --guessed
 lin ebonite_N = mkN "vulkanit" ; --guessed
 lin ebony_A = mkA "abanoz" ;

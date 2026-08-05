@@ -175,7 +175,7 @@ lin TFut = mkTerm "futureTense" ;
 lin TPast = mkTerm "pastTense" ;
 lin TPastSimple = mkTerm "pastSimpleTense" ;
 lin TPres = mkTerm (hideOpt "presentTense") ;
-lin TTAnt tense_1 ant_2 = mkTerm "mkTense" tense_1 ant_2 ;
+lin TTAnt temp_1 ant_2 = mkTerm "mkTemp" temp_1 ant_2 ;
 lin Use2N3 n3_1 = mkTerm "mkN2" n3_1 ;
 lin Use3N3 n3_1 = mkTerm "mkN2" n3_1 ;
 lin UseA2 a2_1 = mkTerm "mkAP" a2_1 ;
@@ -326,7 +326,7 @@ lin MkDocument definition inflection s = mkTerm "MkDocument" definition inflecti
 lin MkTag inflection = mkTerm "MkTag" inflection;
 lin MkVPI vp = mkTerm "MkVPI" vp;
 lin MkVPI2 vpslash = mkTerm "MkVPI2" vpslash;
-lin MkVPS temp pol vp = mkTerm "MkVPS" temp pol vp;
+lin MkVPS temp pol vp = mkTerm "mkVPS" (flatTerm temp) pol vp;
 lin MkVPS2 temp pol vpslash = mkTerm "MkVPS2" temp pol vpslash;
 lin NegDecimal d = mkTerm "mkDecimal" (mkTerm ("-"++BIND++d.x)) ** {hasDot = False} ;
 lin NoDefinition s = mkTerm "NoDefinition" (mkTerm s);

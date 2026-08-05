@@ -78602,7 +78602,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: time flies like an arrow
 swe: tiden flyger likt en pil
 bul: времето лети като стрела
-key: 2 fly_8_V 02076993-v time_5_N 00028468-n
+key: 2 fly_8_V time_5_N 00028468-n
 
 abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (AdvVP (ProgrVP (UseV fly_9_V)) (PrepNP to_1_Prep (UseLN cincinnati_LN))) tonight_Adv)))) NoVoc
 eng: she is flying to Cincinnati tonight
@@ -230240,7 +230240,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: green colourless ideas sleep furiously
 swe: gröna färglösa idéer sover våldsamt
 bul: зелени безцветни идеи спят яростно
-key: 0
+key: 0 _
 
 class: begin-55.1
 role:  Agent +animate +organization

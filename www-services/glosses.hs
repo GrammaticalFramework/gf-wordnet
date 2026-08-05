@@ -148,7 +148,9 @@ parseExamples []                               = []
 parseExamples (l1:l2:l3:l4:l5:l6:ls)
   | take 4 l1 == "abs:" && take 4 l5 == "key:" =
       let (w:ws)      = words (drop 5 l5)
-          (fns,_:ws') = splitAt (read w) ws
+          (fns,_:ws') = case splitAt (read w) ws of
+                          (fns,_:ws') -> (fns,_:ws')
+                          x -> error x
           finsts      = map parseFrameInstance ws'
       in case readExpr (drop 5 l1) of
            Just e  -> ExampleE e fns finsts : parseExamples ls

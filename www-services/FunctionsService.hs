@@ -269,7 +269,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
       checkWarn (ppModule Unqualified nlg_m)
 
       let sgr' = prependModule sgr nlg_m
-          globals1 = Gl sgr' (wikiPredef lref cref db gr lang sgr') True
+          globals1 = Gl sgr' (wikiPredef lref cref db gr lang sgr') False
           qident = (nlg_mn,identS "main")
 
       res <- runEvalMWithInput globals1 csInit $ do
@@ -492,7 +492,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
             update sm c info
        where
          sgr' = prependModule sgr sm
-         globals = Gl sgr' (wikiPredef lref cref db gr lang sgr') True
+         globals = Gl sgr' (wikiPredef lref cref db gr lang sgr') False
 
          chIn loc cat = checkInModule cwd (snd sm) loc ("Happened in" <+> cat <+> c)
 
@@ -664,7 +664,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
     inflectExpr ty lang e =
       VError ("No linearization table available for type" <+> ppValue Unqualified 0 ty)
 
-    globals0 = Gl gr Map.empty True
+    globals0 = Gl gr Map.empty False
 
     xml2value (Data s) = string2value s
     xml2value (Tag n as children) = VMarkup (identS n) [] (map (noLoc . xml2value) children)

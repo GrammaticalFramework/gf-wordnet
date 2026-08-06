@@ -328,7 +328,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
           case toStr t of
             Just s  -> return s
             Nothing -> return (render (ppTerm Unqualified 0 t))
-    toCell links (Q (m,c)) t
+    toCell links (QC (m,c)) t
       | m == cPredef && c == identS "Markup"
                        = do ts <- toXML links t
                             return (foldr showsNospaceXML "" ts)
@@ -336,7 +336,6 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
                        = case toStr t of
                            Just s  -> return s
                            Nothing -> return (render (ppTerm Unqualified 0 t))
-    toCell links (QC (m,c)) t
       | m == abs_mn = fmap (linearize cnc) (toExpr [] t)
     toCell links ty        t
       | isPGFType ty = do e <- toExpr [] t

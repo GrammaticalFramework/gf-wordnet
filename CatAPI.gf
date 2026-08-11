@@ -1,11 +1,13 @@
 concrete CatAPI of Cat = open Prelude in {
 
 lincat 
-  A, A2, AP, AdA, AdN, AdV, Adv, Ant, CAdv, CN, Card, Cl, ClSlash, Comp, Conj, Det, Digits, Decimal,
+  A, A2, AP, AdA, AdN, AdV, Adv, Ant, CAdv, CN, Card, Cl, ClSlash, Comp, Conj, Det, Digits,
   IAdv, IComp, IDet, IP, IQuant, Imp, Interj, N, N2, N3, NP, Num, Numeral, 
   Ord, PConj, GN, SN, PN, Phr, Pol, Predet, Prep, Pron, QCl, QS, Quant, RCl, RP, RS, S, SC, SSlash, 
   Subj, Temp, Tense, Text, Utt, V, V2, V2A, V2Q, V2S, V2V, V3, 
   VA, VP, VPSlash, VQ, VS, VV, Voc, ACard, DAP, LN, MU = Term ;
+
+  Decimal = Term ** {hasDot : Bool};
 
 linref
   A, A2, AP, AdA, AdN, AdV, Adv, Ant, CAdv, CN, Card, Cl, ClSlash, Comp, Conj, Det, Digits, Decimal,

@@ -213,6 +213,8 @@ oper
         = TPres ; --%
       pastTense        : Tense  -- she slept           --# notpresent  --:
         = TPast ; --# notpresent --%
+      pastSimpleTense  : Tense  -- she slept           --# notpresent  --:
+        = TPastSimple ; --# notpresent --%
       futureTense      : Tense  -- she will sleep        --# notpresent  --:
         = TFut ; --# notpresent --%
       conditionalTense : Tense  -- she would sleep       --# notpresent   --:
@@ -487,6 +489,37 @@ oper
 
       progressiveVP : VP -> VP   -- be sleeping
       = ProgrVP ; --%
+
+-- Verb phrases with fixed tense and polarity can be coordinated
+
+    mkVPS = overload {  --%
+      mkVPS : VP  -> VPS  --%
+      = MkVPS (TTAnt TPres ASimul) PPos ;   --%
+      mkVPS : Tense -> VP -> VPS    --%
+      = \t -> MkVPS (TTAnt t ASimul) PPos ;   --%
+      mkVPS : Ant -> VP -> VPS   --%
+      = \a -> MkVPS (TTAnt TPres a) PPos ;   --%
+      mkVPS : Pol -> VP -> VPS    --%
+      = \p -> MkVPS (TTAnt TPres ASimul) p ;   --%
+      mkVPS : Tense -> Ant -> VP -> VPS   --%
+      = \t,a -> MkVPS (TTAnt t a) PPos ;   --%
+      mkVPS : Tense -> Pol -> VP -> VPS   --%
+      = \t,p -> MkVPS (TTAnt t ASimul) p ;   --%
+      mkVPS : Ant -> Pol -> VP -> VPS   --%
+      = \a,p -> MkVPS (TTAnt TPres a) p ;   --%
+      mkVPS : Tense -> Ant -> Pol -> VP -> VPS -- she wouldn't have slept
+      = \t,a -> MkVPS (TTAnt t a) ;   --%
+      mkVPS : Temp -> Pol -> VP -> VPS -- she wouldn't have slept  --:
+      = MkVPS ; --%
+
+-- Sentences can be combined with conjunctions. This can apply to a pair
+-- of sentences, but also to a list of more than two.
+
+      mkVPS : Conj -> VPS -> VPS -> VPS   -- she sleeps and I run
+      = \c,x,y -> ConjVPS c (BaseVPS x y) ; --%
+      mkVPS : Conj -> ListVPS  -> VPS   -- she sleeps, I run and you walk  --:
+      = ConjVPS ; --%
+      } ;
 
 --3 Comp, verb phrase complements
 

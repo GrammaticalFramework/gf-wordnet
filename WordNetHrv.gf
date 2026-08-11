@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "upasti" ; --guessed
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "ebola" ;
 lin ebon_A = mkA "dragunovke" ; --guessed
 lin ebonite_N = mkN "ebonit" ; --guessed
 lin ebony_A = mkA "crna" ; --guessed

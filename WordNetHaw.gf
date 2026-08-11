@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "emi" ; --guessed
 lin ebbtide_N = mkN "kai make" ; --guessed
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = variants {} ;
 lin ebon_A = variants {} ;
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "ʻeleʻele" ; --guessed

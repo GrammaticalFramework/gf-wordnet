@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkTerm "ebb_3_V";
 lin ebbtide_N = mkTerm "ebbtide_N";
 lin ebbw_vale_LN = mkTerm "ebbw_vale_LN";
 lin eblis_N = mkTerm "eblis_N";
+lin ebola_N = mkTerm "ebola_N";
 lin ebon_A = mkTerm "ebon_A";
 lin ebonite_N = mkTerm "ebonite_N";
 lin ebony_A = mkTerm "ebony_A";

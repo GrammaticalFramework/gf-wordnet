@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "હ્રાસ. ઓટ થવી" ; --guessed
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = mkLN "એબવ વેલ" ;
 lin eblis_N = variants {} ;
+lin ebola_N = variants {} ;
 lin ebon_A = mkA "અબનૂસ" ; --guessed
 lin ebonite_N = mkN "સખત બનાવેલું રબર" ; --guessed
 lin ebony_A = mkA "લાકડું" ; --guessed

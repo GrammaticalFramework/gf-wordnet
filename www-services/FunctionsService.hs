@@ -5,8 +5,8 @@ module FunctionsService(WNCache, emptyCache, functionsService, pageService) wher
 import Control.Applicative     (liftA, liftA2, (<|>))
 import Control.Monad (MonadPlus(mplus), foldM, forM, msum, (>=>), when)
 import GF.Compile
-import GF.Compile.Compute.Concrete2
-import GF.Compile.TypeCheck.Concrete
+import GF.Compile.Compute
+import GF.Compile.TypeCheck
 import qualified GF.Data.ErrM            as E
 import GF.Grammar              hiding (VApp, VRecType, ppValue)
 import GF.Grammar.Lookup
@@ -259,18 +259,17 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
                      mopens  = [OSimple mn, OSimple abs_mn],
                      mexdeps = [],
                      msrc    = "Main",
-                     mseqs   = Nothing,
                      jments  = jments
                    }
       let cwd = ""
       nlg_m <- renameModule cwd sgr (nlg_mn, nlg_mi)
 
-      infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments2 nlg_m
-      nlg_m <- foldM (foldM (checkInfo (mflags nlg_mi) cwd sgr)) nlg_m infoss
+      infoss <- checkInModule cwd nlg_mi NoLoc empty $ topoSortJments nlg_m
+      nlg_m <- foldM (checkInfo (mflags nlg_mi) cwd sgr) nlg_m infoss
       checkWarn (ppModule Unqualified nlg_m)
 
       let sgr' = prependModule sgr nlg_m
-          globals1 = Gl sgr' (wikiPredef lref cref db gr lang sgr')
+          globals1 = Gl sgr' (wikiPredef lref cref db gr lang sgr') False
           qident = (nlg_mn,identS "main")
 
       res <- runEvalMWithInput globals1 csInit $ do
@@ -295,7 +294,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
         return (hs,[(r,ois)])
       return $ Map.toList (fmap reverse (Map.fromListWith (++) res))
 
-    toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,ty) <- lbls]
+    toHeaders (RecType lbls) = [toHeader (pp l <+> ':') ty | (l,_,ty) <- lbls]
     toHeaders ty             = [toHeader empty ty]
 
     toHeader d ty = JSONObject [("label",showJSON (render (d <+> ppTerm Unqualified 0 ty)))
@@ -315,8 +314,8 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
     toRecord links (RecType lbls) (R as)  = toCells links lbls as
     toRecord links ty             t       = fmap singleton (toCell links ty t)
 
-    toCells links []            as = return []
-    toCells links ((l,ty):lbls) as =
+    toCells links []              as = return []
+    toCells links ((l,_,ty):lbls) as =
       case lookup l as of
         Just (_,t) -> do c  <- toCell links ty t
                          cs <- toCells links lbls as
@@ -329,7 +328,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
           case toStr t of
             Just s  -> return s
             Nothing -> return (render (ppTerm Unqualified 0 t))
-    toCell links (Q (m,c)) t
+    toCell links (QC (m,c)) t
       | m == cPredef && c == identS "Markup"
                        = do ts <- toXML links t
                             return (foldr showsNospaceXML "" ts)
@@ -337,7 +336,6 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
                        = case toStr t of
                            Just s  -> return s
                            Nothing -> return (render (ppTerm Unqualified 0 t))
-    toCell links (QC (m,c)) t
       | m == abs_mn = fmap (linearize cnc) (toExpr [] t)
     toCell links ty        t
       | isPGFType ty = do e <- toExpr [] t
@@ -493,7 +491,7 @@ executeCode lref cref mode db gr sgr mn mb_qid lang csInit code =
             update sm c info
        where
          sgr' = prependModule sgr sm
-         globals = Gl sgr' (wikiPredef lref cref db gr lang sgr')
+         globals = Gl sgr' (wikiPredef lref cref db gr lang sgr') False
 
          chIn loc cat = checkInModule cwd (snd sm) loc ("Happened in" <+> cat <+> c)
 
@@ -523,30 +521,30 @@ deserializeInput json = case readJSON json of
 
 wikiPredef :: IORef Links -> IORef WNCache -> Database -> PGF -> String -> Grammar -> PredefTable
 wikiPredef lref cref db pgf lang gr = Map.fromList
-  [ (identS "entity", pdArity 2 $\ \g c [typ,qid] -> Const (fetch c typ qid))
-  , (identS "int2digits", pdArity 1 $\ \g c [n] -> Const (int2digits abstr c n))
-  , (identS "int2decimal", pdArity 1 $\ \g c [n] -> Const (int2decimal abstr c n))
-  , (identS "float2decimal", pdArity 1 $\ \g c [f] -> Const (float2decimal abstr c f))
-  , (identS "int2numeral", pdArity 1 $\ \g c [n] -> Const (int2numeral abstr c n))
-  , (identS "int2float", pdArity 1 $\ \g c [v] -> fmap (VFlt . fromIntegral) (value2int g v))
-  , (identS "expr", pdArity 2 $\ \g c [ty,qid] -> Const (get_expr lang c ty qid))
-  , (identS "gendered_expr", pdArity 3 $\ \g c [ty,qid,gender] -> Const (get_gendered_expr lang c ty qid gender))
-  , (identS "demonym", pdArity 1 $\ \g c [qid] -> Const (get_demonym c qid))
-  , (identS "linearize", pdArity 3 $\ \g c [_,lang,t] -> liftA2 linearizeExpr (value2string g lang) (value2expr g [] t))
-  , (identS "inflect", pdArity 3 $\ \g c [ty,lang,t] -> liftA2 (inflectExpr ty) (value2string g lang) (value2expr g [] t))
-  , (identS "time2adv", pdArity 1 $\ \g c [time] -> Const (time2adv abstr c time))
-  , (identS "lang", pdArity 0 $\ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
-  , (identS "compare", pdArity 3 $\ \g c [_,v1,v2] -> fmap (toOrdering c) (compareValue g v1 v2))
-  , (identS "plusInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (+) (value2int g v1) (value2int g v2)))
-  , (identS "minusInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (-) (value2int g v1) (value2int g v2)))
-  , (identS "mulInt", pdArity 2 $\ \g c [v1,v2] -> fmap VInt (liftA2 (*) (value2int g v1) (value2int g v2)))
-  , (identS "divInt", pdArity 2 $\ \g c [v1,v2] -> liftA2 div' (value2int g v1) (value2int g v2))
-  , (identS "modInt", pdArity 2 $\ \g c [v1,v2] -> liftA2 mod' (value2int g v1) (value2int g v2))
-  , (identS "plusFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (+) (value2float g v1) (value2float g v2)))
-  , (identS "minusFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (-) (value2float g v1) (value2float g v2)))
-  , (identS "mulFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (*) (value2float g v1) (value2float g v2)))
-  , (identS "divFloat", pdArity 2 $\ \g c [v1,v2] -> fmap VFlt (liftA2 (/) (value2float g v1) (value2float g v2)))
-  , (identS "round", pdArity 2 $\ \g c [v1,v2] -> liftA2 round' (value2float g v1) (value2int g v2))
+  [ (identS "entity", pdArity 2 $ \g c [typ,qid] -> Const (fetch c typ qid))
+  , (identS "int2digits", pdArity 1 $ \g c [n] -> Const (int2digits abstr c n))
+  , (identS "int2decimal", pdArity 1 $ \g c [n] -> Const (int2decimal abstr c n))
+  , (identS "float2decimal", pdArity 1 $ \g c [f] -> Const (float2decimal abstr c f))
+  , (identS "int2numeral", pdArity 1 $ \g c [n] -> Const (int2numeral abstr c n))
+  , (identS "int2float", pdArity 1 $ \g c [v] -> fmap (VFlt . fromIntegral) (value2int g v))
+  , (identS "expr", pdArity 2 $ \g c [ty,qid] -> Const (get_expr lang c ty qid))
+  , (identS "gendered_expr", pdArity 3 $ \g c [ty,qid,gender] -> Const (get_gendered_expr lang c ty qid gender))
+  , (identS "demonym", pdArity 1 $ \g c [qid] -> Const (get_demonym c qid))
+  , (identS "linearize", pdArity 3 $ \g c [_,lang,t] -> liftA2 linearizeExpr (value2string g lang) (value2expr g [] t))
+  , (identS "inflect", pdArity 3 $ \g c [ty,lang,t] -> liftA2 (inflectExpr ty) (value2string g lang) (value2expr g [] t))
+  , (identS "time2adv", pdArity 1 $ \g c [time] -> Const (time2adv abstr c time))
+  , (identS "lang", pdArity 0 $ \g c [] -> Const (VStr (map toLower (drop 5 lang))))
+  , (identS "compare", pdArity 3 $ \g c [_,v1,v2] -> fmap (toOrdering c) (compareValue g v1 v2))
+  , (identS "plusInt", pdArity 2 $ \g c [v1,v2] -> fmap VInt (liftA2 (+) (value2int g v1) (value2int g v2)))
+  , (identS "minusInt", pdArity 2 $ \g c [v1,v2] -> fmap VInt (liftA2 (-) (value2int g v1) (value2int g v2)))
+  , (identS "mulInt", pdArity 2 $ \g c [v1,v2] -> fmap VInt (liftA2 (*) (value2int g v1) (value2int g v2)))
+  , (identS "divInt", pdArity 2 $ \g c [v1,v2] -> liftA2 div' (value2int g v1) (value2int g v2))
+  , (identS "modInt", pdArity 2 $ \g c [v1,v2] -> liftA2 mod' (value2int g v1) (value2int g v2))
+  , (identS "plusFloat", pdArity 2 $ \g c [v1,v2] -> fmap VFlt (liftA2 (+) (value2float g v1) (value2float g v2)))
+  , (identS "minusFloat", pdArity 2 $ \g c [v1,v2] -> fmap VFlt (liftA2 (-) (value2float g v1) (value2float g v2)))
+  , (identS "mulFloat", pdArity 2 $ \g c [v1,v2] -> fmap VFlt (liftA2 (*) (value2float g v1) (value2float g v2)))
+  , (identS "divFloat", pdArity 2 $ \g c [v1,v2] -> fmap VFlt (liftA2 (/) (value2float g v1) (value2float g v2)))
+  , (identS "round", pdArity 2 $ \g c [v1,v2] -> liftA2 round' (value2float g v1) (value2int g v2))
   ]
   where
     abstr = moduleNameS (abstractName pgf)
@@ -574,12 +572,12 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
 
         matchType (VProd bt1 _ ty11 (VClosure env c ty2)) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
           bt1 == bt2 && matchType ty11 ty12 && matchType (eval globals0 env c ty2 []) (DTyp hypos cat2 [])
-        matchType (VApp _ (mod,cat1) []) (DTyp [] cat2 []) =
+        matchType (VApp (mod,cat1) []) (DTyp [] cat2 []) =
           mod == abstr && showIdent cat1 == cat2
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
     get_expr l c ty (VFV c1 vs) = VFV c1 (mapVariantsC (\c -> get_expr l c ty) c vs)
-    get_expr l c ty qid         = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "expr") [ty, qid]))
+    get_expr l c ty qid         = VError (ppValue Unqualified 0 (VApp (cPredef,identS "expr") [ty, qid]))
 
     get_gendered_expr l c vty (VStr qid) (VStr gender) =
       case res of
@@ -597,7 +595,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
 
         matchType (VProd bt1 _ ty11 (VClosure env c ty2)) (DTyp ((bt2,_,ty12):hypos) cat2 []) =
           bt1 == bt2 && matchType ty11 ty12 && matchType (eval globals0 env c ty2 []) (DTyp hypos cat2 [])
-        matchType (VApp _ (mod,cat1) []) (DTyp [] cat2 []) =
+        matchType (VApp (mod,cat1) []) (DTyp [] cat2 []) =
           mod == abstr && showIdent cat1 == cat2
         matchType (VMeta _ _) _ = True
         matchType _ _ = False
@@ -607,7 +605,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
         matchGender _          ptrs = False
     get_gendered_expr l c ty (VFV c1 (VarFree vs)) gender = VFV c1 (VarFree (mapC (\c qid -> get_gendered_expr l c ty qid gender) c vs))
     get_gendered_expr l c ty qid (VFV c1 (VarFree vs))    = VFV c1 (VarFree (mapC (\c gender -> get_gendered_expr l c ty qid gender) c vs))
-    get_gendered_expr l c ty qid gender                   = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "gendered_expr") [ty, qid, gender]))
+    get_gendered_expr l c ty qid gender                   = VError (ppValue Unqualified 0 (VApp (cPredef,identS "gendered_expr") [ty, qid, gender]))
 
     query_expr l qid = do
        lexeme <- select [(EFun id,ety,lex_pointers lex)
@@ -631,7 +629,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
       where
         res = unsafePerformIO $
                 runDaison db ReadOnlyMode $ do
-                  select [VApp c (abstr,identS fun) []
+                  select [VApp (abstr,identS fun) []
                                    | (_,lex_ln) <- fromIndex lexemes_qid (at qid)
                                    , functionType pgf (lex_fun lex_ln) == Just (DTyp [] "LN" [])
                                    , (Derived,id) <- anyOf (lex_pointers lex_ln)
@@ -639,7 +637,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
                                    , let fun = lex_fun lex_a
                                    , functionType pgf fun == Just (DTyp [] "A" [])]
     get_demonym c (VFV c1 vs) = VFV c1 (mapVariantsC get_demonym c vs)
-    get_demonym c qid         = VError (ppValue Unqualified 0 (VApp c (cPredef,identS "demonym") [qid]))
+    get_demonym c qid         = VError (ppValue Unqualified 0 (VApp (cPredef,identS "demonym") [qid]))
 
     linearizeExpr lang e =
       case language pgf cnc_name of
@@ -648,7 +646,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
       where
         cnc_name = "Parse"++map toUpper (take 1 lang)++drop 1 lang
 
-    inflectExpr ty@(VApp _ (MN m,cat) []) lang e =
+    inflectExpr ty@(VApp (MN m,cat) []) lang e =
       case language pgf cnc_name of
         Just cnc
           | showIdent m == abstractName pgf &&
@@ -665,7 +663,7 @@ wikiPredef lref cref db pgf lang gr = Map.fromList
     inflectExpr ty lang e =
       VError ("No linearization table available for type" <+> ppValue Unqualified 0 ty)
 
-    globals0 = Gl gr Map.empty
+    globals0 = Gl gr Map.empty False
 
     xml2value (Data s) = string2value s
     xml2value (Tag n as children) = VMarkup (identS n) [] (map (noLoc . xml2value) children)
@@ -868,7 +866,7 @@ globeCoordinateWdt = WikiDataType
 
 quantityWdt = WikiDataType
   [ valField "amount" typeInt $ \c -> \case
-      Just (VApp _ f [])
+      Just (VApp f [])
         | f == (cPredef,cInt)   -> decimal VInt
         | f == (cPredef,cFloat) -> decimal VFlt
         | otherwise             -> \_ -> fail "Not an Int or Float"
@@ -927,16 +925,16 @@ int2digits abstr c (VInt n)
     idig    = (abstr,identS "IDig")
     iidig   = (abstr,identS "IIDig")
 
-    digit n = VApp c (abstr,identS ('D':'_':show n)) []
+    digit n = VApp (abstr,identS ('D':'_':show n)) []
 
     digits n =
       let (n2,n1) = divMod n 10
-      in rest n2 (VApp c idig [digit n1])
+      in rest n2 (VApp idig [digit n1])
 
     rest 0 t = t
     rest n t =
       let (n2,n1) = divMod n 10
-      in rest n2 (VApp c iidig [digit n1, t])
+      in rest n2 (VApp iidig [digit n1, t])
 int2digits abstr c (VFV c1 vs) = VFV c1 (fmap (int2digits abstr c) vs)
 
 int2decimal :: ModuleName -> Choice -> Value -> Value
@@ -946,8 +944,8 @@ int2decimal abstr c (VInt n) = sign n (int2digits abstr c (VInt (abs n)))
     pos_dec = (abstr,identS "PosDecimal")
 
     sign n t
-      | n < 0     = VApp c neg_dec [t]
-      | otherwise = VApp c pos_dec [t]
+      | n < 0     = VApp neg_dec [t]
+      | otherwise = VApp pos_dec [t]
 int2decimal abstr c (VFV c1 vs) = VFV c1 (fmap (int2decimal abstr c) vs)
 int2decimal abstr c _ = VFV c (VarFree [])
 
@@ -963,18 +961,18 @@ float2decimal abstr c (VFlt f) =
 
     (ds,n) = floatToDigits 10 (abs f)
 
-    digits []     = VApp c idig [digit 0]
-    digits [d]    = VApp c idig [digit d]
-    digits (d:ds) = VApp c iidig [digit d, digits ds]
+    digits []     = VApp idig [digit 0]
+    digits [d]    = VApp idig [digit d]
+    digits (d:ds) = VApp iidig [digit d, digits ds]
 
     sign v
-      | f < 0 || isNegativeZero f = VApp c neg_dec [v]
-      | otherwise                 = VApp c pos_dec [v]
+      | f < 0 || isNegativeZero f = VApp neg_dec [v]
+      | otherwise                 = VApp pos_dec [v]
 
     fractions v []     = v
-    fractions v (d:ds) = fractions (VApp c ifrac [v, digit d]) ds
+    fractions v (d:ds) = fractions (VApp ifrac [v, digit d]) ds
 
-    digit d = (VApp c (abstr,identS ('D':'_':show d)) [])
+    digit d = (VApp (abstr,identS ('D':'_':show d)) [])
 float2decimal abstr c (VFV c1 vs) = VFV c1 (fmap (float2decimal abstr c) vs)
 float2decimal abstr c _ = VFV c (VarFree [])
 
@@ -1029,37 +1027,37 @@ int2numeral abstr c (VInt n)
 
     range_error n = VError (pp n <+> pp "cannot be represented as a numeral")
 
-    app0 fn = VApp c (abstr,identS fn) []
-    app1 fn v1 = VApp c (abstr,identS fn) [v1]
-    app2 fn v1 v2 = VApp c (abstr,identS fn) [v1,v2]
+    app0 fn = VApp (abstr,identS fn) []
+    app1 fn v1 = VApp (abstr,identS fn) [v1]
+    app2 fn v1 v2 = VApp (abstr,identS fn) [v1,v2]
 int2numeral abstr c (VFV c1 vs) = VFV c1 (fmap (int2numeral abstr c) vs)
 
 time2adv abs_mn c (VStr s) =
   case matchISO8601 s of
     Just (year,month,day) ->
-          let y = VApp c (abs_mn,identS "intYear") [VInt year]
+          let y = VApp (abs_mn,identS "intYear") [VInt year]
               m = case month of
                     0  -> Nothing
-                    1  -> Just (VApp c (abs_mn,identS "january_Month") [])
-                    2  -> Just (VApp c (abs_mn,identS "february_Month") [])
-                    3  -> Just (VApp c (abs_mn,identS "march_Month") [])
-                    4  -> Just (VApp c (abs_mn,identS "april_Month") [])
-                    5  -> Just (VApp c (abs_mn,identS "may_Month") [])
-                    6  -> Just (VApp c (abs_mn,identS "june_Month") [])
-                    7  -> Just (VApp c (abs_mn,identS "july_Month") [])
-                    8  -> Just (VApp c (abs_mn,identS "august_Month") [])
-                    9  -> Just (VApp c (abs_mn,identS "september_Month") [])
-                    10 -> Just (VApp c (abs_mn,identS "october_Month") [])
-                    11 -> Just (VApp c (abs_mn,identS "november_Month") [])
-                    12 -> Just (VApp c (abs_mn,identS "december_Month") [])
+                    1  -> Just (VApp (abs_mn,identS "january_Month") [])
+                    2  -> Just (VApp (abs_mn,identS "february_Month") [])
+                    3  -> Just (VApp (abs_mn,identS "march_Month") [])
+                    4  -> Just (VApp (abs_mn,identS "april_Month") [])
+                    5  -> Just (VApp (abs_mn,identS "may_Month") [])
+                    6  -> Just (VApp (abs_mn,identS "june_Month") [])
+                    7  -> Just (VApp (abs_mn,identS "july_Month") [])
+                    8  -> Just (VApp (abs_mn,identS "august_Month") [])
+                    9  -> Just (VApp (abs_mn,identS "september_Month") [])
+                    10 -> Just (VApp (abs_mn,identS "october_Month") [])
+                    11 -> Just (VApp (abs_mn,identS "november_Month") [])
+                    12 -> Just (VApp (abs_mn,identS "december_Month") [])
                     _  -> Just matchError
               d = case day of
                     0  -> Nothing
-                    _  -> Just (VApp c (abs_mn,identS "intMonthday") [VInt day])
+                    _  -> Just (VApp (abs_mn,identS "intMonthday") [VInt day])
           in case (m,d) of
-               (Just m,Just d)  -> VApp c (abs_mn,identS "dayMonthYearAdv") [d, m, y]
-               (Just m,Nothing) -> VApp c (abs_mn,identS "monthYearAdv") [m, y]
-               (Nothing,_)      -> VApp c (abs_mn,identS "yearAdv") [y]
+               (Just m,Just d)  -> VApp (abs_mn,identS "dayMonthYearAdv") [d, m, y]
+               (Just m,Nothing) -> VApp (abs_mn,identS "monthYearAdv") [m, y]
+               (Nothing,_)      -> VApp (abs_mn,identS "yearAdv") [y]
     Nothing -> matchError
   where
     matchError = VError (pp s <+> "is not a valid timestamp")
@@ -1082,12 +1080,12 @@ time2adv abs_mn c (VStr s) =
           | otherwise = Nothing
 time2adv abs_mn c (VFV c1 vs) = VFV c1 (fmap (time2adv abs_mn c) vs)
 
-toBool c True  = VApp c (cPredef,identS "True")  []
-toBool c False = VApp c (cPredef,identS "False") []
+toBool c True  = VApp (cPredef,identS "True")  []
+toBool c False = VApp (cPredef,identS "False") []
 
-toOrdering c LT = VApp c (cPredef,identS "LT") []
-toOrdering c EQ = VApp c (cPredef,identS "EQ") []
-toOrdering c GT = VApp c (cPredef,identS "GT") []
+toOrdering c LT = VApp (cPredef,identS "LT") []
+toOrdering c EQ = VApp (cPredef,identS "EQ") []
+toOrdering c GT = VApp (cPredef,identS "GT") []
 
 langCodes = [
   ("ParseAfr", "af"),

@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "ընկնել" ; --guessed
 lin ebbtide_N = mkN010 "տեղատվություն" ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Էբոլավիրուս" ;
 lin ebon_A = mkA "եբենոսյա" ; --guessed
 lin ebonite_N = mkN "էբոնիտ" ;
 lin ebony_A = mkA001 "եբենոս" ; --guessed

@@ -31904,6 +31904,7 @@ lin ebb_3_V = variants {} ;
 lin ebbtide_N = mkN "sewjerozapad" ; --guessed
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = variants {} ;
 lin ebon_A = mkA "ebenowe drjewo" ; --guessed
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "čorny" ; --guessed

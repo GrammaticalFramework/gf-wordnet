@@ -31904,6 +31904,7 @@ lin ebb_3_V = variants {} ;
 lin ebbtide_N = mkN "bēgums" masculine D1 ;
 lin ebbw_vale_LN = mkLN "Ebūveila" ; --guessed
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "ebenaceae" ; --guessed
 lin ebonite_N = mkN "ebonīts" masculine D1 ;
 lin ebony_A = mkA "melns" ; --guessed

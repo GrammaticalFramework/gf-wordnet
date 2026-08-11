@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "جزر" ; --guessed
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = mkLN "یببو والی" ; --guessed
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "ایبولا وائرس" ;
 lin ebon_A = variants {} ;
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "کالا" ; --guessed

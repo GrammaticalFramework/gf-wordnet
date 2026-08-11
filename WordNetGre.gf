@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "άμπωτη" ;
 lin ebbtide_N = mkN "άμπωτη" ; --guessed
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Έμπολα" ;
 lin ebon_A = mkA "εβένινος" ; --guessed
 lin ebonite_N = mkN "εβονίτης" ;
 lin ebony_A = mkA "κατάμαυρος" ;

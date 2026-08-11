@@ -31928,6 +31928,7 @@ lin ebb_3_V = mkV "rumple-bane" ; --guessed
 lin ebbtide_N = mkN "ebbtide" "ebbtides";  --guessed
 lin ebbw_vale_LN = mkLN "Glyn Ebwy" ; --guessed
 lin eblis_N = mkN "eblis" ;  --guessed
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "ebenaceae" ; --guessed
 lin ebonite_N = mkN "ebonite" ;
 lin ebony_A = mkA "black" ; --guessed

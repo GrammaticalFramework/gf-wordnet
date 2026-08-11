@@ -31910,6 +31910,7 @@ lin ebb_3_V = mkV "wegebben" ;
 lin ebbtide_N = mkN "eb" ;
 lin ebbw_vale_LN = mkLN "Ebbw Vale" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "ebbenhouten" ; --guessed
 lin ebonite_N = mkN "eboniet" utrum ;
 lin ebony_A = mkA "ebbenhouten" ; --guessed

@@ -2,16 +2,19 @@ concrete WordNetFin of WordNet = CatFin ** open ParadigmsFin,(Synt=SyntaxFin),(S
 
 flags
   coding = utf8 ;
+oper
+  cardStr s n = lin Card {s = \\_,_ => s ; n = n} ;
+  acardStr s n = lin ACard {s = \\_,_ => s ; n = n} ;
 lin a_bomb_N = mkN "atomipommi";
-lin a_couple_Card = variants {};
-lin a_few_Card = variants {};
+lin a_couple_Card = cardStr "pari" plural;
+lin a_few_Card = cardStr "muutama" plural;
 lin a_fortiori_Adv = variants {mkAdv "paremmin perustein"; mkAdv "suuremmalla syyllä"};
 lin a_la_carte_Adv = mkAdv "a la carte";
 lin a_la_mode_Adv = mkAdv "a la mode";
 lin a_level_N = mkN "lukion päättötutkinto"; --unchecked
-lin a_little_Card = variants {};
-lin a_lotSg_Card = variants {};
-lin a_lotPl_Card = variants {};
+lin a_little_Card = cardStr "vähän" singular;
+lin a_lotSg_Card = cardStr "paljon" singular;
+lin a_lotPl_Card = cardStr "paljon" plural;
 lin a_lot_AdA = variants {mkAdA "paljon"; mkAdA "hyvin paljon"};
 lin a_lot_Adv = variants {mkAdv {s = c99 "paljon"}; mkAdv "hyvin paljon"};
 lin a_posteriori_1_A = variants {mkA "a posteriori"; mkA "aposteriorinen"};
@@ -19,7 +22,7 @@ lin a_posteriori_2_A = variants {mkA "a posteriori"; mkA "aposteriorinen"}; --un
 lin a_priori_1_A = variants {mkA {s = d38 "apriorinen"}; mkA "a priori"}; --unchecked
 lin a_priori_2_A = variants {mkA "a priori"; mkA {s = d38 "apriorinen"}}; --unchecked
 lin a_sufficiencySg_Card = variants {};
-lin a_sufficiencyPl_Card = variants {};
+lin a_sufficiencyPl_Card = cardStr "riittävästi" plural; --guessed
 lin aa_1_N = mkN "lohkarelaava";
 lin aa_2_N = variants {};
 lin aa_3_N = variants {};
@@ -89,7 +92,7 @@ lin abbreviation_2_N = mkN "lyhentäminen";
 lin abc_N = mkN "ABC";
 lin abcoulomb_N = mkN "abcoulombi";
 lin abdicable_A = mkA "luovutettavissa oleva"; --unchecked
-lin abdicate_V = variants {};   ---- luopua vallasta luopua kruunusta
+lin abdicate_V = mkV (mkV "luopua") "kruunusta"; --guessed
 lin abdication_1_N = variants {mkN "kruunusta luopuminen"; mkN "vallasta luopuminen"}; --unchecked
 lin abdication_2_N = variants {mkN "kruunusta luopuminen"; mkN "vallasta luopuminen"}; --unchecked
 lin abdicatorMasc_N = mkN "luopuja";
@@ -248,7 +251,7 @@ lin aborad_Adv = mkAdv "aboradisesti";
 lin aboral_A = mkA "aboraalinen";
 lin aboriginal_1_A = variants {mkA "alkuasukas-"; mkA "aboriginaali"};
 lin aboriginal_2_A = mkA "alkukantainen";
-lin aborigineMasc_1_N = variants {};
+lin aborigineMasc_1_N = mkN "aboriginaali";
 lin aborigineFem_1_N = variants {};
 lin aborigineMasc_2_N = mkN {s = d05 "aboriginaali"};
 lin aborigineFem_2_N = mkN {s = d05 "aboriginaali"};
@@ -268,17 +271,17 @@ lin abortionistMasc_N = mkN "sikiönlähdettäjä";
 lin abortive_A = mkA "epäonnistunut";
 lin abortus_N = mkN "abortoitu sikiö"; --unchecked
 lin abound_1_V = variants {};   ---- olla runsaasti
-lin abound_2_V = variants {};   ---- olla runsaasti olla tulvillaan
+lin abound_2_V = mkV "vilistä";   ---- olla runsaasti olla tulvillaan
 lin about_AdN = mkAdN "noin";
 lin about_Predet = mkPredet "noin";
 lin about_2_Adv = variants {mkAdv {s = c99 "ympäriinsä"}; mkAdv "siellä täällä"; mkAdv {s = c99 "ympärille"}};
 lin about_3_Adv = mkAdv "lähistöllä";
-lin about_4_Adv = mkAdv "ympäriinsä/ympäri";
+lin about_4_Adv = mkAdv "ympäriinsä" ;
 lin about_5_Adv = mkAdv {s = c99 "ympäri"};
 lin about_6_Adv = mkAdv "kiertämällä";
 lin about_7_Adv = variants {mkAdv {s = c99 "suurin piirtein"}; mkAdv {s = c99 "noin"}};
-lin about_1_Prep = variants {};
-lin about_2_Prep = variants {};
+lin about_1_Prep = postGenPrep "suhteen";
+lin about_2_Prep = postGenPrep "suhteen"; --guessed
 lin about_face_1_N = mkN "täyskäännös";
 lin about_face_2_N = mkN "täyskäännös";
 lin about_face_1_V = variants {};   ---- tehdä täyskäännös
@@ -349,7 +352,7 @@ lin absent_1_A = mkA "poissaoleva";
 lin absent_2_A = mkA "poissaoleva";
 lin absent_3_A = mkA "hajamielinen";
 lin absent_Prep = variants {};
-lin absent_yourself_V = variants {};
+lin absent_yourself_V = mkV "poistua"; --guessed
 lin absent_minded_A = mkA "hajamielinen";
 lin absenteeMasc_N = mkN "poissaolija";
 lin absenteeFem_N = mkN "poissaolija";
@@ -424,7 +427,7 @@ lin abstract_1_N = mkN "ajatusluomus";
 lin abstract_2_N = mkN {s = d10 "tiivistelmä"};
 lin abstract_1_V2 = mkV2 (mkV {s = c62 "abstrahoida"});
 lin abstract_2_V2 = mkV2 (mkV {s = c53 "anastaa"});
-lin abstract_away_V = variants {};
+lin abstract_away_V = mkV "abstrahoida"; --guessed
 lin abstract_4_V2 = mkV2 (mkV {s = c53 "tiivistää"});
 lin abstractedness_N = mkN "keskittyneisyys";
 lin abstraction_1_N = mkN {s = d03 "abstraktio"};
@@ -459,8 +462,8 @@ lin abundance_3_N = variants {mkN "abundanssi"; mkN "runsaussuhde"};
 lin abundant_A = variants {mkA "yltäkylläinen"; mkA {s = d41 "runsas"}};
 lin abuse_1_N = mkN "hyväksikäyttö";
 lin abuse_2_N = mkN {s = d39 "solvaus"};
-lin abuse_of_N2 = variants {};
-lin abuse_1_V2 = variants {};   ---- kohdella huonosti käyttää hyväkseen
+lin abuse_of_N2 = mkN2 (mkN "väärinkäyttö") (casePrep elative); --guessed
+lin abuse_1_V2 = mkV2 (mkV (mkV "kohdella") "huonosti"); --guessed
 lin abuse_2_V2 = mkV2 (mkV "väärinkäyttää");
 lin abuse_3_V2 = variants {mkV2 (mkV {s = c73 "solvata"}); mkV2 (mkV {s = c73A "loukata"}); mkV2 (mkV {s = c73 "herjata"})};
 lin abuse_4_V2 = mkV2 (mkV "väärinkäyttää");
@@ -532,7 +535,7 @@ lin acathexis_N = mkN "akateksis";
 lin acaudate_1_A = variants {mkA "akaudaattinen"; mkA "hännätön"; mkA "akaudaalinen"};
 lin acaulescent_A = mkA "varreton";
 lin accede_1_V = mkV {s = c52 "suostua"};
-lin accede_to_V2 = variants {};
+lin accede_to_V2 = mkV2 (mkV "nousta"); --guessed
 lin accede_3_V = mkV {s = c52 "suostua"};
 lin accelerando_A = variants {mkA "nopeutuva"; mkA "nopeutuvatempoinen"};
 lin accelerando_Adv = variants {mkAdv "nopeutuvassa tempossa"; mkAdv "nopeutuen"};
@@ -562,19 +565,19 @@ lin accentuate_1_V2 = mkV2 (mkV {s = c53A "painottaa"});
 lin accentuate_2_V2 = mkV2 (mkV {s = c53A "painottaa"});
 lin accentuation_1_N = mkN {s = d39 "painotus"};
 lin accentuation_2_N = mkN "tähdentäminen";
-lin accept_8_V = variants {};   ---- imeä itseensä
+lin accept_8_V = mkV (mkV "ottaa") "vastaan"; --guessed
 lin accept_9_V = mkV "vastaanottaa";
 lin accept_1_V2 = variants {mkV2 (mkV {s = c52 "hyväksyä"}); mkV2 (mkV {s = c53A "kelpuuttaa"})};
 lin accept_2_V2 = mkV2 (mkV {s = c52 "hyväksyä"});
 lin accept_3_V2 = variants {mkV2 (mkV {s = c52 "hyväksyä"}); mkV2 (mkV {s = c52A "myöntyä"})};
 lin accept_4_V2 = variants {mkV2 (mkV {s = c53A "kelpuuttaa"}); mkV2 (mkV {s = c52 "hyväksyä"})};
 lin accept_5_V2 = mkV2 (mkV {s = c52 "hyväksyä"});
-lin accept_6_V2 = variants {};   ---- ottaa vastuulleen ottaa kannettavakseen
+lin accept_6_V2 = mkV2 (mkV (mkV "ottaa") "vastattavakseen"); --guessed
 lin accept_7_V2 = variants {mkV2 (mkV {s = c52 "hyväksyä"}); mkV2 (mkV {s = c53A "sietää"})};
 lin accept_8_V2 = variants {};   ---- imeä itseensä
 lin accept_9_V2 = mkV2 (mkV "vastaanottaa");
 lin accept_10_V2 = mkV2 (mkV {s = c52 "hyväksyä"});
-lin accept_11_V2 = variants {};   ---- ottaa vastaan
+lin accept_11_V2 = mkV2 (mkV "hyväksyä"); --guessed
 lin acceptability_N = mkN {s = d40 "hyväksyttävyys"};
 lin acceptable_1_A = variants {mkA {s = d10 "hyväksyttävä"}; mkA {s = d10 "tyydyttävä"}};
 lin acceptable_2_A = variants {mkA {s = d10 "sopiva"}; mkA {s = d38 "mahdollinen"}};
@@ -591,8 +594,8 @@ lin acceptation_1_N = variants {mkN {s = d10A "hyväksyntä"}; mkN "hyväksymine
 lin acceptation_2_N = mkN "sanan yleisin merkitys"; --unchecked
 lin acceptation_3_N = variants {mkN "vastaanottaminen"; mkN "hyväksyminen"};
 lin accepted_A = mkA "hyväksytty";
-lin acceptive_of_1_A2 = variants {};
-lin acceptive_of_2_A2 = variants {};
+lin acceptive_of_1_A2 = mkA2 "vastaanottavainen" (casePrep elative); --guessed
+lin acceptive_of_2_A2 = mkA2 "vastaanottavainen" (casePrep elative); --guessed
 lin acceptor_1_N = mkN "akseptori";
 lin acceptorMasc_2_N = variants {mkN {s = d10 "tunnustaja"}; mkN "vekselin tunnustaja"}; --unchecked
 lin acceptorFem_2_N = variants {mkN {s = d10 "tunnustaja"}; mkN "vekselin tunnustaja"}; --unchecked
@@ -610,13 +613,13 @@ lin accessaryFem_N = variants {mkN "rikokseen osallinen"; mkN "osasyyllinen"}; -
 lin accessibility_1_N = mkN {s = d40 "käytettävyys"};
 lin accessibility_2_N = variants {mkN {s = d40 "saavutettavuus"}; mkN "lähestyttävyys"};
 lin accessible_1_A = mkA "päästävä";
-lin accessible_to_A2 = variants {};
+lin accessible_to_A2 = mkA2 "saavutettava" (casePrep allative); --guessed
 lin accessible_3_A = variants {mkA "saatavissa oleva"; mkA "käytettävissä oleva"}; --unchecked
 lin accessible_4_A = mkA "lähestyttävä";
 lin accession_1_N = mkN "karttuminen";
 lin accession_2_N = mkN "omistusoikeus";
 lin accession_3_N = variants {mkN "uudishankinta"; mkN {s = d09A "hankinta"}; mkN {s = d09A "kartunta"}};
-lin accession_to_N2 = variants {};
+lin accession_to_N2 = mkN2 (mkN "suostuminen") (casePrep illative); --guessed
 lin accession_5_N = mkN "pääsyoikeus";
 lin accession_6_N = variants {mkN {s = d01 "pääsy"}; mkN {s = d01 "tulo"}; mkN "astuminen"; mkN "valtaistuimelle nousu"}; --unchecked
 lin accessional_A = mkA "virkaanastumis-";
@@ -632,7 +635,7 @@ lin accident_1_N = variants {mkN {s = d40 "onnettomuus"}; mkN {s = d01A "vahinko
 lin accident_2_N = variants {mkN "tapaturma"; mkN {s = d40 "onnettomuus"}; mkN {s = d01A "vahinko"}};
 lin accident_prone_A = mkA "tapaturma-altis";
 lin accidental_A = variants {mkA {s = d38 "satunnainen"}; mkA {s = d38 "tapaturmainen"}};
-lin accidental_to_A2 = variants {};
+lin accidental_to_A2 = mkA2 "epäolennainen" (casePrep illative); --guessed
 lin accidental_N = mkN "tilapäinen etumerkki";
 lin accipitrine_A = mkA "haukkamainen";
 lin acclaim_N = mkN "suosionhuuto";
@@ -652,7 +655,7 @@ lin accommodate_3_V2 = variants {mkV2 (mkV {s = c53 "järjestää"}); mkV2 (mkV 
 lin accommodate_4_V2 = mkV2 (mkV {s = c53A "majoittaa"});
 lin accommodate_5_V2 = variants {};   ---- ottaa asumaan
 lin accommodate_6_V2 = mkV2 (mkV {s = c53A "sovittaa"});
-lin accommodate_with_V3 = variants {};
+lin accommodate_with_V3 = mkV3 (mkV "sovittaa") accusative (postGenPrep "kanssa"); --guessed
 lin accommodation_1_N = variants {mkN "mukautuminen"; mkN "soveltuminen"; mkN {s = d03 "akkommodaatio"}; mkN "sopeutuminen"};
 lin accommodation_2_N = variants {mkN {s = d01A "sovinto"}; mkN {s = d05 "kompromissi"}};
 lin accommodation_3_N = mkN {s = d03 "akkommodaatio"};
@@ -693,7 +696,7 @@ lin accordance_1_N = variants {mkN "sopusointu"; mkN {s = d39 "sopimus"}};
 lin accordance_2_N = variants {mkN "suominen"; mkN "myöntäminen"};
 lin accordant_with_A2 = variants {};
 lin accordant_A = mkA "yhtäpitävä";
-lin according_to_Prep = variants {};
+lin according_to_Prep = postGenPrep "mukaan"; --guessed
 lin accordingly_1_Adv = variants {mkAdv {s = c99 "vastaavasti"}; mkAdv "asianmukaisesti"; mkAdv "niinpä"};
 lin accordingly_2_Adv = variants {mkAdv "asianmukaisesti"; mkAdv {s = c99 "vastaavasti"}; mkAdv "sen mukaisesti"};
 lin accordion_N = variants {};
@@ -702,7 +705,7 @@ lin accordionistFem_N = variants {mkN "harmonikansoittaja"; mkN {s = d05 "hanuri
 lin accost_1_V2 = mkV2 (mkV {s = c67A "puhutella"});
 lin accost_2_V2 = mkV2 (mkV {s = c67 "ahdistella"});
 lin accouchement_N = mkN "lapsivuode";
-lin account_of_N2 = variants {};
+lin account_of_N2 = mkN2 (mkN "selonteko") (casePrep elative); --guessed
 lin account_2_N = mkN "selonteko";
 lin account_3_N = mkN {s = d05 "tili"};
 lin account_4_N = mkN {s = d39 "selostus"};
@@ -712,7 +715,7 @@ lin account_7_N = variants {mkN {s = d39 "selvitys"}; mkN {s = d39 "tilitys"}; m
 lin account_8_N = mkN {s = d39 "selostus"};
 lin account_9_N = mkN {s = d05 "tili"};
 lin account_10_N = variants {mkN {s = d01A "hyöty"}; mkN {s = d01A "etu"}};
-lin account_for_3_V2 = variants {};
+lin account_for_3_V2 = mkV2 (mkV "muodostaa"); --guessed
 lin account_2_V = mkV {s = c53A "tilittää"};
 lin account_2_V2 = mkV2 (mkV {s = c53A "tilittää"});
 lin account_3_V2 = mkV2 (mkV {s = c53 "selostaa"});
@@ -747,7 +750,7 @@ lin accretionary_A = variants {mkA "lisääntymis-"; mkA "vesijättö-"; mkA "ak
 lin accretive_A = mkA "yhteen kasvava"; --unchecked
 lin accrington_LN = variants {};
 lin accrue_V = variants {mkV {s = c52A "karttua"}; mkV {s = c56 "kasvaa"}};
-lin accrue_to_V2 = variants {};
+lin accrue_to_V2 = mkV2 (mkV "siirtyä"); --guessed
 lin acculturation_1_N = mkN "akkulturaatio";
 lin acculturation_2_N = mkN {s = d39 "sivistys"};
 lin acculturation_3_N = mkN "akkulturaatio" ;
@@ -777,7 +780,7 @@ lin accusative_1_A = mkA "syyttävä";
 lin accusative_2_A = mkA "akkusatiivi-";
 lin accusative_N = mkN {s = d05 "akkusatiivi"};
 lin accusatorial_A = variants {mkA "akkusatorinen"; mkA "syytepohjainen"};
-lin accuse_of_V3 = variants {};
+lin accuse_of_V3 = mkV3 (mkV "syyttää") accusative (casePrep elative); --guessed
 lin accuse_V2 = variants {mkV2 (mkV {s = c61A "moittia"}); mkV2 (mkV {s = c53A "syyttää"})};
 lin accused_A = variants {};
 lin accusedMasc_N = variants {mkN {s = d01A "syytetty"}; mkN {s = d10 "vastaaja"}};
@@ -835,7 +838,7 @@ lin acetylic_A = variants {mkA "asetyyli-"; mkA "etikkahapon"};
 lin ache_N = mkN {s = d01A "kipu"};
 lin ache_1_V = variants {mkV {s = c53A "jomottaa"}; mkV {s = c58A "särkeä"}; mkV {s = c53A "pakottaa"}; mkV {s = c53 "kivistää"}};
 lin ache_3_V = variants {mkV {s = c58A "särkeä"}; mkV {s = c53A "jomottaa"}};
-lin ache_for_V2 = variants {};
+lin ache_for_V2 = mkV2 (mkV (mkV "kaivata") "kipeästi"); --guessed
 lin achene_N = mkN {s = d12 "pähkylä"};
 lin achenial_A = variants {mkA "pähkylä-"; mkA "pähkylän"};
 lin acheron_PN = mkPN "Aheron" ;
@@ -897,7 +900,7 @@ lin acinus_2_N = mkN "rauhasrakkula";
 lin ack_ack_N = mkN "ilmatorjuntatykki";
 lin ackee_1_N = mkN "akiluumu";
 lin ackee_2_N = mkN "akee";
-lin acknowledge_2_V2 = variants {};   ---- ilmoittaa vastaanottaneensa
+lin acknowledge_2_V2 = mkV2 (mkV (mkV "kuitata") "vastaanotetuksi"); --guessed
 lin acknowledge_3_V2 = variants {mkV2 (mkV {s = c53 "tunnustaa"}); mkV2 (mkV {s = c54A "myöntää"})};
 lin acknowledge_4_V2 = mkV2 (mkV {s = c53A "kiittää"});
 lin acknowledge_5_V2 = variants {mkV2 (mkV {s = c53 "tunnustaa"}); mkV2 (mkV {s = c52 "hyväksyä"}); mkV2 (mkV {s = c54A "myöntää"})};
@@ -924,7 +927,7 @@ lin acoustic_N = variants {mkN "kuulolääke"; mkN "kuulolaite"};
 lin acousticianMasc_N = mkN "akustikko";
 lin acousticianFem_N = mkN "akustikko";
 lin acoustics_N = mkN {s = d09A "akustiikka"};
-lin acquaint_with_V3 = variants {};
+lin acquaint_with_V3 = mkV3 (mkV "esitellä") accusative (casePrep allative); --guessed
 lin acquaint_2_V2 = variants {mkV2 (mkV {s = c52A "perehtyä"}); mkV2 (mkV {s = c53A "tutustuttaa"}); mkV2 (mkV {s = c52 "tutustua"}); mkV2 (mkV {s = c53A "perehdyttää"})};
 lin acquaint_3_V2 = variants {mkV2 (mkV {s = c53A "tiedottaa"}); mkV2 (mkV {s = c53A "ilmoittaa"})};
 lin acquaintance_1_N = variants {mkN {s = d40 "tuttavuus"}; mkN {s = d39 "tuntemus"}};
@@ -1003,7 +1006,7 @@ lin acroscopic_A = mkA "akroskooppinen";
 lin acrosome_N = mkN "akrosomi";
 lin across_1_Adv = variants {mkAdv "pitkä"; mkAdv "leveä"};
 lin across_2_Adv = variants {mkAdv {s = c99 "ristiin"}; mkAdv {s = c99 "poikittain"}; mkAdv {s = c99 "halki"}};
-lin across_Prep = variants {};
+lin across_Prep = prePrep genitive "poikki";
 lin acrostic_1_N = mkN "sanaleikki";
 lin acrostic_2_N = mkN "akrostikon";
 lin acrylamide_N = mkN "akryyliamidi";
@@ -1017,7 +1020,7 @@ lin act_3_N = mkN {s = d39 "näytös"};
 lin act_4_N = mkN {s = d39 "näytös"};
 lin act_5_N = mkN {s = d39 "näytös"};
 lin act_1_V = mkV {s = c61 "toimia"};
-lin act_4_V = variants {};   ---- toimia jnk
+lin act_4_V = mkV "toimia"; --guessed
 lin act_6_V = mkV {s = c61 "toimia"};
 lin act_7_V = variants {mkV {s = c53A "vaikuttaa"}; mkV {s = c61 "toimia"}};
 lin act_8_V = variants {};   ---- harrastaa toimintaa
@@ -1027,7 +1030,7 @@ lin act_3_V2 = mkV2 (mkV {s = c67A "näytellä"});
 lin act_5_V2 = mkV2 (mkV {s = c53A "esittää"});
 lin act_8_V2 = variants {};   ---- harrastaa toimintaa
 lin act_VA = mkVA (mkV {s = c61 "toimia"}) (casePrep translative);
-lin act_like_V2 = variants {};
+lin act_like_V2 = mkV2 (mkV "käyttäytyä") essive;
 lin act_on_1_V2 = mkV2 (mkV {s = c62 "reagoida"});
 lin act_on_2_V2 = variants {};   ---- toimia jkn pohjalta
 lin act_on_3_V2 = variants {};
@@ -1160,7 +1163,7 @@ lin acyl_N = mkN "asyyli";
 lin acylation_N = mkN "asylaatio";
 lin ad_N = variants {mkN {s = d39 "mainos"}; mkN "lehti-ilmoitus"};
 lin ad_PN = variants {};
-lin ad_hoc_1_A = variants {};
+lin ad_hoc_1_A = mkA "tilapäinen"; --guessed
 lin ad_hoc_2_A = variants {mkA "varta vasten"; mkA "tilapäinen"}; --unchecked
 lin ad_hoc_Adv = variants {mkAdv "asiakohtaisesti"; mkAdv "erityis-"; mkAdv "tätä tarkoitusta varten"};
 lin ad_infinitum_Adv = mkAdv "ad infinitum";
@@ -1218,10 +1221,10 @@ lin add_up_4_V = mkV {s = c73 "täsmätä"};
 lin add_up_1_V2 = mkV2 (mkV {s = c67 "tulla"});
 lin add_up_3_V2 = variants {};   ---- tehdä yhteensä
 lin add_up_4_V2 = mkV2 (mkV {s = c73 "täsmätä"});
-lin add_up_to_V2 = variants {};
+lin add_up_to_V2 = mkV2 (mkV "kehittyä") translative; --guessed
 lin addable_1_A = variants {mkA "lisättävissä oleva"; mkA "lisättävä"}; --unchecked
 lin addax_N = mkN "saharanantilooppi";
-lin added_A = variants {};
+lin added_A = mkA "lisä-"; --guessed
 lin addend_N = variants {mkN "lisättävä"; mkN "yhteenlaskettava"};
 lin addendum_N = mkN {s = d48A "liite"};
 lin adderMasc_1_N = mkN "yhteenlaskija";
@@ -1241,7 +1244,7 @@ lin adding_machine_N = variants {mkN "yhteenlaskin"; mkN {s = d33 "laskin"}; mkN
 lin addis_ababa_LN = mkLN "Addis Abeba";
 lin addition_1_N = mkN "lisääminen";
 lin addition_2_N = variants {mkN "lisääminen"; mkN {s = d10 "lisä"}; mkN {s = d39 "lisäys"}};
-lin addition_to_N2 = variants {};
+lin addition_to_N2 = mkN2 (mkN "lisäys") (casePrep illative); --guessed
 lin addition_4_N = variants {mkN {s = d10 "lisä"}; mkN {s = d39 "lisäys"}; mkN {s = d39 "täydennys"}};
 lin addition_5_N = mkN {s = d03 "lähiö"};
 lin addition_6_N = mkN "yhteenlasku";
@@ -1352,7 +1355,7 @@ lin adjective_1_N = variants {mkN "laatusana"; mkN {s = d05 "adjektiivi"}};
 lin adjective_2_N = mkN {s = d05 "adjektiivi"};
 lin adjoin_1_V = variants {};   ---- olla rajakkain olla vieretysten
 lin adjoin_2_V = mkV {s = c53A "koskettaa"};
-lin adjoin_1_V2 = variants {};   ---- olla rajakkain olla vieretysten
+lin adjoin_1_V2 = mkV2 (mkV "rajoittua"); --guessed
 lin adjoin_2_V2 = mkV2 (mkV {s = c53A "koskettaa"});
 lin adjoin_3_V2 = mkV2 (mkV {s = c73 "lisätä"});
 lin adjourn_1_V = mkV {s = c53A "keskeyttää"};
@@ -1444,16 +1447,16 @@ lin admirer_3_N = mkN {s = d12 "ihailija"};
 lin admiringly_Adv = mkAdv "ihaillen";
 lin admissibility_N = variants {mkN {s = d40 "luvallisuus"}; mkN "sallittavuus"};
 lin admissible_A = variants {mkA "sallittu"; mkA "pätevä"; mkA {s = d10 "hyväksyttävä"}; mkA {s = d38 "kelvollinen"}};
-lin admission_to_N2 = variants {};
+lin admission_to_N2 = mkN2 (mkN "sisäänpääsy") (casePrep illative); --guessed
 lin admission_2_N = variants {mkN "tunnustaminen"; mkN "myöntäminen"};
 lin admission_3_N = mkN "sisäänpääsymaksu";
 lin admission_4_N = mkN {s = d01 "pääsy"};
-lin admissive_of_A2 = variants {};
-lin admit_of_V2 = variants {};
-lin admit_onto_V2 = variants {};
+lin admissive_of_A2 = mkA2 "salliva" (casePrep elative); --guessed
+lin admit_of_V2 = mkV2 (mkV "sallia"); --guessed
+lin admit_onto_V2 = mkV2 (mkV "avautua"); --guessed
 lin admit_1_V2 = variants {mkV2 (mkV {s = c54A "myöntää"}); mkV2 (mkV {s = c53 "tunnustaa"})};
 lin admit_2_V2 = mkV2 (mkV {s = c53 "päästää"});
-lin admit_to_V3 = variants {};
+lin admit_to_V3 = mkV3 (mkV "myöntää") accusative (casePrep allative);
 lin admit_4_V2 = mkV2 (mkV {s = c53 "päästää"});
 lin admit_7_V2 = mkV2 (mkV {s = c53A "ottaa"});
 lin admit_8_V2 = mkV2 (mkV {s = c53 "päästää"});
@@ -1774,7 +1777,7 @@ lin aether_2_N = mkN {s = d06 "eetteri"};
 lin aetiology_1_N = variants {mkN "taudinsyy"; mkN {s = d12 "etiologia"}};
 lin aetiology_2_N = variants {mkN {s = d12 "etiologia"}; mkN "syyoppi"};
 lin afar_Adv = variants {mkAdv {s = c99 "kaukaa"}; mkAdv {s = c99 "kauas"}; mkAdv {s = c99 "kaukana"}};
-lin afar_off_Adv = variants {};
+lin afar_off_Adv = mkAdv "kaukaa"; --guessed
 lin afebrile_A = mkA "afebriili";
 lin affability_N = mkN {s = d40 "ystävällisyys"};
 lin affable_A = variants {mkA {s = d10 "mukava"}; mkA "hyväntahtoinen"};
@@ -1782,7 +1785,7 @@ lin affair_1_N = mkN {s = d10 "homma"};
 lin affair_2_N = variants {mkN "rakkausjuttu"; mkN {s = d48A "suhde"}};
 lin affair_3_N = mkN {s = d01A "juttu"};
 lin affairs_1_N = variants {};
-lin affairs_2_N = variants {};
+lin affairs_2_N = mkN "asiat"; --guessed
 lin affect_N = variants {mkN {s = d05 "affekti"}; mkN "tunnetila"};
 lin affect_1_V2 = mkV2 (mkV {s = c53A "vaikuttaa"});
 lin affect_2_V2 = mkV2 (mkV {s = c53A "vaikuttaa"});
@@ -1846,13 +1849,13 @@ lin affirmativeness_N = variants {mkN {s = d40 "myönteisyys"}; mkN {s = d40 "po
 lin affix_N = variants {mkN "affiksi"; mkN {s = d48A "liite"}};
 lin affix_1_V2 = mkV2 (mkV {s = c53A "kiinnittää"});
 lin affix_2_V2 = mkV2 (mkV {s = c53A "kiinnittää"});
-lin affix_to_V2 = variants {};
+lin affix_to_V2 = mkV2 (mkV "liittyä"); --guessed
 lin affixal_1_A = variants {mkA "liite-"; mkA "liitteeseen liittyvä"}; --unchecked
 lin affixation_1_N = variants {mkN "affiksaatio"; mkN "sanan muodostaminen liitteen avulla"};
 lin affixation_2_N = variants {mkN "sanan muodostaminen liitteen avulla"; mkN "affiksaatio"}; --unchecked
 lin affixation_3_N = variants {mkN "lisääminen"; mkN "kiinnittäminen"; mkN "liittäminen"};
 lin afflatus_N = variants {mkN {s = d39 "innoitus"}; mkN {s = d03 "inspiraatio"}};
-lin afflict_1_V2 = variants {};   ---- tuottaa tuskaa
+lin afflict_1_V2 = mkV2 (mkV "murehduttaa"); --guessed
 lin afflict_2_V2 = variants {mkV2 (mkV {s = c73 "vaivata"}); mkV2 (mkV {s = c73 "kiusata"}); mkV2 (mkV {s = c67A "koetella"})};
 lin affliction_1_N = variants {mkN {s = d01 "suru"}; mkN {s = d39 "kärsimys"}; mkN {s = d48 "murhe"}};
 lin affliction_2_N = variants {mkN {s = d10 "tuska"}; mkN {s = d39 "kärsimys"}};
@@ -1864,12 +1867,12 @@ lin affluentMasc_1_N = variants {mkN "rikas"; mkN "hyvinvoipa"; mkN "varakas"};
 lin affluentFem_1_N = variants {mkN "rikas"; mkN "hyvinvoipa"; mkN "varakas"};
 lin affluent_2_N = mkN "lisäjoki";
 lin afford_2_V2 = variants {mkV2 (mkV {s = c74 "tarjota"}); mkV2 (mkV {s = c56A "antaa"})};
-lin afford_3_V2 = variants {};   ---- olla varaa
+lin afford_3_V2 = mkV2 (mkV (mkV "olla") "varaa") illative; --guessed
 lin afford_4_V2 = variants {};   ---- tarjota pääsy
-lin afford_1_VV = variants {};   ---- olla varaa
-lin afford_3_VV = variants {};   ---- olla varaa
+lin afford_1_VV = mkVV (mkV "voida"); --guessed
+lin afford_3_VV = mkVV (mkV "voida"); --guessed
 lin affordable_A = mkA "huokea";
-lin afforest_V2 = variants {};   ---- muuttaa metsämaaksi
+lin afforest_V2 = mkV2 (mkV "metsittää"); --guessed
 lin afforestation_N = variants {mkN "metsittäminen"; mkN "muuttaminen metsämaaksi"}; --unchecked
 lin affranchise_V2 = mkV2 (mkV {s = c53A "vapauttaa"});
 lin affray_1_N = variants {mkN {s = d02 "tappelu"}; mkN {s = d12 "rähinä"}};
@@ -1941,7 +1944,7 @@ lin aft_Adv = mkAdv "perä-";
 lin after_A = variants {mkA "taakse"; mkA "takana"; mkA "takana oleva"}; --unchecked
 lin after_Adv = variants {mkAdv {s = c99 "takana"}; mkAdv {s = c99 "taakse"}};
 lin after_Prep = S.after_Prep ;
-lin after_Subj = variants {};
+lin after_Subj = {s = "sen jälkeen kun"};
 lin afterbirth_N = mkN {s = d38 "jälkeinen"};
 lin afterburner_N = mkN "jälkipoltin";
 lin aftercare_N = mkN "jälkihoito";
@@ -1969,7 +1972,7 @@ lin afterthought_2_N = mkN "myöhempi lisä"; --unchecked
 lin afterwards_1_Adv = variants {mkAdv "jälkeenpäin"; mkAdv "perästäpäin"; mkAdv {s = c99 "myöhemmin"}; mkAdv {s = c99 "jälkikäteen"}; mkAdv {s = c99 "sittemmin"}};
 lin afterworld_N = variants {mkN "tuonpuoleinen elämä"; mkN "tuleva elämä"}; --unchecked
 lin again_Adv = variants {mkAdv {s = c99 "jälleen"}; mkAdv {s = c99 "uudelleen"}; mkAdv {s = c99 "toistamiseen"}; mkAdv {s = c99 "taas"}};
-lin against_Prep = variants {};
+lin against_Prep = postGenPrep "vastaan";
 lin agal_N = mkN "agal";
 lin agalactia_N = mkN "agalaktia";
 lin agama_N = mkN "agamalisko";
@@ -2141,7 +2144,7 @@ lin agnosticFem_2_N = mkN {s = d04A "agnostikko"};
 lin agnosticism_1_N = variants {mkN {s = d05 "agnostisismi"}; mkN "agnostismi"};
 lin agnosticism_2_N = variants {mkN {s = d05 "agnostisismi"}; mkN "agnostismi"};
 lin ago_Adv = mkAdv {s = c99 "sitten"};
-lin ago_Prep = variants {};
+lin ago_Prep = postGenPrep "sitten"; --guessed
 lin agog_A = variants {mkA "innoissaan oleva"; mkA "innoissaan"; mkA {s = d41A "innokas"}}; --unchecked
 lin agon_N = mkN "agon";
 lin agonadal_A = variants {mkA "sukurauhasten puuttumiseen liittyvä"; mkA "agonadaalinen"}; --unchecked
@@ -2173,15 +2176,15 @@ lin agrapha_N = variants {mkN "agrafa"; mkN {s = d34A "kirjoittamaton"}};
 lin agraphia_N = mkN "agrafia" ;
 lin agraphic_A = variants {mkA "kirjoittamiskyvytön"; mkA "agrafinen"; mkA "kirjoittamiskyvyttömyyteen liittyvä"}; --unchecked
 lin agrarian_A = variants {mkA "maatalousvaltainen"; mkA "agraarinen"; mkA "maataloudellinen"};
-lin agree_to_V2 = variants {};
+lin agree_to_V2 = mkV2 (mkV "suostua"); --guessed
 lin agree_3_V = mkV {s = c61A "sopia"};
 lin agree_4_V = mkV {s = c61A "sopia"};
 lin agree_5_V = variants {mkV {s = c52A "mukautua"}; mkV {s = c53A "noudattaa"}};
 lin agree_2_VV = variants {mkVV (mkV {s = c52A "myöntyä"}); mkVV (mkV {s = c52 "suostua"})};
 lin agree_on_1_V2 = mkV2 (mkV "sopia") elative ;
-lin agree_on_7_V2 = variants {};
-lin agree_with_1_V2 = variants {};
-lin agree_with_6_V2 = variants {};
+lin agree_on_7_V2 = mkV2 (mkV "sopia"); --guessed
+lin agree_with_1_V2 = mkV2 (mkV (mkV "olla") "samaa mieltä"); --guessed
+lin agree_with_6_V2 = mkV2 (mkV "sopia"); --guessed
 lin agreeable_1_A = variants {mkA {s = d10 "miellyttävä"}; mkA {s = d10 "rakastettava"}; mkA "mieleinen"};
 lin agreeable_2_A = mkA "sopusointuinen";
 lin agreeable_3_A = mkA {s = d38 "mukainen"};
@@ -2277,13 +2280,13 @@ lin aim_7_V2 = mkV2 (mkV {s = c61A "pyrkiä"});
 lin aim_2_VV = variants {mkVV (mkV {s = c61A "pyrkiä"}); mkVV (mkV {s = c52A "aikoa"})};
 lin aim_4_VV = variants {mkVV (mkV {s = c53 "kohdistaa"}); mkVV (mkV {s = c73A "tähdätä"}); mkVV (mkV {s = c73A "suunnata"})};
 lin aim_7_VV = mkVV (mkV {s = c61A "pyrkiä"});
-lin aim_at_V2 = variants {};
+lin aim_at_V2 = mkV2 (mkV "tähdätä"); --guessed
 lin aimless_1_A = variants {mkA "kohteeton"; mkA "päämäärätön"};
 lin aimless_2_A = variants {mkA "tavoitteeton"; mkA "päämäärätön"};
 lin aioli_N = mkN "valkosipulimajoneesi";
 lin air_1_N = mkN {s = d09 "ilma"};
 lin air_2_N = mkN {s = d09 "ilma"};
-lin air_of_N2 = variants {};
+lin air_of_N2 = mkN2 (mkN "vaikutelma") (casePrep elative);
 lin air_4_N = mkN {s = d39 "tuulahdus"};
 lin air_5_N = mkN "ilmakehä";
 lin air_6_N = mkN {s = d09 "ilma"};
@@ -2390,7 +2393,7 @@ lin akan_N = mkN "akani" ;
 lin akaryocyte_1_N = variants {mkN "akaryootti"; mkN "akaryosyytti"};
 lin akimbo_Adv = variants {mkAdv "kädet lanteillaan"; mkAdv {s = c99 "puuskassa"}};
 lin akin_1_A = variants {mkA "sukua"; mkA "sukua oleva"}; --unchecked
-lin akin_to_A2 = variants {};
+lin akin_to_A2 = mkA2 "kaltainen" (casePrep illative); --guessed
 lin akinesis_1_N = variants {mkN "akinesia"; mkN "akineesi"};
 lin akkadian_N = variants {} ;
 lin akron_LN = mkLN "Akron";
@@ -2518,7 +2521,7 @@ lin alert_2_A = mkA "rivakka";
 lin alert_1_N = mkN "hälytystila";
 lin alert_2_N = mkN {s = d39 "hälytys"};
 lin alert_3_N = mkN {s = d39 "hälytys"};
-lin alert_to_V3 = variants {};
+lin alert_to_V3 = mkV3 (mkV "varoittaa") accusative (casePrep elative); --guessed
 lin alertness_1_N = mkN "varuillaanolo";
 lin alertness_2_N = variants {mkN {s = d40 "vireys"}; mkN {s = d40 "valppaus"}};
 lin alertness_3_N = variants {mkN {s = d40 "vireys"}; mkN {s = d40 "valppaus"}};
@@ -2648,9 +2651,9 @@ lin alison_GN = variants {};
 lin aliterateMasc_N = mkN "kirjallisesti sivistymätön henkilö"; --unchecked
 lin aliterateFem_N = mkN "kirjallisesti sivistymätön henkilö"; --unchecked
 lin alive_1_A = variants {mkA "elossa"; mkA "elossa oleva"};
-lin alive_with_A2 = variants {};
+lin alive_with_A2 = mkA2 "eloisa" (postGenPrep "kanssa"); --guessed
 lin alive_3_A = variants {mkA {s = d10 "elävä"}; mkA {s = d10 "eloisa"}};
-lin alive_to_A2 = variants {};
+lin alive_to_A2 = mkA2 "herkkä" (casePrep illative); --guessed
 lin alive_5_A = mkA {s = d10 "elävä"};
 lin alive_6_A = variants {mkA "pirteä"; mkA "reipas"};
 lin alive_7_A = mkA "toimiva";
@@ -2756,11 +2759,11 @@ lin alliance_4_N = mkN {s = d39 "sopimus"};
 lin alliance_5_N = mkN "liittoutuminen";
 lin allied_1_A = variants {mkA "sukua"; mkA "sukulais-"; mkA "sukua oleva"}; --unchecked
 lin allied_2_A = mkA "liittoutunut" ;
-lin allied_3_A = variants {};
+lin allied_3_A = mkA "liittoutunut"; --guessed
 lin allied_4_A = variants {mkA "liittolainen"; mkA "liittolais-"};
 lin allied_5_A = variants {mkA "liitto-"; mkA "liittoutunut"};
 lin allies_1_N = variants {};
-lin allies_2_N = variants {};
+lin allies_2_N = mkN "liittoutuneet"; --guessed
 lin allies_3_N = variants {mkN {s = d47 "liittoutuneet"}; mkN "liittolaiset"};
 lin alligator_1_N = mkN {s = d06 "alligaattori"};
 lin alligator_2_N = mkN {s = d06 "alligaattori"};
@@ -2820,9 +2823,9 @@ lin allow_9_V2 = variants {};   ---- antaa alennusta
 lin allow_10_V2 = variants {mkV2 (mkV {s = c52 "hyväksyä"}); mkV2 (mkV {s = c53 "päästää"}); mkV2 (mkV {s = c61 "sallia"})};
 lin allow_1_V2V = variants {mkV2V (mkV {s = c53 "päästää"}); mkV2V (mkV {s = c61 "sallia"})};
 lin allow_2_V2V = variants {mkV2V (mkV {s = c53 "päästää"}); mkV2V (mkV {s = c61 "sallia"})};
-lin allow_for_6_V2 = variants {};   ---- jättää sijaa
-lin allow_for_7_V2 = variants {};
-lin allow_of_V2 = variants {};
+lin allow_for_6_V2 = mkV2 (mkV (mkV "varata") "tilaa"); --guessed
+lin allow_for_7_V2 = mkV2 (mkV (mkV "ottaa") "huomioon"); --guessed
+lin allow_of_V2 = mkV2 (mkV "sallia"); --guessed
 lin allowable_1_A = mkA "vähennyskelpoinen";
 lin allowable_2_A = mkA {s = d38 "luvallinen"};
 lin allowable_3_A = variants {mkA {s = d38 "luvallinen"}; mkA "sallittu"};
@@ -2878,7 +2881,7 @@ lin almonerFem_N = mkN "sairaalan sosiaalihoitaja"; --unchecked
 lin almost_AdA = S.almost_AdA ;
 lin almost_AdN = S.almost_AdN ;
 lin almost_AdV = variants {mkAdV "miltei"; mkAdV "suunnilleen"; mkAdV "lähes"; mkAdV "liki"};
-lin almost_Predet = variants {};
+lin almost_Predet = {s = \\_,_ => "melkein"}; --guessed
 lin alms_N = mkN {s = d01 "almu"};
 lin alms_box_N = mkN "almulaatikko";
 lin alms_giving_1_N = mkN "almujen antaminen"; --unchecked
@@ -2902,7 +2905,7 @@ lin along_1_Adv = mkAdv "eespäin";
 lin along_2_Adv = variants {mkAdv {s = c99 "mukana"}; mkAdv {s = c99 "mukaan"}};
 lin along_3_Adv = mkAdv {s = c99 "pitkällä"};
 lin along_4_Adv = variants {mkAdv {s = c99 "mukaan"}; mkAdv {s = c99 "mukana"}};
-lin along_with_Prep = variants {};
+lin along_with_Prep = postGenPrep "kanssa"; --guessed
 lin along_5_Adv = variants {mkAdv "eteenpäin"; mkAdv {s = c99 "pitkin"}};
 lin along_Prep = variants {mkPrep "eteenpäin"; mkPrep "pitkin"};
 lin alongside_Adv = variants {mkAdv "aluksen sivulla"; mkAdv {s = c99 "vieressä"}; mkAdv {s = c99 "vierekkäin"}; mkAdv {s = c99 "kyljittäin"}};
@@ -2992,7 +2995,7 @@ lin alternate_1_V = variants {mkV {s = c67A "vuorotella"}; mkV {s = c67A "vaihde
 lin alternate_2_V = mkV {s = c53A "kierrättää"};
 lin alternate_3_V = variants {};   ---- olla varalla
 lin alternate_4_V = mkV {s = c67A "vaihdella"};
-lin alternate_5_V = variants {};   ---- vaihdella vuoroja
+lin alternate_5_V = mkV "vaihdella"; --guessed
 lin alternate_1_V2 = variants {mkV2 (mkV {s = c67A "vuorotella"}); mkV2 (mkV {s = c67A "vaihdella"})};
 lin alternate_2_V2 = mkV2 (mkV {s = c53A "kierrättää"});
 lin alternate_3_V2 = variants {};   ---- olla varalla
@@ -3089,7 +3092,7 @@ lin amalgamation_N = mkN "yhdistäminen";
 lin amalgamative_A = variants {mkA "sulautumis-"; mkA "yhdistymis-"; mkA "fuusio-"};
 lin amalgamatorMasc_N = mkN "fuusioija";
 lin amalgamatorFem_N = mkN "fuusioija";
-lin amanda_GN = variants {};
+lin amanda_GN = mkGN "Amanda" female; --guessed
 lin amanuensisMasc_N = mkN "pikakirjoittaja";
 lin amanuensisFem_N = mkN "pikakirjoittaja";
 lin amaranth_1_N = mkN "amarantti";
@@ -3171,7 +3174,7 @@ lin ambrosia_3_N = mkN {s = d12 "ambrosia"};
 lin ambrosia_4_N = variants {mkN "jumalten ruoka"; mkN {s = d12 "ambrosia"}}; --unchecked
 lin ambrosial_1_A = variants {mkA "hyvältä tuoksuva"; mkA {s = d10 "ihana"}; mkA {s = d38 "herkullinen"}; mkA "ambrosia-"}; --unchecked
 lin ambrosial_2_A = mkA "ambrosia-";
-lin ambrosial_3_A = variants {};
+lin ambrosial_3_A = mkA "ambrosiaaninen"; --guessed
 lin ambulacral_A = mkA "ambulakraalinen";
 lin ambulacrum_N = mkN "ambulakrum";
 lin ambulance_N = mkN {s = d05 "ambulanssi"};
@@ -3311,7 +3314,7 @@ lin amniotic_1_A = variants {mkA "vesikalvo-"; mkA "amnioottinen"};
 lin amobarbital_N = mkN "amobarbitaali";
 lin amoeba_1_N = mkN {s = d09 "ameba"};
 lin amoebic_1_A = variants {mkA "ameba-"; mkA "amebamainen"};
-lin among_Prep = variants {};
+lin among_Prep = postGenPrep "joukossa";
 lin amongst_Prep = variants {};
 lin amora_N = mkN "amora";
 lin amoral_A = variants {};
@@ -3342,7 +3345,7 @@ lin amount_3_N = variants {mkN {s = d10 "määrä"}; mkN {s = d10 "summa"}; mkN 
 lin amount_4_N = variants {mkN {s = d10 "summa"}; mkN {s = d10 "määrä"}};
 lin amount_to_1_V2 = mkV2 (mkV "yltää") illative ;
 lin amount_to_2_V2 = variants {};
-lin amount_to_3_V2 = variants {};
+lin amount_to_3_V2 = mkV2 (mkV "kehittyä"); --guessed
 lin amour_N = mkN "rakkausjuttu";
 lin amour_propre_N = mkN "omanarvontunto";
 lin amoxicillin_N = mkN "amoksisilliini";
@@ -3777,7 +3780,7 @@ lin angleFem_3_N = mkN "anglit";
 lin angle_2_V = variants {mkV {s = c53A "taivuttaa"}; mkV {s = c53 "kallistaa"}};
 lin angle_4_V = mkV {s = c61A "onkia"};
 lin angle_5_V = mkV {s = c73A "suunnata"};
-lin angle_1_V2 = variants {};   ---- kulkea viistoon
+lin angle_1_V2 = mkV2 (mkV (mkV "kulkea") "viistosti"); --guessed
 lin angle_3_V2 = mkV2 (mkV {s = c61A "onkia"});
 lin angle_4_V2 = mkV2 (mkV {s = c61A "onkia"});
 lin angle_5_V2 = mkV2 (mkV {s = c73A "suunnata"});
@@ -3976,7 +3979,7 @@ lin annihilative_A = variants {mkA "hävittävä"; mkA "tuhoava"};
 lin annihilatorMasc_N = variants {mkN "annihilaattori"; mkN {s = d10 "tuhoaja"}};
 lin annihilatorFem_N = variants {mkN "annihilaattori"; mkN {s = d10 "tuhoaja"}};
 lin anniversary_N = variants {mkN "merkkipäivä"; mkN "vuosipäivä"};
-lin annotate_1_V2 = variants {};   ---- varustaa selityksin varustaa kommenteilla
+lin annotate_1_V2 = mkV2 (mkV "annotoida"); --guessed
 lin annotate_2_V2 = variants {};   ---- varustaa huomautuksin ja selityksin
 lin annotation_1_N = mkN {s = d09A "merkintä"};
 lin annotation_2_N = mkN "kommentaarin lisääminen"; --unchecked
@@ -4074,8 +4077,8 @@ lin anorthopia_N = mkN "anortopia";
 lin anosmia_N = mkN "anosmia" ;
 lin anosmic_1_A = variants {mkA "hajuaistiton"; mkA "haistamiskyvytön"; mkA "anosminen"};
 lin anosmic_2_A = variants {mkA "haistamiskyvytön"; mkA "anosminen"; mkA "hajuaistiton"};
-lin another_1_Quant = variants {};
-lin another_2_Quant = variants {};
+lin another_1_Quant = {s1 = \\_,_ => "toinen" ; sp = \\_,_ => "toinen" ; s2 = \\_ => [] ; isPoss = False ; isDef = True ; isNeg = False};
+lin another_2_Quant = {s1 = \\_,_ => "toinen" ; sp = \\_,_ => "toinen" ; s2 = \\_ => [] ; isPoss = False ; isDef = True ; isNeg = False};
 lin anovulation_N = variants {mkN "anovulaatio"; mkN "ovuloimattomuus"; mkN "munasolun irtoamattomuus"};
 lin anoxemia_N = mkN "anoksemia";
 lin anoxemic_A = mkA "anokseeminen";
@@ -4102,7 +4105,7 @@ lin answer_9_V2 = mkV2 (mkV {s = c73 "vastata"});
 lin answer_VS = mkV {s = c73 "vastata"};
 lin answer_back_V2 = variants {};
 lin answer_for_1_V2 = mkV2 (mkV {s = c73 "vastata"});
-lin answer_for_6_V2 = variants {};
+lin answer_for_6_V2 = mkV2 (mkV "vastata"); --guessed
 lin answerable_1_A = variants {mkA "johon voidaan vastata"; mkA "vastattavissa oleva"}; --unchecked
 lin answerable_2_A = variants {mkA {s = d38 "vastuullinen"}; mkA "vastuunalainen"; mkA "tilivelvollinen"; mkA "vastuussa oleva"};
 lin ant_N = mkN {s = d38 "muurahainen"};
@@ -4346,7 +4349,7 @@ lin antioxidant_N = variants {mkN {s = d05A "antioksidantti"}; mkN "hapettumisen
 lin antiparallel_A = variants {mkA "antiparalleelinen"; mkA "vastakkaissuuntainen"};
 lin antiparticle_N = variants {mkN "antihiukkanen"; mkN "vastahiukkanen"};
 lin antipasto_N = variants {mkN "alkupala"; mkN {s = d01 "antipasto"}};
-lin antipathetic_to_A2 = variants {};
+lin antipathetic_to_A2 = mkA2 "vastenmielinen" (casePrep illative); --guessed
 lin antipathetic_A = variants {mkA "antipatiaa tunteva"; mkA "antipaattinen"}; --unchecked
 lin antipathy_1_N = mkN {s = d12 "antipatia"};
 lin antipathy_2_N = variants {mkN "vastenmielisyys"; mkN {s = d12 "antipatia"}};
@@ -4451,9 +4454,9 @@ lin anxious_2_A = mkA {s = d41A "innokas"};
 lin anxiousness_1_N = variants {mkN {s = d40 "tuskaisuus"}; mkN {s = d40 "ahdistuneisuus"}};
 lin anxiousness_2_N = variants {mkN {s = d40 "tuskaisuus"}; mkN {s = d40 "ahdistuneisuus"}};
 lin anyPl_1_Det = variants {};
-lin anyPl_2_Det = variants {};
-lin anySg_1_Det = variants {};
-lin anySg_2_Det = variants {};
+lin anyPl_2_Det = S.somePl_Det; --guessed
+lin anySg_1_Det = S.someSg_Det;
+lin anySg_2_Det = S.someSg_Det;
 lin any_AdA = variants {mkAdA "sen"; mkAdA "yhtään"; mkAdA "lainkaan"; mkAdA "ollenkaan"};
 lin anyhow_1_Adv = variants {mkAdv "joka tapauksessa"; mkAdv {s = c99 "kuitenkin"}};
 lin anyhow_2_Adv = variants {mkAdv {s = c99 "jotenkin"}; mkAdv "millään tavoin"};
@@ -4594,7 +4597,7 @@ lin apologetic_1_A = mkA "anteeksipyytävä";
 lin apologetics_N = mkN "apologetiikka";
 lin apologistMasc_N = mkN {s = d09A "apologeetta"};
 lin apologistFem_N = mkN {s = d09A "apologeetta"};
-lin apologize_1_V = variants {};   ---- pyytää anteeksi
+lin apologize_1_V = mkV (mkV "pyytää") "anteeksi"; --guessed
 lin apologize_2_V2 = mkV2 (variants {mkV {s = c67 "puolustella"}; mkV {s = c53A "oikeuttaa"}});
 lin apology_1_N = variants {mkN "anteeksipyyntö"; mkN "pahoittelu"; mkN {s = d02 "valittelu"}};
 lin apology_2_N = variants {mkN "anteeksipyyntö"; mkN "puolustuspuhe"; mkN {s = d39 "puolustus"}; mkN {s = d12 "apologia"}};
@@ -4675,7 +4678,7 @@ lin appeal_3_N = variants {mkN "muutoksenhaku"; mkN {s = d39 "valitus"}};
 lin appeal_4_N = mkN {s = d39 "vetoomus"};
 lin appeal_1_V = mkV {s = c53A "valittaa"};
 lin appeal_2_V = variants {mkV {s = c52 "anoa"}; mkV {s = c54A "pyytää"}};
-lin appeal_to_3_V2 = variants {};
+lin appeal_to_3_V2 = mkV2 (mkV "miellyttää"); --guessed
 lin appeal_5_V = mkV {s = c74A "vedota"};
 lin appeal_4_V2 = mkV2 (mkV {s = c53A "valittaa"});
 lin appealable_A = mkA "valituskelpoinen";
@@ -4734,7 +4737,7 @@ lin appetizer_1_N = variants {mkN "alkupala"; mkN "alkuruoka"};
 lin appetizing_1_A = variants {mkA "ruokahalua kiihottava"; mkA {s = d38 "herkullinen"}}; --unchecked
 lin appetizingness_1_N = mkN {s = d40 "herkullisuus"};
 lin appian_way_LN = mkLN "Via Appia" ;
-lin applaud_1_V = variants {};   ---- taputtaa käsiään osoittaa suosiota
+lin applaud_1_V = mkV "taputtaa"; --guessed
 lin applaud_2_V2 = variants {mkV2 (mkV {s = c52 "hyväksyä"}); mkV2 (mkV {s = c53 "ylistää"}); mkV2 (mkV {s = c53A "kiittää"})};
 lin applaudable_A = mkA "suositeltava";
 lin applause_N = variants {mkN {s = d05 "aplodi"}; mkN "suosionosoitukset"};
@@ -4767,7 +4770,7 @@ lin applicator_N = variants {mkN {s = d09 "lasta"}; mkN {s = d33A "asetin"}; mkN
 lin applied_A = variants {mkA "sovellettu"; mkA "käytännön-"; mkA "soveltava"};
 lin applique_N = variants {mkN "päällikeompelu"; mkN {s = d05A "applikointi"}};
 lin applique_V2 = variants {mkV2 (mkV "päällikeommella"); mkV2 (mkV {s = c62 "applikoida"})};
-lin apply_to_V2 = variants {};
+lin apply_to_V2 = mkV2 (mkV "koskea"); --guessed
 lin apply_5_V = variants {mkV {s = c52A "soveltua"}; mkV {s = c61A "sopia"}};
 lin apply_1_V2 = variants {mkV2 (mkV {s = c54A "soveltaa"}); mkV2 (mkV {s = c53A "käyttää"})};
 lin apply_4_V2 = variants {mkV2 (mkV {s = c73 "maalata"}); mkV2 (mkV {s = c53A "levittää"})};
@@ -4776,17 +4779,17 @@ lin apply_6_V2 = mkV2 (mkV {s = c56A "antaa"});
 lin apply_7_V2 = mkV2 (mkV {s = c54A "soveltaa"});
 lin apply_8_V2 = mkV2 (mkV {s = c54A "soveltaa"});
 lin apply_9_V2 = mkV2 (mkV {s = c53A "käyttää"});
-lin apply_oneself_to_V2 = variants {};
+lin apply_oneself_to_V2 = mkV2 (mkV "paneutua"); --guessed
 lin apply_5_V2V = variants {mkV2V (mkV {s = c52A "soveltua"}); mkV2V (mkV {s = c61A "sopia"})};
 lin apply_6_V2V = mkV2V (mkV {s = c56A "antaa"});
 lin apply_5_VV = variants {mkVV (mkV {s = c52A "soveltua"}); mkVV (mkV {s = c61A "sopia"})};
 lin apply_6_VV = mkVV (mkV {s = c56A "antaa"});
-lin apply_for_V2 = variants {};
-lin appoint_2_V2 = variants {};   ---- asettaa virkaan asettaa tehtävään
+lin apply_for_V2 = mkV2 (mkV "hakea");
+lin appoint_2_V2 = mkV2 (mkV "nimittää"); --guessed
 lin appoint_3_V2 = variants {mkV2 (mkV {s = c53 "varustaa"}); mkV2 (mkV {s = c53 "kalustaa"})};
 lin appoint_1_V2V = mkV2V (mkV {s = c53A "nimittää"});
 lin appoint_1_V3 = mkV3 (mkV {s = c53A "nimittää"});
-lin appoint_2_V3 = variants {};   ---- asettaa virkaan asettaa tehtävään
+lin appoint_2_V3 = mkV3 (mkV "nimittää") accusative (casePrep illative); --guessed
 lin appointed_1_A = mkA "määräyksenvarainen";
 lin appointed_2_A = mkA "nimitetty";
 lin appointed_3_A = mkA "nimetty";
@@ -4826,7 +4829,7 @@ lin appreciable_A = variants {mkA "havaittava"; mkA {s = d10 "huomattava"}};
 lin appreciate_1_V = variants {mkV {s = c54A "ymmärtää"}; mkV {s = c74 "tajuta"}};
 lin appreciate_4_V = mkV {s = c52 "kallistua"};
 lin appreciate_1_V2 = variants {mkV2 (mkV {s = c54A "ymmärtää"}); mkV2 (mkV {s = c74 "tajuta"})};
-lin appreciate_2_V2 = variants {};   ---- ymmärtää täysin
+lin appreciate_2_V2 = mkV2 (mkV "ymmärtää"); --guessed
 lin appreciate_3_V2 = variants {mkV2 (mkV {s = c54A "ymmärtää"}); mkV2 (mkV {s = c74 "tajuta"})};
 lin appreciate_5_V2 = variants {};   ---- nostaa jkn arvoa
 lin appreciation_1_N = variants {mkN "käsittäminen"; mkN "ymmärtäminen"};
@@ -4897,7 +4900,7 @@ lin approval_1_N = mkN {s = d10A "hyväksyntä"};
 lin approval_2_N = variants {mkN {s = d10A "hyväksyntä"}; mkN "hyväksyminen"};
 lin approval_3_N = variants {mkN {s = d10A "hyväksyntä"}; mkN "hyväksyminen"};
 lin approval_4_N = variants {mkN {s = d39 "suostumus"}; mkN "suostuminen"};
-lin approve_of_V2 = variants {};
+lin approve_of_V2 = mkV2 (mkV "hyväksyä"); --guessed
 lin approve_2_V = mkV {s = c52 "hyväksyä"};
 lin approve_2_V2 = mkV2 (mkV {s = c52 "hyväksyä"});
 lin approve_2_V2V = mkV2V (mkV {s = c52 "hyväksyä"});
@@ -4909,11 +4912,11 @@ lin approx_PN = variants {};
 lin approximate_1_A = variants {mkA "likiarvoinen"; mkA "likimääräinen"; mkA "arvioitu"};
 lin approximate_2_A = mkA "läheisesti muistuttava"; --unchecked
 lin approximate_3_A = mkA {s = d38 "läheinen"};
-lin approximate_1_V2 = variants {};   ---- muistuttaa läheisesti
+lin approximate_1_V2 = mkV2 (mkV "lähestyä"); --guessed
 lin approximate_2_V2 = variants {mkV2 (mkV {s = c62 "estimoida"}); mkV2 (mkV "approksimoida"); mkV2 (mkV {s = c62 "arvioida"})};
 lin approximately_AdA = variants {mkAdA "palttiarallaa"; mkAdA "suurinpiirtein"; mkAdA "noin"; mkAdA "osapuilleen"};
 lin approximately_AdN = variants {mkAdN "palttiarallaa"; mkAdN "suurinpiirtein"; mkAdN "noin"; mkAdN "osapuilleen"};
-lin approximately_Predet = variants {} ;
+lin approximately_Predet = {s = \\_,_ => "suunnilleen"}; --guessed
 lin approximation_1_N = variants {mkN {s = d03 "arvio"}; mkN "approksimointi"};
 lin approximation_2_N = mkN "lähentyminen";
 lin approximation_3_N = variants {mkN "likiarvo"; mkN "likimääräinen käsitys"};
@@ -5149,7 +5152,7 @@ lin archpriest_N = mkN "arkkipiispa";
 lin archway_N = mkN "holvikäytävä";
 lin arco_A = mkA "jousella";
 lin arctic_1_A = mkA "arktinen";
-lin arctic_2_A = variants {};
+lin arctic_2_A = mkA "arktinen"; --guessed
 lin arctic_1_N = variants {};
 lin arctic_2_N = mkN "päällyskenkä";
 lin arctic_ocean_LN = mkLN "Pohjoinen jäämeri" ;
@@ -5227,7 +5230,7 @@ lin arguable_1_A = mkA "kiistanalainen";
 lin arguable_2_A = mkA "kiistanalainen";
 lin argue_1_V = variants {mkV {s = c67A "riidellä"}; mkV {s = c67 "kiistellä"}};
 lin argue_2_V = variants {mkV {s = c67 "kiistellä"}; mkV {s = c67 "kinastella"}; mkV {s = c67A "riidellä"}};
-lin argue_for_V2 = variants {};
+lin argue_for_V2 = mkV2 (mkV "puoltaa"); --guessed
 lin argue_1_V2 = variants {mkV2 (mkV {s = c67A "riidellä"}); mkV2 (mkV {s = c67 "kiistellä"})};
 lin argue_2_V2 = variants {mkV2 (mkV {s = c67 "kiistellä"}); mkV2 (mkV {s = c67 "kinastella"}); mkV2 (mkV {s = c67A "riidellä"})};
 lin argue_1_VS = variants {mkV {s = c67A "riidellä"}; mkV {s = c67 "kiistellä"}};
@@ -5277,7 +5280,7 @@ lin arioso_N = mkN "lyhyehkö laulusoolo"; --unchecked
 lin arise_1_V = variants {mkV {s = c72 "ilmetä"}; mkV {s = c52A "syntyä"}; mkV {s = c52A "ilmaantua"}};
 lin arise_2_V = variants {mkV {s = c52A "ilmaantua"}; mkV {s = c52A "syntyä"}; mkV {s = c72 "ilmetä"}};
 lin arise_3_V = variants {};   ---- nousta seisomaan
-lin arise_4_V = variants {};   ---- saada alkunsa
+lin arise_4_V = mkV "aiheutua"; --guessed
 lin arise_5_V = mkV {s = c66 "nousta"};
 lin arise_6_V = variants {};   ---- nousta kapinaan
 lin arise_7_V = variants {};   ---- nousta ylös vuoteesta
@@ -5461,7 +5464,7 @@ lin arrival_2_N = variants {mkN {s = d01 "tulo"}; mkN "saapuminen"};
 lin arrivalMasc_3_N = mkN {s = d41A "tulokas"};
 lin arrivalFem_3_N = mkN {s = d41A "tulokas"};
 lin arrive_1_V = mkV {s = c52A "saapua"};
-lin arrive_2_V = variants {};   ---- lyödä itsensä läpi
+lin arrive_2_V = mkV (mkV "lyödä") "itsensä läpi"; --guessed
 lin arroba_1_N = mkN "arroba";
 lin arroba_2_N = mkN "arroba";
 lin arrogance_N = variants {mkN {s = d40 "koppavuus"}; mkN {s = d40 "röyhkeys"}; mkN "ylimielisyys"};
@@ -5620,17 +5623,17 @@ lin aryan_A = mkA "arjalainen";
 lin arytenoid_1_N = mkN "kannurusto";
 lin as_CAdv = S.as_CAdv ;
 lin as_Prep = casePrep essive ;
-lin as_1_Subj = variants {};
-lin as_2_Subj = variants {};
+lin as_1_Subj = {s = "kun"};
+lin as_2_Subj = {s = "kun"}; --guessed
 lin as_for_Prep = variants {};
 lin as_long_as_Subj = variants {};
 lin as_of_Prep = variants {};
 lin as_opposed_to_Prep = variants {};
 lin as_per_Prep = variants {};
 lin as_regards_Prep = variants {};
-lin as_soon_as_Subj = variants {} ;
+lin as_soon_as_Subj = {s = "heti kun"}; --guessed
 lin as_well_Adv = variants {mkAdv "-kin"; mkAdv {s = c99 "kanssa"}; mkAdv {s = c99 "myös"}};
-lin as_well_as_Conj = variants {};
+lin as_well_as_Conj = mkConj "sekä"; --guessed
 lin asafetida_1_N = mkN "hajupihka";
 lin asahikawa_LN = mkLN "Asahikawa" ;
 lin asana_N = variants {mkN "asana"; mkN {s = d01A "asento"}};
@@ -5757,7 +5760,7 @@ lin ask_2_V2 = variants {mkV2 (mkV {s = c52 "kysyä"}); mkV2 (mkV {s = c67 "kyse
 lin ask_3_V2 = mkV2 (mkV {s = c54A "pyytää"});
 lin ask_4_V2 = variants {mkV2 (mkV {s = c52 "kysyä"}); mkV2 (mkV {s = c67 "tiedustella"}); mkV2 (mkV {s = c67 "kysellä"})};
 lin ask_5_V2 = mkV2 (mkV {s = c61A "vaatia"});
-lin ask_6_V2 = variants {};
+lin ask_6_V2 = mkV2 (mkV "pyytää"); --guessed
 lin ask_7_V2 = mkV2 (mkV {s = c54A "pyytää"});
 lin ask_VV = mkVV (mkV {s = c54A "pyytää"});
 lin ask_about_V2 = variants {};
@@ -5766,7 +5769,7 @@ lin ask_around_V = variants {};
 lin ask_around_V2 = variants {};
 lin ask_for_1_V2 = mkV2 (mkV {s = c52 "kysyä"});
 lin ask_for_1_V3 = variants {mkV3 (mkV {s = c54A "pyytää"}); mkV3 (mkV {s = c52 "kysyä"})};
-lin ask_for_2_V2 = variants {};
+lin ask_for_2_V2 = mkV2 (mkV "pyytää") partitive;
 lin ask_out_V2 = variants {};   ---- pyytää treffeille pyytää ulos
 lin ask_over_V2 = variants {};   ---- pyytää luokse
 lin ask_round_V2 = variants {};   ---- pyytää käymään
@@ -5992,7 +5995,7 @@ lin assist_2_V2 = mkV2 (mkV {s = c53 "avustaa"});
 lin assist_3_V2 = mkV2 (mkV {s = c53 "avustaa"});
 lin assistance_1_N = variants {mkN "myötävaikutus"; mkN {s = d07A "tuki"}; mkN {s = d01A "apu"}};
 lin assistance_2_N = mkN "apuväline";
-lin assistance_3_N = variants {};
+lin assistance_3_N = mkN "tuki"; --guessed
 lin assistantFem_N = variants {mkN {s = d10 "avustaja"}; mkN {s = d05A "assistentti"}; mkN "apulainen"};
 lin assistantMasc_N = variants {mkN {s = d10 "avustaja"}; mkN {s = d05A "assistentti"}; mkN "apulainen"};
 lin assistant_A = variants {mkA "apulais-"; mkA "avustava"; mkA "apulainen"};
@@ -6012,13 +6015,13 @@ lin associateMasc_3_N = variants {mkN "varajäsen"; mkN "vara-"; mkN "avustava";
 lin associateFem_3_N = variants {mkN "varajäsen"; mkN "vara-"; mkN "avustava"; mkN "apulais-"};
 lin associate_4_N = variants {mkN "oheistapahtuma"; mkN {s = d06 "kumppani"}};
 lin associate_5_N = mkN "sivuainetutkinto";
-lin associate_2_V = variants {};   ---- olla osallisena jssak olla tekemisissä jkn kanssa viettää aikaa jkn seurassa olla jonkun kanssa viettää aikaa
+lin associate_2_V = mkV "seurustella"; --guessed
 lin associate_3_V = variants {mkV {s = c52 "yhdistyä"}; mkV {s = c52A "liittoutua"}; mkV {s = c52A "järjestäytyä"}};
 lin associate_1_V2 = variants {mkV2 (mkV {s = c53A "liittää"}); mkV2 (mkV {s = c53 "yhdistää"}); mkV2 (mkV {s = c62 "assosioida"})};
 lin associate_3_V2 = variants {mkV2 (mkV {s = c52 "yhdistyä"}); mkV2 (mkV {s = c52A "liittoutua"}); mkV2 (mkV {s = c52A "järjestäytyä"})};
 lin associate_professorMasc_N = mkN "apulaisprofessori";
 lin associate_professorFem_N = mkN "apulaisprofessori";
-lin associated_A = variants {};
+lin associated_A = variants {mkA "liittyvä"; mkA "yhteydessä oleva"}; --guessed
 lin associateship_N = mkN "kumppani-";
 lin association_1_N = variants {mkN {s = d01A "liitto"}; mkN {s = d09 "seura"}; mkN {s = d02 "järjestö"}; mkN {s = d39 "yhdistys"}};
 lin association_2_N = variants {mkN {s = d48A "suhde"}; mkN "yhdessäolo"; mkN {s = d40 "yhteys"}};
@@ -6049,7 +6052,7 @@ lin assume_3_V2 = mkV2 (mkV {s = c53A "ottaa"});
 lin assume_4_V2 = variants {};   ---- ottaa itselleen ottaa niskoilleen
 lin assume_5_V2 = mkV2 (mkV {s = c52 "omaksua"});
 lin assume_7_V2 = mkV2 (mkV {s = c67A "teeskennellä"});
-lin assume_8_V2 = variants {};   ---- ottaa vastaan
+lin assume_8_V2 = mkV2 (mkV "ottaa"); --guessed
 lin assume_9_V2 = mkV2 (mkV {s = c58A "pukea"});
 lin assume_1_VS = variants {mkV {s = c53A "olettaa"}; mkV {s = c52 "otaksua"}};
 lin assume_6_VS = mkV {s = c53A "ottaa"};
@@ -6204,12 +6207,12 @@ lin asystole_N = mkN "asystolia";
 lin at_1_PN = mkPN "At";
 lin at_2_N = variants {} ;
 lin at_1_Prep = casePrep adessive ;
-lin at_2_Prep = variants {};
-lin at_3_Prep = variants {};
-lin at_4_Prep = variants {};
-lin at_5_Prep = variants {};
-lin at_6_Prep = variants {};
-lin at_7_Prep = variants {};
+lin at_2_Prep = S.on_Prep;
+lin at_3_Prep = S.on_Prep;
+lin at_4_Prep = S.on_Prep;
+lin at_5_Prep = postGenPrep "kohtaan"; --guessed
+lin at_6_Prep = S.on_Prep;
+lin at_7_Prep = casePrep inessive; --guessed
 lin at_all_Adv = variants {mkAdv {s = c99 "yhtään"}; mkAdv {s = c99 "ollenkaan"}; mkAdv {s = c99 "lainkaan"}};
 lin at_bat_N = mkN "lyöntivuoro";
 lin at_home_1_Adv = variants {mkAdv "kotiottelussa"; mkAdv "kotipelissä"; mkAdv "kotikentällä"};
@@ -6258,7 +6261,7 @@ lin atherosclerosis_N = mkN "ateroskleroosi";
 lin atherosclerotic_A = mkA "ateroskleroottinen";
 lin atherstone_LN = variants {};
 lin athetosis_N = mkN "atetoosi";
-lin athirst_for_A2 = variants {};
+lin athirst_for_A2 = mkA2 "janoinen" (casePrep allative); --guessed
 lin athleteMasc_N = variants {mkN {s = d12 "urheilija"}; mkN {s = d05A "atleetti"}; mkN "yleisurheilija"};
 lin athleteFem_N = variants {mkN {s = d12 "urheilija"}; mkN {s = d05A "atleetti"}; mkN "yleisurheilija"};
 lin athletic_1_A = variants {mkA "urheilu-"; mkA "urheilija-"};
@@ -6289,7 +6292,7 @@ lin atmosphere_2_N = mkN "ilmanpaine";
 lin atmosphere_3_N = variants {mkN {s = d05 "atmosfääri"}; mkN {s = d09 "ilma"}};
 lin atmosphere_4_N = variants {mkN {s = d09 "ilma"}; mkN "ilmapiiri"; mkN {s = d18 "sää"}};
 lin atmosphere_5_N = mkN {s = d05 "atmosfääri"};
-lin atmosphere_of_N2 = variants {};
+lin atmosphere_of_N2 = mkN2 (mkN "ilmapiiri") (casePrep elative); --guessed
 lin atmospheric_1_A = variants {mkA "ilmakehän"; mkA "ilman-"};
 lin atmospherics_N = mkN {s = d13 "kohina"};
 lin atole_N = variants {mkN {s = d05 "velli"}; mkN {s = d02 "pöperö"}; mkN {s = d01 "puuro"}; mkN {s = d48 "sose"}};
@@ -6362,7 +6365,7 @@ lin attack_4_N = mkN "toimintatapa";
 lin attack_5_N = mkN {s = d39 "hyökkäys"};
 lin attack_6_N = mkN "attacca";
 lin attack_7_N = mkN "-kohtaus";
-lin attack_by_N2 = variants {};
+lin attack_by_N2 = mkN2 (mkN "hyökkäys") (postGenPrep "toimesta");
 lin attack_9_N = variants {mkN {s = d39 "hyökkäys"}; mkN {s = d05A "kritiikki"}; mkN {s = d02 "arvostelu"}};
 lin attack_1_V2 = variants {mkV2 (mkV {s = c58 "iskeä"}); mkV2 (mkV {s = c73A "hyökätä"})};
 lin attack_2_V2 = variants {mkV2 (mkV {s = c67 "arvostella"}); mkV2 (mkV {s = c62 "kritisoida"}); mkV2 (mkV {s = c73A "hyökätä"})};
@@ -6388,8 +6391,8 @@ lin attempt_2_V2 = mkV2 (mkV {s = c52A "ryhtyä"});
 lin attempt_1_VV = variants {mkVV (mkV {s = c53A "koettaa"}); mkVV (mkV {s = c53A "yrittää"})};
 lin attempt_2_VV = mkVV (mkV {s = c52A "ryhtyä"});
 lin attempted_murder_N = variants {};
-lin attend_to_2_V2 = variants {};
-lin attend_to_5_V2 = variants {};
+lin attend_to_2_V2 = mkV2 (mkV "hoitaa"); --guessed
+lin attend_to_5_V2 = mkV2 (mkV (mkV "kiinnittää") "huomiota"); --guessed
 lin attend_1_V2 = variants {mkV2 (mkV {s = c52 "osallistua"}); mkV2 (mkV {s = c65 "käydä"})};
 lin attend_3_V2 = mkV2 (mkV {s = c73 "seurata"});
 lin attend_4_V2 = mkV2 (mkV {s = c61A "huolehtia"});
@@ -6409,9 +6412,9 @@ lin attention_2_N = variants {mkN {s = d01A "hoito"}; mkN "huolenpito"; mkN {s =
 lin attention_3_N = mkN {s = d03 "huomio"};
 lin attention_4_N = variants {mkN "huomaavaisuudenosoitus"; mkN "huomionosoitus"};
 lin attention_5_N = variants {mkN {s = d40 "tarkkaavaisuus"}; mkN {s = d03 "huomio"}};
-lin at_attention_Adv = variants {};
+lin at_attention_Adv = mkAdv "asennossa"; --guessed
 lin attentional_A = mkA "huomioon liittyvä"; --unchecked
-lin attentive_to_A2 = variants {};
+lin attentive_to_A2 = mkA2 "tarkkaavainen" (casePrep allative);
 lin attentive_A = mkA {s = d38 "tarkkaavainen"};
 lin attentiveness_1_N = mkN {s = d40 "tarkkaavaisuus"};
 lin attentiveness_2_N = variants {mkN {s = d40 "kohteliaisuus"}; mkN {s = d40 "huomaavaisuus"}};
@@ -6422,7 +6425,7 @@ lin attenuate_V2 = mkV2 (mkV {s = c54A "laimentaa"});
 lin attenuation_1_N = variants {mkN "heikentyminen"; mkN "vaimentuminen"; mkN "laimentuminen"; mkN "ohentuminen"};
 lin attenuation_2_N = variants {mkN "ohentuminen"; mkN "laimentuminen"; mkN "vaimentuminen"; mkN "heikentyminen"};
 lin attenuator_N = mkN {s = d33A "vaimennin"};
-lin attest_to_V2 = variants {};
+lin attest_to_V2 = mkV2 (mkV "todistaa") elative; --guessed
 lin attest_3_V = mkV {s = c53 "todistaa"};
 lin attest_2_V2 = mkV2 (mkV {s = c53 "todistaa"});
 lin attest_3_V2 = mkV2 (mkV {s = c53 "todistaa"});
@@ -6432,7 +6435,7 @@ lin attestation_1_N = mkN {s = d39 "todistus"};
 lin attestation_2_N = variants {mkN {s = d48 "todiste"}; mkN "todistusaineisto"; mkN {s = d39 "todistus"}};
 lin attesterMasc_N = mkN {s = d10 "todistaja"};
 lin attesterFem_N = mkN {s = d10 "todistaja"};
-lin attic_A = variants {};
+lin attic_A = mkA "attikalainen"; --guessed
 lin attic_1_N = variants {mkN {s = d05A "vintti"}; mkN {s = d04A "ullakko"}};
 lin attic_2_N = variants {};
 lin attic_3_N = mkN {s = d05A "nuppi"};
@@ -6469,7 +6472,7 @@ lin attractor_3_N = mkN "houkutuskeino";
 lin attributable_A = variants {mkA "ansioksi luettava"; mkA "jstak johtuva"; mkA "syyksiluettava"; mkA "syyksi luettava"}; --unchecked
 lin attribute_1_N = mkN {s = d40 "ominaisuus"};
 lin attribute_2_N = variants {mkN {s = d05A "attribuutti"}; mkN "ominaispiirre"; mkN {s = d40 "ominaisuus"}};
-lin attribute_1_V2 = variants {};   ---- lukea jk jkn syyksi pitää jtak jkn tekemänä pitää jtak jkn ominaisuutena pitää jtak jkn aiheuttamana lukea jk jkn ansioksi
+lin attribute_1_V2 = mkV2 (mkV "lukea"); --guessed
 lin attribute_2_V2 = variants {};   ---- pitää jtak jkn ominaisuutena
 lin attribution_1_N = variants {mkN "syyksilukeminen"; mkN "kohdistaminen"; mkN "ansioksi lukeminen"}; --unchecked
 lin attribution_2_N = variants {mkN "tekijän ilmoittaminen"; mkN "syyksilukeminen"}; --unchecked
@@ -6580,7 +6583,7 @@ lin aunt_N = mkN {s = d05A "täti"};
 lin aunty_N = mkN {s = d05A "täti"};
 lin aura_1_N = variants {mkN {s = d09 "aura"}; mkN "ennakkotunne"; mkN {s = d39 "aavistus"}};
 lin aura_2_N = mkN {s = d09 "aura"};
-lin aura_of_N2 = variants {};
+lin aura_of_N2 = mkN2 (mkN "aura") (casePrep elative); --guessed
 lin aura_LN = variants {};
 lin aural_1_A = variants {mkA "korva-"; mkA "ääni-"; mkA "korvan"; mkA "kuulo-"};
 lin aural_2_A = mkA "auraalinen";
@@ -6807,7 +6810,7 @@ lin auxin_N = mkN "auksiini";
 lin auxinic_A = variants {mkA "auksiini-"; mkA "auksiiniin liittyvä"}; --unchecked
 lin avadavat_1_N = mkN "punatiikeripeippo";
 lin avail_N = variants {mkN {s = d01A "apu"}; mkN {s = d01A "hyöty"}};
-lin avail_of_V2 = variants {};
+lin avail_of_V2 = mkV2 (mkV "hyödyntää"); --guessed
 lin avail_2_V2 = variants {mkV2 (mkV {s = c56A "auttaa"}); mkV2 (mkV {s = c53A "hyödyttää"})};
 lin avail_3_V2 = mkV2 (mkV {s = c54A "hyödyntää"});
 lin availability_N = variants {mkN {s = d40 "käytettävyys"}; mkN {s = d05A "saanti"}; mkN {s = d40 "saatavuus"}};
@@ -6856,7 +6859,7 @@ lin aversion_1_N = mkN {s = d01 "inho"};
 lin aversion_2_N = variants {mkN "pois kääntäminen"; mkN "pois kääntyminen"}; --unchecked
 lin aversive_A = variants {mkA "vastenmielinen"; mkA "aversio-"};
 lin avert_1_V2 = variants {mkV2 (mkV {s = c52 "torjua"}); mkV2 (mkV {s = c53 "estää"}); mkV2 (mkV {s = c66 "ehkäistä"})};
-lin avert_2_V2 = variants {};   ---- kääntää pois nostaa pois
+lin avert_2_V2 = mkV2 (mkV "torjua");   ---- kääntää pois nostaa pois
 lin avestan_N = mkN "avesta" ;
 lin avian_A = mkA "lintu-";
 lin aviary_N = variants {mkN "aviaario"; mkN "lintula"};
@@ -6866,7 +6869,7 @@ lin aviation_3_N = variants {mkN "lento-"; mkN "lentäminen"; mkN {s = d02 "ilma
 lin aviation_4_N = mkN {s = d02 "ilmailu"};
 lin aviator_N = variants {mkN "lentokoneen ohjaaja"; mkN {s = d10 "lentäjä"}; mkN "ilmailija"; mkN {s = d05A "pilotti"}}; --unchecked
 lin aviatrix_N = mkN "naislentäjä";
-lin avid_for_A2 = variants {};
+lin avid_for_A2 = mkA2 "himoitseva" (casePrep allative); --guessed
 lin avid_A = mkA {s = d41A "innokas"};
 lin avidity_N = mkN {s = d40 "ahnaus"};
 lin avifauna_N = mkN {s = d02 "linnusto"};
@@ -6925,10 +6928,10 @@ lin award_1_N = mkN "määrätä korvaus"; --unchecked
 lin award_2_N = mkN "kunniapalkinto";
 lin award_3_N = mkN "palkinto" ;
 lin award_1_V2 = variants {mkV2 (mkV {s = c56A "antaa"}); mkV2 (mkV {s = c54A "myöntää"})};
-lin award_to_V3 = variants {};
+lin award_to_V3 = mkV3 (mkV "myöntää") accusative (casePrep allative);
 lin award_1_V3 = variants {mkV3 (mkV {s = c56A "antaa"}); mkV3 (mkV {s = c54A "myöntää"})};
 lin aware_A = mkA "jstak tietoinen"; --unchecked
-lin aware_of_A2 = variants {};
+lin aware_of_A2 = mkA2 "tietoinen" (casePrep elative);
 lin awareness_1_N = variants {mkN {s = d40 "tietoisuus"}; mkN "valveutuneisuus"; mkN {s = d09A "tajunta"}};
 lin awareness_2_N = variants {mkN {s = d40 "tietoisuus"}; mkN {s = d09A "tajunta"}};
 lin awash_A = variants {mkA "tulvillaan"; mkA "tulvillaan oleva"}; --unchecked
@@ -6949,7 +6952,7 @@ lin away_3_A = mkA "ulkokenttä";
 lin awayness_N = mkN "poissaolevuus";
 lin awe_1_N = variants {mkN "syvä kunnioitus"; mkN "kunnioittava pelko"; mkN "pelonsekainen kunnioitus"}; --unchecked
 lin awe_2_N = variants {mkN "kunnioittava pelko"; mkN "syvä kunnioitus"};
-lin awe_V2 = variants {};   ---- herättää pelonsekaista kunnioitusta herättää kunnioitusta
+lin awe_V2 = mkV2 (mkV (mkV "herättää") "kunnioitusta"); --guessed
 lin awe_inspiring_A = variants {mkA "kunnioitusta herättävä"; mkA "pelkoa herättävä"};
 lin awe_struck_A = mkA "kunnioituksen valtaama"; --unchecked
 lin aweary_A = mkA {s = d47 "väsynyt"};
@@ -6992,7 +6995,7 @@ lin awry_2_A = variants {mkA {s = d01 "vino"}; mkA "epäjärjestyksessä oleva";
 lin awry_1_Adv = variants {mkAdv {s = c99 "hullusti"}; mkAdv {s = c99 "vinoon"}; mkAdv "pielessä"; mkAdv "pieleen"};
 lin awry_2_Adv = variants {mkAdv "epäjärjestyksessä"; mkAdv {s = c99 "sekaisin"}; mkAdv "kierossa"; mkAdv "kieroon"; mkAdv {s = c99 "vinoon"}; mkAdv {s = c99 "vinossa"}};
 lin axe_N = mkN {s = d41 "kirves"};
-lin axe_1_V2 = variants {};   ---- hakata kirveellä
+lin axe_1_V2 = mkV2 (mkV "hakata"); --guessed
 lin axe_2_V2 = variants {mkV2 (mkV {s = c53A "lakkauttaa"}); mkV2 (mkV {s = c54A "vähentää"}); mkV2 (mkV {s = c61 "karsia"})};
 lin axenic_1_A = variants {mkA "akseeninen"; mkA "mikrobiton"};
 lin axenic_2_A = variants {mkA "akseeninen"; mkA "mikrobiton"};
@@ -7161,26 +7164,26 @@ lin back_7_N = variants {mkN "selkäpuoli"; mkN "selkä-"};
 lin back_8_N = variants {mkN "selkänoja"; mkN {s = d10 "noja"}};
 lin back_9_N = variants {mkN {s = d05A "pakki"}; mkN {s = d10 "puolustaja"}};
 lin back_2_V = variants {mkV {s = c52A "perääntyä"}; mkV {s = c53A "peruuttaa"}};
-lin back_8_V = variants {};   ---- kääntyä vastapäivään
+lin back_8_V = mkV (mkV "kiertyä") "vastapäivään"; --guessed
 lin back_10_V = variants {};   ---- varustaa selkämyksellä varustaa selustalla
 lin back_1_V2 = mkV2 (mkV {s = c53A "kannattaa"});
 lin back_2_V2 = mkV2 (variants {mkV {s = c52A "perääntyä"}; mkV {s = c53A "peruuttaa"}});
 lin back_3_V2 = mkV2 (variants {mkV {s = c53A "kannattaa"}; mkV {s = c58A "tukea"}});
 lin back_5_V2 = mkV2 (mkV {s = c58A "tukea"});
-lin back_6_V2 = variants {};   ---- olla jnk taustalla olla jnk rajaama olla jnk reunustama olla jnk takana
-lin back_7_V2 = variants {};   ---- lyödä vetoa
+lin back_6_V2 = mkV2 (mkV (mkV "rajoittua") "takaosastaan"); --guessed
+lin back_7_V2 = mkV2 (mkV (mkV "lyödä") "vetoa"); --guessed
 lin back_away_V = variants {mkV {s = c52A "perääntyä"}; mkV {s = c53A "peruuttaa"}};
 lin back_breaking_A = mkA {s = d41 "raskas"};
 lin back_down_N = mkN "peruminen";
 lin back_down_1_V = variants {mkV {s = c52A "perääntyä"}; mkV {s = c52A "luopua"}};
 lin back_down_2_V = mkV {s = c52A "vetäytyä"};
 lin back_formation_N = mkN "takaperoisjohdos";
-lin back_into_V3 = variants {};
+lin back_into_V3 = mkV3 (mkV (mkV "peruuttaa") "sisään") accusative (casePrep illative); --guessed
 lin back_off_1_V = variants {mkV {s = c52A "perääntyä"}; mkV {s = c52A "luopua"}};
 lin back_off_2_V = mkV {s = c56 "laistaa"};
-lin back_out_1_V = variants {};
-lin back_out_2_V = variants {};
-lin back_to_Prep = variants {};
+lin back_out_1_V = mkV (mkV "peruuttaa") "ulos"; --guessed
+lin back_out_2_V = mkV "perääntyä"; --guessed
+lin back_to_Prep = postGenPrep "takaisin"; --guessed
 lin back_up_1_V2 = mkV2 (mkV {s = c53A "kannattaa"});
 lin back_up_3_V2 = mkV2 (mkV {s = c53 "vahvistaa"});
 lin back_up_4_V2 = mkV2 (mkV "varmuuskopioida");
@@ -7213,7 +7216,7 @@ lin backbone_4_N = mkN {s = d10A "selkä"};
 lin backbone_5_N = mkN "runkoverkko";
 lin backchat_N = variants {mkN "suun soittaminen"; mkN {s = d40 "nenäkkyys"}; mkN "pään aukominen"}; --unchecked
 lin backcloth_N = mkN "taustakangas";
-lin backdate_V2 = variants {};   ---- saattaa jk takautuvasti voimaan
+lin backdate_V2 = mkV2 (mkV (mkV "päivätä") "takautuvasti"); --guessed
 lin backdoor_1_N = mkN "takaportti";
 lin backdoor_2_N = mkN "takaovi";
 lin backdoor_3_N = variants {mkN "vilpillisin keinoin"; mkN "salaisesti"; mkN "takaoven kautta"}; --unchecked
@@ -7521,7 +7524,7 @@ lin balance_12_N = variants {mkN {s = d06 "puntari"}; mkN {s = d09A "vaaka"}};
 lin balance_2_V = variants {mkV {s = c73 "tasata"}; mkV {s = c73 "täsmätä"}};
 lin balance_3_V = mkV {s = c67 "tasapainoilla"};
 lin balance_4_V = mkV {s = c67 "tasapainoilla"};
-lin balance_1_V2 = variants {};   ---- pitää tasapainossa
+lin balance_1_V2 = mkV2 (mkV "tasapainottaa");   ---- pitää tasapainossa
 lin balance_2_V2 = variants {mkV2 (mkV {s = c73 "tasata"}); mkV2 (mkV {s = c73 "täsmätä"})};
 lin balance_3_V2 = mkV2 (mkV {s = c67 "tasapainoilla"});
 lin balance_sheet_N = mkN {s = d48 "tase"};
@@ -7586,7 +7589,7 @@ lin ball_9_N = mkN "tanssiaiset";
 lin ball_10_N = mkN {s = d12 "päkiä"};
 lin ball_11_N = mkN {s = d05 "baseball"};
 lin ball_12_N = mkN {s = d01A "syöttö"};
-lin ball_V2 = variants {};   ---- kiertää kerälle kääriä kerälle
+lin ball_V2 = mkV2 (mkV "keriä"); --guessed
 lin ball_cartridge_N = mkN "terävä patruuna"; --unchecked
 lin ball_dress_N = mkN "iltapuku";
 lin ballade_1_N = mkN {s = d05 "balladi"};
@@ -7735,7 +7738,7 @@ lin bandwidth_N = variants {mkN "kaistanleveys"; mkN "siirtonopeus"; mkN {s = d0
 lin bandy_A = mkA "vääräsäärinen";
 lin bandy_1_V2 = variants {mkV2 (mkV {s = c73 "pelata"}); mkV2 (mkV {s = c52 "viskoa"}); mkV2 (mkV {s = c67A "heitellä"})};
 lin bandy_2_V2 = variants {mkV2 (mkV {s = c67 "kamppailla"}); mkV2 (mkV {s = c67A "riidellä"})};
-lin bandy_around_V2 = variants {};
+lin bandy_around_V2 = mkV2 (mkV "heitellä"); --guessed
 lin bandy_legged_A = mkA "vääräsäärinen";
 lin bane_N = variants {mkN {s = d40 "vaikeus"}; mkN {s = d09 "kiusa"}; mkN {s = d09 "riesa"}; mkN {s = d39 "kirous"}};
 lin baneberry_1_N = mkN "konnanmarja";
@@ -7800,7 +7803,7 @@ lin bank_7_N = variants {mkN {s = d49A "penger"}; mkN {s = d09A "penkka"}; mkN {
 lin bank_8_N = mkN "säästölipas";
 lin bank_9_N = mkN {s = d05A "pankki"};
 lin bank_10_N = variants {mkN {s = d39 "kallistus"}; mkN "kallistuma"};
-lin bank_3_V = variants {};   ---- olla pankin asiakas asioida pankissa
+lin bank_3_V = mkV (mkV "asioida") "pankissa"; --guessed
 lin bank_4_V = variants {};   ---- toimia pankkiirina
 lin bank_5_V = variants {};   ---- toimia pankkiirina
 lin bank_1_V2 = mkV2 (mkV {s = c53 "kallistaa"});
@@ -7810,7 +7813,7 @@ lin bank_7_V2 = variants {};   ---- peittää tuhkalla lisätä tuleen tuhkaa pi
 lin bank_bill_N = mkN {s = d06 "seteli"};
 lin bank_book_N = mkN "pankkikirja";
 lin bank_draft_N = variants {mkN "pankkisekki"; mkN "pankkivekseli"};
-lin bank_off_V3 = variants {};
+lin bank_off_V3 = mkV3 (mkV "kimmottaa") accusative (casePrep ablative); --guessed
 lin bank_on_V2 = variants {};
 lin bank_rate_N = variants {mkN "pankkikorko"; mkN "korkokanta"; mkN "diskonttokorko"};
 lin bankable_1_A = variants {mkA {s = d10 "tuottava"}; mkA {s = d09 "varma"}; mkA "suuria voittoja tuova"};
@@ -7985,8 +7988,8 @@ lin barehanded_A = variants {mkA "paljain käsin"; mkA "paljain käsin oleva"; m
 lin bareheaded_A = variants {mkA "paljain päin oleva"; mkA "avopäinen"; mkA "paljain päin"; mkA "avopäin"}; --unchecked
 lin barelegged_A = mkA "paljasjalkainen";
 lin barely_1_Adv = variants {mkAdv "töin tuskin"; mkAdv {s = c99 "nipin napin"}; mkAdv {s = c99 "tuskin"}};
-lin barely_2_AdV = variants {};
-lin barely_3_AdN = variants {};
+lin barely_2_AdV = {s = "tuskin"}; --guessed
+lin barely_3_AdN = {s = "tuskin"}; --guessed
 lin bareness_1_N = variants {mkN {s = d40 "alastomuus"}; mkN "paljaus"};
 lin bareness_2_N = variants {mkN {s = d40 "alastomuus"}; mkN "paljaus"};
 lin bareness_3_N = variants {mkN "paljaus"; mkN {s = d40 "karuus"}; mkN {s = d40 "alastomuus"}};
@@ -7997,7 +8000,7 @@ lin bargain_1_V = mkV {s = c61A "tinkiä"};
 lin bargain_2_V = mkV {s = c67A "neuvotella"};
 lin bargain_2_V2 = mkV2 (mkV {s = c67A "neuvotella"});
 lin bargain_down_V2 = mkV2 (mkV {s = c61A "tinkiä"});
-lin bargain_for_V2 = variants {};
+lin bargain_for_V2 = mkV2 (mkV "tinkiä"); --guessed
 lin bargain_on_V2 = variants {};
 lin bargainerMasc_1_N = mkN {s = d41 "kauppias"};
 lin bargainerFem_1_N = mkN {s = d41 "kauppias"};
@@ -8007,7 +8010,7 @@ lin bargaining_N = variants {mkN {s = d02 "neuvottelu"}; mkN "tinkiminen"};
 lin barge_N = variants {mkN {s = d10 "lotja"}; mkN {s = d01 "proomu"}};
 lin barge_2_V2 = variants {};   ---- kuljettaa proomulla kuljettaa lotjalla
 lin barge_in_V2 = mkV2 (variants {mkV {s = c69 "häiritä"}; mkV {s = c53A "keskeyttää"}});
-lin barge_into_V2 = variants {};
+lin barge_into_V2 = mkV2 (mkV (mkV "rynnätä") "sisään"); --guessed
 lin bargeeMasc_N = mkN "proomun kuljettaja"; --unchecked
 lin bargeeFem_N = mkN "proomun kuljettaja"; --unchecked
 lin bargello_N = mkN "bargello";
@@ -8066,7 +8069,7 @@ lin barnoldswick_LN = variants {};
 lin barnsley_LN = variants {};
 lin barnstaple_LN = variants {};
 lin barnstorm_1_V = variants {};   ---- olla kiertueella
-lin barnstorm_2_V = variants {};   ---- olla vaalikiertueella
+lin barnstorm_2_V = mkV (mkV "kiertää") "maata"; --guessed
 lin barnstormerMasc_1_N = mkN "kiertävä näyttelijä"; --unchecked
 lin barnstormerFem_1_N = mkN "kiertävä näyttelijä"; --unchecked
 lin barnstormerMasc_2_N = mkN "taitolentäjä";
@@ -8109,7 +8112,7 @@ lin barracking_N = mkN {s = d39 "buuaus"};
 lin barracks_N = variants {};
 lin barracouta_N = mkN {s = d10 "barrakuda"};
 lin barracuda_N = mkN {s = d10 "barrakuda"};
-lin barrage_of_N2 = variants {};
+lin barrage_of_N2 = mkN2 (mkN "ryöppy") (casePrep partitive);
 lin barrage_N = mkN {s = d01A "sulku"};
 lin barramundi_N = mkN "barramundi";
 lin barranquilla_LN = mkLN "Barranquilla";
@@ -8141,8 +8144,8 @@ lin barrette_N = mkN "hiussolki";
 lin barrhead_LN = variants {};
 lin barricade_1_N = mkN "katusulku";
 lin barricade_2_N = variants {mkN "katusulku"; mkN {s = d05 "barrikadi"}};
-lin barricade_1_V2 = variants {};   ---- sulkea barrikadilla sulkea esteellä
-lin barricade_2_V2 = variants {};   ---- sulkea esteellä sulkea barrikadilla
+lin barricade_1_V2 = mkV2 (mkV "barrikadoida"); --guessed
+lin barricade_2_V2 = mkV2 (mkV "barrikadoida"); --guessed
 lin barricade_3_V2 = variants {};   ---- sulkea esteellä sulkea barrikadilla
 lin barrier_1_N = variants {mkN {s = d05A "portti"}; mkN {s = d05 "puomi"}; mkN {s = d48 "este"}; mkN {s = d09A "aita"}};
 lin barrier_2_N = variants {mkN {s = d48 "este"}; mkN {s = d01 "kuilu"}; mkN {s = d05 "muuri"}};
@@ -8181,7 +8184,7 @@ lin baryta_N = mkN "baryytti";
 lin barytic_A = mkA "baryyttinen";
 lin bas_relief_N = variants {mkN "kohokuva"; mkN "basreliefi"};
 lin basal_1_A = mkA "tyvi-";
-lin basal_2_A = variants {};
+lin basal_2_A = mkA "perus-"; --guessed
 lin basal_3_A = variants {mkA "tyvi-"; mkA "pohja-"; mkA "perus-"};
 lin basalt_N = mkN {s = d05A "basaltti"};
 lin basaltic_A = mkA "basaltti-";
@@ -8365,14 +8368,14 @@ lin bat_3_N = mkN {s = d09 "maila"};
 lin bat_4_N = mkN {s = d09 "maila"};
 lin bat_5_N = mkN {s = d09 "maila"};
 lin bat_3_V = mkV {s = c64 "lyödä"};
-lin bat_4_V = variants {};   ---- olla lyöntivuorossa olla lyöjänä
-lin bat_1_V2 = variants {};   ---- lyödä mailalla
+lin bat_4_V = mkV "lyödä"; --guessed
+lin bat_1_V2 = mkV2 (mkV "lyödä"); --guessed
 lin bat_2_V2 = mkV2 (mkV {s = c67A "räpytellä"});
 lin bat_5_V2 = mkV2 (mkV {s = c64 "lyödä"});
 lin bat_in_V = variants {};
 lin bata_N = variants {} ;
 lin batch_1_N = mkN "uunillinen leipää"; --unchecked
-lin batch_of_N2 = variants {};
+lin batch_of_N2 = mkN2 (mkN "erä") (casePrep elative); --guessed
 lin batch_3_N = variants {mkN {s = d09 "sarja"}; mkN {s = d10 "erä"}; mkN {s = d01A "nippu"}; mkN {s = d01A "joukko"}};
 lin bate_1_V2 = variants {mkV2 (mkV {s = c72 "vähetä"}); mkV2 (mkV {s = c69 "hillitä"}); mkV2 (mkV {s = c72 "laimeta"}); mkV2 (mkV {s = c54A "vähentää"})};
 lin bate_2_V2 = variants {mkV2 (mkV {s = c67A "räpytellä"}); mkV2 (mkV {s = c67 "pyristellä"})};
@@ -8613,7 +8616,7 @@ lin bear_2_V2 = mkV2 (mkV {s = c53A "synnyttää"});
 lin bear_3_V2 = variants {mkV2 (mkV {s = c53 "kestää"}); mkV2 (mkV {s = c53A "sietää"})};
 lin bear_4_V2 = variants {mkV2 (mkV {s = c73 "vastata"}); mkV2 (mkV {s = c53A "kannattaa"}); mkV2 (mkV {s = c53A "kuljettaa"}); mkV2 (mkV {s = c56A "kantaa"}); mkV2 (mkV {s = c53 "kestää"})};
 lin bear_5_V2 = mkV2 (mkV {s = c53A "tuottaa"});
-lin bear_6_V2 = variants {};   ---- ottaa maksettavakseen ottaa kannettavakseen
+lin bear_6_V2 = mkV2 (mkV "kantaa"); --guessed
 lin bear_7_V2 = mkV2 (mkV {s = c54A "sisältää"});
 lin bear_8_V2 = mkV2 (mkV {s = c53A "tuottaa"});
 lin bear_9_V2 = mkV2 (mkV {s = c67 "olla"});
@@ -8696,7 +8699,7 @@ lin beat_8_V2 = mkV2 (mkV {s = c67A "räpytellä"});
 lin beat_10_V2 = variants {mkV2 (mkV {s = c73 "vispata"}); mkV2 (mkV {s = c73 "vatkata"})};
 lin beat_11_V2 = variants {mkV2 (mkV {s = c64 "lyödä"}); mkV2 (mkV {s = c52A "takoa"}); mkV2 (mkV {s = c53A "jyskyttää"}); mkV2 (mkV {s = c73A "hakata"})};
 lin beat_12_V2 = mkV2 (mkV {s = c53A "voittaa"});
-lin beat_13_V2 = variants {};   ---- matkustaa jäniksenä mennä pummilla
+lin beat_13_V2 = mkV2 (mkV "vältellä"); --guessed
 lin beat_14_V2 = mkV2 (mkV {s = c64 "lyödä"});
 lin beat_16_V2 = variants {mkV2 (mkV {s = c64 "lyödä"}); mkV2 (mkV {s = c58 "iskeä"})};
 lin beat_18_V2 = variants {mkV2 (mkV {s = c73A "tampata"}); mkV2 (mkV {s = c73 "muovata"})};
@@ -8708,7 +8711,7 @@ lin beat_back_V2 = mkV2 (mkV {s = c52 "torjua"});
 lin beat_down_2_V = mkV {s = c53A "porottaa"};
 lin beat_down_1_V2 = mkV2 (mkV {s = c61A "tinkiä"});
 lin beat_down_3_V2 = mkV2 (mkV {s = c61A "tinkiä"});
-lin beat_down_on_V2 = variants {};
+lin beat_down_on_V2 = mkV2 (mkV "porottaa"); --guessed
 lin beat_out_2_V2 = variants {mkV2 (mkV {s = c64 "lyödä"}); mkV2 (mkV {s = c53A "rummuttaa"})};
 lin beat_up_2_V2 = variants {};   ---- kutsua koolle
 lin beatable_A = variants {mkA "voitettavissa"; mkA "voitettavissa oleva"};
@@ -8769,7 +8772,7 @@ lin beaver_away_at_V2 = variants {};
 lin bebington_LN = variants {};
 lin becalmed_A = mkA "tyveneen joutunut"; --unchecked
 lin because_Subj = S.because_Subj ;
-lin because_of_Prep = variants {};
+lin because_of_Prep = postGenPrep "vuoksi"; --guessed
 lin beccles_LN = variants {};
 lin beck_N = variants {mkN {s = d39 "viittaus"}; mkN "viittaava ele"};
 lin becket_SN = mkSN "Becket";
@@ -8798,7 +8801,7 @@ lin bed_1_V2 = mkV2 (mkV {s = c53A "majoittaa"});
 lin bed_2_V2 = mkV2 (mkV {s = c53A "istuttaa"});
 lin bed_3_V2 = variants {};   ---- panna jku nukkumaan jhk
 lin bed_4_V2 = variants {mkV2 (mkV {s = c73A "maata"}); mkV2 (mkV {s = c56A "maattaa"})};
-lin bed_5_V = variants {};   ---- mennä sänkyyn asettua nukkumaan
+lin bed_5_V = mkV (mkV "mennä") "nukkumaan"; --guessed
 lin bed_down_V = mkV {s = c52A "yöpyä"};
 lin bed_out_V2 = variants {};
 lin bedaubed_A = mkA "töhritty";
@@ -8899,14 +8902,14 @@ lin beetle_browed_A = variants {mkA "mulkoileva"; mkA "synkkäkatseinen"};
 lin beetroot_1_N = mkN {s = d26 "punajuuri"};
 lin beetroot_2_N = mkN {s = d26 "punajuuri"};
 lin befall_V = variants {};   ---- tulla jonkun osaksi
-lin befall_V2 = variants {};   ---- kohdata jkta tapahtua jllek tulla jkn osaksi
+lin befall_V2 = mkV2 (mkV "kohdata"); --guessed
 lin befit_V2 = mkV2 (mkV {s = c61A "sopia"});
 lin befitting_A = variants {mkA {s = d10 "sopiva"}; mkA "sovelias"};
 lin befogged_A = variants {mkA "hämärtynyt"; mkA "hämmentynyt"; mkA "sumentunut"};
 lin before_1_Adv = variants {mkAdv {s = c99 "aikaisemmin"}; mkAdv {s = c99 "aiemmin"}; mkAdv {s = c99 "ennen"}};
 lin before_2_Adv = mkAdv {s = c99 "edellä"};
 lin before_Prep = S.before_Prep ;
-lin before_Subj = variants {};
+lin before_Subj = {s = "ennen kuin"};
 lin beforehand_A = mkA "etukäteis-";
 lin beforehand_Adv = mkAdv "edeltäkäsin";
 lin befoul_V2 = mkV2 (mkV {s = c73A "liata"});
@@ -8915,7 +8918,7 @@ lin befriend_V2 = variants {};   ---- osoittaa ystävällisyyttä jkta kohtaan y
 lin beg_1_V2V = variants {mkV2V (mkV {s = c67 "rukoilla"}); mkV2V (mkV {s = c52 "anoa"})};
 lin beg_2_V2 = variants {mkV2 (mkV {s = c52 "anoa"}); mkV2 (mkV {s = c73 "kerjätä"})};
 lin beg_3_V2 = mkV2 (mkV {s = c73 "kerjätä"});
-lin beg_4_V2 = variants {};   ---- pitää jtak liian itsestään selvänä mennä asioiden edelle
+lin beg_4_V2 = mkV2 (mkV "kerjätä") partitive;   ---- pitää jtak liian itsestään selvänä mennä asioiden edelle
 lin beget_V2 = variants {};   ---- saada perillinen
 lin begetter_N = mkN {s = d10 "siittäjä"};
 lin beggarMasc_N = variants {mkN "keppikerjäläinen"; mkN {s = d38 "kerjäläinen"}};
@@ -8933,7 +8936,7 @@ lin begin_1_V = variants {mkV {s = c56A "alkaa"}; mkV {s = c53A "aloittaa"}};
 lin begin_2_V = variants {mkV {s = c53A "aloittaa"}; mkV {s = c56A "alkaa"}};
 lin begin_4_V = variants {mkV {s = c53A "aloittaa"}; mkV {s = c56A "alkaa"}};
 lin begin_6_V = variants {mkV {s = c53A "aloittaa"}; mkV {s = c56A "alkaa"}};
-lin begin_7_V = variants {};
+lin begin_7_V = mkV "alkaa";
 lin begin_3_V2 = mkV2 (mkV {s = c53A "aloittaa"});
 lin begin_5_V2 = variants {mkV2 (mkV {s = c56A "alkaa"}); mkV2 (mkV {s = c53A "aloittaa"})};
 lin begin_8_V2 = variants {mkV2 (mkV {s = c56A "alkaa"}); mkV2 (mkV {s = c53A "aloittaa"})};
@@ -8966,8 +8969,8 @@ lin beguine_3_N = mkN {s = d08 "beguine"};
 lin begum_N = mkN "korkea-arvoinen nainen"; --unchecked
 lin behalf_2_N = variants {mkN {s = d07 "nimi"}; mkN {s = d26 "puoli"}; mkN "takia"};
 lin behave_2_V = variants {mkV {s = c52A "esiintyä"}; mkV {s = c52A "käyttäytyä"}; mkV {s = c61 "toimia"}};
-lin behave_3_V = variants {};   ---- olla ihmisiksi olla kunnolla käyttäytyä siivosti käyttäytyä kunnolla
-lin behave_like_V2 = variants {};
+lin behave_3_V = mkV (mkV "käyttäytyä") "kunnolla"; --guessed
+lin behave_like_V2 = mkV2 (mkV (mkV "käyttäytyä") "kuin"); --guessed
 lin behaved_A = variants {};
 lin behavioral_1_A = variants {mkA "käyttäytymis-"; mkA "käytös-"};
 lin behavioristic_1_A = mkA "behavioristinen";
@@ -8993,7 +8996,7 @@ lin behold_V2 = variants {mkV2 (mkV {s = c52 "katsoa"}); mkV2 (mkV {s = c71 "nä
 lin beholden_A = variants {mkA "kiitollisuudenvelassa"; mkA "kiitollisuudenvelkainen"};
 lin beholderMasc_N = mkN {s = d12 "katselija"};
 lin beholderFem_N = mkN {s = d12 "katselija"};
-lin behove_1_V2V = variants {};   ---- jkn kuuluu olla velvollisuus
+lin behove_1_V2V = mkV2V (mkV "sopia"); --guessed
 lin beige_A = variants {mkA "beige"; mkA "beesi"};
 lin beige_N = variants {mkN {s = d05 "beesi"}; mkN {s = d08 "beige"}};
 lin beijing_LN = mkLN "Peking";
@@ -9038,11 +9041,11 @@ lin belie_2_V2 = variants {};   ---- antaa väärä käsitys jstak
 lin belief_1_N = variants {mkN {s = d39 "käsitys"}; mkN {s = d01 "luulo"}; mkN {s = d39 "uskomus"}; mkN {s = d01 "usko"}; mkN {s = d39 "vakaumus"}};
 lin belief_2_N = mkN {s = d01 "usko"};
 lin believable_A = mkA {s = d10 "uskottava"};
-lin believe_1_V = variants {};   ---- pitää jtak totena uskoa jhk
+lin believe_1_V = mkV "uskoa"; --guessed
 lin believe_4_V = mkV {s = c52 "uskoa"};
-lin believe_1_V2 = variants {};   ---- pitää jtak totena uskoa jhk
+lin believe_1_V2 = mkV2 (mkV "uskoa") illative;   ---- pitää jtak totena uskoa jhk
 lin believe_2_V2V = mkV2V (mkV {s = c53A "pitää"});
-lin believe_5_V2 = variants {};   ---- uskoa jhk pitää jtak totena
+lin believe_5_V2 = mkV2 (mkV "uskoa"); --guessed
 lin believe_3_VS = mkV {s = c52 "uskoa"};
 lin believerMasc_1_N = variants {mkN {s = d10 "uskova"}; mkN {s = d10 "kannattaja"}};
 lin believerFem_1_N = variants {mkN {s = d10 "uskova"}; mkN {s = d10 "kannattaja"}};
@@ -9066,7 +9069,7 @@ lin bell_5_N = mkN {s = d01 "kello"};
 lin bell_SN = mkSN "Bell";
 lin bell_9_N = mkN {s = d01 "kello"};
 lin bell_10_N = variants {mkN "kaikusuppilo"; mkN {s = d05 "muhvi"}};
-lin bell_V2 = variants {};   ---- ripustaa kello jhk laittaa kello kiinnittää kello jhk
+lin bell_V2 = mkV2 (mkV (mkV "varustaa") "kellolla"); --guessed
 lin bell_bottomed_1_A = variants {mkA "leveälahkeinen"; mkA "leveälahkeiset"};
 lin bell_buoy_N = mkN "kellopoiju";
 lin bell_flower_N = mkN {s = d01 "kello"};
@@ -9134,7 +9137,7 @@ lin bellylaugh_V = mkV "hörönauraa";
 lin bellyless_A = variants {mkA "mahaton"; mkA "vatsaton"};
 lin belmopan_LN = mkLN "Belmopan" ;
 lin belo_horizonte_LN = mkLN "Belo Horizonte";
-lin belong_to_V2 = variants {};   ---- kuulua jhk olla jnk jäsenenä olla jnk osana
+lin belong_to_V2 = mkV2 (mkV "kuulua"); --guessed
 lin belong_with_V2 = variants {};
 lin belonging_N = mkN "yhteenkuuluvuus";
 lin beloved_A = mkA "lemmitty";
@@ -9144,7 +9147,7 @@ lin below_1_Adv = variants {mkAdv {s = c99 "alla"}; mkAdv {s = c99 "alle"}; mkAd
 lin below_2_Adv = variants {mkAdv {s = c99 "tuonnempana"}; mkAdv "alapuolelle"; mkAdv {s = c99 "alle"}; mkAdv {s = c99 "jäljempänä"}; mkAdv "alapuolella"; mkAdv {s = c99 "alla"}};
 lin below_3_Adv = variants {mkAdv {s = c99 "alhaalla"}; mkAdv "alakerrassa"};
 lin below_4_Adv = mkAdv {s = c99 "alla"};
-lin below_Prep = variants {};
+lin below_Prep = postGenPrep "alapuolella"; --guessed
 lin belowground_1_A = mkA "maanalainen";
 lin belowground_2_A = variants {mkA "maan alla oleva"; mkA "maan alla"; mkA "maan alta"}; --unchecked
 lin belper_LN = variants {};
@@ -9373,8 +9376,8 @@ lin beset_1_V2 = variants {mkV2 (mkV {s = c73 "kiusata"}); mkV2 (mkV {s = c53 "a
 lin beset_2_V2 = variants {mkV2 (mkV {s = c57A "saartaa"}); mkV2 (mkV {s = c53A "piirittää"}); mkV2 (mkV {s = c62 "ympäröidä"})};
 lin beset_3_V2 = mkV2 (mkV {s = c53A "peittää"});
 lin beshrew_V2 = mkV2 (mkV {s = c74 "kirota"});
-lin beside_1_Prep = variants {};
-lin beside_2_Prep = variants {};
+lin beside_1_Prep = postGenPrep "vieressä"; --guessed
+lin beside_2_Prep = postGenPrep "vieressä"; --guessed
 lin besides_1_Adv = variants {mkAdv "sitä paitsi"; mkAdv {s = c99 "toisekseen"}};
 lin besides_2_Adv = variants {mkAdv {s = c99 "lisäksi"}; mkAdv "sitä paitsi"};
 lin besides_Prep = variants {};
@@ -9425,7 +9428,7 @@ lin bestubbled_1_A = variants {mkA "sänkimäinen"; mkA "sängellinen"; mkA "sä
 lin bet_1_N = variants {mkN {s = d39 "panos"}; mkN {s = d01 "veto"}; mkN {s = d01A "veto"}; mkN "vedonlyönti"};
 lin bet_2_N = mkN "vedonlyönti";
 lin bet_on_V2 = variants {};
-lin bet_2_V2 = variants {};   ---- lyödä vetoa
+lin bet_2_V2 = mkV2 (mkV (mkV "lyödä") "vetoa"); --guessed
 lin bet_1_VS = mkV {s = c73A "veikata"};
 lin beta_1_A = mkA "beeta-";
 lin beta_2_A = mkA "beeta-";
@@ -9513,7 +9516,7 @@ lin bewdley_LN = variants {};
 lin bewilder_1_V2 = mkV2 (mkV {s = c54A "hämmentää"});
 lin bewilder_2_V2 = variants {mkV2 (mkV {s = c53A "häkellyttää"}); mkV2 (mkV {s = c54A "hämmentää"})};
 lin bewilderedly_Adv = mkAdv "hämmentyneesti";
-lin bewildering_A = variants {};
+lin bewildering_A = mkA "hämmentävä"; --guessed
 lin bewilderment_N = mkN {s = d39 "hämmennys"};
 lin bewitch_1_V2 = mkV2 (mkV {s = c73 "hurmata"});
 lin bewitch_2_V2 = mkV2 (mkV {s = c73 "hurmata"});
@@ -9549,7 +9552,7 @@ lin bib_1_N = mkN "rintalappu";
 lin bib_2_N = variants {mkN "ruokalappu"; mkN "leukalappu"};
 lin bib_V = mkV "lipitellä";
 lin bibbed_A = mkA "rintalapullinen";
-lin bible_1_N = variants {};
+lin bible_1_N = mkN "raamattu"; --guessed
 lin bible_2_N = mkN "raamattu";
 lin bibless_A = variants {mkA "rintalaputon"; mkA "ruokalaputon"};
 lin biblical_1_A = mkA "raamatullinen";
@@ -9760,7 +9763,7 @@ lin bill_7_N = variants {mkN "käsiohjelma"; mkN "elokuvaohjelma"; mkN "mainosle
 lin bill_8_N = mkN {s = d05A "sirppi"};
 lin bill_9_N = mkN {s = d09A "lippa"};
 lin bill_10_N = mkN {s = d10A "nokka"};
-lin bill_GN = variants {};
+lin bill_GN = mkGN "Bill" male;
 lin bill_1_V2 = mkV2 (mkV {s = c53A "laskuttaa"});
 lin bill_2_V2 = variants {mkV2 (mkV {s = c53A "ilmoittaa"}); mkV2 (mkV {s = c53 "mainostaa"})};
 lin bill_3_V2 = variants {};   ---- mainostaa julisteilla
@@ -10258,7 +10261,7 @@ lin blacklegFem_N = mkN {s = d06 "rikkuri"};
 lin blackleg_V = variants {};   ---- rikkoa lakkoa
 lin blackleg_V2 = variants {};   ---- rikkoa lakkoa
 lin blacklist_N = mkN "musta lista";
-lin blacklist_V2 = variants {};   ---- panna mustalle listalle panna jku mustalle listalle laittaa mustalle listalle merkitä mustalle listalle
+lin blacklist_V2 = mkV2 (mkV (mkV "panna") "mustalle listalle"); --guessed
 lin blackmail_N = variants {mkN {s = d39 "kiristys"}; mkN "kiristäminen"};
 lin blackmail_1_V2 = mkV2 (mkV {s = c53 "kiristää"});
 lin blackmail_2_V2 = mkV2 (mkV {s = c53 "kiristää"});
@@ -10349,7 +10352,7 @@ lin blandness_3_N = mkN {s = d40 "sulavuus"};
 lin blank_1_A = variants {mkA "täyttämätön"; mkA "tyhjä"};
 lin blank_2_A = variants {mkA "ilmeetön"; mkA "tyhjä"};
 lin blank_3_A = mkA "tyhjä";
-lin blank_4_A = variants {};
+lin blank_4_A = mkA "sula"; --guessed
 lin blank_1_N = mkN "välilyönti";
 lin blank_2_N = mkN "tyhjä kohta";
 lin blank_3_N = mkN {s = d03 "aihio"};
@@ -10488,7 +10491,7 @@ lin blend_1_N = variants {mkN {s = d39 "sekoitus"}; mkN {s = d10 "yhdistelmä"}}
 lin blend_2_N = mkN "yhdistelmäsana";
 lin blend_3_N = variants {mkN "yhdistäminen"; mkN "sekoittaminen"};
 lin blend_1_V = variants {mkV {s = c53A "sekoittaa"}; mkV {s = c52A "sekoittua"}};
-lin blend_2_V = variants {};   ---- sulautua jhk sopia yhteen
+lin blend_2_V = mkV (mkV "sointua") "yhteen"; --guessed
 lin blend_3_V = mkV {s = c53A "sekoittaa"};
 lin blend_V2 = variants {mkV2 (mkV {s = c53A "sekoittaa"}); mkV2 (mkV {s = c52A "sekoittua"})};
 lin blender_N = mkN "tehosekoitin";
@@ -10561,7 +10564,7 @@ lin blissful_A = variants {mkA {s = d41 "autuas"}; mkA {s = d10 "ihana"}; mkA {s
 lin blister_1_N = variants {mkN {s = d10 "kupla"}; mkN {s = d10 "kohouma"}};
 lin blister_2_N = variants {mkN {s = d12 "rakkula"}; mkN {s = d01A "rakko"}};
 lin blister_3_N = variants {mkN {s = d01A "rakko"}; mkN "vesikello"; mkN {s = d12 "rakkula"}};
-lin blister_1_V = variants {};   ---- nousta rakkuloille nostaa rakkuloille
+lin blister_1_V = mkV (mkV "tulla") "rakoille"; --guessed
 lin blister_2_V2 = mkV2 (mkV {s = c62 "kritisoida"});
 lin blister_3_V2 = variants {};   ---- nostaa rakkuloille nousta rakkuloille
 lin blithe_1_A = variants {mkA "iloisen välinpitämätön"; mkA "huoleton"; mkA "välinpitämätön"}; --unchecked
@@ -10594,7 +10597,7 @@ lin block_1_V2 = variants {mkV2 (mkV {s = c52 "torjua"}); mkV2 (mkV {s = c61A "t
 lin block_2_V2 = variants {mkV2 (mkV {s = c52 "torjua"}); mkV2 (mkV {s = c66 "ehkäistä"})};
 lin block_3_V2 = mkV2 (mkV {s = c66 "ehkäistä"});
 lin block_4_V2 = mkV2 (mkV {s = c61A "tukkia"});
-lin block_5_V2 = variants {};   ---- käyttää linjasuojastusta käyttää suojastusjärjestelmää
+lin block_5_V2 = mkV2 (mkV "suojastaa"); --guessed
 lin block_6_V2 = mkV2 (mkV {s = c73A "salvata"});
 lin block_7_V2 = mkV2 (mkV {s = c53 "estää"});
 lin block_8_V2 = variants {};   ---- painaa painolaatalla
@@ -10650,10 +10653,10 @@ lin blood_4_N = mkN "verisukulaisuus";
 lin blood_5_N = mkN {s = d26 "veri"};
 lin blood_V2 = variants {};   ---- sotkea verellä levittää verta iholle tuhria verellä
 lin blood_bath_N = variants {mkN "verilöyly"; mkN "verenvuodatus"};
-lin blood_cell_N = variants {};
+lin blood_cell_N = mkN "verisolu"; --guessed
 lin blood_donorMasc_N = mkN "verenluovuttaja";
 lin blood_donorFem_N = mkN "verenluovuttaja";
-lin blood_donation_N = variants {};
+lin blood_donation_N = mkN "verenluovutus"; --guessed
 lin blood_group_N = mkN "veriryhmä";
 lin blood_heat_N = mkN "ruumiinlämpötila";
 lin blood_letting_1_N = mkN "suoneniskentä";
@@ -11152,8 +11155,8 @@ lin boil_5_V = variants {mkV {s = c66 "pihistä"}; mkV {s = c53 "pihistää"}};
 lin boil_2_V2 = variants {mkV2 (mkV {s = c53A "kiehuttaa"}); mkV2 (mkV {s = c53A "keittää"})};
 lin boil_3_V2 = variants {mkV2 (mkV {s = c53A "keittää"}); mkV2 (mkV {s = c53A "kiehuttaa"})};
 lin boil_down_V2 = variants {};   ---- kiehua vähiin
-lin boil_down_to_V2 = variants {};
-lin boil_over_V = variants {};   ---- kiehua yli
+lin boil_down_to_V2 = mkV2 (mkV "pelkistyä"); --guessed
+lin boil_over_V = mkV (mkV "kiehua") "yli"; --guessed
 lin boil_up_V = variants {};
 lin boil_up_V2 = variants {};
 lin boiler_1_N = mkN "höyrykattila";
@@ -11241,7 +11244,7 @@ lin bolt_5_V = mkV {s = c73A "rynnätä"};
 lin bolt_2_V2 = variants {mkV2 (mkV {s = c73A "pultata"}); mkV2 (mkV {s = c69 "lukita"}); mkV2 (mkV {s = c74A "teljetä"}); mkV2 (mkV {s = c73A "salvata"})};
 lin bolt_3_V2 = mkV2 (mkV {s = c66 "hotkaista"});
 lin bolt_6_V2 = variants {mkV2 (mkV {s = c61 "hotkia"}); mkV2 (mkV {s = c66 "hotkaista"})};
-lin bolt_7_V2 = variants {};
+lin bolt_7_V2 = mkV2 (mkV (mkV "kääriä") "pakalle"); --guessed
 lin bolt_hole_N = mkN "piilopaikka";
 lin bolti_N = mkN "bolti";
 lin bolton_LN = variants {};
@@ -11401,7 +11404,7 @@ lin book_5_N = mkN "pääkirja";
 lin book_6_N = mkN {s = d09A "pakka"};
 lin book_7_N = mkN {s = d01A "sääntö"};
 lin book_8_N = variants {};
-lin book_9_N = variants {};
+lin book_9_N = mkN "kirja"; --guessed
 lin book_10_N = mkN {s = d09 "kirja"};
 lin book_11_N = mkN {s = d06 "albumi"} ;
 lin book_1_V2 = mkV2 (mkV {s = c53 "järjestää"});
@@ -11574,7 +11577,7 @@ lin bore_hole_N = mkN "porauskuilu";
 lin boreal_1_A = mkA "pohjoistuulen";
 lin boreal_2_A = mkA "boreaalinen";
 lin boreal_3_A = mkA "pohjoinen";
-lin bored_with_A2 = variants {};
+lin bored_with_A2 = mkA2 "kyllästynyt" (casePrep illative); --guessed
 lin bored_A = mkA "pitkästynyt";
 lin boredom_N = mkN {s = d40 "tylsyys"};
 lin borer_1_N = mkN {s = d10 "pora"};
@@ -11657,7 +11660,16 @@ lin botchy_A = mkA {s = d02 "kömpelö"};
 lin botfly_N = variants {mkN {s = d38 "kiiliäinen"}; mkN "saivartajakärpänen"};
 lin both7and_DConj = S.both7and_DConj ;
 lin both_Adv = variants {};
-lin both_Det = variants {};
+lin both_Det = {
+  s1 = \\_ => "molemmat" ;
+  sp = \\_ => "molemmat" ;
+  s2 = \\_ => [] ;
+  n = plural ;
+  isNum = False ;
+  isPoss = False ;
+  isDef = True ;
+  isNeg = False
+  } ; --guessed
 lin bother_1_N = mkN {s = d05 "harmi"};
 lin bother_2_N = variants {mkN {s = d09 "vaiva"}; mkN {s = d40 "hankaluus"}};
 lin bother_1_V = mkV {s = c52A "vaivautua"};
@@ -12216,7 +12228,7 @@ lin break_13_N = mkN {s = d39 "katkos"};
 lin break_14_N = mkN {s = d39 "syöksähdys"};
 lin break_15_N = mkN {s = d01A "murto"};
 lin break_16_N = mkN {s = d01A "pako"};
-lin break_17_N = variants {};
+lin break_17_N = mkN "jarru"; --guessed
 lin break_2_V = mkV {s = c52A "särkyä"};
 lin break_7_V = mkV {s = c72A "paeta"};
 lin break_8_V = mkV {s = c52A "hajaantua"};
@@ -12237,7 +12249,7 @@ lin break_37_V = mkV {s = c73A "breikata"};
 lin break_40_V = mkV {s = c53A "hajottaa"};
 lin break_42_V = variants {mkV {s = c74 "hajota"}; mkV {s = c53A "hajottaa"}};
 lin break_44_V = variants {mkV {s = c74A "puhjeta"}; mkV {s = c52A "rikkoutua"}};
-lin break_46_V = variants {};   ---- tulla julki
+lin break_46_V = mkV (mkV "tulla") "julki"; --guessed
 lin break_47_V = variants {};   ---- pitää tauko
 lin break_49_V = mkV {s = c52A "murtua"};
 lin break_52_V = variants {mkV {s = c52A "murtua"}; mkV {s = c52A "särkyä"}};
@@ -12458,7 +12470,7 @@ lin bremen_LN = mkLN "Bremen";
 lin bremerhaven_LN = mkLN "Bremerhaven";
 lin bren_N = mkN "Bren";
 lin bren_gun_N = variants {};
-lin brenda_GN = variants {};
+lin brenda_GN = mkGN "Brenda" female; --guessed
 lin brenner_pass_LN = mkLN "Brennerin sola" ;
 lin brent_LN = variants {};
 lin brentwood_LN = variants {};
@@ -12664,7 +12676,7 @@ lin bring_in_5_V2 = mkV2 (mkV {s = c53A "välittää"});
 lin bring_on_1_V2 = variants {};   ---- saada aikaan
 lin bring_on_2_V2 = mkV2 (mkV {s = c66 "julkaista"});
 lin bring_on_3_V2 = mkV2 (mkV {s = c64 "tuoda"});
-lin bring_out_1_V2 = variants {};   ---- tuoda esille saada esiin
+lin bring_out_1_V2 = mkV2 (mkV (mkV "tuoda") "esiin"); --guessed
 lin bring_out_2_V2 = variants {};   ---- tuoda esiin
 lin bring_out_3_V2 = mkV2 (mkV {s = c66 "julkaista"});
 lin bring_out_4_V2 = variants {};   ---- tuoda esiin tuoda esille
@@ -12677,13 +12689,13 @@ lin bring_out_in_V3 = variants {};
 lin bring_over_V2 = variants {};
 lin bring_round_2_V2 = mkV2 (mkV {s = c53A "virvoittaa"});
 lin bring_to_V2 = mkV2 (mkV {s = c53A "palauttaa"});
-lin bring_together_V2 = variants {};
+lin bring_together_V2 = mkV2 (mkV (mkV "saattaa") "yhteen"); --guessed
 lin bring_up_1_V2 = variants {};   ---- tuoda esiin
 lin bring_up_2_V2 = mkV2 (mkV {s = c53A "kasvattaa"});
 lin bring_up_3_V2 = mkV2 (mkV {s = c53 "nostaa"});
 lin bring_up_4_V2 = mkV2 (mkV {s = c53 "nostaa"});
 lin bring_up_5_V2 = mkV2 (mkV {s = c53A "pysäyttää"});
-lin bring_up_6_V2 = variants {};   ---- tuoda esiin
+lin bring_up_6_V2 = mkV2 (mkV (mkV "ottaa") "puheeksi"); --guessed
 lin bring_up_7_V2 = variants {};   ---- ottaa esille
 lin bring_up_8_V2 = mkV2 (mkV {s = c53 "käynnistää"});
 lin brininess_N = mkN "suolapitoisuus";
@@ -12935,7 +12947,7 @@ lin brown_1_N = mkN {s = d15 "ruskea"};
 lin brown_SN = mkSN "Brown";
 lin brown_4_PN = mkPN "Brown";
 lin brown_1_V2 = mkV2 (mkV {s = c53 "ruskistaa"});
-lin brown_2_V2 = variants {};   ---- värjätä ruskeaksi
+lin brown_2_V2 = mkV2 (mkV "ruskistaa"); --guessed
 lin brownie_1_N = variants {};
 lin brownie_2_N = variants {mkN {s = d12 "haltija"}; mkN "haltia"};
 lin brownie_3_N = variants {mkN "suklaaleivos"; mkN "pähkinäsuklaaleivos"};
@@ -13002,7 +13014,7 @@ lin brush_4_V2 = mkV2 (mkV {s = c53 "viistää"});
 lin brush_5_V2 = variants {mkV2 (mkV {s = c73 "harjata"}); mkV2 (mkV {s = c61A "pyyhkiä"})};
 lin brush_6_V2 = variants {mkV2 (mkV {s = c67 "sivellä"}); mkV2 (mkV {s = c67A "voidella"})};
 lin brush_aside_1_V2 = mkV2 (mkV {s = c53A "ohittaa"});
-lin brush_aside_2_V2 = variants {};
+lin brush_aside_2_V2 = mkV2 (mkV "sivuuttaa"); --guessed
 lin brush_off_N = mkN "torjuminen";
 lin brush_off_V2 = mkV2 (mkV {s = c53A "ohittaa"});
 lin brush_up_N = mkN {s = d39 "kertaus"};
@@ -13276,7 +13288,7 @@ lin bulgarian_A = variants {mkA "Bulgarian"; mkA "bulgarialainen"};
 lin bulge_N = mkN {s = d10 "pullistuma"};
 lin bulge_1_V = variants {mkV {s = c53A "pullottaa"}; mkV {s = c52 "pullistua"}};
 lin bulge_2_V = variants {mkV {s = c52 "pullistua"}; mkV {s = c53A "pullottaa"}};
-lin bulge_3_V = variants {};   ---- pullistua päästä
+lin bulge_3_V = mkV "pullottaa"; --guessed
 lin bulge_4_V2 = mkV2 (mkV {s = c53 "pullistaa"});
 lin bulgur_1_N = mkN "bulgur";
 lin bulimarexia_N = mkN "bulimareksia";
@@ -13771,10 +13783,10 @@ lin busyness_N = mkN {s = d01 "touhu"};
 lin busywork_N = mkN {s = d02 "touhuilu"};
 lin but_Predet = mkPredet "vain";
 lin but_1_Conj = mkConj "mutta" ;
-lin but_2_Conj = variants {};
+lin but_2_Conj = mkConj "mutta"; --guessed
 lin but_PConj = S.but_PConj ;
-lin but_Prep = variants {};
-lin but_Subj = variants {};
+lin but_Prep = prePrep partitive "paitsi"; --guessed
+lin but_Subj = {s = "mutta"}; --guessed
 lin butacaine_N = mkN "butakaiini";
 lin butadiene_N = variants {mkN "butadiini"; mkN "butadieeni"};
 lin butane_N = mkN {s = d05 "butaani"};
@@ -13920,10 +13932,10 @@ lin buzzword_N = mkN "muotisana";
 lin bvm_N = variants {};
 lin by_1_Adv = mkAdv {s = c99 "ohi"};
 lin by_2_Adv = variants {mkAdv {s = c99 "sivuun"}; mkAdv {s = c99 "syrjään"}};
-lin by_1_Prep = variants {};
-lin by_2_Prep = variants {};
-lin by_3_Prep = variants {};
-lin by_4_Prep = variants {};
+lin by_1_Prep = S.by8means_Prep;
+lin by_2_Prep = postGenPrep "mukaan"; --guessed
+lin by_3_Prep = S.by8means_Prep;
+lin by_4_Prep = S.by8agent_Prep;
 lin by_and_large_Adv = mkAdv "yleisesti ottaen";
 lin by_election_N = mkN "täytevaali";
 lin by_means_of_Prep = variants {};
@@ -14316,7 +14328,7 @@ lin call_back_3_V2 = variants {};   ---- soittaa takaisin
 lin call_back_4_V2 = variants {};   ---- pyytää palaamaan kutsua kotiin
 lin call_box_1_N = mkN "puhelinkoppi";
 lin call_box_2_N = mkN "postilokero";
-lin call_for_V2 = variants {};
+lin call_for_V2 = mkV2 (mkV "vaatia") partitive;
 lin call_for_V2V = variants {};
 lin call_forth_1_V2 = variants {};   ---- houkutella esiin
 lin call_forth_2_V2 = mkV2 (mkV "peräänkuuluttaa");
@@ -14330,18 +14342,18 @@ lin call_in_7_V2 = mkV2 (mkV {s = c53 "poistaa"});
 lin call_off_1_V2 = mkV2 (mkV {s = c53A "peruuttaa"});
 lin call_off_2_V2 = mkV2 (mkV {s = c53A "kuuluttaa"});
 lin call_on_1_V2 = mkV2 (mkV {s = c74A "vedota"});
-lin call_on_2_V2 = variants {};
+lin call_on_2_V2 = mkV2 (mkV "poiketa"); --guessed
 lin call_out_1_V2 = mkV2 (mkV {s = c54A "huutaa"});
 lin call_out_2_V2 = mkV2 (mkV {s = c54A "huutaa"});
 lin call_out_3_V2 = mkV2 (mkV {s = c56 "haastaa"});
-lin call_out_21_V2 = variants {};
+lin call_out_21_V2 = mkV2 (mkV (mkV "tuomita") "ulos"); --guessed
 lin call_over_N = variants {};
 lin call_over_V = variants {};
 lin call_round_V = variants {};
 lin call_up_N = mkN {s = d09A "kutsunta"};
-lin call_up_1_V2 = variants {};   ---- ottaa käsittelyyn
+lin call_up_1_V2 = mkV2 (mkV (mkV "ottaa") "käsiteltäväksi"); --guessed
 lin call_up_3_V2 = variants {};   ---- tuoda mieleen
-lin call_up_4_V2 = variants {};
+lin call_up_4_V2 = mkV2 (mkV "herättää"); --guessed
 lin call_up_5_V2 = mkV2 (mkV {s = c52 "kutsua"});
 lin callable_A = mkA "callable";
 lin called_A = variants {};
@@ -14411,7 +14423,7 @@ lin caloosahatchee_river_LN = mkLN "Caloosahatchee River" ;
 lin calor_PN = variants {};
 lin caloric_1_A = mkA "lämpö-";
 lin caloric_2_A = mkA "kalori-";
-lin calorie_1_N = variants {};
+lin calorie_1_N = mkN "kalori"; --guessed
 lin calorie_2_N = mkN {s = d06 "kalori"};
 lin calorifacient_A = mkA "lämpöä tuottava";
 lin calorific_A = variants {mkA "lämmittävä"; mkA "kuumentava"};
@@ -14532,7 +14544,7 @@ lin campaign_3_N = mkN {s = d01 "isku"};
 lin campaign_4_N = mkN "metsästysmatka";
 lin campaign_1_V = mkV {s = c62 "kampanjoida"};
 lin campaign_2_V = mkV {s = c62 "kampanjoida"};
-lin campaign_3_V = variants {};   ---- lähteä sotaretkelle
+lin campaign_3_V = mkV (mkV "olla") "sotaretkellä"; --guessed
 lin campaignerMasc_N = mkN "viranhakija";
 lin campaignerFem_N = mkN "viranhakija";
 lin campaigning_N = mkN "vaalikampanja";
@@ -14846,7 +14858,7 @@ lin cape_verdean_A = variants {} ;
 lin capability_1_N = variants {mkN {s = d40 "pystyvyys"}; mkN {s = d01A "kyky"}; mkN {s = d40 "kykenevyys"}};
 lin capability_2_N = mkN {s = d01A "kyky"};
 lin capability_3_N = mkN {s = d01A "kyky"};
-lin capable_of_A2 = variants {};
+lin capable_of_A2 = mkA2 "kykenevä" (casePrep illative);
 lin capacious_A = variants {mkA {s = d10 "tilava"}; mkA {s = d09 "laaja"}};
 lin capaciousness_1_N = mkN {s = d40 "laajuus"};
 lin capaciousness_2_N = mkN {s = d40 "tilavuus"};
@@ -15216,7 +15228,7 @@ lin caregiverFem_2_N = variants {mkN {s = d10 "huoltaja"}; mkN {s = d10 "holhooj
 lin careladen_A = variants {};
 lin careless_1_A = variants {mkA "piittaamaton"; mkA "välinpitämätön"; mkA "huolimaton"};
 lin careless_2_A = variants {mkA "huoleton"; mkA "rento"};
-lin careless_of_A2 = variants {};
+lin careless_of_A2 = mkA2 "piittaamaton" (casePrep elative); --guessed
 lin carelessness_1_N = mkN {s = d40 "ajattelemattomuus"};
 lin carelessness_2_N = mkN {s = d40 "huolimattomuus"};
 lin carer_N = variants {};
@@ -15258,7 +15270,7 @@ lin carioca_3_N = mkN "carioca";
 lin carious_A = variants {mkA "mätä"; mkA "reikäinen"};
 lin carissa_N = mkN "kapmaanluumu";
 lin carjacking_N = mkN "auton ryöstäminen"; --unchecked
-lin carl_GN = variants {};
+lin carl_GN = mkGN "Kaarlo" male; --guessed
 lin carlisle_LN = variants {};
 lin carload_1_N = mkN "autolastillinen";
 lin carload_2_N = mkN "vaunulasti";
@@ -15302,7 +15314,7 @@ lin carob_3_N = mkN "johanneksenleipäpuu";
 lin caroche_N = mkN "hevosvaunut";
 lin carol_1_N = mkN {s = d01 "laulu"};
 lin carol_2_N = mkN "joululaulu";
-lin carol_GN = variants {};
+lin carol_GN = mkGN "Carol" female;
 lin carol_V = mkV {s = c56 "laulaa"};
 lin carol_V2 = mkV2 (mkV {s = c56 "laulaa"});
 lin carole_GN = variants {};
@@ -15373,7 +15385,7 @@ lin carriage_3_N = mkN {s = d05A "ryhti"};
 lin carriage_4_N = variants {mkN {s = d05A "lavetti"}; mkN {s = d09 "tela"}; mkN {s = d13 "alusta"}; mkN {s = d01A "alku"}; mkN {s = d39 "alus"}; mkN {s = d38 "alunen"}};
 lin carriage_5_N = variants {mkN {s = d01 "vaunu"}; mkN {s = d41A "ratas"}};
 lin carriageway_N = mkN "ajorata";
-lin carrie_GN = variants {};
+lin carrie_GN = mkGN "Carrie" female; --guessed
 lin carried_away_V = variants {};
 lin carrierMasc_1_N = mkN {s = d10 "kuljettaja"};
 lin carrierFem_1_N = mkN {s = d10 "kuljettaja"};
@@ -15867,9 +15879,9 @@ lin catch_at_V2 = variants {};
 lin catch_crop_N = mkN "välisato";
 lin catch_on_1_V = mkV {s = c53A "käsittää"};
 lin catch_on_2_V = mkV {s = c52 "menestyä"};
-lin catch_out_V2 = variants {};   ---- saada jku kiinni
+lin catch_out_V2 = mkV2 (mkV "paljastaa"); --guessed
 lin catch_up_in_V2 = variants {};
-lin catch_up_on_V2 = variants {};
+lin catch_up_on_V2 = mkV2 (mkV (mkV "kuroa") "umpeen"); --guessed
 lin catch_up_with_1_V2 = mkV2 (mkV {s = c53A "tavoittaa"});
 lin catch_up_with_2_V2 = mkV2 (mkV {s = c54A "täydentää"});
 lin catch_up_with_3_V2 = variants {};
@@ -15964,7 +15976,7 @@ lin catholic_2_A = variants {};
 lin catholicism_N = variants {mkN {s = d40 "katolilaisuus"}; mkN "katolismi"};
 lin catholicity_1_N = mkN {s = d40 "katolisuus"};
 lin catholicity_2_N = mkN "yleismaailmallisuus";
-lin cathy_GN = variants {};
+lin cathy_GN = mkGN "Cathy" female; --guessed
 lin cation_N = mkN {s = d05 "kationi"};
 lin cationic_A = mkA "kationinen";
 lin catkin_N = mkN {s = d01A "urpu"};
@@ -16174,7 +16186,7 @@ lin celestial_1_A = mkA "taivaan-";
 lin celestial_2_A = mkA {s = d38 "taivaallinen"};
 lin celestial_3_A = mkA {s = d38 "taivaallinen"};
 lin celestite_N = mkN "selestiitti";
-lin celia_GN = variants {};
+lin celia_GN = mkGN "Celia" female; --guessed
 lin celiac_1_A = mkA "keliakia-";
 lin celiac_2_A = variants {mkA "vatsaontelon"; mkA "ontelo-"};
 lin celibacy_1_N = mkN {s = d40 "naimattomuus"};
@@ -16306,7 +16318,7 @@ lin centrality_N = mkN {s = d40 "keskeisyys"};
 lin centralization_1_N = mkN "keskittäminen";
 lin centralization_2_N = variants {mkN "keskittäminen"; mkN {s = d39 "keskitys"}};
 lin centralize_V2 = mkV2 (mkV {s = c53A "keskittää"});
-lin centre_1_N = variants {};
+lin centre_1_N = mkN "keskus"; --guessed
 lin centre_2_N = variants {mkN "keskipiste"; mkN {s = d13 "keskusta"}; mkN {s = d39 "keskus"}};
 lin centre_3_N = mkN "keskipiste";
 lin centre_4_N = variants {mkN "keskuspaikka"; mkN {s = d13 "keskusta"}; mkN {s = d39 "keskus"}};
@@ -16584,7 +16596,7 @@ lin challenge_5_N = mkN "tunnussanakehotus";
 lin challenge_V = mkV {s = c73 "jäävätä"};
 lin challenge_1_V2 = mkV2 (mkV {s = c61A "moittia"});
 lin challenge_2_V2 = mkV2 (mkV {s = c56 "haastaa"});
-lin challenge_3_V2 = variants {};   ---- vaatia tunnistusta
+lin challenge_3_V2 = mkV2 (mkV (mkV "pysäyttää") "ja kysyä papereita"); --guessed
 lin challenge_4_V2 = mkV2 (mkV {s = c73 "jäävätä"});
 lin challengeable_A = variants {mkA "kiistanalainen"; mkA "jäävi"};
 lin challengerMasc_N = mkN {s = d10 "haastaja"};
@@ -16824,7 +16836,7 @@ lin chard_2_N = mkN "lehtijuurikas";
 lin chard_LN = mkLN "Chard";
 lin charge_4_N = mkN {s = d39 "varaus"};
 lin charge_1_N = variants {mkN {s = d39 "rynnistys"}; mkN {s = d04A "rynnäkkö"}; mkN {s = d39 "hyökkäys"}};
-lin charge_of_N2 = variants {};
+lin charge_of_N2 = mkN2 (mkN "syytös") (casePrep elative);
 lin charge_3_N = variants {mkN {s = d09A "hinta"}; mkN {s = d09 "taksa"}; mkN {s = d01 "maksu"}};
 lin charge_5_N = mkN "huolenpito";
 lin charge_6_N = mkN {s = d10 "tehtävä"};
@@ -16844,9 +16856,9 @@ lin charge_4_V = mkV {s = c73A "rynnätä"};
 lin charge_7_VS = mkVS (mkV {s = c53A "väittää"});
 lin charge_13_V = variants {};   ---- mennä maata käskystä
 lin charge_19_V = variants {};   ---- antaa ohjeet valamiehistölle
-lin charge_with_5_V3 = variants {};
+lin charge_with_5_V3 = mkV3 (mkV "tehtävöittää") accusative (casePrep allative); --guessed
 lin charge_6_V2 = mkV2 (mkV {s = c53A "syyttää"});
-lin charge_8_V2 = variants {};   ---- ahtaa täyteen
+lin charge_8_V2 = mkV2 (mkV "lastata"); --guessed
 lin charge_9_V2 = mkV2 (mkV {s = c53A "veloittaa"});
 lin charge_10_V2 = mkV2 (mkV {s = c73 "määrätä"});
 lin charge_11_V2 = variants {};   ---- uskoa haltuun
@@ -16867,8 +16879,8 @@ lin charge_d'affairesMasc_N = variants {};
 lin charge_d'affairesFem_N = variants {};
 lin charge_off_V = variants {};
 lin charge_sheet_N = mkN "syytelomake";
-lin charge_up_with_V3 = variants {};
-lin charge_with_2_V3 = variants {};
+lin charge_up_with_V3 = mkV3 (mkV "kiihdyttää") accusative (casePrep elative); --guessed
+lin charge_with_2_V3 = mkV3 (mkV "syyttää") (casePrep partitive) (casePrep elative);
 lin charge_with_18_V3 = variants {};
 lin chargeable_A = mkA "vastuussa";
 lin charger_1_N = mkN "sotaratsu";
@@ -17077,7 +17089,7 @@ lin check_2_V = variants {mkV {s = c73A "tsekata"}; mkV {s = c53 "tarkistaa"}};
 lin check_8_V = mkV {s = c73 "täsmätä"};
 lin check_10_V = mkV {s = c53 "estää"};
 lin check_14_V = variants {};   ---- keskeyttää jahti ja etsiä heikompi saalis
-lin check_15_V = variants {};   ---- pysähtyä ja etsiä jälkiä
+lin check_15_V = mkV "pysähtyä"; --guessed
 lin check_16_V = mkV {s = c53A "ruuduttaa"};
 lin check_17_V = mkV {s = c52A "pidättyä"};
 lin check_20_V = variants {};   ---- asettaa sekki
@@ -17101,24 +17113,24 @@ lin check_20_V2 = variants {};   ---- asettaa sekki
 lin check_21_V2 = variants {mkV2 (mkV {s = c53 "tarkistaa"}); mkV2 (mkV {s = c73A "tsekata"})};
 lin check_22_V2 = variants {mkV2 (mkV {s = c73A "tsekata"}); mkV2 (mkV {s = c53 "tarkistaa"})};
 lin check_23_V2 = mkV2 (mkV {s = c53A "pysäyttää"});
-lin check_24_V2 = variants {};   ---- aiheuttaa särö
+lin check_24_V2 = mkV2 (mkV "säröttää"); --guessed
 lin check_back_V = variants {};
 lin check_by_V2 = variants {};
-lin check_for_V2 = variants {};
+lin check_for_V2 = mkV2 (mkV "epäröidä"); --guessed
 lin check_in_V = variants {};   ---- kirjautua sisään tehdä saapumisilmoitus tehdä lähtöselvitys
 lin check_in_V2 = variants {};   ---- kirjautua sisään tehdä saapumisilmoitus tehdä lähtöselvitys
 lin check_off_V2 = mkV2 (mkV {s = c53A "rastittaa"});
-lin check_on_V2 = variants {};
+lin check_on_V2 = mkV2 (mkV (mkV "käydä") "katsomassa"); --guessed
 lin check_out_2_V = variants {};   ---- kirjautua ulos
 lin check_out_6_V = variants {};   ---- kirjoittaa sekki
 lin check_out_1_V2 = variants {mkV2 (mkV {s = c73A "tsekata"}); mkV2 (mkV {s = c53 "tarkistaa"})};
 lin check_out_2_V2 = variants {};   ---- kirjautua ulos
 lin check_out_4_V2 = mkV2 (mkV {s = c53 "tarkistaa"});
-lin check_out_5_V2 = variants {};   ---- lyödä kassaan
+lin check_out_5_V2 = mkV2 (mkV "rahastaa"); --guessed
 lin check_out_6_V2 = variants {};   ---- kirjoittaa sekki
 lin check_out_of_V2 = variants {};
 lin check_through_V2 = variants {};
-lin check_with_V2 = variants {};
+lin check_with_V2 = mkV2 (mkV "täsmätä"); --guessed
 lin checkbook_N = mkN "sekkivihko";
 lin checkerMasc_1_N = variants {mkN "vaatesäilön hoitaja"; mkN "matkatavarasäilön hoitaja"}; --unchecked
 lin checkerFem_1_N = variants {mkN "vaatesäilön hoitaja"; mkN "matkatavarasäilön hoitaja"}; --unchecked
@@ -17424,7 +17436,7 @@ lin chilly_1_A = mkA {s = d10 "kylmä"};
 lin chilly_2_A = variants {mkA {s = d15 "kolea"}; mkA {s = d10 "jäätävä"}};
 lin chilly_3_A = variants {mkA {s = d10 "jäätävä"}; mkA {s = d15 "viileä"}};
 lin chilly_N = mkN "chilipaprika";
-lin chimaera_1_N = variants {};
+lin chimaera_1_N = mkN "khimaira"; --guessed
 lin chimaera_2_N = mkN "kauhukuva";
 lin chimaera_3_N = mkN "chimaera";
 lin chimariko_N = variants {} ;
@@ -17822,7 +17834,7 @@ lin christlike_A = mkA "Kristuksen kaltainen"; --unchecked
 lin christmas_1_N = mkN {s = d01 "joulu"};
 lin christmas_2_N = mkN {s = d01 "joulu"};
 lin christmas_box_N = variants {};
-lin christmas_tree_N = variants {};
+lin christmas_tree_N = mkN "joulukuusi";
 lin christmastide_N = mkN {s = d09A "joulunaika"};
 lin christmastime_N = mkN {s = d09A "joulunaika"};
 lin christopher_GN = mkGN "Kristoffer" male ;
@@ -17963,7 +17975,7 @@ lin chyliferous_A = mkA "maitiaisnestettä kuljettava"; --unchecked
 lin chylific_A = mkA "maitiaisnestettä tuottava"; --unchecked
 lin chylomicron_N = mkN "kylomikroni";
 lin chyme_N = mkN "ruokasula";
-lin cia_PN = variants {};
+lin cia_PN = mkPN "CIA"; --guessed
 lin cicada_N = variants {};
 lin cicatrice_N = mkN {s = d07A "arpi"};
 lin cicero_1_N = mkN {s = d02 "cicero"};
@@ -18066,7 +18078,7 @@ lin circularize_4_V2 = mkV2 (mkV {s = c53A "tiedottaa"});
 lin circularize_5_V2 = mkV2 (mkV {s = c53 "pyöristää"});
 lin circulate_1_V = mkV {s = c54A "kiertää"};
 lin circulate_4_V = mkV {s = c54A "kiertää"};
-lin circulate_6_V = variants {};   ---- liikkua vapaasti
+lin circulate_6_V = mkV "seurustella"; --guessed
 lin circulate_2_V2 = mkV2 (mkV {s = c66 "julkaista"});
 lin circulate_3_V2 = mkV2 (mkV {s = c67A "jaella"});
 lin circulate_5_V2 = mkV2 (mkV {s = c53A "kierrättää"});
@@ -18267,7 +18279,7 @@ lin clamp_1_V2 = mkV2 (mkV {s = c53 "puristaa"});
 lin clamp_2_V2 = mkV2 (mkV {s = c53A "pakottaa"});
 lin clamp_down_N = mkN {s = d39 "rajoitus"};
 lin clamp_down_V = variants {};
-lin clamp_down_on_V2 = variants {};
+lin clamp_down_on_V2 = mkV2 (mkV (mkV "puuttua") "ankarasti"); --guessed
 lin clamshell_1_N = mkN {s = d26 "simpukankuori"};
 lin clamshell_2_N = mkN "kahmarikauha";
 lin clan_N = mkN {s = d05 "klaani"};
@@ -18304,7 +18316,7 @@ lin clapper_3_N = mkN {s = d10A "läppä"};
 lin clapperboard_N = variants {mkN {s = d05 "klaffi"}; mkN "synkronilauta"};
 lin claptrap_N = variants {mkN {s = d05 "humpuuki"}; mkN "roskapuhe"; mkN "hölynpöly"};
 lin claque_N = mkN "palkatut taputtajat"; --unchecked
-lin clare_LN = variants {};
+lin clare_LN = mkLN "Clare"; --guessed
 lin clarence_N = mkN "nelipyöräiset umpivaunut"; --unchecked
 lin claret_1_N = mkN "purppuranpunainen";
 lin claret_2_N = mkN "punaviini";
@@ -18357,7 +18369,7 @@ lin class_fellowFem_N = mkN "luokkakaveri";
 lin class_list_N = mkN "luokituslista";
 lin class_warfare_N = mkN "luokkasota";
 lin classic_1_A = mkA {s = d38 "klassinen"};
-lin classic_2_A = variants {};
+lin classic_2_A = mkA "klassinen"; --guessed
 lin classic_3_A = variants {};
 lin classic_4_A = variants {};
 lin classic_1_N = mkN {s = d04A "klassikko"};
@@ -18366,9 +18378,9 @@ lin classicFem_2_N = mkN {s = d04A "klassikko"};
 lin classical_1_A = mkA {s = d38 "klassinen"};
 lin classical_2_A = mkA {s = d38 "klassinen"};
 lin classical_3_A = mkA {s = d38 "klassinen"};
-lin classical_4_A = variants {};
+lin classical_4_A = mkA "klassinen"; --guessed
 lin classical_5_A = variants {};
-lin classical_6_A = variants {};
+lin classical_6_A = mkA "klassinen"; --guessed
 lin classical_7_A = mkA {s = d38 "klassinen"};
 lin classicism_1_N = mkN "klassismi";
 lin classicistMasc_1_N = mkN "klassinen taiteilija"; --unchecked
@@ -18487,7 +18499,7 @@ lin clean_up_3_N = mkN {s = d40 "siivous"};
 lin clean_up_2_V = variants {};   ---- tehdä rahaa
 lin clean_up_3_V = mkV {s = c53A "selvittää"};
 lin clean_up_4_V = mkV {s = c52A "siistiytyä"};
-lin clean_up_1_V2 = variants {};   ---- korjata jälkensä
+lin clean_up_1_V2 = mkV2 (mkV "siivota"); --guessed
 lin clean_up_3_V2 = mkV2 (mkV {s = c53A "selvittää"});
 lin cleanable_A = variants {mkA "puhdistettavissa oleva"; mkA "puhdistettavissa"}; --unchecked
 lin cleaner_1_N = variants {mkN "puhdistusaine"; mkN {s = d33 "puhdistin"}};
@@ -18548,7 +18560,7 @@ lin clear_15_V2 = mkV2 (mkV {s = c61A "hankkia"});
 lin clear_16_V2 = variants {};   ---- myydä loppuun
 lin clear_17_V2 = variants {};   ---- päästä ohi
 lin clear_18_V2 = variants {mkV2 (mkV {s = c53A "vapauttaa"}); mkV2 (mkV {s = c53 "päästää"})};
-lin clear_19_V2 = variants {};   ---- saada maksetuksi
+lin clear_19_V2 = mkV2 (mkV "kuitata"); --guessed
 lin clear_20_V2 = mkV2 (mkV {s = c53 "kirkastaa"});
 lin clear_21_V2 = mkV2 (mkV {s = c54A "tyhjentää"});
 lin clear_22_V2 = mkV2 (mkV {s = c53 "poistaa"});
@@ -18597,7 +18609,7 @@ lin cleaver_N = mkN "lihakirves";
 lin cleavers_1_N = mkN "kierumatara";
 lin cleethorpes_LN = variants {};
 lin clef_N = mkN "nuottiavain";
-lin cleft_1_A = variants {};
+lin cleft_1_A = mkA "halkinainen"; --guessed
 lin cleft_2_A = mkA "halkaistu";
 lin cleft_1_N = mkN {s = d03 "halkio"};
 lin cleft_2_N = mkN {s = d10 "halkeama"};
@@ -18792,7 +18804,7 @@ lin cloak_1_N = mkN {s = d01 "verho"};
 lin cloak_2_N = mkN {s = d09A "viitta"};
 lin cloak_1_V2 = mkV2 (mkV {s = c53A "peittää"});
 lin cloak_2_V2 = variants {mkV2 (mkV {s = c52A "verhoutua"}); mkV2 (mkV {s = c74 "verhota"})};
-lin cloak_3_V2 = variants {};   ---- peittää kaavulla
+lin cloak_3_V2 = mkV2 (mkV "verhota"); --guessed
 lin cloakmakerMasc_N = mkN {s = d06 "räätäli"};
 lin cloakmakerFem_N = mkN {s = d06 "räätäli"};
 lin cloakroom_1_N = mkN {s = d05 "loosi"};
@@ -18866,7 +18878,7 @@ lin close_12_A = mkA "hyvin istuva"; --unchecked
 lin close_13_A = mkA "lyhyeksi ajeltu"; --unchecked
 lin close_14_A = mkA {s = d10 "nuuka"};
 lin close_15_A = mkA {s = d41 "vaitelias"};
-lin close_to_AdN = variants {};
+lin close_to_AdN = {s = "lähes"}; --guessed
 lin close_1_Adv = variants {mkAdv {s = c99 "liki"}; mkAdv {s = c99 "lähelle"}};
 lin close_2_Adv = mkAdv {s = c99 "tarkasti"};
 lin close_1_N = mkN {s = d01A "loppu"};
@@ -18904,7 +18916,7 @@ lin close_hauled_A = mkA "tiukasti hankavastaiseen"; --unchecked
 lin close_in_V2 = mkV2 (mkV {s = c62 "ympäröidä"});
 lin close_in_on_V2 = mkV2 (mkV {s = c57A "saartaa"});
 lin close_in_upon_V2 = variants {};
-lin close_on_V2 = variants {};
+lin close_on_V2 = mkV2 (mkV (mkV "saattaa") "päätökseen"); --guessed
 lin close_out_1_V2 = mkV2 (mkV {s = c53 "poistaa"});
 lin close_out_2_V2 = variants {};   ---- myydä loppuun
 lin close_out_3_V2 = mkV2 (mkV {s = c53A "lopettaa"});
@@ -18992,7 +19004,7 @@ lin cloud_8_V2 = mkV2 (mkV {s = c54A "samentaa"});
 lin cloud_bank_N = mkN "pilviverho";
 lin cloud_capped_A = variants {};
 lin cloud_cuckoo_land_N = mkN "satumaa";
-lin cloud_over_1_V = variants {};   ---- mennä pilveen
+lin cloud_over_1_V = mkV "pilvistyä"; --guessed
 lin cloud_over_2_V = mkV {s = c52 "pilvistyä"};
 lin cloudberry_N = mkN "suomuurain";
 lin cloudburst_N = mkN "kaatosade";
@@ -19433,7 +19445,7 @@ lin coffee_2_N = mkN {s = d05 "kahvi"};
 lin coffee_3_N = mkN {s = d05 "kahvi"};
 lin coffee_4_N = variants {mkN {s = d05 "kahvi"}; mkN "kahvinruskea"; mkN "kahvinväri"};
 lin coffee_house_N = mkN {s = d12 "kahvila"};
-lin coffee_maker_N = variants {} ;
+lin coffee_maker_N = mkN "kahvinkeitin"; --guessed
 lin coffee_mill_N = mkN "kahvimylly";
 lin coffee_stall_N = mkN "kahvikioski";
 lin coffeeberry_N = mkN "Rhamnus californicus"; --unchecked
@@ -19525,8 +19537,8 @@ lin coinage_1_N = mkN {s = d04A "kolikko"};
 lin coinage_2_N = mkN "sepitetty sana"; --unchecked
 lin coinage_3_N = mkN "sananmuodostus";
 lin coincide_1_V = variants {};   ---- osua yhteen
-lin coincide_2_V = variants {};   ---- sattua samalla hetkellä sattua samaan aikaan
-lin coincide_3_V = variants {};   ---- osua yhteen
+lin coincide_2_V = mkV (mkV "sattua") "samaan aikaan"; --guessed
+lin coincide_3_V = mkV "täsmätä"; --guessed
 lin coincidence_1_N = mkN "yhteensattuma";
 lin coincidence_2_N = mkN "yhteensattuma";
 lin coincidence_3_N = mkN "yhteensattuma";
@@ -19545,12 +19557,12 @@ lin coital_A = variants {mkA "yhdyntä-"; mkA "yhdynnän"};
 lin coition_N = variants {};
 lin coitus_N = variants {};
 lin coke_1_N = mkN {s = d05 "koksi"};
-lin coke_2_N = variants {};
+lin coke_2_N = mkN "kokis"; --guessed
 lin coke_3_N = variants {mkN "koka"; mkN {s = d05 "kokaiini"}};
 lin coke_V = mkV {s = c52A "koksiintua"};
 lin col_N = mkN {s = d10 "sola"};
 lin col_PN = variants {};
-lin cola_1_N = variants {};
+lin cola_1_N = mkN "koolapuu"; --guessed
 lin cola_2_N = variants {mkN "kolajuoma"; mkN {s = d10 "kola"}};
 lin colander_N = variants {mkN {s = d04A "lävikkö"}; mkN {s = d13 "siivilä"}};
 lin colchester_LN = variants {};
@@ -19589,8 +19601,8 @@ lin colin_GN = variants {};
 lin coliphage_N = mkN "koolifagi";
 lin colitis_N = variants {mkN "colitis"; mkN "koliitti"};
 lin coll_LN = variants {};
-lin collaborate_1_V = variants {};   ---- olla yhteistoiminnassa
-lin collaborate_2_V = variants {};   ---- olla yhteistoiminnassa
+lin collaborate_1_V = mkV (mkV "tehdä") "yhteistyötä";   ---- olla yhteistoiminnassa
+lin collaborate_2_V = mkV "kollaboroida"; --guessed
 lin collaboration_1_N = mkN "yhteistyö";
 lin collaboration_2_N = mkN "yhteistoiminta vihollisen kanssa"; --unchecked
 lin collaborationistMasc_N = mkN {s = d06 "kätyri"};
@@ -19618,7 +19630,7 @@ lin collapse_4_V = mkV {s = c52A "sortua"};
 lin collapse_6_V = mkV {s = c52A "sortua"};
 lin collapse_7_V = mkV {s = c52A "sortua"};
 lin collapse_2_V2 = variants {mkV2 (mkV {s = c53A "romahtaa"}); mkV2 (mkV {s = c52 "lyyhistyä"})};
-lin collapse_3_V2 = variants {};   ---- taittaa kokoon
+lin collapse_3_V2 = mkV2 (mkV (mkV "taittaa") "kokoon"); --guessed
 lin collapse_5_V2 = mkV2 (mkV {s = c53A "romauttaa"});
 lin collapse_6_V2 = mkV2 (mkV {s = c52A "sortua"});
 lin collapsible_A = mkA "kokoon taitettava"; --unchecked
@@ -19702,7 +19714,7 @@ lin collet_2_N = mkN {s = d05A "holkki"};
 lin collet_3_N = mkN "jalokiven kehys"; --unchecked
 lin collide_1_V = variants {};   ---- ottaa yhteen
 lin collide_3_V = variants {mkV {s = c62 "kolaroida"}; mkV {s = c73 "törmätä"}};
-lin collide_V2 = variants {};   ---- saada törmäämään
+lin collide_V2 = mkV2 (mkV "törmäyttää"); --guessed
 lin collider_N = mkN {s = d33A "törmäytin"};
 lin collie_N = mkN {s = d03 "collie"};
 lin collierMasc_N = mkN "hiilityöläinen";
@@ -20030,8 +20042,8 @@ lin come_off_it_V = variants {};
 lin come_on_1_N = variants {mkN {s = d02 "rohkaisu"}; mkN {s = d33A "houkutin"}};
 lin come_on_2_N = mkN {s = d33A "houkutin"};
 lin come_on_1_V = variants {};   ---- tulla esille
-lin come_on_2_V = variants {};   ---- tulla lähelle
-lin come_on_5_V = variants {};   ---- saada taas käyttöön
+lin come_on_2_V = mkV "lähestyä"; --guessed
+lin come_on_5_V = mkV "palata"; --guessed
 lin come_out_1_V = mkV {s = c52A "ilmaantua"};
 lin come_out_2_V = mkV {s = c52 "ilmestyä"};
 lin come_out_3_V = mkV {s = c52 "ilmestyä"};
@@ -20050,9 +20062,9 @@ lin come_through_3_V2 = mkV2 (mkV {s = c52A "selviytyä"});
 lin come_to_4_V = variants {};   ---- palata tajuihinsa
 lin come_to_1_V2 = mkV2 (mkV {s = c53A "tupsahtaa"});
 lin come_to_3_V2 = variants {};   ---- saada kiinni
-lin come_to_VP = variants {};
-lin come_to_adj_VP = variants {};
-lin come_under_V2 = variants {};
+lin come_to_VP v = Synt.mkVP v;
+lin come_to_adj_VP a v = Synt.mkVP v;
+lin come_under_V2 = mkV2 (mkV "joutua") (postGenPrep "kohteeksi"); --guessed
 lin come_up_1_V = mkV {s = c53A "esittää"};
 lin come_up_2_V = mkV {s = c52A "syntyä"};
 lin come_up_3_V = mkV {s = c52 "lähestyä"};
@@ -20068,7 +20080,7 @@ lin come_up_12_V = variants {};   ---- tulla esiin
 lin come_up_against_V2 = variants {};
 lin come_up_to_V2 = mkV2 (mkV {s = c52 "lähestyä"});
 lin come_up_with_V2 = variants {};
-lin come_upon_2_V2 = variants {};   ---- ottaa haltuun
+lin come_upon_2_V2 = mkV2 (mkV (mkV "saada") "haltuunsa"); --guessed
 lin come_with_V2 = variants {};   ---- tulla mukana
 lin comeback_1_N = mkN "iskevä vastaus"; --unchecked
 lin comeback_2_N = mkN {s = d17 "paluu"};
@@ -20133,7 +20145,7 @@ lin coming_4_N = mkN "laukeaminen";
 lin comity_N = variants {mkN "keskinäinen kunnioitus"; mkN {s = d01A "sopu"}}; --unchecked
 lin comma_1_N = mkN {s = d01A "pilkku"};
 lin comma_2_N = mkN "herukkaperhonen";
-lin comma_Conj = variants {};
+lin comma_Conj = mkConj "," "" plural; --guessed
 lin command_1_N = mkN {s = d01 "käsky"};
 lin command_2_N = mkN {s = d02 "osasto"};
 lin command_3_N = mkN "käskyvalta";
@@ -20218,7 +20230,7 @@ lin commercial_3_A = mkA "kauppa-";
 lin commercial_N = mkN {s = d39 "mainos"};
 lin commercialism_N = mkN "kaupankäynti";
 lin commercialization_1_N = mkN "kaupallistaminen";
-lin commercialize_1_V2 = variants {};   ---- yrittää saada mahdollisimman paljon voittoa
+lin commercialize_1_V2 = mkV2 (mkV "kaupallistaa"); --guessed
 lin commercialize_2_V2 = mkV2 (mkV {s = c53 "kaupallistaa"});
 lin commination_1_N = variants {mkN {s = d39 "rukous"}; mkN "commination"};
 lin commination_2_N = mkN "Jumalan koston uhka"; --unchecked
@@ -20469,7 +20481,7 @@ lin compatible_N = variants {};
 lin compatriotFem_N = mkN "maanmies";
 lin compatriotMasc_N = mkN "maanmies";
 lin compeer_N = mkN "vertainen";
-lin compel_2_V2 = variants {};   ---- ajaa tekemään
+lin compel_2_V2 = mkV2 (mkV "pakottaa"); --guessed
 lin compel_1_V2V = mkV2V (mkV {s = c53A "pakottaa"});
 lin compelling_1_A = mkA "pakottava";
 lin compelling_2_A = mkA {s = d10 "vakuuttava"};
@@ -20558,7 +20570,7 @@ lin completeness_2_N = mkN {s = d40 "täydellisyys"};
 lin completion_1_N = mkN "onnistunut eteenpäinsyöttö"; --unchecked
 lin completion_2_N = mkN "loppuun saattaminen"; --unchecked
 lin complex_1_A = mkA "monimutkainen";
-lin complex_2_A = variants {};
+lin complex_2_A = mkA "monimutkainen"; --guessed
 lin complex_1_N = mkN {s = d05 "kompleksi"};
 lin complex_2_N = mkN {s = d05 "kompleksi"};
 lin complex_3_N = mkN {s = d05 "kompleksi"};
@@ -20658,7 +20670,7 @@ lin comprehensiveness_1_N = mkN "kokonaisvaltaisuus";
 lin comprehensiveness_2_N = mkN "laaja-alaisuus";
 lin compress_N = mkN {s = d05 "kompressi"};
 lin compress_1_V2 = variants {mkV2 (mkV "kompressoida"); mkV2 (mkV {s = c73A "pakata"})};
-lin compress_2_V2 = variants {};   ---- puristaa yhteen
+lin compress_2_V2 = mkV2 (mkV (mkV "puristaa") "kasaan"); --guessed
 lin compressibility_N = mkN {s = d40 "puristuvuus"};
 lin compressible_1_A = mkA "kokoon puristettavissa oleva"; --unchecked
 lin compressible_2_A = mkA "kokoon puristettavissa oleva"; --unchecked
@@ -20749,7 +20761,7 @@ lin concede_3_V2 = mkV2 (mkV {s = c53A "luovuttaa"});
 lin concede_1_VS = mkV {s = c53 "tunnustaa"};
 lin concede_2_VS = variants {};   ---- antaa myöten
 lin concede_3_VS = mkV {s = c53A "luovuttaa"};
-lin concede_4_V = variants {};   ---- myöntää vastustajan vaalivoitto
+lin concede_4_V = mkV (mkV "myöntää") "tappionsa"; --guessed
 lin conceit_1_N = mkN {s = d40 "omahyväisyys"};
 lin conceit_2_N = mkN "mielijohde";
 lin conceit_3_N = mkN {s = d40 "sukkeluus"};
@@ -20809,7 +20821,7 @@ lin concern_2_V2 = mkV2 (mkV {s = c53A "huolestuttaa"});
 lin concerned_1_A = variants {mkA "huolestunut"; mkA {s = d38 "huolehtivainen"}};
 lin concerned_2_A = mkA "asianomainen";
 lin concerned_3_A = mkA "sekaantunut";
-lin concerning_Prep = variants {};
+lin concerning_Prep = postGenPrep "koskien"; --guessed
 lin concert_N = mkN {s = d05A "konsertti"};
 lin concert_1_V2 = variants {};   ---- sopia yhdessä
 lin concert_2_V2 = mkV2 (mkV {s = c61A "sopia"});
@@ -20919,7 +20931,7 @@ lin concussion_2_N = variants {mkN {s = d01 "isku"}; mkN "kova isku"}; --uncheck
 lin condemn_1_V2 = variants {mkV2 (mkV {s = c52 "paheksua"}); mkV2 (mkV {s = c69 "tuomita"})};
 lin condemn_2_V2 = mkV2 (mkV {s = c69 "tuomita"});
 lin condemn_3_V2 = mkV2 (mkV {s = c69 "tuomita"});
-lin condemn_4_V2 = variants {};   ---- paljastaa syylliseksi
+lin condemn_4_V2 = mkV2 (mkV (mkV "osoittaa") "syylliseksi"); --guessed
 lin condemn_5_V2 = mkV2 (mkV {s = c69 "tuomita"});
 lin condemn_6_V2 = variants {};   ---- julistaa menetetyksi
 lin condemnable_A = mkA "tuomittava";
@@ -21161,13 +21173,13 @@ lin conflict_4_N = mkN "ristiriita";
 lin conflict_5_N = mkN "ristiriita";
 lin conflict_6_N = mkN "ristiriita";
 lin conflict_7_N = mkN {s = d05 "konflikti"};
-lin conflict_1_V = variants {};   ---- olla ristiriidassa
+lin conflict_1_V = mkV (mkV "olla") "ristiriidassa"; --guessed
 lin conflict_2_V = variants {};   ---- olla ristiriidassa
 lin confluence_1_N = mkN {s = d10A "yhtymäkohta"};
 lin confluence_2_N = mkN "yhteen virtaaminen"; --unchecked
 lin confluence_3_N = mkN "väentungos";
 lin confluent_A = mkA "yhtyvä";
-lin conform_1_V = variants {};   ---- olla yhdenmukainen
+lin conform_1_V = mkV "vastata"; --guessed
 lin conform_2_V = mkV {s = c52A "mukautua"};
 lin conform_1_V2 = variants {};   ---- olla yhdenmukainen
 lin conformable_1_A = mkA "mukautuva";
@@ -21191,7 +21203,7 @@ lin confounding_A = mkA "hämmentävä";
 lin confrere_N = variants {};
 lin confront_1_V2 = mkV2 (mkV {s = c73A "kohdata"});
 lin confront_2_V2 = mkV2 (mkV {s = c73A "kohdata"});
-lin confront_3_V2 = variants {};
+lin confront_3_V2 = mkV2 (mkV "konfrontoida"); --guessed
 lin confront_4_V2 = mkV2 (mkV {s = c73A "kohdata"});
 lin confrontation_1_N = mkN "konfrontaatio";
 lin confrontation_2_N = mkN "vastakkain asettelu"; --unchecked
@@ -21279,7 +21291,7 @@ lin congregation_2_N = mkN "väkijoukko";
 lin congregation_3_N = mkN "kokoontuminen";
 lin congregational_1_A = variants {mkA "seurakunnan"; mkA "seurakunta-"; mkA "seurakunnallinen"};
 lin congregational_2_A = variants {};
-lin congress_1_N = variants {};
+lin congress_1_N = mkN "kongressi"; --guessed
 lin congress_2_N = mkN {s = d05 "kongressi"};
 lin congress_3_N = variants {mkN {s = d05 "kongressi"}; mkN "eduskunta"};
 lin congress_4_N = mkN "sukupuoliyhteys";
@@ -21483,7 +21495,7 @@ lin conservation_3_N = mkN {s = d40 "häviämättömyys"};
 lin conservatism_1_N = mkN {s = d05 "konservatismi"};
 lin conservativeMasc_1_N = mkN {s = d05 "konservatiivi"};
 lin conservativeFem_1_N = mkN {s = d05 "konservatiivi"};
-lin conservativeMasc_2_N = variants {};
+lin conservativeMasc_2_N = mkN "konservatiivi"; --guessed
 lin conservativeFem_2_N = variants {};
 lin conservative_1_A = mkA {s = d38 "konservatiivinen"};
 lin conservative_2_A = mkA {s = d38 "konservatiivinen"};
@@ -21507,7 +21519,7 @@ lin consett_LN = variants {};
 lin consider_6_V = mkV {s = c53A "pitää"};
 lin consider_7_V = mkV {s = c67 "tarkastella"};
 lin consider_2_V2 = mkV2 (mkV {s = c61A "miettiä"});
-lin consider_3_V2 = variants {};   ---- ottaa tarkasteltavaksi
+lin consider_3_V2 = mkV2 (mkV "harkita");   ---- ottaa tarkasteltavaksi
 lin consider_5_V2 = mkV2 (mkV {s = c69 "harkita"});
 lin consider_7_V2 = mkV2 (mkV {s = c67 "tarkastella"});
 lin consider_8_V2 = mkV2 (mkV {s = c67 "tarkastella"});
@@ -21711,9 +21723,9 @@ lin consulate_N = mkN {s = d05A "konsulaatti"};
 lin consulship_N = mkN "konsulin asema"; --unchecked
 lin consult_1_V = variants {};   ---- pyytää neuvoa
 lin consult_3_V = mkV {s = c67A "neuvotella"};
-lin consult_4_V = variants {};   ---- toimia neuvonantajana
-lin consult_1_V2 = variants {};   ---- pyytää neuvoa
-lin consult_2_V2 = variants {};   ---- katsoa jstak
+lin consult_4_V = mkV "konsultoida"; --guessed
+lin consult_1_V2 = mkV2 (mkV "konsultoida");   ---- pyytää neuvoa
+lin consult_2_V2 = mkV2 (mkV "konsultoida"); --guessed
 lin consultancy_N = mkN {s = d05A "konsultointi"};
 lin consultantMasc_N = mkN {s = d05A "konsultti"};
 lin consultantFem_N = mkN {s = d05A "konsultti"};
@@ -21758,7 +21770,7 @@ lin contact_6_N = mkN {s = d05 "kontakti"};
 lin contact_7_N = mkN {s = d33A "kosketin"};
 lin contact_8_N = variants {mkN {s = d39 "kosketus"}; mkN "yhteydenotto"};
 lin contact_9_N = mkN "piilolinssi";
-lin contact_1_V2 = variants {};   ---- ottaa yhteys olla yhteydessä ottaa yhteyttä
+lin contact_1_V2 = mkV2 (mkV (mkV "ottaa") "yhteyttä"); --guessed
 lin contact_2_V2 = mkV2 (mkV {s = c53A "koskettaa"});
 lin contadinoMasc_N = mkN "contadino";
 lin contadinoFem_N = mkN "contadino";
@@ -21871,7 +21883,7 @@ lin continent_1_A = mkA "pidätyskykyinen";
 lin continent_2_A = mkA {s = d38 "pidättyväinen"};
 lin continent_1_N = mkN {s = d49A "manner"};
 lin continent_2_N = variants {};
-lin continental_1_A = variants {};
+lin continental_1_A = mkA "mannermainen"; --guessed
 lin continental_2_A = mkA "vapaussodan aikainen"; --unchecked
 lin continental_3_A = variants {mkA "manner-"; mkA "mannermainen"};
 lin continental_4_A = mkA "manner-";
@@ -22012,7 +22024,7 @@ lin contrast_2_N = mkN {s = d02 "vertailu"};
 lin contrast_3_N = mkN {s = d05 "kontrasti"};
 lin contrast_4_N = mkN {s = d05 "kontrasti"};
 lin contrast_5_N = mkN {s = d05 "kontrasti"};
-lin contrast_2_V = variants {};   ---- erota jyrkästi
+lin contrast_2_V = mkV (mkV "muodostaa") "vastakohta"; --guessed
 lin contrast_1_V2 = mkV2 (mkV {s = c73A "verrata"});
 lin contrastingly_Adv = variants {mkAdv "vastakohtaisesti"; mkAdv "vastakohtana"};
 lin contrastive_1_A = mkA "vastakohtainen";
@@ -22023,7 +22035,7 @@ lin contravene_1_V2 = mkV2 (mkV {s = c73A "loukata"});
 lin contravene_2_V2 = mkV2 (mkV {s = c53 "vastustaa"});
 lin contravention_N = mkN {s = d02 "väittely"};
 lin contretemps_N = mkN {s = d39 "kömmähdys"};
-lin contribute_1_V = variants {};   ---- vaikuttaa osaltaan antaa oma lisänsä
+lin contribute_1_V = mkV "myötävaikuttaa"; --guessed
 lin contribute_2_V = variants {};   ---- antaa avustuksena
 lin contribute_3_V = mkV "myötävaikuttaa";
 lin contribute_1_V2 = variants {};   ---- vaikuttaa osaltaan antaa oma lisänsä
@@ -22508,7 +22520,7 @@ lin core_7_N = mkN "pääsisältö";
 lin core_8_N = mkN {s = d33A "ydin"};
 lin core_9_N = mkN {s = d33A "ydin"};
 lin core_10_N = mkN "kaapelin säikeistö"; --unchecked
-lin core_V2 = variants {};   ---- poistaa sisus
+lin core_V2 = mkV2 (mkV (mkV "poistaa") "siemenkota"); --guessed
 lin coreference_N = mkN "samaviitteisyys";
 lin coreferent_A = mkA "samaviitteinen";
 lin coreferential_A = mkA "koreferenssi-";
@@ -22868,7 +22880,7 @@ lin cost_up_V2 = variants {};
 lin costa_1_N = mkN "costa";
 lin costa_2_N = mkN "costa";
 lin costa_rica_LN = mkLN "Costa Rica" ;
-lin costa_rican_A = variants {};
+lin costa_rican_A = mkA "costaricalainen"; --guessed
 lin costa_ricanMasc_N = variants {};
 lin costa_ricanFem_N = variants {};
 lin costal_A = variants {mkA "kylkiluu-"; mkA "kylkiluun"};
@@ -22955,7 +22967,7 @@ lin couchette_N = mkN "makuuvaunu";
 lin cougar_N = mkN {s = d10 "puuma"};
 lin cough_N = variants {mkN {s = d10 "yskä"}; mkN {s = d39 "yskähdys"}};
 lin cough_V = variants {mkV {s = c61 "köhiä"}; mkV {s = c61 "yskiä"}};
-lin cough_up_1_V2 = variants {};   ---- joutua maksamaan
+lin cough_up_1_V2 = mkV2 (mkV "pulittaa"); --guessed
 lin cough_up_2_V2 = mkV2 (mkV {s = c61 "yskiä"});
 lin coulisse_1_N = mkN {s = d05 "kulissi"};
 lin coulisse_2_N = variants {mkN {s = d01 "kouru"}; mkN {s = d01 "kisko"}};
@@ -22994,7 +23006,7 @@ lin count_4_V = mkV {s = c58 "laskea"};
 lin count_7_V = mkV {s = c58 "laskea"};
 lin count_1_V2 = mkV2 (mkV {s = c58 "laskea"});
 lin count_3_V2 = variants {};   ---- ottaa lukuun
-lin count_5_V2 = variants {};   ---- laskea mukaan
+lin count_5_V2 = mkV2 (mkV "lukea"); --guessed
 lin count_6_V2 = variants {};   ---- ottaa lukuun
 lin count_against_V2 = variants {};
 lin count_among_V2 = variants {};
@@ -23003,7 +23015,7 @@ lin count_for_V2 = variants {};
 lin count_in_V2 = variants {};
 lin count_off_V2 = variants {};   ---- luetella numeroita
 lin count_on_1_V2 = variants {};   ---- luottaa jhk
-lin count_on_9_V2 = variants {};
+lin count_on_9_V2 = mkV2 (mkV (mkV "ottaa") "huomioon"); --guessed
 lin count_on_V2 = variants {};
 lin count_out_V2 = variants {};   ---- julistaa häviäjä
 lin count_towards_V2 = variants {};
@@ -23141,7 +23153,7 @@ lin countervail_2_V2 = variants {};   ---- toimia vastapainona
 lin counterweight_N = mkN "vastapaino";
 lin countess_N = mkN {s = d32A "kreivitär"};
 lin counting_house_N = mkN {s = d06 "konttori"};
-lin countless_ACard = variants {}; -- ylinumeroituva; lukematon
+lin countless_ACard = acardStr "lukematon" plural; --guessed
 lin countrified_1_A = variants {mkA "maalaistunut"; mkA {s = d38 "takapajuinen"}};
 lin country_1_N = mkN "maa" ;
 lin country_2_N = mkN {s = d18 "maa"};
@@ -23198,7 +23210,7 @@ lin course_7_N = mkN "ruokalaji";
 lin course_8_N = variants {mkN {s = d39 "kerros"}; mkN "tiilivarvi"};
 lin course_9_N = variants {mkN {s = d10A "kenttä"}; mkN {s = d09A "rata"}};
 lin course_V = mkV {s = c73A "virrata"};
-lin course_1_V2 = variants {};   ---- kiitää yli kiitää läpi
+lin course_1_V2 = mkV2 (mkV "halkoa"); --guessed
 lin course_3_V2 = mkV2 (mkV {s = c56 "ajaa"});
 lin courserMasc_1_N = mkN "ajavan koiran avulla metsästävä"; --unchecked
 lin courserFem_1_N = mkN "ajavan koiran avulla metsästävä"; --unchecked
@@ -23574,7 +23586,7 @@ lin crank_3_V2 = mkV2 (mkV {s = c73 "veivata"});
 lin crank_4_V2 = variants {};   ---- kiinnittää kammella
 lin crank_5_V2 = variants {};   ---- taivuttaa polvelle
 lin crank_out_V2 = mkV2 (mkV {s = c54A "suoltaa"});
-lin crank_up_1_V2 = variants {};   ---- vääntää moottori käyntiin
+lin crank_up_1_V2 = mkV2 (mkV (mkV "kammeta") "käyntiin"); --guessed
 lin crank_up_2_V2 = variants {};   ---- kiertää kampea
 lin crankcase_N = mkN "kampikammio";
 lin crankiness_N = mkN {s = d40 "omituisuus"};
@@ -23823,7 +23835,7 @@ lin crenelation_2_N = mkN "ampuma-aukoilla varustettujen linnoitusten rakentamin
 lin crenellated_A = variants {};
 lin crenulate_1_A = mkA "nyhälaitainen";
 lin creole_1_A = variants {};
-lin creole_2_A = variants {};
+lin creole_2_A = mkA "kreoli-"; --guessed
 lin creoleMasc_1_N = variants {};
 lin creoleFem_1_N = variants {};
 lin creoleMasc_2_N = variants {};
@@ -23971,7 +23983,7 @@ lin crispness_2_N = mkN {s = d40 "terävyys"};
 lin crispness_3_N = mkN "haperuus";
 lin criss_cross_1_V2 = variants {};   ---- kulkea ristiin rastiin
 lin criss_cross_2_V2 = variants {};   ---- kulkea ristiin rastiin
-lin criss_cross_3_V2 = variants {};   ---- vetää viivaa ristiin rastiin
+lin criss_cross_3_V2 = mkV2 (mkV "ristiä"); --guessed
 lin crisscross_A = mkA "ristikko-";
 lin crisscross_Adv = mkAdv {s = c99 "ristikkäin"};
 lin crisscross_N = mkN {s = d05 "rasti"};
@@ -24121,7 +24133,7 @@ lin cross_grained_1_A = mkA {s = d01 "häijy"};
 lin cross_grained_2_A = mkA "kierokasvuinen";
 lin cross_heading_N = mkN "väliotsikko";
 lin cross_index_N = mkN "ristiviittaus";
-lin cross_index_V2 = variants {};   ---- tehdä ristiviittaus
+lin cross_index_V2 = mkV2 (mkV "ristiinviitata"); --guessed
 lin cross_legged_Adv = variants {mkAdv "jalat ristissä"; mkAdv "risti-istunnassa"};
 lin cross_off_V2 = mkV2 (mkV {s = c53 "poistaa"});
 lin cross_out_V2 = mkV2 (mkV {s = c53 "poistaa"});
@@ -24232,14 +24244,14 @@ lin crowberry_N = mkN "variksenmarja";
 lin crowborough_LN = variants {};
 lin crowd_1_N = mkN {s = d01A "joukko"};
 lin crowd_2_N = mkN {s = d14A "porukka"};
-lin crowd_3_N = variants {};
+lin crowd_3_N = mkN "joukko";
 lin crowd_1_V2 = variants {};   ---- kerätä yhteen
 lin crowd_2_V2 = mkV2 (mkV {s = c52A "ahtautua"});
 lin crowd_3_V2 = mkV2 (mkV {s = c52A "kerääntyä"});
 lin crowd_4_V2 = mkV2 (mkV {s = c52A "lähentyä"});
 lin crowded_A = mkA "täpötäysi";
 lin crowding_N = mkN {s = d39 "tungos"};
-lin crown_1_N = variants {};
+lin crown_1_N = mkN "kruunu"; --guessed
 lin crown_2_N = mkN "hampaanterä";
 lin crown_3_N = mkN "voitonseppele";
 lin crown_4_N = mkN {s = d01 "kruunu"};
@@ -24305,7 +24317,7 @@ lin cruise_1_V = mkV {s = c67 "ajella"};
 lin cruise_2_V = variants {};   ---- kulkea matkanopeudella
 lin cruise_4_V = variants {mkV {s = c67 "risteillä"}; mkV "huvimatkailla"};
 lin cruise_1_V2 = mkV2 (mkV {s = c67 "ajella"});
-lin cruise_3_V2 = variants {};   ---- etsiskellä seksipartneria
+lin cruise_3_V2 = mkV2 (mkV "cruisata"); --guessed
 lin cruise_4_V2 = mkV2 (variants {mkV {s = c67 "risteillä"}; mkV "huvimatkailla"});
 lin cruiser_1_N = mkN "poliisin partioauto"; --unchecked
 lin cruiser_2_N = mkN {s = d12 "risteilijä"};
@@ -24482,7 +24494,7 @@ lin cubeb_1_N = mkN "kubebapippuri";
 lin cubeb_2_N = mkN "kubebapippuri";
 lin cubeb_3_N = mkN "kubebapippuria sisältävä savuke"; --unchecked
 lin cubelike_A = mkA "kuutiomainen";
-lin cubic_1_A = variants {};
+lin cubic_1_A = mkA "kolmannen asteen"; --guessed
 lin cubic_2_A = mkA "kuutio-";
 lin cubical_A = mkA "kuutiomainen";
 lin cubicity_N = mkN {s = d40 "kuutiomaisuus"};
@@ -24906,7 +24918,7 @@ lin cut_19_N = mkN {s = d39 "leikkaus"};
 lin cut_20_N = mkN {s = d39 "pinnaus"};
 lin cut_3_V = variants {};   ---- kulkea poikki
 lin cut_4_V = mkV {s = c73A "leikata"};
-lin cut_14_V = variants {};   ---- muuttaa äkkiä suuntaa
+lin cut_14_V = mkV "iskeä"; --guessed
 lin cut_15_V = mkV {s = c66 "oikaista"};
 lin cut_17_V = mkV {s = c73A "leikata"};
 lin cut_24_V = mkV {s = c73A "leikata"};
@@ -24925,7 +24937,7 @@ lin cut_10_V2 = mkV2 (mkV {s = c73A "leikata"});
 lin cut_11_V2 = variants {mkV2 (mkV {s = c73 "pinnata"}); mkV2 (mkV {s = c73 "lintsata"})};
 lin cut_12_V2 = mkV2 (mkV {s = c73 "pärjätä"});
 lin cut_13_V2 = mkV2 (mkV {s = c53A "vaikuttaa"});
-lin cut_16_V2 = variants {};   ---- kulkea läpi kulkea yli
+lin cut_16_V2 = mkV2 (mkV "halkoa"); --guessed
 lin cut_18_V2 = mkV2 (mkV {s = c73A "leikata"});
 lin cut_19_V2 = mkV2 (mkV {s = c53A "levyttää"});
 lin cut_20_V2 = mkV2 (mkV {s = c54A "tallentaa"});
@@ -24970,7 +24982,7 @@ lin cut_in_5_V2 = mkV2 (mkV {s = c73 "lisätä"});
 lin cut_in_on_V2 = variants {};
 lin cut_it_out_V2 = variants {};
 lin cut_off_1_V2 = mkV2 (mkV {s = c66 "katkaista"});
-lin cut_off_3_V2 = variants {};   ---- leikata pois
+lin cut_off_3_V2 = mkV2 (mkV (mkV "leikata") "irti"); --guessed
 lin cut_off_4_V2 = mkV2 (mkV {s = c53A "pysäyttää"});
 lin cut_off_5_V2 = variants {};   ---- leikata irti
 lin cut_off_6_V2 = mkV2 (mkV {s = c66 "katkaista"});
@@ -25075,12 +25087,12 @@ lin cyberpunkFem_1_N = mkN {s = d06 "krakkeri"};
 lin cyberpunkMasc_2_N = mkN "kyberpunkin kirjoittaja"; --unchecked
 lin cyberpunkFem_2_N = mkN "kyberpunkin kirjoittaja"; --unchecked
 lin cyberpunk_3_N = variants {mkN "cyberpunk"; mkN "kyberpunk"};
-lin cybersex_N = variants {mkN "verkkoseksi"; mkN "kyberseksi"};
+lin cybersex_N = mkN "kyberseksi";
 lin cyborgMasc_N = mkN {s = d05 "kyborgi"};
 lin cyborgFem_N = mkN {s = d05 "kyborgi"};
 lin cycad_N = mkN "käpypalmu";
 lin cyclades_LN = mkLN "Kykladi" plural ;
-lin cyclamen_N = variants {mkN "alppiorvokki"; mkN {s = d06 "syklaami"}};
+lin cyclamen_N = mkN {s = d06 "syklaami"};
 lin cycle_1_N = mkN {s = d05 "sykli"};
 lin cycle_2_N = mkN {s = d10 "sikermä"};
 lin cycle_3_N = mkN {s = d05 "sykli"};
@@ -25365,7 +25377,7 @@ lin damage_5_N = mkN {s = d01A "vahinko"};
 lin damage_V = mkV {s = c52A "vahingoittua"};
 lin damage_V2 = variants {mkV2 (mkV {s = c53A "vaurioittaa"}); mkV2 (mkV {s = c53A "vahingoittaa"})};
 lin damages_N = variants {mkN {s = d39 "hyvitys"}; mkN "vahingonkorvaus"};
-lin damaging_to_A2 = variants {};
+lin damaging_to_A2 = mkA2 "vahingollinen" (casePrep allative); --guessed
 lin damaging_A = mkA {s = d38 "vahingollinen"};
 lin damascene_1_A = variants {mkA "Damaskoksen"; mkA "damaskolais-"};
 lin damascene_2_A = mkA "damaskoitu";
@@ -25424,7 +25436,7 @@ lin damsel_1_N = variants {mkN {s = d05A "neiti"}; mkN {s = d38 "neitonen"}};
 lin damselfish_N = mkN "damselfish";
 lin damselfly_N = mkN "hentosudenkorento";
 lin damson_N = mkN {s = d01 "luumu"};
-lin dan_GN = variants {};
+lin dan_GN = mkGN "Dan" male; --guessed
 lin danaid_N = mkN "Danainae";
 lin dance_1_N = mkN {s = d05 "tanssi"};
 lin dance_2_N = mkN "tanssiaisväki";
@@ -25474,7 +25486,7 @@ lin danish_2_N = variants {};
 lin danish_A = variants {mkA "Tanskan"; mkA "tanskalainen"};
 lin dank_A = variants {mkA {s = d15 "nihkeä"}; mkA {s = d15 "kostea"}};
 lin dankness_N = mkN "kylmänkosteus";
-lin danny_GN = variants {};
+lin danny_GN = mkGN "Danny" male; --guessed
 lin danse_macabre_N = mkN "danse macabre"; --unchecked
 lin danseur_N = mkN "balettitanssija";
 lin danube_LN = mkLN "Tonava" ;
@@ -25681,7 +25693,7 @@ lin day_boarderMasc_N = mkN "päiväoppilas";
 lin day_boarderFem_N = mkN "päiväoppilas";
 lin day_labourerMasc_N = mkN "päivätyöläinen";
 lin day_labourerFem_N = mkN "päivätyöläinen";
-lin day_off_CN = variants {};   ---- vapaapäivä
+lin day_off_CN = Synt.mkCN (mkN "vapaapäivä"); --guessed
 lin day_return_N = mkN "päivälippu";
 lin day_school_1_N = mkN "päiväkoulu";
 lin day_school_2_N = mkN "päiväkoulu";
@@ -25723,7 +25735,7 @@ lin dazzling_1_A = mkA "häikäisevä";
 lin dazzling_2_A = mkA "häikäisevä";
 lin ddt_N = variants {};
 lin de_emphasize_1_V2 = variants {};   ---- jättää taka-alalle
-lin de_escalate_1_V = variants {};   ---- vähentää asteittain
+lin de_escalate_1_V = mkV "lientyä"; --guessed
 lin de_escalate_2_V2 = mkV2 (mkV {s = c54A "heikentää"});
 lin de_escalation_N = mkN "asteittainen vähentäminen"; --unchecked
 lin de_facto_A = variants {mkA "tosiasiallinen"; mkA "de facto"};
@@ -25808,7 +25820,7 @@ lin deafness_N = variants {mkN "kuulovammaisuus"; mkN {s = d40 "kuurous"}};
 lin deal_Adv = variants {};
 lin deal_1_N = mkN {s = d09A "kauppa"};
 lin deal_2_N = variants {mkN {s = d39 "sopimus"}; mkN "diili"; mkN {s = d09A "kauppa"}};
-lin deal_of_N2 = variants {};
+lin deal_of_N2 = mkN2 (mkN "määrä") (casePrep partitive);
 lin deal_4_N = variants {mkN "kuusilankku"; mkN "mäntylankku"};
 lin deal_5_N = variants {mkN "mäntypuutavara"; mkN "kuusipuutavara"};
 lin deal_6_N = mkN {s = d01A "jako"};
@@ -25896,7 +25908,7 @@ lin deathlike_A = variants {mkA "kuolemankaltainen"; mkA "kuoleman kaltainen"}; 
 lin deathly_1_A = mkA "kuolemankaltainen";
 lin deathly_2_A = mkA {s = d10 "kuolettava"};
 lin deathly_1_AdA = mkAdA "kuoleman-";
-lin deathly_2_AdA = variants {};
+lin deathly_2_AdA = mkAdA "kuolettavan"; --guessed
 lin deathtrap_N = mkN "kuolemanloukku";
 lin deb_N = mkN {s = d05A "debytantti"};
 lin debacle_N = variants {};
@@ -25965,7 +25977,7 @@ lin debugger_N = mkN "debuggeri";
 lin debunk_V2 = mkV2 (mkV {s = c53A "romuttaa"});
 lin debut_2_N = mkN {s = d05A "debyytti"};
 lin debut_1_N = mkN {s = d01A "alku"};
-lin debut_1_V2 = variants {};   ---- esittää ensi kertaa
+lin debut_1_V2 = mkV2 (mkV (mkV "esittää") "ensi kerran"); --guessed
 lin debut_2_V2 = mkV2 (mkV {s = c62 "debytoida"});
 lin debut_3_V2 = mkV2 (mkV {s = c62 "debytoida"});
 lin debutante_N = mkN {s = d05A "debytantti"};
@@ -26493,14 +26505,14 @@ lin deflower_1_V2 = variants {};   ---- viedä neitsyys riistää neitsyys
 lin deflower_2_V2 = mkV2 (mkV {s = c67 "turmella"});
 lin defoliant_N = mkN "vesakkomyrkky";
 lin defoliate_A = mkA "lehdetön";
-lin defoliate_V2 = variants {};   ---- saada lehdet putoamaan
+lin defoliate_V2 = mkV2 (mkV (mkV "poistaa") "lehdet"); --guessed
 lin defoliation_1_N = mkN "lehtikato";
 lin defoliation_2_N = mkN "lehtien riistäminen"; --unchecked
 lin defoliator_N = mkN "lehtikatoa aiheuttava hyönteinen"; --unchecked
 lin deforest_V2 = variants {};   ---- kaataa metsä
 lin deforestation_1_N = mkN "avohakkuu";
 lin deforestation_2_N = mkN "metsän hävittäminen"; --unchecked
-lin deform_1_V2 = variants {};   ---- muuttaa muotoa
+lin deform_1_V2 = mkV2 (mkV "deformoida"); --guessed
 lin deform_2_V2 = mkV2 (mkV {s = c67 "turmella"});
 lin deform_3_V2 = variants {};   ---- tehdä muodottomaksi
 lin deform_4_V2 = variants {mkV2 (mkV {s = c67 "turmella"}); mkV2 (mkV {s = c52A "turmeltua"})};
@@ -26544,11 +26556,11 @@ lin degeneration_3_N = mkN "taantuminen";
 lin degenerative_A = mkA "rappeutumis-";
 lin degradation_1_N = mkN "arvonalennus";
 lin degradation_2_N = mkN {s = d03 "rappio"};
-lin degrade_3_V = variants {};   ---- alentaa arvossa
+lin degrade_3_V = mkV "rappeutua"; --guessed
 lin degrade_1_V2 = mkV2 (mkV {s = c53A "kuluttaa"});
 lin degrade_2_V2 = mkV2 (mkV {s = c54A "alentaa"});
 lin degrade_3_V2 = variants {};   ---- alentaa arvossa
-lin degrading_1_A = variants {};
+lin degrading_1_A = mkA "alentava"; --guessed
 lin degrading_2_A = variants {};
 lin degree_1_N = variants {mkN {s = d01 "taso"}; mkN {s = d48 "aste"}};
 lin degree_3_N = mkN {s = d01A "tutkinto"};
@@ -26564,7 +26576,7 @@ lin dehiscent_A = variants {mkA "avautuva"; mkA "siemenensä varistava"; mkA "au
 lin dehorn_1_V2 = variants {};   ---- poistaa sarvet
 lin dehorn_2_V2 = variants {};   ---- poistaa sarvet
 lin dehumanization_1_N = mkN "epäinhimillistäminen";
-lin dehumanize_1_V2 = variants {};   ---- riistää inhimillisyys ottaa pois ihmisarvo
+lin dehumanize_1_V2 = mkV2 (mkV "epäinhimillistää"); --guessed
 lin dehumanize_2_V2 = mkV2 (mkV {s = c53 "koneistaa"});
 lin dehydrate_1_V2 = mkV2 (mkV {s = c53A "kuivattaa"});
 lin dehydrate_2_V2 = mkV2 (mkV {s = c53A "kuivattaa"});
@@ -26580,7 +26592,7 @@ lin deificationMasc_2_N = mkN {s = d05A "jumalointi"};
 lin deificationFem_2_N = mkN {s = d05A "jumalointi"};
 lin deification_3_N = mkN "jumalaksi korottaminen";
 lin deify_1_V2 = variants {mkV2 (mkV {s = c52 "palvoa"}); mkV2 (mkV {s = c62 "jumaloida"})};
-lin deify_2_V2 = variants {};   ---- korottaa jumalaksi
+lin deify_2_V2 = mkV2 (mkV "jumaloida"); --guessed
 lin deign_V = mkV {s = c52A "alentua"};
 lin deinocheirus_N = mkN "deinocheirus";
 lin deinonychus_N = mkN "deinonychus";
@@ -26593,7 +26605,7 @@ lin deistMasc_N = variants {};
 lin deistFem_N = variants {};
 lin deity_N = mkN "jumalolento";
 lin deixis_N = mkN "deiksis";
-lin deja_vu_N = variants {} ;
+lin deja_vu_N = mkN "déjà-vu"; --guessed
 lin deject_V2 = mkV2 (mkV {s = c53 "lannistaa"});
 lin dejectedly_Adv = mkAdv {s = c99 "masentuneesti"};
 lin dejection_1_N = variants {mkN {s = d40 "alakuloisuus"}; mkN {s = d40 "masentuneisuus"}};
@@ -26844,12 +26856,12 @@ lin democracy_1_N = mkN {s = d40 "demokraattisuus"};
 lin democracy_2_N = mkN {s = d12 "demokratia"} ;
 lin democracy_3_N = mkN {s = d12 "demokratia"} ;
 lin democracy_index_N = mkN "demokratia" (mkN "indeksi") ;
-lin democratMasc_1_N = variants {};
+lin democratMasc_1_N = mkN "demokraatti"; --guessed
 lin democratFem_1_N = variants {};
 lin democratMasc_2_N = variants {};
 lin democratFem_2_N = variants {};
 lin democratic_1_A = mkA {s = d38 "demokraattinen"};
-lin democratic_2_A = variants {};
+lin democratic_2_A = mkA "demokraattinen"; --guessed
 lin democratic_3_A = mkA "kansan-";
 lin democratic_republic_of_the_congo_LN = mkLN "Kongon demokraattinen tasavalta" ;
 lin democratization_1_N = mkN {s = d05A "demokratisointi"};
@@ -26887,7 +26899,7 @@ lin demonstrable_2_A = variants {mkA "toteen näytettävissä"; mkA "toteen näy
 lin demonstrate_4_V = variants {};   ---- osoittaa mieltä
 lin demonstrate_1_V2 = variants {mkV2 (mkV {s = c67A "esitellä"}); mkV2 (mkV {s = c62 "demonstroida"})};
 lin demonstrate_2_V2 = variants {mkV2 (mkV {s = c53 "havainnollistaa"}); mkV2 (mkV {s = c53 "todistaa"})};
-lin demonstrate_3_V2 = variants {};   ---- näyttää toteen
+lin demonstrate_3_V2 = mkV2 (mkV "osoittaa"); --guessed
 lin demonstration_1_N = variants {mkN "havainnollistus"; mkN {s = d05A "demonstrointi"}; mkN "havainnollistaminen"; mkN "havaintoesitys"; mkN {s = d03 "demonstraatio"}};
 lin demonstration_2_N = mkN "voimannäytös";
 lin demonstration_3_N = mkN "mielenosoitus";
@@ -27065,14 +27077,14 @@ lin departerFem_N = mkN {s = d12 "lähtijä"};
 lin department_1_N = variants {mkN {s = d04A "yksikkö"}; mkN {s = d02 "osasto"}};
 lin department_2_N = mkN "departementti";
 lin department_3_N = mkN {s = d09 "ala"};
-lin department_store_N = variants {} ;
+lin department_store_N = mkN "tavaratalo"; --guessed
 lin departmental_A = variants {mkA "ministeriön"; mkA "osaston"; mkA "departementin"};
 lin departure_1_N = mkN "lähteminen";
 lin departure_2_N = mkN {s = d40 "poikkeavuus"};
 lin departure_3_N = mkN "poismeno";
 lin depend_V = mkV {s = c52A "riippua"};
-lin depend_on_1_V2 = variants {};
-lin depend_on_2_V2 = variants {};
+lin depend_on_1_V2 = mkV2 (mkV "riippua"); --guessed
+lin depend_on_2_V2 = mkV2 (mkV "riippua") elative;
 lin dependability_N = mkN {s = d40 "luotettavuus"};
 lin dependable_1_A = mkA {s = d10 "luotettava"};
 lin dependable_2_A = mkA {s = d10 "luotettava"};
@@ -27322,7 +27334,7 @@ lin des_1_N = variants {};
 lin des_2_N = variants {};
 lin des_GN = variants {};
 lin des_moines_LN = mkLN "Des Moines" ;
-lin desalinate_V2 = variants {};   ---- poistaa suola
+lin desalinate_V2 = mkV2 (mkV "desalinoida"); --guessed
 lin desalination_N = variants {mkN "suolan poistaminen"; mkN "suolanpoisto"}; --unchecked
 lin desalinization_1_N = mkN "suolan poistaminen"; --unchecked
 lin desalinize_1_V2 = variants {};   ---- poistaa suola
@@ -27498,7 +27510,7 @@ lin despisal_N = mkN {s = d10A "halveksunta"};
 lin despise_V2 = variants {mkV2 (mkV {s = c61 "halveksia"}); mkV2 (mkV {s = c52 "halveksua"})};
 lin despite_1_N = mkN {s = d10A "halveksunta"};
 lin despite_2_N = mkN {s = d10A "halveksunta"};
-lin despite_Prep = variants {};
+lin despite_Prep = postGenPrep "huolimatta"; --guessed
 lin despiteful_A = mkA {s = d15 "ilkeä"};
 lin despoil_1_V2 = mkV2 (mkV {s = c74 "rosvota"});
 lin despoil_2_V2 = mkV2 (mkV {s = c67 "turmella"});
@@ -27642,7 +27654,7 @@ lin detest_V2 = variants {mkV2 (mkV {s = c74 "inhota"}); mkV2 (mkV {s = c53A "in
 lin detestable_1_A = mkA {s = d10 "iljettävä"};
 lin detestable_2_A = mkA {s = d10 "iljettävä"};
 lin detestation_N = mkN {s = d01 "inho"};
-lin dethrone_V2 = variants {};   ---- syöstä vallasta syöstä valtaistuimelta
+lin dethrone_V2 = mkV2 (mkV (mkV "syöstä") "valtaistuimelta"); --guessed
 lin dethronement_N = mkN "valtaistuimelta syökseminen"; --unchecked
 lin detonate_1_V2 = mkV2 (mkV {s = c53A "räjäyttää"}) ;
 lin detonate_2_V = variants {mkV {s = c53A "pamahtaa"}; mkV {s = c53A "räjähtää"}};
@@ -27689,7 +27701,7 @@ lin devaluate_2_V = variants {mkV {s = c62 "devalvoida"}; mkV {s = c52A "devalvo
 lin devaluation_1_N = mkN {s = d03 "devalvaatio"};
 lin devaluation_2_N = mkN "arvon aleneminen"; --unchecked
 lin devalue_1_V2 = variants {};   ---- viedä arvo
-lin devalue_2_V2 = variants {};   ---- alentaa arvoa
+lin devalue_2_V2 = mkV2 (mkV (mkV "alentaa") "arvoa"); --guessed
 lin devalue_3_V = variants {mkV {s = c62 "devalvoida"}; mkV {s = c52A "devalvoitua"}};
 lin devastate_1_V2 = mkV2 (mkV {s = c53A "hävittää"});
 lin devastate_2_V2 = mkV2 (mkV {s = c52A "musertua"});
@@ -27714,7 +27726,7 @@ lin develop_6_V2 = mkV2 (mkV {s = c53A "kehittää"});
 lin develop_7_V2 = mkV2 (mkV {s = c67A "kehitellä"});
 lin develop_8_V2 = mkV2 (mkV {s = c53A "harjoittaa"});
 lin develop_12_V2 = mkV2 (mkV {s = c53A "kehittää"});
-lin develop_13_V2 = variants {};   ---- synnyttää vähitellen
+lin develop_13_V2 = mkV2 (mkV "kehittää"); --guessed
 lin develop_15_V2 = mkV2 (mkV {s = c53A "kehittää"});
 lin develop_16_V2 = variants {};   ---- asettaa kolmiulotteinen pinta tasolle
 lin develop_18_V2 = mkV2 (mkV {s = c53A "kehittää"});
@@ -27756,7 +27768,7 @@ lin device_2_N = mkN "tehokeino";
 lin device_3_N = variants {mkN {s = d01A "keksintö"}; mkN {s = d26 "juoni"}};
 lin device_4_N = mkN "koristekuvio";
 lin device_5_N = variants {mkN {s = d39 "tunnus"}; mkN "tunnuskuva"; mkN "vaakunamerkki"};
-lin devil_1_N = variants {};
+lin devil_1_N = mkN "paholainen"; --guessed
 lin devil_2_N = variants {mkN "Saatana"; mkN "Sielunvihollinen"; mkN {s = d38 "paholainen"}};
 lin devil_3_N = variants {mkN {s = d05A "helvetti"}; mkN "perkele"; mkN "piru"};
 lin devil_4_N = mkN {s = d38 "paholainen"};
@@ -27986,7 +27998,7 @@ lin diazo_A = mkA "diatso-";
 lin diazonium_N = mkN "diatsonium";
 lin diazoxide_N = mkN "diatsoksidi";
 lin dibber_N = mkN "istutuspuikko";
-lin dibble_1_V2 = variants {};   ---- istuttaa istutuspuikolla
+lin dibble_1_V2 = mkV2 (mkV (mkV "istuttaa") "istutuspuikolla"); --guessed
 lin dibble_2_V2 = mkV2 (mkV {s = c53A "rei'ittää"});
 lin dibranchiate_N = mkN "kaksikiduksiset";
 lin dibs_N = mkN {s = d39 "varaus"};
@@ -28075,7 +28087,7 @@ lin die_2_V = variants {};   ---- kärsiä kuolema
 lin die_3_V = mkV {s = c67 "kuolla"};
 lin die_4_V = variants {mkV {s = c52A "hyytyä"}; mkV {s = c74 "hajota"}; mkV {s = c53A "hajottaa"}};
 lin die_5_V = mkV {s = c52A "vieraantua"};
-lin die_6_V = variants {};   ---- haluta kuollakseen
+lin die_6_V = mkV "kuolla"; --guessed
 lin die_7_V = mkV {s = c53 "meistää"};
 lin die_8_V = variants {mkV {s = c73 "palata"}; mkV {s = c56 "palaa"}};
 lin die_9_V = mkV {s = c52A "väljähtyä"};
@@ -28094,7 +28106,7 @@ lin diemakerFem_N = mkN "meistäjä";
 lin diencephalon_N = mkN "väliaivot";
 lin diesel_SN = mkSN "Diesel";
 lin diesel_2_N = mkN "dieselmoottori";
-lin diesel_oil_N = variants {} ;
+lin diesel_oil_N = mkN "dieselöljy"; --guessed
 lin diestock_N = mkN "kierresorkka";
 lin diestrous_1_A = variants {mkA "diestruksessa"; mkA "diestruksen"; mkA "diestruksessa oleva"}; --unchecked
 lin diestrus_1_N = mkN "diestrus";
@@ -28442,7 +28454,7 @@ lin dip_14_V2 = mkV2 (mkV {s = c52 "kauhoa"});
 lin dip_ed_N = variants {};
 lin dip_in_V2 = variants {};
 lin dip_into_1_V2 = variants {};   ---- lukea kursorisesti
-lin dip_into_13_V2 = variants {};
+lin dip_into_13_V2 = mkV2 (mkV "kastaa") illative;
 lin dip_out_V = variants {};
 lin diphenhydramine_N = mkN "difenhydramiini";
 lin diphenylhydantoin_N = mkN "difenyylihydantoiini";
@@ -28627,7 +28639,7 @@ lin disappearance_1_N = mkN "katoaminen";
 lin disappearance_2_N = mkN "häviäminen";
 lin disappearance_3_N = mkN "häviäminen";
 lin disappearance_4_N = mkN "häviäminen";
-lin disappoint_V2 = variants {};   ---- aiheuttaa pettymys tuottaa pettymys
+lin disappoint_V2 = mkV2 (mkV (mkV "tuottaa") "pettymys"); --guessed
 lin disappointedly_Adv = mkAdv "pettyneenä";
 lin disappointing_A = variants {mkA "pettymyksen tuottava"; mkA "pettymyksen aiheuttava"};
 lin disappointment_1_N = mkN {s = d39 "pettymys"};
@@ -29025,7 +29037,7 @@ lin disinfect_V2 = variants {mkV2 (mkV {s = c62 "desinfioida"}); mkV2 (mkV {s = 
 lin disinfectant_A = variants {mkA "desifiointi-"; mkA "desinfioiva"};
 lin disinfectant_N = mkN "desinfiointiaine";
 lin disinfection_N = mkN {s = d05A "desinfiointi"};
-lin disinfest_V2 = variants {};   ---- tuhota syöpäläiset
+lin disinfest_V2 = mkV2 (mkV (mkV "hävittää") "tuholaiset"); --guessed
 lin disinfestation_N = mkN "syöpäläisten torjunta"; --unchecked
 lin disinflation_N = mkN {s = d03 "deflaatio"};
 lin disinformation_N = mkN {s = d03 "disinformaatio"};
@@ -29066,7 +29078,7 @@ lin disjunctive_A = mkA "erottava";
 lin diskette_N = variants {mkN {s = d05A "disketti"}; mkN {s = d48A "levyke"}};
 lin dislikable_A = mkA "epämiellyttävä";
 lin dislike_N = mkN "vastenmielisyys";
-lin dislike_of_N2 = variants {};
+lin dislike_of_N2 = mkN2 (mkN "vastenmielisyys") (casePrep elative); --guessed
 lin dislike_V2 = variants {};   ---- olla pitämättä pitää vastenmielisenä
 lin dislocate_1_V2 = variants {};   ---- mennä sijoiltaan
 lin dislocate_2_V2 = mkV2 (mkV {s = c54A "siirtää"});
@@ -29268,7 +29280,7 @@ lin disregard_1_N = mkN {s = d40 "piittaamattomuus"};
 lin disregard_2_N = mkN {s = d40 "piittaamattomuus"};
 lin disregard_1_V2 = variants {};   ---- jättää huomiotta
 lin disregard_2_V2 = variants {};   ---- olla piittaamatta
-lin disregard_3_V2 = variants {};   ---- olla piittaamatta
+lin disregard_3_V2 = mkV2 (mkV "sivuuttaa"); --guessed
 lin disrepair_N = mkN "huono kunto";
 lin disreputable_A = mkA "huonomaineinen";
 lin disrepute_N = mkN "huono maine";
@@ -30031,7 +30043,7 @@ lin dominate_1_V = variants {};   ---- olla hallitseva
 lin dominate_2_V2 = mkV2 (mkV {s = c69 "hallita"});
 lin dominate_3_V2 = mkV2 (mkV {s = c69 "hallita"});
 lin dominate_4_V2 = variants {mkV2 (mkV {s = c74 "kohota"}); mkV2 (mkV {s = c53A "kohottaa"})};
-lin dominate_5_V2 = variants {};   ---- kohota yli
+lin dominate_5_V2 = mkV2 (mkV "hallita"); --guessed
 lin domination_1_N = variants {mkN {s = d40 "herruus"}; mkN "ylivalta"};
 lin domination_2_N = mkN "valta-asema";
 lin dominatrix_N = variants {mkN "domina"; mkN "dominatrix"};
@@ -30099,7 +30111,7 @@ lin doodlebug_1_N = mkN "pieni moottoriajoneuvo";
 lin doodlebug_2_N = mkN "V-1-ohjus";
 lin doodlebug_3_N = mkN "muurahaisleijonan toukka"; --unchecked
 lin doom_N = variants {mkN {s = d03 "tuomio"}; mkN {s = d02 "kohtalo"}; mkN {s = d01A "loppu"}};
-lin doom_1_V2 = variants {};   ---- olla kohtalona
+lin doom_1_V2 = mkV2 (mkV "tuomita"); --guessed
 lin doom_2_V2 = mkV2 (mkV {s = c69 "tuomita"});
 lin doom_3_V2 = mkV2 (mkV {s = c69 "tuomita"});
 lin doomed_N = mkN "tuomittu";
@@ -30171,7 +30183,7 @@ lin dormie_1_A = mkA "vastapelaajaansa n reikää edellä ja yhtä monen reiän 
 lin dormitory_1_N = variants {mkN "opiskelija-asuntola"; mkN {s = d12 "asuntola"}; mkN "makuusali"};
 lin dormitory_2_N = mkN "makuusali";
 lin dormouse_N = mkN "pähkinähiiri";
-lin dorothy_GN = variants {};
+lin dorothy_GN = mkGN "Dorotea" female; --guessed
 lin dorsal_1_A = variants {mkA "taka-"; mkA "selkä-"};
 lin dorsal_2_A = mkA "selänpuoleinen";
 lin dorset_LN = variants {};
@@ -30241,7 +30253,7 @@ lin double_5_N = mkN "tuplaaminen";
 lin double_1_V = mkV {s = c52 "kaksinkertaistua"};
 lin double_1_V2 = mkV2 (mkV {s = c52 "kaksinkertaistua"}) ;
 lin double_2_V = variants {};   ---- lyödä kahden pesän lyönti
-lin double_3_V = variants {};   ---- mennä kaksinkerroin
+lin double_3_V = mkV (mkV "kääntyä") "kaksin kerroin"; --guessed
 lin double_4_V = variants {};   ---- tehdä kahta työtä palvella kahta tarkoitusta
 lin double_5_V = mkV {s = c54A "kahdentaa"};
 lin double_2_V2 = variants {};   ---- lyödä kahden pesän lyönti
@@ -30300,7 +30312,7 @@ lin doubting_A = mkA {s = d10 "epäilevä"};
 lin doubtless_1_Adv = mkAdv {s = c99 "epäilemättä"};
 lin douche_1_N = mkN "huuhteluruisku";
 lin douche_2_N = mkN {s = d02 "huuhtelu"};
-lin doug_GN = variants {};
+lin doug_GN = mkGN "Doug" male; --guessed
 lin dough_1_N = mkN "taikina";
 lin dough_2_N = mkN {s = d10 "hynä"};
 lin doughboy_1_N = mkN "jalkaväensotilas";
@@ -30612,13 +30624,13 @@ lin draughty_A = mkA "vetoinen";
 lin draw_1_V2 = mkV2 (mkV {s = c52 "kiskoa"});
 lin draw_2_V2 = mkV2 (mkV {s = c61A "hankkia"});
 lin draw_3_V2 = mkV2 (mkV {s = c53A "vetää"});
-lin draw_4_V2 = variants {};   ---- tehdä päätelmä
+lin draw_4_V2 = mkV2 (mkV "tehdä"); --guessed
 lin draw_5_V2 = mkV2 (mkV {s = c53A "vetää"});
 lin draw_6_V2 = mkV2 (mkV {s = c54A "piirtää"});
 lin draw_7_V2 = mkV2 (mkV {s = c53 "nostaa"});
 lin draw_8_V2 = mkV2 (mkV {s = c53A "hahmottaa"});
 lin draw_9_V2 = variants {mkV2 (mkV {s = c69 "valita"}); mkV2 (mkV {s = c53A "valittaa"}); mkV2 (mkV {s = c73 "kerätä"})};
-lin draw_10_V2 = variants {};   ---- saada aikaan
+lin draw_10_V2 = mkV2 (mkV "aiheuttaa");   ---- saada aikaan
 lin draw_11_V2 = variants {};   ---- hengittää sisään
 lin draw_13_V2 = mkV2 (mkV {s = c53 "nostaa"});
 lin draw_14_V2 = variants {mkV2 (mkV {s = c53 "nostaa"}); mkV2 (mkV {s = c52A "arpoa"})};
@@ -30670,7 +30682,7 @@ lin draw_on_V2 = variants {};
 lin draw_out_1_V2 = variants {};   ---- vetää kuorestaan
 lin draw_out_2_V2 = mkV2 (mkV {s = c56 "jatkaa"});
 lin draw_out_3_V2 = variants {};   ---- vetää kuorestaan
-lin draw_out_4_V2 = variants {};   ---- tuoda esiin
+lin draw_out_4_V2 = mkV2 (mkV "päätellä"); --guessed
 lin draw_out_5_V2 = variants {};   ---- vetää ulos
 lin draw_out_6_V2 = mkV2 (mkV {s = c53A "vetää"});
 lin draw_up_5_V = mkV {s = c52A "pysähtyä"};
@@ -30773,7 +30785,7 @@ lin dress_6_V2 = mkV2 (mkV {s = c53 "valmistaa"});
 lin dress_7_V2 = mkV2 (mkV {s = c53 "järjestää"});
 lin dress_8_V2 = mkV2 (mkV {s = c67 "koristella"});
 lin dress_9_V2 = mkV2 (mkV {s = c53 "somistaa"});
-lin dress_10_V2 = variants {};   ---- lisätä kastike
+lin dress_10_V2 = mkV2 (mkV "maustaa"); --guessed
 lin dress_11_V2 = mkV2 (mkV {s = c53A "lannoittaa"});
 lin dress_12_V2 = mkV2 (mkV {s = c73 "höylätä"});
 lin dress_13_V2 = mkV2 (mkV {s = c73A "muokata"});
@@ -31036,7 +31048,7 @@ lin drop_21_V = variants {mkV {s = c74A "pudota"}; mkV {s = c53A "pudottaa"}};
 lin drop_22_V = mkV {s = c52A "taantua"};
 lin drop_1_V2 = mkV2 (mkV {s = c53A "pudottaa"});
 lin drop_5_V2 = mkV2 (mkV {s = c53A "pudottaa"});
-lin drop_6_V2 = variants {};   ---- mainita ohimennen
+lin drop_6_V2 = mkV2 (mkV "pudottaa"); --guessed
 lin drop_7_V2 = variants {};   ---- jättää sikseen
 lin drop_8_V2 = mkV2 (mkV {s = c53A "toimittaa"});
 lin drop_9_V2 = variants {};   ---- iskeä maahan
@@ -31069,7 +31081,7 @@ lin drop_off_4_V2 = variants {mkV2 (mkV {s = c74A "pudota"}); mkV2 (mkV {s = c53
 lin drop_out_1_V = mkV {s = c52A "luopua"};
 lin drop_out_2_V = variants {};   ---- vetäytyä yksinäisyyteen
 lin drop_out_3_V = mkV {s = c53A "keskeyttää"};
-lin drop_out_of_V2 = variants {};
+lin drop_out_of_V2 = mkV2 (mkV "keskeyttää"); --guessed
 lin drop_over_V = variants {};
 lin drop_round_V = variants {};
 lin drop_round_V2 = variants {};
@@ -31103,7 +31115,7 @@ lin droverMasc_N = mkN "karjanajaja";
 lin droverFem_N = mkN "karjanajaja";
 lin drown_3_V = mkV {s = c52A "hukkua"};
 lin drown_5_V = mkV {s = c52A "hukkua"};
-lin drown_6_V = variants {};
+lin drown_6_V = mkV "hukkua"; --guessed
 lin drown_1_V2 = mkV2 (mkV {s = c53A "hukuttaa"});
 lin drown_2_V2 = mkV2 (mkV {s = c53A "hukuttaa"});
 lin drown_4_V2 = mkV2 (mkV {s = c53A "hukuttaa"});
@@ -31311,7 +31323,7 @@ lin due_4_A = variants {mkA "johtuva"; mkA "jnk takia"};
 lin due_Adv = mkAdv {s = c99 "suoraan"};
 lin due_1_N = mkN "jkn osa"; --unchecked
 lin due_2_N = mkN "erääntynyt";
-lin due_to_Prep = variants {};
+lin due_to_Prep = postGenPrep "vuoksi";
 lin duel_1_N = variants {mkN "kaksinkamppailu"; mkN "kaksintaistelu"};
 lin duel_2_N = variants {mkN "kaksintaistelu"; mkN "kaksinkamppailu"};
 lin duel_V = variants {};   ---- olla kaksintaistelussa
@@ -31562,7 +31574,7 @@ lin dutifulness_N = mkN {s = d40 "kuuliaisuus"};
 lin duty_1_N = mkN {s = d40 "velvollisuus"};
 lin duty_2_N = mkN {s = d40 "velvollisuus"};
 lin duty_3_N = variants {mkN {s = d05 "tulli"}; mkN "tullimaksu"};
-lin duty_4_N = variants {};
+lin duty_4_N = mkN "palvelus"; --guessed
 lin duty_free_A = mkA "tulliton";
 lin duvet_N = variants {mkN {s = d05A "täkki"}; mkN "untuvapeite"};
 lin dwarf_1_N = mkN "lyhytkasvuinen";
@@ -31677,7 +31689,7 @@ lin e'er_Adv = mkAdv {s = c99 "aina"};
 lin e_mail_N = mkN "sähköposti";
 lin ea_PN = mkPN "Ea" ;
 lin each_Adv = mkAdv "jokaiselle";
-lin each_Det = variants {};
+lin each_Det = S.every_Det;
 lin eager_A = variants {mkA {s = d41A "innokas"}; mkA {s = d41A "halukas"}; mkA {s = d47 "innostunut"}};
 lin eagerness_1_N = mkN {s = d01A "into"};
 lin eagerness_2_N = mkN {s = d40 "aulius"};
@@ -31812,7 +31824,7 @@ lin easing_1_N = mkN {s = d39 "parannus"};
 lin easing_2_N = mkN {s = d39 "lievitys"};
 lin easington_LN = variants {};
 lin east_A = variants {};
-lin east_Adv = variants {};
+lin east_Adv = variants {mkAdv "itään"; mkAdv "idässä"};
 lin east_1_N = variants {};
 lin east_2_N = variants {mkN "Itä"; mkN "itämaat"};
 lin east_3_N = mkN "itärannikko";
@@ -31835,13 +31847,13 @@ lin easter_PN = mkPN "pääsiäinen";
 lin easterly_1_A = mkA "itä-";
 lin easterly_2_A = mkA "itäinen";
 lin easterly_Adv = mkAdv "idästä";
-lin eastern_1_A = variants {};
-lin eastern_2_A = variants {};
-lin eastern_3_A = variants {};
-lin eastern_4_A = variants {};
-lin eastern_5_A = variants {};
+lin eastern_1_A = mkA "itäinen";
+lin eastern_2_A = mkA "itäinen";
+lin eastern_3_A = mkA "itäinen";
+lin eastern_4_A = mkA "itäinen";
+lin eastern_5_A = mkA "itäinen";
 lin eastern_caribbean_A = variants {} ;
-lin eastern_desert_LN = mkLN "Arabian aavikko (Egypti)" ;
+lin eastern_desert_LN = mkLN "Arabian aavikko" ;
 lin easternerMasc_N = mkN "itäosan asukas"; --unchecked
 lin easternerFem_N = mkN "itäosan asukas"; --unchecked
 lin easternmost_A = mkA "itäisin";
@@ -31909,6 +31921,7 @@ lin ebb_3_V = mkV {s = c72A "heiketä"};
 lin ebbtide_N = variants {mkN {s = d48A "luode"}; mkN "pakovesi"};
 lin ebbw_vale_LN = variants {};
 lin eblis_N = mkN "eblis";
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA "pikimusta";
 lin ebonite_N = mkN {s = d05A "eboniitti"};
 lin ebony_A = mkA "sysimusta";
@@ -31924,10 +31937,10 @@ lin ec_PN = variants {};
 lin ecarte_N = mkN "ecarte";
 lin eccentric_1_A = variants {mkA "eriskummallinen"; mkA "omalaatuinen"; mkA {s = d38 "eksentrinen"}};
 lin eccentric_2_A = mkA "epäkeskinen";
-lin eccentricMasc_1_N = variants {mkN "eksentrinen henkilö"; mkN "eksentrikko"}; --unchecked
-lin eccentricFem_1_N = variants {mkN "eksentrinen henkilö"; mkN "eksentrikko"}; --unchecked
-lin eccentricMasc_2_N = variants {mkN "outo tyyppi"; mkN "eksentrikko"}; --unchecked
-lin eccentricFem_2_N = variants {mkN "outo tyyppi"; mkN "eksentrikko"}; --unchecked
+lin eccentricMasc_1_N = mkN "eksentrikko";
+lin eccentricFem_1_N = mkN "eksentrikko";
+lin eccentricMasc_2_N = mkN "eksentrikko";
+lin eccentricFem_2_N = mkN "eksentrikko";
 lin eccentricity_1_N = mkN {s = d40 "omituisuus"};
 lin eccentricity_2_N = mkN {s = d40 "epäkeskisyys"};
 lin eccentricity_3_N = mkN {s = d40 "epäkeskisyys"};
@@ -32166,7 +32179,7 @@ lin eerie_A = mkA "aavemainen";
 lin eeriness_N = mkN {s = d40 "kaameus"};
 lin eery_A = mkA "aavemainen";
 lin eff_V = variants {mkV {s = c67 "panna"}; mkV {s = c61 "nussia"}; mkV {s = c62 "naida"}};
-lin efface_1_V2 = variants {};   ---- pyyhkiä pois
+lin efface_1_V2 = mkV2 (mkV (mkV "pyyhkiä") "pois"); --guessed
 lin efface_2_V2 = variants {};   ---- vetäytyä syrjään
 lin efface_3_V2 = mkV2 (mkV {s = c61A "pyyhkiä"});
 lin effaceable_A = mkA "pyyhittävä";
@@ -32611,7 +32624,7 @@ lin elk_2_N = mkN "kanadanhirvi";
 lin elk_3_N = mkN "saksanhirvi";
 lin ell_N = mkN {s = d07A "siipi"};
 lin elland_LN = variants {};
-lin ellen_GN = variants {};
+lin ellen_GN = mkGN "Ellen" female; --guessed
 lin ellesmere_LN = variants {};
 lin ellesmere_port_LN = variants {};
 lin ellie_GN = variants {};
@@ -32644,7 +32657,7 @@ lin elope_V = variants {};   ---- karata mennäkseen naimisiin
 lin elopement_N = mkN "karkaaminen";
 lin eloquence_N = mkN {s = d40 "kaunopuheisuus"};
 lin eloquent_A = mkA "kaunopuheinen";
-lin else_Adv = variants {};
+lin else_Adv = mkAdv "muuten"; --guessed
 lin elsewhere_Adv = variants {mkAdv {s = c99 "toisaalle"}; mkAdv {s = c99 "muualle"}; mkAdv {s = c99 "muualla"}; mkAdv {s = c99 "toisaalla"}};
 lin elsholtzia_N = mkN "helttamintut";
 lin elsie_GN = variants {};
@@ -32719,7 +32732,7 @@ lin embarrassment_3_N = mkN "nolo tilanne";
 lin embarrassment_4_N = mkN {s = d39 "hämmennys"};
 lin embassy_1_N = mkN "suurlähetystö";
 lin embassy_2_N = mkN "suurlähetystön henkilöstö"; --unchecked
-lin embattled_1_A = variants {};
+lin embattled_1_A = mkA "ahdistettu"; --guessed
 lin embattled_2_A = mkA "taisteluvalmis";
 lin embattled_3_A = mkA "hammaslaitainen";
 lin embed_1_V2 = mkV2 (mkV {s = c54A "työntää"});
@@ -32789,11 +32802,11 @@ lin emendation_N = mkN {s = d39 "parannus"};
 lin emerald_1_N = mkN {s = d05 "smaragdi"};
 lin emerald_2_N = mkN {s = d05 "smaragdi"};
 lin emerald_3_N = mkN "smaragdinvihreä";
-lin emerge_1_V = variants {};   ---- tulla näkyviin tulla esiin
+lin emerge_1_V = mkV "ilmestyä"; --guessed
 lin emerge_2_V = mkV {s = c52A "ilmaantua"};
 lin emerge_3_V = variants {};   ---- käydä ilmi
 lin emerge_4_V = variants {};   ---- tulla esiin
-lin emerge_5_V = variants {};   ---- tulla esiin
+lin emerge_5_V = mkV "muodostua"; --guessed
 lin emergence_1_N = mkN "esiintyminen";
 lin emergence_2_N = mkN "esiintulo";
 lin emergence_3_N = variants {mkN "esille tuleminen"; mkN "ulostulo"; mkN "ilmaantuminen"}; --unchecked
@@ -32928,7 +32941,7 @@ lin empty_5_V2 = mkV2 (mkV {s = c53 "ulostaa"});
 lin empty_handed_1_A = mkA "tyhjin käsin";
 lin empty_handed_2_A = mkA "tyhjäkätinen";
 lin empty_headed_A = mkA "ajattelematon";
-lin empty_out_V = variants {};
+lin empty_out_V = mkV "tyhjentyä"; --guessed
 lin emptying_N = mkN "tyhjentäminen";
 lin empurpled_A = mkA "kaunisteltu";
 lin empyema_N = mkN "ontelomärkimä";
@@ -33267,7 +33280,7 @@ lin engage_4_V = mkV {s = c73A "palkata"};
 lin engage_5_V = mkV {s = c73 "kihlata"};
 lin engage_10_V = mkV {s = c58 "kytkeä"};
 lin engage_2_V2 = variants {};   ---- vaatia kokonaan
-lin engage_3_V2 = variants {};   ---- ottaa työhön
+lin engage_3_V2 = mkV2 (mkV "palkata"); --guessed
 lin engage_4_V2 = mkV2 (mkV {s = c73A "palkata"});
 lin engage_5_V2 = mkV2 (mkV {s = c73 "kihlata"});
 lin engage_6_V2 = mkV2 (mkV {s = c58 "kytkeä"});
@@ -33337,12 +33350,12 @@ lin enigmatic_2_A = mkA {s = d38 "arvoituksellinen"};
 lin enjambment_1_N = mkN "säkeenylitys";
 lin enjoin_1_V2 = mkV2 (mkV {s = c54A "kieltää"});
 lin enjoin_2_V2 = variants {mkV2 (mkV {s = c58 "käskeä"}); mkV2 (mkV {s = c73 "määrätä"}); mkV2 (mkV "termentää")};
-lin enjoy_1_V2 = variants {};   ---- nauttia jstk
-lin enjoy_2_V2 = variants {};   ---- nauttia jstk
+lin enjoy_1_V2 = mkV2 (mkV "nauttia") elative;   ---- nauttia jstk
+lin enjoy_2_V2 = mkV2 (mkV "nauttia") elative;   ---- nauttia jstk
 lin enjoy_3_V2 = mkV2 (mkV {s = c61A "nauttia"});
-lin enjoy_4_V2 = variants {};   ---- saada nauttia jstk
+lin enjoy_4_V2 = mkV2 (mkV "nauttia"); --guessed
 lin enjoy_5_V2 = variants {};   ---- nauttia jstk
-lin enjoy_5_VV = variants {};   ---- nauttia jstk
+lin enjoy_5_VV = mkVV (mkV "nauttia"); --guessed
 lin enjoyable_A = mkA {s = d10 "nautittava"};
 lin enjoyableness_N = mkN {s = d40 "nautittavuus"};
 lin enjoyerMasc_N = mkN {s = d12 "nautiskelija"};
@@ -33407,8 +33420,8 @@ lin enormity_4_N = mkN "hirmutyö";
 lin enormous_A = mkA {s = d10 "valtava"};
 lin enormousness_N = mkN {s = d40 "valtavuus"};
 lin enosis_N = mkN "enosis";
-lin enoughSg_Card = variants {};   ---- tarpeeksi
-lin enoughPl_Card = variants {};   ---- tarpeeksi
+lin enoughSg_Card = cardStr "tarpeeksi" singular; --guessed
+lin enoughPl_Card = cardStr "tarpeeksi" plural; --guessed
 lin enplane_V = variants {};   ---- nousta lentokoneeseen
 lin enplane_V2 = variants {};   ---- nousta lentokoneeseen
 lin enquire_1_V = mkV {s = c67 "tiedustella"};
@@ -33720,7 +33733,7 @@ lin epicondylitis_N = mkN "epikondyliitti";
 lin epicranium_N = mkN "epikranium";
 lin epicureMasc_N = variants {mkN {s = d12 "nautiskelija"}; mkN {s = d05 "kulinaristi"}; mkN {s = d38 "epikurolainen"}};
 lin epicureFem_N = variants {mkN {s = d12 "nautiskelija"}; mkN {s = d05 "kulinaristi"}; mkN {s = d38 "epikurolainen"}};
-lin epicurean_1_A = variants {};
+lin epicurean_1_A = mkA "epikurolainen"; --guessed
 lin epicurean_2_A = mkA "nautinnonhaluinen";
 lin epicurean_3_A = mkA {s = d38 "nautinnollinen"};
 lin epicureanMasc_N = mkN {s = d38 "epikurolainen"};
@@ -33849,7 +33862,7 @@ lin equal_2_A = mkA {s = d10 "vastaava"};
 lin equalMasc_N = mkN "vertainen";
 lin equalFem_N = mkN "vertainen";
 lin equal_1_V2 = variants {mkV2 (mkV {s = c71 "tehdä"}); mkV2 (mkV {s = c73 "vastata"})};
-lin equal_2_V2 = variants {};   ---- olla yhdenvertainen
+lin equal_2_V2 = mkV2 (mkV "vastata"); --guessed
 lin equal_3_V2 = mkV2 (mkV {s = c53 "yhdenmukaistaa"});
 lin equal_to_A2 = variants {};
 lin equalitarianMasc_N = mkN "egalitaari";
@@ -34529,7 +34542,7 @@ lin even_out_3_V = mkV {s = c52A "tasoittua"};
 lin even_out_1_V2 = mkV2 (mkV {s = c53A "tasoittaa"});
 lin even_out_2_V2 = mkV2 (mkV {s = c73 "tasata"});
 lin even_out_4_V2 = mkV2 (mkV {s = c53A "tasoittaa"});
-lin even_though_Subj = variants {};
+lin even_though_Subj = {s = "vaikka"}; --guessed
 lin evening_1_N = mkN {s = d09A "ilta"};
 lin evening_2_N = mkN {s = d01A "loppu"};
 lin evening_3_N = mkN {s = d09A "ilta"};
@@ -34549,7 +34562,7 @@ lin eventide_N = mkN {s = d09A "ilta"};
 lin eventration_N = variants {mkN "eventraatio"; mkN "suuri vatsatyrä"};
 lin eventual_A = mkA "lopulta tapahtuva"; --unchecked
 lin eventuality_N = mkN {s = d40 "mahdollisuus"};
-lin eventually_AdV = variants {};
+lin eventually_AdV = {s = "lopulta"}; --guessed
 lin ever_1_AdV = variants {mkAdV "koskaan"; mkAdV "ikinä"};
 lin ever_2_AdV = mkAdV "aina";
 lin ever_3_AdV = mkAdV "hyvin";
@@ -34708,7 +34721,7 @@ lin exasperation_1_N = mkN {s = d39 "ärtymys"};
 lin exasperation_2_N = mkN "ärsyttäminen";
 lin exaugural_A = mkA "virkakauden päättävä"; --unchecked
 lin exbibit_N = mkN "eksbibitti";
-lin excavate_1_V2 = variants {};   ---- kaivaa esiin
+lin excavate_1_V2 = mkV2 (mkV (mkV "kaivaa") "esiin"); --guessed
 lin excavate_2_V2 = variants {};   ---- kaivaa ylös
 lin excavate_3_V2 = mkV2 (mkV {s = c56 "kaivaa"});
 lin excavate_4_V2 = variants {};   ---- kaivaa pois
@@ -34719,7 +34732,7 @@ lin excavation_4_N = mkN {s = d09A "louhinta"};
 lin excavatorMasc_1_N = mkN "kaivaja";
 lin excavatorFem_1_N = mkN "kaivaja";
 lin excavator_2_N = mkN {s = d06 "kaivuri"};
-lin exceed_1_V2 = variants {};   ---- olla suurempi kuin
+lin exceed_1_V2 = mkV2 (mkV "ylittää");   ---- olla suurempi kuin
 lin exceed_2_V2 = mkV2 (mkV {s = c53A "ylittää"});
 lin exceed_3_V2 = mkV2 (mkV {s = c53A "ylittää"});
 lin exceedance_N = mkN {s = d40 "pysyvyys"};
@@ -34837,7 +34850,7 @@ lin excogitation_2_N = mkN "käsittäminen";
 lin excogitative_A = mkA "pohtiva";
 lin excogitatorMasc_N = mkN "pohtija";
 lin excogitatorFem_N = mkN "pohtija";
-lin excommunicate_1_V2 = variants {};   ---- erottaa kirkon yhteydestä
+lin excommunicate_1_V2 = mkV2 (mkV (mkV "erottaa") "kirkosta"); --guessed
 lin excommunicate_2_V2 = mkV2 (mkV {s = c53A "erottaa"});
 lin excommunication_1_N = variants {mkN {s = d39 "erotus"}; mkN {s = d09 "panna"}};
 lin excommunication_2_N = variants {mkN {s = d09 "panna"}; mkN "kirkosta erottaminen"}; --unchecked
@@ -34952,7 +34965,7 @@ lin exfoliation_1_N = mkN "kuoriutuminen";
 lin exfoliation_2_N = mkN {s = d48 "hilse"};
 lin exhalation_1_N = mkN "ekshalaatio";
 lin exhalation_2_N = mkN "uloshengitys";
-lin exhale_1_V = variants {};   ---- hengittää ulos
+lin exhale_1_V = mkV (mkV "hengittää") "ulos"; --guessed
 lin exhale_2_V2 = variants {mkV2 (mkV {s = c75 "levitä"}); mkV2 (mkV {s = c53A "levittää"})};
 lin exhaust_1_N = mkN "pakokaasu";
 lin exhaust_2_N = mkN "pakoputki";
@@ -35012,8 +35025,8 @@ lin exileFem_2_N = mkN "karkotettu henkilö"; --unchecked
 lin exile_3_N = mkN {s = d39 "karkotus"};
 lin exile_V2 = mkV2 (mkV {s = c53A "karkottaa"});
 lin exilic_A = variants {mkA "Baabelin vankeuden"; mkA "maanpaon"}; --unchecked
-lin exist_1_V = variants {};   ---- olla olemassa
-lin exist_2_V = variants {};   ---- olla olemassa
+lin exist_1_V = mkV (vOlla) "olemassa"; --guessed
+lin exist_2_V = mkV (mkV "tulla") "toimeen"; --guessed
 lin existence_1_N = mkN "olemassaolo";
 lin existence_2_N = mkN "olemassaolo";
 lin existent_1_A = mkA "nykyinen";
@@ -35242,7 +35255,7 @@ lin explode_8_V = variants {mkV {s = c74 "kumota"}; mkV {s = c53A "kumottaa"}};
 lin explode_9_V = mkV {s = c53A "räjähtää"};
 lin explode_10_V = mkV {s = c53A "räjähtää"};
 lin exploit_N = mkN "urotyö";
-lin exploit_1_V2 = variants {};   ---- käyttää hyväkseen
+lin exploit_1_V2 = mkV2 (mkV (mkV "käyttää") "hyväkseen"); --guessed
 lin exploit_2_V2 = mkV2 (mkV {s = c53A "käyttää"});
 lin exploit_3_V2 = mkV2 (mkV {s = c53 "riistää"});
 lin exploitation_1_N = mkN "hyödyntäminen";
@@ -35340,7 +35353,7 @@ lin express_3_V2 = mkV2 (mkV {s = c66 "ilmaista"});
 lin express_4_V2 = mkV2 (mkV {s = c66 "ilmaista"});
 lin express_5_V2 = mkV2 (mkV {s = c54A "ilmentää"});
 lin express_6_V2 = mkV2 (mkV {s = c53 "puristaa"});
-lin express_7_V2 = variants {};   ---- lähettää pikalähetyksenä
+lin express_7_V2 = mkV2 (mkV (mkV "lähettää") "pikana"); --guessed
 lin expressible_A = mkA "ilmaistavissa oleva"; --unchecked
 lin expression_1_N = mkN {s = d48 "ilme"};
 lin expression_2_N = mkN {s = d02 "ilmaisu"};
@@ -35452,7 +35465,7 @@ lin external_N = mkN "ulkoinen seikka"; --unchecked
 lin externalization_1_N = mkN "ulkoisista syistä johtuvana pitäminen"; --unchecked
 lin externalization_2_N = mkN "ulkoisen muodon antaminen"; --unchecked
 lin externalize_1_V2 = mkV2 (mkV {s = c53 "ulkoistaa"});
-lin externalize_2_V2 = variants {};   ---- antaa muoto
+lin externalize_2_V2 = mkV2 (mkV "ulkoistaa"); --guessed
 lin exteroception_N = mkN "herkkyys ulkoisille ärsykkeille"; --unchecked
 lin exteroceptive_A = mkA "ulkoaisteihin liittyvä"; --unchecked
 lin exteroceptor_N = variants {mkN "eksteroseptori"; mkN "ulkoaisti"};
@@ -35703,10 +35716,10 @@ lin face_10_N = mkN "kirjasintyyli";
 lin face_11_N = mkN {s = d01 "kasvo"};
 lin face_12_N = mkN {s = d40 "röyhkeys"};
 lin face_13_N = mkN {s = d10 "seinämä"};
-lin face_V = variants {};   ---- olla vastapäätä olla vastakkain
+lin face_V = mkV "kohdata";   ---- olla vastapäätä olla vastakkain
 lin face_1_V2 = mkV2 (mkV {s = c73A "kohdata"});
 lin face_2_V2 = mkV2 (mkV {s = c73A "kohdata"});
-lin face_3_V2 = variants {};   ---- olla jnnk päin
+lin face_3_V2 = mkV2 (mkV "avautua"); --guessed
 lin face_5_V2 = variants {};   ---- kääntyä kasvokkain
 lin face_6_V2 = variants {};   ---- esittää faktat
 lin face_7_V2 = variants {};   ---- kääntää oikein päin
@@ -36010,7 +36023,7 @@ lin fall_back_5_V = mkV {s = c52A "turvautua"};
 lin fall_back_6_V = variants {};   ---- jäädä jälkeen
 lin fall_back_on_V2 = variants {};
 lin fall_behind_1_V = variants {};   ---- jäädä jälkeen
-lin fall_behind_2_V = variants {};   ---- jäädä jälkeen
+lin fall_behind_2_V = mkV (mkV "jäädä") "jälkeen"; --guessed
 lin fall_behind_in_V2 = variants {};
 lin fall_for_1_V2 = variants {mkV2 (mkV {s = c52 "ihastua"}); mkV2 (mkV {s = c52 "rakastua"})};
 lin fall_for_2_V2 = variants {};   ---- tulla huijatuksi mennä ansaan antaa huijata itseään
@@ -36043,7 +36056,7 @@ lin fallerFem_2_N = variants {mkN "pudonnut"; mkN "kaatunut"};
 lin fallibility_N = mkN "erehtyvyys";
 lin fallible_1_A = mkA "erehtyväinen";
 lin fallible_2_A = mkA "epätäydellinen";
-lin fallopian_A = variants {};
+lin fallopian_A = mkA "fallopian"; --guessed
 lin fallout_1_N = mkN {s = d10 "laskeuma"};
 lin fallout_2_N = mkN {s = d39 "seuraus"};
 lin fallow_1_A = variants {mkA "kesantona oleva"; mkA "kesannoitu"}; --unchecked
@@ -36104,7 +36117,7 @@ lin familiarFem_1_N = mkN "palveluskunnan jäsen"; --unchecked
 lin familiarMasc_2_N = mkN {s = d01A "tuttu"};
 lin familiarFem_2_N = mkN {s = d01A "tuttu"};
 lin familiar_3_N = variants {mkN {s = d07A "henki"}; mkN "apuolento"; mkN "apuhenki"};
-lin familiar_with_A2 = variants {};
+lin familiar_with_A2 = mkA2 "tuttu" (postGenPrep "kanssa"); --guessed
 lin familiarity_1_N = variants {mkN {s = d40 "perehtyneisyys"}; mkN {s = d40 "tuttavuus"}; mkN {s = d39 "tuntemus"}};
 lin familiarity_2_N = mkN {s = d40 "tuttuus"};
 lin familiarity_3_N = mkN {s = d40 "ystävyys"};
@@ -36217,7 +36230,7 @@ lin far_flung_1_A = mkA "laajalle levinnyt"; --unchecked
 lin far_flung_2_A = mkA "kaukainen";
 lin far_from_Prep = variants {};
 lin far_off_A = mkA {s = d38 "etäinen"};
-lin far_reaching_A = variants {};
+lin far_reaching_A = mkA "kauaskantoinen"; --guessed
 lin far_seeing_1_A = mkA "kaukonäköinen";
 lin far_seeing_2_A = mkA "kaukonäköinen";
 lin far_sighted_1_A = mkA "pitkänäköinen";
@@ -36608,7 +36621,7 @@ lin fedayeen_N = mkN "arabisissit";
 lin fedelline_N = mkN "fedelline";
 lin federal_1_A = mkA "liittovaltion";
 lin federal_2_A = mkA "liittovaltion";
-lin federal_3_A = variants {};
+lin federal_3_A = mkA "liittovaltion"; --guessed
 lin federal_4_A = mkA "liittovaltio-";
 lin federalism_N = mkN {s = d05 "federalismi"};
 lin federalistMasc_1_N = variants {};
@@ -36679,7 +36692,7 @@ lin feel_10_V2 = mkV2 (mkV {s = c67 "tunnustella"});
 lin feel_11_V2 = mkV2 (mkV {s = c67 "tunnustella"});
 lin feel_13_V2 = mkV2 (mkV {s = c67A "kosketella"});
 lin feel_1_VA = mkVA (mkV {s = c59A "tuntea"}) (casePrep translative);
-lin feel_4_VA = variants {};   ---- tuntea olonsa jksk
+lin feel_4_VA = mkVA (mkV "tuntua") (casePrep ablative); --guessed
 lin feel_5_VA = variants {};   ---- tuntea itsensä jksk
 lin feel_7_VA = mkVA (mkV {s = c52A "tuntua"}) (casePrep translative);
 lin feel_12_VA = mkVA (mkV {s = c52A "tuntua"}) (casePrep translative);
@@ -36719,7 +36732,7 @@ lin felicity_2_N = mkN {s = d40 "autuus"};
 lin felicity_GN = variants {};
 lin feline_A = variants {mkA "kissa-"; mkA "kissan-"};
 lin feline_1_N = variants {mkN {s = d09 "kissa"}; mkN "kissaeläin"};
-lin felix_GN = variants {};
+lin felix_GN = mkGN "Felix" male; --guessed
 lin felixstowe_LN = variants {};
 lin fell_A = mkA "kauhistuttava";
 lin fell_1_N = variants {mkN {s = d09 "talja"}; mkN {s = d10A "vuota"}; mkN {s = d19 "vuo"}};
@@ -36973,7 +36986,7 @@ lin feverish_2_A = mkA "kuume-";
 lin feverish_3_A = mkA {s = d38 "kuumeinen"};
 lin feverroot_N = mkN "kuumejuuri";
 lin few_N = mkN {s = d09 "harva"};
-lin few_ACard = variants {} {- muutama -};
+lin few_ACard = acardStr "muutama" plural;
 lin fewer_ACard = variants {} {- harvemmat -};
 lin fewer_than_AdN = variants {};
 lin fewness_N = variants {mkN "harvalukuisuus"; mkN {s = d40 "vähyys"}};
@@ -37216,7 +37229,7 @@ lin file_2_V2 = mkV2 (mkV {s = c73 "viilata"});
 lin file_4_V2 = variants {};   ---- nostaa kanne
 lin file_5_V2 = variants {mkV2 (mkV {s = c62 "arkistoida"}); mkV2 (mkV {s = c54A "tallentaa"})};
 lin file_away_2_V2 = mkV2 (mkV {s = c62 "arkistoida"});
-lin file_for_V2 = variants {};
+lin file_for_V2 = mkV2 (mkV "hakea"); --guessed
 lin filefish_N = mkN "säppikala";
 lin filename_1_N = mkN "tiedostonimi";
 lin filerMasc_1_N = mkN "jättäjä";
@@ -37261,7 +37274,7 @@ lin fill_in_3_V = variants {mkV {s = c73 "korvata"}; mkV {s = c73 "tuurata"}};
 lin fill_in_2_V2 = mkV2 (mkV {s = c53 "varjostaa"});
 lin fill_in_4_V2 = mkV2 (mkV {s = c53A "täyttää"});
 lin fill_in_for_V2 = variants {};
-lin fill_in_on_V3 = variants {};
+lin fill_in_on_V3 = mkV3 (mkV "perehdyttää") accusative (casePrep illative); --guessed
 lin fill_out_2_V = mkV {s = c53A "täyttää"};
 lin fill_out_6_V = mkV {s = c52A "tukevoitua"};
 lin fill_out_1_V2 = mkV2 (mkV {s = c53A "täyttää"});
@@ -37379,11 +37392,11 @@ lin find_6_V2 = mkV2 (mkV {s = c69 "havaita"});
 lin find_7_V2 = mkV2 (mkV {s = c61A "hankkia"});
 lin find_8_V2 = variants {mkV2 (mkV {s = c54A "löytää"}); mkV2 (mkV {s = c61 "keksiä"})};
 lin find_12_V2 = variants {mkV2 (mkV {s = c53A "saavuttaa"}); mkV2 (mkV {s = c63 "saada"})};
-lin find_13_V = variants {};
+lin find_13_V = mkV (mkV "huomata") "olevansa"; --guessed
 lin find_14_V2 = mkV2 (mkV {s = c53A "saavuttaa"});
 lin find_15_V2 = mkV2 (mkV {s = c53A "tavoittaa"});
 lin find_16_V2 = mkV2 (mkV {s = c54A "löytää"});
-lin find_5_V2A = variants {};   ---- pitää jnk
+lin find_5_V2A = mkV2A (mkV "pitää") accusative (casePrep essive);   ---- pitää jnk
 lin find_11_V2A = mkV2A (mkV {s = c74A "todeta"}) (casePrep translative) (casePrep translative);
 lin find_5_V2V = variants {};   ---- pitää jnk
 lin find_10_V2V = mkV2V (mkV {s = c54A "löytää"});
@@ -37521,7 +37534,7 @@ lin fire_8_N = mkN {s = d23 "tuli"};
 lin fire_9_N = variants {mkN {s = d02 "arvostelu"}; mkN {s = d05A "kritiikki"}};
 lin fire_1_V = variants {mkV {s = c52A "ampua"}; mkV {s = c53A "tulittaa"}};
 lin fire_5_V = mkV {s = c74A "laueta"};
-lin fire_11_V = variants {};
+lin fire_11_V = mkV "syttyä"; --guessed
 lin fire_2_V2 = variants {mkV2 (mkV {s = c66 "laukaista"}); mkV2 (mkV {s = c52A "laukoa"})};
 lin fire_3_V2 = mkV2 (mkV {s = c53A "polttaa"});
 lin fire_4_V2 = mkV2 (mkV {s = c53A "erottaa"});
@@ -37671,7 +37684,7 @@ lin fish_3_N = variants {};
 lin fish_PN = variants {};
 lin fish_V = mkV {s = c53 "kalastaa"};
 lin fish_V2 = variants {mkV2 (mkV {s = c67 "kalastella"}); mkV2 (mkV {s = c73 "kerjätä"}); mkV2 (mkV {s = c61A "urkkia"})};
-lin fish_for_V2 = variants {};
+lin fish_for_V2 = mkV2 (mkV "kalastella"); --guessed
 lin fish_hook_N = mkN "ongenkoukku";
 lin fish_knife_N = mkN "kalaveitsi";
 lin fish_out_V2 = variants {};
@@ -37775,7 +37788,7 @@ lin fix_5_N = mkN "paikanmääritys";
 lin fix_7_V = mkV {s = c62 "preparoida"};
 lin fix_1_V2 = mkV2 (mkV {s = c53 "kunnostaa"});
 lin fix_2_V2 = mkV2 (mkV {s = c53A "kiinnittää"});
-lin fix_3_V2 = variants {};   ---- lyödä lukkoon
+lin fix_3_V2 = mkV2 (mkV "määrittää"); --guessed
 lin fix_4_V2 = mkV2 (mkV {s = c53 "valmistaa"});
 lin fix_5_V2 = variants {};   ---- panna järjestykseen
 lin fix_6_V2 = variants {mkV2 (mkV {s = c53A "päättää"}); mkV2 (mkV {s = c61A "sopia"})};
@@ -38811,7 +38824,7 @@ lin follicle_N = mkN {s = d12 "rakkula"};
 lin follicular_A = variants {mkA "rakkula-"; mkA "rakkulainen"};
 lin folliculitis_N = variants {mkN "follikuliitti"; mkN "karvatupentulehdus"};
 lin follies_N = mkN {s = d20 "revyy"};
-lin follow_8_V = variants {};   ---- tulla perässä
+lin follow_8_V = mkV "seurata"; --guessed
 lin follow_16_V = mkV {s = c73 "seurata"};
 lin follow_17_V = mkV {s = c73 "seurata"};
 lin follow_20_V = variants {};   ---- harjoittaa jtak ammattia
@@ -38836,7 +38849,7 @@ lin follow_21_V2 = mkV2 (mkV {s = c73 "seurata"});
 lin follow_22_V2 = mkV2 (mkV {s = c73 "seurata"});
 lin follow_23_V2 = mkV2 (mkV {s = c54A "ymmärtää"});
 lin follow_24_V2 = mkV2 (mkV {s = c52 "pysyä"});
-lin follow_3_VS = variants {};   ---- olla seurauksena
+lin follow_3_VS = mkVS (mkV "päätellä"); --guessed
 lin follow_20_VS = variants {};   ---- harjoittaa jtak ammattia
 lin follow_on_N = mkN "uusi sisävuoro"; --unchecked
 lin follow_on_V = variants {};
@@ -38869,7 +38882,7 @@ lin fomentation_2_N = mkN "hautominen";
 lin fomentation_3_N = mkN "lietsonta";
 lin fomite_N = mkN {s = d10 "välittäjä"};
 lin fond_1_A = mkA {s = d10 "hellä"};
-lin fond_of_1_A2 = variants {};
+lin fond_of_1_A2 = mkA2 "kiintynyt" (casePrep illative); --guessed
 lin fond_2_A = mkA "hemmotteleva";
 lin fond_of_3_A2 = variants {};
 lin fond_3_A = mkA "pitää paljon jstk"; --unchecked
@@ -38998,7 +39011,7 @@ lin footwork_2_N = mkN {s = d03 "kuvio"};
 lin fop_N = mkN {s = d06 "keikari"};
 lin foppish_A = mkA "keikarimainen";
 lin foppishness_N = mkN "keikarimaisuus";
-lin for_Subj = variants {};
+lin for_Subj = {s = "sillä"}; --guessed
 lin for_PConj = variants {};
 lin for_Prep = S.for_Prep ;
 lin for_example_Adv = mkAdv "esimerkiksi";
@@ -39062,7 +39075,7 @@ lin force_out_4_V2 = variants {};   ---- työntää syrjään
 lin force_out_5_V2 = mkV2 (mkV {s = c55A "häätää"});
 lin force_out_6_V2 = mkV2 (mkV {s = c53A "ruiskuttaa"});
 lin force_out_7_V2 = variants {};   ---- puristaa ulos
-lin force_out_8_V2 = variants {};   ---- pakottaa ulos
+lin force_out_8_V2 = mkV2 (mkV (mkV "puristaa") "ulos"); --guessed
 lin forceful_1_A = mkA {s = d10 "vakuuttava"};
 lin forceful_2_A = mkA {s = d41A "voimakas"};
 lin forcefulness_N = variants {mkN {s = d40 "voimakkuus"}; mkN {s = d10 "voima"}};
@@ -39250,7 +39263,7 @@ lin forgetfulness_2_N = mkN "huonomuistisuus";
 lin forgettable_A = mkA "helposti unohdettava"; --unchecked
 lin forging_N = mkN {s = d09A "taonta"};
 lin forgivable_A = mkA "anteeksiannettava";
-lin forgive_1_V2 = variants {};   ---- antaa anteeksi
+lin forgive_1_V2 = mkV2 (mkV (mkV "antaa") "anteeksi"); --guessed
 lin forgive_2_V2 = variants {};   ---- antaa anteeksi
 lin forgiveness_1_N = mkN "anteeksianto";
 lin forgiveness_2_N = mkN "anteeksianto";
@@ -39277,7 +39290,7 @@ lin forli_LN = variants {};
 lin forlorn_A = mkA "toivoton";
 lin forlornness_N = mkN {s = d40 "yksinäisyys"};
 lin form_1_N = mkN {s = d01A "muoto"};
-lin form_of_N2 = variants {};
+lin form_of_N2 = mkN2 (mkN "muoto") (casePrep genitive);
 lin form_3_N = mkN {s = d01A "muoto"};
 lin form_4_N = variants {mkN {s = d01A "muoto"}; mkN {s = d48A "rakenne"}};
 lin form_5_N = mkN {s = d01 "hahmo"};
@@ -39660,7 +39673,7 @@ lin frame_6_N = mkN "näyttösovellus";
 lin frame_7_N = mkN {s = d39 "kehys"};
 lin frame_8_N = mkN "ruumiinrakenne";
 lin frame_9_N = mkN {s = d04A "kehikko"};
-lin frame_10_N = variants {};
+lin frame_10_N = mkN "runko"; --guessed
 lin frame_11_N = mkN {s = d39 "kehys"};
 lin frame_12_N = mkN {s = d39 "kierros"};
 lin frame_6_V = mkV {s = c53A "kiinnittää"};
@@ -39685,7 +39698,7 @@ lin fran_GN = variants {};
 lin franc_N = mkN {s = d05 "frangi"};
 lin france_1_LN = mkLN "Ranska";
 lin france_SN = mkSN "France";
-lin frances_GN = variants {};
+lin frances_GN = mkGN "Fransiska" female; --guessed
 lin franchise_1_N = mkN "toimilupa";
 lin franchise_2_N = mkN "franchise-liike";
 lin franchise_3_N = variants {mkN "äänioikeus"; mkN {s = d40 "oikeus"}};
@@ -39804,7 +39817,7 @@ lin free_list_N = mkN "lisämaksuttomien tuotteiden luettelo"; --unchecked
 lin free_liverMasc_N = mkN {s = d12 "nautiskelija"};
 lin free_liverFem_N = mkN {s = d12 "nautiskelija"};
 lin free_living_N = variants {};
-lin free_of_A2 = variants {};
+lin free_of_A2 = mkA2 "vapaa" (casePrep elative); --guessed
 lin free_range_A = variants {mkA "vapaasti laidunnettu"; mkA {s = d17 "vapaa"}}; --unchecked
 lin free_spoken_A = mkA "suorapuheinen";
 lin free_standing_A = variants {mkA {s = d38 "irrallinen"}; mkA "vapaasti seisova"}; --unchecked
@@ -40102,7 +40115,7 @@ lin frolic_V = variants {mkV {s = c68 "karkeloida"}; mkV {s = c67A "ilotella"}; 
 lin frolicsome_A = mkA "vallaton";
 lin from_Prep = S.from_Prep ;
 lin from_afar_Adv = variants {};
-lin from_home_Adv = variants {};
+lin from_home_Adv = mkAdv "kotoa"; --guessed
 lin from_time_to_time_Adv = variants {mkAdv {s = c99 "ajoittain"}; mkAdv "aika ajoin"};
 lin frome_LN = variants {};
 lin frond_N = variants {mkN "saniaisen lehti"; mkN "palmun lehti"}; --unchecked
@@ -40387,7 +40400,7 @@ lin fumigatorMasc_1_N = mkN "savupuhdistuksen suorittaja"; --unchecked
 lin fumigatorFem_1_N = mkN "savupuhdistuksen suorittaja"; --unchecked
 lin fumigator_2_N = variants {mkN "desinfektiokammio"; mkN "savustuskammio"};
 lin fumitory_N = mkN "peltoemäkki";
-lin fun_A = variants {};
+lin fun_A = mkA "hauska"; --guessed
 lin fun_1_N = variants {mkN {s = d40 "hauskuus"}; mkN "hauska"};
 lin fun_2_N = mkN {s = d02 "vitsailu"};
 lin fun_3_N = mkN {s = d40 "hulluus"};
@@ -40587,7 +40600,7 @@ lin fuss_3_N = variants {mkN {s = d14A "hässäkkä"}; mkN {s = d05A "hämminki"
 lin fuss_4_N = variants {mkN {s = d39 "touhotus"}; mkN {s = d12 "tohina"}; mkN {s = d39 "vouhotus"}};
 lin fuss_1_V = mkV {s = c53A "hössöttää"};
 lin fuss_2_V = mkV {s = c73 "hoivata"};
-lin fuss_at_V2 = variants {};
+lin fuss_at_V2 = mkV2 (mkV "nalkuttaa"); --guessed
 lin fussiness_1_N = mkN "nirsoilu";
 lin fussiness_2_N = mkN "pikkutarkkuus";
 lin fusspotMasc_N = mkN {s = d10 "valittaja"};
@@ -41282,7 +41295,7 @@ lin gcses_N = mkN "GCSE";
 lin gdansk_LN = mkLN "Danzig";
 lin gdn_PN = variants {};
 lin gdns_PN = variants {};
-lin gdp_N = variants {} ;
+lin gdp_N = mkN "bkt"; --guessed
 lin gean_N = mkN "gean-kirsikka";
 lin gear_1_N = variants {mkN "välityspyörä"; mkN "hammaspyörä"; mkN {s = d41A "ratas"}};
 lin gear_2_N = mkN {s = d48A "vaihde"};
@@ -41657,7 +41670,7 @@ lin gesture_V = mkV {s = c67 "viittoilla"};
 lin get_N = mkN "get";
 lin get_1_V2 = mkV2 (mkV {s = c63 "saada"});
 lin get_3_V2 = mkV2 (mkV {s = c63 "saada"});
-lin get_4_V2 = variants {};   ---- saada osakseen
+lin get_4_V2 = mkV2 (mkV "saada"); --guessed
 lin get_6_V2 = variants {mkV2 (mkV {s = c64 "tuoda"}); mkV2 (mkV {s = c53A "toimittaa"}); mkV2 (mkV {s = c64 "viedä"}); mkV2 (mkV {s = c58A "hakea"})};
 lin get_7_V2 = mkV2 (mkV {s = c63 "saada"});
 lin get_8_V2 = mkV2 (mkV {s = c53 "kostaa"});
@@ -41690,11 +41703,11 @@ lin get_V2A = variants {};   ---- saada jku tekemään jtak
 lin get_10_V2V = variants {};   ---- saada jku tekemään jtak
 lin get_26_V2V = mkV2V (mkV {s = c60A "lähteä"});
 lin get_2_VA = variants {mkVA (mkV {s = c66 "päästä"}) (casePrep translative); mkVA (mkV {s = c53 "päästää"}) (casePrep translative); mkVA (mkV {s = c52A "joutua"}) (casePrep translative)};
-lin get_3_VA = variants {};
+lin get_3_VA = mkVA (mkV "tulla") (casePrep translative); --guessed
 lin get_7_VA = mkVA (mkV {s = c63 "saada"}) (casePrep translative);
 lin get_2_VV = variants {mkVV (mkV {s = c66 "päästä"}); mkVV (mkV {s = c53 "päästää"}); mkVV (mkV {s = c52A "joutua"})};
 lin get_26_VV = mkVV (mkV {s = c60A "lähteä"});
-lin get_34_VV = variants {};   ---- saada tehdä jtak alkaa olla jtak alkaa tehdä jtak tulla jksik
+lin get_34_VV = mkVV (mkV "päästä"); --guessed
 lin get_above_V2 = variants {};
 lin get_across_2_V = variants {};   ---- mennä perille
 lin get_across_1_V2 = variants {};   ---- tulla ymmärretyksi mennä perille saada ymmärtämään
@@ -41726,7 +41739,7 @@ lin get_back_3_V = variants {};   ---- maksaa takaisin
 lin get_back_1_V2 = variants {};   ---- saada takaisin
 lin get_back_at_V2 = variants {};
 lin get_back_into_V2 = variants {};
-lin get_back_to_V2 = variants {};
+lin get_back_to_V2 = mkV2 (mkV "palata"); --guessed
 lin get_back_together_V = variants {};
 lin get_behind_V = variants {};   ---- laahata perässä
 lin get_behind_with_V2 = variants {};
@@ -41742,9 +41755,9 @@ lin get_down_4_V2 = mkV2 (mkV {s = c66 "nielaista"});
 lin get_down_5_V2 = mkV2 (mkV "apeuttaa");
 lin get_down_6_V2 = variants {};   ---- kirjoittaa muistiin
 lin get_down_on_V2 = variants {};
-lin get_down_to_V2 = variants {};
-lin get_down_to_VV = variants {};
-lin get_drunk_V = variants {};
+lin get_down_to_V2 = mkV2 (mkV "ryhtyä") illative; --guessed
+lin get_down_to_VV = mkVV (mkV (mkV "ryhtyä") "tosissaan"); --guessed
+lin get_drunk_V = mkV (mkV "juoda") "itsensä humalaan"; --guessed
 lin get_even_1_V = variants {};   ---- päästä tasoihin
 lin get_even_2_V = variants {};   ---- tasoittaa tilit
 lin get_in_3_V = variants {};   ---- tulla valituksi
@@ -41752,7 +41765,7 @@ lin get_in_4_V = variants {};   ---- saapua asemalle
 lin get_in_1_V2 = mkV2 (mkV {s = c52A "saapua"});
 lin get_in_2_V2 = mkV2 (mkV {s = c52 "onnistua"});
 lin get_in_3_V2 = variants {};   ---- tulla valituksi
-lin get_in_V3 = variants {};
+lin get_in_V3 = mkV3 (mkV "saada");
 lin get_into_1_V2 = mkV2 (mkV {s = c52A "joutua"});
 lin get_into_2_V2 = mkV2 (mkV {s = c67 "tulla"});
 lin get_into_3_V2 = variants {};   ---- päästä opiskelemaan
@@ -41866,7 +41879,7 @@ lin ghostMasc_2_N = mkN "haamukirjoittaja";
 lin ghostFem_2_N = mkN "haamukirjoittaja";
 lin ghost_3_N = mkN {s = d01 "haamu"};
 lin ghost_of_N2 = variants {};
-lin ghost_1_V = variants {};   ---- liikkua aaveen lailla
+lin ghost_1_V = mkV (mkV "liitää") "kuin aave"; --guessed
 lin ghost_3_V = variants {};   ---- olla haamukirjoittajana
 lin ghost_2_V2 = variants {};   ---- näyttäytyä kummituksena
 lin ghost_3_V2 = variants {};   ---- olla haamukirjoittajana
@@ -42110,7 +42123,7 @@ lin give_away_4_V2 = mkV2 (mkV {s = c54A "kavaltaa"});
 lin give_back_V2 = variants {};   ---- antaa takaisin
 lin give_in_1_V = mkV {s = c52A "myöntyä"};
 lin give_in_2_V = mkV {s = c53A "luovuttaa"};
-lin give_in_26_V = variants {};
+lin give_in_26_V = mkV "sortua"; --guessed
 lin give_it_to_V2 = variants {};
 lin give_it_up_for_V2 = variants {};
 lin give_it_up_to_V2 = variants {};
@@ -42195,7 +42208,7 @@ lin glamor_N = variants {mkN {s = d39 "lumous"}; mkN {s = d01 "tenho"}; mkN {s =
 lin glamorgan_LN = variants {};
 lin glamorization_1_N = variants {mkN {s = d05A "ihannointi"}; mkN "romantisointi"};
 lin glamorize_1_V2 = variants {};   ---- antaa hohtoa
-lin glamorize_2_V2 = variants {};   ---- antaa hohtoa
+lin glamorize_2_V2 = mkV2 (mkV "kaunistaa"); --guessed
 lin glamorous_1_A = variants {mkA {s = d41A "tyylikäs"}; mkA "lumoava"; mkA {s = d41A "hohdokas"}; mkA "loistokas"};
 lin glance_N = mkN {s = d02 "vilkaisu"};
 lin glance_1_V = variants {mkV {s = c53A "katsahtaa"}; mkV {s = c66 "vilkaista"}};
@@ -42528,11 +42541,11 @@ lin go_2_V = variants {mkV {s = c52 "lähestyä"}; mkV {s = c53A "noudattaa"}; m
 lin go_4_V = variants {mkV {s = c67 "tulla"}; mkV {s = c67 "mennä"}};
 lin go_6_V = mkV {s = c67 "mennä"};
 lin go_8_V = variants {mkV {s = c67 "mennä"}; mkV {s = c53 "luistaa"}; mkV {s = c52 "sujua"}};
-lin go_9_V = variants {};   ---- poistaa käytöstä lakata olemasta
+lin go_9_V = mkV "lähteä"; --guessed
 lin go_11_V = variants {mkV {s = c52 "sanoa"}; mkV {s = c52 "kuulua"}; mkV {s = c67A "äännellä"}};
 lin go_12_V = mkV {s = c65 "käydä"};
-lin go_13_V = variants {};   ---- kuluttaa loppuun
-lin go_14_V = variants {};   ---- käydä läpi
+lin go_13_V = mkV "mennä"; --guessed
+lin go_14_V = mkV "sujua"; --guessed
 lin go_15_V = variants {};   ---- mennä eteenpäin
 lin go_16_V = variants {mkV {s = c67 "mennä"}; mkV {s = c52 "sujua"}};
 lin go_17_V = variants {};   ---- poistua keskuudesta
@@ -42646,7 +42659,7 @@ lin go_on_VV = mkVV (mkV {s = c56 "jatkaa"});
 lin go_one_V = variants {};
 lin go_out_1_V = mkV {s = c67 "mennä"};
 lin go_out_2_V = variants {mkV {s = c61 "juhlia"}; mkV {s = c67A "huvitella"}};
-lin go_out_3_V = variants {};   ---- aloittaa peli aloittaa taistelu
+lin go_out_3_V = mkV "lähteä"; --guessed
 lin go_out_4_V = mkV {s = c52 "sammua"};
 lin go_out_5_V = variants {};   ---- jäädä pois muodista jäädä pois käytöstä
 lin go_out_6_V = variants {mkV {s = c67 "tapailla"}; mkV {s = c67 "seurustella"}};
@@ -42666,7 +42679,7 @@ lin go_slow_N = mkN "hidastuslakko";
 lin go_through_1_V = mkV {s = c58A "kokea"};
 lin go_through_2_V2 = variants {};   ---- käydä läpi
 lin go_through_3_V2 = mkV2 (mkV {s = c61 "popsia"});
-lin go_through_with_V2 = variants {};
+lin go_through_with_V2 = mkV2 (mkV (mkV "viedä") "loppuun"); --guessed
 lin go_to_1_V2 = mkV2 (mkV {s = c65 "käydä"});
 lin go_to_5_V2 = variants {};
 lin go_to_meeting_A = variants {mkA "pyhävaatteet"; mkA "hyvät vaatteet"};
@@ -42679,7 +42692,7 @@ lin go_up_1_V = variants {mkV {s = c74 "kohota"}; mkV {s = c53A "kohottaa"}};
 lin go_up_2_V = variants {mkV {s = c74 "kohota"}; mkV {s = c53A "kohottaa"}};
 lin go_up_3_V = variants {mkV {s = c72 "lähetä"}; mkV {s = c53A "lähettää"}};
 lin go_up_4_V = mkV {s = c66 "nousta"};
-lin go_up_6_V = variants {};   ---- palaa maan tasalle
+lin go_up_6_V = mkV "porotua"; --guessed
 lin go_up_7_V2 = mkV2 (mkV {s = c66 "nousta"});
 lin go_up_to_V2 = variants {};
 lin go_with_1_V2 = mkV2 (mkV {s = c65 "käydä"});
@@ -42741,7 +42754,7 @@ lin goblet_1_N = variants {mkN {s = d06 "pikari"}; mkN "viinilasi"};
 lin goblet_2_N = mkN {s = d09 "malja"};
 lin goblin_N = variants {mkN {s = d38 "menninkäinen"}; mkN {s = d01A "peikko"}};
 lin gobsmacked_A = variants {mkA "ällikällä lyöty"; mkA "ällistynyt"}; --unchecked
-lin god_1_N = variants {};
+lin god_1_N = mkN "jumala"; --guessed
 lin god_2_N = mkN {s = d10 "jumala"};
 lin god_3_N = mkN {s = d10 "jumala"};
 lin god_4_N = mkN {s = d10 "jumala"};
@@ -42914,7 +42927,7 @@ lin good_16_A = mkA "hyvä";
 lin good_17_A = mkA "hyvä";
 lin good_18_A = mkA {s = d38 "hyödyllinen"};
 lin good_19_A = variants {mkA "pätevä"; mkA "aito"; mkA "voimassa oleva"}; --unchecked
-lin good_20_A = variants {};
+lin good_20_A = mkA "hyvä"; --guessed
 lin good_21_A = variants {mkA "hyvä"; mkA "arvostettu"; mkA {s = d01 "hieno"}};
 lin good_1_N = variants {mkN {s = d01A "hyöty"}; mkN {s = d01A "etu"}; mkN {s = d10 "hyvä"}};
 lin good_2_N = mkN {s = d10 "hyvä"};
@@ -43039,8 +43052,8 @@ lin gothMasc_2_N = mkN {s = d05A "gootti"};
 lin gothFem_2_N = mkN {s = d05A "gootti"};
 lin gothenburg_1_LN = mkLN "Göteborg";
 lin gothic_1_A = variants {};
-lin gothic_2_A = variants {};
-lin gothic_3_A = variants {};
+lin gothic_2_A = mkA "goottilainen"; --guessed
+lin gothic_3_A = mkA "goottilainen"; --guessed
 lin gothic_4_A = mkA "goottilainen";
 lin gothic_5_A = mkA "kauhuromanttinen";
 lin gothic_1_N = mkN "gootti" ;
@@ -43237,7 +43250,7 @@ lin grand_8_A = mkA "kuuluisa";
 lin grand_N = variants {};
 lin grand_canal_1_LN = mkLN "Keisarinkanava" ;
 lin grand_canal_2_LN = mkLN "Canal Grande" ;
-lin grand_canyon_LN = variants {};
+lin grand_canyon_LN = mkLN "Grand Canyon"; --guessed
 lin grand_canyon_national_park_LN = mkLN "Grand Canyonin kansallispuisto" ;
 lin grand_island_LN = mkLN "Grand Island" ;
 lin grand_piano_N = variants {};
@@ -43294,7 +43307,7 @@ lin grant_SN = mkSN "Grant";
 lin grant_7_N = mkN "toimilupa";
 lin grant_8_N = variants {mkN "myönnetty lupa"; mkN "myönnetty oikeus"}; --unchecked
 lin grant_1_V2 = mkV2 (mkV {s = c54A "myöntää"});
-lin grant_to_V3 = variants {};
+lin grant_to_V3 = mkV3 (mkV "myöntää") accusative (casePrep allative); --guessed
 lin grant_4_V2 = mkV2 (mkV {s = c54A "myöntää"});
 lin grant_5_V2 = mkV2 (mkV {s = c54A "myöntää"});
 lin grant_6_V2 = mkV2 (mkV {s = c53A "luovuttaa"});
@@ -43951,7 +43964,7 @@ lin grow_8_V2 = variants {mkV2 (mkV {s = c53A "kasvattaa"}); mkV2 (mkV {s = c67 
 lin grow_1_VA = variants {mkVA (mkV {s = c61 "kehiä"}) (casePrep translative); mkVA (mkV {s = c52A "kehittyä"}) (casePrep translative); mkVA (mkV {s = c56 "kasvaa"}) (casePrep translative); mkVA (mkV {s = c67 "tulla"}) (casePrep translative); mkVA (mkV {s = c52 "kypsyä"}) (casePrep translative)};
 lin grow_2_VA = variants {mkVA (mkV {s = c52 "vahvistua"}) (casePrep translative); mkVA (mkV {s = c67 "tulla"}) (casePrep translative); mkVA (mkV {s = c52A "lisääntyä"}) (casePrep translative); mkVA (mkV {s = c56 "kasvaa"}) (casePrep translative); mkVA (mkV {s = c52A "enentyä"}) (casePrep translative)};
 lin grow_5_V = variants {mkV {s = c56 "kasvaa"}; mkV {s = c52 "kysyä"}; mkV {s = c61 "kehiä"}; mkV {s = c52A "kehittyä"}};
-lin grow_apart_V = variants {};
+lin grow_apart_V = mkV (mkV "kasvaa") "erilleen"; --guessed
 lin grow_away_from_V2 = variants {};
 lin grow_back_V = variants {};
 lin grow_from_V2 = variants {};
@@ -44346,7 +44359,7 @@ lin gush_1_N = mkN {s = d39 "purskahdus"};
 lin gush_2_N = mkN {s = d10 "tulva"};
 lin gush_1_V = variants {mkV {s = c74 "pursuta"}; mkV {s = c52 "pursua"}; mkV {s = c53A "hulahtaa"}; mkV {s = c75A "ryöpytä"}; mkV {s = c53A "ryöpyttää"}};
 lin gush_2_V = variants {};   ---- kehua voimakkaasti
-lin gush_3_V2 = variants {};   ---- virrata voimakkaasti
+lin gush_3_V2 = mkV2 (mkV "syöstä"); --guessed
 lin gusher_N = mkN "pulppuava öljylähde"; --unchecked
 lin gushingly_Adv = mkAdv "intoilevasti";
 lin gusset_1_N = mkN {s = d48A "vahvike"};
@@ -44590,7 +44603,7 @@ lin hail_2_N = mkN "-sade";
 lin hail_3_N = mkN {s = d39 "tervehdys"};
 lin hail_2_V = variants {};   ---- olla kotoisin
 lin hail_4_V = mkV {s = c61A "tervehtiä"};
-lin hail_5_V = variants {};   ---- sataa rakeita
+lin hail_5_V = mkV (mkV "sataa") "rakeita"; --guessed
 lin hail_1_V2 = mkV2 (mkV {s = c53 "ylistää"});
 lin hail_3_V2 = mkV2 (mkV {s = c52 "kutsua"});
 lin hail_4_V2 = mkV2 (mkV {s = c61A "tervehtiä"});
@@ -44623,7 +44636,7 @@ lin hairdresserMasc_N = mkN {s = d10 "kampaaja"};
 lin hairdresserFem_N = mkN {s = d10 "kampaaja"};
 lin hairdressing_1_N = mkN "hiustenhoitotuote";
 lin hairdressing_2_N = variants {mkN "hiustenleikkaus"; mkN "hiustenmuotoilu"};
-lin hairdryer_N = variants {} ;
+lin hairdryer_N = mkN "hiustenkuivaaja"; --guessed
 lin hairiness_N = mkN {s = d40 "karvaisuus"};
 lin hairless_A = variants {mkA "höyhenetön"; mkA "kalju"; mkA "karvaton"; mkA "paljas"};
 lin hairlessness_1_N = variants {mkN "karvattomuus"; mkN {s = d40 "kaljuus"}};
@@ -44881,7 +44894,7 @@ lin hand_2_V2 = variants {mkV2 (mkV {s = c56A "auttaa"}); mkV2 (mkV {s = c53A "j
 lin hand_back_V2 = variants {};
 lin hand_barrow_N = mkN {s = d05 "paarit"};
 lin hand_carry_V2 = variants {};
-lin hand_down_V2 = variants {};   ---- jättää perinnöksi
+lin hand_down_V2 = mkV2 (mkV (mkV "siirtää") "perintönä"); --guessed
 lin hand_grenade_N = mkN "käsikranaatti";
 lin hand_in_V2 = variants {};
 lin hand_luggage_N = mkN "käsitavarat";
@@ -44991,7 +45004,7 @@ lin hang_6_V = mkV {s = c52 "leijua"};
 lin hang_8_V = mkV {s = c52A "riippua"};
 lin hang_10_V = variants {};   ---- olla esillä
 lin hang_11_V = variants {};   ---- estää valamiehistön päätös
-lin hang_16_V = variants {};
+lin hang_16_V = mkV "norkoilla"; --guessed
 lin hang_2_V2 = mkV2 (mkV {s = c53 "ripustaa"});
 lin hang_3_V2 = mkV2 (mkV {s = c53A "hirttää"});
 lin hang_4_V2 = mkV2 (mkV {s = c52 "painua"});
@@ -45160,7 +45173,7 @@ lin hardlinerMasc_N = mkN "kovan linjan kannattaja";
 lin hardlinerFem_N = mkN "kovan linjan kannattaja";
 lin hardly_1_AdV = variants {mkAdV "töin tuskin"; mkAdV "hädin tuskin"}; --unchecked
 lin hardly_2_AdV = mkAdV "tuskin";
-lin hardly_3_AdV = variants {};
+lin hardly_3_AdV = {s = "tuskin"}; --guessed
 lin hardness_1_N = mkN {s = d40 "kovuus"};
 lin hardness_2_N = mkN {s = d40 "kovuus"};
 lin hardness_3_N = mkN {s = d40 "kovuus"};
@@ -45228,7 +45241,7 @@ lin harmonium_N = mkN {s = d05 "harmoni"};
 lin harmonizable_A = variants {mkA "harmonisoitavissa oleva"; mkA "harmonisoitavissa"}; --unchecked
 lin harmonization_1_N = mkN {s = d39 "soinnutus"};
 lin harmonization_2_N = mkN {s = d39 "soinnutus"};
-lin harmonize_1_V = variants {};   ---- olla sopusoinnussa
+lin harmonize_1_V = mkV (mkV "sointua") "yhteen"; --guessed
 lin harmonize_2_V = mkV {s = c53A "soinnuttaa"};
 lin harmonize_3_V = variants {};   ---- laulaa harmoniassa soittaa harmoniassa
 lin harmonize_6_V = mkV {s = c53A "soinnuttaa"};
@@ -45366,7 +45379,7 @@ lin hatband_N = variants {mkN "hatun nauha"; mkN "hattunauha"}; --unchecked
 lin hatbox_N = mkN "hatturasia";
 lin hatch_1_N = mkN {s = d09A "haudonta"};
 lin hatch_2_N = mkN {s = d39 "varjostus"};
-lin hatch_3_N = variants {};
+lin hatch_3_N = mkN "takaluukku"; --guessed
 lin hatch_4_N = mkN {s = d01A "luukku"};
 lin hatch_1_V = mkV {s = c52A "kuoriutua"};
 lin hatch_2_V2 = mkV2 (mkV {s = c52A "hautoa"});
@@ -45608,7 +45621,7 @@ lin head_4_V2 = mkV2 (mkV {s = c53A "johtaa"});
 lin head_5_V2 = mkV2 (mkV {s = c53A "johtaa"});
 lin head_7_V2 = variants {};   ---- olla kärjessä
 lin head_8_V2 = variants {};   ---- kasvaa pää
-lin head_9_V2 = variants {};   ---- poistaa pää
+lin head_9_V2 = mkV2 (mkV (mkV "poistaa") "pää"); --guessed
 lin head_for_V2 = variants {};
 lin head_hunterMasc_1_N = variants {mkN "kykyjenetsijä"; mkN "kykyjenmetsästäjä"};
 lin head_hunterFem_1_N = variants {mkN "kykyjenetsijä"; mkN "kykyjenmetsästäjä"};
@@ -45997,7 +46010,7 @@ lin hedonistMasc_N = mkN {s = d05 "hedonisti"};
 lin hedonistFem_N = mkN {s = d05 "hedonisti"};
 lin hedonistic_A = mkA "hedonistinen";
 lin heed_N = mkN {s = d26 "huoli"};
-lin heed_V2 = variants {};   ---- ottaa huomioon
+lin heed_V2 = mkV2 (mkV "noudattaa"); --guessed
 lin heedful_1_A = mkA "valpas";
 lin heedful_2_A = mkA {s = d38 "kuuliainen"};
 lin heedful_3_A = variants {mkA {s = d38 "huolellinen"}; mkA {s = d38 "tarkkaavainen"}};
@@ -46642,7 +46655,7 @@ lin highbrow_1_A = variants {mkA "korkealentoinen"; mkA "älymystön suosima"}; 
 lin highbrowMasc_N = mkN {s = d04A "älykkö"};
 lin highbrowFem_N = mkN {s = d04A "älykkö"};
 lin highchair_N = mkN "syöttötuoli";
-lin higher_education_CN = variants {};   ---- korkeakouluopetus korkeakoulutus
+lin higher_education_CN = Synt.mkCN (mkN "korkeakoulutus"); --guessed
 lin highflierMasc_N = mkN "menestyjä";
 lin highflierFem_N = mkN "menestyjä";
 lin highflown_A = variants {};
@@ -46882,7 +46895,7 @@ lin hit_back_V2 = variants {};
 lin hit_for_V3 = variants {};
 lin hit_it_off_V = variants {};
 lin hit_it_off_with_V2 = variants {};
-lin hit_on_V2 = variants {};
+lin hit_on_V2 = mkV2 (mkV "iskeä"); --guessed
 lin hit_out_at_V2 = variants {};
 lin hit_up_V = variants {};
 lin hit_up_V2 = variants {};
@@ -47034,7 +47047,7 @@ lin hold_15_V = variants {};   ---- olla voimassa
 lin hold_23_V = mkV {s = c52A "pitäytyä"};
 lin hold_24_V = variants {};   ---- pitää pintansa
 lin hold_35_V = mkV {s = c52A "yhtyä"};
-lin hold_1_V2 = variants {};   ---- pitää jonakin
+lin hold_1_V2 = mkV2 (mkV "pitää");   ---- pitää jonakin
 lin hold_2_V2 = mkV2 (mkV {s = c67A "pidellä"});
 lin hold_3_V2 = mkV2 (mkV {s = c53 "järjestää"});
 lin hold_4_V2 = mkV2 (mkV {s = c53 "omistaa"});
@@ -47047,12 +47060,12 @@ lin hold_10_V2 = mkV2 (mkV {s = c53A "pitää"});
 lin hold_11_V2 = mkV2 (mkV {s = c54A "sisältää"});
 lin hold_12_V2 = mkV2 (mkV {s = c52A "mahtua"});
 lin hold_V2A = mkV2A (mkV {s = c53A "säilyttää"}) (casePrep translative) (casePrep translative);
-lin hold_17_V2 = variants {};   ---- pitää sisällään
+lin hold_17_V2 = mkV2 (mkV "sisältää");   ---- pitää sisällään
 lin hold_18_V2 = mkV2 (mkV {s = c53A "pitää"});
 lin hold_19_V2 = mkV2 (mkV {s = c53 "järjestää"});
 lin hold_20_V2 = variants {};   ---- pitää hallussaan
 lin hold_21_V2 = variants {};   ---- pitää voimassa
-lin hold_22_V2 = variants {};   ---- pitää yllä
+lin hold_22_V2 = mkV2 (mkV "vangita"); --guessed
 lin hold_26_V2 = mkV2 (mkV {s = c53A "viivyttää"});
 lin hold_27_V2 = mkV2 (mkV {s = c53A "rauhoittaa"});
 lin hold_28_V2 = mkV2 (mkV {s = c67A "pidätellä"});
@@ -47741,7 +47754,7 @@ lin hospitalization_1_N = mkN "sairaalassaoloaika";
 lin hospitalization_2_N = mkN "sairaalassa olo"; --unchecked
 lin hospitalization_3_N = mkN "sairaalavakuutus";
 lin hospitalization_4_N = mkN "sairaalassa olo"; --unchecked
-lin hospitalize_1_V2 = variants {};   ---- sijoittaa sairaalaan joutua sairaalaan
+lin hospitalize_1_V2 = mkV2 (mkV (mkV "ottaa") "sairaalahoitoon"); --guessed
 lin host_1_N = mkN {s = d10A "isäntä"};
 lin host_2_N = mkN {s = d01A "joukko"};
 lin host_3_N = mkN {s = d10A "isäntä"};
@@ -47753,7 +47766,7 @@ lin hostMasc_7_N = mkN "siirrännäisen saaja"; --unchecked
 lin hostFem_7_N = mkN "siirrännäisen saaja"; --unchecked
 lin hostMasc_8_N = mkN {s = d10A "isäntä"};
 lin hostFem_8_N = mkN {s = d10A "isäntä"};
-lin host_9_N = variants {};
+lin host_9_N = mkN "öylätti"; --guessed
 lin host_10_N = variants {mkN "isäntäkone"; mkN {s = d10A "isäntä"}};
 lin host_V2 = mkV2 (mkV {s = c68 "isännöidä"});
 lin hostageMasc_N = mkN "panttivanki";
@@ -47932,8 +47945,8 @@ lin hover_4_V = mkV {s = c52 "leijua"};
 lin hover_5_V = variants {};   ---- leijua jnk yllä
 lin hover_around_V = variants {};
 lin hovercraft_N = mkN "ilmatyynyalus";
-lin how8many_IDet = variants {};
-lin how8much_IDet = variants {};
+lin how8many_IDet = S.how8many_IDet; --guessed
+lin how8much_IDet = S.how8many_IDet; --guessed
 lin how_IAdv = S.how_IAdv ;
 lin how_d'ye_do_N = mkN "hankala tilanne"; --unchecked
 lin howard_SN = mkSN "Howard";
@@ -48077,7 +48090,7 @@ lin humanitarianFem_1_N = mkN "ihmisystävä";
 lin humanitarianMasc_2_N = mkN "ihmisystävä";
 lin humanitarianFem_2_N = mkN "ihmisystävä";
 lin humanitarianism_N = mkN "humanitaarisuus";
-lin humanities_N = variants {};
+lin humanities_N = mkN "humanistiset tieteet"; --guessed
 lin humanity_1_N = variants {mkN {s = d40 "humaanisuus"}; mkN {s = d40 "inhimillisyys"}};
 lin humanity_2_N = mkN {s = d40 "ihmisyys"};
 lin humanity_3_N = mkN "ihmiskunta";
@@ -48193,7 +48206,7 @@ lin hunger_march_N = mkN "työttömien mielenosoitus"; --unchecked
 lin hunger_marcherMasc_N = mkN "työtön mielenosoittaja"; --unchecked
 lin hunger_marcherFem_N = mkN "työtön mielenosoittaja"; --unchecked
 lin hungry_1_A = mkA "nälkäinen";
-lin hungry_for_A2 = variants {};
+lin hungry_for_A2 = mkA2 "nälkäinen" (casePrep allative); --guessed
 lin hunk_1_N = variants {mkN {s = d39 "adonis"}; mkN "herkkupala"};
 lin hunk_2_N = variants {mkN "iso pala"; mkN {s = d09 "pala"}}; --unchecked
 lin hunker_down_1_V = mkV {s = c61A "kyykkiä"};
@@ -48787,7 +48800,7 @@ lin idea_1_N = mkN {s = d12 "idea"};
 lin idea_3_N = mkN {s = d39 "käsitys"};
 lin idea_4_N = mkN {s = d39 "käsitys"};
 lin idea_5_N = mkN {s = d09 "teema"};
-lin idea_of_N2 = variants {};
+lin idea_of_N2 = mkN2 (mkN "ajatus") (casePrep elative);
 lin ideal_1_A = variants {mkA {s = d38 "ihanteellinen"}; mkA "ideaali-"};
 lin ideal_2_A = variants {mkA "ideaali-"; mkA "ihanne-"};
 lin ideal_3_A = mkA "ideaalinen";
@@ -48930,7 +48943,7 @@ lin ignorant_2_A = mkA "tietämätön";
 lin ignorant_3_A = mkA "tietämätön";
 lin ignorantness_N = mkN {s = d40 "tietämättömyys"};
 lin ignore_3_V = variants {};   ---- olla piittaamatta
-lin ignore_1_V2 = variants {};   ---- olla piittaamatta
+lin ignore_1_V2 = mkV2 (mkV "sivuuttaa");   ---- olla piittaamatta
 lin ignore_2_V2 = variants {};   ---- jättää huomiotta
 lin ignore_3_V2 = variants {};   ---- olla piittaamatta
 lin ignore_4_V2 = variants {};   ---- jättää huomiotta
@@ -49087,7 +49100,7 @@ lin imagination_3_N = mkN {s = d40 "kekseliäisyys"};
 lin imaginative_A = variants {mkA "mielikuvituksellinen"; mkA {s = d41 "kekseliäs"}};
 lin imagine_1_V2 = mkV2 (mkV {s = c67A "kuvitella"});
 lin imagine_2_VS = variants {mkV {s = c73 "arvata"}; mkV {s = c67 "luulla"}};
-lin imagined_A = variants {};
+lin imagined_A = mkA "kuviteltu"; --guessed
 lin imaging_1_N = mkN "mielikuvitus";
 lin imaging_2_N = mkN "kuvaaminen";
 lin imagism_N = mkN "imagismi";
@@ -49104,7 +49117,7 @@ lin imbecileFem_N = mkN {s = d05 "imbesilli"};
 lin imbecility_1_N = mkN "vähämielisyys";
 lin imbecility_2_N = mkN {s = d39 "möhläys"};
 lin imbed_V2 = mkV2 (mkV {s = c53A "upottaa"});
-lin imbibe_1_V2 = variants {};   ---- imeä itseensä
+lin imbibe_1_V2 = mkV2 (mkV "nauttia"); --guessed
 lin imbibe_2_V2 = mkV2 (mkV {s = c52A "imeytyä"});
 lin imbibe_3_V2 = mkV2 (mkV {s = c61A "nauttia"});
 lin imbibe_4_V2 = mkV2 (mkV {s = c52 "omaksua"});
@@ -49225,7 +49238,7 @@ lin immovable_1_A = variants {mkA "järkähtämätön"; mkA "järkkymätön"; mk
 lin immune_1_A = mkA "immuuni-";
 lin immune_2_A = variants {mkA "turvassa oleva"; mkA "turvassa"}; --unchecked
 lin immune_3_A = mkA "immuuni";
-lin immune_to_A2 = variants {};
+lin immune_to_A2 = mkA2 "immuuni" (casePrep allative); --guessed
 lin immuneMasc_N = mkN {s = d05 "immuuni"};
 lin immuneFem_N = mkN {s = d05 "immuuni"};
 lin immunity_1_N = mkN "vastustuskyky";
@@ -49264,7 +49277,7 @@ lin immunotherapy_N = mkN "immunoterapia";
 lin immure_V2 = variants {};   ---- panna muurien sisään
 lin immutability_N = mkN {s = d40 "muuttumattomuus"};
 lin immutable_1_A = mkA "muuttumaton";
-lin immutable_2_A = variants {};
+lin immutable_2_A = mkA "muuttumaton"; --guessed
 lin imp_1_N = variants {mkN {s = d38 "menninkäinen"}; mkN {s = d38 "maahinen"}};
 lin impMasc_2_N = variants {mkN {s = d03 "riiviö"}; mkN "pikkupiru"};
 lin impFem_2_N = variants {mkN {s = d03 "riiviö"}; mkN "pikkupiru"};
@@ -49510,7 +49523,7 @@ lin impossibility_1_N = mkN {s = d40 "mahdottomuus"};
 lin impossibility_2_N = mkN {s = d40 "mahdottomuus"};
 lin impossible_1_A = mkA "mahdoton";
 lin impossible_2_A = mkA "mahdoton";
-lin impossible_3_A = variants {};
+lin impossible_3_A = mkA "mahdoton"; --guessed
 lin impossible_N = mkN {s = d34A "mahdoton"};
 lin imposterMasc_N = mkN {s = d06 "huijari"};
 lin imposterFem_N = mkN {s = d06 "huijari"};
@@ -49664,7 +49677,7 @@ lin impurity_1_N = mkN "epäpuhtaus";
 lin impurity_2_N = mkN "epäpuhtaus";
 lin imputation_1_N = mkN {s = d39 "syytös"};
 lin imputation_2_N = mkN "syyksilukeminen";
-lin impute_1_V2 = variants {};   ---- lukea syyksi
+lin impute_1_V2 = mkV2 (mkV "lukea"); --guessed
 lin impute_2_V2 = variants {};   ---- lukea syyksi
 lin imputrescible_A = mkA "mätänemätön";
 lin in_1_A = variants {mkA "muodissa"; mkA "muodissa oleva"};
@@ -49675,19 +49688,19 @@ lin in_2_PN = mkPN "In";
 lin in_3_LN = mkLN "IN";
 lin in_1_Prep = S.in_Prep ;
 lin in_2_Prep = S.on_Prep ;
-lin in_3_Prep = variants {};
-lin in_4_Prep = variants {};
-lin in_5_Prep = variants {};
+lin in_3_Prep = S.in_Prep;
+lin in_4_Prep = S.in_Prep;
+lin in_5_Prep = casePrep inessive; --guessed
 lin in_accordance_with_Prep = variants {};
 lin in_addition_Adv = variants {};
 lin in_addition_to_Prep = variants {};
 lin in_advance_Adv = mkAdv {s = c99 "etukäteen"};
-lin in_case_of_Prep = variants {};
+lin in_case_of_Prep = postGenPrep "varalta"; --guessed
 lin in_case_Subj = variants {mkSubj "siinä tapauksessa että"; mkSubj "mikäli"; mkSubj "siltä varalta että"}; --unchecked
 lin in_chief_A = variants {};
 lin in_fighting_1_N = mkN "valtataistelu";
 lin in_fighting_2_N = mkN "lähiottelu";
-lin in_front_of_Prep = variants {};
+lin in_front_of_Prep = postGenPrep "edessä";
 lin in_general_Adv = mkAdv {s = c99 "yleensä"};
 lin in_lieu_of_Prep = variants {};
 lin in_loco_parentis_Adv = mkAdv "vanhempien sijasta";
@@ -49704,7 +49717,7 @@ lin in_service_A = variants {};
 lin in_situ_1_Adv = variants {};
 lin in_situ_2_Adv = mkAdv "paikan päällä";
 lin in_spite_of_Prep = variants {};
-lin in_the_affirmative_Adv = variants {};
+lin in_the_affirmative_Adv = mkAdv "myöntävästi"; --guessed
 lin in_the_end_2_Adv = variants {mkAdv "loppujen lopuksi"; mkAdv {s = c99 "lopulta"}};
 lin in_the_end_1_Adv = variants {mkAdv {s = c99 "lopulta"}; mkAdv "loppujen lopuksi"};
 lin in_the_main_2_Adv = mkAdv "pääasiallisesti";
@@ -50068,7 +50081,7 @@ lin incorrect_4_A = mkA {s = d38 "virheellinen"};
 lin incorrectness_1_N = mkN {s = d40 "sopimattomuus"};
 lin incorrectness_2_N = mkN {s = d40 "virheellisyys"};
 lin incorrigible_1_A = mkA "parantumaton";
-lin incorrigible_2_A = variants {};
+lin incorrigible_2_A = mkA "parantumaton"; --guessed
 lin incorrupt_1_A = variants {mkA "korruptoitumaton"; mkA "turmeltumaton"};
 lin incorrupt_2_A = variants {};
 lin incorruptibility_N = mkN "korruptoitumattomuus";
@@ -50278,7 +50291,7 @@ lin indication_3_N = variants {mkN {s = d03 "indikaatio"}; mkN "hoidon aihe"}; -
 lin indication_4_N = mkN {s = d05A "merkki"};
 lin indication_5_N = mkN {s = d10 "näyttämä"};
 lin indicative_A = mkA "indikatiivi-";
-lin indicative_of_A2 = variants {};
+lin indicative_of_A2 = mkA2 "osoittava" (casePrep elative); --guessed
 lin indicator_1_N = mkN {s = d06 "indikaattori"};
 lin indicator_2_N = mkN "merkkivalo";
 lin indicator_3_N = variants {mkN {s = d33 "ilmaisin"}; mkN {s = d38 "ilmainen"}; mkN {s = d06 "mittari"}};
@@ -50853,8 +50866,8 @@ lin inhalant_2_N = mkN "hengitettävä lääke"; --unchecked
 lin inhalation_1_N = mkN {s = d03 "inhalaatio"};
 lin inhalation_2_N = mkN "inhalaatiolääke";
 lin inhale_1_V = variants {};   ---- hengittää sisään
-lin inhale_2_V = variants {};   ---- vetää henkeä
-lin inhale_2_V2 = variants {};   ---- vetää henkeä
+lin inhale_2_V = mkV (mkV "hengittää") "sisään"; --guessed
+lin inhale_2_V2 = mkV2 (mkV (mkV "hengittää") "sisään");   ---- vetää henkeä
 lin inhaler_N = mkN {s = d33A "sumutin"};
 lin inharmonious_1_A = mkA "epäsointuinen";
 lin inharmonious_2_A = mkA "epäsointuinen";
@@ -51150,7 +51163,7 @@ lin insert_2_N = mkN "sisään pantava esine"; --unchecked
 lin insert_3_N = mkN {s = d05A "insertti"};
 lin insert_4_N = mkN {s = d05A "insertti"};
 lin insert_1_V2 = mkV2 (mkV {s = c73 "lisätä"});
-lin insert_2_V2 = variants {};   ---- panna sisään
+lin insert_2_V2 = mkV2 (mkV "syöttää"); --guessed
 lin insert_3_V2 = mkV2 (mkV {s = c58A "tunkea"});
 lin insert_4_V2 = variants {};   ---- lisätä väliin
 lin insertion_1_N = mkN {s = d39 "lisäys"};
@@ -51171,7 +51184,7 @@ lin inside_3_Adv = mkAdv {s = c99 "sisällä"};
 lin inside_4_Adv = mkAdv {s = c99 "sisimmältään"};
 lin inside_1_N = mkN "sisäpuoli";
 lin inside_2_N = mkN "sisäpuoli";
-lin inside_Prep = variants {};
+lin inside_Prep = casePrep inessive; --guessed
 lin inside_of_Prep = variants {};
 lin inside_passage_LN = mkLN "Inside Passage" ;
 lin insider_N = variants {mkN "sisäpiirin jäsen"; mkN "sisäpiiriläinen"}; --unchecked
@@ -51206,7 +51219,7 @@ lin insipidity_1_N = mkN "mielenkiinnottomuus";
 lin insipidity_2_N = variants {mkN {s = d40 "ikävystyttävyys"}; mkN "mielenkiinnottomuus"; mkN {s = d40 "valjuus"}};
 lin insipidness_1_N = mkN {s = d40 "ikävystyttävyys"};
 lin insipidness_2_N = variants {mkN {s = d40 "ikävystyttävyys"}; mkN "mielenkiinnottomuus"; mkN {s = d40 "valjuus"}};
-lin insist_1_V = variants {};   ---- pysyä vaatimuksessaan
+lin insist_1_V = mkV "vaatia"; --guessed
 lin insist_2_V2 = variants {mkV2 (mkV {s = c53A "inttää"}); mkV2 (mkV {s = c61A "vaatia"})};
 lin insist_3_V2 = mkV2 (mkV {s = c53A "väittää"});
 lin insistence_1_N = mkN "hellittämätön vaatimus"; --unchecked
@@ -51276,7 +51289,7 @@ lin instability_2_N = variants {mkN "epävarmuus"; mkN {s = d40 "epävakaus"}};
 lin instability_3_N = variants {mkN {s = d40 "epävakaus"}; mkN "instabiliteetti"};
 lin instability_4_N = variants {mkN {s = d40 "epävakaisuus"}; mkN {s = d40 "epävakaus"}};
 lin install_1_V2 = mkV2 (mkV {s = c54A "asentaa"});
-lin install_2_V2 = variants {};   ---- asettaa virkaan
+lin install_2_V2 = mkV2 (mkV (mkV "asettaa") "virkaan"); --guessed
 lin install_3_V2 = mkV2 (mkV {s = c53A "sijoittaa"});
 lin installation_1_N = mkN {s = d39 "asennus"};
 lin installation_2_N = mkN {s = d39 "laitos"};
@@ -51299,7 +51312,7 @@ lin instantaneous_A = variants {mkA {s = d38 "äkillinen"}; mkA "silmänräpäyk
 lin instantiation_N = mkN {s = d39 "ilmennys"};
 lin instar_N = mkN "kehitysvaihe";
 lin instead_Adv = mkAdv {s = c99 "sen sijaan"};
-lin instead_of_Prep = variants {};
+lin instead_of_Prep = prePrep partitive "sijasta"; --guessed
 lin instep_1_N = mkN "jalkapöytä";
 lin instep_2_N = mkN {s = d10 "pohja"};
 lin instigate_1_V2 = mkV2 (mkV {s = c53A "yllyttää"});
@@ -51589,7 +51602,7 @@ lin interdict_2_V2 = mkV2 (mkV {s = c54A "kieltää"});
 lin interdiction_1_N = mkN {s = d01A "kielto"};
 lin interdiction_2_N = mkN {s = d01A "kielto"};
 lin interdisciplinary_A = variants {mkA "monitieteinen"; mkA "tieteidenvälinen"; mkA "poikkitieteellinen"};
-lin interest_in_N2 = variants {};
+lin interest_in_N2 = mkN2 (mkN "kiinnostus") (casePrep illative);
 lin interest_2_N = variants {mkN {s = d01A "etu"}; mkN {s = d01A "hyöty"}};
 lin interest_3_N = mkN {s = d01A "mielenkiinto"};
 lin interest_4_N = mkN {s = d01A "korko"};
@@ -51610,8 +51623,8 @@ lin interface_3_N = mkN "rajapinta";
 lin interface_4_N = mkN {s = d10 "liittymä"};
 lin interfacial_A = mkA "pintojen välinen"; --unchecked
 lin interfaith_A = mkA "uskontojenvälinen";
-lin interfere_with_V2 = variants {};
-lin interfere_in_V2 = variants {};
+lin interfere_with_V2 = mkV2 (mkV "häiritä"); --guessed
+lin interfere_in_V2 = mkV2 (mkV "puuttua"); --guessed
 lin interference_1_N = variants {mkN "puuttuminen"; mkN "väliintulo"};
 lin interference_2_N = variants {mkN "häiritseminen"; mkN "estäminen"; mkN {s = d09A "häirintä"}};
 lin interference_3_N = variants {mkN {s = d05 "interferenssi"}; mkN {s = d03 "häiriö"}};
@@ -51832,7 +51845,7 @@ lin intertidal_A = variants {mkA "vuorovesi-"; mkA "litoraalinen"};
 lin intertribal_A = mkA "heimojenvälinen";
 lin intertrigo_N = mkN {s = d10 "hiertymä"};
 lin intertwine_2_V = variants {};   ---- pujotella sukkulapitsiä
-lin intertwine_1_V2 = variants {};
+lin intertwine_1_V2 = mkV2 (mkV (mkV "kietoa") "yhteen"); --guessed
 lin intertwine_2_V2 = variants {};   ---- pujotella sukkulapitsiä
 lin intertwine_3_V2 = mkV2 (mkV {s = c52 "punoa"});
 lin interval_1_N = mkN {s = d09A "väliaika"};
@@ -51876,7 +51889,7 @@ lin intimate_1_A = mkA {s = d38 "läheinen"};
 lin intimate_2_A = variants {};
 lin intimate_3_A = variants {mkA {s = d10 "viihtyisä"}; mkA {s = d41A "kodikas"}};
 lin intimate_4_A = variants {mkA "läheisessä suhteessa oleva"; mkA {s = d38 "läheinen"}; mkA "läheisessä suhteessa"}; --unchecked
-lin intimate_5_A = variants {};
+lin intimate_5_A = mkA "intiimi"; --guessed
 lin intimate_6_A = mkA {s = d05 "intiimi"};
 lin intimate_7_A = mkA "perinpohjainen";
 lin intimate_8_A = variants {mkA {s = d10 "syvä"}; mkA "perinpohjainen"};
@@ -51892,10 +51905,10 @@ lin intimidation_1_N = variants {mkN "pakottaminen"; mkN {s = d02 "uhkailu"}};
 lin intimidation_2_N = mkN {s = d02 "pelottelu"};
 lin intimidation_3_N = mkN {s = d02 "uhkailu"};
 lin intimidation_4_N = mkN {s = d02 "uhkailu"};
-lin into_1_Prep = variants {};
-lin into_2_Prep = variants {};
+lin into_1_Prep = S.to_Prep;
+lin into_2_Prep = S.to_Prep;
 lin into_3_Prep = variants {};
-lin into_4_Prep = variants {};
+lin into_4_Prep = S.to_Prep;
 lin intolerable_A = mkA "sietämätön";
 lin intolerance_1_N = variants {mkN "yliherkkyys"; mkN "sietokyvyttömyys"};
 lin intolerance_2_N = mkN {s = d40 "suvaitsemattomuus"};
@@ -52615,7 +52628,7 @@ lin italianMasc_N = mkN "italialainen";
 lin italian_N = mkN {s = d12 "italia"};
 lin italian_A = variants {mkA "Italian"; mkA "italialainen"};
 lin italic_1_A = variants {mkA "vino-"; mkA "kursivoitu"};
-lin italic_2_A = variants {};
+lin italic_2_A = mkA "itaalinen"; --guessed
 lin italic_1_N = mkN {s = d05 "kursiivi"};
 lin italic_2_N = mkN "itaali" ;
 lin italic_3_N = mkN "kursiivikirjasin";
@@ -52733,7 +52746,7 @@ lin jacket_4_N = variants {mkN {s = d05 "kuori"}; mkN {s = d26 "kuori"}};
 lin jacket_5_N = mkN {s = d09A "vaippa"};
 lin jackfruit_1_N = mkN "intialainen leipäpuu"; --unchecked
 lin jackfruit_2_N = mkN "jakkihedelmä";
-lin jackie_GN = variants {};
+lin jackie_GN = mkGN "Jackie" male; --guessed
 lin jacklight_N = mkN "tuulasvalo";
 lin jackpot_1_N = mkN {s = d05A "potti"};
 lin jackpot_2_N = mkN "jättipotti";
@@ -52752,7 +52765,7 @@ lin jackstraw_N = mkN {s = d01A "tikku"};
 lin jackstraws_N = mkN "tikkupeli";
 lin jacob_GN = mkGN "Jacob" male ;
 lin jacob_2_PN = mkPN "Jaakob";
-lin jacobean_A = variants {} ;
+lin jacobean_A = mkA "jaakobinaikuinen"; --guessed
 lin jacobin_A = variants {};
 lin jacobinMasc_N = mkN {s = d05 "jakobiini"};
 lin jacobinFem_N = mkN {s = d05 "jakobiini"};
@@ -52981,7 +52994,7 @@ lin jellyfish_2_N = mkN {s = d13 "meduusa"};
 lin jellyroll_N = mkN "kääretorttu";
 lin jemmy_N = mkN "sorkkarauta";
 lin jennet_N = mkN "aasitamma";
-lin jennifer_GN = variants {};
+lin jennifer_GN = mkGN "Jennifer" female; --guessed
 lin jenny_GN = mkGN "Jenny" female ;
 lin jenny_2_N = mkN "aasitamma";
 lin jeopardize_1_V2 = variants {mkV2 (mkV {s = c54A "vaarantaa"}); mkV2 (mkV {s = c73A "uhata"})};
@@ -53032,8 +53045,8 @@ lin jersey_5_N = variants {};
 lin jersey_1_LN = mkLN "Jersey";
 lin jersey_2_LN = mkLN "Jersey";
 lin jersey_city_LN = mkLN "Jersey City" ;
-lin jess_GN = variants {};
-lin jessica_GN = variants {};
+lin jess_GN = mkGN "Jess" male; --guessed
+lin jessica_GN = mkGN "Jessica" female; --guessed
 lin jessie_GN = variants {};
 lin jest_1_N = mkN {s = d09 "pila"};
 lin jest_2_N = mkN {s = d09 "pila"};
@@ -53514,7 +53527,7 @@ lin jump_4_N = variants {mkN {s = d39 "hypähdys"}; mkN {s = d01 "sätky"}; mkN 
 lin jump_5_N = mkN "laskuvarjohyppy";
 lin jump_6_N = variants {mkN {s = d01A "hyppy"}; mkN {s = d02 "ponkaisu"}};
 lin jump_1_V = mkV {s = c73A "hypätä"};
-lin jump_4_V = variants {};   ---- nousta nopeasti
+lin jump_4_V = mkV "hypähtää"; --guessed
 lin jump_5_V = variants {};   ---- herättää huomiota
 lin jump_6_V = mkV {s = c66 "ponkaista"};
 lin jump_7_V = mkV {s = c73A "hypätä"};
@@ -53526,7 +53539,7 @@ lin jump_15_V = variants {mkV {s = c61A "hyppiä"}; mkV {s = c67A "heilahdella"}
 lin jump_2_V2 = variants {mkV2 (mkV {s = c53A "hätkähtää"}); mkV2 (mkV {s = c53A "hypähtää"})};
 lin jump_3_V2 = mkV2 (mkV {s = c73A "rynnätä"});
 lin jump_5_V2 = variants {};   ---- herättää huomiota
-lin jump_9_V2 = variants {};   ---- suistua kiskoilta
+lin jump_9_V2 = mkV2 (mkV (mkV "suistua") "kiskoilta"); --guessed
 lin jump_10_V2 = variants {};   ---- hypätä laskuvarjolla
 lin jump_11_V2 = mkV2 (mkV {s = c53A "hyppäyttää"});
 lin jump_12_V2 = variants {};   ---- käynnistää kaapeleiden avulla
@@ -53633,7 +53646,7 @@ lin just_4_AdV = mkAdV "aivan";
 lin just_5_AdV = variants {mkAdV "juuri ja juuri"; mkAdV "tuskin"}; --unchecked
 lin just_6_AdV = variants {};
 lin just_7_AdV = variants {mkAdV "parhaillaan"; mkAdV "juuri"};
-lin just_8_AdV = variants {};
+lin just_8_AdV = {s = "juuri"}; --guessed
 lin just_5_Adv = variants {mkAdv "juuri ja juuri"; mkAdv {s = c99 "tuskin"}};
 lin just_6_Adv = variants {};
 lin just_7_Adv = variants {mkAdv {s = c99 "parhaillaan"}; mkAdv {s = c99 "juuri"}};
@@ -53827,7 +53840,7 @@ lin katharobic_A = mkA "katarobinen";
 lin katharometer_N = mkN "mittalaite";
 lin katherine_GN = variants {};
 lin kathmandu_LN = mkLN "Kathmandu" ;
-lin kathy_GN = variants {};
+lin kathy_GN = mkGN "Kathy" female; --guessed
 lin katie_GN = variants {};
 lin katowice_LN = mkLN "Katowice";
 lin katsina_LN = mkLN "Katsina" ;
@@ -53892,7 +53905,7 @@ lin keep_16_V2 = mkV2 (mkV {s = c53A "pitää"});
 lin keep_17_V2 = variants {mkV2 (mkV {s = c53A "säilyttää"}); mkV2 (mkV {s = c53A "pitää"})};
 lin keep_18_V2 = variants {mkV2 (mkV {s = c53A "pitää"}); mkV2 (mkV {s = c53A "säilyttää"})};
 lin keep_19_V2 = variants {mkV2 (mkV "ylläpitää"); mkV2 (mkV {s = c53A "pitää"})};
-lin keep_20_V2 = variants {};   ---- pitää kiinni
+lin keep_20_V2 = mkV2 (mkV "pidättää"); --guessed
 lin keep_21_V2 = mkV2 (mkV {s = c53A "pitää"});
 lin keep_1_V2A = variants {mkV2A (mkV "ylläpitää") (casePrep translative) (casePrep translative); mkV2A (mkV {s = c53A "pitää"}) (casePrep translative) (casePrep translative)};
 lin keep_22_V2A = mkV2A (mkV {s = c52 "säilöä"}) (casePrep translative) (casePrep translative);
@@ -53903,11 +53916,11 @@ lin keep_at_V2 = variants {};
 lin keep_away_V2 = variants {};   ---- pitää erossa
 lin keep_back_1_V2 = mkV2 (mkV {s = c73 "varata"});
 lin keep_back_2_V2 = variants {};   ---- pitää itsellään
-lin keep_down_1_V2 = variants {};   ---- estää kohoamasta pitää kurissa
+lin keep_down_1_V2 = mkV2 (mkV "rajoittaa"); --guessed
 lin keep_down_2_V2 = mkV2 (mkV {s = c53A "sortaa"});
 lin keep_down_3_V2 = variants {};   ---- pystyä pitämään sisällään
 lin keep_from_V2 = variants {};
-lin keep_in_V2 = variants {};   ---- pitää jossakin
+lin keep_in_V2 = mkV2 (mkV (mkV "pitää") "sisällä"); --guessed
 lin keep_ing_V2V = variants {};
 lin keep_off_1_V2 = mkV2 (mkV {s = c53A "välttää"});
 lin keep_off_2_V2 = mkV2 (mkV {s = c53A "välttää"});
@@ -53916,7 +53929,7 @@ lin keep_out_2_V2 = variants {};   ---- pysyä poissa
 lin keep_over_V2 = variants {};
 lin keep_to_V2 = variants {};
 lin keep_to_V2V = mkV2V (mkV {s = c52 "säilyä"});
-lin keep_track_of_V2 = variants {};
+lin keep_track_of_V2 = mkV2 (mkV (mkV "pysyä") "ajan tasalla"); --guessed
 lin keep_up_1_V = variants {mkV "ylläpitää"; mkV {s = c53A "säilyttää"}};
 lin keep_up_4_V = variants {};   ---- pysytellä ajan tasalla
 lin keep_up_2_V2 = variants {mkV2 (mkV {s = c56 "jatkaa"}); mkV2 (mkV {s = c53A "pitkittää"})};
@@ -54161,7 +54174,7 @@ lin kick_in_2_V = variants {};   ---- kantaa kortensa kekoon
 lin kick_in_3_V2 = mkV2 (mkV {s = c52A "rikkoa"});
 lin kick_off_V = mkV {s = c56A "alkaa"};
 lin kick_off_V2 = mkV2 (mkV {s = c56A "alkaa"});
-lin kick_out_1_V2 = variants {};   ---- potkaista ulos
+lin kick_out_1_V2 = mkV2 (mkV (mkV "heittää") "pihalle"); --guessed
 lin kick_out_2_V2 = variants {};   ---- antaa potkut
 lin kick_start_N = variants {};
 lin kick_starter_N = mkN "poljinkäynnistys";
@@ -54212,7 +54225,7 @@ lin kilkenny_LN = variants {};
 lin kill_1_N = variants {mkN {s = d01A "tappo"}; mkN {s = d10 "surma"}};
 lin kill_2_N = variants {mkN {s = d39 "hävitys"}; mkN "tuhoaminen"};
 lin kill_3_N = variants {};
-lin kill_4_V = variants {};   ---- olla kohtalokas olla tappava
+lin kill_4_V = mkV "tappaa"; --guessed
 lin kill_1_V2 = variants {mkV2 (mkV {s = c73 "murhata"}); mkV2 (mkV {s = c73 "nirhata"}); mkV2 (mkV {s = c73 "surmata"})};
 lin kill_2_V2 = mkV2 (mkV {s = c62 "mitätöidä"});
 lin kill_3_V2 = variants {mkV2 (mkV {s = c61 "juuria"}); mkV2 (mkV {s = c64 "lyödä"})};
@@ -54275,7 +54288,7 @@ lin kinase_N = mkN "kinaasi";
 lin kind_1_A = variants {mkA "kiltti"; mkA {s = d38 "ystävällinen"}; mkA "hyväntahtoinen"};
 lin kind_2_A = variants {mkA "ärsyttämätön"; mkA "leuto"};
 lin kind_3_A = mkA {s = d38 "kärsivällinen"};
-lin kind_of_N2 = variants {};
+lin kind_of_N2 = mkN2 (mkN "laji") (casePrep genitive);
 lin kinda_Adv = mkAdv "aika lailla";
 lin kindergarten_N = variants {mkN "lastentarha"; mkN "esikoulu"; mkN "päiväkoti"; mkN {s = d09 "tarha"}};
 lin kindhearted_A = mkA "hyväsydäminen";
@@ -54439,7 +54452,7 @@ lin kith_N = mkN {s = d10 "ystävä"};
 lin kitsch_N = mkN {s = d05 "kitsi"};
 lin kittee_N = mkN "kittee";
 lin kitten_N = mkN {s = d38 "poikanen"};
-lin kitten_V = variants {} ;
+lin kitten_V = mkV "poikia"; --guessed
 lin kittenish_A = mkA {s = d10 "leikkisä"};
 lin kittilä_LN = variants {};
 lin kittiwake_N = mkN "pikkukajava";
@@ -55009,7 +55022,7 @@ lin lafayette_2_LN = mkLN "Lafayette" ;
 lin lag_1_N = mkN {s = d48 "viive"};
 lin lag_2_N = variants {mkN {s = d05 "väli"}; mkN {s = d48 "viive"}};
 lin lag_3_N = variants {mkN {s = d09 "lista"}; mkN {s = d48 "säle"}};
-lin lag_behind_V = variants {};   ---- olla jäljessä jäädä jälkeen
+lin lag_behind_V = mkV (mkV "jäädä") "jälkeen"; --guessed
 lin lag_3_V = variants {};   ---- heittää kolikolla
 lin lag_2_V2 = mkV2 (mkV {s = c69 "vangita"});
 lin lag_3_V2 = variants {};   ---- heittää kolikolla
@@ -55195,7 +55208,7 @@ lin land_1_V = mkV {s = c52A "laskeutua"};
 lin land_6_V = mkV {s = c52A "saapua"};
 lin land_2_V2 = mkV2 (mkV {s = c52A "laskeutua"});
 lin land_3_V2 = mkV2 (mkV {s = c56A "saattaa"});
-lin land_4_V2 = variants {};   ---- päästä maihin
+lin land_4_V2 = mkV2 (mkV (mkV "tuoda") "maihin"); --guessed
 lin land_5_V2 = variants {mkV2 (mkV {s = c53A "välittää"}); mkV2 (mkV {s = c53A "sälyttää"})};
 lin land_7_V2 = variants {};   ---- ampua alas
 lin land_agentMasc_1_N = mkN "kiinteistönvälittäjä";
@@ -55280,7 +55293,7 @@ lin language_2_N = mkN {s = d26 "kieli"};
 lin language_3_N = mkN {s = d39 "sanoitus"};
 lin language_4_N = mkN {s = d26 "kieli"};
 lin language_5_N = mkN {s = d26 "kieli"};
-lin language_6_N = variants {} ;
+lin language_6_N = mkN "ammattikieli"; --guessed
 lin languid_A = variants {mkA "heikko"; mkA "veltto"};
 lin languish_1_V = variants {mkV {s = c52A "nuutua"}; mkV {s = c52A "räytyä"}};
 lin languish_2_V = variants {mkV {s = c68 "ikävöidä"}; mkV {s = c73A "kaivata"}; mkV {s = c53A "kaivattaa"}};
@@ -55856,7 +55869,7 @@ lin lead_in_2_N = mkN {s = d33A "johdin"};
 lin lead_on_1_V2 = variants {};   ---- johtaa harhaan
 lin lead_on_2_V2 = variants {};   ---- johtaa harhaan
 lin lead_ore_N = mkN "lyijymalmi";
-lin lead_to_V2 = variants {};
+lin lead_to_V2 = mkV2 (mkV "johtaa") illative;
 lin lead_up_V = variants {mkV {s = c54A "edeltää"}; mkV {s = c53A "aiheuttaa"}};
 lin leaded_1_A = mkA "lyijytetty";
 lin leaded_2_A = mkA "lyijypitoinen";
@@ -55969,8 +55982,8 @@ lin learn_1_V2 = mkV2 (mkV {s = c61A "oppia"});
 lin learn_3_V2 = mkV2 (mkV {s = c67A "opetella"});
 lin learn_5_V3 = mkV3 (mkV {s = c53A "opettaa"});
 lin learn_6_V2 = variants {};   ---- ottaa selvää
-lin learn_VS = variants {};   ---- saada tietää saada tietoonsa
-lin learn_VV = variants {};   ---- saada tietää saada tietoonsa
+lin learn_VS = mkVS (mkV "oppia");   ---- saada tietää saada tietoonsa
+lin learn_VV = mkVV (mkV "oppia"); --guessed
 lin learnerMasc_1_N = mkN {s = d41 "oppilas"};
 lin learnerFem_1_N = mkN {s = d41 "oppilas"};
 lin learnerMasc_2_N = variants {mkN {s = d12 "harjoittelija"}; mkN {s = d41 "oppilas"}};
@@ -56013,7 +56026,7 @@ lin leathery_1_A = mkA "nahkainen";
 lin leave_1_N = variants {mkN {s = d10 "loma"}; mkN "virkavapaus"};
 lin leave_2_N = mkN {s = d10A "lupa"};
 lin leave_3_N = mkN "jäähyväiset";
-lin leave_1_V = variants {};   ---- lähteä pois
+lin leave_1_V = mkV (mkV "lähteä") "pois";   ---- lähteä pois
 lin leave_8_V = variants {mkV {s = c74 "erota"}; mkV {s = c53A "erottaa"}};
 lin leave_2_V2 = mkV2 (mkV {s = c53A "jättää"});
 lin leave_4_V2 = mkV2 (mkV {s = c53A "jättää"});
@@ -56029,7 +56042,7 @@ lin leave_13_V2 = variants {};   ---- jättää jonnekin
 lin leave_14_V2 = mkV2 (mkV {s = c53A "unohtaa"});
 lin leave_V2A = mkV2A (mkV {s = c53A "jättää"}) (casePrep translative) (casePrep translative);
 lin leave_behind_1_V = variants {};   ---- olla ottamatta mukaansa
-lin leave_of_absence_CN = variants {};   ---- loma virkavapaus
+lin leave_of_absence_CN = Synt.mkCN (mkN "virkavapaa"); --guessed
 lin leave_off_1_V = variants {mkV {s = c53A "lopettaa"}; mkV {s = c53A "keskeyttää"}};
 lin leave_off_2_V2 = variants {};   ---- jättää pois
 lin leave_off_3_V = mkV {s = c53A "lopettaa"};
@@ -56405,7 +56418,7 @@ lin let_6_V2 = mkV2 (mkV {s = c73 "vuokrata"});
 lin let_down_N = mkN {s = d39 "pettymys"};
 lin let_down_2_V2 = mkV2 (mkV {s = c53A "pettää"});
 lin let_in_1_V2 = variants {};   ---- päästää sisään
-lin let_in_2_V2 = variants {};   ---- päästää sisään
+lin let_in_2_V2 = mkV2 (mkV (mkV "päästää") "sisään"); --guessed
 lin let_off_V2 = mkV2 (mkV {s = c53A "vapauttaa"});
 lin let_on_V = mkV {s = c67A "laverrella"};
 lin let_out_1_V2 = variants {};   ---- päästää ulos
@@ -56881,7 +56894,7 @@ lin light_5_V = variants {};   ---- tulla jkn osaksi
 lin light_6_V = variants {};   ---- astua alas
 lin light_1_V2 = mkV2 (mkV {s = c66 "valaista"});
 lin light_2_V2 = variants {};   ---- sytyttää savuke
-lin light_4_V2 = variants {};   ---- saada palamaan sytyttää palamaan
+lin light_4_V2 = mkV2 (mkV "sytyttää"); --guessed
 lin light_6_V2 = variants {};   ---- astua alas
 lin light_7_V2 = variants {};
 lin light_armed_1_A = mkA "kevyesti aseistettu"; --unchecked
@@ -56980,7 +56993,7 @@ lin like_3_A = mkA "samanlainen";
 lin like_4_A = mkA "samankaltainen";
 lin like_1_N = mkN {s = d40 "kaltaisuus"};
 lin like_2_N = variants {mkN {s = d38 "kaltainen"}; mkN {s = d38 "lainen"}};
-lin like_Prep = variants {};
+lin like_Prep = prePrep partitive "kuten";
 lin like_Subj = variants {};
 lin like_2_V2 = mkV2 (mkV {s = c53A "pitää"});
 lin like_3_V2 = variants {mkV2 (mkV {s = c53A "pitää"}); mkV2 (mkV {s = c53A "välittää"})};
@@ -57011,7 +57024,7 @@ lin liliaceous_A = mkA "liliaceous";
 lin lilian_GN = variants {};
 lin liljendal_LN = variants {};
 lin lille_LN = mkLN "Lille";
-lin lilliputian_1_A = variants {};
+lin lilliputian_1_A = mkA "lilliputtimainen"; --guessed
 lin lilliputian_2_A = variants {mkA "lilliputtimainen"; mkA "lilliputti-"};
 lin lilliputian_3_A = mkA "olemattoman pieni"; --unchecked
 lin lilliputianMasc_1_N = mkN {s = d05A "lilliputti"};
@@ -57136,7 +57149,7 @@ lin lincoln_3_PN = mkPN "Lincoln";
 lin lincoln_memorial_LN = mkLN "Lincolnin muistomerkki" ;
 lin lincolnshire_LN = mkLN "Lincolnshire";
 lin lincomycin_N = mkN "linkomysiini";
-lin linda_GN = variants {};
+lin linda_GN = mkGN "Linda" female; --guessed
 lin lindane_N = mkN "lindaani";
 lin lindesnes_LN = mkLN "Lindesnes" ;
 lin linden_1_N = mkN {s = d39 "lehmus"};
@@ -57282,7 +57295,7 @@ lin link_8_N = mkN {s = d05A "linkki"};
 lin link_9_N = variants {mkN {s = d40 "yhteys"}; mkN {s = d05A "linkki"}};
 lin link_3_V = variants {};   ---- liittyä yhteen
 lin link_1_V2 = variants {mkV2 (mkV {s = c53A "linkittää"}); mkV2 (mkV {s = c53 "yhdistää"})};
-lin link_2_V2 = variants {};   ---- liittää yhteen
+lin link_2_V2 = mkV2 (mkV "yhdistää"); --guessed
 lin link_4_V2 = mkV2 (mkV {s = c53A "liittää"});
 lin link_up_N = mkN {s = d40 "yhteys"};
 lin link_up_2_V2 = mkV2 (mkV {s = c58 "kytkeä"});
@@ -57426,8 +57439,8 @@ lin list_2_V2 = mkV2 (mkV {s = c73 "kirjata"});
 lin list_3_V2 = mkV2 (mkV {s = c53 "kallistaa"});
 lin list_5_V2 = mkV2 (mkV {s = c62 "luetteloida"});
 lin list_price_N = variants {mkN "listahinta"; mkN "ohjevähittäishinta"};
-lin listen_to_1_V2 = variants {};
-lin listen_to_2_V2 = variants {};
+lin listen_to_1_V2 = mkV2 (mkV "kuunnella") partitive;
+lin listen_to_2_V2 = mkV2 (mkV "kuunnella") partitive;
 lin listen_V = variants {mkV {s = c52 "uskoa"}; mkV {s = c67A "kuunnella"}};
 lin listen_in_1_V = mkV {s = c67A "kuunnella"};
 lin listen_in_2_V = variants {};   ---- kuunnella salaa
@@ -57536,7 +57549,7 @@ lin little_5_A = mkA "heikko";
 lin little_6_A = mkA "pieni";
 lin little_7_A = mkA "pieni";
 lin little_8_A = mkA "pikku";
-lin little_ACard = variants {} {- vähän -};
+lin little_ACard = acardStr "vähän" singular;
 lin little_bighorn_river_LN = mkLN "Little Bighorn" ;
 lin little_missouri_river_LN = mkLN "Little Missouri River" ;
 lin little_rock_LN = mkLN "Little Rock" ;
@@ -57554,7 +57567,7 @@ lin liturgical_A = mkA "liturginen";
 lin liturgics_N = mkN "liturgian opinnot"; --unchecked
 lin liturgistMasc_N = mkN {s = d05 "liturgi"};
 lin liturgistFem_N = mkN {s = d05 "liturgi"};
-lin liturgy_1_N = variants {};
+lin liturgy_1_N = mkN "liturgia"; --guessed
 lin liturgy_2_N = variants {mkN {s = d12 "liturgia"}; mkN {s = d05 "liturgi"}; mkN "alttaripalvelus"; mkN "jumalanpalvelusjärjestys"};
 lin livable_A = variants {mkA "asuttava"; mkA "asumiskelpoinen"};
 lin live_1_A = variants {mkA {s = d10 "suora"}; mkA "yleisön edessä"; mkA "yleisön edessä esitetty"; mkA "yleisön edessä oleva"};
@@ -58019,7 +58032,7 @@ lin long_6_A = mkA {s = d10 "pitkä"};
 lin long_7_A = mkA {s = d10 "pitkä"};
 lin long_8_A = mkA "pitkäaikainen";
 lin long_9_A = mkA {s = d41 "runsas"};
-lin long_AdA = variants {};
+lin long_AdA = mkAdA "kauan"; --guessed
 lin long_V = variants {mkV {s = c73A "kaivata"}; mkV {s = c53A "kaivattaa"}};
 lin long_beach_LN = mkLN "Long Beach" ;
 lin long_distance_1_A = mkA "kauko-";
@@ -58086,19 +58099,19 @@ lin look_3_N = mkN "ulkonäkö";
 lin look_4_N = mkN {s = d48 "ilme"};
 lin look_1_V = mkV {s = c52 "katsoa"};
 lin look_4_V = mkV {s = c61 "etsiä"};
-lin look_5_V = variants {};   ---- olla jnnk päin
+lin look_5_V = mkV "katsoa"; --guessed
 lin look_6_V2 = variants {};   ---- huolehtia jstak
 lin look_7_V2 = mkV2 (mkV {s = c53A "välittää"});
 lin look_9_V2 = variants {};   ---- näyttää jltak
 lin look_1_VA = mkVA (mkV {s = c53A "näyttää"}) (casePrep translative);
-lin look_3_VA = variants {};   ---- näyttää jltak
+lin look_3_VA = mkVA (mkV "näyttää") (casePrep ablative); --guessed
 lin look_after_V2 = variants {mkV2 (mkV {s = c61A "huolehtia"}); mkV2 (mkV {s = c61A "vahtia"})};
 lin look_ahead_to_V2 = variants {};
-lin look_around_V = variants {};   ---- etsiä jtak katsella ympärilleen jssak
+lin look_around_V = mkV (mkV "katsella") "ympärilleen";   ---- etsiä jtak katsella ympärilleen jssak
 lin look_around_at_V2 = variants {};
 lin look_at_1_V2 = mkV2 (mkV {s = c67 "tarkastella"});
 lin look_at_2_V2 = mkV2 (mkV {s = c67 "tarkastella"});
-lin look_at_3_V2 = variants {};
+lin look_at_3_V2 = mkV2 (mkV "katsoa"); --guessed
 lin look_back_V = variants {};   ---- katsoa taaksepäin katsoa taakseen
 lin look_back_at_V2 = mkV2 (mkV {s = c67 "muistella"});
 lin look_back_on_V2 = variants {};
@@ -58106,7 +58119,7 @@ lin look_down_V = variants {};
 lin look_down_on_V2 = variants {mkV2 (mkV "ylenkatsoa"); mkV2 (mkV {s = c61 "halveksia"})};
 lin look_for_2_V2 = mkV2 (mkV {s = c53A "odottaa"});
 lin look_forward_V = variants {};   ---- odottaa innolla jtak
-lin look_forward_to_V2 = variants {};
+lin look_forward_to_V2 = mkV2 (mkV "odottaa") partitive;
 lin look_in_V2 = variants {};
 lin look_in_on_V2 = variants {};
 lin look_into_1_V2 = mkV2 (mkV {s = c61 "tutkia"});
@@ -58127,7 +58140,7 @@ lin look_to_8_V2 = variants {};
 lin look_to_10_V2 = mkV2 (mkV "luottaa") illative ;
 lin look_toward_V2 = variants {};
 lin look_up_V = variants {};   ---- etsiä jstak
-lin look_up_V2 = variants {};   ---- etsiä jstak
+lin look_up_V2 = mkV2 (mkV "etsiä"); --guessed
 lin look_up_to_V2 = mkV2 (mkV {s = c53A "kunnioittaa"});
 lin look_upon_as_V3 = variants {};
 lin lookdown_N = mkN {s = d05 "makrilli"};
@@ -58320,7 +58333,7 @@ lin lot_4_N = mkN {s = d10 "osa"};
 lin lot_3_N = variants {mkN {s = d07A "väki"}; mkN {s = d14A "porukka"}; mkN {s = d17 "poppoo"}};
 lin lot_5_N = mkN {s = d09A "arpa"};
 lin lot_6_N = mkN {s = d10 "erä"};
-lin lotsSg_Card = variants {};
+lin lotsSg_Card = cardStr "paljon" singular; --guessed
 lin lotsPl_Card = variants {};
 lin lot_PN = mkPN "Loot";
 lin lota_1_N = mkN "lota";
@@ -58388,7 +58401,7 @@ lin louth_LN = variants {};
 lin loutish_A = mkA {s = d38 "öykkärimäinen"};
 lin louvar_N = mkN "luvari";
 lin louvered_A = variants {mkA "säleiköllä varustettu"; mkA "säleikkö-"}; --unchecked
-lin louvre_LN = variants {};
+lin louvre_LN = mkLN "Louvre"; --guessed
 lin louvre_N = mkN {s = d48 "säle"};
 lin lovable_1_A = variants {mkA "herttainen"; mkA {s = d10 "rakastettava"}};
 lin lovage_1_N = mkN {s = d06 "liperi"};
@@ -58476,7 +58489,7 @@ lin lowbrowFem_N = mkN "tavallinen pulliainen"; --unchecked
 lin lower_Adv = variants {};
 lin lower_2_V = variants {mkV {s = c58 "laskea"}; mkV {s = c54A "madaltaa"}};
 lin lower_5_V = mkV {s = c67 "mulkoilla"};
-lin lower_1_V2 = variants {};   ---- siirtää alaspäin
+lin lower_1_V2 = mkV2 (mkV "alentaa"); --guessed
 lin lower_2_V2 = variants {mkV2 (mkV {s = c58 "laskea"}); mkV2 (mkV {s = c54A "madaltaa"})};
 lin lower_3_V2 = mkV2 (mkV {s = c58 "laskea"});
 lin lower_4_V2 = variants {mkV2 (mkV {s = c54A "madaltaa"}); mkV2 (mkV {s = c54A "alentaa"})};
@@ -59115,7 +59128,7 @@ lin mage_N = variants {};
 lin magenta_A = variants {mkA "magenta"; mkA "aniliininpunainen"};
 lin magenta_1_N = variants {mkN "aniliininpunainen"; mkN "magenta"};
 lin magenta_2_PN = mkPN "Magenta";
-lin maggie_GN = variants {};
+lin maggie_GN = mkGN "Maggie" female; --guessed
 lin maggot_N = mkN {s = d10A "toukka"};
 lin maggoty_A = mkA "matoinen";
 lin maghreb_LN = mkLN "Maghreb" ;
@@ -59286,7 +59299,7 @@ lin mainstream_N = mkN "valtavirta";
 lin mainstreamed_A = mkA "sopeutettu";
 lin maintain_3_V = mkV "ylläpitää";
 lin maintain_4_V = mkV {s = c53A "väittää"};
-lin maintain_1_V2 = variants {};   ---- pitää jonakin
+lin maintain_1_V2 = mkV2 (mkV "ylläpitää");   ---- pitää jonakin
 lin maintain_2_V2 = mkV2 (mkV "ylläpitää");
 lin maintain_3_V2 = mkV2 (mkV "ylläpitää");
 lin maintain_4_V2 = mkV2 (mkV {s = c53A "väittää"});
@@ -59343,15 +59356,15 @@ lin majuscule_2_A = mkA {s = d01 "iso"};
 lin makalu_LN = mkLN "Makalu" ;
 lin make_1_N = variants {mkN {s = d05A "merkki"}; mkN {s = d05 "malli"}};
 lin make_2_N = mkN "työn tekeminen"; --unchecked
-lin make_29_V = variants {};   ---- tehdä tarpeensa
+lin make_29_V = mkV "tehdä"; --guessed
 lin make_30_V = mkV {s = c71 "tehdä"};
 lin make_35_V = variants {};   ---- näyttää aikovansa
-lin make_42_V = variants {};   ---- olla olevinaan jtak
+lin make_42_V = mkV "tekeytyä"; --guessed
 lin make_49_V = mkV {s = c53 "päästää"};
 lin make_1_V2 = mkV2 (mkV {s = c71 "tehdä"});
-lin make_2_V3 = variants {};   ---- tehdä jksik
-lin make_3_V2 = variants {};   ---- saada aikaan
-lin make_5_V2 = variants {};   ---- saada aikaan
+lin make_2_V3 = mkV3 (mkV "tehdä"); --guessed
+lin make_3_V2 = mkV2 (mkV "aiheuttaa");   ---- saada aikaan
+lin make_5_V2 = mkV2 (mkV "aiheuttaa"); --guessed
 lin make_6_V2 = mkV2 (mkV {s = c71 "tehdä"});
 lin make_7_V2 = variants {mkV2 (mkV {s = c69 "tulkita"}); mkV2 (mkV {s = c67A "ajatella"})};
 lin make_9_V2 = mkV2 (mkV {s = c71 "tehdä"});
@@ -59373,7 +59386,7 @@ lin make_25_V2 = mkV2 (mkV {s = c53 "muodostaa"});
 lin make_26_V2 = mkV2 (mkV {s = c62 "organisoida"});
 lin make_27_V2 = mkV2 (mkV {s = c73 "sijata"});
 lin make_31_V2 = variants {};   ---- sopia jksik
-lin make_32_V2 = variants {};   ---- tehdä yhteensä
+lin make_32_V2 = mkV2 (mkV "tehdä"); --guessed
 lin make_33_V2 = mkV2 (mkV {s = c67 "olla"});
 lin make_34_V2 = mkV2 (mkV {s = c71 "tehdä"});
 lin make_36_V2 = mkV2 (mkV {s = c52A "siirtyä"});
@@ -59381,16 +59394,16 @@ lin make_37_V2 = mkV2 (mkV {s = c61A "ehtiä"});
 lin make_38_V2 = mkV2 (mkV {s = c71 "tehdä"});
 lin make_39_V3 = mkV3 (mkV {s = c71 "tehdä"});
 lin make_40_V2 = mkV2 (mkV {s = c67A "vietellä"});
-lin make_41_V2 = variants {};   ---- tehdä jksta menestyvä
+lin make_41_V2 = mkV2 (mkV (mkV "taata") "menestys"); --guessed
 lin make_43_V2 = variants {};   ---- pitää jnak
 lin make_44_V2 = mkV2 (mkV {s = c62 "arvioida"});
 lin make_45_V2 = variants {};   ---- tehdä jksik
 lin make_46_V2 = variants {};   ---- tehdä jksik
 lin make_47_V2 = variants {};   ---- tulla jksik
 lin make_48_V2 = variants {mkV2 (mkV {s = c67 "olla"}); mkV2 (mkV {s = c53A "pitää"})};
-lin make_2_V2A = variants {};   ---- tehdä jksik
+lin make_2_V2A = mkV2A (mkV "tehdä") accusative (casePrep translative);   ---- tehdä jksik
 lin make_2_V2V = variants {};   ---- tehdä jksik
-lin make_4_V2V = variants {};   ---- saada aikaan
+lin make_4_V2V = mkV2V (mkV "saada");   ---- saada aikaan
 lin make_8_V2V = mkV2V (mkV {s = c53A "pakottaa"});
 lin make_after_V = variants {};
 lin make_away_with_V2 = variants {};
@@ -59406,7 +59419,7 @@ lin make_it_3_V = mkV {s = c52 "onnistua"};
 lin make_it_4_V = variants {};
 lin make_it_5_V = variants {};
 lin make_it_up_to_V2 = variants {};
-lin make_of_V3 = variants {};
+lin make_of_V3 = mkV3 (mkV "tehdä") accusative (casePrep elative);
 lin make_off_V = mkV {s = c52A "häipyä"};
 lin make_off_with_V2 = variants {};
 lin make_out_5_V = mkV {s = c53A "selvittää"};
@@ -59543,7 +59556,7 @@ lin malformation_1_N = mkN "epämuodostuma";
 lin malformation_2_N = mkN "epämuodostuma";
 lin malformed_A = mkA "epämuodostunut";
 lin malfunction_N = variants {mkN "toimintahäiriö"; mkN "virhetoiminta"};
-lin malfunction_1_V = variants {};   ---- toimia huonosti
+lin malfunction_1_V = mkV "vikaantua"; --guessed
 lin mali_LN = mkLN "Mali";
 lin malian_A = variants {mkA "malilainen"; mkA "Malin"};
 lin malianMasc_N = mkN "malilainen";
@@ -59955,7 +59968,7 @@ lin manuscript_2_N = mkN "käsikirjoitus";
 lin manx_A = variants {mkA "mansaarelainen"; mkA "Mansaaren"};
 lin manx_1_N = mkN "manksi";
 lin manx_2_N = mkN "Manx";
-lin many_ACard = variants {variants {} {- moni -}; variants {} {- monta -}};
+lin many_ACard = acardStr "monta" plural;
 lin many_sided_1_A = mkA "monipuolinen";
 lin many_sided_2_A = mkA "monipuolinen";
 lin many_sided_3_A = mkA "monipuolinen";
@@ -60084,7 +60097,7 @@ lin marguerite_2_N = mkN {s = d05 "krysanteemi"};
 lin mari_N = variants {} ;
 lin maria_N = variants {};
 lin mariachi_N = mkN "mariachi-orkesteri";
-lin maria_GN = variants {};
+lin maria_GN = mkGN "Maria" female; --guessed
 lin marian_GN = variants {};
 lin mariana_islands_LN = mkLN "Mariaani" plural ;
 lin maricopa_N = variants {} ;
@@ -60206,7 +60219,7 @@ lin marksmanship_N = mkN "ampumataito";
 lin marl_N = mkN "kalkkilieju";
 lin marlberry_N = mkN "ardisia";
 lin marlborough_LN = variants {};
-lin marlene_GN = variants {};
+lin marlene_GN = mkGN "Marleena" female; --guessed
 lin marlin_N = mkN "purjekalat";
 lin marline_N = mkN {s = d27 "köysi"};
 lin marlinespike_1_N = variants {mkN "pujontapuikko"; mkN "malspiiki"; mkN "malspiikki"};
@@ -60294,7 +60307,7 @@ lin marsupium_N = mkN {s = d05 "pussi"};
 lin mart_N = mkN "kauppapaikka";
 lin marten_N = mkN {s = d10A "näätä"};
 lin martensite_N = mkN "martensiitti";
-lin martha_GN = variants {};
+lin martha_GN = mkGN "Martta" female; --guessed
 lin martha's_vineyard_LN = mkLN "Martha's Vineyard" ;
 lin martial_1_A = mkA {s = d10 "sotaisa"};
 lin martial_2_A = mkA {s = d38 "sotainen"};
@@ -60333,7 +60346,7 @@ lin marxistFem_1_N = mkN {s = d38 "marxilainen"};
 lin marxistFem_2_N = mkN {s = d05 "marxisti"};
 lin marxistMasc_1_N = mkN {s = d38 "marxilainen"};
 lin marxistMasc_2_N = mkN {s = d05 "marxisti"};
-lin marxist_A = variants {};
+lin marxist_A = mkA "marksilainen"; --guessed
 lin mary_PN = mkPN "Maria";
 lin mary_GN = mkGN "Mery" female ;
 lin maryland_1_LN = mkLN "Maryland";
@@ -60785,7 +60798,7 @@ lin maximum_3_N = variants {mkN "suurin arvo"; mkN {s = d01A "huippu"}}; --unche
 lin maxine_GN = variants {};
 lin maxwell_1_N = mkN "maxwell";
 lin maxwell_SN = mkSN "Maxwell";
-lin may_1_VV = variants {};
+lin may_1_VV = S.can_VV;
 lin may_2_VV = mkVV (mkV "saada") ;
 lin may_beetle_N = variants {};
 lin may_bug_N = variants {};
@@ -60914,7 +60927,7 @@ lin measure_2_V2 = mkV2 (mkV {s = c73A "mitata"});
 lin measure_3_V2 = variants {};   ---- olla mitoiltaan
 lin measure_4_V2 = mkV2 (mkV {s = c53A "arvottaa"});
 lin measure_against_V3 = variants {};
-lin measure_off_V2 = variants {};
+lin measure_off_V2 = mkV2 (mkV "mitata"); --guessed
 lin measure_out_V2 = mkV2 (mkV {s = c73A "mitata"});
 lin measure_up_V = variants {};   ---- täyttää vaatimukset
 lin measure_up_V2 = variants {};   ---- täyttää vaatimukset
@@ -61112,7 +61125,7 @@ lin meet_8_V2 = mkV2 (mkV {s = c73A "kohdata"});
 lin meet_10_V2 = mkV2 (mkV {s = c73A "kohdata"});
 lin meet_11_V2 = mkV2 (mkV {s = c53A "koskettaa"});
 lin meet_up_V = variants {};
-lin meet_with_V2 = variants {};
+lin meet_with_V2 = mkV2 (mkV "kohdata");
 lin meeting_1_N = mkN "palaveri";
 lin meeting_2_N = mkN "kokoontuminen";
 lin meeting_3_N = mkN {s = d38 "tapaaminen"};
@@ -61283,7 +61296,7 @@ lin memorial_1_N = mkN "kunnianosoitus";
 lin memorial_2_N = mkN "memoriaali";
 lin memorial_3_N = mkN "muistomerkki";
 lin memorialize_1_V2 = mkV2 (mkV {s = c53 "ikuistaa"});
-lin memorialize_2_V2 = variants {};   ---- viettää muistojuhlaa
+lin memorialize_2_V2 = mkV2 (mkV "muistella");   ---- viettää muistojuhlaa
 lin memorization_1_N = mkN "ulkoa oppiminen"; --unchecked
 lin memorize_1_V2 = variants {};   ---- opetella ulkoa painaa muistiin
 lin memorizerMasc_1_N = mkN "ulkoa opettelija";
@@ -61831,7 +61844,7 @@ lin micelle_N = mkN "miselli";
 lin michael_PN = mkPN "Mikael";
 lin michaelmas_N = mkN "Mikkelinpäivä";
 lin michaelmas_PN = mkPN "Mikkelinpäivä";
-lin michelle_GN = variants {};
+lin michelle_GN = mkGN "Michelle" female; --guessed
 lin michigan_1_LN = mkLN "Michigan";
 lin michigan_2_LN = mkLN "Michigan";
 lin michigan_3_PN = mkPN "Michigan";
@@ -61922,7 +61935,7 @@ lin microwave_1_N = mkN "mikroaalto";
 lin microwave_2_N = mkN {s = d01 "mikro"};
 lin micturition_N = mkN "virtsaaminen";
 lin mid_A = mkA "keski-";
-lin mid_Prep = variants {};
+lin mid_Prep = casePrep inessive; --guessed
 lin mid_off_N = mkN "mid-off";
 lin mid_on_N = mkN "mid-on";
 lin midafternoon_N = mkN "keskipäivä";
@@ -62187,7 +62200,7 @@ lin millinerFem_N = mkN {s = d05 "modisti"};
 lin millinery_1_N = mkN "hattukauppa";
 lin millinery_2_N = mkN "naisten hattu"; --unchecked
 lin milling_N = mkN "lovettu reuna"; --unchecked
-lin millions_Card = variants {};
+lin millions_Card = cardStr "miljoonia" plural; --guessed
 lin millionaire_N = mkN {s = d05 "miljonääri"};
 lin millionairess_N = mkN {s = d05 "miljonääri"};
 lin millionfold_Adv = mkAdv "miljoonakertaisesti";
@@ -62608,7 +62621,7 @@ lin misgiving_2_N = mkN {s = d39 "epäilys"};
 lin misgiving_3_N = mkN {s = d02 "epäily"};
 lin misgovern_V2 = variants {};   ---- hallita huonosti
 lin misgovernment_N = mkN "väärin hallitseminen"; --unchecked
-lin misguide_1_V2 = variants {};   ---- opastaa väärin
+lin misguide_1_V2 = mkV2 (mkV (mkV "johtaa") "harhaan"); --guessed
 lin misguide_2_V2 = variants {};   ---- johtaa harhaan
 lin mishandle_1_V2 = variants {};   ---- hoidella päin mäntyä
 lin mishandle_2_V2 = variants {};   ---- käsitellä väärin
@@ -62670,14 +62683,14 @@ lin misrule_N = mkN "huono hallinto";
 lin miss_1_N = variants {mkN {s = d38 "neitonen"}; mkN {s = d05A "neiti"}};
 lin miss_2_N = variants {mkN "ohilaukaus"; mkN "ohiheitto"; mkN "epäonnistuminen"};
 lin miss_3_N = variants {};
-lin miss_V = variants {};   ---- olla kadoksissa
+lin miss_V = mkV "puuttua"; --guessed
 lin miss_1_V2 = mkV2 (mkV {s = c73 "missata"});
 lin miss_2_V2 = variants {mkV2 (mkV {s = c73A "kaivata"}); mkV2 (mkV {s = c53A "kaivattaa"}); mkV2 (mkV {s = c68 "ikävöidä"})};
 lin miss_3_V2 = mkV2 (mkV {s = c73 "missata"});
 lin miss_4_V2 = mkV2 (mkV {s = c73 "missata"});
 lin miss_5_V2 = variants {mkV2 (mkV {s = c52 "myöhästyä"}); mkV2 (mkV {s = c73 "missata"})};
 lin miss_6_V2 = variants {};   ---- jäädä vaille
-lin miss_7_V2 = variants {};   ---- mennä ohi
+lin miss_7_V2 = mkV2 (mkV (mkV "epäonnistua") "osumasta"); --guessed
 lin miss_9_V2 = variants {mkV2 (mkV {s = c53A "välttää"}); mkV2 (mkV {s = c73 "missata"})};
 lin miss_out_V = variants {};
 lin miss_out_V2 = variants {};
@@ -62847,7 +62860,7 @@ lin mobile_1_LN = mkLN "Mobile";
 lin mobile_2_LN = mkLN "Mobile";
 lin mobile_3_N = mkN {s = d08 "mobile"};
 lin mobile_bay_LN = mkLN "Mobile Bay" ;
-lin mobile_phone_N = variants {} ;
+lin mobile_phone_N = mkN "matkapuhelin"; --guessed
 lin mobility_N = mkN {s = d40 "liikkuvuus"};
 lin mobilization_1_N = variants {mkN {s = d03 "mobilisaatio"}; mkN "liikekannallepano"};
 lin mobilization_2_N = mkN "käyttöönotto";
@@ -63121,7 +63134,7 @@ lin mollify_3_V2 = mkV2 (mkV {s = c54A "pehmentää"});
 lin mollusc_N = mkN {s = d38 "nilviäinen"};
 lin molluscum_N = mkN "ontelosyylä";
 lin molly_N = mkN "hammaskarppi";
-lin molly_GN = variants {};
+lin molly_GN = mkGN "Molly" female; --guessed
 lin mollycoddle_N = mkN {s = d05A "lellikki"};
 lin mollycoddle_V2 = mkV2 (mkV {s = c73 "hyysätä"});
 lin moloch_N = mkN "moolok";
@@ -63734,7 +63747,7 @@ lin mossy_2_A = mkA {s = d38 "vanhoillinen"};
 lin most_1_AdA = mkAdA "eniten";
 lin most_2_Adv = variants {mkAdv {s = c99 "erittäin"}; mkAdv "äärimmäisen"; mkAdv {s = c99 "mitä"}; mkAdv {s = c99 "todella"}; mkAdv "tosi"};
 lin most_3_Adv = mkAdv "suurimmalta osin";
-lin most_Det = variants {};
+lin most_Det = mkDet plural (mkN "usea");
 lin mostaccioli_N = mkN "mostaccioli";
 lin mostly_1_AdV = variants {mkAdV "lähinnä"; mkAdV "etupäässä"; mkAdV "enimmäkseen"};
 lin mostly_2_AdV = mkAdV "enimmäkseen";
@@ -63900,7 +63913,7 @@ lin mount_vesuvius_LN = mkLN "Vesuvius" ;
 lin mount_whitney_LN = mkLN "Mount Whitney" ;
 lin mount_wilson_LN = mkLN "Mount Wilson" ;
 lin mountain_N = variants {mkN {s = d05 "vuori"}; mkN {s = d26 "vuori"}; mkN {s = d06 "tunturi"}};
-lin mountain_of_N2 = variants {};
+lin mountain_of_N2 = mkN2 (mkN "vuori") (casePrep elative); --guessed
 lin mountain_ash_1_PN = variants {};
 lin mountain_ash_2_PN = variants {};
 lin mountain_ash_3_PN = variants {};
@@ -63984,7 +63997,7 @@ lin mouton_N = mkN "lampaanliha";
 lin movability_N = mkN {s = d40 "liikkuvuus"};
 lin movable_1_A = mkA "irtain";
 lin movable_2_A = mkA {s = d10 "liikkuva"};
-lin move_6_V = variants {};   ---- olla liikkeessä
+lin move_6_V = mkV "liikkua"; --guessed
 lin move_1_V = variants {mkV {s = c52A "siirtyä"}; mkV {s = c52A "liikkua"}};
 lin move_4_V = mkV {s = c53A "muuttaa"};
 lin move_5_V = mkV {s = c61 "toimia"};
@@ -64040,7 +64053,7 @@ lin moverMasc_3_N = mkN {s = d10 "liikkuja"};
 lin moverFem_3_N = mkN {s = d10 "liikkuja"};
 lin mover_4_N = mkN "muuttofirma";
 lin movie_N = mkN "elokuva";
-lin movies_N = variants {};
+lin movies_N = mkN "elokuvateatteri"; --guessed
 lin moviegoerMasc_N = mkN "elokuvissakävijä";
 lin moviegoerFem_N = mkN "elokuvissakävijä";
 lin moviemaking_1_N = variants {mkN "elokuvanteko"; mkN {s = d39 "filmaus"}};
@@ -64085,7 +64098,7 @@ lin much_3_AdA = mkAdA "paljon";
 lin much_3_Adv = mkAdv {s = c99 "paljon"};
 lin much_4_Adv = mkAdv {s = c99 "paljolti"};
 lin much_5_Adv = mkAdv {s = c99 "paljon"};
-lin much_ACard = variants {} {- paljon -};
+lin much_ACard = acardStr "paljon" singular {- paljon -};
 lin much_fewer_ACard = variants {};
 lin muchness_N = mkN {s = d40 "suuruus"};
 lin muciferous_A = mkA "limainen";
@@ -64502,8 +64515,8 @@ lin musselburgh_LN = variants {};
 lin must_1_N = mkN {s = d40 "välttämättömyys"};
 lin must_2_N = mkN "rypälemehu";
 lin must_3_N = mkN {s = d40 "tunkkaisuus"};
-lin must_1_VV = variants {};
-lin must_2_VV = variants {};
+lin must_1_VV = S.must_VV;
+lin must_2_VV = S.must_VV;
 lin mustachio_1_N = mkN {s = d07 "viiksi"};
 lin mustachioed_1_A = mkA "viiksekäs";
 lin mustang_N = mkN {s = d05 "mustangi"};
@@ -65067,7 +65080,7 @@ lin nativeFem_1_N = variants {mkN "alkuasukas"; mkN "alkuperäisasukas"};
 lin nativeMasc_2_N = variants {mkN "syntyperäinen asukas"; mkN "syntyperäinen"; mkN "paikallinen asukas"};
 lin nativeFem_2_N = variants {mkN "syntyperäinen asukas"; mkN "syntyperäinen"; mkN "paikallinen asukas"};
 lin native_3_N = mkN "kotoperäinen eliölaji"; --unchecked
-lin native_language_N = variants {} ;
+lin native_language_N = mkN "äidinkieli"; --guessed
 lin nativeness_N = mkN "alkuperäisyys";
 lin nativism_1_N = mkN "nativismi";
 lin nativism_2_N = mkN "nativismi";
@@ -65191,9 +65204,9 @@ lin naysayerMasc_N = mkN {s = d10 "vastustaja"};
 lin naysayerFem_N = mkN {s = d10 "vastustaja"};
 lin naysaying_N = mkN "kieltäytyminen";
 lin nazareth_LN = mkLN "Nasaret" ;
-lin nazi_1_A = variants {};
+lin nazi_1_A = mkA "natsi"; --guessed
 lin nazi_2_A = variants {};
-lin naziMasc_1_N = variants {};
+lin naziMasc_1_N = mkN "natsi"; --guessed
 lin naziFem_1_N = variants {};
 lin naziMasc_2_N = mkN {s = d05 "natsi"};
 lin naziFem_2_N = mkN {s = d05 "natsi"};
@@ -65207,7 +65220,7 @@ lin ne'er_do_wellMasc_N = mkN {s = d03 "hulttio"};
 lin ne'er_do_wellFem_N = mkN {s = d03 "hulttio"};
 lin ne_plus_ultra_N = mkN "huippusaavutus";
 lin neanderthal_1_A = variants {mkA "junttimainen"; mkA "luolamiesmäinen"};
-lin neanderthal_2_A = variants {};
+lin neanderthal_2_A = mkA "neandertalilainen"; --guessed
 lin neap_N = mkN "matalin nousuvesi"; --unchecked
 lin neap_tide_N = mkN "matalin nousuvesi"; --unchecked
 lin neapolitan_A = variants {mkA "Napolin"; mkA "napolilainen"};
@@ -65221,7 +65234,7 @@ lin near_5_A = mkA {s = d38 "läheinen"};
 lin near_6_A = mkA "läheisesti muistuttava"; --unchecked
 lin near_1_Adv = variants {mkAdv {s = c99 "lähelle"}; mkAdv {s = c99 "lähettyvillä"}; mkAdv {s = c99 "lähellä"}};
 lin near_2_Adv = mkAdv {s = c99 "lähes"};
-lin near_Prep = variants {};
+lin near_Prep = postGenPrep "lähellä";
 lin near_V = variants {mkV {s = c52 "lähestyä"}; mkV {s = c72 "lähetä"}; mkV {s = c53A "lähettää"}};
 lin near_V2 = variants {mkV2 (mkV {s = c52 "lähestyä"}); mkV2 (mkV {s = c72 "lähetä"}); mkV2 (mkV {s = c53A "lähettää"})};
 lin near_sighted_A = mkA "likinäköinen";
@@ -65395,7 +65408,7 @@ lin neglect_5_N = mkN "laiminlyöminen";
 lin neglect_1_V2 = mkV2 (mkV "laiminlyödä");
 lin neglect_2_V2 = mkV2 (mkV "laiminlyödä");
 lin neglect_3_V2 = mkV2 (mkV "laiminlyödä");
-lin neglect_4_V2 = variants {};   ---- olla välittämättä
+lin neglect_4_V2 = mkV2 (mkV "laiminlyödä"); --guessed
 lin neglecterMasc_N = mkN "laiminlyöjä";
 lin neglecterFem_N = mkN "laiminlyöjä";
 lin neglectful_1_A = mkA "välinpitämätön";
@@ -65704,7 +65717,7 @@ lin neurosurgeonMasc_N = mkN "neurokirurgi";
 lin neurosurgeonFem_N = mkN "neurokirurgi";
 lin neurosurgery_N = mkN "neurokirurgia";
 lin neurosyphilis_N = mkN "neurosyfilis";
-lin neurotic_1_A = variants {} ;
+lin neurotic_1_A = mkA "neuroottinen"; --guessed
 lin neurotic_2_A = mkA "neuroottinen";
 lin neuroticMasc_N = mkN {s = d04A "neurootikko"};
 lin neuroticFem_N = mkN {s = d04A "neurootikko"};
@@ -65769,7 +65782,7 @@ lin new_6_A = mkA "uusi";
 lin new_7_A = variants {};
 lin new_8_A = variants {};
 lin new_9_A = mkA "uusi";
-lin new_to_A2 = variants {};
+lin new_to_A2 = mkA2 "uusi" (casePrep illative); --guessed
 lin new_AdV = mkAdV "vasta äsken"; --unchecked
 lin new_britain_LN = mkLN "Uusi-Britannia" ;
 lin new_brunswick_1_LN = mkLN "New Brunswick" ;
@@ -66380,7 +66393,9 @@ lin none_A = mkA "ei yhtään"; --unchecked
 lin none_Adv = mkAdv "ei lainkaan";
 lin none_1_N = mkN "nona";
 lin none_2_N = mkN "iltapäivärukous";
-lin none_of_NP_affair_VP = variants {};
+lin none_of_NP_affair_VP np =
+      let vp = Synt.mkVP (mkV2 (mkV "kuulua") allative) np in
+       vp ** {vptyp = {isNeg = True ; isPass = vp.vptyp.isPass}} ;
 lin nonechoic_A = mkA "ei-kaikumainen";
 lin noneffervescent_1_A = mkA "kuplimaton";
 lin noneffervescent_2_A = mkA "kuohumaton";
@@ -66632,7 +66647,7 @@ lin nor'_nor'_west_Adv = mkAdv "pohjoisluoteeseen";
 lin nor'_nor'_west_N = mkN "pohjoisluode";
 lin nor'_west_N = mkN {s = d48A "luode"};
 lin nor_Conj = variants {};
-lin nora_GN = variants {};
+lin nora_GN = mkGN "Nora" female; --guessed
 lin noradrenaline_N = mkN "noradrenaliini";
 lin nord_pas_de_calais_LN = mkLN "Nord-Pas-de-Calais" ;
 lin nordic_1_A = variants {};
@@ -66724,19 +66739,19 @@ lin northeast_2_N = variants {};
 lin northeast_3_N = mkN {s = d38 "koillinen"};
 lin northeast_4_N = mkN {s = d38 "koillinen"};
 lin northeaster_1_N = variants {mkN "koillismyrsky"; mkN "koillistuuli"};
-lin northeasterly_1_A = mkA "koillis-";
-lin northeasterly_2_A = mkA "koillis-";
-lin northeastern_1_A = mkA "koillis-";
-lin northeastern_2_A = mkA "Koillis-";
+lin northeasterly_1_A = mkA "koillinen";
+lin northeasterly_2_A = mkA "koillinen";
+lin northeastern_1_A = mkA "koillinen";
+lin northeastern_2_A = mkA "koillinen";
 lin northeastward_A = mkA "koillis-";
 lin northeastward_Adv = mkAdv "koilliseen";
 lin northerly_1_A = mkA "pohjois-";
 lin northerly_2_A = mkA "pohjois-";
 lin northerly_Adv = mkAdv "pohjoiseen";
-lin northern_1_A = variants {};
-lin northern_2_A = variants {};
-lin northern_3_A = variants {};
-lin northern_4_A = variants {};
+lin northern_1_A = mkA "pohjoinen"; --guessed
+lin northern_2_A = mkA "pohjoinen"; --guessed
+lin northern_3_A = mkA "pohjoinen"; --guessed
+lin northern_4_A = mkA "pohjoinen"; --guessed
 lin northern_ireland_LN = mkLN "Pohjois-Irlanti" ;
 lin northern_mariana_islands_LN = mkLN "Pohjois-Mariaanit" ;
 lin northern_territory_LN = mkLN "Pohjoisterritorio" ;
@@ -66761,10 +66776,10 @@ lin northwest_4_N = mkN "luoteisosa";
 lin northwest_passage_LN = mkLN "Luoteisväylä" ;
 lin northwest_territories_LN = mkLN "Luoteisterritoriot" ;
 lin northwester_N = mkN "luoteismyrsky";
-lin northwesterly_1_A = mkA "luoteis-";
-lin northwesterly_2_A = mkA "luoteis-";
-lin northwestern_1_A = mkA "luoteis-";
-lin northwestern_2_A = mkA "Luoteis-";
+lin northwesterly_1_A = mkA "luoteinen";
+lin northwesterly_2_A = mkA "luoteinen";
+lin northwestern_1_A = mkA "luoteinen";
+lin northwestern_2_A = mkA "luoteinen";
 lin northwestward_A = mkA "luoteeseen";
 lin northwestward_Adv = mkAdv "luoteeseen";
 lin northwich_LN = variants {};
@@ -66858,8 +66873,8 @@ lin note_6_N = variants {mkN {s = d06 "seteli"}; mkN "paperiraha"};
 lin note_8_N = mkN {s = d40 "merkittävyys"};
 lin note_9_N = mkN "velkakirja";
 lin note_2_V2 = mkV2 (mkV {s = c69 "havaita"}) ;
-lin note_3_V2 = variants {};   ---- kiinnittää huomiota
-lin note_4_V2 = variants {};   ---- merkitä muistiin panna muistiin
+lin note_3_V2 = mkV2 (mkV "huomioida"); --guessed
+lin note_4_V2 = mkV2 (mkV (mkV "merkitä") "muistiin"); --guessed
 lin note_1_VS = mkV {s = c53A "huomauttaa"};
 lin note_2_VS = mkV {s = c69 "havaita"};
 lin note_down_V2 = variants {};
@@ -66902,7 +66917,7 @@ lin notification_3_N = mkN {s = d39 "muistutus"};
 lin notify_V2 = variants {mkV2 (mkV {s = c53A "huomauttaa"}); mkV2 (mkV {s = c53A "ilmoittaa"})};
 lin notion_1_N = mkN {s = d39 "käsitys"};
 lin notion_2_N = mkN {s = d48A "käsite"};
-lin notion_of_N2 = variants {};
+lin notion_of_N2 = mkN2 (mkN "käsitys") (casePrep elative);
 lin notion_4_N = mkN "lyhyttavara";
 lin notional_1_A = mkA "kuviteltu";
 lin notional_2_A = variants {mkA "kuviteltu"; mkA {s = d38 "käsitteellinen"}};
@@ -67311,7 +67326,7 @@ lin object_2_N = mkN {s = d39 "tarkoitus"};
 lin object_3_N = mkN {s = d05 "objekti"};
 lin object_4_N = mkN {s = d48A "kohde"};
 lin object_5_N = mkN {s = d03 "olio"};
-lin object_to_1_V2 = variants {};
+lin object_to_1_V2 = mkV2 (mkV "vastustaa"); --guessed
 lin object_to_2_V2 = variants {};
 lin object_VS = mkV {s = c62 "protestoida"};
 lin objectification_1_N = mkN "havainnollistaminen";
@@ -67711,7 +67726,7 @@ lin oersted_2_PN = mkPN "Oersted";
 lin oesophagus_N = mkN "ruokatorvi";
 lin oeuvre_N = mkN {s = d01A "tuotanto"};
 lin of_1_Prep = S.possess_Prep ;
-lin of_2_Prep = variants {};
+lin of_2_Prep = casePrep genitive;
 lin of_3_Prep = S.possess_Prep ;
 lin of_course_Adv = mkAdv {s = c99 "tietenkin"};
 lin off_1_A = variants {mkA "pois päältä"; mkA "pois"; mkA "poissa päältä oleva"; mkA "poissa päältä"; mkA "suljettuna"; mkA "sammutettuna"; mkA "pois päältä oleva"};
@@ -67722,7 +67737,7 @@ lin off_5_A = variants {mkA "poissa oleva"; mkA "poissa"}; --unchecked
 lin off_1_Adv = variants {mkAdv "poispäin"; mkAdv {s = c99 "pois"}};
 lin off_2_Adv = mkAdv {s = c99 "päässä"};
 lin off_3_Adv = mkAdv {s = c99 "pois"};
-lin off_Prep = variants {};
+lin off_Prep = casePrep ablative; --guessed
 lin off_day_N = mkN "huono päivä";
 lin off_licence_N = mkN "alkoholimyymälä";
 lin off_peak_A = variants {};
@@ -67738,7 +67753,7 @@ lin offence_1_N = mkN {s = d39 "hyökkäys"};
 lin offence_2_N = variants {mkN {s = d10 "hyökkääjä"}; mkN "hyökkäävä puoli"}; --unchecked
 lin offence_3_N = variants {mkN {s = d39 "suuttumus"}; mkN "loukkaantuminen"};
 lin offence_4_N = variants {mkN {s = d39 "hyökkäys"}; mkN {s = d39 "loukkaus"}};
-lin offence_5_N = variants {};
+lin offence_5_N = mkN "rikkomus"; --guessed
 lin offenceless_1_A = mkA "hyökkäyskyvytön";
 lin offend_1_V2 = mkV2 (mkV {s = c73A "loukata"});
 lin offend_2_V2 = mkV2 (mkV {s = c52A "rikkoa"});
@@ -67758,7 +67773,7 @@ lin offer_1_N = mkN {s = d39 "ehdotus"};
 lin offer_2_N = mkN {s = d39 "tarjous"};
 lin offer_3_N = mkN {s = d39 "yritys"};
 lin offer_12_V = mkV {s = c61 "kosia"};
-lin offer_1_V2 = variants {};   ---- olla tarjolla
+lin offer_1_V2 = mkV2 (mkV "tarjota");   ---- olla tarjolla
 lin offer_2_V2 = mkV2 (mkV {s = c74 "tarjota"});
 lin offer_4_V2 = mkV2 (mkV {s = c53A "esittää"});
 lin offer_5_V2 = mkV2 (mkV {s = c53A "esittää"});
@@ -67842,7 +67857,7 @@ lin offset_4_N = mkN {s = d48A "haarake"};
 lin offset_5_N = mkN "offset-menetelmä";
 lin offset_6_N = mkN {s = d48A "haarake"};
 lin offset_1_V2 = mkV2 (mkV {s = c73 "korvata"});
-lin offset_2_V2 = variants {};   ---- olla vastapainona
+lin offset_2_V2 = mkV2 (mkV "hyvittää"); --guessed
 lin offset_3_V2 = variants {};   ---- painaa offsetilla
 lin offset_4_V2 = variants {};   ---- tehdä syvennys
 lin offset_5_V2 = variants {};   ---- painaa offsetilla
@@ -68033,8 +68048,8 @@ lin olympia_1_LN = mkLN "Olympia" ;
 lin olympia_2_LN = mkLN "Olympia" ;
 lin olympiad_1_N = mkN {s = d05 "olympiadi"};
 lin olympiad_2_N = mkN "Olympialaiset";
-lin olympian_1_A = variants {};
-lin olympian_2_A = variants {};
+lin olympian_1_A = mkA "olympialainen"; --guessed
+lin olympian_2_A = mkA "olymposlainen"; --guessed
 lin olympian_3_A = mkA {s = d38 "jumalainen"};
 lin olympian_4_A = mkA "verraton";
 lin olympianMasc_1_N = variants {};
@@ -68097,15 +68112,15 @@ lin on_1_Adv = mkAdv "eteenpäin";
 lin on_2_Adv = mkAdv {s = c99 "edelleen"};
 lin on_3_Adv = mkAdv {s = c99 "päälle"};
 lin on_1_Prep = S.on_Prep ;
-lin on_2_Prep = variants {};
+lin on_2_Prep = S.on_Prep;
 lin on_account_of_Prep = variants {};
-lin on_appro_Adv = variants {};
-lin on_behalf_of_Prep = variants {};
+lin on_appro_Adv = mkAdv "lähestyttäessä"; --guessed
+lin on_behalf_of_Prep = postGenPrep "puolesta"; --guessed
 lin on_licence_N = variants {};
 lin on_occasion_Adv = mkAdv "tarpeen tullen";
-lin on_the_air_Adv = variants {};
-lin on_the_whole_Adv = variants {} ;
-lin on_time_Adv = variants {} ;
+lin on_the_air_Adv = mkAdv "lähetyksessä"; --guessed
+lin on_the_whole_Adv = mkAdv "kokonaisuutena"; --guessed
+lin on_time_Adv = mkAdv "ajoissa"; --guessed
 lin on_top_of_Prep = variants {};
 lin onager_1_N = mkN {s = d05A "katapultti"};
 lin onager_2_N = mkN "onageri";
@@ -68135,7 +68150,7 @@ lin one_sided_3_A = variants {mkA "yksipuolinen"; mkA {s = d38 "puolueellinen"}}
 lin one_step_N = mkN "one-step";
 lin one_time_A = mkA "aiempi";
 lin one_upmanship_N = mkN "edellä pysyminen"; --unchecked
-lin one's_own_Quant = variants {};
+lin one's_own_Quant = {s1 = \\_,_ => "oma" ; sp = \\_,_ => "oma" ; s2 = \\_ => [] ; isPoss = False ; isDef = True ; isNeg = False}; --guessed
 lin oneida_N = mkN "oneida" ;
 lin oneiric_A = mkA "uni-";
 lin oneiromancerMasc_N = mkN "unista ennustaja"; --unchecked
@@ -68187,7 +68202,7 @@ lin onstage_A = mkA "lavalla tapahtuva"; --unchecked
 lin onstage_Adv = variants {mkAdv "näyttämöllä"; mkAdv "lavalla"};
 lin ontario_1_LN = mkLN "Ontario";
 lin ontario_2_LN = mkLN "Ontario";
-lin onto_Prep = variants {};
+lin onto_Prep = postGenPrep "päälle";
 lin ontogenetic_A = mkA "ontogeneettinen";
 lin ontological_A = mkA "ontologinen";
 lin ontology_1_N = mkN "ontologia";
@@ -68338,7 +68353,7 @@ lin operate_3_V2 = mkV2 (mkV {s = c53A "käyttää"});
 lin operate_4_V2 = mkV2 (mkV {s = c62 "operoida"});
 lin operate_on_V2 = mkV2 (mkV {s = c62 "operoida"});
 lin operatic_A = mkA "ooppera-";
-lin operating_system_N = variants {} ;
+lin operating_system_N = mkN "käyttöjärjestelmä"; --guessed
 lin operating_table_N = mkN "leikkauspöytä";
 lin operating_theatre_N = mkN "leikkaussali";
 lin operation_1_N = mkN {s = d39 "vaikutus"};
@@ -68718,7 +68733,7 @@ lin orgy_2_N = mkN "orgiat";
 lin orgy_3_N = mkN "orgia";
 lin oriel_N = mkN {s = d06 "erkkeri"};
 lin orient_A = variants {};
-lin orient_1_N = variants {};
+lin orient_1_N = mkN "itämaat"; --guessed
 lin orient_2_N = mkN {s = d10A "itä"};
 lin orient_1_V = mkV {s = c53A "osoittaa"};
 lin orient_2_V2 = variants {};   ---- selvittää asema
@@ -68980,7 +68995,7 @@ lin other_2_A = mkA "muu";
 lin other_3_A = mkA "toinen";
 lin other_4_A = mkA "toisenlainen";
 lin other_Adv = variants {};
-lin other_N = variants {};
+lin other_N = mkN "muu";
 lin otherness_N = mkN {s = d40 "erilaisuus"};
 lin otherwise_A = mkA "erilainen";
 lin otherwise_AdA = variants {mkAdA "muutoin"; mkAdA "muuten"};
@@ -69015,7 +69030,7 @@ lin ottoman_4_N = mkN "jalkajakkara";
 lin ottumwa_LN = mkLN "Ottumwa" ;
 lin ouagadougou_LN = mkLN "Ouagadougou" ;
 lin oubliette_N = mkN "maanalainen vankityrmä"; --unchecked
-lin ought_VV = variants {};
+lin ought_VV = S.must_VV; --guessed
 lin ouguiya_N = mkN "ouguiya";
 lin ouija_N = mkN "Ouija";
 lin ouija_board_N = variants {};
@@ -69051,8 +69066,8 @@ lin out_1_V2 = variants {};   ---- tuoda julki homoutensa
 lin out_2_V2 = mkV2 (mkV {s = c53 "paljastaa"});
 lin out_from_Prep = variants {};
 lin out_herod_V2 = variants {};   ---- olla julmempi
-lin out_of_1_Prep = variants {};
-lin out_of_2_Prep = variants {};
+lin out_of_1_Prep = casePrep elative; --guessed
+lin out_of_2_Prep = casePrep elative;
 lin out_of_3_Prep = casePrep elative ;
 lin out_of_date_A = mkA "vanhanaikainen";
 lin out_of_door_A = mkA "ulkoilma-";
@@ -69094,7 +69109,7 @@ lin outcome_2_N = mkN {s = d39 "tulos"};
 lin outcrop_N = mkN "avokallio";
 lin outcry_N = mkN {s = d02 "parkaisu"};
 lin outdated_A = mkA "vanhentunut";
-lin outdistance_V2 = variants {};   ---- jättää taakseen
+lin outdistance_V2 = mkV2 (mkV (mkV "jättää") "kauas taakseen"); --guessed
 lin outdo_1_V2 = mkV2 (mkV {s = c53A "päihittää"});
 lin outdo_2_V2 = variants {mkV2 (mkV {s = c53A "voittaa"}); mkV2 (mkV {s = c53A "päihittää"})};
 lin outdoor_1_A = mkA "ulkoilma-";
@@ -69251,7 +69266,7 @@ lin outside_1_Adv = mkAdv {s = c99 "ulkona"};
 lin outside_2_Adv = mkAdv "ulkopuolelta";
 lin outside_1_N = mkN "ulkopuoli";
 lin outside_2_N = mkN "ulkopuoli";
-lin outside_Prep = variants {};
+lin outside_Prep = postGenPrep "ulkopuolella";
 lin outside_of_Prep = variants {};
 lin outsiderMasc_1_N = variants {mkN {s = d38 "sivullinen"}; mkN {s = d41 "vieras"}};
 lin outsiderFem_1_N = variants {mkN {s = d38 "sivullinen"}; mkN {s = d41 "vieras"}};
@@ -69283,7 +69298,7 @@ lin outstroke_N = mkN "pakoisku";
 lin outtake_N = mkN "pois jätetty otos"; --unchecked
 lin outthrust_N = mkN "kalliokieleke";
 lin outvie_V2 = variants {};   ---- olla suurempi kilpailija
-lin outvote_V2 = variants {};   ---- äänestää kumoon
+lin outvote_V2 = mkV2 (mkV (mkV "voittaa") "äänestyksessä"); --guessed
 lin outward_1_A = mkA {s = d38 "ulkoinen"};
 lin outward_2_A = mkA "lähtö-";
 lin outward_Adv = mkAdv {s = c99 "ulos"};
@@ -69318,10 +69333,10 @@ lin over_2_Adv = mkAdv {s = c99 "kaikkialla"};
 lin over_4_Adv = mkAdv "yläpuolella";
 lin over_5_Adv = variants {mkAdv {s = c99 "kaikkialla"}; mkAdv {s = c99 "täynnä"}};
 lin over_N = mkN "puolenvaihto";
-lin over_1_Prep = variants {};
-lin over_2_Prep = variants {};
-lin over_3_Prep = variants {};
-lin over_4_Prep = variants {};
+lin over_1_Prep = prePrep genitive "yli";
+lin over_2_Prep = postGenPrep "kuluessa"; --guessed
+lin over_3_Prep = postGenPrep "aikana"; --guessed
+lin over_4_Prep = prePrep genitive "yli"; --guessed
 lin over_AdN = variants {} ;
 lin over_abundance_1_N = mkN "yltäkylläisyys";
 lin over_abundance_2_N = mkN "ylirunsaus";
@@ -69412,7 +69427,7 @@ lin overcredulity_N = mkN "liika herkkäuskoisuus"; --unchecked
 lin overcredulous_A = mkA "liian herkkäuskoinen";
 lin overcritical_A = mkA "ankarasti arvosteleva"; --unchecked
 lin overcrop_V2 = variants {};   ---- väsyttää liialla viljelyllä
-lin overcrowd_1_V2 = variants {};   ---- ahtaa liian täyteen
+lin overcrowd_1_V2 = mkV2 (mkV "ylitäyttää"); --guessed
 lin overcrowd_2_V2 = variants {};   ---- ahtaa liian täyteen
 lin overcurious_A = mkA "yliutelias";
 lin overdelicate_A = mkA "yliherkkä";
@@ -69485,7 +69500,7 @@ lin overhead_3_N = mkN "lisäresurssit";
 lin overhead_4_N = mkN "piirtoheitinkalvo";
 lin overhead_5_N = mkN {s = d01A "katto"};
 lin overhead_6_N = mkN "iskulyönti";
-lin overhear_V2 = variants {};   ---- kuulla sattumalta sattua kuulemaan kuulla vahingossa
+lin overhear_V2 = mkV2 (mkV (mkV "kuulla") "sattumalta"); --guessed
 lin overheat_1_V2 = variants {mkV2 (mkV "ylikuumentua"); mkV2 (mkV "ylikuumeta")};
 lin overheat_2_V2 = mkV2 (mkV "ylikuumentaa");
 lin overheating_N = mkN "liikakuumeneminen";
@@ -69522,7 +69537,7 @@ lin overload_2_V2 = mkV2 (mkV "ylikuormittaa");
 lin overload_3_V2 = variants {mkV2 (mkV "ylikuormata"); mkV2 (mkV "ylikuormittaa")};
 lin overlook_N = mkN "näköalapaikka";
 lin overlook_1_V2 = variants {};   ---- olla huomaamatta
-lin overlook_2_V2 = variants {};   ---- katsella johonkin
+lin overlook_2_V2 = mkV2 (mkV "avautua"); --guessed
 lin overlook_3_V2 = variants {};   ---- olla huomaamatta
 lin overlook_4_V2 = variants {};   ---- kohota yli
 lin overlook_5_V2 = mkV2 (mkV {s = c52 "valvoa"});
@@ -69574,7 +69589,7 @@ lin overrefined_A = mkA "ylihienostunut";
 lin override_1_N = mkN "manuaalinen ohjaus"; --unchecked
 lin override_2_N = mkN "kumoaminen";
 lin override_1_V2 = variants {mkV2 (mkV {s = c74 "kumota"}); mkV2 (mkV {s = c53A "kumottaa"})};
-lin override_2_V2 = variants {};   ---- työntää syrjään
+lin override_2_V2 = mkV2 (mkV (mkV "mennä") "edelle"); --guessed
 lin override_3_V2 = variants {};   ---- ottaa käsiohjaukseen
 lin override_4_V2 = variants {};   ---- ratsastaa väsyksiin
 lin overriding_A = mkA "ensisijainen";
@@ -69881,7 +69896,7 @@ lin pack_9_N = mkN {s = d01A "reppu"};
 lin pack_8_V = variants {mkV {s = c67 "retkeillä"}; mkV {s = c54A "vaeltaa"}; mkV {s = c68 "patikoida"}};
 lin pack_11_V = mkV {s = c52A "pakkautua"};
 lin pack_12_V = mkV {s = c73 "lastata"};
-lin pack_14_V = variants {} ;
+lin pack_14_V = mkV "pakata"; --guessed
 lin pack_1_V2 = mkV2 (mkV {s = c73A "pakata"});
 lin pack_2_V2 = mkV2 (mkV {s = c53A "täyttää"});
 lin pack_3_V2 = mkV2 (mkV {s = c52 "sulloa"});
@@ -70278,7 +70293,7 @@ lin palomino_N = variants {mkN "palomino-hevonen"; mkN "voikko"};
 lin paloverde_N = mkN "Cercidium";
 lin palpable_1_A = variants {mkA {s = d38 "ilmeinen"}; mkA {s = d10 "selvä"}; mkA "käsinkosketeltava"};
 lin palpable_2_A = mkA "tunnustelemalla havaittava"; --unchecked
-lin palpable_3_A = variants {};
+lin palpable_3_A = mkA "kouraantuntuva"; --guessed
 lin palpable_4_A = variants {};
 lin palpation_N = mkN {s = d03 "palpaatio"};
 lin palpatory_A = mkA "palpaatioon liittyvä"; --unchecked
@@ -70299,7 +70314,7 @@ lin paltriness_N = mkN {s = d40 "mitättömyys"};
 lin paltry_1_A = mkA "mitätön";
 lin paltry_2_A = mkA "vähäpätöinen";
 lin pam_GN = variants {};
-lin pamela_GN = variants {};
+lin pamela_GN = mkGN "Pamela" female; --guessed
 lin pamir_mountains_LN = mkLN "Pamir" ;
 lin pamlico_N = variants {} ;
 lin pampas_N = mkN {s = d09 "pampa"};
@@ -70483,7 +70498,7 @@ lin paper_4_N = mkN {s = d06 "paperi"};
 lin paper_5_N = variants {mkN {s = d10 "esitelmä"}; mkN {s = d10 "tutkielma"}; mkN {s = d06 "artikkeli"}};
 lin paper_6_N = mkN {s = d07A "lehti"};
 lin paper_7_N = mkN {s = d07A "lehti"};
-lin paper_8_N = variants {};
+lin paper_8_N = mkN "asiakirjat"; --guessed
 lin paper_1_V2 = mkV2 (mkV {s = c62 "paperoida"});
 lin paper_2_V2 = mkV2 (mkV {s = c62 "tapetoida"});
 lin paper_chase_N = mkN "takaa-ajopeli";
@@ -70821,7 +70836,7 @@ lin parlour_1_N = mkN "seurusteluhuone";
 lin parlour_2_N = mkN {s = d05 "sali"};
 lin parlour_car_N = mkN "salonkivaunu";
 lin parlous_A = mkA {s = d38 "vaarallinen"};
-lin parma_LN = variants {};
+lin parma_LN = mkLN "Parma"; --guessed
 lin parmesan_N = mkN "Parmesan";
 lin parnassia_N = mkN {s = d04A "vilukko"};
 lin parochial_1_A = mkA "seurakunnan";
@@ -70901,7 +70916,7 @@ lin part_2_V = mkV {s = c52A "jakautua"};
 lin part_3_V = mkV {s = c60A "lähteä"};
 lin part_4_V = variants {mkV {s = c74A "irrota"}; mkV {s = c53A "irrottaa"}};
 lin part_5_V2 = mkV2 (mkV {s = c56A "jakaa"});
-lin part_of_N2 = variants {};
+lin part_of_N2 = mkN2 (mkN "osa") (casePrep partitive);
 lin part_ownerMasc_N = mkN {s = d41A "osakas"};
 lin part_ownerFem_N = mkN {s = d41A "osakas"};
 lin part_singing_N = mkN "moniääninen laulu";
@@ -71064,7 +71079,7 @@ lin pass_6_V = mkV {s = c67 "mennä"};
 lin pass_8_V = mkV {s = c52A "tapahtua"};
 lin pass_9_V = variants {};   ---- tulla hyväksytyksi
 lin pass_11_V = variants {mkV {s = c53A "liikuttaa"}; mkV {s = c53A "kuljettaa"}};
-lin pass_13_V = variants {};   ---- mennä ohi
+lin pass_13_V = mkV (mkV "mennä") "ohi"; --guessed
 lin pass_14_V = mkV {s = c66 "läpäistä"};
 lin pass_16_V = variants {};   ---- päästää läpi
 lin pass_17_V = variants {};   ---- jäädä huomaamatta
@@ -71089,7 +71104,7 @@ lin pass_away_1_V = mkV {s = c52A "menehtyä"};
 lin pass_away_2_V = variants {mkV {s = c75 "hävitä"}; mkV {s = c53A "hävittää"}; mkV {s = c52A "häipyä"}};
 lin pass_back_V2 = variants {};
 lin pass_by_V = variants {};   ---- kulkea ohi
-lin pass_down_V2 = variants {};
+lin pass_down_V2 = mkV2 (mkV "siirtää"); --guessed
 lin pass_for_V2 = variants {};
 lin pass_off_1_V = variants {};   ---- esiintyä jnak
 lin pass_off_5_V = variants {mkV {s = c67 "mennä"}; mkV {s = c52 "sujua"}};
@@ -71110,7 +71125,7 @@ lin pass_over_4_V = variants {};   ---- lentää yli
 lin pass_over_1_V2 = mkV2 (mkV {s = c53A "sivuuttaa"});
 lin pass_over_2_V2 = variants {};   ---- kulkea läpi
 lin pass_over_3_V2 = variants {};   ---- siirtyä yli
-lin pass_over_4_V2 = variants {};   ---- lentää yli
+lin pass_over_4_V2 = mkV2 (mkV (mkV "lentää") "yli"); --guessed
 lin pass_over_5_V2 = mkV2 (mkV {s = c66 "pyyhkäistä"});
 lin pass_round_V2 = variants {};
 lin pass_through_1_V2 = variants {};   ---- kulkea läpi
@@ -71193,7 +71208,7 @@ lin past_Adv = mkAdv {s = c99 "ohi"};
 lin past_1_N = mkN {s = d40 "menneisyys"};
 lin past_2_N = mkN {s = d40 "menneisyys"};
 lin past_3_N = mkN {s = d05 "imperfekti"};
-lin past_Prep = variants {};
+lin past_Prep = postGenPrep "ohi"; --guessed
 lin pasta_1_N = mkN {s = d09 "pasta"};
 lin pasta_2_N = mkN {s = d09 "pasta"};
 lin paste_1_N = mkN {s = d09 "tahna"};
@@ -71248,7 +71263,7 @@ lin pasty_1_A = mkA "kalpea";
 lin pasty_2_A = variants {mkA "tarrautuva"; mkA "tarttuva"};
 lin pasty_1_N = variants {mkN "piirakka"; mkN {s = d12 "pasteija"}};
 lin pasty_2_N = mkN "nänninsuojus";
-lin pat_GN = variants {};
+lin pat_GN = mkGN "Pat" male; --guessed
 lin pat_1_A = mkA "kaunisteleva";
 lin pat_2_A = variants {mkA {s = d10 "sopiva"}; mkA {s = d10 "sattuva"}};
 lin pat_Adv = variants {mkAdv {s = c99 "täydellisesti"}; mkAdv "suoralta kädeltä"};
@@ -71448,7 +71463,7 @@ lin patzerFem_N = mkN "huono pelaaja"; --unchecked
 lin paucity_N = mkN {s = d40 "niukkuus"};
 lin paul_GN = mkGN "Paul" male ;
 lin paul_2_PN = mkPN "Paavali";
-lin paula_GN = variants {};
+lin paula_GN = mkGN "Paula" female; --guessed
 lin pauline_GN = variants {};
 lin paunch_N = variants {mkN {s = d05 "pötsi"}; mkN "ihramaha"; mkN "möhömaha"};
 lin paunchiness_N = mkN "isovatsaisuus";
@@ -71527,7 +71542,7 @@ lin pay_back_2_V2 = variants {mkV2 (mkV {s = c56 "maksaa"}); mkV2 (mkV {s = c53 
 lin pay_back_10_V2 = variants {};
 lin pay_claim_N = mkN "palkkavaatimus";
 lin pay_down_V2 = variants {};
-lin pay_for_V2 = variants {};
+lin pay_for_V2 = mkV2 (mkV "maksaa"); --guessed
 lin pay_for_1_V3 = mkV3 (mkV {s = c54A "kustantaa"});
 lin pay_for_2_V3 = variants {};
 lin pay_into_V3 = variants {};
@@ -71959,14 +71974,14 @@ lin penetralia_N = mkN {s = d36 "sisin"};
 lin penetrate_2_V = variants {};   ---- saada selville
 lin penetrate_1_V2 = variants {mkV2 (mkV {s = c52A "tunkeutua"}); mkV2 (mkV {s = c66 "läpäistä"}); mkV2 (mkV {s = c52A "työntyä"})};
 lin penetrate_2_V2 = variants {};   ---- saada selville
-lin penetrate_3_V2 = variants {};   ---- mennä perille
+lin penetrate_3_V2 = mkV2 (mkV "lävistää"); --guessed
 lin penetrate_4_V2 = mkV2 (mkV {s = c52A "soluttautua"});
 lin penetrate_5_V2 = mkV2 (mkV {s = c52A "tunkeutua"});
 lin penetrate_6_V2 = mkV2 (mkV {s = c52A "työntyä"});
 lin penetrate_7_V2 = mkV2 (mkV {s = c52A "tunkeutua"});
 lin penetratingly_Adv = mkAdv {s = c99 "terävästi"};
 lin penetration_1_N = mkN "läpimurto";
-lin penetration_of_N2 = variants {};
+lin penetration_of_N2 = mkN2 (mkN "pureutuminen") (casePrep elative); --guessed
 lin penetration_3_N = variants {mkN {s = d01 "pääsy"}; mkN "tunkeutuminen"};
 lin penetration_4_N = variants {mkN {s = d02 "läpäisy"}; mkN "tunkeuma"};
 lin penetration_5_N = mkN "tunkeuma";
@@ -72014,7 +72029,7 @@ lin pennsylvania_2_LN = mkLN "Pennsylvania";
 lin pennsylvania_3_PN = mkPN "Pennsylvania";
 lin penny_1_N = mkN {s = d01 "penny"};
 lin penny_2_N = mkN {s = d05 "penni"};
-lin penny_GN = variants {};
+lin penny_GN = mkGN "Penny" female; --guessed
 lin pennycress_N = mkN "taskuruoho";
 lin pennyroyal_1_N = mkN "puolanminttu";
 lin pennyroyal_2_N = mkN {s = d01A "minttu"};
@@ -72584,7 +72599,7 @@ lin pertteli_LN = variants {};
 lin pertunmaa_LN = variants {};
 lin perturb_1_V2 = mkV2 (mkV {s = c52 "huolestua"});
 lin perturb_2_V2 = variants {};   ---- aiheuttaa häiriö
-lin perturb_3_V2 = variants {};   ---- aiheuttaa häiriö
+lin perturb_3_V2 = mkV2 (mkV "perturboida"); --guessed
 lin perturb_4_V2 = mkV2 (mkV {s = c69 "häiritä"});
 lin perturbation_1_N = mkN {s = d40 "levottomuus"};
 lin perturbation_2_N = variants {mkN {s = d03 "häiriö"}; mkN "perturbaatio"};
@@ -72600,7 +72615,7 @@ lin peruse_V2 = mkV2 (mkV {s = c61 "tutkia"});
 lin peruvian_A = variants {mkA "Perun"; mkA "perulainen"};
 lin peruvianMasc_N = mkN "perulainen";
 lin peruvianFem_N = mkN "perulainen";
-lin pervade_V2 = variants {};   ---- tunkeutua jhk
+lin pervade_V2 = mkV2 (mkV "vallita"); --guessed
 lin pervaporation_N = mkN "höyrystäminen välikalvon läpi"; --unchecked
 lin pervasion_N = mkN "tunkeutuminen";
 lin pervasive_A = mkA {s = d10 "läpitunkeva"};
@@ -72859,8 +72874,8 @@ lin phial_N = variants {mkN "pieni lasipullo"; mkN "pikkupullo"}; --unchecked
 lin phil_GN = variants {};
 lin philadelphia_LN = mkLN "Philadelphia";
 lin philadelphus_N = mkN {s = d48A "jasmike"};
-lin philander_1_V = variants {};   ---- käydä naisissa
-lin philander_2_V = variants {};   ---- käydä naisissa
+lin philander_1_V = mkV "naistella"; --guessed
+lin philander_2_V = mkV "flirttailla"; --guessed
 lin philanderer_N = variants {mkN {s = d12 "elostelija"}; mkN "auervaara"};
 lin philanthropic_1_A = mkA "hyväntekeväisyys-";
 lin philanthropic_2_A = mkA "hyväntekeväisyys-";
@@ -73360,7 +73375,7 @@ lin pier_glass_N = mkN "seinäpeili";
 lin pierce_1_V = mkV {s = c73A "leikata"};
 lin pierce_4_V = mkV {s = c53 "lävistää"};
 lin pierce_1_V2 = mkV2 (mkV {s = c73A "leikata"});
-lin pierce_2_V2 = variants {};   ---- tunkeutua jhk
+lin pierce_2_V2 = mkV2 (mkV "viiltää"); --guessed
 lin pierce_3_V2 = mkV2 (mkV {s = c73A "leikata"});
 lin pierce_4_V2 = mkV2 (mkV {s = c53 "lävistää"});
 lin pierce_5_V2 = mkV2 (mkV {s = c66 "puhkaista"});
@@ -73450,7 +73465,7 @@ lin pilaster_N = mkN {s = d06 "pilasteri"};
 lin pilchard_1_N = mkN {s = d06 "sardiini"};
 lin pilchard_2_N = mkN {s = d06 "sardiini"};
 lin pile_1_N = mkN {s = d01 "pino"};
-lin pile_of_N2 = variants {};
+lin pile_of_N2 = mkN2 (mkN "kasa") (casePrep partitive);
 lin pile_3_N = mkN "isot rahat"; --unchecked
 lin pile_4_N = mkN "hieno alusvilla"; --unchecked
 lin pile_5_N = mkN "Voltan patsas";
@@ -73569,7 +73584,7 @@ lin pin_3_V2 = variants {};   ---- kiinnittää neulalla
 lin pin_4_V2 = mkV2 (mkV {s = c53A "kiinnittää"});
 lin pin_down_1_V2 = variants {};   ---- selittää tarkasti
 lin pin_down_2_V2 = mkV2 (mkV {s = c52A "joutua"});
-lin pin_down_3_V2 = variants {};   ---- kiinnittää neulalla
+lin pin_down_3_V2 = mkV2 (mkV (mkV "neulata") "kiinni"); --guessed
 lin pin_money_N = mkN "käyttörahat";
 lin pin_on_V3 = variants {};
 lin pin_point_V2 = mkV2 (mkV {s = c54A "paikantaa"});
@@ -74249,7 +74264,7 @@ lin platitude_N = mkN {s = d40 "latteus"};
 lin platitudinarianMasc_N = mkN "latteuksia viljelevä puhuja"; --unchecked
 lin platitudinarianFem_N = mkN "latteuksia viljelevä puhuja"; --unchecked
 lin platitudinous_A = mkA {s = d15 "lattea"};
-lin platonic_1_A = variants {};
+lin platonic_1_A = mkA "platoninen"; --guessed
 lin platonic_2_A = mkA "platoninen";
 lin platoon_1_N = mkN {s = d48 "joukkue"};
 lin platoon_2_N = mkN {s = d48 "joukkue"};
@@ -74289,7 +74304,7 @@ lin play_26_V = mkV {s = c53A "esittää"};
 lin play_28_V = mkV {s = c53A "ruiskuttaa"};
 lin play_34_V = variants {};   ---- pelata vastaan
 lin play_1_V2 = mkV2 (mkV {s = c73 "pelata"});
-lin play_2_V2 = variants {};   ---- pelata jnk pussiin olla osana
+lin play_2_V2 = mkV2 (mkV "esittää"); --guessed
 lin play_4_V2 = mkV2 (mkV {s = c53A "esittää"});
 lin play_6_V2 = mkV2 (mkV {s = c53A "soittaa"});
 lin play_7_V2 = mkV2 (mkV {s = c53A "soittaa"});
@@ -74330,7 +74345,7 @@ lin play_17_N = mkN {s = d02 "ottelu"};
 lin play_acting_N = mkN "näytteleminen";
 lin play_actorMasc_1_N = mkN "kiertävä näyttelijä"; --unchecked
 lin play_actorFem_1_N = mkN "kiertävä näyttelijä"; --unchecked
-lin play_along_V = variants {};   ---- olla juonessa mukana
+lin play_along_V = mkV "myötäillä"; --guessed
 lin play_along_V2 = variants {};   ---- soittaa mukana
 lin play_around_1_V = variants {};   ---- käydä vieraissa
 lin play_around_2_V = mkV {s = c67A "näperrellä"};
@@ -74430,7 +74445,7 @@ lin pleasantness_2_N = mkN {s = d40 "miellyttävyys"};
 lin pleasantry_N = mkN {s = d40 "kohteliaisuus"};
 lin please_Adv = variants {mkAdv "ole hyvä"; mkAdv "olkaa hyvä"};
 lin please_2_V = variants {mkV {s = c75 "haluta"}; mkV {s = c53A "haluttaa"}};
-lin please_3_V = variants {};   ---- olla mieliksi
+lin please_3_V = mkV "miellyttää"; --guessed
 lin please_V2 = mkV2 (mkV {s = c53A "miellyttää"});
 lin please_Voc = S.please_Voc ;
 lin pleased_1_A = variants {mkA "mielissään"; mkA {s = d38 "tyytyväinen"}; mkA "mielissään oleva"; mkA {s = d38 "iloinen"}}; --unchecked
@@ -74438,7 +74453,7 @@ lin pleased_2_A = variants {mkA "hyvillään oleva"; mkA "hyvillään"; mkA {s =
 lin pleaserMasc_N = mkN "hauskuuttaja";
 lin pleaserFem_N = mkN "hauskuuttaja";
 lin pleasing_1_A = variants {mkA {s = d10 "miellyttävä"}; mkA {s = d10 "mukava"}};
-lin pleasing_2_A = variants {};
+lin pleasing_2_A = mkA "miellyttävä"; --guessed
 lin pleasing_N = mkN "miellyttäminen";
 lin pleasingly_Adv = mkAdv "miellyttävän";
 lin pleasingness_N = mkN {s = d40 "miellyttävyys"};
@@ -74486,7 +74501,7 @@ lin plentiful_1_A = mkA "monilukuinen";
 lin plentiful_2_A = variants {mkA "paljon"; mkA {s = d41 "runsas"}};
 lin plentiful_3_A = mkA "yltäkylläinen";
 lin plenty_Adv = mkAdv {s = c99 "tarpeeksi"};
-lin plenty_of_1_N2 = variants {};
+lin plenty_of_1_N2 = mkN2 (mkN "runsaus") (casePrep partitive);
 lin plenty_of_2_N2 = variants {};
 lin plenum_1_N = mkN "täysistunto";
 lin plenum_2_N = mkN "täysi tila"; --unchecked
@@ -74917,7 +74932,7 @@ lin point_3_V2 = variants {mkV2 (mkV {s = c53A "osoittaa"}); mkV2 (mkV {s = c67A
 lin point_4_V2 = variants {};
 lin point_6_V2 = variants {mkV2 (mkV {s = c64 "luoda"}); mkV2 (mkV {s = c61 "luovia"})};
 lin point_7_V2 = variants {};   ---- lisätä tarkkeet
-lin point_8_V2 = variants {};   ---- lisätä tarkkeet
+lin point_8_V2 = mkV2 (mkV "vokalisoida"); --guessed
 lin point_9_V2 = variants {mkV2 (mkV {s = c69 "merkitä"}); mkV2 (mkV {s = c53A "merkittää"})};
 lin point_11_V2 = mkV2 (mkV {s = c53 "kohdistaa"});
 lin point_12_V2 = mkV2 (mkV {s = c52 "seisoa"});
@@ -74927,7 +74942,7 @@ lin point_blank_1_A = mkA "kursailematon";
 lin point_blank_2_A = variants {mkA "lähietäisyydellä oleva"; mkA {s = d10 "suora"}}; --unchecked
 lin point_blank_Adv = mkAdv {s = c99 "suoraan"};
 lin point_duty_N = mkN "liikennepoliisin tehtävä"; --unchecked
-lin point_of_view_1_N = variants {} ;
+lin point_of_view_1_N = mkN "näkökulma"; --guessed
 lin point_of_view_2_N = variants {} ;
 lin point_out_1_V2 = mkV2 (mkV {s = c62 "kommentoida"});
 lin point_out_2_V2 = mkV2 (mkV {s = c53A "osoittaa"});
@@ -75650,7 +75665,7 @@ lin posh_V2 = variants {};
 lin posio_LN = variants {};
 lin posit_1_V2 = mkV2 (mkV {s = c58 "laskea"});
 lin posit_2_V2 = variants {mkV2 (mkV {s = c74A "todeta"}); mkV2 (mkV {s = c52 "lausua"}); mkV2 (mkV {s = c52 "sanoa"})};
-lin posit_3_V2 = variants {};   ---- ottaa lähtökohdaksi
+lin posit_3_V2 = mkV2 (mkV "olettaa"); --guessed
 lin position_1_N = mkN {s = d09A "paikka"};
 lin position_2_N = mkN {s = d10 "asema"};
 lin position_3_N = variants {mkN {s = d09A "kanta"}; mkN {s = d48A "mielipide"}};
@@ -75705,7 +75720,7 @@ lin posse_N = mkN "etsintäpartio";
 lin posseman_N = mkN "järjestyspartion jäsen"; --unchecked
 lin possess_1_V2 = mkV2 (mkV {s = c73 "omata"});
 lin possess_2_V2 = variants {};   ---- olla oma
-lin possess_3_V2 = variants {};   ---- ottaa valtaansa saada tekemään jtk saada valtaansa
+lin possess_3_V2 = mkV2 (mkV "vallata"); --guessed
 lin possession_1_N = mkN "omistaminen";
 lin possession_2_N = mkN {s = d40 "omaisuus"};
 lin possession_3_N = mkN {s = d01A "riivattu"};
@@ -75818,7 +75833,7 @@ lin postindustrial_A = mkA "jälkiteollinen";
 lin posting_1_N = mkN {s = d39 "ilmoitus"};
 lin posting_2_N = mkN {s = d05A "tiliöinti"};
 lin posting_3_N = mkN {s = d39 "postitus"};
-lin posting_4_N = variants {} ;
+lin posting_4_N = mkN "postaus"; --guessed
 lin postlude_N = mkN "loppusoitto";
 lin postman_N = mkN "postinkantaja";
 lin postmark_N = mkN "postileima";
@@ -76066,9 +76081,9 @@ lin power_5_N = mkN {s = d05A "mahti"};
 lin power_6_N = mkN {s = d05 "potenssi"};
 lin power_7_N = mkN {s = d10 "voima"};
 lin power_8_N = variants {} ;
-lin power_9_N = variants {};
+lin power_9_N = mkN "sähkö"; --guessed
 lin power_10_N = mkN {s = d01A "pamppu"};
-lin power_V2 = variants {};   ---- antaa virtaa antaa tehoa antaa energiaa
+lin power_V2 = mkV2 (mkV "käyttää"); --guessed
 lin power_dive_N = variants {};
 lin power_dive_V2 = mkV2 (mkV {s = c52 "syöksyä"});
 lin power_down_V2 = variants {};
@@ -76439,7 +76454,7 @@ lin prefer_1_V2 = mkV2 (mkV {s = c61 "suosia"});
 lin prefer_2_V2 = variants {};   ---- pitää parempana
 lin prefer_3_V2 = mkV2 (mkV {s = c61 "suosia"});
 lin prefer_4_V2 = mkV2 (mkV {s = c61 "suosia"});
-lin prefer_2_VV = variants {};   ---- pitää parempana
+lin prefer_2_VV = mkVV (mkV "haluta"); --guessed
 lin preferable_A = mkA "parempi";
 lin preference_1_N = variants {mkN {s = d05 "preferenssi"}; mkN {s = d39 "mieltymys"}};
 lin preference_2_N = mkN {s = d05 "preferenssi"};
@@ -76627,7 +76642,7 @@ lin prescient_A = mkA {s = d38 "enteellinen"};
 lin prescot_LN = variants {};
 lin prescribe_1_V2 = mkV2 (mkV {s = c58 "käskeä"});
 lin prescribe_2_V2 = variants {};
-lin prescribe_3_V2 = variants {};
+lin prescribe_3_V2 = mkV2 (mkV "määrätä");
 lin prescript_N = mkN {s = d39 "määräys"};
 lin prescription_1_N = mkN {s = d05 "resepti"};
 lin prescription_2_N = mkN "reseptilääke";
@@ -76721,7 +76736,7 @@ lin presidentFem_4_N = mkN "puheenjohtaja";
 lin presidentFem_5_N = mkN {s = d06 "rehtori"};
 lin presidentFem_6_N = variants {};
 lin presidentMasc_1_N = variants {mkN "puheenjohtaja"; mkN "toimitusjohtaja"};
-lin presidentMasc_2_N = variants {};
+lin presidentMasc_2_N = mkN "presidentti";
 lin presidentMasc_3_N = mkN {s = d05A "presidentti"};
 lin presidentMasc_4_N = mkN "puheenjohtaja";
 lin presidentMasc_5_N = mkN {s = d06 "rehtori"};
@@ -76768,8 +76783,8 @@ lin press_into_V2 = variants {};
 lin press_lordMasc_N = variants {mkN "lehtimoguli"; mkN "sanomalehtikuningas"};
 lin press_lordFem_N = variants {mkN "lehtimoguli"; mkN "sanomalehtikuningas"};
 lin press_on_V = mkV {s = c56 "jatkaa"};
-lin press_on_V2 = variants {};
-lin press_on_V3 = variants {};
+lin press_on_V2 = mkV2 (mkV "painaa"); --guessed
+lin press_on_V3 = mkV3 (mkV "painaa") accusative (casePrep adessive); --guessed
 lin press_photographerMasc_N = mkN "lehtikuvaaja";
 lin press_photographerFem_N = mkN "lehtikuvaaja";
 lin press_stud_N = mkN "painonappi";
@@ -76960,7 +76975,7 @@ lin prick_4_V = mkV {s = c53 "pistää"};
 lin prick_5_V = mkV {s = c68 "kihelmöidä"};
 lin prick_1_V2 = mkV2 (mkV {s = c53 "pistää"});
 lin prick_2_V2 = mkV2 (mkV {s = c67 "pistellä"});
-lin prick_3_V2 = variants {};   ---- olla höröllä
+lin prick_3_V2 = mkV2 (mkV "höristää"); --guessed
 lin prick_4_V2 = mkV2 (mkV {s = c53 "pistää"});
 lin prick_5_V2 = mkV2 (mkV {s = c68 "kihelmöidä"});
 lin prick_6_V2 = variants {mkV2 (mkV {s = c67 "kirvellä"}); mkV2 (mkV {s = c54A "kirveltää"})};
@@ -77124,7 +77139,7 @@ lin print_4_N = variants {mkN {s = d10 "saatava"}; mkN "painettuna"};
 lin print_5_N = mkN {s = d03 "kopio"};
 lin print_6_N = mkN "painokangas";
 lin print_7_N = mkN {s = d39 "vedos"};
-lin print_8_N = variants {};
+lin print_8_N = mkN "pieni präntti"; --guessed
 lin print_2_V = mkV {s = c73 "tekstata"};
 lin print_1_V2 = mkV2 (mkV {s = c66 "julkaista"});
 lin print_2_V2 = mkV2 (mkV {s = c73 "tekstata"});
@@ -77198,7 +77213,7 @@ lin privileged_1_A = mkA "etuoikeutettu";
 lin privileged_2_A = mkA "erioikeutettu";
 lin privileged_3_A = mkA {s = d38 "luottamuksellinen"};
 lin privy_A = variants {mkA {s = d38 "salainen"}; mkA {s = d38 "yksityinen"}};
-lin privy_to_A2 = variants {};
+lin privy_to_A2 = mkA2 "tietoinen" (casePrep illative); --guessed
 lin privy_1_N = variants {mkN {s = d09 "vessa"}; mkN {s = d12 "käymälä"}};
 lin privy_2_N = mkN {s = d12 "käymälä"};
 lin prize_1_N = mkN {s = d01A "palkinto"};
@@ -77430,7 +77445,7 @@ lin profess_4_V = mkV {s = c53A "ilmoittaa"};
 lin profess_5_V = variants {};   ---- hyväksyä jäseneksi
 lin profess_6_V = variants {};   ---- tehdä lupaus
 lin profess_1_V2 = mkV2 (mkV {s = c53A "opettaa"});
-lin profess_3_V2 = variants {};   ---- tuoda julki
+lin profess_3_V2 = mkV2 (mkV "tunnustaa"); --guessed
 lin profess_5_V2 = variants {};   ---- hyväksyä jäseneksi
 lin profess_7_V2 = mkV2 (mkV {s = c53A "väittää"});
 lin profess_5_V2V = variants {};   ---- hyväksyä jäseneksi
@@ -77771,7 +77786,7 @@ lin proof_5_V2 = variants {};   ---- tehdä kestäväksi
 lin proofread_V2 = mkV2 (mkV "oikolukea");
 lin proofreaderMasc_N = mkN "oikolukija";
 lin proofreaderFem_N = mkN "oikolukija";
-lin proofreading_N = variants {};
+lin proofreading_N = mkN "oikoluku"; --guessed
 lin prop_1_N = variants {mkN {s = d33A "kannatin"}; mkN {s = d07A "tuki"}};
 lin prop_2_N = mkN {s = d09A "rekvisiitta"};
 lin prop_3_N = mkN {s = d06 "potkuri"};
@@ -77868,7 +77883,7 @@ lin proportion_5_N = variants {mkN "mittasuhteet"; mkN {s = d48A "suhde"}};
 lin proportion_1_V2 = mkV2 (mkV {s = c53A "suhteuttaa"});
 lin proportion_2_V2 = mkV2 (mkV {s = c53A "suhteuttaa"});
 lin proportionable_A = mkA {s = d38 "verrannollinen"};
-lin proportional_to_A2 = variants {};
+lin proportional_to_A2 = mkA2 "verrannollinen" (casePrep allative); --guessed
 lin proportional_A = mkA {s = d38 "verrannollinen"};
 lin proportional_N = variants {mkN {s = d48 "suure"}; mkN {s = d01A "luku"}};
 lin proportionality_1_N = mkN {s = d40 "verrannollisuus"};
@@ -78130,7 +78145,7 @@ lin proverb_N = variants {mkN {s = d09A "sanonta"}; mkN "sananlasku"};
 lin proverbial_1_A = variants {mkA "sananlaskun"; mkA "sananlaskumainen"};
 lin proverbial_2_A = variants {mkA "tarumainen"; mkA "maankuulu"; mkA "tunnettu"; mkA "kuuluisa"};
 lin provide_3_V = mkV {s = c53A "säätää"};
-lin provide_for_V2 = variants {};
+lin provide_for_V2 = mkV2 (mkV "mahdollistaa"); --guessed
 lin provide_7_V = mkV {s = c52A "varautua"};
 lin provide_1_V2 = mkV2 (mkV {s = c56A "antaa"});
 lin provide_2_V2 = mkV2 (mkV {s = c53 "järjestää"});
@@ -78242,7 +78257,7 @@ lin pry_3_V = mkV {s = c67A "udella"};
 lin pry_1_V2 = mkV2 (mkV {s = c73 "tiirata"});
 lin pry_4_V2 = mkV2 (mkV {s = c61A "urkkia"});
 lin pryingly_Adv = mkAdv "urkkivasti";
-lin psalm_1_N = variants {};
+lin psalm_1_N = mkN "psalmi"; --guessed
 lin psalm_2_N = mkN {s = d05 "psalmi"};
 lin psalmistMasc_N = mkN {s = d05 "psalmi"};
 lin psalmistFem_N = mkN {s = d05 "psalmi"};
@@ -78851,7 +78866,7 @@ lin purine_2_N = mkN "puriini";
 lin purism_N = variants {mkN {s = d05 "purismi"}; mkN "puhdasoppisuus"};
 lin puristMasc_N = mkN {s = d05 "puristi"};
 lin puristFem_N = mkN {s = d05 "puristi"};
-lin puritan_A = variants {};
+lin puritan_A = mkA "puritaaninen"; --guessed
 lin puritanMasc_1_N = variants {};
 lin puritanFem_1_N = variants {};
 lin puritanMasc_2_N = mkN {s = d05 "puritaani"};
@@ -78966,7 +78981,7 @@ lin push_5_V2 = mkV2 (mkV {s = c56 "painaa"});
 lin push_6_V2 = mkV2 (mkV {s = c52 "lähestyä"});
 lin push_8_V2 = variants {};   ---- myydä huumeita
 lin push_V2V = variants {mkV2V (mkV {s = c53 "patistaa"}); mkV2V (mkV {s = c53 "painostaa"})};
-lin push_ahead_V2 = variants {};
+lin push_ahead_V2 = mkV2 (mkV "pomottaa"); --guessed
 lin push_around_V = variants {};
 lin push_back_V2 = mkV2 (mkV {s = c52 "torjua"});
 lin push_bike_N = mkN "polkupyörä";
@@ -79015,7 +79030,7 @@ lin put_away_5_V = mkV {s = c53A "lopettaa"};
 lin put_away_1_V2 = mkV2 (mkV {s = c58A "sulkea"});
 lin put_away_2_V2 = variants {};   ---- heittää pois
 lin put_away_3_V2 = variants {};   ---- panna linnaan
-lin put_away_4_V2 = variants {};   ---- panna pois
+lin put_away_4_V2 = mkV2 (mkV (mkV "panna") "pois");   ---- panna pois
 lin put_away_5_V2 = mkV2 (mkV {s = c53A "lopettaa"});
 lin put_away_6_V2 = mkV2 (mkV {s = c61 "ahmia"});
 lin put_away_7_V2 = variants {};   ---- panna pois
@@ -79060,7 +79075,7 @@ lin put_on_6_V2 = mkV2 (mkV {s = c67 "valmistella"});
 lin put_on_7_V2 = mkV2 (mkV {s = c73 "maalata"});
 lin put_on_8_V2 = mkV2 (mkV {s = c73 "puijata"});
 lin put_on_9_V2 = variants {mkV2 (mkV {s = c74 "lihota"}); mkV2 (mkV {s = c52 "lihoa"})};
-lin put_on_airs_with_V2 = variants {};
+lin put_on_airs_with_V2 = mkV2 (mkV "tärkeillä"); --guessed
 lin put_out_2_V = mkV {s = c53A "tuottaa"};
 lin put_out_6_V = mkV {s = c56A "antaa"};
 lin put_out_7_V = mkV {s = c53A "polttaa"};
@@ -79079,12 +79094,12 @@ lin put_up_1_V2 = mkV2 (mkV {s = c53A "pystyttää"});
 lin put_up_2_V2 = mkV2 (mkV {s = c53 "järjestää"});
 lin put_up_3_V2 = mkV2 (mkV {s = c53A "pystyttää"});
 lin put_up_4_V2 = variants {mkV2 (mkV {s = c53 "kestää"}); mkV2 (mkV {s = c53A "sietää"})};
-lin put_up_5_V2 = variants {};   ---- laittaa esille
+lin put_up_5_V2 = mkV2 (mkV (mkV "asettaa") "huutokaupattavaksi"); --guessed
 lin put_up_6_V2 = mkV2 (mkV {s = c53A "purkittaa"});
 lin put_up_7_V2 = mkV2 (mkV {s = c53A "sijoittaa"});
 lin put_up_8_V2 = mkV2 (mkV {s = c56 "maksaa"});
 lin put_up_9_V2 = variants {};   ---- asettaa ehdokkaaksi
-lin put_up_with_V2 = variants {};
+lin put_up_with_V2 = mkV2 (mkV "sietää"); --guessed
 lin put_upon_V = variants {};
 lin putamen_N = mkN "aivokuorukka";
 lin putative_A = variants {mkA "oletettu"; mkA "putatiivinen"};
@@ -79176,7 +79191,7 @@ lin pyorrhoea_2_N = mkN "märänvuoto";
 lin pyralid_N = mkN {s = d10 "koisa"};
 lin pyramid_1_N = mkN {s = d05 "pyramidi"};
 lin pyramid_2_N = mkN {s = d05 "pyramidi"};
-lin pyramid_3_N = variants {};
+lin pyramid_3_N = mkN "pyramidi"; --guessed
 lin pyramidal_1_A = mkA "pyramidin muotoinen"; --unchecked
 lin pyramidically_Adv = mkAdv "pyramidimaisesti";
 lin pyramiding_N = mkN "pyramidointi";
@@ -79765,7 +79780,7 @@ lin quit_3_V = variants {};   ---- lähteä pois
 lin quit_5_V = mkV {s = c53A "keskeyttää"};
 lin quit_1_V2 = mkV2 (mkV {s = c73A "lakata"});
 lin quit_3_V2 = variants {};   ---- lähteä pois
-lin quit_4_V2 = variants {};   ---- jättää sikseen
+lin quit_4_V2 = mkV2 (mkV "lopettaa"); --guessed
 lin quit_on_V2 = variants {};
 lin quitclaim_1_N = mkN "siirtoasiakirja";
 lin quitclaim_2_N = mkN {s = d01A "siirto"};
@@ -80140,7 +80155,7 @@ lin ragwort_1_N = mkN "jaakonvillakko";
 lin ragwort_2_N = mkN {s = d04A "villakko"};
 lin raid_1_N = mkN {s = d04A "ylläkkö"};
 lin raid_2_N = mkN "romahdutusyritys";
-lin raid_1_V2 = variants {};   ---- tehdä ratsia
+lin raid_1_V2 = mkV2 (mkV (mkV "tehdä") "ratsia"); --guessed
 lin raid_2_V2 = variants {mkV2 (mkV {s = c73A "hyökätä"}); mkV2 (mkV {s = c53 "ryöstää"})};
 lin raid_3_V2 = variants {mkV2 (mkV {s = c73A "vallata"}); mkV2 (mkV {s = c52A "tunkeutua"})};
 lin raid_4_V2 = mkV2 (mkV {s = c54A "tyhjentää"});
@@ -80601,7 +80616,7 @@ lin rather_AdA = mkAdA "aika";
 lin rather_3_Adv = mkAdv {s = c99 "mieluummin"};
 lin rather_4_Adv = mkAdv "melkoisen";
 lin rather_than_Conj = mkConj "ennemmin kuin" ;
-lin rather_than_Prep = variants {};
+lin rather_than_Prep = prePrep partitive "mieluummin kuin"; --guessed
 lin rathole_1_N = mkN "rotankolo";
 lin rathole_2_N = mkN "rotankolo";
 lin rathskeller_N = mkN "kellariravintola";
@@ -80789,15 +80804,15 @@ lin re_count_N = mkN "tarkistuslaskenta";
 lin re_count_1_V2 = mkV2 (mkV {s = c52A "kertoa"});
 lin re_count_2_V2 = variants {};   ---- laskea uudelleen
 lin re_cover_V2 = variants {};   ---- verhoilla uudelleen
-lin re_create_1_V2 = variants {};   ---- luoda uudelleen
+lin re_create_1_V2 = mkV2 (mkV (mkV "luoda") "uudelleen"); --guessed
 lin re_create_2_V2 = mkV2 (mkV {s = c54A "jäljentää"});
-lin re_create_3_V2 = variants {};   ---- luoda uudelleen
+lin re_create_3_V2 = mkV2 (mkV (mkV "luoda") "uudelleen"); --guessed
 lin re_echo_N = mkN {s = d01A "kaiku"};
 lin re_echo_V = variants {};
 lin re_elect_V2 = variants {};   ---- valita uudelleen
 lin re_emerge_V = mkV {s = c73 "palata"};
 lin re_emphasize_1_V2 = variants {};   ---- painottaa uudelleen korostaa uudelleen
-lin re_enter_V2 = variants {};   ---- saapua uudelleen
+lin re_enter_V2 = mkV2 (mkV "palata"); --guessed
 lin re_entry_N = mkN {s = d17 "paluu"};
 lin re_establish_V2 = mkV2 (mkV {s = c53A "palauttaa"});
 lin re_evaluate_V2 = variants {};   ---- arvioida uudelleen
@@ -81082,7 +81097,7 @@ lin rebarbative_A = mkA "vastenmielinen";
 lin rebate_1_N = variants {mkN {s = d39 "palautus"}; mkN {s = d39 "hyvitys"}; mkN "hinnanalennus"; mkN "ostohyvitys"};
 lin rebate_2_N = mkN {s = d10 "ura"};
 lin rebecca_PN = mkPN "Rebekka";
-lin rebelMasc_1_N = variants {};
+lin rebelMasc_1_N = mkN "kapinallinen"; --guessed
 lin rebelFem_1_N = variants {};
 lin rebelMasc_2_N = mkN {s = d38 "kapinallinen"};
 lin rebelFem_2_N = mkN {s = d38 "kapinallinen"};
@@ -81146,7 +81161,7 @@ lin recall_5_N = mkN "takaisinkutsu";
 lin recall_V = mkV {s = c53A "muistuttaa"};
 lin recall_1_V2 = mkV2 (mkV {s = c67 "muistella"});
 lin recall_3_V2 = mkV2 (mkV {s = c53 "muistaa"});
-lin recall_4_V2 = variants {};   ---- kutsua takaisin
+lin recall_4_V2 = mkV2 (mkV (mkV "kutsua") "takaisin"); --guessed
 lin recall_5_V2 = variants {};   ---- palauttaa ajatuksistaan
 lin recall_6_V2 = variants {};   ---- poistaa myynnistä
 lin recall_7_V2 = variants {};   ---- poistaa myynnistä
@@ -81566,7 +81581,7 @@ lin red_2_LN = mkLN "Red";
 lin redMasc_3_N = mkN {s = d05A "punikki"};
 lin redFem_3_N = mkN {s = d05A "punikki"};
 lin red_4_N = mkN {s = d03 "tappio"};
-lin red_cross_PN = variants {} ;
+lin red_cross_PN = mkPN "Punainen Risti"; --guessed
 lin red_hot_1_A = mkA "intohimoinen";
 lin red_hot_2_A = mkA "ajankohtainen";
 lin red_hot_3_A = mkA "intomielinen";
@@ -81798,7 +81813,7 @@ lin refection_N = variants {mkN "välipala"; mkN {s = d48A "virvoke"}};
 lin refectory_N = mkN "ruokasali";
 lin refer_1_V = mkV {s = c73A "viitata"};
 lin refer_2_V = mkV {s = c73A "viitata"};
-lin refer_5_V = variants {};   ---- tarkistaa jstak
+lin refer_5_V = mkV "viitata";   ---- tarkistaa jstak
 lin refer_7_V = mkV {s = c52 "kutsua"};
 lin refer_1_V2 = mkV2 (mkV {s = c73A "viitata"});
 lin refer_3_V2 = variants {};   ---- lukea kuuluvaksi
@@ -81839,7 +81854,7 @@ lin referral_3_N = mkN "viittaaminen";
 lin refile_V2 = variants {};
 lin refill_1_N = mkN "reseptin uusiminen"; --unchecked
 lin refill_2_N = variants {mkN {s = d48A "täyte"}; mkN {s = d27 "täysi"}};
-lin refill_V2 = variants {};   ---- täyttää uudelleen
+lin refill_V2 = mkV2 (mkV (mkV "täyttää") "uudelleen"); --guessed
 lin refilling_N = mkN {s = d39 "täydennys"};
 lin refinance_V2 = variants {};   ---- rahoittaa uudelleen
 lin refine_1_V2 = mkV2 (mkV {s = c67A "parannella"});
@@ -81916,7 +81931,7 @@ lin refloat_V = variants {};
 lin refloat_V2 = variants {};   ---- asettaa kellumaan
 lin reflux_1_N = mkN "refluksi";
 lin reflux_2_N = mkN "pakovesi";
-lin refocus_1_V2 = variants {};   ---- keskittää uudelleen
+lin refocus_1_V2 = mkV2 (mkV (mkV "tarkentaa") "uudelleen"); --guessed
 lin refocus_2_V2 = variants {};   ---- keskittyä uudelleen
 lin refocus_3_V2 = variants {};   ---- tarkentaa uudelleen
 lin refocusing_N = mkN "uudelleen tarkentaminen"; --unchecked
@@ -82040,7 +82055,7 @@ lin regenerate_1_V2 = variants {};   ---- luoda uudelleen
 lin regenerate_2_V2 = mkV2 (mkV {s = c62 "regeneroida"});
 lin regenerate_3_V2 = variants {};   ---- luoda uudestaan
 lin regenerate_4_V2 = variants {mkV2 (mkV {s = c53A "elvyttää"}); mkV2 (mkV {s = c53A "elävöittää"})};
-lin regenerate_5_V2 = variants {};   ---- kasvattaa uudestaan
+lin regenerate_5_V2 = mkV2 (mkV (mkV "kasvattaa") "uudelleen"); --guessed
 lin regenerate_6_V2 = variants {mkV2 (mkV {s = c52 "uudistua"}); mkV2 (mkV {s = c52A "uudentua"})};
 lin regenerate_7_V2 = variants {mkV2 (mkV {s = c52A "uudentua"}); mkV2 (mkV {s = c52 "uudistua"})};
 lin regenerate_8_V2 = variants {mkV2 (mkV "uudestisyntyä"); mkV2 (mkV {s = c52 "uudistua"})};
@@ -82392,7 +82407,7 @@ lin release_9_N = mkN "purkaminen";
 lin release_10_N = mkN "vuotaminen";
 lin release_11_N = mkN "vapautuspäätös";
 lin release_12_N = mkN {s = d39 "lopetus"};
-lin release_1_V2 = variants {};   ---- päästää irti
+lin release_1_V2 = mkV2 (mkV (mkV "päästää") "irti"); --guessed
 lin release_2_V2 = mkV2 (mkV {s = c53A "vapauttaa"});
 lin release_3_V2 = variants {};   ---- laskea ulos
 lin release_4_V2 = mkV2 (mkV {s = c66 "julkaista"});
@@ -82497,11 +82512,11 @@ lin reluctant_1_A = mkA "haluton";
 lin reluctant_2_A = mkA "haluton";
 lin reluctant_3_A = mkA "haluton";
 lin reluctivity_N = mkN "magneettinen ominaisvastus"; --unchecked
-lin rely_on_V2 = variants {};
+lin rely_on_V2 = mkV2 (mkV "luottaa"); --guessed
 lin rely_on_1_V2 = mkV2 (mkV {s = c53A "luottaa"});
 lin rely_on_2_V2 = variants {};   ---- olla riippuvainen
-lin remain_N = variants {};
-lin remain_3_V = variants {};   ---- olla jäljellä jäädä jäljelle
+lin remain_N = mkN "jäänteet"; --guessed
+lin remain_3_V = mkV "jäädä"; --guessed
 lin remain_4_V = variants {mkV {s = c63 "jäädä"}; mkV {s = c53A "jäätää"}};
 lin remain_2_V2 = mkV2 (mkV {s = c67A "pysytellä"});
 lin remain_3_V2 = variants {};   ---- olla jäljellä jäädä jäljelle
@@ -82516,7 +82531,7 @@ lin remains_1_N = variants {mkN {s = d48A "ripe"}; mkN {s = d48A "tähde"}};
 lin remains_2_N = variants {};
 lin remains_3_N = mkN "maalliset jäännökset"; --unchecked
 lin remake_N = mkN "uusi versio"; --unchecked
-lin remake_V2 = variants {};   ---- tehdä uudelleen
+lin remake_V2 = mkV2 (mkV "uudistaa"); --guessed
 lin remand_N = mkN "tutkintavankeuteen palauttaminen"; --unchecked
 lin remand_1_V2 = mkV2 (mkV {s = c53A "palauttaa"});
 lin remand_2_V2 = mkV2 (mkV {s = c69 "vangita"});
@@ -82877,7 +82892,7 @@ lin replacement_4_N = variants {mkN {s = d38 "sijainen"}; mkN {s = d48A "korvike
 lin replacement_5_N = mkN {s = d39 "täydennys"};
 lin replacementMasc_6_N = mkN {s = d10 "seuraaja"};
 lin replacementFem_6_N = mkN {s = d10 "seuraaja"};
-lin replant_V2 = variants {};   ---- istuttaa uudelleen
+lin replant_V2 = mkV2 (mkV (mkV "istuttaa") "uudelleen"); --guessed
 lin replaster_V2 = variants {};
 lin replay_1_N = mkN {s = d09A "uusinta"};
 lin replay_2_N = mkN {s = d09A "uusinta"};
@@ -83058,7 +83073,7 @@ lin republic_of_the_congo_LN = mkLN "Kongon tasavalta" ;
 lin republic_of_vietnam_LN = mkLN "Vietnamin tasavalta" ;
 lin republican_1_A = mkA "republikaaninen";
 lin republican_2_A = mkA "republikaaninen";
-lin republicanMasc_1_N = variants {};
+lin republicanMasc_1_N = mkN "republikaani"; --guessed
 lin republicanFem_1_N = variants {};
 lin republicanMasc_2_N = variants {mkN "tasavaltalainen"; mkN "tasavallan kannattaja"};
 lin republicanFem_2_N = variants {mkN "tasavaltalainen"; mkN "tasavallan kannattaja"};
@@ -83217,7 +83232,7 @@ lin reshipment_N = mkN "uudelleenlähetys";
 lin reshuffle_1_N = mkN "uusi sekoitus"; --unchecked
 lin reshuffle_2_N = mkN "uusi sekoitus"; --unchecked
 lin reshuffle_1_V2 = variants {};   ---- sekoittaa uudelleen
-lin reshuffle_2_V2 = variants {};   ---- järjestää uudelleen
+lin reshuffle_2_V2 = mkV2 (mkV "uudistaa"); --guessed
 lin reside_1_V = mkV {s = c52 "asua"};
 lin reside_2_V = mkV {s = c52 "asua"};
 lin reside_3_V = mkV {s = c67 "olla"};
@@ -83405,7 +83420,7 @@ lin respondentMasc_1_N = mkN {s = d10 "vastaaja"};
 lin respondentFem_1_N = mkN {s = d10 "vastaaja"};
 lin respondentMasc_2_N = mkN {s = d10 "vastaaja"};
 lin respondentFem_2_N = mkN {s = d10 "vastaaja"};
-lin response_to_N2 = variants {};
+lin response_to_N2 = mkN2 (mkN "vastaus") (casePrep illative);
 lin response_2_N = mkN {s = d03 "reaktio"};
 lin response_3_N = mkN {s = d39 "vastaus"};
 lin response_4_N = mkN "vastaanotto";
@@ -83460,7 +83475,7 @@ lin restful_A = mkA {s = d38 "levollinen"};
 lin restfulness_N = mkN {s = d40 "rauhallisuus"};
 lin restharrow_1_N = mkN "orakko";
 lin restharrow_2_N = mkN "rento-orakko";
-lin resting_place_N = variants {};
+lin resting_place_N = mkN "levähdyspaikka"; --guessed
 lin restitution_1_N = mkN {s = d39 "hyvitys"};
 lin restitution_2_N = mkN "restituutio";
 lin restitution_3_N = mkN "palauttaminen";
@@ -83496,7 +83511,7 @@ lin restorerMasc_N = mkN "entisöijä";
 lin restorerFem_N = mkN "entisöijä";
 lin restrain_1_V2 = mkV2 (mkV {s = c67A "pidätellä"});
 lin restrain_2_V2 = variants {};
-lin restrain_3_V2 = variants {};
+lin restrain_3_V2 = mkV2 (mkV "estää"); --guessed
 lin restrain_4_V2 = mkV2 (mkV {s = c69 "hillitä"});
 lin restrainer_1_N = mkN {s = d33 "hidastin"};
 lin restrainerMasc_2_N = mkN "rajoittaja";
@@ -83546,7 +83561,7 @@ lin resume_4_V2 = variants {};   ---- tehdä yhteenveto
 lin resumption_N = mkN "uudelleen aloittaminen"; --unchecked
 lin resurface_1_V = variants {};   ---- nousta pinnalle
 lin resurface_2_V = variants {};   ---- päällystää uudelleen pinnoittaa uudelleen
-lin resurface_3_V = variants {};   ---- ilmestyä takaisin
+lin resurface_3_V = mkV (mkV "ilmestyä") "uudelleen"; --guessed
 lin resurface_1_V2 = variants {};   ---- nousta pinnalle
 lin resurface_2_V2 = variants {};   ---- päällystää uudelleen pinnoittaa uudelleen
 lin resurgence_N = variants {mkN "uusi kukoistus"; mkN "uusi tuleminen"; mkN "uusi nousu"}; --unchecked
@@ -83570,7 +83585,7 @@ lin retail_Adv = mkAdv "myydä vähittäin";
 lin retail_N = variants {mkN "jälleenmyynti"; mkN "vähittäiskauppa"; mkN {s = d05A "myynti"}; mkN "vähittäismyynti"};
 lin retail_V = variants {};   ---- myydä vähittäin
 lin retail_V2 = variants {};   ---- myydä vähittäin
-lin retail_chain_N = variants {} ;
+lin retail_chain_N = mkN "vähittäiskauppaketju"; --guessed
 lin retailerMasc_N = variants {mkN "jälleenmyyjä"; mkN "vähittäiskauppias"};
 lin retailerFem_N = variants {mkN "jälleenmyyjä"; mkN "vähittäiskauppias"};
 lin retailing_N = mkN "vähittäiskauppa";
@@ -83648,7 +83663,7 @@ lin retinoblastoma_N = mkN "retinoblastooma";
 lin retinopathy_N = variants {mkN "retinopatia"; mkN "verkkokalvosairaus"};
 lin retinue_N = mkN {s = d48 "seurue"};
 lin retire_N = variants {};
-lin retire_1_V = variants {};   ---- jäädä eläkkeelle
+lin retire_1_V = mkV (mkV "jäädä") "eläkkeelle"; --guessed
 lin retire_2_V = variants {};   ---- päättää ura
 lin retire_3_V = mkV {s = c52A "perääntyä"};
 lin retire_4_V = variants {};   ---- vetää pois
@@ -83657,7 +83672,7 @@ lin retire_8_V = mkV {s = c52A "vetäytyä"};
 lin retire_9_V = mkV {s = c53A "polttaa"};
 lin retire_11_V = variants {};   ---- mennä levolle
 lin retire_4_V2 = variants {};   ---- vetää pois
-lin retire_6_V2 = variants {};   ---- päästää eläkkeelle
+lin retire_6_V2 = mkV2 (mkV "eläköittää"); --guessed
 lin retire_7_V2 = variants {};   ---- heittää pois
 lin retire_9_V2 = mkV2 (mkV {s = c53A "polttaa"});
 lin retire_10_V2 = mkV2 (mkV {s = c53A "polttaa"});
@@ -83682,7 +83697,7 @@ lin retract_3_V = mkV {s = c53A "vetää"};
 lin retract_1_V2 = mkV2 (mkV {s = c52 "perua"});
 lin retract_2_V2 = mkV2 (mkV {s = c52A "vetäytyä"});
 lin retract_3_V2 = mkV2 (mkV {s = c53A "vetää"});
-lin retract_4_V2 = variants {};   ---- vetää sisään
+lin retract_4_V2 = mkV2 (mkV (mkV "vetää") "sisään"); --guessed
 lin retractable_A = mkA "sisäänvedettävä";
 lin retractile_A = mkA "sisäänvedettävä";
 lin retraction_1_N = mkN "peruminen";
@@ -84208,7 +84223,7 @@ lin ricin_N = mkN {s = d05 "risiini"};
 lin rick_1_N = mkN {s = d39 "venähdys"};
 lin rick_2_N = mkN {s = d10 "suova"};
 lin rick_GN = variants {};
-lin rick_1_V2 = variants {};   ---- koota suovaksi koota keoksi
+lin rick_1_V2 = mkV2 (mkV "suovata"); --guessed
 lin rick_2_V2 = mkV2 (mkV {s = c53A "niksauttaa"});
 lin rickets_N = mkN "riisitauti";
 lin rickettsia_N = mkN "riketsia";
@@ -84615,11 +84630,11 @@ lin rise_6_V = mkV {s = c52A "syntyä"};
 lin rise_7_V = mkV {s = c66 "nousta"};
 lin rise_8_V = mkV {s = c66 "nousta"};
 lin rise_9_V = mkV {s = c66 "nousta"};
-lin rise_10_V = variants {};   ---- nousta ylös vuoteesta
+lin rise_10_V = mkV "nousta"; --guessed
 lin rise_11_V = mkV {s = c66 "nousta"};
 lin rise_12_V = mkV {s = c52A "kohentua"};
 lin rise_13_V = mkV {s = c66 "nousta"};
-lin rise_14_V = variants {};   ---- nousta vastaan
+lin rise_14_V = mkV (mkV "nousta") "kapinaan"; --guessed
 lin rise_15_V = variants {mkV {s = c74 "kohota"}; mkV {s = c53A "kohottaa"}};
 lin rise_16_V = mkV {s = c66 "nousta"};
 lin rise_14_V2 = variants {};   ---- nousta vastaan
@@ -84996,7 +85011,7 @@ lin roman_1_A = mkA "roomalainen";
 lin roman_2_A = variants {mkA "roomalainen"; mkA "Rooman"};
 lin roman_3_A = mkA "roomalainen";
 lin roman_4_A = mkA "roomalaiskatolinen";
-lin romanMasc_1_N = variants {};
+lin romanMasc_1_N = mkN "roomalainen"; --guessed
 lin romanFem_1_N = variants {};
 lin romanMasc_2_N = variants {};
 lin romanFem_2_N = variants {};
@@ -85099,7 +85114,7 @@ lin room_4_N = mkN "huoneessa olijat"; --unchecked
 lin room_in_V2 = variants {};
 lin room_mateMasc_N = mkN "huonetoveri";
 lin room_mateFem_N = mkN "huonetoveri";
-lin room_service_N = variants {};
+lin room_service_N = mkN "huonepalvelu"; --guessed
 lin roomerMasc_N = mkN "vuokralainen";
 lin roomerFem_N = mkN "vuokralainen";
 lin roomette_N = mkN "makuutila";
@@ -85188,7 +85203,7 @@ lin rose_A = mkA "ruusunpunainen";
 lin rose_1_N = mkN {s = d01 "ruusu"};
 lin rose_2_N = mkN "roseviini";
 lin rose_3_N = mkN "ruusunpunainen";
-lin rose_GN = variants {};
+lin rose_GN = mkGN "Roosa" female; --guessed
 lin rose_V = variants {};
 lin rose_V2 = variants {};
 lin rose_bed_N = mkN "ruusupenkki";
@@ -85734,7 +85749,7 @@ lin rumination_3_N = mkN "pulautteluhäiriö";
 lin ruminative_A = mkA "pohdiskeleva";
 lin rummage_1_N = mkN "kirpputoritavara";
 lin rummage_2_N = mkN "penkominen";
-lin rummage_through_V2 = variants {};
+lin rummage_through_V2 = mkV2 (mkV "penkoa");
 lin rummer_N = mkN "juomalasi";
 lin rummy_1_A = variants {mkA "eriskummallinen"; mkA {s = d38 "erikoinen"}};
 lin rummyMasc_1_N = mkN {s = d06 "pultsari"};
@@ -85770,7 +85785,7 @@ lin run_14_N = mkN "valuminen";
 lin run_15_N = mkN {s = d09 "sarja"};
 lin run_16_N = mkN {s = d01 "reissu"};
 lin run_1_V = mkV {s = c70 "juosta"};
-lin run_2_V = variants {};   ---- juosta pois
+lin run_2_V = mkV "paeta"; --guessed
 lin run_3_V = variants {mkV {s = c72A "ulota"}; mkV {s = c52A "ulottua"}};
 lin run_5_V = mkV {s = c67 "olla"};
 lin run_6_V = mkV {s = c73A "virrata"};
@@ -85980,7 +85995,7 @@ lin rush_5_VV = mkVV (mkV {s = c72A "edetä"});
 lin rush_away_V = variants {};   ---- kiirehtiä pois
 lin rush_into_V2 = variants {};
 lin rush_off_V = variants {};   ---- lähteä kiireessä
-lin rush_out_V = variants {};   ---- rynnätä ulos
+lin rush_out_V = mkV (mkV "rynnätä") "esiin"; --guessed
 lin rusher_1_N = mkN "rusher";
 lin rusher_2_N = mkN {s = d10 "muuttaja"};
 lin rusher_3_N = mkN "hätäilijä";
@@ -86176,7 +86191,7 @@ lin sacred_1_A = mkA {s = d10 "pyhä"};
 lin sacred_2_A = mkA {s = d10 "pyhä"};
 lin sacred_3_A = mkA {s = d10 "pyhä"};
 lin sacred_4_A = mkA {s = d10 "pyhä"};
-lin sacred_to_A2 = variants {};
+lin sacred_to_A2 = mkA2 "pyhitetty" (casePrep illative); --guessed
 lin sacredness_N = mkN {s = d40 "pyhyys"};
 lin sacrifice_1_N = variants {mkN "uhraaminen"; mkN {s = d39 "uhraus"}};
 lin sacrifice_2_N = mkN {s = d05 "uhri"};
@@ -86216,7 +86231,7 @@ lin saddle_1_V2 = mkV2 (mkV {s = c62 "satuloida"});
 lin saddle_3_V2 = mkV2 (mkV {s = c58 "käskeä"});
 lin saddle_sore_A = variants {mkA "ratsastuksesta kipeänä oleva"; mkA "ratsastuksesta kipeä"}; --unchecked
 lin saddle_up_V2 = variants {};
-lin saddle_with_V3 = variants {};
+lin saddle_with_V3 = mkV3 (mkV "sälyttää") accusative (casePrep allative); --guessed
 lin saddleback_1_N = mkN {s = d12 "satula"};
 lin saddleback_2_N = mkN "satulakatto";
 lin saddlebag_N = mkN "satulalaukku";
@@ -86585,7 +86600,7 @@ lin salvo_2_N = mkN "yhteislaukaus";
 lin salvo_3_N = mkN {s = d39 "purkaus"};
 lin salwar_1_N = variants {mkN "salwar"; mkN "shalwar"};
 lin salzburg_LN = mkLN "Salzburg";
-lin sam_GN = variants {};
+lin sam_GN = mkGN "Sam" male; --guessed
 lin samantha_GN = variants {};
 lin samara_N = mkN {s = d01A "palko"};
 lin samaria_LN = mkLN "Samaria" ;
@@ -86739,7 +86754,7 @@ lin sandwort_2_N = mkN "laaksoarho";
 lin sandwort_3_N = variants {mkN "Moehringia"; mkN "Arenaria"; mkN "Minuartia"};
 lin sandy_1_A = mkA "hiekanvärinen";
 lin sandy_2_A = variants {mkA "hiekka-"; mkA "hiekkainen"};
-lin sandy_GN = variants {};
+lin sandy_GN = mkGN "Sandy" male; --guessed
 lin sane_1_A = variants {mkA "tervejärkinen"; mkA "järjissään"; mkA {s = d48 "terve"}};
 lin sane_2_A = mkA "järkeenkäypä";
 lin sang_froid_N = variants {};
@@ -86912,7 +86927,7 @@ lin sat_in_V = variants {};
 lin satan_PN = mkPN "Saatana" ;
 lin satang_N = mkN "satang";
 lin satanic_1_A = mkA "saatanallinen";
-lin satanic_2_A = variants {};
+lin satanic_2_A = mkA "saatanallinen"; --guessed
 lin satanophobia_N = mkN "satanofobia";
 lin satchel_N = mkN "olkalaukku";
 lin sate_V2 = mkV2 (mkV {s = c53A "tyydyttää"});
@@ -87751,7 +87766,7 @@ lin scoundrelMasc_N = variants {mkN {s = d12 "kanalja"}; mkN {s = d39 "lurjus"};
 lin scoundrelFem_N = variants {mkN {s = d12 "kanalja"}; mkN {s = d39 "lurjus"}; mkN {s = d05A "hunsvotti"}; mkN {s = d01 "ketku"}};
 lin scoundrelly_A = mkA "veitikkamainen";
 lin scour_N = mkN {s = d10 "ura"};
-lin scour_1_V2 = variants {};   ---- tutkia tarkasti
+lin scour_1_V2 = mkV2 (mkV "haravoida"); --guessed
 lin scour_2_V2 = mkV2 (mkV {s = c73 "jynssätä"});
 lin scour_3_V2 = mkV2 (mkV {s = c73A "hangata"});
 lin scour_4_V2 = mkV2 (mkV {s = c52A "huuhtoa"});
@@ -87825,9 +87840,9 @@ lin scrap_1_N = variants {mkN {s = d01A "tilkku"}; mkN {s = d01 "muru"}; mkN {s 
 lin scrap_2_N = variants {mkN {s = d48A "tähde"}; mkN {s = d48A "jäte"}; mkN {s = d01 "romu"}};
 lin scrap_3_N = mkN {s = d09 "pala"};
 lin scrap_4_N = mkN {s = d14A "nujakka"};
-lin scrap_over_V2 = variants {};
+lin scrap_over_V2 = mkV2 (mkV "nujakoida"); --guessed
 lin scrap_1_V2 = variants {};   ---- heittää pois
-lin scrap_2_V2 = variants {};
+lin scrap_2_V2 = mkV2 (mkV "romuttaa");
 lin scrap_3_V2 = mkV2 (mkV {s = c53A "romuttaa"});
 lin scrap_iron_N = mkN "romurauta";
 lin scrapbook_N = mkN "leikekirja";
@@ -87842,12 +87857,12 @@ lin scrape_3_V2 = mkV2 (mkV {s = c53A "naarmuttaa"});
 lin scrape_4_V2 = mkV2 (mkV {s = c54A "kumartaa"});
 lin scrape_6_V2 = mkV2 (mkV {s = c52A "raapiutua"});
 lin scrape_along_V = mkV {s = c53A "kituuttaa"};
-lin scrape_away_V2 = variants {};
+lin scrape_away_V2 = mkV2 (mkV (mkV "kaapia") "pois"); --guessed
 lin scrape_by_V = variants {};   ---- elää kituuttaa
 lin scrape_in_V = variants {};
 lin scrape_into_V2 = variants {};
 lin scrape_through_V2 = variants {};
-lin scrape_together_V2 = variants {};
+lin scrape_together_V2 = mkV2 (mkV (mkV "raapia") "kasaan"); --guessed
 lin scrape_up_V2 = mkV2 (mkV {s = c73 "kerätä"});
 lin scraper_N = variants {mkN {s = d33A "kaavin"}; mkN {s = d33A "raaputin"}};
 lin scrapheap_1_N = mkN "rojukasa";
@@ -88510,7 +88525,7 @@ lin security_6_N = variants {mkN "turvallisuuspalvelu"; mkN "turvallisuusosasto"
 lin security_7_N = mkN {s = d17 "takuu"};
 lin security_8_N = mkN "turvajärjestelmä";
 lin security_9_N = mkN {s = d40 "turvallisuus"};
-lin security_guardMasc_N = variants {};
+lin security_guardMasc_N = mkN "vartija"; --guessed
 lin security_guardFem_N = variants {};
 lin sedalia_LN = mkLN "Sedalia" ;
 lin sedan_1_N = mkN "sedan";
@@ -88547,7 +88562,7 @@ lin sedulous_A = variants {mkA {s = d10 "ahkera"}; mkA {s = d10 "uuttera"}};
 lin sedum_N = mkN "maksaruoho";
 lin see_N = mkN "piispanistuin";
 lin see_2_V = mkV {s = c53A "käsittää"};
-lin see_14_V = variants {};   ---- huolehtia jstak
+lin see_14_V = mkV "huolehtia"; --guessed
 lin see_17_V = mkV {s = c71 "nähdä"};
 lin see_1_V2 = mkV2 (mkV {s = c71 "nähdä"});
 lin see_2_V2 = mkV2 (mkV {s = c53A "käsittää"});
@@ -88560,7 +88575,7 @@ lin see_9_V2 = mkV2 (mkV {s = c53A "selvittää"});
 lin see_11_V2 = variants {mkV2 (mkV {s = c73A "tavata"}); mkV2 (mkV {s = c73 "tavata"})};
 lin see_12_V2 = mkV2 (mkV {s = c67 "vierailla"});
 lin see_13_V2 = variants {};   ---- käydä katsomassa
-lin see_15_V2 = variants {};   ---- ottaa vastaan
+lin see_15_V2 = mkV2 (mkV (mkV "ottaa") "vastaan"); --guessed
 lin see_16_V2 = mkV2 (mkV {s = c67 "tapailla"});
 lin see_18_V2 = mkV2 (mkV {s = c53A "selvittää"});
 lin see_19_V2 = mkV2 (mkV {s = c69 "havaita"});
@@ -88577,7 +88592,7 @@ lin see_off_V2 = variants {};
 lin see_out_V2 = variants {};
 lin see_through_A = mkA "läpikuultava";
 lin see_through_1_V2 = variants {};   ---- auttaa läpi
-lin see_through_2_V2 = variants {};   ---- nähdä läpi
+lin see_through_2_V2 = mkV2 (mkV (mkV "nähdä") "läpi"); --guessed
 lin see_through_3_V2 = variants {};   ---- suorittaa loppuun
 lin see_to_V2 = variants {};
 lin seed_1_N = mkN {s = d32 "siemen"};
@@ -88836,7 +88851,7 @@ lin selkirk_SN = mkSN "Selkirk";
 lin selkirk_mountains_LN = mkLN "Selkirk Mountains" ;
 lin selkup_N = mkN "selkup" ;
 lin sell_N = mkN {s = d05A "myynti"};
-lin sell_2_V = variants {};   ---- mennä kaupaksi
+lin sell_2_V = mkV (mkV "mennä") "kaupaksi"; --guessed
 lin sell_6_V = mkV {s = c53A "vakuuttaa"};
 lin sell_1_V2 = mkV2 (mkV {s = c63 "myydä"});
 lin sell_3_V2 = mkV2 (mkV {s = c63 "myydä"});
@@ -88975,7 +88990,7 @@ lin semolina_N = mkN "semolina";
 lin sempstress_N = mkN {s = d12 "ompelija"};
 lin sen_N = mkN "sen";
 lin senate_1_N = mkN {s = d05A "senaatti"};
-lin senate_2_N = variants {};
+lin senate_2_N = mkN "senaatti"; --guessed
 lin senatorMasc_N = mkN {s = d06 "senaattori"};
 lin senatorFem_N = mkN {s = d06 "senaattori"};
 lin senatorial_A = mkA "senaattorien";
@@ -88992,7 +89007,7 @@ lin send_1_V2V = mkV2V (mkV {s = c53A "lähettää"});
 lin send_4_V2V = mkV2V (mkV {s = c53A "lähettää"});
 lin send_5_V2V = variants {mkV2V (mkV {s = c53A "lähettää"}); mkV2V (mkV {s = c53A "passittaa"})};
 lin send_V3 = variants {mkV3 (mkV {s = c53A "lähettää"}); mkV3 (mkV {s = c53A "toimittaa"})};
-lin send_aloft_V2 = variants {};
+lin send_aloft_V2 = mkV2 (mkV "kohottaa"); --guessed
 lin send_back_V2 = mkV2 (mkV {s = c53A "palauttaa"});
 lin send_for_V2 = mkV2 (mkV {s = c52 "kutsua"});
 lin send_in_2_V = mkV {s = c52A "ilmoittautua"};
@@ -89307,7 +89322,7 @@ lin serial_1_N = mkN "sarjaohjelma";
 lin serial_2_N = mkN "sarjajulkaisu";
 lin serialism_N = variants {mkN "serialismi"; mkN "sarjallisuus"};
 lin serialization_1_N = variants {mkN "jaksoina julkaiseminen"; mkN "jatkokertomuksena julkaiseminen"}; --unchecked
-lin serialize_1_V2 = variants {};   ---- julkaista sarjana esittää sarjana
+lin serialize_1_V2 = mkV2 (mkV "sarjoittaa"); --guessed
 lin seriatim_Adv = mkAdv {s = c99 "yksittäin"};
 lin sericultural_A = mkA "silkinviljelyksen";
 lin sericulture_1_N = mkN "silkinviljely";
@@ -89375,7 +89390,7 @@ lin serve_N = mkN {s = d01A "syöttö"};
 lin serve_1_V = variants {mkV {s = c67 "palvella"}; mkV {s = c61 "toimia"}};
 lin serve_2_V = mkV {s = c67 "palvella"};
 lin serve_12_V = mkV {s = c73 "vastata"};
-lin serve_13_V = variants {};   ---- olla asepalveluksessa
+lin serve_13_V = mkV "palvella";   ---- olla asepalveluksessa
 lin serve_15_V = mkV {s = c53A "syöttää"};
 lin serve_1_V2 = mkV2 (variants {mkV {s = c67 "palvella"}; mkV {s = c61 "toimia"}}) ;
 lin serve_2_V2 = mkV2 (mkV {s = c67 "palvella"}) ;
@@ -89465,7 +89480,7 @@ lin set_3_V2 = variants {mkV2 (mkV {s = c53A "asettaa"}); mkV2 (mkV {s = c73 "m�
 lin set_4_V2 = variants {mkV2 (mkV {s = c53A "asettaa"}); mkV2 (mkV {s = c73 "määrätä"})};
 lin set_6_V2 = variants {mkV2 (mkV {s = c53 "koristaa"}); mkV2 (mkV {s = c53A "upottaa"})};
 lin set_7_V2 = mkV2 (mkV {s = c52A "valmistautua"});
-lin set_8_V2 = variants {};   ---- asettaa oikeaan
+lin set_8_V2 = mkV2 (mkV "asettaa"); --guessed
 lin set_9_V2 = mkV2 (mkV {s = c69 "sijaita"});
 lin set_11_V2 = mkV2 (mkV {s = c54A "säveltää"});
 lin set_12_V2 = mkV2 (mkV {s = c53A "istuttaa"});
@@ -89485,14 +89500,14 @@ lin set_V2A = mkV2A (mkV {s = c67 "panna"}) (casePrep translative) (casePrep tra
 lin set_about_1_V2 = variants {};   ---- ryhtyä toimeen
 lin set_about_2_V2 = mkV2 (mkV {s = c52A "ryhtyä"});
 lin set_about_3_VV = variants {mkVV (mkV {s = c52A "ryhtyä"}); mkVV (mkV {s = c74A "ruveta"})};
-lin set_ablaze_V2 = variants {};
-lin set_abroach_V2 = variants {};
-lin set_adrift_V2 = variants {};
+lin set_ablaze_V2 = mkV2 (mkV "sytyttää");
+lin set_abroach_V2 = mkV2 (mkV "tapittaa"); --guessed
+lin set_adrift_V2 = mkV2 (mkV (mkV "laskea") "ajelehtimaan"); --guessed
 lin set_apart_1_V2 = mkV2 (mkV {s = c73 "varata"});
 lin set_apart_2_V2 = mkV2 (mkV {s = c53A "erottaa"});
 lin set_aside_1_V2 = mkV2 (mkV {s = c73 "varata"});
 lin set_aside_2_V2 = mkV2 (mkV {s = c73 "varata"});
-lin set_aside_3_V2 = variants {};
+lin set_aside_3_V2 = mkV2 (mkV "kumota"); --guessed
 lin set_back_1_V2 = mkV2 (mkV {s = c73A "lykätä"});
 lin set_back_2_V2 = variants {mkV2 (mkV {s = c53A "viivästyttää"}); mkV2 (mkV {s = c53A "jarruttaa"})};
 lin set_back_3_V2 = mkV2 (mkV {s = c56 "maksaa"});
@@ -89611,7 +89626,7 @@ lin sevenfold_Adv = mkAdv "seitsenkertaisesti";
 lin sevenoaks_LN = variants {};
 lin sever_1_V2 = mkV2 (mkV {s = c66 "katkaista"});
 lin sever_2_V2 = variants {mkV2 (mkV {s = c53A "irrottaa"}); mkV2 (mkV {s = c73A "leikata"})};
-lin several_Card = variants {};   ---- usea
+lin several_Card = cardStr "usea" plural;   ---- usea
 lin severally_1_Adv = mkAdv {s = c99 "yksittäin"};
 lin severally_2_Adv = mkAdv "erillisesti";
 lin severally_3_Adv = mkAdv {s = c99 "eri"};
@@ -89759,9 +89774,9 @@ lin shadowing_N = mkN "varjostaminen";
 lin shadowy_1_A = variants {mkA {s = d10 "hämärä"}; mkA "varjoisa"};
 lin shadowy_2_A = mkA {s = d10 "hämärä"};
 lin shadowy_3_A = mkA "hämäräperäinen";
-lin shady_1_A = variants {};
+lin shady_1_A = mkA "varjoisa"; --guessed
 lin shady_2_A = mkA "kyseenalainen";
-lin shady_3_A = variants {};
+lin shady_3_A = mkA "hämärä"; --guessed
 lin shady_4_A = variants {mkA "varjostava"; mkA "varjoisa"; mkA "varjoinen"};
 lin shaft_1_N = mkN {s = d28 "varsi"};
 lin shaft_2_N = variants {mkN {s = d39 "letkaus"}; mkN {s = d05A "piikki"}};
@@ -89839,7 +89854,7 @@ lin shaky_2_A = variants {mkA "vapiseva"; mkA "tärisevä"};
 lin shaky_3_A = mkA {s = d10 "arveluttava"};
 lin shale_N = mkN "savikivi";
 lin shale_oil_N = mkN "kiviliuskeöljy";
-lin shall_VV = variants {};
+lin shall_VV = S.must_VV;
 lin shallot_1_N = variants {mkN "jakosipuli"; mkN "salottesipuli"; mkN "ryvässipuli"};
 lin shallot_2_N = variants {mkN "ryvässipuli"; mkN "salottesipuli"};
 lin shallot_3_N = variants {mkN "salottisipuli"; mkN "ryvässipuli"};
@@ -89966,7 +89981,7 @@ lin sharkMasc_3_N = mkN {s = d18 "hai"};
 lin sharkFem_3_N = mkN {s = d18 "hai"};
 lin sharkskin_N = mkN "hainnahka";
 lin sharksucker_N = mkN "isoremora";
-lin sharon_GN = variants {};
+lin sharon_GN = mkGN "Sharon" male; --guessed
 lin sharp_1_A = mkA "tarkka";
 lin sharp_2_A = variants {mkA {s = d10 "terävä"}; mkA "suippo"};
 lin sharp_3_A = mkA {s = d10 "terävä"};
@@ -90163,7 +90178,7 @@ lin shell_5_V2 = variants {};   ---- kerätä simpukoita
 lin shell_6_V2 = mkV2 (mkV {s = c53A "voittaa"});
 lin shell_7_V2 = variants {mkV2 (mkV {s = c61A "silpiä"}); mkV2 (mkV {s = c61 "kuoria"})};
 lin shell_8_V2 = variants {};   ---- poistaa kuori
-lin shell_game_N = variants {} ;
+lin shell_game_N = mkN "kuppipeli"; --guessed
 lin shell_out_V2 = mkV2 (mkV {s = c56A "jakaa"});
 lin shell_shock_N = variants {mkN "sotaneuroosi"; mkN "sotapsykoosi"; mkN "taisteluväsymys"};
 lin shellac_1_N = mkN {s = d14A "sellakka"};
@@ -90385,7 +90400,7 @@ lin shire_1_N = mkN "kreivikunta";
 lin shire_2_N = mkN "shire";
 lin shirebrook_LN = variants {};
 lin shiremoor_LN = variants {};
-lin shirk_1_V2 = variants {};   ---- väistää velvollisuuksiaan
+lin shirk_1_V2 = mkV2 (mkV "vältellä"); --guessed
 lin shirk_2_V2 = variants {mkV2 (mkV {s = c53A "välttää"}); mkV2 (mkV {s = c67A "vältellä"})};
 lin shirkerMasc_N = mkN {s = d06 "pinnari"};
 lin shirkerFem_N = mkN {s = d06 "pinnari"};
@@ -90716,7 +90731,7 @@ lin shout_N = mkN {s = d09A "ulvonta"};
 lin shout_1_V = mkV {s = c54A "huutaa"};
 lin shout_2_V = mkV {s = c67A "huudella"};
 lin shout_3_V = mkV {s = c54A "huutaa"};
-lin shout_at_V2 = variants {};
+lin shout_at_V2 = mkV2 (mkV "haukkua"); --guessed
 lin shout_down_V2 = mkV2 (mkV {s = c54A "vaientaa"});
 lin shout_out_V = mkV {s = c52 "kiljua"};
 lin shout_out_V2 = mkV2 (mkV {s = c54A "huutaa"});
@@ -91146,7 +91161,7 @@ lin sight_4_N = mkN {s = d10 "silmä"};
 lin sight_5_N = variants {mkN "näkökenttä"; mkN "näköpiiri"};
 lin sight_6_N = mkN "näkeminen";
 lin sight_of_N = mkN {s = d01 "paljo"};
-lin sight_1_V2 = variants {};   ---- saada näkyviinsä
+lin sight_1_V2 = mkV2 (mkV "havaita"); --guessed
 lin sight_2_V2 = mkV2 (mkV {s = c73A "tähdätä"});
 lin sighting_N = mkN {s = d01A "havainto"};
 lin sightless_A = mkA {s = d15 "sokea"};
@@ -91162,7 +91177,7 @@ lin sigmoid_2_A = mkA "vemmelsuolen";
 lin sigmoidectomy_N = mkN "sigmasuolen poistoleikkaus"; --unchecked
 lin sigmoidoscope_N = mkN "sigmoidoskooppi";
 lin sigmoidoscopy_N = mkN "sigmoidoskopia";
-lin sign_of_N2 = variants {};
+lin sign_of_N2 = mkN2 (mkN "merkki") (casePrep elative);
 lin sign_2_N = mkN {s = d39 "ilmoitus"};
 lin sign_3_N = mkN {s = d05 "viesti"};
 lin sign_4_N = variants {mkN {s = d05A "kyltti"}; mkN {s = d07A "kilpi"}};
@@ -91679,7 +91694,7 @@ lin sit_in_1_V2 = mkV2 (mkV {s = c67 "vierailla"});
 lin sit_in_2_V2 = mkV2 (mkV {s = c68 "pullikoida"});
 lin sit_in_for_V2 = variants {};
 lin sit_in_on_V2 = variants {};
-lin sit_on_V2 = variants {};
+lin sit_on_V2 = mkV2 (mkV "istua") adessive;
 lin sit_out_1_V2 = variants {};   ---- katsoa sivusta
 lin sit_out_2_V2 = variants {};   ---- istua loppuun
 lin sit_over_V2 = variants {};
@@ -91916,7 +91931,7 @@ lin skip_1_N = variants {mkN "hyppääminen"; mkN {s = d02 "hyppely"}};
 lin skip_2_N = mkN "väliin jättäminen"; --unchecked
 lin skip_3_V = mkV {s = c61A "hyppiä"};
 lin skip_5_V = mkV {s = c74 "kimmota"};
-lin skip_1_V2 = variants {};   ---- hypätä yli
+lin skip_1_V2 = mkV2 (mkV (mkV "jättää") "väliin"); --guessed
 lin skip_2_V2 = variants {};   ---- jättää väliin
 lin skip_4_V2 = mkV2 (mkV {s = c52 "poistua"});
 lin skip_5_V2 = mkV2 (mkV {s = c74 "kimmota"});
@@ -92197,7 +92212,7 @@ lin sledding_1_N = variants {mkN "reenajo"; mkN {s = d02 "kelkkailu"}};
 lin sledding_2_N = mkN {s = d01 "meno"};
 lin sledge_1_N = variants {mkN {s = d07A "reki"}; mkN {s = d09A "kelkka"}; mkN {s = d03 "ahkio"}};
 lin sledge_2_N = mkN {s = d09 "leka"};
-lin sledge_2_V = variants {};   ---- ajaa reellä
+lin sledge_2_V = mkV "kelkkailla"; --guessed
 lin sledge_1_V2 = variants {};   ---- vetää reessä kuljettaa reessä
 lin sledge_3_V2 = variants {};   ---- iskeä moukarilla
 lin sledgehammer_N = mkN {s = d06 "moukari"};
@@ -93252,13 +93267,13 @@ lin so_9_Adv = mkAdv {s = c99 "sitten"};
 lin so_10_Adv = mkAdv {s = c99 "niin"};
 lin so_N = mkN "sol";
 lin so_PConj = variants {};
-lin so_Subj = variants {};
+lin so_Subj = {s = "jotta"}; --guessed
 lin so_and_soMasc_N = mkN "sanonko mikä"; --unchecked
 lin so_and_soFem_N = mkN "sanonko mikä"; --unchecked
 lin so_called_A = variants {mkA "mukamas"; mkA "niin sanottu"; mkA "niinkutsuttu"; mkA "niin kutsuttu"}; --unchecked
 lin so_so_A = variants {mkA "välttävä"; mkA "miten kuten"; mkA "niin ja näin"}; --unchecked
 lin so_so_Adv = variants {mkAdv "niin ja näin"; mkAdv {s = c99 "siedettävästi"}};
-lin so_that_Subj = variants {};
+lin so_that_Subj = {s = "jotta"}; --guessed
 lin soak_1_N = variants {mkN "liko"; mkN {s = d39 "liotus"}};
 lin soak_2_N = mkN {s = d39 "liotus"};
 lin soak_1_V = variants {mkV {s = c74A "liota"}; mkV {s = c53A "liottaa"}};
@@ -93307,7 +93322,7 @@ lin soar_4_V = variants {mkV {s = c74 "kohota"}; mkV {s = c53A "kohottaa"}; mkV 
 lin soar_5_V = mkV {s = c55A "liitää"};
 lin soar_2_V2 = mkV2 (mkV {s = c67A "liidellä"});
 lin soar_5_V2 = mkV2 (mkV {s = c55A "liitää"});
-lin sob_1_N = variants {};
+lin sob_1_N = mkN "nyyhke"; --guessed
 lin sobMasc_2_N = variants {};
 lin sobFem_2_N = variants {};
 lin sob_3_N = mkN {s = d39 "nyyhkytys"};
@@ -93450,7 +93465,7 @@ lin soft_18_A = variants {mkA {s = d15 "lempeä"}; mkA "leuto"; mkA "lauha"};
 lin soft_19_A = variants {mkA "taitettu"; mkA {s = d15 "himmeä"}};
 lin soft_boiled_1_A = mkA "pehmeäksi keitetty"; --unchecked
 lin soft_boiled_2_A = mkA "pehmeäksi keitetty"; --unchecked
-lin soft_drink_N = variants {} ;
+lin soft_drink_N = mkN "virvoitusjuoma"; --guessed
 lin soft_footed_A = mkA "kevytjalkainen";
 lin soft_headed_A = mkA "vähäjärkinen";
 lin soft_hearted_A = mkA "helläsydäminen";
@@ -93707,8 +93722,8 @@ lin sombreness_2_N = mkN {s = d40 "synkkyys"};
 lin sombreness_3_N = mkN {s = d40 "synkkyys"};
 lin sombrero_1_LN = mkLN "Sombrero";
 lin sombrero_2_N = mkN {s = d01 "sombrero"};
-lin some_Det = variants {};
-lin some_Quant = variants {};
+lin some_Det = S.someSg_Det;
+lin some_Quant = {s1 = \\_,_ => "joku" ; sp = \\_,_ => "joku" ; s2 = \\_ => [] ; isPoss = False ; isDef = True ; isNeg = False};
 lin someday_Adv = variants {mkAdv "kerran vielä"; mkAdv "jonakin päivänä"; mkAdv {s = c99 "joskus"}};
 lin somehow_1_AdV = variants {mkAdV "jotenkuten"; mkAdV "jotenkin"};
 lin somehow_1_Adv = variants {mkAdv "jotenkuten"; mkAdv {s = c99 "jotenkin"}};
@@ -93882,7 +93897,7 @@ lin sorry_2_A = mkA "surkuteltava";
 lin sorry_3_A = mkA {s = d15 "surkea"};
 lin sorry_4_A = variants {mkA {s = d38 "surullinen"}; mkA {s = d15 "surkea"}};
 lin sorry_Interj = variants {};
-lin sort_of_N2 = variants {};
+lin sort_of_N2 = mkN2 (mkN "laji") (casePrep elative); --guessed
 lin sort_2_N = variants {mkN {s = d05 "laji"}; mkN {s = d01A "laatu"}};
 lin sort_3_N = variants {mkN {s = d05A "tyyppi"}; mkN {s = d06 "kaveri"}};
 lin sort_4_N = variants {mkN {s = d02 "lajittelu"}; mkN "sorttaus"};
@@ -94024,7 +94039,7 @@ lin source_6_N = mkN {s = d48A "lähde"};
 lin source_7_N = mkN {s = d48A "lähde"};
 lin source_8_N = mkN {s = d48A "lähde"};
 lin source_9_N = mkN {s = d48A "lähde"};
-lin source_code_N = variants {} ;
+lin source_code_N = mkN "lähdekoodi"; --guessed
 lin sourdine_1_N = mkN {s = d02 "sordiino"};
 lin sourdine_2_N = mkN {s = d02 "sordiino"};
 lin sourdough_1_N = variants {mkN "hapantaikina"; mkN "taikinajuuri"};
@@ -94049,7 +94064,7 @@ lin souse_4_V2 = variants {};   ---- liottaa etikassa liottaa suolavedessä
 lin soutache_N = mkN "soutache-nauha";
 lin soutane_N = mkN "sutaani";
 lin south_A = variants {};
-lin south_Adv = variants {};
+lin south_Adv = mkAdv "etelään"; --guessed
 lin south_1_N = mkN "Etelä";
 lin south_2_N = mkN "Etelävaltiot";
 lin south_3_N = mkN "etelä" ;
@@ -94092,8 +94107,8 @@ lin southeast_4_N = mkN {s = d01A "kaakko"};
 lin southeast_asia_LN = mkLN "Kaakkois-Aasia" ;
 lin southeaster_1_N = variants {mkN "sou'easter"; mkN "kaakkoismyrsky"};
 lin southeasterly_1_A = mkA "kaakkoinen";
-lin southeasterly_2_A = variants {mkA "kaakkois-"; mkA "kaakkoinen"};
-lin southeastern_1_A = variants {mkA "kaakkois-"; mkA "kaakkoinen"};
+lin southeasterly_2_A = mkA "kaakkoinen";
+lin southeastern_1_A = mkA "kaakkoinen";
 lin southeastern_2_A = mkA "kaakkoinen";
 lin southeastward_A = mkA "kaakkoon päin"; --unchecked
 lin southeastward_Adv = mkAdv "kaakkoon päin";
@@ -94102,10 +94117,10 @@ lin southerly_1_A = variants {mkA "eteläinen"; mkA "etelä-"};
 lin southerly_2_A = variants {mkA "eteläinen"; mkA "etelä-"};
 lin southerly_1_Adv = mkAdv "etelään";
 lin southerly_2_Adv = variants {mkAdv "etelä-"; mkAdv "eteläinen"};
-lin southern_1_A = variants {};
-lin southern_2_A = variants {};
-lin southern_3_A = variants {};
-lin southern_4_A = variants {};
+lin southern_1_A = mkA "eteläinen";
+lin southern_2_A = mkA "eteläinen";
+lin southern_3_A = mkA "eteläinen";
+lin southern_4_A = mkA "eteläinen";
 lin southernerMasc_N = mkN "etelävaltiolainen";
 lin southernerFem_N = mkN "etelävaltiolainen";
 lin southernism_1_N = mkN "eteläinen puhetapa"; --unchecked
@@ -94130,9 +94145,9 @@ lin southwest_2_N = variants {};
 lin southwest_3_N = mkN {s = d41 "lounas"};
 lin southwest_4_N = mkN "lounais-";
 lin southwester_N = mkN "lounaistuuli";
-lin southwesterly_1_A = variants {mkA "lounainen"; mkA "lounais-"};
-lin southwesterly_2_A = variants {mkA "lounainen"; mkA "lounais-"};
-lin southwestern_1_A = variants {mkA "lounainen"; mkA "lounais-"};
+lin southwesterly_1_A = mkA "lounainen";
+lin southwesterly_2_A = mkA "lounainen";
+lin southwestern_1_A = mkA "lounainen";
 lin southwestern_2_A = mkA "lounainen";
 lin southwestward_A = mkA "lounaaseen";
 lin southwestward_Adv = mkAdv "lounaassa";
@@ -94241,7 +94256,7 @@ lin spanish_A = variants {mkA "espanjalainen"; mkA "Espanjan"};
 lin spanish_N = mkN "espanja" ;
 lin spank_N = variants {mkN "läimäytys"; mkN {s = d39 "läimäys"}};
 lin spank_V = variants {};   ---- antaa selkäsauna
-lin spank_V2 = variants {};   ---- antaa selkäsauna
+lin spank_V2 = mkV2 (mkV (mkV "antaa") "piiskaa"); --guessed
 lin spankerMasc_1_N = mkN "läimijä";
 lin spankerFem_1_N = mkN "läimijä";
 lin spanker_2_N = mkN "mesaani";
@@ -94377,7 +94392,7 @@ lin speak_2_V2 = mkV2 (mkV {s = c52 "puhua"}) partitive ;
 lin speak_3_V2 = mkV2 (mkV "puhua") partitive ;
 lin speak_4_V2 = mkV2 (mkV {s = c52 "puhua"});
 lin speak_out_V = variants {};   ---- ottaa kantaa sanoa mielipiteensä puhua ääneen
-lin speak_up_1_V = variants {};   ---- puhua suoraan nousta puhumaan
+lin speak_up_1_V = mkV (mkV "ilmaista") "mielipiteensä"; --guessed
 lin speak_up_2_V = variants {};   ---- puhua kovempaa korottaa ääntä
 lin speakable_A = mkA "puhuttava";
 lin speakeasy_N = mkN "salakapakka";
@@ -95686,7 +95701,7 @@ lin stable_4_A = mkA "tasapainoinen";
 lin stable_5_A = variants {mkA {s = d38 "tasainen"}; mkA "pysähtynyt"; mkA {s = d17 "vakaa"}};
 lin stable_1_N = mkN {s = d05 "talli"};
 lin stable_V = variants {};   ---- pitää tallissa
-lin stable_V2 = variants {};   ---- pitää tallissa
+lin stable_V2 = mkV2 (mkV (mkV "panna") "talliin"); --guessed
 lin stable_companion_N = mkN {s = d38 "hevonen"};
 lin stableboy_N = mkN "tallirenki";
 lin stableman_N = mkN "tallirenki";
@@ -95965,7 +95980,7 @@ lin stand_for_3_V2 = mkV2 (mkV {s = c53A "tarkoittaa"});
 lin stand_for_4_V2 = variants {mkV2 (mkV {s = c53A "sietää"}); mkV2 (mkV {s = c53 "kestää"})};
 lin stand_inMasc_N = mkN {s = d10 "tuuraaja"};
 lin stand_inFem_N = mkN {s = d10 "tuuraaja"};
-lin stand_in_for_V2 = variants {};
+lin stand_in_for_V2 = mkV2 (mkV "sijaistaa"); --guessed
 lin stand_out_1_V = variants {};   ---- nousta esiin herättää huomiota
 lin stand_out_2_V = mkV {s = c53 "loistaa"};
 lin stand_out_3_V = variants {};   ---- suunnata avomerelle
@@ -96058,7 +96073,7 @@ lin star_7_N = mkN {s = d07A "tähti"};
 lin star_8_N = mkN "tähtitopologia";
 lin star_1_V2 = mkV2 (mkV "tähdittää");
 lin star_2_V2 = variants {};   ---- esittää pääosaa esiintyä pääosassa
-lin star_3_V2 = variants {};   ---- merkitä asteriskilla
+lin star_3_V2 = mkV2 (mkV (mkV "merkitä") "tähdellä"); --guessed
 lin starboard_A = variants {mkA "tyyrpuurin puoleinen"; mkA "tyyrpuurissa"}; --unchecked
 lin starboard_N = mkN {s = d05 "tyyrpuuri"};
 lin starboard_V2 = mkV2 (mkV {s = c73 "ohjata"});
@@ -96487,7 +96502,7 @@ lin step_11_N = mkN {s = d49 "askel"};
 lin step_6_V = mkV {s = c67 "astella"};
 lin step_8_V = mkV {s = c67 "panna"};
 lin step_10_V = mkV {s = c52 "astua"};
-lin step_on_2_V2 = variants {};
+lin step_on_2_V2 = mkV2 (mkV (mkV "astua") "päälle"); --guessed
 lin step_on_4_V2 = mkV2 (mkV {s = c58A "polkea"});
 lin step_3_V2 = variants {};
 lin step_5_V2 = mkV2 (mkV {s = c53 "porrastaa"});
@@ -96643,14 +96658,14 @@ lin stick_in_the_mudMasc_N = mkN "jahkailija";
 lin stick_in_the_mudFem_N = mkN "jahkailija";
 lin stick_it_to_V2 = variants {};
 lin stick_on_A = mkA "tarra-";
-lin stick_out_1_V = variants {};   ---- pistää esiin
+lin stick_out_1_V = variants {mkV (mkV "pistää") "esiin"; mkV (mkV "työntyä") "ulos"}; --guessed
 lin stick_out_2_V = variants {};   ---- pistää silmään herättää huomiota
 lin stick_out_2_V2 = variants {};   ---- pistää silmään herättää huomiota
 lin stick_out_3_V2 = variants {mkV2 (mkV {s = c53 "kestää"}); mkV2 (mkV {s = c53A "sietää"})};
 lin stick_out_for_V2 = variants {};
 lin stick_to_1_V2 = variants {};   ---- takertua jhk
 lin stick_to_2_V2 = mkV2 (mkV {s = c52 "pysyä"});
-lin stick_together_1_V = variants {};   ---- pysyä yhdessä
+lin stick_together_1_V = mkV (mkV "pitää") "yhtä"; --guessed
 lin stick_together_7_V = variants {};
 lin stick_up_N = mkN "ryöstö aseella uhaten"; --unchecked
 lin stick_up_1_V = mkV {s = c53 "ryöstää"};
@@ -96901,7 +96916,7 @@ lin stock_17_N = mkN {s = d09 "karja"};
 lin stock_7_V = mkV {s = c52 "versoa"};
 lin stock_1_V2 = variants {};   ---- pitää varastossa
 lin stock_2_V2 = mkV2 (mkV {s = c53 "varustaa"});
-lin stock_3_V2 = variants {};   ---- hankkia kaloja
+lin stock_3_V2 = mkV2 (mkV "istuttaa"); --guessed
 lin stock_4_V2 = variants {};   ---- hankkia karjaa
 lin stock_5_V2 = variants {};   ---- hankkia varastoon
 lin stock_6_V2 = mkV2 (mkV {s = c53 "varustaa"});
@@ -96979,7 +96994,7 @@ lin stokerMasc_2_N = mkN {s = d10 "lämmittäjä"};
 lin stokerFem_2_N = mkN {s = d10 "lämmittäjä"};
 lin stoker_3_N = mkN "stoukkeri";
 lin stole_N = mkN {s = d10 "stoola"};
-lin stolen_A = variants {};
+lin stolen_A = mkA "varastettu"; --guessed
 lin stolid_A = variants {mkA "eloton"; mkA "ilmeetön"};
 lin stolidity_1_N = mkN {s = d40 "ilmeettömyys"};
 lin stolidity_2_N = variants {mkN {s = d40 "stoalaisuus"}; mkN {s = d40 "tyyneys"}};
@@ -97103,7 +97118,7 @@ lin stop_around_V = variants {};
 lin stop_back_V = variants {};
 lin stop_behind_V = variants {};
 lin stop_by_V2 = variants {};
-lin stop_in_V = variants {};
+lin stop_in_V = mkV "pysähtyä"; --guessed
 lin stop_off_V = variants {};
 lin stop_out_V = variants {};
 lin stop_over_1_V = mkV {s = c53A "keskeyttää"};
@@ -97156,7 +97171,7 @@ lin storm_1_V = mkV {s = c74 "raivota"};
 lin storm_3_V = mkV {s = c75 "myrskytä"};
 lin storm_4_V = mkV {s = c75 "myrskytä"};
 lin storm_5_V = variants {mkV {s = c62 "rynnäköidä"}; mkV {s = c53 "rynnistää"}; mkV {s = c73A "rynnätä"}};
-lin storm_2_V2 = variants {};   ---- vallata äkkirynnäköllä
+lin storm_2_V2 = mkV2 (mkV "vallata");   ---- vallata äkkirynnäköllä
 lin storm_5_V2 = variants {mkV2 (mkV {s = c62 "rynnäköidä"}); mkV2 (mkV {s = c53 "rynnistää"}); mkV2 (mkV {s = c73A "rynnätä"})};
 lin storm_beaten_A = mkA "myrskyn runtelema";
 lin storm_bound_A = mkA "myrskyn viivyttämä"; --unchecked
@@ -97180,7 +97195,7 @@ lin stornoway_LN = variants {};
 lin story_1_N = mkN {s = d12 "tarina"};
 lin story_2_N = variants {mkN {s = d39 "kertomus"}; mkN {s = d12 "tarina"}};
 lin story_3_N = mkN {s = d39 "kerros"};
-lin story_of_N2 = variants {};
+lin story_of_N2 = mkN2 (mkN "tarina") (casePrep elative); --guessed
 lin story_5_N = mkN {s = d12 "tarina"};
 lin story_6_N = mkN {s = d01A "satu"};
 lin storybook_N = mkN "satukirja";
@@ -97617,7 +97632,7 @@ lin strike_15_V2 = variants {};   ---- juolahtaa mieleen
 lin strike_16_V2 = mkV2 (mkV {s = c53A "pamauttaa"});
 lin strike_17_V2 = mkV2 (mkV {s = c52 "omaksua"});
 lin strike_18_V2 = variants {};
-lin strike_19_V2 = variants {};   ---- lyödä rahaa
+lin strike_19_V2 = mkV2 (mkV "lyödä"); --guessed
 lin strike_20_V2 = variants {mkV2 (mkV {s = c73 "tasata"}); mkV2 (mkV {s = c53A "silottaa"})};
 lin strike_21_V2 = mkV2 (mkV {s = c52A "iskeytyä"});
 lin strike_22_V2 = variants {mkV2 (mkV {s = c73 "tasata"}); mkV2 (mkV {s = c75 "solmita"}); mkV2 (mkV {s = c61 "solmia"})};
@@ -97676,7 +97691,7 @@ lin string_3_V2 = mkV2 (mkV {s = c52A "liittyä"});
 lin string_4_V2 = mkV2 (mkV {s = c53 "järjestää"});
 lin string_5_V2 = mkV2 (mkV {s = c52A "sitoa"});
 lin string_6_V2 = mkV2 (mkV {s = c73A "perata"});
-lin string_7_V2 = variants {};   ---- varustaa kielillä
+lin string_7_V2 = mkV2 (mkV "kielittää"); --guessed
 lin string_along_V = mkV {s = c52A "liittyä"};
 lin string_along_V2 = mkV2 (mkV {s = c52A "liittyä"});
 lin string_out_V2 = variants {};   ---- levittäytyä pitkäksi ketjuksi
@@ -98146,7 +98161,7 @@ lin subject_8_N = mkN {s = d05 "subjekti"};
 lin subject_2_A = variants {mkA "alistettu"; mkA "riippuvainen"};
 lin subject_to_1_A2 = variants {};
 lin subject_to_3_A2 = variants {};
-lin subject_to_Prep = variants {};
+lin subject_to_Prep = postGenPrep "alaisena"; --guessed
 lin subject_1_V2 = variants {mkV2 (mkV {s = c53 "altistaa"}); mkV2 (mkV {s = c53 "alistaa"})};
 lin subject_2_V2 = mkV2 (mkV {s = c53 "altistaa"});
 lin subject_3_V2 = mkV2 (mkV {s = c53 "alistaa"});
@@ -98188,7 +98203,7 @@ lin sublime_1_A = variants {mkA {s = d10 "mahtava"}; mkA {s = d38 "suurenmoinen"
 lin sublime_2_A = variants {mkA {s = d10 "valtava"}; mkA {s = d10 "mahtava"}; mkA {s = d38 "suurenmoinen"}; mkA {s = d41 "uljas"}};
 lin sublime_3_A = mkA "ylevöitynyt";
 lin sublime_4_A = mkA "ylevä";
-lin sublime_5_A = variants {};
+lin sublime_5_A = mkA "ylevä"; --guessed
 lin sublime_N = variants {};
 lin sublimed_A = mkA "sublimoitu";
 lin subliminal_A = variants {mkA "alitajuinen"; mkA "tiedostamaton"; mkA "subliminaalinen"; mkA "ärsykekynnyksen alapuolella"}; --unchecked
@@ -98227,7 +98242,7 @@ lin submissive_2_A = mkA "nöyrästi myöntyvä"; --unchecked
 lin submissiveness_N = variants {mkN {s = d40 "nöyryys"}; mkN {s = d40 "tottelevaisuus"}; mkN {s = d40 "kuuliaisuus"}};
 lin submit_3_V = mkV {s = c67A "totella"};
 lin submit_6_V = mkV {s = c52 "alistua"};
-lin submit_1_V2 = variants {};   ---- jättää arvioitavaksi
+lin submit_1_V2 = mkV2 (mkV (mkV "jättää") "arvioitavaksi"); --guessed
 lin submit_4_V2 = mkV2 (mkV {s = c53A "luovuttaa"});
 lin submit_5_V2 = mkV2 (mkV {s = c54A "siirtää"});
 lin submit_7_V2 = mkV2 (mkV {s = c52 "alistua"});
@@ -98343,7 +98358,7 @@ lin substantial_2_A = variants {mkA "oleellinen"; mkA {s = d15 "tärkeä"}; mkA 
 lin substantial_3_A = variants {mkA "aineellinen"; mkA {s = d38 "todellinen"}};
 lin substantial_4_A = variants {mkA "tuhti"; mkA {s = d10 "tukeva"}; mkA {s = d41 "runsas"}};
 lin substantial_5_A = mkA {s = d10 "jykevä"};
-lin substantial_6_A = variants {};
+lin substantial_6_A = mkA "varakas"; --guessed
 lin substantiality_N = mkN {s = d40 "aineellisuus"};
 lin substantiate_1_V2 = mkV2 (mkV {s = c54A "todentaa"});
 lin substantiate_2_V2 = variants {};   ---- antaa konkreettinen muoto
@@ -98476,7 +98491,7 @@ lin succumb_2_V = mkV {s = c67 "kuolla"};
 lin succussion_N = mkN {s = d02 "ravistelu"};
 lin such_1_Predet = variants {mkPredet "sellainen"; mkPredet "moinen"; mkPredet "niin kaunis"; mkPredet "niin suuri"; mkPredet "niin kova"}; --unchecked
 lin such_2_Predet = variants {mkPredet "kovin"; mkPredet "ylen"; mkPredet "moinen"; mkPredet "sellainen"};
-lin such_as_Prep = variants {};
+lin such_as_Prep = prePrep partitive "kuten";
 lin suchlike_A = variants {mkA "samantapainen"; mkA {s = d10 "vastaava"}};
 lin suchow_LN = variants {};
 lin suck_N = mkN "imeminen";
@@ -98737,7 +98752,7 @@ lin sumatranFem_N = mkN "sumatralainen";
 lin sumer_LN = mkLN "Sumer";
 lin sumiainen_LN = variants {};
 lin summarization_1_N = mkN "tehdä yhteenveto"; --unchecked
-lin summarize_1_V2 = variants {};   ---- tehdä yhteenveto
+lin summarize_1_V2 = mkV2 (mkV "tiivistää"); --guessed
 lin summarize_2_V2 = mkV2 (mkV {s = c53 "tiivistää"});
 lin summary_1_A = mkA "pika-";
 lin summary_2_A = variants {mkA "lyhyt"; mkA "tiivistetty"};
@@ -98749,7 +98764,7 @@ lin summation_4_N = mkN "yhteenlasku";
 lin summational_A = mkA "yhteenlaskun";
 lin summer_1_N = variants {mkN {s = d10 "kesä"}; mkN {s = d07 "suvi"}};
 lin summer_2_N = variants {mkN {s = d07 "suvi"}; mkN {s = d10 "kesä"}};
-lin summer_V = variants {};   ---- viettää kesää
+lin summer_V = mkV (mkV "viettää") "kesää"; --guessed
 lin summercatersMasc_N = mkN "kesänviettäjät";
 lin summercatersFem_N = mkN "kesänviettäjät";
 lin summerhouse_N = mkN "huvimaja";
@@ -98919,7 +98934,7 @@ lin superfetation_N = mkN "lisähedelmöitys";
 lin superficial_1_A = variants {mkA {s = d38 "pinnallinen"}; mkA "pintapuolinen"};
 lin superficial_2_A = mkA "pinta-";
 lin superficial_3_A = variants {mkA {s = d38 "pinnallinen"}; mkA "pintapuolinen"};
-lin superficial_4_A = variants {};
+lin superficial_4_A = mkA "pinnallinen"; --guessed
 lin superficial_5_A = variants {};
 lin superficiality_1_N = variants {mkN {s = d40 "pinnallisuus"}; mkN {s = d40 "pintapuolisuus"}};
 lin superficiality_2_N = variants {mkN {s = d40 "pinnallisuus"}; mkN {s = d40 "pintapuolisuus"}};
@@ -98954,7 +98969,7 @@ lin superior_to_3_A2 = variants {};
 lin superior_4_A = mkA "yläindeksi";
 lin superior_5_A = mkA "ulommat";
 lin superior_6_A = variants {mkA "vanhin"; mkA "ylempi"};
-lin superior_to_7_A2 = variants {};
+lin superior_to_7_A2 = mkA2 "ylivertainen" (casePrep allative); --guessed
 lin superiorMasc_1_N = mkN "esimies";
 lin superiorFem_1_N = mkN "esimies";
 lin superiorMasc_2_N = variants {mkN {s = d09 "abbedissa"}; mkN {s = d05A "apotti"}};
@@ -99077,7 +99092,7 @@ lin supplicantFem_1_N = mkN {s = d10 "anoja"};
 lin supplicantMasc_2_N = mkN {s = d10 "anoja"};
 lin supplicantFem_2_N = mkN {s = d10 "anoja"};
 lin supplicate_V = mkV {s = c52 "anoa"};
-lin supplicate_1_V2 = variants {};   ---- pyytää nöyrästi
+lin supplicate_1_V2 = mkV2 (mkV "anoa"); --guessed
 lin supplicate_3_V2 = mkV2 (mkV {s = c67 "rukoilla"});
 lin supplication_1_N = mkN {s = d39 "rukous"};
 lin supplication_2_N = mkN {s = d39 "anomus"};
@@ -99086,7 +99101,7 @@ lin supplierMasc_N = mkN {s = d12 "hankkija"};
 lin supplierFem_N = mkN {s = d12 "hankkija"};
 lin supply_1_N = variants {mkN {s = d09A "hankinta"}; mkN {s = d02 "jakelu"}};
 lin supply_2_N = mkN {s = d39 "toimitus"};
-lin supply_of_N2 = variants {};
+lin supply_of_N2 = mkN2 (mkN "saanti") (casePrep elative); --guessed
 lin supply_1_V2 = mkV2 (mkV {s = c53 "varustaa"});
 lin supply_2_V2 = variants {mkV2 (mkV {s = c56A "jakaa"}); mkV2 (mkV {s = c53A "toimittaa"})};
 lin supply_3_V2 = mkV2 (mkV {s = c61A "hankkia"});
@@ -99358,9 +99373,9 @@ lin survival_2_N = variants {mkN "eloonjääminen"; mkN "selviytyminen"; mkN "he
 lin survival_3_N = variants {mkN "eloonjääminen"; mkN "selviytyminen"; mkN "hengissä pysyminen"}; --unchecked
 lin survivalistMasc_N = mkN "survivalisti";
 lin survivalistFem_N = mkN "survivalisti";
-lin survive_1_V = variants {};   ---- selviytyä hengissä
+lin survive_1_V = mkV "selviytyä"; --guessed
 lin survive_3_V = variants {};   ---- selviytyä hengissä
-lin survive_2_V2 = variants {};   ---- jäädä henkiin jäädä eloon selvitä hengissä
+lin survive_2_V2 = mkV2 (mkV "selviytyä") elative; --guessed
 lin survive_4_V2 = variants {};   ---- elää kauemmin elää pitempään
 lin survivorMasc_1_N = mkN {s = d10 "selviytyjä"};
 lin survivorFem_1_N = mkN {s = d10 "selviytyjä"};
@@ -99368,7 +99383,7 @@ lin survivorMasc_2_N = mkN {s = d47 "jälkeenjäänyt"};
 lin survivorFem_2_N = mkN {s = d47 "jälkeenjäänyt"};
 lin survivor_3_N = mkN "eloonjäänyt";
 lin susa_LN = mkLN "Susa" ;
-lin susan_GN = variants {};
+lin susan_GN = mkGN "Susan" female;
 lin susanna_PN = mkPN "Susanna";
 lin susceptibility_N = variants {mkN {s = d40 "herkkyys"}; mkN "herkkätunteisuus"};
 lin susceptible_of_A2 = variants {};
@@ -99388,10 +99403,10 @@ lin suspect_of_V3 = mkV3 (mkV {s = c67 "epäillä"}) ;
 lin suspect_VS = mkV {s = c67 "epäillä"};
 lin suspend_1_V2 = mkV2 (mkV {s = c53 "ripustaa"});
 lin suspend_2_V2 = mkV2 (mkV "suspensoida");
-lin suspend_3_V2 = variants {};   ---- erottaa määräajaksi
+lin suspend_3_V2 = mkV2 (mkV (mkV "erottaa") "määräajaksi"); --guessed
 lin suspend_4_V2 = mkV2 (mkV {s = c53A "keskeyttää"});
 lin suspend_5_V2 = mkV2 (mkV {s = c73A "lykätä"});
-lin suspend_6_V2 = variants {};   ---- lykätä tuonnemmaksi
+lin suspend_6_V2 = mkV2 (mkV "lykätä"); --guessed
 lin suspender_N = mkN "henkselit";
 lin suspense_1_N = mkN "epätietoisuus";
 lin suspense_2_N = mkN "epävarmuus";
@@ -99544,7 +99559,7 @@ lin sway_1_N = variants {mkN {s = d09A "valta"}; mkN "vaikutusvalta"; mkN {s = d
 lin sway_2_N = variants {mkN "huojahdus"; mkN "huojuminen"};
 lin sway_1_V = variants {mkV {s = c67 "kallistella"}; mkV {s = c52 "heilua"}};
 lin sway_2_V = mkV {s = c52A "hoippua"};
-lin sway_3_V2 = variants {};   ---- taivuttaa puolelleen
+lin sway_3_V2 = mkV2 (mkV "taivuttaa"); --guessed
 lin sway_4_V2 = variants {mkV2 (mkV {s = c67 "kallistella"}); mkV2 (mkV {s = c53A "heiluttaa"})};
 lin swazi_A = variants {mkA "Swazimaan"; mkA "swatin"; mkA "swazien"};
 lin swaziMasc_1_N = mkN "swazi";
@@ -100177,7 +100192,7 @@ lin tablespoon_2_N = mkN "ruokalusikka";
 lin tablespoonful_N = mkN "ruokalusikallinen";
 lin tablet_1_N = mkN "taulu" ;
 lin tablet_2_N = mkN {s = d03 "lehtiö"};
-lin tablet_3_N = variants {} ;
+lin tablet_3_N = mkN "tabletti"; --guessed
 lin tablet_4_N = mkN {s = d05A "tabletti"};
 lin tabletop_N = mkN "pöydänpinta";
 lin tableware_N = variants {mkN "pöytäkalusto"; mkN {s = d01 "astiasto"}; mkN {s = d12 "astia"}};
@@ -100390,7 +100405,7 @@ lin take_8_V2 = mkV2 (mkV {s = c53A "ottaa"});
 lin take_9_V2 = mkV2 (mkV {s = c67 "mennä"});
 lin take_10_V2 = mkV2 (mkV {s = c53A "ottaa"});
 lin take_11_V2 = mkV2 (mkV {s = c53A "ottaa"});
-lin take_12_V2 = variants {};   ---- ottaa vastaan
+lin take_12_V2 = mkV2 (mkV (mkV "ottaa") "vastaan");   ---- ottaa vastaan
 lin take_13_V2 = variants {};   ---- ottaa esimerkiksi
 lin take_14_V2 = mkV2 (mkV {s = c53A "edellyttää"});
 lin take_15_V2 = mkV2 (mkV {s = c53A "ottaa"});
@@ -100419,14 +100434,14 @@ lin take_39_V2 = variants {mkV2 (mkV {s = c74A "ruveta"}); mkV2 (mkV {s = c56A "
 lin take_40_V2 = mkV2 (mkV {s = c56 "ajaa"});
 lin take_41_V2 = variants {mkV2 (mkV {s = c53A "ottaa"}); mkV2 (mkV {s = c53A "voittaa"})};
 lin take_42_V2 = variants {};   ---- tulla sairaaksi
-lin take_39_VV = variants {};
+lin take_39_VV = mkVV (mkV "ottaa"); --guessed
 lin take_VA = mkVA (mkV {s = c67 "tulla"}) (casePrep translative);
 lin take_V2V = variants {};
-lin take_aback_V2 = variants {};
+lin take_aback_V2 = mkV2 (mkV "hämmentää");
 lin take_after_1_V2 = variants {mkV2 (mkV {s = c53A "muistuttaa"}); mkV2 (mkV {s = c67 "tulla"})};
 lin take_after_2_V2 = mkV2 (mkV {s = c73 "seurata"});
-lin take_aim_V = variants {};   ---- ottaa tähtäimeen
-lin take_apart_1_V2 = variants {};   ---- purkaa osiin
+lin take_aim_V = mkV "tähdätä"; --guessed
+lin take_apart_1_V2 = mkV2 (mkV "purkaa"); --guessed
 lin take_apart_2_V2 = mkV2 (mkV {s = c53A "hajottaa"});
 lin take_apart_3_V2 = mkV2 (mkV {s = c52 "ratkoa"});
 lin take_aside_V2 = variants {};
@@ -100443,7 +100458,7 @@ lin take_back_2_V2 = variants {};   ---- vallata takaisin
 lin take_back_3_V2 = variants {};   ---- ottaa takaisin
 lin take_back_4_V2 = variants {};   ---- rivittää uudestaan
 lin take_back_5_V2 = variants {};   ---- ottaa takaisin
-lin take_back_6_V2 = variants {};   ---- viedä takaisin ajassa
+lin take_back_6_V2 = mkV2 (mkV (mkV "viedä") "takaisin"); --guessed
 lin take_down_1_V2 = variants {};   ---- laskea alas
 lin take_down_3_V2 = variants {mkV2 (mkV {s = c67 "purra"}); mkV2 (mkV {s = c53A "purkaa"})};
 lin take_down_4_V2 = variants {};   ---- kirjoittaa ylös
@@ -100491,7 +100506,7 @@ lin take_on_5_V2 = mkV2 (mkV {s = c67A "otella"});
 lin take_out_6_V = variants {};   ---- ottaa esiin ottaa ulos
 lin take_out_7_V = variants {};   ---- ostaa valmiina
 lin take_out_13_V = mkV {s = c73 "lainata"};
-lin take_out_1_V2 = variants {};   ---- lähettää ulos
+lin take_out_1_V2 = mkV2 (mkV (mkV "viedä") "ulos"); --guessed
 lin take_out_2_V2 = variants {mkV2 (mkV {s = c67 "purra"}); mkV2 (mkV {s = c53A "purkaa"})};
 lin take_out_3_V2 = mkV2 (mkV {s = c53 "poistaa"});
 lin take_out_4_V2 = mkV2 (mkV {s = c58A "hakea"});
@@ -100591,7 +100606,7 @@ lin talk_1_V2 = mkV2 (mkV {s = c52 "puhua"});
 lin talk_2_V2 = mkV2 (mkV {s = c67 "keskustella"});
 lin talk_around_V2 = variants {};
 lin talk_at_V2 = variants {};
-lin talk_back_V = variants {};
+lin talk_back_V = mkV (mkV "vastata") "nenäkkäästi"; --guessed
 lin talk_back_to_V2 = variants {};
 lin talk_down_1_V2 = mkV2 (mkV {s = c67A "vähätellä"});
 lin talk_down_2_V2 = mkV2 (mkV "lällyttää");
@@ -100602,7 +100617,7 @@ lin talk_out_V2 = variants {};
 lin talk_out_of_V3 = variants {};   ---- taivuttaa luopumaan
 lin talk_over_V2 = mkV2 (mkV {s = c61A "pohtia"});
 lin talk_round_V2 = variants {};
-lin talk_show_N = variants {} ;
+lin talk_show_N = mkN "keskusteluohjelma"; --guessed
 lin talk_through_V3 = variants {};
 lin talk_up_V2 = variants {};
 lin talk_yourself_out_V = variants {};
@@ -101062,7 +101077,7 @@ lin tawse_N = variants {mkN {s = d05 "remmi"}; mkN {s = d09 "piiska"}};
 lin tax_N = variants {mkN "valtionvero"; mkN {s = d01 "vero"}};
 lin tax_1_V2 = mkV2 (mkV {s = c53A "verottaa"});
 lin tax_2_V2 = mkV2 (mkV {s = c53A "taksoittaa"});
-lin tax_3_V2 = variants {};   ---- panna koetukselle
+lin tax_3_V2 = mkV2 (mkV "koetella"); --guessed
 lin tax_4_V2 = mkV2 (mkV {s = c53A "verottaa"});
 lin tax_collectorMasc_N = variants {mkN "veroviranomainen"; mkN "veronkantaja"};
 lin tax_collectorFem_N = variants {mkN "veroviranomainen"; mkN "veronkantaja"};
@@ -101242,7 +101257,7 @@ lin technetium_N = mkN {s = d05 "teknetium"};
 lin technical_1_A = variants {mkA "teknillinen"; mkA {s = d38 "tekninen"}};
 lin technical_2_A = variants {mkA {s = d38 "tekninen"}; mkA "teknillinen"};
 lin technical_3_A = variants {mkA "teknillinen"; mkA {s = d38 "tekninen"}};
-lin technical_4_A = variants {};
+lin technical_4_A = mkA "tekninen"; --guessed
 lin technical_5_A = variants {};
 lin technical_6_A = variants {mkA "teknillinen"; mkA {s = d38 "tekninen"}; mkA {s = d38 "ammatillinen"}};
 lin technical_7_A = variants {mkA {s = d38 "tekninen"}; mkA "teknillinen"};
@@ -101268,7 +101283,7 @@ lin technological_1_A = mkA "teknologinen";
 lin technological_2_A = mkA "teknologinen";
 lin technologistMasc_N = mkN {s = d05 "insinööri"};
 lin technologistFem_N = mkN {s = d05 "insinööri"};
-lin technology_1_N = variants {};
+lin technology_1_N = mkN "teknologia"; --guessed
 lin technology_2_N = mkN {s = d14A "tekniikka"};
 lin technology_3_N = variants {};
 lin technophileMasc_N = mkN "teknofiili";
@@ -101566,9 +101581,9 @@ lin tenantry_N = variants {mkN "vuokralaiset"; mkN "arentimiehet"};
 lin tenby_LN = variants {};
 lin tench_N = mkN {s = d06 "suutari"};
 lin tenerife_LN = mkLN "Teneriffa" ;
-lin tend_to_V2 = variants {};
+lin tend_to_V2 = mkV2 (mkV "hoitaa"); --guessed
 lin tend_V2 = variants {mkV2 (mkV {s = c53A "pitää"}); mkV2 (mkV {s = c53A "hoitaa"})};
-lin tend_VP = variants {};
+lin tend_VP vp = Synt.mkVP (mkVV (mkV "taipua") infIllat) vp;
 lin tendency_1_N = variants {mkN {s = d05 "tendenssi"}; mkN {s = d39 "taipumus"}};
 lin tendency_2_N = mkN {s = d05 "tendenssi"};
 lin tendency_3_N = variants {mkN {s = d05 "tendenssi"}; mkN {s = d39 "taipumus"}};
@@ -102012,7 +102027,7 @@ lin thallus_N = mkN "sekovarsi";
 lin thalweg_1_N = mkN "rajaviiva";
 lin thalweg_2_N = mkN "ääriviiva";
 lin thame_LN = variants {};
-lin than_Prep = variants {};
+lin than_Prep = prePrep partitive "kuin";
 lin than_Subj = variants {};
 lin thanatology_N = variants {mkN {s = d12 "tanatologia"}; mkN {s = d05 "tanatologi"}};
 lin thanatophobia_N = mkN "kuolemankammo";
@@ -102029,7 +102044,7 @@ lin thankless_2_A = mkA "kiittämätön";
 lin thanks_Interj = variants {};
 lin thanks_1_N = mkN {s = d39 "kiitos"};
 lin thanks_2_N = mkN {s = d39 "kiitos"};
-lin thanks_to_Prep = variants {};
+lin thanks_to_Prep = postGenPrep "ansiosta"; --guessed
 lin thanksgiving_1_N = variants {};
 lin thanksgiving_2_N = mkN "kiittäminen";
 lin thar_desert_LN = mkLN "Thar" ;
@@ -102369,7 +102384,7 @@ lin thirst_1_V2 = variants {};   ---- olla janoinen
 lin thirst_2_V2 = variants {mkV2 (mkV {s = c74 "janota"}); mkV2 (mkV {s = c53A "janottaa"})};
 lin thirsty_1_A = mkA {s = d10 "kuiva"};
 lin thirsty_2_A = mkA "janoinen";
-lin thirsty_for_A2 = variants {};
+lin thirsty_for_A2 = mkA2 "janoinen" (casePrep allative); --guessed
 lin thirsty_4_A = mkA "imukykyinen";
 lin this_Quant = S.this_Quant ;
 lin thistle_N = mkN {s = d48A "ohdake"};
@@ -102420,7 +102435,7 @@ lin thortveitite_N = mkN "thortveitiitti";
 lin those_N = variants {};
 lin though_Adv = variants {mkAdv {s = c99 "vaikka"}; mkAdv {s = c99 "kuitenkin"}};
 lin though_Prep = variants {};
-lin though_Subj = variants {};
+lin though_Subj = {s = "vaikka"}; --guessed
 lin thought_1_N = variants {mkN {s = d39 "ajatus"} ; mkN {s = d39 "aatos"}} ;
 lin thought_2_N = mkN {s = d02 "ajattelu"};
 lin thought_3_N = mkN {s = d02 "ajattelu"};
@@ -102611,7 +102626,7 @@ lin through_1_Prep = S.through_Prep ;
 lin through_2_Prep = S.through_Prep ;
 lin throughout_1_Adv = mkAdv "alusta loppuun";
 lin throughout_2_Adv = mkAdv "eri kohdissa teosta";
-lin throughout_Prep = variants {};
+lin throughout_Prep = prePrep genitive "halki"; --guessed
 lin throughput_N = mkN "lähetysnopeus";
 lin throughway_N = mkN "moottoritie";
 lin throw_1_N = mkN {s = d01A "heitto"};
@@ -102635,7 +102650,7 @@ lin throw_12_V2 = variants {mkV2 (mkV {s = c56 "valaa"}); mkV2 (mkV {s = c73 "dr
 lin throw_13_V2 = mkV2 (mkV {s = c53A "pudottaa"});
 lin throw_14_V2 = mkV2 (mkV {s = c53A "heittää"});
 lin throw_15_V2 = mkV2 (mkV {s = c73 "hämätä"});
-lin throw_away_2_V2 = variants {};   ---- heittää pois
+lin throw_away_2_V2 = mkV2 (mkV (mkV "heittää") "pois"); --guessed
 lin throw_in_N = mkN "heittäytyminen";
 lin throw_in_1_V = mkV {s = c73 "lisätä"};
 lin throw_in_1_V2 = mkV2 (mkV {s = c73 "lisätä"});
@@ -102645,7 +102660,7 @@ lin throw_off_1_V2 = mkV2 (mkV {s = c52A "hankkiutua"});
 lin throw_off_2_V2 = variants {};   ---- karistaa kannoiltaan
 lin throw_on_V2 = variants {};
 lin throw_out_1_V2 = variants {};   ---- heittää ulos
-lin throw_out_2_V2 = variants {};   ---- heittää pois
+lin throw_out_2_V2 = mkV2 (mkV (mkV "heittää") "pois"); --guessed
 lin throw_out_3_V2 = variants {};   ---- potkia pois
 lin throw_out_4_V2 = variants {};   ---- tuoda esiin
 lin throw_out_5_V2 = variants {};   ---- jättää käsittelemättä
@@ -103059,7 +103074,7 @@ lin timerFem_2_N = mkN "ajanottaja";
 lin timer_3_N = mkN {s = d33 "ajastin"};
 lin times_1_N = mkN "aikakausi";
 lin times_2_N = variants {mkN "kertolasku"; mkN {s = d09A "kerta"}};
-lin times_Conj = variants {};
+lin times_Conj = mkConj "kertaa"; --guessed
 lin times_square_LN = mkLN "Times Square" ;
 lin timesaving_A = variants {};
 lin timeserverMasc_N = mkN "myötäjuoksija";
@@ -103307,8 +103322,8 @@ lin tnt_N = mkN "TNT";
 lin to_1_Prep = mkPrep illative ;
 lin to_2_Prep = S.to_Prep ;
 lin to_3_Prep = S.to_Prep ;
-lin to_4_Prep = variants {};
-lin to_5_Prep = variants {};
+lin to_4_Prep = S.to_Prep;
+lin to_5_Prep = casePrep allative; --guessed
 lin to_date_Adv = variants {mkAdv "tiettyyn päivämäärään"; mkAdv "tähän päivään"};
 lin to_do_N = variants {mkN {s = d12 "mekkala"}; mkN "älämölö"; mkN {s = d01 "häly"}};
 lin toad_N = variants {mkN {s = d10 "konna"}; mkN "rupikonna"};
@@ -103418,7 +103433,7 @@ lin toil_V = mkV {s = c54A "ahertaa"};
 lin toilerMasc_N = mkN {s = d10 "ahertaja"};
 lin toilerFem_N = mkN {s = d10 "ahertaja"};
 lin toilet_1_N = mkN "toiletti" ;
-lin toilet_2_N = variants {} ;
+lin toilet_2_N = mkN "wc-pönttö"; --guessed
 lin toilet_3_N = mkN {s = d03 "rappio"};
 lin toilet_4_N = mkN "pukeutuminen";
 lin toilet_paper_N = variants {mkN "wc-paperi"; mkN "vessapaperi"};
@@ -103433,7 +103448,7 @@ lin tokay_1_N = mkN "tokay";
 lin tokay_2_N = mkN "tokay";
 lin toke_N = mkN "hatsi";
 lin token_1_N = mkN {s = d05A "merkki"};
-lin token_in_N2 = variants {};
+lin token_in_N2 = mkN2 (mkN "merkki") (casePrep inessive); --guessed
 lin token_3_N = variants {mkN {s = d48A "rahake"}; mkN {s = d05A "poletti"}};
 lin token_4_N = variants {mkN {s = d09 "lahja"}; mkN {s = d05A "merkki"}};
 lin tokyo_LN = mkLN "Tokio";
@@ -103600,7 +103615,7 @@ lin tonsure_2_N = mkN "tonsure";
 lin tonsure_V2 = variants {};   ---- ajella munkin pää
 lin tontine_1_N = mkN "tontiini";
 lin tontine_2_N = mkN "tontiini";
-lin tony_GN = variants {};
+lin tony_GN = mkGN "Tony" male; --guessed
 lin tonyrefail_LN = variants {};
 lin too_AdA = S.too_AdA ;
 lin too_Adv = variants {mkAdv "-kin"; mkAdv {s = c99 "myös"}};
@@ -104033,7 +104048,7 @@ lin tow_N = variants {mkN {s = d39 "hinaus"}; mkN {s = d01 "veto"}; mkN {s = d01
 lin tow_V2 = mkV2 (mkV {s = c53A "vetää"});
 lin tow_away_V2 = variants {};
 lin toward_Prep = mkPrep partitive "kohti" ;
-lin towards_Prep = variants {};
+lin towards_Prep = postGenPrep "kohti";
 lin towel_N = variants {mkN {s = d48A "pyyhe"}; mkN "pyyheliina"};
 lin towel_V2 = variants {mkV2 (mkV {s = c61A "pyyhkiä"}); mkV2 (mkV {s = c73 "kuivata"}); mkV2 (mkV {s = c53A "kuivattaa"})};
 lin towel_horse_N = mkN "pyyheteline";
@@ -104808,7 +104823,7 @@ lin treasure_1_N = variants {mkN {s = d48A "aarre"}; mkN {s = d40 "omaisuus"}};
 lin treasure_2_N = mkN "taideaarre";
 lin treasure_3_N = mkN {s = d48A "aarre"};
 lin treasure_4_N = mkN {s = d48A "aarre"};
-lin treasure_1_V2 = variants {};   ---- pitää suuressa arvossa antaa jllk arvoa
+lin treasure_1_V2 = mkV2 (mkV "vaalia"); --guessed
 lin treasure_2_V2 = variants {};   ---- pitää arvossa
 lin treasure_house_N = mkN "aarrekammio";
 lin treasure_trove_1_N = mkN "aarrelöytö";
@@ -105153,7 +105168,7 @@ lin trinidadianMasc_N = mkN "trinidadilainen";
 lin trinidadianFem_N = mkN "trinidadilainen";
 lin trinitrotoluene_N = variants {mkN {s = d06 "trotyyli"}; mkN "trinitrotolueeni"};
 lin trinity_1_N = mkN {s = d40 "kolminaisuus"};
-lin trinity_2_N = variants {};
+lin trinity_2_N = mkN "kolminaisuus";
 lin trinity_3_N = mkN {s = d04A "kolmikko"};
 lin trinity_river_LN = mkLN "Trinity River" ;
 lin trinket_N = variants {mkN {s = d01 "koru"}; mkN {s = d01 "hely"}; mkN "pukukorut"; mkN "rihkamakorut"};
@@ -105284,7 +105299,7 @@ lin trogon_N = mkN "trogonilintu";
 lin troika_1_N = variants {mkN "kolmivaljakko"; mkN {s = d10A "troikka"}};
 lin troika_2_N = mkN {s = d10A "troikka"};
 lin troika_3_N = mkN {s = d10A "troikka"};
-lin trojan_A = variants {};
+lin trojan_A = mkA "troijalainen"; --guessed
 lin trojanMasc_1_N = variants {};
 lin trojanFem_1_N = variants {};
 lin trojan_2_N = mkN "troijalainen";
@@ -105533,7 +105548,7 @@ lin trust_3_N = mkN {s = d39 "luottamus"};
 lin trust_4_N = mkN {s = d05 "trusti"};
 lin trust_5_N = mkN {s = d39 "luottamus"};
 lin trust_6_N = mkN {s = d39 "luottamus"};
-lin trust_1_V2 = variants {};
+lin trust_1_V2 = mkV2 (mkV "luottaa") illative; --guessed
 lin trust_2_V2 = mkV2 (mkV {s = c53A "luottaa"});
 lin trust_5_V2 = variants {};   ---- uskoa jklle
 lin trust_6_V2 = mkV2 (mkV {s = c73 "lainata"});
@@ -105614,7 +105629,7 @@ lin tube_2_N = mkN "elektroninen väline"; --unchecked
 lin tube_3_N = mkN {s = d07 "putki"};
 lin tube_4_N = mkN {s = d33A "johdin"};
 lin tube_5_N = mkN "maanalainen";
-lin tube_6_N = variants {} ;
+lin tube_6_N = mkN "putki"; --guessed
 lin tube_well_N = mkN "putkikaivo";
 lin tubed_A = mkA "sisäkumillinen";
 lin tubeless_A = mkA "sisärenkaaton";
@@ -105856,7 +105871,7 @@ lin turn_2_V = mkV {s = c52A "kääntyä"};
 lin turn_5_V = mkV {s = c52A "vaihtua"};
 lin turn_9_V = mkV {s = c61 "pyöriä"};
 lin turn_25_V = mkV {s = c52A "pilaantua"};
-lin turn_3_V2 = variants {};   ---- tulla jksik muuttua jksik
+lin turn_3_V2 = mkV2 (mkV "muuttua") translative; --guessed
 lin turn_4_V2 = variants {mkV2 (mkV {s = c54A "kääntää"}); mkV2 (mkV {s = c54A "vääntää"})};
 lin turn_6_V2 = mkV2 (mkV {s = c54A "kiertää"});
 lin turn_8_V2 = mkV2 (mkV {s = c57A "kaataa"});
@@ -105872,7 +105887,7 @@ lin turn_21_V2 = variants {mkV2 (mkV {s = c54A "kääntää"}); mkV2 (mkV {s = c
 lin turn_22_V2 = mkV2 (mkV {s = c54A "kääntää"});
 lin turn_23_V2 = mkV2 (mkV {s = c53A "osoittaa"});
 lin turn_26_V2 = mkV2 (mkV {s = c53A "täyttää"});
-lin turn_7_VA = variants {};   ---- muuttua toisenlaiseksi tulla toiseksi tulla toisenlaiseksi muuttua toiseksi
+lin turn_7_VA = mkVA (mkV "muuttua") (casePrep translative); --guessed
 lin turn_14_VA = mkVA (mkV {s = c52A "muuttua"}) (casePrep translative);
 lin turn_against_V2 = variants {};
 lin turn_around_V = variants {mkV {s = c52A "kääntyä"}; mkV {s = c53A "käännähtää"}};
@@ -105884,7 +105899,7 @@ lin turn_away_1_V2 = variants {};   ---- kääntyä selin
 lin turn_away_2_V2 = mkV2 (mkV {s = c52A "kääntyä"});
 lin turn_away_3_V2 = variants {mkV2 (mkV {s = c52 "torjua"}); mkV2 (mkV {s = c53A "käännyttää"})};
 lin turn_away_4_V2 = variants {};   ---- kääntää pois
-lin turn_away_5_V2 = variants {};
+lin turn_away_5_V2 = mkV2 (mkV "käännyttää"); --guessed
 lin turn_back_1_V = mkV {s = c52A "kääntyä"};
 lin turn_back_2_V = variants {};   ---- kääntyä takaisin
 lin turn_back_5_V = mkV {s = c54A "kääntää"};
@@ -105910,7 +105925,7 @@ lin turn_on_7_V = variants {};   ---- vetää kamaa
 lin turn_on_1_V2 = variants {mkV2 (mkV {s = c58 "kytkeä"}); mkV2 (mkV {s = c53A "sytyttää"}); mkV2 (mkV {s = c73 "avata"}); mkV2 (mkV {s = c53 "käynnistää"})};
 lin turn_on_2_V2 = mkV2 (mkV {s = c52A "riippua"});
 lin turn_on_3_V2 = mkV2 (mkV {s = c53A "käyttää"});
-lin turn_on_4_V2 = variants {};   ---- käydä kimppuun
+lin turn_on_4_V2 = mkV2 (mkV "käydä") (postGenPrep "kimppuun"); --guessed
 lin turn_on_5_V2 = variants {mkV2 (mkV {s = c53 "kannustaa"}); mkV2 (mkV {s = c53A "kiihottaa"}); mkV2 (mkV {s = c53 "innostaa"})};
 lin turn_on_6_V2 = mkV2 (mkV {s = c53A "sytyttää"});
 lin turn_out_1_N = variants {mkN {s = d10 "osallistuja"}; mkN "osallistujajoukko"};
@@ -106425,7 +106440,7 @@ lin umbrellalike_A = mkA "sateenvarjomainen";
 lin umbrellawort_N = mkN {s = d10A "kukka"};
 lin umbria_LN = mkLN "Umbria" ;
 lin umbundu_N = mkN "Mbundu" ;
-lin umlaut_N = variants {};
+lin umlaut_N = mkN "umlaut"; --guessed
 lin umpirage_1_N = mkN "tuomarointi";
 lin umpirage_2_N = mkN "tuomarointi";
 lin umpireMasc_1_N = mkN "erotuomari";
@@ -106593,7 +106608,7 @@ lin unavowed_1_A = mkA "julkilausumaton";
 lin unavowed_2_A = mkA "vahvistamaton";
 lin unavowed_3_A = mkA "salattu";
 lin unawakened_A = mkA "uinuva";
-lin unaware_of_A2 = variants {};
+lin unaware_of_A2 = mkA2 "tietämätön" (casePrep elative); --guessed
 lin unawares_1_Adv = variants {mkAdv "yhtäkkiä"; mkAdv {s = c99 "odottamatta"}};
 lin unawares_2_Adv = variants {mkAdv "yhtäkkiä"; mkAdv {s = c99 "odottamatta"}};
 lin unawares_3_Adv = mkAdv "housut nilkoissa";
@@ -106891,7 +106906,7 @@ lin uncouth_A = mkA "moukkamainen";
 lin uncouthness_N = mkN {s = d40 "sivistymättömyys"};
 lin uncover_1_V2 = mkV2 (mkV {s = c53 "paljastaa"});
 lin uncover_2_V2 = variants {};
-lin uncover_3_V2 = variants {};
+lin uncover_3_V2 = mkV2 (mkV "paljastaa"); --guessed
 lin uncrannied_A = variants {mkA {s = d10 "sulava"}; mkA "esteetön"};
 lin uncreative_A = variants {mkA {s = d15 "lattea"}; mkA {s = d38 "sovinnainen"}};
 lin uncreativeness_N = variants {mkN {s = d40 "sovinnaisuus"}; mkN {s = d40 "latteus"}};
@@ -107596,7 +107611,7 @@ lin unhesitating_A = variants {mkA {s = d38 "päättäväinen"}; mkA {s = d15 "r
 lin unhewn_A = variants {mkA "lohkaremainen"; mkA {s = d15 "karkea"}};
 lin unhindered_A = mkA {s = d17 "vapaa"};
 lin unhinge_1_V2 = mkV2 (mkV {s = c52 "huolestua"});
-lin unhinge_2_V2 = variants {};   ---- nostaa saranoilta
+lin unhinge_2_V2 = mkV2 (mkV (mkV "nostaa") "saranoiltaan"); --guessed
 lin unhitch_V = mkV {s = c53A "irrottaa"};
 lin unhitch_V2 = mkV2 (mkV {s = c53A "irrottaa"});
 lin unholiness_N = mkN "jumalattomuus";
@@ -107728,7 +107743,7 @@ lin uninvolved_2_A = mkA "puolueeton";
 lin union_1_A = variants {};
 lin union_2_A = mkA "ammattiliiton";
 lin union_1_N = mkN "ammattiliitto";
-lin union_2_N = variants {};
+lin union_2_N = mkN "Unioni"; --guessed
 lin union_3_N = mkN {s = d09A "yhdyntä"};
 lin union_4_N = mkN {s = d40 "yhteisyys"};
 lin union_5_N = mkN {s = d01A "liitto"};
@@ -108330,7 +108345,7 @@ lin unruliness_N = variants {mkN {s = d40 "tottelemattomuus"}; mkN {s = d40 "kur
 lin unruly_1_A = mkA {s = d41A "railakas"};
 lin unruly_2_A = mkA "kuriton";
 lin unruly_3_A = mkA "vallaton";
-lin unsaddle_V2 = variants {};   ---- riisua satula
+lin unsaddle_V2 = mkV2 (mkV (mkV "riisua") "satula"); --guessed
 lin unsafe_1_A = mkA "turvaton";
 lin unsafe_2_A = mkA "turvaton";
 lin unsafe_3_A = mkA "turvaton";
@@ -108363,7 +108378,7 @@ lin unschooled_A = mkA "oppimaton";
 lin unscientific_1_A = mkA "epätieteellinen";
 lin unscramble_1_V2 = mkV2 (mkV {s = c69 "tulkita"});
 lin unscramble_2_V2 = variants {mkV2 (mkV {s = c67 "purra"}); mkV2 (mkV {s = c53A "purkaa"})};
-lin unscrew_V = variants {};
+lin unscrew_V = mkV (mkV "ruuvata") "auki"; --guessed
 lin unscrew_1_V2 = mkV2 (mkV {s = c53A "irrottaa"});
 lin unscrew_2_V2 = mkV2 (mkV {s = c53A "irrottaa"});
 lin unscripted_A = mkA "käsikirjoittamaton";
@@ -108626,9 +108641,9 @@ lin untie_2_V2 = variants {mkV2 (mkV {s = c53A "irrottaa"}); mkV2 (mkV {s = c73 
 lin untied_1_A = mkA "avonainen";
 lin untied_2_A = mkA "repsottava";
 lin untied_3_A = mkA "kahleeton";
-lin until_Prep = variants {};
-lin until_Subj = variants {};
-lin until_then_Adv = variants {};
+lin until_Prep = postGenPrep "asti";
+lin until_Subj = {s = "kunnes"}; --guessed
+lin until_then_Adv = mkAdv "siihen asti"; --guessed
 lin untilled_A = mkA "muokkaamaton";
 lin untimbered_1_A = mkA "kaaripuuton";
 lin untimbered_2_A = mkA "puuton";
@@ -108804,14 +108819,14 @@ lin up_4_A = variants {mkA "valveilla"; mkA "ylhäällä"};
 lin up_5_A = variants {mkA "lopussa oleva"; mkA "lopussa"}; --unchecked
 lin up_6_A = mkA "auki";
 lin up_7_A = variants {mkA "kunnossa oleva"; mkA "kunnossa"}; --unchecked
-lin up_on_A2 = variants {};
-lin up_for_A2 = variants {};
+lin up_on_A2 = mkA2 "tasalla" (casePrep adessive); --guessed
+lin up_for_A2 = mkA2 "valmis" (casePrep allative); --guessed
 lin up_1_Adv = mkAdv "ylöspäin";
 lin up_2_Adv = mkAdv "kovemmalle";
 lin up_3_Adv = mkAdv {s = c99 "lähemmäs"};
 lin up_4_Adv = mkAdv {s = c99 "ylös"};
 lin up_5_Adv = mkAdv "eteenpäin";
-lin up_Prep = variants {};
+lin up_Prep = postGenPrep "ylös";
 lin up_V = variants {};
 lin up_V2 = variants {mkV2 (mkV {s = c53 "nostaa"}); mkV2 (mkV {s = c53A "kohottaa"})};
 lin up_and_coming_A = mkA {s = d41 "yritteliäs"};
@@ -108819,7 +108834,7 @@ lin up_beat_1_N = mkN "iloinen";
 lin up_beat_2_N = mkN "kohotahti";
 lin up_holland_LN = variants {};
 lin up_market_A = mkA "varakkaalle väestölle tarkoitettu"; --unchecked
-lin up_to_Prep = variants {};
+lin up_to_Prep = postGenPrep "asti"; --guessed
 lin up_to_date_1_A = variants {mkA "ajantasainen"; mkA "ajan tasalla oleva"; mkA "ajan tasalla"; mkA {s = d48 "tuore"}; mkA "informoitu"};
 lin up_to_date_2_A = variants {mkA "uudenaikainen"; mkA "ajantasainen"; mkA "ajanmukainen"; mkA "viimeisin"};
 lin up_to_the_minute_A = mkA {s = d48 "tuore"};
@@ -108837,7 +108852,7 @@ lin upcountry_A = mkA "sisämaan";
 lin upcountry_Adv = variants {};
 lin upcurved_A = mkA "ylöspäin kaartuva"; --unchecked
 lin update_1_N = mkN {s = d39 "päivitys"};
-lin update_2_N = variants {};
+lin update_2_N = mkN "päivitys"; --guessed
 lin update_1_V2 = variants {mkV2 (mkV {s = c53A "päivittää"}); mkV2 (mkV {s = c53 "ajantasaistaa"})};
 lin update_2_V2 = variants {};   ---- kertoa uutiset
 lin update_3_V2 = variants {mkV2 (mkV {s = c53A "päivittää"}); mkV2 (mkV {s = c53 "ajantasaistaa"})};
@@ -108887,7 +108902,7 @@ lin uplift_3_V2 = mkV2 (mkV {s = c53A "kohottaa"});
 lin uplifting_N = mkN "kohoaminen";
 lin uplink_N = mkN "maasatelliittiyhteys";
 lin upmost_A = variants {mkA "ylempi"; mkA "ylin"};
-lin upon_Prep = variants {};
+lin upon_Prep = casePrep adessive; --guessed
 lin upper_2_A = variants {mkA "ylempi"; mkA "ylä-"};
 lin upper_3_A = variants {mkA "ylempi"; mkA {s = d15 "korkea"}};
 lin upper_1_N = mkN "yläsänky";
@@ -109126,7 +109141,7 @@ lin useable_3_A = variants {mkA {s = d17 "vapaa"}; mkA "käyttökelpoinen"; mkA 
 lin used_1_A = variants {mkA "käytetty"; mkA "hyödynnetty"};
 lin used_2_A = mkA "käytetty";
 lin used_3_A = mkA "käytetty";
-lin used_VV = variants {};
+lin used_VV = mkVV (mkV "tavata"); --guessed
 lin useful_1_A = variants {mkA "yleishyödyllinen"; mkA "tarpeellinen"};
 lin useful_2_A = variants {mkA "käyttökelpoinen"; mkA "yleishyödyllinen"; mkA {s = d38 "hyödyllinen"}};
 lin usefulness_N = mkN {s = d40 "tarpeellisuus"};
@@ -109208,7 +109223,7 @@ lin utricle_N = mkN "soikea rakkula"; --unchecked
 lin utsjoki_LN = variants {};
 lin uttar_pradesh_LN = mkLN "Uttar Pradesh" ;
 lin utter_1_A = variants {mkA {s = d10 "syvä"}; mkA "täysi"};
-lin utter_2_A = variants {};
+lin utter_2_A = mkA "täydellinen"; --guessed
 lin utter_1_V2 = mkV2 (mkV {s = c66 "ilmaista"});
 lin utter_2_V2 = variants {mkV2 (mkV {s = c53A "tuottaa"}); mkV2 (mkV {s = c67A "äännellä"})};
 lin utter_3_V2 = variants {mkV2 (mkV {s = c52 "lausua"}); mkV2 (mkV {s = c73A "virkata"}); mkV2 (mkV {s = c56A "virkkaa"})};
@@ -110062,7 +110077,7 @@ lin vexation_4_N = mkN "kiusanteko";
 lin vexatious_A = variants {mkA "tuskastuttava"; mkA "raivostuttava"; mkA {s = d38 "kiusallinen"}; mkA "harmillinen"; mkA "ärsyttävä"};
 lin vhf_1_PN = variants {};
 lin vhf_2_PN = variants {};
-lin via_Prep = variants {};
+lin via_Prep = postGenPrep "kautta"; --guessed
 lin via_media_N = mkN "keskitie";
 lin viability_1_N = mkN "elinkykyisyys";
 lin viability_2_N = mkN "toteuttamiskelpoisuus";
@@ -110164,7 +110179,7 @@ lin victoria_6_LN = mkLN "Victoria";
 lin victoria_7_LN = mkLN "Victoria";
 lin victoria_falls_LN = mkLN "Victoria Falls" ;
 lin victoria_land_LN = mkLN "Victorianmaa" ;
-lin victorian_1_A = variants {};
+lin victorian_1_A = mkA "viktoriaaninen"; --guessed
 lin victorian_2_A = mkA {s = d38 "viktoriaaninen"};
 lin victorian_3_A = variants {};
 lin victorianMasc_N = variants {};
@@ -110217,7 +110232,7 @@ lin view_2_N = mkN "näköala";
 lin view_1_N = mkN "näkökulma";
 lin view_3_N = variants {mkN {s = d10 "näkymä"}; mkN "näkeminen"};
 lin view_4_N = mkN "näköpiiri";
-lin view_on_N2 = variants {};
+lin view_on_N2 = mkN2 (mkN "näkemys") (casePrep elative); --guessed
 lin view_6_N = mkN {s = d39 "näkemys"};
 lin view_7_N = variants {mkN "näkökulma"; mkN {s = d39 "näkemys"}};
 lin view_8_N = variants {mkN "maisemamaalaus"; mkN "maisemakuva"};
@@ -110745,7 +110760,7 @@ lin volunteerFem_2_N = mkN "vapaaehtoistyöntekijä";
 lin volunteerFem_3_N = variants {};
 lin volunteerMasc_1_N = mkN "vapaaehtoinen";
 lin volunteerMasc_2_N = mkN "vapaaehtoistyöntekijä";
-lin volunteerMasc_3_N = variants {};
+lin volunteerMasc_3_N = mkN "vapaaehtoinen"; --guessed
 lin volunteer_3_V = variants {};   ---- tehdä vapaaehtoistyötä
 lin volunteer_1_V2 = variants {};   ---- kertoa vapaaehtoisesti
 lin volunteer_2_V2 = mkV2 (mkV {s = c74 "tarjota"});
@@ -110906,7 +110921,7 @@ lin waddle_V = variants {mkV {s = c54A "taapertaa"}; mkV {s = c52A "vaappua"}};
 lin waddlerMasc_N = mkN "taapertaja";
 lin waddlerFem_N = mkN "taapertaja";
 lin wade_V2 = variants {mkV2 (mkV {s = c52A "tarpoa"}); mkV2 (mkV {s = c61A "rämpiä"}); mkV2 (mkV {s = c73 "kahlata"})};
-lin wade_V = variants {};
+lin wade_V = mkV "kahlata"; --guessed
 lin wade_in_V = variants {};
 lin wade_into_V2 = variants {};
 lin wade_through_V2 = variants {};
@@ -111064,18 +111079,18 @@ lin walk_to_V3 = variants {};
 lin walk_3_V2 = variants {};   ---- saada piste
 lin walk_4_V2 = mkV2 (mkV {s = c58A "kulkea"});
 lin walk_5_V2 = variants {};   ---- antaa piste
-lin walk_with_V2 = variants {};
+lin walk_with_V2 = mkV2 (mkV "kulkea") (postGenPrep "kanssa"); --guessed
 lin walk_9_V2 = variants {mkV2 (mkV {s = c53A "ulkoiluttaa"}); mkV2 (mkV {s = c53A "taluttaa"}); mkV2 (mkV {s = c53A "kävelyttää"})};
 lin walk_10_V2 = mkV2 (mkV {s = c67 "kävellä"});
 lin walk_away_from_V2 = variants {};
 lin walk_away_with_V2 = variants {};
 lin walk_back_from_V2 = variants {};
-lin walk_by_V = variants {};
+lin walk_by_V = mkV (mkV "kävellä") "ohi"; --guessed
 lin walk_in_V = variants {};   ---- kävellä sisään
 lin walk_in_on_V2 = variants {};
 lin walk_into_V2 = variants {};
 lin walk_off_V2 = mkV2 (mkV {s = c52A "häipyä"});
-lin walk_off_with_V2 = variants {};
+lin walk_off_with_V2 = mkV2 (mkV (mkV "viedä") "mukanaan"); --guessed
 lin walk_on_V = variants {};
 lin walk_out_1_V = variants {};   ---- marssia ulos
 lin walk_out_2_V = mkV {s = c52A "häipyä"};
@@ -111414,7 +111429,7 @@ lin wash_9_V2 = mkV2 (mkV {s = c66 "pestä"});
 lin wash_10_V2 = mkV2 (mkV {s = c52A "huuhtoa"});
 lin wash_11_V2 = mkV2 (mkV {s = c53A "kostuttaa"});
 lin wash_12_V2 = variants {mkV2 (mkV {s = c61 "loiskia"}); mkV2 (mkV {s = c52A "huuhtoa"})};
-lin wash_away_V = variants {};
+lin wash_away_V = mkV (mkV "huuhtoutua") "pois"; --guessed
 lin wash_away_1_V2 = variants {};   ---- huuhtoa pois
 lin wash_away_4_V2 = variants {};
 lin wash_away_9_V2 = variants {};   ---- huuhtoa pois
@@ -111429,8 +111444,8 @@ lin wash_out_1_V2 = mkV2 (mkV {s = c53A "keskeyttää"});
 lin wash_out_2_V2 = mkV2 (mkV {s = c66 "pestä"});
 lin wash_out_3_V2 = mkV2 (mkV {s = c52A "rikkoa"});
 lin wash_out_5_V2 = mkV2 (mkV {s = c54A "heikentää"});
-lin wash_out_6_V2 = variants {};   ---- lähteä pesussa
-lin wash_out_7_V = variants {};   ---- lähteä pesussa päästää väriä pesussa
+lin wash_out_6_V2 = mkV2 (mkV "haalistaa"); --guessed
+lin wash_out_7_V = mkV "haalistua"; --guessed
 lin wash_out_9_V2 = mkV2 (mkV {s = c66 "pestä"});
 lin wash_over_V2 = variants {};
 lin wash_up_1_V = mkV {s = c66 "pestä"};
@@ -111717,7 +111732,7 @@ lin wave_2_V2 = mkV2 (mkV {s = c53A "heiluttaa"});
 lin wave_4_V2 = variants {mkV2 (mkV {s = c53A "taivuttaa"}); mkV2 (mkV {s = c54A "kähertää"})};
 lin wave_5_V2 = mkV2 (mkV {s = c53A "taivuttaa"});
 lin wave_aside_V2 = variants {};
-lin wave_away_V2 = variants {};
+lin wave_away_V2 = mkV2 (mkV (mkV "viittoa") "pois"); --guessed
 lin wave_down_V2 = variants {};
 lin wave_off_V2 = mkV2 (mkV {s = c53A "ohittaa"});
 lin wave_on_V2 = variants {};
@@ -112047,9 +112062,9 @@ lin welcherFem_N = mkN {s = d06 "huijari"};
 lin welcome_A = mkA "tervetullut";
 lin welcome_1_N = mkN "tervetulotoivotus";
 lin welcome_2_N = variants {mkN "tervetulotoivotus"; mkN "vastaanotto"};
-lin welcome_1_V2 = variants {};   ---- ottaa vastaan mielellään
-lin welcome_2_V2 = variants {};   ---- toivottaa tervetulleeksi
-lin welcome_3_V2 = variants {};   ---- ottaa vastaan
+lin welcome_1_V2 = mkV2 (mkV (mkV "ottaa") "vastaan");   ---- ottaa vastaan mielellään
+lin welcome_2_V2 = mkV2 (mkV (mkV "toivottaa") "tervetulleeksi");   ---- toivottaa tervetulleeksi
+lin welcome_3_V2 = mkV2 (mkV (mkV "ottaa") "vastaan");   ---- ottaa vastaan
 lin welcoming_A = mkA {s = d38 "sydämellinen"};
 lin weld_1_N = mkN "värireseda";
 lin weld_SN = mkSN "Weld";
@@ -112134,7 +112149,7 @@ lin wellington_N = mkN "kumisaapas";
 lin wellington_SN = mkSN "Wellington";
 lin wellington_2_LN = mkLN "Wellington";
 lin wells_SN = mkSN "Wells";
-lin welsh_A = variants {};
+lin welsh_A = mkA "walesilainen"; --guessed
 lin welshMasc_1_N = variants {};
 lin welshFem_1_N = variants {};
 lin welsh_2_N = mkN "kymri" ;
@@ -112176,8 +112191,8 @@ lin wesleyan_A = mkA "wesleyläinen";
 lin wesleyanMasc_N = mkN "wesleyläinen";
 lin wesleyanFem_N = mkN "wesleyläinen";
 lin weser_LN = mkLN "Weser" ;
-lin west_A = variants {};
-lin west_Adv = variants {};
+lin west_A = mkA "läntinen";
+lin west_Adv = variants {mkAdv "länteen"; mkAdv "lännessä"};
 lin west_1_N = mkN "länsi" "lännen" ;
 lin west_2_N = mkN "länsi" "lännen" ;
 lin west_3_N = mkN "länsi" "lännen" ;
@@ -112201,15 +112216,15 @@ lin west_yorkshire_LN = mkLN "West Yorkshire" ;
 lin westbound_A = variants {mkA "länteen vievä"; mkA "länteen menevä"}; --unchecked
 lin westbound_N = variants {};
 lin westbury_LN = variants {};
-lin westerly_1_A = mkA "länsi-";
+lin westerly_1_A = mkA "lännestä puhaltava";
 lin westerly_2_A = mkA "länteen menevä"; --unchecked
 lin westerly_1_Adv = mkAdv "länteen";
-lin westerly_2_Adv = mkAdv "länsi-";
-lin western_1_A = variants {};
-lin western_2_A = variants {};
-lin western_3_A = variants {};
-lin western_4_A = variants {};
-lin western_1_N = variants {};
+lin westerly_2_Adv = mkAdv "lännestä";
+lin western_1_A = mkA "länsimainen"; --guessed
+lin western_2_A = mkA "Yhdysvaltain länsiosien"; --guessed
+lin western_3_A = mkA "läntinen"; --guessed
+lin western_4_A = mkA "lännestä puhaltava";
+lin western_1_N = mkN "lännenelokuva"; --guessed
 lin western_2_N = mkN "western-voileipä";
 lin western_australia_LN = mkLN "Länsi-Australia" ;
 lin westernerMasc_N = variants {mkN "lännen asukas"; mkN "länsimaalainen"}; --unchecked
@@ -112345,13 +112360,13 @@ lin whelk_2_N = mkN "kuningaskotilot";
 lin whelp_N = mkN {s = d14A "penikka"};
 lin whelp_V = variants {mkV {s = c61A "poikia"}; mkV {s = c62 "penikoida"}};
 lin when_IAdv = S.when_IAdv ;
-lin when_Prep = variants {};
+lin when_Prep = postGenPrep "aikana"; --guessed
 lin when_Subj = S.when_Subj ;
 lin whence_Adv = mkAdv {s = c99 "mistä"};
 lin whencesoever_A = variants {};
 lin whenever_Adv = variants {};
 lin where_IAdv = S.where_IAdv ;
-lin where_Subj = variants {};
+lin where_Subj = {s = "missä"}; --guessed
 lin where_as_Prep = variants {};
 lin whereabouts_Adv = variants {};
 lin whereabouts_N = variants {mkN {s = d05A "sijainti"}; mkN "olinpaikka"};
@@ -112376,7 +112391,7 @@ lin wherry_1_N = mkN {s = d01 "proomu"};
 lin wherry_2_N = mkN "lauttavene";
 lin whet_1_V2 = variants {};   ---- herättää kiinnostus
 lin whet_2_V2 = mkV2 (mkV {s = c53A "teroittaa"});
-lin whether_Subj = variants {};
+lin whether_Subj = {s = "onko"}; --guessed
 lin whetstone_N = mkN "hiomakivi";
 lin whey_1_N = mkN {s = d09 "hera"};
 lin whey_2_N = mkN {s = d09 "hera"};
@@ -112396,7 +112411,7 @@ lin whigFem_2_N = mkN "whig";
 lin whigMasc_3_N = mkN "whig";
 lin whigFem_3_N = mkN "whig";
 lin while_N = mkN {s = d07 "hetki"};
-lin while_Subj = variants {};
+lin while_Subj = {s = "kun"};
 lin while_V2 = variants {};
 lin while_away_V2 = mkV2 (mkV {s = c53A "viettää"});
 lin whilst_Subj = variants {};
@@ -112440,7 +112455,7 @@ lin whip_into_V2 = variants {};
 lin whip_out_V2 = variants {};
 lin whip_out_of_V2 = variants {};
 lin whip_round_N = mkN "rahankeräys";
-lin whip_through_V2 = variants {};   ---- kiitää läpi
+lin whip_through_V2 = mkV2 (mkV (mkV "käydä") "läpi"); --guessed
 lin whip_up_V2 = mkV2 (mkV {s = c73 "väsätä"});
 lin whipcord_1_N = mkN {s = d09 "siima"};
 lin whipcord_2_N = mkN {s = d09 "siima"};
@@ -113028,9 +113043,9 @@ lin winifred_LN = variants {};
 lin wink_1_N = mkN "silmänräpäys";
 lin wink_2_N = mkN "silmänisku";
 lin wink_3_N = mkN "silmänisku";
-lin wink_1_V = variants {};   ---- iskeä silmää
+lin wink_1_V = mkV (mkV "iskeä") "silmää"; --guessed
 lin wink_2_V = variants {mkV {s = c61A "tuikkia"}; mkV {s = c52A "vilkkua"}};
-lin wink_3_V = variants {};   ---- iskeä silmää
+lin wink_3_V = mkV (mkV "iskeä") "silmää"; --guessed
 lin wink_4_V = variants {};   ---- iskeä silmää
 lin winker_1_N = mkN "silmäniskijä";
 lin winker_2_N = mkN "silmälappu";
@@ -113079,7 +113094,7 @@ lin wipe_N = mkN {s = d02 "pyyhkäisy"};
 lin wipe_V2 = mkV2 (mkV {s = c61A "pyyhkiä"});
 lin wipe_out_1_V2 = mkV2 (mkV {s = c53A "kuluttaa"});
 lin wipe_out_2_V2 = mkV2 (mkV {s = c53A "hävittää"});
-lin wipe_out_3_V2 = variants {};   ---- pyyhkäistä pois pyyhkiä pois
+lin wipe_out_3_V2 = mkV2 (mkV (mkV "pyyhkiä") "pois");   ---- pyyhkäistä pois pyyhkiä pois
 lin wipe_out_4_V2 = mkV2 (mkV {s = c53A "hävittää"});
 lin wipe_out_5_V2 = mkV2 (mkV {s = c61A "pyyhkiä"});
 lin wipeout_1_N = variants {mkN "poispyyhkäisy"; mkN "täystuho"; mkN {s = d09A "pyyhintä"}; mkN {s = d33A "pyyhin"}};
@@ -113257,8 +113272,8 @@ lin withholding_1_N = mkN {s = d39 "pidätys"};
 lin withholding_2_N = mkN "ennakonpidätys";
 lin withholding_3_N = mkN {s = d39 "pidätys"};
 lin within_Adv = mkAdv {s = c99 "sisältä"};
-lin within_1_Prep = variants {};
-lin within_2_Prep = variants {};
+lin within_1_Prep = casePrep inessive; --guessed
+lin within_2_Prep = postGenPrep "sisällä"; --guessed
 lin without_Prep = S.without_Prep ;
 lin withstand_1_V2 = mkV2 (mkV {s = c53 "vastustaa"});
 lin withstand_2_V2 = mkV2 (mkV {s = c53 "kestää"});
@@ -113482,7 +113497,7 @@ lin word_9_N = mkN {s = d09 "sana"};
 lin word_10_N = variants {};
 lin word_V2 = mkV2 (mkV {s = c67 "muotoilla"});
 lin word_division_N = mkN "sanan jako"; --unchecked
-lin word_order_N = variants {} ;
+lin word_order_N = mkN "sanajärjestys"; --guessed
 lin word_painterMasc_N = mkN "sanamaalari";
 lin word_painterFem_N = mkN "sanamaalari";
 lin word_perfect_A = mkA "sanasta sanaan muistava"; --unchecked
@@ -113506,8 +113521,8 @@ lin words_5_N = mkN {s = d09 "sana"};
 lin wordsmithMasc_N = variants {mkN "sanaseppä"; mkN "sanaseppo"};
 lin wordsmithFem_N = variants {mkN "sanaseppä"; mkN "sanaseppo"};
 lin wordy_A = mkA "pitkäpiimäinen";
-lin work_1_V = variants {};   ---- tehdä kovasti töitä tehdä työtä
-lin work_2_V = variants {};   ---- tehdä työtä olla töissä
+lin work_1_V = mkV "työskennellä";   ---- tehdä kovasti töitä tehdä työtä
+lin work_2_V = mkV "työskennellä";   ---- tehdä työtä olla töissä
 lin work_3_V = mkV {s = c61 "toimia"};
 lin work_4_V = mkV {s = c65 "käydä"};
 lin work_10_V = mkV {s = c53A "kiihdyttää"};
@@ -113521,7 +113536,7 @@ lin work_5_N = mkN {s = d19 "työ"};
 lin work_6_N = mkN "työpaikka";
 lin work_7_N = mkN {s = d39 "teos"};
 lin work_5_V2 = mkV2 (mkV {s = c53 "työstää"});
-lin work_6_V2 = variants {};   ---- teettää työtä
+lin work_6_V2 = mkV2 (mkV "harjoituttaa"); --guessed
 lin work_8_V2 = mkV2 (mkV {s = c61 "toimia"});
 lin work_9_V2 = mkV2 (mkV {s = c72A "edetä"});
 lin work_11_V2 = variants {mkV2 (mkV {s = c71 "tehdä"}); mkV2 (mkV {s = c64 "tuoda"})};
@@ -113534,15 +113549,15 @@ lin work_19_V2 = mkV2 (mkV {s = c67A "taivutella"});
 lin work_20_V2 = mkV2 (mkV {s = c52A "takoa"});
 lin work_21_V2 = mkV2 (mkV {s = c73A "muokata"});
 lin work_22_V2 = mkV2 (mkV {s = c73A "muokata"});
-lin work_23_V2 = variants {};   ---- hyötyä jstk
+lin work_23_V2 = mkV2 (mkV (mkV "käyttää") "hyväksi"); --guessed
 lin work_24_V2 = mkV2 (mkV {s = c52 "ratkoa"});
 lin work_25_V2 = mkV2 (mkV {s = c53A "käyttää"});
-lin work_27_V2 = variants {};   ---- tulla joksikin
+lin work_27_V2 = mkV2 (mkV "löystyttää"); --guessed
 lin work_in_N = mkN "mielenosoitus työtä tekemällä"; --unchecked
-lin work_of_art_N = variants {} ;
-lin work_off_V2 = variants {};   ---- maksaa työnteolla
+lin work_of_art_N = mkN "taideteos"; --guessed
+lin work_off_V2 = mkV2 (mkV (mkV "kuitata") "työllään"); --guessed
 lin work_on_1_V2 = variants {mkV2 (mkV {s = c74A "hiota"}); mkV2 (mkV {s = c52 "hioa"})};
-lin work_on_15_V2 = variants {};
+lin work_on_15_V2 = mkV2 (mkV "työstää") partitive;
 lin work_out_N = mkN {s = d09A "liikunta"};
 lin work_out_2_V = mkV {s = c61 "toimia"};
 lin work_out_4_V = variants {mkV {s = c73 "treenata"}; mkV {s = c67A "harjoitella"}};
@@ -113829,7 +113844,7 @@ lin wring_N = mkN {s = d01A "vääntö"};
 lin wring_1_V2 = mkV2 (mkV {s = c54A "vääntää"});
 lin wring_2_V2 = variants {mkV2 (mkV {s = c67A "väännellä"}); mkV2 (mkV {s = c53 "puristaa"}); mkV2 (mkV {s = c54A "vääntää"})};
 lin wring_3_V2 = variants {mkV2 (mkV {s = c52 "kiskoa"}); mkV2 (mkV {s = c53 "puristaa"})};
-lin wring_4_V2 = variants {};   ---- vääntää kuivaksi
+lin wring_4_V2 = mkV2 (mkV "vääntää"); --guessed
 lin wringer_N = mkN {s = d06 "mankeli"};
 lin wrinkle_1_N = mkN {s = d01A "ryppy"};
 lin wrinkle_2_N = variants {mkN {s = d48 "virhe"}; mkN "pieni vastoinkäyminen"; mkN {s = d09 "vika"}; mkN {s = d09A "vika"}}; --unchecked
@@ -114132,9 +114147,9 @@ lin yellowish_A = mkA "kellertävä";
 lin yellowknife_LN = mkLN "Yellowknife" ;
 lin yellowlegs_N = mkN {s = d01 "viklo"};
 lin yellowness_N = mkN {s = d40 "keltaisuus"};
-lin yellowstone_LN = mkLN "Yellowstonen kansallispuisto" ;
-lin yellowtail_1_N = mkN "Ocyurus chrysurus"; --unchecked
-lin yellowtail_2_N = mkN "Seriola dorsalis"; --unchecked
+lin yellowstone_LN = mkLN "Yellowstone" ;
+lin yellowtail_1_N = variants {} ;
+lin yellowtail_2_N = variants {} ;
 lin yellowthroat_N = mkN "naamiokerttuli";
 lin yellowwood_1_N = mkN "yellowwood";
 lin yellowwood_2_N = mkN "yellowwood";
@@ -114536,7 +114551,7 @@ lin zymosis_1_N = mkN {s = d38 "käyminen"};
 lin zymosis_2_N = mkN "tsymoosi";
 lin zymotic_1_A = variants {mkA "käymiseen liittyvä"; mkA "käymistä aiheuttava"}; --unchecked
 lin zymotic_2_A = mkA "tsymoosiin liittyvä"; --unchecked
-lin äetsä_LN = variants {};
-lin ähtäri_LN = variants {};
-lin äänekoski_LN = variants {};
+lin äetsä_LN = mkLN "Äetsä" ;
+lin ähtäri_LN = mkLN "Ähtäri" ;
+lin äänekoski_LN = mkLN "Äänekoski" ;
 }

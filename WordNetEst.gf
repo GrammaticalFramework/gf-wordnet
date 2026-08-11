@@ -31908,6 +31908,7 @@ lin ebb_3_V = mkV "mõõn" ; --guessed
 lin ebbtide_N = mkN "loe" "loode" "loet" "loodesse" "loete" "loodeid" ; --guessed
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "Ebola" ;
 lin ebon_A = mkA (mkN "süsi" (mkN "must" "musta" "musta" "mustasse" "mustade" "musti")) ; --guessed
 lin ebonite_N = mkN "kõvakummi" ; --unchecked
 lin ebony_A = mkA (mkN "must" "musta" "musta" "mustasse" "mustade" "musti") ; --guessed

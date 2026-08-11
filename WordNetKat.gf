@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "წაქცევა" ; --guessed
 lin ebbtide_N = mkN "ჩრდილო-დასავლეთი" ; --guessed
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "ებოლა" ;
 lin ebon_A = mkA "აბანოზი" ; --guessed
 lin ebonite_N = mkN "ებონიტი" ; --guessed
 lin ebony_A = mkA "შავი" ; --guessed

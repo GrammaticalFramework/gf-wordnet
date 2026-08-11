@@ -31904,6 +31904,7 @@ lin ebb_3_V = mkV "kewtin" ; --guessed
 lin ebbtide_N = mkN "bakur rojava" ; --guessed
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "نەخۆشیی ئێبۆلا" ;
 lin ebon_A = mkA "ebenûs" ; --guessed
 lin ebonite_N = variants {} ;
 lin ebony_A = mkA "ebenûs" ; --guessed

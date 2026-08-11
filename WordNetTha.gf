@@ -31905,6 +31905,7 @@ lin ebb_3_V = variants {} ;
 lin ebbtide_N = mkN "น้ำลง" ;
 lin ebbw_vale_LN = variants {} ;
 lin eblis_N = mkN "อีบลิส" ; --unchecked
+lin ebola_N = mkN "ไวรัสอีโบลา" ;
 lin ebon_A = variants {} ;
 lin ebonite_N = mkN "วัลแคไนท์" ; --unchecked
 lin ebony_A = variants {} ;

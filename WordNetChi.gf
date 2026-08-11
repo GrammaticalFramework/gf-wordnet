@@ -31904,6 +31904,7 @@ lin ebb_3_V = variants {} ;
 lin ebbtide_N = variants {} ;
 lin ebbw_vale_LN = mkPN "埃布韋爾" ;
 lin eblis_N = variants {} ;
+lin ebola_N = mkN "埃博拉病毒" ;
 lin ebon_A = mkA "乌黑色" ; --unchecked
 lin ebonite_N = mkN "硬橡胶" ;
 lin ebony_A = mkA "乌黑发亮" ; --unchecked

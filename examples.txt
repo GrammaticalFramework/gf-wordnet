@@ -640,10 +640,10 @@ swe: ett abrupt svar
 bul: рязък отговор
 key: 1 abrupt_4_A 00643542-a
 
-abs* PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA abscessed_A) (UseN tooth_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA abscessed_A) (UseN tooth_1_N)))) NoVoc
 eng: an abscessed tooth
-swe: en abscesserad tand
-bul: зъбен абсцес
+swe: en pussfyld tand
+bul: гноен зъб
 key: 1 abscessed_A 02121470-a
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN accountantMasc_N)) (AdvVP (AdvVP (UseV abscond_V) (PrepNP with_Prep (DetCN (DetQuant DefArt NumSg) (UseN cash_1_N)))) (PrepNP from_Prep (DetCN (DetQuant DefArt NumSg) (UseN safe_1_N))))))) NoVoc

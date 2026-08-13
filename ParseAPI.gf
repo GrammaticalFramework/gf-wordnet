@@ -486,7 +486,6 @@ lin twentyOneHour = mkTerm "twentyOneHour";
 lin twentyThreeHour = mkTerm "twentyThreeHour";
 lin twentyTwoHour = mkTerm "twentyTwoHour";
 lin twoHour = mkTerm "twoHour";
-lin weather_adjCl ap = mkTerm "weather_adjCl" ap;
 lin wednesday_Weekday = mkTerm "wednesday_Weekday";
 lin week_Timeunit = mkTerm "week_Timeunit";
 lin weekdayHabitualAdv weekday = mkTerm "weekdayHabitualAdv" weekday;

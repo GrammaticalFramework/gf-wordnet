@@ -26,7 +26,7 @@ concrete ParseTha of Parse =
                      polish_Language, punjabi_Language, romanian_Language,
                      russian_Language, sindhi_Language, spanish_Language,
                      swahili_Language, swedish_Language, thai_Language,
-                     turkish_Language, urdu_Language],
+                     turkish_Language, urdu_Language, weather_adjCl],
   DocumentationTha
   ** {
 

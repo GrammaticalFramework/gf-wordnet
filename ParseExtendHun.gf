@@ -8,7 +8,7 @@ concrete ParseExtendHun of ParseExtend =
 lincat
   CNN = {s : Str ; n : Number ; agr : Person*Number ; g : Gender} ;
 
-lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 lin num x = x ;
 lin NumMore num = num ** {s = \\p => "további" ++ num.s ! p} ;
 lin NumLess num = num ** {s = \\p => num.s ! p ++ "kevesebb"} ;

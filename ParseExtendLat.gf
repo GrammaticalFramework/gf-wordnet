@@ -3,7 +3,7 @@ concrete ParseExtendLat of ParseExtend =
   NumeralLat - [num], PunctuationX **
   open Prelude, ResLat, (G=GrammarLat) in {
 
-lin PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+lin PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
     UttAP p ap = ss (ap.s ! Ag p.pers.g p.pers.n Nom );
 

@@ -25,7 +25,7 @@ lin
 
   UttAP p ap = {s = ap.s ! Nom ! genNum p.g p.n} ;
   UttVPS p vps = {s = vps.s ! p.g ! p.n ! p.p} ;
-  PhrUttMark pconj utt voc mark = {s = pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
+  PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
   GenModNP num np cn = {
     s = \\c => np.s ! Gen ++ cn.s ! c ! num.n ;
     g = cn.g ;

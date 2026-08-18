@@ -31884,7 +31884,7 @@ lin easygoingness_N = mkN {s = d40 "rentous"};
 lin eat_1_V2 = mkV2 (mkV {s = c64 "syödä"});
 lin eat_2_V = mkV {s = c64 "syödä"};
 lin eat_3_V2 = mkV2 (mkV {s = c64 "syödä"});
-lin eat_4_V2 = mkV2 (mkV kalvaa");
+lin eat_4_V2 = mkV2 (mkV "kalvaa");
 lin eat_5_V2 = mkV2 (mkV {s = c53A "kuluttaa"});
 lin eat_6_V2 = mkV2 (mkV {s = c53A "kuluttaa"});
 lin eat_away_2_V = variants {mkV {s = c53A "rapauttaa"}; mkV {s = c53A "lahottaa"}; mkV {s = c53A "kuluttaa"}; mkV {s = c56 "kalvaa"}; mkV {s = c53A "syövyttää"}};

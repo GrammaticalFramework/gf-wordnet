@@ -101878,7 +101878,7 @@ lin tessera_N = mkN "mosaiikkilaatta";
 lin tesseract_N = mkN "tesserakti";
 lin test_1_N = variants {mkN {s = d48A "koe"}; mkN {s = d05 "testi"}};
 lin test_2_N = variants {mkN {s = d48A "koe"}; mkN {s = d05 "testi"}};
-lin test_3_N = variants {mkN {s = d05A "tentti"}; mkN {s = d05 "testi"}; mkN {s = d48A "koe"}};
+lin test_3_N = mkN {s = d05 "testi"} ;
 lin test_4_N = variants {mkN {s = d48A "koe"}; mkN {s = d39 "koetus"}};
 lin test_5_N = variants {mkN {s = d48A "koe"}; mkN {s = d05 "testi"}};
 lin test_6_N = variants {mkN {s = d05 "kuori"}; mkN {s = d26 "kuori"}};

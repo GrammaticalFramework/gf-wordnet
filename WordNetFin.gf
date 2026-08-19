@@ -34685,7 +34685,7 @@ lin exaltation_1_N = mkN "mielenylennys";
 lin exaltation_2_N = mkN {s = d39 "ylennys"};
 lin exaltation_3_N = mkN {s = d07 "parvi"};
 lin exaltation_4_N = mkN "korottaminen";
-lin exam_N = variants {mkN {s = d02 "kuulustelu"}; mkN {s = d05 "testi"}; mkN {s = d48A "koe"}};
+lin exam_N = mkN {s = d48A "koe"} ;
 lin examen_1_N = mkN {s = d02 "tutkistelu"};
 lin examen_2_N = mkN {s = d39 "tarkastus"};
 lin examination_1_N = variants {mkN {s = d39 "tarkastus"}; mkN {s = d02 "tarkastelu"}};

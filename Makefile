@@ -109,8 +109,8 @@ semantics.db: build/glosses WordNet.gf $(patsubst Parse%, WordNet%.gf, $(LANGS))
 build/glosses: www-services/glosses.hs www-services/SenseSchema.hs www-services/Interval.hs
 	ghc --make -threaded -odir build/www-services -hidir build/www-services -O2 -iwww-services $^ -o $@
 
-build/www-services/WordNetServer: www-services/Server.hs www-services/SenseService.hs www-services/SenseSchema.hs www-services/ContentService.hs www-services/ContentSchema.hs www-services/FunctionsService.hs www-services/PatternMatching.hs www-services/Interval.hs
-	ghc --make -threaded -hidir build/www-services -O2 -optl-pthread $^ -o $@
+build/www-services/WordNetServer: www-services/Server.hs www-services/SenseService.hs www-services/SenseSchema.hs www-services/ContentService.hs www-services/ContentSchema.hs www-services/FunctionsService.hs www-services/CollabService.hs www-services/PatternMatching.hs www-services/Interval.hs www-services/UUID.hs
+	ghc --make -threaded -hidir build/www-services -O2 -optl-pthread -luuid $^ -o $@
 
 morpho:
 	$(foreach WORDNET,$(WORDNETS),mkdir -p $(DOC_PATH)/tmp/$(patsubst WordNet%.gf,morpho-%,$(WORDNET));\

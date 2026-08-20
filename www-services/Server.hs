@@ -3,6 +3,7 @@ import Network.URI hiding (query)
 import Network.HTTP
 import System.FilePath
 import Control.Exception(bracket,bracket_,catch,throw)
+import Control.Concurrent.MVar
 import System.IO (openFile,IOMode(ReadMode),hGetBuf,hFileSize,hClose)
 import System.IO.Error(isAlreadyExistsError,isDoesNotExistError)
 import System.Directory(getModificationTime,getCurrentDirectory,doesFileExist)
@@ -19,7 +20,8 @@ import GF.Compile
 import GF.Infra.Option
 import SenseService
 import ContentService
-import FunctionsService hiding (main)
+import FunctionsService
+import CollabService
 import SenseSchema
 
 main = do
@@ -33,11 +35,12 @@ main = do
              , let c = length (exprFunctions ex)]
   (mn,sgr) <- batchCompile noOptions (Just gr) [doc_dir</>"gf/WordNet.gf"]
   stref <- newIORef emptyCache
-  server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr doc_dir client_secret stref)
+  colabState <- newMVar Map.empty
+  server (Just 8080) Nothing (httpMain db gr bigram_total mn sgr doc_dir client_secret stref colabState)
   closeDB db
 
 
-httpMain db gr bigram_total mn sgr doc_dir client_secret stref conn = do
+httpMain db gr bigram_total mn sgr doc_dir client_secret stref colabState conn = do
   rq <- receiveHTTP conn
   let path0 = uriPath (rqURI rq)
       path1 = path0</>"index.wiki"
@@ -66,6 +69,10 @@ httpMain db gr bigram_total mn sgr doc_dir client_secret stref conn = do
       | path == "/FunctionsService.fcgi"
                    -> do gr <- checkoutPGF gr
                          rsp <- functionsService db gr mn sgr rq stref
+                         respondHTTP conn rsp
+      | path == "/CollabService.fcgi"
+                   -> do gr <- checkoutPGF gr
+                         rsp <- colabService gr colabState rq
                          respondHTTP conn rsp
       | path == "/index.wsgi"
                    -> respondHTTP conn (Response

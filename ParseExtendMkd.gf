@@ -82,8 +82,8 @@ lin PossCNN_RNP quant conj cnn rnp = {
 
 lin NumMore num = {s = num.s ++ "повеќе"; n = NNum Pl} ;
 lin NumLess num = {s = num.s ++ "помалку"; n = NNum Pl} ;
-lin UseACard card = {s = card.s} ;
-lin UseAdAACard ada card = {s = ada.s ++ card.s} ;
+lin UseACard card = card ;
+lin UseAdAACard ada card = card ** {s = ada.s ++ card.s} ;
 
 lin RelNP np rs = {
       s = \\r => np.s ! r ++ rs.s ! np.a.g ;

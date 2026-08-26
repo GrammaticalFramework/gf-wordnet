@@ -3,18 +3,10 @@ concrete ParseExtendMlt of ParseExtend =
                       AdvIsNPAP, DetNPFem, DetNPMasc, ExistCN,
                       PiedPipingQuestSlash, PiedPipingRelSlash,
                       ReflA2RNP,
-                      ReflPossPron, ApposNP,
-                      CompVP, ProgrVPSlash, UseDAP, UseDAPMasc, UseDAPFem],
+                      ReflPossPron, ApposNP, CompVP],
  NumeralMlt - [num], PunctuationX ** open Prelude, Maybe, ResMlt, GrammarMlt in {
 
 oper
-  useDAP : Gender -> DAP -> NP = \g,dap -> lin NP {
-    s = \\_ => dap.s ! g ++ dap.adj ! mkGenNum g (numform2num dap.n) ;
-    a = agrP3 (numform2num dap.n) g ;
-    isPron = False ;
-    isDefn = dap.isDefn
-    } ;
-
   cnWithNum : Num -> CN -> Str = \num,cn ->
     num.s ! NumAdj ++ cn.s ! numform2nounnum num.n ;
 
@@ -82,10 +74,6 @@ lin NumLess num = num ** {
       s = \\c => ada.s ++ card.s ! c ;
       n = card.n
       } ;
-
-lin UseDAP dap = useDAP Masc dap ;
-    UseDAPMasc dap = useDAP Masc dap ;
-    UseDAPFem dap = useDAP Fem dap ;
 
 lin ComparAdv pol cadv adv comp = advSS (pol.s ++ cadv.s ++ adv.s ++ cadv.p ++ comp.s ! agrP3 Sg Masc) ;
     CAdvAP pol cadv ap comp = {

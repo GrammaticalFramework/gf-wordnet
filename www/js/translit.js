@@ -596,13 +596,19 @@ translit.set("స","sa");
 translit.set("హ","ha");
 translit.set("ఱ","ṟa");
 translit.set("ు","u");
+translit.set("ి","i");
+translit.set("ో","oo");
+translit.set("ౌ","au");
+translit.set("ే","ee");
 translit.set("ం","");
+translit.set("్","");
 
 function transliterate(s) {
    let s1 = s.normalize("NFD");
    let s2 = "";
    for (const c of s1) {
-       s2 += (translit.get(c) || c);
+       let c2 = translit.get(c);
+       s2 += (c2 != null) ? c2 : c;
    }
    if (s1 == s2)
       s2 = s;   // return the original non-normalized text

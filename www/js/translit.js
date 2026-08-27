@@ -595,6 +595,8 @@ translit.set("ష","ṣa");
 translit.set("స","sa");
 translit.set("హ","ha");
 translit.set("ఱ","ṟa");
+translit.set("ు","u");
+translit.set("ం","");
 
 function transliterate(s) {
    let s1 = s.normalize("NFD");

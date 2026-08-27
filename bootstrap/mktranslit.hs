@@ -9,8 +9,8 @@ main = do
                  concatMap append ls ++
                  [""
                  ,"function transliterate(s) {"
-                 ,"   s1 = s.normalize(\"NFD\");"
-                 ,"   var s2 = \"\";"
+                 ,"   let s1 = s.normalize(\"NFD\");"
+                 ,"   let s2 = \"\";"
                  ,"   for (const c of s1) {"
                  ,"       s2 += (translit.get(c) || c);"
                  ,"   }"
@@ -23,6 +23,14 @@ append [[c],s] =
   ("translit.set(\""++[c]++"\",\""++s++"\");") :
   if c /= toUpper c
     then ["translit.set(\""++[toUpper c]++"\",\""++toUpperFirst s++"\");"]
+    else []
+  where
+    toUpperFirst (c:cs) = toUpper c : cs
+    toUpperFirst s      = s
+append [[c]] =
+  ("translit.set(\""++[c]++"\",\"\");") :
+  if c /= toUpper c
+    then ["translit.set(\""++[toUpper c]++"\",\"\");"]
     else []
   where
     toUpperFirst (c:cs) = toUpper c : cs

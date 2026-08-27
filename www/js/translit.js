@@ -378,8 +378,13 @@ translit.set("ْ","");
 translit.set("ی","ye");
 translit.set("پ","pe");
 translit.set("ھ","pe");
+translit.set("ھ","");
 translit.set("گ","g");
 translit.set("ٹ","t");
+translit.set("ی","ye");
+translit.set("پ","pe");
+translit.set("ک","k");
+translit.set("ں","o");
 translit.set("چ","ch");
 translit.set("א","a");
 translit.set("ב","v");
@@ -544,14 +549,58 @@ translit.set("Օ","Ò");
 translit.set("ֆ","f");
 translit.set("Ֆ","F");
 translit.set("և","ew");
+translit.set("అ","a");
+translit.set("ఆ","ā");
+translit.set("ఇ","i");
+translit.set("ఈ","ī");
+translit.set("ఉ","u");
+translit.set("ఊ","ū");
+translit.set("ఋ","r̥");
+translit.set("ౠ","r̥̄");
+translit.set("ఌ","l̥");
+translit.set("ౡ","l̥̄");
+translit.set("ఎ","e");
+translit.set("ఏ","ē");
+translit.set("ఐ","ai");
+translit.set("ఒ","o");
+translit.set("ఓ","ō");
+translit.set("ఔ","au");
+translit.set("క","ka");
+translit.set("ఖ","kha");
+translit.set("గ","ga");
+translit.set("ఙ","ṅa");
+translit.set("చ","ca");
+translit.set("జ","ja");
+translit.set("ఝ","jha");
+translit.set("ఞ","ña");
+translit.set("ట","ṭa");
+translit.set("ఠ","ṭha");
+translit.set("డ","ḍa");
+translit.set("ణ","ṇa");
+translit.set("త","ta");
+translit.set("థ","tha");
+translit.set("ద","da");
+translit.set("న","na");
+translit.set("ప","pa");
+translit.set("బ","ba");
+translit.set("భ","bha");
+translit.set("మ","ma");
+translit.set("య","ya");
+translit.set("ర","ra");
+translit.set("ల","la");
+translit.set("వ","va");
+translit.set("ళ","ḷa");
+translit.set("శ","śa");
+translit.set("ష","ṣa");
+translit.set("స","sa");
+translit.set("హ","ha");
+translit.set("ఱ","ṟa");
 
 function transliterate(s) {
    let s1 = s.normalize("NFD");
    let s2 = "";
    for (const c of s1) {
-       let c2 = translit.get(c)
-       if (c2 == null) c2 = c;
-       s2 += c2;
+       s2 += (translit.get(c) || c);
    }
    if (s1 == s2)
       s2 = s;   // return the original non-normalized text

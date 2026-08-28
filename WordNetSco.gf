@@ -59684,7 +59684,7 @@ lin man_5_N = mkN "man" ;
 lin man_6_N = mkN "mannie" ; --guessed
 lin man_7_N = mkN "man" ; --guessed
 lin man_8_N = mkN "mannie" ; --guessed
-lin man_9_LN = mkLN "Isle o Mann" ; --guessed
+lin man_9_LN = mkLN "Mann" ;
 lin man_10_N = mkN "draucht" ; --guessed
 lin man_11_N = mkN "body" ; --guessed
 lin man_1_V2 = mkV2 (mkV "wirk") ; --guessed
@@ -59978,7 +59978,7 @@ lin manure_N = mkN "manur" ; --guessed
 lin manure_V2 = mkV2 (mkV "manure" "manures" "manured" "manured" "manurin");  --guessed
 lin manuscript_1_N = mkN "manuscript" "manuscripts";
 lin manuscript_2_N = mkN "manuscript" "manuscripts";
-lin manx_A = mkA "manx gaelic" ; --guessed
+lin manx_A = variants {} ;
 lin manx_1_N = mkN "manx gaelic" ; --guessed
 lin manx_2_N = mkN "manx gaelic" ; --guessed
 lin many_ACard = {s = table {Nom => "many"; Gen => "many's"}; n = Pl} ;  --guessed

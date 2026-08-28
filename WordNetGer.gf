@@ -59664,7 +59664,7 @@ lin man_5_N = mkN "Mann" ;
 lin man_6_N = mkN "Mann" ;
 lin man_7_N = mkN "Kammerdiener" ; --guessed
 lin man_8_N = mkN "Mann" ;
-lin man_9_LN = mkLN "Isle of Man" ;
+lin man_9_LN = mkLN "Man" ;
 lin man_10_N = mkN "Stein" "Steine" masculine ;
 lin man_11_N = mkN "Menschheit" ; --guessed
 lin man_1_V2 = mkV2 (mkV "bemannen") ;
@@ -59958,7 +59958,7 @@ lin manure_N = mkN "Dünger" ;
 lin manure_V2 = mkV2 (mkV "düngen") ;
 lin manuscript_1_N = mkN "Handschrift" "Handschriften" feminine ;
 lin manuscript_2_N = mkN "Handschrift" "Handschriften" feminine ;
-lin manx_A = mkA "mansk" ; --guessed
+lin manx_A = mkA "mansk" ;
 lin manx_1_N = mkN "Manx" neuter ;
 lin manx_2_N = mkN "Manx-katze" ; --guessed
 lin many_ACard = {s = "viele" ; n = plural} ;

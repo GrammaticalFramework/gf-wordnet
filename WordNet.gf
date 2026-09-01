@@ -77031,7 +77031,7 @@ fun primatology_N : N ;            -- 06083197-n	[biology] the branch of zoology
 fun prime_1_A : A ;                -- 01016587-a	first in rank or degree; "the prime minister"
 fun prime_2_A : A ;                -- 01016768-a	used of the first or originating agent; "prime mover"
 fun prime_3_A : A ;                -- 02351005-a	of superior grade; "prime beef"
-fun prime_4_A : A ;                -- 03023717-a	of or relating to or being an integer that cannot be factored into other integers; "prime number"
+fun prime_4_A : A ;                -- 03023717-a	[mathematics] of or relating to or being an integer that cannot be factored into other integers; "prime number"
 fun prime_5_A : A ;                -- 01492920-a	being at the best stage of development; "our manhood's prime vigor"- Robert Browning
 fun prime_1_N : N ;                -- 13615208-n	[mathematics] a natural number that has exactly two distinct natural number divisors: 1 and itself
 fun prime_2_N : N ;                -- 15320288-n	[industry] the period of greatest prosperity or productivity

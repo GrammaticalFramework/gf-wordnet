@@ -119,7 +119,7 @@ fun abecedarian_2_N : N ;          -- 08110619-n	[religion] a 16th century sect 
 fun abecedarius_N : N ;            -- 06389594-n	[literature] a poem having lines beginning with letters of the alphabet in regular order
 fun abed_Adv : Adv ;               -- 00230832-r	in bed
 fun abelia_N : N ;                 -- 12692412-n	[biology, plants] any of various deciduous or evergreen ornamental shrubs of the genus Abelia having opposite simple leaves and cymes of small white or pink or purplish flowers; Asia and Mexico
-fun abelian_A : A ;
+fun abelian_A : A ;                --           	[mathematics] applies to commutative groups and rings
 fun abelmosk_N : N ;               -- 12192998-n	[biology, plants] bushy herb of tropical Asia grown for its yellow or pink to scarlet blooms that resemble the hibiscus
 fun abercarn_LN : LN ;             -- Q1868842  	[geography] town and community in Caerphilly County Borough
 fun aberdare_LN : LN ;             -- 08915375-n	[administration, geography] a mining town in southern Wales

@@ -119,7 +119,7 @@ fun abecedarian_2_N : N ;          -- 08110619-n	[religion] a 16th century sect 
 fun abecedarius_N : N ;            -- 06389594-n	[literature] a poem having lines beginning with letters of the alphabet in regular order
 fun abed_Adv : Adv ;               -- 00230832-r	in bed
 fun abelia_N : N ;                 -- 12692412-n	[biology, plants] any of various deciduous or evergreen ornamental shrubs of the genus Abelia having opposite simple leaves and cymes of small white or pink or purplish flowers; Asia and Mexico
-fun abelian_A : A ;
+fun abelian_A : A ;                --           	[mathematics] applies to commutative groups and rings
 fun abelmosk_N : N ;               -- 12192998-n	[biology, plants] bushy herb of tropical Asia grown for its yellow or pink to scarlet blooms that resemble the hibiscus
 fun abercarn_LN : LN ;             -- Q1868842  	[geography] town and community in Caerphilly County Borough
 fun aberdare_LN : LN ;             -- 08915375-n	[administration, geography] a mining town in southern Wales
@@ -77031,7 +77031,7 @@ fun primatology_N : N ;            -- 06083197-n	[biology] the branch of zoology
 fun prime_1_A : A ;                -- 01016587-a	first in rank or degree; "the prime minister"
 fun prime_2_A : A ;                -- 01016768-a	used of the first or originating agent; "prime mover"
 fun prime_3_A : A ;                -- 02351005-a	of superior grade; "prime beef"
-fun prime_4_A : A ;                -- 03023717-a	of or relating to or being an integer that cannot be factored into other integers; "prime number"
+fun prime_4_A : A ;                -- 03023717-a	[mathematics] of or relating to or being an integer that cannot be factored into other integers; "prime number"
 fun prime_5_A : A ;                -- 01492920-a	being at the best stage of development; "our manhood's prime vigor"- Robert Browning
 fun prime_1_N : N ;                -- 13615208-n	[mathematics] a natural number that has exactly two distinct natural number divisors: 1 and itself
 fun prime_2_N : N ;                -- 15320288-n	[industry] the period of greatest prosperity or productivity

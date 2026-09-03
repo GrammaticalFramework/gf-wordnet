@@ -86512,7 +86512,7 @@ swe: Systemet går ner minst en gång i veckan
 bul: Системата слиза поне веднъж седмично
 key: 1 go_down_8_V 00435872-v развалям се разваля се
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN theory_1_N)) (ComplSlash (SlashV2a hold_for_V2) (PredetNP all_Predet (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irrational_2_A) (UseN number_2_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN theory_1_N)) (ComplSlash (SlashV2a hold_for_V2) (PredetNP all_1_Predet (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irrational_2_A) (UseN number_2_N)))))))) NoVoc
 eng: This theory holds for all irrational numbers
 swe: Den här teorien håller för alla irrationella tal
 bul: Тази теория важи за всичките ирационални числа

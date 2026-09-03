@@ -215,7 +215,6 @@ lin num x = x ;
     InOrderToVP ant pol pron vp = {s = "fyri at" ++ negStr pol.p ++ vp.Nonfinite} ;
     ApposNP np app = np ** {s = \\c => np.s ! c ++ "," ++ app.s ! Nom} ;
     AdAdV ada adv = {s = ada.s ++ adv.s} ;
-    UttAdV adv = adv ;
     PositAdVAdj a = {s = a.s ! Neuter ! Sg ! Nom} ;
     CompS s = {s = \\_,_ => s.s} ;
     CompQS qs = {s = \\_,_ => qs.s} ;

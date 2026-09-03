@@ -75310,7 +75310,7 @@ swe: han längtade för fältarna av hans ungdom
 bul: той бленува за полетата от неговата младост
 key: 1 field_9_N 09416498-n
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdvCN (UseN set_2_N) (PrepNP of_1_Prep (PredetNP all_1_Predet (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA rational_1_A) (UseN number_2_N))))))) (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (UseN field_10_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdvCN (UseN set_2_N) (PrepNP of_1_Prep (PredetNP all_1_Predet (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA rational_3_A) (UseN number_2_N))))))) (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (UseN field_10_N))))))) NoVoc
 eng: the set of all rational numbers is a field
 swe: mängden av alla rationella tal är en kropp
 bul: множеството от всичките рационални числа е поле
@@ -86512,10 +86512,10 @@ swe: Systemet går ner minst en gång i veckan
 bul: Системата слиза поне веднъж седмично
 key: 1 go_down_8_V 00435872-v развалям се разваля се
 
-abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN theory_1_N)) (ComplSlash (SlashV2a hold_for_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA all_A) (AdjCN (PositA irrational_1_A) (UseN number_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN theory_1_N)) (ComplSlash (SlashV2a hold_for_V2) (PredetNP all_1_Predet (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irrational_2_A) (UseN number_2_N)))))))) NoVoc
 eng: This theory holds for all irrational numbers
-swe: Denna teori gäller för alla irrationella tal
-bul: Тази теория важи за всички ирационални числа
+swe: Den här teorien håller för alla irrationella tal
+bul: Тази теория важи за всичките ирационални числа
 key: 1 hold_for_V2 02682599-v
 
 abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA same_1_A) (UseN rule_1_N))) (AdvVP (UseV go_1_V) (PrepNP for_Prep (UseDAPMasc (DetDAP every_Det))))))) NoVoc

@@ -91,7 +91,7 @@ lin
                   ++ conj.s2
                   ++ quant.s ! False ! (gennum cnn.g2 cnn.n2) ! c
                   ++ cnn.s2 ! quant.a ! c
-                  ++ appPrep vonDat (rnp.s ! a) ++ rnp.ext ++ rnp.rc ;
+                  ++ appPrep vonDat (\\c => rnp.s ! a ! Obj c) ++ rnp.ext ++ rnp.rc ;
       rc, ext = [] ;
       isPron = False
       } ;
@@ -137,7 +137,7 @@ lin
       isPre = False
       } ;
 
-    TimeNP np = {s = np.s ! False ! Acc ++ bigNP np} ;
+    TimeNP np = {s = np.s ! False ! Obj Acc ++ bigNP np} ;
 
     AdvAdv adv1 adv2 = {s = adv1.s ++ adv2.s} ;
 
@@ -150,7 +150,7 @@ lin
 
 lin SlashV2VNP v np ant pol vp =   -- bitte ihn, zu kaufen | lasse ihn kaufen   HL 3/22
       let prep = v.c2 ;
-          obj = appPrep prep (np.s!False) ; -- simplify: no glueing of prep+DefArt, HL 8/22
+          obj = appPrep prep (\\c=>np.s!False!Obj c) ; -- simplify: no glueing of prep+DefArt, HL 8/22
           b : Bool = case prep.t of {isPrep | isPrepDefArt => True ; _ => False} ;
           c = prep.c ;
           w = np.w ;

@@ -69890,7 +69890,6 @@ lin pack_4_V2 = mkV2 (mkV "taşımak") ; --guessed
 lin pack_5_V2 = mkV2 (mkV "paketlemek") ; --guessed
 lin pack_6_V2 = mkV2 (mkV "beraberinde" (mkV "götürmek")) ; --unchecked
 lin pack_7_V2 = mkV2 (mkV "bohça") ; --guessed
-lin pack_8_V2 = mkV2 (mkV "gitmek" "gidmek") ; --guessed
 lin pack_9_V2 = mkV2 (mkV "paketlemek") ; --guessed
 lin pack_10_V2 = mkV2 (mkV "paketlemek") ; --guessed
 lin pack_12_V2 = mkV2 (mkV "taşımak") ; --guessed

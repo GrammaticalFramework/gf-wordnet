@@ -69885,7 +69885,6 @@ lin pack_4_V2 = mkV2 (compoundV (mkV024 "нести") "на спині") ; --gue
 lin pack_5_V2 = mkV2 (compoundV (mkV "укомплектовувати") "своїми прибічниками") ; --guessed
 lin pack_6_V2 = mkV2 (mkV018 "носити") ;
 lin pack_7_V2 = mkV2 (mkV "набивати") ; --guessed
-lin pack_8_V2 = mkV2 (compoundV (mkV036 "подорожувати") "з наплічником") ; --guessed
 lin pack_9_V2 = mkV2 (mkV "утрамбовувати") ; --guessed
 lin pack_10_V2 = mkV2 (mkV "ущільнювати") ; --guessed
 lin pack_12_V2 = mkV2 (mkV "пакувати") ; --guessed

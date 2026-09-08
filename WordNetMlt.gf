@@ -69895,7 +69895,6 @@ lin pack_4_V2 = dirV2 (compoundV (mkV "ġarr") "fuq dahru") ; --guessed
 lin pack_5_V2 = prepV2 (mkV "timla") (mkPrep "b'niesek") ; --guessed
 lin pack_6_V2 = dirV2 (mkV "iġorr") ; --guessed
 lin pack_7_V2 = variants {dirV2 (mkV "daxxa"); dirV2 (mkV "ppaċċja")} ; --guessed
-lin pack_8_V2 = dirV2 (compoundV (mkV "timxi") "bi ruxsak") ; --guessed
 lin pack_9_V2 = dirV2 (mkV "jross") ; --guessed
 lin pack_10_V2 = dirV2 (mkV "issiġilla") ; --guessed
 lin pack_12_V2 = dirV2 (mkV "ippakkja") ; --guessed

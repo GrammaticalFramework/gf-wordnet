@@ -69890,7 +69890,6 @@ lin pack_4_V2 = mkV2 (compoundV (mkV003 "носи") "на грб") ; --guessed
 lin pack_5_V2 = mkV2 (compoundV (mkV "пополнува") "со свои приврзаници") ; --guessed
 lin pack_6_V2 = mkV2 (dualV (mkV003 "носи") (mkV025 "однесе")) ;
 lin pack_7_V2 = mkV2 (mkV "набива") ; --guessed
-lin pack_8_V2 = mkV2 (compoundV (mkV004 "пешачи") "со ранец") ; --guessed
 lin pack_9_V2 = mkV2 (mkV "набива") ; --guessed
 lin pack_10_V2 = mkV2 (mkV "заптива") ; --guessed
 lin pack_12_V2 = mkV2 (mkV "пакува") ; --guessed

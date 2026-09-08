@@ -69885,7 +69885,6 @@ lin pack_4_V2 = mkV2 "ɗauka" ; --guessed
 lin pack_5_V2 = mkV2 "ƙunshḕ" ; --guessed
 lin pack_6_V2 = mkV2 "ɗauka" ; --guessed
 lin pack_7_V2 = mkV2 "matsa" ; --guessed
-lin pack_8_V2 = mkV2 "rukuni" ; --guessed
 lin pack_9_V2 = mkV2 "rukuni" ; --guessed
 lin pack_10_V2 = mkV2 "rukuni" ; --guessed
 lin pack_12_V2 = mkV2 "ɗauka" ; --guessed

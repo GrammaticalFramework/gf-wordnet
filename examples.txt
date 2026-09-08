@@ -244987,7 +244987,7 @@ frm* ?
 sem: location(during(E),Theme,Destination)
 key: spray-9.7-1-1/1200 cram_1_V2 cram_2_V2 crowd_1_V2 crowd_2_V2 jam_1_V2 jam_6_V2 jampack_V2 jam_7_V2 pack_1_V2 pack_2_V2 pack_3_V2 pack_7_V2 pile_1_V2
 
-abs* PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumPl) (UseN crowd_2_N)) (ComplSlash (SlashV2a pack_8_V2) (DetCN (DetQuant DefArt NumPl) (UseN stand_4_N)))))) NoVoc FullStop
+abs* PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumPl) (UseN crowd_2_N)) (ComplSlash (SlashV2a pack_1_V2) (DetCN (DetQuant DefArt NumPl) (UseN stand_4_N)))))) NoVoc FullStop
 eng: Crowds packed the stands.
 swe: gängen packade ur ståndpunkterna.
 bul: тайфите пакетираха позициите.

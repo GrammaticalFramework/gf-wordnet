@@ -69885,7 +69885,6 @@ lin pack_4_V2 = mkV2 "gói" ; --guessed
 lin pack_5_V2 = mkV2 "loạt" ; --guessed
 lin pack_6_V2 = mkV2 "ẵm" ; --guessed
 lin pack_7_V2 = mkV2 "đàn" ; --guessed
-lin pack_8_V2 = mkV2 "gói" ; --guessed
 lin pack_9_V2 = mkV2 "gói" ; --guessed
 lin pack_10_V2 = mkV2 "bao" ; --guessed
 lin pack_12_V2 = mkV2 "gói" ; --guessed

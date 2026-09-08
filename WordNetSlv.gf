@@ -69887,7 +69887,6 @@ lin pack_4_V2 = mkV2 (mkV "nositi" "nosi") ; --guessed
 lin pack_5_V2 = mkV2 (mkReflV (mkV "natlačiti" "natlači") accusative) ; --guessed
 lin pack_6_V2 = mkV2 (mkV "biti") ;
 lin pack_7_V2 = mkV2 (mkReflV (mkV "natlačiti" "natlači") accusative) ; --unchecked
-lin pack_8_V2 = mkV2 (mkV "biti") ; --guessed
 lin pack_9_V2 = mkV2 (mkReflV (mkV "natlačiti" "natlači") accusative) ; --guessed
 lin pack_10_V2 = mkV2 (mkV "zaviti" "zavije" "zavil") ; --guessed
 lin pack_12_V2 = mkV2 (mkV "natovoriti" "natovori") ; --guessed

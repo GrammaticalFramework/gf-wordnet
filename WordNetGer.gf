@@ -69903,7 +69903,6 @@ lin pack_4_V2 = variants {mkV2 (compoundV "auf dem Rücken" I.tragen_V); mkV2 (m
 lin pack_5_V2 = variants {} ;
 lin pack_6_V2 = mkV2 (mkV "führen") ; --guessed
 lin pack_7_V2 = variants {mkV2 (mkV "vollstopfen"); mkV2 (mkV "zusammenpressen")} ; --guessed
-lin pack_8_V2 = mkV2 (mkV "rucksackwandern") ; --guessed
 lin pack_9_V2 = mkV2 (mkV "feststampfen") ; --guessed
 lin pack_10_V2 = mkV2 (mkV "abdichten") ; --guessed
 lin pack_12_V2 = variants {mkV2 (mkV "packen"); mkV2 (mkV "einpacken")} ; --guessed

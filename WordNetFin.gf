@@ -69904,7 +69904,6 @@ lin pack_4_V2 = mkV2 (mkV {s = c56A "kantaa"});
 lin pack_5_V2 = variants {};   ---- täyttää omilla kannattajilla
 lin pack_6_V2 = variants {};   ---- pitää mukanaan
 lin pack_7_V2 = mkV2 (mkV {s = c52A "pakkautua"});
-lin pack_8_V2 = variants {mkV2 (mkV {s = c67 "retkeillä"}); mkV2 (mkV {s = c54A "vaeltaa"}); mkV2 (mkV {s = c68 "patikoida"})};
 lin pack_9_V2 = variants {mkV2 (mkV {s = c73A "ahdata"}); mkV2 (mkV {s = c56A "ahtaa"})};
 lin pack_10_V2 = mkV2 (mkV {s = c53 "tiivistää"});
 lin pack_12_V2 = mkV2 (mkV {s = c73 "lastata"});

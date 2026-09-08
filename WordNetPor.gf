@@ -69892,7 +69892,6 @@ lin pack_4_V2 = mkV2 (mkV "portar") ; --guessed
 lin pack_5_V2 = mkV2 (mkV "encaixotar") ; --guessed
 lin pack_6_V2 = mkV2 (mkV "portar") ;
 lin pack_7_V2 = mkV2 (mkV "lotar") ;
-lin pack_8_V2 = mkV2 (mkV "mochilar") ;
 lin pack_9_V2 = mkV2 (mkV "compactar") ;
 lin pack_10_V2 = mkV2 (mkV "embalar") ;
 lin pack_12_V2 = mkV2 (mkV "carregar") ; --guessed

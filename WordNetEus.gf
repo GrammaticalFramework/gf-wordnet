@@ -69885,7 +69885,6 @@ lin pack_4_V2 = mkV2 (mkV "pakete") ; --guessed
 lin pack_5_V2 = mkV2 (mkV "pakete") ; --guessed
 lin pack_6_V2 = mkV2 (mkV "eraman") ;
 lin pack_7_V2 = mkV2 (mkV "bete") ;
-lin pack_8_V2 = mkV2 (mkV "paketatu") ; --guessed
 lin pack_9_V2 = mkV2 (mkV "sakatu") ; --unchecked
 lin pack_10_V2 = mkV2 (mkV "paketeak" L.egin_V) ; --unchecked
 lin pack_12_V2 = mkV2 (mkV "paketatu") ; --guessed

@@ -69887,7 +69887,6 @@ lin pack_4_V2 = mkV2 (mkV "cipel") ; --guessed
 lin pack_5_V2 = mkV2 (mkV "feltölt") ; --guessed
 lin pack_6_V2 = mkV2 (mkV "hord") ;
 lin pack_7_V2 = variants {mkV2 (mkV "töm"); mkV2 (mkV "zsúfol")} ; --guessed
-lin pack_8_V2 = variants {} ;
 lin pack_9_V2 = mkV2 (mkV "tömörít") ; --guessed
 lin pack_10_V2 = mkV2 (mkV "tömít") ; --guessed
 lin pack_12_V2 = mkV2 (mkV "becsomagol") ; --guessed

@@ -69899,7 +69899,6 @@ lin pack_4_V2 = variants {} ;
 lin pack_5_V2 = variants {} ;
 lin pack_6_V2 = dirV2 (mkMonoVerb "nosić" conj83 Imperfective) ;
 lin pack_7_V2 = variants {} ;
-lin pack_8_V2 = variants {} ;
 lin pack_9_V2 = variants {} ;
 lin pack_10_V2 = variants {} ;
 lin pack_12_V2 = dirV2 (mkMonoVerb "ładować" conj53 Imperfective) ; --guessed

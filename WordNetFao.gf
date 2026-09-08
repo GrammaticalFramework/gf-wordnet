@@ -69885,7 +69885,6 @@ lin pack_4_V2 = mkV2 (mkV (mkV "bera") "á baki") ; --guessed
 lin pack_5_V2 = mkV2 (mkV (mkV023 "seta") "við sínum egnu fólkum") ; --guessed
 lin pack_6_V2 = mkV2 (mkV "bera") ;
 lin pack_7_V2 = variants {mkV2 (mkV "troka"); mkV2 (mkV "pakka")} ; --guessed
-lin pack_8_V2 = mkV2 (mkV (mkV047 "ganga") "við ryggsekki") ; --guessed
 lin pack_9_V2 = mkV2 (mkV "stampa") ; --guessed
 lin pack_10_V2 = mkV2 (mkV "pakka") ; --guessed
 lin pack_12_V2 = mkV2 (mkV "pakka") ;

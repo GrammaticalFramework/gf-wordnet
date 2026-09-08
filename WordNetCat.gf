@@ -69896,7 +69896,6 @@ lin pack_4_V2 = mkV2 (mkV (cantar_15 "portar")) ; --guessed
 lin pack_5_V2 = mkV2 (mkV (cantar_15 "empaquetar")) ; --guessed
 lin pack_6_V2 = mkV2 (mkV (cantar_15 "tornar")) ; --unchecked
 lin pack_7_V2 = mkV2 (mkV (reduir_94 "atapeir" (True|False))) ;
-lin pack_8_V2 = mkV2 (mkV (anar_4 "anar" (0|1|2))) ; --guessed
 lin pack_9_V2 = mkV2 (mkV (cantar_15 "maçonar")) ; --unchecked
 lin pack_10_V2 = mkV2 (mkV (trencar_112 "empacar")) ; --unchecked
 lin pack_12_V2 = mkV2 (mkV (pregar_86 "carregar")) ; --guessed

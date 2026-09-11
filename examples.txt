@@ -4264,7 +4264,7 @@ swe: "stavelse till välsignad stavelse avfined" - Wallace Stevens
 bul: "сричка на благословена сричка" - Уолъс Стивънс
 key: 1 affined_A 00569099-a
 
-abs: PhrUtt NoPConj (UttS (AdvS (PrepNP in_1_Prep (MassNP (AdjCN (PositA anatomical_1_A) (UseN structure_4_N)))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA prehistoric_1_A) (UseN man_3_N))) (ComplSlash (SlashV2a show_4_V2) (MassNP (AdjCN (PositA close_1_A) (AdvCN (UseN affinity_3_N) (PrepNP with_Prep (DetCN (DetQuant gen_Quant NumPl) (AdjCN (PositA modern_1_A) (UseN human_N)))))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (AdvS (PrepNP in_1_Prep (MassNP (AdjCN (PositA anatomical_1_A) (UseN structure_4_N)))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA prehistoric_1_A) (UseN man_3_N))) (ComplSlash (SlashV2a show_4_V2) (MassNP (AdjCN (PositA close_5_A) (AdvCN (UseN affinity_3_N) (PrepNP with_Prep (DetCN (DetQuant gen_Quant NumPl) (AdjCN (PositA modern_1_A) (UseN human_N)))))))))))) NoVoc
 eng: in anatomical structure prehistoric man shows close affinity with modern humans
 swe: i anatomisk struktur visar den förhistoriska mannen nära släktskap med de moderna människorna
 bul: в анатомична структура праисторическият човек показва близко сродство с модерните човеци
@@ -83536,7 +83536,7 @@ swe: Jag samlar in att du inte har gjort dina läxor
 bul: Събрах, че не си свършил домашното
 key: 1 gather_VS 00947157-v
 
-abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a gather_6_V2) (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA close_1_A) (UseN (CompoundN family_1_N memberMasc_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a gather_6_V2) (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA close_2_A) (UseN (CompoundN family_1_N memberMasc_1_N))))))) NoVoc
 eng: gather the close family members
 swe: samla de nära familjmedlemmarna
 bul: събери близките семейни членове

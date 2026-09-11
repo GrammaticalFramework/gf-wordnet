@@ -69897,7 +69897,6 @@ lin pack_4_V2 = mkV2 (mkV "portare") ; --guessed
 lin pack_5_V2 = mkV2 (mkV "imballare") ; --guessed
 lin pack_6_V2 = mkV2 (mkV "trasportare") ; --unchecked
 lin pack_7_V2 = mkV2 (mkV "accalcarsi") ;
-lin pack_8_V2 = mkV2 (verboV (andare_14 "andare")) ; --guessed
 lin pack_9_V2 = mkV2 (mkV "impaccare") ; --guessed
 lin pack_10_V2 = mkV2 (mkV "impacchettare") ; --guessed
 lin pack_12_V2 = mkV2 (mkV "caricare") ; --guessed

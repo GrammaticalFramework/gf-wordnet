@@ -69894,7 +69894,6 @@ lin pack_4_V2 = mkV2 (mkV "한패") ; --guessed
 lin pack_5_V2 = mkV2 (mkV "한패") ; --guessed
 lin pack_6_V2 = mkV2 (mkV "나르다") ; --guessed
 lin pack_7_V2 = mkV2 (mkV "한패") ; --guessed
-lin pack_8_V2 = mkV2 (mkV "산책하다") ; --guessed
 lin pack_9_V2 = mkV2 (mkV "한패") ; --guessed
 lin pack_10_V2 = mkV2 (mkV "싸다") ; --guessed
 lin pack_12_V2 = mkV2 (mkV "싣다") ; --guessed

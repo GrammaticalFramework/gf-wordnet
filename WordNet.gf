@@ -69885,7 +69885,6 @@ fun pack_4_V2 : V2 ;               -- 01453787-v	[transport] carry, as on one's 
 fun pack_5_V2 : V2 ;               -- 02401678-v	[administration, law] set up a committee or legislative body with one's own supporters so as to influence the outcome; "pack a jury"
 fun pack_6_V2 : V2 ;               -- 02722977-v	have with oneself; have on one's person; "She packs a gun when she goes into the mountains"
 fun pack_7_V2 : V2 ;               -- 02068059-v	press tightly together or cram; "The crowd packed the auditorium"
-fun pack_8_V2 : V2 ;               -- 01929984-v	[tourism] hike with a backpack
 fun pack_9_V2 : V2 ;               -- 01577402-v	press down tightly
 fun pack_10_V2 : V2 ;              -- 01487510-v	seal with packing; "pack the faucet"
 fun pack_12_V2 : V2 ;              -- 01485761-v	load with a pack

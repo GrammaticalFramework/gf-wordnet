@@ -66889,7 +66889,6 @@ lin pack_7_N = mkN "قِناع" ; --guessed
 lin pack_7_V2 = variants {} ;
 lin pack_8_N = mkN "علب" ; --guessed
 lin pack_8_V = variants {} ;
-lin pack_8_V2 = variants {} ;
 lin pack_9_N = mkN "حِمْل" ; --guessed
 lin pack_9_V2 = variants {} ;
 lin pack_animal_N = mkN "دابّة" ; --unchecked

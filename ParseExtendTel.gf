@@ -21,6 +21,8 @@ concrete ParseExtendTel of ParseExtend =
 
     UseACard card = {s = card.s ; n = card.n} ;
     UseAdAACard ada card = {s = ada.s ++ card.s ; n = card.n} ;
+    NumLess number = number ** {s = number.s ++ "తక్కువ"} ;
+    NumMore number = number ** {s = number.s ++ "ఎక్కువ"} ;
 
     TimeNP np = {s = np.s ! NPC Obl} ;
 
@@ -53,6 +55,11 @@ concrete ParseExtendTel of ParseExtend =
 
     ReflVPSlash vps rnp = insertObject rnp vps ;
 
+    ReflA2 adjective rnp = {
+      s = \\g,n,c => rnp.s ! NPC Obl ++ adjective.c2 ++
+                       adjective.s ! g ! n ! c
+      } ;
+
     BaseCNN n1 cn1 n2 cn2 = {
       s = cn1.s ! n1.n ! Dir ++ cn2.s ! n2.n ! Dir ;
       n = Pl ;
@@ -72,9 +79,40 @@ concrete ParseExtendTel of ParseExtend =
 
     AdvAdv first second = {s = first.s ++ second.s} ;
 
+    ExtAdvAP ap adv = {
+      s = \\g,n,c => ap.s ! g ! n ! c ++ "," ++ adv.s
+      } ;
+
+    BareN2 noun = {s = noun.s ; g = noun.g} ;
+
+    ComparAdv pol cadv adv comp = {
+      s = pol.s ++ cadv.s ++ adv.s ++ cadv.p ++ comp.s ! defaultAgr
+      } ;
+
+    CAdvAP pol cadv ap comp = {
+      s = \\g,n,c => pol.s ++ cadv.s ++ ap.s ! g ! n ! c ++
+                       cadv.p ++ comp.s ! Ag g n P3
+      } ;
+
+    AdnCAdv pol cadv = {s = pol.s ++ cadv.s} ;
+
+    EnoughAP ap ant pol vp = {
+      s = \\g,n,c => let f = vp.s ! pol.p ! VPInf in
+        ap.s ! g ! n ! c ++ "తగినంతగా" ++
+        vp.obj.s ++ vp.comp ! Ag g n P3 ++ f.neg ++ f.inf ++ f.fin
+      } ;
+
+    EnoughAdv adv = {s = adv.s ++ "తగినంతగా"} ;
+
     ComplVV vv ant pol vp = predV vv ** {
       comp = \\agr => let f = vp.s ! pol.p ! VPInf in
         vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+      } ;
+
+    SlashVV vv ant pol vps = predV vv ** {
+      c2 = vps.c2 ;
+      comp = \\agr => let f = vps.s ! pol.p ! VPInf in
+        vps.obj.s ++ vps.comp ! agr ++ f.neg ++ f.inf ++ f.fin
       } ;
 
     EmbedVP ant pol pron vp = {
@@ -86,5 +124,50 @@ concrete ParseExtendTel of ParseExtend =
       c2 = verb.c2 ;
       comp = \\agr => let f = vp.s ! pol.p ! VPInf in
         vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+      } ;
+
+    SlashV2VNP verb np ant pol vps =
+      let outer = insertObject np (predV verb ** {c2 = verb.c2})
+      in outer ** {
+        c2 = vps.c2 ;
+        comp = \\agr => let f = vps.s ! pol.p ! VPInf in
+          outer.comp ! agr ++ vps.obj.s ++ vps.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+        } ;
+
+    CompVP ant pol pron vp = {
+      s = \\agr => let f = vp.s ! pol.p ! VPInf in
+        pron.s ! PC Dir ++ vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+      } ;
+
+    UttVP ant pol pron vp = {
+      s = let f = vp.s ! pol.p ! VPInf in
+        pron.s ! PC Dir ++ vp.obj.s ++ vp.comp ! pron.a ++ f.neg ++ f.inf ++ f.fin
+      } ;
+
+    RecipVPSlash vps = insertObject reciprocalNP vps ;
+    RecipVPSlashCN vps cn = insertObject
+      {s = \\c => "ఒకరి" ++ cn.s ! Sg ! npcase2case c ; a = defaultAgr}
+      vps ;
+
+    FocusComp comp np = mkClause np (predCopula ** {comp = comp.s}) ;
+
+    EmptyRelSlash slash = {
+      s = \\t,p => slash.s ! t ! p ++ slash.c2.s
+      } ;
+
+    PossCNN_RNP quant conj cnn rnp = {
+      s = \\c => quant.s ! cnn.n ! cnn.g ! npcase2case c ++
+                   cnn.s ++ conj.s2 ++ rnp.s ! c ;
+      a = agrP3 cnn.g Pl ;
+      lock_NP = <>
+      } ;
+
+  oper
+    reciprocalNP : ResTel.NP = {
+      s = \\c => case c of {
+        NPC Dir => "ఒకరినొకరు" ;
+        _ => "ఒకరినొకరి"
+        } ;
+      a = Ag Masc Pl P3
       } ;
 }

@@ -5,19 +5,22 @@ concrete ParseExtendFao of ParseExtend =
 lincat
   CNN = {s : Species => Case => Str ; n : Number ; g : Gender} ;
 
-lin UttAP  p ap  = {s = ap.s ! p.g ! p.n ! Nom} ;
+lin UttAP  p ap  = {s = ap.s ! Strong ! p.g ! p.n ! Nom} ;
     PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
 lin num x = x ;
-    gen_Quant = {s = \\_,_,_,_ => [] ; sp = Def} ;
+    gen_Quant = {s = \\_,_,_,_ => [] ; sp = Indef ; d = Strong} ;
 
     UttVPS p vps = {s = vps.s ! p.g ! persNum p.n p.p} ;
     ReflA2 a rnp = {
-      s = \\g,n,c => a.s ! g ! n ! c ++ a.c2.s ++ rnp.s ! a.c2.c
+      s = \\d,g,n,c => a.s ! d ! g ! n ! c ++ a.c2.s ++ rnp.s ! a.c2.c ;
     } ;
     ReflVPSlash vps rnp = {
       Converb = vps.Converb ++ vps.particle ++ vps.c2.s ++ rnp.s ! vps.c2.c ++ vps.sc ;
+      Imperative = \\n => vps.imperative ! n ++ vps.particle ++ vps.c2.s ++ rnp.s ! vps.c2.c ++ vps.sc ;
       Indicative = \\t,pol,g,p => vps.Indicative ! t ! p ++ vps.particle ++ negStr pol ++ vps.c2.s ++ rnp.s ! vps.c2.c ++ vps.sc ;
+      Finite = vps.Indicative ;
+      Remainder = \\pol,_,_ => negStr pol ++ vps.particle ++ vps.c2.s ++ rnp.s ! vps.c2.c ++ vps.sc ;
       Nonfinite = vps.Nonfinite ++ vps.particle ++ vps.c2.s ++ rnp.s ! vps.c2.c ++ vps.sc ;
       Participle = \\t => vps.Participle ! t ++ vps.particle ++ vps.c2.s ++ rnp.s ! vps.c2.c ++ vps.sc
     } ;
@@ -36,7 +39,12 @@ lin num x = x ;
     GenModIP num ip cn = {s = ip.s ++ cn.s ! Def ! num.n ! Nom ; n = num.n} ;
     CompBareCN cn = {s = \\_,n => cn.s ! Indef ! n ! Nom} ;
 
-    StrandQuestSlash ip cls = {s = \\t,pol => ip.s ++ cls.s ! t ! pol} ;
+    StrandQuestSlash ip cls = {
+      s = \\t,pol => ip.s ++ cls.s ! t ! pol ;
+      anterior = \\t,pol => ip.s ++ cls.s ! t ! pol ;
+      future = \\pol => ip.s ++ cls.s ! Pres ! pol ;
+      conditional = \\pol => ip.s ++ cls.s ! Past ! pol
+    } ;
     StrandRelSlash rp cls = {s = \\t,pol,_,_ => rp.s ++ cls.s ! t ! pol} ;
     EmptyRelSlash cls = {s = \\t,pol,_,_ => cls.s ! t ! pol} ;
 
@@ -70,7 +78,10 @@ lin num x = x ;
     ConjVPI conj xs = {s = xs.s1 ++ conj.s ++ xs.s2} ;
     ComplVPIVV vv vpi = {
       Converb = vv.Converb ++ vv.particle ++ vpi.s ;
+      Imperative = \\n => vv.imperative ! n ++ vv.particle ++ vpi.s ;
       Indicative = \\t,pol,g,p => vv.Indicative ! t ! p ++ vv.particle ++ negStr pol ++ vpi.s ;
+      Finite = vv.Indicative ;
+      Remainder = \\pol,_,_ => negStr pol ++ vv.particle ++ vpi.s ;
       Nonfinite = vv.Nonfinite ++ vv.particle ++ vpi.s ;
       Participle = \\t => vv.Participle ! t ++ vv.particle ++ vpi.s
     } ;
@@ -103,26 +114,32 @@ lin num x = x ;
     ConsImp x xs = {s1 = \\pol,n => x.s ! pol ! n ++ "," ++ xs.s1 ! pol ! n ; s2 = xs.s2} ;
 
     ProDrop p = p ** {s = \\_ => []} ;
-    ICompAP ap = {s = ap.s ! Neuter ! Sg ! Nom} ;
+    ICompAP ap = {s = ap.s ! Strong ! Neuter ! Sg ! Nom} ;
     IAdvAdv adv = {s = adv.s} ;
     CompIQuant iq = {s = iq.s} ;
     PrepCN prep cn = {s = prep.s ++ cn.s ! Indef ! Sg ! prep.c} ;
     FocusObj np ss = {s = np.s ! Acc ++ ss.s} ;
     FocusAdv adv s = {s = adv.s ++ s.s} ;
     FocusAdV adv s = {s = adv.s ++ s.s} ;
-    PresPartAP vp = {s = \\_,_,_ => vp.Participle ! Pres} ;
+    PresPartAP vp = {s = \\_,_,_,_ => vp.Participle ! Pres} ;
     EmbedPresPart vp = {s = vp.Participle ! Pres} ;
-    PastPartAP vps = {s = \\_,_,_ => vps.Participle ! Past ++ vps.particle ++ vps.sc} ;
-    PastPartAgentAP vps np = {s = \\_,_,_ => vps.Participle ! Past ++ vps.particle ++ vps.sc ++ "av" ++ np.s ! Dat} ;
+    PastPartAP vps = {s = \\_,_,_,_ => vps.Participle ! Past ++ vps.particle ++ vps.sc} ;
+    PastPartAgentAP vps np = {s = \\_,_,_,_ => vps.Participle ! Past ++ vps.particle ++ vps.sc ++ "av" ++ np.s ! Dat} ;
     PassVPSlash vps = {
       Converb = "verið" ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ;
+      Imperative = \\n => case n of {Sg => "ver" ; Pl => "verið"} ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ;
       Indicative = \\t,pol,_,p => copula ! t ! p ++ negStr pol ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ;
+      Finite = copula ;
+      Remainder = \\pol,_,_ => negStr pol ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ;
       Nonfinite = "vera" ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ;
       Participle = \\_ => "verið" ++ vps.Participle ! Past ++ vps.particle ++ vps.sc
     } ;
     PassAgentVPSlash vps np = {
       Converb = "verið" ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ++ "av" ++ np.s ! Dat ;
+      Imperative = \\n => case n of {Sg => "ver" ; Pl => "verið"} ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ++ "av" ++ np.s ! Dat ;
       Indicative = \\t,pol,_,p => copula ! t ! p ++ negStr pol ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ++ "av" ++ np.s ! Dat ;
+      Finite = copula ;
+      Remainder = \\pol,_,_ => negStr pol ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ++ "av" ++ np.s ! Dat ;
       Nonfinite = "vera" ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ++ "av" ++ np.s ! Dat ;
       Participle = \\_ => "verið" ++ vps.Participle ! Past ++ vps.particle ++ vps.sc ++ "av" ++ np.s ! Dat
     } ;
@@ -133,80 +150,133 @@ lin num x = x ;
     ExistsNP np = {
       Converb = "tað finst" ++ np.s ! Nom ;
       Indicative = \\t,pol => "tað" ++ copula ! t ! persNum np.n P3 ++ negStr pol ++ np.s ! Nom ;
+      Interrogative = \\t,pol => copula ! t ! persNum np.n P3 ++ "tað" ++ negStr pol ++ np.s ! Nom ;
+      Future = \\pol => "tað" ++ futureAux ! PSg P3 ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      FutureInterrogative = \\pol => futureAux ! PSg P3 ++ "tað" ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      Conditional = \\pol => "tað" ++ conditionalAux ! PSg P3 ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      ConditionalInterrogative = \\pol => conditionalAux ! PSg P3 ++ "tað" ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      Anterior = \\t,pol => "tað" ++ perfectAux ! t ! PSg P3 ++ negStr pol ++ "verið" ++ np.s ! Nom ;
+      AnteriorInterrogative = \\t,pol => perfectAux ! t ! PSg P3 ++ "tað" ++ negStr pol ++ "verið" ++ np.s ! Nom ;
       Nonfinite = "vera" ++ np.s ! Nom ;
       Participle = \\_ => "verið" ++ np.s ! Nom
     } ;
     AdvIsNP adv np = {
       Converb = adv.s ++ copula ! Pres ! persNum np.n P3 ++ np.s ! Nom ;
       Indicative = \\t,pol => adv.s ++ copula ! t ! persNum np.n P3 ++ negStr pol ++ np.s ! Nom ;
+      Interrogative = \\t,pol => copula ! t ! persNum np.n P3 ++ adv.s ++ negStr pol ++ np.s ! Nom ;
+      Future = \\pol => adv.s ++ futureAux ! persNum np.n P3 ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      FutureInterrogative = \\pol => adv.s ++ futureAux ! persNum np.n P3 ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      Conditional = \\pol => adv.s ++ conditionalAux ! persNum np.n P3 ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      ConditionalInterrogative = \\pol => adv.s ++ conditionalAux ! persNum np.n P3 ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      Anterior = \\t,pol => adv.s ++ perfectAux ! t ! persNum np.n P3 ++ negStr pol ++ "verið" ++ np.s ! Nom ;
+      AnteriorInterrogative = \\t,pol => adv.s ++ perfectAux ! t ! persNum np.n P3 ++ negStr pol ++ "verið" ++ np.s ! Nom ;
       Nonfinite = adv.s ++ "vera" ++ np.s ! Nom ;
       Participle = \\_ => adv.s ++ "verið" ++ np.s ! Nom
     } ;
 
     ComplBareVS vs s = {
       Converb = vs.Converb ++ vs.particle ++ s.s ;
+      Imperative = \\n => vs.imperative ! n ++ vs.particle ++ s.s ;
       Indicative = \\t,pol,g,p => vs.Indicative ! t ! p ++ vs.particle ++ negStr pol ++ s.s ;
+      Finite = vs.Indicative ;
+      Remainder = \\pol,_,_ => negStr pol ++ vs.particle ++ s.s ;
       Nonfinite = vs.Nonfinite ++ vs.particle ++ s.s ;
       Participle = \\t => vs.Participle ! t ++ vs.particle ++ s.s
     } ;
     SlashBareV2S v s = v ** {c2 = v.c2 ; sc = s.s} ;
     ComplDirectVS vs utt = {
       Converb = vs.Converb ++ vs.particle ++ utt.s ;
+      Imperative = \\n => vs.imperative ! n ++ vs.particle ++ utt.s ;
       Indicative = \\t,pol,g,p => vs.Indicative ! t ! p ++ vs.particle ++ negStr pol ++ utt.s ;
+      Finite = vs.Indicative ;
+      Remainder = \\pol,_,_ => negStr pol ++ vs.particle ++ utt.s ;
       Nonfinite = vs.Nonfinite ++ vs.particle ++ utt.s ;
       Participle = \\t => vs.Participle ! t ++ vs.particle ++ utt.s
     } ;
     ComplDirectVQ vq utt = {
       Converb = vq.Converb ++ vq.particle ++ utt.s ;
+      Imperative = \\n => vq.imperative ! n ++ vq.particle ++ utt.s ;
       Indicative = \\t,pol,g,p => vq.Indicative ! t ! p ++ vq.particle ++ negStr pol ++ utt.s ;
+      Finite = vq.Indicative ;
+      Remainder = \\pol,_,_ => negStr pol ++ vq.particle ++ utt.s ;
       Nonfinite = vq.Nonfinite ++ vq.particle ++ utt.s ;
       Participle = \\t => vq.Participle ! t ++ vq.particle ++ utt.s
     } ;
     FrontComplDirectVS np vs utt = {
       Converb = utt.s ++ np.s ! Nom ++ vs.Converb ;
       Indicative = \\t,pol => utt.s ++ np.s ! Nom ++ vs.Indicative ! t ! persNum np.n np.p ++ negStr pol ;
+      Interrogative = \\t,pol => utt.s ++ vs.Indicative ! t ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ;
+      Future = \\pol => utt.s ++ np.s ! Nom ++ futureAux ! persNum np.n np.p ++ negStr pol ++ vs.Nonfinite ;
+      FutureInterrogative = \\pol => utt.s ++ futureAux ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ vs.Nonfinite ;
+      Conditional = \\pol => utt.s ++ np.s ! Nom ++ conditionalAux ! persNum np.n np.p ++ negStr pol ++ vs.Nonfinite ;
+      ConditionalInterrogative = \\pol => utt.s ++ conditionalAux ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ vs.Nonfinite ;
+      Anterior = \\t,pol => utt.s ++ np.s ! Nom ++ perfectAux ! t ! persNum np.n np.p ++ negStr pol ++ vs.Converb ;
+      AnteriorInterrogative = \\t,pol => utt.s ++ perfectAux ! t ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ vs.Converb ;
       Nonfinite = utt.s ++ np.s ! Nom ++ vs.Nonfinite ;
       Participle = \\t => utt.s ++ np.s ! Nom ++ vs.Participle ! t
     } ;
     FrontComplDirectVQ np vq utt = {
       Converb = utt.s ++ np.s ! Nom ++ vq.Converb ;
       Indicative = \\t,pol => utt.s ++ np.s ! Nom ++ vq.Indicative ! t ! persNum np.n np.p ++ negStr pol ;
+      Interrogative = \\t,pol => utt.s ++ vq.Indicative ! t ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ;
+      Future = \\pol => utt.s ++ np.s ! Nom ++ futureAux ! persNum np.n np.p ++ negStr pol ++ vq.Nonfinite ;
+      FutureInterrogative = \\pol => utt.s ++ futureAux ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ vq.Nonfinite ;
+      Conditional = \\pol => utt.s ++ np.s ! Nom ++ conditionalAux ! persNum np.n np.p ++ negStr pol ++ vq.Nonfinite ;
+      ConditionalInterrogative = \\pol => utt.s ++ conditionalAux ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ vq.Nonfinite ;
+      Anterior = \\t,pol => utt.s ++ np.s ! Nom ++ perfectAux ! t ! persNum np.n np.p ++ negStr pol ++ vq.Converb ;
+      AnteriorInterrogative = \\t,pol => utt.s ++ perfectAux ! t ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ vq.Converb ;
       Nonfinite = utt.s ++ np.s ! Nom ++ vq.Nonfinite ;
       Participle = \\t => utt.s ++ np.s ! Nom ++ vq.Participle ! t
     } ;
     PredAPVP ap vp = {
-      Converb = "tað er" ++ ap.s ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
-      Indicative = \\t,pol => "tað" ++ copula ! t ! PSg P3 ++ negStr pol ++ ap.s ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
-      Nonfinite = "vera" ++ ap.s ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
-      Participle = \\_ => "verið" ++ ap.s ! Neuter ! Sg ! Nom ++ vp.Nonfinite
+      Converb = "tað er" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      Indicative = \\t,pol => "tað" ++ copula ! t ! PSg P3 ++ negStr pol ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      Interrogative = \\t,pol => copula ! t ! PSg P3 ++ "tað" ++ negStr pol ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      Future = \\pol => "tað" ++ futureAux ! PSg P3 ++ negStr pol ++ "vera" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      FutureInterrogative = \\pol => futureAux ! PSg P3 ++ "tað" ++ negStr pol ++ "vera" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      Conditional = \\pol => "tað" ++ conditionalAux ! PSg P3 ++ negStr pol ++ "vera" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      ConditionalInterrogative = \\pol => conditionalAux ! PSg P3 ++ "tað" ++ negStr pol ++ "vera" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      Anterior = \\t,pol => "tað" ++ perfectAux ! t ! PSg P3 ++ negStr pol ++ "verið" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      AnteriorInterrogative = \\t,pol => perfectAux ! t ! PSg P3 ++ "tað" ++ negStr pol ++ "verið" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      Nonfinite = "vera" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite ;
+      Participle = \\_ => "verið" ++ ap.s ! Strong ! Neuter ! Sg ! Nom ++ vp.Nonfinite
     } ;
-    AdjAsCN ap = mkCN (ap.s ! Masc ! Sg ! Nom) Masc ;
-    AdjAsNP ap = mkNP (ap.s ! Masc ! Sg ! Nom) Masc Sg P3 ;
-    PredIAdvVP iadv vp = {s = \\t,pol => iadv.s ++ vp.Nonfinite} ;
+    AdjAsCN ap = mkCN (ap.s ! Strong ! Masc ! Sg ! Nom) Masc ;
+    AdjAsNP ap = mkNP (ap.s ! Strong ! Masc ! Sg ! Nom) Masc Sg P3 ;
+    PredIAdvVP iadv vp = {
+      s = \\t,pol => iadv.s ++ vp.Nonfinite ;
+      anterior = \\t,pol => iadv.s ++ perfectAux ! t ! PSg P3 ++ negStr pol ++ vp.Converb ;
+      future = \\pol => iadv.s ++ futureAux ! PSg P3 ++ negStr pol ++ vp.Nonfinite ;
+      conditional = \\pol => iadv.s ++ conditionalAux ! PSg P3 ++ negStr pol ++ vp.Nonfinite
+    } ;
     EmbedSSlash ss = {s = ss.s} ;
 
     ReflPron = mkNP "seg" Masc Sg P3 ;
-    ReflPoss num cn = mkNP (cn.s ! Def ! num.n ! Nom) cn.g num.n P3 ;
+    ReflPoss num cn = {
+      s = \\c => reflPoss cn.g num.n c ++ cn.p ! num.n ! c ;
+      g = cn.g ; n = num.n ; p = P3
+    } ;
     PredetRNP pred rnp = rnp ** {s = \\c => pred.s ++ rnp.s ! c} ;
     AdvRNP np prep rnp = rnp ** {s = \\c => rnp.s ! c ++ prep.s ++ np.s ! prep.c} ;
     AdvRVP vp prep rnp = vp ** {
       Converb = vp.Converb ++ prep.s ++ rnp.s ! prep.c ;
+      Imperative = \\n => vp.Imperative ! n ++ prep.s ++ rnp.s ! prep.c ;
       Indicative = \\t,pol,g,p => vp.Indicative ! t ! pol ! g ! p ++ prep.s ++ rnp.s ! prep.c ;
+      Remainder = \\pol,g,p => vp.Remainder ! pol ! g ! p ++ prep.s ++ rnp.s ! prep.c ;
       Nonfinite = vp.Nonfinite ++ prep.s ++ rnp.s ! prep.c ;
       Participle = \\t => vp.Participle ! t ++ prep.s ++ rnp.s ! prep.c
     } ;
-    AdvRAP ap prep rnp = {s = \\g,n,c => ap.s ! g ! n ! c ++ prep.s ++ rnp.s ! prep.c} ;
-    PossPronRNP pron num cn rnp = mkNP (pron.s ! Gen ++ cn.s ! Def ! num.n ! Nom ++ rnp.s ! Gen) cn.g num.n P3 ;
+    AdvRAP ap prep rnp = {s = \\d,g,n,c => ap.s ! d ! g ! n ! c ++ prep.s ++ rnp.s ! prep.c} ;
+    PossPronRNP pron num cn rnp = mkNP (pron.poss ! cn.g ! num.n ! Nom ++ cn.p ! num.n ! Nom ++ rnp.s ! Gen) cn.g num.n P3 ;
     ConjRNP conj xs = mkNP (xs.s1 ! Nom ++ conj.s ++ xs.s2 ! Nom) xs.g Pl P3 ;
     Base_rr_RNP x y = {s1 = x.s ; s2 = y.s ; g = x.g ; n = Pl ; p = P3} ;
     Base_nr_RNP x y = {s1 = x.s ; s2 = y.s ; g = x.g ; n = Pl ; p = P3} ;
     Base_rn_RNP x y = {s1 = x.s ; s2 = y.s ; g = x.g ; n = Pl ; p = P3} ;
     Cons_rr_RNP x xs = {s1 = \\c => x.s ! c ++ "," ++ xs.s1 ! c ; s2 = xs.s2 ; g = xs.g ; n = Pl ; p = P3} ;
     Cons_nr_RNP x xs = {s1 = \\c => x.s ! c ++ "," ++ xs.s1 ! c ; s2 = xs.s2 ; g = xs.g ; n = Pl ; p = P3} ;
-    ReflPossPron = {s = \\_,_,_,_ => "sítt" ; sp = Def} ;
-
-    CompoundN n1 n2 = mkCN (n1.s ! Indef ! Sg ! Nom ++ n2.s ! Indef ! Sg ! Nom) n2.g ;
-    CompoundAP n a = {s = \\g,num,c => n.s ! Indef ! Sg ! Nom ++ a.s ! g ! num ! c} ;
+    ReflPossPron = {s = \\_,g,n,c => reflPoss g n c ; sp = Indef ; d = Weak} ;
+    CompoundN n1 n2 = mkCN (n1.s ! Indef ! Sg ! Nom ++ BIND ++ n2.s ! Indef ! Sg ! Nom) n2.g ;
+    CompoundAP n a = {s = \\d,g,num,c => n.s ! Indef ! Sg ! Nom ++ BIND ++ a.s ! d ! g ! num ! c} ;
     GerundCN vp = mkCN vp.Nonfinite Neuter ;
     GerundNP vp = mkNP vp.Nonfinite Neuter Sg P3 ;
     GerundAdv vp = {s = vp.Nonfinite} ;
@@ -215,7 +285,7 @@ lin num x = x ;
     InOrderToVP ant pol pron vp = {s = "fyri at" ++ negStr pol.p ++ vp.Nonfinite} ;
     ApposNP np app = np ** {s = \\c => np.s ! c ++ "," ++ app.s ! Nom} ;
     AdAdV ada adv = {s = ada.s ++ adv.s} ;
-    PositAdVAdj a = {s = a.s ! Neuter ! Sg ! Nom} ;
+    PositAdVAdj a = {s = a.s ! Strong ! Neuter ! Sg ! Nom} ;
     CompS s = {s = \\_,_ => s.s} ;
     CompQS qs = {s = \\_,_ => qs.s} ;
     CompVP ant pol pron vp = {s = \\_,_ => negStr pol.p ++ vp.Nonfinite} ;
@@ -223,24 +293,37 @@ lin num x = x ;
     UttVPShort vp = {s = vp.Nonfinite} ;
     ComplSlashPartLast vps np = {
       Converb = vps.Converb ++ vps.c2.s ++ np.s ! vps.c2.c ++ vps.particle ++ vps.sc ;
+      Imperative = \\n => vps.imperative ! n ++ vps.c2.s ++ np.s ! vps.c2.c ++ vps.particle ++ vps.sc ;
       Indicative = \\t,pol,g,p => vps.Indicative ! t ! p ++ negStr pol ++ vps.c2.s ++ np.s ! vps.c2.c ++ vps.particle ++ vps.sc ;
+      Finite = vps.Indicative ;
+      Remainder = \\pol,_,_ => negStr pol ++ vps.c2.s ++ np.s ! vps.c2.c ++ vps.particle ++ vps.sc ;
       Nonfinite = vps.Nonfinite ++ vps.c2.s ++ np.s ! vps.c2.c ++ vps.particle ++ vps.sc ;
       Participle = \\t => vps.Participle ! t ++ vps.c2.s ++ np.s ! vps.c2.c ++ vps.particle ++ vps.sc
     } ;
     UseComp_estar comp = {
-      Converb = copula ! Pres ! PPl ++ comp.s ! Masc ! Sg ;
+      Converb = "verið" ++ comp.s ! Masc ! Sg ;
+      Imperative = \\n => case n of {Sg => "ver" ; Pl => "verið"} ++ comp.s ! Masc ! n ;
       Indicative = \\t,pol,g,p => copula ! t ! p ++ negStr pol ++ comp.s ! g ! persNumNumber p ;
+      Finite = copula ;
+      Remainder = \\pol,g,p => negStr pol ++ comp.s ! g ! persNumNumber p ;
       Nonfinite = "vera" ++ comp.s ! Masc ! Sg ;
       Participle = \\_ => "verið" ++ comp.s ! Masc ! Sg
     } ;
     UseComp_ser comp = {
-      Converb = copula ! Pres ! PPl ++ comp.s ! Masc ! Sg ;
+      Converb = "verið" ++ comp.s ! Masc ! Sg ;
+      Imperative = \\n => case n of {Sg => "ver" ; Pl => "verið"} ++ comp.s ! Masc ! n ;
       Indicative = \\t,pol,g,p => copula ! t ! p ++ negStr pol ++ comp.s ! g ! persNumNumber p ;
+      Finite = copula ;
+      Remainder = \\pol,g,p => negStr pol ++ comp.s ! g ! persNumNumber p ;
       Nonfinite = "vera" ++ comp.s ! Masc ! Sg ;
       Participle = \\_ => "verið" ++ comp.s ! Masc ! Sg
     } ;
     SubjRelNP np rs = np ** {s = \\c => np.s ! c ++ rs.s ! np.g ! persNum np.n np.p} ;
-    theyNeutr_Pron = mkNP "tey" Neuter Pl P3 ;
+    theyNeutr_Pron = {
+      s = table {Nom => "tey" ; Acc => "tey" ; Dat => "teimum" ; Gen => "teirra"} ;
+      poss = \\_,_,_ => "teirra" ;
+      g = Neuter ; n = Pl ; p = P3
+    } ;
     UttAccNP np = {s = np.s ! Acc} ;
     UttDatNP np = {s = np.s ! Dat} ;
     UttAccIP ip = {s = ip.s} ;
@@ -249,7 +332,10 @@ lin num x = x ;
     UseDAPMasc dap = mkNP (dap.s ! Masc ! Nom) Masc dap.n P3 ;
     UseDAPFem dap = mkNP (dap.s ! Fem ! Nom) Fem dap.n P3 ;
     CardCNCard card cn = {s = \\_,c => card.s ! cn.g ! c ++ cn.s ! Indef ! card.n ! c ; n = Pl} ;
-    SubjunctRelCN cn rs = cn ** {s = \\sp,n,c => cn.s ! sp ! n ! c ++ rs.s ! cn.g ! persNum n P3} ;
+    SubjunctRelCN cn rs = cn ** {
+      s = \\sp,n,c => cn.s ! sp ! n ! c ++ rs.s ! cn.g ! persNum n P3 ;
+      p = \\n,c => cn.p ! n ! c ++ rs.s ! cn.g ! persNum n P3
+    } ;
 
     NumLess num = num ** {s = \\g,c => num.s ! g ! c ++ "minni"} ;
     NumMore num = num ** {s = \\g,c => num.s ! g ! c ++ "afturat"} ;
@@ -257,12 +343,12 @@ lin num x = x ;
     UseAdAACard ada acard = {s = \\_,_ => ada.s ++ acard.s ; n = Pl} ;
     RelNP np rs = np ** {s = \\c => np.s ! c ++ rs.s ! np.g ! persNum np.n np.p} ;
     ExtRelNP np rs = np ** {s = \\c => np.s ! c ++ "," ++ rs.s ! np.g ! persNum np.n np.p} ;
-    ExtAdvAP ap adv = {s = \\g,n,c => ap.s ! g ! n ! c ++ "," ++ adv.s} ;
+    ExtAdvAP ap adv = {s = \\d,g,n,c => ap.s ! d ! g ! n ! c ++ "," ++ adv.s} ;
     BareN2 n2 = n2 ;
     ComparAdv pol cadv adv comp = {s = negStr pol.p ++ cadv.s ++ adv.s ++ cadv.p ++ comp.s ! Masc ! Sg} ;
-    CAdvAP pol cadv ap comp = {s = \\g,n,c => negStr pol.p ++ cadv.s ++ ap.s ! g ! n ! c ++ cadv.p ++ comp.s ! g ! n} ;
+    CAdvAP pol cadv ap comp = {s = \\d,g,n,c => negStr pol.p ++ cadv.s ++ ap.s ! d ! g ! n ! c ++ cadv.p ++ comp.s ! g ! n} ;
     AdnCAdv pol cadv = {s = negStr pol.p ++ cadv.s} ;
-    EnoughAP ap ant pol vp = {s = \\g,n,c => ap.s ! g ! n ! c ++ "nóg" ++ negStr pol.p ++ vp.Nonfinite} ;
+    EnoughAP ap ant pol vp = {s = \\d,g,n,c => ap.s ! d ! g ! n ! c ++ "nóg" ++ negStr pol.p ++ vp.Nonfinite} ;
     EnoughAdv adv = {s = adv.s ++ "nóg"} ;
     TimeNP np = {s = np.s ! Acc} ;
     AdvAdv a b = {s = a.s ++ b.s} ;
@@ -272,7 +358,10 @@ lin num x = x ;
     EmbedVP ant pol pron vp = {s = negStr pol.p ++ vp.Nonfinite} ;
     ComplVV vv ant pol vp = {
       Converb = vv.Converb ++ vv.particle ++ negStr pol.p ++ vp.Nonfinite ;
+      Imperative = \\n => vv.imperative ! n ++ vv.particle ++ negStr pol.p ++ vp.Nonfinite ;
       Indicative = \\t,p2,g,pn => vv.Indicative ! t ! pn ++ vv.particle ++ negStr p2 ++ negStr pol.p ++ vp.Nonfinite ;
+      Finite = vv.Indicative ;
+      Remainder = \\p2,_,_ => negStr p2 ++ vv.particle ++ negStr pol.p ++ vp.Nonfinite ;
       Nonfinite = vv.Nonfinite ++ vv.particle ++ negStr pol.p ++ vp.Nonfinite ;
       Participle = \\t => vv.Participle ! t ++ vv.particle ++ negStr pol.p ++ vp.Nonfinite
     } ;
@@ -295,6 +384,13 @@ lin num x = x ;
     FocusComp comp np = {
       Converb = comp.s ! np.g ! np.n ++ copula ! Pres ! persNum np.n np.p ++ np.s ! Nom ;
       Indicative = \\t,pol => comp.s ! np.g ! np.n ++ copula ! t ! persNum np.n np.p ++ negStr pol ++ np.s ! Nom ;
+      Interrogative = \\t,pol => comp.s ! np.g ! np.n ++ copula ! t ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ;
+      Future = \\pol => comp.s ! np.g ! np.n ++ futureAux ! persNum np.n np.p ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      FutureInterrogative = \\pol => comp.s ! np.g ! np.n ++ futureAux ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ "vera" ;
+      Conditional = \\pol => comp.s ! np.g ! np.n ++ conditionalAux ! persNum np.n np.p ++ negStr pol ++ "vera" ++ np.s ! Nom ;
+      ConditionalInterrogative = \\pol => comp.s ! np.g ! np.n ++ conditionalAux ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ "vera" ;
+      Anterior = \\t,pol => comp.s ! np.g ! np.n ++ perfectAux ! t ! persNum np.n np.p ++ negStr pol ++ "verið" ++ np.s ! Nom ;
+      AnteriorInterrogative = \\t,pol => comp.s ! np.g ! np.n ++ perfectAux ! t ! persNum np.n np.p ++ np.s ! Nom ++ negStr pol ++ "verið" ;
       Nonfinite = comp.s ! np.g ! np.n ++ "vera" ++ np.s ! Nom ;
       Participle = \\_ => comp.s ! np.g ! np.n ++ "verið" ++ np.s ! Nom
     } ;

@@ -19,6 +19,7 @@ oper
         Pos => [] ;
         Neg => "не"
       } ++
+      medialClitic vp.vtype ++
       case ant.a of {
         Simul => vp.present ! Perfective ! genNum2num agr.g ! agr.p ++ vp.compl ! agr ;
         Anter => auxBe.present ! genNum2num agr.g ! agr.p ++

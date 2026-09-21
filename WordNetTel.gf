@@ -1,15 +1,15 @@
 concrete WordNetTel of WordNet = CatTel ** open ParadigmsTel, ResTel, Prelude, (S=StructuralTel) in {
 
 lin a_bomb_N = variants {} ;
-lin a_couple_Card = {s = "ఒక జంట" ; n = Pl} ; --guessed
-lin a_few_Card = {s = "కొన్ని" ; n = Pl} ; --guessed
+lin a_couple_Card = {s = \\_=>"ఒక జంట" ; n = Pl} ; --guessed
+lin a_few_Card = {s = \\_=>"కొన్ని" ; n = Pl} ; --guessed
 lin a_fortiori_Adv = variants {} ;
 lin a_la_carte_Adv = mkAdv "ఎ లా కార్టే" ;
 lin a_la_mode_Adv = mkAdv "ఐస్‌క్రీమ్‌తో" ;
 lin a_level_N = variants {} ;
-lin a_little_Card = {s = "కొద్దిదైన" ; n = Pl} ; --guessed
-lin a_lotSg_Card = {s = "రాశి" ; n = Pl} ; --guessed
-lin a_lotPl_Card = {s = "రాశి" ; n = Pl} ; --guessed
+lin a_little_Card = {s = \\_=>"కొద్దిదైన" ; n = Pl} ; --guessed
+lin a_lotSg_Card = {s = \\_=>"రాశి" ; n = Pl} ; --guessed
+lin a_lotPl_Card = {s = \\_=>"రాశి" ; n = Pl} ; --guessed
 lin a_lot_AdA = mkAdA "చాలా" ; --guessed
 lin a_lot_Adv = mkAdv "చాలా" ; --guessed
 lin a_posteriori_1_A = mkA "అనుభవాధారిత" ;
@@ -17,7 +17,7 @@ lin a_posteriori_2_A = variants {} ;
 lin a_priori_1_A = mkA "ముందస్తు" ;
 lin a_priori_2_A = variants {} ;
 lin a_sufficiencySg_Card = variants {} ;
-lin a_sufficiencyPl_Card = {s = "కావలసినంత" ; n = Pl} ; --guessed
+lin a_sufficiencyPl_Card = {s = \\_=>"కావలసినంత" ; n = Pl} ; --guessed
 lin aa_1_N = variants {} ;
 lin aa_2_N = variants {} ;
 lin aa_3_N = variants {} ;
@@ -33408,8 +33408,8 @@ lin enormity_4_N = mkN "దురాగతము" ; --guessed
 lin enormous_A = mkA "పేద్ద" ; --guessed
 lin enormousness_N = variants {} ;
 lin enosis_N = variants {} ;
-lin enoughSg_Card = {s = "కావలసినంత" ; n = Pl} ; --guessed
-lin enoughPl_Card = {s = "కావలసినంత" ; n = Pl} ; --guessed
+lin enoughSg_Card = {s = \\_=>"కావలసినంత" ; n = Pl} ; --guessed
+lin enoughPl_Card = {s = \\_=>"కావలసినంత" ; n = Pl} ; --guessed
 lin enplane_V = variants {} ;
 lin enplane_V2 = variants {} ;
 lin enquire_1_V = mkV "అడుగు" ; --guessed
@@ -47933,7 +47933,7 @@ lin hover_4_V = mkV "తేలు" ; --guessed
 lin hover_5_V = variants {} ;
 lin hover_around_V = variants {} ;
 lin hovercraft_N = variants {} ;
-lin how8many_IDet = {s = "ఎలా 8" ; n = Pl} ; --guessed
+lin how8many_IDet = S.how8many_IDet ; --guessed
 lin how8much_IDet = {s = "ఎలా 8మచ్" ; n = Pl} ; --guessed
 lin how_IAdv = {s = "ఎలా"} ; --guessed
 lin how_d'ye_do_N = variants {} ;
@@ -58321,7 +58321,7 @@ lin lot_4_N = mkN "విధి" ; --guessed
 lin lot_3_N = mkN "సమూహం" ; --guessed
 lin lot_5_N = mkN "అదృష్టం" ; --guessed
 lin lot_6_N = mkN "గుంపు" ; --guessed
-lin lotsSg_Card = {s = "రాశి" ; n = Pl} ; --guessed
+lin lotsSg_Card = {s = \\_=>"రాశి" ; n = Pl} ; --guessed
 lin lotsPl_Card = variants {} ;
 lin lot_PN = variants {} ;
 lin lota_1_N = variants {} ;
@@ -62188,7 +62188,7 @@ lin millinerFem_N = variants {} ;
 lin millinery_1_N = variants {} ;
 lin millinery_2_N = variants {} ;
 lin milling_N = variants {} ;
-lin millions_Card = {s = "పది లక్షలు" ; n = Pl} ; --guessed
+lin millions_Card = {s = \\_=>"పది లక్షలు" ; n = Pl} ; --guessed
 lin millionaire_N = mkN "కోటీశ్వరుడు" ; --guessed
 lin millionairess_N = variants {} ;
 lin millionfold_Adv = variants {} ;
@@ -89616,7 +89616,7 @@ lin sevenfold_Adv = mkAdv "ఏడింతలు" ; --guessed
 lin sevenoaks_LN = mkLN "సెవవాక్స్" ;
 lin sever_1_V2 = mkV2 "వేరు చేయు" ; --guessed
 lin sever_2_V2 = mkV2 "వేరు చేయు" ; --guessed
-lin several_Card = {s = "అనేకం" ; n = Pl} ; --guessed
+lin several_Card = {s = \\_=>"అనేకం" ; n = Pl} ; --guessed
 lin severally_1_Adv = mkAdv "విడిగా" ; --guessed
 lin severally_2_Adv = mkAdv "విడిగా" ; --guessed
 lin severally_3_Adv = mkAdv "వేర్వేరు" ; --guessed

@@ -1,5 +1,3 @@
---# -path=.:../gf-rgl/src/telugu:../gf-rgl/src/abstract:../gf-rgl/src/common:../gf-rgl/src/prelude
-
 concrete ParseExtendTel of ParseExtend =
   ExtendTel - [
     iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron,
@@ -19,10 +17,10 @@ concrete ParseExtendTel of ParseExtend =
 
     num x = {s = x.s ; n = x.n} ;
 
-    UseACard card = {s = card.s ; n = card.n} ;
-    UseAdAACard ada card = {s = ada.s ++ card.s ; n = card.n} ;
-    NumLess number = number ** {s = number.s ++ "తక్కువ"} ;
-    NumMore number = number ** {s = number.s ++ "ఎక్కువ"} ;
+    UseACard card = {s = \\_ => card.s ; n = card.n} ;
+    UseAdAACard ada card = {s = \\_ => ada.s ++ card.s ; n = card.n} ;
+    NumLess number = number ** {s = \\g => number.s ! g ++ "తక్కువ"} ;
+    NumMore number = number ** {s = \\g => number.s ! g ++ "ఎక్కువ"} ;
 
     TimeNP np = {s = np.s ! NPC Obl} ;
 

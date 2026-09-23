@@ -79408,7 +79408,7 @@ swe: en fotlös ung man ivriga att se storstaden
 bul: млад мъж, който иска да види големия град
 key: 1 footloose_A 01066975-a
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN police_N)) (AdvVP (AdvVP (ComplSlash (Slash2V3 make_of_V3 (DetCN (DetQuant IndefArt NumPl) (UseN cast_6_N))) (DetCN (DetQuant DefArt NumPl) (UseN footprint_1_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA soft_1_A) (UseN earth_1_N))))) (PrepNP outside_Prep (DetCN (DetQuant DefArt NumSg) (UseN window_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN police_N)) (ComplSlash (SlashV2a make_1_V2) (DetCN (DetQuant IndefArt NumPl) (AdvCN (AdvCN (UseN cast_6_N) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumPl) (UseN footprint_1_N)))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (AdvCN (AdjCN (PositA soft_1_A) (UseN earth_1_N)) (PrepNP outside_Prep (DetCN (DetQuant DefArt NumSg) (UseN window_1_N)))))))))))) NoVoc
 eng: the police made casts of the footprints in the soft earth outside the window
 swe: Polisen gjorde gjutningar från fotavtrycken i den mjuka jorden utanför fönstret
 bul: полицията направи отливки от следите в меката земя пред прозореца

@@ -19,7 +19,7 @@ import Network.HTTP
 import Network.HTTP.MD5
 import Network.URI
 import OpenSSL
-import PGF2
+import PGF2 hiding (showIdent)
 import System.IO ( utf8 )
 import System.IO.Unsafe ( unsafePerformIO )
 import System.FilePath

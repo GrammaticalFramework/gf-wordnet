@@ -6,7 +6,7 @@ concrete ParseExtendBul of ParseExtend =
 lin gen_Quant = DefArt ;
 
     UttAP  p ap  = {s = ap.s ! aform p.gn Indef RSubj ! P3} ;
-    UttVPS p vps = {s = vps.s ! personAgr p.gn p.p} ;
+    UttVPS p vps = {s = vps.s ! personAgr p.gn p.p ! Inv} ;
 
     PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 

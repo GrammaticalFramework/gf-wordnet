@@ -6,7 +6,7 @@ concrete ParseCat of Parse =
   AdverbCat - [ComparAdvAdj,ComparAdvAdjS,AdnCAdv],
   SentenceCat - [EmbedVP],
   QuestionCat,
-  RelativeCat - [IdRP],
+  RelativeCat,
   ConjunctionCat,
   PhraseCat - [UttAP, UttVP],
   IdiomCat,

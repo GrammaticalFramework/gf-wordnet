@@ -2757,8 +2757,8 @@ lin allied_2_A = mkA "դաշնակից" ;
 lin allied_3_A = mkA "դաշնակից" ;
 lin allied_4_A = mkA "դաշնակից" ;
 lin allied_5_A = mkA "դաշնակից" ;
-lin allies_1_N = mkN "Դաշնակիցներ" ; --guessed
-lin allies_2_N = mkN "Դաշնակիցներ" ; --guessed
+lin allies_1_N = mkN "դաշնակից" ; --guessed
+lin allies_2_N = mkN "դաշնակից" ; --guessed
 lin allies_3_N = mkN "դաշնակիցներ" ; --guessed
 lin alligator_1_N = mkN001 "ալիգատոր" ;
 lin alligator_2_N = mkN001 "ալիգատոր" ;
@@ -2900,7 +2900,7 @@ lin along_1_Adv = mkAdv "առաջ" ;
 lin along_2_Adv = mkAdv "հետ" ; --guessed
 lin along_3_Adv = mkAdv "առաջ" ;
 lin along_4_Adv = mkAdv "հետ միասին" ; --guessed
-lin along_with_Prep = lin Prep {s="հետ մեկտեղ";c=Dat;isPre=False} ; --guessed
+lin along_with_Prep = {s="հետ մեկտեղ";c=Dat;isPre=False} ; --guessed
 lin along_5_Adv = mkAdv "առաջ" ;
 lin along_Prep = mkPrep "երկայնքով" ;
 lin alongside_Adv = mkAdv "կողք կողքի" ; --guessed
@@ -5616,7 +5616,7 @@ lin aryanMasc_1_N = mkN "արիացի" ;
 lin aryanMasc_2_N = mkN "արիացի" ;
 lin aryan_A = mkA "Արիական" ; --guessed
 lin arytenoid_1_N = mkN "Շերեփաձև աճառ" ; --guessed
-lin as_CAdv = lin CAdv {s="այնքան";p="որքան"} ; --guessed
+lin as_CAdv = {s="այնքան";p="որքան"} ; --guessed
 lin as_Prep = mkPrep "որպես" ; --guessed
 lin as_1_Subj = mkSubj "մինչ" ; --guessed
 lin as_2_Subj = mkSubj "ինչպես" ; --guessed
@@ -6201,13 +6201,13 @@ lin asynergy_1_N = mkN "ասիներգիա" ; --guessed
 lin asystole_N = mkN "ասիստոլիա" ; --guessed
 lin at_1_PN = mkPN "Աստատ" ; --guessed
 lin at_2_N = mkN "ատ" ; --guessed
-lin at_1_Prep = lin Prep {s=[];c=Loc;isPre=False} ;
-lin at_2_Prep = lin Prep {s=[];c=Loc;isPre=False} ;
+lin at_1_Prep = {s=[];c=Loc;isPre=False} ;
+lin at_2_Prep = {s=[];c=Loc;isPre=False} ;
 lin at_3_Prep = mkPrep "դեպի" ;
-lin at_4_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
+lin at_4_Prep = {s=[];c=Dat;isPre=False} ; --guessed
 lin at_5_Prep = mkPrep "դեմ" ; --guessed
-lin at_6_Prep = lin Prep {s=[];c=Loc;isPre=False} ;
-lin at_7_Prep = lin Prep {s=[];c=Loc;isPre=False} ; --guessed
+lin at_6_Prep = {s=[];c=Loc;isPre=False} ;
+lin at_7_Prep = {s=[];c=Loc;isPre=False} ; --guessed
 lin at_all_Adv = mkAdv "ընդհանրապես" ;
 lin at_bat_N = mkN "մականախաղի հերթ" ; --guessed
 lin at_home_1_Adv = mkAdv "սեփական հարկի տակ" ; --guessed
@@ -6830,7 +6830,7 @@ lin avenge_V2 = mkV2 (mkV "վրեժ լուծել") ;
 lin avengerMasc_N = mkN "վրիժառու" ;
 lin avengerFem_N = mkN "վրիժառու" ;
 lin avens_N = mkN "Մարուխ" ; --guessed
-lin avenue_1_N = mkN "ուղիներ" ; --guessed
+lin avenue_1_N = mkN "ուղի" ; --guessed
 lin avenue_2_N = mkN002 "պողոտա" ;
 lin aver_1_V2 = mkV2 (mkV "պնդել") ; --guessed
 lin aver_2_V2 = mkV2 (mkV001 "հաստատել") ;
@@ -7178,7 +7178,7 @@ lin back_off_1_V = mkV "Նահանջել" ; --guessed
 lin back_off_2_V = mkV "հրաժարվել" ; --guessed
 lin back_out_1_V = mkV "Հետընթաց դուրս գալ" ; --guessed
 lin back_out_2_V = mkV "հրաժարվել" ; --guessed
-lin back_to_Prep = lin Prep {s="հետ";c=Dat;isPre=False} ; --guessed
+lin back_to_Prep = {s="հետ";c=Dat;isPre=False} ; --guessed
 lin back_up_1_V2 = mkV2 (mkV "սատարել") ; --guessed
 lin back_up_3_V2 = mkV2 (mkV001 "հիմնավորել") ; --guessed
 lin back_up_4_V2 = mkV2 (mkV "պահուստային պատճենում կատարել") ; --guessed
@@ -8246,8 +8246,8 @@ lin basic_4_A = mkA "Հիմնային" ; --guessed
 lin basic_PN = mkPN "ԲԵՅՍԻՔ" ; --guessed
 lin basic_N = compoundN (mkA "Հիմնական") (mkN "ապրանքներ") ; --guessed
 lin basically_AdV = mkAdV "հիմնականում" ;
-lin basics_1_N = mkN "Հիմունքներ" ; --guessed
-lin basics_2_N = mkN "Հիմունքներ" ; --guessed
+lin basics_1_N = mkN "հիմունք" ; --guessed
+lin basics_2_N = mkN "հիմունք" ; --guessed
 lin basidial_A = mkA "բազիդիալ" ; --guessed
 lin basidiocarp_N = mkN "Բազիդիոկարպ" ; --guessed
 lin basidiolichen_N = compoundN (mkA "Բազիդիալ") (mkN001 "քարաքոս") ; --guessed
@@ -13916,12 +13916,12 @@ lin buzzword_N = compoundN (mkA "Նորաձև") (mkN "բառ") ; --guessed
 lin bvm_N = mkN "Երանելի Կույս Մարիամ" ; --guessed
 lin by_1_Adv = mkAdv "կողքով" ; --guessed
 lin by_2_Adv = mkAdv "պահուստում" ; --guessed
-lin by_1_Prep = lin Prep {s=[];c=Instr;isPre=False} ; --guessed
+lin by_1_Prep = {s=[];c=Instr;isPre=False} ; --guessed
 lin by_2_Prep = mkPrep "ըստ" ; --guessed
 lin by_3_Prep = mkPrep "կողմից" ; --guessed
-lin by_4_Prep = lin Prep {s=[];c=Instr;isPre=False} ; --guessed
+lin by_4_Prep = {s=[];c=Instr;isPre=False} ; --guessed
 lin by_and_large_Adv = mkAdv "ընդհանուր առմամբ" ; --guessed
-lin by_election_N = compoundN (mkA "լրացուցիչ") (mkN "ընտրություններ") ;
+lin by_election_N = compoundN (mkA "լրացուցիչ") (mkN "ընտրություն") ;
 lin by_means_of_Prep = mkPrep "միջոցով" ;
 lin by_virtue_of_Prep = mkPrep "ուժով" ; --guessed
 lin byblos_LN = mkLN "Բիբլոս" ; --guessed
@@ -16728,7 +16728,7 @@ lin channel_2_V2 = mkV2 (mkV "ուղղորդել") ; --guessed
 lin channel_3_V2 = mkV2 (mkV "ուղղորդել") ; --guessed
 lin channel_islands_national_park_LN = mkLN "Չանել Այլենդս ազգային պարկ" ; --guessed
 lin channelization_1_N = mkN "Ուղղորդում" ; --guessed
-lin channels_N = mkN "ուղիներ" ; --guessed
+lin channels_N = mkN "ուղի" ; --guessed
 lin chant_N = mkN "Երգեցողություն" ; --guessed
 lin chant_1_V = mkV "սաղմոսել" ; --guessed
 lin chant_2_V = mkV "վանկարկել" ; --guessed
@@ -20976,7 +20976,7 @@ lin conditionerMasc_2_N = mkN "մարզիչ" ;
 lin conditionerFem_2_N = mkN "մարզիչ" ;
 lin conditioner_3_N = mkN "Բալզամ" ; --guessed
 lin conditioning_N = mkN "Պայմանավորում" ; --guessed
-lin conditions_1_N = mkN "պայմաններ" ; --guessed
+lin conditions_1_N = mkN "պայման" ; --guessed
 lin conditions_2_N = mkN "Պայմաններ" ; --guessed
 lin conditions_3_N = mkN "եղանակ" ;
 lin condole_V = mkV "ցավակցել" ; --guessed
@@ -23137,7 +23137,7 @@ lin countervail_2_V2 = mkV2 (mkV "հակազդել") ; --guessed
 lin counterweight_N = mkN "հակակշիռ" ; --guessed
 lin countess_N = mkN003 "կոմսուհի" ;
 lin counting_house_N = mkN "Հաշվապահություն" ; --guessed
-lin countless_ACard = lin ACard {s = "անհամար"} ; --guessed
+lin countless_ACard = {s = "անհամար"} ; --guessed
 lin countrified_1_A = mkA "գյուղական" ; --guessed
 lin country_1_N = mkN007 "գյուղ" ;
 lin country_2_N = mkN "երկիր" ;
@@ -25676,7 +25676,7 @@ lin day_boarderMasc_N = compoundN (mkA "Ցերեկային") (mkN001 "աշակե
 lin day_boarderFem_N = compoundN (mkA "ցերեկային") (mkN001 "աշակերտ") ; --guessed
 lin day_labourerMasc_N = mkN "Օրավարձու բանվոր" ; --guessed
 lin day_labourerFem_N = mkN "Օրավարձու բանվոր" ; --guessed
-lin day_off_CN = lin CN {s = table {_ => table {_ => table {_ => "ազատ օր"}}}} ; --guessed
+lin day_off_CN = {s = table {_ => table {_ => table {_ => "ազատ օր"}}}} ; --guessed
 lin day_return_N = mkN "նույն օրվա վերադարձի տոմս" ; --guessed
 lin day_school_1_N = compoundN (mkA "Ցերեկային") (mkN "դպրոց") ; --guessed
 lin day_school_2_N = compoundN (mkA "Ցերեկային") (mkN "դպրոց") ; --guessed
@@ -25838,8 +25838,8 @@ lin dealfish_N = mkN "Ժապավենաձուկ" ; --guessed
 lin dealignment_N = mkN "Դեալայնմենտ" ; --guessed
 lin dealing_1_N = mkN "վերաբերմունք" ; --guessed
 lin dealing_2_N = mkN "գործարք" ; --guessed
-lin dealings_of_N2 = mkN2 (mkN "հարաբերություններ") ; --guessed
-lin dealings_2_N = mkN "հարաբերություններ" ; --guessed
+lin dealings_of_N2 = mkN2 (mkN "հարաբերություն") ; --guessed
+lin dealings_2_N = mkN "հարաբերություն" ; --guessed
 lin dealings_3_N = mkN "գործարքներ" ; --guessed
 lin deamination_1_N = mkN "Դեզամինացում" ; --guessed
 lin deanMasc_1_N = mkN001 "դեկան" ;
@@ -26778,7 +26778,7 @@ lin demagoguery_N = mkN "Դեմագոգիա" ; --guessed
 lin demagogy_N = mkN "դեմագոգիա" ;
 lin demand_1_N = mkN "պահանջ" ; --guessed
 lin demand_2_N = mkN "պահանջարկ" ;
-lin demand_3_N = mkN "պահանջներ" ; --guessed
+lin demand_3_N = mkN "պահանջ" ; --guessed
 lin demand_4_N = mkN "պահանջարկ" ;
 lin demand_5_N = mkN "Պահանջարկ" ; --guessed
 lin demand_1_V2 = mkV2 (mkV "պահանջել") ;
@@ -32421,9 +32421,9 @@ lin elect_A = mkA "Ընտրյալ" ; --guessed
 lin elect_2_V = mkV "ընտրել" ;
 lin elect_1_V3 = mkV3 (mkV "ընտրել") ;
 lin elected_A = mkA "ընտրված" ; --guessed
-lin election_1_N = mkN "ընտրություններ" ;
+lin election_1_N = mkN "ընտրություն" ;
 lin election_2_N = mkN "ընտրություն" ;
-lin election_3_N = mkN "ընտրություններ" ;
+lin election_3_N = mkN "ընտրություն" ;
 lin election_4_N = mkN "ընտրություն" ;
 lin electioneering_1_N = mkN "նախընտրական քարոզչություն" ; --guessed
 lin electioneering_2_N = mkN "նախընտրական քարոզչություն" ; --guessed
@@ -34430,7 +34430,7 @@ lin europe_3_LN = mkLN "Եվրոպա" ; --guessed
 lin european_A = mkA "եվրոպական" ;
 lin europeanMasc_N = mkN "եվրոպացի" ;
 lin europeanFem_N = mkN "եվրոպացի" ;
-lin european_union_NP = lin NP {s = table {_ => "Եվրոպական Միություն"}; a = S.it_Pron.a} ; --guessed
+lin european_union_NP = {s = table {_ => "Եվրոպական Միություն"}; a = S.it_Pron.a} ; --guessed
 lin europium_N = mkN001 "եվրոպիում" ;
 lin eurovision_PN = mkPN "Եվրատեսիլ" ;
 lin eurypterid_N = mkN "Էվրիպտերիդ" ; --guessed
@@ -36969,8 +36969,8 @@ lin feverish_2_A = mkA "տենդային" ; --guessed
 lin feverish_3_A = mkA "տենդոտ" ; --guessed
 lin feverroot_N = mkN "Տենդարմատ" ; --guessed
 lin few_N = mkN "ընտրյալները" ; --guessed
-lin few_ACard = lin ACard {s = "քիչ"} ; --guessed
-lin fewer_ACard = lin ACard {s = "ավելի քիչ"} ; --guessed
+lin few_ACard = {s = "քիչ"} ; --guessed
+lin fewer_ACard = {s = "ավելի քիչ"} ; --guessed
 lin fewer_than_AdN = mkAdN "ավելի քիչ, քան" ; --guessed
 lin fewness_N = mkN "Սակավություն" ; --guessed
 lin fey_1_A = mkA "Մի քիչ խենթ" ; --guessed
@@ -37687,7 +37687,7 @@ lin fishing_1_N = mkN "ձկնորսություն" ;
 lin fishing_2_N = mkN "ձկնորսություն" ;
 lin fishing_line_N = mkN "կարթալար" ;
 lin fishing_rod_N = mkN007 "կարթ" ; --guessed
-lin fishing_tackle_N = compoundN (mkA "Ձկնորսական") (mkN "պարագաներ") ; --guessed
+lin fishing_tackle_N = compoundN (mkA "ձկնորսական") (mkN "պարագա") ; --guessed
 lin fishmongerMasc_N = mkN "ձկնավաճառ" ;
 lin fishmongerFem_N = mkN "ձկնավաճառ" ;
 lin fishnet_N = compoundN (mkA "Ձկնորսական") (mkN "ցանց") ; --guessed
@@ -40096,7 +40096,7 @@ lin frogmouth_N = mkN "Գորտաբերան" ; --guessed
 lin frolic_N = mkN "Զվարճանք" ; --guessed
 lin frolic_V = mkV "թռչկոտել" ; --guessed
 lin frolicsome_A = mkA "Խաղասեր" ; --guessed
-lin from_Prep = lin Prep {s=[];c=Ablat;isPre=False} ; --guessed
+lin from_Prep = {s=[];c=Ablat;isPre=False} ; --guessed
 lin from_afar_Adv = mkAdv "հեռվից" ; --guessed
 lin from_home_Adv = mkAdv "տնից" ; --guessed
 lin from_time_to_time_Adv = mkAdv "ժամանակ առ ժամանակ" ; --guessed
@@ -45746,7 +45746,7 @@ lin hearing_1_N = mkN "Լսում" ; --guessed
 lin hearing_2_N = mkN "Ունկնդրություն" ; --guessed
 lin hearing_3_N = mkN "Լսողության սահման" ; --guessed
 lin hearing_4_N = mkN "Ունկնդրություն" ; --guessed
-lin hearing_5_N = mkN "լսումներ" ; --guessed
+lin hearing_5_N = mkN "լսում" ; --guessed
 lin hearing_6_N = mkN "լսողություն" ;
 lin hearing_aid_1_N = compoundN (mkA "Լսողական") (mkN "ապարատ") ; --guessed
 lin hearing_aid_2_N = compoundN (mkA "Լսողական") (mkN "փող") ; --guessed
@@ -46638,7 +46638,7 @@ lin highbrow_1_A = mkA "Մտավորական" ; --guessed
 lin highbrowMasc_N = mkN "Մտավորական" ; --guessed
 lin highbrowFem_N = mkN "Մտավորական" ; --guessed
 lin highchair_N = mkN "մանկական բարձր աթոռ" ; --guessed
-lin higher_education_CN = lin CN {s = table {_ => table {_ => table {_ => "Բարձրագույն կրթություն"}}}} ; --guessed
+lin higher_education_CN = {s = table {_ => table {_ => table {_ => "Բարձրագույն կրթություն"}}}} ; --guessed
 lin highflierMasc_N = mkN "Մեծ հավակնություններ ունեցող անձ" ; --guessed
 lin highflierFem_N = mkN "Մեծ հավակնություններ ունեցող մարդ" ; --guessed
 lin highflown_A = mkA "վերամբարձ" ; --guessed
@@ -47930,7 +47930,7 @@ lin hover_around_V = mkV "պտտվել" ; --guessed
 lin hovercraft_N = mkN "Օդաբարձիկով նավ" ; --guessed
 lin how8many_IDet = mkIDet "քանի" ;
 lin how8much_IDet = mkIDet "Որքա՞ն" ; --guessed
-lin how_IAdv = mkIAdv "ինչպես" ;
+lin how_IAdv = mkIAdv "ինչպե՞ս" ;
 lin how_d'ye_do_N = compoundN (mkA "անհարմար") (mkN "դրություն") ; --guessed
 lin howard_SN = mkSN "Հովարդ" ; --guessed
 lin howdah_1_N = mkN "հաուդա" ; --guessed
@@ -48073,7 +48073,7 @@ lin humanitarianFem_1_N = mkN "մարդասեր" ; --guessed
 lin humanitarianMasc_2_N = mkN "Մարդասեր" ; --guessed
 lin humanitarianFem_2_N = mkN "Մարդասեր" ; --guessed
 lin humanitarianism_N = mkN "Մարդասիրություն" ; --guessed
-lin humanities_N = compoundN (mkA "Հումանիտար") (mkN "գիտություններ") ; --guessed
+lin humanities_N = compoundN (mkA "հումանիտար") (mkN "գիտություն") ; --guessed
 lin humanity_1_N = mkN "մարդկություն" ;
 lin humanity_2_N = mkN "Մարդկայնություն" ; --guessed
 lin humanity_3_N = mkN "մարդկություն" ;
@@ -49670,10 +49670,10 @@ lin in_MU = mkMU "դյույմ" ; --guessed
 lin in_2_PN = mkPN "ինդիում" ; --guessed
 lin in_3_LN = mkLN "Ինդիանա" ;
 lin in_1_Prep = mkPrep "մեջ" ;
-lin in_2_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
-lin in_3_Prep = lin Prep {s=[];c=Loc;isPre=False} ; --guessed
-lin in_4_Prep = lin Prep {s=[];c=Loc;isPre=False} ; --guessed
-lin in_5_Prep = lin Prep {s=[];c=Loc;isPre=False} ; --guessed
+lin in_2_Prep = {s=[];c=Dat;isPre=False} ; --guessed
+lin in_3_Prep = {s=[];c=Loc;isPre=False} ; --guessed
+lin in_4_Prep = {s=[];c=Loc;isPre=False} ; --guessed
+lin in_5_Prep = {s=[];c=Loc;isPre=False} ; --guessed
 lin in_accordance_with_Prep = mkPrep "համաձայն" ; --guessed
 lin in_addition_Adv = mkAdv "ի հավելումն" ; --guessed
 lin in_addition_to_Prep = mkPrep "ի հավելումն" ; --guessed
@@ -51891,7 +51891,7 @@ lin intimidation_4_N = mkN "Ահաբեկում" ; --guessed
 lin into_1_Prep = mkPrep "մեջ" ;
 lin into_2_Prep = mkPrep "մեջ" ; --guessed
 lin into_3_Prep = mkPrep "մեջ" ; --guessed
-lin into_4_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
+lin into_4_Prep = {s=[];c=Dat;isPre=False} ; --guessed
 lin intolerable_A = mkA "անտանելի" ; --guessed
 lin intolerance_1_N = mkN "անհանդուրժողականություն" ; --guessed
 lin intolerance_2_N = mkN "անհանդուրժողականություն" ; --guessed
@@ -56025,7 +56025,7 @@ lin leave_13_V2 = mkV2 (mkV "թողնել") ;
 lin leave_14_V2 = mkV2 (mkV "գնալ") ;
 lin leave_V2A = mkV2A (mkV "թողնել") ; --guessed
 lin leave_behind_1_V = mkV "հետևում թողնել" ; --guessed
-lin leave_of_absence_CN = lin CN {s = table {_ => table {_ => table {_ => "Արձակուրդ"}}}} ; --guessed
+lin leave_of_absence_CN = {s = table {_ => table {_ => table {_ => "Արձակուրդ"}}}} ; --guessed
 lin leave_off_1_V = mkV "դադարեցնել" ;
 lin leave_off_2_V2 = mkV2 (mkV "բաց թողնել") ; --guessed
 lin leave_off_3_V = mkV "դադարեցնել օգտագործելը" ; --guessed
@@ -57532,7 +57532,7 @@ lin little_5_A = mkA005 "թույլ" ; --guessed
 lin little_6_A = mkA "կարճահասակ" ; --guessed
 lin little_7_A = mkA001 "փոքրատառ" ; --guessed
 lin little_8_A = mkA001 "փոքրիկ" ; --guessed
-lin little_ACard = lin ACard {s = "քիչ"} ; --guessed
+lin little_ACard = {s = "քիչ"} ; --guessed
 lin little_bighorn_river_LN = mkLN "Լիթլ Բիգհորն գետ" ; --guessed
 lin little_missouri_river_LN = mkLN "Լիթլ Միսուրի" ; --guessed
 lin little_rock_LN = mkLN "Լիթլ Ռոք" ;
@@ -59951,7 +59951,7 @@ lin manuscript_2_N = mkN "ձեռագիր" ;
 lin manx_A = mkA "մենքսյան" ; --guessed
 lin manx_1_N = mkN "մենքսերեն" ; --guessed
 lin manx_2_N = mkN "Մենքս" ; --guessed
-lin many_ACard = lin ACard {s = "շատ"} ; --guessed
+lin many_ACard = {s = "շատ"} ; --guessed
 lin many_sided_1_A = mkA "բազմակողմանի" ; --guessed
 lin many_sided_2_A = mkA "բազմակողմանի" ; --guessed
 lin many_sided_3_A = mkA "բազմակողմանի" ; --guessed
@@ -64081,8 +64081,8 @@ lin much_3_AdA = mkAdA "շատ" ;
 lin much_3_Adv = mkAdv "շատ" ;
 lin much_4_Adv = mkAdv "գրեթե" ; --guessed
 lin much_5_Adv = mkAdv "շատ" ;
-lin much_ACard = lin ACard {s = "շատ"} ; --guessed
-lin much_fewer_ACard = lin ACard {s = "շատ ավելի քիչ"} ; --guessed
+lin much_ACard = {s = "շատ"} ; --guessed
+lin much_fewer_ACard = {s = "շատ ավելի քիչ"} ; --guessed
 lin muchness_N = mkN "Շատություն" ; --guessed
 lin muciferous_A = mkA "Լորձածին" ; --guessed
 lin mucilage_1_N = mkN "լորձ" ;
@@ -65830,9 +65830,9 @@ lin newport_news_LN = mkLN "Նյուպորտ Նյուս" ; --guessed
 lin newport_pagnell_LN = mkLN "Նյուպորտ Պագնել" ; --guessed
 lin newquay_LN = mkLN "Նյուքուեյ" ; --guessed
 lin newry_LN = mkLN "Նյուրի" ;
-lin news_1_N = mkN "նորություններ" ;
-lin news_2_N = mkN "նորություններ" ;
-lin news_3_N = mkN "նորություններ" ;
+lin news_1_N = mkN "նորություն" ;
+lin news_2_N = mkN "նորություն" ;
+lin news_3_N = mkN "նորություն" ;
 lin news_4_N = mkN010 "նորություն" ;
 lin news_5_N = mkN010 "նորություն" ;
 lin newsagentMasc_N = mkN "լրագրավաճառ" ; --guessed
@@ -67706,9 +67706,9 @@ lin oersted_1_N = mkN "էրստեդ" ; --guessed
 lin oersted_2_PN = mkPN "Էրստեդ" ; --guessed
 lin oesophagus_N = mkN "կերակրափող" ;
 lin oeuvre_N = mkN001 "վաստակ" ; --guessed
-lin of_1_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
-lin of_2_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
-lin of_3_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
+lin of_1_Prep = {s=[];c=Dat;isPre=False} ; --guessed
+lin of_2_Prep = {s=[];c=Dat;isPre=False} ; --guessed
+lin of_3_Prep = {s=[];c=Dat;isPre=False} ; --guessed
 lin of_course_Adv = mkAdv "իհարկե" ;
 lin off_1_A = mkA "Անջատված" ; --guessed
 lin off_2_A = mkA002 "թերի" ; --guessed
@@ -69045,10 +69045,10 @@ lin out_Prep = mkPrep "դուրս" ;
 lin out_V = mkV "հայտնի դառնալ" ; --guessed
 lin out_1_V2 = mkV2 (mkV "բացահայտել") ; --guessed
 lin out_2_V2 = mkV2 (mkV "Բացահայտել") ; --guessed
-lin out_from_Prep = lin Prep {s=[];c=Ablat;isPre=False} ; --guessed
+lin out_from_Prep = {s=[];c=Ablat;isPre=False} ; --guessed
 lin out_herod_V2 = mkV2 (mkV "գերազանցել դաժանությամբ") ; --guessed
 lin out_of_1_Prep = mkPrep "չունենալ" ; --guessed
-lin out_of_2_Prep = lin Prep {s=[];c=Ablat;isPre=False} ; --guessed
+lin out_of_2_Prep = {s=[];c=Ablat;isPre=False} ; --guessed
 lin out_of_3_Prep = mkPrep "դուրս" ;
 lin out_of_date_A = mkA "Հնացած" ; --guessed
 lin out_of_door_A = mkA "բացօթյա" ; --guessed
@@ -69317,7 +69317,7 @@ lin over_N = mkN "օվեր" ; --guessed
 lin over_1_Prep = mkPrep "վրայով" ;
 lin over_2_Prep = mkPrep "ընթացքում" ; --guessed
 lin over_3_Prep = mkPrep "ընթացքում" ; --guessed
-lin over_4_Prep = lin Prep {s=[];c=Instr;isPre=False} ; --guessed
+lin over_4_Prep = {s=[];c=Instr;isPre=False} ; --guessed
 lin over_AdN = mkAdN "ավելի քան" ; --guessed
 lin over_abundance_1_N = mkN "գերառատություն" ; --guessed
 lin over_abundance_2_N = mkN "Ավելցուկ" ; --guessed
@@ -72085,9 +72085,9 @@ lin peonFem_N = mkN "Սևագործ" ; --guessed
 lin peonage_1_N = mkN "Պարտային կախվածություն" ; --guessed
 lin peonage_2_N = mkN "Պարտքային ստրկություն" ; --guessed
 lin peony_N = mkN007 "քաջվարդ" ;
-lin people_1_N = mkN "մարդիկ" ;
+lin people_1_N = mkN047 "մարդ" ;
 lin people_2_N = mkN031 "ժողովուրդ" ;
-lin people_3_N = mkN "ազգականներ" ; --guessed
+lin people_3_N = mkN "ազգական" ; --guessed
 lin people_4_N = mkN031 "ժողովուրդ" ;
 lin people_1_V2 = mkV2 (mkV "բնակեցնել") ; --guessed
 lin people_2_V2 = mkV2 (mkV "բնակեցնել") ; --guessed
@@ -77019,7 +77019,7 @@ lin primary_1_A = mkA "առաջնային" ; --guessed
 lin primary_2_A = mkA "Նախնական" ; --guessed
 lin primary_3_A = mkA "հիմնական" ; --guessed
 lin primary_4_A = mkA "հիմնական" ; --guessed
-lin primary_1_N = compoundN (mkA "նախնական") (mkN "ընտրություններ") ; --guessed
+lin primary_1_N = compoundN (mkA "նախնական") (mkN "ընտրություն") ; --guessed
 lin primary_2_N = mkN "Առաջնային թափահարող փետուր" ; --guessed
 lin primary_3_N = compoundN (mkA "Գլխավոր") (mkN "մարմին") ; --guessed
 lin primary_4_N = compoundN (mkA "Առաջնային") (mkN "փաթույթ") ; --guessed
@@ -82332,7 +82332,7 @@ lin relationMasc_3_N = mkN001 "ազգական" ;
 lin relationFem_3_N = mkN001 "ազգական" ;
 lin relation_4_N = mkN "Պատմում" ; --guessed
 lin relation_5_N = compoundN (mkA "Հետադարձ") (mkN "ուժ") ; --guessed
-lin relation_6_N = mkN "հարաբերություններ" ; --guessed
+lin relation_6_N = mkN "հարաբերություն" ; --guessed
 lin relational_A = mkA "հարաբերական" ; --guessed
 lin relationship_1_N = mkN010 "հարաբերություն" ;
 lin relationship_2_N = mkN010 "հարաբերություն" ;
@@ -84396,7 +84396,7 @@ lin right_handerFem_1_N = compoundN (mkA "Աջլիկ") (mkN "պիտչեր") ; --
 lin right_handerMasc_2_N = mkN "աջլիկ" ;
 lin right_handerFem_2_N = mkN "աջլիկ" ;
 lin right_minded_A = mkA "ուղղամիտ" ; --guessed
-lin right_of_Prep = lin Prep {s="աջ կողմում";c=Dat;isPre=False} ; --guessed
+lin right_of_Prep = {s="աջ կողմում";c=Dat;isPre=False} ; --guessed
 lin right_turn_N = compoundN (mkA "Աջ") (mkN "շրջադարձ") ; --guessed
 lin right_wing_N = mkN "Աջակողմյան" ; --guessed
 lin right_wingerMasc_N = mkN "աջակողմյան" ; --guessed
@@ -101735,7 +101735,7 @@ lin terich_mir_LN = mkLN "Տիրիչ Միր" ; --guessed
 lin teriyaki_N = mkN "Տերիյակի" ; --guessed
 lin term_1_N = mkN001 "տերմին" ;
 lin term_2_N = mkN "ժամկետ" ; --guessed
-lin term_3_N = mkN "պայմաններ" ; --guessed
+lin term_3_N = mkN "պայման" ; --guessed
 lin term_4_N = mkN001 "անդամ" ; --guessed
 lin term_5_N = mkN "եզր" ; --guessed
 lin term_6_N = mkN "Ծննդաբերություն" ; --guessed
@@ -102030,7 +102030,7 @@ lin thar_desert_LN = mkLN "Թար անապատ" ;
 lin that_AdA = mkAdA "այդքան" ; --guessed
 lin that_Quant = mkQuant "այդ" ; --guessed
 lin that_Subj = mkSubj "որ" ;
-lin that_of_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
+lin that_of_Prep = {s=[];c=Dat;isPre=False} ; --guessed
 lin thatch_1_N = compoundN (mkA "Խիտ") (mkN "մազեր") ; --guessed
 lin thatch_2_N = mkN001 "ծղոտ" ;
 lin thatch_SN = mkSN "Թեչ" ; --guessed
@@ -103300,9 +103300,9 @@ lin tlingit_N = mkN "Թլինգիտ" ; --guessed
 lin tnt_N = mkN "ՏՆՏ" ; --guessed
 lin to_1_Prep = mkPrep "դեպի" ; --guessed
 lin to_2_Prep = mkPrep "դեպի" ; --guessed
-lin to_3_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
+lin to_3_Prep = {s=[];c=Dat;isPre=False} ; --guessed
 lin to_4_Prep = mkPrep "դեպի" ; --guessed
-lin to_5_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
+lin to_5_Prep = {s=[];c=Dat;isPre=False} ; --guessed
 lin to_date_Adv = mkAdv "մինչ օրս" ; --guessed
 lin to_do_N = mkN "Իրարանցում" ; --guessed
 lin toad_N = mkN "դոդոշ" ;
@@ -105043,7 +105043,7 @@ lin tricot_N = mkN "տրիկոտաժ" ; --guessed
 lin tricuspid_A = mkA "եռացցիկ" ; --guessed
 lin tricycle_N = compoundN (mkA "եռանիվ") (mkN001 "հեծանիվ") ; --guessed
 lin tricyclic_N = mkN "տրիցիկլիկ հակադեպրեսանտ" ; --guessed
-lin tricyclic_antidepressant_CN = lin CN {s = table {_ => table {_ => table {_ => "Եռացիկլիկ հակադեպրեսանտ"}}}} ; --guessed
+lin tricyclic_antidepressant_CN = {s = table {_ => table {_ => table {_ => "Եռացիկլիկ հակադեպրեսանտ"}}}} ; --guessed
 lin trident_N = mkN "եռաժանի" ; --guessed
 lin tridymite_N = mkN "տրիդիմիտ" ;
 lin triennial_A = mkA "Երեքամյա" ; --guessed
@@ -108632,7 +108632,7 @@ lin untipped_A = mkA "առանց թեյավճարի" ; --guessed
 lin untired_A = mkA "անհոգնելի" ; --guessed
 lin untiring_A = mkA "անխոնջ" ; --guessed
 lin untitled_A = mkA "անանուն" ;
-lin unto_Prep = lin Prep {s=[];c=Dat;isPre=False} ; --guessed
+lin unto_Prep = {s=[];c=Dat;isPre=False} ; --guessed
 lin untoasted_A = mkA "Չբոված" ; --guessed
 lin untold_A = mkA "Անհամար" ; --guessed
 lin untouchable_1_A = mkA "Անձեռնмխելի" ; --guessed
@@ -112338,13 +112338,13 @@ lin whelk_1_N = compoundN (mkA "Ծովային") (mkN001 "խխունջ") ; --gue
 lin whelk_2_N = mkN "Ծովախխունջ" ; --guessed
 lin whelp_N = mkN007 "ձագ" ;
 lin whelp_V = mkV "լակոտել" ; --guessed
-lin when_IAdv = mkIAdv "երբ" ;
+lin when_IAdv = mkIAdv "ե՞րբ" ;
 lin when_Prep = mkPrep "երբ" ;
 lin when_Subj = mkSubj "երբ" ;
 lin whence_Adv = mkAdv "ուստի" ;
 lin whencesoever_A = mkA "որտեղից էլ որ" ; --guessed
 lin whenever_Adv = mkAdv "երբ էլ" ; --guessed
-lin where_IAdv = mkIAdv "որտեղ" ; --guessed
+lin where_IAdv = mkIAdv "որտե՞ղ" ; --guessed
 lin where_Subj = mkSubj "որտեղ" ;
 lin where_as_Prep = mkPrep "որտեղ" ; --guessed
 lin whereabouts_Adv = mkAdv "մոտավորապես որտե՞ղ" ; --guessed
@@ -112374,7 +112374,7 @@ lin whether_Subj = mkSubj "արդյոք" ; --guessed
 lin whetstone_N = mkN "հեսան" ;
 lin whey_1_N = mkN "շիճուկ" ;
 lin whey_2_N = mkN "շիճուկ" ;
-lin which_IQuant = mkIQuant "որ" ;
+lin which_IQuant = mkIQuant "ո՞ր" ;
 lin whichever_Quant = mkQuant "որն էլ որ" ;
 lin whichsoever_A = mkA "որն էլ որ" ; --guessed
 lin whiff_1_N = mkN "փչոց" ; --guessed
@@ -112615,11 +112615,11 @@ lin whizbang_1_N = compoundN (mkA "Արագընթաց") (mkN007 "արկ") ; --gu
 lin whizbang_2_N = mkN "Սվսվացող պայթուցիկ" ; --guessed
 lin whizz_kidMasc_N = mkN "Հրաշամանուկ" ; --guessed
 lin whizz_kidFem_N = mkN "Հրաշամանուկ" ; --guessed
-lin whoPl_IP = mkIP "ով" ;
+lin whoPl_IP = mkIP "ովքե՞ր" ;
 lin whoSg_IP = mkIP "ո՞վ" ; --guessed
 lin who_PN = mkPN "Առողջապահության համաշխարհային կազմակերպություն" ;
 lin whodunit_N = mkN "Դետեկտիվ" ; --guessed
-lin whoever_NP = lin NP {s = table {_ => "ով էլ որ"}; a = S.it_Pron.a} ; --guessed
+lin whoever_NP = {s = table {_ => "ով էլ որ"}; a = S.it_Pron.a} ; --guessed
 lin whole_1_A = mkA005 "սաղ" ;
 lin whole_2_A = mkA "հարազատ" ; --guessed
 lin whole_3_A = mkA "անվնաս" ; --guessed
@@ -112669,7 +112669,7 @@ lin whorl_2_N = mkN "Մազափունջ" ; --guessed
 lin whorl_3_N = mkN "Պարույր" ; --guessed
 lin whorled_1_A = mkA "պարուրաձև" ; --guessed
 lin whorled_2_A = mkA "Օղակաձև" ; --guessed
-lin why_IAdv = mkIAdv "Ինչու" ; --guessed
+lin why_IAdv = mkIAdv "ինչո՞ւ" ; --guessed
 lin why_N = mkN "պատճառ" ;
 lin whydah_1_N = mkN "Այրիաթռչուն" ; --guessed
 lin wi_LN = mkLN "Վիսկոնսին" ;
@@ -114257,8 +114257,8 @@ lin yottabyte_1_N = mkN "յոտաբայթ" ; --guessed
 lin yottabyte_2_N = mkN "յոտաբայթ" ; --guessed
 lin youPlFem_Pron = S.youPl_Pron ;
 lin youPl_Pron = S.youPl_Pron ;
-lin youPolFem_Pron = lin Pron {s = S.youPol_Pron.s; empty = S.youPol_Pron.empty; a = S.youPol_Pron.a} ; --guessed
-lin youPol_Pron = lin Pron {s = S.youPol_Pron.s; empty = S.youPol_Pron.empty; a = S.youPol_Pron.a} ; --guessed
+lin youPolFem_Pron = S.youPol_Pron ;
+lin youPol_Pron = S.youPol_Pron ;
 lin youSgFem_Pron = S.youSg_Pron ;
 lin youSg_Pron = S.youSg_Pron ;
 lin young_1_A = mkA001 "երիտասարդ" ;

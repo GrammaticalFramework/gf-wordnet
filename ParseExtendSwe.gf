@@ -155,6 +155,10 @@ lin EmbedVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a an
     ReflA2 = ExtendSwe.ReflA2RNP ;
     ReflVPSlash = ExtendSwe.ReflRNP ;
 
+    -- Swedish has no grammatical progressive.  In a context with a gap,
+    -- the ordinary finite form is also the natural translation.
+    ProgrVPSlash vp = vp ;
+
 lin RecipVPSlash slash = GrammarSwe.ComplSlash slash (regNP "varandra" "varandra" Utr Sg);
     RecipVPSlashCN slash cn = GrammarSwe.ComplSlash slash (DetCN (M.mkDet "varandras" Pl) cn);
 

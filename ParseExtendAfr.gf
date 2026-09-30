@@ -57,7 +57,7 @@ lin NumMore n = {s = n.s ++ "meer" ; n = Pl ; isNum = n.isNum} ;
     UseAdAACard ada card = {s = \\_,_ => ada.s ++ card.s ; n = Pl} ;
 
 lin ExtAdvAP ap adv = {
-      s = \\af => ap.s ! af ++ "," ++ adv.s ;
+      s = \\af => ap.s ! af ++ bindComma ++ adv.s ;
       isPre = False
       } ;
     ComparAdv pol cadv adv comp = {
@@ -79,19 +79,40 @@ lin ExtAdvAP ap adv = {
     whatSgNeut_IP = whatSg_IP ;
 
 lin EmbedVP ant pol pron vp = {s = infVPFull False vp pron.a ant.a pol.p} ;
-    ComplVV vv ant pol vp =
-      insertObj (\\a => infVPFull vv.isAux vp a ant.a pol.p) (predVGen vv.isAux vv) ;
-    SlashVV vv ant pol slash =
-      insertObj (\\a => infVPFull vv.isAux slash a ant.a pol.p)
-        (predVGen vv.isAux vv) ** {c2 = slash.c2} ;
-    SlashV2V v ant pol vp =
-      insertObj (\\a => infVPFull v.isAux vp a ant.a pol.p)
-        (predVGen v.isAux v) ** {c2 = v.c2} ;
-    SlashV2VNP v np ant pol slash =
-      insertObj (\\a => appPrep v.c2 np.s ++ infVPFull v.isAux slash a ant.a pol.p)
-        (predVGen v.isAux v) ** {c2 = slash.c2} ;
+    ComplVV vv ant pol vp = case <ant.a,pol.p> of {
+      <Simul,Pos> =>
+        let vpi = infVP vv.isAux vp in
+        insertExtrapos vpi.p3
+          (insertInf vpi.p2 (insertObj vpi.p1 (predVGen vv.isAux vv))) ;
+      _ => insertObj (\\a => infVPFull vv.isAux vp a ant.a pol.p)
+                     (predVGen vv.isAux vv)
+      } ;
+    SlashVV vv ant pol slash = case <ant.a,pol.p> of {
+      <Simul,Pos> =>
+        let vpi = infVP vv.isAux slash in
+        insertExtrapos vpi.p3
+          (insertInf vpi.p2 (insertObj vpi.p1 (predVGen vv.isAux vv))) **
+          {c2 = slash.c2} ;
+      _ => insertObj (\\a => infVPFull vv.isAux slash a ant.a pol.p)
+                     (predVGen vv.isAux vv) ** {c2 = slash.c2}
+      } ;
+    SlashV2V v ant pol vp = case <ant.a,pol.p> of {
+      <Simul,Pos> =>
+        insertInf (infVPFull False vp (agrP3 Sg) Simul Pos) (predV v) **
+          {c2 = v.c2} ;
+      _ => insertObj (\\a => infVPFull v.isAux vp a ant.a pol.p)
+                     (predVGen v.isAux v) ** {c2 = v.c2}
+      } ;
+    SlashV2VNP v np ant pol slash = case <ant.a,pol.p> of {
+      <Simul,Pos> =>
+        insertInf (infVPFull False slash (agrP3 Sg) Simul Pos)
+          (insertObj (\\_ => appPrep v.c2 np.s) (predV v)) **
+          {c2 = slash.c2} ;
+      _ => insertObj (\\a => appPrep v.c2 np.s ++ infVPFull v.isAux slash a ant.a pol.p)
+                     (predVGen v.isAux v) ** {c2 = slash.c2}
+      } ;
     InOrderToVP ant pol pron vp = {
-      s = "ten einde" ++ infVPFull False vp pron.a ant.a pol.p
+      s = infVPFull False vp pron.a ant.a pol.p
       } ;
     CompVP ant pol pron vp = {
       s = \\_ => infVPFull False vp pron.a ant.a pol.p

@@ -9,6 +9,7 @@ lin num = num ;
 lin gen_Quant = DefArt ;
 
     UttAP  p ap  = {s = ap.s ! Strong (gennum p.a.g p.a.n)} ;
+    UttVPS p vps = {s = let x = vps.s ! Main ! p.a in x.verb ++ x.compl} ;
 
     PhrUttMark pconj utt voc mark = {s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s} ;
 
@@ -42,8 +43,28 @@ lin BaseCNN num1 cn1 num2 cn2 = {
         isPron = False
       } ;
 
-lin NumMore num = {s = \\g => num.s ! g ++ "mera" ;  isDet = num.isDet ; n = Pl} ;
-    NumLess num = {s = \\g => num.s ! g ++ "färre" ; isDet = num.isDet ; n = Pl} ;
+    ReflPossCNN conj cnn = {
+      s = \\a => possPron a.n a.p cnn.n (ngen2gen cnn.g1) ++ conj.s1 ++ cnn.s1 ! DDef Indef ! Nom ++ conj.s2 ++ cnn.s2 ! DDef Indef ! Nom ;
+      isPron = False
+    } ;
+
+    PossCNN_RNP quant conj cnn rnp =
+      let md : Bool -> Bool = \b ->
+            case quant.det of {
+              DDef _ => orB b cnn.isDet ;
+              DIndef => cnn.isDet
+            } ;
+          dd = case <quant.det,detDef,cnn.isMod> of {
+                 <DDef Def, Indef, True> => DDef Indef ;
+                 <d,_,_> => d
+               }
+      in {
+        s = \\a => quant.s ! cnn.n1 ! cnn.isMod ! md cnn.isMod ! cnn.g1 ++ conj.s1 ++ cnn.s1 ! dd ! Nom ++ conj.s2 ++ cnn.s2 ! dd ! Nom ++ av_Prep ++ rnp.s ! a;
+        isPron = False
+      } ;
+
+lin NumMore num = {s = \\g => num.s ! g ++ "mere" ;  isDet = num.isDet ; n = Pl} ;
+    NumLess num = {s = \\g => num.s ! g ++ "færre" ; isDet = num.isDet ; n = Pl} ;
 
 lin UseACard card =
       {s = \\_ => card.s;
@@ -58,7 +79,6 @@ lin UseACard card =
 lin RelNP np rs = {
       s = \\c => np.s ! c ++ rs.s ! np.a ! RNom ;
       a = np.a ;
-      p = np.p ;
       isPron = False
       } ;
     ExtRelNP = GrammarDan.RelNP ;
@@ -66,7 +86,7 @@ lin RelNP np rs = {
 lin BareN2 n2 = n2 ;
 
 lin ComparAdv pol cadv adv comp = {
-      s = pol.s ++ case pol.p of {Pos => []; Neg => "inte"} ++ cadv.s ++ adv.s ++ cadv.p ++ comp.s ! agrP3 Neutr Sg
+      s = pol.s ++ case pol.p of {Pos => []; Neg => "ikke"} ++ cadv.s ++ adv.s ++ cadv.p ++ comp.s ! agrP3 Neutr Sg
     } ;
 
     CAdvAP pol cadv ap comp = {
@@ -75,11 +95,11 @@ lin ComparAdv pol cadv adv comp = {
                              Strong GPl     => agrP3 Neutr Pl;
                              Weak n         => agrP3 Neutr n
                            }
-                  in pol.s ++ case pol.p of {Pos => []; Neg => "inte"} ++ cadv.s ++ ap.s ! a ++ cadv.p ++ comp.s ! agr ;
+                  in pol.s ++ case pol.p of {Pos => []; Neg => "ikke"} ++ cadv.s ++ ap.s ! a ++ cadv.p ++ comp.s ! agr ;
       isPre = False
     } ;
 
-    AdnCAdv pol cadv = {s = pol.s ++ case pol.p of {Pos => []; Neg => "inte"} ++ cadv.s ++ conjThan} ;
+    AdnCAdv pol cadv = {s = pol.s ++ case pol.p of {Pos => []; Neg => "ikke"} ++ cadv.s ++ conjThan} ;
 
     EnoughAP a ant pol vp = {
       s = \\ap => let agr = case ap of {
@@ -87,12 +107,12 @@ lin ComparAdv pol cadv adv comp = {
                               Strong GPl     => agrP3 Neutr Pl;
                               Weak n         => agrP3 Neutr n
                             }
-                  in a.s ! ap ++ "nog för" ++ infMark ++ ant.s ++ pol.s ++ infVPPlus vp agr ant.a pol.p ;
+                  in a.s ! ap ++ "nok til" ++ infMark ++ ant.s ++ pol.s ++ infVPPlus vp agr ant.a pol.p ;
       isPre = False
     } ;
 
     EnoughAdv adv = {
-      s = adv.s ++ "nog"
+      s = adv.s ++ "nok"
     } ;
 
     ExtAdvAP ap adv = {
@@ -126,14 +146,21 @@ lin EmbedVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a an
         ** {n3 = vp.n3 ; c2 = vv.c2} ;
 
     InOrderToVP ant pol p vp = {  -- infinitive: att dricka öl, att vara glad
-      s = "för att" ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p
+      s = "for at" ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p
     } ;
 
-    CompVP ant pol p vp = {s = \\agr => "att" ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p} ;
+    CompVP ant pol p vp = {s = \\agr => "at" ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p} ;
 
     UttVP ant pol p vp = {s = infMark ++ ant.s ++ pol.s ++ infVPPlus vp p.a ant.a pol.p} ;
 
-lin RecipVPSlash slash = GrammarDan.ComplSlash slash (regNP "varandra" "varandra" Utr Sg);
-    RecipVPSlashCN slash cn = GrammarDan.ComplSlash slash (DetCN (M.mkDet "varandras" Pl) cn);
+    ReflA2 = ExtendDan.ReflA2RNP ;
+    ReflVPSlash = ExtendDan.ReflRNP ;
+
+    -- Danish normally uses the ordinary finite form for a progressive
+    -- construction with a missing complement.
+    ProgrVPSlash vp = vp ;
+
+lin RecipVPSlash slash = GrammarDan.ComplSlash slash (regNP "hinanden" "hinanden" Utr Sg);
+    RecipVPSlashCN slash cn = GrammarDan.ComplSlash slash (DetCN (M.mkDet "hinandens" Pl) cn);
 
 }

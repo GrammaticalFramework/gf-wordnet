@@ -12,6 +12,7 @@ concrete ParseCze of Parse =
   TenseX,
   NamesCze,
   ParseExtendCze,
+  WordNetCze,
   ConstructionCze - [Language, InLanguage, languageNP, languageCN,
                   afrikaans_Language, amharic_Language, arabic_Language,
                   bulgarian_Language, catalan_Language, chinese_Language,
@@ -25,7 +26,7 @@ concrete ParseCze of Parse =
                   russian_Language, sindhi_Language, spanish_Language,
                   swahili_Language, swedish_Language, thai_Language,
                   turkish_Language, urdu_Language, weather_adjCl],
-  WordNetCze
+  DocumentationCze
   ** {
 
 flags

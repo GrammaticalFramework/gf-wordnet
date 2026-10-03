@@ -9,7 +9,7 @@ concrete ParseCze of Parse =
   ConjunctionCze,
   PhraseCze - [UttAP, UttVP],
   IdiomCze,
-  TenseCze,
+  TenseX,
   NamesCze,
   ParseExtendCze,
   ConstructionCze - [Language, InLanguage, languageNP, languageCN,

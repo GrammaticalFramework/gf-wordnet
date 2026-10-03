@@ -19,26 +19,26 @@ lin
   ComplVV vv ant pol vp = {
     verb = vv ; clitPresent = andB vv.isAux vp.clitPresent ;
     clit = \\a => vv.refl ++ case vv.isAux of {True => vp.clit ! a ; False => []} ;
-    compl = \\a => case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++
+    compl = \\a => case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++
       case vv.isAux of {True => [] ; False => vp.clit ! a} ++ vp.compl ! a
     } ;
 
   EmbedVP ant pol pron vp = {
-    s = case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++
+    s = case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++
       vp.clit ! pron.a ++ vp.compl ! pron.a
     } ;
 
   SlashV2V v ant pol vp = {
     verb = v ; clitPresent = False ; clit = \\_ => v.refl ;
     clitAfter = \\_ => [] ; c = v.c ; compl = \\_ => [] ;
-    ind = \\a => case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++
+    ind = \\a => case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++
       vp.clit ! a ++ vp.compl ! a
     } ;
   SlashVV vv ant pol vp = {
     verb = vv ; clitPresent = andB vv.isAux vp.clitPresent ;
     clit = \\a => vv.refl ++ case vv.isAux of {True => vp.clit ! a ; False => []} ;
     clitAfter = vp.clitAfter ; c = vp.c ;
-    compl = \\a => case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++
+    compl = \\a => case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++
       case vv.isAux of {True => [] ; False => vp.clit ! a} ++ vp.compl ! a ;
     ind = vp.ind
     } ;
@@ -49,20 +49,20 @@ lin
     clitAfter = vp.clitAfter ; c = vp.c ;
     compl = \\a => case hasCliticComplement v.c np.hasClit of {
       True => [] ; False => fullComplement v.c np.s np.prep} ++
-      case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++
+      case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++
       vp.clit ! a ++ vp.compl ! a ; ind = vp.ind
     } ;
 
   InOrderToVP ant pol pron vp = {
-    s = "aby" ++ case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++
+    s = "aby" ++ case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++
       vp.clit ! pron.a ++ vp.compl ! pron.a
     } ;
   CompVP ant pol pron vp = {
-    s = \\_ => case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++
+    s = \\_ => case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++
       vp.clit ! pron.a ++ vp.compl ! pron.a
     } ;
   UttVP ant pol pron vp = {
-    s = case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++
+    s = case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++
       vp.clit ! pron.a ++ vp.compl ! pron.a
     } ;
 
@@ -87,8 +87,8 @@ lin
   TimeNP np = {s = np.s ! Acc} ;
   AdvAdv a b = {s = a.s ++ b.s} ;
   that_RP = G.IdRP ;
-  whatSgFem_IP = {s = \\_ => "co" ; a = Ag Fem Sg P3} ;
-  whatSgNeut_IP = {s = \\_ => "co" ; a = Ag Neutr Sg P3} ;
+  whatSgFem_IP = {s = coForms ; a = Ag Fem Sg P3} ;
+  whatSgNeut_IP = {s = coForms ; a = Ag Neutr Sg P3} ;
   AdnCAdv pol cadv = {s = pol.s ++ cadv.s} ;
   CAdvAP pol cadv ap comp = ap ** {
     s = \\g,n,c => pol.s ++ cadv.s ++ ap.s ! g ! n ! c ++ "než" ++ comp.s ! (Ag g n P3) ;
@@ -105,9 +105,9 @@ lin
   EnoughAdv adv = {s = adv.s ++ "dostatečně"} ;
   EnoughAP ap ant pol vp = ap ** {
     s = \\g,n,c => ap.s ! g ! n ! c ++ "dost na to, aby" ++
-      case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++ vp.compl ! (Ag g n P3) ;
+      case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++ vp.compl ! (Ag g n P3) ;
     pred = \\a => ap.pred ! a ++ "dost na to, aby" ++
-      case pol.p of {True => vp.verb.inf ; False => "ne" ++ BIND ++ vp.verb.inf} ++ vp.compl ! a ;
+      case pol.p of {Pos => vp.verb.inf ; Neg => "ne" ++ BIND ++ vp.verb.inf} ++ vp.compl ! a ;
     isPost = True
     } ;
   FocusComp comp np = G.PredVP np (G.UseComp comp) ;

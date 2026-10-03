@@ -74,7 +74,7 @@ lin
     } ;
 
   UttAP pron ap = {s = ap.pred ! pron.a} ;
-  UttVPS pron vps = {s = vps.s ! pron.a} ;
+  UttVPS pron vps = {s = vps.standalone ! pron.a} ;
   PhrUttMark pconj utt voc mark = {
     s = CAPIT ++ pconj.s ++ utt.s ++ voc.s ++ SOFT_BIND ++ mark.s
     } ;

@@ -60797,8 +60797,7 @@ lin matrix_4_N = dualN (mkN041 "матрица") (mkA079 "матричен") ;
 lin matrix_5_N = (compoundN (mkN041 "матрица") "на нокътя") ; --guessed
 lin matrix_6_N = dualN (mkN041 "матрица") (mkA079 "матричен") ;
 lin matron_1_N = mkN041 "матрона" ;
-lin matronMasc_2_N = (mkN041 "матрона") ** {g = AMasc Human} ;
-lin matronFem_2_N = mkN041 "матрона" ;
+lin matron_2_N = mkN041 "матрона" ;
 lin matron_3_N = compoundN (mkA078 "старши") (mkN041 "сестра") ;
 lin matronly_A = mkA079 "матриархален" ;
 lin matronymic_1_N = mkN007 "матроним" ; --guessed

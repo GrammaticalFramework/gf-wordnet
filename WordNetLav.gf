@@ -60663,8 +60663,7 @@ lin matrix_4_N = mkN "Matrikss" ; --guessed
 lin matrix_5_N = mkN "Naga matrica" ; --guessed
 lin matrix_6_N = mkN "matrica" feminine D4 ; --guessed
 lin matron_1_N = mkN "matrona" feminine D4 ; --guessed
-lin matronMasc_2_N = mkN "Cietuma uzraudze" ; --guessed
-lin matronFem_2_N = mkN "Uzraudze" ; --guessed
+lin matron_2_N = mkN "Uzraudze" ; --guessed
 lin matron_3_N = mkN "virsmāsa" feminine D4 ; --guessed
 lin matronly_A = {s = \\_ => "matronisks"} ; --guessed
 lin matronymic_1_N = mkN "matronīms" ; --guessed

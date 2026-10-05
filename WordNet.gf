@@ -60663,8 +60663,7 @@ fun matrix_4_N : N ;               -- 05589955-n	[anatomy] the body substance in
 fun matrix_5_N : N ;               -- 05589841-n	[anatomy] the formative tissue at the base of a nail
 fun matrix_6_N : N ;               -- 03736146-n	mold used in the production of phonograph records, type, or other relief surface
 fun matron_1_N : N ;               -- 10322704-n	a married woman (usually middle-aged with children) who is staid and dignified
-fun matronMasc_2_N : N ;           -- 10322977-n	[administration, law] a wardress in a prison
-fun matronFem_2_N : N ;            -- 10322977-n	[administration, law] a wardress in a prison
+fun matron_2_N : N ;               -- 10322977-n	[administration, law] a wardress in a prison
 fun matron_3_N : N ;               -- 10322853-n	[medicine] a woman in charge of nursing in a medical institution
 fun matronly_A : A ;               -- 01488561-a	befitting or characteristic of a fully mature woman; "her matronly figure"
 fun matronymic_1_N : N ;           -- 06347519-n	[linguistics] a name derived from the name of your mother or a maternal ancestor

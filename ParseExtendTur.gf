@@ -1,7 +1,7 @@
 concrete ParseExtendTur of ParseExtend =
   ExtendTur - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
-               PiedPipingQuestSlash, PiedPipingRelSlash], NumeralTur - [num], PunctuationX ** 
+               PiedPipingQuestSlash, PiedPipingRelSlash, ReflA2RNP, ReflRNP], NumeralTur - [num], PunctuationX ** 
   open Prelude, ResTur, HarmonyTur, GrammarTur in {
 
 lincat CNN = {

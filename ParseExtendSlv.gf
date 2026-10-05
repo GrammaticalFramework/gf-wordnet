@@ -1,7 +1,7 @@
 concrete ParseExtendSlv of ParseExtend =
   ExtendSlv - [iFem_Pron, youPolFem_Pron, youPolPlFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
-               PiedPipingQuestSlash, PiedPipingRelSlash], NumeralSlv - [num], PunctuationX ** 
+               PiedPipingQuestSlash, PiedPipingRelSlash, ReflA2RNP, ReflRNP], NumeralSlv - [num], PunctuationX ** 
   open Prelude, ResSlv, ParadigmsSlv in {
 
 lincat CNN = {s : Species => Case => Str; a : Agr} ;

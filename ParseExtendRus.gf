@@ -2,7 +2,7 @@
 concrete ParseExtendRus of ParseExtend =
   ExtendRus - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
-               PiedPipingQuestSlash, PiedPipingRelSlash], NumeralRus - [num], PunctuationX **
+               PiedPipingQuestSlash, PiedPipingRelSlash, ReflA2RNP, ReflRNP], NumeralRus - [num], PunctuationX **
   open ParamRus, GrammarRus, ParadigmsRus, ResRus, Coordination, Prelude in {
 
 lincat CNN = {

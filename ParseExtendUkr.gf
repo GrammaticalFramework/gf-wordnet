@@ -2,7 +2,7 @@
 concrete ParseExtendUkr of ParseExtend =
   ExtendUkr - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron, GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
-               PiedPipingQuestSlash, PiedPipingRelSlash],
+               PiedPipingQuestSlash, PiedPipingRelSlash, ReflA2RNP, ReflRNP],
   NumeralUkr - [num], PunctuationX **
   open ResUkr, (R = ParamX), Prelude in {
 

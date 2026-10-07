@@ -18218,8 +18218,7 @@ mathematicianFem_N	Q170790;Mathematician;commons/d/d5/CMAP_-_Centre_de_Mathémat
 mathematicianMasc_N	Q170790;Mathematician;commons/d/d5/CMAP_-_Centre_de_Mathématiques_Appliquées_de_l'Ecole_polytechnique_(25911635211).jpg
 matriarch_2_N	Q6647245;;
 matron_1_N	Q2353556;Dea_Matrona;commons/3/3b/Matrona_Gaul_goddess_alt.jpg
-matronFem_2_N	Q1396008;Matron;
-matronMasc_2_N	Q1396008;Matron;
+matron_2_N	Q1396008;Matron;
 mayor_N	Q30185;Mayor;commons/7/7e/Femme_Maire_2.jpg
 medallistFem_2_N	Q1708232;Medalist;commons/3/39/Ferdinand_II_White_Mountain_Battle_av.JPG
 medallistMasc_2_N	Q1708232;Medalist;commons/3/39/Ferdinand_II_White_Mountain_Battle_av.JPG

@@ -104,24 +104,24 @@ concrete ParseExtendTel of ParseExtend =
 
     ComplVV vv ant pol vp = predV vv ** {
       comp = \\agr => let f = vp.s ! pol.p ! VPInf in
-        vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+        ant.s ++ pol.s ++ vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
       } ;
 
     SlashVV vv ant pol vps = predV vv ** {
       c2 = vps.c2 ;
       comp = \\agr => let f = vps.s ! pol.p ! VPInf in
-        vps.obj.s ++ vps.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+        ant.s ++ pol.s ++ vps.obj.s ++ vps.comp ! agr ++ f.neg ++ f.inf ++ f.fin
       } ;
 
     EmbedVP ant pol pron vp = {
       s = let f = vp.s ! pol.p ! VPInf in
-        pron.s ! PC Dir ++ vp.obj.s ++ vp.comp ! pron.a ++ f.neg ++ f.inf ++ f.fin
+        ant.s ++ pol.s ++ vp.obj.s ++ vp.comp ! pron.a ++ f.neg ++ f.inf ++ f.fin
       } ;
 
     SlashV2V verb ant pol vp = predV verb ** {
       c2 = verb.c2 ;
       comp = \\agr => let f = vp.s ! pol.p ! VPInf in
-        vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+        ant.s ++ pol.s ++ vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
       } ;
 
     SlashV2VNP verb np ant pol vps =
@@ -129,17 +129,17 @@ concrete ParseExtendTel of ParseExtend =
       in outer ** {
         c2 = vps.c2 ;
         comp = \\agr => let f = vps.s ! pol.p ! VPInf in
-          outer.comp ! agr ++ vps.obj.s ++ vps.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+          ant.s ++ pol.s ++ outer.comp ! agr ++ vps.obj.s ++ vps.comp ! agr ++ f.neg ++ f.inf ++ f.fin
         } ;
 
     CompVP ant pol pron vp = {
       s = \\agr => let f = vp.s ! pol.p ! VPInf in
-        pron.s ! PC Dir ++ vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
+        ant.s ++ pol.s ++ vp.obj.s ++ vp.comp ! agr ++ f.neg ++ f.inf ++ f.fin
       } ;
 
     UttVP ant pol pron vp = {
       s = let f = vp.s ! pol.p ! VPInf in
-        pron.s ! PC Dir ++ vp.obj.s ++ vp.comp ! pron.a ++ f.neg ++ f.inf ++ f.fin
+        ant.s ++ pol.s ++ vp.obj.s ++ vp.comp ! pron.a ++ f.neg ++ f.inf ++ f.fin
       } ;
 
     RecipVPSlash vps = insertObject reciprocalNP vps ;

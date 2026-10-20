@@ -1,4 +1,4 @@
---# -path=.:../abstract:../common:../api:lib/src/finnish
+--# -path=.:../abstract:../common:../api
 concrete ParseTha of Parse =
   NounTha - [PPartNP, UseN2, RelNP, DetNP, NumDigits],
   VerbTha - [PassV2, ReflVP, ComplVV, SlashV2V, SlashVV, SlashV2VNP, UseCopula],
@@ -30,5 +30,5 @@ concrete ParseTha of Parse =
   DocumentationTha
   ** {
 
-
+lin IdRP = {s = "ที่"} ;
 } ;

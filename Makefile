@@ -13,7 +13,7 @@ LANGS = ParseAar ParseAbk ParseAdy ParseAfr ParseAlt ParseAmh ParseAng \
 		ParseKhm ParseKik ParseKir ParseKor ParseKpv ParseKur ParseLad \
 		ParseLao ParseLat ParseLav ParseLij ParseLim ParseLit ParseLld \
 		ParseLmo ParseLtz ParseLzz ParseMah ParseMal ParseMar ParseMdf \
-		ParseMhr ParseMkd ParseMlg ParseMlt ParseMnw ParseMya \
+		ParseMhr ParseMkd ParseMlg ParseMlt ParseMnw ParseMon ParseMya \
 		ParseNap ParseNav ParseNds ParseNep ParseNno ParseNor ParseOci \
 		ParseOri ParseOss ParsePam ParsePes ParsePli ParsePms ParsePnb \
 		ParsePol ParsePor ParsePus ParseQue ParseRoh ParseRon ParseRup \

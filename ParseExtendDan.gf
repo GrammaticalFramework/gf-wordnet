@@ -4,7 +4,7 @@ concrete ParseExtendDan of ParseExtend =
                PiedPipingQuestSlash, PiedPipingRelSlash], NumeralDan - [num], PunctuationX **
   open Prelude, ResDan, MorphoDan, CommonScand, GrammarDan, Coordination, ExtendDan, (M = MakeStructuralDan), (P = ParadigmsDan), (I = IrregDan) in {
 
-lin num = num ;
+lin num x = x ;
 
 lin gen_Quant = DefArt ;
 

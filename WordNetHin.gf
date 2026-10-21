@@ -268,7 +268,7 @@ lin abortus_N = mkN "गर्भपात" ;
 lin abound_1_V = compoundV "प्रचुर मात्रा में" (mkV "होना") ; --guessed
 lin abound_2_V = compoundV "भरा" (mkV "होना") ; --guessed
 lin about_AdN = mkAdN "लगभग" ;
-lin about_Predet = lin Predet {s = "लगभग"} ; --guessed
+lin about_Predet = {s = "लगभग"} ; --guessed
 lin about_2_Adv = mkAdv "चारों ओर" ; --guessed
 lin about_3_Adv = mkAdv "आसपास" ; --guessed
 lin about_4_Adv = mkAdv "इधर-उधर" ; --guessed
@@ -1939,7 +1939,7 @@ lin aft_Adv = mkAdv "जहाज़ के पिछले भाग में"
 lin after_A = mkA "पिछला" ; --guessed
 lin after_Adv = mkAdv "पीछे" ; --guessed
 lin after_Prep = mkPrep "के बाद" "" ; --guessed
-lin after_Subj = lin Subj {s = "के बाद"} ; --guessed
+lin after_Subj = {s = "के बाद"} ; --guessed
 lin afterbirth_N = mkN "खेड़ी" ; --guessed
 lin afterburner_N = mkN "पश्चदहन" ; --guessed
 lin aftercare_N = mkN "बाद की देखभाल" ; --guessed
@@ -2448,7 +2448,7 @@ lin albanian_2_N = mkN "आल्बानियन" ;
 lin albatross_1_N = mkN "अल्बाट्रॉस" ; --guessed
 lin albatross_2_N = mkN "महासामुद्र" ;
 lin albedo_N = mkN "धवलता" ;
-lin albeit_Subj = lin Subj {s = "यद्यपि"} ; --guessed
+lin albeit_Subj = {s = "यद्यपि"} ; --guessed
 lin albert_GN = mkGN "अल्बर्ट" ; --guessed
 lin alberta_LN = mkLN "अल्बर्टा" ; --guessed
 lin albescent_A = mkA "सफ़ेद होने वाला" ; --guessed
@@ -2678,8 +2678,8 @@ lin alkylbenzene_N = mkN "अल्किलबेंजीन" ; --guessed
 lin alkylbenzenesulfonate_N = mkN "एल्किलबेंजीन सल्फोनेट" ; --guessed
 lin alkylic_A = mkA "एल्किल" ; --guessed
 lin all_A = mkA "बिल्कुल" ; --guessed
-lin all_1_Predet = lin Predet {s = "सब"} ; --guessed
-lin all_2_Predet = lin Predet {s = "सब"} ; --guessed
+lin all_1_Predet = {s = "सब"} ; --guessed
+lin all_2_Predet = {s = "सब"} ; --guessed
 lin all_mains_A = mkA "सार्वभौमिक वोल्टेज" ; --guessed
 lin all_powerful_A = mkA "सर्वशक्तिमान" ; --guessed
 lin all_round_A = mkA "बहुमुखी" ; --guessed
@@ -2876,7 +2876,7 @@ lin almonerFem_N = mkN "चिकित्सा समाज सेवक" ; --
 lin almost_AdA = mkAdA "लगभग" ;
 lin almost_AdN = mkAdN "लगभग" ;
 lin almost_AdV = mkAdV "लगभग" ;
-lin almost_Predet = lin Predet {s = "लगभग"} ; --guessed
+lin almost_Predet = {s = "लगभग"} ; --guessed
 lin alms_N = mkN "दान" ;
 lin alms_box_N = mkN "दान-पात्र" ; --guessed
 lin alms_giving_1_N = mkN "दान" ;
@@ -4448,10 +4448,10 @@ lin anxious_1_A = mkA "चिंतित" ; --guessed
 lin anxious_2_A = mkA "उत्सुक" ;
 lin anxiousness_1_N = mkN "दुश्चिंता" ; --guessed
 lin anxiousness_2_N = mkN "चिंता" ;
-lin anyPl_1_Det = lin Det {s = \\_,_,_ => "कोई भी" ; n = Pl} ; --guessed
-lin anyPl_2_Det = lin Det {s = \\_,_,_ => "किसी भी प्रकार के" ; n = Pl} ; --guessed
-lin anySg_1_Det = lin Det {s = \\_,_,_ => "कोई भी" ; n = Sg} ; --guessed
-lin anySg_2_Det = lin Det {s = \\_,_,_ => "कोई भी" ; n = Sg} ; --guessed
+lin anyPl_1_Det = {s = \\_,_,_ => "कोई भी" ; n = Pl} ; --guessed
+lin anyPl_2_Det = {s = \\_,_,_ => "किसी भी प्रकार के" ; n = Pl} ; --guessed
+lin anySg_1_Det = {s = \\_,_,_ => "कोई भी" ; n = Sg} ; --guessed
+lin anySg_2_Det = {s = \\_,_,_ => "कोई भी" ; n = Sg} ; --guessed
 lin any_AdA = mkAdA "बिल्कुल" ; --guessed
 lin anyhow_1_Adv = mkAdv "वैसे भी" ; --guessed
 lin anyhow_2_Adv = mkAdv "किसी भी तरह से" ; --guessed
@@ -4911,7 +4911,7 @@ lin approximate_1_V2 = mkV2 (mkV "होना") "के करीब" ; --guess
 lin approximate_2_V2 = mkV2 (compoundV "अनुमान" (mkV "लगाना")) ; --guessed
 lin approximately_AdA = mkAdA "लगभग" ;
 lin approximately_AdN = mkAdN "लगभग" ;
-lin approximately_Predet = lin Predet {s = "लगभग"} ; --guessed
+lin approximately_Predet = {s = "लगभग"} ; --guessed
 lin approximation_1_N = mkN "अनुमान" ; --guessed
 lin approximation_2_N = mkN "सन्निकर्ष" ; --guessed
 lin approximation_3_N = mkN "अनुमान" ; --guessed
@@ -5618,15 +5618,15 @@ lin aryan_A = mkA "आर्य" ;
 lin arytenoid_1_N = mkN "अरीटिनॉइड उपास्थि" ; --guessed
 lin as_CAdv = lin CAdv {s = "उतना... जितना" ; p = ""} ; --guessed
 lin as_Prep = mkPrep "के रूप में" "" ; --guessed
-lin as_1_Subj = lin Subj {s = "जैसे-जैसे"} ; --guessed
-lin as_2_Subj = lin Subj {s = "जैसा कि"} ; --guessed
+lin as_1_Subj = {s = "जैसे-जैसे"} ; --guessed
+lin as_2_Subj = {s = "जैसा कि"} ; --guessed
 lin as_for_Prep = mkPrep "जहाँ तक ... का सवाल है" "" ; --guessed
-lin as_long_as_Subj = lin Subj {s = "जब तक"} ; --guessed
-lin as_of_Prep = mkPrep "...के अनुसार" "" ; --guessed
+lin as_long_as_Subj = {s = "जब तक"} ; --guessed
+lin as_of_Prep = mkPrep "के" "अनुसार" ; --guessed
 lin as_opposed_to_Prep = mkPrep "के विपरीत" "" ; --guessed
 lin as_per_Prep = mkPrep "के अनुसार" "" ; --guessed
 lin as_regards_Prep = mkPrep "के संबंध में" "" ; --guessed
-lin as_soon_as_Subj = lin Subj {s = "जैसे ही"} ; --guessed
+lin as_soon_as_Subj = {s = "जैसे ही"} ; --guessed
 lin as_well_Adv = mkAdv "भी" ;
 lin as_well_as_Conj = mkConj "के साथ-साथ" ; --guessed
 lin asafetida_1_N = mkN "हींग" ;
@@ -8904,7 +8904,7 @@ lin befogged_A = mkA "मदहोश" ; --guessed
 lin before_1_Adv = mkAdv "पहले" ;
 lin before_2_Adv = mkAdv "सामने" ; --guessed
 lin before_Prep = mkPrep "से पहले" "" ; --guessed
-lin before_Subj = lin Subj {s = "से पहले"} ; --guessed
+lin before_Subj = {s = "से पहले"} ; --guessed
 lin beforehand_A = mkA "अग्रिम" ; --guessed
 lin beforehand_Adv = mkAdv "पहले से ही" ; --guessed
 lin befoul_V2 = mkV2 (compoundV "गंदा" (mkV "करना")) ; --guessed
@@ -11655,7 +11655,7 @@ lin botchy_A = mkA "घटिया" ; --guessed
 lin botfly_N = mkN "गडारी" ; --guessed
 lin both7and_DConj = S.both7and_DConj ;
 lin both_Adv = mkAdv "दोनों" ;
-lin both_Det = lin Det {s = \\_,_,_ => "दोनों" ; n = Pl} ; --guessed
+lin both_Det = {s = \\_,_,_ => "दोनों" ; n = Pl} ; --guessed
 lin bother_1_N = mkN "हंगामा" ; --guessed
 lin bother_2_N = mkN "परेशानी" ; --guessed
 lin bother_1_V = compoundV "कष्ट" (mkV "करना") ; --guessed
@@ -13765,12 +13765,12 @@ lin busybodyMasc_N = mkN "दख़ल देने वाला" ; --guessed
 lin busybodyFem_N = mkN "टांग अड़ाने वाली" ; --guessed
 lin busyness_N = mkN "व्यस्तता" ; --guessed
 lin busywork_N = mkN "बेकार का काम" ; --guessed
-lin but_Predet = lin Predet {s = "केवल"} ; --guessed
+lin but_Predet = {s = "केवल"} ; --guessed
 lin but_1_Conj = mkConj "लेकिन" ; --guessed
 lin but_2_Conj = mkConj "लेकिन" ; --guessed
 lin but_PConj = lin PConj {s = "लेकिन"} ; --guessed
 lin but_Prep = mkPrep "बल्कि" "" ; --guessed
-lin but_Subj = lin Subj {s = "लेकिन"} ; --guessed
+lin but_Subj = {s = "लेकिन"} ; --guessed
 lin butacaine_N = mkN "ब्यूटाकेन" ; --guessed
 lin butadiene_N = mkN "ब्यूटाडीन" ; --guessed
 lin butane_N = mkN "ब्यूटेन" ; --guessed
@@ -21528,7 +21528,7 @@ lin consideration_4_N = mkN "लिहाज़" ; --guessed
 lin consideration_5_N = mkN "रिटेनर शुल्क" ; --guessed
 lin consideration_6_N = mkN "लिहाज़" ; --guessed
 lin considering_Prep = mkPrep "को देखते हुए" "" ; --guessed
-lin considering_Subj = lin Subj {s = "यह देखते हुए कि"} ; --guessed
+lin considering_Subj = {s = "यह देखते हुए कि"} ; --guessed
 lin consign_1_V2 = mkV2 (mkV "सौंपना") ; --guessed
 lin consign_2_V2 = mkV2 (mkV "सौंपना") ; --guessed
 lin consign_3_V2 = mkV2 (mkV "भेजना") ;
@@ -23137,7 +23137,7 @@ lin countervail_2_V2 = mkV2 (compoundV "प्रतिकार" (mkV "कर�
 lin counterweight_N = mkN "प्रतिभार" ; --guessed
 lin countess_N = mkN "काउंटेस" ;
 lin counting_house_N = mkN "लेखा-कार्यालय" ; --guessed
-lin countless_ACard = lin ACard {s = "अनगिनत"} ; --guessed
+lin countless_ACard = {s = "अनगिनत"} ; --guessed
 lin countrified_1_A = mkA "देहाती" ;
 lin country_1_N = mkN "देहात" ;
 lin country_2_N = mkN "देश" ;
@@ -31672,7 +31672,7 @@ lin e'er_Adv = mkAdv "हमेशा" ; --guessed
 lin e_mail_N = mkN "ईमेल" ;
 lin ea_PN = mkPN "एआ" ; --guessed
 lin each_Adv = mkAdv "प्रत्येक" ; --guessed
-lin each_Det = lin Det {s = \\_,_,_ => "प्रत्येक" ; n = Sg} ; --guessed
+lin each_Det = {s = \\_,_,_ => "प्रत्येक" ; n = Sg} ; --guessed
 lin eager_A = mkA "आतुर" ;
 lin eagerness_1_N = mkN "उत्सुकता" ;
 lin eagerness_2_N = mkN "तत्परता" ; --guessed
@@ -32327,7 +32327,7 @@ lin eisegesis_N = mkN "ईसागेसिस" ; --guessed
 lin eisteddfod_N = mkN "ईस्टेडफोड" ; --guessed
 lin either7or_DConj = S.either7or_DConj ;
 lin either_Adv = mkAdv "भी नहीं" ; --guessed
-lin either_Det = lin Det {s = \\_,_,_ => "या तो" ; n = Sg} ; --guessed
+lin either_Det = {s = \\_,_,_ => "या तो" ; n = Sg} ; --guessed
 lin ejaculate_1_V2 = mkV2 (compoundV "सहसा" (mkV "बोलना")) ; --guessed
 lin ejaculate_2_V2 = mkV2 (compoundV "स्खलित" (mkV "करना")) ; --guessed
 lin ejaculation_1_N = mkN "विस्मय" ; --guessed
@@ -34525,7 +34525,7 @@ lin even_out_3_V = compoundV "बराबर" (mkV "होना") ; --guessed
 lin even_out_1_V2 = mkV2 (compoundV "संतुलित" (mkV "करना")) ; --guessed
 lin even_out_2_V2 = mkV2 (compoundV "बराबर" (mkV "करना")) ; --guessed
 lin even_out_4_V2 = mkV2 (compoundV "बराबर" (mkV "करना")) ; --guessed
-lin even_though_Subj = lin Subj {s = "हालांकि"} ; --guessed
+lin even_though_Subj = {s = "हालांकि"} ; --guessed
 lin evening_1_N = mkN "शाम" ;
 lin evening_2_N = mkN "शाम" ;
 lin evening_3_N = mkN "शाम" ;
@@ -36969,8 +36969,8 @@ lin feverish_2_A = mkA "ज्वरग्रस्त" ; --guessed
 lin feverish_3_A = mkA "ज्वरग्रस्त" ; --guessed
 lin feverroot_N = mkN "ज्वर-मूल" ; --guessed
 lin few_N = mkN "कुछ चुने हुए" ; --guessed
-lin few_ACard = lin ACard {s = "कुछ"} ; --guessed
-lin fewer_ACard = lin ACard {s = "कम"} ; --guessed
+lin few_ACard = {s = "कुछ"} ; --guessed
+lin fewer_ACard = {s = "कम"} ; --guessed
 lin fewer_than_AdN = mkAdN "से कम" ; --guessed
 lin fewness_N = mkN "अल्पता" ; --guessed
 lin fey_1_A = mkA "थोड़ा पागल" ; --guessed
@@ -38994,7 +38994,7 @@ lin footwork_2_N = mkN "पैंतरेबाज़ी" ; --guessed
 lin fop_N = mkN "बाँका" ;
 lin foppish_A = mkA "छैला" ; --guessed
 lin foppishness_N = mkN "बाँकापन" ; --guessed
-lin for_Subj = lin Subj {s = "क्योंकि"} ; --guessed
+lin for_Subj = {s = "क्योंकि"} ; --guessed
 lin for_PConj = lin PConj {s = "शांति"} ; --guessed
 lin for_Prep = mkPrep "के लिए" "" ; --guessed
 lin for_example_Adv = mkAdv "उदाहरण के लिए" ;
@@ -44679,7 +44679,7 @@ lin half_3_A = mkA "आधा" ;
 lin half_Adv = mkAdv "आधा" ; --guessed
 lin half_1_N = mkN "आधा" ;
 lin half_2_N = mkN "आधा" ;
-lin half_Predet = lin Predet {s = "आधा"} ; --guessed
+lin half_Predet = {s = "आधा"} ; --guessed
 lin half_baked_1_A = mkA "अधपका" ; --guessed
 lin half_baked_2_A = mkA "अधपका" ; --guessed
 lin half_bloodMasc_N = mkN "सौतेला भाई" ; --guessed
@@ -49679,7 +49679,7 @@ lin in_addition_Adv = mkAdv "इसके अतिरिक्त" ; --guessed
 lin in_addition_to_Prep = mkPrep "के अलावा" "" ; --guessed
 lin in_advance_Adv = mkAdv "पहले से" ; --guessed
 lin in_case_of_Prep = mkPrep "की स्थिति में" "" ; --guessed
-lin in_case_Subj = lin Subj {s = "इस स्थिति में कि"} ; --guessed
+lin in_case_Subj = {s = "इस स्थिति में कि"} ; --guessed
 lin in_chief_A = mkA "मुख्य" ;
 lin in_fighting_1_N = mkN "आंतरिक कलह" ; --guessed
 lin in_fighting_2_N = mkN "निकट युद्ध" ; --guessed
@@ -53634,9 +53634,9 @@ lin just_5_Adv = mkAdv "अभी-अभी" ; --guessed
 lin just_6_Adv = mkAdv "केवल" ;
 lin just_7_Adv = mkAdv "अभी-अभी" ; --guessed
 lin just_8_Adv = mkAdv "ज़रा सा" ; --guessed
-lin just_1_Predet = lin Predet {s = "सिर्फ़"} ; --guessed
-lin just_2_Predet = lin Predet {s = "ठीक"} ; --guessed
-lin just_because_Subj = lin Subj {s = "बस इसलिए"} ; --guessed
+lin just_1_Predet = {s = "सिर्फ़"} ; --guessed
+lin just_2_Predet = {s = "ठीक"} ; --guessed
+lin just_because_Subj = {s = "बस इसलिए"} ; --guessed
 lin justice_1_N = mkN "न्याय" ;
 lin justice_2_N = mkN "न्याय" ; --guessed
 lin justiceMasc_3_N = mkN "न्यायाधीश" ;
@@ -56977,7 +56977,7 @@ lin like_4_A = mkA "समान" ; --guessed
 lin like_1_N = mkN "समान" ; --guessed
 lin like_2_N = mkN "समान" ; --guessed
 lin like_Prep = mkPrep "की तरह" "" ; --guessed
-lin like_Subj = lin Subj {s = "जैसा"} ; --guessed
+lin like_Subj = {s = "जैसा"} ; --guessed
 lin like_2_V2 = mkV2 (compoundV "पसंद" (mkV "करना")) ;
 lin like_3_V2 = mkV2 (compoundV "पसंद" (mkV "करना")) ;
 lin like_4_V2 = mkV2 (compoundV "पसंद" (mkV "करना")) ;
@@ -57532,7 +57532,7 @@ lin little_5_A = mkA "धीमी" ; --guessed
 lin little_6_A = mkA "नाटा" ; --guessed
 lin little_7_A = mkA "छोटा" ;
 lin little_8_A = mkA "छोटा" ;
-lin little_ACard = lin ACard {s = "थोड़ा"} ; --guessed
+lin little_ACard = {s = "थोड़ा"} ; --guessed
 lin little_bighorn_river_LN = mkLN "लिटिल बिगहॉर्न नदी" ; --guessed
 lin little_missouri_river_LN = mkLN "लिटिल मिसौरी नदी" ; --guessed
 lin little_rock_LN = mkLN "लिटिल रॉक" ;
@@ -59951,7 +59951,7 @@ lin manuscript_2_N = mkN "पाण्डुलिपि" ;
 lin manx_A = mkA "मैंक्स" ;
 lin manx_1_N = mkN "मैंक्स" ;
 lin manx_2_N = mkN "मैंक्स" ;
-lin many_ACard = lin ACard {s = "बहुत"} ; --guessed
+lin many_ACard = {s = "बहुत"} ; --guessed
 lin many_sided_1_A = mkA "बहुपक्षीय" ; --guessed
 lin many_sided_2_A = mkA "बहुमुखी" ; --guessed
 lin many_sided_3_A = mkA "बहुमुखी" ; --guessed
@@ -63578,7 +63578,7 @@ lin more_2_Adv = mkAdv "ज्यादा" ;
 lin more_SN = mkSN "मोर" ; --guessed
 lin more_often_than_not_Adv = mkAdv "अक्सर" ; --guessed
 lin more_CAdv = lin CAdv {s = "से अधिक" ; p = ""} ; --guessed
-lin more_than_Predet = lin Predet {s = "से ज़्यादा"} ; --guessed
+lin more_than_Predet = {s = "से ज़्यादा"} ; --guessed
 lin morecambe_LN = mkLN "मोर्कम" ; --guessed
 lin moreen_N = mkN "मोरीन" ; --guessed
 lin morel_N = mkN "गुच्छी" ; --guessed
@@ -63729,7 +63729,7 @@ lin mossy_2_A = mkA "पुराने ढंग का" ; --guessed
 lin most_1_AdA = mkAdA "सबसे" ;
 lin most_2_Adv = mkAdv "बहुत" ; --guessed
 lin most_3_Adv = mkAdv "लगभग" ; --guessed
-lin most_Det = lin Det {s = \\_,_,_ => "अधिकांश" ; n = Pl} ; --guessed
+lin most_Det = {s = \\_,_,_ => "अधिकांश" ; n = Pl} ; --guessed
 lin mostaccioli_N = mkN "मोस्ताचिओली" ; --guessed
 lin mostly_1_AdV = mkAdV "अधिकतर" ;
 lin mostly_2_AdV = mkAdV "अधिकतर" ;
@@ -64080,8 +64080,8 @@ lin much_3_AdA = mkAdA "बहुत" ;
 lin much_3_Adv = mkAdv "बहुत" ;
 lin much_4_Adv = mkAdv "लगभग" ; --guessed
 lin much_5_Adv = mkAdv "ज़्यादा" ; --guessed
-lin much_ACard = lin ACard {s = "बहुत"} ; --guessed
-lin much_fewer_ACard = lin ACard {s = "बहुत कम"} ; --guessed
+lin much_ACard = {s = "बहुत"} ; --guessed
+lin much_fewer_ACard = {s = "बहुत कम"} ; --guessed
 lin muchness_N = mkN "बहुतायत" ; --guessed
 lin muciferous_A = mkA "श्लेष्मयुक्त" ; --guessed
 lin mucilage_1_N = mkN "श्लेष्म" ; --guessed
@@ -64983,7 +64983,7 @@ lin narrowness_4_N = mkN "संकीर्णता" ; --guessed
 lin narthex_1_N = mkN "नार्थेक्स" ; --guessed
 lin narthex_2_N = mkN "नार्थेक्स" ; --guessed
 lin narwhal_1_N = mkN "नार्वेल" ; --guessed
-lin nary_Predet = lin Predet {s = "एक भी नहीं"} ; --guessed
+lin nary_Predet = {s = "एक भी नहीं"} ; --guessed
 lin nasa_PN = mkPN "नासा" ;
 lin nasal_1_A = mkA "नासिका" ;
 lin nasal_2_A = mkA "अनुनासिक" ; --guessed
@@ -65441,7 +65441,7 @@ lin neighbourly_1_A = mkA "मैत्रीपूर्ण" ; --guessed
 lin neil_GN = mkGN "नील" ; --guessed
 lin neither7nor_DConj = lin DConj {s1 = "" ; s2 = "न... न" ; n = Pl} ; --guessed
 lin neither_Adv = mkAdv "न ही" ; --guessed
-lin neither_Det = lin Det {s = \\_,_,_ => "दोनों में से कोई नहीं" ; n = Sg} ; --guessed
+lin neither_Det = {s = \\_,_,_ => "दोनों में से कोई नहीं" ; n = Sg} ; --guessed
 lin nekton_N = mkN "तरणक" ;
 lin nelfinavir_N = mkN "नेल्फिनावीर" ; --guessed
 lin nell_GN = mkGN "नेल" ; --guessed
@@ -68109,7 +68109,7 @@ lin once_AdV = mkAdV "एक बार" ; --guessed
 lin once_1_Adv = mkAdv "एक बार" ;
 lin once_3_Adv = mkAdv "एक बार" ;
 lin once_Prep = mkPrep "एक बार" "" ; --guessed
-lin once_Subj = lin Subj {s = "जैसे ही"} ; --guessed
+lin once_Subj = {s = "जैसे ही"} ; --guessed
 lin once_in_a_while_Adv = mkAdv "कभी-कभार" ; --guessed
 lin onchocerciasis_N = mkN "ऑन्कोसर्किआसिस" ; --guessed
 lin oncidium_N = mkN "ओन्सीडियम" ; --guessed
@@ -68155,7 +68155,7 @@ lin only_4_AdV = mkAdV "केवल" ; --guessed
 lin only_5_Adv = mkAdv "सिर्फ यह कि" ; --guessed
 lin only_6_Adv = mkAdv "केवल" ; --guessed
 lin only_7_Adv = mkAdv "ही" ;
-lin only_Predet = lin Predet {s = "केवल"} ; --guessed
+lin only_Predet = {s = "केवल"} ; --guessed
 lin onomancerMasc_N = mkN "नाम-भविष्यवक्ता" ; --guessed
 lin onomancerFem_N = mkN "नाम-भविष्यवक्ता" ; --guessed
 lin onomancy_N = mkN "नाम-भविष्यवाणी" ; --guessed
@@ -78130,7 +78130,7 @@ lin provide_1_V2 = mkV2 (compoundV "प्रदान" (mkV "करना")) ; 
 lin provide_2_V2 = mkV2 (compoundV "प्रदान" (mkV "करना")) ; --guessed
 lin provide_4_V2 = mkV2 (compoundV "प्रदान" (mkV "करना")) ; --guessed
 lin provide_6_V2 = mkV2 (compoundV "भरण-पोषण" (mkV "करना")) ; --guessed
-lin provided_Subj = lin Subj {s = "शांति"} ; --guessed
+lin provided_Subj = {s = "शांति"} ; --guessed
 lin providence_2_N = mkN "ईश्वरीय विधान" ; --guessed
 lin providence_3_N = mkN "ईश्वरीय विधान" ; --guessed
 lin providence_4_N = mkN "दूरदर्शिता" ; --guessed
@@ -78144,7 +78144,7 @@ lin providerMasc_1_N = mkN "प्रदाता" ; --guessed
 lin providerFem_1_N = mkN "प्रदाता" ; --guessed
 lin providerMasc_2_N = mkN "पालनहार" ; --guessed
 lin providerFem_2_N = mkN "पालनहार" ; --guessed
-lin providing_Subj = lin Subj {s = "बशर्ते"} ; --guessed
+lin providing_Subj = {s = "बशर्ते"} ; --guessed
 lin provence_LN = mkLN "प्रोवेंस" ; --guessed
 lin province_1_N = mkN "प्रांत" ; --guessed
 lin province_2_N = mkN "क्षेत्र" ; --guessed
@@ -79765,8 +79765,8 @@ lin quitclaim_1_N = mkN "हकत्याग लेख" ; --guessed
 lin quitclaim_2_N = mkN "अधिकार त्याग" ; --guessed
 lin quite_AdA = mkAdA "काफ़ी" ;
 lin quite_2_Adv = mkAdv "काफ़ी" ;
-lin quite_3_Predet = lin Predet {s = "काफ़ी"} ; --guessed
-lin quite_4_Predet = lin Predet {s = "बिल्कुल"} ; --guessed
+lin quite_3_Predet = {s = "काफ़ी"} ; --guessed
+lin quite_4_Predet = {s = "बिल्कुल"} ; --guessed
 lin quito_LN = mkLN "क्विटो" ;
 lin quits_A = mkA "बराबर" ; --guessed
 lin quittance_1_N = mkN "रसीद" ; --guessed
@@ -91451,7 +91451,7 @@ lin sin_2_V = mkV "पाप" ;
 lin sinai_peninsula_LN = mkLN "सिनाई प्रायद्वीप" ; --guessed
 lin since_Adv = mkAdv "तब से" ; --guessed
 lin since_Prep = mkPrep "से" "" ;
-lin since_Subj = lin Subj {s = "से"} ; --guessed
+lin since_Subj = {s = "से"} ; --guessed
 lin since_then_Adv = mkAdv "तब से" ; --guessed
 lin sincere_1_A = mkA "निष्कपट" ; --guessed
 lin sincere_2_A = mkA "सच्चा" ; --guessed
@@ -93246,13 +93246,13 @@ lin so_9_Adv = mkAdv "इसलिए" ; --guessed
 lin so_10_Adv = mkAdv "ऐसा" ;
 lin so_N = mkN "सोल" ; --guessed
 lin so_PConj = lin PConj {s = "इतना"} ; --guessed
-lin so_Subj = lin Subj {s = "इसलिए"} ; --guessed
+lin so_Subj = {s = "इसलिए"} ; --guessed
 lin so_and_soMasc_N = mkN "नीच" ; --guessed
 lin so_and_soFem_N = mkN "कमीना" ; --guessed
 lin so_called_A = mkA "तथाकथित" ;
 lin so_so_A = mkA "ठीक-ठाक" ; --guessed
 lin so_so_Adv = mkAdv "ठीक-ठाक" ; --guessed
-lin so_that_Subj = lin Subj {s = "ताकि"} ; --guessed
+lin so_that_Subj = {s = "ताकि"} ; --guessed
 lin soak_1_N = mkN "भिगोना" ; --guessed
 lin soak_2_N = mkN "भिगोना" ; --guessed
 lin soak_1_V = mkV "भिगोना" ; --guessed
@@ -93701,7 +93701,7 @@ lin sombreness_2_N = mkN "विषाद" ; --guessed
 lin sombreness_3_N = mkN "गंभीरता" ; --guessed
 lin sombrero_1_LN = mkLN "सोम्ब्रेरो" ; --guessed
 lin sombrero_2_N = mkN "सोमब्रेरो" ; --guessed
-lin some_Det = lin Det {s = \\_,_,_ => "थोड़ा" ; n = Pl} ; --guessed
+lin some_Det = {s = \\_,_,_ => "थोड़ा" ; n = Pl} ; --guessed
 lin some_Quant = demoPN "कुछ" "कुछ" "कुछ" "कुछ" ; --guessed
 lin someday_Adv = mkAdv "किसी दिन" ; --guessed
 lin somehow_1_AdV = mkAdV "किसी न किसी तरह" ; --guessed
@@ -98468,8 +98468,8 @@ lin succulent_N = mkN "गूदेदार पौधा" ; --guessed
 lin succumb_1_V = compoundV "झुक" (mkV "जाना") ; --guessed
 lin succumb_2_V = compoundV "दम" (mkV "तोड़ना") ; --guessed
 lin succussion_N = mkN "विक्षोभन" ; --guessed
-lin such_1_Predet = lin Predet {s = "ऐसा"} ; --guessed
-lin such_2_Predet = lin Predet {s = "इतना"} ; --guessed
+lin such_1_Predet = {s = "ऐसा"} ; --guessed
+lin such_2_Predet = {s = "इतना"} ; --guessed
 lin such_as_Prep = mkPrep "जैसे कि" "" ; --guessed
 lin suchlike_A = mkA "इसी तरह का" ; --guessed
 lin suchow_LN = mkLN "सुख़ुव" ; --guessed
@@ -102006,7 +102006,7 @@ lin thalweg_1_N = mkN "थैलवेग" ; --guessed
 lin thalweg_2_N = mkN "थालवेग" ; --guessed
 lin thame_LN = mkLN "टेम" ; --guessed
 lin than_Prep = mkPrep "से" "" ;
-lin than_Subj = lin Subj {s = "से"} ; --guessed
+lin than_Subj = {s = "से"} ; --guessed
 lin thanatology_N = mkN "मृत्युविज्ञान" ;
 lin thanatophobia_N = mkN "मृत्यु-भीति" ; --guessed
 lin thanatopsis_N = mkN "मृत्यु-दर्शन" ; --guessed
@@ -102413,7 +102413,7 @@ lin thortveitite_N = mkN "थोर्टवेइटाइट" ; --guessed
 lin those_N = mkN "वे" ;
 lin though_Adv = mkAdv "फिर भी" ;
 lin though_Prep = mkPrep "हालांकि" "" ; --guessed
-lin though_Subj = lin Subj {s = "हालांकि"} ; --guessed
+lin though_Subj = {s = "हालांकि"} ; --guessed
 lin thought_1_N = mkN "विचार" ;
 lin thought_2_N = mkN "विचार" ;
 lin thought_3_N = mkN "विचार" ;
@@ -102960,7 +102960,7 @@ lin tiling_N = mkN "टाइल लगाना" ; --guessed
 lin till_1_N = mkN "टिल" ; --guessed
 lin till_2_N = mkN "राजकोष" ; --guessed
 lin till_3_N = mkN "तिजोरी" ; --guessed
-lin till_Subj = lin Subj {s = "तक"} ; --guessed
+lin till_Subj = {s = "तक"} ; --guessed
 lin till_V2 = mkV2 (mkV "जोतना") ; --guessed
 lin tillage_1_N = mkN "जुती हुई भूमि" ; --guessed
 lin tillage_2_N = mkN "जुताई" ;
@@ -107861,7 +107861,7 @@ lin unleash_1_V2 = mkV2 (compoundV "उन्मुक्त" (mkV "करना
 lin unleash_2_V2 = mkV2 (compoundV "पट्टे से" (mkV "छोड़ना")) ; --guessed
 lin unleash_3_V2 = mkV2 (compoundV "मुक्त" (mkV "करना")) ; --guessed
 lin unleavened_A = mkA "बेखमीर" ; --guessed
-lin unless_Subj = lin Subj {s = "जब तक कि ... न"} ; --guessed
+lin unless_Subj = {s = "जब तक कि ... न"} ; --guessed
 lin unlettered_1_A = mkA "अनपढ़" ; --guessed
 lin unlettered_2_A = mkA "अशिक्षित" ; --guessed
 lin unlicensed_1_A = mkA "बिना लाइसेंस का" ; --guessed
@@ -108620,7 +108620,7 @@ lin untied_1_A = mkA "खुला" ;
 lin untied_2_A = mkA "खुला" ; --guessed
 lin untied_3_A = mkA "बंधनमुक्त" ; --guessed
 lin until_Prep = mkPrep "तक" "" ;
-lin until_Subj = lin Subj {s = "जब तक"} ; --guessed
+lin until_Subj = {s = "जब तक"} ; --guessed
 lin until_then_Adv = mkAdv "तब तक" ;
 lin untilled_A = mkA "बिन जुता हुआ" ; --guessed
 lin untimbered_1_A = mkA "वृक्षहीन" ; --guessed
@@ -112344,17 +112344,17 @@ lin whence_Adv = mkAdv "कहाँ से" ; --guessed
 lin whencesoever_A = mkA "जहाँ कहीं से भी" ; --guessed
 lin whenever_Adv = mkAdv "जब कभी" ; --guessed
 lin where_IAdv = S.where_IAdv ;
-lin where_Subj = lin Subj {s = "जहाँ"} ; --guessed
+lin where_Subj = {s = "जहाँ"} ; --guessed
 lin where_as_Prep = mkPrep "कहाँ" "" ; --guessed
 lin whereabouts_Adv = mkAdv "किस जगह के आसपास" ; --guessed
 lin whereabouts_N = mkN "ठिकाना" ; --guessed
 lin whereas_Prep = mkPrep "जबकि" "" ;
-lin whereas_Subj = lin Subj {s = "जबकि"} ; --guessed
+lin whereas_Subj = {s = "जबकि"} ; --guessed
 lin whereat_Adv = mkAdv "जिस पर" ; --guessed
 lin whereby_Adv = mkAdv "जिसके द्वारा" ; --guessed
 lin wherefore_Adv = mkAdv "क्यों" ; --guessed
 lin wherein_IAdv = lin IAdv {s = "जिसमें"} ; --guessed
-lin wherein_Subj = lin Subj {s = "जिसमें"} ; --guessed
+lin wherein_Subj = {s = "जिसमें"} ; --guessed
 lin whereof_Adv = mkAdv "जिसका" ; --guessed
 lin whereon_Adv = mkAdv "जिस पर" ; --guessed
 lin wheresoever_Adv = mkAdv "जहाँ कहीं भी" ; --guessed
@@ -112369,7 +112369,7 @@ lin wherry_1_N = mkN "व्हरी" ; --guessed
 lin wherry_2_N = mkN "हल्की नाव" ; --guessed
 lin whet_1_V2 = mkV2 (compoundV "तेज़" (mkV "करना")) ; --guessed
 lin whet_2_V2 = mkV2 (compoundV "सान" (mkV "देना")) ; --guessed
-lin whether_Subj = lin Subj {s = "क्या"} ; --guessed
+lin whether_Subj = {s = "क्या"} ; --guessed
 lin whetstone_N = mkN "सान" feminine ;
 lin whey_1_N = mkN "दूध का पानी" ;
 lin whey_2_N = mkN "दूध का पानी" ;
@@ -112389,10 +112389,10 @@ lin whigFem_2_N = mkN "व्हिग" ; --guessed
 lin whigMasc_3_N = mkN "व्हिग" ; --guessed
 lin whigFem_3_N = mkN "व्हिग" ; --guessed
 lin while_N = mkN "अंतराल" ; --guessed
-lin while_Subj = lin Subj {s = "जबकि"} ; --guessed
+lin while_Subj = {s = "जबकि"} ; --guessed
 lin while_V2 = mkV2 (mkV "बिताना") ; --guessed
 lin while_away_V2 = mkV2 (mkV "बिताना") ; --guessed
-lin whilst_Subj = lin Subj {s = "जबकि"} ; --guessed
+lin whilst_Subj = {s = "जबकि"} ; --guessed
 lin whim_1_N = mkN "लहर" feminine ;
 lin whim_2_N = mkN "सनक" ; --guessed
 lin whimper_N = mkN "कराह" ; --guessed

@@ -1,23 +1,23 @@
 concrete WordNetUrd of WordNet = CatUrd ** open Prelude, CommonHindustani, ParadigmsUrd, ResHindustani, (G=GrammarUrd), (S=StructuralUrd) in {
 
 lin a_bomb_N = mkCmpdNoun "ایٹم" (mkN "بم") ; --guessed
-lin a_couple_Card = lin Card {s = "چند" ; n = Pl} ; --guessed
-lin a_few_Card = lin Card {s = "چند" ; n = Pl} ; --guessed
+lin a_couple_Card = {s = "چند" ; n = Pl} ; --guessed
+lin a_few_Card = {s = "چند" ; n = Pl} ; --guessed
 lin a_fortiori_Adv = mkAdv "اور بھی زیادہ وجہ سے" ; --guessed
 lin a_la_carte_Adv = mkAdv "حسبِ فرمائش" ; --guessed
 lin a_la_mode_Adv = mkAdv "آئس کریم کے ساتھ" ; --guessed
 lin a_level_N = mkCmpdNoun "اے" (mkN "لیول") ; --guessed
-lin a_little_Card = lin Card {s = "تھوڑا" ; n = Sg} ; --guessed
-lin a_lotSg_Card = lin Card {s = "بہت" ; n = Sg} ; --guessed
-lin a_lotPl_Card = lin Card {s = "بہت" ; n = Pl} ; --guessed
+lin a_little_Card = {s = "تھوڑا" ; n = Sg} ; --guessed
+lin a_lotSg_Card = {s = "بہت" ; n = Sg} ; --guessed
+lin a_lotPl_Card = {s = "بہت" ; n = Pl} ; --guessed
 lin a_lot_AdA = mkAdA "بہت" ; --guessed
 lin a_lot_Adv = mkAdv "بہت" ;
 lin a_posteriori_1_A = mkA "ما بعد" ; --guessed
 lin a_posteriori_2_A = mkA "مابعدی" ; --guessed
 lin a_priori_1_A = mkA "قبل از تجربہ" ; --guessed
 lin a_priori_2_A = mkA "قبل از تجربہ" ; --guessed
-lin a_sufficiencySg_Card = lin Card {s = "کافی مقدار" ; n = Sg} ; --guessed
-lin a_sufficiencyPl_Card = lin Card {s = "کافی مقدار" ; n = Pl} ; --guessed
+lin a_sufficiencySg_Card = {s = "کافی مقدار" ; n = Sg} ; --guessed
+lin a_sufficiencyPl_Card = {s = "کافی مقدار" ; n = Pl} ; --guessed
 lin aa_1_N = mkCmpdNoun "آ" (mkN "لاوا") ; --guessed
 lin aa_2_N = mkCmpdNoun "شرابیوں کی گمنام" (mkN "انجمن") ; --guessed
 lin aa_3_N = mkCmpdNoun "فنون میں ایسوسی ایٹ" (mkN "ڈگری") ; --guessed
@@ -268,7 +268,7 @@ lin abortus_N = mkN "جنين" ; --guessed
 lin abound_1_V = compoundV "کثرت سے" (mkV "ہونا") ;
 lin abound_2_V = compoundV "بھرا" (mkV "ہونا") ; --guessed
 lin about_AdN = mkAdN "تقریباً" ; --guessed
-lin about_Predet = lin Predet {s = "تقریباً"} ; --guessed
+lin about_Predet = {s = "تقریباً"} ; --guessed
 lin about_2_Adv = mkAdv "چاروں طرف" ; --guessed
 lin about_3_Adv = mkAdv "آس پاس" ; --guessed
 lin about_4_Adv = mkAdv "ادھر ادھر" ; --guessed
@@ -1939,7 +1939,7 @@ lin aft_Adv = mkAdv "جہاز کے پچھلے حصے میں" ; --guessed
 lin after_A = mkA "پچھلا" ;
 lin after_Adv = mkAdv "پیچھے" ; --guessed
 lin after_Prep = mkPrep "کے بعد" "" ; --guessed
-lin after_Subj = lin Subj {s = "کے بعد"} ; --guessed
+lin after_Subj = {s = "کے بعد"} ; --guessed
 lin afterbirth_N = mkN "آنول" ; --guessed
 lin afterburner_N = mkCmpdNoun "آفٹر" (mkN "برنر") ; --guessed
 lin aftercare_N = mkCmpdNoun "مابعد کی دیکھ" (mkN "بھال") ; --guessed
@@ -2448,7 +2448,7 @@ lin albanian_2_N = mkN "البانوی" ; --guessed
 lin albatross_1_N = mkN "الباٹروس" ; --guessed
 lin albatross_2_N = mkN "الباٹروس" ; --guessed
 lin albedo_N = mkN "البیڈو" ; --guessed
-lin albeit_Subj = lin Subj {s = "اگرچہ"} ; --guessed
+lin albeit_Subj = {s = "اگرچہ"} ; --guessed
 lin albert_GN = mkGN "البرٹ" ; --guessed
 lin alberta_LN = mkLN "البرٹا" ;
 lin albescent_A = mkA "سفید ہونے والا" ; --guessed
@@ -2678,8 +2678,8 @@ lin alkylbenzene_N = mkCmpdNoun "الکائل" (mkN "بینزین") ; --guessed
 lin alkylbenzenesulfonate_N = mkCmpdNoun "الکائل بینزین" (mkN "سلفونیٹ") ; --guessed
 lin alkylic_A = mkA "الکائل" ; --guessed
 lin all_A = mkA "بالکل" ; --guessed
-lin all_1_Predet = lin Predet {s = "سب"} ; --guessed
-lin all_2_Predet = lin Predet {s = "سب"} ; --guessed
+lin all_1_Predet = {s = "سب"} ; --guessed
+lin all_2_Predet = {s = "سب"} ; --guessed
 lin all_mains_A = mkA "ہمہ گیر وولٹیج" ; --guessed
 lin all_powerful_A = mkA "قادرِ مطلق" ; --guessed
 lin all_round_A = mkA "ہمہ جہت" ; --guessed
@@ -2876,7 +2876,7 @@ lin almonerFem_N = (mkCmpdNoun "ہسپتال کا سماجی" (mkN "کارکن")
 lin almost_AdA = mkAdA "تقریباً" ; --guessed
 lin almost_AdN = mkAdN "تقریباً" ; --guessed
 lin almost_AdV = mkAdV "تقریباً" ; --guessed
-lin almost_Predet = lin Predet {s = "تقریباً"} ; --guessed
+lin almost_Predet = {s = "تقریباً"} ; --guessed
 lin alms_N = mkN "صدقہ" ;
 lin alms_box_N = mkCmpdNoun "خیراتی" (mkN "ڈبہ") ; --guessed
 lin alms_giving_1_N = mkN "خیرات" ; --guessed
@@ -3003,7 +3003,7 @@ lin alternative_3_A = mkA "متبادل" ; --guessed
 lin alternative_N = mkN "متبادل" ; --guessed
 lin alternator_N = mkCmpdNoun "متبادل" (mkN "جنریٹر") ; --guessed
 lin althea_1_N = mkN "خطمی" ; --guessed
-lin although_Subj = lin Subj {s = "اگرچہ"} ; --guessed
+lin although_Subj = {s = "اگرچہ"} ; --guessed
 lin altimeter_N = mkCmpdNoun "بلندی" (mkN "پیما") ; --guessed
 lin altissimo_A = mkA "بہت اونچا" ; --guessed
 lin altitude_1_N = mkN "بلندی" ; --guessed
@@ -4448,10 +4448,10 @@ lin anxious_1_A = mkA "بے چین" ; --guessed
 lin anxious_2_A = mkA "مشتاق" ; --guessed
 lin anxiousness_1_N = mkN "تشویش" ; --guessed
 lin anxiousness_2_N = mkCmpdNoun "بے" (mkN "چینی") ; --guessed
-lin anyPl_1_Det = lin Det {s = \\_,_,_ => "کوئی بھی" ; n = Pl} ; --guessed
-lin anyPl_2_Det = lin Det {s = \\_,_,_ => "کسی بھی قسم کے" ; n = Pl} ; --guessed
-lin anySg_1_Det = lin Det {s = \\_,_,_ => "کوئی بھی" ; n = Sg} ; --guessed
-lin anySg_2_Det = lin Det {s = \\_,_,_ => "کوئی بھی" ; n = Sg} ; --guessed
+lin anyPl_1_Det = {s = \\_,_,_ => "کوئی بھی" ; n = Pl} ; --guessed
+lin anyPl_2_Det = {s = \\_,_,_ => "کسی بھی قسم کے" ; n = Pl} ; --guessed
+lin anySg_1_Det = {s = \\_,_,_ => "کوئی بھی" ; n = Sg} ; --guessed
+lin anySg_2_Det = {s = \\_,_,_ => "کوئی بھی" ; n = Sg} ; --guessed
 lin any_AdA = mkAdA "بالکل" ; --guessed
 lin anyhow_1_Adv = mkAdv "بہرحال" ; --guessed
 lin anyhow_2_Adv = mkAdv "جس طرح بھی" ; --guessed
@@ -4911,7 +4911,7 @@ lin approximate_1_V2 = mkV2 (mkV "ہونا") "کے قریب" ; --guessed
 lin approximate_2_V2 = mkV2 (compoundV "تخمینہ" (mkV "لگانا")) ; --guessed
 lin approximately_AdA = mkAdA "لگ بھگ" ;
 lin approximately_AdN = mkAdN "لگ بھگ" ;
-lin approximately_Predet = lin Predet {s = "تقریباً"} ; --guessed
+lin approximately_Predet = {s = "تقریباً"} ; --guessed
 lin approximation_1_N = mkN "تخمینہ" ; --guessed
 lin approximation_2_N = mkN "تقریب" ; --guessed
 lin approximation_3_N = mkN "تخمینہ" ; --guessed
@@ -5616,17 +5616,17 @@ lin aryanMasc_1_N = (mkN "آریائی") ** {g = masculine} ; --guessed
 lin aryanMasc_2_N = (mkN "آریہ") ** {g = masculine} ; --guessed
 lin aryan_A = mkA "آریائی" ; --guessed
 lin arytenoid_1_N = mkCmpdNoun "اریٹنائڈ" (mkN "غضروف") ; --guessed
-lin as_CAdv = lin CAdv {s = "اتنا" ; p = "جتنا"} ; --guessed
+lin as_CAdv = {s = "اتنا" ; p = "جتنا"} ; --guessed
 lin as_Prep = mkPrep "بطور" "" ; --guessed
-lin as_1_Subj = lin Subj {s = "جیسے جیسے"} ; --guessed
-lin as_2_Subj = lin Subj {s = "جیسا کہ"} ; --guessed
+lin as_1_Subj = {s = "جیسے جیسے"} ; --guessed
+lin as_2_Subj = {s = "جیسا کہ"} ; --guessed
 lin as_for_Prep = mkPrep "کے بارے میں" "" ; --guessed
-lin as_long_as_Subj = lin Subj {s = "جب تک"} ; --guessed
+lin as_long_as_Subj = {s = "جب تک"} ; --guessed
 lin as_of_Prep = mkPrep "سے" "" ; --guessed
 lin as_opposed_to_Prep = mkPrep "کے برعکس" "" ; --guessed
 lin as_per_Prep = mkPrep "کے مطابق" "" ; --guessed
 lin as_regards_Prep = mkPrep "کے بارے میں" "" ; --guessed
-lin as_soon_as_Subj = lin Subj {s = "جیسے ہی"} ; --guessed
+lin as_soon_as_Subj = {s = "جیسے ہی"} ; --guessed
 lin as_well_Adv = mkAdv "بھی" ;
 lin as_well_as_Conj = mkConj "کے ساتھ ساتھ" ; --guessed
 lin asafetida_1_N = mkN "ہینگ" ;
@@ -8766,7 +8766,7 @@ lin beaver_away_V = compoundV "جی توڑ محنت" (mkV "کرنا") ; --guesse
 lin beaver_away_at_V2 = mkV2 (compoundV "جی توڑ کر کام" (mkV "کرنا")) ; --guessed
 lin bebington_LN = mkLN "بیبنگٹن" ; --guessed
 lin becalmed_A = mkA "بے ہوا کے رکا ہوا" ; --guessed
-lin because_Subj = lin Subj {s = "کیونکہ"} ; --guessed
+lin because_Subj = {s = "کیونکہ"} ; --guessed
 lin because_of_Prep = mkPrep "کی وجہ سے" "" ; --guessed
 lin beccles_LN = mkLN "بیکلز" ; --guessed
 lin beck_N = mkN "اشارہ" ; --guessed
@@ -8904,7 +8904,7 @@ lin befogged_A = mkA "مدہوش" ; --guessed
 lin before_1_Adv = mkAdv "پہلے" ;
 lin before_2_Adv = mkAdv "سامنے" ; --guessed
 lin before_Prep = mkPrep "سے پہلے" "" ; --guessed
-lin before_Subj = lin Subj {s = "سے پہلے"} ; --guessed
+lin before_Subj = {s = "سے پہلے"} ; --guessed
 lin beforehand_A = mkA "پیشگی" ; --guessed
 lin beforehand_Adv = mkAdv "پہلے سے" ; --guessed
 lin befoul_V2 = mkV2 (compoundV "گندا" (mkV "کرنا")) ; --guessed
@@ -11655,7 +11655,7 @@ lin botchy_A = mkA "ناقص" ; --guessed
 lin botfly_N = mkN "نبر" ; --guessed
 lin both7and_DConj = S.both7and_DConj ;
 lin both_Adv = mkAdv "دونوں" ;
-lin both_Det = lin Det {s = \\_,_,_ => "دونوں" ; n = Sg} ; --guessed
+lin both_Det = {s = \\_,_,_ => "دونوں" ; n = Sg} ; --guessed
 lin bother_1_N = mkN "ہنگامہ" ; --guessed
 lin bother_2_N = mkN "زحمت" ; --guessed
 lin bother_1_V = compoundV "تکلیف" (mkV "کرنا") ; --guessed
@@ -13765,12 +13765,12 @@ lin busybodyMasc_N = (mkCmpdNoun "دخل دینے" (mkN "والا")) ** {g = mas
 lin busybodyFem_N = (mkCmpdNoun "مداخلت" (mkN "کار")) ** {g = feminine} ; --guessed
 lin busyness_N = mkN "مصروفیت" ; --guessed
 lin busywork_N = mkCmpdNoun "فضول" (mkN "کام") ; --guessed
-lin but_Predet = lin Predet {s = "صرف"} ; --guessed
+lin but_Predet = {s = "صرف"} ; --guessed
 lin but_1_Conj = mkConj "لیکن" ; --guessed
 lin but_2_Conj = mkConj "لیکن" ; --guessed
-lin but_PConj = lin PConj {s = "لیکن"} ; --guessed
+lin but_PConj = {s = "لیکن"} ; --guessed
 lin but_Prep = mkPrep "بلکہ" "" ; --guessed
-lin but_Subj = lin Subj {s = "لیکن"} ; --guessed
+lin but_Subj = {s = "لیکن"} ; --guessed
 lin butacaine_N = mkN "بیوٹاکین" ; --guessed
 lin butadiene_N = mkCmpdNoun "بیوٹا" (mkN "ڈائین") ; --guessed
 lin butane_N = mkN "بیوٹین" ; --guessed
@@ -16097,9 +16097,9 @@ lin cayuga_N = mkN "کیوگا" ; --guessed
 lin cayuga_lake_LN = mkLN "کایوگا جھیل" ; --guessed
 lin cayuse_N = mkN "کایوس" ; --guessed
 lin cbi_N = mkCmpdNoun "مرکزی" (mkN "بینک") ; --guessed
-lin cc_MU = lin MU {s = "مکعب سینٹی میٹر" ; isPre = False} ; --guessed
+lin cc_MU = {s = "مکعب سینٹی میٹر" ; isPre = False} ; --guessed
 lin cd_PN = mkPN "کیڈمیم" ;
-lin cd_MU = lin MU {s = "کینڈلا" ; isPre = False} ; --guessed
+lin cd_MU = {s = "کینڈلا" ; isPre = False} ; --guessed
 lin cd_3_N = mkCmpdNoun "ڈپازٹ" (mkN "سرٹیفکیٹ") ; --guessed
 lin cd_4_N = mkCmpdNoun "سی" (mkN "ڈی") ; --guessed
 lin cdr_PN = mkPN "کمانڈر" ; --guessed
@@ -16209,7 +16209,7 @@ lin cellulose_N = mkN "سیلولوز" ; --guessed
 lin cellulosic_N = mkCmpdNoun "سیلولوزک" (mkN "پلاسٹک") ; --guessed
 lin cellulosid_A = mkA "سیلولوزی" ; --guessed
 lin celom_1_N = mkCmpdNoun "سیلو" (mkN "م") ; --guessed
-lin celsius_MU = lin MU {s = "ڈگری سیلسیس" ; isPre = False} ; --guessed
+lin celsius_MU = {s = "ڈگری سیلسیس" ; isPre = False} ; --guessed
 lin celtMasc_N = (mkN "کیلٹ") ** {g = masculine} ; --guessed
 lin celtFem_N = (mkN "کیلٹ") ** {g = feminine} ; --guessed
 lin celtic_A = mkA "کیلٹک" ; --guessed
@@ -19099,7 +19099,7 @@ lin clwyd_LN = mkLN "کلوئڈ" ; --guessed
 lin clydach_LN = mkLN "کلائیڈیک" ; --guessed
 lin clydebank_LN = mkLN "کلائیڈ بینک" ; --guessed
 lin clypeus_N = mkN "کالیپیس" ; --guessed
-lin cm_MU = lin MU {s = "سینٹی میٹر" ; isPre = False} ; --guessed
+lin cm_MU = {s = "سینٹی میٹر" ; isPre = False} ; --guessed
 lin cm_PN = mkPN "کیوریم" ; --guessed
 lin cn_tower_LN = mkLN "سی این ٹاور" ;
 lin co_1_N = mkCmpdNoun "کاربن مونو" (mkN "آکسائیڈ") ; --guessed
@@ -21528,7 +21528,7 @@ lin consideration_4_N = mkN "لحاظ" ; --guessed
 lin consideration_5_N = mkCmpdNoun "پیشگی" (mkN "رقم") ; --guessed
 lin consideration_6_N = mkN "لحاظ" ; --guessed
 lin considering_Prep = mkPrep "کے پیش نظر" "" ; --guessed
-lin considering_Subj = lin Subj {s = "اس بات کو مدنظر رکھتے ہوئے"} ; --guessed
+lin considering_Subj = {s = "اس بات کو مدنظر رکھتے ہوئے"} ; --guessed
 lin consign_1_V2 = mkV2 (compoundV "سپرد" (mkV "کرنا")) ; --guessed
 lin consign_2_V2 = mkV2 (compoundV "سپرد" (mkV "کرنا")) ; --guessed
 lin consign_3_V2 = mkV2 (mkV "بھیجنا") ; --guessed
@@ -23137,7 +23137,7 @@ lin countervail_2_V2 = mkV2 (compoundV "مدافعت" (mkV "کرنا")) ; --gues
 lin counterweight_N = mkCmpdNoun "جوابی" (mkN "وزن") ; --guessed
 lin countess_N = mkN "کاؤنٹیس" ; --guessed
 lin counting_house_N = mkCmpdNoun "دفترِ" (mkN "حسابات") ; --guessed
-lin countless_ACard = lin ACard {s = "بے شمار"} ; --guessed
+lin countless_ACard = {s = "بے شمار"} ; --guessed
 lin countrified_1_A = mkA "دیہاتی" ; --guessed
 lin country_1_N = mkN "دیہات" ;
 lin country_2_N = mkN "دیش" ;
@@ -25044,8 +25044,8 @@ lin cutwork_N = mkCmpdNoun "کٹ" (mkN "ورک") ; --guessed
 lin cutworm_N = mkCmpdNoun "کٹوا" (mkN "سنڈی") ; --guessed
 lin cuzco_LN = mkLN "کوزکو" ;
 lin cwmbran_LN = mkLN "کومبران" ;
-lin cwt_1_MU = lin MU {s = "ہنڈرڈ ویٹ" ; isPre = False} ; --guessed
-lin cwt_2_MU = lin MU {s = "ہنڈریڈ ویٹ" ; isPre = False} ; --guessed
+lin cwt_1_MU = {s = "ہنڈرڈ ویٹ" ; isPre = False} ; --guessed
+lin cwt_2_MU = {s = "ہنڈریڈ ویٹ" ; isPre = False} ; --guessed
 lin cyan_N = mkN "سائیان" ; --guessed
 lin cyanamide_1_N = mkN "سائنامائیڈ" ; --guessed
 lin cyanamide_2_N = mkN "سائانامائڈ" ; --guessed
@@ -25676,7 +25676,7 @@ lin day_boarderMasc_N = (mkCmpdNoun "ڈے" (mkN "بورڈر")) ** {g = masculine
 lin day_boarderFem_N = (mkCmpdNoun "ڈے" (mkN "بورڈر")) ** {g = feminine} ; --guessed
 lin day_labourerMasc_N = (mkCmpdNoun "دہاڑی دار" (mkN "مزدور")) ** {g = masculine} ; --guessed
 lin day_labourerFem_N = (mkCmpdNoun "دہاڑی دار" (mkN "مزدور")) ** {g = feminine} ; --guessed
-lin day_off_CN = lin CN (mkCmpdNoun "چھٹی کا" (mkN "دن")) ; --guessed
+lin day_off_CN = (mkCmpdNoun "چھٹی کا" (mkN "دن")) ; --guessed
 lin day_return_N = mkCmpdNoun "ایک ہی دن کا واپسی" (mkN "ٹکٹ") ; --guessed
 lin day_school_1_N = mkCmpdNoun "ڈے" (mkN "اسکول") ; --guessed
 lin day_school_2_N = mkCmpdNoun "ڈے" (mkN "اسکول") ; --guessed
@@ -26552,7 +26552,7 @@ lin degree_4_N = mkN "ڈگری" ;
 lin degree_5_N = mkN "درجہ" ; --guessed
 lin degree_6_N = mkN "ڈگری" ;
 lin degree_7_N = mkN "درجہ" ; --guessed
-lin degree_MU = lin MU {s = "درجہ" ; isPre = False} ; --guessed
+lin degree_MU = {s = "درجہ" ; isPre = False} ; --guessed
 lin degressive_A = mkA "تخفیفی" ; --guessed
 lin dehiscence_N = mkN "انشقاق" ; --guessed
 lin dehiscent_A = mkA "شگافتہ" ; --guessed
@@ -27841,7 +27841,7 @@ lin dextrorotation_N = mkCmpdNoun "دائیں" (mkN "گردش") ; --guessed
 lin dextrorse_1_A = mkA "دائیں طرف مڑا ہوا" ; --guessed
 lin dextrose_N = mkN "ڈیکسٹروز" ; --guessed
 lin dextrous_A = mkA "ماہر" ;
-lin dg_MU = lin MU {s = "ڈیسی گرام" ; isPre = False} ; --guessed
+lin dg_MU = {s = "ڈیسی گرام" ; isPre = False} ; --guessed
 lin dhak_1_N = mkN "ڈھاک" ; --guessed
 lin dhahran_LN = mkLN "ظہران" ;
 lin dhaulagiri_LN = mkLN "دہولاگری" ;
@@ -29742,7 +29742,7 @@ lin djsMasc_N = (mkCmpdNoun "ڈی" (mkN "جے")) ** {g = masculine} ;
 lin djsFem_N = (mkCmpdNoun "ڈی" (mkN "جے")) ** {g = feminine} ;
 lin dlitt_N = mkN "خوشی" ; --guessed
 lin dm_N = mkN "ذیابیطس" ; --guessed
-lin dm_MU = lin MU {s = "ڈیسی میٹر" ; isPre = False} ; --guessed
+lin dm_MU = {s = "ڈیسی میٹر" ; isPre = False} ; --guessed
 lin dna_N = mkCmpdNoun "ڈی این" (mkN "اے") ;
 lin dnepropetrovsk_LN = mkLN "دنیپروپیترووسک" ;
 lin dnieper_LN = mkLN "دریائے نیپر" ; --guessed
@@ -29952,7 +29952,7 @@ lin doll_1_N = mkN "گُڑِیا" ;
 lin doll_2_N = mkN "گڑیا" ;
 lin doll_V = mkV "سنورنا" ; --guessed
 lin doll_V2 = variants {mkV2 (mkV "سجانا") ; mkV2 (mkV "سنوارنا")} ; --guessed
-lin dollar_MU = lin MU {s = "ڈالر" ; isPre = False} ; --guessed
+lin dollar_MU = {s = "ڈالر" ; isPre = False} ; --guessed
 lin dollar_1_N = mkN "ڈالَر" ;
 lin dollar_2_N = mkN "ڈالَر" ;
 lin dollar_3_N = mkN "ڈالَر" ;
@@ -31672,7 +31672,7 @@ lin e'er_Adv = mkAdv "ہمیشہ" ;
 lin e_mail_N = mkCmpdNoun "ای" (mkN "میل") ;
 lin ea_PN = mkPN "ایا" ; --guessed
 lin each_Adv = mkAdv "ہر ایک" ; --guessed
-lin each_Det = lin Det {s = \\_,_,_ => "ہر" ; n = Sg} ; --guessed
+lin each_Det = {s = \\_,_,_ => "ہر" ; n = Sg} ; --guessed
 lin eager_A = mkA "سرگرم" ; --guessed
 lin eagerness_1_N = mkN "شوق" ; --guessed
 lin eagerness_2_N = mkN "اشتیاق" ; --guessed
@@ -32327,7 +32327,7 @@ lin eisegesis_N = mkCmpdNoun "ذاتی" (mkN "تشریح") ; --guessed
 lin eisteddfod_N = mkN "ایسٹیڈفوڈ" ; --guessed
 lin either7or_DConj = S.either7or_DConj ;
 lin either_Adv = mkAdv "بھی نہیں" ; --guessed
-lin either_Det = lin Det {s = \\_,_,_ => "یا" ; n = Sg} ; --guessed
+lin either_Det = {s = \\_,_,_ => "یا" ; n = Sg} ; --guessed
 lin ejaculate_1_V2 = mkV2 (compoundV "اچانک بول" (mkV "اٹھنا")) ; --guessed
 lin ejaculate_2_V2 = mkV2 (compoundV "انزال" (mkV "کرنا")) ; --guessed
 lin ejaculation_1_N = mkN "پکار" ; --guessed
@@ -32669,7 +32669,7 @@ lin elysian_2_A = mkA "بہشتی" ; --guessed
 lin elysium_1_PN = mkPN "الیزیم" ; --guessed
 lin elysium_2_PN = mkPN "ایلیزیم" ; --guessed
 lin em_N = mkN "ایم" ; --guessed
-lin em_MU = lin MU {s = "ایم" ; isPre = False} ; --guessed
+lin em_MU = {s = "ایم" ; isPre = False} ; --guessed
 lin emaciate_1_V2 = mkV2 (compoundV "دبلا" (mkV "کرنا")) ; --guessed
 lin emaciate_2_V2 = mkV2 (compoundV "دبلا" (mkV "کرنا")) ;
 lin emaciation_N = mkN "لاغری" ; --guessed
@@ -32951,7 +32951,7 @@ lin emulsify_2_V = compoundV "ایملشن" (mkV "بنانا") ; --guessed
 lin emulsify_1_V2 = mkV2 (compoundV "پاشیدگی" (mkV "کرنا")) ; --guessed
 lin emulsion_1_N = mkN "ایملشن" ; --guessed
 lin emulsion_2_N = mkN "ایملشن" ; --guessed
-lin en_MU = lin MU {s = "این" ; isPre = False} ; --guessed
+lin en_MU = {s = "این" ; isPre = False} ; --guessed
 lin en_clair_Adv = mkAdv "سادہ زبان میں" ; --guessed
 lin en_famille_Adv = mkAdv "خاندان کے ساتھ" ; --guessed
 lin en_masse_Adv = mkAdv "کثیر تعداد میں" ; --guessed
@@ -33403,8 +33403,8 @@ lin enormity_4_N = mkN "شقاوت" ; --guessed
 lin enormous_A = mkA "عظیم" ; --guessed
 lin enormousness_N = mkN "وسعت" ; --guessed
 lin enosis_N = mkN "اینوسس" ; --guessed
-lin enoughSg_Card = lin Card {s = "کافی" ; n = Sg} ; --guessed
-lin enoughPl_Card = lin Card {s = "کافی" ; n = Pl} ; --guessed
+lin enoughSg_Card = {s = "کافی" ; n = Sg} ; --guessed
+lin enoughPl_Card = {s = "کافی" ; n = Pl} ; --guessed
 lin enplane_V = compoundV "جہاز پر سوار" (mkV "ہونا") ; --guessed
 lin enplane_V2 = mkV2 (compoundV "جہاز پر سوار" (mkV "ہونا")) ; --guessed
 lin enquire_1_V = compoundV "دریافت" (mkV "کرنا") ; --guessed
@@ -34421,7 +34421,7 @@ lin eurasianMasc_N = (mkN "یوریشیائی") ** {g = masculine} ; --guessed
 lin eurasianFem_N = (mkN "یوریشیائی") ** {g = feminine} ; --guessed
 lin eureka_LN = mkLN "یوریکا" ;
 lin eurhythmics_N = mkN "یورتھمکس" ; --guessed
-lin euro_MU = lin MU {s = "یورو" ; isPre = False} ; --guessed
+lin euro_MU = {s = "یورو" ; isPre = False} ; --guessed
 lin euro_N = mkN "یورو" ;
 lin eurodollar_N = mkCmpdNoun "یورو" (mkN "ڈالر") ; --guessed
 lin europe_1_LN = mkLN "یورپ" ;
@@ -34430,7 +34430,7 @@ lin europe_3_LN = mkLN "یورپ" ;
 lin european_A = mkA "یورپی" ;
 lin europeanMasc_N = (mkN "یورپی") ** {g = masculine} ; --guessed
 lin europeanFem_N = (mkN "یورپی") ** {g = feminine} ; --guessed
-lin european_union_NP = lin NP {s = \\_ => "یورپی یونین" ; a = defaultAgr} ; --guessed
+lin european_union_NP = {s = \\_ => "یورپی یونین" ; a = defaultAgr} ; --guessed
 lin europium_N = mkN "یوروپیم" ; --guessed
 lin eurovision_PN = mkPN "یوروویژن" ; --guessed
 lin eurypterid_N = mkN "یوریپٹیریڈ" ; --guessed
@@ -34525,7 +34525,7 @@ lin even_out_3_V = compoundV "برابر" (mkV "ہونا") ; --guessed
 lin even_out_1_V2 = mkV2 (compoundV "برابر" (mkV "کرنا")) ; --guessed
 lin even_out_2_V2 = mkV2 (compoundV "ہموار" (mkV "کرنا")) ; --guessed
 lin even_out_4_V2 = mkV2 (compoundV "ہموار" (mkV "کرنا")) ; --guessed
-lin even_though_Subj = lin Subj {s = "حالانکہ"} ; --guessed
+lin even_though_Subj = {s = "حالانکہ"} ; --guessed
 lin evening_1_N = mkN "شام" ;
 lin evening_2_N = mkN "شام" ;
 lin evening_3_N = mkN "شام" ;
@@ -35829,7 +35829,7 @@ lin fag_end_2_N = mkCmpdNoun "ادھڑا ہوا" (mkN "سرا") ; --guessed
 lin faggot_1_N = mkN "گانڈو" ;
 lin faggot_2_N = mkCmpdNoun "لکڑیوں کا" (mkN "گٹھا") ; --guessed
 lin fagoting_1_N = mkCmpdNoun "جالی کا" (mkN "کام") ; --guessed
-lin fahrenheit_MU = lin MU {s = "ڈگری فارن ہائیٹ" ; isPre = False} ; --guessed
+lin fahrenheit_MU = {s = "ڈگری فارن ہائیٹ" ; isPre = False} ; --guessed
 lin faience_N = mkN "فائنز" ; --guessed
 lin fail_2_V = compoundV "ناکام" (mkV "ہونا") ; --guessed
 lin fail_4_V = compoundV "جواب دے" (mkV "جانا") ; --guessed
@@ -36969,8 +36969,8 @@ lin feverish_2_A = mkA "بخار زدہ" ; --guessed
 lin feverish_3_A = mkA "بخار زدہ" ; --guessed
 lin feverroot_N = mkCmpdNoun "بخار کی" (mkN "جڑ") ; --guessed
 lin few_N = mkCmpdNoun "چند" (mkN "منتخب") ; --guessed
-lin few_ACard = lin ACard {s = "چند"} ; --guessed
-lin fewer_ACard = lin ACard {s = "کم"} ; --guessed
+lin few_ACard = {s = "چند"} ; --guessed
+lin fewer_ACard = {s = "کم"} ; --guessed
 lin fewer_than_AdN = mkAdN "سے کم" ; --guessed
 lin fewness_N = mkN "قلت" ; --guessed
 lin fey_1_A = mkA "تھوڑا پاگل" ; --guessed
@@ -38994,8 +38994,8 @@ lin footwork_2_N = mkCmpdNoun "پینترے" (mkN "بازی") ; --guessed
 lin fop_N = mkN "بانکا" ; --guessed
 lin foppish_A = mkA "بانکا" ;
 lin foppishness_N = mkCmpdNoun "بانکا" (mkN "پن") ; --guessed
-lin for_Subj = lin Subj {s = "کیونکہ"} ; --guessed
-lin for_PConj = lin PConj {s = "امن"} ; --guessed
+lin for_Subj = {s = "کیونکہ"} ; --guessed
+lin for_PConj = {s = "امن"} ; --guessed
 lin for_Prep = mkPrep "کے لیے" "" ; --guessed
 lin for_example_Adv = mkAdv "مثال کے طور پر" ; --guessed
 lin for_instance_Adv = mkAdv "مثال کے طور پر" ; --guessed
@@ -40244,7 +40244,7 @@ lin fry_pan_N = mkCmpdNoun "فرائنگ" (mkN "پین") ; --guessed
 lin fryer_N = mkCmpdNoun "تلنے والا" (mkN "مرغ") ; --guessed
 lin frying_N = mkN "تلنا" ; --guessed
 lin frying_pan_N = mkCmpdNoun "فرائنگ" (mkN "پین") ; --guessed
-lin ft_MU = lin MU {s = "فٹ" ; isPre = False} ; --guessed
+lin ft_MU = {s = "فٹ" ; isPre = False} ; --guessed
 lin fuchsia_N = mkN "فوشیہ" ; --guessed
 lin fuck_N = mkN "چدائی" ; --guessed
 lin fuck_V2 = mkV2 (mkV "چودنا") ;
@@ -40627,13 +40627,13 @@ lin fuzzy_1_A = mkA "روئیں دار" ; --guessed
 lin fuzzy_2_A = mkA "دھندلا" ; --guessed
 lin fuzzy_3_A = mkA "غیر واضح" ; --guessed
 lin fwd_PN = mkPN "آگے بھیجیں" ; --guessed
-lin g_1_MU = lin MU {s = "گرام" ; isPre = False} ; --guessed
+lin g_1_MU = {s = "گرام" ; isPre = False} ; --guessed
 lin g_2_N = mkN "گوانین" ;
 lin g_3_N = mkN "گوانین" ; --guessed
 lin g_4_N = mkN "ہزار" ;
-lin g_5_MU = lin MU {s = "جی" ; isPre = False} ; --guessed
-lin g_6_MU = lin MU {s = "گیگا بائٹ" ; isPre = False} ; --guessed
-lin g_7_MU = lin MU {s = "گیگا بائٹ" ; isPre = False} ; --guessed
+lin g_5_MU = {s = "جی" ; isPre = False} ; --guessed
+lin g_6_MU = {s = "گیگا بائٹ" ; isPre = False} ; --guessed
+lin g_7_MU = {s = "گیگا بائٹ" ; isPre = False} ; --guessed
 lin g_8_N = mkCmpdNoun "کائناتی ثقلی" (mkN "مستقل") ; --guessed
 lin g_9_N = mkN "جی" ; --guessed
 lin g_man_N = mkCmpdNoun "ایف بی آئی" (mkN "ایجنٹ") ; --guessed
@@ -41268,10 +41268,10 @@ lin gazump_2_V = compoundV "معاہدے کے بعد قیمت" (mkV "بڑھان�
 lin gazump_1_V2 = mkV2 (mkV "لوٹنا") ; --guessed
 lin gazump_2_V2 = mkV2 (compoundV "معاہدے کے بعد قیمت" (mkV "بڑھانا")) ; --guessed
 lin gb_1_PN = mkPN "سرین" ; --guessed
-lin gb_2_MU = lin MU {s = "گلبرٹ" ; isPre = False} ; --guessed
-lin gb_3_MU = lin MU {s = "گیگا بٹ" ; isPre = False} ; --guessed
-lin gb_4_MU = lin MU {s = "جی بی" ; isPre = False} ; --guessed
-lin gb_5_MU = lin MU {s = "گیگا بائٹ" ; isPre = False} ; --guessed
+lin gb_2_MU = {s = "گلبرٹ" ; isPre = False} ; --guessed
+lin gb_3_MU = {s = "گیگا بٹ" ; isPre = False} ; --guessed
+lin gb_4_MU = {s = "جی بی" ; isPre = False} ; --guessed
+lin gb_5_MU = {s = "گیگا بائٹ" ; isPre = False} ; --guessed
 lin gb_6_LN = mkLN "برطانیہ عظمیٰ" ; --guessed
 lin gcse_N = mkCmpdNoun "سیکنڈری تعلیم کا عمومی" (mkN "سرٹیفکیٹ") ; --guessed
 lin gcses_N = mkCmpdNoun "سیکنڈری ایجوکیشن کا جنرل" (mkN "سرٹیفکیٹ") ; --guessed
@@ -41877,7 +41877,7 @@ lin ghoul_2_N = mkN "غول" ; --guessed
 lin ghoulish_A = mkA "بھیانک" ; --guessed
 lin ghq_PN = mkPN "جنرل ہیڈ کوارٹر" ; --guessed
 lin ghrelin_N = mkN "گھریلن" ; --guessed
-lin gi_MU = lin MU {s = "گلبرٹ" ; isPre = False} ; --guessed
+lin gi_MU = {s = "گلبرٹ" ; isPre = False} ; --guessed
 lin gi_N = mkCmpdNoun "جغرافیائی" (mkN "اشاریہ") ; --guessed
 lin giant_A = mkA "عظیم الجثہ" ; --guessed
 lin giant_1_N = mkN "دیو" ; --guessed
@@ -44679,7 +44679,7 @@ lin half_3_A = mkA "آدھا" ;
 lin half_Adv = mkAdv "آدھا" ; --guessed
 lin half_1_N = mkN "آدھا" ;
 lin half_2_N = mkN "آدھا" ;
-lin half_Predet = lin Predet {s = "آدھا"} ; --guessed
+lin half_Predet = {s = "آدھا"} ; --guessed
 lin half_baked_1_A = mkA "ادھ کچرا" ; --guessed
 lin half_baked_2_A = mkA "آدھا پکا ہوا" ; --guessed
 lin half_bloodMasc_N = (mkCmpdNoun "سوتیلا" (mkN "بھائی")) ** {g = masculine} ; --guessed
@@ -46638,7 +46638,7 @@ lin highbrow_1_A = mkA "اعلیٰ ذوق" ; --guessed
 lin highbrowMasc_N = (mkN "دانشور") ** {g = masculine} ; --guessed
 lin highbrowFem_N = (mkN "دانشور") ** {g = feminine} ; --guessed
 lin highchair_N = mkCmpdNoun "بچوں کی اونچی" (mkN "کرسی") ; --guessed
-lin higher_education_CN = lin CN (mkCmpdNoun "اعلیٰ" (mkN "تعلیم")) ; --guessed
+lin higher_education_CN = (mkCmpdNoun "اعلیٰ" (mkN "تعلیم")) ; --guessed
 lin highflierMasc_N = (mkCmpdNoun "انتہائی حوصلہ مند" (mkN "شخص")) ** {g = masculine} ; --guessed
 lin highflierFem_N = (mkCmpdNoun "بلند" (mkN "پرواز")) ** {g = feminine} ; --guessed
 lin highflown_A = mkA "بلند بانگ" ; --guessed
@@ -46919,7 +46919,7 @@ lin hive_1_V2 = mkV2 (compoundV "ذخیرہ" (mkV "کرنا")) ; --guessed
 lin hive_3_V2 = mkV2 (compoundV "چھتے میں" (mkV "ڈالنا")) ; --guessed
 lin hive_off_1_V2 = mkV2 (compoundV "الگ" (mkV "کرنا")) ; --guessed
 lin hive_off_2_V2 = mkV2 (compoundV "خرد برد" (mkV "کرنا")) ; --guessed
-lin hm_MU = lin MU {s = "ہیکٹومیٹر" ; isPre = False} ; --guessed
+lin hm_MU = {s = "ہیکٹومیٹر" ; isPre = False} ; --guessed
 lin hmso_LN = mkLN "ہز میجسٹی اسٹیشنری آفس" ; --guessed
 lin hoar_A = mkA "سفید بالوں والا" ; --guessed
 lin hoard_N = mkN "خزانہ" ; --guessed
@@ -47929,7 +47929,7 @@ lin hover_5_V = mkV "منڈلانا" ; --guessed
 lin hover_around_V = mkV "منڈرانا" ; --guessed
 lin hovercraft_N = mkCmpdNoun "منڈلاتا" (mkN "جہاز") ;
 lin how8many_IDet = S.how8many_IDet ;
-lin how8much_IDet = lin IDet {s = \\_,_ => "کتنا" ; n = Sg} ; --guessed
+lin how8much_IDet = {s = \\_,_ => "کتنا" ; n = Sg} ; --guessed
 lin how_IAdv = S.how_IAdv ;
 lin how_d'ye_do_N = mkCmpdNoun "عجیب" (mkN "صورتحال") ; --guessed
 lin howard_SN = mkSN "ہاورڈ" ; --guessed
@@ -47956,7 +47956,7 @@ lin hoydenish_A = mkA "لڑکوں جیسی" ; --guessed
 lin hoydenism_N = mkCmpdNoun "نسوانی مردانہ" (mkN "پن") ; --guessed
 lin hoylake_LN = mkLN "ہویلیک" ; --guessed
 lin hoyland_nether_LN = mkLN "ہوئے لینڈ نیدھر" ; --guessed
-lin hp_MU = lin MU {s = "ہارس پاور" ; isPre = False} ; --guessed
+lin hp_MU = {s = "ہارس پاور" ; isPre = False} ; --guessed
 lin hq_N = mkCmpdNoun "ہیڈ" (mkN "کوارٹر") ; --guessed
 lin hrh_PN = mkPN "عالی جاہ" ; --guessed
 lin hryvnia_N = mkN "ہریونیا" ; --guessed
@@ -48895,7 +48895,7 @@ lin idyll_3_N = mkCmpdNoun "چرواہی" (mkN "نظم") ; --guessed
 lin idyllic_1_A = variants {mkA "پرسکون" ; mkA "مثالی"} ; --guessed
 lin idyllic_2_A = mkA "پرسکون" ; --guessed
 lin ie_PN = mkPN "انٹرنیٹ ایکسپلورر" ; --guessed
-lin if_Subj = lin Subj {s = "اگر"} ; --guessed
+lin if_Subj = {s = "اگر"} ; --guessed
 lin ifc_PN = mkPN "بین الاقوامی مالیاتی کارپوریشن" ; --guessed
 lin igloo_1_N = mkN "اگلو" ; --guessed
 lin igneous_1_A = mkA "آتشی" ; --guessed
@@ -49666,7 +49666,7 @@ lin imputrescible_A = mkA "نا قابلِ تعفن" ; --guessed
 lin in_1_A = mkA "رواج میں" ; --guessed
 lin in_2_A = mkA "اندر" ;
 lin in_3_A = mkA "عہدے دار" ; --guessed
-lin in_MU = lin MU {s = "انچ" ; isPre = False} ; --guessed
+lin in_MU = {s = "انچ" ; isPre = False} ; --guessed
 lin in_2_PN = mkPN "انڈیم" ; --guessed
 lin in_3_LN = mkLN "انڈیانا" ;
 lin in_1_Prep = mkPrep "میں" "" ;
@@ -49679,7 +49679,7 @@ lin in_addition_Adv = mkAdv "اس کے علاوہ" ; --guessed
 lin in_addition_to_Prep = mkPrep "کے علاوہ" "" ; --guessed
 lin in_advance_Adv = mkAdv "پیشگی" ; --guessed
 lin in_case_of_Prep = mkPrep "کی صورت میں" "" ; --guessed
-lin in_case_Subj = lin Subj {s = "کی صورت میں"} ; --guessed
+lin in_case_Subj = {s = "کی صورت میں"} ; --guessed
 lin in_chief_A = mkA "اعلیٰ" ; --guessed
 lin in_fighting_1_N = mkCmpdNoun "اندرونی" (mkN "خلفشار") ; --guessed
 lin in_fighting_2_N = mkCmpdNoun "قریبی" (mkN "لڑائی") ; --guessed
@@ -53634,9 +53634,9 @@ lin just_5_Adv = mkAdv "ابھی ابھی" ; --guessed
 lin just_6_Adv = mkAdv "ذرا" ;
 lin just_7_Adv = mkAdv "ابھی ابھی" ; --guessed
 lin just_8_Adv = mkAdv "تھوڑا سا" ; --guessed
-lin just_1_Predet = lin Predet {s = "صرف"} ; --guessed
-lin just_2_Predet = lin Predet {s = "بالکل"} ; --guessed
-lin just_because_Subj = lin Subj {s = "صرف اس لیے"} ; --guessed
+lin just_1_Predet = {s = "صرف"} ; --guessed
+lin just_2_Predet = {s = "بالکل"} ; --guessed
+lin just_because_Subj = {s = "صرف اس لیے"} ; --guessed
 lin justice_1_N = mkN "عَدْل" ;
 lin justice_2_N = mkN "انصاف" ;
 lin justiceMasc_3_N = (mkN "جج") ** {g = masculine} ;
@@ -54089,7 +54089,7 @@ lin keystone_2_N = mkCmpdNoun "مرکزی" (mkN "پتھر") ; --guessed
 lin keystroke_N = mkCmpdNoun "کی" (mkN "اسٹروک") ; --guessed
 lin keyword_N = mkCmpdNoun "کلیدی" (mkN "لفظ") ;
 lin keyworth_LN = mkLN "کیوورتھ" ; --guessed
-lin kg_MU = lin MU {s = "کلو گرام" ; isPre = False} ; --guessed
+lin kg_MU = {s = "کلو گرام" ; isPre = False} ; --guessed
 lin kgb_PN = mkPN "کے جی بی" ; --guessed
 lin khabarovsk_LN = mkLN "خابارووسک" ;
 lin khadi_N = mkN "کھادی" ; --guessed
@@ -54466,7 +54466,7 @@ lin kludge_N = mkN "جگاڑ" ; --guessed
 lin klutzMasc_N = (mkN "اناڑی") ** {g = masculine} ; --guessed
 lin klutzFem_N = (mkN "اناڑی") ** {g = feminine} ; --guessed
 lin klystron_N = mkN "کلائسٹرون" ; --guessed
-lin km_MU = lin MU {s = "کلومیٹر" ; isPre = False} ; --guessed
+lin km_MU = {s = "کلومیٹر" ; isPre = False} ; --guessed
 lin knack_N = mkN "ملکہ" ; --guessed
 lin knackerMasc_1_N = (mkN "کباڑیہ") ** {g = masculine} ; --guessed
 lin knackerFem_1_N = (mkN "کباڑی") ** {g = feminine} ;
@@ -54802,7 +54802,7 @@ lin kvass_N = mkN "کواس" ; --guessed
 lin kvetchMasc_1_N = (mkN "شاکی") ** {g = masculine} ; --guessed
 lin kvetchFem_1_N = (mkN "شاکی") ** {g = feminine} ; --guessed
 lin kvetch_2_N = mkN "شکوہ" ; --guessed
-lin kw_MU = lin MU {s = "کلو واٹ" ; isPre = False} ; --guessed
+lin kw_MU = {s = "کلو واٹ" ; isPre = False} ; --guessed
 lin kwacha_1_N = mkN "کواچا" ; --guessed
 lin kwacha_2_N = mkN "کواچا" ; --guessed
 lin kwajalein_LN = mkLN "کواجالین" ; --guessed
@@ -55803,7 +55803,7 @@ lin lazy_1_A = mkA "دھیما" ; --guessed
 lin lazy_2_A = mkA "آلسی" ;
 lin lazybonesMasc_N = (mkN "کاہل") ** {g = masculine} ; --guessed
 lin lazybonesFem_N = (mkN "سست") ** {g = feminine} ; --guessed
-lin lb_MU = lin MU {s = "پونڈ" ; isPre = False} ; --guessed
+lin lb_MU = {s = "پونڈ" ; isPre = False} ; --guessed
 lin lbw_PN = mkPN "ایل بی ڈبلیو" ; --guessed
 lin le_havre_LN = mkLN "لے ہاور" ; --guessed
 lin le_mans_LN = mkLN "لے مانس" ; --guessed
@@ -56025,7 +56025,7 @@ lin leave_13_V2 = mkV2 (mkV "چھوڑنا") ;
 lin leave_14_V2 = mkV2 (compoundV "بھول" (mkV "جانا")) ; --guessed
 lin leave_V2A = mkV2 (compoundV "چھوڑ" (mkV "دینا")) ; --guessed
 lin leave_behind_1_V = compoundV "پیچھے" (mkV "چھوڑنا") ; --guessed
-lin leave_of_absence_CN = lin CN (mkN "رخصت") ; --guessed
+lin leave_of_absence_CN = (mkN "رخصت") ; --guessed
 lin leave_off_1_V = compoundV "چھوڑ" (mkV "دینا") ; --guessed
 lin leave_off_2_V2 = mkV2 (compoundV "نکال" (mkV "دینا")) ; --guessed
 lin leave_off_3_V = compoundV "استعمال چھوڑ" (mkV "دینا") ; --guessed
@@ -56372,7 +56372,7 @@ lin less_2_A = mkA "کم تر" ; --guessed
 lin less_3_A = mkA "کم" ;
 lin less_AdA = mkAdA "کم" ;
 lin less_Adv = mkAdv "کم" ;
-lin less_CAdv = lin CAdv {s = "کم" ; p = ""} ; --guessed
+lin less_CAdv = {s = "کم" ; p = ""} ; --guessed
 lin lesseeMasc_N = (mkCmpdNoun "پٹے" (mkN "دار")) ** {g = masculine} ; --guessed
 lin lesseeFem_N = (mkCmpdNoun "پٹی" (mkN "دار")) ** {g = feminine} ; --guessed
 lin lessen_1_V = compoundV "کم" (mkV "کرنا") ; --guessed
@@ -56546,7 +56546,7 @@ lin ley_N = mkN "چراگاہ" ;
 lin leyland_LN = mkLN "لیلینڈ" ; --guessed
 lin lhotse_LN = mkLN "لہوٹسے" ;
 lin li_PN = mkPN "لیتھیم" ;
-lin li_MU = lin MU {s = "لی" ; isPre = False} ; --guessed
+lin li_MU = {s = "لی" ; isPre = False} ; --guessed
 lin liabilities_N = mkN "واجبات" ; --guessed
 lin liability_1_N = mkCmpdNoun "ذمہ" (mkN "داری") ; --guessed
 lin liability_2_N = mkN "واجبات" ; --guessed
@@ -56977,7 +56977,7 @@ lin like_4_A = mkA "یکساں" ; --guessed
 lin like_1_N = mkN "مانند" ; --guessed
 lin like_2_N = mkN "ہمسر" ; --guessed
 lin like_Prep = mkPrep "کی طرح" "" ; --guessed
-lin like_Subj = lin Subj {s = "جیسا"} ; --guessed
+lin like_Subj = {s = "جیسا"} ; --guessed
 lin like_2_V2 = mkV2 (compoundV "پَسَنْد" (mkV "ہونا")) ;
 lin like_3_V2 = mkV2 (compoundV "پسند" (mkV "کرنا")) ; --guessed
 lin like_4_V2 = mkV2 (compoundV "پسند" (mkV "کرنا")) ; --guessed
@@ -57532,7 +57532,7 @@ lin little_5_A = mkA "دھیمی" ; --guessed
 lin little_6_A = mkA "ناٹا" ; --guessed
 lin little_7_A = mkA "چھوٹا" ; --guessed
 lin little_8_A = mkA "چھوٹا" ; --guessed
-lin little_ACard = lin ACard {s = "تھوڑا"} ; --guessed
+lin little_ACard = {s = "تھوڑا"} ; --guessed
 lin little_bighorn_river_LN = mkLN "لٹل بگ ہارن دریا" ; --guessed
 lin little_missouri_river_LN = mkLN "لٹل مسوری دریا" ; --guessed
 lin little_rock_LN = mkLN "لٹل راک" ; --guessed
@@ -58316,8 +58316,8 @@ lin lot_4_N = mkN "قسمت" ;
 lin lot_3_N = mkN "ٹولی" ; --guessed
 lin lot_5_N = mkN "قرعہ" ; --guessed
 lin lot_6_N = mkN "کھیپ" ; --guessed
-lin lotsSg_Card = lin Card {s = "بہت" ; n = Sg} ; --guessed
-lin lotsPl_Card = lin Card {s = "بہت" ; n = Pl} ; --guessed
+lin lotsSg_Card = {s = "بہت" ; n = Sg} ; --guessed
+lin lotsPl_Card = {s = "بہت" ; n = Pl} ; --guessed
 lin lot_PN = mkPN "لوط" ;
 lin lota_1_N = mkN "لوٹا" ;
 lin lota_2_N = mkN "بربٹ" ; --guessed
@@ -58817,7 +58817,7 @@ lin luxury_1_N = mkN "تعیش" ; --guessed
 lin luxury_2_N = mkN "تعیش" ; --guessed
 lin luxury_3_N = mkN "تعیش" ; --guessed
 lin luzon_LN = mkLN "لوزون" ;
-lin lv_MU = lin MU {s = "لیو" ; isPre = False} ; --guessed
+lin lv_MU = {s = "لیو" ; isPre = False} ; --guessed
 lin lvov_LN = mkLN "لويو" ; --guessed
 lin lwei_N = mkN "لوئی" ; --guessed
 lin lyallpur_LN = mkLN "فیصل آباد" ;
@@ -58917,7 +58917,7 @@ lin länsi_turunmaa_LN = mkLN "لینسی-تورونما" ; --guessed
 lin ma'am_N = mkN "محترمہ" ; --guessed
 lin ma_1_N = mkN "امی" ; --guessed
 lin ma_2_N = mkCmpdNoun "ایم" (mkN "اے") ; --guessed
-lin ma_MU = lin MU {s = "ملی ایمپیئر" ; isPre = False} ; --guessed
+lin ma_MU = {s = "ملی ایمپیئر" ; isPre = False} ; --guessed
 lin ma_LN = mkLN "میساچوسٹس" ;
 lin maaninka_LN = mkLN "مانینکا" ; --guessed
 lin maar_N = mkN "مار" ; --guessed
@@ -59951,7 +59951,7 @@ lin manuscript_2_N = mkCmpdNoun "قلمی" (mkN "نسخہ") ; --guessed
 lin manx_A = mkA "مینکس" ;
 lin manx_1_N = mkN "مینکس" ;
 lin manx_2_N = mkN "مینک" ; --guessed
-lin many_ACard = lin ACard {s = "کئی"} ; --guessed
+lin many_ACard = {s = "کئی"} ; --guessed
 lin many_sided_1_A = mkA "کثیر الجہتی" ; --guessed
 lin many_sided_2_A = mkA "ہمہ جہت" ; --guessed
 lin many_sided_3_A = mkA "ہمہ جہت" ; --guessed
@@ -60813,9 +60813,9 @@ lin mazed_A = mkA "حیران" ; --guessed
 lin mazer_N = mkCmpdNoun "لکڑی کا بڑا" (mkN "پیالہ") ; --guessed
 lin mazurka_1_N = mkN "مازورکا" ; --guessed
 lin mazurka_2_N = mkN "مزورکا" ; --guessed
-lin mb_1_MU = lin MU {s = "میگابٹ" ; isPre = False} ; --guessed
-lin mb_2_MU = lin MU {s = "میگا بائٹ" ; isPre = False} ; --guessed
-lin mb_3_MU = lin MU {s = "میگا بائٹ" ; isPre = False} ; --guessed
+lin mb_1_MU = {s = "میگابٹ" ; isPre = False} ; --guessed
+lin mb_2_MU = {s = "میگا بائٹ" ; isPre = False} ; --guessed
+lin mb_3_MU = {s = "میگا بائٹ" ; isPre = False} ; --guessed
 lin mb_4_N = mkCmpdNoun "طب میں" (mkN "بیچلر") ; --guessed
 lin mbabane_LN = mkLN "مبابان" ; --guessed
 lin mbeya_LN = mkLN "مبیا" ;
@@ -61797,16 +61797,16 @@ lin mezzo_Adv = mkAdv "آدھا" ; --guessed
 lin mezzo_soprano_1_N = mkCmpdNoun "میزو" (mkN "سوپرانو") ; --guessed
 lin mezzo_soprano_2_N = mkCmpdNoun "میزو" (mkN "سوپرانو") ; --guessed
 lin mezzotint_N = mkCmpdNoun "میزو" (mkN "ٹنٹ") ; --guessed
-lin mg_MU = lin MU {s = "ملی گرام" ; isPre = False} ; --guessed
+lin mg_MU = {s = "ملی گرام" ; isPre = False} ; --guessed
 lin mg_PN = mkPN "میگنیشیم" ; --guessed
 lin mgr_PN = mkPN "مونسینیر" ; --guessed
-lin mho_MU = lin MU {s = "مھو" ; isPre = False} ; --guessed
+lin mho_MU = {s = "مھو" ; isPre = False} ; --guessed
 lin mi5_LN = mkLN "ایم آئی 5" ; --guessed
 lin mi6_LN = mkLN "ایم آئی 6" ; --guessed
 lin mi_1_N = mkCmpdNoun "مایوکارڈیل" (mkN "انفارکشن") ; --guessed
-lin mi_2_MU = lin MU {s = "بحری میل" ; isPre = False} ; --guessed
-lin mi_3_MU = lin MU {s = "بحری میل" ; isPre = False} ; --guessed
-lin mi_4_MU = lin MU {s = "میل" ; isPre = False} ; --guessed
+lin mi_2_MU = {s = "بحری میل" ; isPre = False} ; --guessed
+lin mi_3_MU = {s = "بحری میل" ; isPre = False} ; --guessed
+lin mi_4_MU = {s = "میل" ; isPre = False} ; --guessed
 lin mi_5_LN = mkLN "مشی گن" ;
 lin mi_6_N = mkCmpdNoun "ایم آئی" (mkN "5") ; --guessed
 lin mi_7_N = mkCmpdNoun "ایم" (mkN "آئی") ; --guessed
@@ -62039,10 +62039,10 @@ lin mike_GN = mkGN "مائیک" ; --guessed
 lin mikkeli_LN = mkLN "مکیلی" ; --guessed
 lin mikvah_N = mkN "مِکواہ" ; --guessed
 lin mil_N = mkN "مل" ; --guessed
-lin mil_2_MU = lin MU {s = "سویڈش میل" ; isPre = False} ; --guessed
-lin mil_3_MU = lin MU {s = "مل" ; isPre = False} ; --guessed
-lin mil_4_MU = lin MU {s = "ملی لیٹر" ; isPre = False} ; --guessed
-lin mil_5_MU = lin MU {s = "مل" ; isPre = False} ; --guessed
+lin mil_2_MU = {s = "سویڈش میل" ; isPre = False} ; --guessed
+lin mil_3_MU = {s = "مل" ; isPre = False} ; --guessed
+lin mil_4_MU = {s = "ملی لیٹر" ; isPre = False} ; --guessed
+lin mil_5_MU = {s = "مل" ; isPre = False} ; --guessed
 lin milady_N = mkCmpdNoun "مائی" (mkN "لیڈی") ; --guessed
 lin milage_N = mkCmpdNoun "میلوں کی" (mkN "تعداد") ; --guessed
 lin milan_LN = mkLN "میلان" ;
@@ -62182,7 +62182,7 @@ lin millinerFem_N = (mkCmpdNoun "ٹوپی بنانے" (mkN "والی")) ** {g = 
 lin millinery_1_N = mkCmpdNoun "خواتین کی ٹوپیوں کی" (mkN "دکان") ; --guessed
 lin millinery_2_N = mkCmpdNoun "عورتوں کی" (mkN "ٹوپیاں") ; --guessed
 lin milling_N = mkCmpdNoun "کٹاؤ والا" (mkN "کنارہ") ; --guessed
-lin millions_Card = lin Card {s = "لاکھوں" ; n = Pl} ; --guessed
+lin millions_Card = {s = "لاکھوں" ; n = Pl} ; --guessed
 lin millionaire_N = mkCmpdNoun "لکھ" (mkN "پتی") ; --guessed
 lin millionairess_N = mkCmpdNoun "ملین پتی" (mkN "خاتون") ; --guessed
 lin millionfold_Adv = mkAdv "دس لاکھ گنا" ; --guessed
@@ -62810,9 +62810,9 @@ lin mizzen_1_N = mkCmpdNoun "پچھلا" (mkN "مستول") ; --guessed
 lin mizzen_2_N = mkCmpdNoun "پچھلا" (mkN "بادبان") ; --guessed
 lin mizzen_mast_N = mkCmpdNoun "پچھلا" (mkN "مستول") ; --guessed
 lin mizzle_V = compoundV "بوندا باندی" (mkV "ہونا") ; --guessed
-lin ml_MU = lin MU {s = "ملی لیٹر" ; isPre = False} ; --guessed
+lin ml_MU = {s = "ملی لیٹر" ; isPre = False} ; --guessed
 lin mlle_PN = mkPN "دوشیزہ" ; --guessed
-lin mm_MU = lin MU {s = "ملی میٹر" ; isPre = False} ; --guessed
+lin mm_MU = {s = "ملی میٹر" ; isPre = False} ; --guessed
 lin mme_PN = mkPN "محترمہ" ; --guessed
 lin mnemonic_A = mkA "حافظے کا معاون" ; --guessed
 lin mnemonic_N = mkCmpdNoun "فن" (mkN "حفظ") ;
@@ -63577,8 +63577,8 @@ lin more_1_Adv = mkAdv "زیادہ" ;
 lin more_2_Adv = mkAdv "زیادہ" ;
 lin more_SN = mkSN "مور" ; --guessed
 lin more_often_than_not_Adv = mkAdv "اکثر و بیشتر" ; --guessed
-lin more_CAdv = lin CAdv {s = "سے زیادہ" ; p = ""} ; --guessed
-lin more_than_Predet = lin Predet {s = "سے زیادہ"} ; --guessed
+lin more_CAdv = {s = "سے زیادہ" ; p = ""} ; --guessed
+lin more_than_Predet = {s = "سے زیادہ"} ; --guessed
 lin morecambe_LN = mkLN "مورکم" ; --guessed
 lin moreen_N = mkN "مورین" ; --guessed
 lin morel_N = mkN "گچھی" ; --guessed
@@ -63729,7 +63729,7 @@ lin mossy_2_A = mkA "دقیانوسی" ; --guessed
 lin most_1_AdA = mkAdA "سب سے" ;
 lin most_2_Adv = mkAdv "بہت" ; --guessed
 lin most_3_Adv = mkAdv "تقریباً" ; --guessed
-lin most_Det = lin Det {s = \\_,_,_ => "زیادہ تر" ; n = Sg} ; --guessed
+lin most_Det = {s = \\_,_,_ => "زیادہ تر" ; n = Sg} ; --guessed
 lin mostaccioli_N = mkN "موسٹاچیولی" ; --guessed
 lin mostly_1_AdV = mkAdV "زیاداتر" ;
 lin mostly_2_AdV = mkAdV "زیاداتر" ;
@@ -64070,7 +64070,7 @@ lin ms_2_LN = mkLN "مسیسپی" ;
 lin msasa_N = mkN "مساسا" ; --guessed
 lin msc_N = mkCmpdNoun "ماسٹر آف" (mkN "سائنس") ; --guessed
 lin mt_1_PN = mkPN "مائٹ نیریم" ; --guessed
-lin mt_MU = lin MU {s = "میٹرک ٹن" ; isPre = False} ; --guessed
+lin mt_MU = {s = "میٹرک ٹن" ; isPre = False} ; --guessed
 lin mt_3_PN = mkPN "مونٹانا" ;
 lin mt_4_PN = mkPN "مشینی ترجمہ" ; --guessed
 lin mu_N = mkN "میو" ; --guessed
@@ -64080,8 +64080,8 @@ lin much_3_AdA = mkAdA "بہت" ;
 lin much_3_Adv = mkAdv "بہت" ;
 lin much_4_Adv = mkAdv "تقریباً" ; --guessed
 lin much_5_Adv = mkAdv "زیادہ" ; --guessed
-lin much_ACard = lin ACard {s = "بہت"} ; --guessed
-lin much_fewer_ACard = lin ACard {s = "بہت کم"} ; --guessed
+lin much_ACard = {s = "بہت"} ; --guessed
+lin much_fewer_ACard = {s = "بہت کم"} ; --guessed
 lin muchness_N = mkN "کثرت" ;
 lin muciferous_A = mkA "بلغم پیدا کرنے والا" ; --guessed
 lin mucilage_1_N = mkN "لعاب" ; --guessed
@@ -64983,7 +64983,7 @@ lin narrowness_4_N = mkN "تنگی" ;
 lin narthex_1_N = mkN "نارتھیکس" ; --guessed
 lin narthex_2_N = mkN "نارتھیکس" ; --guessed
 lin narwhal_1_N = mkN "ناروال" ; --guessed
-lin nary_Predet = lin Predet {s = "ایک بھی نہیں"} ; --guessed
+lin nary_Predet = {s = "ایک بھی نہیں"} ; --guessed
 lin nasa_PN = mkPN "ناسا" ; --guessed
 lin nasal_1_A = mkA "ناک کا" ; --guessed
 lin nasal_2_A = mkA "انوناسک" ; --guessed
@@ -65439,9 +65439,9 @@ lin neighbouring_A = mkA "ہمسایہ" ; --guessed
 lin neighbourliness_1_N = mkN "ہمسائیگی" ; --guessed
 lin neighbourly_1_A = mkA "ہمسایہ وار" ; --guessed
 lin neil_GN = mkGN "نیل" ;
-lin neither7nor_DConj = lin DConj {s1 = "نہ" ; s2 = "نہ" ; n = Pl} ; --guessed
+lin neither7nor_DConj = {s1 = "نہ" ; s2 = "نہ" ; n = Pl} ; --guessed
 lin neither_Adv = mkAdv "نہ" ; --guessed
-lin neither_Det = lin Det {s = \\_,_,_ => "دونوں میں سے کوئی نہیں" ; n = Sg} ; --guessed
+lin neither_Det = {s = \\_,_,_ => "دونوں میں سے کوئی نہیں" ; n = Sg} ; --guessed
 lin nekton_N = mkN "نیکٹن" ; --guessed
 lin nelfinavir_N = mkN "نلفیناویر" ; --guessed
 lin nell_GN = mkGN "نیل" ; --guessed
@@ -68109,7 +68109,7 @@ lin once_AdV = mkAdV "ایک بار" ; --guessed
 lin once_1_Adv = mkAdv "ایک بار" ; --guessed
 lin once_3_Adv = mkAdv "ایک بار" ; --guessed
 lin once_Prep = mkPrep "ایک بار" "" ; --guessed
-lin once_Subj = lin Subj {s = "جیسے ہی"} ; --guessed
+lin once_Subj = {s = "جیسے ہی"} ; --guessed
 lin once_in_a_while_Adv = mkAdv "کبھی کبھار" ; --guessed
 lin onchocerciasis_N = mkN "اونکوسیرسیاسس" ; --guessed
 lin oncidium_N = mkN "اونسیدیئم" ; --guessed
@@ -68155,7 +68155,7 @@ lin only_4_AdV = mkAdV "صرف" ;
 lin only_5_Adv = mkAdv "صرف یہ کہ" ; --guessed
 lin only_6_Adv = mkAdv "صرف" ;
 lin only_7_Adv = mkAdv "ہی" ; --guessed
-lin only_Predet = lin Predet {s = "صرف"} ; --guessed
+lin only_Predet = {s = "صرف"} ; --guessed
 lin onomancerMasc_N = (mkCmpdNoun "ناموں سے فال نکالنے" (mkN "والا")) ** {g = masculine} ; --guessed
 lin onomancerFem_N = (mkCmpdNoun "ناموں سے فال نکالنے" (mkN "والی")) ** {g = feminine} ; --guessed
 lin onomancy_N = mkCmpdNoun "علمِ" (mkN "اسماء") ; --guessed
@@ -69807,7 +69807,7 @@ lin ozonide_N = mkN "اوزونائڈ" ; --guessed
 lin ozzie_GN = mkGN "اوزی" ; --guessed
 lin pa_1_N = mkN "ابا" ; --guessed
 lin pa_2_PN = mkPN "پروٹیکٹینیم" ; --guessed
-lin pa_MU = lin MU {s = "پاسکل" ; isPre = False} ; --guessed
+lin pa_MU = {s = "پاسکل" ; isPre = False} ; --guessed
 lin pa_4_LN = mkLN "پنسلوانیا" ; --guessed
 lin pa_5_N = mkCmpdNoun "پبلک ایڈریس" (mkN "سسٹم") ; --guessed
 lin paanga_N = mkN "پانگا" ; --guessed
@@ -72142,7 +72142,7 @@ lin perceived_1_A = mkA "محسوس" ; --guessed
 lin perceived_2_A = mkA "محسوس" ; --guessed
 lin perceiverMasc_N = (mkCmpdNoun "ادراک کرنے" (mkN "والا")) ** {g = masculine} ; --guessed
 lin perceiverFem_N = (mkCmpdNoun "ادراک کرنے" (mkN "والی")) ** {g = feminine} ; --guessed
-lin percent_MU = lin MU {s = "فیصد" ; isPre = False} ; --guessed
+lin percent_MU = {s = "فیصد" ; isPre = False} ; --guessed
 lin percent_N = mkN "فِیصَد" ;
 lin percentage_1_N = mkN "فیصد" ; --guessed
 lin percentage_2_N = mkN "حصہ" ; --guessed
@@ -74426,7 +74426,7 @@ lin please_Adv = mkAdv "ذرا" ;
 lin please_2_V = mkV "چاہنا" ;
 lin please_3_V = compoundV "خوش" (mkV "کرنا") ; --guessed
 lin please_V2 = mkV2 (compoundV "خوش" (mkV "کرنا")) ; --guessed
-lin please_Voc = lin Voc {s = "براہ مہربانی"} ; --guessed
+lin please_Voc = {s = "براہ مہربانی"} ; --guessed
 lin pleased_1_A = mkA "خوش" ;
 lin pleased_2_A = mkA "خوش" ;
 lin pleaserMasc_N = (mkCmpdNoun "محظوظ کرنے" (mkN "والا")) ** {g = masculine} ; --guessed
@@ -75980,7 +75980,7 @@ lin poultry_2_N = mkCmpdNoun "پرندوں کا" (mkN "گوشت") ; --guessed
 lin poultryman_N = mkCmpdNoun "مرغی" (mkN "فروش") ; --guessed
 lin pounce_N = mkN "جھپٹا" ; --guessed
 lin pounce_V = mkV "جھپٹنا" ; --guessed
-lin pound_MU = lin MU {s = "پاؤنڈ کی علامت" ; isPre = False} ; --guessed
+lin pound_MU = {s = "پاؤنڈ کی علامت" ; isPre = False} ; --guessed
 lin pound_1_N = mkN "پونڈ" ; --guessed
 lin pound_2_N = mkN "پاؤنڈ" ;
 lin pound_3_N = mkN "پاؤنڈ" ;
@@ -78130,7 +78130,7 @@ lin provide_1_V2 = mkV2 (compoundV "فراہم" (mkV "کرنا")) ; --guessed
 lin provide_2_V2 = mkV2 (compoundV "فراہم" (mkV "کرنا")) ; --guessed
 lin provide_4_V2 = mkV2 (compoundV "فراہم" (mkV "کرنا")) ; --guessed
 lin provide_6_V2 = mkV2 (compoundV "کفالت" (mkV "کرنا")) ; --guessed
-lin provided_Subj = lin Subj {s = "امن"} ; --guessed
+lin provided_Subj = {s = "امن"} ; --guessed
 lin providence_2_N = mkCmpdNoun "مشیت" (mkN "الہی") ; --guessed
 lin providence_3_N = mkCmpdNoun "مشیت" (mkN "الہی") ; --guessed
 lin providence_4_N = mkCmpdNoun "دور" (mkN "اندیشی") ; --guessed
@@ -78144,7 +78144,7 @@ lin providerMasc_1_N = (mkCmpdNoun "فراہم" (mkN "کنندہ")) ** {g = masc
 lin providerFem_1_N = (mkCmpdNoun "فراہم" (mkN "کنندہ")) ** {g = feminine} ; --guessed
 lin providerMasc_2_N = (mkN "کفیل") ** {g = masculine} ; --guessed
 lin providerFem_2_N = (mkN "کفیل") ** {g = feminine} ; --guessed
-lin providing_Subj = lin Subj {s = "بشرطیکہ"} ; --guessed
+lin providing_Subj = {s = "بشرطیکہ"} ; --guessed
 lin provence_LN = mkLN "پروونس" ; --guessed
 lin province_1_N = mkN "صوبہ" ; --guessed
 lin province_2_N = mkCmpdNoun "دائرہ" (mkN "کار") ; --guessed
@@ -78264,7 +78264,7 @@ lin pseudophloem_N = mkCmpdNoun "جھوٹا" (mkN "فلائیم") ; --guessed
 lin pseudopod_N = mkCmpdNoun "کاذب" (mkN "پا") ; --guessed
 lin pseudoscience_N = mkCmpdNoun "کاذب" (mkN "سائنس") ; --guessed
 lin pseudoscientific_A = mkA "جھوٹی سائنسی" ; --guessed
-lin psi_MU = lin MU {s = "پی ایس آئی" ; isPre = False} ; --guessed
+lin psi_MU = {s = "پی ایس آئی" ; isPre = False} ; --guessed
 lin psi_N = mkN "پسی" ; --guessed
 lin psilocybin_1_N = mkN "سائلوسائبین" ; --guessed
 lin psilomelane_N = mkN "سائلومیلین" ; --guessed
@@ -79765,8 +79765,8 @@ lin quitclaim_1_N = mkCmpdNoun "دستبرداری کا" (mkN "دستاویز") 
 lin quitclaim_2_N = mkN "دستبرداری" ; --guessed
 lin quite_AdA = mkAdA "کافی" ; --guessed
 lin quite_2_Adv = mkAdv "بالکل" ; --guessed
-lin quite_3_Predet = lin Predet {s = "خاصا"} ; --guessed
-lin quite_4_Predet = lin Predet {s = "بالکل"} ; --guessed
+lin quite_3_Predet = {s = "خاصا"} ; --guessed
+lin quite_4_Predet = {s = "بالکل"} ; --guessed
 lin quito_LN = mkLN "کوئٹو" ; --guessed
 lin quits_A = mkA "برابر" ;
 lin quittance_1_N = mkN "رسید" ; --guessed
@@ -89605,7 +89605,7 @@ lin sevenfold_Adv = mkAdv "سات گنا" ; --guessed
 lin sevenoaks_LN = mkLN "سیون اوکس" ; --guessed
 lin sever_1_V2 = mkV2 (compoundV "الگ" (mkV "کرنا")) ; --guessed
 lin sever_2_V2 = mkV2 (mkV "کاٹنا") ;
-lin several_Card = lin Card {s = "کئی" ; n = Pl} ; --guessed
+lin several_Card = {s = "کئی" ; n = Pl} ; --guessed
 lin severally_1_Adv = mkAdv "الگ الگ" ; --guessed
 lin severally_2_Adv = mkAdv "علیحدہ علیحدہ" ; --guessed
 lin severally_3_Adv = mkAdv "بالترتیب" ; --guessed
@@ -91451,7 +91451,7 @@ lin sin_2_V = compoundV "غلطی" (mkV "کرنا") ; --guessed
 lin sinai_peninsula_LN = mkLN "جزیرہ نمائے سینا" ;
 lin since_Adv = mkAdv "تب سے" ; --guessed
 lin since_Prep = mkPrep "سے" "" ;
-lin since_Subj = lin Subj {s = "سے"} ; --guessed
+lin since_Subj = {s = "سے"} ; --guessed
 lin since_then_Adv = mkAdv "تب سے" ; --guessed
 lin sincere_1_A = mkA "مخلص" ; --guessed
 lin sincere_2_A = mkA "مخلص" ;
@@ -93245,14 +93245,14 @@ lin so_8_Adv = mkAdv "پھر" ;
 lin so_9_Adv = mkAdv "اس لیے" ; --guessed
 lin so_10_Adv = mkAdv "سچ مچ" ; --guessed
 lin so_N = mkN "سول" ; --guessed
-lin so_PConj = lin PConj {s = "اتنا"} ; --guessed
-lin so_Subj = lin Subj {s = "اس لیے"} ; --guessed
+lin so_PConj = {s = "اتنا"} ; --guessed
+lin so_Subj = {s = "اس لیے"} ; --guessed
 lin so_and_soMasc_N = (mkN "کمینہ") ** {g = masculine} ; --guessed
 lin so_and_soFem_N = (mkN "ذلیل") ** {g = feminine} ; --guessed
 lin so_called_A = mkA "نام نہاد" ; --guessed
 lin so_so_A = mkA "ٹھیک ٹھاک" ; --guessed
 lin so_so_Adv = mkAdv "ٹھیک ٹھاک" ; --guessed
-lin so_that_Subj = lin Subj {s = "تاکہ"} ; --guessed
+lin so_that_Subj = {s = "تاکہ"} ; --guessed
 lin soak_1_N = mkN "بھگونا" ; --guessed
 lin soak_2_N = mkN "بھگونا" ; --guessed
 lin soak_1_V = mkV "بھگوونا" ; --guessed
@@ -93701,7 +93701,7 @@ lin sombreness_2_N = mkN "افسردگی" ; --guessed
 lin sombreness_3_N = mkN "سنجیدگی" ; --guessed
 lin sombrero_1_LN = mkLN "سومبریرو" ; --guessed
 lin sombrero_2_N = mkN "سومبریرو" ; --guessed
-lin some_Det = lin Det {s = \\_,_,_ => "کچھ" ; n = Sg} ; --guessed
+lin some_Det = {s = \\_,_,_ => "کچھ" ; n = Sg} ; --guessed
 lin some_Quant = demoPN "کچھ" "کچھ" "کچھ" ; --guessed
 lin someday_Adv = mkAdv "کبھی" ;
 lin somehow_1_AdV = mkAdV "کسی نہ کسی طرح" ; --guessed
@@ -95622,7 +95622,7 @@ lin squirt_2_V = compoundV "پچکاری" (mkV "مارنا") ; --guessed
 lin squirt_1_V2 = mkV2 (compoundV "پچکاری" (mkV "مارنا")) ; --guessed
 lin squish_N = mkCmpdNoun "چھپ" (mkN "چھپ") ; --guessed
 lin sr_PN = mkPN "سٹرونشیم" ; --guessed
-lin sr_MU = lin MU {s = "سٹریڈیئن" ; isPre = False} ; --guessed
+lin sr_MU = {s = "سٹریڈیئن" ; isPre = False} ; --guessed
 lin sri_lanka_LN = mkLN "سری لنکا" ;
 lin sri_lankan_A = mkA "سری لنکن" ; --guessed
 lin sri_lankanMasc_N = (mkCmpdNoun "سری" (mkN "لنکن")) ** {g = masculine} ; --guessed
@@ -98468,8 +98468,8 @@ lin succulent_N = mkCmpdNoun "گودے دار" (mkN "پودا") ; --guessed
 lin succumb_1_V = compoundV "ہار" (mkV "ماننا") ; --guessed
 lin succumb_2_V = compoundV "دم" (mkV "توڑنا") ; --guessed
 lin succussion_N = mkN "تقرقر" ; --guessed
-lin such_1_Predet = lin Predet {s = "ایسا"} ; --guessed
-lin such_2_Predet = lin Predet {s = "ایسا"} ; --guessed
+lin such_1_Predet = {s = "ایسا"} ; --guessed
+lin such_2_Predet = {s = "ایسا"} ; --guessed
 lin such_as_Prep = mkPrep "جیسے کہ" "" ; --guessed
 lin suchlike_A = mkA "اس طرح کا" ; --guessed
 lin suchow_LN = mkLN "سوخوف" ; --guessed
@@ -102006,7 +102006,7 @@ lin thalweg_1_N = mkN "تھلوگ" ; --guessed
 lin thalweg_2_N = mkN "تھالویگ" ; --guessed
 lin thame_LN = mkLN "تھم" ; --guessed
 lin than_Prep = mkPrep "سے" "" ;
-lin than_Subj = lin Subj {s = "سے"} ; --guessed
+lin than_Subj = {s = "سے"} ; --guessed
 lin thanatology_N = mkN "تھیناٹولوجی" ; --guessed
 lin thanatophobia_N = mkCmpdNoun "موت کا" (mkN "خوف") ; --guessed
 lin thanatopsis_N = mkCmpdNoun "موت کا" (mkN "فلسفہ") ; --guessed
@@ -102028,7 +102028,7 @@ lin thanksgiving_2_N = mkCmpdNoun "کھانے سے پہلے کی" (mkN "دعا")
 lin thar_desert_LN = mkLN "صحرائے تھر" ;
 lin that_AdA = mkAdA "اتنا" ; --guessed
 lin that_Quant = demoPN "وہ" "وہ" "وہ" ; --guessed
-lin that_Subj = lin Subj {s = "کہ"} ; --guessed
+lin that_Subj = {s = "کہ"} ; --guessed
 lin that_of_Prep = mkPrep "کا" "" ; --guessed
 lin thatch_1_N = mkCmpdNoun "گھنے" (mkN "بال") ; --guessed
 lin thatch_2_N = mkN "پھوس" ; --guessed
@@ -102413,7 +102413,7 @@ lin thortveitite_N = mkN "تھورٹویٹائٹ" ; --guessed
 lin those_N = mkN "وہ" ;
 lin though_Adv = mkAdv "گرچہ" ;
 lin though_Prep = mkPrep "حالانکہ" "" ; --guessed
-lin though_Subj = lin Subj {s = "حالانکہ"} ; --guessed
+lin though_Subj = {s = "حالانکہ"} ; --guessed
 lin thought_1_N = mkN "وچار" ;
 lin thought_2_N = mkN "سوچ" ; --guessed
 lin thought_3_N = mkN "فکر" ; --guessed
@@ -102960,7 +102960,7 @@ lin tiling_N = mkCmpdNoun "ٹائلیں" (mkN "لگانا") ; --guessed
 lin till_1_N = mkN "ٹل" ; --guessed
 lin till_2_N = mkCmpdNoun "سرکاری" (mkN "خزانہ") ; --guessed
 lin till_3_N = mkN "تجوری" ; --guessed
-lin till_Subj = lin Subj {s = "تک"} ; --guessed
+lin till_Subj = {s = "تک"} ; --guessed
 lin till_V2 = mkV2 (compoundV "ہل" (mkV "چلانا")) ;
 lin tillage_1_N = mkCmpdNoun "قابل کاشت" (mkN "زمین") ; --guessed
 lin tillage_2_N = mkCmpdNoun "ہل" (mkN "چلانا") ; --guessed
@@ -105042,7 +105042,7 @@ lin tricot_N = mkN "ٹرائیکوٹ" ; --guessed
 lin tricuspid_A = mkA "سہ لخت" ; --guessed
 lin tricycle_N = mkCmpdNoun "سہ" (mkN "پہیہ") ; --guessed
 lin tricyclic_N = mkCmpdNoun "ٹرائیسائکلک اینٹی ڈپریشن" (mkN "دوا") ; --guessed
-lin tricyclic_antidepressant_CN = lin CN (mkCmpdNoun "ٹرائی سائکلک اینٹی ڈپریشن" (mkN "دوا")) ; --guessed
+lin tricyclic_antidepressant_CN = (mkCmpdNoun "ٹرائی سائکلک اینٹی ڈپریشن" (mkN "دوا")) ; --guessed
 lin trident_N = mkCmpdNoun "سہ" (mkN "شاخہ") ; --guessed
 lin tridymite_N = mkN "ٹرائیڈیمائٹ" ; --guessed
 lin triennial_A = mkA "سہ سالہ" ;
@@ -107861,7 +107861,7 @@ lin unleash_1_V2 = mkV2 (compoundV "آزاد" (mkV "کرنا")) ; --guessed
 lin unleash_2_V2 = mkV2 (compoundV "پٹے سے آزاد" (mkV "کرنا")) ; --guessed
 lin unleash_3_V2 = mkV2 (compoundV "آزاد" (mkV "کرنا")) ; --guessed
 lin unleavened_A = mkA "بے خمیر" ; --guessed
-lin unless_Subj = lin Subj {s = "جب تک کہ"} ; --guessed
+lin unless_Subj = {s = "جب تک کہ"} ; --guessed
 lin unlettered_1_A = mkA "ان پڑھ" ; --guessed
 lin unlettered_2_A = mkA "جاہل" ; --guessed
 lin unlicensed_1_A = mkA "غیر لائسنس یافتہ" ; --guessed
@@ -108620,7 +108620,7 @@ lin untied_1_A = mkA "کھلا" ;
 lin untied_2_A = mkA "کھلا" ; --guessed
 lin untied_3_A = mkA "کھلا" ; --guessed
 lin until_Prep = mkPrep "تک" "" ;
-lin until_Subj = lin Subj {s = "جب تک"} ; --guessed
+lin until_Subj = {s = "جب تک"} ; --guessed
 lin until_then_Adv = mkAdv "تب تک" ; --guessed
 lin untilled_A = mkA "بن جتا ہوا" ; --guessed
 lin untimbered_1_A = mkA "بے درخت" ; --guessed
@@ -112337,24 +112337,24 @@ lin whelk_1_N = mkCmpdNoun "سمندری" (mkN "گھونگھا") ; --guessed
 lin whelk_2_N = mkCmpdNoun "سمندری" (mkN "گھونگھا") ; --guessed
 lin whelp_N = mkN "پِلا" ; --guessed
 lin whelp_V = compoundV "پلے" (mkV "دینا") ; --guessed
-lin when_IAdv = lin IAdv {s = "کب"} ; --guessed
+lin when_IAdv = {s = "کب"} ; --guessed
 lin when_Prep = mkPrep "جب" "" ; --guessed
-lin when_Subj = lin Subj {s = "جب"} ; --guessed
+lin when_Subj = {s = "جب"} ; --guessed
 lin whence_Adv = mkAdv "کہاں سے" ; --guessed
 lin whencesoever_A = mkA "جہاں کہیں سے بھی" ; --guessed
 lin whenever_Adv = mkAdv "جب کبھی" ; --guessed
-lin where_IAdv = lin IAdv {s = "کہاں"} ; --guessed
-lin where_Subj = lin Subj {s = "جہاں"} ; --guessed
+lin where_IAdv = {s = "کہاں"} ; --guessed
+lin where_Subj = {s = "جہاں"} ; --guessed
 lin where_as_Prep = mkPrep "کہاں" "" ; --guessed
 lin whereabouts_Adv = mkAdv "کہاں پر" ; --guessed
 lin whereabouts_N = mkN "ٹھکانہ" ; --guessed
 lin whereas_Prep = mkPrep "جبکہ" "" ; --guessed
-lin whereas_Subj = lin Subj {s = "جبکہ"} ; --guessed
+lin whereas_Subj = {s = "جبکہ"} ; --guessed
 lin whereat_Adv = mkAdv "جس پر" ; --guessed
 lin whereby_Adv = mkAdv "جس کے ذریعے" ; --guessed
 lin wherefore_Adv = mkAdv "کیوں" ; --guessed
-lin wherein_IAdv = lin IAdv {s = "جس میں"} ; --guessed
-lin wherein_Subj = lin Subj {s = "جس میں"} ; --guessed
+lin wherein_IAdv = {s = "جس میں"} ; --guessed
+lin wherein_Subj = {s = "جس میں"} ; --guessed
 lin whereof_Adv = mkAdv "جس کا" ; --guessed
 lin whereon_Adv = mkAdv "جس پر" ; --guessed
 lin wheresoever_Adv = mkAdv "جہاں کہیں بھی" ; --guessed
@@ -112369,7 +112369,7 @@ lin wherry_1_N = mkN "وہری" ; --guessed
 lin wherry_2_N = mkCmpdNoun "ہلکی" (mkN "کشتی") ; --guessed
 lin whet_1_V2 = mkV2 (compoundV "تیز" (mkV "کرنا")) ; --guessed
 lin whet_2_V2 = mkV2 (compoundV "تیز" (mkV "کرنا")) ; --guessed
-lin whether_Subj = lin Subj {s = "کیا"} ; --guessed
+lin whether_Subj = {s = "کیا"} ; --guessed
 lin whetstone_N = mkN "سان" ; --guessed
 lin whey_1_N = mkN "مٹھا" ; --guessed
 lin whey_2_N = mkN "مصل" ; --guessed
@@ -112389,10 +112389,10 @@ lin whigFem_2_N = (mkN "وہگ") ** {g = feminine} ; --guessed
 lin whigMasc_3_N = (mkN "وہگ") ** {g = masculine} ; --guessed
 lin whigFem_3_N = (mkN "وہگ") ** {g = feminine} ; --guessed
 lin while_N = mkN "وقفہ" ; --guessed
-lin while_Subj = lin Subj {s = "جبکہ"} ; --guessed
+lin while_Subj = {s = "جبکہ"} ; --guessed
 lin while_V2 = mkV2 (mkV "گزارنا") ; --guessed
 lin while_away_V2 = mkV2 (compoundV "وقت" (mkV "گزارنا")) ; --guessed
-lin whilst_Subj = lin Subj {s = "جبکہ"} ; --guessed
+lin whilst_Subj = {s = "جبکہ"} ; --guessed
 lin whim_1_N = mkN "لہر" ; --guessed
 lin whim_2_N = mkN "لہر" ; --guessed
 lin whimper_N = mkN "سسکاری" ; --guessed
@@ -112618,7 +112618,7 @@ lin whoPl_IP = mkIP "کون" "کون" "کون" Pl masculine ; --guessed
 lin whoSg_IP = mkIP "کون" "کون" "کون" Sg masculine ; --guessed
 lin who_PN = mkPN "عالمی ادارہ صحت" ; --guessed
 lin whodunit_N = mkCmpdNoun "جاسوسی" (mkN "کہانی") ; --guessed
-lin whoever_NP = lin NP {s = \\_ => "جو کوئی بھی" ; a = defaultAgr} ; --guessed
+lin whoever_NP = {s = \\_ => "جو کوئی بھی" ; a = defaultAgr} ; --guessed
 lin whole_1_A = mkA "سارا" ;
 lin whole_2_A = mkA "سگا" ; --guessed
 lin whole_3_A = mkA "سلامت" ; --guessed
@@ -112668,7 +112668,7 @@ lin whorl_2_N = mkCmpdNoun "بالوں کا" (mkN "بھنور") ; --guessed
 lin whorl_3_N = mkN "چکر" ; --guessed
 lin whorled_1_A = mkA "پیچدار" ; --guessed
 lin whorled_2_A = mkA "چکردار" ; --guessed
-lin why_IAdv = lin IAdv {s = "کیوں"} ; --guessed
+lin why_IAdv = {s = "کیوں"} ; --guessed
 lin why_N = mkN "کیوں" ;
 lin whydah_1_N = mkN "وائڈہ" ; --guessed
 lin wi_LN = mkLN "وسکونسن" ;
@@ -114136,7 +114136,7 @@ lin yemen_LN = mkLN "یمن" ;
 lin yemeni_A = mkA "یمنی" ; --guessed
 lin yemeniMasc_N = (mkN "یمنی") ** {g = masculine} ; --guessed
 lin yemeniFem_N = (mkN "یمنی") ** {g = feminine} ; --guessed
-lin yen_MU = variants {lin MU {s = "ین کی علامت" ; isPre = False} ; lin MU {s = "یوآن کی علامت" ; isPre = False}} ; --guessed
+lin yen_MU = variants {{s = "ین کی علامت" ; isPre = False} ; {s = "یوآن کی علامت" ; isPre = False}} ; --guessed
 lin yen_1_N = mkN "حسرت" ; --guessed
 lin yen_2_N = mkN "ین" ;
 lin yen_V = mkV "تڑپنا" ; --guessed

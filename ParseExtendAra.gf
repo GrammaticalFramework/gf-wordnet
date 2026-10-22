@@ -30,24 +30,72 @@ lin BareN2 n = n ;
 lin ReflA2 a rnp = GrammarAra.ComplA2 a rnp ;
     ReflVPSlash slash rnp = GrammarAra.ComplSlash slash rnp ;
 
-lincat CNN = {n1,n2 : Size ; cn1,cn2 : CN} ;
+lincat CNN = NumCN * NumCN ;
 
-lin BaseCNN n1 cn1 n2 cn2 = {n1 = n1.n ; cn1 = cn1 ; n2 = n2.n ; cn2 = cn2} ;
+lin BaseCNN n1 cn1 n2 cn2 = <numCN n1 cn1,numCN n2 cn2> ;
 
-    DetCNN quant conj cnn =
+oper
+  NumCN = {num, noun, adj : State => Case => Str ;
+           n : Size; h : Species; g : Gender
+          } ;
+  numCN : Num -> CN -> NumCN = \num,cn ->
+    let number = case cn.isDual of {
+                   True  => case sizeToNumber num.n of {
+                              Sg => Sg ;
+                              _  => Dl
+                            } ;
+                   False => sizeToNumber num.n
+                 }
+    in {num = \\d,c => num.s ! detGender cn.g num.n ! (toDef d num.n) ! c ;
+        noun = \\d,c => cn.s ! number
+                             ! nounState d number
+                             ! nounCase c num.n d ;
+        adj = \\d,c => cn.s2 ! number
+                             ! (definite ! d) -- Indef remains Indef, rest become Def
+                             ! c
+                       ++ cn.np ! c ;
+        n = num.n ;
+        h = cn.h ;
+        g = cn.g
+    } ;
+
+  quantCNN : Quant -> NumCN -> NP = \quant,cnn ->
+    let cas : Case -> Case = if_then_else Case quant.is1sg Bare ;
+        determiner : Case -> Str = \c ->
+          quant.s ! sizeToNumber cnn.n ! cnn.h ! cnn.g ! c
+          ++ cnn.num ! quant.d ! c ;
+    in lin NP emptyNP ** {
+      s = \\c => -- Dat is just a hack for liPrep
+        let c' = case c of {Dat => Gen ; x => x} in
+        case cnB4det (quant**{n=cnn.n}) of {
+          False => determiner c'
+                ++ cnn.noun ! quant.d ! c'
+                ++ cnn.adj ! quant.d ! c' ;
+          True => cnn.noun ! quant.d ! (cas c) -- deal with possessive suffix + dative hack
+               ++ determiner c'
+               ++ cnn.adj ! quant.d ! c'
+        };
+      a = { pgn = agrP3 cnn.h cnn.g (sizeToNumber cnn.n);
+            isPron = False } ;
+      isHeavy = True
+    } ;
+
+
+lin DetCNN quant conj cnn =
       GrammarAra.ConjNP conj
         (GrammarAra.BaseNP
-          (GrammarAra.DetCN (GrammarAra.DetQuant quant (lin Num {s = \\_,_,_ => [] ; n = cnn.n1 ; isNum = False})) cnn.cn1)
-          (GrammarAra.DetCN (GrammarAra.DetQuant quant (lin Num {s = \\_,_,_ => [] ; n = cnn.n2 ; isNum = False})) cnn.cn2)) ;
+          (quantCNN quant cnn.p1)
+          (quantCNN quant cnn.p2)) ;
 
-    ReflPossCNN conj cnn = lin RNP
+    ReflPossCNN conj cnn =
       (DetCNN (GrammarAra.PossPron S.he_Pron) conj cnn) ;
 
-    PossCNN_RNP quant conj cnn rnp = lin RNP
+    PossCNN_RNP quant conj cnn rnp =
       (GrammarAra.MassNP
         (GrammarAra.PossNP
           (GrammarAra.PossNP (GrammarAra.UseN (mkN "مجموع")) (DetCNN quant conj cnn))
           rnp)) ;
+
 
 lin NumLess n = n ** {s = \\g,d,c => n.s ! g ! d ! c ++ "أقل"} ;
     NumMore n = n ** {s = \\g,d,c => n.s ! g ! d ! c ++ "إضافي"} ;

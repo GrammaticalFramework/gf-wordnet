@@ -27,6 +27,7 @@ concrete ParsePes of Parse =
     russian_Language, sindhi_Language, spanish_Language,
     swahili_Language, swedish_Language, thai_Language,
     turkish_Language, urdu_Language, weather_adjCl
-  ] ** {
+  ],
+  DocumentationPes ** {
   flags case_sensitive = off ;
 }

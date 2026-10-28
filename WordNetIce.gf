@@ -64073,7 +64073,7 @@ lin mt_1_PN = mkPN "Meitneríum" masculine ; --guessed
 lin mt_MU = {s = "tonn" ; isPre = False} ; --guessed
 lin mt_3_PN = mkPN "Montana" masculine ;
 lin mt_4_PN = mkPN "Vélþýðing" masculine ; --guessed
-lin mu_N = mkN "mý" ; --guessed
+lin mu_N = mkN "mý" ;
 lin much_1_AdA = mkAdA "mikið" ;
 lin much_2_AdA = mkAdA "mjög" ; --guessed
 lin much_3_AdA = mkAdA "mikið" ;
@@ -78264,8 +78264,8 @@ lin pseudophloem_N = mkN "gerviflóem" ; --guessed
 lin pseudopod_N = mkN "skinfótur" ; --guessed
 lin pseudoscience_N = mkN "hjáfræði" ;
 lin pseudoscientific_A = mkA "gervivísindalegur" ; --guessed
-lin psi_MU = {s = "psi" ; isPre = False} ; --guessed
-lin psi_N = mkN "psí" ; --guessed
+lin psi_MU = {s = "psi" ; isPre = False} ;
+lin psi_N = mkN "psí" ;
 lin psilocybin_1_N = mkN "psílósíbín" ; --guessed
 lin psilomelane_N = mkN "psílómelan" ; --guessed
 lin psilophyte_N = mkN "psílófýta" ; --guessed
@@ -108940,7 +108940,7 @@ lin upsetterFem_N = mkN "óvæntur sigurvegari" ; --guessed
 lin upshot_N = variants {mkN "niðurstaða"; mkN "afleiðing"} ; --guessed
 lin upside_N = mkN "efri hlið" ; --guessed
 lin upside_down_Adv = mkAdv "á hvolfi" ; --guessed
-lin upsilon_N = mkN "upsilon" ; --guessed
+lin upsilon_N = mkN "upsilon" ;
 lin upstage_1_A = invarA "aftast á sviðinu" ; --guessed
 lin upstage_2_A = mkA "hrokafullur" ;
 lin upstage_Adv = mkAdv "aftarlega á sviðinu" ; --guessed

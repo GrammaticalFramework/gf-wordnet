@@ -78266,7 +78266,7 @@ lin pseudopod_N = mkN "شبه پا" ; --unchecked
 lin pseudoscience_N = mkN "شبه علم" ;
 lin pseudoscientific_A = mkA "شبه‌علمی" ; --guessed
 lin psi_MU = {s = "پوند بر اینچ مربع" ; isPre = False} ; --guessed
-lin psi_N = mkN "پسی" ; --guessed
+lin psi_N = mkN "پسی" ;
 lin psilocybin_1_N = mkN "سیلوسایبین" ; --guessed
 lin psilomelane_N = mkN "سیلوملان" ; --guessed
 lin psilophyte_N = mkN "پسيلوفیت" ; --guessed

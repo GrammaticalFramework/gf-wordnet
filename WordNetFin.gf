@@ -41027,7 +41027,7 @@ lin garble_V2 = mkV2 (mkV {s = c67 "vääristellä"});
 lin garboard_N = mkN "kölisarja";
 lin garbology_N = mkN "jätteidentutkimus";
 lin garden_1_N = mkN "kasvimaa";
-lin garden_2_N = mkN "puutarhan ja kasvimaan kasvit"; --unchecked
+lin garden_2_N = variants {} ;
 lin garden_3_N = mkN "puutarha";
 lin garden_V = variants {};   ---- hoitaa puutarhaa
 lin garden_truck_N = mkN "hedelmäsato";

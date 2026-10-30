@@ -272,7 +272,7 @@ fun about_Predet : Predet ;        -- 00007414-r	[quantity] imprecise but fairly
 fun about_2_Adv : Adv ;            -- 00072240-r	all around or on all sides; "let's look about for help"
 fun about_3_Adv : Adv ;            -- 00071565-r	in the area or vicinity; "a few spectators standing about"
 fun about_4_Adv : Adv ;            -- 00072729-r	used of movement to or among many different places or in no particular direction; "wandering about with no place to go"; "people were rushing about"
-fun about_5_Adv : Adv ;            -- 00072601-r	in or to a reversed position or direction; "about face"
+fun about_5_Adv : Adv ;            -- 00072601-r	in or to a reversed position or direction
 fun about_6_Adv : Adv ;            -- 00359910-r	in rotation or succession; "turn about is fair play"
 fun about_7_Adv : Adv ;            -- 00073433-r	[action, state] slightly short of or not quite accomplished; all but; "the job is just about done"
 fun about_1_Prep : Prep ;

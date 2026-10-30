@@ -247257,3 +247257,4 @@ abs* PhrUttMark NoPConj (UttNP (AdvNP (UsePron i_Pron) (TimeNP (AdjAsNP (SentAP 
 eng: I loved to write.
 swe: * jag älskade för att skriva.
 bul: * аз обичах за да напиша.
+key: 0

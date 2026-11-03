@@ -58167,7 +58167,7 @@ lin longer_Adv = mkAdv "по-дълго" ; --guessed
 lin longerMasc_N = (mkN049 "копнеещ") ** {g = AMasc Human} ; --guessed
 lin longerFem_N = mkN049 "копнеещ" ; --guessed
 lin longest_Adv = mkAdv "най-дълго" ;
-lin longevity_1_N = mkN007 "трудов стаж" ; --guessed
+lin longevity_1_N = mkN007 "стаж" ;
 lin longevity_2_N = mkN072 "дълголетие" ; --guessed
 lin longhand_A = mkA079 "ръкописен" ; --guessed
 lin longhand_N = mkN007 "ръкопис" ; --guessed

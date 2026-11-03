@@ -8453,7 +8453,6 @@ attenuation_2_N	Q2357982;Attenuation;
 fragility_1_N	Q5477668;Fragility;
 solarization_1_N	Q60712;Sabattier_effect;commons/9/95/1981-fotozirkel-kulturbund-eberswalde-by-RalfR-21-sol2.jpg
 concurrence_4_N	Q1756768;Co-occurrence;
-longevity_1_N	Q1066907;Longevity;commons/c/c8/Caçarelhos46.jpg
 fermata_2_N	Q830328;Fermata;
 fugacity_2_N	Q898412;Fugacity;
 ephemerality_N	Q4916901;Ephemerality;

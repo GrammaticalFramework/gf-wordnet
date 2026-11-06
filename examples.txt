@@ -23648,7 +23648,7 @@ abs: PhrUtt NoPConj (ImpPl1 (AdvVP (UseV break_47_V) (PrepNP for_Prep (MassNP (U
 eng: let's break for lunch
 swe: låt oss ta rast för lunch
 bul: нека да спрем за малко за обяд
-key: 1 break_47_V 00781106-v спра за малко спирам за малко правя пауза направя почивка
+key: 1 break_47_V 00781106-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a break_48_V2) (DetCN (DetQuant IndefArt NumSg) (UseN circuit_1_N))))) NoVoc
 eng: break a circuit

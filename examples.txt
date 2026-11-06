@@ -115478,7 +115478,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (ConjNP and_C
 eng: water and milk and blood are liquid substances
 swe: vatten och mjölk och blod är flytande substanser
 bul: вода и мляко и кръв са течни субстанции
-key: 1 liquid_1_A 02269142-a течен
+key: 1 liquid_1_A 02269142-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (MassNP (UseN sorrow_1_N)) (ComplSlash (SlashV2V make_4_V2V ASimul PPos (ComplVA grow_1_VA (PositA liquid_2_A))) (AdvNP (DetCN (DetQuant DefArt NumPl) (UseN eye_1_N)) (PrepNP of_1_Prep (UseDAP (DetDAP (DetQuant IndefArt (NumCard (UseACard many_ACard))))))))))) NoVoc
 eng: sorrow made the eyes of many grow liquid

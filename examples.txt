@@ -119042,7 +119042,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: people were maimed by the explosion
 swe: människor lemlästades av explosionen
 bul: хора бяха осакатени от експлозията
-key: 1 maim_V2 00090640-v stympa lemlästa
+key: 1 maim_V2 00090640-v
 
 abs* ChunkPhr (PlusChunk quote_Chunk (PlusChunk (NP_Acc_Chunk (DetCN (DetQuant DefArt NumSg) (UseN main_1_N))) (PlusChunk lpar_Chunk (PlusChunk (Conj_Chunk or_Conj) (PlusChunk (AP_Chunk (PositA independent_2_A)) (PlusChunk rpar_Chunk (PlusChunk (S_Chunk (UseCl (TTAnt TPres ASimul) PPos (PredVP (AdvNP (MassNP (UseN clause_1_N)) (PrepNP in_1_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA complex_1_A) (UseN sentence_1_N))))) (AdvVP (ComplSlash (SlashV2a have_1_V2) (ConjNP and_Conj (BaseNP (DetCN (DetQuant IndefArt NumSg) (UseN subject_1_N)) (DetCN (DetQuant IndefArt NumSg) (UseN verb_1_N))))) (PrepNP at_1_Prep (MassNP (UseN least_N))))))) (OneChunk quote_Chunk))))))))
 eng: "the main (or independent) clause in a complex sentence has at least a subject and a verb"

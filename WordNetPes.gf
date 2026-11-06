@@ -1,5 +1,4 @@
-concrete WordNetPes of WordNet = CatPes ** open ParadigmsPes, Prelude,
-  (I=IrregPes), (R=ResPes), (S=StructuralPes) in {
+concrete WordNetPes of WordNet = CatPes ** open ParadigmsPes, Prelude, (I=IrregPes), (R=ResPes), (S=StructuralPes) in {
 
 lin a_bomb_N = mkN "بمب اتمی" ; --unchecked
 lin a_couple_Card = {s = "چند" ; n = plural} ; --guessed

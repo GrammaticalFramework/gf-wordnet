@@ -20708,7 +20708,7 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a block_12_V2) (De
 eng: block an attack
 swe: blockera en attack
 bul: блокирай атака
-key: 1 block_12_V2 01149526-v parera
+key: 1 block_12_V2 01149526-v
 
 abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (AdvVP (ProgrVP (ComplSlash (SlashV2a block_13_V2) (DetCN (DetQuant DefArt NumSg) (UseN name_1_N)))) (PrepNP of_1_Prep (DetCN (DetQuantOrd (PossPron youSgFem_Pron) NumSg (OrdNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 pot01)))))))) (UseN wife_N))))))) NoVoc ExclMark
 eng: You are blocking the name of your first wife!

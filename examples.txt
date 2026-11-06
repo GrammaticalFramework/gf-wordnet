@@ -92044,13 +92044,13 @@ swe: han andades tungt
 bul: той диша тежко
 key: 1 heavily_6_Adv 00178140-r
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseV drink_5_V) heavily_7_Adv)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseV drink_5_V) heavily_7_Adv)))) NoVoc
 eng: he drank heavily
-swe: han drack tungt
+swe: han drack hårt
 bul: той пи много
 key: 1 heavily_7_Adv 00178004-r
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN heaviness_1_N) (MassNP (UseN lead_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN heaviness_1_N) (MassNP (UseN lead_2_N))))) NoVoc
 eng: the heaviness of lead
 swe: tyngden av bly
 bul: тежестта на олово

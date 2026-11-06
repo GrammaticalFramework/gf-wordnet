@@ -23126,7 +23126,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (AdjCN (PositA
 eng: the Germanic branch of Indo-European languages
 swe: den germanska grenen av de indoeuropeiska språken
 bul: германският клон на индоевропейските езици
-key: 1 branch_1_N 08418205-n underavdelning gren
+key: 1 branch_1_N 08418205-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a break_off_5_V2) (UseDAPMasc (DetDAP (DetQuant IndefArt NumSg)))) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumPl) (UseN branch_2_N))))))) NoVoc
 eng: he broke off one of the branches

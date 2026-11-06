@@ -19532,13 +19532,13 @@ abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePro
 eng: they divorced after the birth of the child
 swe: de skilde sig efter födelsen av barnet
 bul: те се разведоха след началото на детето
-key: 1 birth_1_N 15167127-n födelse
+key: 1 birth_1_N 15167127-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN election_3_N)) (ComplSlash (SlashV2a signale_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN birth_1_N) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA new_1_A) (UseN age_2_N))))))))) NoVoc
 eng: his election signaled the birth of a new age
 swe: hans val signalerade födelsen av en ny tidsålder
 bul: неговото избиране сигнализира началото на нова ера
-key: 1 birth_1_N 15167127-n födelse
+key: 1 birth_1_N 15167127-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (ComplSlash (SlashV2a celebrate_2_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN birth_2_N) (DetCN (DetQuantOrd (PossPron they_Pron) NumSg (OrdNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 pot01)))))))) (UseN child_2_N)))))))) NoVoc
 eng: they celebrated the birth of their first child

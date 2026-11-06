@@ -7238,7 +7238,7 @@ abs: PhrUtt NoPConj (UttVPS ? (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (Com
 eng: had ample food for the party
 swe: hade riklig mat för festen
 bul: имах изобилна храна за партито
-key: 1 ample_2_A 00014509-a 00106545-a
+key: 1 ample_2_A 00014509-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA ample_1_A) (UseN supply_1_N)))) NoVoc
 eng: an ample supply

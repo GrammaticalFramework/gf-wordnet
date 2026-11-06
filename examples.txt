@@ -5740,10 +5740,10 @@ swe: justera bilen med trottoarkanten
 bul: подравни колата с бордюра
 key: 1 align_1_V2 00465234-v
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a align_1_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (UseN sheet_2_N) (MassNP (UseN paper_1_N))))) (PrepNP on_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN table_2_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a align_1_V2) (DetCN (DetQuant DefArt NumPl) (AdvCN (UseN sheet_2_N) (PrepNP of_1_Prep (MassNP (UseN paper_1_N)))))) (PrepNP on_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN table_2_N)))))) NoVoc
 eng: align the sheets of paper on the table
 swe: justera arken av papper på bordet
-bul: подравни листовете на хартия на масата
+bul: подравни листовете от хартия на масата
 key: 1 align_1_V2 00465234-v rada rada upp
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a align_4_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (UseN wheel_1_N) (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN car_1_N))))))) NoVoc
@@ -7144,10 +7144,10 @@ swe: amorfa moln av insekter
 bul: аморфни облаци от насекоми
 key: 1 amorphous_1_A 02159252-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumSg) (UseN mob_1_N)) (AdvVP (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (PossNP (AdjCN (PositA amorphous_3_A) (UseN crowd_3_N)) (DetCN (DetQuant IndefArt NumPl) (UseN people_1_N)))))) (PrepNP without_Prep (ApposNP (DetCN (DetQuant IndefArt NumPl) (UseN ideal_1_N)) (DetCN (DetQuant IndefArt NumSg) (SentCN (PossNP (UseN sum_1_N) (DetCN (DetQuant IndefArt NumPl) (UseN individual_1_N))) (EmbedQS (UseQCl (TTAnt TPres ASimul) PPos (QuestIAdv (PrepIP in_1_Prep (IdetIP (IdetQuant which_IQuant NumSg))) (PredVP (UseDAPMasc (DetDAP each_Det)) (ReflVPSlash (SlashV2a live_for_V2) ReflPron))))))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumSg) (UseN mob_1_N)) (AdvVP (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (AdjCN (PositA amorphous_3_A) (UseN crowd_3_N)) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN people_1_N))))))) (PrepNP without_Prep (ApposNP (DetCN (DetQuant IndefArt NumPl) (UseN ideal_1_N)) (DetCN (DetQuant IndefArt NumSg) (SentCN (AdvCN (UseN sum_1_N) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN individual_1_N)))) (EmbedQS (UseQCl (TTAnt TPres ASimul) PPos (QuestIAdv (PrepIP in_1_Prep (IdetIP (IdetQuant which_IQuant NumSg))) (PredVP (UseDAPMasc (DetDAP each_Det)) (ReflVPSlash (SlashV2a live_for_V2) ReflPron))))))))))))) NoVoc
 eng: A mob is an amorphous crowd of people without ideals, a sum of individuals in which each lives for himself
 swe: en pöbel är en amorf massa av människor utan ideal, en summa av individer i vilket varje lever för sig
-bul: пасмина е аморфна тълпа на хора без идеали, сума на индивиди в което всеки живее за себе си
+bul: пасмина е аморфна тълпа от хора без идеали, сума от индивиди в което всеки живее за себе си
 key: 1 amorphous_3_A 01676810-a
 
 abs* PhrUtt NoPConj (UttNP (UseDAP (AdjDAP (DetDAP (DetQuant (PossPron she_Pron) NumSg)) (PositA vague_1_A)))) (VocNP (MassNP (SentCN (AdjCN (PositA amorphous_4_A) (RelCN (PartNP (UseN statement_2_N) (UsePron she_Pron)) (UseRCl (TTAnt TPastSimple ASimul) PPos (EmptyRelSlash (SlashPrep (PredVP (MassNP (UseN predicament_N)) (UseComp (CompAdv part_Adv))) of_1_Prep))))) (EmbedQS (UseQCl (TTAnt TPastSimple ASimul) PPos (QuestVP whatSgNeut_IP (ComplSlash (SlashV2A make_2_V2A (SentAP (AdAP so_1_AdA (AdvAP (PositA hard_4_A) (PrepNP for_Prep (UsePron she_Pron)))) (EmbedVP ASimul PPos ? (ComplSlash (SlashV2a solve_1_V2) (UsePron it_Pron))))) (UsePron it_Pron))))))))
@@ -9814,11 +9814,11 @@ swe: han köpte det på välsignelse
 bul: той го купи на одобрение
 key: 1 approval_3_N 14435778-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (PossNP (UseN word_2_N) (MassNP (UseN approval_4_N)))) (AdVVP seldom_AdV (ComplSlash (SlashV2a pass_7_V2) (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN lip_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdvCN (UseN word_2_N) (PrepNP of_3_Prep (MassNP (UseN approval_4_N))))) (AdVVP seldom_AdV (ComplSlash (SlashV2a pass_7_V2) (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN lip_1_N))))))) NoVoc
 eng: words of approval seldom passed his lips
-swe: ord av välsignelse passerade sällan hans läppar
-bul: думи на одобрение рядко подминаха неговите устни
-key: 1 approval_4_N 06699481-n välsignelse välgångsönskning välgångsönskan utmärkelse uppskattning lyckönskning lyckönskan hedersbevisning hedersbetygelse gillande erkänsla
+swe: ord för välsignelse passerade sällan hans läppar
+bul: думи за одобрение рядко подминаха неговите устни
+key: 1 approval_4_N 06699481-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (UseN list_1_N) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA approved_A) (UseN candidateMasc_1_N))))))) NoVoc
 eng: a list of approved candidates
@@ -10720,11 +10720,11 @@ swe: en fullkomlig duma
 bul: пълен глупак
 key: 1 arrant_A 01524174-a
 
-abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN array_1_N) (DetCN (DetQuant IndefArt NumPl) (UseN troop_1_N)))) (PrepNP in_1_Prep (MassNP (UseN (CompoundN battle_1_N order_5_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN array_1_N) (DetCN (DetQuant IndefArt NumPl) (UseN troop_1_N)))) (PrepNP in_1_Prep (MassNP (UseN (CompoundN battle_1_N order_5_N)))))) NoVoc
 eng: an array of troops in battle order
 swe: ett arrangemang av trupper i stridordning
 bul: подредба на войски в битка ред
-key: 1 array_1_N 07955622-n uppställning arrangemang
+key: 1 array_1_N 07955622-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (ImpersCl (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (AdjCN (PositA bewildering_A) (UseN array_2_N)) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN book_2_N)))))))))) NoVoc
 eng: it was a bewildering array of books
@@ -11950,11 +11950,11 @@ swe: hans försäkran i hans överlägsenhet gjorde honom inte populär
 bul: неговата увереност в неговото превъзходство не го направи популярен
 key: 1 assurance_1_N 05705328-n självsäkerhet självförtroende
 
-abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN assurance_2_N) (MassNP (UseN help_1_N)))) (PrepNP when_Prep (UseDAPFem (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PastPartAP (SlashV2a need_2_V2))))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (UseN assurance_2_N) (PrepNP of_3_Prep (MassNP (UseN help_1_N))))) (PrepNP when_Prep (UseDAPFem (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PastPartAP (SlashV2a need_2_V2))))))) NoVoc
 eng: an assurance of help when needed
-swe: en försäkran av hjälp när en behövd
-bul: гаранция на помощ при нуждата
-key: 1 assurance_2_N 07242432-n garanti försäkring försäkring försäkran försäkran bedyrande
+swe: en försäkran för hjälp när en behövd
+bul: гаранция за помощ при нуждата
+key: 1 assurance_2_N 07242432-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PNeg (PredVP (GenModNP NumPl (DetCN (DetQuant DefArt NumSg) (UseN presidentMasc_1_N)) (UseN assurance_3_N)) (PassVPSlash (SlashV2a respect_2_V2))))) NoVoc
 eng: the President's assurances were not respected
@@ -15250,11 +15250,11 @@ swe: de borde bära ett ramrod samt krut och kula
 bul: те трябваше да носят шомпол както и барут и куршум
 key: 1 ball_2_N 03807768-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN ball_3_N) (MassNP (UseN fire_3_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (UseN ball_3_N) (PrepNP of_1_Prep (MassNP (UseN fire_3_N)))))) NoVoc
 eng: a ball of fire
 swe: ett klot av eld
-bul: топка на огън
-key: 1 ball_3_N 13922097-n топка сфера кълбо
+bul: топка от огън
+key: 1 ball_3_N 13922097-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN ball_4_N)) (AdvVP (AdVVP already_AdV (ProgrVP (UseV empty_out_V))) (SubjS before_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN fire_alarm_1_N)) (UseV sound_2_V)))))))) NoVoc
 eng: the ball was already emptying out before the fire alarm sounded
@@ -18100,10 +18100,10 @@ swe: dessa sidor tillhör inte
 bul: тези страници не принадлежат
 key: 1 belong_to_V2 02725805-v vara del av tillhöra tillhöra räknas till höra till
 
-abs+ PhrUtt NoPConj (UttS (AdvS (PrepNP with_Prep (DetCN (DetQuant ReflPossPron NumPl) (UseN classmateMasc_N))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a feel_1_V2) (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN sense_1_N) (MassNP (UseN belonging_N))))))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (AdvS (PrepNP with_Prep (DetCN (DetQuant ReflPossPron NumPl) (UseN classmateMasc_N))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a feel_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdvCN (UseN sense_1_N) (PrepNP of_3_Prep (MassNP (UseN belonging_N)))))))))) NoVoc
 eng: with his classmates he felt a sense of belonging
-swe: med sina klasskompisar kände han en känsla av trygghet
-bul: с [ReflPossPron] съученици той усети чувство на принадлежност
+swe: med sina klasskompisar kände han en känsla för trygghet
+bul: с [ReflPossPron] съученици той усети чувство за принадлежност
 key: 1 belonging_N 07545205-n
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (UseV see_2_V) below_2_Adv))) NoVoc
@@ -34408,10 +34408,10 @@ swe: de tydliga fotavtrycken i snön
 bul: ясните следи в снега
 key: 1 clear_9_A 00783570-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN letter_1_N)) (AdvVP (ComplSlash (SlashV2a bring_back_2_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA clear_9_A) (UseN image_1_N)))) (PrepNP of_1_Prep (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN grandfather_N))))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN letter_1_N)) (ComplSlash (SlashV2a bring_back_2_V2) (DetCN (DetQuant IndefArt NumSg) (AdvCN (AdjCN (PositA clear_9_A) (UseN image_1_N)) (PrepNP of_3_Prep (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN grandfather_N))))))))) NoVoc
 eng: the letter brought back a clear image of his grandfather
-swe: brevet återfådde till medvetande en tydlig bild av hans farfar
-bul: писмото върна отчетлив образ от неговия дядо
+swe: brevet återfådde till medvetande en tydlig bild för hans farfar
+bul: писмото върна отчетлив образ за неговия дядо
 key: 1 clear_9_A 00783570-a
 
 abs: PhrUtt NoPConj (UttAdv (PrepNP on_1_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA clear_11_A) (UseN day_3_N))))) NoVoc
@@ -35596,10 +35596,10 @@ swe: deras ansikten var fördunklade med sorgsenhet
 bul: техните изражения бяха помрачени с тъга
 key: 1 cloud_4_V2 01773486-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN stroke_3_N)) (AdvVP (ComplSlash (SlashV2a cloud_6_V2) (DetCN (DetQuant IndefArt NumPl) (UseN memory_1_N))) (PrepNP of_1_Prep (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN youth_3_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN stroke_3_N)) (ComplSlash (SlashV2a cloud_6_V2) (DetCN (DetQuant IndefArt NumPl) (AdvCN (UseN memory_1_N) (PrepNP of_3_Prep (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN youth_3_N))))))))) NoVoc
 eng: the stroke clouded memories of her youth
-swe: stroket grumlade minnen av hennes ungdom
-bul: ударът замъгли спомени от нейната младост
+swe: stroket grumlade minnen för hennes ungdom
+bul: ударът замъгли спомени за нейната младост
 key: 1 cloud_6_V2 00589133-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN chemical_N)) (ComplSlash (SlashV2a cloud_8_V2) (DetCN (DetQuant DefArt NumSg) (SentCN (UseN liquid_1_N) (EmbedQS (UseQCl (TTAnt TPastSimple ASimul) PPos (QuestIAdv (PrepIP to_5_Prep (IdetIP (IdetQuant which_IQuant NumSg))) (ImpersCl (PassVPSlash (SlashV2a add_1_V2)))))))))))) NoVoc
@@ -39112,11 +39112,11 @@ swe: blanda ut ingredienserna
 bul: смеси съставките
 key: 1 compound_5_V2 01463957-v
 
-abs+ PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (UsePron youSgFem_Pron) (AdvVP (ComplSlash (SlashV2a comprehend_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN meaning_1_N))) (PrepNP of_2_Prep (DetCN (DetQuant this_Quant NumSg) (UseN letter_1_N)))))))) NoVoc QuestMark
+abs: PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (UsePron youSgFem_Pron) (ComplSlash (SlashV2a comprehend_1_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN meaning_1_N) (DetCN (DetQuant this_Quant NumSg) (UseN letter_1_N))))))))) NoVoc QuestMark
 eng: Do you comprehend the meaning of this letter?
-swe: Begriper du meningen med det här brevet?
-bul: Ти разбираш ли значението с това писмо?
-key: 1 comprehend_1_V2 00589616-v greppa
+swe: Begriper du meningen av det här brevet?
+bul: Ти разбираш ли значението на това писмо?
+key: 1 comprehend_1_V2 00589616-v
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (AdvAP (PositA comprehensible_1_A) (PrepNP to_2_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA average_1_A) (UseN mind_7_N))))) (UseN idea_1_N)))) NoVoc
 eng: an idea comprehensible to the average mind
@@ -42712,10 +42712,10 @@ swe: konventionella former av tilltal
 bul: традиционни форми на обръщение
 key: 1 conventional_1_A 00607893-a
 
-abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA conventional_2_A) (UseN view_1_N))) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN world_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA conventional_2_A) (UseN view_1_N))) (PrepNP of_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN world_1_N))))) NoVoc
 eng: a conventional view of the world
-swe: en konventionell uppfattning av världen
-bul: конвенционален възглед от света
+swe: en konventionell uppfattning för världen
+bul: конвенционален възглед за света
 key: 1 conventional_2_A 01695059-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA conventional_3_A) (UseN warfare_2_N)))) NoVoc
@@ -69820,11 +69820,11 @@ swe: förklaringen var väldigt enkel
 bul: обяснението беше много просто
 key: 1 explanation_1_N 06751030-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (ComplSlash (SlashV2a hear_4_V2) (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN explanation_3_N))) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN accident_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron i_Pron) (ComplSlash (SlashV2a hear_4_V2) (DetCN (DetQuant (PossPron he_Pron) NumSg) (AdvCN (UseN explanation_3_N) (PrepNP of_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN accident_1_N))))))))) NoVoc
 eng: I heard his explanation of the accident
-swe: jag hörde hans förklaring av olyckan
-bul: аз чух неговото обяснение от инцидента
-key: 1 explanation_3_N 07247081-n разяснение пояснение обяснение
+swe: jag hörde hans förklaring för olyckan
+bul: аз чух неговото обяснение за инцидента
+key: 1 explanation_3_N 07247081-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA explanatory_A) (UseN note_7_N)))) NoVoc
 eng: explanatory notes
@@ -74110,10 +74110,10 @@ swe: jag fruktar jag inte ska hinna fram till din bröllopsfest
 bul: аз се страхувам, че аз няма да стигна на твоето сватба парти
 key: 1 fear_5_VS 01784387-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (ComplSlash (SlashV2a fear_4_V2) (DetCN (DetQuant DefArt NumPl) (UseN result_3_N))) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA final_1_A) (UseN exam_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (ComplSlash (SlashV2a fear_4_V2) (DetCN (DetQuant DefArt NumPl) (AdvCN (UseN result_3_N) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA final_1_A) (UseN exam_N)))))))))) NoVoc
 eng: I fear the results of the final exams
 swe: jag fruktar resultaten av de slutgiltiga tentorna
-bul: аз се опасявам резултатите от финалните изпити
+bul: аз се опасявам от резултатите от финалните изпити
 key: 1 fear_4_V2 01784253-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvRVP (ComplSlash (SlashV2a fear_5_V2) (UsePN god_1_PN)) as_Prep (ReflPoss NumSg (UseN father_1_N))))) NoVoc
@@ -85834,7 +85834,7 @@ swe: glattheten av en högtrycksäljare
 bul: повърхностното красноречие на продавач на височина натиска
 key: 1 glibness_N 05102586-n
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA glimmery_A) (UseN candlelight_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA glimmery_A) (UseN candlelight_N)))) NoVoc
 eng: glimmery candlelight
 swe: skimrande ljussken
 bul: мъждукаща свещ
@@ -123028,10 +123028,10 @@ swe: hon gjorde frekvent omnämnande av hennes befordran
 bul: тя направи често споменаване на нейното повишение
 key: 1 mention_1_N 06778981-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (ExistNPAdv (DetCN (DetQuant no_Quant NumSg) (UseN mention_1_N)) (PrepNP of_1_Prep (UsePron it_Pron))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (ExistNPAdv (DetCN (DetQuant no_Quant NumSg) (UseN mention_1_N)) (PrepNP of_3_Prep (UsePron it_Pron))))) NoVoc
 eng: there was no mention of it
-swe: det fanns inget omnämnande av det
-bul: няма никакво споменаване от него
+swe: det fanns inget omnämnande för det
+bul: няма никакво споменаване за него
 key: 1 mention_1_N 06778981-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN article_1_N)) (ComplSlash (SlashV2a include_1_V2) (MassNP (PossNP (UseN mention_2_N) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA similar_1_A) (AdjCN (PositA clinical_1_A) (UseN case_1_N)))))))))) NoVoc
@@ -138982,10 +138982,10 @@ swe: ett smärtsamt prestanda
 bul: болезнено изпълнение
 key: 1 painful_3_A 01130122-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a fear_4_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN painfulness_2_N) (DetCN (DetQuant gen_Quant NumSg) (UseN childbirth_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a fear_4_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN painfulness_2_N) (DetCN (DetQuant gen_Quant NumSg) (UseN childbirth_N)))))))) NoVoc
 eng: she feared the painfulness of childbirth
 swe: hon fruktade smärtsamheten av förlossningen
-bul: тя се опасява болезнеността на раждането
+bul: тя се опасява от болезнеността на раждането
 key: 1 painfulness_2_N 04727300-n
 
 abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA painless_1_A) (UseN solution_3_N))) (PrepNP to_4_Prep (DetCN (DetQuant DefArt NumSg) (UseN problem_1_N))))) NoVoc
@@ -146896,11 +146896,11 @@ swe: kom fram till kärnpunkten
 bul: стигай до смисъла
 key: 1 point_3_N 06619161-n poäng kärnpunkt
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a miss_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN point_3_N))) (PrepNP of_2_Prep (DetCN (DetQuant DefArt NumSg) (UseN joke_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a miss_3_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN point_3_N) (DetCN (DetQuant DefArt NumSg) (UseN joke_1_N)))))))) NoVoc
 eng: he missed the point of the joke
-swe: han missade kärnpunkten med skämtet
-bul: той пропусна смисъла с вица
-key: 1 point_3_N 06619161-n poäng kärnpunkt
+swe: han missade kärnpunkten av skämtet
+bul: той пропусна смисъла на вица
+key: 1 point_3_N 06619161-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN life_1_N)) (ReflVPSlash (SlashV2a lose_2_V2) (ReflPoss NumSg (UseN point_3_N)))))) NoVoc
 eng: life has lost its point
@@ -157600,10 +157600,10 @@ swe: klockan var en signal för mobiliseringen av den hela närheten
 bul: камбаната беше сигнал за мобилизирането на цялата околност
 key: 1 rallying_1_N 01233174-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a fear_4_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN rallying_2_N) (DetCN (DetQuant (PossPron they_Pron) NumPl) (UseN troop_1_N))))) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumSg) (UseN counterattack_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a fear_4_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN rallying_2_N) (DetCN (DetQuant (PossPron they_Pron) NumPl) (UseN troop_1_N))))) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumSg) (UseN counterattack_1_N))))))) NoVoc
 eng: he feared the rallying of their troops for a counterattack
 swe: han fruktade kraftsamlingen av deras trupper för ett motanfall
-bul: той се опасява сплотяването на техните войски за контраатака
+bul: той се опасява от сплотяването на техните войски за контраатака
 key: 1 rallying_2_N 00046387-n
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a ram_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN gate_1_N))) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (UseN sledgehammer_N)))))) NoVoc
@@ -175654,10 +175654,10 @@ swe: planen har en allvarlig anmärkning
 bul: планът има сериозен недостатък
 key: 1 serious_6_A 00751972-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvRVP (ComplSlash (SlashV2a learn_6_V2) (DetCN (DetQuant DefArt NumSg) (UseN seriousness_2_N))) of_2_Prep (ReflPoss NumSg (UseN illness_N)))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvRVP (ComplSlash (SlashV2a learn_6_V2) (DetCN (DetQuant DefArt NumSg) (UseN seriousness_2_N))) of_3_Prep (ReflPoss NumSg (UseN illness_N)))))) NoVoc
 eng: he learned the seriousness of his illness
-swe: han lärde sig allvaret med sin sjukdom
-bul: той узнава сериозността със своето заболяване
+swe: han lärde sig allvaret för sin sjukdom
+bul: той узнава сериозността за своето заболяване
 key: 1 seriousness_2_N 05044352-n
 
 abs* ?
@@ -178036,10 +178036,10 @@ swe: det skandalösa beteendet av den här gifta kvinnan chockade hennes vänner
 bul: скандалното поведение на тази омъжена жена шокира нейните приятелки
 key: 1 shock_2_V2 01814414-v шокирам förskräcka förfära chockera chocka
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumSg) (UseN news_1_N)) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN bombing_2_N)))) (ComplSlash (SlashV2a shock_3_V2) (UsePron she_Pron))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumSg) (UseN news_1_N)) (PrepNP of_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN bombing_2_N)))) (ComplSlash (SlashV2a shock_3_V2) (UsePron she_Pron))))) NoVoc
 eng: The news of the bombing shocked her
-swe: nyheten av bombningen chockerade henne
-bul: новината от бомбения атентат я шокира
+swe: nyheten för bombningen chockerade henne
+bul: новината за бомбения атентат я шокира
 key: 1 shock_3_V2 01786841-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a shock_5_V2) (MassNP (UseN grain_1_N))))) NoVoc
@@ -224212,11 +224212,11 @@ swe: direktören varnade honom att han kunde avskedas
 bul: директорката го предупреди че той можа да бъде уволнен
 key: 1 warn_1_V2 00871877-v предупреждавам предупредя varsko varna
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN doctorMasc_1_N)) (AdvVP (AdvVP (ComplSlash (SlashV2a warn_1_V2) (UsePron i_Pron)) (PrepNP about_1_Prep (DetCN (DetQuant DefArt NumPl) (UseN danger_3_N)))) (PrepNP of_2_Prep (MassNP (UseN smoking_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN doctorMasc_1_N)) (AdvVP (ComplSlash (SlashV2a warn_1_V2) (UsePron i_Pron)) (PrepNP about_1_Prep (DetCN (DetQuant DefArt NumPl) (PossNP (UseN danger_3_N) (DetCN (DetQuant gen_Quant NumSg) (UseN smoking_1_N))))))))) NoVoc
 eng: The doctor warned me about the dangers of smoking
-swe: läkaren varnade mig om farorna med rökning
-bul: докторът ме предупреди за опасностите с пушене
-key: 1 warn_1_V2 00871877-v предупреждавам предупредя varsko varna
+swe: läkaren varnade mig om farorna av rökningen
+bul: докторът ме предупреди за опасностите на пушенето
+key: 1 warn_1_V2 00871877-v
 
 abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron i_Pron) (ComplSlash (SlashV2a warn_4_V2) (AdvNP (UsePron he_Pron) (InOrderToVP ASimul PNeg ? (ComplVA go_10_VA (AdAP too_AdA (PositA far_2_A))))))))) NoVoc
 eng: I warned him not to go too far

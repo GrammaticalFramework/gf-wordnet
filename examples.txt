@@ -5050,7 +5050,7 @@ swe: löner behagliga med de aktuella trenderna
 bul: заплати съответстващи с текущите течения
 key: 1 agreeable_2_A 00579473-a
 
-abs+ PhrUtt NoPConj (UttAP ? (AdvAP (PositA agreeable_3_A) (PrepNP to_2_Prep (DetCN (DetQuant DefArt NumSg) (UseN plan_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA agreeable_3_A) (PrepNP to_2_Prep (DetCN (DetQuant DefArt NumSg) (UseN plan_1_N))))) NoVoc
 eng: agreeable to the plan
 swe: villig till planen
 bul: съгласен на плана
@@ -12112,10 +12112,10 @@ swe: en knipslug hyresgäst läser alltid det lilla trycket i ett arrendekontrak
 bul: проницателен квартирант винаги чете малкия шрифт в договор за наем
 key: 1 astute_A 00440649-a
 
-abs+ PhrUtt NoPConj (UttAP ? (AdvAP (PastPartAP (SlashV2a tear_2_V2)) asunder_Adv)) NoVoc
+abs: PhrUtt NoPConj (UttAP it_Pron (AdvAP (PastPartAP (SlashV2a tear_2_V2)) asunder_Adv)) NoVoc
 eng: torn asunder
 swe: riven sönder
-bul: скъсан на парчета
+bul: скъсано на парчета
 key: 1 asunder_Adv 00182430-r
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA asymmetrical_2_A) (UseN feature_1_N)))) NoVoc
@@ -18004,7 +18004,7 @@ swe: nedvärderande kommentarer
 bul: омаловажаващи коментари
 key: 1 belittling_A 00909877-a
 
-abs+ PhrUtt NoPConj (UttAP ? (PastPartAgentAP (SlashV2a save_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN bell_3_N)))) NoVoc
+abs+ PhrUtt NoPConj (UttAP he_Pron (PastPartAgentAP (SlashV2a save_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN bell_3_N)))) NoVoc
 eng: saved by the bell
 swe: räddad av klockklangen
 bul: спасен от звъна
@@ -18400,7 +18400,7 @@ swe: efterlevandet behöv inte alltid att tas vård med
 bul: опечаления не винаги трябва да бъдеш поет грижа
 key: 1 bereavedMasc_N 09869865-n
 
-abs+ PhrUtt NoPConj (UttAP ? (AdvAP (PositA bereft_2_A) (PrepNP of_1_Prep (MassNP (UseN hope_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttAP ? (AdvAP (PositA bereft_2_A) (PrepNP of_1_Prep (MassNP (UseN hope_2_N))))) NoVoc
 eng: bereft of hope
 swe: sörjande av hopp
 bul: покрусен от надежда
@@ -18412,7 +18412,7 @@ swe: Bermudans stränder
 bul: Бермудски плажове
 key: 1 bermudan_A 03059432-a
 
-abs+ PhrUtt NoPConj (UttAP ? (AdvAP (PositA berserk_A) (PrepNP with_Prep (MassNP (UseN grief_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA berserk_A) (PrepNP with_Prep (MassNP (UseN grief_1_N))))) NoVoc
 eng: berserk with grief
 swe: galen med sorg
 bul: обезумял със скръб
@@ -20428,7 +20428,7 @@ swe: blind till en älskares fel
 bul: сляпа към грешките на обожател
 key: 1 blind_2_A 01750714-a
 
-abs+ PhrUtt NoPConj (UttAP ? (AdvRAP (PositA blind_2_A) to_4_Prep (AdvRNP (DetCN (DetQuant DefArt NumPl) (UseN consequence_1_N)) of_1_Prep (ReflPoss NumPl (UseN action_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdvRAP (PositA blind_2_A) to_4_Prep (AdvRNP (DetCN (DetQuant DefArt NumPl) (UseN consequence_1_N)) of_1_Prep (ReflPoss NumPl (UseN action_1_N))))) NoVoc
 eng: blind to the consequences of their actions
 swe: blind till konsekvenserna av sina handlingar
 bul: сляп за последиците от своите действия
@@ -24034,7 +24034,7 @@ swe: andfådd at tänkt vad jag hade gjort
 bul: задъхан ат припомнен какъв имах направен аз
 key: 1 breathless_1_A 00268737-a
 
-abs+ PhrUtt NoPConj (UttAP ? (AdvAP (PositA breathless_1_A) (PrepNP from_Prep (MassNP (GerundCN (UseV run_1_V)))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA breathless_1_A) (PrepNP from_Prep (MassNP (GerundCN (UseV run_1_V)))))) NoVoc
 eng: breathless from running
 swe: andfådd från att springa
 bul: задъхан от бягане
@@ -26110,7 +26110,7 @@ swe: burlesk teater
 bul: бурлески театър
 key: 1 burlesque_A 02884958-a
 
-abs+ PhrUtt NoPConj (UttAP ? (AdvAP (PastPartAP (SlashV2a have_2_V2)) (TimeNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA tall_1_A) (AdjCN (PositA burly_1_A) (UseN frame_3_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdvAP (PastPartAP (SlashV2a have_2_V2)) (TimeNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA tall_1_A) (AdjCN (PositA burly_1_A) (UseN frame_3_N))))))) NoVoc
 eng: had a tall burly frame
 swe: havd en hög kraftig figur
 bul: иман високо едро телосложение
@@ -26494,11 +26494,11 @@ swe: hejaklacksledarena jäktade omkring spännande före deras föreställning
 bul: мажоретките гъмжаха наоколо вълнуващо преди тяхното представление
 key: 1 bustle_V 02062115-v
 
-abs+ PhrUtt NoPConj (UttAP ? (AdvRAP (PositA busy_1_A) with_Prep (ReflPoss NumSg (UseN work_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttAP she_Pron (AdvRAP (PositA busy_1_A) with_Prep (ReflPoss NumSg (UseN work_1_N)))) NoVoc
 eng: busy with her work
 swe: upptagen med sitt arbete
-bul: зает със своята работа
-key: 1 busy_1_A 00293803-a зает ангажиран
+bul: заета със своята работа
+key: 1 busy_1_A 00293803-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA busy_1_A) (UseN man_1_N)))) NoVoc
 eng: a busy man

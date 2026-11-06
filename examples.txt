@@ -36842,7 +36842,7 @@ abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant DefArt NumSg) (UseN (Compound
 eng: the American colony in Paris
 swe: amerikankolonien i Paris
 bul: американската колония в Париж
-key: 1 colony_1_N 08390976-n колония
+key: 1 colony_1_N 08390976-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN nudistMasc_N colony_4_N)))) NoVoc
 eng: a nudist colony

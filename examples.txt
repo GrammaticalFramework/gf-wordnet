@@ -84812,7 +84812,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePro
 eng: I finally got through this homework assignment
 swe: jag slutförade äntligen det här hemläxauppdraget
 bul: аз най-накрая привърших това възложение за домашна работа
-key: 1 get_through_1_V2 00485823-v hamna hamna
+key: 1 get_through_1_V2 00485823-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ComplSlash (SlashV2a get_to_2_V2) (MassNP (GerundCN (AdvVP (UseV fret_1_V) (SubjS if_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (UseV stay_away_V) from_home_Adv)))))))) (AdAdv too_AdA (PositAdvAdj long_1_A)))))) NoVoc
 eng: She gets to fretting if I stay away from home too long
@@ -84934,7 +84934,7 @@ swe: ett spöklikt ansikte vid fönstret
 bul: призрачно лице на прозореца
 key: 1 ghostly_A 01579318-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (MaleSurname walton_SN) (ComplSlash (SlashV2a build_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN retail_N giant_3_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (MaleSurname walton_SN) (ComplSlash (SlashV2a build_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN retail_N giant_3_N))))))) NoVoc
 eng: Walton built a retail giant
 swe: Walton byggde en detaljgigant
 bul: Уолтън изгради търговски гигант

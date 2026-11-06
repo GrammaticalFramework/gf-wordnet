@@ -4424,7 +4424,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: Soviet troops invaded Afghanistan in 1979
 swe: sovjetiska trupper invaderade Afghanistan år 1979
 bul: съветски войски нахлуха в Афганистан през 1979
-key: 1 afghanistan_LN 08721268-n Afghanistan
+key: 1 afghanistan_LN 08721268-n
 
 abs* ?
 eng: "looking afield for new lands to conquer"- R.A.Hall

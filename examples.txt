@@ -34244,7 +34244,7 @@ abs: PhrUttMark NoPConj (UttImpSg PPos (ImpVP (ReflVPSlash (SlashV2a tidy_up_V2)
 eng: Tidy up your room!
 swe: Städa ditt rum!
 bul: Подреди своята стая!
-key: 1 tidy_up_V2 00276642-v städa plocka plocka i ordning
+key: 1 tidy_up_V2 00276642-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN investorMasc_N)) (AdvVP (AdVVP really_1_AdV (UseV clean_up_2_V)) (SubjS when_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA stock_1_A) (UseN market_1_N))) (AdvVP (UseV go_4_V) up_1_Adv)))))))) NoVoc
 eng: The investor really cleaned up when the stock market went up
@@ -34810,7 +34810,7 @@ swe: en klimaktisk utveckling
 bul: кулминационно развитие
 key: 1 climactic_A 02497396-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA dank_A) (PossNP (UseN climate_1_N) (UseLN (AdjLN (PositA southern_3_A) wales_LN)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA dank_A) (PossNP (UseN climate_1_N) (UseLN (AdjLN (PositA southern_3_A) wales_LN)))))) NoVoc
 eng: the dank climate of southern Wales
 swe: det fuktiga klimatet av södra Wales
 bul: влажният климат на южен Уелс
@@ -34906,11 +34906,11 @@ swe: avgöra en affär
 bul: сключи сделка
 key: 1 clinch_6_V2 00765758-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dress_1_N)) (AdvVP (UseV cling_1_V) (PrepNP to_3_Prep (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN body_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dress_1_N)) (AdvVP (UseV cling_1_V) (PrepNP to_3_Prep (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN body_1_N))))))) NoVoc
 eng: The dress clings to her body
 swe: klänningen klibbar till hennes kropp
 bul: роклята прилепва към нейното тяло
-key: 1 cling_1_V 01223449-v klibba
+key: 1 cling_1_V 01223449-v
 
 abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (AdvVP (UseV cling_2_V) (PrepNP to_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN idea_1_N)))) (SubjS that_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplVV may_1_VV ASimul PPos (AdVVP still_1_AdV (ComplSlash (SlashV2a love_1_V2) (UsePron he_Pron))))))))))) NoVoc FullStop
 eng: He clings to the idea that she might still love him.
@@ -35056,13 +35056,13 @@ swe: omge med korsgång trädgården
 bul: обграждай с колонада градината
 key: 1 cloister_2_V2 01474064-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ReflVPSlash (SlashV2a cloister_3_V2) ReflPron) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN office_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ReflVPSlash (SlashV2a cloister_3_V2) ReflPron) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN office_1_N))))))) NoVoc
 eng: She cloistered herself in the office
 swe: hon isolerade sig i kontoret
 bul: тя се изолира в офиса
-key: 1 cloister_3_V2 00496572-v stänga in sig isolera sig
+key: 1 cloister_3_V2 00496572-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN people_1_N)) (ComplVV can_2_VV ASimul PPos (AdvVP (ComplSlash (SlashV2a clone_V2) (DetCN (DetQuant IndefArt NumSg) (UseN sheepFem_3_N))) nowadays_Adv))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN people_1_N)) (ComplVV can_2_VV ASimul PPos (AdvVP (ComplSlash (SlashV2a clone_V2) (DetCN (DetQuant IndefArt NumSg) (UseN sheepFem_3_N))) nowadays_Adv))))) NoVoc
 eng: people can clone a sheep nowadays
 swe: människor kan klona ett får i nuförtiden
 bul: хора могат да клонират овца в наши дни
@@ -35086,17 +35086,17 @@ swe: Hur nära är vi till staden?
 bul: [ICompAP] Близък са ние на града?
 key: 1 close_1_A 00448955-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_1_A) (PossNP (UseN formation_1_N) (DetCN (DetQuant IndefArt NumPl) (UseN ship_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_1_A) (AdvCN (UseN formation_1_N) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN ship_N))))))) NoVoc
 eng: a close formation of ships
 swe: en nära formation av skepp
-bul: близка формация на кораби
+bul: близка формация от кораби
 key: 1 close_1_A 00448955-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_2_A) (UseN family_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_2_A) (UseN family_2_N)))) NoVoc
 eng: a close family
 swe: en närstående familj
 bul: близко семейство
-key: 1 close_2_A 00453543-a близък
+key: 1 close_2_A 00453543-a
 
 abs* ?
 eng: we are all...in close sympathy with...
@@ -35108,7 +35108,7 @@ abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA close_2_A) (UseN kinMasc_1_N))
 eng: close kin
 swe: närstående släkting
 bul: близък роднина
-key: 1 close_2_A 00453543-a близък
+key: 1 close_2_A 00453543-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_2_A) (UseN resemblance_N)))) NoVoc
 eng: a close resemblance
@@ -35164,13 +35164,13 @@ swe: en jämn tävling
 bul: оспорвана надпревара
 key: 1 close_6_A 00893915-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_6_A) (UseN election_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_6_A) (UseN election_1_N)))) NoVoc
 eng: a close election
 swe: ett jämnt val
 bul: оспорван избор
 key: 1 close_6_A 00893915-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA close_7_A) (UseN quarter_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA close_7_A) (UseN quarter_2_N)))) NoVoc
 eng: close quarters
 swe: trånga kvarter
 bul: тесни квартали
@@ -35200,7 +35200,7 @@ swe: en sluten hemlighet
 bul: пазна тайна
 key: 1 close_11_A 01865308-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_12_A) (UseN fit_3_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA close_12_A) (UseN fit_3_N)))) NoVoc
 eng: a close fit
 swe: en kroppsnära passform
 bul: прилепнала форма
@@ -35272,17 +35272,17 @@ swe: Min verksamhet stängs varje natt vid 8 P.M.
 bul: Бизнесът ми се затваря всяка вечер на 8 стр.
 key: 1 close_3_V 02431242-v stänga slå igen bomma igen
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a close_up_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN shop_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a close_up_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN shop_1_N))))) NoVoc
 eng: close up the shop
 swe: stäng upp affären
 bul: затвори магазина
-key: 1 close_up_1_V2 02431242-v stänga slå igen bomma igen
+key: 1 close_up_1_V2 02431242-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN meeting_1_N)) (PassAgentVPSlash (AdvVPSlash (SlashV2a close_4_V2) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (UseN charge_12_N)))) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN chairman_N) (DetCN (DetQuant DefArt NumSg) (UseN board_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN meeting_1_N)) (PassAgentVPSlash (AdvVPSlash (SlashV2a close_4_V2) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (UseN charge_12_N)))) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN chairman_N) (DetCN (DetQuant DefArt NumSg) (UseN board_1_N)))))))) NoVoc
 eng: The meeting was closed with a charge by the chairman of the board
 swe: mötet stängdes av ordföranden av styrelsen med en befallning
 bul: срещата беше приключена с указание от председателя на борда
-key: 1 close_4_V2 02430760-v приключвам приключа
+key: 1 close_4_V2 02430760-v
 
 abs* ?
 eng: The concert closed with a nocturne by Chopin
@@ -35332,7 +35332,7 @@ swe: sonden närmade sig med rymdstationen
 bul: сондата се доближи с космическата гара
 key: 1 close_12_V 02058306-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN management_2_N)) (ComplSlash (SlashV2a close_13_V2) (DetCN (DetQuant gen_Quant NumPl) (UseN rank_4_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN management_2_N)) (ComplSlash (SlashV2a close_13_V2) (DetCN (DetQuant gen_Quant NumPl) (UseN rank_4_N)))))) NoVoc
 eng: Management closed ranks
 swe: ledningen stängde rangarna
 bul: управлението сплоти ранговете
@@ -35962,7 +35962,7 @@ swe: den atlantiska havsnära slätten
 bul: атлантическата крайбрежна равнина
 key: 1 coastal_2_A 00464942-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA coastwise_A) (UseN wind_1_N))) (AdvVP (UseV contribute_2_V) (PrepNP to_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN storm_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA coastwise_A) (UseN wind_1_N))) (AdvVP (UseV contribute_2_V) (PrepNP to_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN storm_1_N))))))) NoVoc
 eng: coastwise winds contributed to the storm
 swe: kustnära vindar bidrog till stormen
 bul: крайбрежни ветрове допринесоха към бурята
@@ -35980,11 +35980,11 @@ swe: andra hinna av färg
 bul: втори пласт от боя
 key: 1 coat_2_N 03062092-n
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a coat_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN cake_3_N))) (PrepNP with_Prep (MassNP (UseN chocolate_2_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a coat_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN cake_3_N))) (PrepNP with_Prep (MassNP (UseN chocolate_2_N)))))) NoVoc
 eng: coat the cake with chocolate
 swe: belägga kakan med choklad
 bul: покрий тортата с шоколад
-key: 1 coat_1_V2 01266847-v ytbelägga ytbehandla tjärbehandla tjära tjära in belägga
+key: 1 coat_1_V2 01266847-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple AAnter) PPos (PredVP (MassNP (UseN dirt_2_N)) (ComplSlash (SlashV2a coat_3_V2) (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN face_1_N)))))) NoVoc
 eng: Dirt had coated her face
@@ -36046,7 +36046,7 @@ swe: Han gav mig en cockamamie skäl för att inte gå
 bul: той ми даде една причина, за да не отиде
 key: 1 cockamamie_1_A 01804729-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA cockney_1_A) (UseN vowel_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA cockney_1_A) (UseN vowel_1_N)))) NoVoc
 eng: cockney vowels
 swe: cockneya vokaler
 bul: кокни гласни
@@ -36088,11 +36088,11 @@ swe: Hon älskar att stanna hemma och kokong
 bul: Обича да остане у дома и пашкул
 key: 1 cocoon_1_V2 02096947-v
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a coddle_2_V2) (DetCN (DetQuant IndefArt NumPl) (UseN egg_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a coddle_2_V2) (DetCN (DetQuant IndefArt NumPl) (UseN egg_2_N))))) NoVoc
 eng: coddle eggs
 swe: pochera ägg
 bul: поширай яйца
-key: 1 coddle_2_V2 00321211-v småkoka sjuda pochera
+key: 1 coddle_2_V2 00321211-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (AdvVP (AdvVP (ComplSlash (SlashV2a code_1_V2) (DetCN (DetQuant DefArt NumPl) (UseN piece_1_N))) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumPl) (UseN number_4_N)))) (SubjS so_that_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ComplVV can_2_VV ASimul PPos (ComplSlash (SlashV2a identify_1_V2) (UsePron they_Pron))))))) later_1_Adv))) NoVoc
 eng: Code the pieces with numbers so that you can identify them later
@@ -36136,10 +36136,10 @@ swe: ett övertygande argument
 bul: състоятелен аргумент
 key: 1 cogent_A 01774916-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA cogged_A) (UseN wheel_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA cogged_A) (UseN wheel_1_N)))) NoVoc
 eng: a cogged wheel
 swe: ett kuggat hjul
-bul: назъбно колело
+bul: назъбено колело
 key: 1 cogged_A 02447953-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (AdvNP (MassNP (UseN (CompoundN space_4_N flight_2_N))) (PrepNP to_2_Prep (DetCN (DetQuant another_1_Quant NumPl) (UseN galaxy_3_N)))) (ComplVA become_VA (UseComparA cogitable_A))))) NoVoc
@@ -36322,11 +36322,11 @@ swe: ett kallt rum
 bul: студена стая
 key: 1 cold_1_A 01254201-a
 
-abs+ PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant gen_Quant NumSg) (UseN dinner_1_N)) (MkVPS (TTAnt TPres AAnter) PPos (ComplVA get_2_VA (PositA cold_1_A))))) NoVoc
+abs: PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant gen_Quant NumSg) (UseN dinner_1_N)) (MkVPS (TTAnt TPres AAnter) PPos (ComplVA get_2_VA (PositA cold_1_A))))) NoVoc
 eng: dinner has gotten cold
 swe: middagen har blivit kall
 bul: вечерята е станалa студена
-key: 1 cold_1_A 01254201-a хладен студен
+key: 1 cold_1_A 01254201-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA cold_1_A) (UseN finger_1_N)))) NoVoc
 eng: cold fingers
@@ -36784,7 +36784,7 @@ swe: tre passagerare dödades i kollisionen
 bul: трима пасажери бяха убити в сблъсъка
 key: 1 collision_2_N 07316161-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN collision_2_N) (DetCN (DetQuant DefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))))) (UseN ship_N)))) (ComplSlash (SlashV2a result_in_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA serious_2_A) (UseN (CompoundN oil_3_N spill_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN collision_2_N) (DetCN (DetQuant DefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))))) (UseN ship_N)))) (ComplSlash (SlashV2a result_in_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA serious_2_A) (UseN (CompoundN oil_3_N spill_1_N)))))))) NoVoc
 eng: the collision of the two ships resulted in a serious oil spill
 swe: kollisionen av de två skeppen resulterade i ett allvarligt oljeutsläpp
 bul: сблъсъкът на двата кораба доведе до сериозен нефтен разлив

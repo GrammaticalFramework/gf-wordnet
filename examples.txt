@@ -19792,17 +19792,17 @@ swe: svarta läderjackor
 bul: черни кожени якета
 key: 1 black_1_A 00393873-a
 
-abs+ PhrUtt NoPConj (UttAP ? (CAdvAP PPos as_CAdv (PositA black_1_A) (CompNP (MassNP (UseN coal_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (CAdvAP PPos as_CAdv (PositA black_1_A) (CompNP (MassNP (UseN coal_1_N))))) NoVoc
 eng: as black as coal
 swe: lika svart som kol
 bul: черен колкото въглен
-key: 1 black_1_A 00393873-a черен
+key: 1 black_1_A 00393873-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA rich_2_A) (AdjCN (PositA black_1_A) (UseN soil_3_N))))) NoVoc
 eng: rich black soil
 swe: rik svart jord
 bul: богата черна почва
-key: 1 black_1_A 00393873-a черен
+key: 1 black_1_A 00393873-a
 
 abs* ?
 eng: "a great people--a black people--...injected new meaning and dignity into the veins of civilization"- Martin Luther King Jr.

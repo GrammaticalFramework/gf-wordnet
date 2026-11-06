@@ -25436,7 +25436,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA bucca
 eng: a buccal gland
 swe: en buckal körtel
 bul: устна жлеза
-key: 1 buccal_2_A 01669663-a устен
+key: 1 buccal_2_A 01669663-a
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (GivenName john_GN) (AdvVP (ProgrVP (UseV buck_1_V)) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumSg) (UseN promotion_2_N))))))) NoVoc
 eng: John is bucking for a promotion

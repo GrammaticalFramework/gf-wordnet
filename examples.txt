@@ -20270,7 +20270,7 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a bleach_2_V2) (De
 eng: bleach the laundry
 swe: blek tvätten
 bul: избели прането
-key: 1 bleach_2_V2 00280235-v blondera bleka
+key: 1 bleach_2_V2 00280235-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumPl) (UseN prospect_1_N)) (UseComp (CompAP (PositA bleak_1_A)))))) NoVoc
 eng: prospects were bleak
@@ -82120,11 +82120,11 @@ swe: Om barnen stannar ute på stranden i ytterligare en timme kommer de att ste
 bul: Ако децата останат на плажа за още един час, ще бъдат пържени
 key: 1 fry_1_V2 02744116-v
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a fry_2_V2) (DetCN (DetQuant DefArt NumPl) (UseN pancake_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a fry_2_V2) (DetCN (DetQuant DefArt NumPl) (UseN pancake_N))))) NoVoc
 eng: fry the pancakes
 swe: steka pannkakorna
 bul: пържи палачинките
-key: 1 fry_2_V2 00326129-v steka blondera
+key: 1 fry_2_V2 00326129-v
 
 abs+ PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPastSimple ASimul) PPos (QuestVP whatSg_IP (AdvVP (AdvVP (ComplSlash (SlashV2a take_2_V2) (UsePron youSgFem_Pron)) (AdAdv so_1_AdA fucking_Adv)) (PositAdvAdj long_1_A))))) NoVoc QuestMark
 eng: what took you so fucking long?

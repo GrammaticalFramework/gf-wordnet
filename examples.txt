@@ -232689,7 +232689,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Nora brought the book to the meeting.
 swe: Nora tog boken till mötet.
 bul: Нора донесе книгата на срещата.
-key: 0
+key: 0 _
 
 frm* ?
 sem: motion(during(E0),Theme), location(end(E0),Theme,Destination), equals(E0,E1), motion(during(E1),Agent), location(end(E1),Agent,Destination), cause(Agent,E0)

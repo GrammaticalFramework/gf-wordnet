@@ -34360,10 +34360,10 @@ swe: Vi var fria av faran
 bul: ние бяхме свободни от опасността
 key: 1 clear_5_A 01066627-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN ship_N)) (AdvVP (UseComp (CompAP (PositA clear_5_A))) (PrepNP of_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN reef_1_N))))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN ship_N)) (AdvVP (UseComp (CompAP (PositA clear_5_A))) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN reef_1_N))))))) NoVoc
 eng: the ship was clear of the reef
 swe: skeppet var frit för revet
-bul: корабът беше свободен за рифа
+bul: корабът беше свободен от рифа
 key: 1 clear_5_A 01066627-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA clear_6_A) (UseN conscience_2_N)))) NoVoc
@@ -34814,7 +34814,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA dank_A)
 eng: the dank climate of southern Wales
 swe: det fuktiga klimatet av södra Wales
 bul: влажният климат на южен Уелс
-key: 1 climate_1_N 14542968-n климат klimat
+key: 1 climate_1_N 14542968-n
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN climate_2_N) (DetCN (DetQuant gen_Quant NumSg) (UseN opinion_3_N))))) NoVoc
 eng: the climate of opinion

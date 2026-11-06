@@ -21476,7 +21476,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: the board has seven members
 swe: styrelsen har sju medlemmar
 bul: бордът има седем члена
-key: 1 board_1_N 08339911-n борд styrelse förbundsstyrelse
+key: 1 board_1_N 08339911-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a nail_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN board_3_N))) (PrepNP across_Prep (DetCN (DetQuant DefArt NumPl) (UseN window_1_N))))))) NoVoc
 eng: he nailed boards across the windows

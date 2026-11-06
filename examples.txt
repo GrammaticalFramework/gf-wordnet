@@ -154580,7 +154580,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GenMod
 eng: The baby's heart was pulsating again after the surgeon massaged it
 swe: bebisens hjärta höll på att pulsera igen efter kirurgen masserade det
 bul: сърцето на бебето би отново след като хирургът го масажира
-key: 1 pulsate_1_V 01883244-v pulsera pulsera
+key: 1 pulsate_1_V 01883244-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN city_1_N)) (AdvVP (UseV pulsate_2_V) (PrepNP with_Prep (MassNP (ConjCN and_Conj (BaseCN (UseN music_4_N) (UseN excitement_1_N))))))))) NoVoc
 eng: the city pulsated with music and excitement

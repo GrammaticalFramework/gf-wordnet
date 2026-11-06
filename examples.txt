@@ -25160,7 +25160,7 @@ abs: PhrUtt NoPConj (UttS (ConjS comma_Conj (BaseS (UseCl (TTAnt TPres ASimul) P
 eng: I don't need help, I'm just browsing
 swe: jag behöver inte hjälp, jag håller bara på att titta runt
 bul: аз не се нуждая от помощ, аз просто разглеждам
-key: 1 browse_1_V 02331351-v shoppa
+key: 1 browse_1_V 02331351-v
 
 abs: PhrUtt NoPConj (UttVPShort (ComplSlash (SlashV2a browse_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN computer_1_N directory_2_N))))) NoVoc
 eng: browse a computer directory
@@ -25238,13 +25238,13 @@ abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: the dentist recommended two brushes a day
 swe: tandläkaren rekommenderade två tandborstningar ett dygn
 bul: зъболекарят препоръча две измивания ден
-key: 1 brush_7_N 00657629-n tandborstning
+key: 1 brush_7_N 00657629-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ReflVPSlash (Slash3V3 give_1_V3 (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA quick_1_A) (UseN brush_8_N)))) (ReflPoss NumSg (UseN hair_1_N)))))) NoVoc
 eng: he gave his hair a quick brush
 swe: han gav sitt hår en snabb hårborstning
 bul: той даде на своята коса бързо сресване
-key: 1 brush_8_N 00257487-n borstning
+key: 1 brush_8_N 00257487-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (ReflVPSlash (SlashV2a have_1_V2) (AdvRNP (DetCN (DetQuant IndefArt NumSg) (UseN brush_9_N)) with_Prep (AdvRNP (MassNP (UseN danger_1_N)) on_1_Prep (ReflPoss NumSg (UseN way_6_N))))) (PrepNP to_2_Prep (MassNP (UseN work_1_N))))))) NoVoc
 eng: I had a brush with danger on my way to work
@@ -25264,11 +25264,11 @@ swe: Johnson borstade håren från sin jacka
 bul: Джонсън отметна космите от сакото си
 key: 1 brush_1_V2 01246373-v четкам изчетквам изчеткам borsta
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a brush_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN wall_1_N))) (PositAdvAdj light_13_A))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a brush_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN wall_1_N))) (PositAdvAdj light_13_A))))) NoVoc
 eng: He brushed the wall lightly
 swe: han snuddade vid väggen lätt
 bul: той закачи стената леко
-key: 1 brush_2_V2 01243284-v snudda vid snudda nudda
+key: 1 brush_2_V2 01243284-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (AdvVP (AdvVP (ComplSlash (SlashV2a brush_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN suit_1_N))) (PrepNP before_Prep (MassNP (GerundCN (ComplSlash (SlashV2a hang_2_V2) (UsePron it_Pron)))))) back_1_Adv) (PrepNP into_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN closet_1_N))))))) NoVoc
 eng: She brushed the suit before hanging it back into the closet

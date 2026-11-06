@@ -90106,10 +90106,10 @@ swe: överlämningen av ockuperat territorium
 bul: предаването на окупирана територия
 key: 1 handover_N 00214035-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN fate_3_N)) (UseComp (CompAdv (PrepNP in_1_Prep (DetCN (DetQuant (PossPron youSgFem_Pron) NumSg) (UseN hands_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN fate_3_N)) (UseComp (CompAdv (PrepNP in_1_Prep (DetCN (DetQuant (PossPron youSgFem_Pron) NumPl) (UseN hands_1_N)))))))) NoVoc
 eng: my fate is in your hands
-swe: mitt öde är i din händer
-bul: моята участ е в твоята ръка
+swe: mitt öde är i dinа händer
+bul: моята участ е в твоите ръце
 key: 1 hands_1_N 00820339-n
 
 abs* ?

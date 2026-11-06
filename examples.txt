@@ -232719,7 +232719,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Nora brought the book from home to the meeting.
 swe: Nora tog boken hemifrån till mötet.
 bul: Нора донесе книгата от вкъщи на срещата.
-key: 0
+key: 0 _
 
 frm* ?
 sem: motion(during(E0),Theme), motion(during(E1),Instrument), location(end(E0),Theme,Destination), location(end(E1),Instrument,Destination), equals(E0,E1), cause(Agent,E0)
@@ -232752,7 +232752,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Nora brought us together.
 swe: Nora samlade oss tillsammans.
 bul: Нора ни събра заедно.
-key: 0
+key: 0 _
 
 class: braid-41.2.2
 role:  Agent +animate
@@ -232966,7 +232966,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (D
 eng: The contractor builds houses for $100,000.
 swe: Entreprenören bygger hus för $100000.
 bul: Изпълнителката строи къщи за $100 000.
-key: 0
+key: 0 _
 
 frm* ?
 sem: exist(start(E),Product), exist(result(E),Product), made_of(result(E),Product,?Material), cause(?Agent,E), cost(E,Asset)
@@ -233619,7 +233619,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (D
 eng: The book costs $10.
 swe: Boken kostar $10.
 bul: Книгата струва $10.
-key: 0
+key: 0 _
 
 frm* ?
 sem: value(E,Theme,Value), benefit(E,Beneficiary)
@@ -233761,7 +233761,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (D
 eng: The rules forbid our smoking.
 swe: Reglerna förbjuder vår rökning.
 bul: Правилата забраняват нашето пушене.
-key: 0
+key: 0 _
 
 frm: PredVP Agent (ComplSlash (SlashV2a Verb) Theme)
 sem: forbid(during(E),Agent,Theme)
@@ -234821,7 +234821,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Amanda drove the package from home.
 swe: Amanda körde paketet hemifrån.
 bul: Аманда докара пакета от вкъщи.
-key: 0
+key: 0 _
 
 frm: PredVP Agent (AdvVP (AdvVP (ComplSlash (SlashV2a Verb) Theme) (PrepNP from_Prep InitialLocation)) (PrepNP to_1_Prep Destination))
 sem: motion(during(E0),Theme), location(start(E0),Theme,InitialLocation), location(end(E0),Theme,Destination), equals(E0,E1), motion(during(E1),Agent), location(start(E1),Agent,InitialLocation), location(end(E1),Agent,Destination), cause(Agent,E0)
@@ -235069,7 +235069,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He managed.
 swe: Han lyckades.
 bul: Той успя.
-key: 0
+key: 0 _
 
 class: cope-83-1-1
 
@@ -235081,7 +235081,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He managed the climb.
 swe: Han klarade av klättringen.
 bul: Той се справи с изкачването.
-key: 0
+key: 0 _
 
 class: peer-30.3
 role:  Experiencer +animate
@@ -235446,7 +235446,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He came from France.
 swe: Han kom från Frankrike.
 bul: Той дойде от Франция.
-key: 0
+key: 0 _
 
 frm* ?
 sem: motion(during(E),Theme), path(during(E),Theme,?InitialLocation,?Trajectory,Destination)
@@ -235466,7 +235466,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He came through the door.
 swe: Han kom genom dörren.
 bul: Той дойде през вратата.
-key: 0
+key: 0 _
 
 frm* ?
 sem: motion(during(E),Theme), path(during(E),Theme,InitialLocation,?Trajectory,Destination)
@@ -235512,7 +235512,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He climbed the mountain.
 swe: Han klättrade uppför berget.
 bul: Той изкатери планината.
-key: 0
+key: 0 _
 
 class: poke-19
 role:  Agent +animate +machine
@@ -235777,7 +235777,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They waltzed.
 swe: De valsade.
 bul: Те танцуваха валс.
-key: 0
+key: 1 waltz_V 01899605-v
 
 frm: PredVP Theme (AdvVP (UseV Verb) (PrepNP Prep Location))
 sem: motion(during(E),Theme), Prep(E,Theme,Location)
@@ -235832,7 +235832,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He adapted himself.
 swe: Han anpassade sig.
 bul: Той се адаптира.
-key: 0
+key: 0 _
 
 frm* ?
 sem: adjust(during(E),Patient,Goal)
@@ -236026,7 +236026,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The gardener grew an oak tree from that acorn.
 swe: Trädgårdsmästaren odlade ett ekträd från det där ekollonet.
 bul: Градинарката отгледа дъбово дърво от онзи жълъд.
-key: 0
+key: 0 _
 
 frm* ?
 sem: exist(start(E),Product), exist(result(E),Product), made_of(result(E),Product,Material), cause(Agent,E)
@@ -236413,7 +236413,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He wished to come.
 swe: Han önskade att komma.
 bul: Той жела да дойде.
-key: 0
+key: 1 wish_2_VV _
 
 class: engender-27
 role:  Cause +abstract
@@ -236587,7 +236587,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: A serious accident happened.
 swe: En allvarlig olycka hände.
 bul: Сериозен инцидент се случи.
-key: 0
+key: 1 happen_1_V _
 
 frm* ?
 sem: occur(during(E),Theme)
@@ -236607,7 +236607,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: A serious accident happened in front of them.
 swe: En allvarlig olycka hände framför dem.
 bul: Сериозен инцидент се случи пред тях.
-key: 0
+key: 1 happen_1_V _
 
 frm* ?
 sem: occur(during(E),Theme), Prep(during(E),Theme,Location)
@@ -236844,7 +236844,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Paul breathed.
 swe: Paul andades.
 bul: Пол диша.
-key: 0
+key: 1 breathe_1_V _
 
 frm* ?
 sem: body_process(E,Agent), emit(during(E),Agent,?Theme), Prep(E,?Theme,Destination)
@@ -236860,7 +236860,7 @@ frm* ?
 sem: body_process(E,Agent), emit(during(E),Agent,Theme)
 key: breathe-40.1.2/511 bleed_1_V dribble_4_V drool_2_V puke_V puke_V2 spit_1_V sweat_V vomit_V weep_V breathe_1_V breathe_7_V cough_V cry_1_V cry_7_V expectorate_2_V2 retch_1_V urinate_1_V hawk_3_V2
 
-abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dragon_1_N)) (AdvVP (UseV breathe_1_V) (TimeNP (MassNP (UseN fire_3_N))))))) NoVoc FullStop
+abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dragon_1_N)) (AdvVP (UseV breathe_1_V) (TimeNP (MassNP (UseN fire_3_N))))))) NoVoc FullStop
 eng: The dragon breathed fire.
 swe: Draken andades eld.
 bul: Драконът диша огън.
@@ -236956,7 +236956,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He turned into a frog.
 swe: Han blev till en groda.
 bul: Той се превърна в жаба.
-key: 0
+key: 1 turn_into_V2 _
 
 frm* ?
 sem: state(start(E),Material,Patient), state(result(E),Material,Patient)
@@ -237056,7 +237056,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Carrie touched his shoulder with the stick.
 swe: Carrie rörde hans axel med pinnen.
 bul: Кари докосна неговото рамо с пръчката.
-key: 0
+key: 1 touch_1_V2 _
 
 class: own-100
 role:  Pivot +animate +organization
@@ -237532,7 +237532,7 @@ frm: PredVP Agent (ComplSlash (SlashV2a Verb) Theme)
 sem: motion(during(E),Theme), cause(Agent,E)
 key: carry-11.4-1/568 heave_2_V2 kick_1_V2 push_1_V2 thrust_1_V2 thrust_2_V2 thrust_8_V2
 
-abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GivenName amanda_GN) (AdvVP (UseV shove_2_V) (TimeNP (DetCN (DetQuant DefArt NumSg) (UseN box_1_N))))))) NoVoc FullStop
+abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GivenName amanda_GN) (AdvVP (UseV shove_2_V) (TimeNP (DetCN (DetQuant DefArt NumSg) (UseN box_1_N))))))) NoVoc FullStop
 eng: Amanda shoved the box.
 swe: Amanda knuffade lådan.
 bul: Аманда бутна кутията.
@@ -237542,7 +237542,7 @@ frm: PredVP Agent (AdvVP (ComplSlash (SlashV2a Verb) Theme) (PrepNP FromPrep Ini
 sem: motion(during(E),Theme), location(start(E),Theme,InitialLocation), cause(Agent,E)
 key: carry-11.4-1/569 heave_2_V2 kick_1_V2 push_1_V2 thrust_1_V2 thrust_2_V2 thrust_8_V2
 
-abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GivenName amanda_GN) (AdvVP (AdvVP (UseV shove_2_V) (TimeNP (DetCN (DetQuant DefArt NumSg) (UseN box_1_N)))) (PrepNP from_Prep (DetCN (DetQuant DefArt NumSg) (UseN corner_1_N))))))) NoVoc FullStop
+abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GivenName amanda_GN) (AdvVP (AdvVP (UseV shove_2_V) (TimeNP (DetCN (DetQuant DefArt NumSg) (UseN box_1_N)))) (PrepNP from_Prep (DetCN (DetQuant DefArt NumSg) (UseN corner_1_N))))))) NoVoc FullStop
 eng: Amanda shoved the box from the corner.
 swe: Amanda knuffade lådan från hörnan.
 bul: Аманда бутна кутията от ъгъла.
@@ -237997,7 +237997,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They reached the hill.
 swe: De nådde kullen.
 bul: Те достигнаха хълма.
-key: 0
+key: 1 reach_1_V2 _
 
 class: scribble-25.2
 role:  Agent +animate +machine
@@ -238012,7 +238012,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The jeweler printed the name.
 swe: Juveleraren tryckte namnet.
 bul: Бижутерката разпечата името.
-key: 0
+key: 1 print_4_V2 _
 
 frm* ?
 sem: created_image(result(E),Theme), Prep(end(E),Theme,Destination), cause(Agent,E)
@@ -238245,7 +238245,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I neglected the job.
 swe: Jag försummade jobbet.
 bul: Аз пренебрегнах задачата.
-key: 0
+key: 1 neglect_3_V2 _
 
 class: neglect-75-2
 
@@ -238257,7 +238257,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I managed to do the job.
 swe: Jag lyckades att göra jobbet.
 bul: Аз успях да свърша задачата.
-key: 0
+key: 1 manage_1_VV _
 
 frm* ?
 sem: neglect(E,Agent,Theme)
@@ -238267,7 +238267,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I managed the job.
 swe: Jag klarade av jobbet.
 bul: Аз се справих със задачата.
-key: 0
+key: 1 manage_4_V2 _
 
 class: throw-17.1
 role:  Agent +int_control
@@ -238330,7 +238330,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I threw the package away.
 swe: Jag kastade bort paketet.
 bul: Аз изхвърлих пакета.
-key: 0
+key: 0 _
 
 class: throw-17.1-1
 role:  Destination +animate
@@ -238471,7 +238471,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They confessed that they had stolen.
 swe: De erkände att de hade stulit.
 bul: Те признаха, че те бяха задигнали.
-key: 0
+key: 0 _
 
 class: correlate-86.1
 role:  Agent +animate +organization
@@ -239378,7 +239378,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Ellen said a few words.
 swe: Ellen sade några ord.
 bul: Елън каза няколко думи.
-key: 0
+key: 1 say_8_V2 _
 
 frm* ?
 sem: transfer_info(during(E),Agent,Recipient,Topic), cause(Agent,E)
@@ -239388,7 +239388,7 @@ abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Ellen said a few words to Helen.
 swe: Ellen sade några ord till Helen.
 bul: Елън каза няколко думи до Елена.
-key: 0
+key: 1 say_8_V2 _
 
 frm* ?
 sem: transfer_info(during(E),Agent,Recipient,Topic), cause(Agent,E)
@@ -239883,7 +239883,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Ma
 eng: Smith inscribed the ring with his name.
 swe: Smith ristade ringen med sitt namn.
 bul: Смит надписа пръстена със своето име.
-key: 0
+key: 1 inscribe_1_V2 _
 
 frm: PredVP Agent (ComplSlash (SlashV2a Verb) Destination)
 sem: created_image(result(E),?Theme), location(end(E),?Theme,Destination), cause(Agent,E)
@@ -240286,7 +240286,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: We elected him as governor.
 swe: Vi valde honom som guvernör.
 bul: Ние избрахме него като губернатор.
-key: 0
+key: 0 _
 
 frm* ?
 sem: designated(result(E),Theme,Result), cause(Agent,E)
@@ -240306,7 +240306,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They elected John.
 swe: De valde John.
 bul: Те избраха Йоан.
-key: 0
+key: 0 _
 
 class: devour-39.4
 role:  Agent +animate
@@ -240492,7 +240492,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Co
 eng: John and Mary married.
 swe: John och Mary gifte sig.
 bul: Йоан и Мария се ожениха.
-key: 0
+key: 0 _
 
 class: amalgamate-22.2-3-2
 role:  Agent
@@ -240685,7 +240685,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: Cynthia nibbled.
 swe: Cynthia knaprade.
 bul: Синтия гризка.
-key: 0
+key: 0 _
 
 frm* ?
 sem: take_in(during(E),Agent,Patient)
@@ -241025,7 +241025,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I asked him.
 swe: Jag tillfrågade honom.
 bul: Аз го попитах.
-key: 0
+key: 0 _
 
 frm* ?
 sem: transfer_info(during(E),Agent,?Recipient,Topic), cause(Agent,E)
@@ -241035,7 +241035,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I asked a question.
 swe: Jag ställde en fråga.
 bul: Аз зададох въпрос.
-key: 0
+key: 0 _
 
 frm* ?
 sem: transfer_info(during(E),Agent,Recipient,Topic), cause(Agent,E)
@@ -241045,7 +241045,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I asked him about it.
 swe: Jag tillfrågade honom om det.
 bul: Аз го попитах за него.
-key: 0
+key: 0 _
 
 frm* ?
 sem: transfer_info(during(E),Agent,Recipient,Topic), cause(Agent,E)
@@ -241314,7 +241314,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I considered the matter closed.
 swe: Jag ansåg ärendet stängt.
 bul: Аз сметнах въпроса за приключен.
-key: 0
+key: 0 _
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
@@ -241366,7 +241366,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They considered him stupid.
 swe: De ansåg honom dum.
 bul: Те го сметнаха за глупав.
-key: 0
+key: 0 _
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
@@ -241376,7 +241376,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They considered him professor.
 swe: De ansåg honom professor.
 bul: Те го сметнаха за професор.
-key: 0
+key: 0 _
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
@@ -241418,7 +241418,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They considered him professor.
 swe: De ansåg honom professor.
 bul: Те го сметнаха за професор.
-key: 0
+key: 0 _
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
@@ -241438,7 +241438,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They considered the children found.
 swe: De ansåg barnen funna.
 bul: Те сметнаха децата за намерени.
-key: 0
+key: 0 _
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
@@ -241855,7 +241855,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Steve pelted Anna with acorns.
 swe: Steve bombarderade Anna med ekollon.
 bul: Стийв замерва Анна с жълъди.
-key: 0
+key: 0 _
 
 frm: PredVP Agent (ComplSlash (SlashV2a Verb) Destination)
 sem: motion(during(E),?Theme), contact(during(E),Agent,?Theme), cause(Agent,E), location(start(E),?Theme,Destination), location(end(E),?Theme,Destination)
@@ -241865,7 +241865,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Steve pelted Anna.
 swe: Steve bombarderade Anna.
 bul: Стийв замеря Анна.
-key: 0
+key: 0 _
 
 class: debone-10.8
 role:  Agent +animate +organization
@@ -242325,7 +242325,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: My ankle twisted.
 swe: Min ankel vred sig.
 bul: Моят глезен се изви.
-key: 0
+key: 0 _
 
 class: hurt-40.8.3-2
 
@@ -242347,7 +242347,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Tessa hurt herself.
 swe: Tessa gjorde sig illa.
 bul: Теса се нарани.
-key: 0
+key: 0 _
 
 class: banish-10.2
 role:  Agent +animate +organization
@@ -242458,7 +242458,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I needed him here.
 swe: Jag behövde honom här.
 bul: Аз се нуждах от него тук.
-key: 0
+key: 0 _
 
 frm* ?
 sem: desire(E,Pivot,Theme)
@@ -242632,7 +242632,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Paula spanked the child.
 swe: Paula smiskade barnet.
 bul: Паула нашляпа детето.
-key: 0
+key: 0 _
 
 frm* ?
 sem: cause(Agent,E), manner(during(E),directedmotion,Instrument), contact(during(E),Instrument,Patient), manner(end(E),forceful,Instrument), contact(end(E),Instrument,Patient), use(during(E),Agent,Instrument)
@@ -242642,7 +242642,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Paula spanked the child with her right hand.
 swe: Paula smiskade barnet med sin högra hand.
 bul: Паула нашляпа детето със своята дясна ръка.
-key: 0
+key: 0 _
 
 frm* ?
 sem: cause(Agent,E), manner(during(E),directedmotion,Agent), contact(during(E),Agent,Patient), manner(end(E),forceful,Agent), contact(end(E),Agent,Patient), Pred(result(E),Patient)
@@ -242738,7 +242738,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron 
 eng: I cannot risk smoking.
 swe: Jag kan inte riskera att röka.
 bul: Аз не мога да рискувам да пуша.
-key: 0
+key: 0 _
 
 class: tingle-40.8.2
 role:  Experiencer +animate
@@ -242788,7 +242788,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I stalked game in the woods.
 swe: Jag pyrschade vilt i skogarna.
 bul: Аз дебнах дивеч в горите.
-key: 0
+key: 0 _
 
 frm* ?
 sem: search(during(E),Agent,?Location,Theme)
@@ -242976,7 +242976,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The storm ended.
 swe: Stormen slutade.
 bul: Бурята приключи.
-key: 0
+key: 0 _
 
 frm* ?
 sem: end(E,Theme), cause(Agent,E)
@@ -242996,7 +242996,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The party ended with a bang.
 swe: Festen slutade med en smäll.
 bul: Партито приключи с трясък.
-key: 0
+key: 0 _
 
 frm* ?
 sem: end(E,Theme), use(during(E),Agent,Instrument), cause(Agent,E)
@@ -243006,7 +243006,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I ended the party with a speech.
 swe: Jag avslutade festen med ett tal.
 bul: Аз завърших партито с реч.
-key: 0
+key: 0 _
 
 class: stop-55.4-1
 
@@ -243032,7 +243032,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He rehearsed.
 swe: Han repeterade.
 bul: Той репетира.
-key: 0
+key: 0 _
 
 frm* ?
 sem: perform(during(E),Agent,Theme)
@@ -243042,7 +243042,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He rehearsed the song.
 swe: Han repeterade sången.
 bul: Той репетира песента.
-key: 0
+key: 0 _
 
 frm* ?
 sem: perform(during(E),Agent,Theme)
@@ -243067,7 +243067,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: John informed me.
 swe: John informerade mig.
 bul: Йоан ме информира.
-key: 0
+key: 0 _
 
 frm* ?
 sem: transfer_info(during(E),Agent,Recipient,Topic), cause(Agent,E)
@@ -243122,6 +243122,7 @@ abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Ellen told Helen a story.
 swe: Ellen berättade en historia för Helen.
 bul: Елън каза история на Елена.
+
 abs* ?
 eng: Ellen told me, 'Leave the room.'
 swe:
@@ -243255,7 +243256,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The bells traded places.
 swe: Klockorna bytte platser.
 bul: Камбаните размениха места.
-key: 0
+key: 0 _
 
 class: exchange-13.6-1-1
 
@@ -243337,7 +243338,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: A flag fluttered.
 swe: En flagga fladdrade.
 bul: Знаме пърха.
-key: 0
+key: 0 _
 
 frm* ?
 sem: exist(during(E),Theme), Prep(during(E),Theme,Location), motion(during(E),Theme)
@@ -243420,7 +243421,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He denied the horrid woman's statement.
 swe: Han förnekade den gräsliga kvinnans påstående.
 bul: Той отрече изявлението на ужасната жена.
-key: 0
+key: 0 _
 
 class: conjecture-29.5-2
 
@@ -243442,7 +243443,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The prisoner admitted that he may have been in the area.
 swe: Fången erkände att han kan ha varit i området.
 bul: Затворникът призна, че той може да е бил в района.
-key: 0
+key: 0 _
 
 frm* PredVP Agent (ComplSlash (SlashV2a admit_8_V2) Theme)
 sem: declare(during(E),Agent,Theme,?Predicate)
@@ -243452,7 +243453,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The prisoner admitted his guilt.
 swe: Fången medgav sin skuld.
 bul: Затворникът призна своята вина.
-key: 0
+key: 0 _
 
 class: give-13.1
 role:  Agent +animate +organization
@@ -243467,7 +243468,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They lent a bicycle to me.
 swe: De lånade ut en cykel till mig.
 bul: Те заеха колело на мен.
-key: 0
+key: 0 _
 
 frm* ?
 sem: has_possession(start(E),Agent,Theme), has_possession(end(E),Recipient,Theme), transfer(during(E),Theme), cause(Agent,E)
@@ -243804,7 +243805,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: John confronted the disaster.
 swe: John konfronterade katastrofen.
 bul: Йоан се изправи пред бедствието.
-key: 0
+key: 0 _
 
 frm: PredVP Agent (AdvVP (ComplSlash (SlashV2a Verb) Theme) (PrepNP with_Prep Instrument))
 sem: confront(during(E),Agent,Theme,Instrument)
@@ -243964,7 +243965,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (ImpersCl (ProgrV
 eng: It's raining.
 swe: Det håller på att regna.
 bul: Вали.
-key: 0
+key: 0 _
 
 frm* ?
 sem: weather(during(E),Weather_type,Theme)
@@ -244483,7 +244484,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I begged her to do it.
 swe: Jag bad henne att göra det.
 bul: Аз я умолявах да го направи.
-key: 0
+key: 0 _
 
 frm* ?
 sem: supplicate(during(E),Agent,?Recipient,Topic)
@@ -244528,7 +244529,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They maintained a strong government.
 swe: De upprätthöll en stark regering.
 bul: Те поддържаха силно управление.
-key: 0
+key: 0 _
 
 frm* ?
 sem: continue(during(E),Agent,Theme), use(during(E),Agent,Instrument)
@@ -244538,7 +244539,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I maintained a strong government through ruthless domination.
 swe: Jag upprätthöll en stark regering genom hänsynslöst herravälde.
 bul: Аз поддържах силно управление чрез безмилостно господство.
-key: 0
+key: 0 _
 
 frm* ?
 sem: continue(during(E),Agent,Theme), use(during(E),Agent,Instrument)
@@ -244595,7 +244596,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I forced him to come.
 swe: Jag tvingade honom att komma.
 bul: Аз го принудих да дойде.
-key: 0
+key: 0 _
 
 class: preparing-26.3
 role:  Agent +animate +machine
@@ -244612,7 +244613,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Ma
 eng: Donna fixed a sandwich.
 swe: Donna lagade en smörgås.
 bul: Дона направи сандвич.
-key: 0
+key: 0 _
 
 frm* ?
 sem: exist(start(E),Product), exist(result(E),Product), cause(Agent,E), benefit(E,Beneficiary)
@@ -244632,7 +244633,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Ma
 eng: Donna fixed a sandwich for me.
 swe: Donna lagade en smörgås för mig.
 bul: Дона направи сандвич за мен.
-key: 0
+key: 0 _
 
 class: preparing-26.3-2
 role:  Patient +concrete
@@ -244690,7 +244691,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He ordered John to eat his sloth.
 swe: Han beordrade John att äta sin sengångare.
 bul: Той заповяда на Йоан да изяде своя ленивец.
-key: 0
+key: 0 _
 
 class: order-60-1
 
@@ -244727,7 +244728,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I unscrewed the handle.
 swe: Jag skruvade loss handtaget.
 bul: Аз отвинтвах дръжката.
-key: 0
+key: 0 _
 
 frm* ?
 sem: cause(Agent,E), together(start(E),physical,Patient,CoPatient), apart(result(E),physical,Patient,CoPatient)
@@ -244737,7 +244738,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I unscrewed the handle from the box.
 swe: Jag skruvade loss handtaget från lådan.
 bul: Аз отвинтвах дръжката от кутията.
-key: 0
+key: 0 _
 
 frm* ?
 sem: property(Patient,Prop), Adv(Prop)
@@ -244936,7 +244937,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Jessica loaded the wagon with boxes.
 swe: Jessica lastade vagnen med lådor.
 bul: Джесика натовари каруцата с кутии.
-key: 0
+key: 0 _
 
 frm: PredVP Agent (ComplSlash (SlashV2a Verb) Theme)
 sem: motion(during(E),Theme), location(start(E),Theme,?Destination), location(end(E),Theme,?Destination), cause(Agent,E)
@@ -244946,7 +244947,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Jessica squirted water.
 swe: Jessica sprutade vatten.
 bul: Джесика пръсна вода.
-key: 0
+key: 0 _
 
 frm: PredVP Agent (ComplSlash (SlashV2a Verb) Destination)
 sem: motion(during(E),?Theme), location(start(E),?Theme,Destination), location(end(E),?Theme,Destination), cause(Agent,E)
@@ -244979,7 +244980,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Jessica squirted water at me.
 swe: Jessica sprutade vatten mot mig.
 bul: Джесика пръсна вода по мен.
-key: 0
+key: 0 _
 
 class: spray-9.7-1-1
 
@@ -245008,7 +245009,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I saw the play.
 swe: Jag såg pjäsen.
 bul: Аз видях пиесата.
-key: 0
+key: 0 _
 
 frm* ?
 sem: perceive(during(E),Experiencer,Stimulus), in_reaction_to(E,Stimulus)
@@ -245028,7 +245029,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I sensed the eagerness in him.
 swe: Jag kände ivern i honom.
 bul: Аз почувствах усърдието в него.
-key: 0
+key: 0 _
 
 frm* ?
 sem: perceive(during(E),Experiencer,Stimulus), in_reaction_to(E,Stimulus)
@@ -245117,7 +245118,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron 
 eng: I understand the problem.
 swe: Jag förstår problemet.
 bul: Аз разбирам проблема.
-key: 0
+key: 0 _
 
 frm* ?
 sem: understand(E,Experiencer,Stimulus,Attribute)
@@ -245167,7 +245168,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron 
 eng: I understand that he is a good doctor.
 swe: Jag förstår att han är en god läkare.
 bul: Аз разбирам, че той е добър лекар.
-key: 0
+key: 0 _
 
 class: comprehend-87.2-1
 
@@ -245551,7 +245552,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Co
 eng: Bill and Kathy married.
 swe: Bill och Kathy gifte sig.
 bul: Бил и Кати се ожениха.
-key: 0
+key: 0 _
 
 frm* ?
 sem: social_interaction(during(E),Agent,CoAgent)
@@ -245641,7 +245642,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: They agreed.
 swe: De höll med.
 bul: Те се съгласиха.
-key: 0
+key: 0 _
 
 frm* ?
 sem: social_interaction(during(E),Agent_i,Agent_j), about(E,Theme)
@@ -246524,7 +246525,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I stashed the book.
 swe: Jag stoppade undan boken.
 bul: Аз скатавах книгата.
-key: 0
+key: 0 _
 
 class: put-9.1-2
 role:  Theme +abstract
@@ -246563,7 +246564,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Gi
 eng: Frances hid the presents behind the books in the drawer.
 swe: Frances gömde presenterna bakom böckerna i lådan.
 bul: Франсис скри подаръците зад книгите в чекмеджето.
-key: 0
+key: 0 _
 
 frm* ?
 sem: visible(start(E),Patient), visible(end(E),Patient), cause(Agent,E)
@@ -246585,7 +246586,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The children hid.
 swe: Barnen gömde sig.
 bul: Децата се криха.
-key: 0
+key: 0 _
 
 frm* ?
 sem: visible(start(E),Agent), visible(end(E),Agent), Prep(E,Agent,Beneficiary)
@@ -246595,7 +246596,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The children hid from Sally.
 swe: Barnen gömde sig från Sally.
 bul: Децата се криха от Сали.
-key: 0
+key: 0 _
 
 frm* ?
 sem: visible(start(E),Agent), visible(end(E),Agent), location(during(E),Agent,Location)
@@ -246605,7 +246606,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The children hid in the chimney.
 swe: Barnen gömde sig i skorstenen.
 bul: Децата се криха в комина.
-key: 0
+key: 0 _
 
 class: become-109.1
 role:  Patient
@@ -246662,7 +246663,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The phone company billed me.
 swe: Telefonbolaget fakturerade mig.
 bul: Телефонната компания ме таксува.
-key: 0
+key: 0 _
 
 frm* ?
 sem: financial_relationship(E,Agent,Recipient,Asset)
@@ -246672,7 +246673,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The phone company billed me $10.
 swe: Telefonbolaget fakturerade mig $10.
 bul: Телефонната компания ме таксува $10.
-key: 0
+key: 0 _
 
 class: split-23.2
 role:  Agent +int_control
@@ -246737,7 +246738,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (D
 eng: Those twigs and branches break apart easily.
 swe: De där kvistarna och grenarna faller isär lätt.
 bul: Онези клонки и клони се разпадат лесно.
-key: 0
+key: 0 _
 
 class: cheat-10.6
 role:  Agent +animate +organization
@@ -246910,7 +246911,7 @@ abs: PhrUttMark NoPConj (UttS (PredVPS (QuantityNP (PosDecimal (IIDig D_5 (IDig 
 eng: $50 won't even purchase a dress.
 swe: $50 ska inte även köpa en klänning.
 bul: $50 дори няма да закупят рокля.
-key: 0
+key: 0 _
 
 class: run-51.3.2
 role:  Agent +animate

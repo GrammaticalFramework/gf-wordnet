@@ -100690,11 +100690,11 @@ swe: benägen att vara nyckfull
 bul: склонен да бъда капризен
 key: 1 inclined_to_A2 01295251-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN list_1_N)) (ComplSlash (SlashV2a include_1_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (UseN name_1_N) (DetCN (DetQuant IndefArt (NumCard (UseACard many_ACard))) (AdjCN (PositA famous_A) (UseN writerMasc_1_N))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN list_1_N)) (ComplSlash (SlashV2a include_1_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (UseN name_1_N) (DetCN (DetQuant IndefArt (NumCard (UseACard many_ACard))) (AdjCN (PositA famous_A) (UseN writerMasc_2_N))))))))) NoVoc
 eng: The list includes the names of many famous writers
-swe: listan innehåller namnen av många berömda skrivare
+swe: listan innehåller namnen av många berömda författare
 bul: списъкът включва имената на много известни писатели
-key: 1 include_1_V2 02639021-v съдържам
+key: 1 include_1_V2 02639021-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (ComplSlash (SlashV2a include_2_V2) (AdvNP (UsePron youSg_Pron) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN list_1_N) (DetCN (DetQuant IndefArt NumPl) (UseN culpritMasc_N)))))))))) NoVoc
 eng: I include you in the list of culprits

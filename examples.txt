@@ -28310,7 +28310,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePro
 eng: we were part of a caravan of almost a thousand camels
 swe: vi var del av en karavan av nästan tusen kameler
 bul: ние бяхме част от керван от почти хиляда камили
-key: 1 caravan_1_N 08444586-n karavan
+key: 1 caravan_1_N 08444586-n
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA carboniferous_1_A) (UseN (CompoundN rock_2_N system_1_N))))) NoVoc
 eng: carboniferous rock system
@@ -33682,17 +33682,17 @@ swe: hennes klänning var en störande sammandrabbning av färger
 bul: нейната рокля беше смущаващ сблъсък от цветове
 key: 1 clash_3_N 14004756-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))))) (UseN meteor_1_N)) (UseV clash_1_V)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))))) (UseN meteor_1_N)) (UseV clash_1_V)))) NoVoc
 eng: Two meteors clashed
 swe: två meteorer sammanstötade
-bul: два метеора се сблъскваха
-key: 1 clash_1_V 01563925-v krocka kollidera
+bul: два метеора се сблъскаха
+key: 1 clash_1_V 01563925-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumPl) (UseN colour_5_N)) (UseV clash_2_V)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumPl) (UseN colour_5_N)) (UseV clash_2_V)))) NoVoc
 eng: These colors clash
 swe: de här färgerna krockar
 bul: тези цветове се сблъскват
-key: 1 clash_2_V 02673757-v kollidera
+key: 1 clash_2_V 02673757-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron we_Pron) (AdvVP (AdvVP (UseV clash_3_V) over_1_Adv) (TimeNP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA new_1_A) (UseN (CompoundN farm_N policy_1_N))))))))) NoVoc
 eng: We clashed over the new farm policies

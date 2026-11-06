@@ -23402,7 +23402,7 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a break_into_1_V2)
 eng: break into tears
 swe: brist ut i tårar
 bul: избухвай в сълзи
-key: 1 break_into_1_V2 00988449-v 01789214-v krevera få utbrott få anfall explodera brista ut
+key: 1 break_into_1_V2 00988449-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a break_off_2_V2) (DetCN (DetQuant DefArt NumPl) (UseN negotiation_1_N))))) NoVoc
 eng: break off the negotiations
@@ -23414,7 +23414,7 @@ abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UseDAP
 eng: Someone broke in while I was on vacation
 swe: någon bröt sig in medan jag var på semester
 bul: някой влезе с взлом докато аз бях по почивка
-key: 1 break_in_1_V 02576599-v нахлуя нахлувам
+key: 1 break_in_1_V 02576599-v
 
 abs* PhrUttMark NoPConj (UttS (PredVPS (UsePron they_Pron) (ConjVPS and_Conj (BaseVPS (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a break_into_1_V2) (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN car_1_N)))) (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a steal_1_V2) (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN radio_1_N)))))))) NoVoc ExclMark
 eng: They broke into my car and stole my radio!

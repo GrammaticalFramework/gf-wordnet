@@ -46771,7 +46771,7 @@ key: 1 cuban_A 02981136-a
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a cube_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN cheese_1_N))))) NoVoc
 eng: cube the cheese
 swe: tärna osten
-bul: нарязвай на кубчета сиренето
+bul: нарежи на кубчета сиренето
 key: 1 cube_2_V2 01259431-v
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA cubic_1_A) (UseN equation_1_N)))) NoVoc
@@ -156049,7 +156049,7 @@ key: 1 quarter_14_N 01261259-n
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a quarter_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN apple_1_N))))) NoVoc
 eng: quarter an apple
 swe: kvarta ett äpple
-bul: разчетвъртявай ябълка
+bul: раздели на четери ябълка
 key: 1 quarter_3_V2 01566356-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN quarterback_2_N)) (AdvVP (UseComp (CompNP (DetCN (DetQuantOrd DefArt NumSg (OrdSuperl important_1_A)) (UseN position_9_N)))) (PrepNP on_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN team_1_N))))))) NoVoc

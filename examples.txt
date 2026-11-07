@@ -5744,7 +5744,7 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a align_1_V
 eng: align the sheets of paper on the table
 swe: justera arken av papper på bordet
 bul: подравни листовете от хартия на масата
-key: 1 align_1_V2 00465234-v rada rada upp
+key: 1 align_1_V2 00465234-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a align_4_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (UseN wheel_1_N) (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN car_1_N))))))) NoVoc
 eng: align the wheels of my car

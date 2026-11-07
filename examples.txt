@@ -46771,7 +46771,7 @@ key: 1 cuban_A 02981136-a
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a cube_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN cheese_1_N))))) NoVoc
 eng: cube the cheese
 swe: tärna osten
-bul: нарязвай на кубчета сиренето
+bul: нарежи на кубчета сиренето
 key: 1 cube_2_V2 01259431-v
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA cubic_1_A) (UseN equation_1_N)))) NoVoc

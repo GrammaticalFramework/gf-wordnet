@@ -1077,7 +1077,7 @@ gfwordnet.onclick_eval = function(event,editor) {
                     extract_html(html);
                     return;
                 }
-                gfwordnet.shell_call("dir="+dir+"&command=cc%20-one%20"+encodeURIComponent("MkDocument (NoDefinition {s=\"\"}) (Inflection"+cat+" ("+def+")) {s=\"\"}"),extract_html);
+                gfwordnet.shell_call("dir="+dir+"&command=cc%20-one%20"+encodeURIComponent("MkDocument (NoDefinition {s=\"\"; lock_String=<>}) (Inflection"+cat+" ("+def+")) {s=\"\"; lock_String=<>}"),extract_html);
             });
         });
 }

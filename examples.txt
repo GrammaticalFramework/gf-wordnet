@@ -89494,7 +89494,7 @@ swe: ett hagel av småstenar
 bul: градушка от камъчета
 key: 1 hail_2_N 09323811-n
 
-abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN hail_2_N) (DetCN (DetQuant IndefArt NumPl) (UseN bullet_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (UseN hail_2_N) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN bullet_1_N)))))) NoVoc
 eng: a hail of bullets
 swe: ett hagel av kulor
 bul: градушка на куршуми

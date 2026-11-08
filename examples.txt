@@ -226246,7 +226246,7 @@ swe: nyck kan vara humoristisk till någon med tid för att njuta av det
 bul: приумица може да бъде хумористична на някой с време за да му се наслади
 key: 1 whimsey_1_N 05928143-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN bullet_1_N)) (ProgrVP (AdvVP (UseV whine_1_V) (PrepNP past_Prep (UsePron we_Pron))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN bullet_1_N)) (ProgrVP (AdvVP (UseV whine_1_V) (PrepNP past_Prep (UsePron we_Pron))))))) NoVoc
 eng: The bullets were whining past us
 swe: kulorna höll på att vina förbi oss
 bul: куршумите свистиха зад нас
@@ -226528,7 +226528,7 @@ swe: en hel garderob för tropikerna
 bul: цял гардероб за тропиците
 key: 1 whole_1_A 00516809-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA whole_1_A) (UseN hog_3_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA whole_1_A) (UseN hog_3_N)))) NoVoc
 eng: the whole hog
 swe: den hela grisen
 bul: цялата свиня
@@ -226588,10 +226588,10 @@ swe: Hur stor är den där delen jämförde till enheten?
 bul: Както голяма е онази част сравни към цялостта?
 key: 1 whole_2_N 00003553-n enhet
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (ComplSlash (SlashV2a give_11_V2) (MassNP (AdjCN (PositA wholehearted_A) (UseN support_3_N)))) (PrepNP to_2_Prep (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN candidacy_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (ComplSlash (SlashV2a give_11_V2) (MassNP (AdjCN (PositA wholehearted_A) (UseN support_3_N)))) (PrepNP to_2_Prep (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN candidacy_N)))))) NoVoc
 eng: gave wholehearted support to her candidacy
 swe: gav helhjärtat stöd till hennes kandidatur
-bul: даде безрезервна подкрепа на нейното кандидатство
+bul: даде безрезервна подкрепа на нейната кандидатура
 key: 1 wholehearted_A 02188116-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA wholehearted_A) (UseN commitment_2_N)))) NoVoc
@@ -226651,7 +226651,7 @@ key: 1 wholesome_2_A 01176236-a
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN child_1_N)) (AdvVP (AdvVP (UseV whoop_1_V) (SubjS when_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (PassVPSlash (SlashV2a lead_1_V2)))))) (PrepNP to_2_Prep (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN picnic_3_N table_2_N)))))))) NoVoc
 eng: The children whooped when they were led to the picnic table
 swe: barnen hojtade när de leddes till picknickbordet
-bul: децата зарадваха когато те бяха доведени на масата за пикник
+bul: децата се зарадваха когато те бяха доведени на масата за пикник
 key: 1 whoop_1_V 00916168-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (AdvNP (UsePron they_Pron) (PositAdvAdj all_A)) (AdvVP (UseComp (CompAdv whopping_Adv)) (TimeNP (MassNP (UseN drunkFem_2_N))))))) NoVoc

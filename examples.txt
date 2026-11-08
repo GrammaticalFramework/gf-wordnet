@@ -96,7 +96,7 @@ key: 1 abatement_2_N 00362159-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (PossNP (AdjCN (PositA abaxial_A) (UseN surface_1_N)) (DetCN (DetQuant IndefArt NumSg) (UseN leaf_1_N)))) (UseComp (CompNP (ConjNP or_Conj (BaseNP (DetCN (DetQuant DefArt NumSg) (UseN underside_N)) (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PresPartAP (AdvVP (UseV face_V) (AdvAdv away_3_Adv (PrepNP from_Prep (DetCN (DetQuant DefArt NumSg) (UseN stem_2_N)))))) (UseN side_5_N)))))))))) NoVoc
 eng: the abaxial surface of a leaf is the underside or side facing away from the stem
-swe: den abaxiella ytan av ett löv är undersidan eller den sidan vågande borta från stjälken
+swe: den abaxiella ytan av ett löv är undersidan eller den sidan vändande sig borta från stjälken
 bul: абаксиалната повърхност на листо е долната страна или страната гледаща встрани от стъблото
 key: 1 abaxial_A 00002312-a
 
@@ -15552,7 +15552,7 @@ key: 1 bank_1_N 09236472-n крайбрежие бряг
 
 abs: PhrUtt NoPConj (UttS (PredVPS (UsePron he_Pron) (ConjVPS and_Conj (BaseVPS (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV sit_1_V) (PrepNP on_1_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN bank_1_N) (DetCN (DetQuant DefArt NumSg) (UseN river_N))))))) (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a watch_1_V2) (DetCN (DetQuant DefArt NumPl) (UseN current_2_N)))))))) NoVoc
 eng: he sat on the bank of the river and watched the currents
-swe: han satt på banken av floden och tittade på strömmarna
+swe: han satt på stranden av floden och tittade på strömmarna
 bul: той седя на брега на реката и наблюдава теченията
 key: 1 bank_1_N 09236472-n
 
@@ -30306,7 +30306,7 @@ key: 1 cavalryman_2_N 09921806-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN river_N)) (ProgrVP (ComplSlash (SlashV2a cave_1_V2) (DetCN (DetQuant DefArt NumPl) (UseN bank_1_N))))))) NoVoc
 eng: The river was caving the banks
-swe: Floden höll på att grotta bankerna
+swe: Floden höll på att grotta stränderna
 bul: Реката издълбава бреговете
 key: 1 cave_1_V2 01285636-v
 
@@ -71436,7 +71436,7 @@ key: 1 face_3_V2 02699161-v
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PresPartAP (UseV face_V)) (UseN page_1_N)))) NoVoc
 eng: the facing page
-swe: den vågande sidan
+swe: den sig vändande sidan
 bul: гледащата страница
 key: 1 face_V 02699533-v
 
@@ -80478,7 +80478,7 @@ key: 1 forward_3_A 00205366-a
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseV face_V) forward_1_Adv)))) NoVoc
 eng: he faced forward
-swe: han vågade framåt
+swe: han vände sig framåt
 bul: той гледаше напред
 key: 1 forward_1_Adv 00074907-r
 
@@ -112786,9 +112786,9 @@ swe: vänster central åker
 bul: ляво централно поле
 key: 1 left_1_A 02040360-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA left_1_A) (PossNP (UseN bank_1_N) (DetCN (DetQuant IndefArt NumSg) (UseN river_N))))) (AdvVP (AdvVP (AdvVP (UseComp (CompNP (MassNP (UseN bank_1_N)))) (PrepNP on_1_Prep (DetCN (DetQuant (PossPron youSgFem_Pron) NumSg) (AdjCN (PositA left_1_A) (UseN side_3_N))))) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ProgrVP (UseV face_V)))))) downstream_Adv)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA left_1_A) (PossNP (UseN bank_1_N) (DetCN (DetQuant IndefArt NumSg) (UseN river_N))))) (AdvVP (AdvVP (AdvVP (UseComp (CompNP (MassNP (UseN bank_1_N)))) (PrepNP on_1_Prep (DetCN (DetQuant (PossPron youSgFem_Pron) NumSg) (AdjCN (PositA left_1_A) (UseN side_3_N))))) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ProgrVP (UseV face_V)))))) downstream_Adv)))) NoVoc
 eng: the left bank of a river is bank on your left side when you are facing downstream
-swe: den vänstra banken av en flod är bank på din vänstra sida när du håller på att våga nedströms
+swe: den vänstra stranden av en flod är strand på din vänstra sida när du håller på att vända sig nedströms
 bul: левият бряг на река е бряг на твоята лява страна когато ти гледаш по течението
 key: 1 left_1_A 02040360-a
 
@@ -166876,10 +166876,10 @@ swe: en högra hand vändning
 bul: дясна ръен завой
 key: 1 right_1_A 02039393-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA right_1_A) (PossNP (UseN bank_2_N) (DetCN (DetQuant IndefArt NumSg) (UseN river_N))))) (AdvVP (AdvVP (AdvVP (UseComp (CompNP (DetCN (DetQuant DefArt NumSg) (UseN bank_1_N)))) (PrepNP on_1_Prep (DetCN (DetQuant (PossPron youSgFem_Pron) NumSg) (AdjCN (PositA right_1_A) (UseN side_1_N))))) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ProgrVP (UseV face_V)))))) downstream_Adv)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA right_1_A) (PossNP (UseN bank_1_N) (DetCN (DetQuant IndefArt NumSg) (UseN river_N))))) (AdvVP (AdvVP (AdvVP (UseComp (CompNP (DetCN (DetQuant DefArt NumSg) (UseN bank_1_N)))) (PrepNP on_1_Prep (DetCN (DetQuant (PossPron youSgFem_Pron) NumSg) (AdjCN (PositA right_1_A) (UseN side_1_N))))) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ProgrVP (UseV face_V)))))) downstream_Adv)))) NoVoc
 eng: the right bank of a river is the bank on your right side when you are facing downstream
-swe: den högra banken av en flod är banken på din högra sida när du håller på att våga nedströms
-bul: дясната банка на река е брега на твоята дясна страна когато ти гледаш по течението
+swe: den högra stranden av en flod är stranden på din högra sida när du håller på att vända sig nedströms
+bul: десния бряг на река е брега на твоята дясна страна когато ти гледаш по течението
 key: 1 right_1_A 02039393-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA right_2_A) (UseN answer_2_N)))) NoVoc

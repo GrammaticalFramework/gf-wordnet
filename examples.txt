@@ -226546,7 +226546,7 @@ swe: bebisen grät den hela resan hem
 bul: бебето плака цялото пътуване вкъщи
 key: 1 whole_1_A 00516809-a
 
-abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (AdjCN (PositA whole_1_A) (UseN loaf_1_N)) (PredNP of_1_Prep (MassNP (UseN bread_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (AdjCN (PositA whole_1_A) (UseN loaf_1_N)) (PrepNP of_1_Prep (MassNP (UseN bread_1_N)))))) NoVoc
 eng: a whole loaf of bread
 swe: en hel limpa av bröd
 bul: цял самун от хляб

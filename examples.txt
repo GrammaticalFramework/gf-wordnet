@@ -227104,10 +227104,10 @@ swe: avsiktlig olydnad
 bul: преднамерено непокорство
 key: 1 willful_1_A 02530749-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant that_Quant NumSg) (UseN guy_1_N)) (AdvVP (ComplSlash (SlashV2a give_13_V2) (UsePron i_Pron)) (TimeNP (DetCN (DetQuant DefArt NumSg) (UseN willies_N))))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant that_Quant NumSg) (UseN guy_1_N)) (AdvVP (ComplSlash (SlashV2a give_13_V2) (UsePron i_Pron)) (TimeNP (DetCN (DetQuant DefArt NumPl) (UseN willies_N))))))) NoVoc
 eng: that guy gave me the willies
 swe: den där killen gav mig kalla kåraren
-bul: онзи тип ме даде тръпкито
+bul: онзи тип ме даде тръпките
 key: 1 willies_N 07540498-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA willing_1_A) (UseN participantMasc_1_N)))) NoVoc

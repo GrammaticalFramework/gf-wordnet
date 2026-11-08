@@ -226342,17 +226342,17 @@ swe: han låg där, snarkande och visslande
 bul: той лежа там, хъркайки и подсвирквайки
 key: 1 whistle_1_V 02188072-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN bullet_1_N)) (AdvVP (UseV whistle_2_V) (PrepNP past_Prep (UsePron he_Pron)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN bullet_1_N)) (AdvVP (UseV whistle_2_V) (PrepNP past_Prep (UsePron he_Pron)))))) NoVoc
 eng: The bullets whistled past him
 swe: kulorna visslade förbi honom
-bul: куршумите дюдюкаха зад него
+bul: куршумите изсвистяха зад него
 key: 1 whistle_2_V 02097366-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a whistle_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN melody_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a whistle_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN melody_1_N)))))) NoVoc
 eng: She whistled a melody
 swe: hon visslade en melodi
-bul: тя изсвирва мелодия
-key: 1 whistle_3_V2 01045313-v vissla busvissla
+bul: тя изсвири мелодия
+key: 1 whistle_3_V2 01045313-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN optimism_1_N)) (ComplSlash (AdvVPSlash (SlashV2a whistle_4_V2) away_7_Adv) (DetCN (DetQuant this_Quant NumPl) (UseN worry_1_N)))))) NoVoc
 eng: Her optimism whistled away these worries
@@ -226360,10 +226360,10 @@ swe: hennes optimism visslade de här bekymren bort
 bul: нейният оптимизъм свири настрани на тези грижи
 key: 1 whistle_4_V2 02097512-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvRVP (UseV whistle_6_V) for_Prep (ReflPoss NumSg (UseN maid_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvRVP (UseV whistle_6_V) for_Prep (ReflPoss NumSg (UseN maid_1_N)))))) NoVoc
 eng: She whistled for her maid
 swe: hon visslade för sitt hembiträde
-bul: тя свири за своята прислужница
+bul: тя изсвири за своята прислужница
 key: 1 whistle_6_V 01045484-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron he_Pron) NumSg) (AdjCN (PositA cheerful_1_A) (UseN whistling_2_N))) (ComplVS indicate_VS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ReflVPSlash (SlashV2a enjoy_1_V2) (ReflPoss NumSg (UseN work_1_N))))))))) NoVoc
@@ -226402,7 +226402,7 @@ swe: en vit jul
 bul: бяла Коледа
 key: 1 white_4_A 01702684-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA white_4_A) (PossNP (UseN hill_1_N) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA northern_4_A) (UseN winter_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA white_4_A) (PossNP (UseN hill_1_N) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA northern_4_A) (UseN winter_N))))))) NoVoc
 eng: the white hills of a northern winter
 swe: de vita kullarna av en norr vinter
 bul: белите хълмове на северна зима
@@ -226414,10 +226414,10 @@ swe: vita flammor
 bul: бели пламъци
 key: 1 white_6_A 01254064-a
 
-abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (AdjCN (PositA white_hot_2_A) (UseN centre_1_N)) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN fire_3_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA white_hot_2_A) (PossNP (UseN centre_1_N) (DetCN (DetQuant DefArt NumSg) (UseN fire_3_N)))))) NoVoc
 eng: a white-hot center of the fire
 swe: ett vit varmt centrum av elden
-bul: център нажежен до бяло от огъня
+bul: център на огъня нажежен до бяло
 key: 1 white_hot_2_A 01254064-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UseDAP (DetDAP (DetQuant that_Quant NumSg))) (AdvVP (UseComp (CompAP (PositA white_7_A))) (PrepNP of_1_Prep (UsePron youSgFem_Pron)))))) NoVoc
@@ -226468,7 +226468,7 @@ swe: kolgruvarbetarens son strävade till en vitkrage- sysselsättning som en bo
 bul: синът на миньора за въглища се стреми на чиновническо занятие като деловодител
 key: 1 white_collar_A 02566724-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA fierce_1_A) (AdjCN (PositA white_hot_1_A) (UseN loyalty_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA fierce_1_A) (AdjCN (PositA white_hot_1_A) (UseN loyalty_2_N))))) NoVoc
 eng: fierce white-hot loyalty
 swe: vild glödande lojalitet
 bul: ожесточена буйна лоялност
@@ -226480,11 +226480,11 @@ swe: vit-ut typsnittet
 bul: изчерпване на печата
 key: 1 white_out_1_V2 01338004-v
 
-abs+ PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant this_Quant NumSg) (UseN detergent_2_N)) (MkVPS (TTAnt TFut ASimul) PPos (ComplSlash (SlashV2a whiten_V2) (DetCN (DetQuant (PossPron youSgFem_Pron) NumSg) (UseN laundry_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant this_Quant NumSg) (UseN detergent_2_N)) (MkVPS (TTAnt TFut ASimul) PPos (ComplSlash (SlashV2a whiten_V2) (DetCN (DetQuant (PossPron youSgFem_Pron) NumSg) (UseN laundry_1_N)))))) NoVoc
 eng: This detergent will whiten your laundry
 swe: det här rengöringsmedlet ska vitna din tvätt
 bul: това миещо вещество ще избели твоето пране
-key: 1 whiten_V2 00281071-v vitta vitna vitmena
+key: 1 whiten_V2 00281071-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (PredetNP only_Predet (DetCN (DetQuant DefArt NumSg) (PossNP (UseN whiteness_3_N) (DetCN (DetQuant (PossPron she_Pron) NumPl) (UseN cheek_1_N))))) (ComplSlash (SlashV2a give_4_V2) (DetCN anySg_2_Det (PossNP (UseN indication_1_N) (DetCN (DetQuant DefArt NumSg) (SentCN (UseN stress_2_N) (EmbedQS (UseQCl (TTAnt TPastSimple ASimul) PPos (QuestIAdv (PrepIP from_Prep (IdetIP (IdetQuant which_IQuant NumSg))) (PredVP (UsePron she_Pron) (ProgrVP (UseV suffer_6_V)))))))))))))) NoVoc
 eng: only the whiteness of her cheeks gave any indication of the stress from which she was suffering
@@ -226516,11 +226516,11 @@ swe: han hörde susen av kulor nära sitt huvud
 bul: той чу фученето на куршуми близо до своята глава
 key: 1 whiz_2_N 07414961-n
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ReflVPSlash (SlashV2a give_10_V2) (ReflPoss NumSg (AdjCN (PositA whole_1_A) (UseN attention_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ReflVPSlash (SlashV2a give_10_V2) (ReflPoss NumSg (AdjCN (PositA whole_1_A) (UseN attention_1_N)))))) NoVoc
 eng: gave his whole attention
 swe: ägnade sin hela uppmärksamhet
 bul: посвети своето цяло внимание
-key: 1 whole_1_A 00516809-a цял
+key: 1 whole_1_A 00516809-a
 
 abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA whole_1_A) (UseN wardrobe_2_N))) (PrepNP for_Prep (DetCN (DetQuant DefArt NumPl) (UseN tropic_N))))) NoVoc
 eng: a whole wardrobe for the tropics

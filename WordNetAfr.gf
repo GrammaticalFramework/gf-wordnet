@@ -1,5 +1,4 @@
-concrete WordNetAfr of WordNet = CatAfr ** open ParadigmsAfr, GrammarAfr, ResAfr,
-  (S=StructuralAfr), (X=ConstructX), Predef in {
+concrete WordNetAfr of WordNet = CatAfr ** open ParadigmsAfr, GrammarAfr, ResAfr, (S=StructuralAfr), (X=ConstructX), Predef in {
 
 lin a_bomb_N = mkN "atoombom" ; --guessed
 lin a_couple_Card = mkCard "’n paar" Pl ; --guessed

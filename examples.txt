@@ -226570,11 +226570,11 @@ swe: en hel person igen
 bul: цял човек отново
 key: 1 whole_4_A 01174940-a
 
-abs+ PhrUtt NoPConj (UttNP (UseLN (AdjLN (AdvAP (PastPartAP (SlashV2a consider_3_V2)) (PrepNP as_Prep (DetCN (DetQuant IndefArt NumSg) (UseN whole_1_N)))) europe_3_LN))) NoVoc
+abs: PhrUtt NoPConj (UttNP (UseLN (AdjLN (AdvAP (PastPartAP (SlashV2a consider_3_V2)) (PrepNP as_Prep (DetCN (DetQuant IndefArt NumSg) (UseN whole_1_N)))) europe_3_LN))) NoVoc
 eng: Europe considered as a whole
 swe: Europa övervägda som en helhet
 bul: Европа разгледана като цялост
-key: 1 whole_1_N 05878206-n helhet
+key: 1 whole_1_N 05878206-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN whole_1_N) (DetCN (DetQuant gen_Quant NumSg) (UseN (CompoundN americanMasc_1_N literature_3_N)))))) NoVoc
 eng: the whole of American literature
@@ -226612,7 +226612,7 @@ swe: jag kan sälja det till dig i parti
 bul: аз мога да го продам на теб на едро
 key: 1 wholesale_1_Adv 00444667-r
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (ComplSlash (SlashV2a buy_1_V2) (MassNP (UseN food_1_N))) wholesale_2_Adv)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (ComplSlash (SlashV2a buy_1_V2) (MassNP (UseN food_1_N))) wholesale_2_Adv)))) NoVoc
 eng: I buy food wholesale
 swe: jag köper mat urskillningslöst
 bul: аз купувам храна безразборно
@@ -226636,10 +226636,10 @@ swe: hälsosam mat
 bul: здравословна храна
 key: 1 wholesome_1_A 02568127-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN exercise_1_N)) (AdvVP (UseV develop_10_V) (TimeNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wholesome_2_A) (UseN appetite_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN exercise_1_N)) (ComplSlash (SlashV2a develop_4_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wholesome_2_A) (UseN appetite_N)))))))) NoVoc
 eng: exercise develops wholesome appetites
-swe: träning utvecklar sig hälsosamma lustar
-bul: упражнение се развива здрави апетити
+swe: träning utvecklar hälsosamma lustar
+bul: упражнението развива здрави апетити
 key: 1 wholesome_2_A 01176236-a
 
 abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (UseN grin_N)) (PrepNP on_1_Prep (DetCN (DetQuant (PossPron he_Pron) NumSg) (AdjCN (PositA ugly_4_A) (AdjCN (PositA wholesome_2_A) (UseN face_1_N))))))) NoVoc

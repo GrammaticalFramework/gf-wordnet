@@ -44818,10 +44818,10 @@ swe: jag ska inte ljuga och täcker upp för dig
 bul: аз няма да лъжа и те покривам
 key: 1 cover_for_V2 00897451-v
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (PossNP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN dictionary_N)) (UseN coverage_2_N)) (DetCN (DetQuant gen_Quant NumSg) (UseN (CompoundN standard_1_N english_N)))) (UseComp (CompAP (PositA excellent_A)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN dictionary_N)) (PossNP (UseN coverage_2_N) (MassNP (UseN (CompoundN standard_1_N english_N))))) (UseComp (CompAP (PositA excellent_A)))))) NoVoc
 eng: the dictionary's coverage of standard English is excellent
-swe: ordbokens täckning av standardengelskan är utmärkt
-bul: обхватът на речника на стандартния английски е отличен
+swe: ordbokens täckning av standardengelska är utmärkt
+bul: обхватът на стандартен английски на речника е отличен
 key: 1 coverage_2_N 05131025-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (ComplSlash (Slash2V3 accuse_of_V3 (DetCN (DetQuant DefArt NumSg) (UseN paper_3_N))) (MassNP (PossNP (AdjCN (PastPartAP (SlashV2a bias_1_V2)) (UseN coverage_3_N)) (DetCN (DetQuant IndefArt NumPl) (UseN (CompoundN race_3_N relation_6_N))))))))) NoVoc

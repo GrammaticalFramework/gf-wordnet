@@ -226708,10 +226708,10 @@ swe: tre fötter bred
 bul: три фута широк
 key: 1 wide_1_A 02571278-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (Slash2V3 grant_5_V3 (UsePron he_Pron)) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wide_2_A) (UseN power_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (Slash2V3 grant_5_V3 (UsePron he_Pron)) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wide_2_A) (UseN power_1_N)))))) NoVoc
 eng: granted him wide powers
 swe: beviljade honom breda makter
-bul: предостави го широки сили
+bul: предостави му широки сили
 key: 1 wide_2_A 00528239-a
 
 abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV stare_1_V) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wide_3_A) (UseN eye_1_N))))))) NoVoc

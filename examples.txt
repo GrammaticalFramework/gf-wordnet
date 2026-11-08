@@ -226636,7 +226636,7 @@ swe: hälsosam mat
 bul: здравословна храна
 key: 1 wholesome_1_A 02568127-a
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN exercise_1_N)) (ComplSlash (SlashV2a develop_4_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wholesome_2_A) (UseN appetite_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN exercise_1_N)) (ComplSlash (SlashV2a develop_4_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wholesome_2_A) (UseN appetite_N))))))) NoVoc
 eng: exercise develops wholesome appetites
 swe: träning utvecklar hälsosamma lustar
 bul: упражнението развива здрави апетити

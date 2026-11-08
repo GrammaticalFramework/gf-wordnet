@@ -226714,7 +226714,7 @@ swe: beviljade honom breda makter
 bul: предостави го широки сили
 key: 1 wide_2_A 00528239-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV stare_1_V) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wide_3_A) (UseN eye_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV stare_1_V) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA wide_3_A) (UseN eye_1_N))))))) NoVoc
 eng: stared with wide eyes
 swe: stirrade med breda ögon
 bul: зяпна с широки очи
@@ -226972,11 +226972,11 @@ swe: han bodde i viltet
 bul: той живееше в пущинака
 key: 1 wild_1_N 13962386-n naturligt tillstånd
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a collect_3_V2) (DetCN (DetQuant IndefArt NumPl) (UseN mushroom_5_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN wild_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a collect_3_V2) (DetCN (DetQuant IndefArt NumPl) (UseN mushroom_5_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN wild_1_N))))))) NoVoc
 eng: they collected mushrooms in the wild
 swe: de samlade matsvampar i viltet
 bul: те събраха гъби в пущинака
-key: 1 wild_1_N 13962386-n naturligt tillstånd
+key: 1 wild_1_N 13962386-n
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA wildcat_1_A) (AdjCN (PastPartAgentAP (SlashV2a issue_5_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irresponsible_A) (UseN bank_2_N)))) (UseN currency_1_N))))) NoVoc
 eng: wildcat currency issued by irresponsible banks

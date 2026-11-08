@@ -2128,10 +2128,10 @@ swe: Hon vill agera Lady Macbeth, men hon är för ung för rollen
 bul: Тя иска да действа като лейди Макбет, но тя е твърде млада за ролята
 key: 1 act_3_V2 01723161-v spela spela teater skådespela agera
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (UseV act_4_V) (PrepNP as_Prep (DetCN (DetQuant DefArt NumSg) (UseN chairMasc_3_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (UseV act_4_V) (PrepNP as_Prep (DetCN (DetQuant DefArt NumSg) (UseN chairFem_3_N))))))) NoVoc
 eng: She acts as the chair
 swe: hon agerar som ordföranden
-bul: тя действа като председателя
+bul: тя действа като председателката
 key: 1 act_4_V 01098310-v
 
 abs: PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestIAdv (AdvIAdv (PrepIP in_1_Prep whatSgFem_IP) (TimeNP (MassNP (UseN capacity_5_N)))) (PredVP (UsePron youSgFem_Pron) (ProgrVP (UseV act_4_V)))))) NoVoc QuestMark

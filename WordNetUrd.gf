@@ -1249,7 +1249,7 @@ lin additive_1_A = mkA "جمعی" ; --guessed
 lin additive_2_A = mkA "جمعی" ; --guessed
 lin additive_N = mkCmpdNoun "اضافی" (mkN "مادہ") ; --guessed
 lin addle_A = mkA "سڑا ہوا" ; --guessed
-lin addle_2_V = mkV "سڑنا" ; --guessed
+lin addle_2_V2 = mkV2 (mkV "سڑنا") ; --guessed
 lin addle_1_V2 = mkV2 (mkV "الجھانا") ; --guessed
 lin addle_brained_A = mkA "بد حواس" ; --guessed
 lin addle_headMasc_1_N = (mkN "احمق") ** {g = masculine} ; --guessed
@@ -26278,7 +26278,8 @@ lin deed_1_N = mkN "دستاويز" ; --guessed
 lin deed_2_N = mkN "عمل" ;
 lin deed_box_N = mkN "تجوری" ; --guessed
 lin deedpoll_N = mkCmpdNoun "تبدیلی نام کی" (mkN "دستاویز") ; --guessed
-lin deem_V2 = mkV2 (mkV "سمجھنا") ; --guessed
+lin deem_V2A = mkV2 (mkV "سمجھنا") ; --guessed
+lin deem_V3 = mkV3 (mkV "سمجھنا") "" "" ; --guessed
 lin deep_1_A = mkA "گہرا" ;
 lin deep_2_A = mkA "گہرا" ;
 lin deep_3_A = mkA "گہرا" ;
@@ -29163,7 +29164,8 @@ lin dispatcherMasc_1_N = (mkCmpdNoun "آغاز کرنے" (mkN "والا")) ** {g
 lin dispatcherFem_1_N = (mkN "اسٹارٹر") ** {g = feminine} ; --guessed
 lin dispatcherMasc_2_N = (mkN "ڈسپیچر") ** {g = masculine} ; --guessed
 lin dispatcherFem_2_N = (mkN "ڈسپیچر") ** {g = feminine} ; --guessed
-lin dispel_1_V2 = mkV2 (compoundV "دور" (mkV "کرنا")) ;
+lin dispel_1a_V2 = mkV2 (compoundV "دور" (mkV "کرنا")) ;
+lin dispel_1b_V2 = mkV2 (compoundV "دور" (mkV "کرنا")) ;
 lin dispel_2_V2 = mkV2 (compoundV "منتشر" (mkV "کرنا")) ; --guessed
 lin dispensability_N = mkCmpdNoun "غیر ضروری" (mkN "ہونا") ; --guessed
 lin dispensable_A = mkA "غیر ضروری" ;

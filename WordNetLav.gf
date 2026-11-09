@@ -1249,7 +1249,7 @@ lin additive_1_A = mkA "aditīvs" ; --guessed
 lin additive_2_A = mkA "aditīvs" ; --guessed
 lin additive_N = mkN "pārtikas piedeva" ;
 lin addle_A = variants {{s = \\_ => "sapuvis"}; {s = \\_ => "bojāts"}} ; --guessed
-lin addle_2_V = {s = \\_,_ => "sapūt" ; leftVal = nominative} ; --guessed
+lin addle_2_V2 = {s = \\_,_ => "sapūt" ; leftVal = nominative ; rightVal = acc_Prep} ; --guessed
 lin addle_1_V2 = variants {{s = \\_,_ => "sajaukt" ; leftVal = nominative ; rightVal = acc_Prep}; mkV2 (mkV "samulsināt" third_conjugation)} ; --guessed
 lin addle_brained_A = {s = \\_ => "Apstulbis"} ; --guessed
 lin addle_headMasc_1_N = mkN "Putragalva" ; --guessed
@@ -26278,7 +26278,8 @@ lin deed_1_N = variants {mkN "akts" masculine D1; mkN "zemesgrāmata" feminine D
 lin deed_2_N = variants {mkN "rīcība" feminine D4; mkN "darbs" masculine D1} ; --guessed
 lin deed_box_N = mkN "seifs" masculine D1 ; --guessed
 lin deedpoll_N = mkN "Uzvārda vai vārda maiņas dokuments" ; --guessed
-lin deem_V2 = variants {mkV2 (mkV "uzskatīt" third_conjugation); {s = \\_,_ => "atzīt" ; leftVal = nominative ; rightVal = acc_Prep}} ; --guessed
+lin deem_V2A = variants {mkV2 (mkV "uzskatīt" third_conjugation) acc_Prep; {s = \\_,_ => "atzīt" ; leftVal = nominative ; rightVal = acc_Prep}} ; --guessed
+lin deem_V3 = mkV3 (mkV "uzskatīt" third_conjugation) ; --guessed
 lin deep_1_A = mkA "dziļš" ;
 lin deep_2_A = mkA "dziļš" ;
 lin deep_3_A = mkA "dziļš" ;
@@ -29163,7 +29164,8 @@ lin dispatcherMasc_1_N = mkN "starteris" masculine D2 ; --guessed
 lin dispatcherFem_1_N = mkN "startere" feminine D5 ; --guessed
 lin dispatcherMasc_2_N = mkN "dispečers" masculine D1 ; --guessed
 lin dispatcherFem_2_N = mkN "dispečers" masculine D1 ; --guessed
-lin dispel_1_V2 = mkV2 (mkV "izkliedēt" second_conjugation) ; --guessed
+lin dispel_1a_V2 = mkV2 (mkV "izkliedēt" second_conjugation) ; --guessed
+lin dispel_1b_V2 = mkV2 (mkV "izkliedēt" second_conjugation) ; --guessed
 lin dispel_2_V2 = mkV2 (mkV "izklīdināt" third_conjugation) ; --guessed
 lin dispensability_N = mkN "nenozīmīgums" masculine D1 ; --guessed
 lin dispensable_A = {s = \\_ => "aizstājams"} ; --guessed

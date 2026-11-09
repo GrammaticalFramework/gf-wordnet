@@ -1254,7 +1254,7 @@ lin additive_1_A = mkA "additiivinen";
 lin additive_2_A = variants {mkA "lisäävä"; mkA "additiivinen"};
 lin additive_N = mkN "lisäaine";
 lin addle_A = variants {};
-lin addle_2_V = mkV {s = c52A "pilaantua"};
+lin addle_2_V2 = mkV2 (mkV {s = c52A "pilaantua"});
 lin addle_1_V2 = mkV2 (mkV {s = c53A "sekoittaa"});
 lin addle_brained_A = mkA "sekapäinen";
 lin addle_headMasc_1_N = mkN "sekopää";
@@ -26295,7 +26295,8 @@ lin deed_1_N = mkN "hallintatodistus";
 lin deed_2_N = variants {mkN {s = d01A "teko"}; mkN {s = d25 "toimi"}};
 lin deed_box_N = mkN "kassakaappi";
 lin deedpoll_N = variants {};
-lin deem_V2 = variants {};   ---- olla jostakin jotakin mieltä
+lin deem_V2A = variants {};   ---- olla jostakin jotakin mieltä
+lin deem_V3 = variants {};   ---- olla jostakin jotakin mieltä
 lin deep_1_A = mkA {s = d10 "syvä"};
 lin deep_2_A = mkA {s = d38 "syvällinen"};
 lin deep_3_A = mkA {s = d10 "syvä"};
@@ -29180,7 +29181,8 @@ lin dispatcherMasc_1_N = mkN {s = d10 "lähettäjä"};
 lin dispatcherFem_1_N = mkN {s = d10 "lähettäjä"};
 lin dispatcherMasc_2_N = variants {mkN {s = d10 "lähettäjä"}; mkN {s = d12 "huolitsija"}};
 lin dispatcherFem_2_N = variants {mkN {s = d10 "lähettäjä"}; mkN {s = d12 "huolitsija"}};
-lin dispel_1_V2 = variants {mkV2 (mkV {s = c54A "hälventää"}); mkV2 (mkV {s = c53A "karkottaa"})};
+lin dispel_1a_V2 = variants {mkV2 (mkV {s = c54A "hälventää"}); mkV2 (mkV {s = c53A "karkottaa"})};
+lin dispel_1b_V2 = variants {mkV2 (mkV {s = c54A "hälventää"}); mkV2 (mkV {s = c53A "karkottaa"})};
 lin dispel_2_V2 = mkV2 (mkV {s = c53A "karkottaa"});
 lin dispensability_N = mkN {s = d40 "tarpeettomuus"};
 lin dispensable_A = variants {mkA "tarpeeton"; mkA "turha"};

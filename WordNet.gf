@@ -1249,7 +1249,7 @@ fun additive_1_A : A ;             -- 01420302-a	[mathematics] designating or in
 fun additive_2_A : A ;             -- 00048349-a	characterized or produced by addition; "an additive process"
 fun additive_N : N ;               -- 02682642-n	something added to enhance food or gasoline or paint or medicine
 fun addle_A : A ;
-fun addle_2_V : V ;                -- 00211073-v	[gastronomy] become rotten; "addled eggs"
+fun addle_2_V2 : V2 ;              -- 00211073-v	[gastronomy] become rotten; "addled eggs"
 fun addle_1_V2 : V2 ;              -- 00622204-v	mix up or confuse
 fun addle_brained_A : A ;          -- 00437587-a	stupid and confused
 fun addle_headMasc_1_N : N ;       -- 10618312-n	[person] a person with confused ideas; incapable of serious thought
@@ -26278,7 +26278,8 @@ fun deed_1_N : N ;                 -- 06557128-n	[law] a legal document signed a
 fun deed_2_N : N ;                 -- 00030657-n	something that people do or cause to happen
 fun deed_box_N : N ;               -- 04347828-n	a strongly made box for holding money or valuables; can be locked
 fun deedpoll_N : N ;
-fun deem_V2 : V2 ;                 -- 00695546-v	keep in mind or convey as a conviction or view
+fun deem_V2A : V2A ;               -- 00695546-v	keep in mind or convey as a conviction or view
+fun deem_V3 : V3 ;                 -- 00695546-v	keep in mind or convey as a conviction or view
 fun deep_1_A : A ;                 -- 00696211-a	[quality] relatively deep or strong; affecting one deeply; "a deep breath"; "a deep sigh"; "deep concentration"; "deep emotion"; "a deep trance"; "in a deep sleep"
 fun deep_2_A : A ;                 -- 01879131-a	marked by depth of thinking; "deep thoughts"; "a deep allegory"
 fun deep_3_A : A ;                 -- 00693335-a	[quality] having great spatial extension or penetration downward or inward from an outer surface or backward or laterally or outward from a center; sometimes used in combination; "a deep well"; "a deep dive"; "deep water"; "a deep casserole"; "a deep gash"; "deep massage"; "deep pressure receptors in muscles"; "deep shelves"; "a deep closet"; "surrounded by a deep yard"; "hit the ball to deep center field"; "in deep space"; "waist-deep"
@@ -29163,7 +29164,8 @@ fun dispatcherMasc_1_N : N ;       -- 10668747-n	[sport] the official who signal
 fun dispatcherFem_1_N : N ;        -- 10668747-n	[sport] the official who signals the beginning of a race or competition
 fun dispatcherMasc_2_N : N ;       -- 10037147-n	[person] employee of a transportation company who controls the departures of vehicles according to weather conditions and in the interest of efficient service
 fun dispatcherFem_2_N : N ;        -- 10037147-n	[person] employee of a transportation company who controls the departures of vehicles according to weather conditions and in the interest of efficient service
-fun dispel_1_V2 : V2 ;             -- 02006752-v	force to go away; used both with concrete and metaphoric meanings; "dispel doubts"
+fun dispel_1a_V2 : V2 ;            -- 02006752-v	force to go away; metaphoric use; "dispel doubts"
+fun dispel_1b_V2 : V2 ;            -- 02006752-v	force to go away; concrete use; "dispel a student whose conduct is deemed unworthy"
 fun dispel_2_V2 : V2 ;             -- 02034269-v	to cause to separate and go in different directions
 fun dispensability_N : N ;         -- 05180480-n	the quality possessed by something that you can get along without
 fun dispensable_A : A ;            -- 00906671-a	[quality] capable of being dispensed with or done without; "dispensable items of personal property"

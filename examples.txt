@@ -1210,10 +1210,10 @@ swe: förslaget fann bred acceptans
 bul: предложението намери широко приемане
 key: 1 acceptance_2_N 00181262-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PastPartAP (SlashV2a tear_2_V2)) (UseN jeans_N))) (AdvVP (ComplSlash (SlashV2a receive_1_V2) (DetCN (DetQuant no_Quant NumSg) (UseN acceptance_3_N))) (PrepNP at_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN country_4_N club_2_N)))))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PastPartAP (SlashV2a tear_2_V2)) (UseN jeans_N))) (AdvVP (ComplSlash (SlashV2a receive_1_V2) (DetCN (DetQuant no_Quant NumSg) (UseN acceptance_3_N))) (PrepNP at_2_Prep (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN country_4_N club_2_N)))))))) NoVoc
 eng: torn jeans received no acceptance at the country club
-swe: rivna jeans mottog ingen acceptans vid landsklubben
-bul: скъсани джинси не получиха никакво одобрение на провинциалния клуб
+swe: rivna jeans mottog ingen acceptans i landsklubben
+bul: скъсани джинси не получиха никакво одобрение в провинциалния клуб
 key: 1 acceptance_3_N 13955454-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumSg) (PossNP (UseN acceptance_7_N) (DetCN (DetQuant DefArt NumSg) (UseN gift_1_N)))) (ComplSlash (SlashV2a encourage_1_V2) (UsePron he_Pron))))) NoVoc
@@ -1876,10 +1876,10 @@ swe: tacksägelserna skrivs vanligen vid framdelen av en bok
 bul: признанията обикновено са разпечатани на предната страна на книга
 key: 1 acknowledgement_3_N 06776392-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN landscape_2_N)) (AdvVP (PassVPSlash (SlashV2a deem_V2)) (TimeNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN acme_1_N) (MassNP (UseN beauty_1_N))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN landscape_2_N)) (PassVPSlash (Slash3V3 deem_V3 (DetCN (DetQuant DefArt NumSg) (PossNP (UseN acme_1_N) (MassNP (UseN beauty_1_N))))))))) NoVoc
 eng: his landscapes were deemed the acme of beauty
 swe: hans landskap anseddes kulmen av skönhet
-bul: неговите ландшафти бяха счетени върха на красота
+bul: неговите ландшафти бяха счетени за върха на красота
 key: 1 acme_1_N 13963489-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (GenModNP NumPl (DetCN (DetQuant DefArt NumSg) (UseN artist_N)) (UseN gift_2_N)) (UseComp (CompAdv (PrepNP at_1_Prep (DetCN (DetQuant (PossPron they_Pron) NumSg) (UseN acme_1_N)))))))) NoVoc
@@ -2950,11 +2950,11 @@ swe: en additiv process
 bul: добавящ процес
 key: 1 additive_2_A 00048349-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV addle_2_V) (TimeNP (DetCN (DetQuant IndefArt NumPl) (UseN egg_2_N)))))) NoVoc
+abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PastPartAP (SlashV2a addle_2_V2)) (UseN egg_2_N)))) NoVoc
 eng: addled eggs
 swe: ruttnade ägg
-bul: развали се яйца
-key: 1 addle_2_V 00211073-v
+bul: развалени яйца
+key: 1 addle_2_V2 00211073-v
 
 abs+ PhrUtt NoPConj (UttAP he_Pron (PresPartAP (AdvVP (AdvVP (AdvVP (UseV blather_1_V) (PrepNP like_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA addle_pated_A) (UseN nincompoop_N))))) (AdAdv that_AdA (TimeNP (UsePron youSgFem_Pron)))) (TimeNP (MassNP (UseN are_1_N)))))) NoVoc
 eng: blathering like the addlepated nincompoop that you are
@@ -10156,11 +10156,11 @@ swe: arkitektonisk design
 bul: архитектурен дизайн
 key: 1 architectural_A 02909209-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (ConjNP and_Conj (BaseNP (MassNP (UseN architecture_2_N)) (MassNP (UseN eloquence_N)))) (UseComp (CompNP (DetCN (DetQuant IndefArt NumPl) (RelCN (AdjCN (PositA mixed_1_A) (UseN art_2_N)) (UseRCl (TTAnt TPres ASimul) PPos (RelVP (GenRP NumSg (UseN end_3_N)) (AdvVP (AdVVP sometimes_AdV (UseComp (ConjComp and_Conj (BaseComp (CompNP (MassNP (UseN beauty_1_N))) (CompAdv sometimes_Adv))))) (TimeNP (MassNP (UseN use_1_N))))))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (ConjNP and_Conj (BaseNP (MassNP (UseN architecture_2_N)) (MassNP (UseN eloquence_N)))) (UseComp (CompNP (DetCN (DetQuant IndefArt NumPl) (RelCN (AdjCN (PositA mixed_1_A) (UseN art_2_N)) (UseRCl (TTAnt TPres ASimul) PPos (RelVP (GenRP NumSg (UseN end_3_N)) (AdvVP (AdVVP sometimes_AdV (UseComp (ConjComp and_Conj (BaseComp (CompNP (MassNP (UseN beauty_1_N))) (CompAdv sometimes_Adv))))) (TimeNP (MassNP (UseN use_1_N))))))))))))) NoVoc
 eng: architecture and eloquence are mixed arts whose end is sometimes beauty and sometimes use
 swe: arkitektur och vältalighet är blandade konster vars slut ibland är skönhet och ibland användning
-bul: архитектура и красноречие са смесени изкуства [GenRP] край понякога са красота и понякога употреба
-key: 1 architecture_2_N 06132970-n архитектура byggnadskonst arkitektur
+bul: архитектура и красноречие са смесени изкуства чийто край понякога е красота и понякога употреба
+key: 1 architecture_2_N 06132970-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN architecture_4_N) (GenModNP NumSg (DetCN (DetQuant IndefArt NumSg) (UseN computer_1_N)) (UseN (CompoundN system_1_N software_N)))))) NoVoc
 eng: the architecture of a computer's system software
@@ -38761,7 +38761,7 @@ key: 1 complainingly_Adv 00289622-r
 abs+ PhrUtt NoPConj (UttVP ASimul PPos ? (AdvVP (ComplSlash (SlashV2a close_1_V2) (GenModNP NumPl (UseDAP (DetDAP (DetQuant IndefArt NumSg))) (UseN eye_1_N))) (PrepNP like_Prep (DetCN (DetQuant IndefArt NumSg) (RelCN (AdjCN (PositA complaisant_A) (UseN husband_N)) (RelVPS (GenRP NumSg (UseN wife_N)) (MkVPS (TTAnt TPres AAnter) PPos (ComplSlash (SlashV2a take_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN loverMasc_3_N)))))))))) NoVoc
 eng: to close one's eyes like a complaisant husband whose wife has taken a lover
 swe: att stänga etts ögon som en tillmötesgående make vars fru har tagit en älskare
-bul: да затворя очите на едно като услужлив съпруг [RelVPS] [GenRP] съпруга съм взел любовник
+bul: да затворя очите на едно като услужлив съпруг [RelVPS] чиято съпруга съм взел любовник
 key: 1 complaisant_A 00021147-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA full_6_A) (UseN complement_2_N)))) NoVoc
@@ -52885,7 +52885,7 @@ key: 1 deservedly_Adv 00302867-r
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (ExistNP (ConjNP and_Conj (BaseNP (DetCN (DetQuant IndefArt (NumCard (UseACard many_ACard))) (RelCN (UseN child_1_N) (UseRCl (TTAnt TPastSimple ASimul) PPos (RelSlash (GenRP NumSg (UseN deservingness_N)) (SlashVP (UsePron he_Pron) (SlashV2a recognize_4_V2)))))) (UseDAP (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PastPartAP (SlashV2a reward_3_V2))))))))) NoVoc
 eng: there were many children whose deservingness he recognized and rewarded
 swe: det fanns många barn vars förtjänthet han kände igen och ett belönat
-bul: имаше много деца [GenRP] заслуга той разпозна и възнаградено
+bul: имаше много деца чиято заслуга той разпозна и възнаградено
 key: 1 deservingness_N 04814129-n заслуга
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumPl) (UseN desideratum_N)) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumSg) (UseN vacation_1b_N)))) (UseComp (CompNP (ConjNP and_Conj (BaseNP (MassNP (UseN time_2_N)) (DetCN (DetQuant IndefArt NumPl) (UseN money_2_N))))))))) NoVoc
@@ -56860,11 +56860,11 @@ swe: förrädaren expedierades av konspiratörerna
 bul: предателят беше ликвидиран от конспираторите
 key: 1 dispatch_5_V2 01327810-v
 
-abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a dispel_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN doubt_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a dispel_1a_V2) (DetCN (DetQuant IndefArt NumPl) (UseN doubt_2_N))))) NoVoc
 eng: dispel doubts
 swe: fördriva tvivel
 bul: разсейвай съмнения
-key: 1 dispel_1_V2 02006752-v
+key: 1 dispel_1a_V2 02006752-v
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (PossNP (AdjCN (PositA dispensable_A) (UseN item_3_N)) (MassNP (AdjCN (PositA personal_1_A) (UseN property_1_N)))))) NoVoc
 eng: dispensable items of personal property
@@ -160048,11 +160048,11 @@ swe: partnerna var förtjusta med erkännandet av sitt arbete
 bul: партньорките бяха възхитни с разпознаването от своята работа
 key: 1 recognition_1_N 14435385-n признание
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN politicianFem_2_N) (UseRCl (TTAnt TPastSimple ASimul) PPos (RelVP (GenRP NumSg (PossNP (UseN recall_4_N) (DetCN (DetQuant IndefArt NumPl) (UseN name_1_N)))) (UseComp (CompAP (CAdvAP PPos as_CAdv (PositA remarkable_1_A) (CompNP (DetCN (DetQuant (PossPron he_Pron) NumSg) (PossNP (UseN recognition_2_N) (DetCN (DetQuant IndefArt NumPl) (UseN face_1_N))))))))))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN politicianMasc_2_N) (UseRCl (TTAnt TPastSimple ASimul) PPos (RelVP (GenRP NumSg (PossNP (UseN recall_4_N) (DetCN (DetQuant IndefArt NumPl) (UseN name_1_N)))) (UseComp (CompAP (CAdvAP PPos as_CAdv (PositA remarkable_1_A) (CompNP (DetCN (DetQuant (PossPron he_Pron) NumSg) (PossNP (UseN recognition_2_N) (DetCN (DetQuant IndefArt NumPl) (UseN face_1_N))))))))))))) NoVoc
 eng: a politician whose recall of names was as remarkable as his recognition of faces
 swe: en politiker vars återerinring av namn var lika anmärkningsvärd som hans igenkänning av ansikten
-bul: политичка [GenRP] припомняне на имена беше забележителна колкото неговото разпознаване на лица
-key: 1 recognition_2_N 05770995-n igenkänning
+bul: политик чието припомняне на имена беше забележително колкото неговото разпознаване на лица
+key: 1 recognition_2_N 05770995-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA experimental_1_A) (UseN psychologistMasc_N))) (AdvVP (AdvVP (AdvVP (ComplSlash (SlashV2a measure_1_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA elapsed_A) (UseN time_5_N)))) (PrepNP from_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN onset_1_N) (DetCN (DetQuant DefArt NumSg) (UseN stimulus_N)))))) (PrepNP to_2_Prep (DetCN (DetQuant (PossPron it_Pron) NumSg) (UseN recognition_2_N)))) (PrepNP by_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN observerMasc_1_N))))))) NoVoc
 eng: experimental psychologists measure the elapsed time from the onset of the stimulus to its recognition by the observer
@@ -188869,7 +188869,7 @@ key: 1 stamp_2_N 08015015-n
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN man_1_N) (UseRCl (TTAnt TPres ASimul) PPos (RelVP (GenRP NumSg (UseN name_1_N)) (AdvVP (UseComp (CompAP (AdAP (PositAdAAdj permanent_1_A) (PastPartAP (SlashV2a stamp_2_V2))))) (PrepNP on_1_Prep (DetCN (DetQuant (PossPron we_Pron) NumPl) (UseN map_1_N))))))))) NoVoc
 eng: a man whose name is permanently stamped on our maps
 swe: en man vars namn är permanent ut stämplat på våra kartor
-bul: мъж [GenRP] име е постоянно щампован на нашите карти
+bul: мъж чието име е постоянно щамповано на нашите карти
 key: 1 stamp_2_V2 01275580-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron he_Pron) NumSg) (GerundCN (UseV play_3_V))) (AdvVP (ComplSlash (SlashV2a stamp_3_V2) (UsePron he_Pron)) (PrepNP as_Prep (DetCN (DetQuant IndefArt NumSg) (UseN romanticMasc_2_N))))))) NoVoc
@@ -199183,16 +199183,16 @@ key: 1 talk_down_2_V2 00965047-v
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN control_1_N tower_1_N))) (AdvVP (ComplSlash (SlashV2a talk_down_3_V2) (DetCN (DetQuant DefArt NumSg) (RelCN (UseN plane_1_N) (UseRCl (TTAnt TPastSimple ASimul) PPos (RelVP (GenRP NumSg (UseN pilotMasc_1_N)) (UseV fall_32_V)))))) (TimeNP (MassNP (UseN ill_N))))))) NoVoc
 eng: the control tower talked down the plane whose pilot fell ill
 swe: kontrolltornet pratade ner flyget vars pilot föll åkomma
-bul: контрол кулата насочва при кацане по радиото самолета [GenRP] пилот настана болест
+bul: контролната кула насочва за кацане самолета чийто пилот настана болест
 key: 1 talk_down_3_V2 00751590-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN teacherMasc_N)) (AdvVP (ComplSlash (SlashV2a give_4_V2) (UsePron he_Pron)) (TimeNP (DetCN (DetQuant IndefArt NumSg) (UseN talking_to_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN teacherMasc_N)) (ComplSlash (Slash2V3 give_7_V3 (UsePron he_Pron)) (DetCN (DetQuant IndefArt NumSg) (UseN talking_to_N)))))) NoVoc
 eng: the teacher gave him a talking to
 swe: läraren gav honom en avhyvling
-bul: учителят го даде конско
+bul: учителят му даде конско
 key: 1 talking_to_N 06726869-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA tall_1_A) (UseN people_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA tall_1_A) (UseN people_1_N)))) NoVoc
 eng: tall people
 swe: höga människor
 bul: високи хора
@@ -213148,11 +213148,11 @@ swe: hon var ojämlik till uppgiften
 bul: тя беше неподходяща за задачата
 key: 1 unequal_2_A 00051936-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (RelCN (UseN craftsman_3_N) (UseRCl (TTAnt TPres ASimul) PPos (RelVP (GenRP NumSg (UseN skill_1_N)) (UseComp (CompAP (PositA unequalled_1_A)))))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (RelCN (UseN craftsman_3_N) (UseRCl (TTAnt TPres ASimul) PPos (RelVP (GenRP NumSg (UseN skill_1_N)) (UseComp (CompAP (PositA unequalled_1_A)))))))) NoVoc
 eng: craftsmen whose skill is unequaled
 swe: hantverkare vars skicklighet är oöverträffad
-bul: занаятчии [GenRP] умение са несравними
-key: 1 unequalled_1_A 00507765-a уникален неповторим изключителен
+bul: занаятчии чието умение е несравнимо
+key: 1 unequalled_1_A 00507765-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (AdvAP (PositA unequipped_A) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PastPartAP (SlashV2a pitch_8_V2)) (UseN battle_1_N))))) (UseN guerrilla_N)))) NoVoc
 eng: guerrillas unequipped for a pitched battle
@@ -218704,16 +218704,16 @@ swe: hans beröm släppte högljudda protester av hennes ovärdighet från henne
 bul: неговата възхвала освободи от нея силни протести на нейното недостойнство
 key: 1 unworthiness_2_N 04728926-n
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a dispel_1_V2) (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN studentMasc_1_N) (UseRCl (TTAnt TPres ASimul) PPos (RelVP (GenRP NumSg (UseN conduct_1_N)) (UseComp (CompNP (UseDAP (AdjDAP (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PastPartAP (SlashV2a deem_V2))) (PositA unworthy_1_A)))))))))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a dispel_1b_V2) (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN studentMasc_1_N) (UseRCl (TTAnt TPres ASimul) PPos (RelVP (GenRP NumSg (UseN conduct_1_N)) (PassVPSlash (SlashV2A deem_V2A (PositA unworthy_1_A)))))))))) NoVoc
 eng: dispel a student whose conduct is deemed unworthy
 swe: fördriva en student vars uppträdande är ett ansett ovärdigt
-bul: разсейвай студент [GenRP] държание е счетено недостойно
+bul: изгони студент чието държание е счетено за недостойно
 key: 1 unworthy_1_A 02598414-a
 
-abs+ PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA unworthy_1_A) (PrepNP of_1_Prep (MassNP (UseN forgiveness_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA unworthy_1_A) (PrepNP of_3_Prep (MassNP (UseN forgiveness_1_N))))) NoVoc
 eng: unworthy of forgiveness
-swe: ovärdig av förlåtelse
-bul: недостоен от прощаване
+swe: ovärdig för förlåtelse
+bul: недостоен за прошка
 key: 1 unworthy_1_A 02598414-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN (CompoundN tapa_2_N cloth_N))) (AdvVP (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA unwoven_A) (AdjCN (PastPartAgentAP (SlashV2a make_1_V2) (MassNP (UseN (CompoundN pounding_3_N bark_1_N)))) (UseN fabric_1_N)))))) (PrepNP into_1_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA thin_1_A) (UseN sheet_6_N)))))))) NoVoc
@@ -241254,7 +241254,7 @@ role:  Attribute
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
-key: consider-29.9/876 deem_V2 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2 postulate_2_V2
+key: consider-29.9/876 deem_V2A deem_V3 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2 postulate_2_V2
 
 abs+ PhrUttMark NoPConj (UttNP (AdvNP (UsePron i_Pron) (TimeNP (UseDAP (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (SentAP (PastPartAP (SlashV2a consider_5_V2)) (EmbedQS (UseQCl (TTAnt TPast ASimul) PPos (QuestIAdv how_IAdv (PredVP (UsePron he_Pron) (ComplVV can_1_VV ASimul PPos (ComplSlash (SlashV2a become_2_V2) (MassNP (UseN professorMasc_N)))))))))))))) NoVoc FullStop
 eng: I considered how he could become professor.
@@ -241264,7 +241264,7 @@ key: 0
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
-key: consider-29.9/877 deem_V2 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2 postulate_2_V2
+key: consider-29.9/877 deem_V2A deem_V3 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2 postulate_2_V2
 
 abs* PhrUttMark NoPConj (UttNP (AdvNP (UsePron i_Pron) (TimeNP (AdjAsNP (SentAP (PastPartAP (SlashV2a consider_2_V2)) (EmbedQS (UseQCl (TTAnt TPres ASimul) PPos (PredIAdvVP how_IAdv (UseComp (CompCN (UseN professorMasc_N))))))))))) NoVoc FullStop
 eng: I considered how to be a professor.
@@ -241276,7 +241276,7 @@ class: consider-29.9-1
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
-key: consider-29.9-1/878 deem_V2 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2
+key: consider-29.9-1/878 deem_V2A deem_V3 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2
 
 abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron they_Pron) (ComplSlash (SlashV2A consider_6_V2A (PositA stupid_3_A)) (AdvNP (UsePron he_Pron) (PrepNP as_Prep (MassNP (UseN being_2_N)))))))) NoVoc FullStop
 eng: They considered him as being stupid.
@@ -241286,7 +241286,7 @@ key: 0
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
-key: consider-29.9-1/879 deem_V2 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2
+key: consider-29.9-1/879 deem_V2A deem_V3 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2
 
 abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron they_Pron) (ComplSlash (SlashV2V consider_1_V2V ASimul PPos (UseComp (CompNP (DetCN (DetQuant DefArt NumSg) (UseN professorMasc_N))))) (UsePron he_Pron))))) NoVoc FullStop
 eng: They considered him to be the professor.
@@ -241296,7 +241296,7 @@ key: 0
 
 frm* ?
 sem: consider(during(E),Agent,Theme)
-key: consider-29.9-1/880 deem_V2 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2
+key: consider-29.9-1/880 deem_V2A deem_V3 esteem_2_V2 rate_1_V2 reckon_3_V2 report_4_V2 consider_5_V2
 
 abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (UseV consider_6_V) (SubjS that_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (UseComp (CompNP (DetCN (DetQuant DefArt NumSg) (UseN professorMasc_N))))))))))) NoVoc FullStop
 eng: They considered that he was the professor.

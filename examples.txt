@@ -39406,11 +39406,11 @@ swe: koncentrera juice
 bul: концентрирай сок
 key: 1 concentrate_1_V2 00238397-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumPl) (UseN group_1_N)) (AdvVP (UseV concentrate_5_V) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA inner_2_A) (UseN city_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumPl) (UseN group_1_N)) (AdvVP (UseV concentrate_5_V) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA inner_2_A) (UseN city_1_N)))))))) NoVoc
 eng: These groups concentrate in the inner cities
 swe: de här grupperna koncentrerar sig i de inre städerna
 bul: тези групи се концентрират във вътрешните градове
-key: 1 concentrate_5_V 02036779-v koncentrera
+key: 1 concentrate_5_V 02036779-v
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant (PossPron they_Pron) NumPl) (AdjCN (PositA concentrated_1_A) (UseN effort_1_N)))) NoVoc
 eng: their concentrated efforts
@@ -39424,16 +39424,16 @@ swe: hans koncentrerade uppmärksamhet
 bul: неговото концентрирано внимание
 key: 1 concentrated_1_A 00540785-a
 
-abs+ PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA concentrated_1_A) (TimeNP (MassNP (UseN study_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttCN (AdjCN (PositA concentrated_1_A) (UseN study_2_N))) NoVoc
 eng: concentrated study
-swe: koncentrerad studie
-bul: концентриран обучение
+swe: koncentrerat studie
+bul: концентрирано обучение
 key: 1 concentrated_1_A 00540785-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (AdjCN (PositA narrow_1_A) (UseN thread_2_N)) (MassNP (AdjCN (PositA concentrated_1_A) (UseN ore_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (AdjCN (PositA narrow_1_A) (UseN thread_2_N)) (PrepNP of_1_Prep (MassNP (AdjCN (PositA concentrated_1_A) (UseN ore_1_N))))))) NoVoc
 eng: a narrow thread of concentrated ore
 swe: en smal tråd av koncentrerad malm
-bul: тясна нишка на концентрирана руда
+bul: тясна нишка от концентрирана руда
 key: 1 concentrated_1_A 00540785-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumSg) (AdjCN (PositA concentrated_3_A) (UseN passion_1_N))) (AdvVP (ComplSlash (SlashV2a hold_1_V2) (UsePron they_Pron)) (PrepNP at_1_Prep (MassNP (UseN bay_6_N))))))) NoVoc
@@ -39442,7 +39442,7 @@ swe: hennes koncentrerade passion höll dem vid utrymme
 bul: нейната съсредоточена страст ги държа на отделение
 key: 1 concentrated_3_A 01514758-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA concentric_1_A) (UseN ring_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA concentric_1_A) (UseN ring_2_N)))) NoVoc
 eng: concentric rings
 swe: koncentriska ring
 bul: концентрични пръстени
@@ -39466,11 +39466,11 @@ swe: schizofrnen förlorar förmågan till abstrakt eller gör konceptuellt tän
 bul: шизофреникът губи умението на абстракция или прави концептуално мислене
 key: 1 conceptual_A 00012381-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumSg) (UseN safety_1_N)) (PrepNP of_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN ship_N)))) (UseComp (CompNP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN captainFem_4_N)) (UseN concern_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN safety_1_N) (DetCN (DetQuant DefArt NumSg) (UseN ship_N)))) (UseComp (CompNP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN captainMasc_4_N)) (UseN concern_1_N))))))) NoVoc
 eng: the safety of the ship is the captain's concern
-swe: säkerheten för skeppet är kaptenens bekymmer
-bul: сигурността за кораба е грижата на капитанката
-key: 1 concern_1_N 05678554-n отговорност грижа eget intresse egenintresse ansvarsområde angelägenhet
+swe: säkerheten av skeppet är kaptenens bekymmer
+bul: сигурността на кораба е грижата на капитана
+key: 1 concern_1_N 05678554-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ComplSlash (SlashV2a feel_1_V2) (MassNP (AdjCN (PositA strong_2_A) (UseN concern_3_N)))) (PrepNP for_Prep (UseDAP (AdjDAP (DetDAP (DetQuant that_Quant (NumLess NumPl))) (PositA fortunate_1_A)))))))) NoVoc
 eng: She felt strong concern for those less fortunate

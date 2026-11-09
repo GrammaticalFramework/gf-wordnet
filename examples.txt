@@ -38344,10 +38344,10 @@ swe: de bildade en gemenskap av vetenskapsmän
 bul: те основаха общност на учени
 key: 1 community_2_N 07961512-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (ComplSlash (SlashV2a share_1_V2) (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN community_3_N) (DetCN (DetQuant IndefArt NumPl) (UseN possession_2_N)))))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron they_Pron) (ComplSlash (SlashV2a share_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdvCN (UseN community_3_N) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN possession_2_N))))))))) NoVoc
 eng: they shared a community of possessions
 swe: de delade ett samhälle av ägodelar
-bul: те споделиха общност на притежания
+bul: те споделяха общност от притежания
 key: 1 community_3_N 13261737-n
 
 abs* ?

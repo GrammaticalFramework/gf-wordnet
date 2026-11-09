@@ -129815,11 +129815,8 @@ covalent_A \ covalence_1_N + covalence_1_N + covalence_1_N
 covariance_N + covariation_N + covariant_A
 covariant_A + covariance_N
 covariation_N + covariance_N
-covenant_1_N + covenant_2_V2
 covenant_1_V + covenant_2_N
-covenant_1_V2 + covenant_2_N
-covenant_2_N + covenant_1_V2 + covenant_1_V
-covenant_2_V2 + covenant_1_N
+covenant_2_N + covenant_1_V
 cover_11_V2 + covering_3_N
 cover_14_V2 + coverage_1_N
 cover_18_V2 + cover_8_N

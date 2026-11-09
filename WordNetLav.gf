@@ -11744,6 +11744,7 @@ lin bounce_7_V2 = variants {mkV2 (mkV "izraidīt" third_conjugation); {s = \\_,_
 lin bounce_back_V = mkV "atveseļoties" second_conjugation ; --guessed
 lin bounce_into_V2 = variants {{s = \\_,_ => "piespiest" ; leftVal = nominative ; rightVal = acc_Prep}; {s = \\_,_ => "iegrūst" ; leftVal = nominative ; rightVal = acc_Prep}} ; --guessed
 lin bounce_off_V2 = mkV2 (lin V {s = \\_,_ => "atsisties" ; leftVal = nominative}) (mkPrep "pret" accusative dative) ; --guessed
+lin bounce_off_V = variants {} ;
 lin bouncerMasc_N = mkN "izmetējs" masculine D1 ; --guessed
 lin bouncerFem_N = mkN "apsargs" masculine D1 ; --guessed
 lin bouncy_1_A = mkA "elastīgs" ;
@@ -22860,6 +22861,7 @@ lin cost_2_N = mkN "cena" feminine D4 ;
 lin cost_3_N = mkN "cena" feminine D4 ;
 lin cost_1_V2 = mkV2 (mkV "maksāt" second_conjugation) ;
 lin cost_2_V2 = mkV2 (mkV "maksāt" second_conjugation) ;
+lin cost_2_V3 = variants {} ;
 lin cost_up_V2 = {s = \\_,_ => "aprēķināt izmaksas" ; leftVal = nominative ; rightVal = acc_Prep} ; --guessed
 lin costa_1_N = mkN "dzīsla" feminine D4 ; --guessed
 lin costa_2_N = mkN "riba" feminine D4 ;
@@ -23259,8 +23261,7 @@ lin coven_N = mkN "Raganu kopa" ; --guessed
 lin covenant_1_N = mkN "pakts" masculine D1 ; --guessed
 lin covenant_2_N = mkN "Derība" ; --guessed
 lin covenant_1_V = {s = \\_,_ => "slēgt derību" ; leftVal = nominative} ; --guessed
-lin covenant_1_V2 = {s = \\_,_ => "noslēgt derību" ; leftVal = nominative ; rightVal = acc_Prep} ; --guessed
-lin covenant_2_V2 = variants {{s = \\_,_ => "noslēgt līgumu" ; leftVal = nominative ; rightVal = acc_Prep}; mkV2 (mkV "vienoties" second_conjugation)} ; --guessed
+lin covenant_2_V = variants {} ;
 lin coventry_1_PN = variants {mkPN "Ostrakisms"; mkPN "Izstumšana no sabiedrības"} ; --guessed
 lin coventry_2_LN = mkLN "Koventrija" ;
 lin cover_1_N = variants {mkN "aizsegs" masculine D1; mkN "patvērums" masculine D1} ; --guessed
@@ -26783,6 +26784,7 @@ lin demand_3_N = mkN "prasība" feminine D4 ;
 lin demand_4_N = mkN "pieprasījums" masculine D1 ;
 lin demand_5_N = mkN "pieprasījums" masculine D1 ; --guessed
 lin demand_1_V2 = mkV2 (mkV "pieprasīt" third_conjugation) ; --guessed
+lin demand_1_VV = variants {} ;
 lin demand_2_V2 = mkV2 (mkV "prasīt" third_conjugation) ;
 lin demand_3_V2 = mkV2 (mkV "pieprasīt" third_conjugation) ; --guessed
 lin demand_4_V2 = mkV2 (mkV "pieprasīt" third_conjugation) ; --guessed
@@ -27404,6 +27406,7 @@ lin design_6_N = mkN "dizains" masculine D1 ;
 lin design_7_N = mkN "dizains" masculine D1 ;
 lin design_5_V = variants {mkV "projektēt" second_conjugation; {s = \\_,_ => "dizainēt" ; leftVal = nominative}} ; --guessed
 lin design_7_V = variants {mkV "paredzēt" third_conjugation; mkV "nodomāt" second_conjugation} ; --guessed
+lin design_7_VV = variants {} ;
 lin design_1_V2 = mkV2 (mkV "projektēt" second_conjugation) ; --guessed
 lin design_2_V2 = variants {mkV2 (mkV "projektēt" second_conjugation); mkV2 (mkV "izstrādāt" second_conjugation)} ; --guessed
 lin design_3_V2 = variants {mkV2 (mkV "projektēt" second_conjugation); {s = \\_,_ => "dizainēt" ; leftVal = nominative ; rightVal = acc_Prep}} ; --guessed
@@ -28072,6 +28075,7 @@ lin die_3_V = {s = \\_,_ => "Mirt" ; leftVal = nominative} ; --guessed
 lin die_4_V = mkV "mir" "mirst" "mir" ;
 lin die_5_V = {s = \\_,_ => "Būt vienaldzīgam" ; leftVal = nominative} ; --guessed
 lin die_6_V = {s = \\_,_ => "mirt nost" ; leftVal = nominative} ; --guessed
+lin die_6_VV = variants {} ;
 lin die_7_V = mkV "štancēt" second_conjugation ; --guessed
 lin die_8_V = {s = \\_,_ => "palikt uz bāzes" ; leftVal = nominative} ; --guessed
 lin die_9_V = mkV "izgarot" second_conjugation ; --guessed
@@ -35992,6 +35996,7 @@ lin fall_27_V = {s = \\_,_ => "krist" ; leftVal = nominative} ; --guessed
 lin fall_28_V = {s = \\_,_ => "Izsprukt" ; leftVal = nominative} ; --guessed
 lin fall_29_V = {s = \\_,_ => "jērties" ; leftVal = nominative} ; --guessed
 lin fall_30_V = {s = \\_,_ => "Ķerties klāt" ; leftVal = nominative} ; --guessed
+lin fall_30_VV = variants {} ;
 lin fall_31_V = {s = \\_,_ => "krist" ; leftVal = nominative} ; --guessed
 lin fall_32_V = {s = \\_,_ => "iestāties" ; leftVal = nominative} ; --guessed
 lin fall_about_V = {s = \\_,_ => "vārtīties smieklos" ; leftVal = nominative} ; --guessed
@@ -56685,6 +56690,7 @@ lin lie_2_V = mkV "gulēt" third_conjugation ;
 lin lie_1_V = variants {{s = \\_,_ => "atrasties" ; leftVal = nominative}; {s = \\_,_ => "gult" ; leftVal = nominative}} ; --guessed
 lin lie_3_V = variants {{s = \\_,_ => "slēpties" ; leftVal = nominative}; mkV "balstīties" third_conjugation} ; --guessed
 lin lie_4_V = {s = \\_,_ => "atrasties" ; leftVal = nominative} ; --guessed
+lin lie_4_VA = variants {} ;
 lin lie_5_V = mkV "melot" second_conjugation ;
 lin lie_6_V = {s = \\_,_ => "atrasties" ; leftVal = nominative} ; --guessed
 lin lie_7_V = mkV "gulēt" third_conjugation ;
@@ -58401,6 +58407,7 @@ lin love_5_N = mkN "nulle" feminine D5 ;
 lin love_6_N = mkN "Mīlēšanās" ; --guessed
 lin love_1_V2 = mkV2 (mkV "mīlēt" second_conjugation) ;
 lin love_2_V2 = mkV2 (mkV "mīlēt" second_conjugation) ;
+lin love_2_VV = variants {} ;
 lin love_3_V2 = mkV2 (mkV "mīlēt" second_conjugation) ;
 lin love_4_V2 = mkV2 (mkV "mīlēties" second_conjugation) ;
 lin love_affair_N = mkN "mīlas dēka" ; --guessed
@@ -83090,6 +83097,7 @@ lin reputation_2_N = mkN "reputācija" feminine D4 ;
 lin reputation_3_N = mkN "reputācija" feminine D4 ;
 lin repute_N = mkN "slava" feminine D4 ;
 lin repute_V2 = mkV2 (mkV "uzskatīt" third_conjugation) ; --guessed
+lin repute_V2V = variants {} ;
 lin reputed_A = mkA "šķietams" ; --guessed
 lin request_1_N = mkN "lūgums" masculine D1 ;
 lin request_2_N = mkN "lūgšana" feminine D4 ;
@@ -83317,6 +83325,7 @@ lin resolve_2_N = mkN "lēmums" masculine D1 ; --guessed
 lin resolve_1_V = mkV "atrisināt" third_conjugation ; --guessed
 lin resolve_2_V = {s = \\_,_ => "nolemt" ; leftVal = nominative} ; --guessed
 lin resolve_3_V = {s = \\_,_ => "nolemt" ; leftVal = nominative} ; --guessed
+lin resolve_3_VV = variants {} ;
 lin resolve_1_V2 = mkV2 (mkV "atrisināt" third_conjugation) ; --guessed
 lin resolve_2_V2 = {s = \\_,_ => "nolemt" ; leftVal = nominative ; rightVal = acc_Prep} ; --guessed
 lin resolve_4_V2 = variants {mkV2 (mkV "atrisināt" third_conjugation); mkV2 (mkV "atminēt" third_conjugation)} ; --guessed
@@ -87132,6 +87141,7 @@ lin saxophonistFem_N = mkN "saksofoniste" feminine D5 ;
 lin say_N = mkN "teikšana" feminine D4 ; --guessed
 lin say_5_V = {s = \\_,_ => "teikt" ; leftVal = nominative} ; --guessed
 lin say_4_V2 = {s = \\_,_ => "teikt" ; leftVal = nominative ; rightVal = acc_Prep} ; --guessed
+lin say_4_V2V = variants {} ;
 lin say_6_V2 = mkV2 (mkV "sacīt" third_conjugation) ;
 lin say_7_V2 = mkV2 (mkV "teik" "teic" "teic") ;
 lin say_8_V2 = mkV2 (mkV "teik" "teic" "teic") ;
@@ -88070,6 +88080,7 @@ lin scruple_1_N = mkN "skrupuls" ; --guessed
 lin scruple_2_N = mkN "šaubas" feminine D4 ;
 lin scruple_3_N = mkN "skrupuli" ; --guessed
 lin scruple_1_V = mkV "svārstīties" third_conjugation ; --guessed
+lin scruple_1_VV = variants {} ;
 lin scruple_2_V = mkV "šaubīties" third_conjugation ; --guessed
 lin scruple_3_V = variants {mkV "šaubīties" third_conjugation; mkV "svārstīties" third_conjugation} ; --guessed
 lin scrupulous_1_A = mkA "apzinīgs" ; --guessed
@@ -102480,6 +102491,7 @@ lin threat_3_N = mkN "draudi" masculine D1 ; --guessed
 lin threatMasc_4_N = mkN "Drauds" ; --guessed
 lin threatFem_4_N = mkN "Drauds" ; --guessed
 lin threaten_3_V = mkV "draudēt" third_conjugation ;
+lin threaten_3_VV = variants {} ;
 lin threaten_1_V2 = mkV2 (mkV "apdraudēt" third_conjugation) ; --guessed
 lin threaten_2_V2 = mkV2 (mkV "draudēt" third_conjugation) ;
 lin threaten_3_V2 = mkV2 (mkV "draudēt" third_conjugation) ;

@@ -11744,6 +11744,7 @@ fun bounce_7_V2 : V2 ;             -- 01471709-v	eject from the premises; "The e
 fun bounce_back_V : V ;            -- 00268897-v	[medicine] improve in health
 fun bounce_into_V2 : V2 ;
 fun bounce_off_V2 : V2 ;
+fun bounce_off_V : V ;
 fun bouncerMasc_N : N ;            -- 09888415-n	[person] a person whose duty is to throw troublemakers out of a bar or public meeting
 fun bouncerFem_N : N ;             -- 09888415-n	[person] a person whose duty is to throw troublemakers out of a bar or public meeting
 fun bouncy_1_A : A ;               -- 00847134-a	elastic; rebounds readily; "clean bouncy hair"
@@ -22860,6 +22861,7 @@ fun cost_2_N : N ;                 -- 05152365-n	[money] the property of having 
 fun cost_3_N : N ;                 -- 05171334-n	value measured by what must be given or done or undergone to obtain something; "the cost in human life was enormous"
 fun cost_1_V2 : V2 ;               -- 02708368-v	be priced at; "These shoes cost $100"
 fun cost_2_V2 : V2 ;               -- 02635042-v	require to lose, suffer, or sacrifice; "This mistake cost him his job"
+fun cost_2_V3 : V3 ;               -- 02635042-v	require to lose, suffer, or sacrifice; "This mistake cost him his job"
 fun cost_up_V2 : V2 ;
 fun costa_1_N : N ;                -- 05599881-n	[anatomy] a riblike part of a plant or animal (such as a middle rib of a leaf or a thickened vein of an insect wing)
 fun costa_2_N : N ;                -- 05286525-n	[anatomy, animals] any of the 12 pairs of curved arches of bone extending from the spine to or toward the sternum in humans (and similar bones in most vertebrates)
@@ -23259,8 +23261,7 @@ fun coven_N : N ;                  -- 08415424-n	an assembly of witches; usually
 fun covenant_1_N : N ;             -- 06785061-n	[law] a signed written agreement between two or more parties (nations) to perform some action
 fun covenant_2_N : N ;             -- 06537579-n	[religion] an agreement between God and his people in which God makes certain promises and requires certain behavior from them in return
 fun covenant_1_V : V ;             -- 02480203-v	enter into a covenant
-fun covenant_1_V2 : V2 ;           -- 02480203-v	enter into a covenant
-fun covenant_2_V2 : V2 ;           -- 01032865-v	enter into a covenant or formal agreement; "They covenanted with Judas for 30 pieces of silver"; "The nations covenanted to fight terrorism around the world"
+fun covenant_2_V : V ;             -- 01032865-v	enter into a formal agreement; "They covenanted with Judas for 30 pieces of silver"; "The nations covenanted to fight terrorism around the world"
 fun coventry_1_PN : PN ;           -- 14451037-n	[sociology] the state of being banished or ostracized (excluded from society by general consent); "the association should get rid of its elderly members--not by euthanasia, of course, but by Coventry"
 fun coventry_2_LN : LN ;           -- 08900094-n	[geography] an industrial city in central England; devastated by air raids during World War II; remembered as the home of Lady Godiva in the 11th century
 fun cover_1_N : N ;                -- 04159023-n	a covering that serves to conceal or shelter something; "under cover of darkness"
@@ -26783,6 +26784,7 @@ fun demand_3_N : N ;               -- 05901258-n	required activity; "there were 
 fun demand_4_N : N ;               -- 01063257-n	the act of demanding; "the kidnapper's exorbitant demands for money"
 fun demand_5_N : N ;               -- 14472592-n	a condition requiring relief; "there is a demand for jobs"
 fun demand_1_V2 : V2 ;             -- 00756987-v	request urgently and forcefully; "The victim's family is demanding compensation"; "The boss demanded that he be fired immediately"; "She demanded to see the manager"
+fun demand_1_VV : VV ;             -- 00756987-v	request urgently and forcefully; "She demanded to see the manager"
 fun demand_2_V2 : V2 ;             -- 02634015-v	require as useful, just, or proper; "This position demands a lot of personal sacrifice"
 fun demand_3_V2 : V2 ;             -- 01019835-v	[law] claim as due or just; "The bank demanded payment of the loan"
 fun demand_4_V2 : V2 ;             -- 01071112-v	[law] lay legal claim to
@@ -27404,6 +27406,7 @@ fun design_6_N : N ;               -- 03183984-n	[drawing] a preliminary sketch 
 fun design_7_N : N ;               -- 05641230-n	the creation of something in the mind
 fun design_5_V : V ;               -- 01757404-v	[art] create designs; "Dupont designs for the house of Chanel"
 fun design_7_V : V ;               -- 00700338-v	intend or have as a purpose; "She designed to go far in the world of business"
+fun design_7_VV : VV ;             -- 00700338-v	intend or have as a purpose; "She designed to go far in the world of business"
 fun design_1_V2 : V2 ;             -- 01641910-v	[industry] make or work out a plan for; devise; "design a new sales strategy"
 fun design_2_V2 : V2 ;             -- 00711454-v	plan something for a specific role or purpose or effect; "This room is not designed for work"
 fun design_3_V2 : V2 ;             -- 01644092-v	[art] create the design for; create or execute in an artistic or highly skilled manner; "Chanel designed the famous suit"
@@ -28072,6 +28075,7 @@ fun die_3_V : V ;                  -- 01788772-v	[psychology] be brought to or a
 fun die_4_V : V ;                  -- 00435327-v	stop operating or functioning; "The car died on the road"
 fun die_5_V : V ;                  -- 01833417-v	[psychological features] feel indifferent towards; "She died to worldly things and eventually entered a monastery"
 fun die_6_V : V ;                  -- 01789061-v	languish as with love or desire; "She dying for a cigarette"; "I was dying to leave"
+fun die_6_VV : VV ;                -- 01789061-v	languish as with love or desire; "I was dying to leave"
 fun die_7_V : V ;                  -- 01557816-v	cut or shape with a die; "Die out leather for belts"
 fun die_8_V : V ;                  -- 01077307-v	[sport] to be on base at the end of an inning, of a player
 fun die_9_V : V ;                  -- 00539403-v	lose sparkle or bouquet
@@ -35992,6 +35996,7 @@ fun fall_27_V : V ;                -- 00562343-v	be cast down; "his eyes fell"
 fun fall_28_V : V ;                -- 00531257-v	come out; issue; "silly phrases fell from her mouth"
 fun fall_29_V : V ;                -- 00361331-v	[biology] be born, used chiefly of lambs; "The lambs fell in the afternoon"
 fun fall_30_V : V ;                -- 00347493-v	begin vigorously; "The prisoners fell to work right away"
+fun fall_30_VV : VV ;              -- 00347493-v	begin vigorously; "The prisoners fell to work right away"
 fun fall_31_V : V ;                -- 00342969-v	go as if by falling; "Grief fell from our hearts"
 fun fall_32_V : V ;                -- 00342819-v	come as if by falling; "Night fell"; "Silence fell"
 fun fall_about_V : V ;
@@ -56685,6 +56690,7 @@ fun lie_2_V : V ;                  -- 01549783-v	be lying, be prostrate; be in a
 fun lie_1_V : V ;                  -- 02696550-v	be located or situated somewhere; occupy a certain position
 fun lie_3_V : V ;                  -- 02659476-v	originate (in)
 fun lie_4_V : V ;                  -- 02740213-v	be and remain in a particular state or condition; "lie dormant"
+fun lie_4_VA : VA ;                -- 02740213-v	be and remain in a particular state or condition; "The country lay ruined after the war"
 fun lie_5_V : V ;                  -- 00835938-v	tell an untruth; pretend with intent to deceive; "Don't lie to your parents"; "She lied when she told me she was only 29"
 fun lie_6_V : V ;                  -- 02737265-v	have a place in relation to something else; "The fate of Bosnia lies in the hands of the West"
 fun lie_7_V : V ;                  -- 01989043-v	assume a reclining position
@@ -58401,6 +58407,7 @@ fun love_5_N : N ;                 -- 13617812-n	[play, sport] a score of zero i
 fun love_6_N : N ;                 -- 00848145-n	[physiology, sexuality] sexual activities (often including sexual intercourse) between two people; "he hadn't had any love in months"; "he has a very complicated love life"
 fun love_1_V2 : V2 ;               -- 01779085-v	have a great affection or liking for; "I love French food"; "She loves her boss and works hard for him"
 fun love_2_V2 : V2 ;               -- 01832678-v	[tourism] get pleasure from; "I love cooking"
+fun love_2_VV : VV ;               -- 01832678-v	[tourism] get pleasure from; "I love cooking"
 fun love_3_V2 : V2 ;               -- 01779456-v	be enamored or in love with; "She loves her husband deeply"
 fun love_4_V2 : V2 ;               -- 01429048-v	[animals, sexuality] have sexual intercourse with
 fun love_affair_N : N ;            -- 13954469-n	a relationship between two lovers
@@ -83090,6 +83097,7 @@ fun reputation_2_N : N ;           -- 14462760-n	[sociology] notoriety for some 
 fun reputation_3_N : N ;           -- 06216934-n	the general estimation that the public has for a person; "he acquired a reputation as an actor before he started writing"
 fun repute_N : N ;                 -- 14461591-n	[sociology] the state of being held in high esteem and honor
 fun repute_V2 : V2 ;               -- 00691692-v	look on as or consider; "He is reputed to be intelligent"
+fun repute_V2V : V2V ;             -- 00691692-v	look on as or consider; "He is reputed to be intelligent"
 fun reputed_A : A ;
 fun request_1_N : N ;              -- 06525357-n	a formal message requesting something that is submitted to an authority
 fun request_2_N : N ;              -- 07199985-n	the verbal act of requesting
@@ -83317,6 +83325,7 @@ fun resolve_2_N : N ;              -- 06523865-n	[administration] a formal expre
 fun resolve_1_V : V ;              -- 00700621-v	bring to an end; settle conclusively
 fun resolve_2_V : V ;              -- 01023429-v	reach a conclusion after a discussion or deliberation
 fun resolve_3_V : V ;              -- 00701392-v	reach a decision; "he resolved never to drink again"
+fun resolve_3_VV : VV ;            -- 00701392-v	reach a decision; "he resolved never to drink again"
 fun resolve_1_V2 : V2 ;            -- 00700621-v	bring to an end; settle conclusively
 fun resolve_2_V2 : V2 ;            -- 01023429-v	reach a conclusion after a discussion or deliberation
 fun resolve_4_V2 : V2 ;            -- 00637185-v	understand the meaning of
@@ -87132,6 +87141,7 @@ fun saxophonistFem_N : N ;         -- 10573671-n	[music] a musician who plays th
 fun say_N : N ;                    -- 14509110-n	the chance to speak; "let him have his say"
 fun say_5_V : V ;                  -- 00748704-v	give instructions to or direct somebody to do something with authority; "I said to him to go home"
 fun say_4_V2 : V2 ;                -- 02736688-v	have or contain a certain wording or form; "What does the law say?"
+fun say_4_V2V : V2V ;              -- 02736688-v	declare or report; "the brain is said to be the seat of reason"
 fun say_6_V2 : V2 ;                -- 00980581-v	[linguistics] speak, pronounce, or utter in a certain way; "I cannot say `zip wire'"
 fun say_7_V2 : V2 ;                -- 00930921-v	communicate or express nonverbally; "What does this painting say?"; "Did his face say anything about how he felt?"
 fun say_8_V2 : V2 ;                -- 00981902-v	utter aloud; "She said `Hello' to everyone in the office"
@@ -88070,6 +88080,7 @@ fun scruple_1_N : N ;              -- 13744165-n	[metrology] a unit of apothecar
 fun scruple_2_N : N ;              -- 07540794-n	[psychological features] uneasiness about the fitness of an action
 fun scruple_3_N : N ;              -- 05966604-n	an ethical or moral principle that inhibits action
 fun scruple_1_V : V ;              -- 02647382-v	hesitate on moral grounds; "The man scrupled to perjure himself"
+fun scruple_1_VV : VV ;            -- 02647382-v	hesitate on moral grounds; "The man scrupled to perjure himself"
 fun scruple_2_V : V ;              -- 01798206-v	[psychological features] raise scruples; "He lied and did not even scruple about it"
 fun scruple_3_V : V ;              -- 00927343-v	have doubts about
 fun scrupulous_1_A : A ;           -- 02092595-a	having scruples; arising from a sense of right and wrong; principled; "less scrupulous producers sent bundles that were deceptive in appearance"
@@ -102480,6 +102491,7 @@ fun threat_3_N : N ;               -- 06746225-n	declaration of an intention or 
 fun threatMasc_4_N : N ;           -- 10722264-n	[person] a person who inspires fear or dread
 fun threatFem_4_N : N ;            -- 10722264-n	[person] a person who inspires fear or dread
 fun threaten_3_V : V ;             -- 00873444-v	to be a menacing indication of something; "Danger threatens"
+fun threaten_3_VV : VV ;           -- 00873444-v	"The rebels threaten to seize civilian hostages"
 fun threaten_1_V2 : V2 ;           -- 02702962-v	pose a threat to; present a danger to
 fun threaten_2_V2 : V2 ;           -- 00873067-v	to utter intentions of injury or punishment against; "He threatened me when I tried to call the police"
 fun threaten_3_V2 : V2 ;           -- 00873444-v	to be a menacing indication of something; "The clouds threaten rain"

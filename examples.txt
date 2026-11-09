@@ -576,7 +576,7 @@ key: 1 aboveground_A 02480739-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (ConjNP and_Conj (BaseNP (ExtAdvNP (MassNP (UseN judaism_2_N)) (TimeNP (MassNP (UseN christianity_1_N)))) (AdvNP (MassNP (UseN islam_2_N)) each_Adv))) (AdvVP (ComplSlash (SlashV2a have_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA special_1_A) (UseN claim_4_N)))) (PrepNP on_1_Prep (UsePN abraham_PN)))))) NoVoc
 eng: Judaism, Christianity, and Islam each has a special claim on Abraham
-swe: judendom, kristendom, och islam varje har ett speciellt anspråk på Abraham
+swe: judendom, kristendom, och islam vardera har ett speciellt anspråk på Abraham
 bul: юдейство, християнство и ислям всеки имат специално право на Авраам
 key: 1 abraham_PN 10827091-n
 
@@ -2272,10 +2272,10 @@ swe: Den senaste federala åtgärden undergrävde segregeringspositionen
 bul: скорошните федерални действия подкопаха сегрегационната позиция
 key: 1 action_9_N 01184802-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA united_1_A) (UseN nation_1_N))) (ComplVPIVV must_2_VV (ConjVPI and_Conj (BaseVPI (MkVPI (ComplSlash (SlashV2a have_1_V2) (DetCN (DetQuant DefArt NumSg) (SentCN (UseN power_1_N) (EmbedVP ASimul PPos they_Pron (UseV propose_5_V)))))) (MkVPI (AdvVP (ComplSlash (SlashV2a organize_1_V2) (MassNP (UseN action_9_N))) (WithoutVP (PassAgentVPSlash (SlashV2a hobble_2_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irrelevant_A) (UseN issue_1_N))))))))))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA united_1_A) (UseN nation_1_N))) (ComplVPIVV must_2_VV (ConjVPI and_Conj (BaseVPI (MkVPI (ComplSlash (SlashV2a have_1_V2) (DetCN (DetQuant IndefArt NumSg) (SentCN (UseN power_1_N) (EmbedVP ASimul PPos they_Pron (ComplSlash (SlashV2a propose_2_V2) (MassNP (UseN action_9_N)))))))) (MkVPI (AdvVP (ComplSlash (SlashV2a organize_1_V2) (MassNP (UseN action_9_N))) (WithoutVP (PassAgentVPSlash (SlashV2a hobble_2_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irrelevant_A) (UseN issue_1_N))))))))))))) NoVoc
 eng: the United Nations must have the power to propose and organize action without being hobbled by irrelevant issues
-swe: de förenade nationerna måste ha makten att fria och organisera handling [WithoutVP] hämmas av irrelevanta frågor
-bul: съединените нации трябва да имат силата да предложат и да организират действие [WithoutVP] съм спънато от ирелевантни въпроси
+swe: de förenade nationerna måste ha en makt att föreslå handling och organisera handling [WithoutVP] hämmas av irrelevanta frågor
+bul: съединените нации трябва да имат сила да предложат действие и да организират действие [WithoutVP] съм спънато от ирелевантни въпроси
 key: 1 action_9_N 01184802-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdvCN (UseN (CompoundN union_2_N action_9_N)) (PrepNP of_3_Prep (MassNP (GerundCN (ComplSlash (SlashV2a emancipate_2_V2) (DetCN (DetQuant gen_Quant NumPl) (AdjCN (PositA southern_1_A) (UseN slaveMasc_1_N)))))))))) NoVoc
@@ -2950,7 +2950,7 @@ swe: en additiv process
 bul: добавящ процес
 key: 1 additive_2_A 00048349-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PastPartAP (SlashV2a addle_2_V2)) (UseN egg_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PastPartAP (SlashV2a addle_2_V2)) (UseN egg_2_N)))) NoVoc
 eng: addled eggs
 swe: ruttnade ägg
 bul: развалени яйца
@@ -5130,8 +5130,8 @@ key: 1 aground_A 00078057-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (SentAP (AdvAP (PositA waiting_A) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN tide_1_N)))) (EmbedVP ASimul PPos he_Pron (ComplSlash (SlashV2a lift_1_V2) (UsePron it_Pron)))) (AdjCN (AdvAP (PositA aground_A) (PrepNP on_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN beach_N)))) (UseN boat_1_N))))) NoVoc
 eng: a boat aground on the beach waiting for the tide to lift it
-swe: en båt fast på stranden i väntan för tidvattnet att lyfta det
-bul: лодка заседнала на плажа в готовноста за прилива да го вдигне
+swe: en båt fast på stranden väntande för tidvattnet att lyfta det
+bul: лодка заседнала на плажа чакаща за прилива да го вдигне
 key: 1 aground_A 00078057-a
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a run_23_V2) (DetCN (DetQuant DefArt NumSg) (UseN ship_N))) aground_Adv)))) NoVoc
@@ -5194,10 +5194,10 @@ swe: att driva framåt talangfulla studenter
 bul: насърчаване талантливи студенти
 key: 1 push_ahead_V2 00068470-r
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (AdvVP (AdvVP (ComplSlash (SlashV2a move_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN appointment_1_N))) ahead_6_Adv) (PrepNP from_Prep (MassNP (UseN (weekdayN tuesday_Weekday))))) (PrepNP to_2_Prep (MassNP (UseN (weekdayN monday_Weekday))))))) NoVoc
+abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (AdvVP (AdvVP (ComplSlash (SlashV2a move_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN appointment_2_N))) ahead_6_Adv) (PrepNP from_Prep (MassNP (UseN (weekdayN tuesday_Weekday))))) (PrepNP to_2_Prep (MassNP (UseN (weekdayN monday_Weekday))))))) NoVoc
 eng: moved the appointment ahead from Tuesday to Monday
-swe: flyttade utnämningen fram från tisdag till måndag
-bul: придвижи назначаването напред от вторник на понеделник
+swe: flyttade tiden fram från tisdag till måndag
+bul: придвижи срещата напред от вторник на понеделник
 key: 1 ahead_6_Adv 00068223-r
 
 abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (AdvVP (AdvVP (ComplSlash (SlashV2a push_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN deadline_N))) ahead_6_Adv) (PrepNP from_Prep (MassNP (UseN (weekdayN tuesday_Weekday))))) (PrepNP to_1_Prep (MassNP (UseN (weekdayN wednesday_Weekday))))))) NoVoc
@@ -5748,7 +5748,7 @@ key: 1 align_1_V2 00465234-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a align_4_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (UseN wheel_1_N) (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN car_1_N))))))) NoVoc
 eng: align the wheels of my car
-swe: samordna hjulen av min bil
+swe: justera hjulen av min bil
 bul: подравни колелата на моята кола
 key: 1 align_4_V2 00466966-v
 
@@ -14269,7 +14269,7 @@ key: 1 baby_1_N 09846929-n пеленаче кърмаче бебе spädbarn li
 abs+ PhrUtt NoPConj (UttS (SSubjS (UseCl (TTAnt TPres ASimul) PPos (ImpersCl (ComplVA sound_1_VA (PositA simple_2_A)))) but_Subj (AdvS (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ReflVPSlash (SlashV2a have_1_V2) (ReflPoss NumSg (AdjCN (PositA own_A) (UseN baby_1_N))))))) (UseCl (TTAnt TPres ASimul) PPos (ImpersCl (UseComp (CompAP (AdAP (PositAdAAdj all_A) (AdAP so_1_AdA (PositA different_1_A)))))))))) NoVoc
 eng: it sounds simple, but when you have your own baby it is all so different
 swe: det låter enkelt, men när du har din egna bebis är det helt så olikt
-bul: звуа просто, но когато ти имаш своето собствено бебе е изцяло толкова различно
+bul: звучи просто, но когато ти имаш своето собствено бебе е изцяло толкова различно
 key: 1 baby_1_N 09846929-n пеленаче кърмаче бебе spädbarn lindebarn bebis baby
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN baby_2_N) (DetCN (DetQuant DefArt NumSg) (UseN family_1_N))))) NoVoc
@@ -15978,8 +15978,8 @@ key: 1 barefoot_A 02164101-a
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (AdvVP (ComplSlash (SlashV2a chase_1_V2) (UsePron she_Pron)) barefoot_Adv) (PrepNP across_Prep (DetCN (DetQuant DefArt NumSg) (UseN meadow_N))))))) NoVoc
 eng: he chased her barefoot across the meadow
-swe: han rusade henne ut barfota över ängen
-bul: той я преследи бос през ливадата
+swe: han jagade henne barfota över ängen
+bul: той я подгони бос през ливадата
 key: 1 barefoot_Adv 00279508-r
 
 abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV fight_1_V) (TimeNP (UseDAPMasc (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PositA barehanded_A))))))) NoVoc
@@ -21894,7 +21894,7 @@ key: 1 boldness_2_N 04845441-n нахалство наглост дързост 
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN road_1_N)) (AdvVP (AdvVP (PassVPSlash (SlashV2a close_1_V2)) (PrepNP to_4_Prep (MassNP (AdjCN (PositA vehicular_A) (UseN traffic_1_N))))) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumPl) (UseN bollard_N))))))) NoVoc
 eng: the road was closed to vehicular traffic with bollards
-swe: vägen stängdes till fordon trafik med pollare
+swe: vägen stängdes till motoriserad trafik med pollare
 bul: пътят беше затворен за моторизиран трафик с колони
 key: 1 bollard_N 02867933-n
 
@@ -22044,7 +22044,7 @@ key: 1 bone_up_V 00607178-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a bone_V2) (DetCN (DetQuant DefArt NumSg) (UseN turkey_4_N))) (PrepNP before_Prep (GerundNP (ComplSlash (SlashV2a roast_1_V2) (UsePron it_Pron))))))) NoVoc
 eng: bone the turkey before roasting it
-swe: bena ur kalkonen före att rosta det
+swe: bena ur kalkonen före att steka det
 bul: обезкостявай пуйката преди да го пека
 key: 1 bone_V2 00197798-v
 
@@ -22968,7 +22968,7 @@ key: 1 brace_1_N 02890450-n
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ReflVPSlash (SlashV2a brace_2_V2) (ReflPoss NumPl (UseN elbow_1_N))) (SubjS while_Subj (UseCl (TTAnt TPres ASimul) PPos (FocusComp (CompAP (PresPartAP (AdvVP (UseV work_1_V) (PrepNP on_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN potterMasc_N)))))) (MassNP (UseN wheel_1_N)))))))) NoVoc
 eng: brace your elbows while working on the potter's wheel
-swe: staga dina armbågar medan arbetande på krukmakaret är hjul
+swe: staga dina armbågar medan arbetande på krukmakaren är hjul
 bul: укрепи своите лакти докато работещо на грънчаря е колело
 key: 1 brace_2_V2 01222557-v
 
@@ -24510,7 +24510,7 @@ key: 1 bring_down_5_V2 01834249-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN accusedMasc_N)) (AdvVP (AdvVP (ComplSlash (SlashV2a bring_forth_2_V2) (DetCN (DetQuant IndefArt NumSg) (UseN letter_1_N))) (PrepNP in_1_Prep (DetCN (DetQuant gen_Quant NumSg) (UseN court_1_N)))) (SubjS that_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (AdvNP (UsePron he_Pron) (TimeNP (DetCN (DetQuant IndefArt NumPl) (UseN claim_2_N)))) (ComplSlash (SlashV2a exonerate_V2) (UsePron he_Pron))))))))) NoVoc
 eng: The accused brought forth a letter in court that he claims exonerates him
-swe: tilltaladen visade upp ett brev i domstolen att han fordringar frikännar honom
+swe: tilltaladen visade upp ett brev i domstolen att han påståenden frikännar honom
 bul: обвиняемият показа писмо в съда че той твърдения го оправдава
 key: 1 bring_forth_2_V2 02145619-v
 
@@ -25788,7 +25788,7 @@ key: 1 bull_2_N 09898168-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredSCVP (EmbedSSlash (UseSlash (TTAnt TPastSimple ASimul) PPos (SlashVP (UsePron he_Pron) (SlashV2a say_8_V2)))) (AdVVP mostly_1_AdV (UseComp (CompNP (MassNP (UseN bull_3_N)))))))) NoVoc
 eng: what he said was mostly bull
-swe: det han sade var mestadels tjur
+swe: det han sade var mestadels struntprat
 bul: [EmbedSSlash] той каза предимно беше глупости
 key: 1 bull_3_N 06623729-n
 
@@ -28560,7 +28560,7 @@ key: 1 careful_1_A 00309819-a
 
 abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlashPartLast (SlashV2a do_6_V2) (MassNP (AdjCN (AdAP very_AdA (PositA careful_2_A)) (UseN research_2_N)))))) NoVoc
 eng: did very careful research
-swe: gjorde väldigt noggran forskning
+swe: gjorde väldigt noggrann forskning
 bul: упражни много внимателно проучване
 key: 1 careful_2_A 00309819-a предпазлив внимателен
 
@@ -29100,7 +29100,7 @@ key: 1 carry_24_V2 02562363-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a carry_25_V2) (DetCN (DetQuant IndefArt NumSg) (UseN cause_3_N))))) NoVoc
 eng: carry a cause
-swe: för vidare en orsak
+swe: för vidare en kampanj
 bul: доведи кауза
 key: 1 carry_25_V2 02561392-v
 
@@ -30222,7 +30222,7 @@ key: 1 cause_2_N 06753097-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (AdvVP (UseV work_1_V) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN cause_3_N)))) (PrepNP of_3_Prep (MassNP (UseN (CompoundN world_2_N peace_1_N)))))))) NoVoc
 eng: they worked in the cause of world peace
-swe: de arbetade i orsaken för världfred
+swe: de arbetade i kampanjen för världfred
 bul: те работиха в каузата за световен мир
 key: 1 cause_3_N 00799906-n кампания акция operation kampanj drive
 
@@ -30324,7 +30324,7 @@ key: 1 caveat_1_N 07239827-n
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (AdvAP (PastPartAP (SlashV2a file_1_V2)) (PrepNP against_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN probate_2_N) (DetCN (DetQuant IndefArt NumSg) (UseN will_3_N)))))) (UseN caveat_2_N)))) NoVoc
 eng: a caveat filed against the probate of a will
-swe: ett invidelse in lämnat mot testamentsbevakningen av ett testamente
+swe: en invändning in lämnad mot testamentsbevakningen av ett testamente
 bul: възражение подадено срещу узаконяване на завещанието на завещание
 key: 1 caveat_2_N 06760621-n
 
@@ -30390,7 +30390,7 @@ key: 1 celebrate_2_V2 02496526-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN film_1_N directorFem_4_N))) (AdvVP (AdvVP (PassVPSlash (SlashV2a celebrate_3_V2)) (PositAdvAdj all_A)) (PrepNP over_1_Prep (UsePN hollywood_1_PN)))))) NoVoc
 eng: The film director was celebrated all over Hollywood
-swe: filmregissören firades helt över Hollywood
+swe: filmregissören hyllades helt över Hollywood
 bul: филмовата режисьорка беше възхвалена изцяло над Холивуд
 key: 1 celebrate_3_V2 02404098-v fira celebrera
 
@@ -31020,7 +31020,7 @@ key: 1 chamber_4_N 08335834-n
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA spiral_A) (AdjCN (PositA chambered_A) (UseN seashell_N))))) NoVoc
 eng: a spiral chambered seashell
-swe: ett spiralt kamrat snäckskal
+swe: ett spiralt kammarförsett snäckskal
 bul: спирална камерна раковина
 key: 1 chambered_A 02490124-a
 
@@ -31194,7 +31194,7 @@ key: 1 change_3_V 00122978-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN car_1_N)) (ComplSlash (SlashV2a change_4_V2) (DetCN (DetQuant gen_Quant NumPl) (UseN lane_2_N)))))) NoVoc
 eng: The car changed lanes
-swe: bilen bytte simbanorna
+swe: bilen bytte körfälten
 bul: колата смени лентите
 key: 1 change_4_V2 00551194-v сменям сменя заменям заменя
 
@@ -31564,9 +31564,9 @@ swe: han arresterades på en grund av stöld
 bul: той беше арестуван по обвинение в кражба
 key: 1 charge_of_N2 06573933-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN admission_3_N charge_3_N)))) NoVoc
+abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN entrance_1_N charge_3_N)))) NoVoc
 eng: the admission charge
-swe: inträdesavgiftdebiteringen
+swe: ingångavgiften
 bul: входната такса
 key: 1 charge_3_N 13327892-n debitering
 
@@ -31854,15 +31854,15 @@ key: 1 chary_A 00326517-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN policeman_N)) (AdvVP (AdvVP (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN muggerMasc_N))) down_2_Adv) (TimeNP (DetCN (DetQuant DefArt NumSg) (UseN alley_1_N))))))) NoVoc
 eng: The policeman chased the mugger down the alley
-swe: polismannen rusade ut rånaren ner gränden
-bul: полицаят преследи обирджията на юг пасажа
+swe: polismannen jagade rånaren ner gränden
+bul: полицаят подгони обирджията на юг пасажа
 key: 1 chase_1_V2 02005890-v преследвам гоня
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dog_1_N)) (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN rabbit_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dog_1_N)) (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN rabbit_1_N)))))) NoVoc
 eng: the dog chased the rabbit
-swe: hunden rusade ut kaninen
-bul: кучето преследи заека
-key: 1 chase_1_V2 02005890-v преследвам гоня
+swe: hunden jagade kaninen
+bul: кучето подгони заека
+key: 1 chase_1_V2 02005890-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a chase_3_V2) (MassNP (UseN silver_5_N))))) NoVoc
 eng: chase silver
@@ -32056,9 +32056,9 @@ swe: hämma tillväxten av kommunismen i syd österut Asien
 bul: спри растежа на комунизма в юг на изток Азия
 key: 1 check_18_V2 01133899-v stoppa hindra hejda
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a check_19_V2) (DetCN (DetQuant (PossPron i_Pron) NumPl) (UseN king_8_N)))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a check_19_V2) (DetCN (DetQuant (PossPron i_Pron) NumPl) (UseN king_10_N)))))) NoVoc
 eng: He checked my kings
-swe: han schackade mina damar
+swe: han schackade mina kungar
 bul: той даваше шах моите царе
 key: 1 check_19_V2 01117182-v
 
@@ -33438,13 +33438,13 @@ key: 1 claim_1_N 06742613-n
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant (PossPron he_Pron) NumSg) (SentCN (UseN claim_2_N) (EmbedS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (UseComp (CompAP (PositA innocent_1_A))))))))) NoVoc
 eng: his claim that he was innocent
-swe: hans fordring att han var oskyldig
+swe: hans påstående att han var oskyldig
 bul: неговото твърдение че той беше невинен
 key: 1 claim_2_N 06743312-n твърдение fordring fordringar
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (MassNP (UseN evidence_3_N)) (ComplSlash (SlashV2a contradict_1_V2) (GenModNP NumPl (DetCN (DetQuant DefArt NumSg) (UseN government_1_N)) (UseN claim_2_N)))))) NoVoc
 eng: evidence contradicted the government's claims
-swe: bevis motsägade regeringens fordringar
+swe: bevis motsägade regeringens påståenden
 bul: доказателство противореча твърденията на правителството
 key: 1 claim_2_N 06743312-n твърдение fordring fordringar
 
@@ -33798,7 +33798,7 @@ key: 1 classic_3_A 02352097-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA classic_4_A) (AdjCN (PositA double_breasted_A) (UseN suit_1_N))))) NoVoc
 eng: classic double-breasted suit
-swe: klassisk dubbelknäpp kostym
+swe: klassisk dubbelknäppt kostym
 bul: класически двуреден костюм
 key: 1 classic_4_A 00613690-a
 
@@ -34144,15 +34144,15 @@ swe: efter en lång tillvandning på heroin har hon varit ren för 4 år
 bul: след дълга зависимост на хероин тя е била чиста за 4 години
 key: 1 clean_18_A 00047873-a
 
-abs+ PhrUttMark NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a clean_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN stove_1_N))))) NoVoc ExclMark
+abs: PhrUttMark NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a clean_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN stove_1_N))))) NoVoc ExclMark
 eng: Clean the stove!
-swe: Rengöra spisen!
+swe: Rengör spisen!
 bul: Почисти печката!
 key: 1 clean_1_V2 01535377-v städa rengöra göra ren feja diska
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dentistMasc_N)) (ComplSlash (SlashV2a clean_1_V2) (DetCN (DetQuant (PossPron i_Pron) NumPl) (UseN tooth_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dentistMasc_N)) (ComplSlash (SlashV2a clean_1_V2) (DetCN (DetQuant (PossPron i_Pron) NumPl) (UseN tooth_1_N)))))) NoVoc
 eng: The dentist cleaned my teeth
-swe: tandläkaren rengörade mina tänder
+swe: tandläkaren rengjorde mina tänder
 bul: зъболекарят почисти моите зъби
 key: 1 clean_1_V2 01535377-v städa rengöra göra ren feja diska
 
@@ -35922,8 +35922,8 @@ key: 1 coarsen_2_V2 00136251-v
 
 abs+ PhrUtt NoPConj (UttS (AdvS (SubjS when_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (ImpersCl (UseV snow_1_V)))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a make_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN coast_2_N))) (PrepNP on_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN golf_course_N)))))))) NoVoc
 eng: when it snowed they made a coast on the golf course
-swe: när det snöade gjorde de en kust på golfbanan
-bul: когато вали сняг те направиха крайбрежие на голф игрищеа
+swe: när det snöade gjorde de en kälkbacke på golfbanan
+bul: когато вали сняг те направиха склон за спускане с шейни на голф игрищеа
 key: 1 coast_2_N 09271059-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN coast_3_N)) (UseComp (CompAP (PositA clear_5_A)))))) NoVoc
@@ -37752,7 +37752,7 @@ key: 1 command_3_N 05205065-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumPl) (UseN material_4_N)) (PrepNP at_1_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN command_4_N) (DetCN (DetQuant DefArt NumPl) (UseN potterFem_N)))))) (UseV grow_3_V)))) NoVoc
 eng: the materials at the command of the potters grew
-swe: materialen vid förfogandet av krukmakarena växte
+swe: materialen vid förfogandet av krukmakarna växte
 bul: материалите на разположението на грънчарките нараснаха
 key: 1 command_4_N 04726652-n
 
@@ -38004,7 +38004,7 @@ key: 1 commitment_1_N 04654347-n
 
 abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant (PossPron he_Pron) NumSg) (AdjCN (PositA long_1_A) (UseN commitment_2_N))) (PrepNP to_3_Prep (MassNP (AdjCN (PositA public_2_A) (UseN service_4_N)))))) NoVoc
 eng: his long commitment to public service
-swe: hans långa åtagande till allmän myndighet
+swe: hans långa engagemang till allmän myndighet
 bul: неговата дълга отдаденост към обществена служба
 key: 1 commitment_2_N 01208643-n преданост лоялност вярност rättslig påföljd påföljd
 
@@ -38190,7 +38190,7 @@ key: 1 country_1_N 08185877-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN commotion_3_N) (DetCN (DetQuant IndefArt NumPl) (UseN people_1_N)))) (AdvVP (UseV fight_3_V) (PrepNP for_Prep (DetCN (DetQuant DefArt NumPl) (UseN exit_1_N))))))) NoVoc
 eng: a commotion of people fought for the exits
-swe: ett uppståndelse av människor kämpte för utgångarna
+swe: ett uppståndelse av människor kämpade för utgångarna
 bul: аларма на хора се бори за изходите
 key: 1 commotion_3_N 07456668-n
 
@@ -39032,7 +39032,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePro
 eng: She composed a poem
 swe: hon författade en dikt
 bul: тя композира поема
-key: 1 compose_3_V2 01702148-v skriva
+key: 1 compose_3_V2 01702148-v
 
 abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ComplVV have_5_VV ASimul PPos (SelfAdvVP (UseV compose_5_V))) (SubjS before_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplVV can_2_VV ASimul PPos (AdvVP (UseV reply_V) (PrepNP to_1_Prep (DetCN (DetQuant this_Quant NumSg) (AdjCN (PositA terrible_1_A) (UseN insult_1_N))))))))))))) NoVoc
 eng: She had to compose herself before she could reply to this terrible insult
@@ -42330,7 +42330,7 @@ key: 1 contradiction_2_N 07221547-n противоречие motsägelse motsäg
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseV speak_1_V) (SubjS as_2_Subj (AdvS (SubjS if_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (UseV think_10_V)))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN claim_2_N)) (UseComp (CompAP (ComplA2 immune_to_A2 (MassNP (UseN contradiction_3_N))))))))))))) NoVoc
 eng: he spoke as if he thought his claims were immune to contradiction
-swe: han talade som om han tyckte var hans fordringar immuna mot motsägelse
+swe: han talade som om han tyckte var hans påståenden immuna mot motsägelse
 bul: той говори както ако той мисли неговите твърдения бяха неподатливи към оспорване
 key: 1 contradiction_3_N 07221256-n
 
@@ -43488,7 +43488,7 @@ key: 1 cordless_A 02714647-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n5)))))))))) (UseN periodical_N)) (ComplSlash (SlashV2a make_up_1_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN core_1_N) (DetCN (DetQuant (PossPron they_Pron) NumSg) (AdjCN (PositA publishing_A) (UseN programme_6_N))))))))) NoVoc
 eng: five periodicals make up the core of their publishing program
-swe: fem tidskrifter utgör kärnan av deras förlags-a program
+swe: fem tidskrifter utgör kärnan av deras publicistiska program
 bul: пет списания съставляват ядрото на тяхната издателска програма
 key: 1 core_1_N 08259144-n
 
@@ -44124,7 +44124,7 @@ key: 1 costume_1_N 03118308-n
 
 abs+ PhrUtt NoPConj (UttS (AdvS (PrepNP in_spite_of_Prep (DetCN (DetQuant DefArt NumSg) (UseN heat_2_N))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvRVP (UseV insist_1_V) on_2_Prep (ReflPoss NumSg (AdjCN (PositA woolen_A) (UseN costume_2_N)))))))) NoVoc
 eng: in spite of the heat he insisted on his woolen costume
-swe: trots värmen insisterade han på sin ylle-a dräkt
+swe: trots värmen insisterade han på sin ylleklädda dräkt
 bul: въпреки горещината той настоя по своя вълнен костюм
 key: 1 costume_2_N 03118692-n
 
@@ -45228,7 +45228,7 @@ key: 1 crash_3_V 01564601-v bump-18.4/11@{Theme:10,Verb:18,Prep:20,Location:21}
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN car_1_N)) (AdvVP (UseV crash_3_V) (PrepNP into_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN lamp_1_N post_4_N)))))))) NoVoc
 eng: The car crashed into the lamp post
-swe: bilen kraschade in i lampastolpet
+swe: bilen kraschade in i lampastolpen
 bul: колата се разби в стълба за лампа
 key: 1 crash_3_V 01564601-v
 
@@ -45712,9 +45712,9 @@ swe: Kreolisk matlagning
 bul: Креолско готвене
 key: 1 creole_2_A 03068658-a
 
-abs+ PhrUtt NoPConj (UttNP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN evening_1_N)) (AdjCN (PositA crepuscular_A) (UseN charm_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN evening_1_N)) (AdjCN (PositA crepuscular_A) (UseN charm_1_N)))) NoVoc
 eng: the evening's crepuscular charm
-swe: kvällens skymnings-a charm
+swe: kvällens skymningslika charm
 bul: сумрачният чар на вечерта
 key: 1 crepuscular_A 00275417-a
 
@@ -46110,7 +46110,7 @@ key: 1 pop_up_V 02161949-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA cross_2_A) (UseN member_2_N))) (ComplVV should_VV ASimul PPos (UseComp (CompNP (PredetNP all_1_Predet (MassNP (UseN steel_1_N))))))))) NoVoc
 eng: cross members should be all steel
-swe: tvär-a medlemmar bör vara all stål
+swe: tvärgående medlemmar bör vara all stål
 bul: напречни членове трябва да бъдат всичката стомана
 key: 1 cross_2_A 01448808-a
 
@@ -49788,7 +49788,7 @@ key: 1 debug_V2 00200606-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN physicistMasc_N)) (ComplSlash (SlashV2a debunk_V2) (GenModNP NumPl (DetCN (DetQuant DefArt NumSg) (UseN psychicMasc_N)) (UseN claim_2_N)))))) NoVoc
 eng: The physicist debunked the psychic's claims
-swe: fysikern avslöjade mediumens fordringar
+swe: fysikern avslöjade mediumens påståenden
 bul: физикът развенча твърденията на екстрасенса
 key: 1 debunk_V2 00854877-v разобличавам разоблича разкривам
 
@@ -54252,7 +54252,7 @@ key: 1 diametral_A 02722582-a
 
 abs+ PhrUtt NoPConj (UttAdv (PrepNP in_1_Prep (AdvNP (MassNP (AdjCN (PositA diametric_2_A) (UseN contradiction_1_N))) (PrepNP to_2_Prep (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN claim_2_N)))))) NoVoc
 eng: in diametric contradiction to his claims
-swe: i diametral motsägelse till hans fordringar
+swe: i diametral motsägelse till hans påståenden
 bul: в диаметрално противоречие на неговите твърдения
 key: 1 diametric_2_A 02073716-a
 
@@ -55056,13 +55056,13 @@ key: 1 dimensionality_N 05070162-n
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA ultrasonic_1_A) (AdjCN (PositA dimensioning_A) (UseN measurement_N))))) NoVoc
 eng: the ultrasonic dimensioning measurement
-swe: den ultraljuds-a dimensioneringa mätningen
+swe: den ultraljudsbaserade dimensionerande mätningen
 bul: свръхзвуковото оразмеряващо измерване
 key: 1 dimensioning_A 01689582-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA ultrasonic_1_A) (PossNP (AdjCN (PositA dimensioning_A) (UseN arrangement_3_N)) (DetCN (DetQuant DefArt NumSg) (UseN heart_2_N)))))) NoVoc
 eng: an ultrasonic dimensioning arrangement of the heart
-swe: en ultraljuds- dimensionering ordning av hjärtat
+swe: en ultraljudsbaserad dimensionerande ordning av hjärtat
 bul: свръхзвуково оразмеряващо подреждане на сърцето
 key: 1 dimensioning_A 01689582-a
 
@@ -56964,7 +56964,7 @@ key: 1 disposable_1_A 00780977-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA disposable_2_A) (UseN (CompoundN paper_1_N cup_1_N))))) NoVoc
 eng: disposable paper cups
-swe: engångs-a papperkoppar
+swe: engångs papperkoppar
 bul: за еднократна употреба хартиени чаши
 key: 1 disposable_2_A 00780129-a
 
@@ -57676,9 +57676,9 @@ swe: i komplementär spridning
 bul: в допълнително разпределение
 key: 1 distribution_2_N 05094504-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA distributional_A) (UseN requirement_3_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA distributional_A) (UseN requirement_3_N)))) NoVoc
 eng: distributional requirements
-swe: distributions-a krav
+swe: fördelningsmässiga krav
 bul: разпределителни изисквания
 key: 1 distributional_A 02725314-a
 
@@ -57772,21 +57772,21 @@ swe: han var i en upphetsning
 bul: той беше в колебание
 key: 1 dither_N 14427176-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA diurnal_1_A) (UseN animal_N))) (AdvVP (UseComp (CompAP (PositA active_5_A))) (PrepNP during_Prep (DetCN (DetQuant DefArt NumSg) (UseN day_4_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA diurnal_1_A) (UseN animal_N))) (AdvVP (UseComp (CompAP (PositA active_5_A))) (PrepNP during_Prep (DetCN (DetQuant DefArt NumSg) (UseN day_4_N))))))) NoVoc
 eng: diurnal animals are active during the day
-swe: dags-a djur är aktiva under dagen
+swe: dagaktiva djur är aktiva under dagen
 bul: дневни животни са активни по време на деня
 key: 1 diurnal_1_A 00681933-a
 
 abs+ PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA diurnal_1_A) (UseN flower_1_N))) (ConjVPS and_Conj (BaseVPS (MkVPS (TTAnt TPres ASimul) PPos (AdvVP (UseComp (CompAP (PositA open_1_A))) (PrepNP during_Prep (DetCN (DetQuant DefArt NumSg) (UseN day_4_N))))) (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV close_2_V) (PrepNP at_1_Prep (MassNP (UseN night_1_N))))))))) NoVoc
 eng: diurnal flowers are open during the day and closed at night
-swe: dags-a blommor är öppna under dagen och stängde vid natt
+swe: dagaktiva blommor är öppna under dagen och stängde vid natt
 bul: дневни цветя са отворени по време на деня и се затвориха на нощ
 key: 1 diurnal_1_A 00681933-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (ConjAP and_Conj (BaseAP (PositA diurnal_1_A) (PositA nocturnal_2_A))) (UseN office_6_N)))) NoVoc
 eng: diurnal and nocturnal offices
-swe: dags-a och nattliga tidebönar
+swe: dagaktiva och nattliga tidebönar
 bul: дневни и нощни служби
 key: 1 diurnal_1_A 00681933-a
 
@@ -58006,7 +58006,7 @@ swe: den gudomliga förmågan för kärlek
 bul: божествената способност за любов
 key: 1 divine_3_A 01183311-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA divine_4_A) (UseN worship_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA divine_4_A) (UseN worship_1_N)))) NoVoc
 eng: divine worship
 swe: gudomlig tillbedjan
 bul: божествено почитание
@@ -58332,7 +58332,7 @@ key: 1 document_1_V2 01004342-v
 
 abs: PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (UsePron youSgFem_Pron) (ComplVV can_2_VV ASimul PPos (ReflVPSlash (SlashV2a document_2_V2) (ReflPoss NumPl (UseN claim_2_N)))))))) NoVoc QuestMark
 eng: Can you document your claims?
-swe: Kan du dokumentera dina fordringar?
+swe: Kan du dokumentera dina påståenden?
 bul: Ти можеш ли да документираш своите твърдения?
 key: 1 document_2_V2 00668428-v
 
@@ -58543,7 +58543,7 @@ key: 1 domestic_3_A 01042490-a
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UseDAP (DetDAP every_Det)) (ComplVA sound_1_VA (AdAP very_AdA (ConjAP and_Conj (BaseAP (PositA peaceful_1_A) (PositA domestic_3_A)))))))) NoVoc
 eng: everything sounded very peaceful and domestic
 swe: vart och ett lät väldigt fridfullt och husligt
-bul: всяко звуа много мирно и домашно
+bul: всяко звуча много мирно и домашно
 key: 1 domestic_3_A 01042490-a
 
 abs* ?
@@ -59046,13 +59046,13 @@ key: 1 double_bedded_A 00209298-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA double_breasted_A) (UseN jacket_1a_N)))) NoVoc
 eng: double-breasted jacket
-swe: dubbelknäpp kavaj
+swe: dubbelknäppt kavaj
 bul: двуредно сако
 key: 1 double_breasted_A 00797981-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA double_breasted_A) (UseN suit_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA double_breasted_A) (UseN suit_1_N)))) NoVoc
 eng: double-breasted suit
-swe: dubbelknäpp kostym
+swe: dubbelknäppt kostym
 bul: двуреден костюм
 key: 1 double_breasted_A 00797981-a
 
@@ -60322,7 +60322,7 @@ swe: hon pretenderar för att aldrig drömma
 bul: тя претендира за никога да сънува
 key: 1 dream_2_V 02122725-v drömma
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a think_up_V2) (DetCN (DetQuant IndefArt NumSg) (UseN plan_1_N))) (InOrderToVP ASimul PPos he_Pron (AdvVP (ComplVA get_2_VA (PositA rich_1_A)) (PositAdvAdj quick_1_A))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a think_up_V2) (DetCN (DetQuant IndefArt NumSg) (UseN plan_1_N))) (InOrderToVP ASimul PPos he_Pron (AdvVP (ComplVA get_2_VA (PositA rich_1_A)) (PositAdvAdj quick_1_A))))))) NoVoc
 eng: He thought up a plan to get rich quickly
 swe: han hittade på en plan för att bli rik snabbt
 bul: той измисли план за да стане богат бързо
@@ -60694,7 +60694,7 @@ swe: patienten måste dricka flera litrar varje dygn
 bul: пациентът трябва да пие няколко литри всеки ден
 key: 1 drink_1_V2 01172332-v пия dricka
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN child_1_N)) (ComplVV like_1_VV ASimul PPos (ComplSlash (SlashV2a drink_1_V2) (MassNP (UseN soda_2_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN child_1_N)) (ComplVV like_1_VV ASimul PPos (ComplSlash (SlashV2a drink_1_V2) (MassNP (UseN soda_2_N))))))) NoVoc
 eng: The children like to drink soda
 swe: barnen tycker om att dricka soda
 bul: на децата им харесва да пият сода
@@ -61576,7 +61576,7 @@ swe: en tomt bro över vilken man och bestar kunde ha korsade över en torrskodd
 bul: земя мост над която човек и зверове можаха да имат пресече със сухи крака
 key: 1 dry_shod_A 02564330-a
 
-abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA dual_1_A) (UseN control_9_N))) (PrepNP for_Prep (MassNP (ConjCN and_Conj (BaseCN (UseN pilotMasc_1_N) (UseN copilotMasc_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA dual_1_A) (UseN control_9_N))) (PrepNP for_Prep (MassNP (ConjCN and_Conj (BaseCN (UseN pilotMasc_1_N) (UseN copilotMasc_1_N))))))) NoVoc
 eng: dual controls for pilot and copilot
 swe: dubbla kontroller för pilot och andrepilot
 bul: дуални контроли за пилот и втори пилот
@@ -61614,7 +61614,7 @@ key: 1 dubious_3_A 00339567-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN dubiousness_2_N) (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN claim_2_N))))) NoVoc
 eng: the dubiousness of his claim
-swe: tvivelaktigheten av hans fordring
+swe: tvivelaktigheten av hans påstående
 bul: съмнението на неговото твърдение
 key: 1 dubiousness_2_N 04764777-n съмнение несигурност
 
@@ -61720,7 +61720,7 @@ swe: avbokningen av konserten var hänförlig till regnet
 bul: анулирането на концерта беше дължащо се на дъжда
 key: 1 due_4_A 00173133-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (AdvVP (UseV go_8_V) due_Adv) north_Adv))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (AdvVP (UseV go_8_V) due_Adv) north_Adv))) NoVoc
 eng: went due North
 swe: gick rakt norrut
 bul: мина точно на север
@@ -61756,27 +61756,27 @@ swe: de ljuva tonerna av cellon
 bul: благозвучните тонове на челото
 key: 1 dulcet_2_A 01505500-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseComp (CompAP (AdAP so_1_AdA (PositA dull_1_A)))) (PrepNP at_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN party_4_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseComp (CompAP (AdAP so_1_AdA (PositA dull_1_A)))) (PrepNP at_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN party_4_N))))))) NoVoc
 eng: he was so dull at parties
-swe: han var så slö vid fester
+swe: han var så tråkig vid fester
 bul: той беше толкова скучен на партита
 key: 1 dull_1_A 00810082-a скучен отегчителен
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA dull_1_A) (AdjCN (PositA political_1_A) (UseN campaign_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA dull_1_A) (AdjCN (PositA political_1_A) (UseN campaign_1_N))))) NoVoc
 eng: a dull political campaign
-swe: en slö politisk kampanj
+swe: en tråkig politisk kampanj
 bul: скучна политическа кампания
 key: 1 dull_1_A 00810082-a скучен отегчителен
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA large_1_A) (AdjCN (PositA dull_1_A) (AdjCN (PositA impassive_1_A) (UseN man_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA large_1_A) (AdjCN (PositA dull_1_A) (AdjCN (PositA impassive_1_A) (UseN man_1_N)))))) NoVoc
 eng: a large dull impassive man
-swe: en stor slö uttryckslös man
+swe: en stor tråkig uttryckslös man
 bul: голям скучен безстрастен мъж
 key: 1 dull_1_A 00810082-a скучен отегчителен
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (SentCN (AdvCN (AdjCN (PositA dull_1_A) (UseN day_5_N)) (PrepNP with_Prep (UseDAP (DetDAP (DetQuant no_Quant NumSg))))) (EmbedVP ASimul PPos he_Pron (UseV do_7_V))))) NoVoc
 eng: dull days with nothing to do
-swe: slöa dagar med inget att duga
+swe: tråkiga dagar med inget att duga
 bul: скучни дни без нищо да стигне
 key: 1 dull_1_A 00810082-a скучен отегчителен
 
@@ -61788,7 +61788,7 @@ key: 1 dull_1_A 00810082-a скучен отегчителен
 
 abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV fall_back_3_V) (PrepNP into_1_Prep (CountNP (DetQuant IndefArt NumSg) (DetCN (DetQuant (PossPron she_Pron) NumPl) (AdjCN (PositA dull_1_A) (UseN mood_1_N)))))))) NoVoc
 eng: fell back into one of her dull moods
-swe: föll tillbaka in i en av hennes slöa sinnesstämningar
+swe: föll tillbaka in i en av hennes tråkiga sinnesstämningar
 bul: падна в едно от нейните скучни настроения
 key: 1 dull_1_A 00810082-a скучен отегчителен
 
@@ -61944,7 +61944,7 @@ key: 1 duly_AdV 00140318-r
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA dumb_1_A) (UseN officialMasc_1_N))) (ComplSlash (SlashV2a make_1_V2) (DetCN (DetQuant some_Quant NumPl) (AdjCN (AdAP really_AdA (PositA dumb_1_A)) (UseN decision_2_N))))))) NoVoc
 eng: dumb officials make some really dumb decisions
-swe: duma tjänstemän gör några riktigt duma beslut
+swe: dumma tjänstemän gör några riktigt dumma beslut
 bul: тъпи представители правят някои наистина тъпи решения
 key: 1 dumb_1_A 00442596-a
 
@@ -62074,7 +62074,7 @@ swe: invandraren lurades till eftersom han litade på var och en
 bul: имигрантът беше измамен защото той повярва на всеки
 key: 1 dupe_V2 00856586-v
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA duplex_1_A) (UseN transaction_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA duplex_1_A) (UseN transaction_N)))) NoVoc
 eng: a duplex transaction
 swe: en duplex transaktion
 bul: дуплексна транзакция
@@ -62086,7 +62086,7 @@ swe: duplext system
 bul: дуплексна система
 key: 1 duplex_2_A 00235348-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA duplex_2_A) (UseN telephony_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA duplex_2_A) (UseN telephony_N)))) NoVoc
 eng: duplex telephony
 swe: duplex telefoni
 bul: дуплексна телефония
@@ -62422,9 +62422,9 @@ swe: du kan inte skicka paket genom e-post
 bul: ти не можеш да изпратиш пакети чрез е-мейл
 key: 1 e_mail_N 06289979-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a receive_1_V2) (QuantityNP (PosDecimal (IIDig D_1 (IDig D_0))) dollar_MU)) each_Adv)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a receive_1_V2) (QuantityNP (PosDecimal (IIDig D_1 (IDig D_0))) dollar_MU)) each_Adv)))) NoVoc
 eng: they received $10 each
-swe: de mottog $10 varje
+swe: de mottog $10 vardera
 bul: те получиха $10 всеки
 key: 1 each_Adv 00241635-r
 
@@ -62568,7 +62568,7 @@ key: 1 early_1_A 00816521-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA early_1_A) (ComplN2 variety_of_N2 (DetCN (DetQuant IndefArt NumPl) (ConjCN and_Conj (BaseCN (UseN pea_2_N) (UseN tomato_1_N))))))) (AdvVP (UseV mature_1_V) (PrepNP before_Prep (DetCN most_Det (AdjCN (PositA standard_5_A) (UseN variety_3_N)))))))) NoVoc
 eng: early varieties of peas and tomatoes mature before most standard varieties
-swe: tidiga sorter av ärter och tomater mognar före de flesta standarda varietetar
+swe: tidiga sorter av ärter och tomater mognar före de flesta standard varietetar
 bul: ранни разновидности грахи и домати съзряват преди повечето стандартни разновидности
 key: 1 early_1_A 00816521-a ранен
 
@@ -63460,7 +63460,7 @@ swe: glupska gamar
 bul: ненаситени лешоядки
 key: 1 edacious_A 00010745-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN ant_eater_2_N)) (UseComp (CompNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA edental_1_A) (UseN animal_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN ant_eater_2_N)) (UseComp (CompNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA edental_1_A) (UseN animal_N)))))))) NoVoc
 eng: anteaters are edentate animals
 swe: myrslokar är tandlösa djur
 bul: мравояди са беззъби животни
@@ -64050,7 +64050,7 @@ key: 1 emergence_2_N 07334509-n
 
 abs+ PhrUtt NoPConj (UttS (SSubjS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron he_Pron) (UseComp (CompAP (PositA stupid_1_A))))) but_Subj (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron he_Pron) (AdvVP (AdvVP (UseComp (CompAdv (PositAdvAdj exact_1_A))) (TimeNP (DetCN (DetQuant IndefArt NumSg) (UseN geniusFem_1_N)))) either_Adv))))) NoVoc
 eng: he isn't stupid, but he isn't exactly a genius either
-swe: han är inte dum, men han inte är exaktt ett geni heller
+swe: han är inte dum, men han inte är exakt ett geni heller
 bul: той не е глупав, но той не е точно гений също
 key: 1 either_Adv 00025252-r
 
@@ -64198,13 +64198,13 @@ swe: de gamla invånarna kunde minnas konstruktionen av den första skyskrapan
 bul: възрастните жители можаха да запомнят строека на първия небостъргач
 key: 1 elderly_A 01648667-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA eldritch_A) (UseN screech_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA eldritch_A) (UseN screech_2_N)))) NoVoc
 eng: an eldritch screech
-swe: en övernaturlig skri
+swe: ett övernaturligt skri
 bul: свръхестествен писък
 key: 1 eldritch_A 01579817-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA elect_A) (PossNP (UseN circle_2_N) (DetCN (DetQuant IndefArt NumPl) (UseN artist_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA elect_A) (PossNP (UseN circle_2_N) (DetCN (DetQuant IndefArt NumPl) (UseN artist_N)))))) NoVoc
 eng: an elect circle of artists
 swe: en utvald cirkel av konstnärer
 bul: избран кръг на хора на изкуството
@@ -64294,7 +64294,7 @@ swe: gav en elektrisk läsning av pjäsen
 bul: изнесе вълнуващо четене на пиесата
 key: 1 electric_3_A 00924872-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA electrical_1_A) (UseN engineerMasc_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA electrical_1_A) (UseN engineerMasc_1_N)))) NoVoc
 eng: an electrical engineer
 swe: en elektrisk ingenjör
 bul: електрически инженер
@@ -64312,7 +64312,7 @@ swe: elektriska apparatar
 bul: електрически уредове
 key: 1 electrical_2_A 02837762-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA electrical_2_A) (UseN storm_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA electrical_2_A) (UseN storm_1_N)))) NoVoc
 eng: an electrical storm
 swe: en elektrisk storm
 bul: електрическа буря
@@ -65086,7 +65086,7 @@ swe: en framväxande republik
 bul: възникваща република
 key: 1 emergent_2_A 00003552-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt (NumCard (UseACard many_ACard))) (UseN people_1_N)) (ComplVV must_2_VV ASimul PPos (AdvVP (UseV emigrate_V) (PrepNP during_Prep (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN naziFem_1_N period_1_N))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt (NumCard (UseACard many_ACard))) (UseN people_1_N)) (ComplVV must_2_VV ASimul PPos (AdvVP (UseV emigrate_V) (PrepNP during_Prep (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN naziFem_1_N period_1_N))))))))) NoVoc
 eng: Many people had to emigrate during the Nazi period
 swe: många människor fick emigrera under nazistperioden
 bul: много хора трябваше да емигрират по време на нацисткия период
@@ -65110,7 +65110,7 @@ swe: en framskjutande topp
 bul: стърчащ връх
 key: 1 eminent_2_A 01208145-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN ozone_N layer_2_N))) (ComplSlash (SlashV2a block_9_V2) (DetCN (DetQuant some_Quant NumPl) (AdjCN (PositA harmful_A) (RelCN (UseN ray_4_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVP (DetCN (DetQuant DefArt NumSg) (UseN sun_2_N)) (SlashV2a emit_2_V2))))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN ozone_N layer_2_N))) (ComplSlash (SlashV2a block_9_V2) (DetCN (DetQuant some_Quant NumPl) (AdjCN (PositA harmful_A) (RelCN (UseN ray_4_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVP (DetCN (DetQuant DefArt NumSg) (UseN sun_2_N)) (SlashV2a emit_2_V2))))))))))) NoVoc
 eng: The ozone layer blocks some harmful rays which the sun emits
 swe: ozonlagret blockerar några skadliga strålar som solen emitterar
 bul: озоновият слой блокира някои вредни лъчи които слънцето излъчва
@@ -65160,7 +65160,7 @@ key: 1 emotional_4_A 00086315-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ReflVPSlash (SlashV2a keep_1_V2) (ReflPossCNN and_Conj (BaseCNN NumSg (AdjCN (PositA emotionless_A) (UseN objectivity_N)) NumSg (UseN faith_4_N)))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (RelCN (UseN cause_3_N) (UseRCl (TTAnt TPastSimple ASimul) PPos (EmptyRelSlash (SlashVP (UsePron he_Pron) (SlashV2a serve_7_V2))))))))))) NoVoc
 eng: he kept his emotionless objectivity and faith in the cause he served
-swe: han behöll sin känslolösa objektivitet och tro i orsaken han tjänade
+swe: han behöll sin känslolösa objektivitet och tro i kampanjen han tjänade
 bul: той задържа своята безстрастната обективност и вярата в каузата на която той служи
 key: 1 emotionless_A 01261062-a
 
@@ -68410,9 +68410,9 @@ swe: hans dumhet följtes av ett förvärrande av deras gräl
 bul: неговата глупост беше последвана от обостряне на тяхната разправия
 key: 1 exacerbation_2_N 01224646-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA exact_1_A) (UseN mind_7_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA exact_1_A) (UseN mind_7_N)))) NoVoc
 eng: an exact mind
-swe: ett exaktt sinne
+swe: ett exakt sinne
 bul: точен ум
 key: 1 exact_1_A 00917535-a точен
 
@@ -68736,7 +68736,7 @@ key: 1 excess_A 01585713-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA excessive_1_A) (UseN charge_3_N)))) NoVoc
 eng: excessive charges
-swe: överdrivna debiteringar
+swe: överdrivna avgifter
 bul: прекалени такси
 key: 1 excessive_1_A 01538069-a
 
@@ -69460,15 +69460,15 @@ swe: expansionen av (a + b) ^ 2 är a ^ 2 + 2ab + b ^ 2
 bul: разширяването на (a + b) ^ 2 е ^ 2 + 2ab + b ^ 2
 key: 1 expansion_2_N 13806578-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA expansive_1_A) (UseN material_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA expansive_1_A) (UseN material_1_N)))) NoVoc
 eng: Expansive materials
-swe: ekspansiva material
+swe: expanderande material
 bul: разширяеми материали
 key: 1 expansive_1_A 00949706-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (AdjCN (PositA expansive_1_A) (UseN force_3_N)) (MassNP (UseN fire_3_N))))) NoVoc
 eng: the expansive force of fire
-swe: den ekspansiva kraften av eld
+swe: den expanderande kraften av eld
 bul: разширяемата сила на огън
 key: 1 expansive_1_A 00949706-a
 
@@ -69624,7 +69624,7 @@ key: 1 expense_2_N 07435271-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a keep_8_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA careful_2_A) (PossNP (UseN record_5_N) (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN expense_3_N)))))) (PrepNP at_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN meeting_1_N))))))) NoVoc
 eng: he kept a careful record of his expenses at the meeting
-swe: han förde en noggran register av hans kostnader vid mötet
+swe: han förde en noggrann register av hans kostnader vid mötet
 bul: той води внимателен регистър на неговите разходи на срещата
 key: 1 expense_3_N 13298909-n
 
@@ -70711,7 +70711,7 @@ key: 1 external_4_A 00954193-a
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a enjoy_1_V2) (DetCN (DetQuant DefArt NumPl) (PossNP (AdjCN (PositA solemn_1_A) (UseN external_N)) (DetCN (DetQuant gen_Quant NumSg) (UseN religion_2_N)))))))) NoVoc
 eng: he enjoyed the solemn externals of religion
 swe: han njöt av de högtidliga det yttrena av religionen
-bul: той се наслади на церемониалните прояви на религията
+bul: той се наслади на тържествените прояви на религията
 key: 1 external_N 05860572-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN language_1_N)) (ComplSlash (SlashV2a externalize_2_V2) (DetCN (DetQuant (PossPron we_Pron) NumPl) (UseN thought_1_N)))))) NoVoc
@@ -72252,19 +72252,19 @@ key: 1 fake_3_V2 00841205-v
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA falcate_A) (UseN leaf_1_N)))) NoVoc
 eng: a falcate leaf
-swe: ett falka löv
+swe: ett skärformat löv
 bul: сърповидно листо
 key: 1 falcate_A 02323594-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA falcate_A) (UseN claw_1_N)))) NoVoc
 eng: falcate claws
-swe: falka klor
+swe: skärformade klor
 bul: сърповидни нокти
 key: 1 falcate_A 02323594-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA falcate_A) (UseN moon_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA falcate_A) (UseN moon_1_N)))) NoVoc
 eng: the falcate moon
-swe: den falka månen
+swe: den skärformade månen
 bul: сърповидната луна
 key: 1 falcate_A 02323594-a
 
@@ -72864,7 +72864,7 @@ key: 1 falsify_2_V2 02583006-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a falsify_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN claim_2_N))))) NoVoc
 eng: Falsify a claim
-swe: falsifiera en fordring
+swe: falsifiera ett påstående
 bul: опровергай твърдение
 key: 1 falsify_3_V2 00669860-v
 
@@ -74884,7 +74884,7 @@ swe: den ormbunkliga underväxten
 bul: папратовидният гъстак
 key: 1 ferny_1_A 00210671-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA ferny_2_A) (PossNP (UseN shadowFem_9_N) (DetCN (DetQuant IndefArt NumPl) (UseN (CompoundN locust_3_N leaf_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA ferny_2_A) (PossNP (UseN shadowFem_9_N) (DetCN (DetQuant IndefArt NumPl) (UseN (CompoundN locust_3_N leaf_1_N))))))) NoVoc
 eng: the ferny shadows of locust leaves
 swe: de ormbunksliknande skuggorna av akacialöv
 bul: папратовидните сянки на акациеви листа
@@ -75420,7 +75420,7 @@ key: 1 fight_2_V2 01093838-v motarbeta motarbeta göra motstånd förmena betvin
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseV fight_3_V) (PrepNP for_Prep (MassNP (UseN breath_2_N))))))) NoVoc
 eng: He fought for breath
-swe: han kämpte för andetag
+swe: han kämpade för andetag
 bul: той се бори за дъх
 key: 1 fight_3_V 02412468-v
 
@@ -79980,7 +79980,7 @@ key: 1 forlorn_A 01233260-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA forlorn_A) (UseN cause_3_N)))) NoVoc
 eng: a forlorn cause
-swe: en hopplös orsak
+swe: en hopplös kampanj
 bul: безнадеждна кауза
 key: 1 forlorn_A 01233260-a
 
@@ -81132,7 +81132,7 @@ key: 1 free_4_A 01628191-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA free_4_A) (UseN lane_2_N)))) NoVoc
 eng: a free lane
-swe: en ledig simbana
+swe: ett ledigt körfält
 bul: свободна лента
 key: 1 free_4_A 01628191-a
 
@@ -83002,7 +83002,7 @@ swe: futuristisk konst
 bul: футуристично изкуство
 key: 1 futuristic_1_A 03004602-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (UseN (CompoundN peach_1_N fuzz_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (UseN (CompoundN peach_1_N fuzz_1_N)))) NoVoc
 eng: peach fuzz
 swe: persikaludd
 bul: прасковен мъх
@@ -83566,7 +83566,7 @@ swe: De var ett samhälle av jägare och samlare
 bul: те бяха общество на ловци и събирачи
 key: 1 gathererMasc_1_N 10141957-n
 
-abs+ PhrUtt NoPConj (UttAP he_Pron (AdAP too_AdA (SentAP (PositA gauche_A) (EmbedVP ASimul PPos he_Pron (AdvVP (ComplSlash (SlashV2a leave_5_V2) (DetCN (DetQuant DefArt NumSg) (UseN room_1_N))) (SubjS when_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN conversation_N)) (ComplVA become_VA (PositA intimate_2_A)))))))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdAP too_AdA (SentAP (PositA gauche_A) (EmbedVP ASimul PPos he_Pron (AdvVP (ComplSlash (SlashV2a leave_5_V2) (DetCN (DetQuant DefArt NumSg) (UseN room_1_N))) (SubjS when_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN conversation_N)) (ComplVA become_VA (PositA intimate_2_A)))))))))) NoVoc
 eng: too gauche to leave the room when the conversation became intimate
 swe: för taktlös att lämna rummet när samtalet blev intimt
 bul: твърде нетактичен да напусне стаята когато разговорът стана интимен
@@ -83632,7 +83632,7 @@ swe: tog upp handsken
 bul: пое ръкавицата
 key: 1 gauntlet_1_N 07246935-n
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvRVP (UseV gesture_V) with_Prep (ReflPoss NumSg (AdjCN (PositA gauntleted_A) (UseN hand_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvRVP (UseV gesture_V) with_Prep (ReflPoss NumSg (AdjCN (PositA gauntleted_A) (UseN hand_1_N)))))) NoVoc
 eng: gestured with his gauntleted hand
 swe: gestikulerade med sin behandskade hand
 bul: жестикулира със своята ръка с ръкавица
@@ -84958,9 +84958,9 @@ swe: en yr brant
 bul: замаяна бездна
 key: 1 giddy_1_A 02554818-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA gifted_A) (UseN writerMasc_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA gifted_A) (UseN writerMasc_2_N)))) NoVoc
 eng: a gifted writer
-swe: en begåvad skrivare
+swe: en begåvad författare
 bul: надарен писател
 key: 1 gifted_A 01122955-a талантлив способен надарен даровит
 
@@ -85260,7 +85260,7 @@ key: 1 give_16_V2 02348591-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a give_18_V2) (GenModNP NumPl (UseDAPMasc (DetDAP (DetQuant IndefArt NumSg))) (UseN talent_1_N))) (PrepNP to_2_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA good_1_A) (UseN cause_3_N))))))) NoVoc
 eng: give one's talents to a good cause
-swe: ge ens talanger till en bra orsak
+swe: ge ens talanger till en bra kampanj
 bul: отдай талантите на един на добра кауза
 key: 1 give_18_V2 00888984-v посвещавам посветя отдам отдавам ägna skänka hängiva sig hänge sig ge ge sig hän
 
@@ -85780,9 +85780,9 @@ swe: daggiga druvor
 bul: глаукозни гроздета
 key: 1 glaucous_A 00435811-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN potterMasc_N)) (ComplSlash (SlashV2a glaze_1_V2) (DetCN (DetQuant DefArt NumPl) (UseN dish_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN potterMasc_N)) (ComplSlash (SlashV2a glaze_1_V2) (DetCN (DetQuant DefArt NumPl) (UseN dish_1_N)))))) NoVoc
 eng: the potter glazed the dishes
-swe: krukmakaret glaserade faten
+swe: krukmakaren glaserade faten
 bul: грънчарят глазира чиниите
 key: 1 glaze_1_V2 01272085-v glasera
 
@@ -87030,7 +87030,7 @@ key: 1 good_2_N 04856472-n доброта добрина благост
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a weigh_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN good_3_N))) (PrepNP against_Prep (UseDAP (AdjDAP (DetDAP (DetQuant DefArt NumSg)) (PositA bad_1_A))))))) NoVoc
 eng: weigh the good against the bad
-swe: väga goden mot det dåliga
+swe: väg goden mot det dåliga
 bul: претегли доброто срещу лошото
 key: 1 good_3_N 05149427-n gott
 
@@ -88450,9 +88450,9 @@ swe: grönsakmalslar täppade till avloppet
 bul: зеленчукови остатъцита запушиха канала
 key: 1 grinding_1_N 09317622-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a have_2_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA strong_1_A) (UseN grip_1_N)))) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA old_1_A) (UseN man_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a have_2_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA strong_1_A) (UseN grip_1_N)))) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA old_1_A) (UseN man_1_N)))))))) NoVoc
 eng: he has a strong grip for an old man
-swe: han har en stark grepp för en gammal man
+swe: han har ett starkt grepp för en gammal man
 bul: той има силен хват за стар мъж
 key: 1 grip_1_N 00814187-n
 
@@ -88494,7 +88494,7 @@ key: 1 grip_1_V2 01226565-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (AdvVP (ComplSlash (SlashV2a have_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN gripe_N))) (PrepNP about_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN service_15_N)))) here_1_Adv)))) NoVoc
 eng: I have a gripe about the service here
-swe: jag har en gnäll om tjänsten här
+swe: jag har ett klagomål om tjänsten här
 bul: аз имам оплакване за обслужването тук
 key: 1 gripe_N 07224625-n
 
@@ -88648,16 +88648,16 @@ swe: han tappade stockarna på marken
 bul: той изпусна трупите на земята
 key: 1 ground_1_N 09357302-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a gain_1_V2) (MassNP (UseN (CompoundN ground_5_N step_1_N)))) (PrepNP by_3_Prep (MassNP (UseN step_1_N))))))) NoVoc
+abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a gain_1_V2) (MassNP (UseN ground_5_N))) stepwise_Adv)))) NoVoc
 eng: they gained ground step by step
-swe: de fick marksteg av steg
-bul: те получиха позиция стъпка от стъпка
+swe: de fick terräng stegvis
+bul: те получиха позиция поетапно
 key: 1 ground_5_N 08597662-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (UseV fight_3_V) (InOrderToVP ASimul PPos he_Pron (ComplSlash (SlashV2a regain_1_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA lost_1_A) (UseN ground_5_N))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (UseV fight_3_V) (InOrderToVP ASimul PPos they_Pron (ComplSlash (SlashV2a regain_1_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA lost_1_A) (UseN ground_5_N))))))))) NoVoc
 eng: they fought to regain the lost ground
-swe: de kämpte för att återfå den förlorade marken
-bul: те се бориха за да си възвърне загубената позиция
+swe: de kämpade för att återfå den förlorade terrängen
+bul: те се бориха за да си възвърнат загубената позиция
 key: 1 ground_5_N 08597662-n
 
 abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant DefArt NumPl) (UseN ground_2_N)) (PrepNP for_Prep (DetCN (DetQuant (PossPron they_Pron) NumSg) (UseN declaration_1_N))))) NoVoc
@@ -89092,9 +89092,9 @@ swe: guineanska gränser
 bul: гвинейски граници
 key: 1 guinean_A 03082629-a
 
-abs+ PhrUtt NoPConj (UttS (AdvS (PrepNP under_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN guise_N) (MassNP (UseN friendship_N))))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a betray_2_V2) (UsePron they_Pron)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (AdvS (PrepNP under_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN guise_N) (MassNP (UseN friendship_N))))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a betray_2_V2) (UsePron they_Pron)))))) NoVoc
 eng: under the guise of friendship he betrayed them
-swe: under sknen av vänskap förrådde han dem
+swe: under skenet av vänskap förrådde han dem
 bul: под формата на приятелство той ги предаде
 key: 1 guise_N 04686265-n
 
@@ -89320,9 +89320,9 @@ swe: pojkarna bälgade den billiga vodkan
 bul: момчетата лочиха евтината водка
 key: 1 guzzle_V2 01173104-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN beer_N guzzlerMasc_1_N))))) (TimeNP (DetCN every_Det (UseN night_4_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN beer_N guzzlerMasc_1_N))))) (TimeNP (DetCN every_Det (UseN night_4_N))))))) NoVoc
 eng: he's a beer guzzler every night
-swe: han är ett ölstordrickare varje natt
+swe: han är en ölstordrickare varje natt
 bul: той е бирен пияница всяка нощ
 key: 1 guzzlerMasc_1_N 10172786-n
 
@@ -90958,15 +90958,15 @@ swe: dragen upp kullen gick väldigt trögt
 bul: тегленето нагоре по хълма отиде много слабо
 key: 1 haul_1_N 00115856-n
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a haul_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN stone_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a haul_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN stone_1_N))))) NoVoc
 eng: haul stones
-swe: höja stenar
+swe: släpa stenar
 bul: изтегли камъни
 key: 1 haul_1_V2 01457421-v hala hala upp hala in
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a haul_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN net_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a haul_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN net_2_N))))) NoVoc
 eng: haul nets
-swe: höja nät
+swe: släpa nät
 bul: изтегли мрежи
 key: 1 haul_1_V2 01457421-v hala hala upp hala in
 
@@ -92602,10 +92602,10 @@ swe: "Helvetet är belagt med goda avsikter" -Dr. Johnson
 bul: "Адът е прострен с добри намерения" - д-р. Джонсън
 key: 1 hell_3_N 05637465-n inferno helvetet helvete
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvRVP (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA young_1_A) (UseN hellion_N)))) out_of_1_Prep (ReflPoss NumSg (UseN yard_2_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvRVP (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA young_1_A) (UseN hellion_N)))) out_of_3_Prep (ReflPoss NumSg (UseN yard_2_N)))))) NoVoc
 eng: he chased the young hellions out of his yard
-swe: han rusade ut de unga busarna ut ur sin gård
-bul: той преследи младите ашлаки без своя двор
+swe: han jagade de unga busarna utanför sin gård
+bul: той подгони младите ашлаци извън своя двор
 key: 1 hellion_N 10189012-n
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA hellish_1_A) (UseN weather_N)))) NoVoc
@@ -92718,7 +92718,7 @@ key: 1 helping_N 07593928-n порция portion
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (ExistNPAdv (AdvNP (UseDAP (DetDAP (DetQuant IndefArt (NumCard enoughSg_Card)))) (PrepNP for_Prep (DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))))) (UseN serving_1_N)))) each_Adv))) NoVoc
 eng: there's enough for two servings each
-swe: det finns tillräckligt för två portioner varje
+swe: det finns tillräckligt för två portioner vardera
 bul: има достатъчно за две порции всеки
 key: 1 serving_1_N 07593928-n порция portion
 
@@ -102901,7 +102901,7 @@ key: 1 infirm_2_A 01999637-a
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA repetitive_2_A) (UseN motion_3_N))) (ComplSlash (SlashV2a inflame_1_V2) (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN joint_1_N)))))) NoVoc
 eng: The repetitive motion inflamed her joint
 swe: den repetitiva rörelsen inflammerade hennes led
-bul: повтарящ сеото движение възпалява нейната става
+bul: повтарящото движение възпалява нейната става
 key: 1 inflame_1_V2 00063495-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN throat_1_N)) (UseV inflame_5_V)))) NoVoc
@@ -104280,13 +104280,13 @@ key: 1 inspire_2_V2 01650224-v engender-27/474@{Cause:10,Verb:27,Theme:28}
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN patientMasc_1_N)) (AdvVP (ComplSlash (SlashV2a have_1_V2) (MassNP (UseN trouble_1_N))) (TimeNP (MassNP (GerundCN (UseV inspire_V)))))))) NoVoc
 eng: The patient has trouble inspiring
-swe: patienten har bekymmer att andas ut
+swe: patienten har bekymmer att andas in
 bul: пациентът има затруднение вдишване
 key: 1 inspire_V 00005041-v andas in
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN (CompoundN lung_N cancer_1_N) patientMasc_1_N))) (ComplVV can_2_VV ASimul PPos (AdvVP (ComplSlash (SlashV2a inspire_6_V2) (MassNP (UseN air_1_N))) (AdAdv very_AdA (PositAdvAdj good_1_A))))))) NoVoc
 eng: The lung cancer patient cannot inspire air very well
-swe: lungcancerpatienten kan inte andas ut luft väldigt bra
+swe: lungcancerpatienten kan inte andas in luft väldigt bra
 bul: пациентът на белодробния рак не може да вдиша въздух много добре
 key: 1 inspire_6_V2 00005041-v andas in
 
@@ -106600,7 +106600,7 @@ swe: ofrivilligt dråp
 bul: неволно клане
 key: 1 involuntary_1_A 02531409-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA involuntary_1_A) (UseN servitude_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA involuntary_1_A) (UseN servitude_N)))) NoVoc
 eng: involuntary servitude
 swe: ofrivillig träldom
 bul: неволно робство
@@ -107158,16 +107158,16 @@ swe: oåterkalleliga defekter av karaktären
 bul: непоправими дефекти на характера
 key: 1 irremediable_A 01969644-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irremovable_A) (UseN boulder_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irremovable_A) (UseN boulder_1_N)))) NoVoc
 eng: irremovable boulders
-swe: oavsättliga bumlingar
-bul: несменяеми канари
+swe: orubbliga bumlingar
+bul: неотстраними канари
 key: 1 irremovable_A 01531194-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irremovable_A) (UseN obstacle_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA irremovable_A) (UseN obstacle_2_N)))) NoVoc
 eng: irremovable obstacles
-swe: oavsättliga hinder
-bul: несменяеми пречки
+swe: orubbliga hinder
+bul: неотстраними пречки
 key: 1 irremovable_A 01531194-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA irreparable_A) (UseN harm_1_N)))) NoVoc
@@ -108180,13 +108180,13 @@ key: 1 jokingly_1_Adv 00386040-r
 
 abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA jolly_A) (UseN crowd_3_N))) (PrepNP at_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN reunion_1_N))))) NoVoc
 eng: the jolly crowd at the reunion
-swe: den genomlyckliga massan vid återföreningen
+swe: den glada massan vid återföreningen
 bul: веселата тълпа на срещата
 key: 1 jolly_A 01370567-a
 
 abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA jolly_A) (AdjCN (PositA old_3_A) (ApposCN (UseN saint_1_N) (GivenName nick_GN)))))) NoVoc
 eng: jolly old Saint Nick
-swe: genomlyckligt gammalt helgon Nick
+swe: glatt gammalt helgon Nick
 bul: весел стар светия Ник
 key: 1 jolly_A 01370567-a
 
@@ -108696,7 +108696,7 @@ key: 1 just_1_A 01372590-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA just_4_A) (UseN cause_3_N)))) NoVoc
 eng: a just cause
-swe: en rättvis orsak
+swe: en rättvis kampanj
 bul: честна кауза
 key: 1 just_4_A 02044341-a добър
 
@@ -109018,9 +109018,9 @@ swe: de här potatisarna håller sig för en lång tid
 bul: тези картофи траят за дълго време
 key: 2 keep_to_V2V keep_12_V 02740675-v
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a keep_13_V2) (DetCN (DetQuant DefArt NumPl) (UseN commandment_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a keep_13_V2) (DetCN (DetQuant DefArt NumPl) (UseN commandment_1_N))))) NoVoc
 eng: Keep the commandments
-swe: fira budorden
+swe: följ budorden
 bul: спази заповедите
 key: 1 keep_13_V2 02584595-v чествам празник спазвам обичай празнувам
 
@@ -110472,7 +110472,7 @@ key: 1 lacking_2_A 00052252-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA dull_1_A) (AdjCN (PositA lackluster_1_A) (UseN life_1_N))))) NoVoc
 eng: a dull lackluster life
-swe: ett slött glanslöst liv
+swe: ett tråkigt glanslöst liv
 bul: скучен безличен живот
 key: 1 lackluster_1_A 00811581-a
 
@@ -118090,7 +118090,7 @@ swe: en ringa sockenpräst
 bul: низък енорийски свещеник
 key: 1 lowly_1_A 02348528-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumPl) (UseN supply_1_N)) (UseComp (CompAP (PositA low_8_A)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumPl) (UseN supply_1_N)) (UseComp (CompAP (PositA low_8_A)))))) NoVoc
 eng: supplies are low
 swe: tillgångarna är låga
 bul: запасите са ниски
@@ -121312,7 +121312,7 @@ swe: en tova ogräs och gräs
 bul: сплъстена маса от бурени и трева
 key: 1 mat_4_N 09371724-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdVVP always_1_AdV (AdvVP (ComplSlash (SlashV2a carry_2_V2) (DetCN (DetQuant IndefArt NumPl) (UseN match_1_N))) (InOrderToVP ASimul PPos he_Pron (ReflVPSlash (SlashV2a light_4_V2) (ReflPoss NumSg (UseN pipe_1_N))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (AdVVP always_1_AdV (AdvVP (ComplSlash (SlashV2a carry_2_V2) (DetCN (DetQuant IndefArt NumPl) (UseN match_1_N))) (InOrderToVP ASimul PPos he_Pron (ReflVPSlash (SlashV2a light_4_V2) (ReflPoss NumSg (UseN pipe_1_N))))))))) NoVoc
 eng: he always carries matches to light his pipe
 swe: han bär alltid tändstickor för att tända sin pipa
 bul: той винаги носи кибрити за да запали своята лула
@@ -121960,9 +121960,9 @@ swe: vi tänkte att återvända tidigt den där natten
 bul: ние мислихме да се върнем рано онази нощ
 key: 1 think_7_VV 00710367-v mena
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN path_3_N)) (AdvVP (UseV meander_V) (PrepNP through_1_Prep (DetCN (DetQuant DefArt NumPl) (UseN vineyard_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN path_3_N)) (AdvVP (UseV meander_V) (PrepNP through_1_Prep (DetCN (DetQuant DefArt NumPl) (UseN vineyard_N))))))) NoVoc
 eng: the path meanders through the vineyards
-swe: vägen slingrar genom vingårdarna
+swe: vägen slingrar sig genom vingårdarna
 bul: пътят криволичи през лозетата
 key: 1 meander_V 01886807-v
 
@@ -122488,15 +122488,15 @@ swe: jag ska sannolikt se dig i mötet
 bul: аз вероятно ще видя теб в срещата
 key: 1 see_8_V2 02026953-v срещна се срещам се виждам се видя се
 
-abs+ PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN paper_2_N)) (AdvVP (ComplSlash (SlashV2a meet_4_V2) (DetCN (DetQuant DefArt NumPl) (UseN requirement_3_N))) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN degree_3_N)))))))) NoVoc QuestMark
+abs: PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN paper_2_N)) (AdvVP (ComplSlash (SlashV2a meet_4_V2) (DetCN (DetQuant DefArt NumPl) (UseN requirement_3_N))) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN degree_3_N)))))))) NoVoc QuestMark
 eng: does this paper meet the requirements for the degree?
-swe: Uppfyllar den här artikeln kraven för examen?
+swe: Uppfyller den här artikeln kraven för examen?
 bul: Това есе удовлетворява ли изискванията за степента?
 key: 1 meet_4_V2 01185870-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a meet_4_V2) (DetCN (DetQuant IndefArt NumSg) (UseN need_1_N))))) NoVoc
 eng: meet a need
-swe: uppfylla ett behov
+swe: uppfyll ett behov
 bul: удовлетворявай нужда
 key: 1 meet_4_V2 01185870-v
 
@@ -125830,7 +125830,7 @@ swe: "plikt har blivit det moderna livet" - Norman Douglas
 bul: "дългът се превърна в молото на съвременния живот" - Норман Дъглас
 key: 1 moloch_1_PN 10481571-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PartNP (UseN mass_5_N) (MassNP (AdjCN (PositA molten_A) (UseN rock_2_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PartNP (UseN mass_5_N) (MassNP (AdjCN (PositA molten_A) (UseN rock_2_N)))))) NoVoc
 eng: a mass of molten rock
 swe: en massa smält sten
 bul: маса от разтопена скала
@@ -127420,9 +127420,9 @@ swe: lagen verkar ge mer skydd till rånaren än till rånoffern
 bul: законът изглежда да поддава повече защитеност на обирджията от до жертвата на грабеж
 key: 1 muggeeMasc_N 10356847-n
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA muggy_A) (UseN weather_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA muggy_A) (UseN weather_N)))) NoVoc
 eng: muggy weather
-swe: kvaftt väder
+swe: kvavt väder
 bul: влажно време
 key: 1 muggy_A 02560461-a тежък задушен
 
@@ -127504,7 +127504,7 @@ swe: ett mångsidigt förslag
 bul: многоизмерно предложение
 key: 1 multidimensional_A 00663206-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA multidimensional_A) (UseN personality_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA multidimensional_A) (UseN personality_1_N)))) NoVoc
 eng: a multidimensional personality
 swe: en mångsidig personlighet
 bul: многоизмерна персоналност
@@ -129496,7 +129496,7 @@ swe: ett ordnat rum
 bul: спретната стая
 key: 1 neat_1_A 02432057-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA neat_2_A) (UseN homework_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA neat_2_A) (UseN homework_N)))) NoVoc
 eng: neat homework
 swe: ordentlig hemläxa
 bul: спретната домашна работа
@@ -131134,7 +131134,7 @@ swe: de hörde oklara ljud av människor pratande
 bul: те чуха неотчетливи шумове от хора говорейки
 key: 1 noise_1_N 07402109-n шум звук
 
-abs+ PhrUtt NoPConj (UttS (AdvS (PrepNP during_Prep (DetCN (DetQuant DefArt NumSg) (RelCN (UseN (CompoundN firework_N display_5_N)) (UseRCl (TTAnt TPastSimple ASimul) PPos (RelVP that_RP (ComplSlash (SlashV2a end_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN gala_N)))))))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN noise_1_N)) (ComplSlash (SlashV2a reach_2_V2) (DetCN (DetQuant IndefArt (NumCard (NumDecimal (PosDecimal (IIDig D_9 (IDig D_8)))))) (UseN decibel_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (AdvS (PrepNP during_Prep (DetCN (DetQuant DefArt NumSg) (RelCN (UseN (CompoundN firework_N display_5_N)) (UseRCl (TTAnt TPastSimple ASimul) PPos (RelVP that_RP (ComplSlash (SlashV2a end_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN gala_N)))))))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN noise_1_N)) (ComplSlash (SlashV2a reach_2_V2) (DetCN (DetQuant IndefArt (NumCard (NumDecimal (PosDecimal (IIDig D_9 (IDig D_8)))))) (UseN decibel_N))))))) NoVoc
 eng: during the firework display that ended the gala the noise reached 98 decibels
 swe: under fyrverkeriuppvisningen som avslutade galan nådde ljudet 98 decibel
 bul: по време на фойерверковия показ който завърши галата шумът достигна 98 децибела
@@ -131368,7 +131368,7 @@ swe: körde hans bil med nonchalant otvungenhet
 bul: кара неговата кола с безгрижна непринуденост
 key: 1 nonchalant_A 00547966-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseComp (CompAP (PositA polite_3_A))) (PrepNP in_5_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA teasing_1_A) (AdjCN (PositA nonchalant_A) (UseN manner_2_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseComp (CompAP (PositA polite_3_A))) (PrepNP in_5_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA teasing_1_A) (AdjCN (PositA nonchalant_A) (UseN manner_2_N)))))))) NoVoc
 eng: was polite in a teasing nonchalant manner
 swe: var artig i ett retfullt nonchalant manér
 bul: беше учтив в закачлив безгрижен маниер
@@ -131818,21 +131818,21 @@ swe: "den gemensamma kärnan i icke-standardiserade ord och fraser i folktal" - 
 bul: "общото ядро ​​на нестандартни думи и фрази в народната реч" - A.R.Dunlap
 key: 1 nonstandard_1_A 02305966-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA nonstandard_2_A) (UseN window_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA nonstandard_2_A) (UseN window_1_N)))) NoVoc
 eng: nonstandard windows
-swe: icke-standarda fönster
+swe: icke-standardiserade fönster
 bul: нестандартни прозорци
 key: 1 nonstandard_2_A 02304841-a
 
-abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumPl) (UseN envelope_1_N)) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA nonstandard_2_A) (UseN size_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumPl) (UseN envelope_1_N)) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA nonstandard_2_A) (UseN size_1_N)))))) NoVoc
 eng: envelopes of nonstandard sizes
-swe: kuvert av icke-standarda storlekar
+swe: kuvert av icke-standardiserade storlekar
 bul: пликове от нестандартни големини
 key: 1 nonstandard_2_A 02304841-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (PossNP (AdjCN (PositA nonstandard_2_A) (UseN length_1_N)) (MassNP (UseN board_2_N))))) NoVoc
 eng: nonstandard lengths of board
-swe: icke-standarda längder av bräda
+swe: icke-standardiserade längder av bräda
 bul: нестандартни дължини на дъска
 key: 1 nonstandard_2_A 02304841-a
 
@@ -131944,9 +131944,9 @@ swe: otraditionella praxisar
 bul: нетрадиционни практики
 key: 1 nontraditional_A 00614561-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA nonturbulent_A) (UseN flow_3_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA nonturbulent_A) (UseN flow_3_N)))) NoVoc
 eng: nonturbulent flow
-swe: icke-turbulentt flöde
+swe: icke-turbulent flöde
 bul: нетурбулентен поток
 key: 1 nonturbulent_A 00089477-a
 
@@ -131998,7 +131998,7 @@ swe: en icke-flyktig syra
 bul: нелетлива киселина
 key: 1 nonvolatile_A 02530133-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA nordic_1_A) (UseN language_1_N))) (ComplSlash (SlashV2a have_2_V2) (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN gender_1_N system_5_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA nordic_1_A) (UseN language_1_N))) (ComplSlash (SlashV2a have_2_V2) (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN gender_1_N system_5_N))))))) NoVoc
 eng: Nordic languages have a gender system
 swe: nordiska språk har ett genussystem
 bul: северногермански езици имат родова система
@@ -132466,15 +132466,15 @@ swe: Hon noterade vart och ett läraren sade den där morgonen
 bul: тя отбеляза всяко което учителят каза онази сутрин
 key: 1 note_4_V2 01022943-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA noteworthy_A) (UseN fact_4_N))) (UseComp (CompAdv (SubjS that_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumPl) (UseN studentFem_1_N)) (AdVVP (PositAdVAdj rare_2_A) (UseV complain_1_V)))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA noteworthy_A) (UseN fact_4_N))) (UseComp (CompAdv (SubjS that_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumPl) (UseN studentMasc_1_N)) (AdVVP seldom_AdV (UseV complain_1_V)))))))))) NoVoc
 eng: a noteworthy fact is that her students rarely complain
-swe: ett anmärkningsvärdt faktum är att hennes studenter sällsynt klagar
-bul: забележителен факт е че нейните студентки рядко се оплакват
+swe: ett anmärkningsvärt faktum är att hennes studenter sällan klagar
+bul: забележителен факт е че нейните студенти рядко се оплакват
 key: 1 noteworthy_A 02171017-a
 
 abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA noteworthy_A) (UseN advance_2_N))) (PrepNP in_5_Prep (MassNP (UseN (CompoundN cancer_1_N research_2_N)))))) NoVoc
 eng: a noteworthy advance in cancer research
-swe: ett anmärkningsvärdt framsteg i cancerforskning
+swe: ett anmärkningsvärt framsteg i cancerforskning
 bul: забележителен напредък в раково проучване
 key: 1 noteworthy_A 02171017-a
 
@@ -133150,13 +133150,13 @@ swe: näringsmässig information
 bul: хранителна информация
 key: 1 nutritional_A 03013859-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA nutty_1_A) (UseN sherry_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA nutty_1_A) (UseN sherry_N)))) NoVoc
 eng: a nutty sherry
 swe: en nötig sherry
 bul: орехово шери
 key: 1 nutty_1_A 02407004-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN pig_1_N)) (ComplSlash (SlashV2a nuzzle_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN truffle_2_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN pig_1_N)) (ComplSlash (SlashV2a nuzzle_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN truffle_2_N)))))) NoVoc
 eng: the pig nuzzled the truffle
 swe: grisen bökade tryffeln
 bul: прасето рови трюфела
@@ -133714,7 +133714,7 @@ swe: det behövdes bara på speciella tillfällen
 bul: беше нуждато само на специални събития
 key: 1 occasion_1_N 07431314-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (SentAP (PastPartAP (SlashV2a arrange_3_V2)) (EmbedVP ASimul PPos he_Pron (ComplSlash (SlashV2a honour_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN presidentMasc_3_N))))) (UseN occasion_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (SentAP (PastPartAP (SlashV2a arrange_3_V2)) (EmbedVP ASimul PPos he_Pron (ComplSlash (SlashV2a honour_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN presidentMasc_3_N))))) (UseN occasion_2_N)))) NoVoc
 eng: an occasion arranged to honor the president
 swe: en tilldragelse arrangerad att hedra presidenten
 bul: събитие организирано да почете президента
@@ -134050,7 +134050,7 @@ swe: [odorless_A] blommor
 bul: [odorless_A] цветя
 key: 1 odorless_A 01061474-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA odorous_1_A) (UseN (CompoundN jasmine_N flower_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA odorous_1_A) (UseN (CompoundN jasmine_N flower_2_N))))) NoVoc
 eng: odorous jasmine flowers
 swe: luktande jasminblommor
 bul: дъхащи жасминови цветове
@@ -134094,13 +134094,13 @@ key: 1 work_7_N 03846937-n труд творчество дело
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN oven_N)) (UseComp (CompAP (PositA off_1_A)))))) NoVoc
 eng: the oven is off
-swe: ugnen är av
+swe: ugnen är avstängd
 bul: фурната е изключена
 key: 1 off_1_A 01655911-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN light_2_N)) (UseComp (CompAP (PositA off_1_A)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN light_2_N)) (UseComp (CompAP (PositA off_1_A)))))) NoVoc
 eng: the lights are off
-swe: ljusen är ava
+swe: ljusen är avstängda
 bul: светлините са изключени
 key: 1 off_1_A 01655911-a
 
@@ -134359,7 +134359,7 @@ key: 1 offhand_2_Adv 00264858-r
 abs+ PhrUtt NoPConj (UttNP (MassNP (GerundCN (ComplVV try_VV ASimul PPos (ComplVA sound_1_VA (ConjAP and_Conj (BaseAP (PositA offhanded_1_A) (PositA reassuring_A)))))))) NoVoc
 eng: trying to sound offhanded and reassuring
 swe: att försöka att låta oförberedd och lugnande
-bul: опитване да звуа неподготвено и насърчително
+bul: опитване да звучи неподготвено и насърчително
 key: 1 offhanded_1_A 01851375-a
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a rent_4_V2) (DetCN (DetQuant IndefArt NumSg) (UseN office_1_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA new_1_A) (UseN building_1_N)))))))) NoVoc
@@ -134698,7 +134698,7 @@ swe: den samma gamla berättelsen
 bul: същата стара история
 key: 1 old_3_A 00969546-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA old_4_A) (UseN offenderMasc_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA old_4_A) (UseN offenderMasc_N)))) NoVoc
 eng: an old offender
 swe: en gammal gärningsman
 bul: стар нарушител
@@ -136582,7 +136582,7 @@ swe: ekologisk kyckling
 bul: екологично пиле
 key: 1 organic_4_A 02569537-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA organic_5_A) (UseN lifestyle_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA organic_5_A) (UseN lifestyle_1_N)))) NoVoc
 eng: an organic lifestyle
 swe: en organisk livsstil
 bul: органичен стил на живот
@@ -138256,7 +138256,7 @@ swe: den överlandstrafik som används av Marco Polo
 bul: маршрута на сушата, използван от Марко Поло
 key: 1 overland_A 00126042-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (ExistNPAdv (DetCN (DetQuant no_Quant NumSg) (UseN overlap_1_N)) (PrepNP between_Prep (DetCN (DetQuant (PossPron they_Pron) NumPl) (UseN proposal_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (ExistNPAdv (DetCN (DetQuant no_Quant NumSg) (UseN overlap_1_N)) (PrepNP between_Prep (DetCN (DetQuant (PossPron they_Pron) NumPl) (UseN proposal_1_N)))))) NoVoc
 eng: there was no overlap between their proposals
 swe: det fanns ingen överlappning mellan deras förslag
 bul: няма никакво застъпване между техните предложения
@@ -139987,7 +139987,7 @@ key: 1 parrotlike_A 01219805-a
 abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN voice_1_N quality_4_N))) (GerundAdv (ComplVA sound_1_VA (PositA parrotlike_A))))) NoVoc
 eng: a voice quality sounding parrotlike
 swe: en röstkvalitet låtande papegojaktig
-bul: гласово качество звуайки папагалско
+bul: гласово качество звучейки папагалско
 key: 1 parrotlike_A 01219805-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PastPartAgentAP (SlashV2a relieve_4_V2) (DetCN (DetQuant IndefArt (NumCard (UseACard few_ACard))) (AdjCN (PositA generous_1_A) (UseN impulse_2_N)))) (AdjCN (PositA parsimonious_A) (UseN thrift_2_N))))) NoVoc
@@ -141756,8 +141756,8 @@ key: 1 pelt_2_V2 01123738-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN police_N)) (AdvVP (UseComp (CompAP (AdAP too_AdA (PositA busy_1_A)))) (InOrderToVP ASimul PPos he_Pron (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumPl) (UseN pelterMasc_2_N)))))))) NoVoc
 eng: the police were too busy to chase the pelters
-swe: polisen var för upptagen för att rusa ut kastarena
-bul: полицията беше твърде заета за да преследи хвъргачите
+swe: polisen var för upptagen för att jaga kastarena
+bul: полицията беше твърде заета за да подгони хвъргачите
 key: 1 pelterMasc_2_N 10433174-n
 
 abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA pelvic_A) (UseN exam_N)))) NoVoc
@@ -142432,7 +142432,7 @@ swe: de jämförde matlagningsprestandan av varje ugn
 bul: те сравниха функционирането за готвене на всяка фурна
 key: 1 performance_5_N 13546752-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN (CompoundN orange_3_N blossom_1_N))) (AdvVP (ComplSlash (SlashV2a perfume_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN air_1_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN garden_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN (CompoundN orange_3_N blossom_1_N))) (AdvVP (ComplSlash (SlashV2a perfume_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN air_1_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN garden_1_N))))))) NoVoc
 eng: orange blossoms perfumed the air in the garden
 swe: apelsinblommor parfymerade luften i trädgården
 bul: портокалови цветове напарфюмираха въздуха в градината
@@ -142600,9 +142600,9 @@ swe: "En periphrastic studie i ett utslitat poetiskt sätt, / Lämna en kvar med
 bul: "Перифрастично изследване по износен поетически начин / Оставяне на един все още с нетърпимата борба / С думи и значения." - T.S.Eliot
 key: 1 periphrastic_A 00771186-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN child_1_N)) (AdvVP (UseV perish_V) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN fire_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN child_1_N)) (AdvVP (UseV perish_V) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN fire_1_N))))))) NoVoc
 eng: The children perished in the fire
-swe: barnen omkommade i branden
+swe: barnen omkom i branden
 bul: децата загинаха в пожара
 key: 1 perish_V 00359085-v умра умирам почина почивам издъхна издъхвам trilla av pinn stryka med somna in omkomma lägga benen i vädret kola vippen kola kola av insomna gå över gå ur tiden gå hädan gå hem förolyckas dö avlida
 
@@ -143742,8 +143742,8 @@ key: 1 pick_1_V2 00678369-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ReflVPSlash (SlashV2a pick_1_V2) (ReflPoss NumSg (UseN way_5_N))) (PositAdvAdj careful_2_A))))) NoVoc
 eng: He picked his way carefully
-swe: Han valde sitt sätt noggrant
-bul: Той избра своя път внимателно
+swe: han valde sitt sätt noggrant
+bul: той избра своя път внимателно
 key: 1 pick_1_V2 00678369-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a pick_2_V2) (DetCN (DetQuant IndefArt NumPl) (UseN mushroom_5_N))))) NoVoc
@@ -147142,7 +147142,7 @@ swe: hon förgiftade sin make
 bul: тя отрови своя съпруг
 key: 1 poison_2_V2 01326002-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN husband_N)) (AdvVP (ComplSlash (SlashV2a poison_3_V2) (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN drink_1_N))) (InOrderToVP ASimul PPos he_Pron (ComplSlash (SlashV2a kill_1_V2) (UsePron she_Pron))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN husband_N)) (AdvVP (ComplSlash (SlashV2a poison_3_V2) (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN drink_1_N))) (InOrderToVP ASimul PPos he_Pron (ComplSlash (SlashV2a kill_1_V2) (UsePron she_Pron))))))) NoVoc
 eng: Her husband poisoned her drink in order to kill her
 swe: hennes make förgiftade hennes dryck för att döda henne
 bul: нейният съпруг отрови нейното питие за да я убие
@@ -148750,15 +148750,15 @@ swe: låt oss senarelägga tentan
 bul: нека да отложим изпита
 key: 1 postpone_V2 02648898-v
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant (PossPron he_Pron) NumSg) (AdjCN (PositA postprandial_A) (UseN cigar_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant (PossPron he_Pron) NumSg) (AdjCN (PositA postprandial_A) (UseN cigar_N)))) NoVoc
 eng: his postprandial cigar
-swe: hans efter måltida cigarr
+swe: hans postprandiella cigarr
 bul: неговата постпрандиална цигара
 key: 1 postprandial_A 00130801-a
 
 abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a take_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA postprandial_A) (UseN walk_4_N)))))) NoVoc
 eng: took a postprandial walk
-swe: tog en efter måltid promenad
+swe: tog en postprandiell promenad
 bul: взе постпрандиална разходка
 key: 1 postprandial_A 00130801-a
 
@@ -148774,7 +148774,7 @@ swe: posturala träningar
 bul: постурални упражнения
 key: 1 postural_A 03113124-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV stand_1_V) (PrepNP with_Prep (MassNP (AdjCN (PositA good_1_A) (UseN posture_2_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV stand_1_V) (PrepNP with_Prep (MassNP (AdjCN (PositA good_1_A) (UseN posture_2_N))))))) NoVoc
 eng: stood with good posture
 swe: stod med bra hållning
 bul: стоя с добра поза
@@ -148782,8 +148782,8 @@ key: 1 posture_2_N 05009987-n стойка поза hållning
 
 abs+ PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant IndefArt NumPl) (UseN politicianFem_2_N)) (MkVPS (TTAnt TPres AAnter) PPos (ComplSlash (SlashV2a neglect_4_V2) (GenModNP NumSg (UsePron we_Pron) (AdjCN (PositA military_2_A) (UseN posture_4_N))))))) NoVoc
 eng: politicians have neglected our military posture
-swe: politiker har försummat vår militära militär styrkeposition
-bul: политички са запуснали военната военна готовност на нас
+swe: politiker har försummat vår militära beredskap
+bul: политички са запуснали военната готовност на нас
 key: 1 posture_4_N 05210917-n
 
 abs+ PhrUtt NoPConj (UttS (PredVPS (UsePron she_Pron) (ConjVPS and_Conj (BaseVPS (MkVPS (TTAnt TPastSimple ASimul) PPos (UseV posture_1_V)) (MkVPS (TTAnt TPastSimple ASimul) PPos (ReflVPSlash (SlashV2a make_3_V2) (AdvRNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA total_2_A) (UseN foolMasc_1_N))) of_1_Prep ReflPron))))))) NoVoc
@@ -148812,7 +148812,7 @@ key: 1 potency_1_N 05203850-n myndighet dominans auktoritet
 
 abs+ PhrUtt NoPConj (UttNP (MassNP (GerundCN (AdvVP (ComplSlash (SlashV2a provide_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN ground_5_N soldierMasc_1_N)))) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (AdAP increasingly_AdA (PositA potent_2_A)) (UseN weapon_1_N)))))))) NoVoc
 eng: providing the ground soldier with increasingly potent weapons
-swe: att förse marksoldaten med alltmer mäktiga vapen
+swe: att förse terrängsoldaten med alltmer mäktiga vapen
 bul: осигуряване позиция войника с все по-могъщи оръжия
 key: 1 potent_2_A 01832697-a
 
@@ -148882,7 +148882,7 @@ swe: olicensierade hundar ska tas till hundstallen
 bul: нелицензирани кучета ще бъдат заведени на кучкарника
 key: 1 pound_13_N 04000061-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN salesman_N)) (ComplSlash (SlashV2a pound_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN door_1_N knocker_5_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN salesman_N)) (ComplSlash (SlashV2a pound_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN door_1_N knocker_5_N))))))) NoVoc
 eng: the salesman pounded the door knocker
 swe: säljaren bultade dörrklappen
 bul: продавачът удари хлопката на вратата
@@ -149494,13 +149494,13 @@ swe: ett precist sinne
 bul: прецизен ум
 key: 1 precise_1_A 01843460-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a specify_4_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA precise_1_A) (UseN amount_3_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a specify_4_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA precise_1_A) (UseN amount_3_N)))))) NoVoc
 eng: specified a precise amount
 swe: specificerade en precis mängd
 bul: специфицира прецизно количество
 key: 1 precise_1_A 01843460-a точен
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV arrive_1_V) (PrepNP at_2_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA precise_1_A) (UseN moment_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV arrive_1_V) (PrepNP at_2_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA precise_1_A) (UseN moment_1_N))))))) NoVoc
 eng: arrived at the precise moment
 swe: ankom i det precisa ögonblicket
 bul: пристигна в прецизния момент
@@ -149860,15 +149860,15 @@ swe: en tystnad svanger med spänning
 bul: мълчание бременно с напрежение
 key: 1 pregnant_3_A 01088588-a
 
-abs+ PhrUttMark NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a preheat_V2) (DetCN (DetQuant DefArt NumSg) (UseN oven_N))))) NoVoc ExclMark
+abs: PhrUttMark NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a preheat_V2) (DetCN (DetQuant DefArt NumSg) (UseN oven_N))))) NoVoc ExclMark
 eng: Preheat the oven!
-swe: Förvärma ugnen!
-bul: Предварителай загрявам фурната!
+swe: Förvärm ugnen!
+bul: Загрей фурната!
 key: 1 preheat_V2 00373053-v
 
-abs+ PhrUtt NoPConj (UttNP (GenModNP NumSg (DetCN (DetQuant IndefArt NumSg) (UseN monkey_1_N)) (AdjCN (PositA prehensile_1_A) (UseN tail_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (GenModNP NumSg (DetCN (DetQuant IndefArt NumSg) (UseN monkey_1_N)) (AdjCN (PositA prehensile_1_A) (UseN tail_1_N)))) NoVoc
 eng: a monkey's prehensile tail
-swe: en apas grip-a svans
+swe: en apas gripförmögna svans
 bul: захващащата опашка на маймуна
 key: 1 prehensile_1_A 00129954-a
 
@@ -151252,7 +151252,7 @@ swe: furstligt manér
 bul: княжески маниер
 key: 1 princely_2_A 01596515-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (PossNP (AdjCN (PositA principal_A) (UseN river_N)) (UseLN america_2_LN)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (PossNP (AdjCN (PositA principal_A) (UseN river_N)) (UseLN america_2_LN)))) NoVoc
 eng: the principal rivers of America
 swe: de främsta floderna av Amerika
 bul: главните реки на Америка
@@ -156316,7 +156316,7 @@ swe: ett snabbt sinne
 bul: бърз ум
 key: 1 quick_4_A 01338856-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (UseComp (CompAP (SentAP (PositA quick_5_A) (EmbedVP ASimul PPos he_Pron (UseV respond_2_V))))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (UseComp (CompAP (SentAP (PositA quick_5_A) (EmbedVP ASimul PPos he_Pron (UseV respond_2_V))))))) NoVoc
 eng: was quick to respond
 swe: var snabb att svara
 bul: беше бърз да отговори
@@ -156364,7 +156364,7 @@ swe: snabbtänkt debattör
 bul: съобразителна дебатьорка
 key: 1 quick_witted_A 00063346-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (ComplSlash (SlashV2a save_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA embarrassing_1_A) (UseN situation_3_N)))) (PrepNP with_Prep (MassNP (AdjCN (PositA quick_witted_A) (UseN tact_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (ComplSlash (SlashV2a save_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA embarrassing_1_A) (UseN situation_3_N)))) (PrepNP with_Prep (MassNP (AdjCN (PositA quick_witted_A) (UseN tact_N))))))) NoVoc
 eng: saved an embarrassing situation with quick-witted tact
 swe: räddade en pinsam situation med snabbtänkt taktkänsla
 bul: спаси притеснителна ситуация със съобразителен такт
@@ -157294,10 +157294,10 @@ swe: stormen hade regnat bort spelet
 bul: бурята беше отменялa заради дъжд играта
 key: 1 wash_out_1_V2 02600830-v
 
-abs+ PhrUtt NoPConj (UttAdv (GerundAdv (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN rainbow_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttAdv (GerundAdv (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN rainbow_2_N))))) NoVoc
 eng: chasing rainbows
-swe: rusande ut regnbågar
-bul: преследвайки дъги
+swe: jagande regnbågar
+bul: гонейки дъги
 key: 1 rainbow_2_N 05959849-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA rainless_A) (UseN month_1_N)))) NoVoc
@@ -163012,16 +163012,16 @@ swe: remontera ett regemente
 bul: снабдявай с пресни коне полк
 key: 1 remount_3_V2 01186728-v
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA removable_1_A) (UseN cord_3_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA removable_1_A) (UseN cord_3_N)))) NoVoc
 eng: a removable cord
 swe: en avtagbar sladd
-bul: сменяем кабел
+bul: отстраним кабел
 key: 1 removable_1_A 01530701-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA removable_1_A) (UseN partition_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA removable_1_A) (UseN partition_1_N)))) NoVoc
 eng: removable partitions
-swe: avtagbara avdelaren
-bul: сменяеми прегради
+swe: avtagbara skiljeväggar
+bul: отстраними прегради
 key: 1 removable_1_A 01530701-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlashPartLast (AdvVPSlash (SlashV2a have_1_V2) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN removal_1_N)))) (MassNP (UseN surgery_4_N))) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumSg) (UseN malignancy_1_N))))))) NoVoc
@@ -163120,10 +163120,10 @@ swe: han döpades om minister av interiören
 bul: той беше преименуван министър на интериора
 key: 1 rename_2_V2 02402123-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN shot_1_N)) (ComplSlash (SlashV2A render_1_V2A (PositA immobile_1_A)) (UsePron she_Pron))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN shot_2_N)) (ComplSlash (SlashV2A render_1_V2A (PositA immobile_1_A)) (UsePron she_Pron))))) NoVoc
 eng: The shot rendered her immobile
-swe: skyttet gjorde henne orörlig
-bul: изстрелът я направи неподвижна
+swe: kulan gjorde henne orörlig
+bul: куршумът я направи неподвижна
 key: 1 render_1_V2A 00120483-v
 
 abs* ?
@@ -163350,7 +163350,7 @@ key: 1 rental_2_A 02903285-a
 
 abs+ PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA rental_2_A) (TimeNP (DetCN (DetQuant IndefArt NumPl) (UseN charge_3_N))))) NoVoc
 eng: rental charges
-swe: hyres- debiteringar
+swe: hyres- avgifter
 bul: наемен такси
 key: 1 rental_2_A 02903285-a
 
@@ -163546,10 +163546,10 @@ swe: har en stor repertoar av dialekter och karaktärer
 bul: има голям репертоар на диалекти и герои
 key: 1 repertory_2_N 08353771-n
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA repetitive_2_A) (UseN movement_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA repetitive_2_A) (UseN movement_1_N)))) NoVoc
 eng: repetitive movement
 swe: repetitiv rörelse
-bul: повтарящ сео движение
+bul: повтарящо движение
 key: 1 repetitive_2_A 01971192-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a replace_1_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_2_A) (UseN razor_N)))) (TimeNP (DetCN (DetQuant gen_Quant NumSg) (UseN blade_9_N))))))) NoVoc
@@ -166552,16 +166552,16 @@ swe: stapla upp hö
 bul: натрупай сено
 key: 1 rick_1_V2 01506368-v
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA rickety_1_A) (UseN table_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA rickety_1_A) (UseN table_2_N)))) NoVoc
 eng: a rickety table
 swe: ett rangligt bord
-bul: разклатна маса
+bul: разклатена маса
 key: 1 rickety_1_A 02300529-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (ConjCN and_Conj (BaseCN (AdjCN (PositA rickety_2_A) (UseN limb_1_N)) (UseN joint_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA rickety_2_A) (ConjCN and_Conj (BaseCN (UseN limb_1_N) (UseN joint_1_N)))))) NoVoc
 eng: rickety limbs and joints
 swe: rakitiska lemmar och leder
-bul: разклатни крайници и стави
+bul: рахитични крайници и стави
 key: 1 rickety_2_A 02557086-a
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a rid_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN house_1_N) (DetCN (DetQuant IndefArt NumPl) (UseN pest_4_N))))))) NoVoc
@@ -166734,7 +166734,7 @@ key: 1 ridicule_V2 00853615-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron she_Pron) NumSg) (AdjCN (PositA conceited_A) (PossNP (UseN assumption_7_N) (MassNP (AdjCN (PositA universal_2_A) (ComplN2 interest_in_N2 (DetCN (DetQuant (PossPron she_Pron) NumPl) (AdjCN (AdAP rather_AdA (PositA dull_1_A)) (UseN child_2_N))))))))) (UseComp (CompAP (PositA ridiculous_2_A)))))) NoVoc
 eng: her conceited assumption of universal interest in her rather dull children was ridiculous
-swe: hennes inbilska antagande av allmänt intresse för hennes ganska slöa barn var orimligt
+swe: hennes inbilska antagande av allmänt intresse för hennes ganska tråkiga barn var orimligt
 bul: нейното суетно предположение на универсален интерес към нейните доста скучни деца беше нелепо
 key: 1 ridiculous_2_A 02581199-a
 
@@ -167698,9 +167698,9 @@ swe: brak- ett berusat
 bul: изключително пияно
 key: 1 roaring_Adv 00446217-r
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a roast_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN turkey_4_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a roast_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN turkey_4_N))))) NoVoc
 eng: roast the turkey
-swe: rosta kalkonen
+swe: stek kalkonen
 bul: опечи пуйката
 key: 1 roast_1_V2 00325361-v
 
@@ -167818,15 +167818,15 @@ swe: hon gungade på sina fötter bakåt och framåt
 bul: тя се люшка назад и далеч на своите стъпала
 key: 1 rock_1_V 01879288-v люлея клатя vagga kränga gunga
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a rock_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN cradle_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a rock_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN cradle_1_N))))) NoVoc
 eng: rock the cradle
-swe: rocka vaggan
+swe: vagga vaggan
 bul: люшкай люлката
 key: 1 rock_2_V2 01880021-v люшкам люлея
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a rock_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN baby_4_N))))) NoVoc
 eng: rock the baby
-swe: rocka bebisen
+swe: vagga bebisen
 bul: люшкай бебето
 key: 1 rock_2_V2 01880021-v
 
@@ -168100,10 +168100,10 @@ swe: romersk arkitektur
 bul: римска архитектура
 key: 1 roman_2_A 02932638-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_5_A) (AdjCN (PositA roman_2_A) (UseN wall_8_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_2_A) (AdjCN (PositA roman_2_A) (UseN wall_8_N))))) NoVoc
 eng: the old Roman wall
 swe: den gamla romerska väggen
-bul: предишната римска стена
+bul: старата римска стена
 key: 1 roman_2_A 02932638-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA roman_4_A) (AdjCN (PositA catholic_1_A) (UseN church_1_N))))) NoVoc
@@ -168634,7 +168634,7 @@ swe: vild och oorganiserad politik
 bul: безредена политика
 key: 1 rough_and_tumble_A 01671524-a
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a rough_dry_V2) (DetCN (DetQuant DefArt NumSg) (UseN laundry_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a rough_dry_V2) (DetCN (DetQuant DefArt NumSg) (UseN laundry_1_N))))) NoVoc
 eng: rough-dry the laundry
 swe: torka utan att stryka tvätten
 bul: суши без гладене прането
@@ -168850,7 +168850,7 @@ swe: felet i beräkningen var hänförbart till avrundning
 bul: грешката в изчислението беше преписваема на закръгляване
 key: 1 rounding_N 00073997-n
 
-abs+ PhrUtt NoPConj (UttS (ConjS but_1_Conj (BaseS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN tax_N)) (AdvVP (PassVPSlash (SlashV2a round_off_3_V2)) (PrepNP to_1_Prep (DetCN (DetQuantOrd DefArt NumSg (OrdSuperl near_1_A)) (UseN dollar_1_N)))))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN rounding_N error_2_N))) (UseComp (CompAP (AdAP (PositAdAAdj surprising_A) (PositA small_1_A))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (ConjS but_1_Conj (BaseS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (UseN tax_N)) (AdvVP (PassVPSlash (SlashV2a round_off_3_V2)) (PrepNP to_1_Prep (DetCN (DetQuantOrd DefArt NumSg (OrdSuperl near_1_A)) (UseN dollar_1_N)))))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN rounding_N error_2_N))) (UseComp (CompAP (AdAP (PositAdAAdj surprising_A) (PositA small_1_A))))))))) NoVoc
 eng: taxes are rounded off to the nearest dollar but the rounding error is surprisingly small
 swe: skatter avrundas till den närmaste dollarn men avrundningsfelet är överraskande litet
 bul: данъци са закръглени до най-близкия долар но грешката от закръгляне е изненадващо малка
@@ -171624,8 +171624,8 @@ key: 1 scan_1_V2 02156934-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ComplSlash (SlashV2a scan_2_V2) (DetCN (DetQuant DefArt NumPl) (UseN (CompoundN newspaper_1_N headline_N)))) (TimeNP (MassNP (AdjCN (AdvAP (PositA waiting_A) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN taxi_N)))) (UseN while_N)))))))) NoVoc
 eng: She scanned the newspaper headlines while waiting for the taxi
-swe: hon ögnade igenom tidningsrubrikerna stund i väntan för taxin
-bul: тя сканира вестникарските заглавия момент в готовност за таксито
+swe: hon ögnade igenom tidningsrubrikerna stund väntande för taxin
+bul: тя сканира вестникарските заглавия момент чакащ за таксито
 key: 1 scan_2_V2 02156708-v преглеждам прегледам
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN beam_4_N)) (ComplSlash (SlashV2a scan_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN night_1_N sky_N))))))) NoVoc
@@ -173074,9 +173074,9 @@ swe: det var jultiden
 bul: беше коледния сезон
 key: 1 season_3_N 15264089-n tid helg
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a season_1_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA chicken_A) (UseN breast_3_N)))) (PrepNP after_Prep (MassNP (GerundCN (ComplSlash (SlashV2a roast_1_V2) (UsePron it_Pron)))))))) NoVoc
+abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a season_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN chicken_1_N breast_3_N)))) (PrepNP after_Prep (MassNP (GerundCN (ComplSlash (SlashV2a roast_1_V2) (UsePron it_Pron)))))))) NoVoc
 eng: Season the chicken breast after roasting it
-swe: krydda det fega bröstet efter att rosta det
+swe: krydda kycklingsbröstet efter att steka det
 bul: подправи пилешката гърда след печене
 key: 1 season_1_V2 02196212-v smaksätta parfymera
 
@@ -173280,7 +173280,7 @@ key: 1 second_raterMasc_N 10588623-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN stone_1_N)) (AdvVP (PassVPSlash (SlashV2a haul_1_V2)) (PrepNP to_1_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA secondary_1_A) (UseN crusher_N)))))))) NoVoc
 eng: the stone will be hauled to a secondary crusher
-swe: stenen ska höjas till en sekundär kross
+swe: stenen ska släpas till en sekundär kross
 bul: камъкът ще бъде изтеглен до второстепенна трошачка
 key: 1 secondary_1_A 01859389-a
 
@@ -174496,16 +174496,16 @@ swe: såg den densamme citaten i två tidningar
 bul: видя същиетия цитат в два вестника
 key: 1 self_same_A 02076350-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA self_sealing_1_A) (UseN tire_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA self_sealing_1_A) (UseN tire_N)))) NoVoc
 eng: self-sealing tires
 swe: självtätande däck
-bul: самоуплътняващ сеи гуми
+bul: самоуплътняващи гуми
 key: 1 self_sealing_1_A 01781390-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA self_sealing_2_A) (UseN envelope_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA self_sealing_2_A) (UseN envelope_1_N)))) NoVoc
 eng: self-sealing envelopes
 swe: självhäftande kuvert
-bul: самозалепващ сеи пликове
+bul: самозалепващи пликове
 key: 1 self_sealing_2_A 00054781-a
 
 abs* ?
@@ -174630,7 +174630,7 @@ key: 1 semantics_2_N 05929245-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (ComplBareVS hope_1_VS (UseCl (TTAnt TCond ASimul) PPos (PredVP (DetCN (DetQuant (PossPron he_Pron) NumPl) (UseN claim_2_N)) (ComplSlash (SlashV2a have_1_V2) (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN semblance_1_N) (MassNP (UseN authenticity_N))))))))))) NoVoc
 eng: he hoped his claims would have a semblance of authenticity
-swe: han hoppades hans fordringar skulle ha en sken av autenticitet
+swe: han hoppades hans påståenden skulle ha en sken av autenticitet
 bul: той се надяваше, че неговите твърдения биха имали подобие на автентичност
 key: 1 semblance_1_N 04685309-n
 
@@ -175906,7 +175906,7 @@ swe: serva min lastbil
 bul: обслужи моя камион
 key: 1 service_2_V2 00457892-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN washing_machine_N)) (ComplVV need_1_VV ASimul PPos (PassVPSlash (SlashV2a service_2_V2)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN washing_machine_N)) (ComplVV need_1_VV ASimul PPos (PassVPSlash (SlashV2a service_2_V2)))))) NoVoc
 eng: the washing machine needs to be serviced
 swe: tvättmaskinen behöver att servas
 bul: пералнята трябва да бъде обслужена
@@ -177634,7 +177634,7 @@ swe: han bombarderade pitcheret för åtta löpningar i den första inningen
 bul: той обстрелва питчъра за осем бягания в първия ининг
 key: 1 shell_4_V2 01408849-v
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a shell_7_V2) (DetCN (DetQuant DefArt NumPl) (UseN legume_3_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a shell_7_V2) (DetCN (DetQuant DefArt NumPl) (UseN legume_3_N))))) NoVoc
 eng: shell the legumes
 swe: sprita baljväxterna
 bul: лющи бобовите зърна
@@ -178578,7 +178578,7 @@ key: 1 shortness_4_N 05059983-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN shot_2_N)) (AdvVP (UseV buzz_1_V) (PrepNP past_Prep (DetCN (DetQuant (PossPron he_Pron) NumSg) (UseN ear_3_N))))))) NoVoc
 eng: the shot buzzed past his ear
-swe: projektilen surrade förbi hans öra
+swe: kulan surrade förbi hans öra
 bul: куршумът бръмча зад неговото ухо
 key: 1 shot_2_N 04212826-n
 
@@ -178936,7 +178936,7 @@ swe: en grälsjuk fru
 bul: заядлива съпруга
 key: 1 shrewish_A 01142110-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA shrill_1_A) (UseN whistle_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA shrill_1_A) (UseN whistle_1_N)))) NoVoc
 eng: a shrill whistle
 swe: en gäll vissling
 bul: кресливо свиркане
@@ -179932,9 +179932,9 @@ swe: alla dissidentar tystades när diktatorn antog makten
 bul: всичките отцепници бяха заглушавани когато диктаторът встъпи в силата
 key: 1 silence_2_V2 00463920-v
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA silent_1_A) (UseN house_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA silent_1_A) (UseN house_1_N)))) NoVoc
 eng: a silent house
-swe: ett tystt hus
+swe: ett tyst hus
 bul: тиха къща
 key: 1 silent_1_A 01925827-a
 
@@ -180112,7 +180112,7 @@ swe: grytan förblev vid en sjudning för timmar
 bul: яхнията остана пред къкрене за часове
 key: 1 simmer_N 05021740-n
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a simmer_V2) (DetCN (DetQuant DefArt NumSg) (UseN sauce_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a simmer_V2) (DetCN (DetQuant DefArt NumSg) (UseN sauce_N))))) NoVoc
 eng: simmer the sauce
 swe: sjud såsen
 bul: къкри соса
@@ -180880,7 +180880,7 @@ swe: Den obehagliga situationen (eller positionen) att välja mellan två onda
 bul: неблагоприятната ситуация (или положение) на избора между две злини
 key: 1 situation_2_N 13948785-n
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV find_13_V) (PrepNP in_1_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (AdAP very_AdA (PositA fortunate_1_A)) (UseN situation_2_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV find_13_V) (PrepNP in_1_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (AdAP very_AdA (PositA fortunate_1_A)) (UseN situation_2_N))))))) NoVoc
 eng: found herself in a very fortunate situation
 swe: befann sig i en väldigt tursam situation
 bul: озова се в много щастлива ситуация
@@ -180988,7 +180988,7 @@ swe: det skelettiska systemet
 bul: скелетната система
 key: 1 skeletal_1_A 02947062-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA skeletal_1_A) (UseN bone_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA skeletal_1_A) (UseN bone_1_N)))) NoVoc
 eng: skeletal bones
 swe: skelettiska ben
 bul: скелетни кости
@@ -181884,7 +181884,7 @@ key: 1 slight_2_A 02172469-a
 
 abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a watch_3_V2) (DetCN (DetQuant (PossPron she_Pron) NumSg) (AdjCN (PositA slight_3_A) (AdjCN (AdvAP (PositA cross_2_A) (TimeNP (DetCN (DetQuant DefArt NumSg) (UseN street_1_N)))) (UseN figure_2_N))))))) NoVoc
 eng: watched her slight figure cross the street
-swe: tittade på hennes späda figur tvär-a gatan
+swe: tittade på hennes späda figur tvärgående gatan
 bul: гледа нейната слаба фигура напречна улицата
 key: 1 slight_3_A 00994085-a
 
@@ -181936,7 +181936,7 @@ swe: stöten orsakade många halkningar och några vurpor
 bul: трусът причини много подхлъзвания и няколко падания
 key: 1 slip_7_N 07332119-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN receipt_2_N slip_10_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN receipt_2_N slip_10_N)))) NoVoc
 eng: a receipt slip
 swe: en kvittolapp
 bul: касово листче
@@ -182298,7 +182298,7 @@ key: 1 slow_1_A 00983718-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (AdjCN (PositA slow_1_A) (UseN lane_2_N)) (DetCN (DetQuant gen_Quant NumSg) (UseN traffic_1_N))))) NoVoc
 eng: the slow lane of traffic
-swe: den långsamma simbanan av trafiken
+swe: det långsamma körfältet av trafiken
 bul: бавната лента на трафика
 key: 1 slow_1_A 00983718-a муден бавен
 
@@ -184408,16 +184408,16 @@ swe: sula skorna
 bul: подметявай обувките
 key: 1 sole_V2 00534483-v
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA solemn_1_A) (UseN promise_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA solemn_1_A) (UseN promise_1_N)))) NoVoc
 eng: a solemn promise
 swe: ett högtidligt löfte
-bul: церемониално обещание
+bul: тържествено обещание
 key: 1 solemn_1_A 02126493-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN judgeFem_1_N)) (AdvVP (UseComp (CompAP (PositA solemn_1_A))) (SubjS as_1_Subj (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a pronounce_2_V2) (MassNP (UseN sentence_2_N)))))))))) NoVoc
 eng: the judge was solemn as he pronounced sentence
 swe: domaren var högtidlig när han avkunnade dom
-bul: съдийката беше церемониална когато той обяви присъда
+bul: съдийката беше тържествена когато той обяви присъда
 key: 1 solemn_1_A 02126493-a
 
 abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (UseN film_1_N)) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA solemn_2_A) (AdjCN (PositA social_1_A) (UseN message_2_N))))))) NoVoc
@@ -185016,7 +185016,7 @@ key: 1 sop_2_N 07231275-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (UseN (CompoundN rote_N memorization_1_N))) (AdvVP (UseComp (CompNP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN educatorMasc_N)) (AdjCN (PositA standard_1_A) (AdjCN (PresPartAP (UseV operate_2_V)) (UseN procedure_1_N)))))) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumPl) (UseN century_1_N))))))) NoVoc
 eng: rote memorization has been the educator's standard operating procedure for centuries
-swe: rotmemoreringen har varit lärarens standarda skötande procedur för århundraden
+swe: rotmemoreringen har varit lärarens standard skötande procedur för århundraden
 bul: запаметяването чрез зубрене е било стандартната оперираща процедура на учителя за векове
 key: 1 rote_N 01026910-n
 
@@ -185404,7 +185404,7 @@ swe: han ansträngade de svaga ljuden för att höra
 bul: той напрегна за да чуе бледите звуци
 key: 1 sound_2_N 05726201-n звук ljud hörselförnimmelse
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PresPartAP (UseV fall_1_V)) (UseN tree_1_N))) (AdvVP (AdvVP (AdvVP (ComplSlash (SlashV2a make_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN sound_3_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN forest_2_N)))) even_1_Adv) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UseDAPMasc (DetDAP (DetQuant no_Quant NumSg))) (AdvVP (UseComp (CompAdv there_1_Adv)) (InOrderToVP ASimul PPos he_Pron (ComplSlash (SlashV2a hear_1_V2) (UsePron they_Pron))))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PresPartAP (UseV fall_1_V)) (UseN tree_1_N))) (AdvVP (AdvVP (AdvVP (ComplSlash (SlashV2a make_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN sound_3_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN forest_2_N)))) even_1_Adv) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UseDAPMasc (DetDAP (DetQuant no_Quant NumSg))) (AdvVP (UseComp (CompAdv there_1_Adv)) (InOrderToVP ASimul PPos he_Pron (ComplSlash (SlashV2a hear_1_V2) (UsePron they_Pron))))))))))) NoVoc
 eng: falling trees make a sound in the forest even when no one is there to hear them
 swe: fallande träd gör ett ljud i skogen även när ingen är där för att höra dem
 bul: падащи дървета правят звук в гората дори когато никой не е там за да ги чуе
@@ -185422,10 +185422,10 @@ swe: den huvudsakliga kroppen av sundet drev parallell till kusten
 bul: основното тяло на пролива държа паралел до брега
 key: 1 sound_8_N 09463090-n sund
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UseDAP (DetDAP (DetQuant this_Quant NumSg))) (ComplVA sound_1_VA (PositA interesting_A))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UseDAP (DetDAP (DetQuant this_Quant NumSg))) (ComplVA sound_1_VA (PositA interesting_A))))) NoVoc
 eng: This sounds interesting
 swe: det här låter intressant
-bul: това звуа интересно
+bul: това звучи интересно
 key: 1 sound_1_VA 02139392-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN record_2_N)) (ComplVA sound_3_VA (PositA scratchy_4_A))))) NoVoc
@@ -185704,7 +185704,7 @@ swe: så marken med solrosfrön
 bul: насей земята със слънчогледови семена
 key: 1 sow_3_V2 01503986-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a test_1_V2) (DetCN (DetQuant (PossPron he_Pron) NumSg) (SentCN (UseN ability_2_N) (EmbedVP ASimul PPos he_Pron (ComplSlash (SlashV2a locate_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN object_4_N))))))) (PrepNP in_1_Prep (MassNP (UseN space_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ComplSlash (SlashV2a test_1_V2) (DetCN (DetQuant (PossPron he_Pron) NumSg) (SentCN (UseN ability_2_N) (EmbedVP ASimul PPos he_Pron (ComplSlash (SlashV2a locate_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN object_4_N))))))) (PrepNP in_1_Prep (MassNP (UseN space_1_N))))))) NoVoc
 eng: they tested his ability to locate objects in space
 swe: de testade hans förmåga att lokalisera föremål i rum
 bul: те тестваха неговото умение да локализира обекти в пространство
@@ -186450,7 +186450,7 @@ key: 1 specimen_2_N 05274378-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA specious_1_A) (UseN claim_2_N)))) NoVoc
 eng: a specious claim
-swe: en bestickande fordring
+swe: ett bestickande påstående
 bul: благовидно твърдение
 key: 1 specious_1_A 02471438-a
 
@@ -186976,7 +186976,7 @@ swe: spill bönorna helt över bordet
 bul: разпилей бобовете изцяло над масата
 key: 1 spill_3_V2 01544361-v разсипя разсипвам
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a spill_4_V2) (MassNP (UseN blood_1_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a spill_4_V2) (MassNP (UseN blood_1_N))))) NoVoc
 eng: spill blood
 swe: spill blod
 bul: разлей кръв
@@ -188988,7 +188988,7 @@ key: 1 stand_3_V 02740363-v
 
 abs+ PhrUttMark NoPConj (UttS (PredVPS (UsePron i_Pron) (ConjVPS and_Conj (BaseVPS (MkVPS (TTAnt TPres ASimul) PPos (ProgrVP (ReflVPSlash (SlashV2a stand_4_V2) (ReflPoss NumSg (UseN ground_5_N))))) (MkVPS (TTAnt TFut ASimul) PNeg (UseV give_in_1_V)))))) NoVoc ExclMark
 eng: I am standing my ground and won't give in!
-swe: Jag håller på att hålla stånd min mark och ska inte ge efter!
+swe: Jag håller på att hålla stånd min terräng och ska inte ge efter!
 bul: Аз отстоявам своята позиция и няма да отстъпя!
 key: 1 stand_4_V2 02707980-v
 
@@ -189102,19 +189102,19 @@ key: 1 standard_1_A 02303673-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA standard_1_A) (UseN size_2_N)))) NoVoc
 eng: standard sizes
-swe: standarda storlekar
+swe: standard storlekar
 bul: стандартни размери
 key: 1 standard_1_A 02303673-a установен стандартен общоприет
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA standard_1_A) (UseN fixture_1_N)))) NoVoc
 eng: the standard fixtures
-swe: de standarda systemen
+swe: de standard systemen
 bul: стандартните инсталации
 key: 1 standard_1_A 02303673-a установен стандартен общоприет
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA standard_1_A) (UseN brand_2_N)))) NoVoc
 eng: standard brands
-swe: standarda märken
+swe: standard märken
 bul: стандартни типове
 key: 1 standard_1_A 02303673-a установен стандартен общоприет
 
@@ -189138,7 +189138,7 @@ key: 1 standard_2_A 00489512-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA standard_3_A) (UseN (CompoundN reference_4_N work_1_N))))) NoVoc
 eng: a standard reference work
-swe: ett standart faktabokarbete
+swe: ett standard faktabokarbete
 bul: стандартна справочна работа
 key: 1 standard_3_A 02302509-a
 
@@ -192088,9 +192088,9 @@ swe: studenterna rätade sig på när läraren inträdde
 bul: студентките се изправяха когато учителят влезе
 key: 1 straighten_3_V 01986058-v
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a straighten_6_V2) (UseDAPMasc (DetDAP (DetQuant this_Quant NumSg)))) (TimeNP (MassNP (UseN post_4_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a straighten_6_V2) (DetCN (DetQuant this_Quant NumSg) (UseN post_4_N))))) NoVoc
 eng: Straighten this post
-swe: räta ut den här stolpe
+swe: räta ut den här stolpen
 bul: изправи този стълб
 key: 1 straighten_6_V2 00278705-v
 
@@ -197118,7 +197118,7 @@ key: 1 sustain_4_V2 01187158-v
 
 abs+ PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant DefArt NumPl) (UseN money_2_N)) (MkVPS (TTAnt TFut ASimul) PPos (ComplSlash (SlashV2a sustain_4_V2) (DetCN (DetQuant (PossPron we_Pron) NumSg) (AdjCN (PositA good_1_A) (UseN cause_3_N))))))) NoVoc
 eng: The money will sustain our good cause
-swe: kapitalen ska försörja vår bra orsak
+swe: kapitalen ska försörja vår bra kampanj
 bul: парите ще поддържат нашата добра кауза
 key: 1 sustain_4_V2 01187158-v
 
@@ -197856,7 +197856,7 @@ key: 1 syllabic_1_A 02817544-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA syllabic_1_A) (UseN character_8_N))) each_Adv) (ComplSlash (SlashV2a represent_5_V2) (DetCN (DetQuant IndefArt NumSg) (UseN syllable_N)))))) NoVoc
 eng: syllabic characters each represent a syllable
-swe: stavelse-a tecken varje företräder en stavelse
+swe: stavelse-a tecken vardera företräder en stavelse
 bul: силабични знаци всеки представляват сричка
 key: 1 syllabic_1_A 02817544-a
 
@@ -197970,7 +197970,7 @@ key: 1 sympathetic_1_A 03019521-a
 
 abs: PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA sympathetic_2_A) (PrepNP to_3_Prep (GenModNP NumSg (DetCN (DetQuant DefArt NumPl) (UseN studentMasc_1_N)) (UseN cause_3_N))))) NoVoc
 eng: sympathetic to the students' cause
-swe: sympatisk till studenternas orsak
+swe: sympatisk till studenternas kampanj
 bul: симпатичен към каузата на студентите
 key: 1 sympathetic_2_A 02383482-a
 
@@ -200688,7 +200688,7 @@ key: 1 tempterMasc_N 10719401-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a question_5_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN tenability_N) (DetCN (DetQuant (PossPron i_Pron) NumPl) (UseN claim_2_N)))))))) NoVoc
 eng: he questioned the tenability of my claims
-swe: han ifrågasatte hållbarheten av mina fordringar
+swe: han ifrågasatte hållbarheten av mina påståenden
 bul: той постави под въпрос обосноваността на моите твърдения
 key: 1 tenability_N 04791152-n
 
@@ -200728,13 +200728,13 @@ swe: sköta en affär
 bul: стопанисвай магазин
 key: 1 tend_V2 02443912-v
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (SentCN (UseN tendency_1_N) (EmbedVP ASimul PPos he_Pron (UseComp (CompAP (AdAP too_AdA (PositA strict_3_A)))))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (SentCN (UseN tendency_1_N) (EmbedVP ASimul PPos he_Pron (UseComp (CompAP (AdAP too_AdA (PositA strict_3_A)))))))) NoVoc
 eng: a tendency to be too strict
 swe: en tendens att vara för sträng
 bul: тенденция да бъде твърде стриктен
 key: 1 tendency_1_N 06206319-n тенденция склонност наклонност tendens dragning disposition böjelse
 
-abs+ PhrUtt NoPConj (UttNP (AdvNP (MassNP (UseN fabric_1_N)) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (SentCN (UseN tendency_3_N) (EmbedVP ASimul PPos he_Pron (UseV shrink_4_V))))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (AdvNP (MassNP (UseN fabric_1_N)) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (SentCN (UseN tendency_3_N) (EmbedVP ASimul PPos he_Pron (UseV shrink_4_V))))))) NoVoc
 eng: fabric with a tendency to shrink
 swe: tyg med en tendens att krympa
 bul: тъкан с тенденция да се свие
@@ -201120,7 +201120,7 @@ key: 1 terminal_1_A 02823245-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA terminal_1_A) (UseN charge_3_N)))) NoVoc
 eng: terminal charges
-swe: terminala debiteringar
+swe: terminala avgifter
 bul: терминални такси
 key: 1 terminal_1_A 02823245-a
 
@@ -204040,15 +204040,15 @@ swe: flyktingslägret är ett tickande bombi väntant till tur bort
 bul: бежанският лагер е цъкане в готовносто от бомба до смяна далеч
 key: 1 time_bomb_1_N 13967148-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA time_honoured_1_A) (UseN custom_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA time_honoured_1_A) (UseN custom_2_N)))) NoVoc
 eng: time-honored customs
-swe: hävdvunnna bruk
-bul: утвърден от времени обичаи
+swe: hävdvunna bruk
+bul: традиционни обичаи
 key: 1 time_honoured_1_A 01990737-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA time_honoured_2_A) (UseN institution_3_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA time_honoured_2_A) (UseN institution_3_N)))) NoVoc
 eng: time-honored institutions
-swe: hävdvunnna institutioner
+swe: hävdvunna institutioner
 bul: вековни институции
 key: 1 time_honoured_2_A 01229870-a
 
@@ -204172,7 +204172,7 @@ swe: Kan du tinker med T.V.-setet - det fungerar inte rätt
 bul: Можеш ли да се въртиш с комплекта TV - не работи добре
 key: 1 tinker_3_V 00262200-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (PossNP (AdjCN (PositA careful_1_A) (PossNP (UseN tinning_1_N) (DetCN (DetQuant DefArt NumPl) (UseN end_1_N)))) (DetCN (DetQuant IndefArt NumPl) (UseN wire_1_N)))) (AdvVP (ComplSlash (SlashV2a result_in_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA better_1_A) (UseN joint_5_N)))) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ComplSlash (SlashV2a solder_V2) (UsePron they_Pron))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (PossNP (AdjCN (PositA careful_1_A) (PossNP (UseN tinning_1_N) (DetCN (DetQuant DefArt NumPl) (UseN end_1_N)))) (DetCN (DetQuant IndefArt NumPl) (UseN wire_1_N)))) (AdvVP (ComplSlash (SlashV2a result_in_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA better_1_A) (UseN joint_5_N)))) (SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ComplSlash (SlashV2a solder_V2) (UsePron they_Pron))))))))) NoVoc
 eng: careful tinning of the ends of wires results in a better joint when you solder them
 swe: försiktig förtenning av ändarna av ledningar resulterar i en bättre skarv när du lödar dem
 bul: внимателно калайдисване на краищата на жици довежда до по-добро съединение когато ти ги запояваш
@@ -204316,7 +204316,7 @@ swe: trötta mödrar med gråtande bebisar
 bul: уморени майки с плачещи бебета
 key: 1 tired_1_A 02440540-a
 
-abs+ PhrUtt NoPConj (UttAP he_Pron (AdAP too_AdA (AdvAP (PositA tired_1_A) (InOrderToVP ASimul PPos he_Pron (UseV eat_2_V))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdAP too_AdA (AdvAP (PositA tired_1_A) (InOrderToVP ASimul PPos he_Pron (UseV eat_2_V))))) NoVoc
 eng: too tired to eat
 swe: för trött för att äta
 bul: твърде уморен за да яде
@@ -205708,9 +205708,9 @@ swe: hans tacksamhet var enkel och rörande
 bul: неговата благодарност беше простодушна и трогателна
 key: 1 touching_A 01565214-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA touchy_2_A) (UseN subject_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA touchy_2_A) (UseN subject_1_N)))) NoVoc
 eng: a touchy subject
-swe: ett stingsligt ämne
+swe: ett känsligt ämne
 bul: докачлива тема
 key: 1 touchy_2_A 00750606-a
 
@@ -205902,7 +205902,7 @@ key: 1 trace_1_N 13795501-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PNeg (ExistNPAdv (DetCN (DetQuant IndefArt NumSg) (PartNP (UseN trace_2_N) (MassNP (UseN evidence_3_N)))) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN claim_2_N)))))) NoVoc
 eng: there wasn't a trace of evidence for the claim
-swe: det fanns inte ett spår bevis för fordringen
+swe: det fanns inte ett spår bevis för påståendet
 bul: няма следа от доказателство за твърдението
 key: 1 trace_2_N 06659391-n
 
@@ -209496,8 +209496,8 @@ key: 1 twice_Adv 00065694-r
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ReflVPSlash (SlashV2a twiddle_2_V2) (ReflPoss NumPl (UseN thumb_1_N))) (TimeNP (MassNP (AdjCN (AdvAP (PositA waiting_A) (PrepNP for_Prep (DetCN (DetQuant DefArt NumSg) (UseN interview_1_N)))) (UseN while_N)))))))) NoVoc
 eng: He twiddled his thumbs while waiting for the interview
-swe: han rullade tummarna sina tummar stund i väntan för intervjun
-bul: той въртя своите палци момент в готовност за интервюта
+swe: han rullade tummarna sina tummar stund väntande för intervjun
+bul: той въртя своите палци момент чакащ за интервюта
 key: 1 twiddle_2_V2 01226775-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumSg) (UseN lightning_1_N)) bolt_2_Adv) (AdvVP (UseV twig_1_V) (PrepNP in_1_Prep (DetCN (DetQuant IndefArt (NumCard several_Card)) (UseN direction_2_N))))))) NoVoc
@@ -210922,7 +210922,7 @@ swe: avlasta åsnan
 bul: разтовари магарето
 key: 1 unburden_2_V2 01490553-v
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a unbutton_V2) (DetCN (DetQuant DefArt NumSg) (UseN shirt_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a unbutton_V2) (DetCN (DetQuant DefArt NumSg) (UseN shirt_N))))) NoVoc
 eng: unbutton the shirt
 swe: knäpp upp skjortan
 bul: разкопчей ризата
@@ -210958,7 +210958,7 @@ swe: bara utan matta golv
 bul: голи без килими подове
 key: 1 uncarpeted_A 00317374-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA uncensored_A) (UseN (CompoundN news_2_N report_3_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA uncensored_A) (UseN (CompoundN news_2_N report_3_N))))) NoVoc
 eng: uncensored news reports
 swe: ocensurerade nyhetrapporter
 bul: нецензурирани новинарски репортажи
@@ -211258,10 +211258,10 @@ swe: ett klart sinne
 bul: бистър ум
 key: 1 unclouded_3_A 00437089-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN wine_1_N)) (UseComp (CompAP (PositA unclouded_4_A)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN wine_1_N)) (UseComp (CompAP (PositA unclouded_4_A)))))) NoVoc
 eng: the wine was unclouded
 swe: vinet var klart
-bul: виното беше безоблачно
+bul: виното беше бистро
 key: 1 unclouded_4_A 00434575-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA uncluttered_1_A) (UseN room_1_N)))) NoVoc
@@ -211606,7 +211606,7 @@ swe: "en hyllning till hans mod ... och hans oövervinnliga vilja" - R.E.Daniels
 bul: "отдаденост на смелостта му ... и неговата непоколебима воля" - R.E.Danielson
 key: 1 unconquerable_1_A 00571832-a
 
-abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a face_1_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA unconquerable_1_A) (UseN difficulty_3_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a face_1_V2) (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA unconquerable_1_A) (UseN difficulty_3_N)))))) NoVoc
 eng: faced unconquerable difficulties
 swe: mötte oövervinnerliga svårigheter
 bul: сблъска се с непобедими трудности
@@ -211924,10 +211924,10 @@ swe: han rätade sig ut själv
 bul: той [SelfAdvVP] разгъвам
 key: 1 uncurl_V 02067414-v
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA uncut_2_A) (UseN grass_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA uncut_2_A) (UseN grass_1_N)))) NoVoc
 eng: uncut grass
-swe: oklipptt gräs
-bul: неподстригана трева
+swe: oklippt gräs
+bul: неокосена трева
 key: 1 uncut_2_A 01570681-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA uncut_3_A) (UseN diamond_2_N)))) NoVoc
@@ -212896,7 +212896,7 @@ swe: accepterade de oförtjänta belöningarna som kom hans sätt samt den oför
 bul: прие незаслужените награди които дойдоха неговите начини както и незаслужената критика
 key: 1 unearned_A 00825292-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA unearned_A) (UseN income_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA unearned_A) (UseN income_N)))) NoVoc
 eng: unearned income
 swe: oförtjänt inkomst
 bul: незаслужен приход
@@ -217686,7 +217686,7 @@ key: 1 unsupported_1_A 02361582-a
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (PossNP (UseN removal_1_N) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA central_2_A) (UseN post_4_N))))) (ComplSlash (SlashV2A leave_V2A (PositA unsupported_2_A)) (DetCN (DetQuant DefArt NumSg) (UseN roof_1_N)))))) NoVoc
 eng: removal of the central post left the roof unsupported
-swe: borttagningen av det centrala stolpet lämnade taket ostöttat
+swe: borttagningen av den centrala stolpen lämnade taket ostöttat
 bul: премахването на централния стълб остави покрива неподпрян
 key: 1 unsupported_2_A 02360857-a
 
@@ -218916,7 +218916,7 @@ key: 1 up_to_the_minute_A 00671602-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA upbound_A) (AdjCN (PresPartAP (UseV ship_1_V)) (UseN lane_2_N))))) NoVoc
 eng: upbound shipping lanes
-swe: uppåtgående skeppande simbanor
+swe: uppåtgående skeppande körfält
 bul: възходящи превозващи ленти
 key: 1 upbound_A 02501256-a
 
@@ -219138,7 +219138,7 @@ key: 1 upraised_A 01210893-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA upright_1_A) (UseN post_4_N)))) NoVoc
 eng: an upright post
-swe: ett upprätt stolpe
+swe: en upprätt stolpe
 bul: вертикален стълб
 key: 1 upright_1_A 01236903-a
 
@@ -220006,10 +220006,10 @@ swe: tomma kommentarer
 bul: безсъдържателни коментари
 key: 1 vacuous_2_A 01501421-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA vacuous_3_A) (UseN space_2_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA vacuous_3_A) (UseN space_2_N)))) NoVoc
 eng: a vacuous space
 swe: ett tomt utrymme
-bul: безсъдържателно пространство
+bul: празно пространство
 key: 1 vacuous_3_A 01091954-a
 
 abs* ?
@@ -220150,21 +220150,21 @@ swe: ett fåfängt försök
 bul: напразен опит
 key: 1 vain_2_A 01872762-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA valedictory_2_A) (UseN address_3_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA valedictory_2_A) (UseN address_3_N)))) NoVoc
 eng: a valedictory address
-swe: ett avskeds-t tal
+swe: ett avslutande tal
 bul: прощално обръщение
 key: 1 valedictory_2_A 01294221-a 02833168-a
 
 abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA valedictory_1_A) (AdvCN (UseN praise_1_N) (PrepNP for_Prep (DetCN (DetQuant (PossPron he_Pron) NumSg) (AdjCN (AdAP (PositAdAAdj uniform_4_A) (PositA manly_1_A)) (UseN course_4_N)))))))) NoVoc
 eng: valedictory praise for his uniformly manly course
-swe: avskeds- beröm för hans jämnt manliga tillvägagångssätt
+swe: avslutande beröm för hans jämnt manliga tillvägagångssätt
 bul: прощална възхвала за неговия равномерно мъжествен курс
 key: 1 valedictory_1_A 02833168-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA suitable_1_A) (AdjCN (PositA valedictory_1_A) (UseN gesture_3_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA suitable_1_A) (AdjCN (PositA valedictory_1_A) (UseN gesture_3_N))))) NoVoc
 eng: a suitable valedictory gesture
-swe: en passande avskeds- gest
+swe: en passande avslutande gest
 bul: подходящ прощален жест
 key: 1 valedictory_1_A 02833168-a
 
@@ -220776,7 +220776,7 @@ key: 1 vegetative_1_A 03158967-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA dull_1_A) (AdjCN (PositA vegetative_2_A) (UseN lifestyle_1_N))))) NoVoc
 eng: a dull vegetative lifestyle
-swe: en slö vegetativ livsstil
+swe: en tråkig vegetativ livsstil
 bul: скучен вегетативен стил на живот
 key: 1 vegetative_2_A 02844216-a
 
@@ -220834,15 +220834,15 @@ swe: pjäsen var bara ett fordon för att visa hennes talanger
 bul: пиесата беше само средство за да покаже нейните таланти
 key: 1 vehicle_2_N 06265658-n
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA vehicular_A) (UseN traffic_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA vehicular_A) (UseN traffic_1_N)))) NoVoc
 eng: vehicular traffic
-swe: fordon trafik
+swe: motoriserad trafik
 bul: моторизиран трафик
 key: 1 vehicular_A 03139995-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PastPartAP (SlashV2a veil_2_V2)) (UseN threat_3_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PastPartAP (SlashV2a veil_2_V2)) (UseN threat_3_N)))) NoVoc
 eng: a veiled threat
-swe: ett fördunklat hot
+swe: ett dolt hot
 bul: прикрита заплаха
 key: 1 veil_2_V2 00314788-v mörklägga mörka fördunkla
 
@@ -221212,9 +221212,9 @@ swe: vänligen verifiera det där dörrarna ar stängde
 bul: моля провери онова вратите които ар затвори
 key: 1 verify_1_V2 00666401-v verifiera intyga någots riktighet besanna
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a verify_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN claim_2_N))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a verify_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN claim_2_N))))) NoVoc
 eng: verify a claim
-swe: verifiera en fordring
+swe: verifiera ett påstående
 bul: провери твърдение
 key: 1 verify_1_V2 00666401-v verifiera intyga någots riktighet besanna
 
@@ -221290,9 +221290,9 @@ swe: ombytliga sinnesstämningar
 bul: променливи настроения
 key: 1 versatile_2_A 02515662-a
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA versatile_3_A) (UseN writerMasc_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA versatile_3_A) (UseN writerMasc_2_N)))) NoVoc
 eng: a versatile writer
-swe: en mångsidig skrivare
+swe: en mångsidig författare
 bul: всестранен писател
 key: 1 versatile_3_A 02235908-a
 
@@ -223180,9 +223180,9 @@ swe: fakulteten vikade ner tummarna på kandidaten för dekanläget
 bul: факултетът обръща надолу палците на кандидата за деканското положение
 key: 1 vote_down_2_V 02467453-v
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA votive_A) (UseN prayer_4_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA votive_A) (UseN prayer_4_N)))) NoVoc
 eng: votive prayers
-swe: votiv-a böner
+swe: votiva böner
 bul: вотивни молитви
 key: 1 votive_A 00575952-a
 
@@ -223456,28 +223456,28 @@ swe: Kan du passa upp på vårt bord tack?
 bul: Ти можеш ли да обслужиш нашата маса, моля?
 key: 1 wait_on_V2 02546367-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA waiting_A) (ConjCN and_Conj (BaseCN (UseN car_1_N) (UseN limousine_N))))) (ComplSlash (SlashV2a line_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN curb_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA waiting_A) (ConjCN and_Conj (BaseCN (UseN car_1_N) (UseN limousine_N))))) (ComplSlash (SlashV2a line_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN curb_1_N)))))) NoVoc
 eng: waiting cars and limousines lined the curb
-swe: i väntana bilar och limousiner kantade trottoarkanten
-bul: в готовности коли и лимузини обрамчваха бордюра
+swe: väntande bilar och limousiner kantade trottoarkanten
+bul: чакащи коли и лимузини обрамчваха бордюра
 key: 1 waiting_A 01938342-a
 
 abs+ PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (ComplSlash (SlashV2a find_6_V2) (DetCN (DetQuant (PossPron she_Pron) NumSg) (AdjCN (AdvAP (PositA waiting_A) (PrepNP for_Prep (UsePron they_Pron))) (UseN mother_1_N)))))) NoVoc
 eng: found her mother waiting for them
-swe: fann hennes mor i väntana för dem
-bul: намери нейната майка в готовноста за тях
+swe: fann hennes mor väntande för dem
+bul: намери нейната майка чакаща за тях
 key: 1 waiting_A 01938342-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (ConjAP and_Conj (BaseAP (PositA ready_1_A) (AdvAP (PositA waiting_A) (PrepNP for_Prep (DetCN (DetQuant DefArt NumPl) (UseN guestMasc_1_N)))))) (AdjCN (PositA impressive_1_A) (PossNP (UseN array_1_N) (DetCN (DetQuant gen_Quant NumSg) (UseN food_1_N))))))) NoVoc
 eng: an impressive array of food ready and waiting for the guests
-swe: ett imponerande arrangemang av maten färdigt och i väntant för gästerna
-bul: впечатляваща подредба на храната готова и в готовноста за гостите
+swe: ett imponerande arrangemang av maten färdigt och väntande för gästerna
+bul: впечатляваща подредба на храната готова и чакаща за гостите
 key: 1 waiting_A 01938342-a
 
 abs+ PhrUtt NoPConj (UttQS (SQuestVPS (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA military_2_A) (UseN force_4_N))) (ConjVPS and_Conj (BaseVPS (MkVPS ? ? ready_VP) (MkVPS ? ? (UseComp (CompAP (PositA waiting_A)))))))) NoVoc
 eng: military forces ready and waiting
 swe: [SQuestVPS] militära krafter ? ? är
-bul: [SQuestVPS] военни сили ? ? съм готов и ? ? съм в готовност
+bul: [SQuestVPS] военни сили ? ? съм готов и ? ? съм чакащ
 key: 1 waiting_A 01938342-a
 
 abs+ PhrUtt NoPConj (UttS (AdvS (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (PossNP (UseN wake_1_N) (DetCN (DetQuant DefArt NumSg) (UseN accident_1_N))))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UseDAPMasc (DetDAP (DetQuant no_Quant NumSg))) (ComplVQ know_1_VQ (QuestVPS (IdetIP how8many_IDet) (MkVPS (TTAnt TPastSimple AAnter) PPos (PassVPSlash (SlashV2a injure_1_V2))))))))) NoVoc
@@ -223668,7 +223668,7 @@ key: 1 walk_off_V2 02014079-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN employeeMasc_N)) (AdvVP (UseV walk_out_1_V) (SubjS when_Subj (UseCl (TTAnt TPastSimple ASimul) PNeg (PredVP (AdvNP (DetCN (DetQuant (PossPron they_Pron) NumSg) (UseN demand_1_N)) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA better_1_A) (UseN benefit_1_N))))) (PassVPSlash (SlashV2a meet_4_V2))))))))) NoVoc
 eng: The employees walked out when their demand for better benefits was not met
-swe: arbetstagarna gick när deras krav för bättre fördelar inte uppfyllades
+swe: arbetstagarna gick när deras krav för bättre fördelar inte uppfylldes
 bul: служителите обявиха стачка когато тяхното искане за по-добри ползи не беше удовлетворявано
 key: 1 walk_out_1_V 02417777-v стачкувам strejka
 
@@ -224302,9 +224302,9 @@ swe: jag garanterar den här informationen
 bul: аз гарантирам тази информация
 key: 1 warrant_2_V2 00893457-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvRVP (UseComp (CompAP (PositA wary_1_A))) in_5_Prep (ReflPoss NumPl (UseN movement_2_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvRVP (UseComp (CompAP (PositA wary_1_A))) in_5_Prep (ReflPoss NumPl (UseN movement_2_N)))))) NoVoc
 eng: they were wary in their movements
-swe: de var vaksama i sina rörelser
+swe: de var vaksamma i sina rörelser
 bul: те бяха предпазливи в своите движения
 key: 1 wary_1_A 00163651-a
 
@@ -224617,7 +224617,7 @@ key: 1 watch_4_V 02133118-v
 abs* PhrUtt NoPConj (UttNP (AdvNP (MassNP (SentCN (UseN watch_1_N) (EmbedQS (UseQCl (TTAnt TPres ASimul) PPos (QuestIAdv how_IAdv (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dog_1_N)) (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumPl) (UseN cat_2_N))))))))) away_1_Adv)) NoVoc
 eng: Watch how the dog chases the cats away
 swe: klocka hur hunden rusar ut snubbena bort
-bul: часовник както кучето преследва пичовете далеч
+bul: часовник както кучето гони пичовете далеч
 key: 1 watch_6_V2 02136428-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (AdvVP (UseComp (CompNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA global_1_A) (UseN watchdogMasc_1_N))))) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA human_2_A) (UseN right_1_N))))) (TimeNP (DetCN (DetQuant IndefArt NumPl) (UseN (BareN2 abuse_of_N2)))))))) NoVoc
@@ -225454,7 +225454,7 @@ swe: veckovis tidning
 bul: седмичен вестник
 key: 1 weekly_A 01975568-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ReflVPSlash (SlashV2a visit_3_V2) (ReflPoss NumSg (UseN aunt_N))) weekly_Adv)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ReflVPSlash (SlashV2a visit_3_V2) (ReflPoss NumSg (UseN aunt_N))) weekly_Adv)))) NoVoc
 eng: she visited her aunt weekly
 swe: hon besökte sin tant varje vecka
 bul: тя посети своята леля ежеседмично
@@ -225466,9 +225466,9 @@ swe: flickan i rullstolen grät med frustration när hon inte kunde komma uppfö
 bul: момичето в количката плака с безсилие когато тя не можа да качи стълбите
 key: 1 weep_V 00065962-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN butcherMasc_1_N)) (ComplSlash (SlashV2a weigh_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN chicken_2_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN butcherMasc_1_N)) (ComplSlash (SlashV2a weigh_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN chicken_2_N)))))) NoVoc
 eng: The butcher weighed the chicken
-swe: slaktaren vägade kycklingen
+swe: slaktaren vägde kycklingen
 bul: касапинът претегли пилето
 key: 1 weigh_3_V2 02710477-v претеглям претегля премеря премервам меря väga
 
@@ -226596,7 +226596,7 @@ key: 1 wholehearted_A 02188116-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA wholehearted_A) (UseN commitment_2_N)))) NoVoc
 eng: wholehearted commitment
-swe: helhjärtat åtagande
+swe: helhjärtat engagemang
 bul: безрезервна отдаденост
 key: 1 wholehearted_A 02188116-a
 
@@ -226752,7 +226752,7 @@ key: 1 wide_7_A 00024282-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN claim_2_N) (UseRCl (TTAnt TPastSimple ASimul) PPos (RelVP that_RP (AdvVP (UseComp (CompAP (PositA wide_7_A))) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN truth_1_N))))))))) NoVoc
 eng: a claim that was wide of the truth
-swe: en fordring som var bred av sanningen
+swe: ett påstående som var brett av sanningen
 bul: твърдение което беше далечно от истината
 key: 1 wide_7_A 00024282-a
 
@@ -227652,7 +227652,7 @@ key: 1 witheringly_Adv 00498753-r
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN father_1_N)) (AdvVP (ProgrVP (ComplSlash (SlashV2a withhold_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN allowance_1a_N)))) (SubjS until_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN son_1_N)) (ReflVPSlash (SlashV2a clean_1_V2) (ReflPoss NumSg (UseN room_1_N)))))))))) NoVoc
 eng: The father is withholding the allowance until the son cleans his room
-swe: fadern håller på att undanhålla bidraget tills sonen rengörar sitt rum
+swe: fadern håller på att undanhålla bidraget tills sonen rengör sitt rum
 bul: бащата задържа надбавката докато синът почиства своята стая
 key: 1 withhold_1_V2 02218472-v undanhålla hålla tillbaka dölja
 
@@ -228000,7 +228000,7 @@ key: 1 woody_2_A 02583630-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA woolen_A) (UseN sweater_1_N)))) NoVoc
 eng: a woolen sweater
-swe: en ylle- tröja
+swe: en ylleklädd tröja
 bul: вълнен пуловер
 key: 1 woolen_A 03142357-a
 
@@ -228954,7 +228954,7 @@ key: 1 worthy_1_A 02595419-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA worthy_1_A) (UseN cause_3_N)))) NoVoc
 eng: a worthy cause
-swe: en värdig orsak
+swe: en värdig kampanj
 bul: достойна кауза
 key: 1 worthy_1_A 02595419-a
 
@@ -231506,8 +231506,8 @@ key: chase-51.6/81 chase_1_V2 chase_2_V2 follow_1_V2 follow_22_V2 pursue_2_V2 sh
 
 abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GivenName jackie_GN) (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN thiefMasc_N)))))) NoVoc FullStop
 eng: Jackie chased the thief.
-swe: Jackie rusade ut tjuven.
-bul: Джаки преследи крадеца.
+swe: Jackie jagade tjuven.
+bul: Джаки подгони крадеца.
 key: 1 chase_1_V2 02005890-v chase-51.6/81@{Agent:10,Verb:15,Theme:16}
 
 frm: PredVP Agent (AdvVP (ComplSlash (SlashV2a Verb) (DetCN (DetQuant DefArt NumSg) (UseN thief_N))) (PrepNP Prep Location))
@@ -231516,8 +231516,8 @@ key: chase-51.6/82 chase_1_V2 chase_2_V2 follow_1_V2 follow_22_V2 pursue_2_V2 sh
 
 abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GivenName jackie_GN) (AdvVP (ComplSlash (SlashV2a chase_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN thiefMasc_N))) (PrepNP down_Prep (DetCN (DetQuant DefArt NumSg) (UseN street_1_N))))))) NoVoc FullStop
 eng: Jackie chased the thief down the street.
-swe: Jackie rusade ut tjuven ner gatan.
-bul: Джаки преследи крадеца надолу по улицата.
+swe: Jackie jagade tjuven ner gatan.
+bul: Джаки подгони крадеца надолу по улицата.
 key: 1 chase_1_V2 02005890-v chase-51.6/82@{Agent:10,Verb:16,Prep:24,Location:25}
 
 frm* ?
@@ -231545,7 +231545,7 @@ swe: Clownen roade barnen.
 bul: клоунът забавлява децата.
 key: 1 amuse_2_V2 00861422-v amuse-31.1/84@{Stimulus:10,Verb:18,Experiencer:19}
 
-abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UseDAP (DetDAP (DetQuant this_Quant NumSg))) (ComplSlash (SlashV2a boggle_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN mind_1_N)))))) NoVoc ExclMark
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UseDAP (DetDAP (DetQuant this_Quant NumSg))) (ComplSlash (SlashV2a boggle_3_V2) (DetCN (DetQuant DefArt NumSg) (UseN mind_1_N)))))) NoVoc ExclMark
 eng: This boggles the mind!
 swe: Det här förbluffar sinnet!
 bul: Това изумява ума!
@@ -232128,7 +232128,7 @@ frm: PredVP Agent (ComplSlash (SlashV2a Verb) Theme)
 sem: delay(during(E),Agent,Theme)
 key: linger-53.1-1/130 delay_2_V2 stall_1_V2 stall_3_V2
 
-abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a delay_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN watering_2_N)))))) NoVoc FullStop
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a delay_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN watering_2_N)))))) NoVoc FullStop
 eng: He delayed the watering.
 swe: Han fördröjde bevattningen.
 bul: Той забави дъждуването.
@@ -232725,7 +232725,7 @@ frm* ?
 sem: motion(during(E0),Theme), motion(during(E1),Instrument), location(end(E0),Theme,Destination), location(end(E1),Instrument,Destination), equals(E0,E1), cause(Agent,E0)
 key: bring-11.3/170 take_3_V2 take_to_V3 take_30_V2 bring_1_V2 bring_1_V3 bring_4_V2 bring_6_V2
 
-abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN train_1_N)) (AdvVP (ComplSlash (SlashV2a bring_1_V2) (UsePron we_Pron)) here_3_Adv)))) NoVoc FullStop
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN train_1_N)) (AdvVP (ComplSlash (SlashV2a bring_1_V2) (UsePron we_Pron)) here_3_Adv)))) NoVoc FullStop
 eng: The train brought us here.
 swe: Tåget tog oss hit.
 bul: Влакът ни донесе насам.
@@ -237151,7 +237151,7 @@ frm* ?
 sem: admit(during(E),Agent,Theme,?Location)
 key: admit-65/536 admit_2_V2 admit_to_V3 allow_2_V2 exclude_1_V2 exclude_2_V2 include_4_V2 welcome_3_V2
 
-abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a admit_2_V2) (UsePron we_Pron))))) NoVoc FullStop
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a admit_2_V2) (UsePron we_Pron))))) NoVoc FullStop
 eng: She admitted us.
 swe: Hon släppte oss in.
 bul: Тя ни пусна.
@@ -237161,7 +237161,7 @@ frm* ?
 sem: admit(during(E),Agent,Theme,Location)
 key: admit-65/537 admit_2_V2 admit_to_V3 allow_2_V2 exclude_1_V2 exclude_2_V2 include_4_V2 welcome_3_V2
 
-abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ComplSlash (SlashV2a admit_2_V2) (UsePron we_Pron)) here_1_Adv)))) NoVoc FullStop
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ComplSlash (SlashV2a admit_2_V2) (UsePron we_Pron)) here_1_Adv)))) NoVoc FullStop
 eng: She admitted us here.
 swe: Hon släppte oss in här.
 bul: Тя ни пусна тук.
@@ -237373,7 +237373,7 @@ frm* ?
 sem: emit(during(E),Agent,Theme)
 key: animal_sounds-38/555 baa_1_V bark_4_V bay_1_V bellow_2_V bleat_2_V bray_1_V buzz_1_V cackle_2_V call_10_V caw_V2 chatter_5_V cheep_V chirp_1_V chirrup_V cluck_V coo_2_V2 croak_2_V2 crow_3_V drone_1_V gobble_2_V2 growl_V2 grunt_V2 honk_3_V hoot_1_V howl_2_V low_V mew_1_V moo_V neigh_V peep_3_V pipe_V pipe_up_2_V purr_2_V2 quack_1_V roar_5_V squawk_1_V squeak_1_V2 squeal_1_V2 stridulate_V trill_2_V2 tweet_1_V twitter_1_V wail_1_V warble_1_V2 whimper_V whinny_V whistle_1_V yap_1_V yell_1_V yelp_V yowl_1_V yowl_2_V boom_1_V rattle_2_V2 groan_V ululate_V moan_V rumble_V2 thunder_4_V wheeze_V2 whine_1_V
 
-abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dog_1_N)) (AdvVP (UseV bark_4_V) (TimeNP (DetCN (DetQuant IndefArt NumSg) (UseN warning_1_N))))))) NoVoc FullStop
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN dog_1_N)) (AdvVP (UseV bark_4_V) (TimeNP (DetCN (DetQuant IndefArt NumSg) (UseN warning_1_N))))))) NoVoc FullStop
 eng: The dog barked a warning.
 swe: Hunden skällde en varning.
 bul: Кучето излая предупреждение.
@@ -237435,7 +237435,7 @@ frm* ?
 sem: appear(during(E),Theme)
 key: reflexive_appearance-48.1.2/560 assert_1_V assert_1_V2 assert_1_VS declare_3_VS define_1_V define_1_V2 display_1_V2 express_1_V2 form_1_V2 intrude_4_V manifest_1_V2 offer_4_V2 pose_1_V2 present_2_V2 present_5_V2 proffer_V2 reassert_V2 recommend_2_V2 show_2_V2 show_3_VS show_4_V2 show_8_V suggest_1_V suggest_1_V2 suggest_1_VS suggest_3_V2 suggest_4_V2
 
-abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumSg) (UseN solution_3_N)) (AdvVP (ReflVPSlash (SlashV2a present_2_V2) ReflPron) yesterday_1_Adv)))) NoVoc FullStop
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumSg) (UseN solution_3_N)) (AdvVP (ReflVPSlash (SlashV2a present_2_V2) ReflPron) yesterday_1_Adv)))) NoVoc FullStop
 eng: A solution presented itself yesterday.
 swe: En lösning presenterade sig igår.
 bul: Решение се представи вчера.
@@ -238724,8 +238724,8 @@ key: promote-102/662 advance_4_V2 advance_9_V2 boost_3_V2 emphasize_1_V2 further
 
 abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron we_Pron) (ComplSlash (SlashV2a promote_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN cause_3_N)))))) NoVoc FullStop
 eng: We promoted the cause.
-swe: vi befordrade orsaken.
-bul: ние промотирахме каузата.
+swe: Vi befordrade kampanjen.
+bul: Ние промотирахме каузата.
 key: 1 promote_1_V2 02560630-v promote-102/662@{Agent:10,Verb:14,Theme:15}
 
 frm* ?
@@ -238849,7 +238849,7 @@ frm* ?
 sem: assess(during(E),Agent,Theme,?Value)
 key: estimate-34.2/673 estimate_1_V2V gauge_1_V2 approximate_2_V2 guess_3_V2 judge_3_V2 assess_1_V2
 
-abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplVS estimate_2_VS (UseCl (TTAnt TCond ASimul) PPos (ImpersCl (UseComp (CompAP (PositA likely_1_A))))))))) NoVoc FullStop
+abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplVS estimate_2_VS (UseCl (TTAnt TCond ASimul) PPos (ImpersCl (UseComp (CompAP (PositA likely_1_A))))))))) NoVoc FullStop
 eng: He estimated that it would be likely.
 swe: Han uppskattade att det skulle vara sannolikt.
 bul: Той оцени, че би било вероятно.
@@ -242059,7 +242059,7 @@ key: coil-9.6/948 loop_2_V2 loop_4_V2 roll_6_V2 rotate_1_V spin_3_V2 swirl_1_V t
 
 abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN rope_1_N)) (AdvVP (UseV coil_1_V) (PrepNP around_8_Prep (DetCN (DetQuant DefArt NumSg) (UseN post_4_N))))))) NoVoc FullStop
 eng: The rope coiled around the post.
-swe: Repet rullade omkring stolpet.
+swe: Repet rullade omkring stolpen.
 bul: Въжето се виеше около стълба.
 key: 0
 
@@ -242069,7 +242069,7 @@ key: coil-9.6/949 loop_2_V2 loop_4_V2 roll_6_V2 rotate_1_V spin_3_V2 swirl_1_V t
 
 abs+ PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant that_Quant NumSg) (PossNP (UseN type_1_N) (MassNP (UseN rope_1_N)))) (AdvVP (AdvVP (UseV coil_1_V) (PositAdvAdj easy_1_A)) (PrepNP around_8_Prep (DetCN (DetQuant DefArt NumSg) (UseN post_4_N))))))) NoVoc FullStop
 eng: That type of rope coils easily around the post.
-swe: Den där typen av rep rullar lätt omkring stolpet.
+swe: Den där typen av rep rullar lätt omkring stolpen.
 bul: Онзи тип на въже се вие лесно около стълба.
 key: 0
 
@@ -245511,7 +245511,7 @@ key: 0
 
 abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron i_Pron) (AdvVP (ReflVPSlash (SlashV2a dedicate_1_V2) ReflPron) (PrepNP to_2_Prep (DetCN (DetQuant DefArt NumSg) (UseN cause_3_N))))))) NoVoc FullStop
 eng: I dedicated myself to the cause.
-swe: jag tillägnade mig till orsaken.
+swe: Jag tillägnade mig till kampanjen.
 bul: Аз се посветих на каузата.
 key: 1 dedicate_1_V2 00888984-v
 

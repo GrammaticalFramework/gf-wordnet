@@ -39004,11 +39004,11 @@ swe: den lilla komponenten är svår till räckvidd
 bul: по-малкият компонент е труден за обсег
 key: 1 component_2_N 13831419-n част компонент дял nederdel inslag del beståndsdel
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdvCN (AdjCN (PositA spare_4_A) (UseN component_3_N)) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumPl) (UseN car_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdvCN (AdjCN (PositA spare_4_A) (UseN component_3_N)) (PrepNP for_Prep (DetCN (DetQuant IndefArt NumPl) (UseN car_1_N)))))) NoVoc
 eng: spare components for cars
 swe: reserva komponenter för bilar
 bul: резервни компоненти за коли
-key: 1 component_3_N 03085025-n компонент елемент komponent instrumentdel fordonsdel
+key: 1 component_3_N 03085025-n
 
 abs* PhrUtt NoPConj (UttNP (ConjNP or_Conj (BaseNP (DetCN (DetQuant IndefArt NumSg) (UseN component_3_N)) (MassNP (PossNP (AdjCN (PositA constituent_A) (UseN element_2_N)) (DetCN (DetQuant IndefArt NumSg) (UseN system_1_N))))))) NoVoc
 eng: a component or constituent element of a system
@@ -39028,7 +39028,7 @@ swe: Beethoven komponerade nio symfonier
 bul: Бетовен състави девет симфонии
 key: 1 compose_2_V2 01709353-v композирам
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a compose_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN poem_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a compose_3_V2) (DetCN (DetQuant IndefArt NumSg) (UseN poem_N)))))) NoVoc
 eng: She composed a poem
 swe: hon författade en dikt
 bul: тя композира поема
@@ -39352,11 +39352,11 @@ swe: arkitektens strålande konstgrepp var att bygga huset omkring trädet
 bul: блестящият художествен похват на архитекта беше да построя къщата около дървото
 key: 1 conceit_4_N 07082513-n
 
-abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA conceited_A) (UseN foolMasc_1_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA conceited_A) (UseN foolMasc_1_N)))) NoVoc
 eng: a conceited fool
 swe: en inbilsk duma
 bul: суетен глупак
-key: 1 conceited_A 01897840-a суетен самомнителен горделив
+key: 1 conceited_A 01897840-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN attitude_1_N) (MassNP (AdjCN (CompoundAP self_1_N conceited_A) (UseN arrogance_N)))))) NoVoc
 eng: an attitude of self-conceited arrogance
@@ -39376,17 +39376,17 @@ swe: han uttänkade av en robot som skulle hjälpa paralyserade patienter
 bul: той си замисли от робот който би помогнал парализирани пациенти
 key: 1 conceive_1_V 01636885-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN library_5_N)) (PassVPSlash (AdVVPSlash (PositAdVAdj good_1_A) (SlashV2a conceive_1_V2)))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN library_5_N)) (PassVPSlash (AdVVPSlash (PositAdVAdj good_1_A) (SlashV2a conceive_1_V2)))))) NoVoc
 eng: This library was well conceived
 swe: det här biblioteket uttänkades bra
-bul: тази библиотека беше добре замисляна
+bul: тази библиотека беше добре замислена
 key: 1 conceive_1_V2 01636885-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron she_Pron) (ComplVV can_1_VV ASimul PPos (UseV conceive_3_V))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron she_Pron) (ComplVV can_1_VV ASimul PPos (UseV conceive_3_V))))) NoVoc
 eng: She cannot conceive
 swe: hon kan inte befruktas
 bul: тя не може да зачене
-key: 1 conceive_3_V 00054002-v зачена зачевам забременявам
+key: 1 conceive_3_V 00054002-v
 
 abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN daughter_N)) (AdvVP (PassVPSlash (SlashV2a conceive_2_V2)) (PrepNP in_1_Prep (MassNP (UseN (CompoundN christmas_1_N day_3_N)))))))) NoVoc
 eng: My daughter was conceived in Christmas Day

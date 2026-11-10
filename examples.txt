@@ -85784,7 +85784,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: the potter glazed the dishes
 swe: krukmakaren glaserade faten
 bul: грънчарят глазира чиниите
-key: 1 glaze_1_V2 01272085-v glasera
+key: 1 glaze_1_V2 01272085-v
 
 abs* ?
 eng: glaze the bread with eggwhite

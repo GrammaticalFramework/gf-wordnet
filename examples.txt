@@ -90962,13 +90962,13 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a haul_1_V2) (DetC
 eng: haul stones
 swe: släpa stenar
 bul: изтегли камъни
-key: 1 haul_1_V2 01457421-v hala hala upp hala in
+key: 1 haul_1_V2 01457421-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a haul_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN net_2_N))))) NoVoc
 eng: haul nets
 swe: släpa nät
 bul: изтегли мрежи
-key: 1 haul_1_V2 01457421-v hala hala upp hala in
+key: 1 haul_1_V2 01457421-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (AdvVP (ComplSlash (SlashV2a haul_2_V2) (DetCN (DetQuant IndefArt NumPl) (UseN stone_1_N))) (PrepNP from_Prep (DetCN (DetQuant DefArt NumSg) (UseN quarry_2_N)))) (PrepNP in_1_Prep (DetCN (DetQuant IndefArt NumSg) (UseN truck_1_N)))))) NoVoc
 eng: haul stones from the quarry in a truck
@@ -109022,7 +109022,7 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a keep_13_V2) (Det
 eng: Keep the commandments
 swe: följ budorden
 bul: спази заповедите
-key: 1 keep_13_V2 02584595-v чествам празник спазвам обичай празнувам
+key: 1 keep_13_V2 02584595-v
 
 abs+ PhrUtt NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (UsePN god_1_PN) (ComplVV may_1_VV ASimul PPos (ComplSlash (SlashV2a keep_14_V2) (UsePron youSgFem_Pron))))))) NoVoc
 eng: May God keep you
@@ -121316,7 +121316,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_P
 eng: he always carries matches to light his pipe
 swe: han bär alltid tändstickor för att tända sin pipa
 bul: той винаги носи кибрити за да запали своята лула
-key: 1 match_1_N 03733928-n кибрит tändsticka
+key: 1 match_1_N 03733928-n
 
 abs+ PhrUtt NoPConj (UttS (AdvS (SubjS if_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (AdvVP (ComplSlashPartLast (SlashV2a drop_in_V2) (DetCN (DetQuant IndefArt NumSg) (UseN match_3_N))) there_1_Adv)))) (PredVPS (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA whole_1_A) (UseN place_7_N))) (MkVPS (TTAnt TFut ASimul) PPos (UseV explode_9_V))))) NoVoc
 eng: if you drop a match in there the whole place will explode
@@ -127424,7 +127424,7 @@ abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA muggy_A) (UseN weather_N)))) N
 eng: muggy weather
 swe: kvavt väder
 bul: влажно време
-key: 1 muggy_A 02560461-a тежък задушен
+key: 1 muggy_A 02560461-a
 
 abs+ PhrUtt NoPConj (UttQS (SQuestVPS (DetCN (DetQuant DefArt NumSg) (RelCN (UseN term_1_N) (UseRCl (TTAnt TPres ASimul) PPos (EmptyRelSlash (SlashPrep (PredVP (MassNP (UseN muhammadanism_1_N)) (UseComp (CompAP (PositA offensive_3_A)))) to_3_Prep))))) (ConjVPS comma_Conj (ConsVPS (MkVPS ? ? (UseComp (CompNP (DetCN (DetQuant IndefArt NumPl) (RelCN (UseN muslimMasc_N) (UseRCl (TTAnt TPres ASimul) PPos (RelVP IdRP (AdvVP (UseV believe_1_V) (AdAdv that_AdA (TimeNP (UsePN allah_PN))))))))))) (BaseVPS (MkVPS ? ? (UseComp (CompNP (UsePN muhammad_2_PN)))) (MkVPS ? ? (ReflVPSlash (SlashV2a found_2_V2) (ReflPoss NumSg (UseN religion_1_N))))))))) NoVoc
 eng: the term Muhammadanism is offensive to Muslims who believe that Allah, not Muhammad, founded their religion
@@ -131138,7 +131138,7 @@ abs: PhrUtt NoPConj (UttS (AdvS (PrepNP during_Prep (DetCN (DetQuant DefArt NumS
 eng: during the firework display that ended the gala the noise reached 98 decibels
 swe: under fyrverkeriuppvisningen som avslutade galan nådde ljudet 98 decibel
 bul: по време на фойерверковия показ който завърши галата шумът достигна 98 децибела
-key: 1 noise_1_N 07402109-n шум звук
+key: 1 noise_1_N 07402109-n
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumSg) (AdjCN (PositA modern_1_A) (UseN music_1_N))) (AdvVP (UseComp (CompNP (PredetNP just_1_Predet (MassNP (UseN noise_2_N))))) (PrepNP to_3_Prep (UsePron i_Pron)))))) NoVoc
 eng: modern music is just noise to me
@@ -133718,7 +133718,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (SentAP (Past
 eng: an occasion arranged to honor the president
 swe: en tilldragelse arrangerad att hedra presidenten
 bul: събитие организирано да почете президента
-key: 1 occasion_2_N 07461861-n тържество social tilldragelse fest festlighet
+key: 1 occasion_2_N 07461861-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (ExistNPAdv (DetCN (DetQuant no_Quant NumSg) (UseN occasion_3_N)) (PrepNP for_Prep (MassNP (UseN complaint_3_N)))))) NoVoc
 eng: there was no occasion for complaint
@@ -138260,7 +138260,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (ExistNPAdv (De
 eng: there was no overlap between their proposals
 swe: det fanns ingen överlappning mellan deras förslag
 bul: няма никакво застъпване между техните предложения
-key: 1 overlap_1_N 05772362-n överlappning
+key: 1 overlap_1_N 05772362-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron we_Pron) NumPl) (UseN vacation_1b_N)) (UseV overlap_1_V)))) NoVoc
 eng: Our vacations overlap
@@ -142604,7 +142604,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: The children perished in the fire
 swe: barnen omkom i branden
 bul: децата загинаха в пожара
-key: 1 perish_V 00359085-v умра умирам почина почивам издъхна издъхвам trilla av pinn stryka med somna in omkomma lägga benen i vädret kola vippen kola kola av insomna gå över gå ur tiden gå hädan gå hem förolyckas dö avlida
+key: 1 perish_V 00359085-v
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant this_Quant NumSg) (AdjCN (ConjAP and_Conj (BaseAP (PositA minute_1_A) (PositA perishable_A))) (UseN planet_1_N)))) NoVoc
 eng: this minute and perishable planet
@@ -145274,7 +145274,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: the police used a plant to trick the thieves
 swe: polisen använde en fälla för att lura till tjuvarna
 bul: полицията използва постановка за да изиграят крадците
-key: 1 plant_4_N 05914674-n fälla
+key: 1 plant_4_N 05914674-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplVS claim_1_VS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumSg) (UseN evidence_3_N)) (PrepNP against_Prep (UsePron he_Pron))) (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (UseN plant_4_N)))))))))) NoVoc
 eng: he claimed that the evidence against him was a plant
@@ -146384,7 +146384,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePro
 eng: they concocted a plot to discredit the governor
 swe: de kokade ihop en plan för att diskreditera guvernören
 bul: те измислиха заговор за да дискредитират губернатора
-key: 1 plot_1_N 05916276-n игра hemlig plan
+key: 1 plot_1_N 05916276-n
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (UseN (CompoundN bean_3_N plot_2_N)))) NoVoc
 eng: a bean plot
@@ -147146,7 +147146,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: Her husband poisoned her drink in order to kill her
 swe: hennes make förgiftade hennes dryck för att döda henne
 bul: нейният съпруг отрови нейното питие за да я убие
-key: 1 poison_3_V2 00533509-v förgifta
+key: 1 poison_3_V2 00533509-v
 
 abs+ PhrUtt NoPConj (UttNP (RelNP (UseDAP (DetDAP (DetQuant this_Quant NumSg))) (UseRCl (TTAnt TPres ASimul) PPos (EmptyRelSlash (SlashVP (DetCN (DetQuant IndefArt NumPl) (UseN mushroom_3_N)) (SlashVV can_1_VV ASimul PPos (SlashV2a poison_4_V2))))))) NoVoc
 eng: This mushrooms can poison
@@ -148778,7 +148778,7 @@ abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvV
 eng: stood with good posture
 swe: stod med bra hållning
 bul: стоя с добра поза
-key: 1 posture_2_N 05009987-n стойка поза hållning
+key: 1 posture_2_N 05009987-n
 
 abs+ PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant IndefArt NumPl) (UseN politicianFem_2_N)) (MkVPS (TTAnt TPres AAnter) PPos (ComplSlash (SlashV2a neglect_4_V2) (GenModNP NumSg (UsePron we_Pron) (AdjCN (PositA military_2_A) (UseN posture_4_N))))))) NoVoc
 eng: politicians have neglected our military posture
@@ -148886,7 +148886,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: the salesman pounded the door knocker
 swe: säljaren bultade dörrklappen
 bul: продавачът удари хлопката на вратата
-key: 1 pound_1_V2 01417280-v dunka bulta banka
+key: 1 pound_1_V2 01417280-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (UseV pound_2_V) (PrepNP on_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN door_1_N)))))) NoVoc
 eng: pound on the door
@@ -149498,13 +149498,13 @@ abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (Comp
 eng: specified a precise amount
 swe: specificerade en precis mängd
 bul: специфицира прецизно количество
-key: 1 precise_1_A 01843460-a точен
+key: 1 precise_1_A 01843460-a
 
 abs: PhrUtt NoPConj (UttVPS he_Pron (MkVPS (TTAnt TPastSimple ASimul) PPos (AdvVP (UseV arrive_1_V) (PrepNP at_2_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA precise_1_A) (UseN moment_1_N))))))) NoVoc
 eng: arrived at the precise moment
 swe: ankom i det precisa ögonblicket
 bul: пристигна в прецизния момент
-key: 1 precise_1_A 01843460-a точен
+key: 1 precise_1_A 01843460-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA precise_2_A) (UseN image_3_N)))) NoVoc
 eng: a precise image
@@ -151256,7 +151256,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumPl) (PossNP (AdjCN (PositA
 eng: the principal rivers of America
 swe: de främsta floderna av Amerika
 bul: главните реки на Америка
-key: 1 principal_A 01280536-a основен главен
+key: 1 principal_A 01280536-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA principal_A) (UseN example_1_N)))) NoVoc
 eng: the principal example
@@ -167822,7 +167822,7 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a rock_2_V2) (DetC
 eng: rock the cradle
 swe: vagga vaggan
 bul: люшкай люлката
-key: 1 rock_2_V2 01880021-v люшкам люлея
+key: 1 rock_2_V2 01880021-v
 
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a rock_2_V2) (DetCN (DetQuant DefArt NumSg) (UseN baby_4_N))))) NoVoc
 eng: rock the baby
@@ -185408,7 +185408,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: falling trees make a sound in the forest even when no one is there to hear them
 swe: fallande träd gör ett ljud i skogen även när ingen är där för att höra dem
 bul: падащи дървета правят звук в гората дори когато никой не е там за да ги чуе
-key: 1 sound_3_N 11501330-n ultraljud ljud
+key: 1 sound_3_N 11501330-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN sound_4_N)) (ComplSlash (SlashV2a awaken_1_V2) (UsePron they_Pron))))) NoVoc
 eng: the sound awakened them
@@ -200732,7 +200732,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (SentCN (UseN tenden
 eng: a tendency to be too strict
 swe: en tendens att vara för sträng
 bul: тенденция да бъде твърде стриктен
-key: 1 tendency_1_N 06206319-n тенденция склонност наклонност tendens dragning disposition böjelse
+key: 1 tendency_1_N 06206319-n
 
 abs: PhrUtt NoPConj (UttNP (AdvNP (MassNP (UseN fabric_1_N)) (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (SentCN (UseN tendency_3_N) (EmbedVP ASimul PPos he_Pron (UseV shrink_4_V))))))) NoVoc
 eng: fabric with a tendency to shrink
@@ -204320,7 +204320,7 @@ abs: PhrUtt NoPConj (UttAP he_Pron (AdAP too_AdA (AdvAP (PositA tired_1_A) (InOr
 eng: too tired to eat
 swe: för trött för att äta
 bul: твърде уморен за да яде
-key: 1 tired_1_A 02440540-a уморен изморен
+key: 1 tired_1_A 02440540-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA tireless_1_A) (UseN workerMasc_1_N)))) NoVoc
 eng: a tireless worker
@@ -220154,7 +220154,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA valed
 eng: a valedictory address
 swe: ett avslutande tal
 bul: прощално обръщение
-key: 1 valedictory_2_A 01294221-a 02833168-a
+key: 1 valedictory_2_A 01294221-a
 
 abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA valedictory_1_A) (AdvCN (UseN praise_1_N) (PrepNP for_Prep (DetCN (DetQuant (PossPron he_Pron) NumSg) (AdjCN (AdAP (PositAdAAdj uniform_4_A) (PositA manly_1_A)) (UseN course_4_N)))))))) NoVoc
 eng: valedictory praise for his uniformly manly course
@@ -220844,7 +220844,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PastPartAP (
 eng: a veiled threat
 swe: ett dolt hot
 bul: прикрита заплаха
-key: 1 veil_2_V2 00314788-v mörklägga mörka fördunkla
+key: 1 veil_2_V2 00314788-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (PredetNP all_1_Predet (ConjNP except_Conj (BaseNP (DetCN (DetQuant IndefArt NumPl) (UseN vein_1_N)) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA pulmonary_A) (UseN vein_1_N)))))) (ComplSlash (SlashV2a carry_1_V2) (MassNP (AdjCN (PositA unaerated_A) (UseN blood_1_N))))))) NoVoc
 eng: all veins except the pulmonary vein carry unaerated blood
@@ -221216,7 +221216,7 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a verify_1_V2) (De
 eng: verify a claim
 swe: verifiera ett påstående
 bul: провери твърдение
-key: 1 verify_1_V2 00666401-v verifiera intyga någots riktighet besanna
+key: 1 verify_1_V2 00666401-v
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA verisimilar_A) (UseN tale_1_N)))) NoVoc
 eng: a verisimilar tale
@@ -225470,7 +225470,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: The butcher weighed the chicken
 swe: slaktaren vägde kycklingen
 bul: касапинът претегли пилето
-key: 1 weigh_3_V2 02710477-v претеглям претегля премеря премервам меря väga
+key: 1 weigh_3_V2 02710477-v
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (AdvVP (UseV weigh_5_V) heavily_5_Adv) (PrepNP on_2_Prep (DetCN (DetQuant DefArt NumSg) (UseN mind_1_N)))))) NoVoc
 eng: weigh heavily on the mind
@@ -226532,7 +226532,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA whole_1
 eng: the whole hog
 swe: den hela grisen
 bul: цялата свиня
-key: 1 whole_1_A 00516809-a цял
+key: 1 whole_1_A 00516809-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA whole_1_A) (UseN week_1_N)))) NoVoc
 eng: a whole week

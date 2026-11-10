@@ -33644,7 +33644,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GenMod
 eng: the professor's clarification helped her to understand the textbook
 swe: professorns klargörande hjälpte henne att förstå läroboken
 bul: пояснението на професора й помогна да разбере учебника
-key: 1 clarification_1_N 07185857-n klarläggande klargörande
+key: 1 clarification_1_N 07185857-n
 
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a clarify_1_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PresPartAP (ComplSlash (SlashV2a surround_1_V2) (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN death_1_N)))) (UseN mystery_1_N)))))) NoVoc
 eng: clarify the mystery surrounding her death

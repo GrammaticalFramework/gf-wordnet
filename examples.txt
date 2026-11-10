@@ -83842,10 +83842,10 @@ swe: den nya managern genererade mycket problem
 bul: новият мениджър генерира много проблеми
 key: 1 generate_1_V2 01630392-v
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN computer_1_N bug_2_N))) (AdvVP (ComplSlash (SlashV2a generate_1_V2) (MassNP (UseN chaos_1_N))) (PrepNP in_3_Prep (DetCN (DetQuant DefArt NumSg) (UseN office_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN computer_1_N bug_2_N))) (AdvVP (ComplSlash (SlashV2a generate_1_V2) (MassNP (UseN chaos_1_N))) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN office_1_N))))))) NoVoc
 eng: The computer bug generated chaos in the office
-swe: datorbuggen genererade kaos på kontoret
-bul: компютърният бъг генерира хаос на офиса
+swe: datorbuggen genererade kaos i kontoret
+bul: компютърният бъг генерира хаос в офиса
 key: 1 generate_1_V2 01630392-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN computer_1_N)) (ComplSlash (SlashV2a generate_1_V2) (DetCN (DetQuant this_Quant NumSg) (UseN image_3_N)))))) NoVoc

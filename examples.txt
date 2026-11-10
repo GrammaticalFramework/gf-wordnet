@@ -60698,7 +60698,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: The children like to drink soda
 swe: barnen tycker om att dricka soda
 bul: на децата им харесва да пият сода
-key: 1 drink_1_V2 01172332-v пия dricka
+key: 1 drink_1_V2 01172332-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron we_Pron) (AdvVP (AdvVP (UseComp (CompAdv up_1_Adv)) (GerundAdv (UseV drink_2_V))) (TimeNP (PredetNP all_2_Predet (MassNP (UseN night_1_N)))))))) NoVoc
 eng: We were up drinking all night

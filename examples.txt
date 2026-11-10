@@ -206846,7 +206846,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: plants transpire
 swe: växter transpirerar
 bul: растения транспирират
-key: 0 00368216-v
+key: 0 _ 00368216-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (ImpersCl (ComplVS transpire_VS (PredVPS (UsePron she_Pron) (MkVPS (TTAnt TPastSimple AAnter) PPos (AdvVP (AdvVP (UseV work_2_V) (PrepNP as_Prep (MassNP (UseN spyFem_1_N)))) (InLN (AdjLN (PositA east_A) germany_LN))))))))) NoVoc
 eng: It transpired that she had worked as spy in East Germany
@@ -232132,7 +232132,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He delayed the watering.
 swe: Han fördröjde bevattningen.
 bul: Той забави дъждуването.
-key: 0
+key: 0 _
 
 class: suffocate-40.7
 role:  Agent +animate
@@ -232729,7 +232729,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The train brought us here.
 swe: Tåget tog oss hit.
 bul: Влакът ни донесе насам.
-key: 0
+key: 0 _
 
 class: bring-11.3-1
 role:  Destination +animate
@@ -237155,7 +237155,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: She admitted us.
 swe: Hon släppte oss in.
 bul: Тя ни пусна.
-key: 0
+key: 0 _
 
 frm* ?
 sem: admit(during(E),Agent,Theme,Location)
@@ -237165,7 +237165,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: She admitted us here.
 swe: Hon släppte oss in här.
 bul: Тя ни пусна тук.
-key: 0
+key: 0 _
 
 frm* ?
 sem: admit(during(E),Agent,Theme,Location)
@@ -237377,7 +237377,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: The dog barked a warning.
 swe: Hunden skällde en varning.
 bul: Кучето излая предупреждение.
-key: 0
+key: 0 _
 
 frm* ?
 sem: emit(during(E),Agent,Sound), location(during(E),Agent,Location)
@@ -237439,7 +237439,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (De
 eng: A solution presented itself yesterday.
 swe: En lösning presenterade sig igår.
 bul: Решение се представи вчера.
-key: 0
+key: 0 _
 
 class: remove-10.1
 role:  Agent +int_control +organization
@@ -238853,7 +238853,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: He estimated that it would be likely.
 swe: Han uppskattade att det skulle vara sannolikt.
 bul: Той оцени, че би било вероятно.
-key: 0
+key: 0 _
 
 frm* ?
 sem: assess(during(E),Agent,Theme,?Value)
@@ -246698,7 +246698,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (Us
 eng: I broke the twig and the branch apart.
 swe: Jag bröt kvisten och grenen separat.
 bul: Аз счупих клонката и клона отделно.
-key: 0
+key: 0 _
 
 frm* ?
 sem: together(start(E),physical,Patient,CoPatient), apart(result(E),physical,Patient,CoPatient)

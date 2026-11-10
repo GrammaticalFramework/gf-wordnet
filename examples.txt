@@ -6433,7 +6433,7 @@ key: 1 get_along_1_V 00069386-r
 abs: PhrUtt NoPConj (UttS (ConjS and_Conj (BaseS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron we_Pron) (ComplSlash (Slash2V3 send_V3 (UsePron they_Pron)) (MassNP (UseN food_1_N))))) (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN some_Det (UseN clothing_N)) (AdvVP (AdvVP (UseV go_1_V) along_4_Adv) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN package_1_N))))))))) NoVoc
 eng: we sent them food and some clothing went along in the package
 swe: vi skickade dem mat och lite klädsel gick med i paketet
-bul: ние им изпратихме храна и малко облекло отиде заедно с в пакета
+bul: ние им изпратихме храна и малко облекло отиде заедно в пакета
 key: 1 along_4_Adv 00069153-r
 
 abs* ?
@@ -60326,7 +60326,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePro
 eng: He thought up a plan to get rich quickly
 swe: han hittade på en plan för att bli rik snabbt
 bul: той измисли план за да стане богат бързо
-key: 1 think_up_V2 01637684-v kläcka
+key: 1 think_up_V2 01637684-v
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (ConjAP and_Conj (BaseAP (PositA sound_9_A) (PositA dreamless_A))) (UseN sleep_1_N)))) NoVoc
 eng: a sound and dreamless sleep

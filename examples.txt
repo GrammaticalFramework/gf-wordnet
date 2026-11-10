@@ -65090,7 +65090,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: Many people had to emigrate during the Nazi period
 swe: många människor fick emigrera under nazistperioden
 bul: много хора трябваше да емигрират по време на нацисткия период
-key: 1 emigrate_V 00417060-v utvandra emigrera
+key: 1 emigrate_V 00417060-v
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN scholarMasc_1_N) (MassNP (AdjCN (PositA great_3_A) (UseN eminence_1_N)))))) NoVoc
 eng: a scholar of great eminence

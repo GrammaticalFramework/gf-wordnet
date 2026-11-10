@@ -61760,19 +61760,19 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePro
 eng: he was so dull at parties
 swe: han var så tråkig vid fester
 bul: той беше толкова скучен на партита
-key: 1 dull_1_A 00810082-a скучен отегчителен
+key: 1 dull_1_A 00810082-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA dull_1_A) (AdjCN (PositA political_1_A) (UseN campaign_1_N))))) NoVoc
 eng: a dull political campaign
 swe: en tråkig politisk kampanj
 bul: скучна политическа кампания
-key: 1 dull_1_A 00810082-a скучен отегчителен
+key: 1 dull_1_A 00810082-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA large_1_A) (AdjCN (PositA dull_1_A) (AdjCN (PositA impassive_1_A) (UseN man_1_N)))))) NoVoc
 eng: a large dull impassive man
 swe: en stor tråkig uttryckslös man
 bul: голям скучен безстрастен мъж
-key: 1 dull_1_A 00810082-a скучен отегчителен
+key: 1 dull_1_A 00810082-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (SentCN (AdvCN (AdjCN (PositA dull_1_A) (UseN day_5_N)) (PrepNP with_Prep (UseDAP (DetDAP (DetQuant no_Quant NumSg))))) (EmbedVP ASimul PPos he_Pron (UseV do_7_V))))) NoVoc
 eng: dull days with nothing to do

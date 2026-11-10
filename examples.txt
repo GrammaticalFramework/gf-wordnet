@@ -84962,7 +84962,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA gifte
 eng: a gifted writer
 swe: en begåvad författare
 bul: надарен писател
-key: 1 gifted_A 01122955-a талантлив способен надарен даровит
+key: 1 gifted_A 01122955-a
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (ComplSlash (SlashV2a play_25_V2) (AdvNP (DetCN (DetQuant IndefArt NumSg) (UseN gig_6_N)) (InLN new_jersey_1_LN)))))) NoVoc
 eng: they played a gig in New Jersey

@@ -8551,7 +8551,7 @@ key: 1 antipope_N 09816816-n
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA beautiful_1_A) (AdjCN (PositA antique_1_A) (AdjCN (PositA french_A) (UseN furniture_N)))))) NoVoc
 eng: the beautiful antique French furniture
 swe: den vackra antika franska möbeln
-bul: хубавото антично френско мебели
+bul: хубавота антична френска мебел
 key: 1 antique_1_A 01643588-a
 
 abs: PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (UseN suit_1_N)) (PrepNP of_2_Prep (MassNP (AdjCN (AdAP rather_AdA (PositA antique_2_A)) (UseN appearance_1_N)))))) NoVoc
@@ -10711,7 +10711,7 @@ key: 1 arrangement_3_N 05734541-n other_cos-45.4/35@{Agent:10,Verb:14,Patient:15
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (PossNP (UseN arrangement_4_N) (DetCN (DetQuant DefArt NumSg) (UseN furniture_N))))) NoVoc
 eng: the arrangement of the furniture
 swe: arrangemanget av möbeln
-bul: подреждането на мебелито
+bul: подреждането на мебелитe
 key: 1 arrangement_4_N 05082771-n
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA arrant_A) (UseN foolMasc_1_N)))) NoVoc
@@ -29227,7 +29227,7 @@ key: 1 pull_through_2_V 02557529-v såvera sauvera rädda
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (ComplSlash (SlashV2a cart_off_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_2_A) (UseN furniture_N))))))) NoVoc
 eng: They carted off the old furniture
 swe: De forslade av den gamla möbeln
-bul: те изнесоха старото мебели
+bul: те изнесоха старaтa мебел
 key: 1 cart_off_V2 01454276-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplSlash (SlashV2a load_2_V2) (DetCN (DetQuant IndefArt NumSg) (PossNP (UseN cartridge_3_N) (MassNP (AdjCN (PositA fresh_11_A) (UseN tape_1_N)))))) (PrepNP into_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN (CompoundN tape_1_N deck_1_N)))))))) NoVoc
@@ -48445,7 +48445,7 @@ key: 1 daniel_2_PN 10010823-n
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA danish_A) (UseN furniture_N)))) NoVoc
 eng: Danish furniture
 swe: dansk möbel
-bul: датско мебели
+bul: датска мебел
 key: 1 danish_A 02971884-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA dank_A) (UseN cellar_1_N)))) NoVoc
@@ -62164,11 +62164,11 @@ swe: av gulda örhängen glimmade mot hennes mörkhyade kinder
 bul: златни обеци блестяха срещу нейните мургави бузи
 key: 1 dusky_2_A 00246314-a
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN furniture_N)) (AdvVP (PassVPSlash (SlashV2a cover_2_V2)) (PrepNP with_Prep (MassNP (UseN dust_1_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN furniture_N)) (AdvVP (PassVPSlash (SlashV2a cover_2_V2)) (PrepNP with_Prep (MassNP (UseN dust_1_N))))))) NoVoc
 eng: the furniture was covered with dust
 swe: möbeln täcktes med damm
-bul: мебелито беше покрито с прах
-key: 1 dust_1_N 14864016-n прах damm
+bul: мебелта беше покрита с прах
+key: 1 dust_1_N 14864016-n
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant gen_Quant NumPl) (UseN astronomerMasc_N)) (ComplVS say_1_VS (UseCl (TTAnt TPres ASimul) PPos (PredVP (AdvNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA empty_1_A) (UseN space_1_N))) (PrepNP between_Prep (DetCN (DetQuant gen_Quant NumPl) (UseN planet_1_N)))) (ComplSlash (AdVVPSlash actually_2_AdV (SlashV2a contain_5_V2)) (DetCN (DetQuant IndefArt NumPl) (AdvCN (AdjCN (PositA measurable_2_A) (UseN amount_3_N)) (PrepNP of_1_Prep (MassNP (UseN dust_3_N)))))))))))) NoVoc
 eng: astronomers say that the empty space between planets actually contains measurable amounts of dust
@@ -63670,10 +63670,10 @@ swe: en pedagogisk upplevelse
 bul: възпитателно изживяване
 key: 1 educative_A 01327376-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA edwardian_A) (UseN furniture_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA edwardian_A) (UseN furniture_N)))) NoVoc
 eng: Edwardian furniture
 swe: edvardiansk möbel
-bul: едуардианско мебели
+bul: едуардианска мебел
 key: 1 edwardian_A 03074395-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdvCN (AdjCN (PositA eerie_A) (UseN feeling_1_N)) (PrepNP of_3_Prep (MassNP (UseN deja_vu_N)))))) NoVoc
@@ -65114,7 +65114,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: The ozone layer blocks some harmful rays which the sun emits
 swe: ozonlagret blockerar några skadliga strålar som solen emitterar
 bul: озоновият слой блокира някои вредни лъчи които слънцето излъчва
-key: 1 emit_2_V2 02773266-v utsöndra avgiva avge
+key: 1 emit_2_V2 02773266-v
 
 abs* ?
 eng: a clause in the U.S. constitution prevents sitting legislators from receiving emoluments from their own votes
@@ -85450,10 +85450,10 @@ swe: hon gav hennes hand till henne en liten syster
 bul: тя даде на нейната ръка до нея малка сестра
 key: 1 give_44_V3 00108408-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ReflVPSlash (SlashV2a give_away_1_V2) (ReflPoss NumSg (AdjCN (PositA antique_1_A) (UseN furniture_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (ReflVPSlash (SlashV2a give_away_1_V2) (ReflPoss NumSg (AdjCN (PositA antique_1_A) (UseN furniture_N))))))) NoVoc
 eng: She gave away her antique furniture
 swe: hon gav bort sin antika möbel
-bul: тя подари своето антично мебели
+bul: тя подари своята антична мебел
 key: 1 give_away_1_V2 02206637-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (AdjCN (PositA big_1_A) (UseN city_1_N))) (ComplSlash (SlashV2a give_off_V2) (DetCN (DetQuant IndefArt (NumCard (UseAdAACard so_7_AdA many_ACard))) (AdjCN (PositA wonderful_A) (AdjCN (PositA american_1_A) (UseN quality_1_N)))))))) NoVoc
@@ -92080,11 +92080,11 @@ swe: bly är en tung metall
 bul: олово е тежък метал
 key: 1 heavy_1_A 01188475-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA heavy_1_A) (UseN (CompoundN mahogany_1_N furniture_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA heavy_1_A) (UseN (CompoundN mahogany_1_N furniture_N))))) NoVoc
 eng: heavy mahogany furniture
 swe: tung mahognymöbel
-bul: тежко махагоново мебели
-key: 1 heavy_1_A 01188475-a тежък
+bul: тежка махагонова мебел
+key: 1 heavy_1_A 01188475-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA heavy_2_A) (UseN tax_N)))) NoVoc
 eng: heavy taxes
@@ -92698,10 +92698,10 @@ swe: hon hjälpte själv till någon av kontortillgångarna
 bul: тя [SelfAdvVP] помагам до нещо от офис запасите
 key: 1 help_7_V 01196102-v
 
-abs+ PhrUtt NoPConj (UttS (PredVPS (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA new_1_A) (UseN slipcover_N))) (MkVPS (TTAnt TFut ASimul) PPos (ComplSlash (SlashV2a help_8_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_2_A) (UseN (CompoundN living_room_N furniture_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA new_1_A) (UseN slipcover_N))) (ComplSlash (SlashV2a help_8_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_2_A) (UseN (CompoundN living_room_N furniture_N)))))))) NoVoc
 eng: New slipcovers will help the old living room furniture
 swe: nya överdrag ska förbättra den gamla vardagsrummöbeln
-bul: нови калъфи ще подобрят старото холно мебели
+bul: нови калъфи ще подобрят старата холна мебел
 key: 1 help_8_V2 00207406-v
 
 abs+ PhrUttMark NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (UsePron youSgFem_Pron) (AdvVP (AdvVP (ComplVV can_1_VV ASimul PPos (UseV help_out_2_V)) tonight_Adv) (PrepNP with_Prep (DetCN (DetQuant DefArt NumPl) (UseN (CompoundN dinner_2_N guestFem_1_N))))))))) NoVoc QuestMark
@@ -95056,10 +95056,10 @@ swe: anspråkslös och enkel mat
 bul: непретенциозна храна
 key: 1 homely_3_A 01797914-a
 
-abs+ PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA plain_6_A) (TimeNP (MassNP (AdjCN (PositA homely_4_A) (UseN furniture_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttAP he_Pron (AdvAP (PositA plain_6_A) (TimeNP (MassNP (AdjCN (PositA homely_4_A) (UseN furniture_N)))))) NoVoc
 eng: plain homely furniture
 swe: enkel okonstlad möbel
-bul: обикновен непретенциозно мебели
+bul: обикновена непретенциозна мебел
 key: 1 homely_4_A 00854767-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA homely_4_A) (UseN manner_2_N)))) NoVoc
@@ -118045,7 +118045,7 @@ key: 1 low_2_A 01209146-a
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA low_2_A) (UseN furniture_N)))) NoVoc
 eng: low furniture
 swe: låg möbel
-bul: ниско мебели
+bul: ниска мебел
 key: 1 low_2_A 01209146-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA low_2_A) (UseN bow_6_N)))) NoVoc
@@ -119518,10 +119518,10 @@ swe: den här ullen gör till en trevlig tröja
 bul: тази вълна се произвежда на хубав пуловер
 key: 1 make_30_V 02754634-v
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN wood_1_N)) (ComplSlash (SlashV2a make_31_V2) (MassNP (AdjCN (PositA good_1_A) (UseN furniture_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN wood_1_N)) (ComplSlash (SlashV2a make_31_V2) (MassNP (AdjCN (PositA good_1_A) (UseN furniture_N))))))) NoVoc
 eng: Wood makes good furniture
 swe: trä blir bra möbel
-bul: дърво става за добро мебели
+bul: дърво става за добра мебел
 key: 1 make_31_V2 02754502-v
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (ConjNP and_Conj (BaseNP (UseDAP (DetDAP (DetQuant IndefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n4)))))))))))) (UseDAP (DetDAP (DetQuant IndefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n4)))))))))))))) (ComplSlash (SlashV2a make_32_V2) (UseDAP (DetDAP (DetQuant IndefArt (NumCard (NumNumeral (num (pot4as5 (pot3as4 (pot2as3 (pot1as2 (pot0as1 (pot0 n8)))))))))))))))) NoVoc
@@ -125512,11 +125512,11 @@ swe: modern konst
 bul: модерно изкуство
 key: 1 modern_1_A 01539804-a
 
-abs+ PhrUtt NoPConj (UttNP (AdvNP (UseDAPMasc (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PositA modern_1_A))) (TimeNP (MassNP (UseN furniture_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (AdvNP (UseDAPMasc (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PositA modern_1_A))) (TimeNP (MassNP (UseN furniture_N))))) NoVoc
 eng: modern furniture
 swe: en modern möbel
-bul: модерен мебели
-key: 1 modern_1_A 01539804-a съвременен модерен
+bul: модерна мебел
+key: 1 modern_1_A 01539804-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA modern_1_A) (UseN history_3_N)))) NoVoc
 eng: modern history
@@ -125650,10 +125650,10 @@ swe: Han modifierade sina åsikter om samma könsmässiga äktenskap
 bul: той промени монопола си по брака на същия пол
 key: 1 modify_1_V2 00169614-v modifiera
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA modular_A) (UseN furniture_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA modular_A) (UseN furniture_N)))) NoVoc
 eng: modular furniture
 swe: modulär möbel
-bul: модулно мебели
+bul: модулна мебел
 key: 1 modular_A 02304090-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PositA modular_A) (UseN home_2_N)))) NoVoc
@@ -125740,10 +125740,10 @@ swe: en ledare i stöpningen av hennes företrädare
 bul: лидер в калъпа на нейните предшественици
 key: 1 mould_6_N 04739949-n
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN furniture_N)) (AdvVP (UseV mold_2_V) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_2_A) (UseN house_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN furniture_N)) (AdvVP (UseV mold_2_V) (PrepNP in_1_Prep (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA old_2_A) (UseN house_1_N)))))))) NoVoc
 eng: The furniture molded in the old house
 swe: möbeln möglade i det gamla huset
-bul: мебелито мухлясва в старата къща
+bul: мебелта мухлясва в старата къща
 key: 1 mold_2_V 00211164-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron she_Pron) (AdvVP (ComplSlash (SlashV2a mold_4_V2) (DetCN (DetQuant DefArt NumPl) (UseN (CompoundN rice_1_N ball_8_N)))) (PositAdvAdj careful_1_A))))) NoVoc
@@ -133282,10 +133282,10 @@ swe: när ett tillfrågat att köra lastbilen, protesterade hon att hon inte had
 bul: при попитано да кара камиона, тя възрази, че тя не има лиценза на шофьорка
 key: 1 object_VS 00809123-v протестирам възразявам възразя avstyrka
 
-abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN wife_N)) (AdvVP (ComplSlash (SlashV2a object_to_2_V2) (UseDAPMasc (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PositA modern_2_A)))) (TimeNP (MassNP (UseN furniture_N))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN wife_N)) (ComplSlash (SlashV2a object_to_2_V2) (MassNP (AdjCN (PositA modern_2_A) (UseN furniture_N))))))) NoVoc
 eng: My wife objects to modern furniture
-swe: min fru invänder mot en modern möbel
-bul: моята съпруга възразява срещу модерен мебели
+swe: min fru invänder mot modern möbel
+bul: моята съпруга възразява срещу модерна мебел
 key: 1 object_to_2_V2 02759740-v
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (ConjAP and_Conj (BaseAP (PositA vulgar_2_A) (PositA objectionable_1_A))) (UseN person_1_N)))) NoVoc
@@ -159418,10 +159418,10 @@ swe: vänligen ordna om de här filerna
 bul: моля пренареждай тези файлове
 key: 1 rearrange_V2 00279050-v
 
-abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a rearrange_V2) (DetCN (DetQuant DefArt NumSg) (UseN furniture_N))) (PrepNP in_1_Prep (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN room_1_N)))))) NoVoc
+abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a rearrange_V2) (DetCN (DetQuant DefArt NumSg) (UseN furniture_N))) (PrepNP in_1_Prep (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN room_1_N)))))) NoVoc
 eng: rearrange the furniture in my room
 swe: ordna om möbeln i mitt rum
-bul: пренареждай мебелито в моята стая
+bul: пренареди мебелта в моята стая
 key: 1 rearrange_V2 00279050-v
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA rearward_1_A) (UseN glance_N)))) NoVoc
@@ -169156,10 +169156,10 @@ swe: rynka gardintyget
 bul: набери перделната тъкан
 key: 1 ruffle_9_V2 01389955-v
 
-abs+ PhrUtt NoPConj (UttS (AdvS (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (AdvAP (PositA full_1_A) (PrepNP of_1_Prep (DetCN (DetQuant IndefArt NumPl) (UseN boy_1_N)))) (UseN house_1_N)))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ComplVV have_5_VV ASimul PPos (ComplSlash (SlashV2a have_1_V2) (MassNP (AdjCN (PositA rugged_1_A) (UseN furniture_N))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (AdvS (PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (AdjCN (AdvAP (PositA full_1_A) (PrepNP of_2_Prep (DetCN (DetQuant IndefArt NumPl) (UseN boy_1_N)))) (UseN house_1_N)))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSgFem_Pron) (ComplVV have_5_VV ASimul PPos (ComplSlash (SlashV2a have_1_V2) (MassNP (AdjCN (PositA rugged_1_A) (UseN furniture_N))))))))) NoVoc
 eng: with a house full of boys you have to have rugged furniture
-swe: med ett hus fullt av pojkar bör du ha robust möbel
-bul: с къща пълна от момчета ти трябва да имаш здраво мебели
+swe: med ett hus fullt med pojkar bör du ha robust möbel
+bul: с къща пълна с момчета ти трябва да имаш здрава мебел
 key: 1 rugged_1_A 00710810-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA rugged_3_A) (UseN ground_1_N)))) NoVoc
@@ -176674,10 +176674,10 @@ swe: seychellska fiskare
 bul: сейшелски рибари
 key: 1 seychellois_A 03128185-a
 
-abs+ PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA shabby_1_A) (UseN furniture_N)))) NoVoc
+abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA shabby_1_A) (UseN furniture_N)))) NoVoc
 eng: shabby furniture
 swe: sliten möbel
-bul: вехто мебели
+bul: вехта мебел
 key: 1 shabby_1_A 02593481-a
 
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA shabby_2_A) (UseN treatment_2_N)))) NoVoc
@@ -209872,11 +209872,11 @@ swe: ett fult ansikte
 bul: грозно лице
 key: 1 ugly_1_A 00222548-a
 
-abs+ PhrUtt NoPConj (UttNP (AdvNP (UseDAPMasc (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PositA ugly_1_A))) (TimeNP (MassNP (UseN furniture_N))))) NoVoc
+abs: PhrUtt NoPConj (UttNP (AdvNP (UseDAPMasc (AdjDAP (DetDAP (DetQuant IndefArt NumSg)) (PositA ugly_1_A))) (TimeNP (MassNP (UseN furniture_N))))) NoVoc
 eng: ugly furniture
 swe: en ful möbel
-bul: грозен мебели
-key: 1 ugly_1_A 00222548-a противен неприятен грозен
+bul: грозна мебел
+key: 1 ugly_1_A 00222548-a
 
 abs+ PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (PossNP (AdjCN (PositA ugly_2_A) (UseN frame_7_N)) (DetCN (DetQuant gen_Quant NumSg) (UseN mind_1_N))))) NoVoc
 eng: an ugly frame of mind
@@ -213643,7 +213643,7 @@ key: 1 unfinished_2_A 01007907-a
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA unfinished_3_A) (UseN furniture_N)))) NoVoc
 eng: unfinished furniture
 swe: ofärdig möbel
-bul: недовършено мебели
+bul: недовършена мебел
 key: 1 unfinished_3_A 01718610-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA unfirm_1_A) (UseN stance_1_N)))) NoVoc
@@ -215923,7 +215923,7 @@ key: 1 unpainted_2_A 01718378-a
 abs: PhrUtt NoPConj (UttNP (MassNP (AdjCN (PositA unpainted_2_A) (UseN furniture_N)))) NoVoc
 eng: unpainted furniture
 swe: ommålad möbel
-bul: небоядисано мебели
+bul: небоядисана мебел
 key: 1 unpainted_2_A 01718378-a
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN policy_1_N)) (UseN unpalatability_2_N)) (ComplSlash (SlashV2a cause_V2) (DetCN (DetQuant IndefArt NumSg) (UseN uproar_1_N)))))) NoVoc
@@ -220873,7 +220873,7 @@ key: 1 venal_A 00623826-a
 abs+ PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ComplSlash (SlashV2a veneer_V2) (DetCN (DetQuant DefArt NumSg) (UseN furniture_N))) (InOrderToVP ASimul PPos he_Pron (ComplSlash (SlashV2a protect_1_V2) (UsePron it_Pron)))))) NoVoc
 eng: veneer the furniture to protect it
 swe: fanera möbeln för att skydda det
-bul: фурнировай мебелито за да го защити
+bul: фурнировай мебелта за да го защити
 key: 1 veneer_V2 01271788-v
 
 abs+ PhrUtt NoPConj (UttNP (AdvNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA venerable_1_A) (UseN sageMasc_1_N))) (PrepNP with_Prep (MassNP (AdjCN (PositA white_10_A) (ConjCN and_Conj (BaseCN (UseN hair_1_N) (UseN beard_1_N)))))))) NoVoc

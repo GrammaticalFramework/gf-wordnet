@@ -68414,7 +68414,7 @@ abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA exact
 eng: an exact mind
 swe: ett exakt sinne
 bul: точен ум
-key: 1 exact_1_A 00917535-a точен
+key: 1 exact_1_A 00917535-a
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA exact_1_A) (UseN copy_2_N)))) NoVoc
 eng: an exact copy

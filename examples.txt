@@ -26236,7 +26236,7 @@ swe: den elektriska spisen hade en stor häll och tre mindre
 bul: електрическата печка има един голям котлон и три по-малки
 key: 1 burner_2_N 02926715-n
 
-abs: DetCN (DetQuant gen_Quant NumPl) (AdvCN (AdjCN (PositA burning_A) (UseN issue_1_N)) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN day_2_N))))
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant gen_Quant NumPl) (AdvCN (AdjCN (PositA burning_A) (UseN issue_1_N)) (PrepNP of_1_Prep (DetCN (DetQuant DefArt NumSg) (UseN day_2_N)))))) NoVoc
 eng: burning issues of the day
 swe: de heta frågorna av dagen
 bul: горещите въпроси от деня
@@ -131230,7 +131230,7 @@ swe: nominell fras
 bul: номинална фраза
 key: 1 nominal_3_A 02779730-a
 
-abs: DetCN (DetQuant DefArt NumSg) (AdjCN (PositA nominal_4_A) (UseN gdp_N))
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA nominal_4_A) (UseN gdp_N)))) NoVoc
 eng: the nominal GDP
 swe: den nominella BNP
 bul: номиналният БНП
@@ -156310,7 +156310,7 @@ swe: snabb av fot
 bul: бърз от стъпало
 key: 1 quick_3_A 00032846-a пъргав подвижен
 
-abs: DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA quick_1_A) (UseN mind_7_N))
+abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA quick_1_A) (UseN mind_7_N)))) NoVoc
 eng: a quick mind
 swe: ett snabbt sinne
 bul: бърз ум

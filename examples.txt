@@ -138895,7 +138895,7 @@ key: 1 pad_3_V2 01529744-v
 abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2a pad_4_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (UseN seat_4_N) (DetCN (DetQuant DefArt NumSg) (UseN chair_1_N))))))) NoVoc
 eng: pad the seat of the chair
 swe: vaddera sätet av stolen
-bul: подплътявай седалката на стола
+bul: подплъти седалката на стола
 key: 1 pad_4_V2 00322287-v
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (ProgrVP (ComplSlash (AdvVPSlash (SlashV2a page_2_V2) (PrepNP in_1_Prep (DetCN (DetQuant gen_Quant NumSg) (UseN congress_1_N)))) (DetCN (DetQuant this_Quant NumSg) (UseN summer_1_N))))))) NoVoc

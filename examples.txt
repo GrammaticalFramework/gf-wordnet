@@ -56,7 +56,7 @@ abs: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdvVP (ReflVPSlash (SlashV2a abandon_
 eng: Abandon your life to God
 swe: överge ditt liv till Gud
 bul: изостави своя живот на Бог
-key: 1 abandon_2_V2 02232523-v /0@{Verb:9,Theme:10,Destination:16}
+key: 1 abandon_2_V2 02232523-v /0@{Verb:9,Theme:10,Beneficiary:16}
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron he_Pron) (ComplSlash (SlashV2a abandon_4_V2) (DetCN (DetQuant DefArt NumSg) (AdvCN (UseN thought_1_N) (PrepNP of_3_Prep (DetCN (DetQuant gen_Quant NumSg) (GerundCN (ComplSlash (SlashV2a ask_for_2_V2) (AdvNP (DetCN (DetQuant (PossPron she_Pron) NumSg) (UseN hand_1_N)) (PrepNP in_1_Prep (MassNP (UseN marriage_1_N)))))))))))))) NoVoc
 eng: He abandoned the thought of asking for her hand in marriage

@@ -74,7 +74,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (PossPr
 eng: his abandonment of his wife and children left them penniless
 swe: hans övergivande av sina fru och barn lämnade dem utfattiga
 bul: неговото напускане на своята съпругата и децата ги остави безпарични
-key: 1 abandonment_2_N 00056135-n /0@{Agent:10,Verb:26,Theme:29,Attribute:27}
+key: 1 abandonment_2_N 00056135-n /0@{Instrument:10,Verb:26,Theme:29,Attribute:27}
 
 abs* ?
 eng: "each confession brought her into an attitude of abasement"- H.L.Menchken

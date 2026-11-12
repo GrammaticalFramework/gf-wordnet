@@ -193720,11 +193720,11 @@ swe: han håller på att studera geologi i sitt rum
 bul: той учи геология в своята стая
 key: 1 study_5_V2 00608509-v /0@{Agent:10,Verb:16,Theme:17}
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN wheat_2_N)) (AdvVP (UseComp (CompNP (DetCN (DetQuant DefArt NumSg) (RelCN (UseN stuff_1_N) (UseRCl (TTAnt TPres ASimul) PPos (EmptyRelSlash (SlashVP (UsePron they_Pron) (SlashV2a use_1_V2)))))))) (InOrderToVP ASimul PPos they_Pron (ComplSlash (SlashV2a make_15_V2) (MassNP (UseN bread_1_N)))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN wheat_2_N)) (AdvVP (UseComp (CompNP (RelNP (DetCN (DetQuant DefArt NumSg) (UseN stuff_1_N)) (UseRCl (TTAnt TPres ASimul) PPos (EmptyRelSlash (SlashVP (UsePron they_Pron) (SlashV2a use_1_V2)))))))) (InOrderToVP ASimul PPos they_Pron (ComplSlash (SlashV2a make_15_V2) (MassNP (UseN bread_1_N)))))))) NoVoc
 eng: wheat is the stuff they use to make bread
 swe: vete är materialet de använder för att göra bröd
 bul: пшеница е веществото което те използват за да направят хляб
-key: 1 stuff_1_N 14604877-n /0@{Agent:10,Verb:40,Theme:41}
+key: 1 stuff_1_N 14604877-n use-105/391@{Agent:30,Verb:33,Theme:17,Predicate:38}
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN trunk_4_N)) (AdvVP (UseComp (CompAP (PositA full_1_A))) (PrepNP of_1_Prep (MassNP (UseN stuff_2_N))))))) NoVoc
 eng: the trunk was full of stuff

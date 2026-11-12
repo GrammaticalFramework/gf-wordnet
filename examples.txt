@@ -125210,7 +125210,7 @@ abs: PhrUtt NoPConj (UttNP (MassNP (PossNP (AdjCN (PastPartAgentAP (SlashV2a mak
 eng: paste made by a mix of flour and water
 swe: klister gjort av en blandning av mjöl och vatten
 bul: лепило направено от смесване на брашно и вода
-key: 1 mix_3_N 00380891-n /0@{Theme:16,Verb:9,Agent:10}
+key: 1 mix_3_N 00380891-n /0@{Theme:16,Verb:9,Instrument:10}
 
 abs: PhrUtt NoPConj (UttNP (DetCN (DetQuant IndefArt NumPl) (AdjCN (PresPartAP (UseV mix_3_V)) (UseN sound_1_N)))) NoVoc
 eng: mixing sounds

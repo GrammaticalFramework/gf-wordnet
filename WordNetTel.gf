@@ -1,7 +1,4 @@
---# -path=../abstract:../common
-
-concrete WordNetTel of WordNet = CatTel ** open ParadigmsTel, ResTel, Prelude,
-  (M=MorphoTel), (S=StructuralTel) in {
+concrete WordNetTel of WordNet = CatTel ** open ParadigmsTel, ResTel, Prelude, (M=MorphoTel), (S=StructuralTel) in {
 
 lin a_bomb_N = mkN "అణుబాంబు" ; --guessed
 lin a_couple_Card = {s = \\_=>"కొన్ని" ; n = Pl} ; --guessed

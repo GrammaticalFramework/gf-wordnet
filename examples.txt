@@ -32108,7 +32108,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePro
 eng: She was checking out the apples that the customer had put on the conveyer belt
 swe: Hon höll på att stoppa till äpplena som kunden hade ställt på transportör-bältet
 bul: тя сканира ябълките които потребителят беше сложил на транспортната лента
-key: 1 check_out_5_V2 02368741-v /0@{Agent:10,Verb:15,Theme:16} /0@{Agent:10,Verb:39,Location:42}
+key: 1 check_out_5_V2 02368741-v /0@{Agent:10,Verb:15,Theme:16} /0@{Agent:31,Verb:39,Location:42}
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (ComplVV have_5_VV ASimul PPos (ComplSlash (SlashV2a sound_out_2_V2) (DetCN (DetQuant DefArt NumSg) (AdjCN (PositA new_1_A) (UseN professorMasc_N)))))))) NoVoc
 eng: I have to sound out the new professor

@@ -193724,7 +193724,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN
 eng: wheat is the stuff they use to make bread
 swe: vete är materialet de använder för att göra bröd
 bul: пшеница е веществото което те използват за да направят хляб
-key: 1 stuff_1_N 14604877-n use-105/391@{Agent:30,Verb:33,Theme:17,Predicate:38}
+key: 1 stuff_1_N 14604877-n use-105/391@{Agent:30,Verb:33,Theme:17,Predicate:38} create-26.4/548@{Agent:30,Verb:40,Result:41}
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN trunk_4_N)) (AdvVP (UseComp (CompAP (PositA full_1_A))) (PrepNP of_1_Prep (MassNP (UseN stuff_2_N))))))) NoVoc
 eng: the trunk was full of stuff

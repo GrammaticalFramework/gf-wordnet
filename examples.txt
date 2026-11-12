@@ -230774,7 +230774,7 @@ abs: PhrUttMark NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (D
 eng: The bread cuts easily.
 swe: brödet skärs lätt.
 bul: хлябът се реже лесно.
-key: 1 cut_25_V 01613894-v /0@{Agent:10,Verb:18}
+key: 1 cut_25_V 01613894-v cut-21.1/23@{Patient:10,Verb:18,Manner:19}
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN curtain_1_N)) (AdvVP (AdvVP (UseV rip_1_V) (PrepNP from_Prep (MassNP (UseN top_1_N)))) (PrepNP to_2_Prep (MassNP (UseN bottom_2_N))))))) NoVoc
 eng: The curtain ripped from top to bottom

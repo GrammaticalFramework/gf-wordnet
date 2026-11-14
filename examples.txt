@@ -30562,7 +30562,7 @@ swe: i de flesta människor är talcentret i den vänstra hjärnhalvan
 bul: в повечето хора речевият център е в лявото полукълбо
 key: 1 centre_8_N 05471109-n
 
-abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ProgrVP (ComplSlash (SlashV2a raise_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN money_1_N)))) (InOrderToVP ASimul PPos they_Pron (ComplSlash (SlashV2a build_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA new_1_A) (AdjCN (UseN centre_9_N) (PrepNP for_Prep (MassNP (UseN research_2_N)))))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (UsePron they_Pron) (AdvVP (ProgrVP (ComplSlash (SlashV2a raise_1_V2) (DetCN (DetQuant IndefArt NumPl) (UseN money_1_N)))) (InOrderToVP ASimul PPos they_Pron (ComplSlash (SlashV2a build_1_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA new_1_A) (AdcCN (UseN centre_9_N) (PrepNP for_Prep (MassNP (UseN research_2_N)))))))))))) NoVoc
 eng: they were raising money to build a new center for research
 swe: de höll på att höja pengar för att bygga ett nytt centrum för forskning
 bul: те събираха пари за да построят нов център за проучване
@@ -101072,7 +101072,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN 
 eng: the inconvertibility of their currency made international trade impossible
 swe: inkonvertibiliteten av deras valuta gjorde den internationella handeln omöjlig
 bul: неконвертируемостта на тяхната валута направи международната търговия невъзможна
-key: 1 inconvertibility_N 04744260-n /0@{Agent:10,Verb:26,Theme:29,Attribute:27}
+key: 1 inconvertibility_N 04744260-n /0@{Instrument:10,Verb:26,Theme:29,Attribute:27}
 
 abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN alchemistMasc_N)) (UseComp (CompAP (SentAP (PositA unable_1_A) (EmbedVP ASimul PPos they_Pron (ComplSlash (SlashV2a accept_1_V2) (DetCN (DetQuant DefArt NumSg) (PossNP (AdjCN (PositA inconvertible_2_A) (UseN nature_1_N)) (DetCN (DetQuant gen_Quant NumPl) (AdjCN (PositA elemental_1_A) (UseN metal_1_N))))))))))))) NoVoc
 eng: the alchemists were unable to accept the inconvertible nature of elemental metals
@@ -158600,7 +158600,7 @@ abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQu
 eng: His mind re-creates the entire world
 swe: Hans sinne återskapar den hela världen
 bul: неговият ум пресъздава целия свят
-key: 1 re_create_3_V2 00738804-v /0@{Agent:10,Verb:19,Theme:20}
+key: 1 re_create_3_V2 00738804-v /0@{Instrument:10,Verb:19,Theme:20}
 
 abs+ PhrUtt NoPConj (UttS (UseCl (TTAnt TPastSimple ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN directorFem_1_N)) (AdvVP (ComplSlash (SlashV2a re_emphasize_1_V2) (DetCN (DetQuant DefArt NumSg) (UseN need_2_N))) (PrepNP for_Prep (MassNP (AdjCN (UseComparA great_1_A) (UseN productivity_2_N)))))))) NoVoc
 eng: The director re-emphasized the need for greater productivity

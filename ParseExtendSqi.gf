@@ -1,6 +1,6 @@
 concrete ParseExtendSqi of ParseExtend =
   ExtendSqi - [iFem_Pron, youPolFem_Pron, weFem_Pron, youPlFem_Pron, theyFem_Pron,
-               GenNP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
+               GenNP, GenRP, DetNPMasc, DetNPFem, FocusAP, N2VPSlash, A2VPSlash,
                CompVP, InOrderToVP, PurposeVP, ComplGenVV, ReflRNP, ReflA2RNP,
                UncontractedNeg, AdvIsNPAP, ExistCN, NominalizeVPSlashNP,
                PiedPipingQuestSlash, PiedPipingRelSlash],
@@ -14,7 +14,7 @@ oper
   infVP : Ant -> Pol -> Agr -> VP -> Str = \ant,pol,a,vp -> case ant.a of {
     Simul => "të" ++ case pol.p of {Pos=>[];Neg=>"mos"} ++
       vp.subjunctive!agrNumber a!a.p!agrGender a!Nom;
-    Anter => "të" ++ case pol.p of {Pos=>[];Neg=>"mos"} ++ haveAux!ParamX.Pres!agrNumber a!a.p++vp.participle!a!Nom
+    Anter => "të" ++ case pol.p of {Pos=>[];Neg=>"mos"} ++ perfectAux vp.vtype ParamX.Pres (agrNumber a) a.p++vp.participle!a!Nom
   } ;
 
 lin
@@ -58,6 +58,13 @@ lin
   AdvAdv a b={s=a.s++b.s};
   whatSgFem_IP={s="çfarë";a={gn=GSg Fem;p=P3}};
   whatSgNeut_IP={s="çfarë";a={gn=GSg Masc;p=P3}};
+  GenRP n cn={
+    s=\\_,gn=>cn.s!Def!Nom!n.n++case gn of {
+      GSg Masc=>"e të cilit";
+      GSg Fem=>"e të cilës";
+      GPl=>"e të cilëve"
+    }
+  };
 
   ComplVV vv ant pol vp=extAddVP (baseVP vv) (\\a=>infVP ant pol a vp);
   SlashVV vv ant pol sl=sl**{
@@ -82,7 +89,7 @@ lin
       (v.indicative!ResSqi.Pres!n!p) n p++
       v.c2.s++np.s ! v.c2.c++infVP ant pol np.a (baseSlashVP sl)
     };
-  InOrderToVP ant pol p vp={s="për të"++infVP ant pol p.a vp};
+  InOrderToVP ant pol p vp={s="për"++infVP ant pol p.a vp};
 
   ReflA2 a r= {
     s=\\sp,c,g,n=>(PositA a).s ! sp ! c ! g ! n++a.c2.s++r.s!(agrgP3 g n)!a.c2.c};

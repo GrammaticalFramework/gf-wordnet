@@ -19,6 +19,17 @@ oper
     past=\\p,n=>v.past!p!n++x;participle=\\p=>v.participle!p++x;
     subjunctive=\\a,p,n=>v.subjunctive!a!p!n++x
   } ;
+  prependVVComplement : Str -> Verb -> VP = \x,v -> lin VP {
+    s=x++v.s;
+    conditional=\\a,p,n=>x++v.conditional!a!p!n;
+    converb={imperfective=x++v.converb.imperfective;futCon1=x++v.converb.futCon1;
+      futCon2=x++v.converb.futCon2;negative=x++v.converb.negative;
+      perfective=x++v.converb.perfective;simultaneous=x++v.converb.simultaneous};
+    imperative=\\n=>x++v.imperative!n;passive=x++v.passive;
+    past=\\p,n=>v.past!p!n++x;
+    participle=\\p=>x++v.participle!p;
+    subjunctive=\\a,p,n=>x++v.subjunctive!a!p!n
+  } ;
   simpleCl : Str -> Cl = \s -> lin Cl {s=s;negative=table {_=>"չ"++s};
     anterior=\\_=>table {_=>s};conditional=\\_,_=>s;
     converb={imperfective=s;futCon1=s;futCon2=s;negative=s;perfective=s;simultaneous=s};
@@ -28,7 +39,7 @@ lin
   gen_Quant = {s=\\_=>[];sp=Indef;isArt=False} ;
   UttAP pron ap = {s=pron.s!Nom ++ ap.s ! Indef ! Nom ! pron.a.n ++ presentAux pron.a.p pron.a.n} ;
   UttVPS pron vps = {s=pron.s!Nom ++ vps.s!pron.a} ;
-  PhrUttMark p u v m = {s=p.s ++ u.s ++ v.s ++ m.s} ;
+  PhrUttMark p u v m = {s=CAPIT ++ p.s ++ u.s ++ v.s ++ SOFT_BIND ++ m.s} ;
   QuestMark = {s=[]} ;
   ReflA2 a r = {s=\\sp,c,n=>a.s!c!n ++ a.c2.s ++ r.s!a.c2.c;isPre=False} ;
   ReflVPSlash slash r = extAddVP (extToVP slash) (slash.c2.s ++ r.s!slash.c2.c) ;
@@ -43,7 +54,7 @@ lin
   UseAdAACard a c = {s=a.s ++ c.s} ;
   RelNP np rs = {s=\\c=>np.s!c ++ rs.s;a=np.a} ;
   ExtRelNP np rs = {s=\\c=>np.s!c ++ "," ++ rs.s;a=np.a} ;
-  ExtAdvAP ap adv = {s=\\sp,c,n=>ap.s!sp!c!n ++ "," ++ adv.s;isPre=ap.isPre} ;
+  ExtAdvAP ap adv = {s=\\sp,c,n=>ap.s!sp!c!n ++ SOFT_BIND ++ "," ++ adv.s;isPre=ap.isPre} ;
   BareN2 n = n ;
   ComparAdv pol ca adv comp = {s=pol.s ++ ca.s ++ adv.s ++ ca.p ++ comp.s} ;
   CAdvAP pol ca ap comp = {s=\\sp,c,n=>pol.s++ca.s++ap.s!sp!c!n++ca.p++comp.s;isPre=True} ;
@@ -56,7 +67,7 @@ lin
   whatSgNeut_IP = {s="ի՞նչ"} ;
   that_RP = {s="որը"} ;
   EmbedVP ant pol pron vp = {s=pol.s ++ vp.s} ;
-  ComplVV vv ant pol vp = extAddVP (extToVP vv) (pol.s ++ vp.s) ;
+  ComplVV vv ant pol vp = prependVVComplement (pol.s ++ vp.s) vv ;
   SlashVV vv ant pol slash = lin VPSlash ((addVerb vv (pol.s++slash.s)) ** {c2=slash.c2}) ;
   SlashV2V v ant pol vp = lin VPSlash ((addVerb v (pol.s++vp.s)) ** {c2=v.c2}) ;
   SlashV2VNP v np ant pol slash = lin VPSlash

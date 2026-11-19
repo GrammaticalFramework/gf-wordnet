@@ -108633,7 +108633,7 @@ lin untie_2_V2 = mkV2 "విప్పు" ; --guessed
 lin untied_1_A = mkA "విప్పబడిన" ; --guessed
 lin untied_2_A = mkA "విప్పబడిన" ; --guessed
 lin untied_3_A = mkA "సరిపోని" ; --guessed
-lin until_Prep = mkPrep "వరకు" ; --guessed
+lin until_Prep = mkPrep "వరకు" ;
 lin until_Subj = {s = "వరకు"} ; --guessed
 lin until_then_Adv = mkAdv "అప్పటివరకు" ; --guessed
 lin untilled_A = mkA "దున్నని" ; --guessed

@@ -24,6 +24,7 @@ import qualified Data.ByteString.UTF8 as BSS
 import qualified Data.Map as Map
 import qualified Data.Set as Set
 import Data.Char
+import Data.List (tails)
 import Data.Maybe
 import PGF2
 import OpenSSL
@@ -195,23 +196,17 @@ contentService db client_secret rq = do
       git inp [["pull","--no-edit"]]
       hGetContents out
 
-    doPickExample _ = do
+    doPickExample mode = do
       g  <- newStdGen
       ls <- fmap lines $ readUtf8File "examples.txt"
-      return (showJSON (pick g 36000 1 ls))
+      let marker = if mode == "approved" then "abs: Phr" else "abs* Phr"
+          candidates = [(line_no, unlines (l:take 4 rest))
+                       | (line_no, l:rest) <- zip [1..] (tails ls)
+                       , take 8 l == marker]
+      return (showJSON (pick g candidates))
       where
-        pick :: StdGen -> Int -> Int -> [String] -> (Int,String)
-        pick g n line_no ls = find i line_no ls
-          where
-            (i,g') = randomR (0,n) g
-
-            find i !line_no []     = pick g' i 1 ls
-            find i !line_no (l:ls)
-              | take 8 l == "abs* Phr"
-                                   = if i == 0
-                                       then (line_no,unlines (l:take 4 ls))
-                                       else find (i-1) (line_no+1) ls
-              | otherwise          = find i (line_no+1) ls
+        pick :: StdGen -> [(Int,String)] -> (Int,String)
+        pick g candidates = candidates !! fst (randomR (0,length candidates - 1) g)
 
     doUpdateExample user line_no def =
       case map (readExpr . drop 4) def_ls of

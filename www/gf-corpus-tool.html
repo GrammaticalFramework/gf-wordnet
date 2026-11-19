@@ -201,6 +201,7 @@
 			<td align="center">
 			    <input id="linearize_button" type="button" value="Linearize" disabled onclick="on_linearize()">
 			    <input id="next_button" type="button" value="Next" onclick="on_next()">
+			    <label><input id="approved_examples" type="checkbox"> pick approved example</label>
 			</td>
 			<td align="right">
 			    <input id="approve_button" type="button" value="Approve" disabled onclick="on_approve()">
@@ -294,6 +295,10 @@
 
 			function on_next() {
 				function extract_example(exmpl) {
+					if (exmpl == null) {
+						alert("No examples found for the selected marker.");
+						return;
+					}
 					exmpl_id = exmpl[0];
 					element("example").value = exmpl[1];
 					element("approve_button").disabled=false;
@@ -304,7 +309,7 @@
 					clear(element("result").getElementsByTagName("TFOOT")[0]);
 					on_linearize();
 				}
-				gfwordnet.content_call("pick_example=1",extract_example);
+				gfwordnet.content_call("pick_example="+(element("approved_examples").checked ? "approved" : "1"),extract_example);
 			}
 
 			function on_approve() {

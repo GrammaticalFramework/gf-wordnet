@@ -8901,7 +8901,7 @@ lin befall_V2 = mkV2 "సంభవించు" ; --guessed
 lin befit_V2 = mkV2 "తగియుండు" ; --guessed
 lin befitting_A = mkA "తగిన" ; --guessed
 lin befogged_A = mkA "అర్థం కాని ముఖం" ; --guessed
-lin before_1_Adv = mkAdv "ముందు" ; --guessed
+lin before_1_Adv = mkAdv "ఇంతకుముందు" ;
 lin before_2_Adv = mkAdv "ముందు" ; --guessed
 lin before_Prep = mkPrep "ముందు" ; --guessed
 lin before_Subj = {s = "ముందు"} ; --guessed
@@ -56984,7 +56984,7 @@ lin like_3_A = mkA "సమానమైన" ; --guessed
 lin like_4_A = mkA "సమానమైన" ; --guessed
 lin like_1_N = mkN "అలాంటిది" ; --guessed
 lin like_2_N = mkN "అలాంటివాడు" ; --guessed
-lin like_Prep = mkPrep "సమానం" ; --guessed
+lin like_Prep = mkPrep "వాటిలాగే" ;
 lin like_Subj = {s = "లాగా"} ; --guessed
 lin like_2_V2 = mkV2 "ఇష్టపడు" ; --guessed
 lin like_3_V2 = mkV2 "ఇష్టపడు" ; --guessed
@@ -71428,7 +71428,7 @@ lin patter_1_N = mkN "మాటకారిత్వం" ; --guessed
 lin patter_2_N = mkN "టపటప" ; --guessed
 lin patter_1_V = mkV "చిటపటలాడు" ; --guessed
 lin patter_2_V = variants {} ;
-lin pattern_1_N = variants {mkN "నమూనా" ; mkN "విన్యాసం"} ; --guessed
+lin pattern_1_N = variants {mkN "సరళి" ; mkN "విన్యాసం"} ;
 lin pattern_2_N = mkN "సరళి" ; --guessed
 lin pattern_3_N = mkN "నమూనా" ; --guessed
 lin pattern_4_N = mkN "నమూనా" ; --guessed

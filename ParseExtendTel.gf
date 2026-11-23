@@ -45,8 +45,8 @@ concrete ParseExtendTel of ParseExtend =
 
     gen_Quant = {s = \\_,_,_ => []} ;
 
-    UttAP pron ap = {s = pron.s ! PC Dir ++ case pron.a of {
-      Ag g n _ => ap.s ! g ! n ! Dir
+    UttAP pron ap = {s = case pron.a of {
+      Ag g n _ => ap.pred ! g ! n ! Dir
       }} ;
 
     UttVPS pron vps = {s = pron.s ! PC Dir ++ vps.s ! pron.a} ;
@@ -54,8 +54,10 @@ concrete ParseExtendTel of ParseExtend =
     ReflVPSlash vps rnp = insertObject rnp vps ;
 
     ReflA2 adjective rnp = {
-      s = \\g,n,c => rnp.s ! NPC Obl ++ adjective.c2 ++
-                       adjective.s ! g ! n ! c
+      s = rnp.s ! NPC Obl ++ adjective.c2 ++
+            adjective.s ;
+      pred = \\g,n,c => rnp.s ! NPC Obl ++ adjective.c2 ++
+                          adjective.pred ! g ! n ! c
       } ;
 
     BaseCNN n1 cn1 n2 cn2 = {
@@ -78,7 +80,8 @@ concrete ParseExtendTel of ParseExtend =
     AdvAdv first second = {s = first.s ++ second.s} ;
 
     ExtAdvAP ap adv = {
-      s = \\g,n,c => ap.s ! g ! n ! c ++ "," ++ adv.s
+      s = ap.s ++ "," ++ adv.s ;
+      pred = \\g,n,c => ap.pred ! g ! n ! c ++ "," ++ adv.s
       } ;
 
     BareN2 noun = {s = noun.s ; g = noun.g} ;
@@ -88,15 +91,20 @@ concrete ParseExtendTel of ParseExtend =
       } ;
 
     CAdvAP pol cadv ap comp = {
-      s = \\g,n,c => pol.s ++ cadv.s ++ ap.s ! g ! n ! c ++
-                       cadv.p ++ comp.s ! Ag g n P3
+      s = pol.s ++ cadv.s ++ ap.s ++
+                       cadv.p ++ comp.s ! Ag Masc Sg P3 ;
+      pred = \\g,n,c => pol.s ++ cadv.s ++ ap.pred ! g ! n ! c ++
+                          cadv.p ++ comp.s ! Ag g n P3
       } ;
 
     AdnCAdv pol cadv = {s = pol.s ++ cadv.s} ;
 
     EnoughAP ap ant pol vp = {
-      s = \\g,n,c => let f = vp.s ! pol.p ! VPInf in
-        ap.s ! g ! n ! c ++ "తగినంతగా" ++
+      s = let f = vp.s ! pol.p ! VPInf in
+        ap.s ++ "తగినంతగా" ++
+        vp.obj.s ++ vp.comp ! Ag Masc Sg P3 ++ f.neg ++ f.fin ;
+      pred = \\g,n,c => let f = vp.s ! pol.p ! VPInf in
+        ap.pred ! g ! n ! c ++ "తగినంతగా" ++
         vp.obj.s ++ vp.comp ! Ag g n P3 ++ f.neg ++ f.fin
       } ;
 

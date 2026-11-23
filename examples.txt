@@ -191356,7 +191356,7 @@ swe: lagra skafferit med kött
 bul: снабди килера с месо
 key: 1 stock_6_V2 02328055-v spray-9.7/1195@{Verb:9,Destination:10,Theme:18}
 
-abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN friendliness_2_N)) (UseComp (CompNP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN salesman_N)) (AdjCN (PositA stock_2_A) (AdjCN (PositA in_2_A) (UseN trade_1_N))))))))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (MassNP (UseN friendliness_2_N)) (UseComp (CompNP (GenModNP NumSg (DetCN (DetQuant DefArt NumSg) (UseN salesman_N)) (AdjCN (PositA stock_2_A) (AdjCN (PositA in_2_A) (UseN trade_1_N))))))))) NoVoc
 eng: friendliness is the salesman's stock in trade
 swe: vänlighet är säljarens standarda inåtriktade handel
 bul: дружелюбност е стандартната вътрешна търговия на продавача

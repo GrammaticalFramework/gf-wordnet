@@ -490,7 +490,7 @@ swe: jag har visat in [AdjAsNP] hel jag kan stå ut
 bul: аз съм чул за [AdjAsNP] изцял който аз мога да стоя
 key: 1 about_Predet 00007414-r
 
-abs* PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron we_Pron) (AdvVP (AdvVP (ComplSlash (SlashV2a meet_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN month_1_N))) once_1_Adv) about_1_Adv)))) NoVoc
+abs: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron we_Pron) (AdvVP (AdvVP (ComplSlash (SlashV2a meet_1_V2) (DetCN (DetQuant IndefArt NumSg) (UseN month_1_N))) once_1_Adv) about_1_Adv)))) NoVoc
 eng: we meet about once a month
 swe: vi möter en månad en gång [about_1_Adv]
 bul: ние срещаме месец веднъж [about_1_Adv]
